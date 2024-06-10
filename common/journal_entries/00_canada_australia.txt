@@ -1,0 +1,232 @@
+﻿je_canada_can = {
+	icon = "gfx/interface/icons/event_icons/event_flags/event_can_flag.dds"
+	
+	scripted_button = je_confederate_canada_can_button
+
+	group = je_group_historical_content
+
+	is_shown_when_inactive = {
+		OR = {
+			country_has_primary_culture = cu:anglo_canadian
+			country_has_primary_culture = cu:franco_canadian
+		}
+		is_subject = yes
+	}
+
+	possible = {
+		has_technology_researched = nationalism
+	}
+
+	complete = {
+		calc_true_if = {
+			amount >= 9
+			owns_entire_state_region = STATE_ONTARIO
+			owns_entire_state_region = STATE_NEW_BRUNSWICK
+			owns_entire_state_region = STATE_QUEBEC
+			owns_entire_state_region = STATE_NEWFOUNDLAND
+			owns_entire_state_region = STATE_ALBERTA
+			owns_entire_state_region = STATE_BRITISH_COLUMBIA
+			owns_entire_state_region = STATE_SASKATCHEWAN
+			owns_entire_state_region = STATE_MANITOBA
+			owns_entire_state_region = STATE_YUKON_TERRITORY
+			owns_entire_state_region = STATE_NORTHWEST_TERRITORIES
+			owns_entire_state_region = STATE_NUNAVUT
+		}
+	}
+
+	on_complete = {
+		trigger_event = { id = can_aus.5 }
+	}
+
+	invalid = {
+		is_subject = no
+	}
+
+	weight = 100
+
+	should_be_pinned_by_default = yes
+}
+
+je_canada_gbr = {
+	icon = "gfx/interface/icons/event_icons/event_flags/event_can_flag.dds"
+
+	group = je_group_historical_content
+
+	scripted_button = je_unify_two_canadas_gbr_button
+	scripted_button = je_maritime_union_gbr_button
+	scripted_button = je_found_british_columbia_button
+	scripted_button = je_force_hbc_sale_button
+
+	is_shown_when_inactive = {
+		any_subject_or_below = {
+			OR = {
+				country_has_primary_culture = cu:anglo_canadian
+				country_has_primary_culture = cu:franco_canadian
+			}
+			count >= 2
+		}
+		NOT = {
+			OR = {
+				country_has_primary_culture = cu:anglo_canadian
+				country_has_primary_culture = cu:franco_canadian
+			}
+		}
+	}
+
+	possible = {
+		has_technology_researched = nationalism
+	}
+
+	complete = {
+		any_subject_or_below = {
+			calc_true_if = {
+				amount >= 9
+				owns_entire_state_region = STATE_ONTARIO
+				owns_entire_state_region = STATE_NEW_BRUNSWICK
+				owns_entire_state_region = STATE_QUEBEC
+				owns_entire_state_region = STATE_NEWFOUNDLAND
+				owns_entire_state_region = STATE_ALBERTA
+				owns_entire_state_region = STATE_BRITISH_COLUMBIA
+				owns_entire_state_region = STATE_SASKATCHEWAN
+				owns_entire_state_region = STATE_MANITOBA
+				owns_entire_state_region = STATE_YUKON_TERRITORY
+				owns_entire_state_region = STATE_NORTHWEST_TERRITORIES
+				owns_entire_state_region = STATE_NUNAVUT
+			}
+		}
+		any_subject_or_below = {
+			filter = {
+				OR = {
+					country_has_primary_culture = cu:anglo_canadian
+					country_has_primary_culture = cu:franco_canadian	
+				}
+				NOT = {
+					is_subject_type = subject_type_chartered_company
+				}
+			}
+			has_technology_researched = nationalism
+			percent > 0.75
+		}
+	}
+
+	on_complete = {
+		trigger_event = { id = can_aus.6 }
+	}
+
+	weight = 100
+
+	should_be_pinned_by_default = yes
+}
+
+je_australia_aus = {
+	icon = "gfx/interface/icons/event_icons/event_flags/event_ast_flag.dds"
+	
+	scripted_button = je_australia_aus_claim_new_zealand_button
+	scripted_button = je_australia_aus_claim_eastern_new_guinea_button
+
+	group = je_group_historical_content
+
+	is_shown_when_inactive = {
+		OR = {
+			country_has_primary_culture = cu:australian
+			country_has_primary_culture = cu:maori
+		}
+		is_subject = yes
+	}
+
+	possible = {
+		has_technology_researched = nationalism
+	}
+
+	complete = {
+		calc_true_if = {
+			amount >= 7
+			owns_entire_state_region = STATE_NEW_SOUTH_WALES
+			owns_entire_state_region = STATE_VICTORIA
+			owns_entire_state_region = STATE_TASMANIA
+			owns_entire_state_region = STATE_QUEENSLAND
+			owns_entire_state_region = STATE_SOUTH_AUSTRALIA
+			owns_entire_state_region = STATE_WESTERN_AUSTRALIA
+			owns_entire_state_region = STATE_NORTHERN_TERRITORY
+			owns_entire_state_region = STATE_NORTH_ISLAND
+			owns_entire_state_region = STATE_SOUTH_ISLAND
+		}
+	}
+
+	on_complete = {
+		trigger_event = { id = can_aus.7 }
+	}
+
+	invalid = {
+		is_subject = no
+	}
+
+	should_be_pinned_by_default = yes
+}
+
+je_australia_gbr = {
+	icon = "gfx/interface/icons/event_icons/event_flags/event_ast_flag.dds"
+
+	group = je_group_historical_content
+
+	scripted_button = je_australia_gbr_found_south_australia_button
+	scripted_button = je_australia_gbr_found_north_australia_button
+	scripted_button = je_australia_gbr_found_victoria_button
+	scripted_button = je_australia_gbr_revoke_south_australia_button
+	scripted_button = je_australia_gbr_revoke_van_diemens_button
+	scripted_button = je_australia_gbr_revoke_new_zealand_button
+
+	is_shown_when_inactive = {
+		any_subject_or_below = {
+			OR = {
+				country_has_primary_culture = cu:australian
+				country_has_primary_culture = cu:maori
+			}
+			count >= 2
+		}
+		NOT = {
+			OR = {
+				country_has_primary_culture = cu:australian
+				country_has_primary_culture = cu:maori
+			}
+		}
+	}
+
+	possible = {
+		has_technology_researched = nationalism
+	}
+
+	complete = {
+		any_subject_or_below = {
+			calc_true_if = {
+				amount >= 7
+				owns_entire_state_region = STATE_NEW_SOUTH_WALES
+				owns_entire_state_region = STATE_VICTORIA
+				owns_entire_state_region = STATE_TASMANIA
+				owns_entire_state_region = STATE_QUEENSLAND
+				owns_entire_state_region = STATE_SOUTH_AUSTRALIA
+				owns_entire_state_region = STATE_WESTERN_AUSTRALIA
+				owns_entire_state_region = STATE_NORTHERN_TERRITORY
+				owns_entire_state_region = STATE_NORTH_ISLAND
+				owns_entire_state_region = STATE_SOUTH_ISLAND
+			}
+		}
+		any_subject_or_below = {
+			filter = {
+				OR = {
+					country_has_primary_culture = cu:australian			
+				}
+			}
+			has_technology_researched = nationalism
+			percent > 0.75
+		}
+	}
+
+	on_complete = {
+		trigger_event = { id = can_aus.8 }
+	}
+
+	weight = 100
+
+	should_be_pinned_by_default = yes
+}

@@ -1,0 +1,43 @@
+﻿#  ██████  ██████  ██    ██ ███    ██ ████████ ██████  ██    ██ 
+# ██      ██    ██ ██    ██ ████   ██    ██    ██   ██  ██  ██  
+# ██      ██    ██ ██    ██ ██ ██  ██    ██    ██████    ████   
+# ██      ██    ██ ██    ██ ██  ██ ██    ██    ██   ██    ██    
+#  ██████  ██████   ██████  ██   ████    ██    ██   ██    ██ 
+
+##############
+### INCOME ###
+##############
+
+country_bureaucracy_add = {
+	good = yes
+	percent = no
+	num_decimals = 0
+	
+	ai_value = 40 # KAI: 1 bureaucracy = 40 pounds
+}
+
+####################
+### CONSTRUCTION ###
+#################### 
+
+country_construction_add = {
+	good = yes
+	percent = no
+	
+	ai_value = 750 # KAI: 1 construction = 750 pounds
+}
+
+##############
+### BUDGET ###
+##############
+
+country_minting_add = {
+	good = yes
+	percent = no
+	num_decimals = 0
+	prefix = "MONEY_PREFIX"
+
+	# KAI: 1 minting = 4 pounds of profit
+	# Multiplied by 3 to combat the unincorporated state infrastructure usage modifier.
+	ai_value = 12
+}

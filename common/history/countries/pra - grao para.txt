@@ -1,0 +1,28 @@
+﻿COUNTRIES = {
+	c:PRA = {
+		set_next_election_date = 1839.1.6 # 4 years after the uprising's start
+		
+		effect_starting_technology_tier_3_tech = yes
+		add_technology_researched = mass_communication
+
+		activate_law = law_type:law_presidential_republic
+		activate_law = law_type:law_oligarchy #cabanagem started with the participation of the oligarchies of Grao-Pará in its capital, belem, wich gained support due to the terrible working conditions of the north
+		activate_law = law_type:law_national_supremacy #The game's system for dealing with culture and conflating them with race really doesnt lend itself well for representing latin america; that aside, slave/native revolts do not tend to be that chill about outsiders specially in the midts of war
+		activate_law = law_type:law_total_separation #Can't imagine the goverment caring about supressing native beliefs nor ever wanting to actually since again, this was a native7/upprising
+		activate_law = law_type:law_appointed_bureaucrats #Revolutionary goverment
+		activate_law = law_type:law_national_militia #Basically a way to represent the population rasing up in arms agaisnt Brazil, much more fitting than pesant levies
+		activate_law = law_type:law_traditionalism #Could be agrarianism, honestly it only matter if the revolution actually survives 
+		activate_law = law_type:law_consumption_based_taxation
+		activate_law = law_type:law_homesteading #Slave/native revolt, any new land distribution would have been parsed after the end of the war
+		activate_law = law_type:law_censorship
+		
+		set_tariffs_import_priority = g:artillery
+		set_tariffs_import_priority = g:small_arms
+
+		ig:ig_devout = {
+			set_interest_group_name = ig_catholic_church
+		}
+		
+		add_journal_entry = { type = ragamuffin_war_minors }
+	}
+}

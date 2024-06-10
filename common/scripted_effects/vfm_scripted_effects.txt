@@ -1,0 +1,208 @@
+﻿set_character_as_prime_minister = {
+	custom_tooltip = {
+		text = set_character_as_prime_minister
+		owner = {
+			random_scope_character = {
+				limit = {
+					has_variable = prime_minister_trigger
+				}
+				remove_variable = prime_minister_trigger
+			}
+		}
+		set_variable = prime_minister_trigger
+		owner = {
+			set_variable = {
+				name = prime_minister
+				value = PREV
+			}
+		}
+	}
+}
+
+set_character_as_vice_president = {
+	custom_tooltip = {
+		text = set_character_as_vice_president
+		owner = {
+			random_scope_character = {
+				limit = {
+					has_variable = vice_president_trigger
+				}
+				remove_variable = vice_president_trigger
+			}
+		}
+		set_variable = vice_president_trigger
+		owner = {
+			set_variable = {
+				name = vice_president
+				value = PREV
+			}
+		}
+	}
+}
+
+effect_starting_technology_tier_4_asia_tech = {
+
+	effect_starting_technology_tier_5_tech = yes
+		# Economic
+		add_technology_researched = distillation
+	    add_technology_researched = prospecting
+		
+		# Military
+		add_technology_researched = admiralty
+	    add_technology_researched = gunsmithing
+	    add_technology_researched = drydocks
+		
+		# cultural
+		add_technology_researched = centralization
+	    add_technology_researched = democracy
+	    add_technology_researched = international_relations
+	    add_technology_researched = international_trade
+		add_technology_researched = urban_planning
+		add_technology_researched = sericulture
+		add_technology_researched = academia
+		add_technology_researched = law_enforcement
+}
+
+calculate_acw_countdown_progress = {
+	set_variable = { name = acw_countdown_next value = 0 }
+	if = {
+		limit = {
+			ruler = {
+				has_ideology = ideology:ideology_abolitionist
+			}
+		}
+		change_variable = {
+			name = acw_countdown_next
+			add = 3
+		}
+	}
+	if = {
+		limit = {
+			is_enacting_law = law_type:law_slavery_banned
+		}
+		change_variable = {
+			name = acw_countdown_next
+			add = 5
+		}
+	}
+	if = {
+		limit = {
+			ig:ig_landowners = {
+				is_marginal = yes
+			}
+		}
+		change_variable = {
+			name = acw_countdown_next
+			add = 3
+		}
+	}
+	if = {
+		limit = {
+			ig:ig_landowners = {
+				is_in_government = no
+				is_powerful = yes
+			}
+			government_legitimacy < 50
+		}
+		change_variable = {
+			name = acw_countdown_next
+			add = 3
+		}
+	}
+	if = {
+		limit = {
+			var:proportion_free >= 1.15
+		}
+		change_variable = {
+			name = acw_countdown_next
+			add = 2
+		}
+	}
+	if = {
+		limit = {
+			var:proportion_free >= 1.3
+		}
+		change_variable = {
+			name = acw_countdown_next
+			add = 3
+		}
+	}
+	if = {
+		limit = {
+			var:proportion_free >= 1.5
+		}
+		change_variable = {
+			name = acw_countdown_next
+			add = 5
+		}
+	}
+	if = {
+		limit = {
+			ruler = {
+				has_ideology = ideology:ideology_slaver
+			}
+		}
+		change_variable = {
+			name = acw_countdown_next
+			add = -3
+		}
+	}
+	if = {
+		limit = {
+			is_enacting_law = law_type:law_slave_trade
+		}
+		change_variable = {
+			name = acw_countdown_next
+			add = -5
+		}
+	}
+	if = {
+		limit = {
+			ig:ig_landowners = {
+				is_in_government = yes
+				is_powerful = yes
+			}
+			government_legitimacy < 50
+		}
+		change_variable = {
+			name = acw_countdown_next
+			add = -3
+		}
+	}
+	if = {
+		limit = {
+			var:proportion_free <= 0.85
+		}
+		change_variable = {
+			name = acw_countdown_next
+			add = -2
+		}
+	}
+	if = {
+		limit = {
+			var:proportion_free <= 0.7
+		}
+		change_variable = {
+			name = acw_countdown_next
+			add = -3
+		}
+	}
+	if = {
+		limit = {
+			var:proportion_free <= 0.5
+		}
+		change_variable = {
+			name = acw_countdown_next
+			add = -5
+		}
+	}
+	if = {
+		limit = {
+			var:acw_countdown_divisiveness > 0
+		}
+		change_variable = {
+			name = acw_countdown_next
+			multiply = acw_countdown_divisiveness_multiplier
+		}
+	}
+}

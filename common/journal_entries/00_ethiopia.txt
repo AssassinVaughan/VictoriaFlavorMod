@@ -1,0 +1,148 @@
+﻿je_age_of_princes = {
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+
+	group = je_group_historical_content
+
+	is_shown_when_inactive = {
+		can_form_nation = ETH
+	}
+
+	possible = {
+		hidden_trigger = { always = yes }
+	}
+
+	complete = {
+		calc_true_if = {
+			custom_tooltip = {
+				text = je_age_of_princes_amhara_ownership_desc
+				any_scope_state = { state_region = s:STATE_AMHARA }
+				s:STATE_AMHARA = {
+					NOT = {
+						any_scope_state = {
+							owner = {
+								NOT = {
+									this = root 
+									country_rank = 0
+									NOR = {
+										country_has_primary_culture = cu:tigray
+										country_has_primary_culture = cu:oromo
+										country_has_primary_culture = cu:amhara
+										country_has_primary_culture = cu:sidama
+										country_has_primary_culture = cu:afar
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			custom_tooltip = {
+				text = je_age_of_princes_gonder_ownership_desc
+				any_scope_state = { state_region = s:STATE_GONDER }
+				s:STATE_GONDER = {
+					NOT = {
+						any_scope_state = {
+							owner = {
+								NOT = {
+									this = root 
+									country_rank = 0
+									NOR = {
+										country_has_primary_culture = cu:tigray
+										country_has_primary_culture = cu:oromo
+										country_has_primary_culture = cu:amhara
+										country_has_primary_culture = cu:sidama
+										country_has_primary_culture = cu:afar
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			custom_tooltip = {
+				text = je_age_of_princes_oromia_ownership_desc
+				any_scope_state = { state_region = s:STATE_OROMIA }
+				s:STATE_OROMIA = {
+					NOT = {
+						any_scope_state = {
+							owner = {
+								NOT = {
+									this = root 
+									country_rank = 0
+									NOR = {
+										country_has_primary_culture = cu:tigray
+										country_has_primary_culture = cu:oromo
+										country_has_primary_culture = cu:amhara
+										country_has_primary_culture = cu:sidama
+										country_has_primary_culture = cu:afar
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			custom_tooltip = {
+				text = je_age_of_princes_eritrea_ownership_desc
+				any_scope_state = { state_region = s:STATE_ERITREA }
+				s:STATE_ERITREA = {
+					NOT = {
+						any_scope_state = {
+							owner = {
+								NOT = {
+									this = root 
+									country_rank = 0
+									NOR = {
+										country_has_primary_culture = cu:tigray
+										country_has_primary_culture = cu:oromo
+										country_has_primary_culture = cu:amhara
+										country_has_primary_culture = cu:sidama
+										country_has_primary_culture = cu:afar
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			custom_tooltip = {
+				text = je_age_of_princes_gambela_ownership_desc
+				any_scope_state = { state_region = s:STATE_GAMBELA }
+				s:STATE_GAMBELA = {
+					NOT = {
+						any_scope_state = {
+							owner = {
+								NOT = {
+									this = root 
+									country_rank = 0
+									NOR = {
+										country_has_primary_culture = cu:tigray
+										country_has_primary_culture = cu:oromo
+										country_has_primary_culture = cu:amhara
+										country_has_primary_culture = cu:sidama
+										country_has_primary_culture = cu:afar
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			amount >= 4
+		}
+	}
+
+	on_complete = {
+		trigger_event = { id = formation.4 popup = yes }
+	}
+
+	on_monthly_pulse = {
+		random_events = {
+			11 = 0
+			1 = ethiopia.1
+		}
+	}
+
+	weight = 100
+	should_be_pinned_by_default = yes
+}

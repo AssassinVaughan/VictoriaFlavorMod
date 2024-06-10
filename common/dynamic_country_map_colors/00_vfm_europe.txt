@@ -1,0 +1,102 @@
+﻿estonia_governorate = {
+	color = "russian_puppet_estonia"
+
+	possible = {
+		exists = c:EST
+		THIS = c:EST
+		has_diplomatic_pact = {
+			who = c:RUS
+			type = puppet
+		}
+	}
+
+}
+
+yellow_prussia_rule = {
+	color = "yellow"
+
+	possible = {
+		exists = c:PRU
+		THIS = c:PRU
+		OR = {
+			has_game_rule = yellow_prussia
+		}
+		
+	}
+}
+
+blue_romania_rule = {
+	color = rgb{ 21  96  178 }
+
+	possible = {
+		exists = c:ROM
+		THIS = c:ROM
+		OR = {
+			has_game_rule = blue_romania
+		}
+		
+	}
+}
+
+red_ottomans_rule = {
+	color = "red"
+
+	possible = {
+		exists = c:TUR
+		THIS = c:TUR
+		has_game_rule = red_ottomans
+		NOR = {
+			has_law = law_type:law_parliamentary_republic
+			has_law = law_type:law_presidential_republic
+			has_law = law_type:law_council_republic
+		}
+		
+	}
+}
+
+purple_naples = {
+	color = "naples_purple"
+	possible = {
+		always = no
+	}
+}
+
+austria_hungary = {
+	color = "rusty_austria"
+
+	possible = {
+		exists = c:AUS
+		THIS = c:AUS
+		country_has_primary_culture = cu:hungarian
+	}
+}
+
+republican_france = {
+	color = "revolutionary_blue"
+
+	possible = {
+		exists = c:FRA
+		THIS = c:FRA
+		has_law = law_type:law_council_republic
+	}
+}
+
+south_italian_italy = {
+	color = rgb{ 204 84 16 }
+
+	possible = {
+		exists = c:ITA
+		THIS = c:ITA
+		was_formed_from = SIC
+	}
+}
+
+spanish_empire_restored = {
+	color = { 208 146 45 }
+
+	possible = {
+		exists = c:SPA
+		THIS = c:SPA
+		has_variable = je_third_reconquista_succeed
+	}
+}

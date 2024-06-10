@@ -1,0 +1,270 @@
+﻿coa_def_subject_trigger = {
+	OR = {
+		NOT = { exists = scope:target }
+		AND = {
+			exists = scope:target
+			scope:target = { 
+				OR = {
+					is_subject_type = subject_type_puppet
+					is_subject_type = subject_type_vassal
+					is_subject_type = subject_type_chartered_company
+                    is_subject_type = subject_type_dominion
+					is_subject_type = subject_type_real_union
+					is_subject_type = subject_type_dependency
+				}
+			}
+		}
+	}
+}
+
+coa_def_non_company_subject_trigger = {
+	OR = {
+		NOT = { exists = scope:target }
+		AND = {
+			exists = scope:target
+			scope:target = { 
+				OR = {
+					is_subject_type = subject_type_puppet
+					is_subject_type = subject_type_vassal
+                    is_subject_type = subject_type_dominion
+					is_subject_type = subject_type_real_union
+					is_subject_type = subject_type_dependency
+				}
+			}
+		}
+	}
+}
+
+coa_peru_bolivia_trigger = {
+	OR = {
+		AND = {
+			exists = c:PEU
+			scope:target = c:PEU
+		}
+		AND = {
+			exists = c:ESP
+			scope:target = c:ESP
+		}
+		AND = {
+			exists = c:BOL
+			scope:target = c:BOL
+		}
+	}
+	scope:target = { 
+		owns_entire_state_region = STATE_LA_PAZ
+		owns_entire_state_region = STATE_LIMA
+	}
+}
+
+coa_def_russian_subject_trigger = {
+	OR = {
+		NOT = { exists = scope:target }
+		AND = {
+			exists = scope:target
+			scope:target = { 
+			exists = c:RUS
+			c:RUS = {
+				has_diplomatic_pact = {
+					who = scope:target 
+					type = puppet
+					is_initiator = yes
+				}
+			}
+			}
+		}
+	}
+}
+
+coa_def_qing_subject_trigger = {
+	OR = {
+		NOT = { exists = scope:target }
+		AND = {
+			exists = scope:target
+			scope:target = { 
+			exists = c:CHI
+			c:CHI = {
+					AND = {
+					country_has_primary_culture = cu:manchu
+					OR = {
+						has_diplomatic_pact = {
+							who = scope:target 
+							type = puppet
+							is_initiator = yes
+						}
+						has_diplomatic_pact = {
+							who = scope:target 
+							type = vassal
+							is_initiator = yes
+						}
+						has_diplomatic_pact = {
+							who = scope:target 
+							type = dependency
+							is_initiator = yes
+						}
+						has_diplomatic_pact = {
+							who = scope:target 
+							type = real_union
+							is_initiator = yes
+						}
+					}
+				}
+			}
+			}
+		}
+	}
+}
+
+coa_def_british_colony_trigger = {
+	OR = {
+		NOT = { exists = scope:target }
+		AND = {
+			exists = scope:target
+			scope:target = { 
+				exists = c:GBR
+				c:GBR = {
+					OR = {
+						has_diplomatic_pact = {
+							who = scope:target 
+							type = puppet
+							is_initiator = yes
+						}
+						has_diplomatic_pact = {
+							who = scope:target 
+							type = vassal
+							is_initiator = yes
+						}
+						has_diplomatic_pact = {
+							who = scope:target 
+							type = chartered_company
+							is_initiator = yes
+						}
+						has_diplomatic_pact = {
+							who = scope:target 
+							type = dominion
+							is_initiator = yes
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+coa_def_german_colony_trigger = {
+	OR = {
+		NOT = { exists = scope:target }
+		AND = {
+			exists = scope:target
+			scope:target = {
+				OR = {
+					AND = {
+						exists = c:GER
+						c:GER = {
+							OR = {
+								has_diplomatic_pact = {
+									who = scope:target 
+									type = puppet
+									is_initiator = yes
+								}
+								has_diplomatic_pact = {
+									who = scope:target 
+									type = vassal
+									is_initiator = yes
+								}
+								has_diplomatic_pact = {
+									who = scope:target 
+									type = chartered_company
+									is_initiator = yes
+								}
+								has_diplomatic_pact = {
+									who = scope:target 
+									type = dominion
+									is_initiator = yes
+								}
+							}
+						}
+					}
+					AND = {
+						exists = c:PRU
+						c:PRU = {
+							OR = {
+								has_diplomatic_pact = {
+									who = scope:target 
+									type = puppet
+									is_initiator = yes
+								}
+								has_diplomatic_pact = {
+									who = scope:target 
+									type = vassal
+									is_initiator = yes
+								}
+								has_diplomatic_pact = {
+									who = scope:target 
+									type = chartered_company
+									is_initiator = yes
+								}
+								has_diplomatic_pact = {
+									who = scope:target 
+									type = dominion
+									is_initiator = yes
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+coa_def_austrian_subject_trigger = {
+	OR = {
+		NOT = { exists = scope:target }
+		AND = {
+			exists = scope:target
+			scope:target = { 
+				exists = c:AUS
+				c:AUS = {
+					OR = {
+						has_diplomatic_pact = {
+							who = scope:target 
+							type = personal_union
+							is_initiator = yes
+						}
+						has_diplomatic_pact = {
+							who = scope:target 
+							type = real_union
+							is_initiator = yes
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+coa_def_bolivian_subject_trigger = {
+	OR = {
+		NOT = { exists = scope:target }
+		AND = {
+			exists = scope:target
+			scope:target = { 
+				exists = c:BOL
+				c:BOL = {
+					has_diplomatic_pact = {
+						who = scope:target 
+						type = confederation
+						is_initiator = yes
+					}
+				}
+			}
+		}
+	}
+}
+
+coa_def_uruguay_war_trigger = {
+	OR = {
+		NOT = { exists = scope:target }
+		exists = c:UCO
+	}
+}

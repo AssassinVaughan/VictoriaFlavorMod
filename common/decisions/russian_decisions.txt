@@ -1,0 +1,70 @@
+﻿expand_transcaucasia = {
+	is_shown = {
+		exists = c:CAU
+		c:CAU = {
+			is_subject_of = ROOT
+		}
+		c:RUS = {
+			any_scope_state = {
+				region = sr:region_caucasus
+				OR = {
+					state_region = s:STATE_DAGESTAN
+					state_region = s:STATE_KUBAN
+					state_region = s:STATE_KARS
+					state_region = s:STATE_GREATER_CAUCASUS
+				}
+			}
+		}
+	}
+
+	possible = {
+		c:RUS = {
+			any_scope_state = {
+				region = sr:region_caucasus
+				OR = {
+					state_region = s:STATE_DAGESTAN
+					state_region = s:STATE_KUBAN
+					state_region = s:STATE_KARS
+					state_region = s:STATE_GREATER_CAUCASUS
+				}
+			}
+		}
+		has_technology_researched = central_archives
+	}
+
+	when_taken = {
+	    custom_tooltip = expand_transcaucasia_tt
+		if = {
+			limit = {
+				c:RUS = {
+					any_scope_state = {
+						region = sr:region_caucasus
+						OR = {
+							state_region = s:STATE_DAGESTAN
+							state_region = s:STATE_KUBAN
+							state_region = s:STATE_KARS
+							state_region = s:STATE_GREATER_CAUCASUS
+						}
+					}
+				}
+			}
+			every_scope_state = {
+				limit = {
+					owner = ROOT
+					region = sr:region_caucasus
+					OR = {
+						state_region = s:STATE_DAGESTAN
+						state_region = s:STATE_KUBAN
+						state_region = s:STATE_KARS
+						state_region = s:STATE_GREATER_CAUCASUS
+				    }
+				}
+				set_state_owner = c:CAU
+			}
+		}
+	}
+
+	ai_chance = {
+		base = 10
+	}
+}

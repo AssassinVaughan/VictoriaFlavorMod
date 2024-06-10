@@ -1,0 +1,46 @@
+﻿CHARACTERS = {
+	c:ECU = {
+		create_character = {
+			template = ECU_Vicente_Rocafuerte
+			on_created = {
+				set_variable = {
+					name = is_rocafuerte
+				}				
+			}
+		}
+		
+		#Vice President
+		create_character = {
+			# Juan Bernardo León
+			first_name = "Juan"
+			last_name = "Bernardo_Leon"
+			historical = yes
+			age = 53
+			interest_group = ig_landowners
+			ideology = ideology_moderate
+			traits = {
+				meticulous
+			}
+			on_created = {
+				set_variable = vice_president_trigger
+				owner = {
+					set_variable = {
+						name = vice_president
+						value = PREV
+					}
+				}
+			}
+		}
+		
+
+		### Interest Group leaders
+		# Armed Forces
+		create_character = {
+			template = ECU_Juan_Jose_Flores
+		}
+		# Intelligentsia
+		create_character = {
+			template = ECU_Pedro_Moncayo
+		}
+	}
+}

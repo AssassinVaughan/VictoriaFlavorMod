@@ -1,0 +1,1466 @@
+﻿# This is executed last among all history
+GLOBAL = {
+	
+	vfm_scripted_lists_effect = yes
+	
+	every_country = {
+		limit = { NOT = { has_law = law_type:law_slavery_banned } }
+		ig:ig_landowners = { add_ideology = ideology_pro_slavery }
+	}
+	
+	# Jack the ripper, prevents the event from happening every game
+
+	every_country = {
+		if = {
+			limit = {
+				is_player = yes
+			}
+		}
+		random_list = {
+			1 = { set_variable = var_jack_ripper_possible }
+			9 = {
+				#Nothing Happens
+			}
+		}
+	}
+
+	c:BRZ = {
+		set_variable = {
+			name = pedropoints
+			value = 5
+		}
+		set_variable = {
+			name = brazilian_slavery_progress_var
+			value = 70
+		}
+	}
+
+	c:FRA = {
+		fra_define_leading_dynasty = yes
+	}
+
+###ACHIEVEMENT VARIABLES###
+	
+	#Serf's Up
+	every_country = {
+	   limit = { has_law = law_type:law_serfdom }
+	   set_variable = serfs_up_ach_possible
+	}
+	
+	#The Berlin Conference
+	every_country = {
+		limit = {
+			exists = c:PRU
+			this = c:PRU
+		}
+		set_variable = the_berlin_conference_ach_possible
+	}
+
+	#Muhammad Ali's Ambition
+	every_country = {
+		limit = {
+			exists = c:EGY
+			this = c:EGY
+		}
+		set_variable = muhammed_alis_ambition_ach_possible
+	}
+	
+	#Broken Promises
+	every_country = {
+		limit = {
+			can_form_nation = ITA
+		}
+		set_variable = broken_promises_ach_possible
+	}
+	
+	#Reading Campaign
+	every_country = {
+		limit = {
+			literacy_rate <= 0.2
+		}
+		set_variable = reading_campaign_ach_possible
+	}
+	
+	#We Are Not Amused
+	every_country = {
+		limit = {
+			exists = c:GBR
+			this = c:GBR
+		}
+		set_variable = we_are_not_amused_ach_possible
+	}
+	
+	#Star Swarmed Banner
+	every_country = {
+		limit = {
+			exists = c:USA
+			this = c:USA
+		}
+		set_variable = star_swarmed_banner_ach_possible
+	}
+	
+	#Peccavi
+	every_country = {
+		limit = {
+			exists = c:BIC
+			this = c:BIC
+		}
+		set_variable = peccavi_ach_possible
+	}
+	
+	#Perkeletankki
+	every_country = {
+		limit = {
+			exists = c:FIN
+			this = c:FIN
+		}
+		set_variable = perkeletankki_ach_possible
+	}
+	
+	#Luxurious Luxembourg
+	every_country = {
+		limit = {
+			exists = c:LUX
+			this = c:LUX
+		}
+		set_variable = luxurious_luxembourg_ach_possible
+	}
+	
+	#Anarchy in the UK
+	every_country = {
+		limit = {
+			exists = c:GBR
+			this = c:GBR
+		}
+		set_variable = anarchy_in_the_uk_ach_possible
+	}
+	
+	#An Empire Under the Pun
+	every_country = {
+		limit = {
+			exists = c:PAN
+			this = c:PAN
+		}
+		set_variable = an_empire_under_the_pun_ach_possible
+	}
+			
+	#I Didn't Vote for Pedro
+	every_country = {
+		limit = {
+			exists = c:BRZ
+			this = c:BRZ
+		}
+		set_variable = i_didnt_vote_for_pedro_ach_possible
+	}
+	
+	#Go West Young Man
+	every_country = {
+		limit = {
+			exists = c:USA
+			this = c:USA
+		}
+		set_variable = go_west_young_man_ach_possible
+	}
+	
+	#The Western Protectorate
+	every_country = {
+		limit = {
+			exists = c:CHI
+			this = c:CHI
+		}
+		set_variable = the_western_protectorate_ach_possible
+	}
+	
+	#The Paris Commune
+	every_country = {
+		limit = {
+			exists = c:FRA
+			this = c:FRA
+		}
+		set_variable = the_paris_commune_ach_possible
+	}
+	
+	#Barbarys Back
+	every_country = {
+		limit = {
+			OR = {
+				c:MAS ?= this
+				c:CON ?= this
+				c:AIT ?= this
+				c:TUG ?= this
+			}
+		}
+		set_variable = barbarys_back_ach_possible
+	}
+	
+	#Miners and Minors
+	every_country = {
+		limit = {
+			exists = c:LAN
+			this = c:LAN
+		}
+		set_variable = miners_and_minors_ach_possible
+	}
+	
+	#Healthy Man of Europe
+	every_country = {
+		limit = {
+			exists = c:TUR
+			this = c:TUR
+		}
+		set_variable = healthy_man_of_europe_ach_possible
+	}
+	
+	#Habsburg Resurgence
+	every_country = {
+		limit = {
+			exists = c:AUS
+			this = c:AUS
+		}
+		set_variable = habsburg_resurgence_ach_possible
+	}
+	
+	#The Great Game
+	every_country = {
+		limit = {
+			exists = c:RUS
+			this = c:RUS
+		}
+		set_variable = great_game_ach_possible
+	}
+	
+	#Bourbon for Everyone
+	every_country = {
+		limit = {
+			exists = c:SPA
+			this = c:SPA
+		}
+		set_variable = bourbon_for_everyone_ach_possible
+	}
+	
+	#American Territory
+	every_country = {
+		limit = {
+			exists = c:SEQ
+			this = c:SEQ
+		}
+		set_variable = american_territory_ach_possible
+	}
+	
+	#Belle Epoque
+	every_country = {
+		limit = {
+			exists = c:FRA
+			this = c:FRA
+		}
+		set_variable = belle_epoque_ach_possible
+	}
+	
+	#Risorgimento
+	every_country = {
+		limit = {
+			can_form_nation = ITA
+		}
+		set_variable = risorgimento_ach_possible
+	}
+	
+	#Three Hurrahs
+	every_country = {
+		limit = {
+			can_form_nation = GER
+		}
+		set_variable = three_hurrahs_ach_possible
+		set_variable = huge_ego_sorry_ach_possible
+	}
+	
+	#Solomon's Quest
+	every_country = {
+		limit = {
+			can_form_nation = ETH
+		}
+		set_variable = solomons_quest_ach_possible
+	}
+	
+	#I Am a Scandinavian
+	every_country = {
+		limit = {
+			can_form_nation = SCA
+		}
+		set_variable = i_am_a_scandinavian_ach_possible
+	}
+
+	#Grander Colombia
+	every_country = {
+		limit = {
+			can_form_nation = GCO
+		}
+		set_variable = grander_colombia_ach_possible
+	}
+
+	#Manifest Mexico
+	every_country = {
+		limit = {
+			c:MEX ?= this
+		}
+		set_variable = manifest_mexico_ach_possible
+	}
+
+	#Not Yet Lost
+	every_country = {
+		limit = {
+			c:KRA ?= this
+		}
+		set_variable = not_yet_lost_ach_possible
+	}
+
+	#Event Variables
+	
+	set_global_variable = {
+		name = number_of_mega_earthquakes
+		value = 0
+	}
+
+	set_global_variable = {
+		name = number_of_mega_floods
+		value = 0
+	}
+	
+	set_global_variable = {
+		name = number_of_mega_eruptions
+		value = 0
+	}
+	
+	s:STATE_DISTRICT_OF_COLUMBIA = {	
+		set_variable = {
+            name = usa_state_flag_block
+            value = yes
+        }
+
+        set_variable = {
+            name = district_of_columbia
+            value = yes
+        }
+	}
+	
+	s:STATE_WEST_VIRGINIA = {	
+        set_variable = {
+            name = usa_state_flag_block
+            value = yes
+        }
+	}
+
+	c:UCA = {
+		add_radicals = {
+			value = 1.2
+		}
+	}
+	
+	#Welcome message
+	every_country = {
+		trigger_event = {
+			id = welcome_event.1
+			days = 1
+		}
+	}
+
+	c:SPA = {
+		trigger_event = {
+			id = journal_flavor_spain.1
+			days = 4			
+		}
+	}	
+
+	c:CAR = {
+		trigger_event = {
+			id = journal_flavor_spain.1
+			days = 4			
+		}
+	}	
+
+	c:BOL = {
+		trigger_event = {
+			id = peru_bolivia_confederation.1
+			days = 4	
+		}
+	}
+
+	c:PEU = {
+		trigger_event = {
+			id = peru_bolivia_confederation.1
+			days = 4	
+		}
+	}
+
+	
+	c:IQU = {
+		trigger_event = {
+			id = peru_bolivia_confederation.1
+			days = 3	
+		}
+
+		add_loyalists = {
+			value = 0.25
+			culture = cu:quechua
+		}
+
+		add_radicals = {
+			value = 0.25
+			culture = cu:south_andean
+		}
+	}
+
+	c:PNI = {
+		trigger_event = {
+			id = garibaldi_events.1
+			days = 6
+		}
+	}
+
+	c:RUS = {
+		every_scope_state = {
+            limit = {
+                OR = {
+                    state_region = s:STATE_KUBAN
+                    state_region = s:STATE_DAGESTAN 
+                }
+            }
+            add_radicals_in_state = {
+                value = 1.5
+                culture = cu:north_caucasian
+            }
+			add_radicals_in_state = {
+                value = very_large_radicals
+            }
+			add_radicals_in_state = {
+                value = very_large_radicals
+            }
+        }
+        create_truce = {
+			country = c:CIR
+			months = 60
+		}
+		create_truce = {
+			country = c:CHC
+			months = 60
+		}
+		add_radicals = {
+			value = small_radicals
+			culture = cu:lithuanian
+		}
+		add_radicals = {
+			value = small_radicals
+			culture = cu:latvian
+		}
+		add_radicals = {
+			value = small_radicals
+			culture = cu:estonian
+		}
+		add_radicals = {
+			value = small_radicals
+			culture = cu:polish
+		}
+		add_radicals = {
+			value = small_radicals
+			culture = cu:ukrainian
+		}
+		add_radicals = {
+			value = medium_radicals
+			culture = cu:tatar
+		}
+		add_radicals = {
+            value = large_radicals
+            culture = cu:north_caucasian
+        }
+		add_radicals = {
+            value = large_radicals
+            culture = cu:azerbaijani
+        }
+	}
+	c:BUE = {
+		every_scope_state = {
+			limit = {
+				NOR = {
+					state_region = s:STATE_BUENOS_AIRES
+					state_region = s:STATE_SANTA_FE
+				}
+			}
+			add_radicals_in_state = {
+				value = 3
+				strata = rich
+			}
+			add_radicals_in_state = {
+				value = 1
+				strata = middle
+			}
+			add_radicals_in_state = {
+				value = 0.5
+				strata = poor
+			}
+		}
+		every_scope_state = {
+			limit = {
+				OR = {
+					state_region = s:STATE_BUENOS_AIRES
+					state_region = s:STATE_SANTA_FE
+				}
+			}
+			add_radicals_in_state = {
+				value = 0.25
+			}
+		}
+	}
+	c:URU = {
+		add_radicals = {
+			value = 0.75
+		}
+	}
+
+	c:CPL = {
+	    add_radicals = {
+			value = medium_radicals
+			culture = cu:polish
+		}
+	}
+	c:POS = {
+	    add_radicals = {
+			value = medium_radicals
+			culture = cu:polish
+		}
+	}
+	
+	c:GBR = {
+	    add_radicals = {
+			value = 0.03
+			culture = cu:irish
+		}
+	}
+
+	c:CHI = {
+		random_scope_state = {
+			limit = {	
+				state_region = s:STATE_SICHUAN
+			}
+			add_radicals_in_state = {
+                value = large_radicals
+                culture = cu:han
+            }
+		}
+		random_scope_state = {
+			limit = {	
+				state_region = s:STATE_YUNNAN
+			}
+			add_radicals_in_state = {
+                value = small_radicals
+                culture = cu:han
+            }
+		}
+		random_scope_state = {
+			limit = {	
+				state_region = s:STATE_CHONGQING
+			}
+			add_radicals_in_state = {
+                value = medium_radicals
+                culture = cu:han
+            }
+		}
+		add_radicals = {
+			value = medium_radicals
+			culture = cu:han
+		}
+	}
+	
+	c:AUS = {
+		add_radicals = {
+			value = 0.03
+			culture = cu:czech
+		}
+		add_radicals = {
+			value = 0.25
+			culture = cu:czech
+			pop_type = academics
+		}
+		add_radicals = {
+			value = 0.04
+			culture = cu:ukrainian
+		}
+		add_radicals = {
+			value = 0.04
+			culture = cu:hungarian
+		}
+		add_radicals = {
+			value = 0.04
+			culture = cu:slovak
+		}
+		add_radicals = {
+			value = 0.01
+			culture = cu:ashkenazi
+		}
+		add_radicals = {
+			value = 0.05
+			culture = cu:serb
+		}
+		add_radicals = {
+			value = 0.04
+			culture = cu:croat
+		}
+		add_radicals = {
+			value = 0.03
+			culture = cu:romanian
+		}
+		add_radicals = {
+			value = 0.03
+			culture = cu:slovene
+		}
+		add_radicals = {
+			value = 0.05
+			culture = cu:north_italian
+		}
+		add_radicals = {
+			value = 0.4
+			culture = cu:north_italian
+			pop_type = academics
+		}
+		
+		capital = {
+			effect_starting_pop_literacy_very_high = yes
+		}
+		s:STATE_BOHEMIA.region_state:AUS = {
+			effect_starting_pop_literacy_very_high = yes
+		}
+		s:STATE_TYROL.region_state:AUS = {
+			effect_starting_pop_literacy_very_high = yes
+		}
+		s:STATE_STYRIA.region_state:AUS = {
+			effect_starting_pop_literacy_very_high = yes
+		}
+	}
+	
+	c:TUR = {
+	    add_radicals = {
+			value = 0.3
+			culture = cu:kurdish
+		}
+		add_radicals = {
+			value = 0.08
+			culture = cu:armenian
+		}
+		add_radicals = {
+			value = 0.08
+			culture = cu:sephardic
+		}
+	    add_radicals = {
+			value = 0.08
+			culture = cu:greek
+		}
+		add_radicals = {
+			value = 0.05
+			culture = cu:bulgarian
+		}
+		add_radicals = {
+			value = 0.03
+			culture = cu:serb
+		}
+		add_radicals = {
+			value = 0.05
+			culture = cu:croat
+		}
+		add_radicals = {
+			value = 0.05
+			culture = cu:romanian
+		}
+		add_radicals = {
+			value = 0.02
+			culture = cu:albanian
+		}
+		add_radicals = {
+			value = 0.02
+			culture = cu:bosniak
+		}
+	}
+	
+	c:EGY = {
+	    add_radicals = {
+			value = 0.08
+			culture = cu:greek
+		}
+		add_radicals = {
+			value = 0.03
+			culture = cu:sephardic
+		}
+	}
+	
+	c:CPL = {
+		add_radicals = {
+			value = very_large_radicals
+			culture = cu:polish
+		}
+	}
+	
+	c:POS = {
+		add_radicals = {
+			value = very_large_radicals
+			culture = cu:polish
+		}
+	}
+	
+	c:KRA = {
+		add_radicals = {
+			value = very_large_radicals
+			culture = cu:polish
+		}
+	}
+	
+	c:RUS = {
+		add_radicals = {
+			value = very_large_radicals
+			culture = cu:polish
+		}
+	}
+	
+	c:RAC = {
+		add_radicals = {
+			value = large_radicals
+			culture = cu:inuit
+		}
+		add_radicals = {
+			value = very_large_radicals
+			culture = cu:athabaskan
+		}	
+	}
+	
+	c:AUS = {
+		add_radicals = {
+			value = very_large_radicals
+			culture = cu:polish
+		}
+	}
+	
+	c:PRU = {
+		add_radicals = {
+			value = very_large_radicals
+			culture = cu:polish
+		}
+	}
+	
+	
+	c:USA = {
+		add_radicals = {
+			value = very_large_radicals
+			culture = cu:muskogean
+		}
+		add_radicals = {
+			value = very_large_radicals
+			culture = cu:cherokee
+		}
+		add_radicals = {
+			value = very_large_radicals
+			culture = cu:algonquian
+		}
+		add_radicals = {
+			value = very_large_radicals
+			culture = cu:dakota
+		}
+		add_radicals = {
+			value = very_large_radicals
+			culture = cu:siouan
+		}
+		add_radicals = {
+			value = very_large_radicals
+			culture = cu:paiute
+		}
+		add_radicals = {
+			value = very_large_radicals
+			culture = cu:comanche
+		}
+		
+		add_radicals = {
+			value = large_radicals
+			culture = cu:cajun
+		}
+		add_radicals = {
+			value = large_radicals
+			culture = cu:afro_american
+		}
+		
+		add_radicals = {
+			value = medium_radicals
+			culture = cu:franco_canadian
+		}
+		
+		set_variable = {
+			name = acw_progress_var
+			value = 110
+		}
+	}
+	
+	c:QUE = {
+		add_radicals = {
+			value = very_large_radicals
+			culture = cu:cree
+		}
+		
+		add_radicals = {
+			value = medium_radicals
+			culture = cu:anglo_canadian
+		}
+		add_radicals = {
+			value = medium_radicals
+			culture = cu:yankee
+		}
+	}
+	
+	c:ONT = {
+		add_radicals = {
+			value = very_large_radicals
+			culture = cu:iroquoian
+		}
+		add_radicals = {
+			value = very_large_radicals
+			culture = cu:algonquian
+		}
+		add_radicals = {
+			value = very_large_radicals
+			culture = cu:cree
+		}
+		
+		add_radicals = {
+			value = medium_radicals
+			culture = cu:franco_canadian
+		}
+	}
+
+	c:HBC = {
+		add_to_variable_list = { name = past_overlord target = top_overlord }
+		
+		add_radicals = {
+			value = very_large_radicals
+			culture = cu:siouan
+		}
+		add_radicals = {
+			value = very_large_radicals
+			culture = cu:cree
+		}
+	}
+
+	c:NWT = {
+		add_to_variable_list = { name = past_overlord target = top_overlord }
+	}
+
+	c:COL = {
+		add_to_variable_list = { name = past_overlord target = top_overlord }
+	}
+
+	c:RAC = {
+		add_to_variable_list = { name = past_overlord target = top_overlord }
+	}
+
+	c:BIC = {
+		add_to_variable_list = { name = past_overlord target = top_overlord }
+	}
+
+	
+	c:BPR = {
+		add_to_variable_list = { name = past_overlord target = top_overlord }
+	}
+
+	
+	c:MPR = {
+		add_to_variable_list = { name = past_overlord target = top_overlord }
+	}
+
+	c:RGT = {
+		add_to_variable_list = { name = past_overlord target = top_overlord }
+	}
+
+	c:URU = {
+		trigger_event = {
+			id = journal_flavor_uruguay.3
+			days = 7
+		}
+	}
+	
+	#VFM GAME RULES HISTORY
+	
+	if = {
+		limit = {
+			has_game_rule = condensed_religions
+		}
+		every_country = {
+			every_scope_pop = {
+				limit = {
+					OR = {
+						has_pop_religion = taoist
+						has_pop_religion = siberian_shamanist
+						has_pop_religion = alcheringa
+						has_pop_religion = generic_african
+						has_pop_religion = generic_native_american
+						has_pop_religion = bon
+						has_pop_religion = bimoist
+						has_pop_religion = hmongist
+						has_pop_religion = mormon
+					}
+				}
+				change_pop_religion = { target = rel:animist value = 1.0 }
+			}
+			every_scope_pop = {
+				limit = {
+					OR = {
+						has_pop_religion = reformed
+						has_pop_religion = anglican
+						has_pop_religion = lutheran
+						has_pop_religion = methodist
+						has_pop_religion = baptist
+						has_pop_religion = presbyterian
+						has_pop_religion = congregationalist
+						has_pop_religion = anabaptist
+						has_pop_religion = mormon
+						has_pop_religion = god_society
+					}
+				}
+				change_pop_religion = { target = rel:protestant value = 1.0 }
+			}
+			every_scope_pop = {
+				limit = {
+					OR = {
+						has_pop_religion = druze
+						has_pop_religion = ibadi
+					}
+				}
+				change_pop_religion = { target = rel:sunni value = 1.0 }
+			}
+			every_scope_pop = {
+				limit = {
+					OR = {
+						has_pop_religion = shenist
+						has_pop_religion = confucian
+						has_pop_religion = taoist
+					}
+				}
+				change_pop_religion = { target = rel:mahayana value = 1.0 }
+			}
+			set_global_variable = condensed_religions
+		}
+	}
+	
+	if = {
+		limit = {
+			has_game_rule = no_vfm_starting_countries
+		}
+		c:AUS = {
+			annex = c:LIE
+		}
+		c:CAR = {
+			annex = c:ANR
+		}
+		c:PAP = {
+			annex = c:SRO
+		}
+		c:MEI = {
+			annex = c:GRZ
+		}
+		c:COB = {
+			annex = c:GRA
+			annex = c:ALN
+			s:STATE_SAXONY.region_state:COB = {
+				set_state_type = incorporated
+			}
+		}
+		c:SCW = {
+			annex = c:SND
+			s:STATE_BRUNSWICK.region_state:SCW = {
+				set_state_type = incorporated
+			}
+		}
+		c:HOL = {
+			annex = c:LAU
+		}
+		c:HOH = {
+			annex = c:HHN
+		}
+		c:HES = {
+			annex = c:HHB
+		}
+		c:AHD = {
+			annex = c:AHK
+			annex = c:AHB
+		}
+		c:PRU = {
+			annex = c:POS
+		}
+		c:RUS = {
+			annex = c:CAU
+			annex = c:MIN
+			annex = c:SVA
+			annex = c:ABK
+			annex = c:EST
+			annex = c:LVN
+			annex = c:CRL
+			annex = c:CPL
+			annex = c:RAC
+		}
+		c:TUR = {
+			annex = c:KOC
+			annex = c:KHA
+			annex = c:DOJ
+			annex = c:JUM
+			annex = c:MIL
+			annex = c:TAI
+			annex = c:BOK
+			annex = c:BIT
+			annex = c:BAY
+			annex = c:HAK
+			annex = c:SOR
+			annex = c:BAN
+			annex = c:KUW
+			annex = c:BHN
+		}
+		c:PER = {
+			annex = c:ARD
+			annex = c:JEL
+			annex = c:SHZ
+			annex = c:MUK
+		}
+		c:HBC = {
+			annex = c:NWT
+		}
+		c:CHI = {
+			annex = c:MCH
+			annex = c:OMG
+			annex = c:IMG
+			annex = c:TUV
+			annex = c:ATI
+			annex = c:XIN
+			annex = c:KUM
+			annex = c:QIN
+		}
+		c:MJT = {
+			annex = c:HIR
+		}
+		c:DEN = {
+			annex = c:RGT
+		}
+		c:NTO = {
+			annex = c:TNK
+			annex = c:TNU
+			annex = c:THE
+			annex = c:NGA
+		}
+		c:DEI = {
+			annex = c:KOT
+			annex = c:BAU
+			annex = c:BIM
+			annex = c:BLN
+			annex = c:BON
+			annex = c:GOR
+			annex = c:PGI
+			annex = c:TOJ
+			annex = c:BGK
+			annex = c:RIA
+		}
+		c:KTI = {
+			annex = c:PAS
+		}
+		c:STG = {
+			annex = c:SLI
+		}
+		c:ACE = {
+			annex = c:BAK
+			annex = c:BAR
+		}
+		c:LUW = {
+			annex = c:TOL
+			annex = c:DGL
+			annex = c:SIG
+			annex = c:MND
+			annex = c:TOR
+			annex = c:WAJ
+			annex = c:KNA
+		}
+		c:SIA = {
+			annex = c:KED
+			annex = c:PTT
+			annex = c:KEL
+			annex = c:TRG
+		}
+		c:MCR = {
+			annex = c:YAP
+			annex = c:CUU
+			annex = c:PHN
+			annex = c:MJL
+		}
+		c:TNG = {
+			annex = c:SMO
+			annex = c:WAF
+			annex = c:NIU
+		}
+		c:PLY = {
+			annex = c:NKV
+			annex = c:THT
+			annex = c:MGV
+			annex = c:RRT
+			annex = c:BRB
+			annex = c:RAI
+			annex = c:HUA
+		}
+		c:MAS = {
+			annex = c:ZWA
+			annex = c:ONL
+			annex = c:OSC
+		}
+		c:MAD = {
+			annex = c:ANT
+			annex = c:BAA
+			annex = c:ONI
+			annex = c:ZAF
+		}
+		c:TRI = {
+			annex = c:AWG
+		}
+		c:BUR = {
+			annex = c:SHS
+			annex = c:KRI
+			annex = c:WST
+			annex = c:KGT
+			annex = c:CHH
+		}
+		c:BIC = {
+			annex = c:PTL
+			annex = c:GHW
+			annex = c:BHW
+			annex = c:KHS
+			annex = c:TRR
+			annex = c:MNP
+		}
+		c:PAN = {
+			annex = c:MQP
+		}
+	}
+	
+	if = {
+		limit = {
+			has_game_rule = no_micro_european_nations
+		}
+		c:AUS = {
+			annex = c:LIE
+		}
+		c:CAR = {
+			annex = c:ANR
+		}
+		c:PAP = {
+			annex = c:SRO
+		}
+	}
+	
+	if = {
+		limit = {
+			has_game_rule = vanilla_german_minors
+		}
+		c:MEI = {
+			annex = c:GRZ
+		}
+		c:COB = {
+			annex = c:GRA
+			annex = c:ALN
+			s:STATE_SAXONY.region_state:COB = {
+				set_state_type = incorporated
+			}
+		}
+		c:SCW = {
+			annex = c:SND
+			s:STATE_BRUNSWICK.region_state:SCW = {
+				set_state_type = incorporated
+			}
+		}
+		c:HOL = {
+			annex = c:LAU
+		}
+		c:HOH = {
+			annex = c:HHN
+		}
+		c:MEC = {
+			annex = c:MST
+		}
+		c:HES = {
+			annex = c:HHB
+		}
+		c:AHD = {
+			annex = c:AHK
+			annex = c:AHB
+		}
+	}
+
+	if = {
+		limit = {
+			has_game_rule = no_confederations
+		}
+
+		c:BUE = {
+			annex = c:COE
+			annex = c:ENT
+			annex = c:TUC
+			annex = c:MDZ
+			annex = c:SLT
+			annex = c:SDE
+			annex = c:SFE
+			annex = c:CDA
+			annex = c:JUJ
+			annex = c:CMA
+			annex = c:LRJ
+			annex = c:SJN
+			annex = c:SLS
+			s:STATE_CHACO = {
+				add_claim = c:BUE
+			}
+			s:STATE_SANTA_FE = {
+				add_claim = c:BUE
+			}
+			s:STATE_RIO_NEGRO = {
+				add_claim = c:BUE
+			}
+			change_tag = ARG
+		}
+	}
+
+	if = {
+		limit = {
+			has_game_rule = no_polish_subjects
+		}
+		c:RUS = {
+			annex = c:CPL
+		}
+		c:PRU = {
+			annex = c:POS
+		}
+	}
+
+	if = {
+		limit = {
+			has_game_rule = congress_polish_subjects
+		}
+		c:RUS = {
+			annex = c:CPL
+		}
+	}
+
+	if = {
+		limit = {
+			has_game_rule = yes_polish_subjects
+		}
+		create_country = {
+			tag = c:GAL
+			origin = c:AUS
+			state = s:STATE_WEST_GALICIA
+			state = s:STATE_EAST_GALICIA
+		}
+	}
+
+	if = {
+		limit = {
+			has_game_rule = no_caucasus_subjects
+		}
+		c:RUS = {
+			annex = c:CAU
+			annex = c:MIN
+			annex = c:SVA
+			annex = c:ABK
+		}
+	}
+
+	if = {
+		limit = {
+			has_game_rule = no_baltic_subjects
+		}
+		c:RUS = {
+			annex = c:EST
+			annex = c:LVN
+			annex = c:CRL
+		}
+	}
+	
+	if = {
+		limit = {
+			has_game_rule = no_ottoman_subjects
+		}
+		c:TUR = {
+			annex = c:KOC
+			annex = c:KHA
+			annex = c:DOJ
+			annex = c:JUM
+			annex = c:MIL
+			annex = c:TAI
+			annex = c:BOK
+			annex = c:BIT
+			annex = c:BAY
+			annex = c:HAK
+			annex = c:SOR
+			annex = c:BAN
+			annex = c:KUW
+			annex = c:BHN
+		}
+		c:PER = {
+			annex = c:ARD
+			annex = c:JEL
+			annex = c:SHZ
+			annex = c:MUK
+		}
+	}
+	
+	#if = {
+	#	limit = {
+	#		has_game_rule = no_real_unions
+	#	}
+	#	every_country = {
+	#		while = {
+	#			limit = {
+	#				any_subject_or_below = {
+	#					count > 0
+	#					is_subject_type = subject_type_real_union
+	#				}
+	#			}
+	#			every_subject_or_below = {
+	#				limit = {
+	#					is_subject_type = subject_type_real_union
+	#				}
+	#				save_scope_as = real_union_subject
+	#				overlord = {
+	#					annex = scope:real_union_subject
+	#				}
+	#			}
+	#		}
+	#	}
+	#}
+
+	if = {
+		limit = {
+			has_game_rule = no_dependencies
+		}
+		every_country = {
+			while = {
+				limit = {
+					any_subject_or_below = {
+						count > 0
+						is_subject_type = subject_type_dependency
+					}
+				}
+				every_subject_or_below = {
+					limit = {
+						is_subject_type = subject_type_dependency
+					}
+					save_scope_as = dependency_subject
+					overlord = {
+						annex = scope:dependency_subject
+					}
+				}
+			}
+		}
+	}
+
+	if = {
+		limit = {
+			has_game_rule = no_NA_decentralized
+		}
+		c:USA = {
+			annex = c:LKT
+			annex = c:PWN
+			annex = c:ARP
+			annex = c:ABS
+		}
+		c:MEX = {
+			annex = c:COM
+			annex = c:UTE
+			annex = c:NVJ
+			annex = c:APC
+		}
+		c:COL = {
+			annex = c:NZP
+		}
+		c:HBC = {
+			annex = c:BLF
+			annex = c:IRC
+		}
+	}
+	
+	c:SWE = {
+		trigger_event = {
+			id = vfm_ai.1
+			days = 6
+		}
+	}
+
+	every_state = {
+		limit = {
+
+			owner = {
+				has_law = law_type:law_jizya
+			}
+			NOT = { has_modifier = jizya_state }
+
+			any_scope_pop = {
+				state = { save_temporary_scope_as = m_state }
+
+				culture = { 
+					has_homeland = scope:m_state
+					#NOT = { is_primary_culture_of = root }
+					NOT = { 
+						#Check for muslim cultures to identify muslims,
+						#until I can figure out how to find majority religions of cultures.
+						OR = { 
+							has_discrimination_trait = middle_eastern_heritage
+							has_discrimination_trait = malay_culture
+							has_discrimination_trait = iranian_turanian_culture_group
+							has_discrimination_trait = albanian_language
+							has_discrimination_trait = arab_speaking
+						}
+					}
+				}
+				#These muslim cultures don't fit into any specific trait group and need to be pointed out specifically
+				NOT = { 
+					OR = {
+					culture = cu:bosniak
+					culture = cu:tatar
+					culture = cu:fur
+					culture = cu:swahili
+					culture = cu:beja
+					culture = cu:afar
+					culture = cu:hausa
+					culture = cu:fulbe
+					culture = cu:dyula
+					culture = cu:haratin
+					culture = cu:mande
+					#culture = cu:bidan
+					culture = cu:songhai
+					culture = cu:tuareg
+					culture = cu:wolof
+					}
+				}
+
+				religion = {
+					NOT = { has_discrimination_trait = muslim }
+				}
+			}
+		}
+		add_modifier = {
+			name = jizya_state
+		}
+	}
+
+	every_state = {
+		limit = {
+
+			NOT = { has_modifier = malones }
+
+			any_scope_pop = {
+				state = { save_temporary_scope_as = p_state }
+
+				culture = { 
+					has_homeland = scope:p_state
+				}
+				culture = cu:patagonian
+			}
+		}
+		add_modifier = {
+			name = malones
+			years = 20
+		}
+	}
+}

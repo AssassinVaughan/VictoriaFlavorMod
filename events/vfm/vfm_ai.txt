@@ -1,0 +1,234 @@
+﻿namespace = vfm_ai
+# 1836
+vfm_ai.1 = {
+	type = country_event
+	placement = root
+
+	hidden = yes
+
+	duration = 1
+
+	trigger = {
+		#is_ai = yes
+	}
+
+	immediate = {
+	    # root = swe, change this
+	    if = {
+			limit = {
+			    c:SWE = {
+					exists = yes
+					is_ai = yes
+				}
+			}
+			c:SWE = {
+				s:STATE_SCANIA = {
+					random_scope_state = {
+						start_building_construction = building_coal_mine
+					}
+				}
+				s:STATE_GOTALAND = {
+					random_scope_state = {
+						start_building_construction = building_tooling_workshops
+					}
+				}
+				s:STATE_NORRLAND = {
+					random_scope_state = {
+						start_building_construction = building_iron_mine
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+			    c:DEN = {
+					exists = yes
+					is_ai = yes
+				}
+			}
+			c:DEN = {
+				s:STATE_ZEALAND = {
+					random_scope_state = {
+						start_building_construction = building_furniture_manufacturies
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+			    c:PRU = {
+					exists = yes
+					is_ai = yes
+				}
+			}
+			c:PRU = {
+				s:STATE_POMERANIA = {
+					random_scope_state = {
+						start_building_construction = building_port
+					}
+				}
+				s:STATE_WESTPHALIA = {
+					random_scope_state = {
+						start_building_construction = building_railway
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				c:SWI = {
+					exists = yes
+				}
+			}
+			c:SWI = {
+           	create_trade_route = {
+				    goods = tools
+				    level = 3
+				    direction = export
+				    target = c:AUS.market
+		   	}
+		  	create_trade_route = {
+				goods = small_arms
+				level = 1
+				direction = import
+				target = c:PRU.market
+			}	
+			create_trade_route = {
+				goods = tobacco
+				level = 1
+				direction = import
+				target = c:FRA.market
+			}	
+			create_trade_route = {
+				goods = furniture
+				level = 1
+				direction = import
+				target = c:FRA.market
+			}	
+			}
+		}
+	}
+}
+
+# 1838
+vfm_ai.2 = {
+	type = country_event
+	placement = root
+
+	hidden = yes
+
+	duration = 1
+
+	trigger = {
+	    c:PRU ?= this
+		#is_ai = yes
+		game_date > 1837.7.1
+		game_date < 1838.12.1
+	}
+
+	immediate = {
+		
+		if = {
+			limit = {
+			    c:PRU ?= {
+					is_ai = yes
+				}
+			}
+			c:PRU = {
+				s:STATE_POMERANIA = {
+					random_scope_state = {
+						start_building_construction = building_port
+					}
+				}
+				s:STATE_WESTPHALIA = {
+					random_scope_state = {
+						start_building_construction = building_tooling_workshops
+						start_building_construction = building_livestock_ranch
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+			    c:DEN ?= {
+					is_ai = yes
+				}
+			}
+			if = {
+			limit = {
+				any_scope_state = { # danes are obsessed with luxury furniture
+						can_activate_production_method = {
+							building_type = building_furniture_manufacturies
+							production_method = pm_luxury_furniture
+					    }	
+					}
+			}
+			activate_production_method = {
+				building_type = building_furniture_manufacturies
+				production_method = pm_luxury_furniture
+		    }
+		}
+		}
+	}
+}
+
+# 1839
+vfm_ai.3 = {
+	type = country_event
+	placement = root
+
+	hidden = yes
+
+	duration = 1
+
+	trigger = {
+	    c:SWE ?= this
+		is_ai = yes
+		game_date > 1839.1.1
+		game_date < 1840.6.1
+	}
+
+	immediate = {
+	    if = {
+			limit = {
+				has_state_in_state_region = STATE_SCANIA
+			}
+			s:STATE_SCANIA = {
+				random_scope_state = {
+					start_building_construction = building_coal_mine
+				}
+			}
+		}
+		if = {
+			limit = {
+				any_scope_state = {
+						can_activate_production_method = {
+							building_type = building_iron_mine
+							production_method = pm_condensing_engine_pump_building_iron_mine
+					    }	
+					}
+			}
+			activate_production_method = {
+				building_type = building_iron_mine
+				production_method = pm_condensing_engine_pump_building_iron_mine
+		    }
+		}
+		else = {
+		    activate_production_method = {
+				building_type = building_iron_mine
+				production_method = pm_atmospheric_engine_pump_building_iron_mine
+		    }
+		}
+		
+		if = {
+			limit = {
+				has_state_in_state_region = STATE_NORRLAND
+			}
+			s:STATE_NORRLAND = {
+				random_scope_state = {
+					start_building_construction = building_iron_mine
+				}
+			}
+		}
+	}
+}
