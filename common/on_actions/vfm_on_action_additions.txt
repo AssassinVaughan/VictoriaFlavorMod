@@ -210,26 +210,26 @@ secession_escalation_on_action = {
 					}
 				}
 			}
-			random_diplomatic_play = {
-				limit = {
-					any_scope_play_involved = { this = ROOT }
-					any_scope_play_involved = { this = scope:target }
-					is_diplomatic_play_type = dp_secession
-				}
-				every_state = {
-					limit = {
-						owner = ROOT
-						is_homeland_of_country_cultures = scope:target
-					}
-					prev = {
-						add_war_goal = {
-							holder = scope:target
-							type = return_state
-							target_state = prev
-						}
-					}
-				}
-			}
+			#random_diplomatic_play = { # a bit much maybe?
+			#	limit = {
+			#		any_scope_play_involved = { this = ROOT }
+			#		any_scope_play_involved = { this = scope:target }
+			#		is_diplomatic_play_type = dp_secession
+			#	}
+			#	every_state = {
+			#		limit = {
+			#			owner = ROOT
+			#			is_homeland_of_country_cultures = scope:target
+			#		}
+			#		prev = {
+			#			add_war_goal = {
+			#				holder = scope:target
+			#				type = return_state
+			#				target_state = prev
+			#			}
+			#		}
+			#	}
+			#}
 		}
 		
 		scope:target = {

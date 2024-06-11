@@ -912,6 +912,10 @@ ideology_abolitionist = {
 				}
 				add = 150
 			}		
+		}	
+        if = {
+			limit = { scope:interest_group = { is_interest_group_type = ig_petty_bourgeoisie } owner = { has_journal_entry = je_acw_countdown } }
+			add = 200	
 		}		
 		if = {
 			limit = { has_trait = tactful }
@@ -921,7 +925,14 @@ ideology_abolitionist = {
 			limit = {
 				owner = { has_journal_entry = je_acw_countdown }
 			}
-			add = 100
+			add = 125
+			
+			if = {
+				limit = {
+					owner = { is_interest_group_type = ig_petty_bourgeoisie }
+				}
+				add = 75
+			}
 		}
 	}
 }
@@ -1307,6 +1318,10 @@ ideology_royalist = {
 				AND = {
 					exists = c:FRA
 					c:FRA = this
+				}
+				AND = {
+					exists = c:USA
+					c:USA = this
 				}
 				AND = {
 					any_interest_group = {

@@ -97,8 +97,8 @@ NAI = {
 	NAVAL_INVASION_MIN_SCORE = 10									# AI won't bother launching naval invasions against theaters with a lower total state score than this
 	NAVAL_INVASION_MAX_LOCAL_FRONT_SCORE = 200						# Don't launch a naval invasion if there is a local front of at least this total score for the general
 	
-	MAX_INSTITUTION_SPENDING = 0.025 #0.02 AI will not spend more BUR than this on institutions (scaled by weekly GDP)
-	INSTITUTION_SPENDING_INCREASE_SPENDING_RATIO = 1.0 # If current + additional institution spending is equal or less than max spending * this, try to improve some institutions
+	#MAX_INSTITUTION_SPENDING = 0.025 #0.02 AI will not spend more BUR than this on institutions (scaled by weekly GDP)
+	#INSTITUTION_SPENDING_INCREASE_SPENDING_RATIO = 1.0 # If current + additional institution spending is equal or less than max spending * this, try to improve some institutions
 	INSTITUTION_SPENDING_DECREASE_SPENDING_RATIO = 2.1 # 2.0 If current institution spending is at least max spending * this, try to degrade some institutions 
 	
 	MOBILIZATION_OPTION_GOODS_SHORTAGE_MULT = 0.1 #0.0 Multiply value of mobilization option by this if there is a goods shortage of any of its input goods
@@ -224,7 +224,7 @@ NPops = {
 ### Pop Growth Constants
 ## Base Values per month
 @min_birthrate = 0.00055			# Minimum base birthrate per month (at POP_GROWTH_STABLE_SOL)
-@max_birthrate = 0.00480			#0.00450 Maximum base birthrate per month (at SOL = 0 if not modified by malnourishment)
+@max_birthrate = 0.00470			#0.00450 Maximum base birthrate per month (at SOL = 0 if not modified by malnourishment)
 @min_mortality = 0.00045			# Minimum base mortality per month (at POP_GROWTH_STABLE_SOL)
 @max_mortality = 0.00650			#0.00600 Maximum base mortality per month (at SOL = 0 if not modified by malnourishment)
 
@@ -236,7 +236,7 @@ NPops = {
 
 ## Others
 @transition_birthrate_mult = 1 		# If you want the birthrate "lag" to go to a higher or lower value than max_birthrate. (you can also just change it directly below)
-@max_growth_mortality_mult = 0.35	# What proportion of birthrate_at_growth_max mortality should be at. Higher means lower growth
+@max_growth_mortality_mult = 0.4	#0.35 What proportion of birthrate_at_growth_max mortality should be at. Higher means lower growth
 
 ### Pop Growth Derived values
 # Generally, for each one of these derived values below we're really just doing one of three operations (or combination of them):

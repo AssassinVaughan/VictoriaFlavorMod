@@ -2,12 +2,27 @@ je_peru_bolivia_the_feeble_union = {
 	icon = "gfx/interface/icons/event_icons/event_fire.dds"
     group = je_group_internal_affairs
 	immediate = {
-		OR = {
-			c:PEU = {
+	    if = { 
+			limit = {
+	   			c:NPU ?= {
+					is_subject_of = ROOT
+					is_subject_type = subject_type_confederation
+					relations:root < relations_threshold:cordial
+				}
+			}
+			c:NPU = {
 				save_scope_as = npu_scope
 			}
-
-			c:NPU = {
+		}
+		else_if = { 
+			limit = {
+	   			c:PEU ?= {
+					is_subject_of = ROOT
+					is_subject_type = subject_type_confederation
+					relations:root < relations_threshold:cordial
+				}
+			}
+			c:PEU = {
 				save_scope_as = npu_scope
 			}
 		}
@@ -18,13 +33,8 @@ je_peru_bolivia_the_feeble_union = {
 			if = {
 				limit = {
 					is_at_war = no
-					OR = {
-						c:PEU ?= {
-							relations:root < relations_threshold:cordial
-						}
-						c:NPU ?= {
-							relations:root < relations_threshold:cordial
-						}
+					scope:npu_scope = {
+						relations:root < relations_threshold:cordial
 					}
 				}
 				change_variable = {
@@ -63,27 +73,15 @@ je_peru_bolivia_the_feeble_union = {
 
 	complete = {
 		scope:journal_entry = { is_goal_complete = yes }
-		OR = {
-			c:PEU = {
-				is_at_war = no
-			}
-			c:NPU = {
-				is_at_war = no
-			}
-		}	
+		scope:npu_scope = {
+			is_at_war = no
+		}
 	}
 
 	on_complete = {
 		custom_tooltip = {
 			text = peru_bolivia_feeble_union_tt
-
-			c:PEU ?= {
-				trigger_event = {
-					id = journal_flavor_peru.1
-				}
-			}
-
-			c:NPU ?= {
+			scope:npu_scope = {
 				trigger_event = {
 					id = journal_flavor_peru.1
 				}
@@ -93,13 +91,8 @@ je_peru_bolivia_the_feeble_union = {
 
 	fail = {
 		NOT = {
-			OR = {
-				c:PEU = {
-					is_subject_of = c:BOL
-				}
-				c:NPU = {
-					is_subject_of = c:BOL
-				}
+			scope:npu_scope = {
+				is_subject_of = c:BOL
 			}
 		}
 	}

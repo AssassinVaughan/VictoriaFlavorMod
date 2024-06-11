@@ -1,20 +1,14 @@
 ﻿DIPLOMATIC_PLAYS = {
-	c:GBR = {
+	c:SAF = {
 		create_diplomatic_play = {
 			name = 6th_xhosa_war
 		
 			target_country = c:XHO
 			
-			war = yes
+			escalation = 40
 			
-			type = humiliation
-			
-			add_war_goal = {
-				holder = c:SAF
-				type = conquer_state
-				target_state = s:STATE_EASTERN_CAPE.region_state:XHO
-				primary_demand = yes
-			}
+			type = dp_annex_war
+			target_state = s:STATE_EASTERN_CAPE.region_state:XHO
 
 			add_war_goal = {
 				holder = c:XHO
