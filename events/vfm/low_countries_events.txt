@@ -122,12 +122,12 @@ low_countries_events.2 = {
 
 	icon = "gfx/interface/icons/event_icons/event_map.dds"
 
-	trigger = {
-		exists = c:LBG
-		c:LBG = {
-			is_player = no
-		}
-	}
+#	trigger = {
+#		exists = c:LBG
+#		c:LBG = {
+#			is_player = no
+#		}
+#	}
 
 	option = {
 		name = low_countries_events.2.a
@@ -216,48 +216,53 @@ low_countries_events.2 = {
 #		}
 #	}
 #}
-#
-#low_countries_events.5 = {
-#	type = country_event
-#	placement = root
-#	title = low_countries_events.5.t
-#	desc = low_countries_events.5.d
-#	flavor = low_countries_events.5.f
-#
-#	duration = 6
-#
-#	event_image = {
-#		video = "gfx/event_pictures/unspecific_signed_contract.bk2"
-#	}
-#
-#	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
-#	on_opened_soundeffect = "event:/SFX/Events/unspecific/signed_contract"
-#
-#	icon = "gfx/interface/icons/event_icons/event_map.dds"
-#
-#	trigger = {
-#		exists = c:LAR
-#	}
-#
-#	option = {
-#		name = low_countries_events.5.a
-#		highlighted_option = yes
-#		default_option = yes
-#		ai_chance = {
-#			base = 100
-#		}
-#		c:DEI ?= {
-#			annex = c:LAR
-#		}
-#		c:NET ?= {
-#			add_treasury = -250000
-#		}
-#		c:POR ?= {
-#			add_treasury = 250000
-#		}
-#	}
-#
-#	option = {
-#		name = low_countries_events.5.b
-#	}
-#}
+#purchase of Larantuka
+low_countries_events.5 = {
+	type = country_event
+	placement = root
+	title = low_countries_events.5.t
+	desc = low_countries_events.5.d
+	flavor = low_countries_events.5.f
+
+	duration = 6
+
+	event_image = {
+		video = "gfx/event_pictures/unspecific_signed_contract.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/unspecific/signed_contract"
+
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+
+	trigger = {
+		c:NET ?= this
+		exists = c:LAR
+		c:LAR ?= {
+			is_subject_of = c:NET
+		}
+		year > 1859
+	}
+
+	option = {
+		name = low_countries_events.5.a
+		highlighted_option = yes
+		default_option = yes
+		ai_chance = {
+			base = 100
+		}
+		c:DEI ?= {
+			annex = c:LAR
+		}
+		c:NET ?= {
+			add_treasury = -250000
+		}
+		c:POR ?= {
+			add_treasury = 250000
+		}
+	}
+
+	option = {
+		name = low_countries_events.5.b
+	}
+}
