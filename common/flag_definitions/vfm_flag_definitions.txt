@@ -2021,8 +2021,8 @@ KOR = { # Korea
 		}	
 	}
 	flag_definition = {
-		coa = KOR_tributary
-		priority = 30
+		coa = KOR_joseon
+		priority = 2
 		trigger = { 
 			scope:actor ?= { 
 				is_subject_type = subject_type_tributary
@@ -2034,9 +2034,8 @@ KOR = { # Korea
 		coa = KOR_empire
 		priority = 20
 		trigger = { 
-			scope:actor ?= { 
-				NOT = { is_subject_type = subject_type_tributary }
-				has_law = law_type:law_monarchy
+			scope:actor ?= {
+				has_variable = KOR_korean_empire_declared
 			}
 		}
 	}	
