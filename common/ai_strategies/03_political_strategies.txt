@@ -9,21 +9,8 @@
 	
 	min_law_chance_to_pass = {
 		value = 30
-
 		if = {
-			limit = { 				
-				OR = {
-					any_political_movement = {
-						desired_law ?= scope:law.type
-						political_movement_radicalism >= 75
-					}
-					AND = {
-						has_journal_entry = je_government_petition
-						var:desired_law_var	?= scope:law			
-					}
-				}
-			}
-			
+			limit = { ai_has_reasons_to_not_oppose_law = yes }			
 			multiply = 0.33
 		}			
 	}
@@ -67,7 +54,12 @@
 		}
 
 		if = {
-			limit = { has_journal_entry = je_government_petition  }
+			limit = { 
+				OR = {
+					has_journal_entry = je_government_petition  
+					has_journal_entry = je_law_imposition
+				}
+			}
 			add = 25
 		}			
 	}		
@@ -138,7 +130,7 @@
 		
 		if = {
 			limit = {
-				has_law = law_type:law_council_republic	
+				has_radical_leftist_government = yes	
 			}
 			multiply = 0.25
 		}	
@@ -155,21 +147,8 @@ ai_strategy_reactionary_agenda = {
 	
 	min_law_chance_to_pass = {
 		value = 25
-		
 		if = {
-			limit = { 				
-				OR = {
-					any_political_movement = {
-						desired_law ?= scope:law.type
-						political_movement_radicalism >= 75
-					}
-					AND = {
-						has_journal_entry = je_government_petition
-						var:desired_law_var	?= scope:law			
-					}
-				}
-			}
-			
+			limit = { ai_has_reasons_to_not_oppose_law = yes }			
 			multiply = 0.5
 		}	
 	}
@@ -209,7 +188,12 @@ ai_strategy_reactionary_agenda = {
 		}
 
 		if = {
-			limit = { has_journal_entry = je_government_petition  }
+			limit = { 
+				OR = {
+					has_journal_entry = je_government_petition  
+					has_journal_entry = je_law_imposition
+				}
+			}
 			add = 10
 		}			
 	}	
@@ -325,7 +309,7 @@ ai_strategy_reactionary_agenda = {
 		
 		if = {
 			limit = {
-				has_law = law_type:law_council_republic	
+				has_radical_leftist_government = yes	
 			}
 			multiply = 0.25
 		}					
@@ -343,21 +327,8 @@ ai_strategy_progressive_agenda = {
 	
 	min_law_chance_to_pass = {
 		value = 20
-		
 		if = {
-			limit = { 				
-				OR = {
-					any_political_movement = {
-						desired_law ?= scope:law.type
-						political_movement_radicalism >= 75
-					}
-					AND = {
-						has_journal_entry = je_government_petition
-						var:desired_law_var	?= scope:law			
-					}
-				}
-			}
-			
+			limit = { ai_has_reasons_to_not_oppose_law = yes }			
 			multiply = 0.5
 		}	
 	}
@@ -397,7 +368,12 @@ ai_strategy_progressive_agenda = {
 		}	
 
 		if = {
-			limit = { has_journal_entry = je_government_petition  }
+			limit = { 
+				OR = {
+					has_journal_entry = je_government_petition  
+					has_journal_entry = je_law_imposition
+				}
+			}
 			add = 25
 		}			
 	}	
@@ -532,21 +508,8 @@ ai_strategy_egalitarian_agenda = {
 	
 	min_law_chance_to_pass = {
 		value = 15
-		
 		if = {
-			limit = { 				
-				OR = {
-					any_political_movement = {
-						desired_law ?= scope:law.type
-						political_movement_radicalism >= 75
-					}
-					AND = {
-						has_journal_entry = je_government_petition
-						var:desired_law_var	?= scope:law			
-					}
-				}
-			}
-			
+			limit = { ai_has_reasons_to_not_oppose_law = yes }			
 			multiply = 0.5
 		}		
 	}
@@ -586,7 +549,12 @@ ai_strategy_egalitarian_agenda = {
 		}	
 
 		if = {
-			limit = { has_journal_entry = je_government_petition  }
+			limit = { 
+				OR = {
+					has_journal_entry = je_government_petition  
+					has_journal_entry = je_law_imposition
+				}
+			}
 			add = 25
 		}			
 	}	
@@ -686,7 +654,7 @@ ai_strategy_egalitarian_agenda = {
 		
 		if = {
 			limit = {
-				has_law = law_type:law_council_republic	
+				has_radical_leftist_government = yes	
 			}
 			add = 250
 		}			
@@ -704,21 +672,8 @@ ai_strategy_nationalist_agenda = {
 	
 	min_law_chance_to_pass = {
 		value = 20
-		
 		if = {
-			limit = { 				
-				OR = {
-					any_political_movement = {
-						desired_law ?= scope:law.type
-						political_movement_radicalism >= 75
-					}
-					AND = {
-						has_journal_entry = je_government_petition
-						var:desired_law_var	?= scope:law			
-					}
-				}
-			}
-			
+			limit = { ai_has_reasons_to_not_oppose_law = yes }			
 			multiply = 0.5
 		}		
 	}
@@ -762,7 +717,12 @@ ai_strategy_nationalist_agenda = {
 		}
 
 		if = {
-			limit = { has_journal_entry = je_government_petition  }
+			limit = { 
+				OR = {
+					has_journal_entry = je_government_petition  
+					has_journal_entry = je_law_imposition
+				}
+			}
 			add = 25
 		}		
 	}	
@@ -888,21 +848,8 @@ ai_strategy_maintain_mandate_of_heaven = {
 	
 	min_law_chance_to_pass = {
 		value = 50
-		
 		if = {
-			limit = { 				
-				OR = {
-					any_political_movement = {
-						desired_law ?= scope:law.type
-						political_movement_radicalism >= 75
-					}
-					AND = {
-						has_journal_entry = je_government_petition
-						var:desired_law_var	?= scope:law			
-					}
-				}
-			}
-			
+			limit = { ai_has_reasons_to_not_oppose_law = yes }			
 			multiply = 0.25
 		}		
 	}
@@ -946,7 +893,12 @@ ai_strategy_maintain_mandate_of_heaven = {
 		}
 		
 		if = {
-			limit = { has_journal_entry = je_government_petition  }
+			limit = { 
+				OR = {
+					has_journal_entry = je_government_petition  
+					has_journal_entry = je_law_imposition
+				}
+			}
 			add = 10
 		}		
 	}	

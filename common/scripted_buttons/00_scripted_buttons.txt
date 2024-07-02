@@ -113,7 +113,9 @@ french_monarchy_bonapartist_button = {
 		}
 		custom_tooltip = {
 			text = bonapartist_progress_increase_10_tt
-			change_variable = { name = bonapartist_progress add = 10 }
+			je:je_divided_monarchists = {
+				add_progress = { value = 10 name = divided_monarchists_bonapartist_progress_bar }
+			}
 		}
 	}
 }
@@ -166,7 +168,9 @@ french_monarchy_orleanist_button = {
 		}
 		custom_tooltip = {
 			text = orleanist_progress_increase_10_tt
-			change_variable = { name = orleanist_progress add = 10 }
+			je:je_divided_monarchists = {
+				add_progress = { value = 10 name = divided_monarchists_orleanist_progress_bar }
+			}
 		}
 	}
 }
@@ -218,7 +222,9 @@ french_monarchy_legitimist_button = {
 		}
 		custom_tooltip = {
 			text = legitimist_progress_increase_10_tt
-			change_variable = { name = legitimist_progress add = 10 }
+			je:je_divided_monarchists = {
+				add_progress = { value = 10 name = divided_monarchists_legitimist_progress_bar }
+			}
 		}
 	}
 }
@@ -340,6 +346,7 @@ je_sell_alaska_button = {
 		modifier = {
 			trigger = { 
 				any_country = {
+					NOT = { this = root }
 					country_rank >= root.country_rank
 					has_interest_marker_in_region = sr:region_pacific_coast
 					relations:root <= relations_threshold:poor
@@ -350,6 +357,7 @@ je_sell_alaska_button = {
 		modifier = {
 			trigger = { 
 				any_country = {
+					NOT = { this = root }
 					country_rank >= root.country_rank
 					has_interest_marker_in_region = sr:region_pacific_coast
 					relations:root <= relations_threshold:cold
@@ -357,6 +365,7 @@ je_sell_alaska_button = {
 			}
 			add = 50
 		}
+	}
 	}
 
 	possible = {
@@ -376,9 +385,8 @@ je_sell_alaska_button = {
 		custom_tooltip = {
 			text = friendly_nation_with_interest_in_alaska_tt
 			any_country = {
-				NOT = {
-					is_subject = yes
-				}
+				NOT = { is_subject = yes }
+				NOT = { this = root }
 				country_is_in_north_america = yes
 				relations:root >= 0
 				country_rank >= rank_value:great_power
@@ -398,9 +406,8 @@ je_sell_alaska_button = {
 		save_scope_as = alaska_seller
 		random_country = {
 			limit = {
-				NOT = {
-					is_subject = yes
-				}
+				NOT = { is_subject = yes }
+				NOT = { this = root }
 				country_is_in_north_america = yes
 				relations:root >= 0
 				country_rank >= rank_value:great_power
@@ -433,12 +440,17 @@ je_buy_alaska_button = {
 		s:STATE_ALASKA = {
 			any_scope_state = {
 				owner = {
+					NOT = {
+						root = this
+						is_country_type = decentralized
+					}
 					relations:root >= 0
 					OR = {
 						custom_tooltip = {
 							text = unfriendly_nation_with_interest_in_alaska_tt
 							any_country = {
 								country_rank >= prev.country_rank
+								NOT = { this = prev }
 								has_interest_marker_in_region = sr:region_pacific_coast
 								relations:prev < relations_threshold:cordial
 							}
@@ -1134,7 +1146,7 @@ je_marea_unire = {
 			is_player = no
 		}
 	}
-	
+
 	ai_chance = {
 		base = 100
 	}
@@ -1142,13 +1154,12 @@ je_marea_unire = {
 	possible = {
 		is_at_war = no
 
-		exists = c:TRS
-        c:TRS ?= {
-        	is_subject = no
-            relations:root >= 25
-            is_at_war = no
-        }
-    }
+		c:TRS ?= {
+			is_subject = no
+			relations:root >= 25
+			is_at_war = no
+		}
+	}
 
 	effect = {
 		if = {

@@ -124,77 +124,30 @@
 			}
 		}
 	}
-	c:RUS = {
+	c:RUS ?= {
 		create_diplomatic_pact = {
 			country = c:FIN
-			type = real_union
-		}
-		if = {
-			limit = {
-				NOT = { has_game_rule = no_baltic_subjects }
-			}
-		create_diplomatic_pact = {
-			country = c:CRL
-			type = dependency
+			type = personal_union
 		}
 		create_diplomatic_pact = {
-			country = c:LVN
-			type = dependency
+			country = c:UBD
+			type = puppet
 		}
 		create_diplomatic_pact = {
-			country = c:EST
-			type = dependency
-		}
-		}
-		if = {
-			limit = {
-				OR = {
-					has_game_rule = yes_polish_subjects
-					has_game_rule = congress_polish_subjects
-					has_game_rule = congress_posen_polish_subjects
-				}
-			}
-			create_diplomatic_pact = {
-				country = c:CPL
-				type = real_union
-			}
-		}
-		if = {
-			limit = {
-				NOT = { has_game_rule = no_caucasus_subjects }
-			}
-		create_diplomatic_pact = {
-			country = c:CAU
-			type = dependency
-		}
-		create_diplomatic_pact = {
-			country = c:ABK
+			country = c:KZH
 			type = protectorate
 		}
 		create_diplomatic_pact = {
-			country = c:MIN
+			country = c:UZH
 			type = protectorate
 		}
 		create_diplomatic_pact = {
-			country = c:SVA
+			country = c:OZH
 			type = protectorate
-		}
 		}
 		create_diplomatic_pact = {
 			country = c:RAC
 			type = chartered_company
-		}
-		create_diplomatic_pact = {
-			country = c:KZH
-			type = puppet
-		}
-		create_diplomatic_pact = {
-			country = c:UZH
-			type = puppet
-		}
-		create_diplomatic_pact = {
-			country = c:OZH
-			type = puppet
 		}
 	}
 	c:JAP = {
@@ -798,52 +751,96 @@
 		}
 	}
 	c:PER = {
-        if = {
-			limit = {
-				NOT = { has_game_rule = no_ottoman_subjects }
-			}	    
-			create_diplomatic_pact = {
-				country = c:ARD
-				type = tributary
-			}
-			create_diplomatic_pact = {
-				country = c:JEL
-				type = tributary
-			}
-			create_diplomatic_pact = {
-				country = c:SHZ
-				type = tributary
-			}
-			create_diplomatic_pact = {
-				country = c:MUK
-				type = tributary
-			}
-        }		
-		#create_diplomatic_pact = {
-		#	country = c:ARB
-		#	type = tributary
-		#}		
-		#create_diplomatic_pact = {
-		#	country = c:BOJ
-		#	type = tributary
-		#}
-		#create_diplomatic_pact = {
-		#	country = c:QOC
-		#	type = tributary
-		#}
-		#create_diplomatic_pact = {
-		#	country = c:AKH
-		#	type = tributary
-		#}
-		#create_diplomatic_pact = {
-		#	country = c:MAZ
-		#	type = tributary
-		#}
-		#create_diplomatic_pact = {
-		#	country = c:KHZ
-		#	type = vassal
-		#}
+		create_diplomatic_pact = {
+			country = c:ARB
+			type = vassal
+		}
 	}
+	
+	c:KAL = {
+		create_diplomatic_pact = {
+			country = c:MAK
+			type = vassal
+		}
+	}
+	
+	
+	# Starting liberty desire
+	c:BIC = {
+		add_liberty_desire = -30
+	}
+	
+	c:DEI = {
+		add_liberty_desire = -30
+	}	
+	
+	c:SAF = {
+		add_liberty_desire = -30
+	}	
+	
+	c:NSW = {
+		add_liberty_desire = -30
+	}
+
+	c:SAF = {
+		add_liberty_desire = -30
+	}
+
+	c:WAS = {
+		add_liberty_desire = -30
+	}	
+
+	c:SAS = {
+		add_liberty_desire = -30
+	}	
+
+	c:TAS = {
+		add_liberty_desire = -30
+	}
+
+	c:UNT = {
+		add_liberty_desire = 10
+	}	
+	
+	c:FIN = {
+		add_liberty_desire = 10
+	}
+	
+	c:OZH = {
+		add_liberty_desire = 10
+	}
+
+	c:KZH = {
+		add_liberty_desire = 10
+	}
+
+	c:UZH = {
+		add_liberty_desire = 10
+	}	
+
+	c:SEQ = {
+		add_liberty_desire = 10
+	}
+
+	c:SER = {
+		add_liberty_desire = 20
+	}	
+	
+	c:MOL = {
+		add_liberty_desire = 20
+	}	
+	
+	c:WAL = {
+		add_liberty_desire = 20
+	}	
+	
+	c:BIC ?= {
+		every_subject_or_below = {
+			 set_relations = { country = c:BIC value = 50 }
+			 add_liberty_desire = -20
+		}
+	}	
+
 	c:POR = {
 		create_diplomatic_pact = {
 			country = c:LAR

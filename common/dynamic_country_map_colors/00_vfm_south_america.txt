@@ -30,6 +30,61 @@ peru_bolivia_2 = {#duplicate name exists in vanilla file
 	}
 }
 
+brazil_democratic_republic = {
+	color = "modern_brazil_green"
+
+	possible = {
+		exists = c:BRZ
+		THIS = c:BRZ
+		OR = {
+			has_law = law_type:law_parliamentary_republic
+			has_law = law_type:law_presidential_republic
+			has_law = law_type:law_council_republic
+		}
+		OR = {
+			has_law = law_type:law_census_voting
+			has_law = law_type:law_universal_suffrage
+		}
+		NOT = {
+			coa_fascist_trigger = yes
+		}
+	}
+}
+
+brazil_republican = {#edited from vanilla file
+	color = "republican_brazil_green"
+
+	possible = {
+		exists = c:BRZ
+		THIS = c:BRZ
+		OR = {
+			has_law = law_type:law_parliamentary_republic
+			has_law = law_type:law_presidential_republic
+			has_law = law_type:law_council_republic
+		}
+		NOT = {
+			has_law = law_type:law_census_voting
+			has_law = law_type:law_universal_suffrage
+		}
+		NOT = {
+			coa_fascist_trigger = yes
+		}
+	}
+}
+
+brazil_communist = {
+	color = "communist_brazil_red"
+
+	possible = {
+		exists = c:BRZ
+		THIS = c:BRZ
+		has_law = law_type:law_council_republic
+		NOT = {
+			coa_fascist_trigger = yes
+		}
+	}
+}
+
 blancos = { 
 	color = "white"
 	possible = {

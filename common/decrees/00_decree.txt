@@ -509,7 +509,8 @@ decree_greener_grass_campaign = {
 	valid = {
 		is_isolated_from_market = no
 		# KAI: Disable greener grass campaign when having closed borders
-		owner = { NOT = { modifier:country_disallow_migration = yes } }
+		owner = { NOT = { modifier:country_disallow_migration_bool = yes } }
+		# Not serfdom?
 	}
 	modifier = {
 		state_migration_pull_add = 10 #20 VFM

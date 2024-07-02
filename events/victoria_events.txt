@@ -27,6 +27,7 @@ victoria.1 = {
 		ruler = {
 			save_scope_as = queen_victoria
 		}
+		c:GBR = { power_bloc ?= { add_leverage = { target = c:HAN value = -1000 } } }
 		c:HAN = {
 			create_character = {
 				first_name = Ernest_Augustus
@@ -221,78 +222,6 @@ victoria.2 = {
 		ruler = {
 			save_scope_as = ernest_augustus
 		}
-		if = {
-			limit = {
-				exists = c:HAM
-				c:HAM = {
-					has_variable = victoria_customs_ham
-					NOT = { 
-						has_diplomatic_pact = {
-							who = c:HAM
-							type = customs_union
-						}
-					}
-				}
-			}
-			create_diplomatic_pact = {
-				country = c:HAM
-				type = customs_union
-			}
-		}
-		if = {
-			limit = {
-				exists = c:BRE
-				c:BRE = {
-					has_variable = victoria_customs_bre
-					NOT = { 
-						has_diplomatic_pact = {
-							who = c:BRE
-							type = customs_union
-						}
-					}
-				}
-			}
-			create_diplomatic_pact = {
-				country = c:BRE
-				type = customs_union
-			}
-		}
-		if = {
-			limit = {
-				exists = c:OLD
-				c:OLD = {
-					has_variable = victoria_customs_old
-					NOT = { 
-						has_diplomatic_pact = {
-							who = c:OLD
-							type = customs_union
-						}
-					}
-				}
-			}
-			create_diplomatic_pact = {
-				country = c:OLD
-				type = customs_union
-			}
-		}
-		if = {
-			limit = {
-				exists = c:BRA
-				c:BRA = {
-					has_variable = victoria_customs_bra
-					NOT = { 
-						has_diplomatic_pact = {
-							who = c:BRA
-							type = customs_union
-						}
-					}
-				}
-			}
-			create_diplomatic_pact = {
-				country = c:BRA
-				type = customs_union
-			}
-		}
 	}
 	option = {
 		name = victoria.2.a
@@ -304,9 +233,11 @@ victoria.2 = {
 				}
 			}
 		}
-		custom_tooltip = victoria.2.tt
 	}
 }
+
+# Say the line Bart!
+# *sigh* victoria.3 when?
 
 # For Hannover
 victoria.3 = {
@@ -353,77 +284,6 @@ victoria.3 = {
 					holder = c:HAN
 					type = independence
 					target_country = c:GBR
-				}
-			}
-		}
-
-		hidden_effect = {
-			if = {
-				limit = {
-					exists = c:HAM
-					c:HAM = {
-						NOT = { 
-							has_diplomatic_pact = {
-								who = c:HAM
-								type = customs_union
-							}
-						}
-					}
-				}
-				create_diplomatic_pact = {
-					country = c:HAM
-					type = customs_union
-				}
-			}
-			if = {
-				limit = {
-					exists = c:BRE
-					c:BRE = {
-						NOT = { 
-							has_diplomatic_pact = {
-								who = c:BRE
-								type = customs_union
-							}
-						}
-					}
-				}
-				create_diplomatic_pact = {
-					country = c:BRE
-					type = customs_union
-				}
-			}
-			if = {
-				limit = {
-					exists = c:OLD
-					c:OLD = {
-						NOT = { 
-							has_diplomatic_pact = {
-								who = c:OLD
-								type = customs_union
-							}
-						}
-					}
-				}
-				create_diplomatic_pact = {
-					country = c:OLD
-					type = customs_union
-				}
-			}
-			if = {
-				limit = {
-					exists = c:BRA
-					c:BRA = {
-						NOT = { 
-							has_diplomatic_pact = {
-								who = c:BRA
-								type = customs_union
-							}
-						}
-					}
-				}
-				create_diplomatic_pact = {
-					country = c:BRA
-					type = customs_union
 				}
 			}
 		}

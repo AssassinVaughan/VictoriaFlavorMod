@@ -28,7 +28,7 @@ je_encourage_boer_migration_into_the_oranje_river_basin = {
 	complete = {
 		OR = {
 			gdp > 200000
-			year > 1852
+			year > 1952
 		}
 	}
 	
@@ -140,12 +140,16 @@ je_form_griqualand_west = {
 	}
 
 	complete = {
-		year > 1870
-		NOT = {
-			c:WBL ?= {
-				is_direct_subject_of = GBR
-			}
+		c:WBL ?= {
+			is_direct_subject_of = ROOT
 		}
+		#AND = {	
+		#	gdp > 1200000
+		#	exists = c:WBL
+		#	root = {
+		#		c:WBL.relations:ROOT > relations_threshold:amicable
+		#	}
+		#}
 	}
 	
 	on_complete = {
@@ -246,18 +250,6 @@ je_anglo_zulu_war = {
 je_establish_the_orange_river_soverignty = {
 	icon = "gfx/interface/icons/event_icons/event_scales.dds"
     group = je_group_foreign_affairs
-	is_shown_when_inactive = {
-		exists = c:ORA
-		THIS ?= c:GBR
-	}
-	possible = {
-		exists = c:ORA
-		NOT = {
-			c:ORA ?= {
-				is_subject_of = c:GBR
-			}
-		}
-	}
 	complete = {
 		OR = {
 			AND = {	
@@ -280,11 +272,11 @@ je_establish_the_orange_river_soverignty = {
 	}
 	
 	on_complete = {
-		create_diplomatic_play = {
-			name = Anglo_intervention_in_Transvaal
-			target_country = c:ORA
-			war = yes
-			type = dp_make_protectorate
+		root = {
+			create_diplomatic_pact = {
+				country = c:ORA
+				type = puppet
+			}	
 		}
 	}
 }
@@ -292,18 +284,6 @@ je_establish_the_orange_river_soverignty = {
 je_establish_the_traansval_colony = {
 	icon = "gfx/interface/icons/event_icons/event_scales.dds"
     group = je_group_foreign_affairs
-	is_shown_when_inactive = {
-		exists = c:TRA
-		THIS ?= c:GBR
-	}
-	possible = {
-		exists = c:TRA
-		NOT = {
-			c:ORA ?= {
-				is_subject_of = c:GBR
-			}
-		}
-	}
 	complete = {
 		OR = {
 			AND = {	
@@ -326,32 +306,32 @@ je_establish_the_traansval_colony = {
 	}
 	
 	on_complete = {
-#		if = {
-#			limit = {
-#				c:TRN ?= {
-#					is_ai = yes
-#				}
-#			}
-#			root = {
-#				create_diplomatic_pact = {
-#					country = c:TRN
-#					type = puppet
-#				}	
-#			}
-#		}
-#		if = {
-#			limit = {
-#				c:TRN ?= {
-#					is_ai = no
-#				}
-#			}
+		if = {
+			limit = {
+				c:TRN ?= {
+					is_ai = yes
+				}
+			}
+			root = {
+				create_diplomatic_pact = {
+					country = c:TRN
+					type = puppet
+				}	
+			}
+		}
+		if = {
+			limit = {
+				c:TRN ?= {
+					is_ai = no
+				}
+			}
 			create_diplomatic_play = {
 				name = Anglo_intervention_in_Transvaal
 				target_country = c:TRN
 				war = yes
 				type = dp_make_protectorate
 			}
-#		}
+		}
 	}
 }
 
@@ -490,13 +470,13 @@ je_second_boer_war = {
 		}
 		root = {
 			create_diplomatic_play = {
-				name = second_boer_war
+				name = first_boer_war
 				target_country = c:TRN
 				war = yes
 				type = dp_make_protectorate
 			}
 			create_diplomatic_play = {
-				name = second_boer_war
+				name = first_boer_war
 				target_country = c:ORA
 				war = yes
 				type = dp_make_protectorate
@@ -509,12 +489,12 @@ je_form_the_union_of_south_africa = {
 	icon = "gfx/interface/icons/event_icons/event_saf.dds"
     group = je_group_historical_content
 	complete = {
-		c:GBR = {
-			country_or_subject_owns_entire_state_region = STATE_TRANSVAAL
-			country_or_subject_owns_entire_state_region = STATE_VRYSTAAT
-			country_or_subject_owns_entire_state_region = STATE_ZULULAND
-			country_or_subject_owns_entire_state_region = STATE_NATAL
-			country_or_subject_owns_entire_state_region = STATE_NATAL
+		custom_tooltip = {
+			text = is_african_union_tt
+			AND = {
+				exists = c:BOE
+				c:BOE = ROOT
+			}
 		}
 	}
 	

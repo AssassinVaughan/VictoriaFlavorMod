@@ -345,13 +345,10 @@ je_war_of_the_confederation = {
 				}
 				c:BOL ?= {
 					OR = {
+						is_in_customs_union_with = root
 						has_diplomatic_pact = {
 							who = root
 							type = alliance
-						}
-						has_diplomatic_pact = {
-							who = root
-							type = customs_union
 						}
 						has_diplomatic_pact = {
 							who = root

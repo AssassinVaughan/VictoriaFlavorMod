@@ -36,6 +36,8 @@
 		interest_group_ig_landowners_pol_str_mult = 0.5
 		interest_group_ig_rural_folk_pol_str_mult = -0.25
 		state_bureaucracy_population_base_cost_factor_mult = -0.1
+		state_peasants_internal_migration_disallowed_bool = yes
+		state_peasants_mass_migration_disallowed_bool = yes
 	}
 
 	possible_political_movements = {
@@ -58,10 +60,6 @@
 		}
 	}
 	
-	can_impose = { 
-		is_subject_of = scope:initiator	
-	} 
-	
 	# AI should never try to bring back serfdom
 	ai_will_do = {
 		always = no
@@ -71,11 +69,7 @@
 		value = 0
 		
 		if = {
-			limit = { 
-				has_journal_entry = je_government_petition
-				has_variable = desired_law_var
-                scope:law = var:desired_law_var
-			}
+			limit = { ai_has_enact_weight_modifier_journal_entries = yes }
 			add = 750
 		}
 	}
@@ -90,6 +84,7 @@ law_tenant_farmers = {
 
 	modifier = {
 		interest_group_ig_landowners_pol_str_mult = 0.25
+		state_peasants_internal_migration_disallowed_bool = yes
 	}
 
 	possible_political_movements = {
@@ -149,20 +144,12 @@ law_tenant_farmers = {
 			}			
 		}
 	}
-	
-	can_impose = { 
-		is_subject_of = scope:initiator	
-	} 
 
 	ai_enact_weight_modifier = { #Petitions
 		value = 0
 		
 		if = {
-			limit = { 
-				has_journal_entry = je_government_petition
-				has_variable = desired_law_var
-                scope:law = var:desired_law_var
-			}
+			limit = { ai_has_enact_weight_modifier_journal_entries = yes }
 			add = 750
 		}
 	}
@@ -190,6 +177,7 @@ law_commercialized_agriculture = {
 	}
 	
 	on_enact = {
+		custom_tooltip = financial_districts_buy_farms_tt
 		if = {
 			limit = {
 				NOR = {
@@ -247,20 +235,12 @@ law_commercialized_agriculture = {
 			}			
 		}
 	}
-	
-	can_impose = { 
-		is_subject_of = scope:initiator	
-	} 
 
 	ai_enact_weight_modifier = { #Petitions
 		value = 0
-		
+
 		if = {
-			limit = { 
-				has_journal_entry = je_government_petition
-				has_variable = desired_law_var
-                scope:law = var:desired_law_var
-			}
+			limit = { ai_has_enact_weight_modifier_journal_entries = yes }
 			add = 750
 		}
 	}
@@ -280,8 +260,8 @@ law_homesteading = {
 	}
 
 	modifier = {
-		interest_group_ig_rural_folk_pol_str_mult = 0.15
-	    country_farmers_pol_str_mult = 0.15
+		country_farmers_pol_str_mult = 0.25
+		building_group_bg_agriculture_allowed_collectivization_add = 0.5
 	}
 
 	on_enact = {
@@ -353,20 +333,12 @@ law_homesteading = {
 			multiply = 0.75
 		}
 	}
-	
-	can_impose = { 
-		is_subject_of = scope:initiator	
-	}
 
 	ai_enact_weight_modifier = { #Petitions
 		value = 0
 		
 		if = {
-			limit = { 
-				has_journal_entry = je_government_petition
-				has_variable = desired_law_var
-                scope:law = var:desired_law_var
-			}
+			limit = { ai_has_enact_weight_modifier_journal_entries = yes }
 			add = 750
 		}
 	}
@@ -380,8 +352,9 @@ law_collectivized_agriculture = {
 	progressiveness = 50
 
 	modifier = {
+		
 	}
-	
+
 	on_enact = {
 		custom_tooltip = rural_laborers_tu_ig_shift_effect_tt
 		if = {
@@ -434,20 +407,12 @@ law_collectivized_agriculture = {
 			}			
 		}
 	}
-	
-	can_impose = { 
-		is_subject_of = scope:initiator	
-	} 
 
 	ai_enact_weight_modifier = { #Petitions
 		value = 0
 		
 		if = {
-			limit = { 
-				has_journal_entry = je_government_petition
-				has_variable = desired_law_var
-                scope:law = var:desired_law_var
-			}
+			limit = { ai_has_enact_weight_modifier_journal_entries = yes }
 			add = 750
 		}
 		

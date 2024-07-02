@@ -160,7 +160,7 @@ ai_strategy_plantation_economy = {
 			country_is_in_middle_east = yes	
 		}
 		# KAI: Nowhere to export
-		NOT = { modifier:market_disallow_trade_routes = yes }
+		NOT = { modifier:market_disallow_trade_routes_bool = yes }
 	}
 	
 	weight = {
@@ -263,7 +263,7 @@ ai_strategy_resource_expansion = {
 		
 		if = {
 			limit = {
-				has_law = law_type:law_council_republic	
+				has_radical_leftist_government = yes
 				NOT = {
 					ig:ig_rural_folk ?= {
 						is_powerful = yes
@@ -522,7 +522,7 @@ ai_strategy_industrial_expansion = {
 		
 		if = {
 			limit = {
-				has_law = law_type:law_council_republic	
+				has_radical_leftist_government = yes
 				NOT = {
 					ig:ig_rural_folk ?= {
 						is_powerful = yes

@@ -435,13 +435,22 @@ GLOBAL = {
                 value = very_large_radicals
             }
         }
-        create_truce = {
+       create_bidirectional_truce = {
 			country = c:CIR
-			months = 60
+			months = 240
 		}
-		create_truce = {
+		create_bidirectional_truce = {
 			country = c:CHC
-			months = 60
+			months = 240
+		}
+		if = {
+			limit = {
+				has_dlc_feature = ep1_content
+			}
+			trigger_event = {
+				id = kazakhstan_events.2
+				days = 690
+			}
 		}
 		add_radicals = {
 			value = small_radicals
@@ -515,7 +524,7 @@ GLOBAL = {
 		}
 	}
 
-	c:CPL = {
+	c:CPL ?= {
 	    add_radicals = {
 			value = medium_radicals
 			culture = cu:polish
@@ -566,6 +575,11 @@ GLOBAL = {
 		add_radicals = {
 			value = medium_radicals
 			culture = cu:han
+		}
+		
+		set_variable = {
+			name = china_warlord_explosion
+			value = 5
 		}
 	}
 	
@@ -689,21 +703,21 @@ GLOBAL = {
 		}
 	}
 	
-	c:CPL = {
+	c:CPL ?= {
 		add_radicals = {
 			value = very_large_radicals
 			culture = cu:polish
 		}
 	}
 	
-	c:POS = {
+	c:POS ?= {
 		add_radicals = {
 			value = very_large_radicals
 			culture = cu:polish
 		}
 	}
 	
-	c:KRA = {
+	c:KRA ?= {
 		add_radicals = {
 			value = very_large_radicals
 			culture = cu:polish
@@ -1379,7 +1393,7 @@ GLOBAL = {
 			annex = c:IRC
 		}
 	}
-	every_country = {
+	every_country = {# change to normal rule check, then add only to player
 		limit = {
 			has_game_rule = vanilla_construction_rate
 		}

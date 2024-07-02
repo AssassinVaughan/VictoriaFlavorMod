@@ -23,6 +23,13 @@
 		trigger_event = {
 			id = sick_man.3
 		}
+		if = {
+			limit = {
+	       		is_in_power_bloc = yes
+	        	is_power_bloc_leader = yes				
+			}
+			custom_tooltip = sick_man_of_europe_lose_power_bloc
+		}
 	}
 	
 	on_monthly_pulse = {

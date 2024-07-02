@@ -41,7 +41,7 @@ pm_iron_frame_buildings = {
 
 	country_modifiers = {
 		workforce_scaled = {
-			country_construction_add = 4.5 
+			country_construction_add = 4.4
 		}
 
 	}
@@ -49,9 +49,9 @@ pm_iron_frame_buildings = {
 		workforce_scaled = {
 			goods_input_wood_add = 40   # 20x40 = 800
 			goods_input_fabric_add = 20 # 20x20 = 500
-			goods_input_iron_add = 40   # 40x50 = 2000  --- 40x40 = 1600
+			goods_input_iron_add = 35   # 40x50 = 2000  --- 40x35 = 1400
 			goods_input_tools_add = 10  # 40x10 = 400
-		}                               # tot 3700 for 5 = 740 per point -> 4.5 for 733
+		}                               # tot 3500 for 5 = 700 per point --- tot 3100 for 4.4 for 705
 
 		level_scaled = {
 			building_employment_bureaucrats_add = 500
@@ -82,19 +82,19 @@ pm_steel_frame_buildings = {
 
 	country_modifiers = {
 		workforce_scaled = {
-			country_construction_add = 8
+			country_construction_add = 7.8
 		}
 	}
 
 	building_modifiers = {
 		workforce_scaled = {
-		    goods_input_wood_add = 20       # 0x0 =   0    --- 20x20 = 400
+		    goods_input_wood_add = 25       # 0x0 =   0    --- 20x25 = 500
 			goods_input_fabric_add = 20     # 0x0 =   0    --- 20x20 = 400
-			goods_input_steel_add = 40      # 50x50 = 2500 --- 50x40 = 2000
+			goods_input_steel_add = 35      # 50x50 = 2500 --- 50x35 = 1750
 			goods_input_glass_add = 20      # 40x40 = 1600 --- 40x20 = 800
 			goods_input_explosives_add = 10 # 50x10 = 500
 			goods_input_tools_add = 20      # 40x20 = 800
-		}                                   # tot 5400 for 10 = 540 per point --- tot 4900 for 8 = 613 per point
+		}                                   # tot 5400 for 10 = 540 per point --- tot 4750 for 7.8 = 609 per point
 
 		level_scaled = {
 			building_employment_bureaucrats_add = 500
@@ -125,7 +125,7 @@ pm_arc_welded_buildings = {
 		
 	country_modifiers = {
 		workforce_scaled = {
-			country_construction_add = 12
+			country_construction_add = 11.5
 		}
 	}
 
@@ -133,12 +133,12 @@ pm_arc_welded_buildings = {
 		workforce_scaled = {
 		    goods_input_wood_add = 20       # 0x0 =   0    --- 20x20 = 400
 			goods_input_fabric_add = 20     # 0x0 =   0    --- 20x20 = 400
-			goods_input_steel_add = 40      # 50x50 = 2500 --- 50x40 = 2000
+			goods_input_steel_add = 35      # 50x50 = 2500 --- 50x35 = 1750
 			goods_input_glass_add = 20      # 40x40 = 1600 --- 40x20 = 800
 			goods_input_explosives_add = 20 # 50x20 = 1000 --- 50x15 = 750
 			goods_input_tools_add = 30      # 40x40 = 1600 --- 40x30 = 1200
-			goods_input_electricity_add = 40# 30x40 = 1200 --- 40x30 = 1200
-		}                                   # tot 7900 for 15 = 527 per point --- tot 6750 for 12 = 562 per point
+			goods_input_electricity_add = 35# 30x40 = 1200 --- 30x35 = 1050
+		}                                   # tot 7900 for 15 = 527 per point --- tot 6350 for 11.5 = 552 per point
 
 		level_scaled = {
 			building_employment_bureaucrats_add = 500
@@ -157,6 +157,7 @@ pm_arc_welded_buildings = {
 			state_construction_mult = 0.02
 		}	
 	}
-	
+
 	ai_value = 1500
+	required_input_goods = electricity
 }

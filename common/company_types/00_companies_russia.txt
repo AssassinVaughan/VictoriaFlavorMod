@@ -187,7 +187,7 @@ company_savva_morozov = {
 	}
 	
 	potential = {
-		has_interest_marker_in_region = region_central_russia
+		has_interest_marker_in_region = region_russia
 	}
 	
 	attainable = {
@@ -234,20 +234,20 @@ company_john_hughes = {
 	}
 	
 	potential = {
-		has_interest_marker_in_region = region_ukraine
+		has_interest_marker_in_region = region_dnieper
 	}
 	
 	attainable = {
 		hidden_trigger = { # Hide attainable if it's always fulfilled by possible
 			any_scope_state = {
-				state_region = s:STATE_EKATERINOSLAV
+				state_region = s:STATE_KHARKOV
 			}
 		}
 	}		
 	
 	possible = { 
 		any_scope_state = {
-			state_region = s:STATE_EKATERINOSLAV
+			state_region = s:STATE_KHARKOV
 			is_incorporated = yes
 			any_scope_building = {
 				OR = {

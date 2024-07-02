@@ -146,30 +146,20 @@ BYZ = {
 }
 
 PLC = {
-	states = { 
-		STATE_WEST_PRUSSIA
-		STATE_POSEN
-		STATE_WARSAW
-		STATE_PLOCK
-		STATE_AUGUSTOW
-		STATE_LUBLIN
-		STATE_RADOM
-		STATE_WEST_GALICIA
+	states = {
+		STATE_BREST
 		STATE_EAST_GALICIA
-		STATE_VOLHYNIA
-		STATE_MINSK
-		STATE_GRODNO
-		STATE_VILNA
-		STATE_PODOLIA
-		STATE_KIEV
-		STATE_MOGILEV
-		STATE_VITEBSK
+		STATE_GREATER_POLAND
+		STATE_LESSER_POLAND
 		STATE_KAUNAS
-		STATE_COURLAND
-		STATE_LIVONIA
+		STATE_MAZOVIA
+		STATE_POSEN
+		STATE_VOLHYNIA
+		STATE_WEST_GALICIA
+		STATE_WEST_PRUSSIA
 	}
 
-	required_states_fraction = 0.8
+	required_states_fraction = 1
 	
 	ai_will_do = { always = yes }
 }
@@ -332,6 +322,10 @@ FSA = {
 	required_states_fraction = 0.75	
 	
 	ai_will_do = { always = yes }
+
+	possible = {
+		has_law = law_type:law_slavery_banned
+	}
 }
 
 CZH = {
@@ -531,20 +525,7 @@ SAF = {
 }
 
 TRH = {
-	states = { 
-		STATE_UZBEKIA
-		STATE_KIRGHIZIA
-		STATE_TAJIKISTAN
-		STATE_TURKMENIA
-		STATE_KHIVA
-		STATE_SEMIRECHE
-		STATE_AKMOLINSK
-		STATE_URALSK
-		STATE_TIANSHAN
-		STATE_DZUNGARIA
-		STATE_JETISY
-		STATE_URAL
-	}
+	use_culture_states = yes
 
 	required_states_fraction = 0.5
 	
@@ -615,6 +596,7 @@ CAU = {
 		STATE_ARMENIA
 		STATE_AZERBAIJAN
 		STATE_KARS
+		STATE_ELIZAVETPOL
 	}
 
 	required_states_fraction = 0.75	
@@ -642,10 +624,12 @@ KAZ = {
 		STATE_SEMIRECHE
 		STATE_AKMOLINSK
 		STATE_JETISY
-		STATE_URAL
+		STATE_URALSK
+		STATE_AKTOBE
+		STATE_SYRDARYA
 	}
 
-	required_states_fraction = 0.75	
+	required_states_fraction = 0.5
 	
 	ai_will_do = { always = yes }
 
@@ -781,6 +765,19 @@ CLI = {
 		}
 		NOT = { has_game_rule = plausible_formable_nations }
 	}
+}
+
+AFG = {
+	states = {
+		STATE_HERAT
+		STATE_KANDAHAR
+		STATE_KABUL 
+		STATE_CENTRAL_HIGHLANDS
+	}
+	
+	required_states_fraction = 1
+
+	ai_will_do = { always = yes }
 }
 
 TWT = {

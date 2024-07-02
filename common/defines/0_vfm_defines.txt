@@ -124,10 +124,7 @@ NPolitics = {
 
 NEconomy = {
 	
-	DOWNSIZE_BUILDING_POP_TYPE_RADICALIZATION_SHARED_FACTOR = 0.04 # This percentage of a pop becomes radicalized when a building they would have ownership shares in is downsized in the state (multiplied by per-pop shares)
-
-    FIRED_POP_RADICALIZATION_BASE_FRACTION = 0.07		# This percentage of a pop becomes radicalized when they lose their job, for instance due to a building being downsized
-	FIRED_POP_RADICALIZATION_SHARES_FACTOR = 0.02		# Additional percentage of pop that becomes radicalized they lost their job for each per-pop share they had in the building	
+	FIRED_POP_RADICALIZATION_FRACTION = 0.05				# This percentage of a pop becomes radicalized when they lose their job, for instance due to a building being downsized
 	
 	DEFAULT_MIN_HIRING_RATE = 0.03 				# Default weekly min hiring limit applied in a building per profession as a ratio of full employment
 	DEFAULT_MAX_HIRING_RATE = 0.1 				# Default weekly max hiring limit applied in a building per profession as a ratio of full employment
@@ -137,7 +134,6 @@ NEconomy = {
 	BUILDING_RAISE_WAGES_MIN_RELEVANT_POP_SIZE = 50 # Pops with less workforce than this are ignored when checking whether a profitable building should raise wages because of radicalizing workers
 	BUILDING_RAISE_WAGES_DISCRIMINATION_FACTOR = 0.66 # Profitable buildings only care to raise wages for discriminated pops if their wealth to expected SoL ratio is less than this
 	BUILDING_LOWER_WAGES_TARGET_WEALTH_MULT = 1.33 # Buildings will consider lowering wages if all significant pops working in them have this * the target wealth to expected SoL ratio
-	BUILDING_MIN_EARNINGS_TO_HIRE_EMPLOYEES = 0.5  # Non-subsidized buildings will not hire if it would result in their annual earnings/employee falling below this threshold
 	BUILDING_PROFIT_TARGET_TO_RAISE_WAGES = 0.25	# Required profit margin to consider raising wages for SoL or employment reasons, with BUILDING_WEEKS_BETWEEN_PAY_CHANGES weeks cooldown
 	BUILDING_PROFIT_TARGET_TO_LOWER_WAGES = 0.1 	# If profit margin is this or below, consider lowering wages for SoL or employment reasons, with BUILDING_WEEKS_BETWEEN_PAY_CHANGES weeks cooldown
 	BUILDING_MAX_EMPLOYMENT_FRACTION_TO_RAISE_WAGES = 0.5 # If the employment fraction of a building is above this, don't raise wages just to try and snipe employees from other buildings

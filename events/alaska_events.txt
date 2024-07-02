@@ -60,6 +60,10 @@ alaska.1 = {
 					state_region = s:STATE_ALASKA
 					owner = scope:alaska_seller
 				}
+				state_region = {
+					remove_claim = root
+					add_claim = scope:alaska_buyer
+				}
 				set_state_owner = scope:alaska_buyer
 			}
 			change_relations = {
@@ -141,6 +145,9 @@ alaska.2 = {
 				    owner = scope:alaska_seller
 					owner.top_overlord = scope:alaska_seller
 				}
+			}
+			state_region = {
+				add_claim = scope:alaska_buyer
 			}
 			set_state_owner = scope:alaska_buyer
 		}

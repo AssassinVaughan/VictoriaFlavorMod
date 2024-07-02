@@ -500,13 +500,13 @@
 	c:PER = {
 		create_trade_route = {
 			goods = artillery
-			level = 3
+			level = 1
 			direction = import
 			target = c:RUS.market
 		}	
         create_trade_route = {
 			goods = paper
-			level = 4
+			level = 3
 			direction = import
 			target = c:TUR.market
 		}		
@@ -517,10 +517,10 @@
 			target = c:RUS.market
 		}		
 		create_trade_route = {
-			goods = luxury_clothes
-			level = 2
-			direction = export
-			target = c:AFG.market
+			goods = small_arms
+			level = 1
+			direction = import
+			target = c:GBR.market
 		}	
 	}
 	
@@ -1161,13 +1161,13 @@
 		}
 		create_trade_route = {
 			goods = sugar
-			level = 7
+			level = 4
 			direction = import
 			target = c:CHI.market
 		}		
 		create_trade_route = {
 			goods = sugar
-			level = 7
+			level = 5
 			direction = import
 			target = c:NET.market
 		}
@@ -1194,7 +1194,13 @@
 			level = 1
 			direction = export
 			target = c:FRA.market
-		}			
+		}	
+        create_trade_route = {
+			goods = silk
+			level = 1
+			direction = import
+			target = c:CHI.market
+		}		
 	}
 
 	# Portugal

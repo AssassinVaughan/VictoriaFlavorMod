@@ -26,19 +26,11 @@ law_chiefdom = {
 		value = 0
 	}
 
-	can_impose = { 
-		is_subject_of = scope:initiator	
-	}
-
 	ai_enact_weight_modifier = { #Petitions
 		value = 0
 		
 		if = {
-			limit = { 
-				has_journal_entry = je_government_petition
-				has_variable = desired_law_var
-                scope:law = var:desired_law_var
-			}
+			limit = { ai_has_enact_weight_modifier_journal_entries = yes }
 			add = 750
 		}
 	}
@@ -53,6 +45,19 @@ law_monarchy = {
 
 	disallowing_laws = {
 		law_anarchy
+	}
+	
+	can_impose = {
+		OR = {
+			AND = {
+				is_in_same_power_bloc = scope:target_country
+				AND = {
+					modifier:country_can_impose_same_lawgroup_governance_principles_in_power_bloc_bool = yes
+					has_law = scope:law
+				}
+			}
+			can_impose_law_default = yes
+		}
 	}
 
 	modifier = {
@@ -80,10 +85,6 @@ law_monarchy = {
 			}
 		}
 	}
-	
-	can_impose = { 
-		is_subject_of = scope:initiator	
-	} 
 	
 	ai_will_do = {
 		exists = ruler
@@ -135,12 +136,35 @@ law_monarchy = {
 		value = 0
 		
 		if = {
-			limit = { 
-				has_journal_entry = je_government_petition
-				has_variable = desired_law_var
-                scope:law = var:desired_law_var
-			}
+			limit = { ai_has_enact_weight_modifier_journal_entries = yes }
 			add = 750
+		}
+	}
+	
+	ai_impose_chance = {
+		value = 0
+		
+		if = {
+			limit = {
+				has_law = law_type:law_monarchy
+				has_strategy = ai_strategy_reactionary_agenda
+				power_bloc ?= { has_identity = identity:identity_ideological_union }
+				scope:target_country = { # Is their law different enough from what we want to impose?
+					NOT = { has_law = law_type:law_theocracy }
+				}				
+			}
+			
+			add = base_impose_law_weight	
+			if = {
+				limit = { 
+					scope:target_country = { has_law = law_type:council_republic } 
+					NOT = { has_strategy = ai_strategy_egalitarian_agenda }
+				}
+				multiply = 5
+			}	
+			else = {
+				multiply = 0.5 # AI is less likely to mess with governance principles unless dealing with council republics
+			}
 		}
 	}
 }
@@ -154,6 +178,19 @@ law_presidential_republic = {
 	
 	unlocking_technologies = {
 		democracy
+	}
+	
+	can_impose = {
+		OR = {
+			AND = {
+				is_in_same_power_bloc = scope:target_country
+				AND = {
+					modifier:country_can_impose_same_lawgroup_governance_principles_in_power_bloc_bool = yes
+					has_law = scope:law
+				}
+			}
+			can_impose_law_default = yes
+		}
 	}
 	
 	modifier = {
@@ -207,10 +244,6 @@ law_presidential_republic = {
 		}
 	}
 	
-	can_impose = { 
-		is_subject_of = scope:initiator	
-	} 
-	
 	ai_will_do = {
 		exists = ruler
 		ruler = {
@@ -227,14 +260,37 @@ law_presidential_republic = {
 			add = 100
 		}
 		if = {
-			limit = { 
-				has_journal_entry = je_government_petition
-				has_variable = desired_law_var
-                scope:law = var:desired_law_var
-			}
+			limit = { ai_has_enact_weight_modifier_journal_entries = yes }
 			add = 750
 		}
 	}
+	
+	ai_impose_chance = {
+		value = 0
+		
+		if = {
+			limit = {
+				has_law = law_type:law_presidential_republic
+				has_strategy = ai_strategy_progressive_agenda
+				power_bloc ?= { has_identity = identity:identity_ideological_union }
+				scope:target_country = { # Is their law different enough from what we want to impose?
+					NOT = { has_law = law_type:law_parliamentary_republic }
+				}				
+			}
+			
+			add = base_impose_law_weight
+			if = {
+				limit = { 
+					scope:target_country = { has_law = law_type:council_republic } 
+					NOT = { has_strategy = ai_strategy_egalitarian_agenda }
+				}
+				multiply = 5
+			}	
+			else = {
+				multiply = 0.5 # AI is less likely to mess with governance principles unless dealing with council republics
+			}
+		}
+	}	
 }
 
 law_parliamentary_republic = {
@@ -251,6 +307,19 @@ law_parliamentary_republic = {
 	
 	unlocking_technologies = {
 		democracy
+	}
+	
+	can_impose = {
+		OR = {
+			AND = {
+				is_in_same_power_bloc = scope:target_country
+				AND = {
+					modifier:country_can_impose_same_lawgroup_governance_principles_in_power_bloc_bool = yes
+					has_law = scope:law
+				}
+			}
+			can_impose_law_default = yes
+		}
 	}
 	
 	modifier = {
@@ -302,10 +371,6 @@ law_parliamentary_republic = {
 		}
 	}
 	
-	can_impose = { 
-		is_subject_of = scope:initiator	
-	} 
-	
 	ai_will_do = {
 		exists = ruler
 		ruler = {
@@ -317,14 +382,37 @@ law_parliamentary_republic = {
 		value = 0
 		
 		if = {
-			limit = { 
-				has_journal_entry = je_government_petition
-				has_variable = desired_law_var
-                scope:law = var:desired_law_var
-			}
+			limit = { ai_has_enact_weight_modifier_journal_entries = yes }
 			add = 750
 		}
 	}
+	
+	ai_impose_chance = {
+		value = 0
+		
+		if = {
+			limit = {
+				has_law = law_type:law_parliamentary_republic
+				has_strategy = ai_strategy_progressive_agenda
+				power_bloc ?= { has_identity = identity:identity_ideological_union }
+				scope:target_country = { # Is their law different enough from what we want to impose?
+					NOT = { has_law = law_type:law_presidential_republic }
+				}				
+			}
+			
+			add = base_impose_law_weight
+			if = {
+				limit = { 
+					scope:target_country = { has_law = law_type:council_republic } 
+					NOT = { has_strategy = ai_strategy_egalitarian_agenda }
+				}
+				multiply = 5
+			}		
+			else = {
+				multiply = 0.5 # AI is less likely to mess with governance principles unless dealing with council republics
+			}
+		}
+	}	
 }
 
 law_theocracy = {
@@ -338,6 +426,19 @@ law_theocracy = {
 		law_total_separation 
 	}
 
+	can_impose = {
+		OR = {
+			AND = {
+				is_in_same_power_bloc = scope:target_country
+				AND = {
+					modifier:country_can_impose_same_lawgroup_governance_principles_in_power_bloc_bool = yes
+					has_law = scope:law
+				}
+			}
+			can_impose_law_default = yes
+		}
+	}
+	
 	modifier = {
 		country_legitimacy_headofstate_add = 15
 		country_legitimacy_ideological_incoherence_mult = 0.1
@@ -366,10 +467,6 @@ law_theocracy = {
 		}
 	}
 	
-	can_impose = { 
-		is_subject_of = scope:initiator	
-	} 
-	
 	ai_will_do = {
 		exists = ruler
 		ruler = {
@@ -381,14 +478,38 @@ law_theocracy = {
 		value = 0
 		
 		if = {
-			limit = { 
-				has_journal_entry = je_government_petition
-				has_variable = desired_law_var
-                scope:law = var:desired_law_var
-			}
+			limit = { ai_has_enact_weight_modifier_journal_entries = yes }
 			add = 750
 		}
 	}
+	
+	ai_impose_chance = {
+		value = 0
+		
+		if = {
+			limit = {
+				has_law = law_type:law_theocracy
+				has_strategy = ai_strategy_reactionary_agenda
+				power_bloc ?= { has_identity = identity:identity_religious }
+				religion = scope:target_country.religion
+				scope:target_country = { # Is their law different enough from what we want to impose?					
+					NOT = { has_law = law_type:law_monarchy }
+				}				
+			}
+			
+			add = base_impose_law_weight
+			if = {
+				limit = { 
+					scope:target_country = { has_law = law_type:council_republic } 
+					NOT = { has_strategy = ai_strategy_egalitarian_agenda }
+				}
+				multiply = 5
+			}		
+			else = {
+				multiply = 0.5 # AI is less likely to mess with governance principles unless dealing with council republics
+			}
+		}
+	}	
 }
 
 law_council_republic = {
@@ -405,7 +526,6 @@ law_council_republic = {
 	on_activate = {		
 		custom_tooltip = {
 			text = enact_law_radical_leftist_government_warning_desc
-		
 		}
 		if = {
 			limit = {
@@ -420,9 +540,22 @@ law_council_republic = {
 				remove_ideology = ideology_constitutionalist
 				add_ideology = ideology_republican
 			}
-		}
+		}	
 	}		
 
+	can_impose = {
+		OR = {
+			AND = {
+				is_in_same_power_bloc = scope:target_country
+				AND = {
+					modifier:country_can_impose_same_lawgroup_governance_principles_in_power_bloc_bool = yes
+					has_law = scope:law
+				}
+			}
+			can_impose_law_default = yes
+		}
+	}
+	
 	modifier = {
 		country_legitimacy_govt_total_votes_add = 10
 		country_legitimacy_govt_size_add = 1
@@ -448,10 +581,6 @@ law_council_republic = {
 		}
 	}
 	
-	can_impose = { 
-		is_subject_of = scope:initiator	
-	} 
-	
 	ai_will_do = {
 		exists = ruler
 		ruler = {
@@ -467,12 +596,22 @@ law_council_republic = {
 		value = 0
 		
 		if = {
-			limit = { 
-				has_journal_entry = je_government_petition
-				has_variable = desired_law_var
-                scope:law = var:desired_law_var
-			}
+			limit = { ai_has_enact_weight_modifier_journal_entries = yes }
 			add = 750
+		}
+	}
+	
+	ai_impose_chance = {
+		value = 0
+		
+		if = {
+			limit = {
+				has_law = law_type:law_council_republic
+				has_strategy = ai_strategy_egalitarian_agenda				
+			}
+			
+			add = base_impose_law_weight
+			multiply = 5.0
 		}
 	}
 }

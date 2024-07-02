@@ -62,10 +62,7 @@ german_unification.1 = {
 				limit = {
 					is_ai = yes			
 					OR = {
-						has_diplomatic_pact = {
-							who = ROOT
-							type = customs_union
-						}
+						is_in_customs_union_with = root
 						is_supporting_unification_candidate = { who = root country_formation = GER }
 					}
 				}			
