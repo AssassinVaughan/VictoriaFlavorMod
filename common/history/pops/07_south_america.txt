@@ -1267,20 +1267,37 @@ POPS = {
 			}
 		}
 	}
-	s:STATE_RIO_DE_JANEIRO = {
+	s:STATE_RIO_DE_JANEIRO = { #subtract espirito santo
 		region_state:BRZ = {
 			create_pop = {
 				culture = brazilian
-				size = 647988
+				size = 640209
 			}
 			create_pop = {
 				pop_type = slaves
 				culture = afro_brazilian
-				size = 238908
+				size = 236040
 			}
 			create_pop = {
 				culture = afro_brazilian
-				size = 105653
+				size = 104384
+			}
+		}
+	}
+	s:STATE_ESPIRITO_SANTO = { #11915 GFM
+		region_state:BRZ = {
+			create_pop = {
+				culture = brazilian
+				size = 7778
+			}
+			create_pop = {
+				pop_type = slaves
+				culture = afro_brazilian
+				size = 2867
+			}
+			create_pop = {
+				culture = afro_brazilian
+				size = 1268
 			}
 		}
 	}
