@@ -1,0 +1,66 @@
+je_dual_monarchy = { #Replaces vanilla dual monarchy
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	group = je_group_historical_content
+
+	complete = {
+		cu:hungarian = {
+			NOT = { culture_is_discriminated_in = ROOT }
+		}
+		NOT = {
+			OR = {
+				has_law = law_type:law_serfdom
+				has_law = law_type:law_tenant_farmers
+			}
+		}
+	}
+
+	on_complete = {
+		trigger_event = {
+			id = grosdeutschland.4
+		}
+	}
+
+	fail = {
+		is_at_war = no
+		NOT = { is_unification_candidate = GER }
+		OR = {
+			has_law = law_type:law_autocracy
+			has_law = law_type:law_landed_voting
+			has_law = law_type:law_single_party_state
+		}
+		custom_tooltip = {
+			text = je_dual_monarchy_german_unification_requirement
+			has_variable = je_german_unification_idea
+			has_global_variable = schleswig_holstein_question_solved
+		}
+	}
+
+	on_fail = {
+		set_variable = dual_monarchy_fail
+		trigger_event = {
+			id = grosdeutschland.4
+		}
+	}
+
+	invalid = {
+		OR = {
+			custom_tooltip = {
+				text = austria_hunary_invalid
+				NOT = {
+					any_scope_state = {
+						state_region = {
+							is_homeland = cu:hungarian
+						}
+					}
+				}
+			}
+			NOT = {
+				this = c:AUS
+			}
+		}
+	}
+
+	weight = 100
+	should_be_pinned_by_default = yes
+}

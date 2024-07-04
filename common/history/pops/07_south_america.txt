@@ -270,20 +270,29 @@ POPS = {
 		region_state:PEU = {
 			create_pop = {
 				culture = amazonian
-				size = 80000
+				size = 40000
 			}
 			create_pop = {
 				culture = south_andean
-				size = 13696
+				size = 11996
 			}
 			create_pop = {
 				culture = quechua
-				size = 4564
+				size = 4004
+			}
+		}
+		region_state:ECU = {
+			create_pop = {
+				culture = amazonian
+				size = 32000
+			}
+			create_pop = {
+				culture = south_andean
+				size = 1700
 			}
 			create_pop = {
 				culture = quechua
-				religion = catholic
-				size = 2642
+				size = 3200
 			}
 		}
 	}
@@ -1267,20 +1276,37 @@ POPS = {
 			}
 		}
 	}
-	s:STATE_RIO_DE_JANEIRO = {
+	s:STATE_RIO_DE_JANEIRO = { #subtract espirito santo
 		region_state:BRZ = {
 			create_pop = {
 				culture = brazilian
-				size = 647988
+				size = 640209
 			}
 			create_pop = {
 				pop_type = slaves
 				culture = afro_brazilian
-				size = 238908
+				size = 236040
 			}
 			create_pop = {
 				culture = afro_brazilian
-				size = 105653
+				size = 104384
+			}
+		}
+	}
+	s:STATE_ESPIRITO_SANTO = { #11915 GFM
+		region_state:BRZ = {
+			create_pop = {
+				culture = brazilian
+				size = 7778
+			}
+			create_pop = {
+				pop_type = slaves
+				culture = afro_brazilian
+				size = 2867
+			}
+			create_pop = {
+				culture = afro_brazilian
+				size = 1268
 			}
 		}
 	}
@@ -1364,24 +1390,67 @@ POPS = {
 			}
 		}
 	}
-	s:STATE_PERNAMBUCO = { # Pernambuco proper (1829) + Alagoas (1849), Sergipe (1849), and Paraiba (estimate from average of 1811 and 1872 censii)
+	s:STATE_PERNAMBUCO = { # Pernambuco proper (1829) + Alagoas (1849), Sergipe (1849), and Paraiba (estimate from average of 1811 and 1872 censii) #wow, maybe tell me what those values were?????
+		#Using GFM values for now (until an actual researcher can find population values)
 		region_state:BRZ = {
 			create_pop = {
 				culture = nordestino
-				size = 234140
+				size = 214160
 			}
 			create_pop = {
 				culture = tupinamba
-				size = 29920
+				size = 27365
 			}
 			create_pop = {
 				pop_type = slaves
 				culture = afro_brazilian
-				size = 182445
+				size = 166875
 			}
 			create_pop = {
 				culture = afro_brazilian
-				size = 452391
+				size = 413785
+			}
+		}
+	}
+	s:STATE_ALAGOAS = {  #GFM Values (51866)
+		region_state:BRZ = {
+			create_pop = {
+				culture = nordestino
+				size = 13509
+			}
+			create_pop = {
+				culture = tupinamba
+				size = 1726
+			}
+			create_pop = {
+				pop_type = slaves
+				culture = afro_brazilian
+				size = 10527
+			}
+			create_pop = {
+				culture = afro_brazilian
+				size = 26102
+			}
+		}
+	}
+	s:STATE_SERGIPE = { #GFM Values (24837)
+		region_state:BRZ = {
+			create_pop = {
+				culture = nordestino
+				size = 6469
+			}
+			create_pop = {
+				culture = tupinamba
+				size = 825
+			}
+			create_pop = {
+				pop_type = slaves
+				culture = afro_brazilian
+				size = 5041
+			}
+			create_pop = {
+				culture = afro_brazilian
+				size = 12500
 			}
 		}
 	}
