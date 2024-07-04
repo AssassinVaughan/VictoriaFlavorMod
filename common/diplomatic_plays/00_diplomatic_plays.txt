@@ -582,6 +582,50 @@ dp_contain_threat = {
 	on_war_end = {}
 }
 
+dp_taiping_rebellion = {
+	war_goal = annex_country
+	mirror_war_goal = yes
+	add_infamy_for_starting_initiator_wargoals = no
+	allow_negotiated_peace = no
+	
+	texture = "gfx/interface/icons/war_goals/annex_country.dds"
+	
+	selectable_in_lens = {
+		always = no
+	}
+	
+	possible = {
+		exists = c:TPG
+		scope:target_country = {
+			this = c:TPG
+		}
+	}
+	
+	additional_involvement_trigger = {
+		NOT = { is_country_type = decentralized }
+		aggressive_diplomatic_plays_permitted = yes
+
+		scope:target_country = {
+			capital = {
+				region = {
+					save_temporary_scope_as = target_capital_region
+				}
+			}
+		}
+		
+		OR = {
+			has_interest_marker_in_region = scope:target_capital_region
+			is_home_country_for = scope:target_country
+		}
+	}
+	
+	on_weekly_pulse = {}
+	
+	on_war_begins = {}
+
+	on_war_end = {}
+}
+
 dp_join_power_bloc = {
 	war_goal = join_power_bloc
 	texture = "gfx/interface/icons/war_goals/join_power_bloc.dds"
@@ -787,6 +831,83 @@ dp_unify_scandinavia = {
 	on_war_end = {}
 }
 
+dp_unify_ethiopia = {
+	war_goal = unification
+	
+	requires_interest_marker = no
+	blocked_by_diplomatic_status = no
+	
+	texture = "gfx/interface/icons/war_goals/unification.dds"
+	
+	selectable_in_lens = {
+		can_form_nation = ETH
+	}
+	
+	possible = {
+		NOT = { exists = c:ETH }
+		NOT = { is_country_type = decentralized }
+		is_subject = no
+		custom_tooltip = {
+			text = ETH_tt
+			can_form_nation = ETH
+		}
+		scope:target_country = {
+			NOT = { is_country_type = decentralized }
+			aggressive_diplomatic_plays_permitted = yes
+			custom_tooltip = {
+				text = ETH_tt
+				can_form_nation = ETH
+			}
+		}
+	}
+	
+	on_weekly_pulse = {}
+	
+	on_war_begins = {}
+
+	on_war_end = {}
+}
+
+dp_unify_china = {
+	war_goal = unification
+	
+	requires_interest_marker = no
+	blocked_by_diplomatic_status = no
+	
+	texture = "gfx/interface/icons/war_goals/unification.dds"
+	
+	selectable_in_lens = {
+		OR = {
+			has_government_type = gov_warlord_state
+			has_variable = chinese_central_government
+		}
+	}
+	
+	possible = {
+		#NOT = { exists = c:CHI }
+		NOT = { is_country_type = decentralized }
+		is_subject = no
+		custom_tooltip = {
+			text = CHI_tt
+			can_form_nation = CHI
+		}
+		scope:target_country = {
+			NOT = { is_country_type = decentralized }
+			aggressive_diplomatic_plays_permitted = yes
+			custom_tooltip = {
+				text = CHI_tt
+				can_form_nation = CHI
+			}
+		}
+	}
+	
+	on_weekly_pulse = {}
+	
+	on_war_begins = {}
+
+	on_war_end = {}
+}
+
 dp_unify_arabia = {
 	war_goal = annex_country
 	
@@ -817,6 +938,64 @@ dp_unify_arabia = {
 	
 	on_war_begins = {}
 
+	on_war_end = {}
+}
+
+dp_unify_india = {
+	war_goal = unification
+	
+	requires_interest_marker = no
+	blocked_by_diplomatic_status = no
+	
+	texture = "gfx/interface/icons/war_goals/unification.dds"
+	
+	selectable_in_lens = {
+		can_form_nation = BHT
+	}
+	  
+	possible = {
+		NOT = { exists = c:BHT }
+		NOT = { is_country_type = decentralized }
+		OR = {
+			custom_tooltip = {
+			text = india_unification_criteria
+				OR = {
+					NOT = { exists = c:BIC }
+					NOT = {
+						AND = {
+							exists = c:BIC
+							c:BIC = {
+								any_scope_state = {
+									state_region = {
+										state_is_in_india = yes
+									}
+								}
+							}
+						}
+					}
+				}   
+			}
+		}
+		has_technology_researched = pan-nationalism
+		is_subject = no 
+		custom_tooltip = {
+			text = BHT_tt
+			can_form_nation = BHT
+		}
+		scope:target_country = {
+			NOT = { is_country_type = decentralized }
+			aggressive_diplomatic_plays_permitted = yes
+			custom_tooltip = {
+				text = BHT_tt
+				can_form_nation = BHT
+			}
+		}
+	}
+	
+	on_weekly_pulse = {}
+	
+	on_war_begins = {}
+	
 	on_war_end = {}
 }
 
