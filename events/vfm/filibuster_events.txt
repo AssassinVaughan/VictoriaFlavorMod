@@ -1,0 +1,109 @@
+﻿namespace = filibuster
+
+# Gaston de Raousset-Boulbon's invasion of Sonora
+filibuster.1 = {
+	type = country_event
+	placement = root
+	title = filibuster.1.t
+	desc = filibuster.1.d
+	flavor = filibuster.1.f
+
+	duration = 3
+
+	event_image = {
+		video = "gfx/event_pictures/unspecific_fire.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/africa/soldiers_breaking_protest"
+
+	icon = "gfx/interface/icons/event_icons/event_fire.dds"
+
+	trigger = {
+		c:USA ?= {
+			owns_entire_state_region = s:STATE_CALIFORNIA
+			owns_entire_state_region = s:STATE_TEXAS
+		}
+		exists = c:TEX
+		c:MEX ?= this
+		is_subject = no
+		game_date > 1852
+	}
+
+	immediate = {
+		create_country = {
+			tag = RBS
+			origin = c:TEX
+			state = s:STATE_SONORA
+			on_created = {
+				ig:ig_landowners = {
+					set_interest_group_name = ig_boulbon_filibusters
+					add_modifier = {
+						name = boulbon_filibusters
+						months = very_long_modifier_time
+						is_decaying = yes
+					}
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_law = law_type:law_presidential_republic
+						}
+					}
+					activate_law = law_type:law_presidential_republic
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_law = law_type:law_professional_army
+						}
+					}
+					activate_law = law_type:law_professional_army
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_law = law_type:law_legacy_slavery	
+						}
+					}
+					activate_law = law_type:law_legacy_slavery	
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_law = law_type:law_no_workers_rights
+						}
+					}
+					activate_law = law_type:law_no_workers_rights
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_law = law_type:law_homesteading
+						}
+					}
+					activate_law = law_type:law_homesteading
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_law = law_type:law_no_migration_controls
+						}
+					}
+					activate_law = law_type:law_no_migration_controls
+				}
+			}
+		}
+		set_global_variable = raousset_boulbon_invasion
+		s:STATE_SONORA.region_state:MEX = { set_state_owner = c:RBS }
+	}
+
+
+	option = {
+		name = filibuster.1.a
+	}
+	option = {
+		name = filibuster.1.b
+	}
+}
+
