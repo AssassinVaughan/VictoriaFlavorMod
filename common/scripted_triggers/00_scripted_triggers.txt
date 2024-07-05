@@ -38,10 +38,21 @@ country_has_voting_franchise = {
 
 country_can_form_power_bloc = {
 	AND = {
-		is_revolutionary = no
-		country_rank >= rank_value:major_power
+		trigger_if = {
+			limit = {
+				is_country_type = decentralized
+			}
+			NOT = { is_country_type = decentralized }
+		}
+		trigger_if = {
+			limit = {
+				is_revolutionary = yes
+			}
+			is_revolutionary = no
+		}
+		country_rank >= rank_value:unrecognized_major_power
+		NOT = { has_law = law_type:law_isolationism }
 	}
-	
 }
 
 power_bloc_is_weak = {
@@ -418,7 +429,7 @@ in_potato_blight_mild_zone = {
 		region = sr:region_scandinavia
 		region = sr:region_south_germany
 		region = sr:region_poland
-		region = sr:region_baltic_states
+		region = sr:region_baltic
 		region = sr:region_belarus
 		region = sr:region_hungary
 	}
