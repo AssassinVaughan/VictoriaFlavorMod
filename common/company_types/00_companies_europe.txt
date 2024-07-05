@@ -592,14 +592,14 @@ company_ursus = {
 	attainable = {
 		hidden_trigger = { # Hide attainable if it's always fulfilled by possible
 			any_scope_state = {
-				state_region = s:STATE_LUBLIN
+				state_region = s:STATE_MAZOVIA
 			}
 		}
 	}		
 	
 	possible = {
 		any_scope_state = {
-			state_region = s:STATE_LUBLIN
+			state_region = s:STATE_MAZOVIA
 			is_incorporated = yes
 			any_scope_building = {
 				is_building_type = building_motor_industry
@@ -639,8 +639,8 @@ company_lilpop = {
 		hidden_trigger = { # Hide attainable if it's always fulfilled by possible
 			any_scope_state = {
 				OR = {
-					state_region = s:STATE_PLOCK
-					state_region = s:STATE_WARSAW
+					state_region = s:STATE_MAZOVIA
+					state_region = s:STATE_GREATER_POLAND
 				}
 			}
 		}
@@ -649,8 +649,8 @@ company_lilpop = {
 	possible = {
 		any_scope_state = {
 			OR = {
-				state_region = s:STATE_PLOCK
-				state_region = s:STATE_WARSAW
+				state_region = s:STATE_MAZOVIA
+				state_region = s:STATE_GREATER_POLAND
 			}
 			is_incorporated = yes
 			any_scope_building = {
