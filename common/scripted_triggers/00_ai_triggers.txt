@@ -146,6 +146,8 @@ has_je_conquest_reason = {
 					OR = {
 						state_region = s:STATE_AMHARA
 						state_region = s:STATE_GONDER
+						state_region = s:STATE_OROMIA
+						state_region = s:STATE_GAMBELA
 					}
 				}
 			}
@@ -159,10 +161,13 @@ has_je_conquest_reason = {
 						state_region = s:STATE_CALIFORNIA
 						state_region = s:STATE_NEVADA
 						state_region = s:STATE_UTAH
-						state_region = s:STATE_COLORADO
 						state_region = s:STATE_ARIZONA
 						state_region = s:STATE_NEW_MEXICO
 						state_region = s:STATE_TEXAS
+						state_region = s:STATE_WYOMING
+						state_region = s:STATE_COLORADO
+						state_region = s:STATE_OKLAHOMA
+						state_region = s:STATE_KANSAS
 					}
 				}
 			}
@@ -203,21 +208,23 @@ has_je_conquest_reason = {
 			}
 		}
 		
-		AND = {
-			wants_to_solve_schleswig_holstein = yes
-			$TARGET$ = {
-				is_oppressor_of_schleswig_holstein = yes
-			}
-		}
+		#AND = {
+		#	wants_to_solve_schleswig_holstein = yes
+		#	$TARGET$ = {
+		#		is_oppressor_of_schleswig_holstein = yes
+		#	}
+		#}
 
 		AND = {
 			has_journal_entry = je_conquest_of_algeria
 			$TARGET$ = {
 				any_scope_state = {
 					OR = {
+						state_region = s:STATE_TLEMCEN
 						state_region = s:STATE_ALGIERS
 						state_region = s:STATE_CONSTANTINE
-						state_region = s:STATE_ORAN
+						state_region = s:STATE_TOUGGOURT
+						state_region = s:STATE_GHARDAIA
 						state_region = s:STATE_SAHARA
 						state_region = s:STATE_EAST_SAHARA
 					}
