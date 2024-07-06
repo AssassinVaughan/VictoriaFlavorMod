@@ -542,7 +542,7 @@ subject_type_dependency = {
 	overlord_must_be_same_country_type = no
 	use_for_release_country = no
 	gives_prestige_to_overlord = yes
-
+    convoy_contribution = 0.75
     autonomy_level = 1
     category = same_as_puppet
 	
@@ -557,8 +557,9 @@ subject_type_dependency = {
 	}
 	
 	valid_overlord_country_types = {
-		unrecognized
+		recognized
 		colonial
+		unrecognized
 	}
 	
 	valid_subject_country_types = {
@@ -580,6 +581,7 @@ subject_type_dependency = {
 	valid_subject_ranks = {
 		minor_power
 		insignificant_power
+		unrecognized_major_power
 		unrecognized_regional_power	
 		unrecognized_power
 	}
