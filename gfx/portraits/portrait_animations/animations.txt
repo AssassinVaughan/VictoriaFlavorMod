@@ -4,10 +4,43 @@
 
 idle = {
 	male = {
-		default = { head = "idle1" torso = "idle1" }
-		
+		default = { head = "idle_entry" torso = "idle_entry" }
 
-		###################################
+		smoker_character_idle = {
+			animation = { head = "idle_entry" torso = "idle_entry" }
+
+	        weight = {
+	            base = 0
+	            modifier = {
+	                add = 90000
+
+	                has_dlc_feature = ep1_cosmetics
+
+	                scope:character ?= {
+	                    age >= define:NCharacters|ADULT_AGE # always refer to the Defines entry rather than set an arbitrary figure, just to keep things consistent
+	                    OR = {
+		                    has_trait = grifter
+		                    has_trait = expensive_tastes
+		                    has_trait = hedonist
+		                }
+		                owner = {
+		                	NOT = {
+		                		is_country_type = decentralized
+		                	}
+							market ?= {
+								mg:tobacco ?= {
+									market_goods_sell_orders > 0
+								}
+							}
+		                }
+	                }
+	            }
+	        }
+
+			portrait_modifier = { animations_props = smoking_attachment }
+		}
+
+        ###################################
 		# VFM Animations  #
 		###################################
 		
@@ -74,6 +107,42 @@ idle = {
 		###################################
 		# POP Animations  #
 		###################################
+
+		hatacademic_pop_idle = {
+			animation = { head = "idle_head_pop_hatacademic" torso = "idle_body_hatacademic" }
+
+			weight = {
+				base = 0
+
+				modifier = {
+					add = 200
+
+				    exists = scope:pop
+				    scope:pop = {
+						is_pop_type = academics
+					}
+					struggling_pop_trigger = no
+				}
+			}							
+		}
+
+		hatacademic_pop_idle_struggle = {
+			animation = { head = "idle_head_struggle_pop_hatacademic" torso = "idle_body_struggle_hatacademic" }
+
+			weight = {
+				base = 0
+
+				modifier = {
+					add = 200
+					
+				    exists = scope:pop
+				    scope:pop = {
+						is_pop_type = academics
+					}
+					struggling_pop_trigger = yes
+				}
+			}
+		}
 
 		basket_pop_idle = {
 			animation = { head = "idle_head_pop_basket" torso = "idle_body_basket" }

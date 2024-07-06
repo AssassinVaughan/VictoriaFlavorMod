@@ -398,6 +398,39 @@ french_empire_clothes_pop_trigger = {
 	}
 }
 
+russian_empire_clothes_trigger = {
+	exists = scope:character
+	scope:character = {
+		exists = c:RUS
+		exists = home_country
+		home_country = {
+			OR = {
+				AND = {
+					c:RUS = this
+					is_subject = no # preventing uniform conflicts if RUS becomes a subject of another country with puppet uniforms
+				}
+				is_subject_of = c:RUS
+			}		
+		}
+	}
+}
+
+russian_empire_clothes_pop_trigger = {
+	exists = scope:pop
+	scope:pop = {
+		exists = c:RUS
+		home_country = {
+			OR = {
+				AND = {
+					c:RUS = this
+					is_subject = no # preventing uniform conflicts if RUS becomes a subject of another country with puppet uniforms
+				}
+				is_subject_of = c:RUS
+			}		
+		}
+	}
+}
+
 german_clothes_trigger = {
 	exists = scope:character
 	scope:character = {
@@ -1233,6 +1266,24 @@ south_american_clothes_pop_trigger = {
 			culture = cu:mexican
 			culture = cu:central_american
 			culture = cu:caribeno
+		}
+	}
+}
+
+integrated_south_american_natives_pop_trigger = { # Represents those South American native groups that had long been integrated into wider South and Central American society.
+	exists = scope:pop
+	scope:pop = {
+		culture = {
+			OR = {
+				has_discrimination_trait = native_mesoamerican_culture_group
+				has_discrimination_trait = south_american_group
+			}
+			NOT = {
+				OR = {
+					this = cu:patagonian
+					this = cu:amazonian
+				}
+			}
 		}
 	}
 }
