@@ -265,6 +265,28 @@
 				activate_production_methods={ "pm_handcrafted_furniture" "pm_luxury_furniture" "pm_automation_disabled"  }
 			}
 			create_building={
+				building="building_textile_mills"
+				add_ownership={
+					country={
+						country="c:FIN"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_handsewn_clothes" "pm_no_luxury_clothes" "pm_traditional_looms" }
+			}
+			create_building={
+				building="building_construction_sector"
+				add_ownership={
+					country={
+						country="c:FIN"
+						levels=2
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_wooden_buildings" }
+			}
+			create_building={
 				building="building_fishing_wharf"
 				add_ownership={
 					building={
@@ -378,7 +400,7 @@
 					building={
 						type="building_logging_camp"
 						country="c:FIN"
-						levels=1
+						levels=2
 						region="STATE_WEST_KARELIA"
 					}
 				}
@@ -400,6 +422,17 @@
 	}
 	s:STATE_ALAND={
 		region_state:FIN={
+		    create_building={
+				building="building_fishing_wharf"
+				add_ownership={
+					country={
+						country="c:FIN"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_simple_fishing" "pm_unrefrigerated" "pm_merchant_guilds_building_fishing_wharf" }
+			}
 		}
 	}
 	s:STATE_OSTROBOTHNIA={
