@@ -1392,6 +1392,15 @@
 				activate_production_methods={ "pm_basic_port" }
 			}
 		}
+		region_state:FRA={
+			create_building={
+				building="building_port"
+				level=1
+				reserves=1
+				activate_production_methods={ "pm_anchorage" }
+			}
+		}
+	}
 		region_state:NVS = {
 			create_building={
 				building="building_fishing_wharf"
@@ -1476,14 +1485,7 @@
 				activate_production_methods={ "pm_fishing_trawlers" "pm_unrefrigerated" "pm_merchant_guilds_building_fishing_wharf" }
 			}
 		}
-		region_state:FRA={
-			create_building={
-				building="building_port"
-				level=1
-				reserves=1
-				activate_production_methods={ "pm_anchorage" }
-			}
-		}
+		#French territory moved to New Brunswick due to Nunasiavut colonization. If we split Labrador and Newfoundland we could move it back
 	}
 	s:STATE_ALBERTA={
 		region_state:HBC={
