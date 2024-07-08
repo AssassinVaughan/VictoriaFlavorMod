@@ -29,6 +29,10 @@ victoria.1 = {
 		}
 		c:GBR = { power_bloc ?= { add_leverage = { target = c:HAN value = -1000 } } }
 		c:HAN = {
+			remove_diplomatic_pact = {
+				country = c:GBR
+				type = personal_union
+			}
 			create_character = {
 				first_name = Ernest_Augustus
 				last_name = Hannover
@@ -73,89 +77,15 @@ victoria.1 = {
 				name = queen_victoria_mod
 			}
 		}
-		remove_diplomatic_pact = {
-			country = c:HAN
-			type = personal_union
-		}
-		custom_tooltip = {
-			text = victoria.1.tt
-		if = {
-			limit = {
-				c:GBR = {
-					has_diplomatic_pact = {
-						who = c:HAM
-		     			type = customs_union
-					}
-				}
-			}
-			c:GBR = {
+		show_as_tooltip = {
+			c:HAN = {
 				remove_diplomatic_pact = {
-					country = c:HAM
-					type = customs_union
-				}
-			}
-			c:HAM = {
-				set_variable = victoria_customs_ham
+					country = c:GBR
+					type = personal_union
+				}			
 			}
 		}
-		if = {
-			limit = {
-				c:GBR = {
-					has_diplomatic_pact = {
-						who = c:BRE
-		     			type = customs_union
-					}
-				}
-			}
-			c:GBR = {
-				remove_diplomatic_pact = {
-					country = c:BRE
-					type = customs_union
-				}
-			}
-			c:BRE = {
-				set_variable = victoria_customs_bre
-			}
-		}
-		if = {
-			limit = {
-				c:GBR = {
-					has_diplomatic_pact = {
-						who = c:OLD
-		     			type = customs_union
-					}
-				}
-			}
-			c:GBR = {
-				remove_diplomatic_pact = {
-					country = c:OLD
-					type = customs_union
-				}
-			}
-			c:OLD = {
-				set_variable = victoria_customs_old
-			}
-		}
-		if = {
-			limit = {
-				c:GBR = {
-					has_diplomatic_pact = {
-						who = c:BRA
-		     			type = customs_union
-					}
-				}
-			}
-			c:GBR = {
-				remove_diplomatic_pact = {
-					country = c:BRA
-					type = customs_union
-				}
-			}
-			c:BRA = {
-				set_variable = victoria_customs_bra
-			}
-		}
-	}
+		custom_tooltip = victoria.1.tt
 		hidden_effect = {
 			c:HAN = {
 				trigger_event = { id = victoria.2 }
