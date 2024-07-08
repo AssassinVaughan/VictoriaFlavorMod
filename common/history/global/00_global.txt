@@ -35,6 +35,10 @@ GLOBAL = {
 		}
 	}
 
+	c:FRA = {
+		fra_define_leading_dynasty = yes
+	}
+
 ###ACHIEVEMENT VARIABLES###
 	
 	#Serf's Up
@@ -1133,10 +1137,10 @@ GLOBAL = {
 		}
 	}
 	
-	#if = {
-	#	limit = {
-	#		has_game_rule = vanilla_german_minors
-	#	}
+	if = {
+		limit = {
+			has_game_rule = vanilla_german_minors
+		}
 		c:MEI = {
 			annex = c:GRZ
 		}
@@ -1169,7 +1173,7 @@ GLOBAL = {
 			annex = c:AHK
 			annex = c:AHB
 		}
-	#}
+	}
 
 	if = {
 		limit = {

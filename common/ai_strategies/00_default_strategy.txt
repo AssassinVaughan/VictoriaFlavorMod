@@ -66,6 +66,142 @@ ai_strategy_default = {
 	# NOTE: You need to include a description when adding values here so there are correct tooltips, this is different from most of ai strategy data!
 	diplomatic_play_support = {
 		value = 0
+		
+		### German Leadership War
+		if = {
+			# Non-Germans should stay out of the leadership war unless they have a good reason to intervene
+			limit = {
+				scope:diplomatic_play_type = play_type:dp_leadership_germany
+				NOR = {
+					country_has_primary_culture = cu:north_german
+					country_has_primary_culture = cu:south_german
+				}				
+			}
+			
+			if = {
+				limit = {				
+					NOR = {
+						has_diplomatic_pact = {
+							who = scope:country
+							type = alliance
+						}
+						AND = {
+							NOT = { exists = scope:is_initiator }
+							OR = {
+								has_diplomatic_pact = {
+									who = scope:country
+									type = defensive_pact
+								}
+								has_diplomatic_pact = {
+									who = scope:country
+									type = guarantee_independence
+								}								
+							}
+						}							
+					}
+				
+					scope:enemy_country = { 
+						NOR = {
+							play_participant_has_war_goal_of_type_against = {
+								type = conquer_state
+								target = scope:country
+							}
+							play_participant_has_war_goal_of_type_against = {
+								type = make_protectorate
+								target = scope:country
+							}								
+							play_participant_has_war_goal_of_type_against = {
+								type = liberate_country
+								target = scope:country
+							}
+							play_participant_has_war_goal_of_type_against = {
+								type = liberate_subject
+								target = scope:country
+							}		
+							play_participant_has_war_goal_of_type_against = {
+								type = transfer_subject
+								target = scope:country
+							}
+							play_participant_has_war_goal_of_type_against = {
+								type = take_treaty_port
+								target = scope:country
+							}								
+						}
+					}
+				}
+				
+				add = {
+					value = -100
+					desc = "german_leadership_neutrality"
+				}
+			}
+		}
+		
+		### Ottomans vs Egypt - Great Powers pick sides
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						scope:country = { c:TUR ?= this }
+						scope:enemy_country = { c:EGY ?= this }
+					}
+					AND = {
+						scope:country = { c:EGY ?= this }
+						scope:enemy_country = { c:TUR ?= this }
+					}				
+				}
+				c:TUR ?= {
+					OR = {
+						has_journal_entry = je_sick_man_syria
+						has_journal_entry = je_sick_man_egypt
+						has_journal_entry = je_veiled_protectorate
+					}
+				}
+			}
+
+			if = {
+				limit = {
+					has_variable = veiled_protectorate_support_ottomans
+					OR = {
+						AND = {
+							NOT = { exists = scope:is_initiator }
+							scope:enemy_country = { c:TUR ?= this }
+						}
+						AND = {
+							exists = scope:is_initiator
+							scope:country = { c:TUR ?= this }
+						}
+					}
+				}
+				
+				add = {
+					value = 100
+					desc = "veiled_protectorate_ottomans_support"
+				}
+			}
+			else_if = {
+				limit = {
+					has_variable = veiled_protectorate_support_egypt
+					OR = {
+						AND = {
+							NOT = { exists = scope:is_initiator }
+							scope:enemy_country = { c:EGY ?= this }
+						}
+						AND = {
+							exists = scope:is_initiator
+							scope:country = { c:EGY ?= this }
+						}
+					}
+				}
+				
+				add = {
+					value = 100
+					desc = "veiled_protectorate_egypt_support"
+				}
+			}							
+		}	
+		
+		### Risorgimento
 
 		if = {
 			limit = { 
@@ -367,6 +503,15 @@ ai_strategy_default = {
 	# Using this value in other strategies will function additively
 	diplomatic_play_neutrality = {
 		value = 55
+		
+		# Ottomans should avoid unnecessary entanglements while trying to pursue the Tanzimat reforms
+		if = {
+			limit = {
+				has_journal_entry = je_sick_man_main
+			}
+			
+			add = 50
+		}
 
 		#GPs don't want to get involved with too many other GPs in the early game
 		if = {
@@ -579,7 +724,6 @@ ai_strategy_default = {
 			limit = {
 				c:JAP ?= this
 				has_law = law_type:law_isolationism 
-				NOT = { has_variable = japan_forced_to_open_market }
 				scope:diplomatic_play = { 
 					OR = {
 						has_play_goal = open_market
@@ -747,6 +891,7 @@ ai_strategy_default = {
 								state_region = s:STATE_NEW_MEXICO
 								state_region = s:STATE_TEXAS
 								state_region = s:STATE_KANSAS
+							    state_region = s:STATE_OKLAHOMA # if they somehow lose it
 							}
 						}
                     }
@@ -1244,7 +1389,8 @@ ai_strategy_default = {
 				limit = {
 					has_journal_entry = je_consolidate_colonial_rule
 					scope:target_country = {
-						NOT = { is_subject_of = ROOT }
+						is_country_type = unrecognized
+						target_is_our_or_fellow_subject = no	
 						any_scope_state = {
 							OR = {
 								region = sr:region_north_india
@@ -1340,17 +1486,31 @@ ai_strategy_default = {
 			if = {
 				limit = {
 					has_journal_entry = je_manifest_destiny_mexico
-					scope:target_state = {
-						OR = {
-							state_region = s:STATE_TEXAS
-							state_region = s:STATE_WYOMING
-							state_region = s:STATE_COLORADO
-							state_region = s:STATE_KANSAS
-							state_region = s:STATE_OKLAHOMA
-						}
+				}
+				
+				if = {
+					limit = {
+						scope:target_state = {
+							OR = {
+								state_region = s:STATE_COLORADO
+								state_region = s:STATE_UTAH
+								state_region = s:STATE_TEXAS
+								state_region = s:STATE_KANSAS
+								state_region = s:STATE_OKLAHOMA
+								state_region = s:STATE_ARIZONA						
+								state_region = s:STATE_CALIFORNIA
+								state_region = s:STATE_NEVADA
+								state_region = s:STATE_NEW_MEXICO								
+							}
+						}					
+					}
+					add = 50 
+					
+					if = {
+						limit = { is_adjacent_to_state = scope:target_state }
+						multiply = 2
 					}
 				}
-				add = 90
 			}
 
 			if = {
@@ -1437,6 +1597,26 @@ ai_strategy_default = {
 					}
 				}
 				add = 15
+			}
+			
+			# French Natural Borders
+			if = {
+				limit = {
+					has_journal_entry = je_french_natural_borders
+					has_strategy = ai_strategy_territorial_expansion
+					scope:target_state = {
+						OR = {
+							state_region = {
+								is_homeland = cu:french
+							}
+							state_region = s:STATE_WALLONIA
+							state_region = s:STATE_FLANDERS
+							state_region = s:STATE_RHINELAND
+							state_region = s:STATE_NORTH_RHINE
+						}
+					}
+				}
+				add = 25
 			}
 			
 			if = {
@@ -1581,6 +1761,9 @@ ai_strategy_default = {
 
 		if = {
 			limit = {
+				NOT = { is_country_type = unrecognized }
+				scope:target_country = { is_country_type = unrecognized }
+				NOT = { is_adjacent_to_country = scope:target_country } # No interest in treaty ports right next to our lands
 				OR = {
 					scope:target_country = {
 						has_diplomatic_pact = {
@@ -1633,22 +1816,12 @@ ai_strategy_default = {
 					}
 					add = 5
 				}
-				
-				if = {
-					limit = {
-						OR = {
-							is_country_type = unrecognized
-							scope:target_country = { NOT = { is_country_type = unrecognized } }
-						}						
-					}
-					multiply = 0.5
-				}
 					
 				if = {
 					limit = {
 						has_strategic_adjacency = scope:target_state		
 					}
-					multiply = 1.25
+					multiply = 1.5
 				}	
 
 				if = {
@@ -1761,6 +1934,13 @@ ai_strategy_default = {
 						}
 					}
 				}
+				scope:target_state = {
+					OR = {
+						region = sr:region_north_china
+						region = sr:region_south_china
+						region = sr:region_manchuria
+					}
+				}	
 			}
 			add = 75
 		}
@@ -2093,13 +2273,40 @@ ai_strategy_default = {
 			}	
 		}
 		
-		min = 0
+		# AI should open up Japan, not subjugate them
 		if = {
-			limit = { scope:target_country = { is_subject_of = root } }
-			max = 1000			
+			limit = {
+				has_strategy = ai_strategy_economic_imperialism
+				scope:target_country = { 
+					c:JAP ?= this		
+					has_law = law_type:law_isolationism
+					gdp >= 5000000
+				} 			
+			}
+			multiply = 0.0
+		}
+		
+		if = {
+			limit = {
+				scope:target_country = { is_subject_of = root }
+			}
+			min = 100
+			max = 1000
+		}
+		else_if = {
+			limit = {
+				has_secret_goal = {
+					who = scope:target_country
+					secret_goal = dominate
+				}
+			}
+			
+			min = 50
+			max = 200
 		}
 		else = {
-			max = 200		
+			min = 0
+			max = 200
 		}
 	}
 
@@ -2401,15 +2608,18 @@ ai_strategy_default = {
 			add = 2
 		}	
 
-		# Ethiopian Thunderdome
+		# Greek Nationalism
 		if = {
 			limit = {
-				has_journal_entry = je_age_of_princes
+				has_journal_entry = je_greek_nationalism
 				scope:target_country = {
-					has_journal_entry = je_age_of_princes
+					any_state = {
+						state_region = { is_homeland = cu:greek }
+						has_claim_by = root
+					}
 				}
 			}
-			add = 0.5
+			add = 1.0
 		}
 
 		# Schleswig-Holstein question
@@ -2438,18 +2648,6 @@ ai_strategy_default = {
 						   }
 						}
 					}
-				}
-			}
-			add = 0.5
-		}
-
-		# Warlord China Thunderdome
-		if = {
-			limit = {
-				has_global_variable = china_shatters
-				has_variable = warlord_state
-				scope:target_country = {
-					has_variable = warlord_state
 				}
 			}
 			add = 0.5
@@ -2503,7 +2701,17 @@ ai_strategy_default = {
 			limit = {
 				has_journal_entry = je_unify_afghanistan
 				scope:target_country = {
-					has_journal_entry = je_unify_afghanistan
+					OR = {
+						has_journal_entry = je_unify_afghanistan
+						any_scope_state = {
+							OR = {
+								state_region = s:STATE_KABUL
+								state_region = s:STATE_HERAT
+								state_region = s:STATE_KANDAHAR
+								state_region = s:STATE_CENTRAL_HIGHLANDS
+							}
+						}
+					}
 				}
 			}
 			add = 3
@@ -2604,12 +2812,39 @@ ai_strategy_default = {
 			}
 			add = 2
 		}
+		
+		# Paraguay should be very bold while they have the war JE.
+        if = {
+            limit = {
+                has_journal_entry = je_expanding_paraguay
+                scope:target_country = {
+                    any_scope_state = {
+                        OR = {
+                            state_region = s:STATE_SANTA_FE
+                            state_region = s:STATE_PARANA
+                            state_region = s:STATE_RIO_GRANDE_DO_SUL
+                        }
+                    }
+                }
+            }
+            add = 2
+        }	
 	}
 	
 	# How likely is the AI to start a diplomatic play against another country if their attitude allows for it
 	# Using this value in other strategies will function additively
 	aggression = {
 		value = 0
+		
+		# More fighting between unrecognized powers
+		if = {
+			limit = {
+				is_country_type = unrecognized
+				scope:target_country = { is_country_type = unrecognized }
+			}
+			
+			add = 1
+		}
 			
 		# Higher aggression against pariah countries
 		if = {
@@ -2657,6 +2892,20 @@ ai_strategy_default = {
 				}
 			}
 			add = 100
+		}
+		
+		# Greek Nationalism
+		if = {
+			limit = {
+				has_journal_entry = je_greek_nationalism
+				scope:target_country = {
+					any_state = {
+						state_region = { is_homeland = cu:greek }
+						has_claim_by = root
+					}
+				}
+			}
+			add = 10
 		}
 
 		# Schleswig-Holstein question
@@ -2842,7 +3091,11 @@ ai_strategy_default = {
 		# Veiled Protectorate
 		if = {
 			limit = {
-				has_journal_entry = je_veiled_protectorate
+				OR = {
+					has_journal_entry = je_sick_man_syria
+					has_journal_entry = je_sick_man_egypt
+					has_journal_entry = je_veiled_protectorate
+				}
 				exists = c:EGY
 				scope:target_country = {
 					THIS = c:EGY
@@ -2856,10 +3109,8 @@ ai_strategy_default = {
 			limit = {
 				has_journal_entry = je_consolidate_colonial_rule
 				scope:target_country = {
-					NOR = { 
-						is_subject_of = ROOT 
-						is_subject_of = ROOT.overlord
-					}
+					is_country_type = unrecognized
+					target_is_our_or_fellow_subject = no
 					any_scope_state = {
 						OR = {
 							region = sr:region_north_india
@@ -3395,6 +3646,7 @@ ai_strategy_default = {
             }
             add = -10
         }
+		
         # Paraguay should be highly aggressive while they have the war JE.
         if = {
             limit = {
@@ -3423,6 +3675,7 @@ ai_strategy_default = {
             }
             add = 25
         }
+		
 		# Acre claimant wants Acre
 		if = {
 			limit = {
@@ -3562,11 +3815,21 @@ ai_strategy_default = {
 			limit = {
 				has_journal_entry = je_unify_afghanistan
 				scope:target_country = {
-					has_journal_entry = je_unify_afghanistan
+					OR = {
+						has_journal_entry = je_unify_afghanistan
+						any_scope_state = {
+							OR = {
+								state_region = s:STATE_KABUL
+								state_region = s:STATE_HERAT
+								state_region = s:STATE_KANDAHAR
+								state_region = s:STATE_CENTRAL_HIGHLANDS
+							}
+						}
+					}
 				}
 			}
 			add = 35
-		}
+		}	
 	}
 	
 	# How much construction output should the AI aim for
@@ -3594,6 +3857,16 @@ ai_strategy_default = {
 			value = gdp
 			divide = 1400000 # 1 construction point per 1.4 million gdp								
 		}	
+		
+		if = {
+			limit = {
+				OR = {
+					has_journal_entry = je_meiji_restoration
+					has_journal_entry = je_meiji_main
+				}
+			}			
+			multiply = 1.3
+		}
 		
 		if = {
 			limit = { has_law = law_type:law_traditionalism }
@@ -3777,6 +4050,20 @@ ai_strategy_default = {
 			divide = 100000 # 1 level of barracks per 100k incorporated population	
 
 			max = 5 #VFM, dropped to 5
+		}	
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_sick_man_army game_date > 1840.1.1
+			}
+			min = 100
+		}	
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_prussian_guard game_date > 1840.1.1
+			}
+			min = 125
 		}	
 
 		max = 700 #VFM, from 500
@@ -3972,7 +4259,7 @@ ai_strategy_default = {
 		value = 0
 		if = {
 			limit = { has_law = law_type:law_national_militia }
-			add = 8 #VFM, bumped up from 5 to compensate for less barracks wanted by AI
+			add = 7.5 #VFM, bumped up from 5 to compensate for less barracks wanted by AI
 		}
 		else_if = {
 			limit = { has_law = law_type:law_professional_army }
@@ -3985,6 +4272,37 @@ ai_strategy_default = {
 		else_if = {
 			limit = { has_law = law_type:law_mass_conscription }
 			add = 2
+		}
+
+        if = {
+			limit = { 
+				has_technology_researched = mandatory_service
+			}
+			multiply = 1.15
+		}
+		if = {
+			limit = { 
+				has_technology_researched = army_reserves
+			}
+			multiply = 1.15
+		}
+		if = {
+			limit = { 
+				has_technology_researched = logistics
+			}
+			multiply = 1.15
+		}
+		if = {
+			limit = { 
+				has_technology_researched = enlistment_offices
+			}
+			multiply = 1.15
+		}
+		if = {
+			limit = { 
+				has_technology_researched = war_propaganda
+			}
+			multiply = 1.2
 		}		
 	}
 	
@@ -4200,9 +4518,14 @@ ai_strategy_default = {
 			if = {
 				limit = { # Great Powers care about Egyptian-Ottoman conflict in Arabia/Anatolia early game
 					exists = c:TUR
+					exists = c:EGY
 					c:TUR = { has_journal_entry = je_sick_man_syria }
 					country_rank = rank_value:great_power
-					navy_size >= 50
+					OR = {
+						navy_size >= 25
+						is_adjacent_to_country = c:TUR
+						is_adjacent_to_country = c:EGY
+					}
 				}
 				add = 1000
 			}
@@ -4572,13 +4895,7 @@ ai_strategy_default = {
 				limit = {
 					country_is_in_europe = yes
 					country_rank >= rank_value:great_power
-					any_country = {
-						country_rank >= rank_value:great_power
-						any_scope_state = {
-							region = sr:region_north_china
-							is_treaty_port = yes
-						}
-					}
+					navy_size >= 25
 				}
 				add = 50
 			}
@@ -4599,15 +4916,9 @@ ai_strategy_default = {
 				limit = {
 					country_is_in_europe = yes
 					country_rank >= rank_value:great_power
-					any_country = {
-						country_rank >= rank_value:great_power
-						any_scope_state = {
-							region = sr:region_manchuria
-							is_treaty_port = yes
-						}
-					}
+					navy_size >= 25
 				}
-				add = 50
+				add = 40
 			}
 		}			
 		region_south_china = {
@@ -4632,13 +4943,7 @@ ai_strategy_default = {
 				limit = {
 					country_is_in_europe = yes
 					country_rank >= rank_value:great_power
-					any_country = {
-						country_rank >= rank_value:great_power
-						any_scope_state = {
-							region = sr:region_south_china
-							is_treaty_port = yes
-						}
-					}
+					navy_size >= 25
 				}
 				add = 50
 			}
@@ -5023,7 +5328,7 @@ ai_strategy_default = {
 				limit = {
 					has_je_befriend_reason = { TARGET = scope:target_country }
 				}
-				add = 500
+				add = 1000
 			}	
 			
 			if = { # venice you had ONE chance, ONE
@@ -5117,6 +5422,15 @@ ai_strategy_default = {
 					country_rank <= scope:target_country.country_rank
 				}
 				add = 100
+			}
+			
+			if = {
+				limit = {
+					has_journal_entry = je_earn_recognition
+					scope:target_country = { country_rank >= rank_value:great_power }
+					var:recognition_progress_var >= 100
+				}
+				add = 200
 			}
 			
 			multiply = {
@@ -5244,6 +5558,25 @@ ai_strategy_default = {
 				}
 				multiply = 0.0
 			}
+			
+			# Don't befriend isolationists
+			if = {
+				limit = { 			
+						has_law = law_type:law_isolationism	
+					}	
+				}
+
+				multiply = 0.5
+			}	
+			# Don't befriend if isolationist
+			if = {
+				limit = { 			
+						scope:target_country = { has_law = law_type:law_isolationism }
+					}	
+				}
+
+				multiply = 0.3
+			}
 		}
 		reconcile = {
 			value = 0
@@ -5285,6 +5618,22 @@ ai_strategy_default = {
 				
 				add = 50					
 			}
+			
+			if = {
+					limit = {
+						has_journal_entry = je_earn_recognition
+						scope:target_country = { country_rank >= rank_value:great_power }
+						var:recognition_progress_var >= 100
+					}
+					add = 100
+				}				
+
+				if = {
+					limit = {
+						has_je_befriend_reason = { TARGET = scope:target_country }
+					}
+					add = 200
+				}	
 
 			if = {
 				limit = {
@@ -5455,7 +5804,7 @@ ai_strategy_default = {
 				limit = {
 					has_je_protect_reason = { TARGET = scope:target_country }
 				}
-				add = 500
+				add = 1000
 			}	
 			
 			if = {
@@ -5876,7 +6225,7 @@ ai_strategy_default = {
 			
 			if = {
 				limit = { has_je_conquest_reason = { TARGET = scope:target_country } }
-				add = 500
+				add = 1000
 			}
 	
 			# AI should want to conquer countries it has claims on
@@ -5903,16 +6252,35 @@ ai_strategy_default = {
 	
 			if = {
 				limit = {
-					can_reach_target_country = yes
 					NOT = { is_country_type = unrecognized }
 					scope:target_country = { is_country_type = unrecognized }
+					has_technology_researched = colonization
+					institution_investment_level = {
+						institution = institution_colonial_affairs
+						value >= 1
+					}					
 				}
 				add = 50
-				
+
 				if = {
 					limit = { has_technology_researched = civilizing_mission }
+					add = 100
+					
+					if = {
+						limit = {
+							is_adjacent_to_country = scope:target_country
+							"relations(scope:target_country)" < relations_threshold:amicable							
+						}
+						add = 1000
+					}
+				}
+				
+				if = {
+					limit = {
+						power_bloc ?= { has_principle_group = principle_group:principle_group_colonial_offices }
+					}
 					add = 50
-				}					
+				}						
 			}			
 			
 			if = { 
@@ -6449,6 +6817,14 @@ ai_strategy_default = {
 				}
 				multiply = 1.5
 			}
+			
+			# AI implications for Power Blocs: 'conquer' secret goal is much less likely towards the Bloc members
+			if = {
+				limit = {
+					is_in_same_power_bloc = scope:target_country
+				}
+				multiply = 0.25
+			}
 
             if = {
 				limit = {
@@ -6489,7 +6865,7 @@ ai_strategy_default = {
 					has_je_subjugation_reason = { TARGET = scope:target_country }
 					NOT = { is_subject_of = root }
 				}
-				add = 500
+				add = 1000
 			}					
 
 			if = {
@@ -6528,14 +6904,34 @@ ai_strategy_default = {
 					NOT = { is_country_type = unrecognized }
 					scope:target_country = { is_country_type = unrecognized }
 					scope:target_country = { NOT = { is_subject_of = root }	}
+					has_technology_researched = colonization
+					institution_investment_level = {
+						institution = institution_colonial_affairs
+						value >= 1
+					}					
 				}
 				add = 25
 				
 				if = {
 					limit = { has_technology_researched = civilizing_mission }
-					add = 25
-				}					
-			}			
+					add = 100
+					
+					if = {
+						limit = {
+							is_adjacent_to_country = scope:target_country
+							"relations(scope:target_country)" < relations_threshold:amicable							
+						}
+						add = 1000
+					}					
+				}
+			
+				if = {
+					limit = {
+						power_bloc ?= { has_principle_group = principle_group:principle_group_colonial_offices }
+					}
+					add = 50
+				}				
+			}				
 			
 			if = {
 				limit = {
@@ -6933,7 +7329,8 @@ ai_strategy_default = {
 				limit = {
 					has_journal_entry = je_consolidate_colonial_rule
 					scope:target_country = {
-						NOT = { is_subject_of = ROOT }
+						is_country_type = unrecognized
+						target_is_our_or_fellow_subject = no
 						any_scope_state = {
 							OR = {
 								region = sr:region_north_india
