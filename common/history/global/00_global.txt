@@ -988,6 +988,14 @@ GLOBAL = {
 			annex = c:POS
 		}
 		c:RUS = {
+			annex = c:CAU
+			annex = c:MIN
+			annex = c:SVA
+			annex = c:ABK
+			annex = c:EST
+			annex = c:LVN
+			annex = c:CRL
+			annex = c:CPL
 			annex = c:RAC
 		}
 		c:TUR = {
@@ -1005,6 +1013,12 @@ GLOBAL = {
 			annex = c:BAN
 			annex = c:KUW
 			annex = c:BHN
+		}
+		c:PER = {
+			annex = c:ARD
+			annex = c:JEL
+			annex = c:SHZ
+			annex = c:MUK
 		}
 		c:HBC = {
 			annex = c:NWT
@@ -1240,11 +1254,40 @@ GLOBAL = {
 		}
 	}
 
-	
+	if = {
+		limit = {
+			has_game_rule = no_caucasus_subjects
+		}
+		c:RUS = {
+			annex = c:CAU
+			annex = c:MIN
+			annex = c:SVA
+			annex = c:ABK
+		}
+	}
 
+	if = {
+		limit = {
+			has_game_rule = no_baltic_subjects
+		}
+		c:RUS = {
+			annex = c:EST
+			annex = c:LVN
+			annex = c:CRL
+		}
+	}
+	
+	if = {
+		limit = {
+			has_game_rule = no_ottoman_subjects
+		}
 		c:TUR = {
 			annex = c:KOC
+			annex = c:KHA
 			annex = c:DOJ
+			annex = c:JUM
+			annex = c:MIL
+			annex = c:TAI
 			annex = c:BOK
 			annex = c:BIT
 			annex = c:BAY
@@ -1254,7 +1297,13 @@ GLOBAL = {
 			annex = c:KUW
 			annex = c:BHN
 		}
-
+		c:PER = {
+			annex = c:ARD
+			annex = c:JEL
+			annex = c:SHZ
+			annex = c:MUK
+		}
+	}
 	
 	#if = {
 	#	limit = {
@@ -1330,14 +1379,14 @@ GLOBAL = {
 			annex = c:IRC
 		}
 	}
-	#every_country = {# change to normal rule check, then add only to player
-	#	limit = {
-	#		has_game_rule = vanilla_construction_rate
-	#	}
-	#	add_modifier = {
-	#		name = vanilla_construction_modifier
-	#	}
-	#}
+	every_country = {# change to normal rule check, then add only to player
+		limit = {
+			has_game_rule = vanilla_construction_rate
+		}
+		add_modifier = {
+			name = vanilla_construction_modifier
+		}
+	}
 	
 	c:SWE = {
 		trigger_event = {
