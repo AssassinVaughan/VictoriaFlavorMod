@@ -258,6 +258,17 @@
 	}
 	s:STATE_GREATER_POLAND={
 		region_state:RUS={
+		    create_building={
+				building="building_government_administration"
+				add_ownership={
+					country={
+						country="c:RUS"
+						levels=2
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_religious_bureaucrats" "pm_hereditary_bureaucrats" "pm_horizontal_drawer_cabinets" }
+			}
 			create_building={
 				building="building_textile_mills"
 				add_ownership={
@@ -290,7 +301,7 @@
 					building={
 						type="building_manor_house"
 						country="c:RUS"
-						levels=3
+						levels=4
 						region="STATE_GREATER_POLAND"
 					}
 				}
@@ -490,7 +501,7 @@
 					building={
 						type="building_manor_house"
 						country="c:POS"
-						levels=2
+						levels=3
 						region="STATE_POSEN"
 					}
 				}

@@ -193,7 +193,7 @@
 			}
 			create_diplomatic_pact = {
 				country = c:POS
-				type = dependency
+				type = puppet
 			}
 		}
 	}		
@@ -308,6 +308,15 @@
 		create_diplomatic_pact = {
 			country = c:KRA
 			type = puppet
+		}
+		if = {
+		    limit = {
+			    NOT = { has_game_rule = no_micro_european_nations }
+			}
+			create_diplomatic_pact = {
+				country = c:LIE
+				type = puppet
+			}
 		}
 	}
 	c:USA = {
@@ -425,6 +434,10 @@
 		create_diplomatic_pact = {
 			country = c:BAH
 			type = dependency
+		}
+		create_diplomatic_pact = {
+			country = c:HAM
+			type = protectorate
 		}
 	}
 	c:HBC = {
@@ -754,6 +767,18 @@
 		create_diplomatic_pact = {
 			country = c:ARB
 			type = vassal
+		}
+	}
+	
+	c:FRA ?= {
+		if = {
+		    limit = {
+				NOT = { has_game_rule = no_micro_european_nations }
+			}
+			create_diplomatic_pact = {
+				country = c:ANR
+				type = puppet
+			}
 		}
 	}
 	

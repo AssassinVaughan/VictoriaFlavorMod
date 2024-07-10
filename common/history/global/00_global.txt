@@ -1254,28 +1254,6 @@ GLOBAL = {
 		}
 	}
 
-	if = {
-		limit = {
-			has_game_rule = no_caucasus_subjects
-		}
-		c:RUS = {
-			annex = c:CAU
-			annex = c:MIN
-			annex = c:SVA
-			annex = c:ABK
-		}
-	}
-
-	if = {
-		limit = {
-			has_game_rule = no_baltic_subjects
-		}
-		c:RUS = {
-			annex = c:EST
-			annex = c:LVN
-			annex = c:CRL
-		}
-	}
 	
 	if = {
 		limit = {
@@ -1379,14 +1357,14 @@ GLOBAL = {
 			annex = c:IRC
 		}
 	}
-	every_country = {# change to normal rule check, then add only to player
-		limit = {
-			has_game_rule = vanilla_construction_rate
-		}
-		add_modifier = {
-			name = vanilla_construction_modifier
-		}
-	}
+	#every_country = {# change to normal rule check, then add only to player
+	#	limit = {
+	#		has_game_rule = vanilla_construction_rate
+	#	}
+	#	add_modifier = {
+	#		name = vanilla_construction_modifier
+	#	}
+	#}
 	
 	c:SWE = {
 		trigger_event = {

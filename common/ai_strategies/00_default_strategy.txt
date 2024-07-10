@@ -5562,18 +5562,16 @@ ai_strategy_default = {
 			# Don't befriend isolationists
 			if = {
 				limit = { 			
-						has_law = law_type:law_isolationism	
-					}	
-				}
+					has_law = law_type:law_isolationism	
+				}	
 
 				multiply = 0.5
 			}	
 			# Don't befriend if isolationist
 			if = {
 				limit = { 			
-						scope:target_country = { has_law = law_type:law_isolationism }
-					}	
-				}
+					scope:target_country = { has_law = law_type:law_isolationism }
+				}	
 
 				multiply = 0.3
 			}

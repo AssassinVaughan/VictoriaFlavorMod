@@ -672,12 +672,33 @@
 		}		
 	}
 	
+	c:OLD = {
+		create_trade_route = {
+			goods = paper
+			level = 1
+			direction = import
+			target = c:BRE.market
+		}
+		create_trade_route = {
+			goods = clippers
+			level = 1
+			direction = import
+			target = c:DEN.market
+		}
+	}
+	
 	c:SCH = {
 		create_trade_route = {
 			goods = iron
-			level = 2
+			level = 1
 			direction = import
-			target = c:FRA.market
+			target = c:RUS.market
+		}
+		create_trade_route = {
+			goods = iron
+			level = 1
+			direction = import
+			target = c:SWE.market
 		}
 		create_trade_route = {
 			goods = paper
@@ -693,6 +714,12 @@
 			level = 1
 			direction = import
 			target = c:NET.market
+		}
+		create_trade_route = {
+			goods = manowars
+			level = 1
+			direction = export
+			target = c:GBR.market
 		}
 	}
 
@@ -1094,9 +1121,15 @@
 		create_trade_route = {
 			goods = clippers
 			level = 1
-			direction = import
-			target = c:DEN.market
-		}		
+			direction = export
+			target = c:SWE.market
+		}	
+        create_trade_route = {
+			goods = clippers
+			level = 1
+			direction = export
+			target = c:FRA.market
+		}			
 	}
 	
 	# Bremen
@@ -1610,6 +1643,27 @@
 			direction = import
 			target = c:RUS.market
 		}	
+	}
+	
+	c:NAS = {	
+		create_trade_route = {
+			goods = coffee
+			level = 1
+			direction = import
+			target = c:NET.market
+		}	
+		create_trade_route = {
+			goods = luxury_clothes
+			level = 1
+			direction = import
+			target = c:FRA.market
+		}
+		create_trade_route = {
+			goods = dye
+			level = 1
+			direction = import
+			target = c:GBR.market
+		}
 	}
 	
 	# Prussia
