@@ -1887,7 +1887,7 @@ ai_strategy_unify_china = {
 			limit = { 
 				scope:target_country = { has_variable = warlord_state }
 			}
-			add = 10.0
+			add = 5.0
 		}
 
 		# Less aggressive against countries we're just antagonistic against, rather than belligerent/domineering
@@ -1977,6 +1977,13 @@ ai_strategy_unify_china = {
 
 	weight = {
 		value = 25
+
+		if = {
+			limit = { 
+				has_journal_entry = je_reunify_china
+			}
+			add = 50
+		}
 		
 		add = {
 			value = army_size

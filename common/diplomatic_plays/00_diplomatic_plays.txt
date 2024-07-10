@@ -296,6 +296,20 @@ dp_increase_autonomy = {
 	on_war_end = {}
 }
 
+dp_reduce_autonomy = {
+	war_goal = reduce_autonomy
+	
+	requires_interest_marker = no
+	
+	texture = "gfx/interface/icons/war_goals/reduce_autonomy.dds"
+	
+	on_weekly_pulse = {}
+	
+	on_war_begins = {}
+
+	on_war_end = {}
+}
+
 dp_take_treaty_port = {
 	
 	war_goal = take_treaty_port
@@ -398,7 +412,6 @@ dp_annex_subject = {
 		scope:target_country = {
 			NOT = { is_country_type = decentralized }
 			is_direct_subject_of = root
-			liberty_desire < 25
 			OR = {
 				has_diplomatic_pact = { who = root type = puppet }
 				has_diplomatic_pact = { who = root type = vassal }
@@ -881,24 +894,25 @@ dp_unify_china = {
 	selectable_in_lens = {
 		OR = {
 			has_government_type = gov_warlord_state
-			has_variable = chinese_central_government
+			global_var:chinese_central_government ?= THIS
 		}
 	}
 	
 	possible = {
-		#NOT = { exists = c:CHI }
+		NOT = { exists = c:CHI }
 		NOT = { is_country_type = decentralized }
 		is_subject = no
-		custom_tooltip = {
-			text = CHI_tt
-			can_form_nation = CHI
+		OR = {
+			has_government_type = gov_warlord_state
+			global_var:chinese_central_government ?= THIS
 		}
+		
 		scope:target_country = {
 			NOT = { is_country_type = decentralized }
 			aggressive_diplomatic_plays_permitted = yes
-			custom_tooltip = {
-				text = CHI_tt
-				can_form_nation = CHI
+			OR = {
+				has_government_type = gov_warlord_state
+				global_var:chinese_central_government ?= THIS
 			}
 		}
 	}

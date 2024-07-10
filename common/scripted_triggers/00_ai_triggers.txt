@@ -527,3 +527,36 @@ target_is_our_or_fellow_subject = {
 		}	
 	}
 }
+
+should_carve_up_china = {
+	country_rank >= rank_value:great_power
+	OR = {
+		sr:region_north_china = {
+			any_scope_state = {
+				is_treaty_port = yes
+				owner = {
+					NOT = { this = root }
+					NOT = { is_country_type = unrecognized }
+				}
+			}
+		}
+		sr:region_south_china = {
+			any_scope_state = {
+				is_treaty_port = yes
+				owner = {
+					NOT = { this = root }
+					NOT = { is_country_type = unrecognized }
+				}
+			}
+		}
+		sr:region_manchuria = {
+			any_scope_state = {
+				is_treaty_port = yes
+				owner = {
+					NOT = { this = root }
+					NOT = { is_country_type = unrecognized }
+				}
+			}
+		}
+	}
+}

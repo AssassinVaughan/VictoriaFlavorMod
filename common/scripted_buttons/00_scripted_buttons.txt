@@ -493,6 +493,48 @@ je_risorgimento_austrian_radicals_button = {
 				}
 			}
 		}
+		OR = {
+		sr:region_north_italy = {
+			any_scope_country = {
+				NOR = {
+					country_has_primary_culture = cu:south_italian
+					country_has_primary_culture = cu:north_italian
+				}
+				custom_tooltip = {
+					text = owns_italian_homelands_tt
+					any_scope_state = {
+						state_region = {
+							OR = {
+								is_homeland = cu:south_italian
+								is_homeland = cu:north_italian
+							}
+						}
+					}
+				}
+				relations:root <= 20
+			}
+		}
+		sr:region_south_italy = {
+			any_scope_country = {
+				NOR = {
+					country_has_primary_culture = cu:south_italian
+					country_has_primary_culture = cu:north_italian
+				}
+				custom_tooltip = {
+					text = owns_italian_homelands_tt
+					any_scope_state = {
+						state_region = {
+							OR = {
+								is_homeland = cu:south_italian
+								is_homeland = cu:north_italian
+							}
+						}
+					}
+				}
+				relations:root <= 20
+			}
+		}
+		}
 		custom_tooltip = {
 			text = risorgimento_unifying_stance_tt
 			has_variable = risorgimento_unifying_stance
@@ -505,7 +547,7 @@ je_risorgimento_austrian_radicals_button = {
 			trigger = {
 				has_law = law_type:law_theocracy
 			}
-			add = -50
+			add = -70
 		}
 		modifier = {
 			trigger = {
@@ -526,26 +568,6 @@ je_risorgimento_austrian_radicals_button = {
 				}
 			}
 			add = -25
-		}
-		modifier = {
-			trigger = {
-				any_country = {
-					NOR = {
-						country_has_primary_culture = cu:south_italian
-						country_has_primary_culture = cu:north_italian
-					}
-					any_scope_state = {
-						state_region = {
-							OR = {
-								is_homeland = cu:south_italian
-								is_homeland = cu:north_italian
-							}
-						}
-					}
-					relations:root <= 20
-				}
-			}
-			add = 25
 		}
 	}
 
@@ -574,9 +596,22 @@ je_risorgimento_austrian_radicals_button = {
 						is_homeland = cu:north_italian
 					}
 				}
-				add_radicals_in_state = {
-					value = 0.15
-					culture = cu:north_italian
+				if = {
+					limit = {
+						ROOT = {
+							country_rank >= rank_value:major_power
+						}
+					}
+					add_radicals_in_state = {
+						value = 0.15
+						culture = cu:north_italian
+					}
+				}
+				else = {
+					add_radicals_in_state = {
+						value = 0.10
+						culture = cu:north_italian
+					}
 				}
 			}
 			every_scope_state = {
@@ -585,9 +620,22 @@ je_risorgimento_austrian_radicals_button = {
 						is_homeland = cu:south_italian
 					}
 				}
-				add_radicals_in_state = {
-					value = 0.15
-					culture = cu:south_italian
+				if = {
+					limit = {
+						ROOT = {
+							country_rank >= rank_value:major_power
+						}
+					}
+					add_radicals_in_state = {
+						value = 0.15
+						culture = cu:south_italian
+					}
+				}
+				else = {
+					add_radicals_in_state = {
+						value = 0.10
+						culture = cu:south_italian
+					}
 				}
 			}
 			post_notification = nationalism_decision_agitation_occurred

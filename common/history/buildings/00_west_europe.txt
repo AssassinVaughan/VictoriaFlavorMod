@@ -6404,7 +6404,7 @@
 					building={
 						type="building_financial_district"
 						country="c:HAM"
-						levels=2
+						levels=1
 						region="STATE_ELBE"
 					}
 				}
@@ -6468,11 +6468,24 @@
 				add_ownership={
 					country={
 						country="c:HAN"
-						levels=1
+						levels=2
 					}
 				}
 				reserves=1
 				activate_production_methods={ "pm_horizontal_drawer_cabinets" }
+			}
+			create_building={
+				building="building_furniture_manufacturies"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:HAN"
+						levels=1
+						region="STATE_ELBE"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_handcrafted_furniture" "pm_no_luxuries" "pm_automation_disabled"  }
 			}
 			create_building={
 				building="building_fishing_wharf"

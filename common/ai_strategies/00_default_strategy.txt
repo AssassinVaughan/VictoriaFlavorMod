@@ -36,6 +36,21 @@ ai_strategy_default = {
 	# Using a different value in a strategy will override this value
 	revolution_aversion = {
 		value = 5 
+		
+		# Ottomans should avoid getting into revolutions before they deal with Egypt
+		if = {
+			limit = { 
+				has_journal_entry = je_sick_man_syria 
+				game_date < 1845.1.1
+			}
+			add = 100
+		}	
+		
+		# Revolution aversion for July Monarchy
+		if = {
+			limit = { has_journal_entry = je_divided_monarchists }
+			add = 100
+		}
 	}
 	
 	# If base chance for law to pass is below this, don't enact it
@@ -497,12 +512,30 @@ ai_strategy_default = {
 				desc = "recognised_kenesary"
 			}
 		}
+		
+		if = { # Chinese unification warlord coalitions
+			limit = {
+				has_variable = warlord_state
+				scope:country = {
+					has_variable = warlord_state
+				}
+				scope:enemy_country = { 
+					has_journal_entry = je_reunify_china
+					has_variable = warlord_state
+					this.country_rank >= scope:country.country_rank
+			 	}
+			}
+			add = {
+				value = 25
+				desc = "alignment_politics"
+			}
+		}
 	}	
 	
 	# Added to base neutrality in diplomatic plays	
 	# Using this value in other strategies will function additively
 	diplomatic_play_neutrality = {
-		value = 55
+		value = 55	
 		
 		# Ottomans should avoid unnecessary entanglements while trying to pursue the Tanzimat reforms
 		if = {
@@ -719,6 +752,27 @@ ai_strategy_default = {
 	# Using this value in other strategies will function additively
 	diplomatic_play_boldness = {
 		value = 50 
+		
+		# Great Powers with the appropriate flags should get involved in Egypt vs Ottomans
+		if = {
+			limit = {
+				OR = {
+					has_variable = veiled_protectorate_support_ottomans
+					has_variable = veiled_protectorate_support_egypt
+				}	
+					
+				OR = {
+					scope:diplomatic_play.initiator = { c:TUR ?= this }
+					scope:diplomatic_play.target = { c:TUR ?= this }
+				}
+				OR = {
+					scope:diplomatic_play.initiator = { c:EGY ?= this }
+					scope:diplomatic_play.target = { c:EGY ?= this }
+				}
+			}
+			
+			add = 100
+		}
 
 		if = { # Isolationist Japan should tend to back down against market opening plays
 			limit = {
@@ -1267,7 +1321,7 @@ ai_strategy_default = {
 						OR = {
 							scope:target_state = { 
 								is_split_state = yes 
-								region = { 
+								state_region = { 
 									any_scope_state = { owner = ROOT }
 								}
 							}
@@ -1395,7 +1449,7 @@ ai_strategy_default = {
 							OR = {
 								region = sr:region_north_india
 								region = sr:region_south_india
-								region = sr:region_himalayas
+								state_region = s:STATE_HIMALAYAS
 								state_region = s:STATE_BURMA
 								state_region = s:STATE_KACHIN
 								state_region = s:STATE_SHAN_STATES
@@ -1746,7 +1800,7 @@ ai_strategy_default = {
 			limit = {	
 				scope:target_state = { 
 					is_treaty_port = yes 
-					region = { 
+					state_region = { 
 						any_scope_state = { 
 							OR = {
 								owner = { is_subject_of = ROOT }
@@ -1860,37 +1914,7 @@ ai_strategy_default = {
 
 		if = { #Carving up China
 			limit = {
-				country_rank >= rank_value:great_power
-				exists = c:CHI
-				OR = {
-					sr:region_north_china = {
-						any_scope_state = {
-							is_treaty_port = yes
-							owner = {
-								NOT = { this = root }
-								country_is_in_europe = yes
-							}
-						}
-					}
-					sr:region_south_china = {
-						any_scope_state = {
-							is_treaty_port = yes
-							owner = {
-								NOT = { this = root }
-								country_is_in_europe = yes
-							}
-						}
-					}
-					sr:region_manchuria = {
-						any_scope_state = {
-							is_treaty_port = yes
-							owner = {
-								NOT = { this = root }
-								country_is_in_europe = yes
-							}
-						}
-					}
-				}
+				should_carve_up_china = yes
 				scope:target_state = {
 					OR = {
 						region = sr:region_north_china
@@ -1899,50 +1923,7 @@ ai_strategy_default = {
 					}
 				}
 			}
-			add = 25
-		}
-		else_if = {
-			limit = {
-				country_rank >= rank_value:great_power
-				exists = c:CHI
-				OR = {
-					sr:region_north_china = {
-						any_scope_state = {
-							is_treaty_port = yes
-							owner = {
-								NOT = { THIS = ROOT }
-								country_rank >= rank_value:great_power
-							}
-						}
-					}
-					sr:region_south_china = {
-						any_scope_state = {
-							is_treaty_port = yes
-							owner = {
-								NOT = { THIS = ROOT }
-								country_rank >= rank_value:great_power
-							}
-						}
-					}
-					sr:region_manchuria = {
-						any_scope_state = {
-							is_treaty_port = yes
-							owner = {
-								NOT = { THIS = ROOT }
-								country_rank >= rank_value:great_power
-							}
-						}
-					}
-				}
-				scope:target_state = {
-					OR = {
-						region = sr:region_north_china
-						region = sr:region_south_china
-						region = sr:region_manchuria
-					}
-				}	
-			}
-			add = 75
+			add = 100
 		}
 		
 		# Not worth doing against very small markets
@@ -2273,12 +2254,11 @@ ai_strategy_default = {
 			}	
 		}
 		
-		# AI should open up Japan, not subjugate them
+		# AI should open up large isolationist powers, not subjugate them
 		if = {
 			limit = {
 				has_strategy = ai_strategy_economic_imperialism
 				scope:target_country = { 
-					c:JAP ?= this		
 					has_law = law_type:law_isolationism
 					gdp >= 5000000
 				} 			
@@ -2834,7 +2814,7 @@ ai_strategy_default = {
 	# How likely is the AI to start a diplomatic play against another country if their attitude allows for it
 	# Using this value in other strategies will function additively
 	aggression = {
-		value = 0
+		value = 0.5
 		
 		# More fighting between unrecognized powers
 		if = {
@@ -2843,7 +2823,7 @@ ai_strategy_default = {
 				scope:target_country = { is_country_type = unrecognized }
 			}
 			
-			add = 1
+			add = 0.5
 		}
 			
 		# Higher aggression against pariah countries
@@ -2879,7 +2859,7 @@ ai_strategy_default = {
 					}
 				}
 			}
-			add = 25
+			add = 100
 		}		
 		
 		# Opium wars aggressor should be very, very aggressive against target if they're banning opium
@@ -2921,11 +2901,9 @@ ai_strategy_default = {
 
 		if = { #Carving up China
 			limit = {
-				country_rank >= rank_value:great_power
-				exists = c:CHI
-				any_country = {
-					NOT = { THIS = ROOT }
-					country_is_in_europe = yes
+				should_carve_up_china = yes
+				scope:target_country = {
+					is_country_type = unrecognized
 					any_scope_state = {
 						OR = {
 							region = sr:region_north_china
@@ -2933,74 +2911,23 @@ ai_strategy_default = {
 							region = sr:region_manchuria
 						}
 						is_treaty_port = yes
-					}
-				}
-				scope:target_country = {
-					c:CHI ?= this
+					}					
 				}
 			}
-			add = 10
-		}
-		else_if = {
-			limit = {
-				country_rank >= rank_value:great_power
-				exists = c:CHI
-				any_country = {
-					NOT = { THIS = ROOT }
-					country_rank >= rank_value:great_power
-					any_scope_state = {
-						OR = {
-							region = sr:region_north_china
-							region = sr:region_south_china
-							region = sr:region_manchuria
-						}
-						is_treaty_port = yes
-					}
-				}
-				scope:target_country = {
-					c:CHI ?= this
-				}
-			}
-			add = 25
+			add = 5
 		}
 
 		# Ottomans should be very aggressive against owners of Syria and Egypt when they have the relevant JE's
 		if = {
 			limit = {
 				OR = {
-					AND = {
-						has_journal_entry = je_sick_man_syria
-						scope:target_country = {
-							any_scope_state = {
-								OR = {
-									state_region = s:STATE_ALEPPO
-									state_region = s:STATE_SYRIA
-									state_region = s:STATE_LEBANON
-									state_region = s:STATE_PALESTINE
-									state_region = s:STATE_TRANSJORDAN
-									state_region = s:STATE_ADANA
-								}	
-							}
-						}
-					}
-					AND = {
-						has_journal_entry = je_sick_man_egypt
-						OR = { # either we or target owns Sinai
-							scope:target_country = {
-								any_scope_state = { state_region = s:STATE_SINAI }
-							}
-							owns_entire_state_region = STATE_SINAI
-						}
-						scope:target_country = {
-							any_scope_state = {
-								OR = {
-									state_region = s:STATE_UPPER_EGYPT
-									state_region = s:STATE_MIDDLE_EGYPT
-									state_region = s:STATE_LOWER_EGYPT
-								}	
-							}
-						}
-					}
+					has_journal_entry = je_sick_man_syria
+					has_journal_entry = je_sick_man_egypt
+					has_journal_entry = je_veiled_protectorate
+				}
+				exists = c:EGY
+				scope:target_country = {
+					THIS = c:EGY
 				}
 			}
 			add = 100
@@ -3027,7 +2954,7 @@ ai_strategy_default = {
 					}
 				}
 			}
-			add = 100
+			add = 30
 		}
 
 		# Extra french aggression for Haiti renouncing debt payments
@@ -3101,7 +3028,7 @@ ai_strategy_default = {
 					THIS = c:EGY
 				}
 			}
-			add = 5
+			add = 2
 		}
 
 		# East India Company vs its neighbors
@@ -3115,7 +3042,7 @@ ai_strategy_default = {
 						OR = {
 							region = sr:region_north_india
 							region = sr:region_south_india
-							region = sr:region_himalayas
+							state_region = s:STATE_HIMALAYAS
 							state_region = s:STATE_BURMA
 							state_region = s:STATE_KACHIN
 							state_region = s:STATE_SHAN_STATES
@@ -3139,7 +3066,7 @@ ai_strategy_default = {
 						OR = {
 							region = sr:region_north_india
 							region = sr:region_south_india
-							region = sr:region_himalayas
+							state_region = s:STATE_HIMALAYAS
 							state_region = s:STATE_BURMA
 							state_region = s:STATE_KACHIN
 							state_region = s:STATE_SHAN_STATES
@@ -3305,7 +3232,7 @@ ai_strategy_default = {
 					}
 				}
 			}
-			add = 5
+			add = 1
 		}
 		
 		if = {
@@ -3315,16 +3242,7 @@ ai_strategy_default = {
 					has_radical_leftist_economy = yes				
 				}				
 			}
-			add = 5
-		}
-		
-		if = { # The EIC/Raj should never go against its suzerain, as doing so is suicide
-			limit = {
-				exists = c:BIC
-				this = c:BIC
-				is_subject_of = scope:target_country
-			}
-			multiply = 0.0
+			add = 1
 		}
 
 		if = { #Indian suzerain will be aggressive against Russia
@@ -3391,15 +3309,6 @@ ai_strategy_default = {
 			add = 25
 		}
 		
-        # Neutral Switzerland
-        if = {
-            limit = {
-				exists = c:SWI
-				this = c:SWI
-            }
-            add = -25
-        }
-		
 		# France should very aggressively go for Algeria.
 		if = {
 			limit = {
@@ -3418,7 +3327,7 @@ ai_strategy_default = {
 					}
 				}
 			}
-			add = 100
+			add = 50
 		}
 		
 		#Aggression against unrecognized countries once colonization has begun and already owns state in region
@@ -3515,58 +3424,6 @@ ai_strategy_default = {
 					has_global_variable = caucasus_failure_var
 				}
 			}
-			add = 100
-		}
-		
-		if = {
-			limit = {
-				country_has_primary_culture = cu:russian
-				has_technology_researched = nationalism
-				OR = {
-					AND = {	
-						exists = c:KZH
-						scope:target_country = {
-							this = c:KZH
-						}
-					}
-					AND = {	
-						exists = c:UZH
-						scope:target_country = {
-							this = c:UZH
-						}
-					}
-					AND = {	
-						exists = c:OZH
-						scope:target_country = {
-							this = c:OZH
-						}
-					}
-					AND = {	
-						exists = c:KOK
-						scope:target_country = {
-							this = c:KOK
-						}
-					}
-					AND = {	
-						exists = c:KHI
-						scope:target_country = {
-							this = c:KHI
-						}
-					}
-					AND = {	
-						exists = c:BUK
-						scope:target_country = {
-							this = c:BUK
-						}
-					}
-					AND = {	
-						exists = c:AFG
-						scope:target_country = {
-							this = c:AFG
-						}
-					}
-				}
-			}
 			add = 50
 		}
 
@@ -3631,21 +3488,6 @@ ai_strategy_default = {
 			}
 			add = 50
 		}
-		
-		 # Isolationist Paraguay under Francia should not go awol.
-        if = {
-            limit = {
-            	has_journal_entry = je_francocracia
-            }
-            add = -25
-        }
-        # Paraguay is less likely to be aggressive when modernizing.
-        if = {
-            limit = {
-            	has_journal_entry = je_modernizing_paraguay
-            }
-            add = -10
-        }
 		
         # Paraguay should be highly aggressive while they have the war JE.
         if = {
@@ -3829,6 +3671,39 @@ ai_strategy_default = {
 				}
 			}
 			add = 35
+		}
+
+        # Neutral Switzerland
+        if = {
+            limit = {
+				exists = c:SWI
+				this = c:SWI
+            }
+            multiply = 0.1
+        }	
+
+        # Isolationist Paraguay under Francia should not go awol.
+        if = {
+            limit = {
+            	has_journal_entry = je_francocracia
+            }
+            multiply = 0.1
+        }
+        # Paraguay is less likely to be aggressive when modernizing.
+        if = {
+            limit = {
+            	has_journal_entry = je_modernizing_paraguay
+            }
+			multiply = 0.25
+        }
+		
+		if = { # The EIC/Raj should never go against its suzerain, as doing so is suicide
+			limit = {
+				exists = c:BIC
+				this = c:BIC
+				is_subject_of = scope:target_country
+			}
+			multiply = 0.0
 		}	
 	}
 	
@@ -4516,20 +4391,20 @@ ai_strategy_default = {
 	strategic_region_scores = {
 		region_anatolia = {
 			if = {
-				limit = { # Great Powers care about Egyptian-Ottoman conflict in Arabia/Anatolia early game
-					exists = c:TUR
-					exists = c:EGY
-					c:TUR = { has_journal_entry = je_sick_man_syria }
-					country_rank = rank_value:great_power
+				limit = { # Certain Great Powers care about Egyptian-Ottoman conflict in the early game
+					OR = {
+						has_variable = veiled_protectorate_support_ottomans
+						has_variable = veiled_protectorate_support_egypt
+					}
 					OR = {
 						navy_size >= 25
 						is_adjacent_to_country = c:TUR
 						is_adjacent_to_country = c:EGY
-					}
+					}					
 				}
 				add = 1000
 			}
-		}	
+		}		
 		region_caucasus = {
 			if = {
 				limit = { # Britain is participating in the Caucasian War in a certain capacity early game.
@@ -4565,11 +4440,16 @@ ai_strategy_default = {
 		}	
 		region_arabic = {
 			if = {
-				limit = { # Great Powers care about Egyptian-Ottoman conflict in Arabia/Anatolia early game
-					exists = c:TUR
-					c:TUR = { has_journal_entry = je_sick_man_syria }
-					country_rank = rank_value:great_power
-					navy_size >= 50
+				limit = { # Certain Great Powers care about Egyptian-Ottoman conflict in the early game
+					OR = {
+						has_variable = veiled_protectorate_support_ottomans
+						has_variable = veiled_protectorate_support_egypt
+					}
+					OR = {
+						navy_size >= 25
+						is_adjacent_to_country = c:TUR
+						is_adjacent_to_country = c:EGY
+					}					
 				}
 				add = 1000
 			}
@@ -4596,6 +4476,20 @@ ai_strategy_default = {
 			}				
 		}				
 		region_nile_basin = {
+			if = {
+				limit = { # Certain Great Powers care about Egyptian-Ottoman conflict in the early game
+					OR = {
+						has_variable = veiled_protectorate_support_ottomans
+						has_variable = veiled_protectorate_support_egypt
+					}
+					OR = {
+						navy_size >= 25
+						is_adjacent_to_country = c:TUR
+						is_adjacent_to_country = c:EGY
+					}					
+				}
+				add = 1000
+			}		
 			if = {
 				limit = {
 					OR = {
@@ -4759,6 +4653,20 @@ ai_strategy_default = {
 			}
 		}
 		region_east_balkans = {
+		    if = {
+				limit = { # Certain Great Powers care about Egyptian-Ottoman conflict in the early game
+					OR = {
+						has_variable = veiled_protectorate_support_ottomans
+						has_variable = veiled_protectorate_support_egypt
+					}
+					OR = {
+						navy_size >= 25
+						is_adjacent_to_country = c:TUR
+						is_adjacent_to_country = c:EGY
+					}					
+				}
+				add = 1000
+			}	
 			if = {
 				limit = {
 					country_is_in_europe = yes
@@ -5977,6 +5885,18 @@ ai_strategy_default = {
 					is_subject_of = scope:target_country	
 				}
 				multiply = 0.0	
+			}		
+
+            # Don't protect large isolationist powers
+			if = {
+				limit = { 
+					scope:target_country = {
+						has_law = law_type:law_isolationism
+						gdp >= 3000000		
+					}
+				}
+
+				multiply = 0
 			}				
 		}		
 		
@@ -6107,7 +6027,7 @@ ai_strategy_default = {
 				limit = {
 					has_game_rule = low_ai_aggression
 				}
-				multiply = 1.5 # Yes, this is actually intended to be an increase - it's to partially compensate for lowered conquer/dominate desires
+				multiply = 1.25 # Yes, this is actually intended to be an increase - it's to partially compensate for lowered conquer/dominate desires
 			}				
 			
 			if = {
@@ -6798,14 +6718,14 @@ ai_strategy_default = {
 				limit = {
 					has_game_rule = high_ai_aggression
 				}
-				multiply = 1.5
+				multiply = 1.25
 			}
 			
 			if = {
 				limit = {
 					has_game_rule = low_ai_aggression
 				}
-				multiply = 0.5
+				multiply = 0.75
 			}	
 
             # AI implications for Power Blocs: 'conquer' secret goal is more likely towards the country from another Bloc
@@ -7079,14 +6999,14 @@ ai_strategy_default = {
 				limit = {
 					has_game_rule = high_ai_aggression
 				}
-				multiply = 1.5
+				multiply = 1.25
 			}
 			
 			if = {
 				limit = {
 					has_game_rule = low_ai_aggression
 				}
-				multiply = 0.5
+				multiply = 0.75
 			}
 			
 			# Shouldn't usually upset diplomatic pacts unless they're bankrupt or infamous
@@ -7333,7 +7253,7 @@ ai_strategy_default = {
 							OR = {
 								region = sr:region_north_india
 								region = sr:region_south_india
-								region = sr:region_himalayas
+								state_region = s:STATE_HIMALAYAS
 								state_region = s:STATE_BURMA
 								state_region = s:STATE_KACHIN
 								state_region = s:STATE_SHAN_STATES
