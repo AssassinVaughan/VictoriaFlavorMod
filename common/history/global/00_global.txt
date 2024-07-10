@@ -1207,7 +1207,7 @@ GLOBAL = {
 			annex = c:CMA
 			annex = c:LRJ
 			annex = c:SJN
-			annex = c:SLS
+			annex = c:SLU
 			s:STATE_CHACO = {
 				add_claim = c:BUE
 			}
@@ -1364,6 +1364,7 @@ GLOBAL = {
 			annex = c:PWN
 			annex = c:ARP
 			annex = c:ABS
+			annex = c:SLS
 		}
 		c:MEX = {
 			annex = c:COM
@@ -1375,8 +1376,20 @@ GLOBAL = {
 			annex = c:NZP
 		}
 		c:HBC = {
-			annex = c:BLF
 			annex = c:IRC
+		}
+		#split states
+		s:STATE_ALBERTA.region_state:BLF = {
+			set_state_owner = c:HBC
+		}
+		s:STATE_MONTANA.region_state:BLF = {
+			set_state_owner = c:USA
+		}
+		s:STATE_IDAHO.region_state:BNN = {
+			set_state_owner = c:COL
+		}
+		s:STATE_NEVADA.region_state:BNN = {
+			set_state_owner = c:MEX
 		}
 	}
 	every_country = {# change to normal rule check, then add only to player
