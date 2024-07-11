@@ -1,0 +1,32 @@
+﻿namespace = journal_flavor_australia
+
+#DUMMY EVENT FOR TEST
+journal_flavor_australia.1 = { 
+	type = country_event
+	placement = ROOT
+
+	title = journal_flavor_australia.1.t
+	desc = journal_flavor_australia.1.d
+	flavor = journal_flavor_australia.1.f
+
+	event_image = {
+		video = "gfx/event_pictures/unspecific_military_parade.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/unspecific/military_parade"
+
+	icon = "gfx/interface/icons/event_icons/event_centralization.dds"
+
+	duration = 1
+
+	option = {
+		name = journal_flavor_australia.1.a
+		default_option = yes
+
+
+	    ai_chance = {
+			base = 1	
+		}
+    }
+}
