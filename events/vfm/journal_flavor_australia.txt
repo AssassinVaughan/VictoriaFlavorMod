@@ -19,11 +19,6 @@ journal_flavor_australia.1 = {
 
 	duration = 1
 
-	trigger = {
-		NOT = { has_variable = was_arc_var }
-		c:WAS = ROOT 
-	}
-
 	immediate = {
 		set_variable = {
 			name = was_arc_var
@@ -38,6 +33,11 @@ journal_flavor_australia.1 = {
 		name = journal_flavor_australia.1.a
 		default_option = yes
 		add_journal_entry = { type = je_was_base_1 }
+		
+		add_modifier = { # Remember it can be in scope, if not, it is in the ROOT scope by default.
+		    name = colonial_boom # what name you want
+		    months = 3 # Optional, if it is not set, the modifier is permanent.
+		}
 
 	    ai_chance = {
 			base = 5	
