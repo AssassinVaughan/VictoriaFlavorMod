@@ -1,6 +1,5 @@
 ﻿namespace = journal_flavor_australia
 
-#DUMMY EVENT FOR TEST
 journal_flavor_australia.1 = { 
 	type = country_event
 	placement = ROOT
@@ -10,21 +9,43 @@ journal_flavor_australia.1 = {
 	flavor = journal_flavor_australia.1.f
 
 	event_image = {
-		video = "gfx/event_pictures/unspecific_military_parade.bk2"
+		video = "gfx/event_pictures/europenorthamerica_russian_serfs.bk2"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
 	on_opened_soundeffect = "event:/SFX/Events/unspecific/military_parade"
 
-	icon = "gfx/interface/icons/event_icons/event_centralization.dds"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
 
 	duration = 1
+
+	trigger = {
+		NOT = { has_variable = was_arc_var }
+		c:WAS = ROOT 
+	}
+
+	immediate = {
+		set_variable = {
+			name = was_arc_var
+			value = 0
+		}
+		c:WAS = {
+			save_scope_as = was_country_scope
+		}
+	}
 
 	option = {
 		name = journal_flavor_australia.1.a
 		default_option = yes
+		add_journal_entry = { type = je_was_base_1 }
 
-
+	    ai_chance = {
+			base = 5	
+		}
+    }
+	option = {
+		name = journal_flavor_australia.1.b
+		add_journal_entry = { type = je_was_base_1 }
 	    ai_chance = {
 			base = 1	
 		}
