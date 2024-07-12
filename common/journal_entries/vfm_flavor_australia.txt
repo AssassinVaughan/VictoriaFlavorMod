@@ -1,38 +1,38 @@
 ﻿#The Dry Colony JE
-je_waustralia_expansion_1 = {
-	icon = "gfx/interface/icons/event_icons/event_map.dds"
-    group = je_group_internal_affairs
-
-	is_shown_when_inactive = {
-		c:WAS = ROOT
-	}
-	possible = {
-		ROOT = {
-			NOT = {
-				owns_entire_state_region = STATE_WESTERN_AUSTRALIA 
-			}
-		}
-	}
-	immediate = {
-		c:WAS = {
-			# saved scopes can be used in any events triggered from the Journal Entry, as well as in the loc for the Journal Entry itself
-			# To use saved scopes in loc: JournalEntry.GetTopScope.sCountry('saved_scope_name') or SCOPE.sCountry('saved_scope_name')
-			save_scope_as = west_australia_je
-		}
-	}
-	complete = {
-		scope:west_australia_je = {
-			owns_entire_state_region = STATE_WESTERN_AUSTRALIA 
-		}
-	}
-
-	on_complete = {
-		trigger_event = {
-			id = journal_flavor_australia.1
-			days = 0
-		}
-	}
-
-    should_be_pinned_by_default = yes
-	weight = 20
-}
+#je_waustralia_expansion_1 = {
+#	icon = "gfx/interface/icons/event_icons/event_map.dds"
+#    group = je_group_internal_affairs
+#
+#	is_shown_when_inactive = {
+#		c:WAS = ROOT
+#	}
+#	possible = {
+#		ROOT = {
+#			NOT = {
+#				owns_entire_state_region = STATE_WESTERN_AUSTRALIA 
+#			}
+#		}
+#	}
+#	immediate = {
+#		c:WAS = {
+#			# saved scopes can be used in any events triggered from the Journal Entry, as well as in the loc for the Journal Entry itself
+#			# To use saved scopes in loc: JournalEntry.GetTopScope.sCountry('saved_scope_name') or SCOPE.sCountry('saved_scope_name')
+#			save_scope_as = west_australia_je
+#		}
+#	}
+#	complete = {
+#		scope:west_australia_je = {
+#			owns_entire_state_region = STATE_WESTERN_AUSTRALIA 
+#		}
+#	}
+#
+#	on_complete = {
+#		trigger_event = {
+#			id = journal_flavor_australia.1
+#			days = 0
+#		}
+#	}
+#
+#    should_be_pinned_by_default = yes
+#	weight = 20
+#}
