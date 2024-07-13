@@ -66,13 +66,6 @@
 		}
 	}
 
-	can_impose = { 
-		is_subject_of = scope:initiator	
-	} 
-	
-	on_impose = {	
-	} 
-
 	# AI will never return to peasant levies
 	ai_will_do = {
 		always = no
@@ -105,6 +98,10 @@ law_professional_army = {
 		unit_experience_gain_mult = 0.25
 	}
 	
+	possible_political_movements = {
+		law_mass_conscription
+	}
+
 	can_impose = {
 		OR = {
 			AND = {
@@ -118,10 +115,6 @@ law_professional_army = {
 		}
 	}
 	
-	possible_political_movements = {
-		law_mass_conscription
-	}
-
 	on_enact = {
 		if = {
 			limit = {
@@ -164,13 +157,6 @@ law_professional_army = {
 		}
 	}
 
-	can_impose = { 
-		is_subject_of = scope:initiator	
-	} 
-
-	on_impose = { 
-	} 
-
 	ai_enact_weight_modifier = { #Petitions
 		value = 0
 		
@@ -199,7 +185,7 @@ law_professional_army = {
 				}	
 			}
 			add = 1000
-		}	
+		}		
 	}
 }
 
@@ -224,7 +210,7 @@ law_national_militia = {
 		law_professional_army
 		law_mass_conscription
 	}
-	
+
 	can_enact = {
 		OR = {
 			is_power_bloc_leader = no
@@ -233,7 +219,7 @@ law_national_militia = {
 			}
 		}
 	}
-
+	
 	on_enact = {
 		if = {
 			limit = {
@@ -263,13 +249,6 @@ law_national_militia = {
 			}
 		}
 	}
-
-	can_impose = { 
-		is_subject_of = scope:initiator	
-	} 
-
-	on_impose = { 
-	} 
 	
 	ai_will_do = {
 		exists = ruler
@@ -303,7 +282,7 @@ law_mass_conscription = {
 		state_building_barracks_max_level_add = 35 # vfm - dont let player place everything in capital...
 		state_building_conscription_center_max_level_add = 100
 	}
-	
+
 	can_impose = {
 		OR = {
 			AND = {
@@ -316,7 +295,7 @@ law_mass_conscription = {
 			can_impose_law_default = yes
 		}
 	}
-
+	
 	on_enact = {
 		if = {
 			limit = {
@@ -341,13 +320,6 @@ law_mass_conscription = {
 		value = 0
 	}
 
-	can_impose = { 
-		is_subject_of = scope:initiator	
-	} 
-
-	on_impose = { 
-	} 
-
 	ai_enact_weight_modifier = { #Petitions
 		value = 0
 		
@@ -355,6 +327,7 @@ law_mass_conscription = {
 			limit = { ai_has_enact_weight_modifier_journal_entries = yes }
 			add = 750
 		}
+		
 		if = {
 			limit = { 
 				has_journal_entry = je_sick_man_army
@@ -375,6 +348,6 @@ law_mass_conscription = {
 				}	
 			}
 			add = 1000
-		}	
+		}		
 	}
 }

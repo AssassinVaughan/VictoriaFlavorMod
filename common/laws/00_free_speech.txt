@@ -69,9 +69,18 @@ law_censorship = {
 		value = 0
 	}
 
-	can_impose = { 
-		is_subject_of = scope:initiator	
-	} 
+	can_impose = {
+		OR = {
+			AND = {
+				is_in_same_power_bloc = scope:target_country
+				AND = {
+					modifier:country_can_impose_same_lawgroup_free_speech_in_power_bloc_bool = yes
+					has_law = scope:law
+				}
+			}
+			can_impose_law_default = yes
+		}
+	}
 
 	ai_enact_weight_modifier = { #Petitions
 		value = 0
@@ -132,8 +141,17 @@ law_right_of_assembly = {
 		}
 	}
 
-	can_impose = { 
-		is_subject_of = scope:initiator	
+	can_impose = {
+		OR = {
+			AND = {
+				is_in_same_power_bloc = scope:target_country
+				AND = {
+					modifier:country_can_impose_same_lawgroup_free_speech_in_power_bloc_bool = yes
+					has_law = scope:law
+				}
+			}
+			can_impose_law_default = yes
+		}
 	} 
 
 	ai_enact_weight_modifier = { #Petitions
@@ -203,9 +221,18 @@ law_protected_speech = {
 		}
 	}
 
-	can_impose = { 
-		is_subject_of = scope:initiator	
-	} 
+	can_impose = {
+		OR = {
+			AND = {
+				is_in_same_power_bloc = scope:target_country
+				AND = {
+					modifier:country_can_impose_same_lawgroup_free_speech_in_power_bloc_bool = yes
+					has_law = scope:law
+				}
+			}
+			can_impose_law_default = yes
+		}
+	}  
 
 	ai_enact_weight_modifier = { #Petitions
 		value = 0
