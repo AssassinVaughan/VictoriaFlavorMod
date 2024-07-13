@@ -1,0 +1,43 @@
+﻿namespace = frontier_war_events
+
+frontier_war_events.1 = { 
+	type = country_event
+	placement = ROOT
+
+	title = frontier_war_events.1.t
+	desc = frontier_war_events.1.d
+	flavor = frontier_war_events.1.f
+
+	event_image = {
+		video = "gfx/event_pictures/europenorthamerica_russian_serfs.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/unspecific/military_parade"
+
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+
+	dlc = dlc_vfm
+
+	duration = 1
+
+	immediate = {
+		ROOT = {
+			save_scope_as = frontier_war_country_scope
+			set_variable = {
+				name = frontier_var
+				value = 0
+			}
+		}
+	}
+
+	option = {
+		name = frontier_war_events.1.a
+		default_option = yes
+		add_journal_entry = { type = je_frontier_wars }
+		
+		add_modifier = {
+		    name = colonial_boom
+		}
+    }
+}
