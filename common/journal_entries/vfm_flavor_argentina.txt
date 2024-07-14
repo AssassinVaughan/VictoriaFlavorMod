@@ -26,7 +26,7 @@
 	invalid = {
 		NOT = {
 			any_country = {
-				is_subject_type = subject_type_confederation
+				is_subject_type = subject_type_confederative_partner
 				overlord = ROOT
 			}
 		}
@@ -44,14 +44,14 @@
 			if={
 				limit = { 
 					any_country = {
-						is_subject_type = subject_type_confederation
+						is_subject_type = subject_type_confederative_partner
 						overlord = ROOT
 						is_player = yes
 					}
 				}
 				random_country = {
 					limit = {
-						is_subject_type = subject_type_confederation
+						is_subject_type = subject_type_confederative_partner
 						overlord = ROOT
 						is_player = yes
 					}
@@ -77,11 +77,11 @@
 				hidden_effect = {
 					remove_diplomatic_pact = {
 						country = scope:new_argentina_leader
-						type = confederation
+						type = confederative_partner
 					}
 					every_country = {
 						limit = {
-							is_subject_type = subject_type_confederation
+							is_subject_type = subject_type_confederative_partner
 							overlord = ROOT
 							NOT = { this = c:ENT }
 						}
@@ -89,7 +89,7 @@
 						scope:new_argentina_leader = {
 							create_diplomatic_pact = {
 								country = scope:transfer_scope
-								type = confederation
+								type = confederative_partner
 							}
 						}
 					}
@@ -99,7 +99,7 @@
 			limit = { 
 				exists = c:ENT 
 				c:ENT = {
-					is_subject_type = subject_type_confederation
+					is_subject_type = subject_type_confederative_partner
 					overlord = ROOT
 				}
 			}
@@ -123,11 +123,11 @@
 			hidden_effect = {
 				remove_diplomatic_pact = {
 					country = c:ENT
-					type = confederation
+					type = confederative_partner
 				}
 				every_country = {
 					limit = {
-						is_subject_type = subject_type_confederation
+						is_subject_type = subject_type_confederative_partner
 						overlord = ROOT
 						NOT = { this = c:ENT }
 					}
@@ -135,7 +135,7 @@
 					c:ENT = {
 						create_diplomatic_pact = {
 							country = scope:transfer_scope
-							type = confederation
+							type = confederative_partner
 						}
 					}
 				}
@@ -144,7 +144,7 @@
 		else = {
 			random_country = {
 				limit = {
-					is_subject_type = subject_type_confederation
+					is_subject_type = subject_type_confederative_partner
 					overlord = ROOT
 				}
 				save_scope_as = new_argentina_leader
@@ -169,11 +169,11 @@
 			hidden_effect = {
 				remove_diplomatic_pact = {
 					country = scope:new_argentina_leader
-					type = confederation
+					type = confederative_partner
 				}
 				every_country = {
 					limit = {
-						is_subject_type = subject_type_confederation
+						is_subject_type = subject_type_confederative_partner
 						overlord = ROOT
 						NOT = { this = c:ENT }
 					}
@@ -181,7 +181,7 @@
 					scope:new_argentina_leader = {
 						create_diplomatic_pact = {
 							country = scope:transfer_scope
-							type = confederation
+							type = confederative_partner
 						}
 					}
 				}
@@ -198,7 +198,7 @@ je_argentina_constitution_minor = {
     group = je_group_internal_affairs
 	is_shown_when_inactive = {
 		any_country = {
-			is_subject_type = subject_type_confederation
+			is_subject_type = subject_type_confederative_partner
 			overlord = ROOT
 		}
 		country_has_primary_culture = cu:platinean
@@ -207,7 +207,7 @@ je_argentina_constitution_minor = {
 
 	possible = {
 		any_country = {
-			is_subject_type = subject_type_confederation
+			is_subject_type = subject_type_confederative_partner
 			overlord = ROOT
 		}
 	}
@@ -242,7 +242,7 @@ je_argentina_constitution_minor = {
 	invalid = {
 		NOT = {
 			any_country = {
-				is_subject_type = subject_type_confederation
+				is_subject_type = subject_type_confederative_partner
 				overlord = ROOT
 			}
 		}
