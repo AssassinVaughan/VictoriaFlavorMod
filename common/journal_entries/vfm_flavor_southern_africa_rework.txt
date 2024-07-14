@@ -33,16 +33,35 @@ je_encourage_boer_migration_into_the_oranje_river_basin = {
 	}
 	
 	is_shown_when_inactive = {
-		exists = c:WIB
-		THIS = c:WIB
+		OR = {
+			AND = {
+				exists = c:WIB
+				THIS = c:WIB				
+			}
+			AND = {
+				exists = c:ORA
+				THIS = c:ORA				
+			}
+		}
 		NOT = {
 			owns_entire_state_region = STATE_VRYSTAAT
 		}
 	}
 	
 	possible = {
-		exists = c:WIB
-		THIS = c:WIB
+		OR = {
+			AND = {
+				exists = c:WIB
+				THIS = c:WIB				
+			}
+			AND = {
+				exists = c:ORA
+				THIS = c:ORA				
+			}
+		}
+		NOT = {
+			owns_entire_state_region = STATE_VRYSTAAT
+		}
 	}
 	
 	on_complete = {
@@ -87,7 +106,7 @@ je_climax_of_the_great_trek = {
     group = je_group_historical_content
 	complete = {
 		OR = {
-			gdp > 350000
+			gdp > 150000
 			owns_entire_state_region = STATE_TRANSVAAL
 		}
 	}

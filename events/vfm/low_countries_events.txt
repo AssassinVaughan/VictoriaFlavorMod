@@ -59,26 +59,6 @@ low_countries_events.1 = {
 			country = c:NET
 			value = 10
 		}
-		create_country = {
-			tag = LBG
-			origin = THIS
-			state = s:STATE_GELRE.region_state:BEL
-		}
-		create_country = {
-			tag = LUX
-			origin = THIS
-			state = s:STATE_LUXEMBOURG.region_state:BEL
-		}
-		c:NET ?= {
-			create_diplomatic_pact = {
-				country = c:LBG
-				type = personal_union
-			}
-			create_diplomatic_pact = {
-				country = c:LUX
-				type = personal_union
-			}
-		}
 	}
 
 	option = {
