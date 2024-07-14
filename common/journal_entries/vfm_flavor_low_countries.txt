@@ -52,6 +52,7 @@ je_treaty_of_london_1867 = {
 					type = rivalry
 				}
 			}
+			date > 1867
 		}
 	}
 	on_complete = {
@@ -63,6 +64,9 @@ je_treaty_of_london_1867 = {
 		exists = c:NET
 		this = c:NET
 		exists = c:LBG
+		c:LBG = {
+			is_player = no
+		}
 	}
 	possible = {
 		c:LBG ?= {

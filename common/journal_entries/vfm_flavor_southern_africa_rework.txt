@@ -27,32 +27,30 @@ je_encourage_boer_migration_into_the_oranje_river_basin = {
     group = je_group_internal_affairs
 	complete = {
 		OR = {
-			gdp > 200000
+			gdp > 100000
 			year > 1952
 		}
 	}
 	
 	is_shown_when_inactive = {
-		exists = c:WIN
-		THIS = c:WIN
+		exists = c:WIB
+		THIS = c:WIB
 		NOT = {
 			owns_entire_state_region = STATE_VRYSTAAT
 		}
 	}
 	
 	possible = {
-		exists = c:WIN
-		THIS = c:WIN
-		NOT = {
-			owns_entire_state_region = STATE_VRYSTAAT
-		}
+		exists = c:WIB
+		THIS = c:WIB
 	}
 	
 	on_complete = {
 		custom_tooltip = {
 			text = form_oranje_vrystaat_2_tt
 		}
-		s:STATE_VRYSTAAT.region_state:BST = { set_state_owner = c:ORA }
+		s:STATE_VRYSTAAT.region_state:BST = { set_state_owner = c:WIB }
+		s:STATE_VRYSTAAT.region_state:SAF = { set_state_owner = c:WIB }
 	}
 }
 
@@ -60,7 +58,9 @@ je_the_forming_of_the_oranje_vrystaat = {
 	icon = "gfx/interface/icons/event_icons/event_scales.dds"
     group = je_group_historical_content
 	complete = {
-		gdp > 200000
+		exists = c:WIB
+		THIS = c:WIB
+		gdp > 150000
 		owns_entire_state_region = STATE_VRYSTAAT
 	}
 	
