@@ -133,11 +133,11 @@
 	}
 	
 	secret_goal_weights = {
-		protect = 0.5
-		dominate = 0.5
-		reconcile = 0.5
-		conquer = 0.5
-        antagonize = 0.5
+		protect = 1.5
+		dominate = 1.5
+		reconcile = 1.5
+		conquer = 1
+        antagonize = 1
 	}
 
 	wargoal_weights = {
@@ -251,7 +251,7 @@ ai_strategy_territorial_expansion = {
 					attitude = antagonistic
 				}					
 			}
-			multiply = 0.5
+			multiply = 0.33
 		}	
 
 		# More aggressive against ideological enemies, a bit less aggressive against ideological allies
@@ -486,6 +486,28 @@ ai_strategy_colonial_expansion = {
 				}					
 			}
 			multiply = 0.2
+		}	
+
+        # More aggressive against ideological enemies, a bit less aggressive against ideological allies
+		if = {
+			limit = {
+				"ai_ideological_opinion(scope:target_country)" < 0
+			}
+			
+			multiply = {
+				value = "ai_ideological_opinion(scope:target_country)"
+				multiply = -0.2
+				add = 1
+				max = 4.0
+			}				
+		}	
+		else = {
+			multiply = {
+				value = "ai_ideological_opinion(scope:target_country)"
+				multiply = -0.05
+				add = 1
+				min = 0.5
+			}			
 		}			
 	}
 	
@@ -734,23 +756,17 @@ ai_strategy_armed_isolationism = {
 		if = {
 			limit = { has_law = law_type:law_isolationism }
 			add = 100
-		}
-
+		}	
+		
 		if = {
-			limit = { has_variable = korean_sovereignty_breached }
-			add = 200
-		}
-
-        if = {
 			limit = {
 				OR = {
 					has_modifier = shogun_ig_forced_to_open_market
 					has_journal_entry = je_meiji_main					
-					has_variable = gwangmu_reforms_var
-                }
+				}			
 			}
 			multiply = 0.1
-		}			
+		}				
 
 		if = {
 			limit = { country_rank = rank_value:great_power }
@@ -924,8 +940,30 @@ ai_strategy_economic_imperialism = {
 					attitude = antagonistic
 				}					
 			}
-			multiply = 0.5
-		}		
+			multiply = 0.33
+		}
+
+        # More aggressive against ideological enemies, a bit less aggressive against ideological allies
+		if = {
+			limit = {
+				"ai_ideological_opinion(scope:target_country)" < 0
+			}
+			
+			multiply = {
+				value = "ai_ideological_opinion(scope:target_country)"
+				multiply = -0.2
+				add = 1
+				max = 4.0
+			}				
+		}	
+		else = {
+			multiply = {
+				value = "ai_ideological_opinion(scope:target_country)"
+				multiply = -0.05
+				add = 1
+				min = 0.5
+			}			
+		}				
 	}
 	
 	building_group_weights = {
@@ -1482,7 +1520,7 @@ ai_strategy_unify_italy = {
 	}
 	
 	diplomatic_play_boldness = {
-		value = 50
+		value = 75
 	}
 	
 	# Added to value from default strategy
@@ -1515,10 +1553,10 @@ ai_strategy_unify_italy = {
 					OR = {
 						country_has_primary_culture = cu:north_italian
 						country_has_primary_culture = cu:south_italian
-					}				
+					}	
 				}
 			}
-			add = 10
+			add = 2.75
 		}
 
 		# Less aggressive against countries we're just antagonistic against, rather than belligerent/domineering
@@ -1529,8 +1567,30 @@ ai_strategy_unify_italy = {
 					attitude = antagonistic
 				}					
 			}
-			multiply = 0.5
-		}			
+			multiply = 0.25
+		}	
+
+		# More aggressive against ideological enemies, a bit less aggressive against ideological allies
+		if = {
+			limit = {
+				"ai_ideological_opinion(scope:target_country)" < 0
+			}
+			
+			multiply = {
+				value = "ai_ideological_opinion(scope:target_country)"
+				multiply = -0.2
+				add = 1
+				max = 4.0
+			}				
+		}	
+		else = {
+			multiply = {
+				value = "ai_ideological_opinion(scope:target_country)"
+				multiply = -0.05
+				add = 1
+				min = 0.5
+			}			
+		}		
 	}
 
 	building_group_weights = {
@@ -1570,7 +1630,11 @@ ai_strategy_unify_italy = {
 							country_has_primary_culture = cu:south_italian
 						}
 						NOT = { is_unification_candidate = ITA }
-						is_supporting_unification_candidate = { who = root country_formation = ITA }
+						OR = { 
+							is_supporting_unification_candidate = { who = root country_formation = ITA }
+							is_subject_of = root
+							is_in_customs_union_with = root
+						}
 					}
 				}
 				add = 1000
@@ -1584,8 +1648,12 @@ ai_strategy_unify_italy = {
 							country_has_primary_culture = cu:north_italian
 							country_has_primary_culture = cu:south_italian
 						}					
-						NOT = { is_unification_candidate = ITA }
-						NOT = { is_supporting_unification_candidate = { who = root country_formation = ITA } }
+						NOR = { 
+							is_unification_candidate = ITA
+							is_supporting_unification_candidate = { who = root country_formation =ITA }
+							is_subject_of = root
+							is_in_customs_union_with = root
+						}	
 					}
 				}
 				add = 1000
