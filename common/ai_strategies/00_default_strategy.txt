@@ -80,7 +80,47 @@ ai_strategy_default = {
 	# scope:is_initiator = bool, set to true if evaluating support for initiator, false if target
 	# NOTE: You need to include a description when adding values here so there are correct tooltips, this is different from most of ai strategy data!
 	diplomatic_play_support = {
-		value = 0
+		value = 0		
+					
+		if = {
+			limit = {
+				OR = {
+					country_has_primary_culture = cu:north_german
+					country_has_primary_culture = cu:south_german
+				}
+				scope:country = {
+				    wants_to_solve_schleswig_holstein = yes
+					OR = {
+					    country_has_primary_culture = cu:north_german
+					    country_has_primary_culture = cu:south_german
+					}
+				}
+				scope:enemy_country = {
+					OR = {
+						is_oppressor_of_schleswig_holstein = yes
+					    overlord = {
+						    is_oppressor_of_schleswig_holstein = yes
+						}
+					}
+				}
+			}
+			
+			if = {
+				limit = {
+				    has_technology_researched = nationalism
+				}
+				add = {
+					value = 50
+					desc = "german_leadership_neutrality"
+			    }
+			}
+			else = {
+			    add = {
+					value = 25
+					desc = "german_leadership_neutrality"
+			    }
+			}
+		}
 		
 		### German Leadership War
 		if = {
@@ -786,6 +826,21 @@ ai_strategy_default = {
 				}
 			}
 			add = -75
+		}	
+
+        if = { # Isolationist China should tend to back down against minor plays
+			limit = {
+				c:CHI ?= this
+				has_law = law_type:law_isolationism 
+				scope:diplomatic_play = { 
+					OR = {
+						has_play_goal = liberate_subject
+						has_play_goal = liberate_country
+						has_play_goal = transfer_subject
+					}	
+				}
+			}
+			add = -50
 		}		
 
 		if = { #Taiping should never surrender against China.
@@ -951,7 +1006,7 @@ ai_strategy_default = {
                     }
                 }
             }
-            add = 0.5
+            add = 0.3
         }
 		
 		# France should very aggressively go for Algeria.
@@ -993,7 +1048,7 @@ ai_strategy_default = {
 					}
 				}
 			}
-			add = 0.15
+			add = 0.1
 		}	
 	}	
 	
@@ -2897,7 +2952,7 @@ ai_strategy_default = {
 					is_oppressor_of_schleswig_holstein = yes
 				}
 			}
-			add = 30
+			add = 25
 		}		
 
 		if = { #Carving up China
@@ -2931,7 +2986,7 @@ ai_strategy_default = {
 					THIS = c:EGY
 				}
 			}
-			add = 100
+			add = 50
 		}
 
 		# USA should be extremely aggressive against owners of their Manifest Destiny states
@@ -2955,7 +3010,7 @@ ai_strategy_default = {
 					}
 				}
 			}
-			add = 30
+			add = 10
 		}
 
 		# Extra french aggression for Haiti renouncing debt payments
@@ -2988,7 +3043,7 @@ ai_strategy_default = {
 					country_has_primary_culture = cu:ecuadorian
 				}
 			}
-			add = 25
+			add = 5
 		}
 
 		# Even more aggression if you have the War of the Confederation JE
@@ -3110,7 +3165,7 @@ ai_strategy_default = {
 					}
 				}
 			}
-			add = 30
+			add = 10
 		}
 		
 		if = {
@@ -3122,7 +3177,7 @@ ai_strategy_default = {
 					}
 				}
 			}
-			add = 50
+			add = 10
 		}
 		
 		if = {
@@ -3136,7 +3191,7 @@ ai_strategy_default = {
 					}
 				}
 			}
-			add = 5
+			add = 3
 		}
 	
 		if = { #Russian Far East
@@ -3154,7 +3209,7 @@ ai_strategy_default = {
 				}
 				can_reach_target_country = yes
 			}
-			add = 15
+			add = 5
 		}
 
 		if = { #Russian Central Asia
@@ -3173,7 +3228,7 @@ ai_strategy_default = {
 				}
 				can_reach_target_country = yes
 			}
-			add = 15
+			add = 8
 		}
 		
 		if = { #Russian Central Asia
@@ -3190,7 +3245,7 @@ ai_strategy_default = {
 					}
 				}
 			}
-			add = 15
+			add = 10
 		}
 		
 		if = { #Russia wants Korea
@@ -3307,7 +3362,7 @@ ai_strategy_default = {
 					}
 				}
 			}
-			add = 25
+			add = 10
 		}
 		
 		# France should very aggressively go for Algeria.
@@ -3450,7 +3505,7 @@ ai_strategy_default = {
 					has_journal_entry = je_age_of_princes
 				}
 			}
-			add = 25
+			add = 10
 		}
 		
 		# Scramble for Africa participants want everything
@@ -3471,7 +3526,7 @@ ai_strategy_default = {
 					}
 				}
 			}
-			add = 50
+			add = 25
 		}
 		
 		if = {
@@ -3695,7 +3750,7 @@ ai_strategy_default = {
             limit = {
             	has_journal_entry = je_modernizing_paraguay
             }
-			multiply = 0.25
+			multiply = 0.1
         }
 		
 		if = { # The EIC/Raj should never go against its suzerain, as doing so is suicide
