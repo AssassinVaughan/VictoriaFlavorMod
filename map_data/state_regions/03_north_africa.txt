@@ -370,6 +370,7 @@ STATE_CONSTANTINE = {
 
 
 
+
     arable_land = 55
     arable_resources = { "bg_wheat_farms" "bg_livestock_ranches" "bg_vineyard_plantations" }
     capped_resources = {
@@ -396,6 +397,7 @@ STATE_TLEMCEN = {
     farm = "x60D278"
     mine = "xB735DB"
     wood = "xB951DE" #Unused
+
 
 
 
@@ -514,7 +516,9 @@ STATE_TOUGGOURT = {
 
 
 
+
     wood = "x315D65" #Unused
+
 
 
 
@@ -627,7 +631,9 @@ STATE_GHARDAIA = {
 
 
 
+
     wood = "x267471" #Unused
+
 
 
 
@@ -741,7 +747,9 @@ STATE_SAHARA = {
 
 
 
+
     wood = "x6F252B" #Unused
+
 
 
 
@@ -862,7 +870,9 @@ STATE_EAST_SAHARA = {
 
 
 
+
     wood = "x873702" #Unused
+
 
 
 
@@ -1076,6 +1086,13 @@ STATE_EASTERN_MALI = {
     arable_resources = { "bg_millet_farms" "bg_livestock_ranches" "bg_cotton_plantations" "bg_opium_plantations" "bg_tobacco_plantations" }
     capped_resources = {
         bg_monuments = 1
+        bg_iron_mining = 6
+    }
+    resource = {
+        type = "bg_gold_fields"
+        depleted_type = "bg_gold_mining"
+        undiscovered_amount = 9
+        discovered_amount = 2
     }
 }
 
@@ -1090,6 +1107,15 @@ STATE_WESTERN_MALI = {
     wood = "x901121"
     arable_land = 50
     arable_resources = { "bg_millet_farms" "bg_livestock_ranches" "bg_cotton_plantations" "bg_opium_plantations" "bg_tobacco_plantations" }
+    capped_resources = {
+        bg_iron_mining = 12
+    }
+    resource = {
+        type = "bg_gold_fields"
+        depleted_type = "bg_gold_mining"
+        undiscovered_amount = 6
+        discovered_amount = 1
+    }
 }
 
 STATE_TIMBUKTU = {

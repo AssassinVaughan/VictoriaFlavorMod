@@ -46,6 +46,7 @@ low_countries_events.1 = {
 	option = {
 		name = low_countries_events.1.a
 		default_option = yes
+		ai_chance = 1
 		change_relations = {
 			country = c:GBR
 			value = 20
@@ -63,8 +64,7 @@ low_countries_events.1 = {
 	option = {
 		name = low_countries_events.1.b
 		ai_chance = 0
-		
-		change_infamy = 30
+		change_infamy = 24
 		s:STATE_GELRE = {
 			add_claim = ROOT
 		}
@@ -86,6 +86,7 @@ low_countries_events.1 = {
 		#add_modifier = { #Only give after victory
 		#	name = pax_belgica
 		#}
+
 	}
 	option = {
 		name = low_countries_events.1.c
@@ -97,9 +98,9 @@ low_countries_events.1 = {
 	option = {
 		name = low_countries_events.1.e
 		trigger = {
-			exists = c:LIM
+			exists = c:LBG
 		}
-		play_as = c:LIM
+		play_as = c:LBG
 	}
 }
 
