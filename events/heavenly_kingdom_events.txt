@@ -25,15 +25,11 @@ heavenly.1 = {
 	immediate = {
 		set_variable = { name = missionary_works_counter value = 1 }
 		random_scope_state = {
-			limit = {
+			limit = { 
 				is_incorporated = yes
 				any_scope_pop = {
 					NOT = {
-						OR = {
-							religion = rel:protestant
-							religion = rel:reformed
-							religion = rel:anglican
-						}
+						religion = rel:protestant
 					}
 				}
 				any_neighbouring_state = {
@@ -71,53 +67,10 @@ heavenly.1 = {
 				name = missionary_schools_hospitals
 				months = normal_modifier_time
 			}
-		if = {
-			limit = {
-				exists = c:CHI
-				ROOT = c:CHI
-			}
 			convert_population = {
-				target = rel:god_society
+				target = rel:protestant 
 				value = 0.05
 			}
-		}
-		else = {
-		if = {
-			limit = {
-				scope:treaty_port_owner = {
-					religion = rel:anglican
-				} 
-			}
-			convert_population = {
-				target = rel:anglican
-				value = 0.05
-			}
-		}
-		if = {
-			limit = {
-				scope:treaty_port_owner = {
-					religion = rel:reformed
-				} 
-			}
-			convert_population = {
-				target = rel:reformed
-				value = 0.05
-			}
-		}
-		if = {
-			limit = {
-				scope:treaty_port_owner = {
-					religion = rel:protestant
-				} 
-			}
-			convert_population = {
-				target = rel:protestant
-				value = 0.05
-			}
-		}
-		}
-
-
 		}
 	}
 	option = {
@@ -127,52 +80,10 @@ heavenly.1 = {
 			value = -10
 		}
 		scope:missionary_state = {
-		if = {
-			limit = {
-				exists = c:CHI
-				ROOT = c:CHI
-			}
-			convert_population = {
-				target = rel:god_society
-				value = 0.01
-			}
-		}
-		else = {
-		if = {
-			limit = {
-				scope:treaty_port_owner = {
-					religion = rel:anglican
-				} 
-			}
-			convert_population = {
-				target = rel:anglican
-				value = 0.01
-			}
-		}
-		if = {
-			limit = {
-				scope:treaty_port_owner = {
-					religion = rel:reformed
-				} 
-			}
-			convert_population = {
-				target = rel:reformed
-				value = 0.01
-			}
-		}
-		if = {
-			limit = {
-				scope:treaty_port_owner = {
-					religion = rel:protestant
-				} 
-			}
 			convert_population = {
 				target = rel:protestant
 				value = 0.01
 			}
-		}
-		}
-
 		}
 	}
 }
@@ -194,8 +105,8 @@ heavenly.2 = {
 
 	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
 
-	duration = 3	
-
+	duration = 3
+	
 	cooldown = { months = very_long_modifier_time }
 
 	trigger = {
@@ -224,7 +135,7 @@ heavenly.2 = {
 				months = normal_modifier_time
 			}
 			convert_population = {
-				target = rel:god_society value = 0.1
+				target = rel:protestant value = 0.1
 			}
 		}
 		if = {
@@ -306,7 +217,7 @@ heavenly.3 = {
 			state_region = { is_homeland = cu:han NOT = { is_homeland = cu:manchu } }
 			has_variable = cult_center
 			any_scope_pop = {
-				has_pop_religion = god_society
+				has_pop_religion = protestant
 			}
 			any_neighbouring_state = {
 				owner = ROOT
@@ -329,7 +240,7 @@ heavenly.3 = {
 			limit = {
 				has_variable = cult_center
 				any_scope_pop = {
-					has_pop_religion = god_society
+					has_pop_religion = protestant
 				}
 				any_neighbouring_state = {
 					owner = ROOT
@@ -337,7 +248,7 @@ heavenly.3 = {
 					NOT = {
 						has_variable = cult_center
 					}
-					state_region = {
+					state_region = { 
 						OR = {
 							is_homeland = cu:han 
 							is_homeland = cu:hakka
@@ -377,13 +288,12 @@ heavenly.3 = {
 				months = normal_modifier_time
 			}
 			convert_population = {
-				target = rel:god_society value = 0.1
+				target = rel:protestant value = 0.1
 			}
 		}
 	}
 }
 
-# Heavenly Kingdom spawn
 # Heavenly Kingdom spawn
 heavenly.4 = {
 	type = country_event
@@ -440,7 +350,8 @@ heavenly.4 = {
     			state_region = { is_homeland = cu:han NOT = { is_homeland = cu:manchu } }
 				has_variable = cult_center
 				any_scope_pop = {
-					has_pop_religion = god_society
+					has_pop_religion = protestant
+					religion_accepted = no
 				}
 				radical_fraction = { value >= 0.15 }
 			}
@@ -549,7 +460,7 @@ heavenly.4 = {
 					}
 					activate_law = law_type:law_no_migration_controls
 				}
-				
+
 				add_modifier = {
 					name = taiping_army_modifier
 					months = normal_modifier_time
@@ -753,11 +664,11 @@ heavenly.5 = {
 			every_scope_state = {
 				limit = {
 					any_scope_pop = {
-						religion = rel:god_society
+						religion = rel:protestant
 					}
 				}
 				add_religion_standard_of_living_modifier = {
-					religion = rel:god_society
+					religion = rel:protestant
 					multiplier = -3
 				}
 				convert_population = {
@@ -796,7 +707,7 @@ heavenly.5 = {
 		name = heavenly.5.b
 		add_loyalists = {
 			value = 0.2
-			religion = rel:god_society
+			religion = rel:protestant
 		}
 	}
 }
@@ -998,7 +909,7 @@ immediate = {
 					is_general = yes
 					culture = cu:hakka
 					birth_date = 1815.1.1
-					religion = rel:god_society
+					religion = rel:protestant
 					interest_group = ig_devout 
 					traits = {
 							pious
@@ -1012,7 +923,7 @@ immediate = {
 					is_general = yes
 					culture = cu:yue
 					birth_date = 1821.09.23
-					religion = rel:god_society
+					religion = rel:protestant
 					interest_group = ig_armed_forces 
 					traits = {
 							ambitious
@@ -1028,7 +939,7 @@ immediate = {
 					is_general = yes
 					culture = cu:yue
 					birth_date = 1821.09.23
-					religion = rel:god_society
+					religion = rel:protestant
 					interest_group = ig_devout 
 					traits = {
 							pious
@@ -1042,7 +953,7 @@ immediate = {
 					is_general = yes
 					culture = cu:yue
 					birth_date = 1823.1.1
-					religion = rel:god_society
+					religion = rel:protestant
 					interest_group = ig_armed_forces  
 					traits = {
 							meticulous
@@ -1055,7 +966,7 @@ immediate = {
 					last_name = "Dakai"
 					is_general = yes
 					culture = cu:yue
-					religion = rel:god_society
+					religion = rel:protestant
 					birth_date = 1831.04.1
 					interest_group = ig_devout
 					traits = {
@@ -1279,7 +1190,7 @@ heavenly.8 = {
 		}
 
 		c:RUS = {
-			create_truce = {
+			create_bidirectional_truce = {
 				country = c:CHI
 				months = 12
 			}
@@ -1400,7 +1311,7 @@ CHI_missionaries.2 = {
 	flavor = CHI_missionaries.2.f
 
 	event_image = {
-		video = "southamerica_aristocrats"
+		video = "asia_union_leader"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -1523,7 +1434,7 @@ CHI_missionaries.3 = {
 	flavor = CHI_missionaries.3.f
 
 	event_image = {
-		video = "southamerica_christianity"
+		video = "asia_union_leader"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -1589,7 +1500,7 @@ CHI_missionaries.4 = {
 	flavor = CHI_missionaries.4.f
 
 	event_image = {
-		video = "unspecific_sick_in_hospital"
+		video = "asia_union_leader"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -1655,7 +1566,7 @@ CHI_missionaries.5 = {
 	flavor = CHI_missionaries.5.f
 
 	event_image = {
-		video = "votp_prison"
+		video = "asia_union_leader"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"

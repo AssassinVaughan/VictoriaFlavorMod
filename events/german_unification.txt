@@ -69,7 +69,7 @@ german_unification.1 = {
 				root = {
 					create_diplomatic_pact = {
 						country = prev
-						type = confederation
+						type = confederative_partner
 					}
 					activate_law = law_type:law_confederated
 				}
@@ -99,13 +99,44 @@ german_unification.1 = {
 			limit = {
 				country_has_primary_culture = cu:north_german
 				NOT = { exists = c:NGF }
+				OR = {
+					country_tier = kingdom
+					country_tier = principality
+				}
 			}
+			# Reconcile with Austria if we didn't conquer states from them or release any crucial territories
+			hidden_effect = {
+				if = {
+					limit = {
+						exists = c:AUS
+						c:AUS = {
+							country_rank >= rank_value:great_power
+							NOT = { has_claim = root }
+							owns_entire_state_region = STATE_BOHEMIA
+							owns_entire_state_region = STATE_CENTRAL_HUNGARY
+							owns_entire_state_region = STATE_LOMBARDY
+						}
+					}
+					
+					c:AUS = {
+						set_mutual_secret_goal = {
+							country = root
+							secret_goal = reconcile
+						}						
+					}
+				}
+			}		
+			
 			change_tag = NGF
 		}
 		else_if = {
 			limit = {
 				country_has_primary_culture = cu:south_german
 				NOT = { exists = c:SGF }
+				OR = {
+					country_tier = kingdom
+					country_tier = principality
+				}
 			}
 			change_tag = SGF
 		}
@@ -170,7 +201,7 @@ german_unification.2 = {
 		scope:german_unification_candidate = {
 			create_diplomatic_pact = {
 				country = root
-				type = confederation
+				type = confederative_partner
 			}
 		}
 		ai_chance = {

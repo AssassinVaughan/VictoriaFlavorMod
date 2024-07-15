@@ -80,12 +80,6 @@ combat_unit_type_line_infantry = {
     upkeep_modifier = {
         goods_input_small_arms_add = 1
     }
-	
-    can_build_conscript = {
-        NOT = {
-            has_law = law_type:law_peasant_levies
-        }
-    }
 
     battle_modifier = {
         unit_offense_add = 20
@@ -138,12 +132,6 @@ combat_unit_type_line_infantry = {
 
 combat_unit_type_skirmish_infantry = {
     group = combat_unit_group_infantry
-
-    can_build_conscript = {
-        NOT = {
-            has_law = law_type:law_peasant_levies
-        }
-    }
 
     upkeep_modifier = {
         goods_input_small_arms_add = 2
@@ -201,12 +189,6 @@ combat_unit_type_skirmish_infantry = {
 combat_unit_type_trench_infantry = {
     group = combat_unit_group_infantry
 
-    can_build_conscript = {
-        NOT = {
-            has_law = law_type:law_peasant_levies
-        }
-    }
-
     upkeep_modifier = {
         goods_input_small_arms_add = 3
         goods_input_ammunition_add = 2
@@ -261,12 +243,6 @@ combat_unit_type_trench_infantry = {
 
 combat_unit_type_squad_infantry = {
     group = combat_unit_group_infantry
-
-    can_build_conscript = {
-        NOT = {
-            has_law = law_type:law_peasant_levies
-        }
-    }
 
     upkeep_modifier = {
         goods_input_small_arms_add = 3
@@ -385,6 +361,12 @@ combat_unit_type_mechanized_infantry = {
 combat_unit_type_cannon_artillery = {
     group = combat_unit_group_artillery
 
+    can_build_conscript = {
+        NOT = {
+            has_law = law_type:law_peasant_levies
+        }
+    }	
+	
     upkeep_modifier = {
         goods_input_artillery_add = 1
     }
@@ -447,6 +429,12 @@ combat_unit_type_cannon_artillery = {
 
 combat_unit_type_mobile_artillery = {
     group = combat_unit_group_artillery
+	
+    can_build_conscript = {
+        NOT = {
+            has_law = law_type:law_peasant_levies
+        }
+    }	
 
     upkeep_modifier = {
         goods_input_artillery_add = 2
@@ -684,6 +672,12 @@ combat_unit_type_heavy_tank = {
 
 combat_unit_type_hussars = {
     group = combat_unit_group_cavalry
+	
+    can_build_conscript = {
+        NOT = {
+            has_law = law_type:law_peasant_levies
+        }
+    }	
     
     upkeep_modifier = {
         goods_input_grain_add = 1

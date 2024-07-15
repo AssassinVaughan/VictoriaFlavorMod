@@ -241,6 +241,13 @@ pattern_textures = {
 	properties	= "gfx/portraits/accessory_variations/textures/patterns/generic/generic_misc_plastic_shiny_properties.dds"
 }
 
+pattern_textures = {
+	name = "generic_polished_wood_01"
+	colormask	= "gfx/portraits/accessory_variations/textures/patterns/generic/generic_polished_wood_01_masks.dds"
+	normal		= "gfx/portraits/accessory_variations/textures/patterns/generic/generic_polished_wood_01_normal.dds"
+	properties	= "gfx/portraits/accessory_variations/textures/patterns/generic/generic_polished_wood_01_properties.dds"
+}
+
 
 # pattern_textures = {
 # 	name = "european_silk_brocade_01"
@@ -356,6 +363,7 @@ pattern_layout = {
 	rotation 	= { min = 0	max = 0 }	
 	offset 		= { x = { min = 0	max = 0 }    y = { min = 0.25	max = 0.25 } } 
 }
+
 
 ## Top Layer European Royal ##
 
@@ -623,22 +631,7 @@ variation = {
 	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_headgear_european_military_02_red.dds" }	
 }
 
-variation = {
-	name = "male_headgear_european_military_02_korean"
-	
- 
-	pattern = { 
-		weight = 1
- 
-		r = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
-		g = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
-		b = { textures = "generic_misc_plastic_shiny" 		layout = "plain_fabric_layout" }
-		a = { textures = "generic_misc_plastic_shiny"		layout = "plain_fabric_layout" }
-	}	
 
- 
-	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/male_headgear_korean_empire_military.dds" }	
-}
 
 variation = {
 	name = "male_headgear_american_military_late"
@@ -658,6 +651,42 @@ variation = {
 }
 
 variation = {
+	name = "male_headgear_gb_01_military"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_leather_standard_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_medal_metals_01" 				layout = "plain_fabric_layout" }
+		a = { textures = "circumpolar_fur_pattern_02"		layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_headgear_gb_01_military_01.dds" }	
+}
+
+
+variation = {
+	name = "male_headgear_russian_military_01"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_leather_standard_agitator_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_medal_metals_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_medal_metals_01" 				layout = "plain_fabric_layout" }
+		a = { textures = "circumpolar_fur_pattern_02"		layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/male_headgear_russian_military_01.dds" }	
+}
+
+
+variation = {
 	name = "male_headgear_prussian_military"
 	
  
@@ -672,6 +701,23 @@ variation = {
 
  
 	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_headgear_military_03_prussian_01.dds" }	
+}
+
+variation = {
+	name = "male_headgear_european_late_military_04"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_leather_standard_fine_01" 				layout = "plain_fabric_layout" }
+		a = { textures = "generic_medal_metals_01" 				layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_headgear_european_late_military_04.dds" }	
 }
 
 variation = {
@@ -711,7 +757,7 @@ variation = {
 		b = { textures = "generic_silk_standard_plain_01" 		layout = "plain_fabric_layout" }
 		a = { textures = "generic_wool_standard_plain_01"		layout = "plain_fabric_layout" }
 	}	
-	pattern = { 
+		pattern = { 
 		weight = 1
  
 		r = { textures = "european_gold_trim_02" 		layout = "male_coat_european_trim_layout_06" }
@@ -739,6 +785,8 @@ variation = {
  
 	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_coats_prussian_01.dds" }	
 }
+
+
 
 variation = {
 	name = "male_coats_prussian_blue"
@@ -791,6 +839,46 @@ variation = {
 	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_american_confederate.dds" }	
 }
 
+
+
+
+variation = {
+	name = "male_coat_gb_color_variations_black"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_standard_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_wool_standard_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/male_coat_gb_color_variations_black.dds" }	
+}
+
+
+
+variation = {
+	name = "male_coat_gb_color_variations"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_standard_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_wool_standard_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_british_redcoat.dds" }	
+}
+
+
 variation = {
 	name = "male_coats_british_redcoat"
 	
@@ -806,6 +894,24 @@ variation = {
 
  
 	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_british_redcoat.dds" }	
+}
+
+
+variation = {
+	name = "male_coats_british_redcoat_01"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_leather_standard_agitator_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_wool_standard_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_british_redcoat_gb_01.dds" }	
 }
 
 
@@ -827,7 +933,6 @@ variation = {
 	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_alexis_de_tocqueville.dds" }	
 }
 
-
 variation = {
 	name = "male_coats_french_blue"
 	
@@ -846,6 +951,40 @@ variation = {
 }
 
 variation = {
+	name = "male_coats_persian_blue"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_standard_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_wool_standard_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_persian_uniform.dds" }	
+}
+
+variation = {
+	name = "male_coats_russian_military_01"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_leather_standard_agitator_01" 				layout = "male_coat_european_trim_layout_02" }
+		a = { textures = "generic_silk_standard_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/male_coat_russian_military_01.dds" }	
+}
+
+variation = {
 	name = "male_coats_russian_color"
 	
  
@@ -855,11 +994,45 @@ variation = {
 		r = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
 		g = { textures = "generic_silk_standard_plain_01" 		layout = "plain_fabric_layout" }
 		b = { textures = "european_gold_trim_01" 				layout = "male_coat_european_trim_layout_02" }
-		a = { textures = "generic_silk_standard_plain_01"		layout = "plain_fabric_layout" }
+		a = { textures = "generic_medal_metals_01"		layout = "plain_fabric_layout" }
 	}	
 
  
 	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_russian_uniform.dds" }	
+}
+
+variation = {
+	name = "male_coats_early_american_military_01"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_leather_standard_agitator_01" 				layout = "male_coat_european_trim_layout_02" }
+		a = { textures = "generic_silk_standard_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/male_coat_early_american_military_01_colors.dds" }	
+}
+
+variation = {
+	name = "male_headgear_european_military_02_korean"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_misc_plastic_shiny" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_misc_plastic_shiny"		layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/male_headgear_korean_empire_military.dds" }	
 }
 
 variation = {
@@ -895,7 +1068,22 @@ variation = {
 	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_coats_prussian_01.dds" }	
 }
 
+variation = {
+	name = "male_saber"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_leather_standard_agitator_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_medal_metals_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_leather_standard_agitator_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_misc_plastic_shiny"		layout = "plain_fabric_layout" }
+	}	
 
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_saber_military_01.dds" }	
+}
 
 variation = {
 	name = "male_sashes_prussian"
@@ -912,6 +1100,23 @@ variation = {
 
  
 	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_sashes_prussian_01.dds" }	
+}
+
+variation = {
+	name = "male_sash_european_white"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_silk_sash_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_sash_european_white.dds" }	
 }
 
 variation = {
@@ -1040,6 +1245,25 @@ variation = {
 }
 
 
+variation = {
+	name = "male_coat_persian_01"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_standard_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "european_gold_trim_02" 				layout = "male_coat_european_trim_layout_01" }
+		a = { textures = "generic_silk_standard_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_coats_european_02.dds" }	
+}
+
+
+
 
 variation = {
 	name = "male_coat_european_03"
@@ -1056,6 +1280,24 @@ variation = {
 
  
 	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_coats_european_01.dds" }	
+}
+
+
+variation = {
+	name = "male_coat_persian_01"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_standard_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "european_gold_trim_01" 				layout = "male_coat_european_trim_layout_02" }
+		a = { textures = "generic_silk_standard_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_coats_persian_01.dds" }	
 }
 
 variation = {
@@ -1225,6 +1467,177 @@ variation = {
 	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_coats_german_military_01.dds" }	
 }
 
+variation = {
+	name = "male_coat_late_british"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_medal_metals_01" 				layout = "plain_fabric_layout" }
+		b = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+	}	
+ 
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_late_british.dds" }	
+}
+
+variation = {
+	name = "male_coat_late_russian"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_medal_metals_01" 				layout = "plain_fabric_layout" }
+		b = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+	}	
+ 
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_late_russian.dds" }	
+}
+
+variation = {
+	name = "male_coat_russian_military_01"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_cotton_standard_fine_01" 			layout = "plain_fabric_layout" }
+		b = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+	}	
+ 
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/male_coat_russian_military_01.dds" }	
+}
+
+variation = {
+	name = "male_headgear_late_russian"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_wool_standard_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_late_russian.dds" }	
+}
+
+variation = {
+	name = "male_coat_late_american"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_medal_metals_01" 				layout = "plain_fabric_layout" }
+		b = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+	}	
+ 
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_late_american.dds" }	
+}
+
+variation = {
+	name = "male_coat_late_american_blue"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_medal_metals_01" 				layout = "plain_fabric_layout" }
+		b = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+	}	
+ 
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_late_american_blue.dds" }	
+}
+
+variation = {
+	name = "male_coat_european_military_01"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_medal_metals_01" 				layout = "plain_fabric_layout" }
+		b = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+	}	
+ 
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_coats_european_military_01.dds" }	
+}
+
+variation = {
+	name = "female_coat_european_military_01"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_leather_standard_plain_01" 				layout = "plain_fabric_layout" }
+		b = { textures = "generic_medal_metals_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_medal_metals_01" 		layout = "plain_fabric_layout" }
+	}	
+ 
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_female_coat_european_military_01.dds" }	
+}
+
+
+variation = {
+	name = "reza_shah_pahlavi_coat"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_medal_metals_01" 				layout = "plain_fabric_layout" }
+		b = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+	}	
+ 
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_reza_shah_pahlavi_coat.dds" }	
+}
+
+variation = {
+	name = "male_coat_late_french"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_medal_metals_01" 				layout = "plain_fabric_layout" }
+		b = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+	}	
+ 
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_late_french_light_blue.dds" }	
+}
+
 ## Male Legwear ##
 
 variation = {
@@ -1275,6 +1688,23 @@ variation = {
 	}	
 
  
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_european_01_blue.dds" }	
+}
+
+variation = {
+	name = "male_legwear_light_blue"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_wool_standard_fine_01"		layout = "plain_fabric_layout" }
+	}	
+
+ 
 	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_european_01_light_blue.dds" }	
 }
 
@@ -1312,6 +1742,93 @@ variation = {
 	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_european_01_white.dds" }	
 }
 
+variation = {
+	name = "male_coat_white"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_wool_standard_fine_01"		layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_european_08_white.dds" }	
+}
+
+variation = {
+	name = "male_legwear_european_military_01"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_medal_metals_01" 				layout = "plain_fabric_layout" }
+		b = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+	}	
+
+
+ 	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_legwear_european_military_01.dds" }	
+}
+
+variation = {
+	name = "female_legwear_european_military_01"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_leather_standard_plain_01" 				layout = "plain_fabric_layout" }
+		b = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+	}	
+
+
+ 	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_legwear_european_military_01.dds" }	
+}
+
+variation = {
+
+	name = "female_legwear_european_military_02"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_leather_standard_plain_01" 				layout = "plain_fabric_layout" }
+		b = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+	}	
+
+
+ 	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_legwear_european_military_01.dds" }	
+}
+
+
+
+variation = {
+	name = "reza_shah_pahlavi_legwear"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_medal_metals_01" 				layout = "plain_fabric_layout" }
+		b = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+	}	
+
+	
+ 	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_reza_shah_pahlavi_legwear.dds" }	
+}
 
 ## Top Layer European Royal ##
 
@@ -1532,6 +2049,24 @@ variation = {
 	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_legwear_peasants_02.dds" }	
 }
 
+variation = {
+	name = "female_headgear_common_02"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_cotton_standard_fine_01" 			layout = "male_outfits_christian_fabric_layout_01" }
+		g = { textures = "generic_wool_standard_fine_01" 			layout = "male_outfits_christian_fabric_layout_01" }
+		b = { textures = "generic_wool_standard_fine_01" 			layout = "plain_fabric_layout" }
+		a = { textures = "generic_wool_standard_fine_01"			layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_female_headgear_european_common_02.dds" }	
+}
+
+
 
 
 variation = {
@@ -1580,6 +2115,26 @@ variation = {
  
 	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_coats_european_civilian_01.dds" }	
 }
+
+
+variation = {
+	name = "female_power_blocks_01_gems"
+	
+	pattern = { 
+		weight = 1
+
+	
+		r = { textures = "generic_medal_metals_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_gem_01" 			layout = "plain_fabric_layout" }
+		b = { textures = "generic_gem_01" 			layout = "plain_fabric_layout" }
+		a = { textures = "generic_gem_01"			layout = "plain_fabric_layout" }
+
+}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_female_power_blocks_01_gems.dds" }	
+}
+
+
 
 variation = {
 	name = "female_hair_european_01_gems"
@@ -1903,3 +2458,1044 @@ variation = {
 	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_outfit_european_carnaval_pierrot.dds" }	
 }
 
+variation = {
+	name = "male_belt_military_01"
+
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_leather_standard_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_medal_metals_01"		layout = "plain_fabric_layout" }
+		b = { textures = "generic_velvet_standard_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_silk_standard_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+		pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_leather_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_medal_metals_01"		layout = "plain_fabric_layout" }
+		b = { textures = "generic_velvet_standard_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_silk_standard_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_belt_military_01.dds" }	
+}
+
+variation = {
+	name = "male_coat_european_civil_dress_uniform_01"
+
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_trims_standard_plain_01" 		layout = "male_headgera_american_02" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_civil_dress_uniform_01.dds" }	
+}
+
+variation = {
+	name = "female_coat_vivandiere_01"
+
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_standard_plain_01"		layout = "plain_fabric_layout" }
+		a = { textures = "generic_medal_metals_01"		layout = "plain_fabric_layout" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_female_coat_vivandiere_01.dds" }	
+}
+
+variation = {
+	name = "female_legwear_vivandiere_01"
+
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_medal_metals_01"		layout = "plain_fabric_layout" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_female_legwear_vivandiere_01.dds" }	
+}
+
+variation = {
+	name = "female_headgear_vivandiere_01"
+
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_standard_plain_01"		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_standard_plain_01"		layout = "plain_fabric_layout" }
+		a = { textures = "generic_medal_metals_01"		layout = "plain_fabric_layout" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_female_headgear_vivandiere_01.dds" }	
+}
+
+variation = {
+	name = "female_prop_vivandiere_01"
+
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_medal_metals_01"		layout = "plain_fabric_layout" }
+		a = { textures = "generic_medal_metals_01"		layout = "plain_fabric_layout" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_female_prop_vivandiere_01.dds" }	
+}
+
+variation = {
+	name = "male_top_layer_cuirass_01"
+
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_medal_metals_01"		layout = "plain_fabric_layout" }
+		g = { textures = "generic_medal_metals_01"		layout = "plain_fabric_layout" }
+		b = { textures = "generic_trims_standard_plain_01" 		layout = "male_headgera_american_02" }
+		a = { textures = "generic_leather_standard_fine_01" 		layout = "plain_fabric_layout" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_top_layer_cuirass_01.dds" }	
+}
+
+variation = {
+	name = "male_belts_cuirass_01"
+
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_leather_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_medal_metals_01"		layout = "plain_fabric_layout" }
+		b = { textures = "generic_medal_metals_01"		layout = "plain_fabric_layout" }
+		a = { textures = "generic_medal_metals_01"		layout = "plain_fabric_layout" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_belts_cuirass_01.dds" }	
+}
+
+variation = {
+	name = "male_sashes_cuirass_01"
+
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_trims_standard_plain_01" 		layout = "male_headgera_american_02" }
+		b = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_medal_metals_01"		layout = "plain_fabric_layout" }
+	}
+
+		pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_standard_plain_01"		layout = "plain_fabric_layout" }
+		b = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_medal_metals_01"		layout = "plain_fabric_layout" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_sashes_cuirass_01.dds" }	
+}
+
+
+
+
+variation = {
+	name = "male_sash_european_red"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_silk_sash_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_sashes_colours_red_01.dds" }	
+}
+
+variation = {
+	name = "male_sash_european_orange"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_silk_sash_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_sashes_colours_orange_01.dds" }	
+}
+
+variation = {
+	name = "male_sash_european_yellow"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_silk_sash_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_sashes_colours_yellow_01.dds" }	
+}
+
+variation = {
+	name = "male_sash_european_gold"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_silk_sash_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_sashes_colours_gold_01.dds" }	
+}
+
+variation = {
+	name = "male_sash_european_green"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_silk_sash_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_sashes_colours_green_01.dds" }	
+}
+
+variation = {
+	name = "male_sash_european_lightblue"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_silk_sash_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_sashes_colours_lightblue_01.dds" }	
+}
+
+variation = {
+	name = "male_sash_european_blue"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_silk_sash_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_sashes_colours_blue_01.dds" }	
+}
+
+variation = {
+	name = "male_sash_european_darkblue"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_silk_sash_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_sashes_colours_darkblue_01.dds" }	
+}
+
+variation = {
+	name = "male_sash_european_purple"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_silk_sash_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_sashes_colours_purple_01.dds" }	
+}
+
+variation = {
+	name = "male_sash_european_black"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_silk_sash_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_sashes_colours_black_01.dds" }	
+}
+
+variation = {
+	name = "male_coat_european_08_black"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_standard_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_wool_standard_plain_01"		layout = "plain_fabric_layout" }
+	}
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_coats_european_08_black.dds" }	
+}
+
+variation = {
+	name = "male_coat_european_cossack_01"
+
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_trims_standard_plain_01"		layout = "plain_fabric_layout" }
+		a = { textures = "generic_medal_metals_01"		layout = "plain_fabric_layout" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_coat_european_cossack_01.dds" }	
+}
+
+variation = {
+	name = "male_belts_cossack_01"
+
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_leather_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_leather_standard_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_medal_metals_01"		layout = "plain_fabric_layout" }
+		a = { textures = "generic_medal_metals_01"		layout = "plain_fabric_layout" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_belts_cossack_01.dds" }	
+}
+
+variation = {
+	name = "male_headgear_european_cossack_01"
+
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "circumpolar_fur_pattern_02"		layout = "plain_fabric_layout_top_layer_europian" }
+		g = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_standard_plain_01"		layout = "plain_fabric_layout" }
+		a = { textures = "generic_medal_metals_01"		layout = "plain_fabric_layout" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_headgear_european_cossack_01.dds" }	
+}
+
+variation = {
+	name = "male_epaulettes_cossack_01"
+
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_medal_metals_01"		layout = "plain_fabric_layout" }
+		b = { textures = "generic_trims_standard_plain_01" 		layout = "male_headgera_american_02" }
+		a = { textures = "generic_medal_metals_01"		layout = "plain_fabric_layout" }
+	}
+
+		pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_trims_standard_plain_01" 		layout = "plain_fabric_male_epaulettes_layout_01" }
+		g = { textures = "generic_medal_metals_01"		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_standard_plain_01"		layout = "plain_fabric_layout" }
+		a = { textures = "generic_medal_metals_01"		layout = "plain_fabric_layout" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_epaulettes_cossack_01.dds" }	
+}
+
+variation = {
+	name = "male_belts_sash_power_bloc_01_sovereign"
+
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_silk_standard_plain_01"		layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_standard_plain_01"		layout = "plain_fabric_layout" }
+		b = { textures = "european_gold_trim_01" 				layout = "male_coat_european_trim_layout_01" }
+		a = { textures = "generic_trims_standard_plain_01" 		layout = "plain_fabric_male_epaulettes_layout_01" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_sovereign_01.dds" }	
+}
+
+
+variation = {
+	name = "male_top_layer_religious_cape"
+
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_velvet_standard_plain_01" 				layout = "plain_fabric_layout" }
+		g = { textures = "european_gold_trim_01"		layout = "plain_fabric_layout" }
+		b = { textures = "generic_medal_metals_01" 				layout = "male_coat_european_trim_layout_01" }
+		a = { textures = "generic_medal_metals_01" 		layout = "plain_fabric_male_epaulettes_layout_01" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_top_layers_power_bloc_01.dds" }	
+}
+
+
+
+variation = {
+	name = "male_belts_sash_power_bloc_01_ideological"
+
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_silk_standard_plain_01"		layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_standard_plain_01"		layout = "plain_fabric_layout" }
+		b = { textures = "european_gold_trim_01" 				layout = "male_coat_european_trim_layout_01" }
+		a = { textures = "generic_trims_standard_plain_01" 		layout = "plain_fabric_male_epaulettes_layout_01" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_ideological_01.dds" }	
+}
+
+variation = {
+	name = "male_belts_sash_power_bloc_01_military"
+
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_silk_standard_plain_01"		layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_standard_plain_01"		layout = "plain_fabric_layout" }
+		b = { textures = "european_gold_trim_01" 				layout = "male_coat_european_trim_layout_01" }
+		a = { textures = "generic_trims_standard_plain_01" 		layout = "plain_fabric_male_epaulettes_layout_01" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_military_01.dds" }	
+}
+
+variation = {
+	name = "male_belts_sash_power_bloc_01_trade"
+
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_silk_standard_plain_01"		layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_standard_plain_01"		layout = "plain_fabric_layout" }
+		b = { textures = "european_gold_trim_01" 				layout = "male_coat_european_trim_layout_01" }
+		a = { textures = "generic_trims_standard_plain_01" 		layout = "plain_fabric_male_epaulettes_layout_01" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_trade_01.dds" }	
+}
+
+variation = {
+	name = "male_belts_sash_power_bloc_01_religious"
+
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_silk_standard_plain_01"		layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_standard_plain_01"		layout = "plain_fabric_layout" }
+		b = { textures = "european_gold_trim_01" 				layout = "male_coat_european_trim_layout_01" }
+		a = { textures = "generic_trims_standard_plain_01" 		layout = "plain_fabric_male_epaulettes_layout_01" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_religious_01.dds" }	
+}
+
+variation = {
+	name = "male_belts_sash_power_bloc_04_sovereign"
+
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_velvet_standard_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_silk_sash_plain_01"		layout = "plain_fabric_layout" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_sovereign_01.dds" }	
+}
+
+variation = {
+	name = "male_belts_sash_power_bloc_04_ideological"
+
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_velvet_standard_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_silk_sash_plain_01"		layout = "plain_fabric_layout" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_ideological_01.dds" }	
+}
+
+variation = {
+	name = "male_belts_sash_power_bloc_04_military"
+
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_velvet_standard_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_silk_sash_plain_01"		layout = "plain_fabric_layout" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_military_01.dds" }	
+}
+
+variation = {
+	name = "male_belts_sash_power_bloc_04_trade"
+
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_velvet_standard_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_silk_sash_plain_01"		layout = "plain_fabric_layout" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_trade_01.dds" }	
+}
+
+variation = {
+	name = "male_belts_sash_power_bloc_04_religious"
+
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_velvet_standard_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_silk_sash_plain_01"		layout = "plain_fabric_layout" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_religious_01.dds" }	
+}
+
+
+variation = {
+	name = "male_top_layers_power_bloc_01_sovereign"
+
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_velvet_standard_plain_01" 				layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_standard_plain_01"		layout = "plain_fabric_layout" }
+		b = { textures = "european_gold_trim_01" 				layout = "male_coat_european_trim_layout_01" }
+		a = { textures = "generic_trims_standard_plain_01" 		layout = "plain_fabric_male_epaulettes_layout_01" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_sovereign_01.dds" }	
+}
+
+variation = {
+	name = "male_top_layers_power_bloc_01_ideological"
+
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_velvet_standard_plain_01" 				layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_standard_plain_01"		layout = "plain_fabric_layout" }
+		b = { textures = "european_gold_trim_01" 				layout = "male_coat_european_trim_layout_01" }
+		a = { textures = "generic_trims_standard_plain_01" 		layout = "plain_fabric_male_epaulettes_layout_01" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_ideological_01.dds" }	
+}
+
+variation = {
+	name = "male_top_layers_power_bloc_01_military"
+
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_velvet_standard_plain_01" 				layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_standard_plain_01"		layout = "plain_fabric_layout" }
+		b = { textures = "european_gold_trim_01" 				layout = "male_coat_european_trim_layout_01" }
+		a = { textures = "generic_trims_standard_plain_01" 		layout = "plain_fabric_male_epaulettes_layout_01" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_military_01.dds" }	
+}
+
+variation = {
+	name = "male_top_layers_power_bloc_01_trade"
+
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_velvet_standard_plain_01" 				layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_standard_plain_01"		layout = "plain_fabric_layout" }
+		b = { textures = "european_gold_trim_01" 				layout = "male_coat_european_trim_layout_01" }
+		a = { textures = "generic_trims_standard_plain_01" 		layout = "plain_fabric_male_epaulettes_layout_01" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_trade_01.dds" }	
+}
+
+variation = {
+	name = "male_top_layers_power_bloc_01_religious"
+
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_velvet_standard_plain_01" 				layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_standard_plain_01"		layout = "plain_fabric_layout" }
+		b = { textures = "european_gold_trim_01" 				layout = "male_coat_european_trim_layout_01" }
+		a = { textures = "generic_trims_standard_plain_01" 		layout = "plain_fabric_male_epaulettes_layout_01" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_religious_01.dds" }	
+}
+
+variation = {
+	name = "male_necklace_power_bloc_sovereign_01"
+
+	pattern = { 
+		weight = 1
+
+		r = { textures = "generic_gem_01" 			layout = "plain_fabric_layout" }
+		g = { textures = "generic_pearl_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_medal_metals_01" 				layout = "plain_fabric_layout" }
+		a = { textures = "generic_medal_metals_01" 				layout = "plain_fabric_layout" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_sovereign_01.dds" }	
+}
+
+variation = {
+	name = "male_necklace_power_bloc_ideological_01"
+
+	pattern = { 
+		weight = 1
+
+		r = { textures = "generic_gem_01" 			layout = "plain_fabric_layout" }
+		g = { textures = "generic_pearl_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_medal_metals_01" 				layout = "plain_fabric_layout" }
+		a = { textures = "generic_medal_metals_01" 				layout = "plain_fabric_layout" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_ideological_01.dds" }	
+}
+
+variation = {
+	name = "male_necklace_power_bloc_military_01"
+
+	pattern = { 
+		weight = 1
+
+		r = { textures = "generic_gem_01" 			layout = "plain_fabric_layout" }
+		g = { textures = "generic_pearl_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_medal_metals_01" 				layout = "plain_fabric_layout" }
+		a = { textures = "generic_medal_metals_01" 				layout = "plain_fabric_layout" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_military_01.dds" }	
+}
+
+variation = {
+	name = "male_necklace_power_bloc_trade_01"
+
+	pattern = { 
+		weight = 1
+
+		r = { textures = "generic_gem_01" 			layout = "plain_fabric_layout" }
+		g = { textures = "generic_pearl_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_medal_metals_01" 				layout = "plain_fabric_layout" }
+		a = { textures = "generic_medal_metals_01" 				layout = "plain_fabric_layout" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_trade_01.dds" }	
+}
+
+variation = {
+	name = "male_necklace_power_bloc_religious_01"
+
+	pattern = { 
+		weight = 1
+
+		r = { textures = "generic_gem_01" 			layout = "plain_fabric_layout" }
+		g = { textures = "generic_pearl_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_medal_metals_01" 				layout = "plain_fabric_layout" }
+		a = { textures = "generic_medal_metals_01" 				layout = "plain_fabric_layout" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_religious_01.dds" }	
+}
+
+variation = {
+	name = "male_pb_sashes_sovereign_01"
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_silk_sash_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_sovereign_01.dds" }	
+}
+
+variation = {
+	name = "male_pb_sashes_ideological_01"
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_silk_sash_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_ideological_01.dds" }	
+}
+
+variation = {
+	name = "male_pb_sashes_military_01"
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_silk_sash_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_military_01.dds" }	
+}
+
+variation = {
+	name = "male_pb_sashes_trade_01"
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_silk_sash_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_trade_01.dds" }	
+}
+
+variation = {
+	name = "male_pb_sashes_religious_01"
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_sash_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_silk_sash_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_religious_01.dds" }	
+}
+
+variation = {
+	name = "male_coat_european_greatcoat_01"
+
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_leather_standard_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_velvet_standard_plain_01" 				layout = "plain_fabric_layout" }
+		a = { textures = "european_wool_standard_plaid_01" 		layout = "plain_fabric_layout" }
+	}
+
+		pattern = { 
+		weight = 1
+ 
+		r = { textures = "european_wool_standard_plaid_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_leather_standard_fine_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_velvet_standard_plain_01" 				layout = "plain_fabric_layout" }
+		a = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_coat_european_greatcoat_01.dds" }	
+}
+
+variation = {
+	name = "female_coat_european_greatcoat_01"
+
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_leather_standard_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_velvet_standard_plain_01" 				layout = "plain_fabric_layout" }
+		a = { textures = "generic_silk_standard_plain_01"		layout = "plain_fabric_layout" }
+	}
+
+		pattern = { 
+		weight = 1
+ 
+		r = { textures = "european_wool_standard_plaid_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_leather_standard_fine_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_velvet_standard_plain_01" 				layout = "plain_fabric_layout" }
+		a = { textures = "generic_silk_standard_plain_01"		layout = "plain_fabric_layout" }
+	}
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_female_coat_european_greatcoat_01.dds" }	
+}
+
+variation = {
+	name = "male_waistcoat_european_black_01"
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "european_wool_standard_plaid_01" 		layout = "waistcoat_european_plain_fabric_layout" }
+		g = { textures = "european_wool_standard_plaid_01" 		layout = "waistcoat_european_plain_fabric_layout" }
+		b = { textures = "generic_silk_standard_plain_01"		layout = "plain_fabric_layout" }
+		a = { textures = "generic_medal_metals_01"		layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_waistcoat_european_black_01.dds" }	
+}
+
+variation = {
+	name = "male_waistcoat_european_grey_01"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "european_wool_standard_striped_01" 		layout = "waistcoat_european_plain_fabric_layout" }
+		g = { textures = "european_wool_standard_striped_01" 		layout = "waistcoat_european_plain_fabric_layout" }
+		b = { textures = "generic_silk_standard_plain_01"		layout = "small_trim_layout" }
+		a = { textures = "generic_medal_metals_01"		layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_waistcoat_european_grey_01.dds" }	
+}
+
+variation = {
+	name = "male_waistcoat_european_greybrown_01"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "european_wool_standard_striped_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "european_wool_standard_striped_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "european_silk_brocade_01"		layout = "plain_fabric_layout" }
+		a = { textures = "generic_medal_metals_01"		layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_waistcoat_european_greybrown_01.dds" }	
+}
+
+variation = {
+	name = "male_civilian_coat_european_grey_01"
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "european_wool_standard_striped_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_fine_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_medal_metals_01"		layout = "plain_fabric_layout" }
+		a = { textures = "european_wool_standard_striped_01"		layout = "plain_fabric_layout" }
+	}	
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_civilian_coat_european_grey_01.dds" }	
+}
+
+variation = {
+	name = "male_civilian_coat_european_greybrown_01"
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "european_wool_standard_striped_01" 		layout = "plain_fabric_layout_top_layer_europian" }
+		g = { textures = "generic_silk_fine_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_medal_metals_01"		layout = "plain_fabric_layout" }
+		a = { textures = "european_wool_standard_striped_01"		layout = "plain_fabric_layout" }
+	}	
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_civilian_coat_european_greybrown_01.dds" }	
+}
+
+variation = {
+	name = "male_civilian_coat_european_lightcolors_01"
+	pattern = { 
+		weight = 1
+
+		r = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_wool_standard_plain_01"		layout = "plain_fabric_layout" }
+	}	
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_civilian_coat_european_lightcolors_01.dds" }	
+}
+
+variation = {
+	name = "male_legwear_greybrown"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "european_wool_standard_striped_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_wool_standard_fine_01"		layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_legwear_greybrown.dds" }	
+}
+
+variation = {
+	name = "male_civilian_coat_european_02_black"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_velvet_standard_plain_01" 				layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_standard_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_velvet_standard_plain_01" 				layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_civilian_coat_european_02_black.dds" }	
+}
+
+variation = {
+	name = "male_coat_gb_admiral"
+	
+ 
+	pattern = { 
+		weight = 1
+
+		r = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "european_gold_trim_01" 				layout = "male_coats_prussian_01" }
+		b = { textures = "generic_gold_trim_01" 				layout = "plain_fabric_layout" }
+		a = { textures = "generic_velvet_standard_plain_01" 				layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_coat_gb_admiral.dds" }	
+}
+
+variation = {
+	name = "male_belt_gb_admiral"
+	
+ 
+	pattern = { 
+		weight = 1
+
+		r = { textures = "generic_medal_metals_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "european_gold_trim_01"  				layout = "plain_fabric_layout" }
+		b = { textures = "generic_velvet_standard_plain_01" 				layout = "male_coats_prussian_01" }
+		a = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_belt_gb_admiral.dds" }	
+}
+
+variation = {
+	name = "flowers_01"
+ 
+	pattern = { 
+		weight = 1
+
+		r = { textures = "generic_misc_plastic_shiny" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_misc_plastic_shiny" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_misc_plastic_shiny" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_misc_plastic_shiny"		layout = "plain_fabric_layout" }
+	}	
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_flowers_01.dds" }
+}	
+
+variation = {
+	name = "male_headgear_european_military_02_korean"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_velvet_standard_plain_01" 		layout = "male_headgera_american_02" }
+		b = { textures = "generic_leather_standard_fine_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_misc_plastic_shiny"		layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/male_headgear_korean_empire_military.dds" }	
+}

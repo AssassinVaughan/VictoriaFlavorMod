@@ -1,5 +1,5 @@
 ﻿BUILDINGS={
-	s:STATE_ECUADOR={
+	s:STATE_ECUADOR = {
 		region_state:ECU={
 			create_building={
 				building="building_government_administration"
@@ -13,9 +13,16 @@
 				reserves=1
 				activate_production_methods={ "pm_simple_fishing" "pm_unrefrigerated" "pm_merchant_guilds_building_fishing_wharf" }
 			}
-			create_building={
+            create_building={
 				building="building_maize_farm"
-				level=2
+                add_ownership={ 
+                    building={ 
+                        type="building_manor_house"
+                        country="c:ECU"
+                        levels=2
+                        region="STATE_ECUADOR"
+                   }
+                }
 				reserves=1
 				activate_production_methods={ "pm_simple_farming" "pm_no_secondary" "pm_tools_disabled" "pm_privately_owned" }
 			}
@@ -39,7 +46,7 @@
 			}
 		}
 	}
-	s:STATE_GUAYANA={
+	s:STATE_GUAYANA = {
 		region_state:NET={
 			create_building={
 				building="building_sugar_plantation"
@@ -77,7 +84,7 @@
 			}
 		}
 	}
-	s:STATE_ZULIA={
+	s:STATE_ZULIA = {
 		region_state:REF={
 			create_building={
 				building="building_coffee_plantation"
@@ -93,7 +100,7 @@
 			}
 		}
 	}
-	s:STATE_MIRANDA={
+	s:STATE_MIRANDA = {
 		region_state:VNZ={
 			create_building={ 
 				building="building_construction_sector"
@@ -139,7 +146,7 @@
 			}
 		}
 	}
-	s:STATE_BOLIVAR={
+	s:STATE_BOLIVAR = {
 		region_state:VNZ={
 			create_building={
 				building="building_livestock_ranch"
@@ -155,7 +162,7 @@
 			}
 		}
 	}
-	s:STATE_ANTIOQUIA={
+	s:STATE_ANTIOQUIA = {
 		region_state:CLM={
 			create_building={
 				building="building_government_administration"
@@ -189,7 +196,7 @@
 			}
 		}
 	}
-	s:STATE_GUAVIARE={
+	s:STATE_GUAVIARE = {
 		region_state:CLM={
 			create_building={
 				building="building_rice_farm"
@@ -205,7 +212,7 @@
 			}			
 		}
 	}
-	s:STATE_CUNDINAMARCA={
+	s:STATE_CUNDINAMARCA = {
 		region_state:CLM={
 			create_building={ 
 				building="building_construction_sector"
@@ -257,7 +264,7 @@
 			}
 		}
 	}
-	s:STATE_CAUCA={
+	s:STATE_CAUCA = {
 		region_state:CLM={
 			create_building={
 				building="building_tobacco_plantation"
@@ -271,21 +278,28 @@
 				reserves=1
 				activate_production_methods={ "default_building_coffee_plantation" "pm_road_carts" "pm_privately_owned_plantation" }
 			}
-			create_building={
+            create_building={
 				building="building_maize_farm"
-				level=2
+                add_ownership={ 
+                    building={ 
+                        type="building_manor_house"
+                        country="c:CLM"
+                        levels=2
+                        region="STATE_CAUCA"
+                   }
+                }
 				reserves=1
 				activate_production_methods={ "pm_simple_farming" "pm_no_secondary" "pm_tools_disabled" "pm_privately_owned" }
 			}
 		}
 	}
-	s:STATE_PASTAZA={
+	s:STATE_PASTAZA = {
 		region_state:PEU={
 		}
 		region_state:ECU={
 		}
 	}
-	s:STATE_TARAPACA={
+	s:STATE_TARAPACA = {
 		region_state:PEU={
 			create_building={
 				building="building_livestock_ranch"
@@ -295,7 +309,7 @@
 			}
 		}
 	}
-	s:STATE_ANTOFAGASTA={
+	s:STATE_ANTOFAGASTA = {
 		region_state:BOL={
 			create_building={
 				building="building_fishing_wharf"
@@ -311,7 +325,7 @@
 			}
 		}
 	}
-	s:STATE_SANTA_CRUZ={
+	s:STATE_SANTA_CRUZ = {
 		region_state:BOL={
 			create_building={
 				building="building_government_administration"
@@ -333,7 +347,7 @@
 			}			
 		}
 	}
-	s:STATE_LA_PAZ={
+	s:STATE_LA_PAZ = {
 		region_state:BOL={
 			create_building={ #Santa Cruz was running around building stuff since 1829, I doubt he did it without a construction, besides, Bolivia can afford it
 				building="building_construction_sector"
@@ -372,9 +386,16 @@
 				reserves=1
 				activate_production_methods={ "pm_picks_and_shovels_building_gold_mine" "pm_no_explosives" "pm_no_steam_automation" "pm_road_carts" "pm_merchant_guilds_building_gold_mine" }
 			}			
-			create_building={
+            create_building={
 				building="building_rice_farm"
-				level=1
+                add_ownership={ 
+                    building={ 
+                        type="building_manor_house"
+                        country="c:BOL"
+                        levels=1
+                        region="STATE_LA_PAZ"
+                   }
+                }
 				reserves=1
 				activate_production_methods={ "pm_simple_farming_building_rice_farm" "pm_no_secondary" "pm_tools_disabled" "pm_privately_owned" }
 			}
@@ -398,7 +419,7 @@
 			}
 		}
 	}
-	s:STATE_POTOSI={
+	s:STATE_POTOSI = {
 		region_state:BOL={
 			create_building={
 				building="building_tobacco_plantation"
@@ -426,7 +447,7 @@
 			}		
 		}
 	}
-	s:STATE_CAJAMARCA={
+	s:STATE_CAJAMARCA = {
 		region_state:PEU={
 			create_building={
 				building="building_government_administration"
@@ -472,11 +493,18 @@
 			}
 		}
 	}
-	s:STATE_LIMA={
+	s:STATE_LIMA = {
 		region_state:PEU={
-			create_building={
+            create_building={
 				building="building_maize_farm"
-				level=2
+                add_ownership={ 
+                    building={ 
+                        type="building_manor_house"
+                        country="c:PEU"
+                        levels=2
+                        region="STATE_LIMA"
+                   }
+                }
 				reserves=1
 				activate_production_methods={ "pm_simple_farming" "pm_no_secondary" "pm_tools_disabled" "pm_privately_owned" }
 			}		
@@ -512,7 +540,14 @@
 			}			
             create_building={
 				building="building_maize_farm"
-				level=1
+                add_ownership={ 
+                    building={ 
+                        type="building_manor_house"
+                        country="c:PEU"
+                        levels=1
+                        region="STATE_LIMA"
+                   }
+                }
 				reserves=1
 				activate_production_methods={ "pm_simple_farming" "pm_privately_owned" "pm_tools_disabled" }
 			}
@@ -554,7 +589,7 @@
 			}
 		}
 	}
-	s:STATE_ICA={
+	s:STATE_ICA = {
 		region_state:PEU={
 			create_building={
 				building="building_government_administration"
@@ -574,9 +609,16 @@
 				reserves=1
 				activate_production_methods={ "pm_simple_ranch" "pm_open_air_stockyards" "pm_standard_fences" "pm_unrefrigerated" "pm_privately_owned" }
 			}
-			create_building={
+            create_building={
 				building="building_maize_farm"
-				level=2
+                add_ownership={ 
+                    building={ 
+                        type="building_manor_house"
+                        country="c:PEU"
+                        levels=2
+                        region="STATE_ICA"
+                   }
+                }
 				reserves=1
 				activate_production_methods={ "pm_simple_farming" "pm_privately_owned" "pm_tools_disabled" "pm_no_secondary" }
 			}			
@@ -597,7 +639,7 @@
 			}
 		}
 	}
-	s:STATE_AREQUIPA={
+	s:STATE_AREQUIPA = {
 		region_state:PEU={
 			create_building={
 				building="building_livestock_ranch"
@@ -627,7 +669,7 @@
 			}				
 		}
 	}
-	s:STATE_URUGUAY={
+	s:STATE_URUGUAY = {
 		region_state:URU={
 			create_building={
 				building="building_livestock_ranch"
@@ -643,7 +685,7 @@
 			}
 		}
 	}
-	s:STATE_JUJUY={
+	s:STATE_JUJUY = {
 		region_state:JUJ={
 			create_building={
 				building="building_livestock_ranch"
@@ -661,11 +703,11 @@
 			}
 		}
 	}
-	s:STATE_ALTO_PARAGUAY={
+	s:STATE_ALTO_PARAGUAY = {
 		region_state:GNI={
 		}
 	}
-	s:STATE_BAJO_PARAGUAY={
+	s:STATE_BAJO_PARAGUAY = {
 		region_state:PRG={
 			create_building={
 				building="building_arms_industry"
@@ -725,7 +767,7 @@
 			}
 		}
 	}
-	s:STATE_BUENOS_AIRES={		
+	s:STATE_BUENOS_AIRES = {		
 		region_state:BUE={
 			create_building={ 
 				building="building_construction_sector"
@@ -791,11 +833,11 @@
 		region_state:PAT={
 		}
 	}
-	s:STATE_PATAGONIA={
+	s:STATE_PATAGONIA = {
 		region_state:PAT={
 		}
 	}
-	s:STATE_RIO_NEGRO={
+	s:STATE_RIO_NEGRO = {
 		region_state:MDZ={
 			create_building={
 				building="building_wheat_farm"
@@ -811,7 +853,7 @@
 			}
 		}
 	}
-	s:STATE_LA_PAMPA={
+	s:STATE_LA_PAMPA = {
 		region_state:CDA={	
 			create_building={
 				building="building_wheat_farm"
@@ -833,7 +875,7 @@
 			}		
 		}
 	}
-	s:STATE_SANTA_FE={
+	s:STATE_SANTA_FE = {
 		region_state:SFE={
 			create_building={
 				building="building_furniture_manufacturies"
@@ -869,7 +911,7 @@
 			}
 		}
 	}
-	s:STATE_CORRIENTES={
+	s:STATE_CORRIENTES = {
 		region_state:COE={
 			create_building={
 				building="building_livestock_ranch"
@@ -885,7 +927,7 @@
 			}
 		}			
 	}
-	s:STATE_TUCUMAN={
+	s:STATE_TUCUMAN = {
 		region_state:TUC={
 			create_building={
 				building="building_livestock_ranch"
@@ -925,7 +967,7 @@
 			}
 		}
 	}
-	s:STATE_CHACO={
+	s:STATE_CHACO = {
 		region_state:GNI={
 		}
 		region_state:SDE={	
@@ -937,7 +979,7 @@
 			}
 		}
 	}
-	s:STATE_SANTIAGO={
+	s:STATE_SANTIAGO = {
 		region_state:CHL={
 			create_building={ 
 				building="building_construction_sector"
@@ -1016,7 +1058,7 @@
 			}
 		}
 	}
-	s:STATE_LOS_RIOS={
+	s:STATE_LOS_RIOS = {
 		region_state:CHL={
 			create_building={
 				building="building_port"
@@ -1050,7 +1092,7 @@
 			}
 		}
 	}
-	s:STATE_ARAUCANIA={
+	s:STATE_ARAUCANIA = {
 		region_state:CHL={
 			create_building={
 				building="building_livestock_ranch"
@@ -1074,7 +1116,7 @@
 		region_state:PAT={
 		}
 	}
-	s:STATE_SOUTH_ATLANTIC_ISLANDS={
+	s:STATE_SOUTH_ATLANTIC_ISLANDS = {
 		region_state:GBR={
 			create_building={
 				building="building_port"
@@ -1084,11 +1126,11 @@
 			}
 		}
 	}
-	s:STATE_ACRE={
+	s:STATE_ACRE = {
 		region_state:BOL={
 		}
 	}
-	s:STATE_AMAZONAS={
+	s:STATE_AMAZONAS = {
 		region_state:CLM={
 		}
 		region_state:PRA={
@@ -1096,7 +1138,7 @@
 		region_state:BOL={
 		}
 	}
-	s:STATE_MATO_GROSSO={
+	s:STATE_MATO_GROSSO = {
 		region_state:PRG={
 			create_building={
 				building="building_logging_camp"
@@ -1120,7 +1162,7 @@
 			}
 		}
 	}
-	s:STATE_RIO_GRANDE_DO_SUL={
+	s:STATE_RIO_GRANDE_DO_SUL = {
 		region_state:PNI={
 			create_building={
 				building="building_livestock_ranch"
@@ -1142,7 +1184,7 @@
 			}
 		}
 	}
-	s:STATE_PARANA={
+	s:STATE_PARANA = {
 		region_state:BRZ={
 			create_building={
 				building="building_logging_camp"
@@ -1158,7 +1200,7 @@
 			}
 		}
 	}
-	s:STATE_SANTA_CATARINA={
+	s:STATE_SANTA_CATARINA = {
 		region_state:BRZ={
 			create_building={
 				building="building_logging_camp"
@@ -1174,7 +1216,7 @@
 			}
 		}
 	}
-	s:STATE_SAO_PAULO={
+	s:STATE_SAO_PAULO = {
 		region_state:BRZ={
 			create_building={
 				building="building_coffee_plantation"
@@ -1202,7 +1244,7 @@
 			}
 		}
 	}
-	s:STATE_MINAS_GERAIS={
+	s:STATE_MINAS_GERAIS = {
 		region_state:BRZ={
 			create_building={
 				building="building_government_administration"
@@ -1248,7 +1290,7 @@
 			}
 		}
 	}
-	s:STATE_RIO_DE_JANEIRO={
+	s:STATE_RIO_DE_JANEIRO = {
 		region_state:BRZ={
 			create_building={
 				building="building_government_administration"
@@ -1298,9 +1340,16 @@
 				reserves=1
 				activate_production_methods={ "default_building_sugar_plantation" "pm_road_carts" "pm_privately_owned_plantation" }
 			}
-			create_building={
+            create_building={
 				building="building_maize_farm"
-				level=5
+                add_ownership={ 
+                    building={ 
+                        type="building_manor_house"
+                        country="c:BRZ"
+                        levels=5
+                        region="STATE_RIO_DE_JANEIRO"
+                   }
+                }
 				reserves=1
 				activate_production_methods={ "pm_simple_farming" "pm_no_secondary" "pm_tools_disabled" "pm_privately_owned" }
 			}
@@ -1314,7 +1363,7 @@
 
 		}
 	}
-	s:STATE_BAHIA={
+	s:STATE_BAHIA = {
 		region_state:BRZ={
 			create_building={
 				building="building_government_administration"
@@ -1340,9 +1389,16 @@
 				reserves=1
 				activate_production_methods={ "default_building_sugar_plantation" "pm_road_carts" "pm_privately_owned_plantation" }
 			}
-			create_building={
+            create_building={
 				building="building_maize_farm"
-				level=1
+                add_ownership={ 
+                    building={ 
+                        type="building_manor_house"
+                        country="c:BRZ"
+                        levels=1
+                        region="STATE_BAHIA"
+                   }
+                }
 				reserves=1
 				activate_production_methods={ "pm_simple_farming" "pm_no_secondary" "pm_tools_disabled" "pm_privately_owned" }
 			}
@@ -1366,7 +1422,7 @@
 			}
 		}
 	}
-	s:STATE_RIO_GRANDE_DO_NORTE={
+	s:STATE_RIO_GRANDE_DO_NORTE = {
 		region_state:BRZ={
 			create_building={
 				building="building_maize_farm"
@@ -1388,7 +1444,7 @@
 			}
 		}
 	}
-	s:STATE_CEARA={
+	s:STATE_CEARA = {
 		region_state:BRZ={
 			create_building={
 				building="building_cotton_plantation"
@@ -1396,9 +1452,16 @@
 				reserves=1
 				activate_production_methods={ "default_building_cotton_plantation" "pm_road_carts" "pm_privately_owned_plantation" }
 			}
-			create_building={
+            create_building={
 				building="building_maize_farm"
-				level=1
+                add_ownership={ 
+                    building={ 
+                        type="building_manor_house"
+                        country="c:BRZ"
+                        levels=1
+                        region="STATE_CEARA"
+                   }
+                }
 				reserves=1
 				activate_production_methods={ "pm_simple_farming" "pm_no_secondary" "pm_tools_disabled" "pm_privately_owned" }
 			}
@@ -1416,7 +1479,7 @@
 			}
 		}
 	}
-	s:STATE_PIAUI={
+	s:STATE_PIAUI = {
 		region_state:BRZ={
 			create_building={
 				building="building_maize_farm"
@@ -1432,7 +1495,7 @@
 			}		
 		}
 	}
-	s:STATE_PARAIBA={
+	s:STATE_PARAIBA = {
 		region_state:BRZ={
 			create_building={
 				building="building_textile_mills"
@@ -1446,15 +1509,22 @@
 				reserves=1
 				activate_production_methods={ "default_building_tobacco_plantation" "pm_road_carts" "pm_privately_owned_plantation" }
 			}
-			create_building={
+            create_building={
 				building="building_maize_farm"
-				level=2
+                add_ownership={ 
+                    building={ 
+                        type="building_manor_house"
+                        country="c:BRZ"
+                        levels=2
+                        region="STATE_PARAIBA"
+                   }
+                }
 				reserves=1
 				activate_production_methods={ "pm_simple_farming" "pm_no_secondary" "pm_tools_disabled" "pm_privately_owned" }
 			}
 		}
 	}
-	s:STATE_PERNAMBUCO={
+	s:STATE_PERNAMBUCO = {
 		region_state:BRZ={
 			create_building={
 				building="building_government_administration"
@@ -1494,7 +1564,7 @@
 			}			
 		}
 	}
-	s:STATE_MARANHAO={
+	s:STATE_MARANHAO = {
 		region_state:BRZ={
 			create_building={
 				building="building_logging_camp"
@@ -1510,7 +1580,7 @@
 			}
 		}
 	}
-	s:STATE_GOIAS={
+	s:STATE_GOIAS = {
 		region_state:BRZ={
 			create_building={
 				building="building_logging_camp"
@@ -1520,7 +1590,7 @@
 			}
 		}
 	}
-	s:STATE_PARA={
+	s:STATE_PARA = {
 		region_state:PRA={
 			create_building={
 				building="building_logging_camp"

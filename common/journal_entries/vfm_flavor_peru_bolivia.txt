@@ -1,4 +1,4 @@
-je_peru_bolivia_the_feeble_union = { 
+﻿je_peru_bolivia_the_feeble_union = { 
 	icon = "gfx/interface/icons/event_icons/event_fire.dds"
     group = je_group_internal_affairs
 	immediate = {
@@ -6,7 +6,7 @@ je_peru_bolivia_the_feeble_union = {
 			limit = {
 	   			c:NPU ?= {
 					is_subject_of = ROOT
-					is_subject_type = subject_type_confederation
+					is_subject_type = subject_type_confederative_partner
 					relations:root < relations_threshold:cordial
 				}
 			}
@@ -18,7 +18,7 @@ je_peru_bolivia_the_feeble_union = {
 			limit = {
 	   			c:PEU ?= {
 					is_subject_of = ROOT
-					is_subject_type = subject_type_confederation
+					is_subject_type = subject_type_confederative_partner
 					relations:root < relations_threshold:cordial
 				}
 			}
@@ -49,11 +49,11 @@ je_peru_bolivia_the_feeble_union = {
         c:BOL ?= THIS
 		OR = {
 			c:PEU ?= {
-				is_subject_type = subject_type_confederation
+				is_subject_type = subject_type_confederative_partner
 				is_subject_of = c:BOL
 			}
 			c:NPU ?= {
-				is_subject_type = subject_type_confederation
+				is_subject_type = subject_type_confederative_partner
 				is_subject_of = c:BOL
 			}
 		}
@@ -121,7 +121,7 @@ je_peru_restoration = {
 	}
 
 	possible = {
-		is_subject_type = subject_type_confederation
+		is_subject_type = subject_type_confederative_partner
 	}
 
 	complete = {

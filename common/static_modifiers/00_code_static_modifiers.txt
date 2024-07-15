@@ -63,10 +63,6 @@ base_values = {
 	state_urbanization_per_level_add = 100
 	
 	unit_experience_gain_add = 1.0
-	
-	# Changing this value currently does nothing as the logic is contained in a static modifier below 
-	# It just needs to be above 0 to ensure the mechanic is activated at all
-	country_leverage_resistance_per_population_add = 1 
 }
 
 # Scales with a country's global prestige rank, so at 20/100 this is multiplied by 0.8x, 50/100 by 0.5x, etc
@@ -172,6 +168,7 @@ declared_bankruptcy = {
 	state_radicals_from_sol_change_mult = 0.25
 	state_construction_mult = -0.25
 	building_throughput_add = -0.1
+	country_force_privatization_bool = yes
 }
 
 incorporated_state = {
@@ -769,11 +766,6 @@ forced_regime_change = {
 	interest_group_in_government_approval_add = 5
 	country_legitimacy_base_add = 25
 	country_prestige_mult = -0.25
-}
-
-cohesion_from_members = {
-	# scaled by power_bloc_cohesion_per_member_add on the Identity * number of non-leader, non-subject members
-	power_bloc_cohesion_add = 1
 }
 
 weak_power_bloc = {

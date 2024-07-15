@@ -34,6 +34,13 @@ GLOBAL = {
 			value = 70
 		}
 	}
+	
+	c:HAI = {
+		add_treasury = {
+			value = gold_reserves_limit
+			multiply = -1.0
+		}
+	}
 
 	c:FRA = {
 		fra_define_leading_dynasty = yes
@@ -904,14 +911,9 @@ GLOBAL = {
 				limit = {
 					OR = {
 						has_pop_religion = taoist
-						has_pop_religion = siberian_shamanist
 						has_pop_religion = alcheringa
 						has_pop_religion = generic_african
 						has_pop_religion = generic_native_american
-						has_pop_religion = bon
-						has_pop_religion = bimoist
-						has_pop_religion = hmongist
-						has_pop_religion = mormon
 					}
 				}
 				change_pop_religion = { target = rel:animist value = 1.0 }
@@ -922,13 +924,6 @@ GLOBAL = {
 						has_pop_religion = reformed
 						has_pop_religion = anglican
 						has_pop_religion = lutheran
-						has_pop_religion = methodist
-						has_pop_religion = baptist
-						has_pop_religion = presbyterian
-						has_pop_religion = congregationalist
-						has_pop_religion = anabaptist
-						has_pop_religion = mormon
-						has_pop_religion = god_society
 					}
 				}
 				change_pop_religion = { target = rel:protestant value = 1.0 }
@@ -945,8 +940,6 @@ GLOBAL = {
 			every_scope_pop = {
 				limit = {
 					OR = {
-						has_pop_religion = shenist
-						has_pop_religion = confucian
 						has_pop_religion = taoist
 					}
 				}
@@ -1003,13 +996,7 @@ GLOBAL = {
 		}
 		c:RUS = {
 			annex = c:CAU
-			annex = c:MIN
-			annex = c:SVA
 			annex = c:ABK
-			annex = c:EST
-			annex = c:LVN
-			annex = c:CRL
-			annex = c:CPL
 			annex = c:RAC
 		}
 		c:TUR = {
@@ -1044,7 +1031,6 @@ GLOBAL = {
 			annex = c:TUV
 			annex = c:ATI
 			annex = c:XIN
-			annex = c:KUM
 			annex = c:QIN
 		}
 		c:MJT = {
@@ -1221,7 +1207,7 @@ GLOBAL = {
 			annex = c:CMA
 			annex = c:LRJ
 			annex = c:SJN
-			annex = c:SLS
+			annex = c:SLU
 			s:STATE_CHACO = {
 				add_claim = c:BUE
 			}
@@ -1268,28 +1254,6 @@ GLOBAL = {
 		}
 	}
 
-	if = {
-		limit = {
-			has_game_rule = no_caucasus_subjects
-		}
-		c:RUS = {
-			annex = c:CAU
-			annex = c:MIN
-			annex = c:SVA
-			annex = c:ABK
-		}
-	}
-
-	if = {
-		limit = {
-			has_game_rule = no_baltic_subjects
-		}
-		c:RUS = {
-			annex = c:EST
-			annex = c:LVN
-			annex = c:CRL
-		}
-	}
 	
 	if = {
 		limit = {
@@ -1378,6 +1342,7 @@ GLOBAL = {
 			annex = c:PWN
 			annex = c:ARP
 			annex = c:ABS
+			annex = c:SLS
 		}
 		c:MEX = {
 			annex = c:COM
@@ -1389,18 +1354,30 @@ GLOBAL = {
 			annex = c:NZP
 		}
 		c:HBC = {
-			annex = c:BLF
 			annex = c:IRC
 		}
-	}
-	every_country = {# change to normal rule check, then add only to player
-		limit = {
-			has_game_rule = vanilla_construction_rate
+		#split states
+		s:STATE_ALBERTA.region_state:BLF = {
+			set_state_owner = c:HBC
 		}
-		add_modifier = {
-			name = vanilla_construction_modifier
+		s:STATE_MONTANA.region_state:BLF = {
+			set_state_owner = c:USA
+		}
+		s:STATE_IDAHO.region_state:BNN = {
+			set_state_owner = c:COL
+		}
+		s:STATE_NEVADA.region_state:BNN = {
+			set_state_owner = c:MEX
 		}
 	}
+	#every_country = {# change to normal rule check, then add only to player
+	#	limit = {
+	#		has_game_rule = vanilla_construction_rate
+	#	}
+	#	add_modifier = {
+	#		name = vanilla_construction_modifier
+	#	}
+	#}
 	
 	c:SWE = {
 		trigger_event = {

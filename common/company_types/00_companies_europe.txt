@@ -370,7 +370,7 @@ company_ericsson = {
 	
 	prosperity_modifier = {
 		country_weekly_innovation_mult = 0.1
-		state_education_access_wealth_add = 0.05
+		state_education_access_wealth_add = 0.005
 	}	
 	
 	ai_weight = {
@@ -541,20 +541,20 @@ company_nokia = {
 	}
 	
 	potential = {
-		has_interest_marker_in_region = region_baltic_states
+		has_interest_marker_in_region = region_baltic
 	}
 	
 	attainable = {
 		hidden_trigger = { # Hide attainable if it's always fulfilled by possible
 			any_scope_state = {
-				state_region = s:STATE_SOUTHERN_FINLAND
+				state_region = s:STATE_UUSIMAA
 			}
 		}
 	}		
 	
 	possible = {
 		any_scope_state = {
-			state_region = s:STATE_SOUTHERN_FINLAND
+			state_region = s:STATE_UUSIMAA
 			is_incorporated = yes
 			any_scope_building = {
 				is_building_type = building_paper_mills
@@ -592,14 +592,14 @@ company_ursus = {
 	attainable = {
 		hidden_trigger = { # Hide attainable if it's always fulfilled by possible
 			any_scope_state = {
-				state_region = s:STATE_LUBLIN
+				state_region = s:STATE_MAZOVIA
 			}
 		}
 	}		
 	
 	possible = {
 		any_scope_state = {
-			state_region = s:STATE_LUBLIN
+			state_region = s:STATE_MAZOVIA
 			is_incorporated = yes
 			any_scope_building = {
 				is_building_type = building_motor_industry
@@ -639,8 +639,8 @@ company_lilpop = {
 		hidden_trigger = { # Hide attainable if it's always fulfilled by possible
 			any_scope_state = {
 				OR = {
-					state_region = s:STATE_PLOCK
-					state_region = s:STATE_WARSAW
+					state_region = s:STATE_MAZOVIA
+					state_region = s:STATE_GREATER_POLAND
 				}
 			}
 		}
@@ -649,8 +649,8 @@ company_lilpop = {
 	possible = {
 		any_scope_state = {
 			OR = {
-				state_region = s:STATE_PLOCK
-				state_region = s:STATE_WARSAW
+				state_region = s:STATE_MAZOVIA
+				state_region = s:STATE_GREATER_POLAND
 			}
 			is_incorporated = yes
 			any_scope_building = {

@@ -398,6 +398,39 @@ french_empire_clothes_pop_trigger = {
 	}
 }
 
+russian_empire_clothes_trigger = {
+	exists = scope:character
+	scope:character = {
+		exists = c:RUS
+		exists = home_country
+		home_country = {
+			OR = {
+				AND = {
+					c:RUS = this
+					is_subject = no # preventing uniform conflicts if RUS becomes a subject of another country with puppet uniforms
+				}
+				is_subject_of = c:RUS
+			}		
+		}
+	}
+}
+
+russian_empire_clothes_pop_trigger = {
+	exists = scope:pop
+	scope:pop = {
+		exists = c:RUS
+		home_country = {
+			OR = {
+				AND = {
+					c:RUS = this
+					is_subject = no # preventing uniform conflicts if RUS becomes a subject of another country with puppet uniforms
+				}
+				is_subject_of = c:RUS
+			}		
+		}
+	}
+}
+
 german_clothes_trigger = {
 	exists = scope:character
 	scope:character = {
@@ -827,6 +860,7 @@ european_clothes_trigger = {
 					has_variable = meiji_restoration_complete
 				}
 			}
+			has_template = AST_william_light
 			AND = {
 				culture = {
 					has_discrimination_trait = european_heritage
@@ -996,12 +1030,12 @@ military_clothes_trigger = {
 monarchy_clothes_trigger = {
 	exists = scope:character
 	scope:character = {
-		exists = home_country
+		exists = owner
 		OR = {
 	     	is_ruler = yes
 	     	is_heir = yes
 	     }
-     	home_country = {
+     	owner = {
      		has_law = law_type:law_monarchy
      	}
 	}
@@ -1023,6 +1057,49 @@ overweight_trigger = {
 	scope:character = {
      	has_trait = expensive_tastes
      }
+}
+
+army_traits_trigger = {
+	exists = scope:character
+	scope:character = {
+		OR = {
+			has_trait = resupply_commander
+			has_trait = surveyor
+			has_trait = forest_commander
+			has_trait = plains_commander
+			has_trait = mountain_commander
+			has_trait = basic_artillery_commander
+			has_trait = experienced_artillery_commander
+			has_trait = expert_artillery_commander
+			has_trait = stalwart_defender
+			has_trait = trench_rat
+			has_trait = defense_in_depth_specialist
+			has_trait = basic_offensive_planner
+			has_trait = experienced_offensive_planner
+			has_trait = expert_offensive_planner
+			has_trait = basic_defensive_strategist
+			has_trait = experienced_defensive_strategist
+			has_trait = expert_defensive_strategist
+			has_trait = traditionalist_commander
+			has_trait = popular_commander
+			has_trait = celebrity_commander
+		}
+	}
+}
+
+navy_traits_trigger = {
+	exists = scope:character
+	scope:character = {
+		OR = {
+			has_trait = basic_naval_commander
+			has_trait = experienced_naval_commander
+			has_trait = expert_naval_commander
+			has_trait = convoy_raider_commander
+			has_trait = experienced_convoy_raider
+			has_trait = expert_convoy_raider
+			has_trait = dockyard_master
+		}
+	}
 }
 
 #Pop 
@@ -1189,6 +1266,24 @@ south_american_clothes_pop_trigger = {
 			culture = cu:mexican
 			culture = cu:central_american
 			culture = cu:caribeno
+		}
+	}
+}
+
+integrated_south_american_natives_pop_trigger = { # Represents those South American native groups that had long been integrated into wider South and Central American society.
+	exists = scope:pop
+	scope:pop = {
+		culture = {
+			OR = {
+				has_discrimination_trait = native_mesoamerican_culture_group
+				has_discrimination_trait = south_american_group
+			}
+			NOT = {
+				OR = {
+					this = cu:patagonian
+					this = cu:amazonian
+				}
+			}
 		}
 	}
 }

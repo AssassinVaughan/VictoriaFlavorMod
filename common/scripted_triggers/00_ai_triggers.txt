@@ -122,6 +122,7 @@ has_je_conquest_reason = {
 			$TARGET$ = {
 				any_scope_state = {
 					state_region = { is_homeland = cu:greek }
+					has_claim_by = root
 				}
 			}
 		}
@@ -129,23 +130,39 @@ has_je_conquest_reason = {
 		AND = {
 			has_journal_entry = je_consolidate_colonial_rule
 			$TARGET$ = {
+				is_country_type = unrecognized
+				target_is_our_or_fellow_subject = no
 				any_scope_state = {
 					OR = {
 						region = sr:region_north_india
 						region = sr:region_south_india
-						region = sr:region_himalayas
+						# himalayas intentionally excluded to make BIC less aggressive against Tibet etc
+						state_region = s:STATE_BURMA
+						state_region = s:STATE_KACHIN
+						state_region = s:STATE_SHAN_STATES
+						state_region = s:STATE_PEGU						
 					}
 				}
 			}
 		}
 
 		AND = {
+			has_strategy = ai_strategy_unify_china
+			$TARGET$ = {
+				has_variable = warlord_state
+			}
+		}
+
+		AND = {
 			has_journal_entry = je_age_of_princes
+			has_strategy = ai_strategy_unify_ethiopia
 			$TARGET$ = {
 				any_scope_state = {
 					OR = {
 						state_region = s:STATE_AMHARA
 						state_region = s:STATE_GONDER
+						state_region = s:STATE_OROMIA
+						state_region = s:STATE_GAMBELA
 					}
 				}
 			}
@@ -159,10 +176,13 @@ has_je_conquest_reason = {
 						state_region = s:STATE_CALIFORNIA
 						state_region = s:STATE_NEVADA
 						state_region = s:STATE_UTAH
-						state_region = s:STATE_COLORADO
 						state_region = s:STATE_ARIZONA
 						state_region = s:STATE_NEW_MEXICO
 						state_region = s:STATE_TEXAS
+						state_region = s:STATE_WYOMING
+						state_region = s:STATE_COLORADO
+						state_region = s:STATE_OKLAHOMA
+						state_region = s:STATE_KANSAS
 					}
 				}
 			}
@@ -203,21 +223,23 @@ has_je_conquest_reason = {
 			}
 		}
 		
-		AND = {
-			wants_to_solve_schleswig_holstein = yes
-			$TARGET$ = {
-				is_oppressor_of_schleswig_holstein = yes
-			}
-		}
+		#AND = {
+		#	wants_to_solve_schleswig_holstein = yes
+		#	$TARGET$ = {
+		#		is_oppressor_of_schleswig_holstein = yes
+		#	}
+		#}
 
 		AND = {
 			has_journal_entry = je_conquest_of_algeria
 			$TARGET$ = {
 				any_scope_state = {
 					OR = {
+						state_region = s:STATE_TLEMCEN
 						state_region = s:STATE_ALGIERS
 						state_region = s:STATE_CONSTANTINE
-						state_region = s:STATE_ORAN
+						state_region = s:STATE_TOUGGOURT
+						state_region = s:STATE_GHARDAIA
 						state_region = s:STATE_SAHARA
 						state_region = s:STATE_EAST_SAHARA
 					}
@@ -241,9 +263,19 @@ has_je_conquest_reason = {
 		
 		AND = {
 			has_journal_entry = je_unify_afghanistan
-			country_has_primary_culture = cu:pashtun
+			is_afghan_nation = yes
 			$TARGET$ = {
-				is_afghan_nation = yes
+				OR = {
+					is_afghan_nation = yes
+					any_scope_state = {
+						OR = {
+							state_region = s:STATE_KABUL
+							state_region = s:STATE_HERAT
+							state_region = s:STATE_KANDAHAR
+							state_region = s:STATE_CENTRAL_HIGHLANDS
+						}
+					}
+				}
 			}
 		}
 		
@@ -293,6 +325,18 @@ has_je_subjugation_reason = {
 			exists = c:EGY
 			$TARGET$ = c:EGY		
 		}
+		AND = { # Open up Japan	
+			has_strategy = ai_strategy_economic_imperialism
+			has_technology_researched = nationalism # Just to make sure it doesn't happen immediately in 1836
+			country_rank = rank_value:great_power
+			navy_size >= 25
+			scope:target_country = { 
+				exists = c:JAP
+				this = c:JAP		
+				has_law = law_type:law_isolationism
+				gdp >= 5000000
+			} 		
+		}
 		AND = {
 			c:GBR ?= this
 			has_variable = committed_to_afghanistan_assistance
@@ -334,6 +378,24 @@ has_je_befriend_reason = {
 			}
 			has_variable = rsm_friendship
 		}
+		
+		AND = {
+			has_journal_entry = je_oregon
+			$TARGET$ = {
+				any_scope_state = {
+					OR = {
+						state_region = s:STATE_WASHINGTON
+						state_region = s:STATE_IDAHO
+						state_region = s:STATE_OREGON
+					}
+				}
+			}
+		}
+
+		AND = {
+			c:GBR ?= this
+			$TARGET$ = { has_journal_entry = je_oregon }			
+		}			
 	
 		AND = {
 			c:GBR ?= this
@@ -453,5 +515,48 @@ has_powerful_protectors = {
 				type = guarantee_independence
 			}						
 		}							
+	}
+}
+
+target_is_our_or_fellow_subject = {
+	OR = {
+		is_subject_of = root
+		AND = {
+			root = { is_subject = yes }
+			is_subject_of = root.overlord
+		}	
+	}
+}
+
+should_carve_up_china = {
+	country_rank >= rank_value:great_power
+	OR = {
+		sr:region_north_china = {
+			any_scope_state = {
+				is_treaty_port = yes
+				owner = {
+					NOT = { this = root }
+					NOT = { is_country_type = unrecognized }
+				}
+			}
+		}
+		sr:region_south_china = {
+			any_scope_state = {
+				is_treaty_port = yes
+				owner = {
+					NOT = { this = root }
+					NOT = { is_country_type = unrecognized }
+				}
+			}
+		}
+		sr:region_manchuria = {
+			any_scope_state = {
+				is_treaty_port = yes
+				owner = {
+					NOT = { this = root }
+					NOT = { is_country_type = unrecognized }
+				}
+			}
+		}
 	}
 }

@@ -7,11 +7,10 @@ NJominiMap = {
 NAI = {
 	STRATEGY_RANDOM_FACTOR = 10.0
 	CHANGE_STRATEGY_INCREASE_WEEKLY_CHANCE = 40.0
-	CHANGE_STRATEGY_DIPLOMATIC_STATE_GAINED = 15
-	CHANGE_STRATEGY_DIPLOMATIC_STATE_LOST = 15
+	CHANGE_STRATEGY_DIPLOMATIC_STATE_GAINED_OR_LOST = 15
 	COUNTRY_GOAL_STRATEGIC_UPDATE_COUNT = 10
 	COUNTRY_GOAL_ADJUSTMENT_UPDATE_COUNT = 75
-	BASE_AGGRESSION = 0.8
+	BASE_AGGRESSION = 0.3
 	DIPLO_PROPOSAL_TO_PLAYER_COOLDOWN_MONTHS = 60
 	DIPLO_PROPOSAL_LIKELY_NON_ACCEPTED_COOLDOWN_MONTHS = 60
 	GOAL_BEFRIEND_RECONCILE_FACTOR = 100
@@ -19,11 +18,8 @@ NAI = {
 	START_DIPLO_PLAY_RANDOM_FACTOR = 1.2
 	WAR_GOAL_RANDOM_FACTOR = 1.5
 	TECH_RANDOM_FACTOR = 1.5
-	TECH_REMAINING_COST_FACTOR = 0.03
 	DEFEND_STATE_CAPITAL_WEIGHT = 50
 	INVADE_STATE_CAPITAL_WEIGHT = 50
-	NAVAL_INVASION_COOLDOWN_DAYS = 30
-	FRONT_IMPORTANCE_MIN_SCORE = 20
 	COLONY_ARABLE_LAND_WEIGHT = 15
 	COLONY_ADJACENT_WEIGHT_MULT = 20
 	COLONY_RANDOM_FACTOR = 1.5
@@ -110,7 +106,6 @@ NCountry = {
 }
 
 NPolitics = {
-	LEADER_IDEOLOGY_RANDOM_FACTOR = 1.5
 	POP_IG_RANDOM_FACTOR = 0.3
 	MAX_POP_FRACTION_LEAVE_IG = 0.1
 	
@@ -154,7 +149,6 @@ NMilitary = {
 	MANPOWER_LOST_DUE_TO_ATTRITION_PER_WEEK_MAX = 0.03 	#0.12 The maximum percentage of manpower a unit can lose each week due to attrition
 	BATTLE_LETHALITY_MIN = 0.0002 # 0.001
 	BATTLE_LETHALITY_MAX = 0.002  # 0.005
-	USE_TRAVEL_NETWORK = no
 	
 	MANPOWER_RATIO_REQUIRED_TO_CLEAR_DEFEATED_ADMIRALS = 0.75 #0.5	# A Defeated fleet without at least this ratio of current/max manpower will remain Defeated
 }
@@ -168,7 +162,6 @@ NDiplomacy = {
 	WAR_GOAL_INFAMY_REDUCE_AUTONOMY = 2.5
 	WAR_GOAL_INFAMY_TRANSFER_SUBJECT = 2.5	
 	WAR_GOAL_INFAMY_ANNEX_COUNTRY = 6.0
-	WAR_GOAL_INFAMY_UNIFICATION = 0.5
 	WAR_GOAL_INFAMY_REGIME_CHANGE = 1.0
 	SWAY_OFFER_WARGOAL_MANEUVERS_COST_RETURN_STATE = 5
 	
@@ -181,13 +174,15 @@ NDiplomacy = {
 	WAR_GOAL_INFAMY_POPULATION_SCALING_MULTIPLIER_MAX_TOTAL = 40 # Infamy population multiplier can't be higher than this, regardless of number of states affected
 	WAR_GOAL_INFAMY_HOMELAND_FACTOR = -0.5 # Infamy is adjusted by this if the states taken/puppeted etc are Homelands of the aggressor
 	WAR_GOAL_INFAMY_UNINCORPORATED_FACTOR = -0.75 # Infamy is adjusted by this if the states taken/puppeted etc are unincorporated
-	WAR_GOAL_INFAMY_OWN_SUBJECT_MULT = 0.67 # Infamy is multiplied by this for wargoals targeting your own subject
+	WAR_GOAL_INFAMY_REBELLING_SUBJECT_MULT = 0.5 # Infamy is multiplied by this for wargoals targeting a rebellious subject
+	WAR_GOAL_INFAMY_LOW_LIBERTY_DESIRE_SUBJECT_MULT = 0.5 # Infamy is multiplied by this for wargoals targeting a subject whose LD is below WAR_GOAL_INFAMY_LOW_LIBERTY_DESIRE_THRESHOLD
+	WAR_GOAL_INFAMY_LOW_LIBERTY_DESIRE_THRESHOLD = 25 # Threshold for WAR_GOAL_INFAMY_LOW_LIBERTY_DESIRE_SUBJECT_MULT
 }
 
 NPops = {
     CONVERSION_RATE = 0.001						# Percentage of pops who will Convert into a different Religion each month, if eligible (halved from vanilla)
 	RADICALS_MONTHLY_FROM_DISCRIMINATION = 0.006 #0.005 # Scales by literacy
-	
+	SOL_DECREASE_POP_IMPACT_FACTOR = 0.05		# 0.06 How large part of a pop become more radical as a result of a decrease in standard of living
 	
 	MIGRATION_MAX_EMIGRATION_AS_POPULATION_FRACTION = 0.001		#0.005 Max emigration per week is clamped to this fraction of a state's population
 	

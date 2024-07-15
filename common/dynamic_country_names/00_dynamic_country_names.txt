@@ -779,8 +779,420 @@ BOL = {
 			c:BOL = {
 				has_diplomatic_pact = {
 					who = c:PEU
-					type = confederation
+					type = confederative_partner
 					is_initiator = yes
+				}
+			}
+		}
+	}
+}
+
+VNZ = {
+	dynamic_country_name = {
+		name = dyn_c_klein_venedig
+		adjective = dyn_c_klein_venedig_adj
+
+		is_main_tag_only = yes
+		priority = 0
+		
+		trigger = {
+			OR = {
+				AND = {
+					exists = c:HRE
+					scope:actor ?= {
+						is_subject_of = c:HRE
+					}
+				}
+				AND = {
+					exists = c:GER
+					scope:actor ?= {
+						is_subject_of = c:GER
+					}
+				}
+				AND = {
+					exists = c:AUS
+					scope:actor ?= {
+						is_subject_of = c:AUS
+					}
+				}
+			}
+		}
+	}
+}
+
+PLT = {
+	dynamic_country_name = { # Argentina also has this dynamic name
+		name = dyn_c_river_plate
+		adjective = dyn_c_river_plate_adj
+
+		is_main_tag_only = yes
+		priority = 1
+		
+		trigger = {
+			exists = c:GBR
+			scope:actor ?= {
+				is_subject_of = c:GBR
+			}
+		}
+	}
+
+	dynamic_country_name = {
+		name = dyn_c_sudamerica_legionaria
+		adjective = dyn_c_sudamerica_legionaria_adj
+
+		is_main_tag_only = yes
+		priority = 0
+		
+		trigger = {
+			exists = scope:actor
+			scope:actor ?= {
+				was_formed_from = ARG
+				coa_fascist_trigger = yes
+				NOT = {
+					has_law = law_type:law_council_republic
+				}
+			}
+		}
+	}	
+	dynamic_country_name = {
+		name = dyn_c_confederacion_sudamericana
+		adjective = dyn_c_confederacion_sudamericana_adj
+		
+		is_main_tag_only = yes
+		priority = 0
+		
+		trigger = {
+			coa_def_dictatorship_flag_trigger = yes
+			exists = scope:actor
+			scope:actor ?= {
+				was_formed_from = ARG
+			}
+		}
+	}
+}
+
+ARB = {
+	dynamic_country_name = {
+		name = dyn_c_muhammara
+		adjective = dyn_c_muhammara_adj
+
+		is_main_tag_only = yes
+		priority = 1
+
+		trigger = {
+			coa_def_monarchy_flag_trigger = yes
+		}
+	}
+}
+
+
+PER = {
+	dynamic_country_name = {
+		name = dyn_c_iran
+		adjective = dyn_c_iran_adj
+
+		is_main_tag_only = yes
+		priority = 1
+
+		trigger = {
+			scope:actor = {
+				NOT = { is_country_type = unrecognized }
+			}
+		}
+	}
+}
+
+AFG = {
+	dynamic_country_name = {
+		name = dyn_c_durrani_empire
+		adjective = dyn_c_durrani_empire_adj
+
+		is_main_tag_only = yes
+		priority = 1
+
+		trigger = {
+			exists = scope:actor
+			scope:actor = {
+				has_law = law_type:law_monarchy
+				was_formed_from = HER
+			}
+		}
+	}
+}
+
+GEO = {
+	dynamic_country_name = {
+		name = dyn_c_kartli_kakheti
+		adjective = dyn_c_kartli_kakheti_adj
+
+		is_main_tag_only = yes
+		priority = 1
+
+		trigger = {
+			exists = scope:actor
+			scope:actor = {
+				is_country_type = unrecognized
+				NOT = {
+					has_technology_researched = nationalism
+				}
+			}
+		}
+	}
+}
+
+AZB = {
+	dynamic_country_name = {
+		name = dyn_c_baku 
+		adjective = dyn_c_baku_adj 
+
+		is_main_tag_only = yes
+		priority = 1
+
+		trigger = {
+			exists = scope:actor
+			scope:actor = {
+				is_country_type = unrecognized
+				NOT = {
+					has_technology_researched = nationalism
+				}
+			}
+		}
+	}
+}
+
+LUR = {
+	dynamic_country_name = {
+		name = dyn_c_bakhtiari
+		adjective = dyn_c_bakhtiari_adj
+
+		is_main_tag_only = yes
+		priority = 1
+
+		trigger = {
+			exists = scope:actor
+			scope:actor = {
+				is_country_type = unrecognized
+				NOT = {
+					has_technology_researched = nationalism
+				}
+			}
+		}
+	}
+}
+
+# Chinese Warlords
+HNA = {
+	dynamic_country_name = {
+		name = dyn_c_hunan_clique
+		adjective = HNA_ADJ
+
+		is_main_tag_only = yes
+		priority = 1
+
+		trigger = {
+			has_global_variable = china_shatters
+			scope:actor ?= {
+				has_government_type = gov_warlord_state
+			}
+		}
+	}
+}
+GNG = {
+	dynamic_country_name = {
+		name = dyn_c_guangxi_clique
+		adjective = AHU_ADJ
+
+		is_main_tag_only = yes
+		priority = 1
+
+		trigger = {
+			has_global_variable = china_shatters
+			scope:actor ?= {
+				has_government_type = gov_warlord_state
+			}
+		}
+	}
+}
+AHU = {
+	dynamic_country_name = {
+		name = dyn_c_anhui_clique
+		adjective = AHU_ADJ
+
+		is_main_tag_only = yes
+		priority = 1
+
+		trigger = {
+			has_global_variable = china_shatters
+			scope:actor ?= {
+				has_government_type = gov_warlord_state
+			}
+		}
+	}
+}
+ZHI = {
+	dynamic_country_name = {
+		name = dyn_c_zhili_clique
+		adjective = ZHI_ADJ
+
+		is_main_tag_only = yes
+		priority = 1
+
+		trigger = {
+			has_global_variable = china_shatters
+			scope:actor ?= {
+				has_government_type = gov_warlord_state
+			}
+		}
+	}
+}
+MCH = {
+	dynamic_country_name = {
+		name = dyn_c_fengtian_clique
+		adjective = dyn_c_fengtian_adj
+
+		is_main_tag_only = yes
+		priority = 1
+
+		trigger = {
+			has_global_variable = china_shatters
+			scope:actor ?= {
+				any_scope_state = {
+					state_region = s:STATE_SHENGJING
+				}
+				has_government_type = gov_warlord_state
+			}
+		}
+	}
+}
+SHN = {
+	dynamic_country_name = {
+		name = dyn_c_shanxi_clique
+		adjective = SHN_ADJ
+
+		is_main_tag_only = yes
+		priority = 1
+
+		trigger = {
+			has_global_variable = china_shatters
+			scope:actor ?= {
+				has_government_type = gov_warlord_state
+			}
+		}
+	}
+}
+XIN = {
+	dynamic_country_name = {
+		name = dyn_c_xinjiang_clique
+		adjective = dyn_c_xinjiang_adj
+
+		is_main_tag_only = yes
+		priority = 1
+
+		trigger = {
+			has_global_variable = china_shatters
+			scope:actor ?= {
+				has_government_type = gov_warlord_state
+			}
+		}
+	}
+}
+GUI = {
+	dynamic_country_name = {
+		name = dyn_c_guizhou_clique
+		adjective = GUI_ADJ
+
+		is_main_tag_only = yes
+		priority = 1
+
+		trigger = {
+			has_global_variable = china_shatters
+			scope:actor ?= {
+				has_government_type = gov_warlord_state
+			}
+		}
+	}
+}
+YUE = {
+	dynamic_country_name = {
+		name = dyn_c_guangdong_clique
+		adjective = dyn_c_guangdong_adj
+
+		is_main_tag_only = yes
+		priority = 1
+
+		trigger = {
+			has_global_variable = china_shatters
+			scope:actor ?= {
+				has_government_type = gov_warlord_state
+			}
+		}
+	}
+}
+SIH = {
+	dynamic_country_name = {
+		name = dyn_c_sichuan_clique
+		adjective = SIH_ADJ
+
+		is_main_tag_only = yes
+		priority = 1
+
+		trigger = {
+			has_global_variable = china_shatters
+			scope:actor ?= {
+				has_government_type = gov_warlord_state
+			}
+		}
+	}
+}
+SHA = {
+	dynamic_country_name = {
+		name = dyn_c_shandong_clique
+		adjective = SHA_ADJ
+
+		is_main_tag_only = yes
+		priority = 1
+
+		trigger = {
+			has_global_variable = china_shatters
+			scope:actor ?= {
+				has_government_type = gov_warlord_state
+			}
+		}
+	}
+}
+YUN = {
+	dynamic_country_name = {
+		name = dyn_c_yunnan_clique
+		adjective = YUN_ADJ
+
+		is_main_tag_only = yes
+		priority = 1
+
+		trigger = {
+			has_global_variable = china_shatters
+			scope:actor ?= {
+				has_government_type = gov_warlord_state
+			}
+		}
+	}
+}
+BEI = {
+	dynamic_country_name = {
+		name = dyn_c_beiyang_government
+		adjective = CHI_ADJ
+		
+		is_main_tag_only = yes
+		priority = 15
+		
+		trigger = {
+			scope:actor = {
+				has_global_variable = china_shatters
+				global_var:chinese_central_government ?= THIS
+				capital = {
+					OR = {
+						state_region = s:STATE_BEIJING
+						state_region = s:STATE_HEBEI
+					}
 				}
 			}
 		}

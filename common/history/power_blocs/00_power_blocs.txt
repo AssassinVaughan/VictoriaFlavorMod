@@ -7,6 +7,11 @@
 			founding_date = 1784.5.12 # Treaty of Paris (1783) comes into effect
 			identity = identity_sovereign_empire
 			principle = principle_vassalization_1
+			
+			#member = c:HAM
+			member = c:BRE
+			member = c:OLD
+			member = c:BRA
 
 			# subjects are automatically part of the bloc
 		}
@@ -34,6 +39,7 @@
 			# Habsburg leaders in Italy and Italian states held up by direct Austrian intervention
 			member = c:MOD
 			member = c:TUS
+			member = c:LUC
 			member = c:PAR
 			member = c:SIC
 		}
@@ -59,10 +65,25 @@
 			identity = identity_trade_league
 			principle = principle_internal_trade_1
 			
+			#if = { this doesnt work :(
+		    #limit = {
+			#    NOT = { has_game_rule = vanilla_german_minors }
+			#	member = c:AHB
+			#	member = c:AHK
+			#	member = c:HHB
+			#	member = c:GRZ
+			#	member = c:GRA
+			#	member = c:ALN
+			#	member = c:SND
+			#	member = c:HHN
+			#}
+			#}
+			
+			member = c:AHD # VFM
 			member = c:LUB # After 1836, but member for gameplay balance reasons
-			member = c:BRA # After 1836, but member for gameplay balance reasons
-			member = c:SCM # After 1836, but member for gameplay balance reasons
-			member = c:MST # After 1836, but member for gameplay balance reasons
+			member = c:BRA # After 1836, but member for gameplay balance reasons, in GBRs sphere in VFM
+			#member = c:SCM # After 1836, but member for gameplay balance reasons, not in VFM?
+			#member = c:MST # After 1836, but member for gameplay balance reasons, Not in VFM?
 			member = c:HES # 1834
 			member = c:BAV # 1834
 			member = c:WUR # 1834
@@ -97,7 +118,7 @@
 
 	c:RUS = {
 		create_power_bloc = {
-			name = ROSSIYSKAYA_IMPERIYA
+			name = russian_empire
 
 			map_color = { 78 134 62 }
 

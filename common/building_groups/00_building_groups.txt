@@ -347,6 +347,8 @@ bg_gold_fields = {
 	
 	depletable_resource = yes
 	
+	always_self_owning = yes
+	
 	pays_taxes = no
 	
 	infrastructure_usage_per_level = 0
@@ -543,6 +545,8 @@ bg_service = {
 	
 	auto_place_buildings = yes	
 	
+	always_self_owning = yes
+	
 	economy_of_scale = yes
 	
 	default_building = building_urban_center
@@ -638,6 +642,8 @@ bg_trade = {
 	
 	subsidized = yes
 	
+	always_self_owning = yes
+	
 	created_by_trade_routes = yes
 	
 	auto_place_buildings = yes
@@ -674,6 +680,8 @@ bg_financial_districts = {
 # Needed for autonomous investment to track investments separately from other ownership buildings
 bg_manor_houses = {
 	parent_group = bg_owner_buildings
+	
+	infrastructure_usage_per_level = 0.0
 }
 
 bg_owner_buildings = {
@@ -692,6 +700,8 @@ bg_owner_buildings = {
 	auto_place_buildings = yes
 
 	owns_other_buildings = yes
+	
+	always_self_owning = yes
 
 	min_hiring_rate = 1.0
 	max_hiring_rate = 1.0

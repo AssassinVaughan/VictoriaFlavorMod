@@ -84,10 +84,6 @@ law_state_religion = {
 			value = 0.25
 		}
 	}
-
-	can_impose = { 
-		is_subject_of = scope:initiator	
-	} 
 	
 	ai_will_do = {
 		exists = ruler
@@ -476,16 +472,20 @@ law_freedom_of_conscience = {
 		}
 	}
 
-	can_impose = { 
-		is_subject_of = scope:initiator	
-	} 
-
 	ai_enact_weight_modifier = { #Petitions
 		value = 0
 		
 		if = {
 			limit = { ai_has_enact_weight_modifier_journal_entries = yes }
 			add = 750
+		}
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_sick_man_education
+				has_law = law_type:law_state_religion
+			}
+			add = 1000
 		}
 	}
 }
@@ -503,6 +503,15 @@ law_total_separation = {
 
 	disallowing_laws = {
 		law_theocracy
+	}
+	
+	can_enact = {
+		OR = {
+			is_power_bloc_leader = no
+			power_bloc ?= {
+				NOT = { has_identity = identity:identity_religious }
+			}
+		}
 	}
 	
 	on_enact = {
@@ -591,10 +600,6 @@ law_total_separation = {
 		}
 	}
 
-	can_impose = { 
-		is_subject_of = scope:initiator	
-	} 
-
 	ai_enact_weight_modifier = { #Petitions
 		value = 0
 		
@@ -619,17 +624,23 @@ law_state_atheism = {
 	disallowing_laws = {
 		law_theocracy
 	}
-
-	modifier = {
-		interest_group_ig_devout_pol_str_mult = -0.5
-		state_conversion_mult = 0.25
-		country_authority_add = 200
-	}
 	
 	can_enact = {
 		ig:ig_devout = {
 			is_in_government = no
 		}
+		OR = {
+			is_power_bloc_leader = no
+			power_bloc ?= {
+				NOT = { has_identity = identity:identity_religious }
+			}
+		}
+	}
+
+	modifier = {
+		interest_group_ig_devout_pol_str_mult = -0.5
+		state_conversion_mult = 0.25
+		country_authority_add = 200
 	}
 	
 	on_enact = {
@@ -697,10 +708,6 @@ law_state_atheism = {
 			}
 		}
 	}
-
-	can_impose = { 
-		is_subject_of = scope:initiator	
-	} 
 
 	ai_enact_weight_modifier = { #Petitions
 		value = 0

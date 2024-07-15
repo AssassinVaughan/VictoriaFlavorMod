@@ -929,7 +929,7 @@ ideology_abolitionist = {
 			
 			if = {
 				limit = {
-					owner = { is_interest_group_type = ig_petty_bourgeoisie }
+					scope:interest_group = { is_interest_group_type = ig_petty_bourgeoisie }
 				}
 				add = 75
 			}
@@ -1066,7 +1066,9 @@ ideology_pacifist = {
 			}
 		}
 		scope:interest_group = {
-			is_interest_group_type = ig_armed_forces
+			NOT = {
+				is_interest_group_type = ig_armed_forces
+			}
 		}
 		scope:interest_group = {
 			NOR = {

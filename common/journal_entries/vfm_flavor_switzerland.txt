@@ -4,9 +4,9 @@
 	is_shown_when_inactive = {
 		country_has_primary_culture = cu:alemannic
 		OR={
-			is_subject_type = subject_type_confederation
+			is_subject_type = subject_type_confederative_partner
 			any_country = {
-				is_subject_type = subject_type_confederation
+				is_subject_type = subject_type_confederative_partner
 				overlord = ROOT
 			}
 		}
@@ -16,7 +16,7 @@
 		custom_tooltip = {
 			text = swiss_confederation_tt
 			any_country = {
-				is_subject_type = subject_type_confederation
+				is_subject_type = subject_type_confederative_partner
 				overlord = ROOT
 			}
 		}
@@ -56,7 +56,7 @@
 						
 						NOT = {
 							any_country = {
-								is_subject_type = subject_type_confederation
+								is_subject_type = subject_type_confederative_partner
 								country_has_state_religion = rel:catholic
 								overlord = ROOT
 							}
@@ -80,7 +80,7 @@
 					
 						NOT = {
 							any_country = {
-								is_subject_type = subject_type_confederation
+								is_subject_type = subject_type_confederative_partner
 								country_has_state_religion = rel:reformed
 								overlord = ROOT
 							}
@@ -94,7 +94,7 @@
 	invalid = {
 		NOT = {
 			any_country = {
-				is_subject_type = subject_type_confederation
+				is_subject_type = subject_type_confederative_partner
 				overlord = ROOT
 			}
 		}

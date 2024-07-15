@@ -258,6 +258,17 @@
 	}
 	s:STATE_GREATER_POLAND={
 		region_state:RUS={
+		    create_building={
+				building="building_government_administration"
+				add_ownership={
+					country={
+						country="c:RUS"
+						levels=2
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_religious_bureaucrats" "pm_hereditary_bureaucrats" "pm_horizontal_drawer_cabinets" }
+			}
 			create_building={
 				building="building_textile_mills"
 				add_ownership={
@@ -290,7 +301,7 @@
 					building={
 						type="building_manor_house"
 						country="c:RUS"
-						levels=3
+						levels=4
 						region="STATE_GREATER_POLAND"
 					}
 				}
@@ -490,7 +501,7 @@
 					building={
 						type="building_manor_house"
 						country="c:POS"
-						levels=2
+						levels=3
 						region="STATE_POSEN"
 					}
 				}
@@ -1181,7 +1192,7 @@
 						type="building_financial_district"
 						country="c:AUS"
 						levels=1
-						region="STATE_MOLDAVIA"
+						region="STATE_BUKOVINA"
 					}
 					building={
 						type="building_financial_district"
@@ -1283,7 +1294,7 @@
 					building={
 						type="building_manor_house"
 						country="c:WAL"
-						levels=14
+						levels=4
 						region="STATE_WALLACHIA"
 					}
 				}
@@ -1296,7 +1307,7 @@
 					building={
 						type="building_manor_house"
 						country="c:WAL"
-						levels=2
+						levels=1
 						region="STATE_WALLACHIA"
 					}
 				}
@@ -1309,7 +1320,7 @@
 					building={
 						type="building_coal_mine"
 						country="c:WAL"
-						levels=2
+						levels=1
 						region="STATE_WALLACHIA"
 					}
 					building={
@@ -1341,7 +1352,7 @@
 					building={
 						type="building_manor_house"
 						country="c:WAL"
-						levels=9
+						levels=2
 						region="STATE_WALLACHIA"
 					}
 				}
@@ -1354,13 +1365,13 @@
 					building={
 						type="building_logging_camp"
 						country="c:WAL"
-						levels=3
+						levels=2
 						region="STATE_WALLACHIA"
 					}
 					building={
 						type="building_financial_district"
 						country="c:WAL"
-						levels=2
+						levels=1
 						region="STATE_WALLACHIA"
 					}
 				}
@@ -1391,7 +1402,7 @@
 						type="building_manor_house"
 						country="c:RUS"
 						levels=1
-						region="STATE_MOLDAVIA"
+						region="STATE_KIEV"
 					}
 				}
 				reserves=1

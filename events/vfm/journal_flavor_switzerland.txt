@@ -30,7 +30,7 @@ journal_flavor_switzerland.1 = {
 
 		every_country = {
 			limit = {
-				is_subject_type = subject_type_confederation
+				is_subject_type = subject_type_confederative_partner
 				overlord = ROOT
 				is_player = no
 			}
@@ -71,12 +71,12 @@ journal_flavor_switzerland.2 = {
 				exists = c:API
 				c:API = {
 					is_subject_of = ROOT
-					is_subject_type = subject_type_confederation
+					is_subject_type = subject_type_confederative_partner
 				}
 			}
 			remove_diplomatic_pact = {
 				country = c:API
-				type = confederation
+				type = confederative_partner
 			}
 		}
 		if = {
@@ -84,12 +84,12 @@ journal_flavor_switzerland.2 = {
 				exists = c:NTL
 				c:NTL = {
 					is_subject_of = ROOT
-					is_subject_type = subject_type_confederation
+					is_subject_type = subject_type_confederative_partner
 				}
 			}
 			remove_diplomatic_pact = {
 				country = c:NTL
-				type = confederation
+				type = confederative_partner
 			}
 		}
 
@@ -104,7 +104,7 @@ journal_flavor_switzerland.2 = {
 			}
 			every_country = {
 				limit = {
-					is_subject_type = subject_type_confederation
+					is_subject_type = subject_type_confederative_partner
 					overlord = ROOT
 					OR = {
 						country_has_state_religion = rel:reformed
@@ -149,13 +149,13 @@ journal_flavor_switzerland.2 = {
 					ROOT = {
 						remove_diplomatic_pact = {
 							country = scope:sonderbund_leader
-							type = confederation
+							type = confederative_partner
 						}
 					}
 	
 					every_country = {
 						limit = {
-							is_subject_type = subject_type_confederation
+							is_subject_type = subject_type_confederative_partner
 							overlord = ROOT
 							country_has_state_religion = rel:catholic
 							is_player = no
@@ -185,13 +185,13 @@ journal_flavor_switzerland.2 = {
 					ROOT = {
 						remove_diplomatic_pact = {
 							country = scope:sonderbund_leader
-							type = confederation
+							type = confederative_partner
 						}
 					}
 	
 					every_country = {
 						limit = {
-							is_subject_type = subject_type_confederation
+							is_subject_type = subject_type_confederative_partner
 							overlord = ROOT
 							country_has_state_religion = rel:catholic
 							is_player = no
@@ -209,7 +209,7 @@ journal_flavor_switzerland.2 = {
 		else = {
 			every_country = {
 				limit = {
-					is_subject_type = subject_type_confederation
+					is_subject_type = subject_type_confederative_partner
 					overlord = ROOT
 					country_has_state_religion = rel:catholic
 					is_player = no
@@ -253,12 +253,12 @@ journal_flavor_switzerland.2 = {
 					ROOT = {
 						remove_diplomatic_pact = {
 							country = scope:sonderbund_leader
-							type = confederation
+							type = confederative_partner
 						}
 					}
 					every_country = {
 						limit = {
-							is_subject_type = subject_type_confederation
+							is_subject_type = subject_type_confederative_partner
 							overlord = ROOT
 							OR = {
 								country_has_state_religion = rel:reformed
@@ -290,13 +290,13 @@ journal_flavor_switzerland.2 = {
 					ROOT = {
 						remove_diplomatic_pact = {
 							country = scope:sonderbund_leader
-							type = confederation
+							type = confederative_partner
 						}
 					}
 
 					every_country = {
 						limit = {
-							is_subject_type = subject_type_confederation
+							is_subject_type = subject_type_confederative_partner
 							overlord = ROOT
 							OR = {
 								country_has_state_religion = rel:reformed
@@ -377,7 +377,7 @@ journal_flavor_switzerland.2 = {
 				}
 				every_country = {
 					limit = {
-						is_subject_type = subject_type_confederation
+						is_subject_type = subject_type_confederative_partner
 						overlord = ROOT
 						OR = {
 							country_has_state_religion = rel:reformed
@@ -396,7 +396,7 @@ journal_flavor_switzerland.2 = {
 			else = {
 				every_country = {
 					limit = {
-						is_subject_type = subject_type_confederation
+						is_subject_type = subject_type_confederative_partner
 						overlord = ROOT
 						country_has_state_religion = rel:catholic
 						is_player = no
@@ -432,7 +432,7 @@ journal_flavor_switzerland.2 = {
 				}
 				every_country = {
 					limit = {
-						is_subject_type = subject_type_confederation
+						is_subject_type = subject_type_confederative_partner
 						overlord = ROOT
 						OR = {
 							country_has_state_religion = rel:reformed
@@ -451,7 +451,7 @@ journal_flavor_switzerland.2 = {
 			else = {
 				every_country = {
 					limit = {
-						is_subject_type = subject_type_confederation
+						is_subject_type = subject_type_confederative_partner
 						overlord = ROOT
 						country_has_state_religion = rel:catholic
 						is_player = no
@@ -504,7 +504,7 @@ journal_flavor_switzerland.2 = {
 				}
 				every_country = {
 					limit = {
-						is_subject_type = subject_type_confederation
+						is_subject_type = subject_type_confederative_partner
 						overlord = ROOT
 						OR = {
 							country_has_state_religion = rel:reformed
@@ -523,7 +523,7 @@ journal_flavor_switzerland.2 = {
 			else = {
 				every_country = {
 					limit = {
-						is_subject_type = subject_type_confederation
+						is_subject_type = subject_type_confederative_partner
 						overlord = ROOT
 						country_has_state_religion = rel:catholic
 						is_player = no

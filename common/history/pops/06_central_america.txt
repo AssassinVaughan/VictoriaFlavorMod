@@ -21,7 +21,12 @@
 		region_state:JAM = {
 			create_pop = {
 				culture = afro_caribbean
-				size = 7104
+				size = 7502
+			}
+			create_pop = {
+				culture = afro_caribbean
+				religion = generic_african
+				size = 3502
 			}
 			create_pop = {
 				culture = british
@@ -59,11 +64,12 @@
 			}
 			create_pop = {
 				culture = miskito
-				religion = anglican
+				religion = protestant #Anglican
 				size = 10000
 			}
 			create_pop = {
 				culture = afro_caribbean # Miskito Sambu
+				religion = generic_african
 				size = 20000
 			}
 			create_pop = {
@@ -77,6 +83,7 @@
 			create_pop = {
 				pop_type = slaves
 				culture = afro_caribeno
+				religion = generic_african
 				size = 1000
 			}
 		}
@@ -102,6 +109,7 @@
 			create_pop = {
 				pop_type = slaves
 				culture = afro_caribeno
+				religion = generic_african
 				size = 4100
 			}
 			create_pop = {
@@ -119,10 +127,16 @@
 		region_state:HAI = {
 			create_pop = { # Includes mulatto population.
 				culture = afro_antillean
-				size = 830824
+				size = 500824
+			}
+			create_pop = { # Haitians practicing Vodou
+				culture = afro_antillean
+				religion = generic_african
+				size = 330000
 			}
 			create_pop = { # A small number of protestants existed in Haiti since the early 19th century.
 				culture = afro_antillean
+				religion = protestant
 				size = 8060
 			}
 			create_pop = { # Spanish speaking population mainly inhabiting the area surrounding Hincha. Black.
@@ -143,6 +157,7 @@
 			}
 			create_pop = { # Remnants of the 1824 migration scheme
 				culture = afro_american
+				religion = generic_african
 				size = 212
 			}
 			create_pop = {
@@ -167,7 +182,12 @@
 			}
 			create_pop = { # Black.
 				culture = afro_caribeno
-				size = 19896
+				size = 10800
+			}
+			create_pop = { # Black.
+				culture = afro_caribeno
+				religion = generic_african
+				size = 9096
 			}
 			create_pop = { # White.
 				culture = spanish
@@ -187,7 +207,12 @@
 			}
 			create_pop = {
 				culture = afro_caribeno
-				size = 168400
+				size = 100400
+			}
+			create_pop = {
+				culture = afro_caribeno
+				religion = generic_african
+				size = 68000
 			}
 			create_pop = {
 				culture = spanish
@@ -208,7 +233,12 @@
 			}
 			create_pop = {
 				culture = afro_caribbean
-				size = 100400
+				religion = generic_african
+				size = 240200
+			}
+			create_pop = {
+				culture = afro_caribbean
+				size = 200600
 			}
 		}
 	}
@@ -220,17 +250,48 @@
 			}
 			create_pop = {
 				culture = afro_antillean
-				size = 108052
+				size = 79052
+			}
+			create_pop = {
+				culture = afro_antillean
+				religion = generic_african
+				size = 37052
 			}
 		}
 		region_state:GBR = {
 			create_pop = {
 				culture = british
-				size = 15000
+				size = 14200
 			}
 			create_pop = {
 				culture = afro_caribbean
-				size = 115000
+				size = 59000
+			}
+			create_pop = {
+				culture = afro_caribbean
+				religion = generic_african
+				size = 44000
+			}
+		}
+		region_state:NET = {
+			create_pop = {
+				culture = dutch
+				size = 800
+			}
+			create_pop = {
+				culture = antillianen
+				size = 200
+			}
+			create_pop = {
+				culture = antillianen
+				size = 7000
+				pop_type = slaves
+			}
+			create_pop = {
+				pop_type = slaves
+				culture = antillianen
+				religion = generic_african
+				size = 4800
 			}
 		}
 	}
@@ -242,7 +303,12 @@
 			}
 			create_pop = {
 				culture = afro_antillean
-				size = 108052
+				size = 75052
+			}
+			create_pop = {
+				culture = afro_antillean
+				religion = generic_african
+				size = 33000
 			}
 		}
 		region_state:GBR = {
@@ -252,7 +318,12 @@
 			}
 			create_pop = {
 				culture = afro_caribbean
-				size = 115000
+				size = 605000
+			}
+			create_pop = {
+				culture = afro_caribbean
+				religion = generic_african
+				size = 410000
 			}
 		}
 	}
@@ -274,7 +345,12 @@
 			}
 			create_pop = {
 				culture = afro_caribbean
-				size = 4768
+				size = 3000
+			}
+			create_pop = {
+				culture = afro_caribbean
+				religion = generic_african
+				size = 1768
 			}
 			create_pop = {
 				culture = dutch
@@ -305,7 +381,13 @@
 		region_state:JAM = {
 			create_pop = {
 				culture = afro_caribbean
-				size = 358596
+				size = 224214
+			}
+			#obeah population
+			create_pop = {
+				culture = afro_caribbean
+				religion = generic_african
+				size = 134382
 			}
 			create_pop = {
 				culture = british
@@ -320,13 +402,20 @@
 				culture = caribeno
 				size = 461304 # est. "white" population in 1836 of 483308, minus the explicit Spanish pops below
 			}
+			#the vast majority of Afro-Cubans followed Santeria, as they still do today
 			create_pop = {
 				culture = afro_caribeno
-				size = 152011
+				religion = generic_african
+				size = 92000
+			}
+			create_pop = {
+				culture = afro_caribeno
+				size = 60011
 			}
 			create_pop = {
 				pop_type = slaves
 				culture = afro_caribeno
+				religion = generic_african
 				size = 288786
 			}			
 			create_pop = {

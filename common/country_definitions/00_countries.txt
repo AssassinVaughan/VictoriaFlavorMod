@@ -10,13 +10,13 @@
 }
 
 GBR = {
-	color = rgb{ 195  0  0 }
+	color = hsv{ 0.99  0.7  0.9 }
 
 	country_type = recognized
 
 	tier = empire	
 	
-	cultures = { british scottish }
+	cultures = { british scottish welsh }
 	capital = STATE_HOME_COUNTIES
 }
 
@@ -237,7 +237,7 @@ FIN = {
 
 	tier = grand_principality
 	
-	cultures = { finnish swedish }
+	cultures = { finnish swedish russian }
 	capital = STATE_UUSIMAA
 }
 
@@ -490,7 +490,7 @@ WUR = {
 	tier = kingdom
 	
 	cultures = { south_german }
-	religion = lutheran
+	religion = protestant
 	capital = STATE_WURTTEMBERG
 	is_named_from_capital = yes
 }
@@ -742,7 +742,7 @@ SWI = {
 	
 	capital = STATE_WEST_SWITZERLAND
 	cultures = { alemannic francoprovencal }
-	religion = reformed
+	religion = protestant
 }
 
 TRS = {
@@ -2058,7 +2058,7 @@ NVS = {
 	
 	tier = principality
 	
-	cultures = { anglo_canadian }
+	cultures = { anglo_canadian scottish }
 	capital = STATE_NEW_BRUNSWICK
 }
 
@@ -2097,7 +2097,7 @@ ARG = {
 }
 
 BOL = {
-	color = { 219  184  44 }
+	color = { 219  182  182 }
 	
 	country_type = colonial
 	
@@ -3349,7 +3349,7 @@ TPG = {
 	country_type = unrecognized
 	tier = empire
 	cultures = { han hakka }
-	religion = god_society
+	religion = protestant
 	capital = STATE_NANJING
 }
 
@@ -4163,7 +4163,7 @@ MAI = {
 
 	tier = principality
 	
-	cultures = { uzbek turkmen }
+	cultures = { uzbek turkmen tajik }
 	capital = STATE_BALKH
 }
 
@@ -4247,4 +4247,16 @@ MAZ = { # Mazandaran
 	cultures = { mazanderani }
 
 	capital = STATE_MAZANDARAN
+}
+
+BEI = { # Beiyang
+	color = { 252 185 61 }
+
+	country_type = unrecognized
+
+	tier = kingdom
+
+	cultures = { han }
+
+	capital = STATE_BEIJING
 }

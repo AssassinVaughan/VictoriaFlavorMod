@@ -59,7 +59,7 @@
 	}
 }
 
-subject_type_confederation = {
+subject_type_confederative_partner = {
 	allow_change_country_flag = yes
 	use_overlord_map_color = yes
 	use_overlord_ruler = no
@@ -76,7 +76,7 @@ subject_type_confederation = {
     autonomy_level = 3
     category = same_as_puppet
 		
-	diplomatic_action = confederation
+	diplomatic_action = confederative_partner
 		
 	valid_overlord_country_types = {
 		recognized
@@ -542,7 +542,6 @@ subject_type_dependency = {
 	overlord_must_be_same_country_type = no
 	use_for_release_country = no
 	gives_prestige_to_overlord = yes
-
     autonomy_level = 1
     category = same_as_puppet
 	
@@ -551,6 +550,10 @@ subject_type_dependency = {
 	higher_autonomy_subject_type_alternatives = {
 		subject_type_dominion
 	}	
+	
+	same_autonomy_subject_type_alternatives = {
+	    subject_type_puppet
+	}
 	
 	valid_overlord_country_types = {
 		recognized
@@ -562,7 +565,7 @@ subject_type_dependency = {
 		recognized
 		colonial
 		unrecognized
-	}	
+	}		
 	
 	valid_overlord_ranks = {
 		great_power
@@ -575,11 +578,10 @@ subject_type_dependency = {
 	}
 	
 	valid_subject_ranks = {
-		major_power
 		minor_power
 		insignificant_power
 		unrecognized_major_power
-		unrecognized_regional_power
-		unrecognized_power		
+		unrecognized_regional_power	
+		unrecognized_power
 	}
 }

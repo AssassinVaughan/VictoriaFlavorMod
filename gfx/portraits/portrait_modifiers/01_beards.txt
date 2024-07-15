@@ -32,7 +32,10 @@
             modifier = {
                 add = 100
                 exists = scope:character
-                scope:character = { age > 16 }
+                scope:character = { 
+                    age > 18
+                    is_historical = no
+                }
                 OR = {
                     chinese_court_clothes_trigger = yes
                     chinese_imperial_clothes_trigger = yes
@@ -56,7 +59,10 @@
             modifier = {
                 add = 100
                 exists = scope:character
-                 scope:character = { age > 16 }
+                scope:character = { 
+                    age > 16 
+                    is_historical = no
+                }
                 OR = {
                     african_clothes_trigger = yes
                     african_diaspora_clothes_trigger = yes
@@ -83,10 +89,35 @@
                 OR = {
                     arabic_clothes_trigger = yes
                     arabic_clothes_pop_trigger = yes
-                }  
+                }
+                scope:character ?= {
+                    age > 13
+                    is_historical = no
+                }
             }
         }
     }    
+
+    persian_mustaches = {
+        dna_modifiers = {
+            accessory = {
+                mode = add
+                gene = mustaches
+                template = european_mustaches
+                range = { 0.33 1 } 
+            }
+        }
+        weight = {
+            base = 0
+            modifier = {
+                add = 100
+                
+                scope:pop ?= {
+                    culture = cu:persian
+                }
+            }
+        }
+    }   
 
     european_beards = {
         dna_modifiers = {
@@ -101,7 +132,10 @@
             base = 0
             modifier = {
                 exists = scope:character
-                scope:character = { age > 16 }
+                scope:character = { 
+                    age > 16 
+                    is_historical = no
+                }
                 add = 100
                 OR = {
                     arabic_clothes_trigger = yes
@@ -155,5 +189,33 @@
                 }                
             }
         }
-    } 
+    }
+
+    old_man_pedro = {
+        dna_modifiers = {
+            accessory = {
+                mode = replace
+                gene = beards
+                template = beard_john_brown
+                accessory = male_beard_john_brown
+            }
+            accessory = {
+                mode = replace
+                gene = mustaches
+                template = european_mustaches
+                accessory = male_mustache_european_12
+            }
+        } 
+        weight = {
+            base = 0
+            modifier = {
+                add = 90000
+
+                scope:character ?= {
+                    has_template = BRZ_emperor_pedro_02
+                    age > 40
+                }
+            }
+        }
+    }
 }
