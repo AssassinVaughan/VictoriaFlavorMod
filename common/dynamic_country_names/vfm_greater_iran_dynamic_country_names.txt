@@ -1,0 +1,145 @@
+PER = { 
+	dynamic_country_name = {
+		name = dyn_c_qajar_persia
+		adjective = dyn_c_persia_adj
+		
+		is_main_tag_only = yes
+		priority = 1000
+		
+		trigger = {
+			exists = c:PER
+			AND = {
+				c:PER = { has_variable = qajar_dynasty }
+				OR = {
+					c:PER = { has_variable = reign_of_mohammad_shah_qajar_var }
+					c:PER = { has_variable = qajar_rename_qajar_var }
+				}
+			}
+		}
+	}
+	dynamic_country_name = {
+		name = dyn_c_persia
+		adjective = dyn_c_persia_adj
+		
+		is_main_tag_only = yes
+		priority = 5
+		
+		trigger = {
+			exists = c:PER
+			AND = {
+				c:PER = { has_variable = qajar_dynasty }
+				c:PER = { NOT = { has_variable = reign_of_mohammad_shah_qajar_var } }
+				c:PER = { NOT = { has_variable = qajar_rename_qajar_var } }
+			}
+		}
+	}
+	dynamic_country_name = {
+		name = dyn_c_imperial_iran
+		adjective = dyn_c_iran_adj
+		
+		is_main_tag_only = yes
+		priority = 20
+		
+		trigger = {
+			exists = c:PER
+			AND = {
+				c:PER = { has_variable = qajar_dynasty }
+				c:PER = { has_variable = qajar_iran_var }
+			}
+		}
+	}
+	dynamic_country_name = {
+		name = dyn_c_iran
+		adjective = dyn_c_iran_adj
+		
+		is_main_tag_only = yes
+		priority = 20
+		
+		trigger = {
+			exists = c:PER
+			c:PER = { NOT = { has_variable = qajar_dynasty } }
+		}
+	}
+}
+
+ZFL = { 
+	dynamic_country_name = {
+		name = dyn_c_khorasan
+		adjective = dyn_c_khorasan_adj
+		
+		is_main_tag_only = yes
+		priority = 0
+		
+		trigger = {
+			exists = c:ZFL
+			c:ZFL = {
+				has_variable = become_khorasan_var
+			}
+		}
+	}
+}
+
+SDL = { 
+	dynamic_country_name = {
+		name = dyn_c_khorasan
+		adjective = dyn_c_khorasan_adj
+		
+		is_main_tag_only = yes
+		priority = 0
+		
+		trigger = {
+			exists = c:SDL
+			c:SDL = {
+				has_variable = become_khorasan_var
+			}
+		}
+	}
+}
+
+ARB = { 
+	dynamic_country_name = {
+		name = dyn_c_arabistan
+		adjective = dyn_c_arabistan_adj
+		
+		is_main_tag_only = yes
+		priority = 0
+		
+		trigger = {
+			exists = c:ARB
+			c:ARB = {
+				has_variable = become_arabistan_var
+			}
+		}
+	}
+}
+
+KAL = { 
+	dynamic_country_name = {
+		name = dyn_c_baluchistan
+		adjective = dyn_c_baluchistan_adj
+		
+		is_main_tag_only = yes
+		priority = 0
+		
+		trigger = {
+			exists = c:KAL
+			c:KAL = {
+				has_variable = baluchistan_name_var 
+			}
+		}
+	}
+	dynamic_country_name = {
+		name = dyn_c_kohistan
+		adjective = dyn_c_kohistan_adj
+		
+		is_main_tag_only = yes
+		priority = 0
+		
+		trigger = {
+			exists = c:KAL
+			c:KAL = {
+				has_variable = kohistan_name_var 
+			}
+		}
+	}
+}
