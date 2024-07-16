@@ -307,3 +307,229 @@
   notification_springtime_of_the_people_je_over_desc: "The prolonged period of unrest in [SCOPE.sC('originator').GetName] is over."
   notification_springtime_of_the_people_je_closed_tooltip: "Whether the liberal forces in [SCOPE.sC('originator').GetName] were victorious or have been vanquished, the Journal Entry "Springtime of the Peoples" is now closed."
   notification_springtime_of_the_people_je_opened_tooltip: "This political Springtime in [SCOPE.sC('originator').GetName] may inspire citizens of other countries to create unrest in the pursuit of liberty."
+  
+  ###Iran and Friends Content###
+  je_qajar_situation: "Fragile Authority"
+  je_qajar_situation_status: "Preserve the Qajar Dynasty"
+  je_qajar_situation_reason: "Iran’s fortunes have turned since the fall of the $safavid_empire$:\n\nWhen Nader Shah died, Iran splintered into a variety of new states ruled by local dynasties, the most prevelent of which were the $durrani_empire$ of the Afghans in the east, as well as the Zand Dynasty of the Lurs in the west that ruled from Isfahan until 1789 when the Qajars took over.\n\nThe Reign of the Qajars has been rather turbulent thus far: The Caucasus was officially ceded to Russia following two wars in 1813 and 1828, putting the dynasty at odds with the upper echelons of society who feel that the Qajars cannot safeguard the interests of Iran. Simultaneously, the limited amount of state funds available in the rather decentralized realm are often wasted on elaborate parties at court or excessive displays of decadence, alienating the dynasty from the common folk.\n\nIt becomes clear that, unless the Qajars change their course, Iran will become nothing more but a mere pawn in the politics of foreign nations."
+  
+  je_iran_constitution: "The Constitutional Revolution"
+  je_iran_constitution_status: "Adopt an Iranian Constitution"
+  je_iran_constitution_reason: "Iran never had an official constitution; However, even in ancient times, laws were written and passed down by the Shahs, some of which were preserved in artifacts such as the famous Cyrus Cylinder. While there never was much of a need for a formal constitution, the times are rapidly changing, and Iran is slowly falling behind the European Powers.\n\nAs we continue to modernize our country, the need for a constitution like that of the Europeans becomes a necessity and shall lay the groundwork for a truly modern Iranian state."
+  
+  constitutional_revolution_tt: "Receives a unique [concept_modifier] based on your #tooltippable;tooltip:,je_iran_religious_laws_special_tooltip Religious Laws#!"
+  
+  ,je_iran_religious_laws_special_tooltip: "• If we have #bold State Religion#! enacted, the Ulema will be cemented as an integral part of Iran's political sphere for decades to come.\n• If we have either #bold Total Separation#! or #bold State Atheism#! enacted, the Ulema will be ostracized from Iran's political sphere."
+  
+  change_name_qajar_empire_persia_tt: "Your country will become known as #GOLD Persia#!"
+  
+  #Guarded Domains of Iran
+  
+  je_integrate_khanate_subjects_iran: "The Guarded Domains of Iran"
+  je_integrate_khanate_subjects_iran_reason: "Since the fall of the $safavid_empire$, Iran has been more or less divided between various dynasties, principalities and even empires.\n\nMost notoriously, many of the old governates only begrudgingly accept Qajar suzerainty, namely those of the Khorasani and Ardalani, but also the various Arab Sheiks on the Gulf Coast as well as the Bayati of Maku.\n\nAdditionally, the Kalati have established themselves as the head of a confederation of various chiefdoms in Baluchistan, effectively bringing the region of Kohistan under their control despite its ancient ties to our realm.\n\nWe must deal with all of these issues before the realm can truly prosper under our rule. "
+  
+  #Subject Tooltips
+  
+  autonomous_province_break_tt: "The country needs to be sufficiently decentralized"
+  custom_tooltip_annexed_kohistan: "We own #tooltippable;tooltip:,je_kohistan_special_tooltip Kohistan#! as an [concept_incorporated_state]"
+  custom_tooltip_annexed_maku: "We have integrated [SCOPE.sCountry('jel_scope').GetName]"
+  custom_tooltip_annexed_ardalan: "We have integrated [SCOPE.sCountry('ard_scope').GetName]"
+  custom_tooltip_annexed_bastak: "We have #tooltippable;tooltip:,je_bastak_special_tooltip reintegrated the Coast#!"
+  custom_tooltip_annexed_khorasan: "We have #tooltippable;tooltip:,je_khorasan_special_tooltip integrated Khorasan#!"
+  lost_subjects_iran_tt: "Every #bold remaining#! country that started as our [concept_subject] is independent"
+  doesnt_control_kohistan_tt: "We do not control #bold Kohistan#!"
+  doesnt_control_khorasan_tt: "We do not control #bold Khorasan#!"
+  ,je_khorasan_special_tooltip: "We must achieve #bold all#! of the following:\n\n• The #bold Shadilu Khanate#! has been integrated\n• The #bold Za'faranlu Emirate#! has been integrated\n• The #bold Khozeimeh Amirdom#! has been abolished\n\nNote: The #YELLOW Khozeimeh Amirdom#! can be abolished via #bold decision#!"
+  ,je_bastak_special_tooltip: "We must achieve #bold all#! of the following:\n\n• The #bold Mohammerah Emirate#! has been integrated\n• #bold Langeh#! and #bold Kangan#! have been returned\n• The #bold Al-Madkhuri#! have been ousted from #bold Bushehr#!\n• The lease of #bold Bandar Abbas#! has expired"
+
+  #Integrate Subject Buttons
+  je_annex_khr_button: "Integrate the Khorasani Kurds"
+  je_annex_khr_button_desc: "The Kurds of Khorasan have become rather rebellious as of recent; the revolt of the Za'afaranlu in 1832 proved that they cannot be trusted. We must abolish their little confederations and establish a proper administration in the rest of Khorasan."
+  je_annex_bandar_abbas_button: "Bandar Abbas Lease Expiration"
+  je_annex_bandar_abbas_button_desc: "Bandas Abbas has been occupied by the Omani for a while now under a questionable agreement that our predecessors signed. As part of our centralization policy, we must bring this vital port back under Iranian control."
+  je_annex_ard_button: "Abolish the Kurdistan Autonomy"
+  je_annex_ard_button_desc: "The Principality of Ardalan is an old one, having existed for many centuries at this point. Serving as a major cultural and economic hub right on the Ottoman-Persian border, we must bring it firmly into our fold."
+  je_annex_arb_button: "Deal with Mohammerah"
+  je_annex_arb_button_desc: "Founded in the early 19th century by the Banu Ka'b, the Sheikhdom of Mohammerah has ruled the left bank of the Shatt al-Arab independently from the central government. We cannot risk the Sheikh to ally himself with the British or Turks."
+  je_annex_btk_button: "Reclaim the Coastal Sheikhdoms"
+  je_annex_btk_button_desc: "Many of our southern ports have been leased to or occupied by foreigners; most of these are today under the control of the British and their Trucial States. By establishing good relations with the owner of the ports, they may be returned to us peacefully."
+  je_annex_jel_button: "Remove the Bayati from Maku"
+  je_annex_jel_button_desc: "The Bayati have ruled in Maku ever since the Afsharid Empire collapsed. The last remaining Khanate from the post-Afsharid era, the time has come to put an end to this archaic entity."
+  
+  bushehr_owner_relations_tt: "#bold Kangan#!, #bold Langeh#! and #bold Bushehr#! must be owned by either [SCOPE.sCountry('gbr_scope').GetName] or [SCOPE.sCountry('abu_scope').GetName]"
+  bushehr_owner_relations_two_tt: "#bold Relations#! between us and the owner must at least #GREEN cordial#!"
+  integration_action_taken_tt: "#YELLOW 150 days#! have passed since the last #YELLOW Integration Action#! and this option has not been taken before"
+  ardalan_relations_tt: "#bold Relations#! between us and [SCOPE.sCountry('ard_scope').GetName] must be at least #GREEN cordial#!"
+  maku_relations_tt: "#bold Relations#! between us and [SCOPE.sCountry('jel_scope').GetName] must be at least #GREEN cordial#!"
+  custom_tooltip_abolished_kurdistan_iran: "has abolished the #bold Kurdistan Autonomy#!"
+  custom_tooltip_abolished_kurdistan_and_maku_iran: "has removed the #bold Bayati#! and abolished the #bold Kurdistan Autonomy#!"
+  custom_tooltip_not_abolished_kurdistan_iran: "We have not abolished the #bold Kurdistan Autonomy#!"
+  custom_tooltip_ardalan_autonomy_has_been_reduced: "[SCOPE.sCountry('ard_scope').GetName]'s autonmy has been reduced"
+  has_abolished_khozeimeh_amirdom_tt: "We have abolished the #YELLOW Khozeimeh Amirdom#!"
+  iran_has_reclaimed_coastal_ports_tt: "has full control over the #bold Coastal Sheikhdoms#!"
+  
+  
+  #Qajar Authority Tooltips
+  integrated_herat_iran_tt: "has #tooltippable;tooltip:,je_herat_dispute_special_tooltip solved#! the #YELLOW Herat Dispute#! "
+  integrated_khorasan_kurds_iran_tt: "has completed the #bold Guarded Domains of Iran#! [concept_journal_entry]"
+  integrated_khozeimeh_iran_tt: "has abolished the #YELLOW Khozeimeh Amirdom#!"
+  abolished_pompous_court_iran_tt: "has #tooltippable;tooltip:,je_pomp_court_special_tooltip abolished#! the #YELLOW Pompous Court#!"
+  trigger_event_the_qajar_century_tt: "Triggers the Event #GOLD #bold The Qajar Century#!"
+  trigger_event_fall_of_the_qajars_tt: "Triggers the Event #WHITE #bold The Fall of the Qajars#!"
+  persian_constitution_has_been_adopted_tt: "has consolidated #tooltippable;tooltip:,je_consolidate_iran_special_tooltip Iran#! and adopted a #YELLOW Constitution#! by completing the #bold Constitutional Revolution#! [concept_journal_entry]"
+  reclaimed_caucasus_tt: "has reclaimed the #tooltippable;tooltip:,je_consolidate_caucasus_special_tooltip Caucasus#! and #bold forced recognition#! through a [concept_diplomatic_play]"
+  change_name_qajar_empire_tt: "Your country will become known as the #GOLD Qajar Empire#!."
+  change_name_iran_tt: "Your country will become known as the #GOLD Imperial Iran#!."
+  
+  ,je_herat_dispute_special_tooltip: "We must achieve #bold either#! objective:\n\n• Annexed #bold Herat#! and #bold fully#! controls its state\n• Recognized Herat as independent through the [concept_journal_entry] or #bold Siege Events#!\n\nNote: Should the #bold Siege of Herat#! [concept_journal_entry] be failed, a second siege will commence upon the ascension of #bold Nasir al-Din Qajar#!"
+  ,je_consolidate_iran_special_tooltip: "We must #bold fully#! control every #bold Persian [concept_homeland]#!:\n\n• Owns the entirety of #bold Tabriz#!\n• Owns the entirety of #bold Luristan#!\n• Owns the entirety of #bold Khuzestan#!\n• Owns the entirety of #bold Laristan#!\n• Owns the entirety of #bold Isfahan#!\n• Owns the entirety of #bold Irak-i-Ajami#!\n• Owns the entirety of #bold Fars#!\n• Owns the entirety of #bold Mazandaran#!\n• Owns the entirety of #bold Khorasan#!\n• Owns the entirety of #bold Sistan#!\n\n#italic Note: #bold Western Afghanistan#! is not required to complete this #bold objective#! #!"
+  ,je_consolidate_caucasus_special_tooltip: "We must #bold fully#! control the states of #bold Armenia#! and #bold Azerbaijan#!\n\n#italic Note: #bold Georgia#! is not required to complete this #bold objective#! #!"
+  ,je_pomp_court_special_tooltip: "Note: The #YELLOW Pompous Court#! can be abolished via #bold decision#!"
+  
+  
+  #Herat Related Journals
+  
+  je_herat_situation: "The Matter of Herat"
+  je_herat_situation_reason: "When the $durrani_empire$ fractured in 1823, [SCOPE.sCountry('her_scope').GetNameNoFlag] became the last vestige of their once vast domain. Mahmud Shah Durrani, in an attempt to preserve his throne, pledged his allegiance to the Qajars, but under the rule of his successor Kamran Shah Durrani, the principality has become increasingly more rebellious.\n\nWith our recent losses in the Caucasus to the #RED Russians#!, and the #RED British#! steadily advancing towards Afghanistan, we must act decisively to keep the realm together."
+  
+  je_the_siege_of_herat: "The Siege of Herat"
+  je_the_siege_of_herat_status: "We must return Herat into the #BLUE Guarded Domains of Iran#!"
+  je_the_siege_of_herat_reason: "[ROOT.GetCountry.GetRuler.GetFullName] has begun the reconquest of Khorasan by invading Herat.\n\nHowever, as the #RED British#! and #RED Russians#! may see their interests in Afghanistan, India and Central Asia threatened, they may potentially intervene in the conflict depending on how the siege develops."
+  
+  #Herat Intervention Tooltips
+  british_going_to_intervene_one_tt: "We will kindly request of the Persians to abandon the siege. - Should they decline, this will trigger a [concept_diplomatic_play]."
+  british_going_to_intervene_two_tt: "Additionally, we will demand the abolition of the #GOLD Slave Trade#! in the Persian Gulf."
+  
+  #Herat Buttons
+  je_progress_siege_button: "Surround Herat"
+  je_progress_siege_button_desc: "We shall dig trenches around the city and bring our artillery in line to prepare for a prolonged siege!"
+  je_progress_siege_button_two: "Negotiate with Kamran"
+  je_progress_siege_button_two_desc: "Surely Kamran realizes the hopelessness of the situation. If we extend an open hand, he might peacefully give up the city for some monetary compensation."
+  je_progress_siege_button_three: "Barrage Herat"
+  je_progress_siege_button_three_desc: "With our artillery in position, we can attempt to breach the walls of the city!"
+  je_annex_herat_button: "Storm the City!"
+  je_annex_herat_button_desc: "We have managed to breach the wall; It is time to take the city by force!"
+  
+  #Herat Siege & Situation Tooltips // Qajar Authority related stuff above
+  herat_siege_progress_at_100_tt: "The #YELLOW Siege Progress#! has reached #YELLOW 100%#!"
+  herat_siege_progress_at_40_tt: "The #YELLOW Siege Progress#! has reached #YELLOW 40%#!"
+  progress_siege_advance_10: "#GREEN Increase#! Siege Progress by #GREEN 10%#!"
+  progress_siege_advance_20: "#GREEN Increase#! Siege Progress by #GREEN 20%#!"
+  decrease_siege_advance_10: "#RED Decrease Siege Progress by 10%#!"
+  decrease_siege_advance_20: "#RED Decrease Siege Progress by 20%#!"
+  cooldown_30_days_tt: "Sets a #RED 30 days#! cooldown"
+  progress_siege_cooldown_tt: "A #YELLOW Siege Action#! hasn't been taken in the past #YELLOW 30 days#!"
+  offer_kamran_terms_offered_tt: "We have not yet offered terms to Kamran"
+  offer_kamran_terms_tt: "We will offer Kamran a #YELLOW large sum of money#! to give up the city; However, he may also use the #GREEN correspondence delay#! to #RED acquire British support#!"
+  herat_game_over_tt: "#RED NOTE: This will cause Herat to get annexed!#!"
+  request_british_support_herat_tt: "#GREEN We will request for a British Intervention to force the Persians to retreat.#!"
+  herat_trenches_established_var_tt: "We have not yet entrenched ourselves around the city"
+  herat_trenches_var_tt: "We have entrenched ourselves around the city"
+  storming_the_city_tt: "#RED We will order an assault on the city#!"
+  herat_given_up_tt: "#GREEN Kamran will peacefully give up Herat to our forces#!"
+  integrate_herat_iran_tt: "The #YELLOW Herat Dispute#! will be resolved"
+  british_intervention_diplo_play_tt: "#RED This will trigger a [concept_war] with the British!#!"
+  
+  #Babism JE
+  
+  je_iran_babism: "The Báb's Message"
+  je_iran_babism_reason: "A mysterious figure by the name of the Báb has recently begun to preach a new religious message across Iran. While not unusual in of itself, this self-proclaimed prophet asserts that he is the messenger of a new revelation, one that will bring about the Apocalypse, Judgment Day and the rebirth of a new world.\n\nWe must act swiftly and exterminate it before it grows out of control."
+  
+  #Babism Buttoms
+  
+  je_capture_bab_button: "Arrest the Báb"
+  je_capture_bab_button_desc: "We will arrest the Báb as soon as we have located him"
+  je_execute_bab_button: "Execute the Báb"
+  je_execute_bab_button_desc: "We will execute the Báb for committing the crime of apostasy"
+  
+  #Babism Tooltips
+  
+  bab_sighted_tt: "We have located the Báb"
+  captured_bab_tt: "The Báb will be put under house arrest"
+  plan_execute_bab_tt: "We have decided to execute the Báb"
+  execute_bab_tt: "The Báb will be executed"
+  
+  babism_event_chain_tt: "The Báb is dead"
+  
+  ### Iranian Minors Content ###
+  
+  #Khorasani Kurds
+  je_khorasan_situation_zfl: "The Black Banner of Khorasan"
+  je_khorasan_situation_zfl_status: "Reunite the Confederation"
+  je_khorasan_situation_zfl_reason:"Our ancestors were brought to Khorasan by Shah Abbas the Great of the $safavid_empire$ to defend the frontier against Turkmen and Uzbek incursions.\n\nSince then, the land has become our new home and many principalities emerged on the frontier of the empire to defend it, but following the death of  Nader Shah, the empire fell into disarray and we became independent for the first time; This changed once more as the Qajars have begun to consolidate Iran, abolishing princedom after princedom, leaving only the Shadilu and Za’afaranlu autonomous today.\n\nIn response, the Shadilu and Za’faranlu joined into a Confederation in 1832 to defend their interests, but when the Za'faranlu revolted against the Qajars in 1833 and the Shadilu refused to send aid, the Confederation effectively came to a swift end. Once the Za'faranlu revolt was put down in 1834, the Khorasani Kurds were once again firmly divided between their tribal components.\n\nIf we wish to achieve independence from the dying Qajar realm, we have to reunite with our brethren and form a united Khorasani state."
+  je_khorasan_situation_sdl: "The Black Banner of Khorasan"
+  je_khorasan_situation_sdl_status: "Reunite the Confederation"
+  je_khorasan_situation_sdl_reason:"Our ancestors were brought to Khorasan by Shah Abbas the Great of the $safavid_empire$ to defend the frontier against Turkmen and Uzbek incursions.\n\nSince then, the land has become our new home and many principalities emerged on the frontier of the empire to defend it, but following the death of  Nader Shah, the empire fell into disarray and we became independent for the first time; This changed once more as the Qajars have begun to consolidate Iran, abolishing princedom after princedom, leaving only the Shadilu and Za’afaranlu autonomous today.\n\nIn response, the Shadilu and Za’faranlu joined into a Confederation in 1832 to defend their interests, but when the Za'faranlu revolted against the Qajars in 1833 and the Shadilu refused to send aid, the Confederation effectively came to a swift end. Once the Za'faranlu revolt was put down in 1834, the Khorasani Kurds were once again firmly divided between their tribal components.\n\nIf we wish to achieve independence from the dying Qajar realm, we have to reunite with our brethren and form a united Khorasani state."
+  
+  become_khorasan_tt: "Your country's name will change to #GOLD Khorasan#!"
+  
+  #Arabistan
+  je_mohammarah_situation: "The Legacy of the Banu Ka’b"
+  je_mohammarah_situation_reason: "Founded in 1812 by a sheikh of the Banu Ka’b, the Emirate of Mohammarah is situated strategically in the marshy and isolated lands on the left bank of the Shatt al-Arab, forming a disputed frontier zone between the Ottoman and Qajar Empires. While nominally a part of the Shah’s domain, Mohammarah has effectively remained independent and continues to maintain close ties with Ottoman administration on the other side of the border.\n\nBy utilizing our location and by playing both empires against each other, we might be able to secure our independence permanently and develop Arabistan into a prosperous nation free of foreign influence; Should we fail however, Arabistan might become nothing more but a mere province of either empire."
+  
+  complete_arabistan_je_tt: "We have gained our independence from [SCOPE.sCountry('per_scope').GetName]"
+  
+  ### Afghani Content ###
+  
+  #Durrani Situation
+  
+  je_durrani_situation: "The Domain of Herat"
+  je_durrani_situation_reason: "The #bold Durrani#! have fallen greatly from grace: The east of the country has fallen to the #bold Barakzai#! usurpers while to the west stand the expansionist #bold Qajars#! that wish to reunite the former $safavid_empire$.\n\nKamran’s predecessor pledged his allegiance to the Persians after the fall of Kabul to preserve his throne, but this state of affairs won’t last for long as the Persians are preparing for the #bold reconquest of Khorasan#!. Only by #bold submitting#! fully to the Persians, or by #bold resisting#! the Qajar’s advance and thus asserting full independence, can the #bold Durrani#! continue to rule over the vital principality of [SCOPE.sCountry('her_scope').GetNameNoFlag] and its surroundings.\n\nShould the #bold Durrani#! get toppled in [SCOPE.sCountry('her_scope').GetNameNoFlag], the only chance of restoring the $durrani_empire$ will be gone and Afghanistan may very well remain divided, or worse, fall under the dominion of the #bold Barakzai#!."
+  
+  #Durrani Situation Tooltips
+  
+  herat_siege_herat_tt: "#bold #white [SCOPE.sCountry('her_scope').GetName] will become independent#!"
+  herat_independent_herat_tt: "[SCOPE.sCountry('her_scope').GetName] has submitted to the Shah"
+  
+  #Durrani Scripted Buttons
+  je_submit_to_iran_button: "Submit to the Shah"
+  je_submit_to_iran_button_desc: "We will fully submit to the Qajar Shahs and become an integral part of their domain"
+  
+  #Durrani Scripted Buttons Tooltips
+  herat_rebellious_vassal_tt: "We are currently seeking more autonomy from the Sublime Porte"
+  herat_rebellious_vassal_remove_tt: "We will become a province of the Qajar Empire"
+
+  #Durrani Siege of Herat
+  je_durrani_the_siege_of_herat: "The Siege of Herat"
+  je_durrani_the_siege_of_herat_reason: "[SCOPE.sCountry('her_scope').GetNameNoFlag] is under siege and [ROOT.GetCountry.GetRuler.GetFullName] must act carefully to avoid the city falling to the attackers.\n\nWhile it is unlikely that [SCOPE.sCountry('her_scope').GetNameNoFlag] can withstand the invasion force by itself, the surrounding tribes have pledged their allegiance to the #bold Durrani#! and the #bold British#! might be willing to support us if the situation becomes too grim.\n\nHowever, getting the #bold British#! involved may have dire long term consequences for the country at large..."
+  
+  #Durrani Siege of Herat Tooltips
+  herat_independent_siege_tt: "[SCOPE.sCountry('per_scope').GetName] has retreated from [SCOPE.sCountry('her_scope').GetNameNoFlag]"
+  
+  #Herat Siege & Situation Tooltips // Durrani related Siege Stuff
+  je_decrease_siege_button: "Organize the Aimaqs"
+  je_decrease_siege_button_desc: "We will organize the Aimaqs around #bold Herat#! to attack and harrass the invading force."
+  je_decrease_siege_button_two: "Mobilize the Hazara"
+  je_decrease_siege_button_two_desc: "We will mobilize the Hazara in the east to form a tribal coalition against the invaders."
+  je_decrease_siege_button_three: "Request British Aid"
+  je_decrease_siege_button_three_desc: "We will request a #RED British Intervention#! to achieve independence from the Qajars"
+  
+  decrease_siege_herat_10: "#GREEN Decrease#! Siege Progress by #GREEN 10%#!"
+  decrease_siege_herat_20: "#GREEN Decrease#! Siege Progress by #GREEN 20%#!"
+  durrani_progress_siege_advance_20: "#RED Increase Siege Progress by 20%#!"
+  herat_decrease_siege_progress_20_tt: "This will #GREEN decrease#! the Siege Progress by #GREEN 20%#!"
+  cooldown_90_days_tt: "Sets a #RED 90 days#! cooldown"
+  progress_siege_cooldown_large_tt: "A #YELLOW Siege Action#! hasn't been taken in the past #YELLOW 90 days#!"
+  herat_major_decrease_tt: "We have not yet mobilized the Hazara"
+  herat_requesting_british_aid_tt: "We have decided to petition the British for aid"
+  herat_siege_progress_at_30_tt: "The #YELLOW Siege Progress#! has reached #YELLOW 30%#!"
+  herat_siege_progress_at_60_tt: "The #YELLOW Siege Progress#! has reached #YELLOW 60%#!"
+  herat_siege_progress_at_80_tt: "The #YELLOW Siege Progress#! has reached #YELLOW 80%#!"
+  
+  ### Beluchistan Content ###
+  
+  je_kalat_situation: "The Chiefs of Beluchistan"
+  je_kalat_situation_status: "Centralize the Khanate"
+  je_kalat_situation_reason: "Beluchistan is divided between many different Chiefdoms who are united in a Confederation under the Khan of Kalat. The Khan’s authority is strong around Kalat itself, however, the further one travels west, the more nominal this authority becomes.\n\nEspecially #bold Kohistan#!, #bold Makran#!, #bold Kharan#! and #bold Las Bela#! are likely to slip away from the Confederation should we not assert our authority over them. "
+  
+  # Beluchistan Tooltips
+  
+  kal_abolished_chiefdoms_tt: "We have abolished the #bold Tribal Autonomies#!"
+  kal_territory_tt: "We #bold fully#! control #bold Kalat#! and the area around #tooltippable;tooltip:,je_kohistan_special_tooltip Kohistan#!"
+  kal_change_name_to_bal_tt: "We will become known #bold Baluchistan#!"
+  kal_disintegrate_tt: "[SCOPE.sCountry('kal_scope').GetName] will #tooltippable;tooltip:,je_kalat_disintegration_special_tooltip disintegrate#!"
+  kal_disintegrate_alt_tt: "[SCOPE.sCountry('kal_scope').GetName] will #bold disintegrate#!"
+  kal_weird_situation_tt: "We will become known as #bold Kohistan#!"
+  
+  ,je_kohistan_special_tooltip: "#bold Kohistan#! refers to the southern part of the [concept_state] of #bold Sistan & Beluchistan#!, also known as #bold West Baluchistan#!"
+  ,je_kalat_disintegration_special_tooltip: "• #bold Kohistan#! will be occupied by Persia\n• #bold Makran#! will become independent\n• #bold Las Bela#! will become independent"#
