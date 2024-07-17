@@ -759,7 +759,22 @@ grosdeutschland.4 = {
 	type = country_event
 
 	title = grosdeutschland.4.t
-	desc = grosdeutschland.4.d2
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = dual_monarchy.1.d
+				trigger = {
+					NOT = { has_variable = dual_monarchy_fail }
+				}
+			}
+			triggered_desc = {
+				desc = dual_monarchy.1.d2
+				trigger = {
+					has_variable = dual_monarchy_fail
+				}
+			}
+		}
+	}
 	flavor = grosdeutschland.4.f
 
 	event_image = {
@@ -866,6 +881,8 @@ grosdeutschland.4 = {
 							is_homeland = cu:croat
 						}
 					}
+					state_region != s:STATE_ISTRIA
+					state_region != s:STATE_DALMATIA
 				}
 				set_variable = former_austria
 				set_state_owner = scope:hungarian_country
