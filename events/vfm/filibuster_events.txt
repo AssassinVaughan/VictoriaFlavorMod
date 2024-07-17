@@ -11,99 +11,298 @@ filibuster.1 = {
 	duration = 3
 
 	event_image = {
-		video = "gfx/event_pictures/unspecific_fire.bk2"
+		video = "gfx/event_pictures/ep1_ca_mountain_pass_military.bk2"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
-	on_opened_soundeffect = "event:/SFX/Events/africa/soldiers_breaking_protest"
+	on_opened_soundeffect = "event:/SFX/Events/misc/2Characters"
 
 	icon = "gfx/interface/icons/event_icons/event_fire.dds"
 
 	trigger = {
 		c:USA ?= {
-			owns_entire_state_region = s:STATE_CALIFORNIA
-			owns_entire_state_region = s:STATE_TEXAS
+			owns_entire_state_region = STATE_CALIFORNIA
 		}
-		exists = c:TEX
-		c:MEX ?= this
+		OR = {
+			c:USA ?= {
+				has_state_in_state_region = STATE_TEXAS
+			}
+			exists = c:TEX
+		}	
+		exists = c:MEX
+		this = c:MEX
 		is_subject = no
-		game_date > 1852
+		is_at_war = no
+		year > 1852
 	}
 
 	immediate = {
 		create_country = {
 			tag = SNR
 			origin = c:TEX
-			state = s:STATE_SONORA
+			state = s:STATE_SONORA.region_state:MEX
 			on_created = {
 				ig:ig_landowners = {
 					set_interest_group_name = ig_boulbon_filibusters
-					add_modifier = {
-						name = boulbon_filibusters
-						months = very_long_modifier_time
-						is_decaying = yes
-					}
+					add_ruling_interest_group = yes
 				}
-				if = {
-					limit = {
-						NOT = {
-							has_law = law_type:law_presidential_republic
-						}
+				create_character = {
+					first_name = "Gaston"
+					last_name = de_Raousset_Boulbon
+					historical = yes
+					ruler = yes
+					birth_date = 1817.5.13
+					culture = cu:french
+					dna = dna_lord_palmerston
+					ig_leader = yes
+					interest_group = ig_landowners
+					ideology = ideology_moderate
+					traits = {
+						imperious
+						ambitious
 					}
-					activate_law = law_type:law_presidential_republic
-				}
-				if = {
-					limit = {
-						NOT = {
-							has_law = law_type:law_professional_army
-						}
-					}
-					activate_law = law_type:law_professional_army
-				}
-				if = {
-					limit = {
-						NOT = {
-							has_law = law_type:law_legacy_slavery	
-						}
-					}
-					activate_law = law_type:law_legacy_slavery	
-				}
-				if = {
-					limit = {
-						NOT = {
-							has_law = law_type:law_no_workers_rights
-						}
-					}
-					activate_law = law_type:law_no_workers_rights
-				}
-				if = {
-					limit = {
-						NOT = {
-							has_law = law_type:law_homesteading
-						}
-					}
-					activate_law = law_type:law_homesteading
-				}
-				if = {
-					limit = {
-						NOT = {
-							has_law = law_type:law_no_migration_controls
-						}
-					}
-					activate_law = law_type:law_no_migration_controls
 				}
 			}
 		}
 		set_global_variable = raousset_boulbon_invasion
-		s:STATE_SONORA.region_state:MEX = { set_state_owner = c:SNR }
+		s:STATE_SONORA.region_state:MEX = { 
+			set_state_owner = c:SNR 
+			create_pop = {
+				pop_type = smallholders
+				culture = yankee
+				size = 50
+			}
+			create_pop = {
+				pop_type = soldiers
+				culture = yankee
+				size = 50
+			}
+			create_building={
+				building="building_barracks"
+				add_ownership={
+					country={
+						country="c:SNR"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_no_organization" }
+			}
+		}
+		c:SNR = {
+			if = {
+				limit = {
+					NOT = {
+						has_law = law_type:law_oligarchy
+					}
+				}
+				activate_law = law_type:law_oligarchy
+			}
+			create_military_formation = {
+				type = army
+				hq_region = sr:region_mexico
+				name = sonora_filibusters
+
+				combat_unit = {
+					type = unit_type:combat_unit_type_line_infantry
+					state_region = s:STATE_SONORA
+					count = 4
+				}
+			}
+			#add_modifier = {
+			#	name = filibustering_modifier
+			#	months = 6
+			#}
+		}
+		c:MEX = {
+			create_diplomatic_play = {
+				name = annex_war
+				target_country = c:SNR
+				type = dp_annex_war
+			}
+		}
 	}
 
 
 	option = {
 		name = filibuster.1.a
+		default_option = yes
 	}
 	option = {
 		name = filibuster.1.b
+		trigger = {
+			exists = c:SNR
+		}
+		play_as = c:SNR
+	}
+}
+#William Walker invades Baja California
+filibuster.2 = {
+	type = country_event
+	placement = root
+	title = filibuster.2.t
+	desc = filibuster.2.d
+	flavor = filibuster.2.f
+
+	duration = 3
+
+	event_image = {
+		video = "gfx/event_pictures/ep1_ca_mountain_pass_military.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/misc/2Characters"
+
+	icon = "gfx/interface/icons/event_icons/event_fire.dds"
+
+	trigger = {
+		c:USA ?= {
+			owns_entire_state_region = STATE_CALIFORNIA
+		}
+		OR = {
+			c:USA ?= {
+				has_state_in_state_region = STATE_TEXAS
+			}
+			exists = c:TEX
+		}	
+		exists = c:MEX
+		this = c:MEX
+		is_subject = no
+		is_at_war = no
+		year > 1854
+		has_global_variable = raousset_boulbon_invasion
+	}
+
+	immediate = {
+		set_global_variable = walker_baja_invasion
+		create_country = {
+			tag = BAJ
+			origin = c:TEX
+			state = s:STATE_BAJA_CALIFORNIA.region_state:MEX
+			on_created = {
+				ig:ig_petty_bourgeoisie = {
+					set_interest_group_name = ig_walker_filibusters
+					add_ruling_interest_group = yes
+				}
+				create_character = {
+					first_name = "William"
+					last_name = "Walker"
+					historical = yes
+					ruler = yes
+					birth_date = 1824.5.1
+					culture = cu:yankee
+					dna = dna_william_walker
+					ig_leader = yes
+					interest_group = ig_petty_bourgeoisie
+					ideology = ideology_jingoist
+					traits = {
+						imperious
+						ambitious
+					}
+				}
+			}
+		}
+		s:STATE_BAJA_CALIFORNIA.region_state:MEX = { 
+			set_state_owner = c:BAJ
+		}
+		s:STATE_BAJA_CALIFORNIA.region_state:BAJ = {
+				create_pop = {
+					pop_type = smallholders
+					culture = yankee
+					size = 50
+				}
+				create_pop = {
+					pop_type = soldiers
+					culture = yankee
+					size = 5000
+				}
+				create_building={
+					building="building_arms_industry"
+					add_ownership={
+						country={
+							country="c:BAJ"
+							levels=1
+						}
+					}
+					reserves=1
+					activate_production_methods={ "pm_muskets" "pm_automation_disabled"  }
+				}
+				create_building={
+					building="building_barracks"
+					add_ownership={
+						country={
+							country="c:BAJ"
+							levels=1
+						}
+					}
+					reserves=1
+					activate_production_methods={ "pm_no_organization" }
+				}
+		}
+		s:STATE_SONORA = { 
+			add_claim = c:BAJ
+		}
+		c:BAJ = {
+			#add_modifier = {
+			#	name = filibustering_modifier
+			#	months = 6
+			#}
+			create_diplomatic_play = {
+					name = annex_war
+					target_country = c:OZH
+					type = dp_annex_war
+
+					add_war_goal = { holder = c:KAZ target_state = s:STATE_URALSK.region_state:RUS type = return_state }
+					add_war_goal = { holder = c:RUS target_country = c:KAZ type = make_protectorate }
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_law = law_type:law_oligarchy
+					}
+				}
+				activate_law = law_type:law_oligarchy
+			}
+			create_military_formation = {
+				type = army
+				hq_region = sr:region_pacific_coast
+				name = baja_filibusters
+
+				combat_unit = {
+					type = unit_type:combat_unit_type_line_infantry
+					state_region = s:STATE_BAJA_CALIFORNIA
+					count = 4
+				}
+			}
+			create_diplomatic_play = {
+				name = filibuster_war
+			
+				target_state = s:STATE_SONORA.region_state:MEX
+				
+				war = yes
+				
+				type = dp_return_state
+				
+				add_war_goal = {
+					holder = c:MEX
+					type = return_state
+					target_state = s:STATE_BAJA_CALIFORNIA.region_state:BAJ
+				}			
+			}	
+		}
+	}
+
+
+	option = {
+		name = filibuster.2.a
+		default_option  = yes
+	}
+	option = {
+		name = filibuster.2.b
+		trigger = {
+			exists = c:BAJ
+		}
+		play_as = c:BAJ
 	}
 }
 
