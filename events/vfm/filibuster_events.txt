@@ -69,17 +69,17 @@ filibuster.1 = {
 			set_state_owner = c:SNR 
 			create_pop = {
 				pop_type = smallholders
-				culture = yankee
+				culture = dixie
 				size = 50
 			}
 			create_pop = {
 				pop_type = soldiers
-				culture = yankee
+				culture = dixie
 				size = 5000
 			}
 			create_pop = {
 				pop_type = officers
-				culture = yankee
+				culture = dixie
 				size = 50
 			}
 			create_building={
@@ -195,7 +195,7 @@ filibuster.2 = {
 					historical = yes
 					ruler = yes
 					birth_date = 1824.5.1
-					culture = cu:yankee
+					culture = cu:dixie
 					dna = dna_william_walker
 					ig_leader = yes
 					interest_group = ig_petty_bourgeoisie
@@ -213,17 +213,17 @@ filibuster.2 = {
 		s:STATE_BAJA_CALIFORNIA.region_state:BAJ = {
 				create_pop = {
 					pop_type = smallholders
-					culture = yankee
+					culture = dixie
 					size = 50
 				}
 				create_pop = {
 					pop_type = officers
-					culture = yankee
+					culture = dixie
 					size = 50
 				}
 				create_pop = {
 					pop_type = soldiers
-					culture = yankee
+					culture = dixie
 					size = 5000
 				}
 				create_building={
@@ -257,14 +257,6 @@ filibuster.2 = {
 			#	name = filibustering_modifier
 			#	months = 6
 			#}
-			create_diplomatic_play = {
-					name = annex_war
-					target_country = c:OZH
-					type = dp_annex_war
-
-					add_war_goal = { holder = c:KAZ target_state = s:STATE_URALSK.region_state:RUS type = return_state }
-					add_war_goal = { holder = c:RUS target_country = c:KAZ type = make_protectorate }
-			}
 			if = {
 				limit = {
 					NOT = {
