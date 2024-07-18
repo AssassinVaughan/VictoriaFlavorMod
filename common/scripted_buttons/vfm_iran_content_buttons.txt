@@ -449,11 +449,14 @@ je_annex_btk_button = {
 			}
 		}
 		OR = {
-			custom_tooltip = {
-				text = bushehr_owner_relations_two_tt
-				c:PER ?= {
-					c:ABU.relations:ROOT > relations_threshold:cordial
+			AND = {
+				custom_tooltip = {
+					text = bushehr_owner_relations_two_tt
+					c:PER ?= {
+						c:ABU.relations:ROOT > relations_threshold:cordial
+					}
 				}
+				c:MZK = { liberty_desire <= 25 }
 			}
 			AND = {
 				has_technology_researched = nationalism
