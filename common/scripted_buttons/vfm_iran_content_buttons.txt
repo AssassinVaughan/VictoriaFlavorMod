@@ -306,12 +306,15 @@ je_annex_ard_button = {
 	possible = {
 		exists = c:ARD
 		OR = {
-			custom_tooltip = {
-				text = ardalan_relations_tt
-				exists = c:ARD
-				c:PER ?= {
-					c:ARD.relations:ROOT > relations_threshold:cordial
+			AND = {
+				custom_tooltip = {
+					text = ardalan_relations_tt
+					exists = c:ARD
+					c:PER ?= {
+						c:ARD.relations:ROOT > relations_threshold:cordial
+					}
 				}
+				c:ARD = { liberty_desire <= 25 }
 			}
 			has_technology_researched = pan-nationalism
 		}
@@ -348,12 +351,15 @@ je_annex_jel_button = {
 	possible = {
 		exists = c:JEL
 		OR = {
-			custom_tooltip = {
-				text = maku_relations_tt
-				exists = c:JEL
-				c:PER ?= {
-					c:JEL.relations:ROOT > relations_threshold:cordial
+			AND = {
+				custom_tooltip = {
+					text = maku_relations_tt
+					exists = c:JEL
+					c:PER ?= {
+						c:JEL.relations:ROOT > relations_threshold:cordial
+					}
 				}
+				c:JEL = { liberty_desire <= 25 }
 			}
 			has_technology_researched = nationalism
 		}
