@@ -64,6 +64,24 @@ pm_serfdom_no = {
 	}
 }
 
+pm_homesteading_building_subsistence = {
+	texture = "gfx/interface/icons/production_method_icons/homesteading.dds"
+	unlocking_laws = {
+		law_homesteading
+	}
+	
+	building_modifiers = {					
+		unscaled = {
+			building_subsistence_output_add = 4
+		}
+		
+		level_scaled = {
+			building_employment_peasants_add = -1000
+			building_employment_farmers_add = 500
+		}		
+	}
+}
+
 pm_serfdom = {
 	texture = "gfx/interface/icons/production_method_icons/serfdom.dds"
 	disallowing_laws = {
