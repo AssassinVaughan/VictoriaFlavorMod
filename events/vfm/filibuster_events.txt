@@ -42,7 +42,7 @@ filibuster.1 = {
 	immediate = {
 		create_country = {
 			tag = SNR
-			origin = c:TEX
+			origin = c:USA
 			state = s:STATE_SONORA.region_state:MEX
 			on_created = {
 				ig:ig_landowners = {
@@ -105,6 +105,14 @@ filibuster.1 = {
 					}
 				}
 				activate_law = law_type:law_oligarchy
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_law = law_type:law_slave_trade
+					}
+				}
+				activate_law = law_type:law_slave_trade
 			}
 			create_military_formation = {
 				type = army
@@ -212,7 +220,7 @@ filibuster.2 = {
 		set_global_variable = walker_baja_invasion
 		create_country = {
 			tag = BAJ
-			origin = c:TEX
+			origin = c:USA
 			state = s:STATE_BAJA_CALIFORNIA.region_state:MEX
 			on_created = {
 				ig:ig_petty_bourgeoisie = {
@@ -318,6 +326,14 @@ filibuster.2 = {
 					}
 				}
 				activate_law = law_type:law_oligarchy
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_law = law_type:law_slave_trade
+					}
+				}
+				activate_law = law_type:law_slave_trade
 			}
 			create_military_formation = {
 				type = army
