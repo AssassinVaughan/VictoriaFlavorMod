@@ -30,10 +30,13 @@ filibuster.1 = {
 			exists = c:TEX
 		}	
 		exists = c:MEX
-		this = c:MEX
+		THIS = c:MEX
 		is_subject = no
 		is_at_war = no
 		year > 1852
+		NOT = {
+			has_global_variable = raousset_boulbon_invasion
+		}
 	}
 
 	immediate = {
@@ -114,6 +117,30 @@ filibuster.1 = {
 					count = 4
 				}
 			}
+			create_trade_route = {
+				goods = small_arms
+				level = 2
+				direction = import
+				target = c:USA.market
+			}	
+			create_trade_route = {
+				goods = artillery
+				level = 1
+				direction = import
+				target = c:USA.market
+			}
+			create_trade_route = {
+				goods = liquor
+				level = 1
+				direction = import
+				target = c:USA.market
+			}
+			create_trade_route = {
+				goods = grain
+				level = 2
+				direction = import
+				target = c:GBR.market
+			}
 			#add_modifier = {
 			#	name = filibustering_modifier
 			#	months = 6
@@ -176,6 +203,9 @@ filibuster.2 = {
 		is_at_war = no
 		year > 1854
 		has_global_variable = raousset_boulbon_invasion
+		NOT = {
+			has_global_variable = walker_baja_invasion
+		}
 	}
 
 	immediate = {
@@ -257,6 +287,30 @@ filibuster.2 = {
 			#	name = filibustering_modifier
 			#	months = 6
 			#}
+			create_trade_route = {
+				goods = small_arms
+				level = 2
+				direction = import
+				target = c:USA.market
+			}	
+			create_trade_route = {
+				goods = artillery
+				level = 1
+				direction = import
+				target = c:USA.market
+			}
+			create_trade_route = {
+				goods = liquor
+				level = 1
+				direction = import
+				target = c:USA.market
+			}
+			create_trade_route = {
+				goods = grain
+				level = 2
+				direction = import
+				target = c:GBR.market
+			}
 			if = {
 				limit = {
 					NOT = {
