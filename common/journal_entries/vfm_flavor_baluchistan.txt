@@ -173,7 +173,7 @@
 			if = { 
 				limit = {	
 					exists = s:STATE_SISTAN.region_state:KAL
-					exists = s:STATE_LARISTAN.region_state:PER
+					exists = s:STATE_KERMAN.region_state:PER
 				}
 				s:STATE_SISTAN.region_state:KAL = {
 					set_state_owner = c:PER
@@ -182,10 +182,28 @@
 			}
 			if = { 
 				limit = {	
+					exists = s:STATE_LARISTAN.region_state:KAL
+					exists = s:STATE_KERMAN.region_state:PER
+				}
+				s:STATE_LARISTAN.region_state:KAL = {
+					set_state_owner = c:PER
+				}
+			}
+			if = { 
+				limit = {	
 					exists = s:STATE_SISTAN.region_state:KAL
-					NOT = { exists = s:STATE_LARISTAN.region_state:PER }
+					NOT = { exists = s:STATE_KERMAN.region_state:PER }
 				}
 				s:STATE_SISTAN.region_state:KAL = {
+					set_state_owner = c:MAK
+				}
+			}
+			if = { 
+				limit = {	
+					exists = s:STATE_LARISTAN.region_state:KAL
+					NOT = { exists = s:STATE_KERMAN.region_state:PER }
+				}
+				s:STATE_LARISTAN.region_state:KAL = {
 					set_state_owner = c:MAK
 				}
 			}
