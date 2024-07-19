@@ -284,6 +284,7 @@
 		set_relations = { country = c:NOR value = 30 }
 		set_relations = { country = c:PRU value = 30 }
 		set_relations = { country = c:RUS value = -20 }
+		set_relations = { country = c:MEC value = -20 }
 	}
 	c:TUR = {
 		set_relations = { country = c:WAL value = -30 }
@@ -317,6 +318,26 @@
 		set_relations = {country = c:BRE value = 60 }
 		set_relations = {country = c:BRA value = 60 }
 		set_relations = {country = c:SCM value = 60 }
+		set_relations = {country = c:GBR value = 20 }
+		set_relations = {country = c:PRU value = -20 }
+	}
+	c:HAM = {
+		set_relations = {country = c:OLD value = 50 }
+		set_relations = {country = c:BRE value = 50 }
+		set_relations = {country = c:GBR value = 20 }
+		set_relations = {country = c:DEN value = -20 }
+	}
+	c:OLD = {
+		set_relations = {country = c:HAM value = 20 }
+		set_relations = {country = c:BRE value = 50 }
+		set_relations = {country = c:GBR value = 50 }
+		set_relations = {country = c:DEN value = -20 }
+	}
+	c:BRE = {
+	    set_relations = {country = c:HAM value = 20 }
+		set_relations = {country = c:OLD value = 50 }
+		set_relations = {country = c:GBR value = 20 }
+		set_relations = {country = c:PRU value = -20 }
 	}
 	c:ENT = {
 		set_relations = {country = c:COE value = 60 }		
