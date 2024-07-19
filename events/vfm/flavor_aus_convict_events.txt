@@ -1,22 +1,22 @@
-﻿namespace = frontier_war_events
+﻿namespace = flavor_aus_convict_events
 
-#Frontier Wars Intro
-frontier_war_events.1 = { 
+#The Convict System Intro
+flavor_aus_convict_events.1 = { 
 	type = country_event
 	placement = ROOT
 
-	title = frontier_war_events.1.t
-	desc = frontier_war_events.1.d
-	flavor = frontier_war_events.1.f
+	title = flavor_aus_convict_events.1.t
+	desc = flavor_aus_convict_events.1.d
+	flavor = flavor_aus_convict_events.1.f
 
 	event_image = {
-		video = "gfx/event_pictures/southamerica_war_civilians.bk2"
+		video = "gfx/event_pictures/southamerica_aristocrats.bk2"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
 	on_opened_soundeffect = "event:/SFX/Events/unspecific/military_parade"
 
-	icon = "gfx/interface/icons/event_icons/event_military.dds"
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
 
 	dlc = dlc_vfm
 
@@ -33,9 +33,9 @@ frontier_war_events.1 = {
 	}
 
 	option = {
-		name = frontier_war_events.1.a
+		name = flavor_aus_convict_events.1.a
 		default_option = yes
-		add_journal_entry = { type = je_frontier_wars }
+		add_journal_entry = { type = je_convict_system }
 		
 		add_modifier = {
 		    name = colonial_boom

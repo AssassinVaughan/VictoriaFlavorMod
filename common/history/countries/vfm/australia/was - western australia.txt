@@ -1,30 +1,44 @@
 ﻿COUNTRIES = {
-	c:TAS = {
-		# set_next_election_date = ???
+	c:WAS = {
 		
 		effect_starting_technology_tier_2_tech = yes
 		
 		activate_law = law_type:law_presidential_republic
-		activate_law = law_type:law_wealth_voting
+		activate_law = law_type:law_oligarchy
 		activate_law = law_type:law_religious_schools
 		activate_law = law_type:law_freedom_of_conscience
 		activate_law = law_type:law_women_own_property
 		activate_law = law_type:law_per_capita_based_taxation
 		activate_law = law_type:law_appointed_bureaucrats
-		activate_law = law_type:law_censorship
 		activate_law = law_type:law_racial_segregation
 		activate_law = law_type:law_mercantilism
 		activate_law = law_type:law_interventionism
-		activate_law = law_type:law_homesteading
+		activate_law = law_type:law_censorship
 		activate_law = law_type:law_frontier_colonization
+		activate_law = law_type:law_homesteading
+		activate_law = law_type:law_migration_controls
+		activate_law = law_type:law_unitary
+		#Small colony, no formal military yet
+		activate_law = law_type:law_national_militia
+
+		ig:ig_armed_forces = {
+			add_ruling_interest_group = yes
+		}
 
 		ig:ig_landowners = {
-			add_ruling_interest_group = yes
 			set_interest_group_name = ig_squattocracy
 		}
 
 		ig:ig_devout = {
 			set_interest_group_name = ig_anglican_church
+		}
+		
+		#Flavor Events
+		trigger_event = {
+			id = flavor_western_australia_events.1
+		}
+		trigger_event = {
+			id = frontier_war_events.1
 		}
 	}
 }

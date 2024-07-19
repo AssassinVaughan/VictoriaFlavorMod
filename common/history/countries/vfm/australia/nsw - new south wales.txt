@@ -1,11 +1,10 @@
 ﻿COUNTRIES = {
 	c:NSW = {
-		# set_next_election_date = ???
 		
 		effect_starting_technology_tier_2_tech = yes
 		
 		activate_law = law_type:law_presidential_republic
-		activate_law = law_type:law_wealth_voting
+		activate_law = law_type:law_oligarchy
 		activate_law = law_type:law_religious_schools
 		activate_law = law_type:law_freedom_of_conscience
 		activate_law = law_type:law_women_own_property
@@ -19,6 +18,8 @@
 		activate_law = law_type:law_homesteading
 		activate_law = law_type:law_migration_controls
 		activate_law = law_type:law_devolved
+		# Penal Colony
+		activate_law = law_type:law_debt_slavery
 
 		ig:ig_devout = {
 			set_interest_group_name = ig_anglican_church
@@ -30,6 +31,14 @@
 
 		ig:ig_rural_folk = {
 			add_ruling_interest_group = yes
+		}
+
+		#Flavor Events
+		trigger_event = {
+			id = flavor_aus_convict_events.1
+		}
+		trigger_event = {
+			id = frontier_war_events.1
 		}
 
 		add_taxed_goods = g:grain
