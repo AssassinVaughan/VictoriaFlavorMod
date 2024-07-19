@@ -19,15 +19,43 @@
 
 		activate_law = law_type:law_monarchy
 		activate_law = law_type:law_autocracy 
-		activate_law = law_type:law_state_religion
+		activate_law = law_type:law_jizya
 		activate_law = law_type:law_national_supremacy
 		activate_law = law_type:law_mercantilism
 		activate_law = law_type:law_traditionalism
 		activate_law = law_type:law_censorship
 		activate_law = law_type:law_land_based_taxation	
 		activate_law = law_type:law_slave_trade
+		activate_law = law_type:law_devolved
 
-		set_tax_level = medium
+		set_tax_level = high
+		
+		set_variable = qajar_dynasty
+		set_variable = reign_of_mohammad_shah_qajar_var
+		
+		add_modifier = {
+			name = per_fragile_authority
+		}
+		
+		add_modifier = {
+			name = per_pompous_court
+		}
+		
+		add_modifier = {
+			name = per_lack_of_policing
+		}
+
+		add_journal_entry = {
+			type = je_qajar_situation
+		}
+		
+		add_journal_entry = {
+			type = je_herat_situation
+		}
+		
+		add_journal_entry = {
+			type = je_integrate_khanate_subjects_iran
+		}
 
 		if = {
 			limit = {

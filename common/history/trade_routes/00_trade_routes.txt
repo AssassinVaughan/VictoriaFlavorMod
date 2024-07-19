@@ -685,6 +685,18 @@
 			direction = import
 			target = c:DEN.market
 		}
+		create_trade_route = {
+			goods = artillery
+			level = 1
+			direction = import
+			target = c:SWE.market
+		}
+		create_trade_route = {
+			goods = small_arms
+			level = 1
+			direction = import
+			target = c:PRU.market
+		}
 	}
 	
 	c:SCH = {
@@ -859,13 +871,19 @@
 	c:EGY = {				
 		create_trade_route = {
 			goods = iron
-			level = 5
+			level = 3
 			direction = import
 			target = c:GBR.market
+		}	
+        create_trade_route = {
+			goods = artillery
+			level = 1
+			direction = import
+			target = c:FRA.market
 		}		
 		create_trade_route = {
 			goods = wood
-			level = 12
+			level = 11
 			direction = import
 			target = c:RUS.market
 		}
@@ -877,7 +895,7 @@
 		}	
         create_trade_route = {
 			goods = sugar
-			level = 4
+			level = 3
 			direction = export
 			target = c:RUS.market
 		}		
@@ -1102,13 +1120,13 @@
 	c:HAM = {	
 		create_trade_route = {
 			goods = furniture
-			level = 3
+			level = 2
 			direction = export
 			target = c:DEN.market
 		}
 		create_trade_route = {
 			goods = wood
-			level = 4
+			level = 3
 			direction = import
 			target = c:SWE.market
 		}
@@ -1124,12 +1142,30 @@
 			direction = export
 			target = c:SWE.market
 		}	
+		create_trade_route = {
+			goods = clippers
+			level = 1
+			direction = export
+			target = c:GBR.market
+		}	
         create_trade_route = {
 			goods = clippers
 			level = 1
 			direction = export
 			target = c:FRA.market
-		}			
+		}
+        create_trade_route = {
+			goods = tools
+			level = 1
+			direction = import
+			target = c:DEN.market
+		}	
+        create_trade_route = {
+			goods = paper
+			level = 1
+			direction = import
+			target = c:BRE.market
+		}		
 	}
 	
 	# Bremen

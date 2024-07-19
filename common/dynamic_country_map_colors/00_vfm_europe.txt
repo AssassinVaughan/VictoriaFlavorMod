@@ -67,7 +67,10 @@ austria_hungary = {
 	possible = {
 		exists = c:AUS
 		THIS = c:AUS
-		country_has_primary_culture = cu:hungarian
+		exists = c:HUN
+		c:HUN = {
+			is_subject_of = c:AUS
+		}
 	}
 }
 

@@ -46,9 +46,18 @@
 		}
 	}
 
-	can_impose = { 
-		is_subject_of = scope:initiator	
-	} 
+	can_impose = {
+		OR = {
+			AND = {
+				is_in_same_power_bloc = scope:target_country
+				AND = {
+					modifier:country_can_impose_same_lawgroup_bureaucracy_in_power_bloc_bool = yes
+					has_law = scope:law
+				}
+			}
+			can_impose_law_default = yes
+		}
+	}
 
 	on_impose = { 
 	} 
@@ -127,9 +136,18 @@ law_appointed_bureaucrats = {
 		}
 	}
 
-	can_impose = { 
-		is_subject_of = scope:initiator	
-	} 
+	can_impose = {
+		OR = {
+			AND = {
+				is_in_same_power_bloc = scope:target_country
+				AND = {
+					modifier:country_can_impose_same_lawgroup_bureaucracy_in_power_bloc_bool = yes
+					has_law = scope:law
+				}
+			}
+			can_impose_law_default = yes
+		}
+	}
 
 	on_impose = { 
 	} 
@@ -199,8 +217,17 @@ law_elected_bureaucrats = {
 		}
 	}
 
-	can_impose = { 
-		is_subject_of = scope:initiator	
+	can_impose = {
+		OR = {
+			AND = {
+				is_in_same_power_bloc = scope:target_country
+				AND = {
+					modifier:country_can_impose_same_lawgroup_bureaucracy_in_power_bloc_bool = yes
+					has_law = scope:law
+				}
+			}
+			can_impose_law_default = yes
+		}
 	} 
 
 	on_impose = { 

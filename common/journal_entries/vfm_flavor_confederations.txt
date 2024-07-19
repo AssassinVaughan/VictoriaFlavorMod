@@ -2,7 +2,7 @@
 	icon = "gfx/interface/icons/event_icons/event_diplomacy.dds"
     group = je_group_internal_affairs
 	is_shown_when_inactive = {
-		is_subject_type = subject_type_confederation
+		is_subject_type = subject_type_confederative_partner
 		
 	}
 
@@ -27,7 +27,7 @@
 
 	invalid = {
 		NOT = {
-			is_subject_type = subject_type_confederation
+			is_subject_type = subject_type_confederative_partner
 		}
 	}
 
@@ -67,7 +67,7 @@
 		else = {
 			remove_diplomatic_pact = {
 				country = scope:overlord_scope
-				type = confederation
+				type = confederative_partner
 			}
 		}
 	}
@@ -78,7 +78,7 @@
 		}
 		every_country = {
 			limit = {
-				is_subject_type = subject_type_confederation
+				is_subject_type = subject_type_confederative_partner
 				overlord = scope:old_confederation_leader
 				NOT = { this = ROOT }
 			}
@@ -86,18 +86,18 @@
 			ROOT = {
 				create_diplomatic_pact = {
 					country = scope:transfer_scope
-					type = confederation
+					type = confederative_partner
 				}
 			}
 		}
 		hidden_effect = {
 			remove_diplomatic_pact = {
 				country = overlord
-				type = confederation
+				type = confederative_partner
 			}
 			every_country = {
 				limit = {
-					is_subject_type = subject_type_confederation
+					is_subject_type = subject_type_confederative_partner
 					overlord = ROOT
 					NOT = { this = scope:old_confederation_leader }
 				}
@@ -109,7 +109,7 @@
 		}
 		create_diplomatic_pact = {
 			country = scope:old_confederation_leader
-			type = confederation
+			type = confederative_partner
 		}
 	}
 

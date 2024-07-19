@@ -73,15 +73,29 @@ journal_flavor_south_africa.1 = {
 					}
 					create_building={
 						building="building_millet_farm"
-						level=1
+						add_ownership={
+							building={
+								type="building_manor_house"
+								country="c:NAL"
+								levels=1
+								region="STATE_NATAL"
+							}
+						}
 						reserves=1
-						activate_production_methods={ "pm_simple_farming" "pm_no_secondary" "pm_tools_disabled" "pm_privately_owned" }
+						activate_production_methods={ "pm_simple_farming" "pm_no_secondary" "pm_tools_disabled"  }
 					}
 					create_building={
 						building="building_furniture_manufacturies"
-						level=1
+						add_ownership={
+							building={
+								type="building_financial_district"
+								country="c:NAL"
+								levels=1
+								region="STATE_NATAL"
+							}
+						}
 						reserves=1
-						activate_production_methods={ "pm_handcrafted_furniture" "pm_merchant_guilds_building_furniture_manufacturies" "pm_automation_disabled" "pm_luxury_furniture" }
+						activate_production_methods={ "pm_handcrafted_furniture"  "pm_automation_disabled" "pm_luxury_furniture" }
 					}
 
 				}
@@ -279,310 +293,301 @@ journal_flavor_south_africa.2 = {
 
 }
 
-journal_flavor_south_africa.3 = {
-	type = country_event
-	placement = ROOT
-
-
-	title = journal_flavor_south_africa.3.t
-	desc = journal_flavor_south_africa.3.d
-	flavor = journal_flavor_south_africa.3.f
-
-	event_image = {
-		video = "gfx/event_pictures/africa_construction_colony.bk2"
-	}
-
-	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
-	on_opened_soundeffect = "event:/SFX/Events/africa/construction_colony"
-
-	icon = "gfx/interface/icons/event_icons/event_map.dds"
-
-
-	minor_left_icon = c:ORA
-	minor_right_icon = root
-
-	duration = 1
-
-	trigger = {
-	    NOT = { has_global_variable = trek_ora }
-	}
-	
-	immediate = {
-
-		s:STATE_VRYSTAAT = {
-			add_claim = root
-		}
-
-		set_global_variable = trek_ora
-
-		c:BST ?= {
-			save_scope_as = bst_scope
-		}
-		
-		s:STATE_VRYSTAAT = {
-			random_scope_state = {
-				save_scope_as = ora_spawn
-			}
-		}
-
-		create_country = {
-			tag = ORA
-			origin = this
-			state =  scope:ora_spawn
-			on_created = {
-			    effect_starting_technology_tier_3_tech = yes
-				random_state = {
-					limit = {
-						state_region = s:STATE_VRYSTAAT
-					}
-
-			create_building={
-				building="building_livestock_ranch"
-				level=1
-				reserves=1
-				activate_production_methods={ "pm_privately_owned" "pm_simple_ranch" "pm_standard_fences" "pm_unrefrigerated" "pm_open_air_stockyards" }
-			}
-			#create_building={
-					#	building="building_barracks"
-					#	level=2
+#journal_flavor_south_africa.3 = {
+#	type = country_event
+#	placement = ROOT
+#
+#
+#	title = journal_flavor_south_africa.3.t
+#	desc = journal_flavor_south_africa.3.d
+#	flavor = journal_flavor_south_africa.3.f
+#
+#	event_image = {
+#		video = "gfx/event_pictures/africa_construction_colony.bk2"
+#	}
+#
+#	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+#	on_opened_soundeffect = "event:/SFX/Events/africa/construction_colony"
+#
+#	icon = "gfx/interface/icons/event_icons/event_map.dds"
+#
+#
+#	minor_left_icon = c:ORA
+#	minor_right_icon = root
+#
+#	duration = 1
+#
+#	trigger = {
+#	    NOT = { has_global_variable = trek_ora }
+#	}
+#	immediate = {
+#
+#		s:STATE_VRYSTAAT = {
+#			add_claim = root
+#		}
+#
+#		set_global_variable = trek_ora
+#
+#		c:BST ?= {
+#			save_scope_as = bst_scope
+#		}
+#		
+#		s:STATE_VRYSTAAT = {
+#			random_scope_state = {
+#				save_scope_as = ora_spawn
+#		}
+#
+#		create_country = {
+#			tag = ORA
+#			origin = this
+#			state =  scope:ora_spawn
+#			on_created = {
+#			    effect_starting_technology_tier_3_tech = yes
+#					limit = {
+#						state_region = s:STATE_VRYSTAAT
+#					}
+#
+#			create_building={
+#				building="building_livestock_ranch"
+#				level=1
+#				reserves=1
+#				activate_production_methods={  "pm_simple_ranch" "pm_standard_fences" "pm_unrefrigerated" "pm_open_air_stockyards" }
+#			}
+#			#create_building={
+#					#	building="building_barracks"
+#					#	level=2
 					#	reserves=1
 					#	activate_production_methods={ "pm_no_organization" }
 					#}
-
-				}
-
-				if = {
-					limit = {
-						NOT = {
-							has_law = law_type:law_presidential_republic
-						}
-					}
-					activate_law = law_type:law_presidential_republic
-				}
-
-				if = {
-						limit = {
-							NOT = {
-								has_law = law_type:law_landed_voting
-							}
-						}
-						activate_law = law_type:law_landed_voting
-					}
-
-				if = {
-						limit = {
-							NOT = {
-								has_law = law_type:law_national_supremacy
-							}
-						}
-						activate_law = law_type:law_national_supremacy
-					}
-				if = {
-						limit = {
-							NOT = {
-								has_law = law_type:law_mercantilism
-							}
-						}
-						activate_law = law_type:law_mercantilism
-					}
-
-				if = {
-						limit = {
-							NOT = {
-								has_law = law_type:law_interventionism
-							}
-						}
-						activate_law = law_type:law_interventionism
-					}
-
-				if = {
-						limit = {
-							NOT = {
-								has_law = law_type:law_slave_trade
-							}
-						}
-						activate_law = law_type:law_slave_trade
-					}
-
-				if = {
-						limit = {
-							NOT = {
-								has_law = law_type:law_censorship
-							}
-						}
-						activate_law = law_type:law_censorship
-					}
-
-				if = {
-						limit = {
-							NOT = {
-								has_law = law_type:law_land_based_taxation
-							}
-						}
-						activate_law = law_type:law_land_based_taxation
-					}
-
+#
+#				}
+#
+#				if = {
+#					limit = {
+#						NOT = {
+#							has_law = law_type:law_presidential_republic
+#					}
+#					activate_law = law_type:law_presidential_republic
+#				}
+#
+#				if = {
+#						limit = {
+#							NOT = {
+#							}
+#						}
+#						activate_law = law_type:law_landed_voting
+#					}
+#
+#				if = {
+#							NOT = {
+#								has_law = law_type:law_national_supremacy
+#							}
+#						}
+#						activate_law = law_type:law_national_supremacy
+#					}
+#				if = {
+#							NOT = {
+#								has_law = law_type:law_mercantilism
+#							}
+#						}
+#						activate_law = law_type:law_mercantilism
+#					}
+#
+#				if = {
+#						limit = {
+#							NOT = {
+#								has_law = law_type:law_interventionism
+#							}
+#						}
+#						activate_law = law_type:law_interventionism
+#					}
+#
+#				if = {
+#						limit = {
+#							NOT = {
+#								has_law = law_type:law_slave_trade
+#							}
+#						}
+#						activate_law = law_type:law_slave_trade
+#					}
+#
+#				if = {
+#						limit = {
+#								has_law = law_type:law_censorship
+#							}
+#						}
+#						activate_law = law_type:law_censorship
+#					}
+#
+#				if = {
+#						limit = {
+#							NOT = {
+#								has_law = law_type:law_land_based_taxation
+#							}
+#						}
+#						activate_law = law_type:law_land_based_taxation
+#					}
+#
 					# date of establishment of the Natalia Republic, as good a date as any in this case
-					set_next_election_date = 1839.10.12
+#					set_next_election_date = 1839.10.12
+#
+#
+#					ig:ig_petty_bourgeoisie = {
+#						add_ruling_interest_group = yes
+#					}
+#
+#					ig:ig_devout = {
+#						set_interest_group_name = ig_evangelical_church
+#					}
+#
+##
+#		}
+#		c:ORA = {
+#			save_scope_as = ora_scope
+#		}
+#
+#		every_scope_state = {
+#
+#			every_scope_pop = {
+#				limit = {
+#					culture = cu:boer
+#				}
+#				change_pop_culture = { target = cu:dummy_culture value = 0.05 }
+#			}
+#			every_scope_pop = {
+#				limit = {
+#					culture = cu:dummy_culture
+#				}
+#				move_pop = scope:ora_spawn
+#			}
+#		}
+#
+#	}
+#
+#	option = {
+#		name = journal_flavor_south_africa.1.a
+#		default_option = yes
+#		ai_chance = { base = 1 }
+#
+ #       c:WIB ?= {
+#			trigger_event = { id = journal_flavor_south_africa.10 }
+#		}
+#		
+#		custom_tooltip = {
+#			text = boers_move_tt
+#			scope:ora_scope = {
+#				every_scope_pop = {
+#					limit = {
+#						culture = cu:dummy_culture
+#					}
+#					change_pop_culture = { target = cu:boer value = 1.0 }
+#				}
+#			}
+#		}
+#
+#	}
+#	option = {
+#		name = journal_flavor_south_africa.3.b
+#		ai_chance = { base = 0 }
+#
+#		c:WIB ?= {
+#			trigger_event = { id = journal_flavor_south_africa.9 }
+#		}
+#		
+#		custom_tooltip = {
+#			text = boers_move_tt
+#			scope:ora_scope = {
+#				every_scope_pop = {
+#					limit = {
+#						culture = cu:dummy_culture
+#					}
+#					change_pop_culture = { target = cu:boer value = 1.0 }
+#				}
+#			}
+#		}
+#
+#		play_as = scope:ora_scope
+#	}
+#}
+
+#journal_flavor_south_africa.4 = {
+#	type = country_event
+#	placement = ROOT
 
 
-					ig:ig_petty_bourgeoisie = {
-						add_ruling_interest_group = yes
-					}
+#	title = journal_flavor_south_africa.4.t
+#	desc = journal_flavor_south_africa.4.d
+#	flavor = journal_flavor_south_africa.4.f
 
-					ig:ig_devout = {
-						set_interest_group_name = ig_evangelical_church
-					}
+#	event_image = {
+#		video = "gfx/event_pictures/africa_construction_colony.bk2"
+#	}
 
-				}
+#	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+#	on_opened_soundeffect = "event:/SFX/Events/africa/construction_colony"
 
-		}
-		c:ORA = {
-			save_scope_as = ora_scope
-		}
-
-		every_scope_state = {
-
-			every_scope_pop = {
-				limit = {
-					culture = cu:boer
-				}
-				change_pop_culture = { target = cu:dummy_culture value = 0.05 }
-			}
-			every_scope_pop = {
-				limit = {
-					culture = cu:dummy_culture
-				}
-				move_pop = scope:ora_spawn
-			}
-		}
-
-	}
-
-	option = {
-		name = journal_flavor_south_africa.1.a
-		default_option = yes
-		ai_chance = { base = 1 }
-
-        c:WIB ?= {
-			trigger_event = { id = journal_flavor_south_africa.10 }
-		}
-		
-		custom_tooltip = {
-			text = boers_move_tt
-			scope:ora_scope = {
-				every_scope_pop = {
-					limit = {
-						culture = cu:dummy_culture
-					}
-					change_pop_culture = { target = cu:boer value = 1.0 }
-				}
-			}
-		}
-
-	}
-	option = {
-		name = journal_flavor_south_africa.3.b
-		ai_chance = { base = 0 }
-
-		c:WIB ?= {
-			trigger_event = { id = journal_flavor_south_africa.9 }
-		}
-		
-		custom_tooltip = {
-			text = boers_move_tt
-			scope:ora_scope = {
-				every_scope_pop = {
-					limit = {
-						culture = cu:dummy_culture
-					}
-					change_pop_culture = { target = cu:boer value = 1.0 }
-				}
-			}
-		}
-
-		play_as = scope:ora_scope
-	}
-}
-
-journal_flavor_south_africa.4 = {
-	type = country_event
-	placement = ROOT
+#	icon = "gfx/interface/icons/event_icons/event_map.dds"
 
 
-	title = journal_flavor_south_africa.4.t
-	desc = journal_flavor_south_africa.4.d
-	flavor = journal_flavor_south_africa.4.f
+#	minor_left_icon = c:TRN
+#	minor_right_icon = root
 
-	event_image = {
-		video = "gfx/event_pictures/africa_construction_colony.bk2"
-	}
+#	duration = 1
 
-	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
-	on_opened_soundeffect = "event:/SFX/Events/africa/construction_colony"
+#	trigger = {
+#	    NOT = { has_global_variable = trek_trn }
+#	}
+#	immediate = {
 
-	icon = "gfx/interface/icons/event_icons/event_map.dds"
+#		s:STATE_TRANSVAAL = {
+#			add_claim = root
+#		}
 
+#		set_global_variable = trek_trn
 
-	minor_left_icon = c:TRN
-	minor_right_icon = root
+#		c:ZOU = {
+#			save_scope_as = zou_scope
+#		}
+#		c:MTB = {
+#			save_scope_as = mtb_scope
+#		}
 
-	duration = 1
+#		random_state = {
+#			limit = {
+#				owner = {
+#					OR = {
+#						is_country_type = decentralized
+#						is_country_type = unrecognized
+#					}
+#				}
+#				state_region = s:STATE_TRANSVAAL
+#			}
+#			save_scope_as = trn_spawn
+#		}
 
-	trigger = {
-	    NOT = { has_global_variable = trek_trn }
-	}
-	immediate = {
-
-		s:STATE_TRANSVAAL = {
-			add_claim = root
-		}
-
-		set_global_variable = trek_trn
-
-		c:ZOU = {
-			save_scope_as = zou_scope
-		}
-		c:MTB = {
-			save_scope_as = mtb_scope
-		}
-
-		random_state = {
-			limit = {
-				owner = {
-					OR = {
-						is_country_type = decentralized
-						is_country_type = unrecognized
-					}
-				}
-				state_region = s:STATE_TRANSVAAL
-			}
-			save_scope_as = trn_spawn
-		}
-
-		create_country = {
-			tag = TRN
-			origin = this
-			state =  scope:trn_spawn
-			on_created = {
-			    effect_starting_technology_tier_3_tech = yes
-				random_state = {
-					limit = {
-						state_region = s:STATE_TRANSVAAL
-					}
-
-			create_building={
-				building="building_millet_farm"
-				level=1
-				reserves=1
-				activate_production_methods={ "pm_simple_farming" "pm_no_secondary" "pm_tools_disabled" "pm_privately_owned" }
-			}
-			create_building={
-				building="building_livestock_ranch"
-				level=1
-				reserves=1
-				activate_production_methods={ "pm_privately_owned" "pm_simple_ranch" "pm_standard_fences" "pm_unrefrigerated" "pm_open_air_stockyards" }
-			}
+#		create_country = {
+#			tag = TRN
+#			origin = this
+#			state =  scope:trn_spawn
+#			on_created = {
+#			    effect_starting_technology_tier_3_tech = yes
+#				random_state = {
+#					limit = {
+#						state_region = s:STATE_TRANSVAAL
+#					}
+#
+#			create_building={
+#				building="building_millet_farm"
+#				level=1
+#				reserves=1
+#				activate_production_methods={ "pm_simple_farming" "pm_no_secondary" "pm_tools_disabled"  }
+#			}
+#			create_building={
+#				building="building_livestock_ranch"
+#				level=1
+#				reserves=1
+#				activate_production_methods={  "pm_simple_ranch" "pm_standard_fences" "pm_unrefrigerated" "pm_open_air_stockyards" }
+#			}
 			#create_building={
 					#	building="building_barracks"
 					#	level=6
@@ -590,159 +595,156 @@ journal_flavor_south_africa.4 = {
 					#	activate_production_methods={ "pm_no_organization" }
 					#}
 
-				}
+#				}
 
-				if = {
-					limit = {
-						NOT = {
-							has_law = law_type:law_presidential_republic
-						}
-					}
-					activate_law = law_type:law_presidential_republic
-				}
+#				if = {
+#					limit = {
+#						NOT = {
+#							has_law = law_type:law_presidential_republic
+#						}
+#					}
+#					activate_law = law_type:law_presidential_republic
+#				}
 
-				if = {
-						limit = {
-							NOT = {
-								has_law = law_type:law_landed_voting
-							}
-						}
-						activate_law = law_type:law_landed_voting
-					}
-
-				if = {
-						limit = {
-							NOT = {
-								has_law = law_type:law_national_supremacy
-							}
-						}
-						activate_law = law_type:law_national_supremacy
-					}
-				if = {
-						limit = {
-							NOT = {
-								has_law = law_type:law_mercantilism
-							}
-						}
-						activate_law = law_type:law_mercantilism
-					}
-
-				if = {
-						limit = {
-							NOT = {
-								has_law = law_type:law_interventionism
-							}
-						}
-						activate_law = law_type:law_interventionism
-					}
-
-				if = {
-						limit = {
-							NOT = {
-								has_law = law_type:law_slave_trade
-							}
-						}
-						activate_law = law_type:law_slave_trade
-					}
-
-				if = {
-						limit = {
-							NOT = {
-								has_law = law_type:law_censorship
-							}
-						}
-						activate_law = law_type:law_censorship
-					}
-
-				if = {
-						limit = {
-							NOT = {
-								has_law = law_type:law_land_based_taxation
-							}
-						}
-						activate_law = law_type:law_land_based_taxation
-					}
-
-					# date of establishment of the Natalia Republic, as good a date as any in this case
-					set_next_election_date = 1839.10.12
-
-
-					ig:ig_petty_bourgeoisie = {
-						add_ruling_interest_group = yes
-					}
-
-					ig:ig_devout = {
-						set_interest_group_name = ig_evangelical_church
-					}
-
-				}
-
-		}
-		c:TRN = {
-			save_scope_as = trn_scope
-		}
-
-		every_scope_state = {
-
-			every_scope_pop = {
-				limit = {
-					culture = cu:boer
-				}
-				change_pop_culture = { target = cu:dummy_culture value = 0.05 }
-			}
-			every_scope_pop = {
-				limit = {
-					culture = cu:dummy_culture
-				}
-				move_pop = scope:trn_spawn
-			}
-		}
-
-	}
-
-	option = {
-		name = journal_flavor_south_africa.4.a
-		default_option = yes
-		ai_chance = { base = 1 }
-        c:ZOU ?= {
-			trigger_event = { id = journal_flavor_south_africa.8 }
-		}
-		
-		custom_tooltip = {
-			text = boers_move_tt
-			scope:trn_scope = {
-				every_scope_pop = {
-					limit = {
-						culture = cu:dummy_culture
-					}
-					change_pop_culture = { target = cu:boer value = 1.0 }
-				}
-			}
-		}
-
-	}
-	option = {
-		name = journal_flavor_south_africa.4.b
-		ai_chance = { base = 0 }
-		c:ZOU ?= {
-			trigger_event = { id = journal_flavor_south_africa.7 }
-		}
-		
-		custom_tooltip = {
-			text = boers_move_tt
-			scope:trn_scope = {
-				every_scope_pop = {
-					limit = {
-						culture = cu:dummy_culture
-					}
-					change_pop_culture = { target = cu:boer value = 1.0 }
-				}
-			}
-		}
-
-		play_as = scope:trn_scope
-	}
-}
+#				if = {
+#						limit = {
+#							NOT = {
+#								has_law = law_type:law_landed_voting
+#							}
+#						}
+#						activate_law = law_type:law_landed_voting
+#					}
+#
+#				if = {
+#						limit = {
+#							NOT = {
+#								has_law = law_type:law_national_supremacy
+#							}
+#						}
+#						activate_law = law_type:law_national_supremacy
+#					}
+#				if = {
+#						limit = {
+#							NOT = {
+#								has_law = law_type:law_mercantilism
+#							}
+#						}
+#						activate_law = law_type:law_mercantilism
+#					}
+#
+#				if = {
+#						limit = {
+#							NOT = {
+#								has_law = law_type:law_interventionism
+#							}
+#						}
+#						activate_law = law_type:law_interventionism
+#					}
+#
+#				if = {
+#						limit = {
+#							NOT = {
+#								has_law = law_type:law_slave_trade
+#							}
+#						}
+#						activate_law = law_type:law_slave_trade
+#					}
+#
+#				if = {
+#						limit = {
+#							NOT = {
+#								has_law = law_type:law_censorship
+#							}
+#						}
+#						activate_law = law_type:law_censorship
+#					}
+#
+#				if = {
+#						limit = {
+#							NOT = {
+#								has_law = law_type:law_land_based_taxation
+#							}
+#						}
+#						activate_law = law_type:law_land_based_taxation
+#					}
+#
+#					# date of establishment of the Natalia Republic, as good a date as any in this case
+#					set_next_election_date = 1839.10.12
+#
+#
+#					ig:ig_petty_bourgeoisie = {
+#						add_ruling_interest_group = yes
+#					}
+#
+#					ig:ig_devout = {
+#						set_interest_group_name = ig_evangelical_church
+#					}
+#
+#				}
+#
+#		}
+#		c:TRN = {
+#			save_scope_as = trn_scope
+#		}
+#		every_scope_state = {
+#
+#			every_scope_pop = {
+#					culture = cu:boer
+#				}
+#				change_pop_culture = { target = cu:dummy_culture value = 0.05 }
+#			}
+#			every_scope_pop = {
+#				limit = {
+#					culture = cu:dummy_culture
+#				}
+#				move_pop = scope:trn_spawn
+#			}
+#		}
+#
+#	}
+#
+#	option = {
+#		name = journal_flavor_south_africa.4.a
+#		default_option = yes
+#		ai_chance = { base = 1 }
+#        c:ZOU ?= {
+#			trigger_event = { id = journal_flavor_south_africa.8 }
+#		}
+#		
+#		custom_tooltip = {
+#			text = boers_move_tt
+#			scope:trn_scope = {
+#				every_scope_pop = {
+#					limit = {
+#						culture = cu:dummy_culture
+#					}
+#					change_pop_culture = { target = cu:boer value = 1.0 }
+#				}
+#		}
+#
+#	}
+#	option = {
+#		name = journal_flavor_south_africa.4.b
+#		ai_chance = { base = 0 }
+#		c:ZOU ?= {
+#			trigger_event = { id = journal_flavor_south_africa.7 }
+#		}
+#		
+#		custom_tooltip = {
+#			text = boers_move_tt
+#			scope:trn_scope = {
+#				every_scope_pop = {
+#					limit = {
+#						culture = cu:dummy_culture
+#					}
+#					change_pop_culture = { target = cu:boer value = 1.0 }
+#				}
+#			}
+#		}
+#
+#		play_as = scope:trn_scope
+#	}
+#}
 
 #Zoutpansberg annex
 journal_flavor_south_africa.7 = {
@@ -921,15 +923,29 @@ journal_flavor_south_africa.5 = {
 					}
 					create_building={
 						building="building_millet_farm"
-						level=1
+						add_ownership={
+							building={
+								type="building_manor_house"
+								country="c:KLE"
+								levels=1
+								region="STATE_ZULULAND"
+							}
+						}
 						reserves=1
-						activate_production_methods={ "pm_simple_farming" "pm_no_secondary" "pm_tools_disabled" "pm_privately_owned" }
+						activate_production_methods={ "pm_simple_farming" "pm_no_secondary" "pm_tools_disabled"  }
 					}
 					create_building={
 						building="building_livestock_ranch"
-						level=1
+						add_ownership={
+							building={
+								type="building_manor_house"
+								country="c:KLE"
+								levels=1
+								region="STATE_ZULULAND"
+							}
+						}
 						reserves=1
-						activate_production_methods={ "pm_privately_owned" "pm_simple_ranch" "pm_standard_fences" "pm_unrefrigerated" "pm_open_air_stockyards" }
+						activate_production_methods={  "pm_simple_ranch" "pm_standard_fences" "pm_unrefrigerated" "pm_open_air_stockyards" }
 					}
 					#create_building={
 					#	building="building_barracks"
@@ -1224,15 +1240,29 @@ journal_flavor_south_africa.6 = {
 			}
 			create_building={
 				building="building_millet_farm"
-				level=1
+				add_ownership={
+							building={
+								type="building_manor_house"
+								country="c:STE"
+								levels=1
+								region="STATE_NORTHERN_CAPE"
+							}
+						}
 				reserves=1
-				activate_production_methods={ "pm_simple_farming" "pm_no_secondary" "pm_tools_disabled" "pm_privately_owned" }
+				activate_production_methods={ "pm_simple_farming" "pm_no_secondary" "pm_tools_disabled"  }
 			}
 			create_building={
 				building="building_livestock_ranch"
-				level=1
+				add_ownership={
+							building={
+								type="building_manor_house"
+								country="c:STE"
+								levels=1
+								region="STATE_NORTHERN_CAPE"
+							}
+						}
 				reserves=1
-				activate_production_methods={ "pm_privately_owned" "pm_simple_ranch" "pm_standard_fences" "pm_unrefrigerated" "pm_open_air_stockyards" }
+				activate_production_methods={  "pm_simple_ranch" "pm_standard_fences" "pm_unrefrigerated" "pm_open_air_stockyards" }
 			}
 			save_scope_as = ste_spawn
 		}
@@ -1298,57 +1328,54 @@ journal_flavor_south_africa.6 = {
 }
 
 #Winburg annex
-journal_flavor_south_africa.9 = {
-	type = country_event
-	placement = root
-
-	title = journal_flavor_south_africa.9.t
-	desc = journal_flavor_south_africa.9.d
-	flavor = journal_flavor_south_africa.9.f
-
-
-	event_image = {
-		video = "gfx/event_pictures/africa_construction_colony.bk2"
-	}
-
-	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
-	on_opened_soundeffect = "event:/SFX/Events/africa/construction_colony"
-
-	icon = "gfx/interface/icons/event_icons/event_map.dds"
-
-	minor_left_icon = c:ORA
-	minor_right_icon = c:WIB
-
-	duration = 1
-
-	trigger = {
-		# triggered by journal entry
-	}
-
-	option = {
-		name = journal_flavor_south_africa.9.a
-		default_option = yes
-		        ai_chance = { base = 1 }
-     	c:ORA = {
-            annex = c:WIB
-        }
-
-	}
-    	option = {
-		name = journal_flavor_south_africa.9.b
-                ai_chance = { base = 0 }
-
-		s:STATE_TRANSVAAL = {
-				add_claim = c:ORA
-		}
-        change_relations = {
-			country = c:ORA
-			value = -50
-		}
-
-	}
-
-}
+#journal_flavor_south_africa.9 = {
+#	type = country_event
+#	placement = root
+#
+#	flavor = journal_flavor_south_africa.9.f
+#
+#
+#	event_image = {
+#		video = "gfx/event_pictures/africa_construction_colony.bk2"
+#	}
+#
+#	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+#	on_opened_soundeffect = "event:/SFX/Events/africa/construction_colony"
+#
+#	icon = "gfx/interface/icons/event_icons/event_map.dds"
+#
+#	minor_right_icon = c:WIB
+#
+#	duration = 1
+#
+#	trigger = {
+#		# triggered by journal entry
+#	}
+#
+#	option = {
+#		name = journal_flavor_south_africa.9.a
+#		default_option = yes
+#		        ai_chance = { base = 1 }
+#    	c:ORA = {
+#          annex = c:WIB
+#        }
+#
+#	}
+#    	option = {
+#		name = journal_flavor_south_africa.9.b
+#                ai_chance = { base = 0 }
+#
+#		s:STATE_TRANSVAAL = {
+#				add_claim = c:ORA
+#		}
+#        change_relations = {
+#			country = c:ORA
+#			value = -50
+#		}
+#
+#	}
+#
+#}
 
 #Zoutpansberg play as
 journal_flavor_south_africa.10 = {

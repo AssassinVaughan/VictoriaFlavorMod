@@ -1,18 +1,16 @@
 ﻿CHARACTERS = {
-    if = {
-		limit = { exists = c:ENT }
-	c:ENT = {
+	c:ENT ?= {
 		create_character = {
-			first_name = "Justo_Jose"
-			last_name = "de_Urquiza"
-			historical = yes
-			ruler = yes
-			is_general = yes
-			dna = dna_Justo_Jose_de_Urquiza
-			birth_date = 1801.10.18
+			# Pascual Echagüe
+			template = ARG_Pascual_EchagU_e
+		}
 		
-			interest_group = ig_armed_forces
-		}	
-	}
+		### Interest Group Leaders ###
+
+		# Rural Folk
+		create_character = {
+			# Justo José de Urquiza
+			template = ARG_Justo_Jose_de_Urquiza
+		}
 	}
 }

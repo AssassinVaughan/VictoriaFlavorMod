@@ -2,7 +2,7 @@
 
 grosdeutschland.1 = {
 	type = country_event
-	placement = s:STATE_AUSTRIA.region_state:GER
+	placement = ROOT
 
 	title = grosdeutschland.1.t
 	desc = grosdeutschland.1.d
@@ -92,6 +92,23 @@ grosdeutschland.1 = {
 				value = 30
 			}
 		}
+
+		every_country = {
+			limit = {
+				has_variable = former_austrian_subject
+			}
+			change_relations = {
+				country = root
+				value = 30
+			}
+		}
+
+		if = {
+			limit = {
+				tag = c:AUS
+			}
+			change_tag = BOH
+		}
 	}
 	option = { #To war
 		name = grosdeutschland.1.b
@@ -135,12 +152,17 @@ grosdeutschland.1 = {
 			every_state = {
 				limit = {
 					has_variable = former_austria
+					NOT = { 
+						owner = {
+							has_variable = former_austrian_subject
+						} 
+					}
 				}
 				save_temporary_scope_as = temp_scope
 				random_diplomatic_play = {
 					limit = {
 						any_scope_play_involved = {
-							c:GER ?= this
+							scope:war_goal_country ?= this
 						}
 					}
 					add_war_goal = {
@@ -161,7 +183,7 @@ grosdeutschland.1 = {
 				random_diplomatic_play = {
 					limit = {
 						any_scope_play_involved = {
-							c:GER ?= this
+							scope:war_goal_country ?= this
 						}
 					}
 					add_war_goal = {
@@ -290,6 +312,12 @@ grosdeutschland.3 = {
 	type = country_event
 
 	hidden = yes
+
+	trigger = {
+		NOT = {
+			exists = c:AUS
+		}
+	}
 
 	immediate = {
 		#Locate Slovenia
@@ -731,7 +759,22 @@ grosdeutschland.4 = {
 	type = country_event
 
 	title = grosdeutschland.4.t
-	desc = grosdeutschland.4.d2
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = dual_monarchy.1.d
+				trigger = {
+					NOT = { has_variable = dual_monarchy_fail }
+				}
+			}
+			triggered_desc = {
+				desc = dual_monarchy.1.d2
+				trigger = {
+					has_variable = dual_monarchy_fail
+				}
+			}
+		}
+	}
 	flavor = grosdeutschland.4.f
 
 	event_image = {
@@ -775,6 +818,7 @@ grosdeutschland.4 = {
 	}
 	option = { # accept compromise
 		name = dual_monarchy.1.b
+		default_option = yes
 		trigger = {
 			has_variable = dual_monarchy_fail
 		}
@@ -837,6 +881,8 @@ grosdeutschland.4 = {
 							is_homeland = cu:croat
 						}
 					}
+					state_region != s:STATE_ISTRIA
+					state_region != s:STATE_DALMATIA
 				}
 				set_variable = former_austria
 				set_state_owner = scope:hungarian_country
@@ -869,4 +915,441 @@ grosdeutschland.4 = {
 				months = long_modifier_time
 			}
 		}
+	}
+}
+
+grosdeutschland.5 = {
+	type = country_event
+
+	hidden = yes
+
+	trigger = {
+		NOT = {
+			any_scope_state = {
+				state_region = {
+					OR = {
+						is_homeland = cu:south_german
+						is_homeland = cu:north_german
+					}
+					NOT = { 
+						OR = {
+							is_homeland = cu:czech
+							is_homeland = cu:slovene
+							is_homeland = cu:north_italian
+							is_homeland = cu:polish
+						}
+					}
+				}
+			}
+		}
+	}
+
+	immediate = {
+		#Locate Slovenia
+		if = {
+			limit = {
+				any_country = {
+					country_has_primary_culture = cu:slovene
+					any_scope_state = {
+						any_neighbouring_state = {
+							owner = ROOT
+							state_region = { is_homeland = cu:slovene }
+						}
+					}
+				}
+			}
+			random_country = {
+				limit = {
+					country_has_primary_culture = cu:slovene
+					any_scope_state = {
+						any_neighbouring_state = {
+							owner = ROOT
+							state_region = { is_homeland = cu:slovene }
+						}
+					}
+				}
+				save_scope_as = slovenian_country
+			}
+		}
+		#Locate Croatia
+		if = {
+			limit = {
+				any_country = {
+					country_has_primary_culture = cu:croat
+					any_scope_state = {
+						any_neighbouring_state = {
+							owner = ROOT
+							state_region = { is_homeland = cu:croat }
+						}
+					}
+				}
+			}
+			random_country = {
+				limit = {
+					country_has_primary_culture = cu:croat
+					any_scope_state = {
+						any_neighbouring_state = {
+							owner = ROOT
+							state_region = { is_homeland = cu:croat }
+						}
+					}
+				}
+				save_scope_as = croatian_country
+			}
+		}
+		#Create Hungary
+		if = {
+			limit = {
+				c:HUN ?= {
+					any_scope_state = {
+						any_neighbouring_state = {
+							owner = ROOT
+							state_region = {
+								OR = {
+									is_homeland = cu:hungarian
+									is_homeland = cu:croat
+									is_homeland = cu:slovene
+								}
+							}
+						}
+					}
+				}
+			}
+			c:HUN = {
+				save_scope_as = hungarian_country
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					exists = s:STATE_CENTRAL_HUNGARY.region_state:AUS
+				}
+				s:STATE_CENTRAL_HUNGARY.region_state:AUS = {
+					set_variable = former_austria
+				}
+				create_country = {
+					tag = HUN
+					origin = this
+					state = s:STATE_CENTRAL_HUNGARY.region_state:AUS
+				}
+				c:HUN = { save_scope_as = hungarian_country }
+			}
+		}
+
+		#Create Venice/Lombardy
+		if = {
+			limit = {
+				c:ITA ?= {
+					any_scope_state = {
+						any_neighbouring_state = {
+							owner = ROOT
+							state_region = {
+								is_homeland = cu:north_italian
+							}
+						}
+					}
+				}
+			}
+			c:ITA = {
+				save_scope_as = italian_country
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					exists = s:STATE_VENETIA.region_state:AUS
+				}
+				s:STATE_VENETIA.region_state:AUS = {
+					set_variable = former_austria
+				}
+				create_country = {
+					tag = VEN
+					origin = this
+					state = s:STATE_VENETIA.region_state:AUS
+				}
+				c:VEN = { save_scope_as = italian_country_2 }
+			}
+			if = {
+				limit = {
+					exists = s:STATE_LOMBARDY.region_state:AUS
+				}
+				s:STATE_LOMBARDY.region_state:AUS = {
+					set_variable = former_austria
+				}
+				create_country = {
+					tag = LOM
+					origin = this
+					state = s:STATE_LOMBARDY.region_state:AUS
+				}
+				c:LOM = { save_scope_as = italian_country }
+			}
+		}
+
+		#Create Galicia
+		if = {
+			limit = {
+				any_country = {
+					NOT = { overlord = root }
+					country_has_primary_culture = cu:polish
+					any_scope_state = {
+						any_neighbouring_state = {
+							owner = ROOT
+							state_region = { is_homeland = cu:polish }
+						}
+					}
+				}
+			}
+			random_country = {
+				limit = {
+					NOT = { overlord = root }
+					country_has_primary_culture = cu:polish
+					any_scope_state = {
+						any_neighbouring_state = {
+							owner = ROOT
+							state_region = { is_homeland = cu:polish }
+						}
+					}
+				}
+				save_scope_as = polish_country
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					exists = s:STATE_EAST_GALICIA.region_state:AUS
+				}
+				s:STATE_EAST_GALICIA.region_state:AUS = {
+					set_variable = former_austria
+				}
+				create_country = {
+					tag = GAL
+					origin = this
+					state = s:STATE_EAST_GALICIA.region_state:AUS
+				}
+				c:GAL = { save_scope_as = polish_country }
+			}
+		}
+
+		#Create Romania
+		if = {
+			limit = {
+				any_country = {
+					country_has_primary_culture = cu:romanian
+					any_scope_state = {
+						any_neighbouring_state = {
+							owner = ROOT
+							state_region = s:STATE_MOLDAVIA
+						}
+					}
+				}
+			}
+			random_country = {
+				limit = {
+					country_has_primary_culture = cu:romanian
+					any_scope_state = {
+						any_neighbouring_state = {
+							owner = ROOT
+							state_region = s:STATE_MOLDAVIA
+						}
+					}
+				}
+				save_scope_as = romanian_country
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					exists = s:STATE_MOLDAVIA.region_state:AUS
+				}
+				s:STATE_MOLDAVIA.region_state:AUS = {
+					set_variable = former_austria
+				}
+				create_country = {
+					tag = ROM
+					origin = this
+					state = s:STATE_MOLDAVIA.region_state:AUS
+				}
+				c:ROM = { save_scope_as = romanian_country }
+			}
+		}
+
+		#Create Montenegro
+		if = {
+			limit = {
+				any_country = {
+					OR = {
+						country_has_primary_culture = cu:serb
+						country_has_primary_culture = cu:albanian
+					}
+					any_scope_state = {
+						any_neighbouring_state = {
+							owner = ROOT
+							state_region = s:STATE_MONTENEGRO
+						}
+					}
+				}
+			}
+			random_country = {
+				limit = {
+					OR = {
+						country_has_primary_culture = cu:serb
+						country_has_primary_culture = cu:albanian
+					}
+					any_scope_state = {
+						any_neighbouring_state = {
+							owner = ROOT
+							state_region = s:STATE_MONTENEGRO
+						}
+					}
+				}
+				save_scope_as = serbian_country
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					exists = s:STATE_MONTENEGRO.region_state:AUS
+				}
+				s:STATE_MONTENEGRO.region_state:AUS = {
+					set_variable = former_austria
+				}
+				create_country = {
+					tag = MON
+					origin = this
+					state = s:STATE_MONTENEGRO.region_state:AUS
+				}
+				c:MON = { save_scope_as = serbian_country }
+			}
+		}
+
+		#
+		# ASSIGN CULTURAL HOMELANDS
+		#
+
+		every_scope_state = { #Give land to slovenia
+			limit = {
+				state_region = {
+					is_homeland = cu:slovene
+				}
+			}
+			set_variable = former_austria
+			set_state_owner = scope:slovenian_country
+		}
+
+		every_scope_state = { #Give land to croatia
+			limit = {
+				state_region = {
+					is_homeland = cu:croat
+				}
+			}
+			set_variable = former_austria
+			set_state_owner = scope:croatian_country
+		}
+
+		every_scope_state = { #Give land to hungary
+			limit = {
+				state_region = {
+					OR = {
+						is_homeland = cu:hungarian
+						is_homeland = cu:croat
+						is_homeland = cu:slovene
+					}
+				}
+			}
+			set_variable = former_austria
+			set_state_owner = scope:hungarian_country
+		}
+
+		every_scope_state = { #Give land to Romania
+			limit = {
+				state_region = {
+					is_homeland = cu:romanian
+				}
+			}
+			set_variable = former_austria
+			set_state_owner = scope:romanian_country
+		}
+
+		every_scope_state = { #Give land to Italy
+			limit = {
+				state_region = {
+					is_homeland = cu:north_italian
+				}
+			}
+			set_variable = former_austria
+			set_state_owner = scope:italian_country
+		}
+
+		every_scope_state = { #Give land to Poland
+			limit = {
+				state_region = {
+					is_homeland = cu:polish
+				}
+			}
+			set_variable = former_austria
+			set_state_owner = scope:polish_country
+		}
+
+		every_scope_state = { #Give land to Montenegro
+			limit = {
+				state_region = {
+					OR = {
+						is_homeland = cu:serb
+						is_homeland = cu:albanian
+					}
+				}
+			}
+			set_variable = former_austria
+			set_state_owner = scope:serbian_country
+		}
+
+		#what to do with silly little krakow?
+		if = {
+			limit = {
+				c:KRA ?= { 
+					is_subject = yes 
+					overlord = root
+				}
+			}
+			c:KRA = {
+				trigger_event = { id = grosdeutschland.2 days = 3}
+			}
+		}
+
+		#If you're a subject, be free
+		every_country = {
+			limit = {
+				OR = {
+					country_has_primary_culture = cu:hungarian
+					country_has_primary_culture = cu:romanian
+					country_has_primary_culture = cu:north_italian
+					country_has_primary_culture = cu:polish
+					country_has_primary_culture = cu:serb
+					country_has_primary_culture = cu:croat
+					country_has_primary_culture = cu:slovene
+				}
+				is_subject_of = root
+			}
+			set_variable = former_austria_subject
+			make_independent = yes
+		}
+
+		ordered_state = { 
+			limit = { 
+				has_variable = former_austria 
+				is_capital = yes
+			} 
+			order_by = {
+				owner = {
+					add = GetTotalPopulation
+				}
+			}
+			position = 0
+			save_scope_as = war_goal_state
+			owner = {
+				save_scope_as = war_goal_country
+			}
+		}
+		trigger_event = { id = grosdeutschland.1 }
+	}
 }
