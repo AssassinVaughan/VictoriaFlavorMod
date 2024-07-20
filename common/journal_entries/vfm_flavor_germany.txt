@@ -187,7 +187,7 @@ je_prussian_guard = {
 
 	weight = 50
 }
-je_establish_german_colonial_department = {
+je_establish_italian_colonial_department = {
 	icon = "gfx/interface/icons/event_icons/event_map.dds"
     group = je_group_foreign_affairs
 
@@ -200,14 +200,14 @@ je_establish_german_colonial_department = {
 		activate_law = law_type:law_colonial_exploitation
 	}
 	possible = {
-		exists = c:GER
-		this = c:GER
+		exists = c:ITA
+		this = c:ITA
 	}
 	invalid = {
 		has_law = law_type:law_colonial_exploitation
 	}
 	is_shown_when_inactive = {
-		exists = c:GER
-		this = c:GER
+		exists = c:ITA
+		this = c:ITA
 	}
 }
