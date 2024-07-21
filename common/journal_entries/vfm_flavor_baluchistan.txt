@@ -30,8 +30,7 @@
 			}
 			add_modifier = {
 				name = kal_tribal_autonomy
-				days = 4250
-				is_decaying = yes
+				days = 9250
 			}
 		}
 		every_state = {
@@ -41,7 +40,15 @@
 			add_modifier = {
 				name = kal_tribal_autonomy
 				days = 9250
-				is_decaying = yes
+			}
+		}
+		every_state = {
+			limit = {
+				state_region = s:STATE_NORTHERN_BALUCHISTAN
+			}
+			add_modifier = {
+				name = kal_tribal_autonomy
+				days = 9250
 			}
 		}
 		s:STATE_BALUCHISTAN = {
