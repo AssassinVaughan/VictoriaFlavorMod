@@ -42,8 +42,8 @@ filibuster.1 = {
 	immediate = {
 		create_country = {
 			tag = SNR
-			origin = c:USA
-			state = s:STATE_SONORA.region_state:MEX
+			origin = this
+			province = p:x81A80B
 			on_created = {
 				ig:ig_landowners = {
 					set_interest_group_name = ig_boulbon_filibusters
@@ -65,11 +65,17 @@ filibuster.1 = {
 						ambitious
 					}
 				}
+				s:STATE_SONORA = {
+					add_claim = c:SNR
+					set_owner_of_provinces = {
+						country = c:SNR
+						provinces = { xC699E3 xDF50C0 x4271A2 x54B1CE x575437 x0E6844 xE51C65 }
+					}
+				}
 			}
 		}
 		set_global_variable = raousset_boulbon_invasion
-		s:STATE_SONORA.region_state:MEX = { 
-			set_state_owner = c:SNR 
+		s:STATE_SONORA.region_state:SNR = { 
 			create_pop = {
 				pop_type = smallholders
 				culture = dixie
@@ -149,16 +155,21 @@ filibuster.1 = {
 				direction = import
 				target = c:GBR.market
 			}
-			add_modifier = {
-				name = filibustering_modifier
-				months = 6
-			}
+			#add_modifier = {
+			#	name = filibustering_modifier
+			#	months = 6
+			#}
 		}
 		c:MEX = {
 			create_diplomatic_play = {
-				name = annex_war
+				name = sonora_filibuster_war
+			
 				target_country = c:SNR
+				
+				war = yes
+				
 				type = dp_annex_war
+						
 			}
 		}
 	}
@@ -220,8 +231,9 @@ filibuster.2 = {
 		set_global_variable = walker_baja_invasion
 		create_country = {
 			tag = BAJ
-			origin = c:USA
+			origin = this
 			state = s:STATE_BAJA_CALIFORNIA.region_state:MEX
+			#province = p:x205040
 			on_created = {
 				ig:ig_petty_bourgeoisie = {
 					set_interest_group_name = ig_walker_filibusters
@@ -243,10 +255,15 @@ filibuster.2 = {
 						ambitious
 					}
 				}
+				s:STATE_BAJA_CALIFORNIA.region_state:MEX = {
+					set_state_owner = c:BAJ
+				#	add_claim = c:BAJ
+				#	set_owner_of_provinces = {
+				#		country = c:BAJ
+				#		provinces = { x6320AE x7546F8 x1E47C8 xC642C3 xBC4223 xD34672 xDD6E50 x9F7207 }
+				#	}
+				}
 			}
-		}
-		s:STATE_BAJA_CALIFORNIA.region_state:MEX = { 
-			set_state_owner = c:BAJ
 		}
 		s:STATE_BAJA_CALIFORNIA.region_state:BAJ = {
 				create_pop = {
@@ -262,7 +279,7 @@ filibuster.2 = {
 				create_pop = {
 					pop_type = soldiers
 					culture = dixie
-					size = 5000
+					size = 10000
 				}
 				create_building={
 					building="building_arms_industry"
@@ -291,10 +308,10 @@ filibuster.2 = {
 			add_claim = c:BAJ
 		}
 		c:BAJ = {
-			add_modifier = {
-				name = filibustering_modifier
-				months = 6
-			}
+			#add_modifier = {
+			#	name = filibustering_modifier
+			#	months = 6
+			#}
 			create_trade_route = {
 				goods = small_arms
 				level = 2
@@ -357,8 +374,8 @@ filibuster.2 = {
 				
 				add_war_goal = {
 					holder = c:MEX
-					type = return_state
-					target_state = s:STATE_BAJA_CALIFORNIA.region_state:BAJ
+					type = annex_country
+					target_country = c:BAJ
 				}			
 			}	
 		}
