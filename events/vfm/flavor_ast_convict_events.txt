@@ -1,13 +1,13 @@
-﻿namespace = flavor_aus_convict_events
+﻿namespace = flavor_ast_convict_events
 
 #The Convict System Intro
-flavor_aus_convict_events.1 = { 
+flavor_ast_convict_events.1 = { 
 	type = country_event
 	placement = ROOT
 
-	title = flavor_aus_convict_events.1.t
-	desc = flavor_aus_convict_events.1.d
-	flavor = flavor_aus_convict_events.1.f
+	title = flavor_ast_convict_events.1.t
+	desc = flavor_ast_convict_events.1.d
+	flavor = flavor_ast_convict_events.1.f
 
 	event_image = {
 		video = "gfx/event_pictures/southamerica_aristocrats.bk2"
@@ -24,21 +24,17 @@ flavor_aus_convict_events.1 = {
 
 	immediate = {
 		ROOT = {
-			save_scope_as = frontier_war_country_scope
+			save_scope_as = convict_country_scope
 			set_variable = {
-				name = frontier_var
+				name = convict_var
 				value = 0
 			}
 		}
 	}
 
 	option = {
-		name = flavor_aus_convict_events.1.a
+		name = flavor_ast_convict_events.1.a
 		default_option = yes
 		add_journal_entry = { type = je_convict_system }
-		
-		add_modifier = {
-		    name = colonial_boom
-		}
     }
 }

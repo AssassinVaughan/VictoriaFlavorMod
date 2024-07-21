@@ -1,4 +1,9 @@
 ﻿l_english:
+  #Refer to these as a WIP text using event_name.#.(letter):"$(insert WIP tag)$"
+  DESC_WIP: "@information! #light_green This #italic description#! is unfinished!#!"
+  FLAVOR_WIP: "@information! #light_green This #italic flavor text#! is unfinished!#!"
+  OPTION_WIP: "@information! #light_green This #italic option#! is unfinished! Select at your own risk!#!"
+
  #Central American Events
   central_america.4.t:0 "The Nicaraguan Secession"
   central_america.4.d:1 "The Federal Republic stands divided. With tensions rising, Nicaragua has now declared their secession Union."
@@ -1192,3 +1197,22 @@
   journal_flavor_afghanistan.6.f: "Although the Durrani Empire collapsed two decades ago, the former ruling dynasty has managed to hold out in the fortified city of Herat from where Kamran Durrani continues to exert influence throughout Khorasan.\n\nThe Principality of Sistan, long ruled by a Pro-Herati Prince, has recently broken free however as the Qajars march on the city of Herat. The Sistani entity is situated in a remote and desolate area, and while only of little importance, it may be wise to capitalize on this opportunity and to integrate it into our domain to counter future Persian and Herati ambitions."
   journal_flavor_afghanistan.6.a: "Noted."
   journal_flavor_afghanistan.6.b: "Towards Rudbar we go!"
+
+  flavor_western_australia_events.1.t: "The Colony of [SCOPE.sCountry('was_country_scope').GetNameNoFlag]"
+  flavor_western_australia_events.1.d: "Our colony is anything but old, only being founded in the year 1829. As such, our current supplies and infrastructure leave something to be desired. To add more salt to the wound, [SCOPE.sCountry('was_country_scope').GetName] is the only free colony on the continent, barring us from the cheap labor the [Concept('concept_convict_system', 'Convict System')] provides our eastern cousins."
+  flavor_western_australia_events.1.f: "$FLAVOR_WIP$"
+  flavor_western_australia_events.1.a: "Penal colony or not, [SCOPE.sCountry('was_country_scope').GetNameNoFlag] will prosper!"
+
+  flavor_ast_convict_events.1.t: "The Convict System"
+  flavor_ast_convict_events.1.d_NSW: "$DESC_WIP$"
+  flavor_ast_convict_events.1.d_TAS: "$DESC_WIP$"
+  flavor_ast_convict_events.1.f: "$FLAVOR_WIP$"
+  flavor_ast_convict_events.1.a: "$OPTION_WIP$"
+
+  frontier_war_events.1.t: "The [SCOPE.sCountry('frontier_war_country_scope').GetAdjective] Frontier Wars"
+  frontier_war_events.1.d_WAS: "[SCOPE.sCountry('frontier_war_country_scope').GetNameNoFlag] and the [SCOPE.sCountry('frontier_war_noongar_scope').GetName] have already had violent skurmishes in recent years, with the recent [context_pinjarra] as proof. Further violence is beneficial to neither party."
+  frontier_war_events.1.d_NSW: "$DESC_WIP$"
+  frontier_war_events.1.f_WAS: "$FLAVOR_WIP$"
+  frontier_war_events.1.f_NSW: "$FLAVOR_WIP$"
+  frontier_war_events.1.a: "In the name of King William, the Aborigines must make way!"
+  frontier_war_events.1.b: "We all share this continent, Anglo or Aboriginal."
