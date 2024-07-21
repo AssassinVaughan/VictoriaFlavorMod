@@ -53,3 +53,78 @@ je_western_australia_claim = {
     should_be_pinned_by_default = yes
 	weight = 20
 }
+#The Southern Prison
+je_convict_system = {
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+    group = je_group_internal_affairs
+
+	timeout = 3650
+	scripted_progress_bar = convict_system_progress_bar
+
+	immediate = {
+		ROOT = {
+			save_scope_as = je_convict_country_scope
+			set_variable = {
+				name = convict_progress_var
+				value = 0
+			}
+		}
+	}
+
+	on_monthly_pulse = {
+		effect = {
+			if = {
+				limit = {
+					has_variable = var_importing_convicts
+				}
+				set_variable = {
+					name = convict_progress_var
+					subtract = 1
+				}
+			}
+			else_if = {
+				limit = {
+					has_variable = var_swaying_settlers
+				}
+				set_variable = {
+					name = convict_progress_var
+					add = 1
+				}
+			}
+		}
+		random_events = {
+			185 = 0
+			5 = flavor_ast_convict_events.4 
+			5 = flavor_ast_convict_events.5 
+			#Anti-transportation League
+			5 = flavor_ast_convict_events.6 
+		}
+	}
+
+	on_timeout = {
+		trigger_event = { id = flavor_ast_convict_events.3 }
+	}
+
+	complete = {
+		OR = {
+			pop_type_percent_country = {
+				pop_type = slaves
+				percent < 0.1
+			}
+			NOT = {
+				has_law = law_type:law_debt_slavery 
+			}
+		}
+	}
+
+
+	on_complete = {
+		trigger_event = {
+			id = flavor_ast_convict_events.2
+			days = 0
+		}
+	}
+
+    should_be_pinned_by_default = yes
+	weight = 20
+}

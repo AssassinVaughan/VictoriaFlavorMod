@@ -38,3 +38,80 @@ flavor_ast_convict_events.1 = {
 		add_journal_entry = { type = je_convict_system }
     }
 }
+
+#Transportation Ended
+flavor_ast_convict_events.2 = { 
+	type = country_event
+	placement = ROOT
+
+	title = flavor_ast_convict_events.2.t
+	desc = flavor_ast_convict_events.2.d
+	flavor = flavor_ast_convict_events.2.f
+
+	event_image = {
+		video = "gfx/event_pictures/southamerica_aristocrats.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/unspecific/military_parade"
+
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+
+	dlc = dlc_vfm
+
+	duration = 1
+
+	immediate = {
+		ROOT = {
+			save_scope_as = convict_country_scope
+			set_variable = {
+				name = convict_var
+				value = 0
+			}
+		}
+	}
+
+	option = {
+		name = flavor_ast_convict_events.2.a
+		default_option = yes
+		add_journal_entry = { type = je_convict_system }
+    }
+}
+
+#Transportation Endures
+flavor_ast_convict_events.3 = { 
+	type = country_event
+	placement = ROOT
+
+	title = flavor_ast_convict_events.3.t
+	desc = flavor_ast_convict_events.3.d
+	flavor = flavor_ast_convict_events.3.f
+
+	event_image = {
+		video = "gfx/event_pictures/southamerica_aristocrats.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/unspecific/military_parade"
+
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+
+	dlc = dlc_vfm
+
+	duration = 1
+
+	immediate = {
+		ROOT = {
+			save_scope_as = convict_country_scope
+			set_variable = {
+				name = convict_var
+				value = 0
+			}
+		}
+	}
+
+	option = {
+		name = flavor_ast_convict_events.3.a
+		default_option = yes
+    }
+}

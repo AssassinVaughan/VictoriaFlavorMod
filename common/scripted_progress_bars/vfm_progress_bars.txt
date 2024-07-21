@@ -1,0 +1,28 @@
+﻿ ### For je_convict_system
+
+convict_system_progress_bar = {
+	name = "Convict Support"
+	desc = "Emancipation Support"
+ 	second_desc = "Convict Support"
+
+	double_sided_grey = yes
+
+	monthly_progress = {
+		if = {
+			limit = {
+				NOT = {
+					has_journal_entry = je_convict_system
+				}
+			}
+			add = {
+				desc = "convict_progress_from_migration"
+				value = owner.var:convict_progress_var
+			}
+		}
+	}
+
+	start_value = 50
+	min_value = 0
+	max_value = 100
+
+}
