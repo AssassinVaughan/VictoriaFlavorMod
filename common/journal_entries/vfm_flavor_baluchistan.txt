@@ -75,8 +75,14 @@
 		}
 		custom_tooltip = {
 			text = kal_territory_tt
-				owns_entire_state_region = STATE_BALUCHISTAN
+			c:KAL = {
 				has_state_in_state_region = STATE_SISTAN
+			}
+			NOT = {
+				c:OMA = {
+					has_state_in_state_region = STATE_SISTAN
+				}
+			}
 		}
 	}
 	
