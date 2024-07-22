@@ -323,9 +323,9 @@
   je_iran_constitution_status: "Adopt an Iranian Constitution"
   je_iran_constitution_reason: "Iran never had an official constitution; However, even in ancient times, laws were written and passed down by the Shahs, some of which were preserved in artifacts such as the famous Cyrus Cylinder. While there never was much of a need for a formal constitution, the times are rapidly changing, and Iran is slowly falling behind the European Powers.\n\nAs we continue to modernize our country, the need for a constitution like that of the Europeans becomes a necessity and shall lay the groundwork for a truly modern Iranian state."
   
-  constitutional_revolution_tt: "Receives a unique [concept_modifier] based on your #tooltippable;tooltip:,je_iran_religious_laws_special_tooltip Religious Laws#!"
+  constitutional_revolution_tt: "Receives a unique [concept_modifier] based on your #tooltippable;tooltip:je_iran_religious_laws_special_tooltip Religious Laws#!"
   
-  ,je_iran_religious_laws_special_tooltip: "• If we have #bold State Religion#! enacted, the Ulema will be cemented as an integral part of Iran's political sphere for decades to come.\n• If we have either #bold Total Separation#! or #bold State Atheism#! enacted, the Ulema will be ostracized from Iran's political sphere."
+  je_iran_religious_laws_special_tooltip: "• If we have #bold State Religion#! enacted, the Ulema will be cemented as an integral part of Iran's political sphere for decades to come.\n• If we have either #bold Total Separation#! or #bold State Atheism#! enacted, the Ulema will be ostracized from Iran's political sphere."
   
   change_name_qajar_empire_persia_tt: "Your country will become known as #GOLD Persia#!"
   
@@ -337,16 +337,15 @@
   #Subject Tooltips
   
   autonomous_province_break_tt: "The country needs to be sufficiently decentralized"
-  custom_tooltip_annexed_kohistan: "We own the entire state of #bold Bampur#!"
   custom_tooltip_annexed_maku: "We have integrated [SCOPE.sCountry('jel_scope').GetName]"
   custom_tooltip_annexed_ardalan: "We have integrated [SCOPE.sCountry('ard_scope').GetName]"
-  custom_tooltip_annexed_bastak: "We have #tooltippable;tooltip:,je_bastak_special_tooltip reintegrated the Coast#!"
-  custom_tooltip_annexed_khorasan: "We have #tooltippable;tooltip:,je_khorasan_special_tooltip integrated Khorasan#!"
+  custom_tooltip_annexed_bastak: "We have #tooltippable;tooltip:je_bastak_special_tooltip reintegrated the Coast#!"
+  custom_tooltip_annexed_khorasan: "We have #tooltippable;tooltip:je_khorasan_special_tooltip integrated Khorasan#!"
   lost_subjects_iran_tt: "Every #bold remaining#! country that started as our [concept_subject] is independent"
   doesnt_control_kohistan_tt: "We do not control #bold Kohistan#!"
   doesnt_control_khorasan_tt: "We do not control #bold Khorasan#!"
-  ,je_khorasan_special_tooltip: "We must achieve #bold all#! of the following:\n\n• The #bold Shadilu Khanate#! has been integrated\n• The #bold Za'faranlu Emirate#! has been integrated\n• The #bold Khozeimeh Amirdom#! has been abolished\n\nNote: The #YELLOW Khozeimeh Amirdom#! can be abolished via #bold decision#!"
-  ,je_bastak_special_tooltip: "We must achieve #bold all#! of the following:\n\n• The #bold Mohammerah Emirate#! has been integrated\n• #bold Langeh#! and #bold Kangan#! have been returned\n• The #bold Al-Madkhuri#! have been ousted from #bold Bushehr#!\n• The lease of #bold Bandar Abbas#! has expired"
+  je_khorasan_special_tooltip: "We must achieve #bold all#! of the following:\n\n• The #bold Shadilu Khanate#! has been integrated\n• The #bold Za'faranlu Emirate#! has been integrated\n• The #bold Khozeimeh Amirdom#! has been abolished\n\nNote: The #YELLOW Khozeimeh Amirdom#! can be abolished via #bold decision#!"
+  je_bastak_special_tooltip: "We must achieve #bold all#! of the following:\n\n• The #bold Mohammerah Emirate#! has been integrated\n• #bold Langeh#! has been returned\n• The #bold Al-Madkhuri#! have been ousted from #bold Bushehr#! and #bold Kangan#!\n• The lease of #bold Bandar Abbas#! has expired"
 
   #Integrate Subject Buttons
   je_annex_khr_button: "Integrate the Khorasani Kurds"
@@ -376,21 +375,21 @@
   
   
   #Qajar Authority Tooltips
-  integrated_herat_iran_tt: "has #tooltippable;tooltip:,je_herat_dispute_special_tooltip solved#! the #YELLOW Herat Dispute#! "
+  integrated_herat_iran_tt: "has #tooltippable;tooltip:je_herat_dispute_special_tooltip solved#! the #YELLOW Herat Dispute#! "
   integrated_khorasan_kurds_iran_tt: "has completed the #bold Guarded Domains of Iran#! [concept_journal_entry]"
   integrated_khozeimeh_iran_tt: "has abolished the #YELLOW Khozeimeh Amirdom#!"
-  abolished_pompous_court_iran_tt: "has #tooltippable;tooltip:,je_pomp_court_special_tooltip abolished#! the #YELLOW Pompous Court#!"
+  abolished_pompous_court_iran_tt: "has #tooltippable;tooltip:je_pomp_court_special_tooltip abolished#! the #YELLOW Pompous Court#!"
   trigger_event_the_qajar_century_tt: "Triggers the Event #GOLD #bold The Qajar Century#!"
   trigger_event_fall_of_the_qajars_tt: "Triggers the Event #WHITE #bold The Fall of the Qajars#!"
-  persian_constitution_has_been_adopted_tt: "has consolidated #tooltippable;tooltip:,je_consolidate_iran_special_tooltip Iran#! and adopted a #YELLOW Constitution#! by completing the #bold Constitutional Revolution#! [concept_journal_entry]"
-  reclaimed_caucasus_tt: "has reclaimed the #tooltippable;tooltip:,je_consolidate_caucasus_special_tooltip Caucasus#! and is a #bold recognized#! country"
+  persian_constitution_has_been_adopted_tt: "has consolidated #tooltippable;tooltip:je_consolidate_iran_special_tooltip Iran#! and adopted a #YELLOW Constitution#! by completing the #bold Constitutional Revolution#! [concept_journal_entry]"
+  reclaimed_caucasus_tt: "has reclaimed the #tooltippable;tooltip:je_consolidate_caucasus_special_tooltip Caucasus#! and is a #bold recognized#! country"
   change_name_qajar_empire_tt: "Your country will become known as the #GOLD Qajar Empire#!."
   change_name_iran_tt: "Your country will become known as the #GOLD Imperial Iran#!."
   
-  ,je_herat_dispute_special_tooltip: "We must achieve #bold either#! objective:\n\n• Annexed #bold Herat#! and #bold fully#! controls its state\n• Recognized Herat as independent through the [concept_journal_entry] or #bold Siege Events#!\n\nNote: Should the #bold Siege of Herat#! [concept_journal_entry] be failed, a second siege will commence upon the ascension of #bold Nasir al-Din Qajar#!"
-  ,je_consolidate_iran_special_tooltip: "We must #bold fully#! control every #bold Persian [concept_homeland]#!:\n\n• Owns the entirety of #bold Tabriz#!\n• Owns the entirety of #bold Luristan#!\n• Owns the entirety of #bold Khuzestan#!\n• Owns the entirety of #bold Laristan#!\n• Owns the entirety of #bold Isfahan#!\n• Owns the entirety of #bold Irak-i-Ajami#!\n• Owns the entirety of #bold Fars#!\n• Owns the entirety of #bold Mazandaran#!\n• Owns the entirety of #bold Khorasan#!\n• Owns the entirety of #bold Sistan#!\n\n#italic Note: #bold Western Afghanistan#! is not required to complete this #bold objective#! #!"
-  ,je_consolidate_caucasus_special_tooltip: "We must #bold fully#! control the states of #bold Armenia#! and #bold Azerbaijan#!\n\n#italic Note: #bold Georgia#! is not required to complete this #bold objective#! #!"
-  ,je_pomp_court_special_tooltip: "Note: The #YELLOW Pompous Court#! can be abolished via #bold decision#!"
+  je_herat_dispute_special_tooltip: "We must achieve #bold either#! objective:\n\n• Annexed #bold Herat#! and #bold fully#! controls its state\n• Recognized Herat as independent through the [concept_journal_entry] or #bold Siege Events#!\n\nNote: Should the #bold Siege of Herat#! [concept_journal_entry] be failed, a second siege will commence upon the ascension of #bold Nasir al-Din Qajar#!"
+  je_consolidate_iran_special_tooltip: "We must #bold fully#! control every #bold Persian [concept_homeland]#!:\n\n• Owns the entirety of #bold Tabriz#!\n• Owns the entirety of #bold Urmia#!\n• Owns the entirety of #bold Luristan#!\n• Owns the entirety of #bold Arabistan#!\n• Owns the entirety of #bold Hormuz#!\n• Owns the entirety of #bold Isfahan#!\n• Owns the entirety of #bold Irak-i-Ajami#!\n• Owns the entirety of #bold Semnan#!\n• Owns the entirety of #bold Fars#!\n• Owns the entirety of #bold Mazandaran#!\n• Owns the entirety of #bold Khorasan#!\n• Owns the entirety of #bold Bampur#!\n\n#italic Note: #bold Herat#! is not required to complete this #bold objective#! #!"
+  je_consolidate_caucasus_special_tooltip: "We must #bold fully#! control the states of #bold Armenia#!, #bold Elizavetpol#! and #bold Baku#!\n\n#italic Note: #bold Georgia#! is not required to complete this #bold objective#! #!"
+  je_pomp_court_special_tooltip: "Note: The #YELLOW Pompous Court#! can be abolished via #bold decision#!"
   
   
   #Herat Related Journals
@@ -531,11 +530,11 @@
   # Beluchistan Tooltips
   
   kal_abolished_chiefdoms_tt: "We have abolished the #bold Tribal Autonomies#!"
-  kal_territory_tt: "We #bold fully#! control #bold Kalat#! and the area around #tooltippable;tooltip:,je_kohistan_special_tooltip Kohistan#!"
-  kal_change_name_to_bal_tt: "We will become known #bold Baluchistan#!"
-  kal_disintegrate_tt: "[SCOPE.sCountry('kal_scope').GetName] will #tooltippable;tooltip:,je_kalat_disintegration_special_tooltip disintegrate#!"
+  kal_territory_tt: "We control the area around #tooltippable;tooltip:je_kohistan_special_tooltip Kohistan#!"
+  kal_change_name_to_bal_tt: "We will become known as #bold Baluchistan#!"
+  kal_disintegrate_tt: "[SCOPE.sCountry('kal_scope').GetName] will #tooltippable;tooltip:je_kalat_disintegration_special_tooltip disintegrate#!"
   kal_disintegrate_alt_tt: "[SCOPE.sCountry('kal_scope').GetName] will #bold disintegrate#!"
   kal_weird_situation_tt: "We will become known as #bold Kohistan#!"
   
-  ,je_kohistan_special_tooltip: "#bold Kohistan#! refers to the southern part of the [concept_state] of #bold Sistan & Beluchistan#!, also known as #bold West Baluchistan#!"
-  ,je_kalat_disintegration_special_tooltip: "• #bold Kohistan#! will be occupied by Persia\n• #bold Makran#! will become independent\n• #bold Las Bela#! will become independent"#
+  je_kohistan_special_tooltip: "#bold Kohistan#! refers to the southern part of the [concept_state] of #bold Bampur#!\n\nNote: We can take control of the Omani port of Chahbahar via #bold Decision#!"
+  je_kalat_disintegration_special_tooltip: "• #bold Kohistan#! will be occupied by Persia\n• #bold Makran#! will become independent\n• #bold Las Bela#! will become independent\n• #bold Kharan#! will become independent"#

@@ -113,8 +113,7 @@ coa_fascist_trigger = {
 	# A fascist can lead a monarchy or a theocracy without the government changing form. The Papal State should retain the same flag even if the Pope's a fascist, for example.
 	# A fascist can also lead a democracy without the democracy immediately becoming fascist. If the fascist successfully implements his wildest dreams and becomes a dictatorship, then sure the government will become Fascist, but while there's still voting the government shouldn't count as (fully) fascist yet.
 	coa_dictatorship_trigger = yes
-	any_scope_character = {
-		is_ruler = yes
+	ruler ?= {
 		OR = {
 			has_ideology = ideology:ideology_fascist
 			has_ideology = ideology:ideology_integralist
@@ -129,9 +128,8 @@ coa_nihilist_trigger = {
 		has_law = law_type:law_monarchy
 		has_law = law_type:law_council_republic
 	}
-	any_scope_character = {
+	ruler ?= {
 		has_ideology = ideology:ideology_atheist
-		is_ruler = yes
     }
 }
 
@@ -457,7 +455,7 @@ coa_def_crescent_trigger = {
 
 coa_def_buddhist_trigger = {
     religion = {
-        has_discrimination_trait = buddhist_heritage
+        has_discrimination_trait = buddhist
     }
 }
 

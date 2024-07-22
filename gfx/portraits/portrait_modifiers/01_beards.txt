@@ -33,7 +33,7 @@
                 add = 100
                 exists = scope:character
                 scope:character = { 
-                    age > 18
+                    age > 16 
                     is_historical = no
                 }
                 OR = {
@@ -91,7 +91,6 @@
                     arabic_clothes_pop_trigger = yes
                 }
                 scope:character ?= {
-                    age > 13
                     is_historical = no
                 }
             }
@@ -171,7 +170,7 @@
                         scope:character = { 
                             age > 16 
                             religion = {
-                                has_discrimination_trait = jewish_religion_heritage
+                                has_discrimination_trait = jewish
                             }
 							is_interest_group_type = ig_devout 
                         }
@@ -182,7 +181,7 @@
                         scope:pop = {
                             is_pop_type = clergymen
                             religion = {
-                                has_discrimination_trait = jewish_religion_heritage
+                                has_discrimination_trait = jewish
                             }
                         }
                     }

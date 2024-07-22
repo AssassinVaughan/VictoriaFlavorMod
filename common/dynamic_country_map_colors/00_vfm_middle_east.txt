@@ -8,3 +8,14 @@
 		}
 	}
 }
+
+iranian_gold = {
+	color = { 242 185 53 }
+	possible = {
+		exists = c:PER
+		this = c:PER 
+		c:PER = { 
+			NOT = { has_variable = qajar_dynasty }
+		}
+	}
+}
