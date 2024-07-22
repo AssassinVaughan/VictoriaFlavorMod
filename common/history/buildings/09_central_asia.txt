@@ -656,6 +656,21 @@
 		}
 	}
 	s:STATE_KANDAHAR={
+		region_state:SIS={
+			create_building={
+				building="building_opium_plantation"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:SIS"
+						levels=1
+						region="STATE_KANDAHAR"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "default_building_opium_plantation" "pm_road_carts"  }
+			}
+		}
 		region_state:KAN={
 			create_building={
 				building="building_textile_mills"

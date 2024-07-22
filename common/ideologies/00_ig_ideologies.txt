@@ -52,8 +52,10 @@
 	}	
 	
 	lawgroup_centralization = {
-		law_federal = strongly_disapprove
-		law_devolved = disapprove
+		law_decentralized = strongly_disapprove
+		law_confederated = disapprove
+		law_federal = neutral
+		law_devolved = approve
 		law_unitary = strongly_approve
 	}
 }
@@ -203,6 +205,14 @@ ideology_oligarchic = {
 		law_total_separation = approve
 		law_state_atheism = strongly_disapprove
 	}
+	
+	lawgroup_centralization = {
+		law_decentralized = neutral
+		law_confederated = approve
+		law_federal = approve
+		law_devolved = neutral
+		law_unitary = approve
+	}
 }
 
 ideology_pious = {
@@ -251,6 +261,14 @@ ideology_agrarian = {
 		law_graduated_taxation = neutral
 		law_land_based_taxation = disapprove
 	}
+	
+	lawgroup_centralization = {
+		law_decentralized = strongly_approve
+		law_confederated = approve
+		law_federal = neutral
+		law_devolved = disapprove
+		law_unitary = strongly_dispprove
+	}
 }
 
 ideology_particularist = {
@@ -275,6 +293,14 @@ ideology_particularist = {
 		law_legacy_slavery = neutral
 		law_debt_slavery = strongly_disapprove
 		law_slave_trade = neutral
+	}
+	
+	lawgroup_centralization = {
+		law_decentralized = strongly_approve
+		law_confederated = approve
+		law_federal = neutral
+		law_devolved = neutral
+		law_unitary = strongly_disapprove
 	}
 }
 
@@ -354,6 +380,14 @@ ideology_meritocratic = {
 		law_graduated_taxation = disapprove
 		law_land_based_taxation = disapprove
 	}	
+	
+	lawgroup_centralization = {
+		law_decentralized = strongly_disapprove
+		law_confederated = disapprove
+		law_federal = neutral
+		law_devolved = neutral
+		law_unitary = approve
+	}
 }
 
 ideology_patriotic = {
@@ -379,6 +413,14 @@ ideology_patriotic = {
 		law_right_of_assembly = neutral
 		law_protected_speech = disapprove
 	}	
+	
+	lawgroup_centralization = {
+		law_decentralized = strongly_disapprove
+		law_confederated = neutral
+		law_federal = neutral
+		law_devolved = strongly_approve
+		law_unitary = strongly_approve
+	}
 }
 
 ideology_loyalist = {
@@ -451,9 +493,11 @@ ideology_liberal = {
 	}
 	
 	lawgroup_centralization = {
-		law_federal = strongly_approve
-		law_devolved = neutral
-		law_unitary = disapprove
+		law_decentralized = neutral
+		law_confederated = strongly_approve
+		law_federal = approve
+		law_devolved = disapprove
+		law_unitary = strongly_disapprove
 	}
 }
 
@@ -505,9 +549,11 @@ ideology_republican = {
 	}	
 	
 	lawgroup_centralization = {
-		law_federal = strongly_approve
+		law_decentralized = strongly_disapprove
+		law_confederated = disapprove
+		law_federal = approve
 		law_devolved = neutral
-		law_unitary = disapprove
+		law_unitary = approve
 	}
 }
 
@@ -551,6 +597,7 @@ ideology_proletarian = {
 		law_religious_schools = neutral	
 		law_no_schools = disapprove	
 	}
+
 }
 
 ideology_egalitarian = {
@@ -573,7 +620,8 @@ ideology_egalitarian = {
 		law_worker_protections = strongly_approve
 		law_regulatory_bodies = approve
 		law_no_workers_rights = neutral
-	}		
+	}	
+	
 }
 
 ideology_populist = {
@@ -640,6 +688,14 @@ ideology_socialist = {
 		law_consumption_based_taxation = neutral
 		law_graduated_taxation = approve
 	}
+	
+	lawgroup_centralization = {
+		law_decentralized = strongly_disapprove
+		law_confederated = neutral
+		law_federal = neutral
+		law_devolved = approve
+		law_unitary = strongly_approve
+	}
 }
 
 ideology_reactionary = {
@@ -668,8 +724,10 @@ ideology_reactionary = {
 	}
 	
 	lawgroup_centralization = {
+		law_decentralized = neutral
+		law_confederated = neutral
 		law_federal = neutral
-		law_devolved = neutral
+		law_devolved = approve
 		law_unitary = strongly_approve
 	}
 }
