@@ -42,6 +42,8 @@
 	}
 	
 	lawgroup_centralization = {
+		law_decentralized = strongly_disapprove
+		law_confederated = strongly_approve
 		law_federal = disapprove
 		law_devolved = approve
 		law_unitary = neutral
@@ -102,6 +104,8 @@ ideology_scholar_paternalistic = {
 	}
 	
 	lawgroup_centralization = {
+		law_confederated = strongly_disapprove
+		law_confederated = disapprove
 		law_federal = disapprove
 		law_devolved = approve
 		law_unitary = neutral
@@ -145,16 +149,11 @@ ideology_junker_paternalistic = {
 	}
 	
 	lawgroup_centralization = {
-		law_federal = strongly_disapprove
-		law_devolved = disapprove
-		law_unitary = strongly_approve
-	}
-	
-	lawgroup_centralization = {
-		law_devolved = disapprove
+		law_decentralized = strongly_disapprove
 		law_confederated = neutral
-		law_federal = neutral
-		law_unitary = approve
+		law_federal = disapprove
+		law_devolved = approve
+		law_unitary = strongly_approve
 	}
 }
 
@@ -195,8 +194,10 @@ ideology_papal_paternalistic = {
 	}
 	
 	lawgroup_centralization = {
+		law_decentralized = strongly_disapprove
 		law_federal = strongly_disapprove
 		law_devolved = disapprove
+		law_confederated = disapprove
 		law_unitary = strongly_approve
 	}
 }
