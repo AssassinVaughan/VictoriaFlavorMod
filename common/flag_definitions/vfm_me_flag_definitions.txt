@@ -631,3 +631,32 @@ DVZ = { # Darvaz
 		}
 	}
 }
+
+KAF = { # Kafiristan
+	flag_definition = {
+		coa = KAF
+		subject_canton = KAF
+		priority = 1
+	}
+}
+
+KAF = { # Kafiristan
+	flag_definition = {
+		coa = KAF
+		subject_canton = KAF
+		priority = 1
+	}
+	flag_definition = {
+		coa = KAF_muslim
+		subject_canton = KAF_muslim
+		priority = 5
+		trigger = {
+			scope:actor = {
+				OR = {
+					country_has_state_religion = rel:sunni
+					country_has_state_religion = rel:shiite
+				}
+			}
+		}
+	}
+}
