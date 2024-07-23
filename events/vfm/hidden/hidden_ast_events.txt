@@ -8,40 +8,46 @@ hidden_ast_events.1 = {
 	hidden = yes
 
 	immediate = {
-		scope:je_convict_country_scope = {
-			ordered_scope_state = {
-				order_by = free_arable_land
-				random_list = {
-					5 = {
-						create_pop = {
-							pop_type = slaves
-							culture = british
-							size = 1000
-						}
-					}
-					3 = {
-						create_pop = {
-							pop_type = slaves
-							culture = irish
-							size = 1000
-						}
-					}
-					1 = {
-						create_pop = {
-							pop_type = slaves
-							culture = scottish
-							size = 1000
-						}
-					}
-					1 = {
-						create_pop = {
-							pop_type = slaves
-							culture = welsh
-							size = 1000
-						}
-					}
+		if = {
+			limit = {
+				scope:je_convict_country_scope = {
+					has_variable = importing_convicts_var
 				}
-			} 
+			}
+			scope:je_convict_country_scope = {
+				every_scope_state = {
+					random_list = {
+						5 = {
+							create_pop = {
+								pop_type = slaves
+								culture = british
+								size = 1000
+							}
+						}
+						3 = {
+							create_pop = {
+								pop_type = slaves
+								culture = irish
+								size = 1000
+							}
+						}
+						1 = {
+							create_pop = {
+								pop_type = slaves
+								culture = scottish
+								size = 1000
+							}
+						}
+						1 = {
+							create_pop = {
+								pop_type = slaves
+								culture = welsh
+								size = 1000
+							}
+						}
+					}
+				} 
+			}
 		}
 	}
 }

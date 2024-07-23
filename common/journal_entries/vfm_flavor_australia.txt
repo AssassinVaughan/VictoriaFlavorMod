@@ -1,6 +1,6 @@
 ﻿#The Frontier Wars
 je_frontier_wars = {
-	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	icon = "gfx/interface/icons/event_icons/event_colonial.dds"
     group = je_group_internal_affairs
 
 	immediate = {
@@ -11,14 +11,19 @@ je_frontier_wars = {
 	}
 	complete = {
 		scope:frontier_war_country_je = {
-			owns_entire_state_region = STATE_WESTERN_AUSTRALIA 
+			NOT = {
+				any_neighbouring_state {
+					owner = {
+						country_has_primary_culture = cu:aborigine
+					}
+				}
+			}
 		}
 	}
 
 	on_complete = {
 		trigger_event = {
-			id = journal_flavor_australia.2
-			days = 0
+			id = frontier_war_events.2
 		}
 	}
 
