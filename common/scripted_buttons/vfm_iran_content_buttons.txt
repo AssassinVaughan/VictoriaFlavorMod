@@ -569,3 +569,57 @@ je_execute_bab_button = {
 		}
 	}
 }
+
+je_annex_omani_bampur_button = {
+	name = "je_annex_omani_bampur_button"
+	desc = "je_annex_omani_bampur_button_desc"
+
+	visible = { 
+		NOT = { has_variable = kal_annexed_omani_bampur }
+	}
+	
+	ai_chance = {
+		base = 100
+	}
+
+	possible = {
+		has_technology_researched = napoleonic_warfare
+	}
+
+	effect = {
+		s:STATE_SISTAN = {
+			set_owner_of_provinces = {
+				country = c:KAL
+				provinces = { xA9F721 }
+			}
+		}
+		set_variable = kal_annexed_omani_bampur
+	}
+}
+
+je_annex_gwadar_button = {
+	name = "je_annex_gwadar_button"
+	desc = "je_annex_gwadar_button_desc"
+
+	visible = { 
+		NOT = { has_variable = kal_annexed_gwadar }
+	}
+	
+	ai_chance = {
+		base = 100
+	}
+
+	possible = {
+		has_technology_researched = pan-nationalism
+	}
+
+	effect = {
+		s:STATE_BALUCHISTAN = {
+			set_owner_of_provinces = {
+				country = c:KAL
+				provinces = { xB7B2BD }
+			}
+		}
+		set_variable = kal_annexed_gwadar
+	}
+}
