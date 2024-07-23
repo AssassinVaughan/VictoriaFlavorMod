@@ -13,9 +13,9 @@ law_decentralized = {
 	}
 	
 	modifier = {
-		country_bureaucracy_mult = -0.2
-		country_bureaucracy_investment_cost_factor_mult = -0.1
-		state_radicals_from_sol_change_mult = -0.2
+		country_bureaucracy_mult = -0.25
+		country_bureaucracy_investment_cost_factor_mult = -0.2
+		state_radicals_from_sol_change_mult = -0.15
 		country_farmers_pol_str_mult = 0.15
 		country_aristocrats_pol_str_mult = 0.1
 		country_authority_add = -200
@@ -71,7 +71,9 @@ law_confederated = {
 	
 	modifier = {
 		state_radicals_from_sol_change_mult = -0.1
-		state_bureaucracy_population_base_cost_factor_mult = -0.1
+		state_bureaucracy_population_base_cost_factor_mult = -0.15
+		country_authority_add = -100
+		country_aristocrats_pol_str_mult = 0.05
 	}
 	
 	possible_political_movements = {
@@ -113,9 +115,9 @@ law_federal = {
 	}
 	
 	modifier = {
-		country_bureaucracy_investment_cost_factor_mult = -0.2
+		country_bureaucracy_investment_cost_factor_mult = -0.1
 		state_decree_cost_mult = -0.2
-		country_bureaucrats_pol_str_mult = 0.05
+		country_bureaucrats_pol_str_mult = 0.025
 	}
 	
 	possible_political_movements = {
@@ -244,6 +246,7 @@ law_unitary = {
 		country_authority_add = 200
 		country_bureaucracy_mult = 0.1
 		country_bureaucracy_investment_cost_factor_mult = 0.05
+		country_bureaucrats_pol_str_mult = 0.075
 	}
 	
 	possible_political_movements = {
