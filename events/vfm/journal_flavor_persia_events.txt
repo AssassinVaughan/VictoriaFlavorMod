@@ -447,6 +447,12 @@ journal_flavor_iran.10 = {
 		c:HER = {
 			make_independent = yes
 		}
+		c:GBR = {
+			save_scope_as = british_influence_scope
+		}
+		c:PER = {
+			save_scope_as = british_influence_per_scope
+		}
 	}
 
 	duration = 1
@@ -454,6 +460,10 @@ journal_flavor_iran.10 = {
 	option = { #Accept the demands
 		name = journal_flavor_iran.10.a
 		
+		c:PER = { trigger_event = { id = journal_flavor_iran.3 } }
+		scope:british_influence_scope.power_bloc = {
+			add_leverage = { target = scope:british_influence_per_scope value = 25 }
+		}
 		add_modifier = {
 			name = per_caved_to_foreign_demands
 			days = 3650
@@ -464,8 +474,6 @@ journal_flavor_iran.10 = {
 			}
 			activate_law = law_type:law_legacy_slavery
 		}
-		
-		c:PER = { trigger_event = { id = journal_flavor_iran.3 } }
 		
 		set_variable = { name = british_intervention_in_iran days = 30 }
 		
@@ -2171,11 +2179,30 @@ journal_flavor_iran.37 = {
 	
 	immediate = { 
 		remove_modifier = per_lack_of_policing
+		c:GBR = {
+			save_scope_as = british_influence_scope
+		}
+		c:PRU = {
+			save_scope_as = prussian_influence_scope
+		}
+		c:RUS = {
+			save_scope_as = russian_influence_scope
+		}
+		c:SWE = {
+			save_scope_as = swedish_influence_scope
+		}
+		c:PER = {
+			save_scope_as = influence_per_scope
+		}
 	}
 	
 	option = { #Russian Police
 		name = journal_flavor_iran.37.a
 		
+		
+		scope:russian_influence_scope.power_bloc = {
+			add_leverage = { target = scope:influence_per_scope value = 25 }
+		}
 		c:RUS = {
 			change_relations = {
 				country = ROOT
@@ -2202,6 +2229,9 @@ journal_flavor_iran.37 = {
 	option = { #British Police
 		name = journal_flavor_iran.37.b 
 		
+		scope:british_influence_scope.power_bloc = {
+			add_leverage = { target = scope:influence_per_scope value = 25 }
+		}
 		c:RUS = {
 			change_relations = {
 				country = ROOT
@@ -2228,6 +2258,10 @@ journal_flavor_iran.37 = {
 	option = { #Prussian Police
 		name = journal_flavor_iran.37.c
 		
+		
+		scope:prussian_influence_scope.power_bloc = {
+			add_leverage = { target = scope:influence_per_scope value = 25 }
+		}
 		c:RUS = {
 			change_relations = {
 				country = ROOT
