@@ -10,7 +10,7 @@ je_frontier_wars = {
 		}
 	}
 	complete = {
-		scope:west_australia_je = {
+		scope:frontier_war_country_je = {
 			owns_entire_state_region = STATE_WESTERN_AUSTRALIA 
 		}
 	}
@@ -61,6 +61,9 @@ je_convict_system = {
 	timeout = 3650
 	scripted_progress_bar = convict_system_progress_bar
 
+	scripted_button = je_import_convicts_button
+	scripted_button = je_sway_settlers_button
+
 	immediate = {
 		ROOT = {
 			save_scope_as = je_convict_country_scope
@@ -70,25 +73,36 @@ je_convict_system = {
 			}
 		}
 	}
-
-	on_monthly_pulse = {
+	on_weekly_pulse = {
+		events = {
+			hidden_ast_events.1
+		}
 		effect = {
 			if = {
 				limit = {
-					has_variable = var_importing_convicts
+					has_variable = importing_convicts_var
 				}
 				set_variable = {
 					name = convict_progress_var
-					subtract = 1
+					value = -1
 				}
 			}
 			else_if = {
 				limit = {
-					has_variable = var_swaying_settlers
+					has_variable = swaying_settlers_var
 				}
 				set_variable = {
 					name = convict_progress_var
-					add = 1
+					value = 1
+				}
+			}
+		}
+	}
+	on_monthly_pulse = {
+		effect = {
+			if = {
+				limit = {
+					has_variable = importing_convicts_var
 				}
 			}
 		}

@@ -1,18 +1,16 @@
 ﻿ ### For je_convict_system
 
 convict_system_progress_bar = {
-	name = "Convict Support"
-	desc = "Emancipation Support"
- 	second_desc = "Convict Support"
+	name = "convict_system_progress_bar"
+	desc = "convict_system_progress_bar_free_desc"
+ 	second_desc = "convict_system_progress_bar_convict_desc"
 
 	double_sided_grey = yes
 
 	monthly_progress = {
 		if = {
 			limit = {
-				NOT = {
-					has_journal_entry = je_convict_system
-				}
+				has_journal_entry = je_convict_system
 			}
 			add = {
 				desc = "convict_progress_from_migration"

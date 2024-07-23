@@ -164,69 +164,69 @@ je_australia_aus = {
 	should_be_pinned_by_default = yes
 }
 
-je_australia_gbr = {
-	icon = "gfx/interface/icons/event_icons/event_flags/event_ast_flag.dds"
-
-	group = je_group_historical_content
-
-	scripted_button = je_australia_gbr_found_south_australia_button
-	scripted_button = je_australia_gbr_found_north_australia_button
-	scripted_button = je_australia_gbr_found_victoria_button
-	scripted_button = je_australia_gbr_revoke_south_australia_button
-	scripted_button = je_australia_gbr_revoke_van_diemens_button
-	scripted_button = je_australia_gbr_revoke_new_zealand_button
-
-	is_shown_when_inactive = {
-		any_subject_or_below = {
-			OR = {
-				country_has_primary_culture = cu:australian
-				country_has_primary_culture = cu:maori
-			}
-			count >= 2
-		}
-		NOT = {
-			OR = {
-				country_has_primary_culture = cu:australian
-				country_has_primary_culture = cu:maori
-			}
-		}
-	}
-
-	possible = {
-		has_technology_researched = nationalism
-	}
-
-	complete = {
-		any_subject_or_below = {
-			calc_true_if = {
-				amount >= 7
-				owns_entire_state_region = STATE_NEW_SOUTH_WALES
-				owns_entire_state_region = STATE_VICTORIA
-				owns_entire_state_region = STATE_TASMANIA
-				owns_entire_state_region = STATE_QUEENSLAND
-				owns_entire_state_region = STATE_SOUTH_AUSTRALIA
-				owns_entire_state_region = STATE_WESTERN_AUSTRALIA
-				owns_entire_state_region = STATE_NORTHERN_TERRITORY
-				owns_entire_state_region = STATE_NORTH_ISLAND
-				owns_entire_state_region = STATE_SOUTH_ISLAND
-			}
-		}
-		any_subject_or_below = {
-			filter = {
-				OR = {
-					country_has_primary_culture = cu:australian			
-				}
-			}
-			has_technology_researched = nationalism
-			percent > 0.75
-		}
-	}
-
-	on_complete = {
-		trigger_event = { id = can_aus.8 }
-	}
-
-	weight = 100
-
-	should_be_pinned_by_default = yes
-}
+#je_australia_gbr = {
+#	icon = "gfx/interface/icons/event_icons/event_flags/event_ast_flag.dds"
+#
+#	group = je_group_historical_content
+#
+#	scripted_button = je_australia_gbr_found_south_australia_button
+#	scripted_button = je_australia_gbr_found_north_australia_button
+#	scripted_button = je_australia_gbr_found_victoria_button
+#	scripted_button = je_australia_gbr_revoke_south_australia_button
+#	scripted_button = je_australia_gbr_revoke_van_diemens_button
+#	scripted_button = je_australia_gbr_revoke_new_zealand_button
+#
+#	is_shown_when_inactive = {
+#		any_subject_or_below = {
+#			OR = {
+#				country_has_primary_culture = cu:australian
+#				country_has_primary_culture = cu:maori
+#			}
+#			count >= 2
+#		}
+#		NOT = {
+#			OR = {
+#				country_has_primary_culture = cu:australian
+#				country_has_primary_culture = cu:maori
+#			}
+#		}
+#	}
+#
+#	possible = {
+#		has_technology_researched = nationalism
+#	}
+#
+#	complete = {
+#		any_subject_or_below = {
+#			calc_true_if = {
+#				amount >= 7
+#				owns_entire_state_region = STATE_NEW_SOUTH_WALES
+#				owns_entire_state_region = STATE_VICTORIA
+#				owns_entire_state_region = STATE_TASMANIA
+#				owns_entire_state_region = STATE_QUEENSLAND
+#				owns_entire_state_region = STATE_SOUTH_AUSTRALIA
+#				owns_entire_state_region = STATE_WESTERN_AUSTRALIA
+#				owns_entire_state_region = STATE_NORTHERN_TERRITORY
+#				owns_entire_state_region = STATE_NORTH_ISLAND
+#				owns_entire_state_region = STATE_SOUTH_ISLAND
+#			}
+#		}
+#		any_subject_or_below = {
+#			filter = {
+#				OR = {
+#					country_has_primary_culture = cu:australian			
+#				}
+#			}
+#			has_technology_researched = nationalism
+#			percent > 0.75
+#		}
+#	}
+#
+#	on_complete = {
+#		trigger_event = { id = can_aus.8 }
+#	}
+#
+#	weight = 100
+#
+#	should_be_pinned_by_default = yes
+#}
