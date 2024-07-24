@@ -14,12 +14,16 @@
 		activate_law = law_type:law_mercantilism
 		activate_law = law_type:law_interventionism
 		activate_law = law_type:law_right_of_assembly
-		activate_law = law_type:law_colonial_resettlement
+		activate_law = law_type:law_frontier_colonization
 		activate_law = law_type:law_homesteading
 		activate_law = law_type:law_migration_controls
-		activate_law = law_type:law_devolved
+		activate_law = law_type:law_unitary
 		# Penal Colony
 		activate_law = law_type:law_debt_slavery
+
+		ig:ig_rural_folk = {
+			add_ruling_interest_group = yes
+		}
 
 		ig:ig_devout = {
 			set_interest_group_name = ig_anglican_church
@@ -27,10 +31,6 @@
 
 		ig:ig_landowners = {
 			set_interest_group_name = ig_squattocracy
-		}
-
-		ig:ig_rural_folk = {
-			add_ruling_interest_group = yes
 		}
 
 		#Flavor Events
@@ -42,7 +42,6 @@
 		}
 		add_modifier = {
 			name = terra_nullius
-			years = 20
 		}
 
 		add_taxed_goods = g:grain

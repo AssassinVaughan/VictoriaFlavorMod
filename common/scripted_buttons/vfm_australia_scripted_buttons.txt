@@ -378,6 +378,47 @@ je_import_convicts_button = {
 
 	ai_chance = {
 		base = 0
+		#Doesn't have button, is conservative
+		modifier = {
+			trigger = {
+				AND = {
+					has_strategy = ai_strategy_conservative_agenda
+					NOT = { has_variable = importing_convicts_var }
+				}
+			}
+			add = 50
+			
+		}
+		#Has button, is conservative
+		modifier = {
+			trigger = {
+				AND = {
+					has_strategy = ai_strategy_conservative_agenda
+					has_variable = importing_convicts_var
+				}
+			}
+			subtract = 50
+		}
+		#Has button, running bureaucracy deficit
+		modifier = {
+			trigger = {
+				AND = {
+					bureaucracy < 0
+					has_variable = importing_convicts_var
+				}
+			}
+			add = 100
+		}
+		#Does not have button, running bureaucracy deficit
+		modifier = {
+			trigger = {
+				AND = {
+					bureaucracy < 0
+					NOT = { has_variable = importing_convicts_var }
+				}
+			}
+			subtract = 100
+		}
 	}
 }
 
@@ -445,7 +486,47 @@ je_sway_settlers_button = {
 	}
 
 	ai_chance = {
-		base = 5
+		base = 0
+		#Doesn't have button, is Liberal
+		modifier = {
+			trigger = {
+				AND = {
+					has_strategy = ai_strategy_progressive_agenda
+					NOT = { has_variable = swaying_settlers_var }
+				}
+			}
+			add = 50
+		}
+		#Has button, is liberal
+		modifier = {
+			trigger = {
+				AND = {
+					has_strategy = ai_strategy_progressive_agenda
+					has_variable = swaying_settlers_var
+				}
+			}
+			subtract = 50
+		}
+		#Has button, running bureaucracy deficit
+		modifier = {
+			trigger = {
+				AND = {
+					bureaucracy < 0
+					has_variable = importing_convicts_var
+				}
+			}
+			add = 100
+		}
+		#Doesn't have button, running bureaucracy deficit
+		modifier = {
+			trigger = {
+				AND = {
+					bureaucracy < 0
+					NOT = { has_variable = importing_convicts_var }
+				}
+			}
+			subtract = 100
+		}
 	}
 }
 

@@ -9,6 +9,13 @@ je_frontier_wars = {
 			save_scope_as = frontier_war_country_je
 		}
 	}
+	on_weekly_pulse = {
+		random_events = {
+			10 = 0
+			10 = frontier_war_events.3
+			10 = frontier_war_events.4
+		}
+	}
 	complete = {
 		scope:frontier_war_country_je = {
 			NOT = {
@@ -104,13 +111,6 @@ je_convict_system = {
 		}
 	}
 	on_monthly_pulse = {
-		effect = {
-			if = {
-				limit = {
-					has_variable = importing_convicts_var
-				}
-			}
-		}
 		random_events = {
 			185 = 0
 			5 = flavor_ast_convict_events.4 

@@ -138,7 +138,6 @@ frontier_war_events.2 = {
     }
 	option = {
 		name = frontier_war_events.1.b
-		add_journal_entry = { type = je_frontier_wars }
 		
 		custom_tooltip = {
 			text = ast_frontier_1_tt
@@ -146,6 +145,266 @@ frontier_war_events.2 = {
 				name = frontier_var
 				value = 2
 			}
+		}
+    }
+}
+
+frontier_war_events.3 = { 
+	type = country_event
+	placement = ROOT
+
+	title = frontier_war_events.3.t
+	desc = frontier_war_events.3.d
+	flavor = frontier_war_events.3.f
+
+	event_image = {
+		video = "gfx/event_pictures/southamerica_aristocrats.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/unspecific/military_parade"
+
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+
+	dlc = dlc_vfm
+
+	duration = 1
+
+	trigger = {
+		THIS = c:NSW
+		NOT = {
+			exists = c:SAS
+		}
+	}
+
+	after = {
+		create_country = {
+            tag = SAS
+            origin = c:WAS
+            state = s:STATE_SOUTH_AUSTRALIA.region_state:NSW
+		}
+		s:STATE_SOUTH_AUSTRALIA = {
+			remove_claim = c:NSW
+			add_claim = c:SAS
+	    }
+	    if = {
+	    	limit = { has_variable = wanna_south_ast }
+	    	remove_variable = wanna_south_ast
+			play_as = c:SAS
+	    }
+	    c:GBR = {
+	        create_diplomatic_pact = {
+	            country = c:SAS
+	            type = chartered_company
+	        }	
+	    }	
+	    s:STATE_SOUTH_AUSTRALIA.region_state:SAS = {
+			create_building = {
+				building = building_port
+				level = 1
+			}
+			create_building = {
+				building = building_livestock_ranch
+				level = 1
+			}
+			create_pop = {
+				pop_type = peasants
+				culture = british
+				size = 21000
+			}
+			create_pop = {
+				pop_type = peasants
+				culture = aborigine
+				size = 9000
+			}
+	    }
+	    c:SAS = {
+			add_journal_entry = { type = je_frontier_wars }
+	    	add_modifier = {
+	    		name = colonial_boom
+	    		years = 10
+	    	}
+	    	add_modifier = {
+	    		name = terra_nullius
+	    	}
+	    	add_modifier = {
+	    		name = settler_colony
+	    	}
+			create_character = {
+				template = AST_john_hindmarsh
+			}	
+	
+			create_character = {
+				template = AST_robert_gouger
+			}
+			
+			create_character = {
+				template = AST_george_strickland_kensington
+			}
+			
+			create_character = {
+				template = AST_george_fife_angas
+			}
+			
+			create_character = {
+				template = AST_charles_howard
+			}
+	
+			create_character = {
+				template = AST_william_light
+			}
+	    }
+	}
+
+	option = {
+		name = frontier_war_events.3.a
+		default_option = yes
+		custom_tooltip = ast_frontier_2_tt
+		hidden_effect = {
+        	s:STATE_SOUTH_AUSTRALIA = {
+				set_owner_of_provinces = {
+					country = c:NSW
+					provinces = { xC58F87 xD0A0D0 xE5B909 x4064E2 xD53092 x90DF50 xC7963D x239C93 }
+				}
+        	}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	option = {
+		name = frontier_war_events.3.b
+		custom_tooltip = ast_frontier_2_tt
+		hidden_effect = {
+        	s:STATE_SOUTH_AUSTRALIA = {
+				set_owner_of_provinces = {
+					country = c:NSW
+					provinces = { xC58F87 xD0A0D0 xE5B909 x4064E2 xD53092 x90DF50 xC7963D x239C93 }
+				}
+        	}
+        	set_variable = {
+        		name = wanna_south_ast
+        		value = 0
+        	}
+		}
+    }
+}
+
+
+frontier_war_events.4 = { 
+	type = country_event
+	placement = ROOT
+
+	title = frontier_war_events.4.t
+	desc = frontier_war_events.4.d
+	flavor = frontier_war_events.4.f
+
+	event_image = {
+		video = "gfx/event_pictures/southamerica_aristocrats.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/unspecific/military_parade"
+
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+
+	dlc = dlc_vfm
+
+	duration = 1
+
+	trigger = {
+		THIS = c:NSW
+		NOT = {
+			exists = c:NTT
+		}
+	}
+
+	after = {
+		create_country = {
+            tag = NTT
+            origin = c:NSW
+            state = s:STATE_NORTHERN_TERRITORY.region_state:NSW
+		}
+		s:STATE_NORTHERN_TERRITORY = {
+			remove_claim = c:NSW
+			add_claim = c:NTT
+	    }
+	    if = {
+	    	limit = { has_variable = wanna_north_ast }
+	    	remove_variable = wanna_north_ast
+			play_as = c:NTT
+	    }
+	    c:GBR = {
+	        create_diplomatic_pact = {
+	            country = c:NTT
+	            type = dependency
+	        }	
+	    }	
+	    s:STATE_NORTHERN_TERRITORY.region_state:NTT = {
+			create_building = {
+				building = building_port
+				level = 1
+			}
+			create_building = {
+				building = building_livestock_ranch
+				level = 1
+			}
+			create_pop = {
+				pop_type = peasants
+				culture = british
+				size = 15000
+			}
+			create_pop = {
+				pop_type = peasants
+				culture = aborigine
+				size = 9000
+			}
+	    }
+	    c:NTT = {
+			add_journal_entry = { type = je_frontier_wars }
+	    	add_modifier = {
+	    		name = colonial_boom
+	    		years = 10
+	    	}
+	    	add_modifier = {
+	    		name = terra_nullius
+	    	}
+	    	add_modifier = {
+	    		name = settler_colony
+	    	}
+	    }
+	}
+
+	option = {
+		name = frontier_war_events.4.a
+		default_option = yes
+		custom_tooltip = ast_frontier_3_tt
+		hidden_effect = {
+        	s:STATE_NORTHERN_TERRITORY = {
+				set_owner_of_provinces = {
+					country = c:NSW
+					provinces = { x8544DF x01BF32 x22DF3C xA4B8B3 x2E031D x6EC633 x365248 }
+				}
+        	}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	option = {
+		name = frontier_war_events.4.b
+		custom_tooltip = ast_frontier_3_tt
+		hidden_effect = {
+        	s:STATE_NORTHERN_TERRITORY = {
+				set_owner_of_provinces = {
+					country = c:NSW
+					provinces = { x8544DF x01BF32 x22DF3C xA4B8B3 x2E031D x6EC633 x365248 }
+				}
+        	}
+        	set_variable = {
+        		name = wanna_north_ast
+        		value = 0
+        	}
 		}
     }
 }
