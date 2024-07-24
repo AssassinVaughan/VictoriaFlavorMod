@@ -78,7 +78,7 @@
 		}
 	}
 	c:SPA = {
-		create_diplomatic_pact = {
+		#create_diplomatic_pact = {
 		#	country = c:CUB
 		#	type = dependency
 		#}
@@ -666,13 +666,21 @@
 		}
 	}
 	c:BIC = {
+#		create_diplomatic_pact = {
+#			country = c:MPR
+#			type = dependency
+#		}
+#		create_diplomatic_pact = {
+#			country = c:BPR
+#			type = dependency
+#		}
 		create_diplomatic_pact = {
 			country = c:MPR
-			type = dependency
+			type = puppet
 		}
 		create_diplomatic_pact = {
 			country = c:BPR
-			type = dependency
+			type = puppet
 		}
 		create_diplomatic_pact = {
 			country = c:KUT

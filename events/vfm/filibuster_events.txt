@@ -588,4 +588,70 @@ filibuster.3 = {
 		play_as = c:WNG
 	}
 }
+#joint invasion of Walker's Nicaragua
+filibuster.4 = {
+	type = country_event
+	placement = root
+	title = filibuster.4.t
+	desc = filibuster.4.d
+	flavor = filibuster.4.f
+
+	duration = 6
+
+	gui_window = event_window_1char
+
+	gui_window = event_window_1char_tabloid
+
+	left_icon = ruler
+
+
+	event_image = {
+		video = "gfx/event_pictures/southamerica_war_civilians.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/southamerica/war_civilians"
+
+	icon = "gfx/interface/icons/event_icons/event_fire.dds"
+
+	trigger = {	
+		OR = {
+			AND = {
+				exists = c:COS
+				this = c:COS
+			}
+			AND = {
+				exists = c:HON
+				this = c:HON
+			}
+		}	
+		is_subject = no
+		is_at_war = no
+		c:WNG = {
+			is_subject = no
+			is_at_war = no
+			owns_entire_state_region = STATE_NICARAGUA
+		}
+		year > 1854
+		has_global_variable = walker_nicaragua_invasion
+	}
+
+
+	option = {
+		name = filibuster.4.a
+		default_option  = yes
+		ai_chance = {
+			base = 1
+		}
+		create_diplomatic_play = {
+			name = annex_war
+			target_country = c:WNG
+			type = dp_liberate_country
+			#??
+		}
+	}
+	option = {
+		name = filibuster.4.b
+	}
+}
 
