@@ -434,6 +434,18 @@ BLH = {
 	
 	possible = {
 		has_technology_researched = pan-nationalism
+		OR = {
+			c:XRN ?= this
+			c:LSB ?= this
+			c:MAK ?= this
+			AND = {
+				c:KAL ?= this
+				custom_tooltip = {
+					text = kalat_can_form_baluchistan_tooltip
+					NOT = { has_variable = kalat_cannot_form_baluchistan }
+				}
+			}
+		}
 	}
 }
 
