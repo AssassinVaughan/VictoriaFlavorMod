@@ -66,14 +66,7 @@ german_unification.1 = {
 						is_supporting_unification_candidate = { who = root country_formation = GER }
 					}
 				}			
-				root = {
-					create_diplomatic_pact = {
-						country = prev
-						type = confederative_partner
-					}
-					activate_law = law_type:law_confederated
-				}
-				activate_law = law_type:law_confederated
+				root = { annex_with_incorporation = prev }
 			}
 			else = {
 				trigger_event = { id = german_unification.2 days = 0 popup = yes }
