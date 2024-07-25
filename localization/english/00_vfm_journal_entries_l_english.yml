@@ -86,14 +86,14 @@
   je_swe_gotavarven: "Götavarven"
   je_swe_gotavarven_reason: "Götavarven, also known as Storvarven, were a number of large shipyards that were historically setup in the 1840s and 50s in Gothenburg in Götaland. With cheaply available wood and iron, it would be perfect to setup large modern shipbuilding facilities."
 
- #Central American Journal Entries
+  #Central American Journal Entries
   je_central_america_falls_apart: "The Dissolution of Central America"
   je_central_america_falls_apart_reason: "The past decade has left Central America polarized. Tensions between the liberals and conservatives are growing with every day and unless we manage to restore order in the provinces, the future of the Union seems to be one of uncertainty."
 
   je_debug_interest: "Interest in the Andes"
   je_debug_interest_reason: "I'm not sure why this exists but I want it out of the error log"
 
- #Chinese Journal Entries
+  #Chinese Journal Entries
   je_canton_system: "The Canton System"
   je_canton_system_reason: "The Canton System is a system of trade regulations imposed by the Qing dynasty. Under this system, all foreign trade is restricted to the city of Canton, in southern China. \n\n Foreign merchants, mostly from European countries, are not allowed to travel or trade freely within China and were required to conduct their business through a group of Chinese intermediaries known as the "hong merchants"."
 
@@ -540,3 +540,46 @@
   je_kalat_disintegration_special_tooltip: "• #bold Kohistan#! will be occupied by Persia\n• #bold Makran#! will become independent\n• #bold Las Bela#! will become independent\n• #bold Kharan#! will become independent"#
   
   kalat_can_form_baluchistan_tooltip: "Kalat must have disintegrated before it can form Baluchistan"
+  
+  #Central American Journal Entries
+  je_frca_situation: "The Crumbling Union"
+  je_frca_situation_status: "Keep Order in the Provinces"
+  je_frca_situation_reason: "The #bold Federal Republic of Central America#! gained its independence from Mexico in 1823, but has been in chaotic state since its inception. Rising tensions between the #bold Liberals#! and #bold Conservatives#! escalated into a $frca_1826_civil_war$ by 1826 which brought about the current #bold Liberal#! Government of Morazán.\n\nDuring his presidency, Morazán implemented a series of reforms which left the #bold Conservatives#! alienated and disenfranchised. The $frca_1834_elections$ only worsened the growing conflict and by now the #bold Conservatives#! have lost hope in the union.\n\nThe #bold FRCA#! is starting to #tooltippable;tooltip:[Country.GetTooltipTag],je_central_america_disintegrated_special_tooltip disintegrate#! and it appears increasingly more unlikely that the crumbling union will stay together."
+  
+  #FRCA situation tooltips
+  frca_lost_war_tt: "The Federation has #bold disintegrated#!"
+  je_central_america_disintegrated_special_tooltip: "The #BLUE Federal Republic of Central America#! is in a precarious situation as #WHITE #bold Federal Cohesion#!#! begins to wane.\n\nShould #WHITE #bold Federal Cohesion#!#! fall below #bold 40%#!, a #RED Civil War#! over the future of Central America will commence.\n\n#The #bold Disintegration#! and the consequent decline of #WHITE #bold Federal Cohesion#!#! continues if:\n\n• Any province has #bold separatism#!\n• Any province has [concept_turmoil]\n• Any province has #bold declared independence#!\n• There is a #bold Civil War#! in Guatemala\n• There is a #bold Civil War#! in Nicaragua\n• There is a #bold Civil War#! in Costa Rica\n\nAdditionally, the following events will cause the Union to #bold immediately#! disintegrate:\n\n• Any #bold Civil War Progress#! has reached #bold 50%#!\n• The Capital is #bold not#! in San Salvador\n• The #bold Hacendados#! or #bold Catholic Church#! are part of the [concept_government]\n• It has been decided that the #BLUE FRCA#! shall be turned into a [concept_confederation]"
+  guatemala_support_tt: "There is no #bold separatism#! in #bold Guatemala#!"
+  el_salvador_support_tt: "There is no #bold separatism#! in #bold El Salvador#!"
+  honduras_support_tt: "There is no #bold separatism#! in #bold Honduras#!"
+  nicaragua_support_tt: "There is no #bold separatism#! in #bold Nicaragua#!"
+  costa_rica_support_tt: "There is no #bold separatism#! in #bold Costa Rica#!"
+  uca_won_war_tt: "The Federation was kept together by #bold force#!"
+  uca_election_tt: "#YELLOW Morazán#!'s term has ended"
+  uca_restore_order_cooldown_tt: "We have #BOLD not#! restored order in a province in the past #BOLD 60 days#!"
+  
+  #FRCA Buttons
+  restore_order_gua_button: "Restore Order in Guatemala"
+  restore_order_gua_button_desc: "Ever since the capital was moved to San Salvador, Guatemala has been difficult to deal with. The cholera pandemic and rushed reforms caused widespread unrest in the province. We must put an end to the armed uprising and reintegrate the province into the union."
+  restore_order_hon_button: "Restore Order in Honduras"
+  restore_order_hon_button_desc: "Honduras has been the most loyal of the provinces but has increasingly grown frustrated with the union’s inability to maintain national integrity. The British occupation of the Honduran Bay Islands, and the conflicts in Guatemala and Nicaragua, are tempting the Honduran Government to secede. We must restore order in the rest of the country so that the Hondurans may rededicate themselves to the future of the union."
+  restore_order_nic_button: "Restore Order in Nicaragua"
+  restore_order_nic_button_desc: "Public Order has broken down in Nicaragua as Granada and León engage in a regional civil war. We must mobilize the armed forces to bring the province back under our control."
+  restore_order_cos_button: "Restore Order in Costa Rica"
+  restore_order_cos_button_desc: "While fundamentally Costa Rica does not wish to secede, the chaos in Nicaragua has forced the Costa Rican government to take matters into their own hands: Sparsely populated and disconnected from the rest of the country, the provincial government increasingly leans towards independence. We must negotiate with the Costa Rican government to avoid an escalation of the crisis."
+  nicaragua_intervention_central_america_button: "Invade Nicaragua"
+  nicaragua_intervention_central_america_button_desc: "Enough is enough. The assembly in Nicaragua has overstepped its limits and we must immediately mobilize the armed forces to punish these traitors before this crisis spirals out of control."
+  
+  #FRCA Buttons Tooltips
+  invade_nicaragua_frca_stab_tt: "Guatemala, Honduras and El Salvador have no separatism"
+  invade_nicaragua_frca_cos_support_tt: "Costa Rica has no separatism and supports the union"
+  invade_nicaragua_frca_tt: "This will trigger a [concept_diplomatic_play] against Nicaragua to reintegrate them by force. However, they will be able to sway other countries to support them."
+  nicaragua_subject_frca_tt: "Nicaragua is in a [concept_confederation] with us"
+  controls_gua_tt: "Guatemala is part of Central America and has #bold separatism#!"
+  controls_hon_tt: "Honduras is part of Central America and has #bold separatism#!"
+  controls_nic_tt: "Nicaragua is part of Central America and has #bold separatism#!"
+  controls_cos_tt: "Costa Rica is part of Central America and has #bold separatism#!"
+  restore_order_gua_tt: "#bold Separatism#! will be removed from Guatemala"
+  restore_order_hon_tt: "#bold Separatism#! will be removed from Honduras"
+  restore_order_nic_tt: "#bold Separatism#! will be removed from Nicaragua"
+  restore_order_cos_tt: "#bold Separatism#! will be removed from Costa Rica"
