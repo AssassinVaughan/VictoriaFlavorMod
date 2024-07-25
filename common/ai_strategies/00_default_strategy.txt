@@ -2273,7 +2273,7 @@ ai_strategy_default = {
 						}
 					}
 				}
-				add = 50
+				add = 25
 			}
 
 			if = {
@@ -3332,15 +3332,15 @@ ai_strategy_default = {
 					scope:target_country = {
 						any_scope_state = {
 							OR = {
-								state_region = s:STATE_KABUL
-								state_region = s:STATE_KANDAHAR
+								#state_region = s:STATE_KABUL
+								#state_region = s:STATE_KANDAHAR
 								state_region = s:STATE_MOSCOW
 							}
 						}
 					}
 				}
 			}
-			add = 5
+			add = 3
 		}
 		
 		# French Natural Borders
@@ -4306,7 +4306,7 @@ ai_strategy_default = {
 		# 1 level of naval base per 375k coastal incorporated population							
 		add = {
 			value = cached_ai_incorporated_coastal_population
-			divide = 375000 
+			divide = 350000 
 		}
 
 		# 1 level of naval base per 1 million coastal unincorporated population					
@@ -4323,12 +4323,12 @@ ai_strategy_default = {
 
 		max = 250 # No more than 250 from population		
 
-		# 1 level of naval base per 1 million gdp, multiplied by relative incorporated coastal population to total incorporated population
+		# 1 level of naval base per 700k gdp, multiplied by relative incorporated coastal population to total incorporated population
 		add = {
 			value = gdp
 			divide = cached_ai_incorporated_population
 			multiply = cached_ai_incorporated_coastal_population
-			divide = 1000000 
+			divide = 700000 
 		}
 
         # Need to favor industrial buildup early game
@@ -4560,6 +4560,7 @@ ai_strategy_default = {
 		building_power_plant = must_have
 		building_railway = must_have
 		building_trade_center = must_have		
+		building_military_shipyards = wants_to_have	
 	}
 	
 	# Specifying values here will override subsidy priorities while at war
