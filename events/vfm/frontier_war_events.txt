@@ -177,6 +177,15 @@ frontier_war_events.3 = {
 		}
 	}
 
+	immediate = {
+        s:STATE_SOUTH_AUSTRALIA = {
+			set_owner_of_provinces = {
+				country = c:NSW
+				provinces = { xC58F87 xD0A0D0 xE5B909 x4064E2 xD53092 x90DF50 xC7963D x239C93 }
+			}
+        }
+	}
+
 	after = {
 		create_country = {
             tag = SAS
@@ -199,14 +208,6 @@ frontier_war_events.3 = {
 	        }	
 	    }	
 	    s:STATE_SOUTH_AUSTRALIA.region_state:SAS = {
-			create_building = {
-				building = building_port
-				level = 1
-			}
-			create_building = {
-				building = building_livestock_ranch
-				level = 1
-			}
 			create_pop = {
 				pop_type = peasants
 				culture = british
@@ -261,12 +262,12 @@ frontier_war_events.3 = {
 		default_option = yes
 		custom_tooltip = ast_frontier_2_tt
 		hidden_effect = {
-        	s:STATE_SOUTH_AUSTRALIA = {
-				set_owner_of_provinces = {
-					country = c:NSW
-					provinces = { xC58F87 xD0A0D0 xE5B909 x4064E2 xD53092 x90DF50 xC7963D x239C93 }
+			s:STATE_SOUTH_AUSTRALIA.region_state:NSW = {
+				create_building = {
+					building = building_port
+					level = 1
 				}
-        	}
+			}
 		}
 		ai_chance = {
 			base = 100
@@ -276,12 +277,12 @@ frontier_war_events.3 = {
 		name = frontier_war_events.3.b
 		custom_tooltip = ast_frontier_2_tt
 		hidden_effect = {
-        	s:STATE_SOUTH_AUSTRALIA = {
-				set_owner_of_provinces = {
-					country = c:NSW
-					provinces = { xC58F87 xD0A0D0 xE5B909 x4064E2 xD53092 x90DF50 xC7963D x239C93 }
+			s:STATE_SOUTH_AUSTRALIA.region_state:NSW = {
+				create_building = {
+					building = building_port
+					level = 1
 				}
-        	}
+			}
         	set_variable = {
         		name = wanna_south_ast
         		value = 0
@@ -319,6 +320,15 @@ frontier_war_events.4 = {
 		}
 	}
 
+	immediate = {
+        s:STATE_NORTHERN_TERRITORY = {
+			set_owner_of_provinces = {
+				country = c:NSW
+				provinces = { x8544DF x01BF32 x22DF3C xA4B8B3 x2E031D x6EC633 x365248 }
+			}
+        }
+	}
+
 	after = {
 		create_country = {
             tag = NTT
@@ -341,14 +351,6 @@ frontier_war_events.4 = {
 	        }	
 	    }	
 	    s:STATE_NORTHERN_TERRITORY.region_state:NTT = {
-			create_building = {
-				building = building_port
-				level = 1
-			}
-			create_building = {
-				building = building_livestock_ranch
-				level = 1
-			}
 			create_pop = {
 				pop_type = peasants
 				culture = british
@@ -380,12 +382,12 @@ frontier_war_events.4 = {
 		default_option = yes
 		custom_tooltip = ast_frontier_3_tt
 		hidden_effect = {
-        	s:STATE_NORTHERN_TERRITORY = {
-				set_owner_of_provinces = {
-					country = c:NSW
-					provinces = { x8544DF x01BF32 x22DF3C xA4B8B3 x2E031D x6EC633 x365248 }
+			s:STATE_NORTHERN_TERRITORY.region_state:NSW = {
+				create_building = {
+					building = building_port
+					level = 1
 				}
-        	}
+			}
 		}
 		ai_chance = {
 			base = 100
@@ -395,16 +397,56 @@ frontier_war_events.4 = {
 		name = frontier_war_events.4.b
 		custom_tooltip = ast_frontier_3_tt
 		hidden_effect = {
-        	s:STATE_NORTHERN_TERRITORY = {
-				set_owner_of_provinces = {
-					country = c:NSW
-					provinces = { x8544DF x01BF32 x22DF3C xA4B8B3 x2E031D x6EC633 x365248 }
+			s:STATE_NORTHERN_TERRITORY.region_state:NSW = {
+				create_building = {
+					building = building_port
+					level = 1
 				}
-        	}
+			}
         	set_variable = {
         		name = wanna_north_ast
         		value = 0
         	}
 		}
     }
+}
+frontier_war_events.5 = { 
+	type = country_event
+	placement = ROOT
+
+	title = frontier_war_events.5.t
+	desc = frontier_war_events.5.d
+	flavor = frontier_war_events.5.f
+
+	event_image = {
+		video = "gfx/event_pictures/southamerica_aristocrats.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/unspecific/military_parade"
+
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+
+	dlc = dlc_vfm
+
+	duration = 1
+
+	option = {
+		name = frontier_war_events.5.a
+		default_option = yes
+		set_variable = {
+			name = the_bung_var
+			value = 1
+		}
+		#remove_variable = the_bung_var
+	}
+	option = {
+		name = frontier_war_events.5.b
+		default_option = yes
+		#set_variable = {
+		#	name = the_bung_var
+		#	value = 1
+		#}
+		remove_variable = the_bung_var
+	}
 }
