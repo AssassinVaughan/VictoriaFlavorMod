@@ -1113,11 +1113,16 @@ STATES = {
 	s:STATE_GUATEMALA = {
 		create_state = {
 			country = c:UCA
-			owned_provinces = { xDEC8D3 x464F6A x0F5049 xBD8628 xA9090A x78C465 xD9BEFE xD030C0 x42124E xB2E11E x50B040 x2D4EB6 x5449D0 x6D71DA x702CD9 x65C19A x30E01C x50B0C0 xC67219 xD176F3 xFA4B41 x011E0F }
+			owned_provinces = { xDEC8D3 x464F6A x0F5049 xBD8628 xA9090A x78C465 xD9BEFE xD030C0 x42124E xB2E11E x50B040 x2D4EB6 x5449D0 x6D71DA x702CD9 x65C19A x50B0C0 xFA4B41 x011E0F }
 		}
 		create_state = {
 			country = c:JAM
 			owned_provinces = { xD0B040 x02073E x7D333F }
+			state_type = unincorporated
+		}
+		create_state = {
+			country = c:MEX
+			owned_provinces = { xD03040 x30E01C xD176F3 xC67219 }
 			state_type = unincorporated
 		}
 		add_homeland = cu:mayan
@@ -9576,18 +9581,19 @@ STATES = {
 		create_state = {
 			country = c:MEX
 			owned_provinces = { 
-				"x10B0C0" "x1521F4" "x31E49A" "x8E26C5" "xA46BA0" "xA6550F" "xB70B3B" "xE0AADA" "xE8CFA0" "xF19260"
+				"x10B0C0" "x1521F4" "xA46BA0" "xA6550F" "xB70B3B" "xE0AADA" "xE8CFA0" "xF19260"
 			}
 		}
 		# Soconusco and parts of Los Altos. Control was disputed.
 		create_state = {
 			country = c:UCA
 			owned_provinces = {
-				x1030C0 x4DBDE9 xD03040 xA087F6
+				x1030C0 x4DBDE9 xA087F6 x8E26C5 x31E49A
 			}
 		}
 		
 		add_homeland = cu:mexican
+		add_homeland = cu:central_american		
 		add_homeland = cu:mayan		
 	}
 	s:STATE_SAN_SALVADOR = {
