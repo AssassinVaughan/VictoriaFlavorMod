@@ -30,8 +30,7 @@
 			}
 			add_modifier = {
 				name = kal_tribal_autonomy
-				days = 4250
-				is_decaying = yes
+				days = 9250
 			}
 		}
 		every_state = {
@@ -41,7 +40,15 @@
 			add_modifier = {
 				name = kal_tribal_autonomy
 				days = 9250
-				is_decaying = yes
+			}
+		}
+		every_state = {
+			limit = {
+				state_region = s:STATE_NORTHERN_BALUCHISTAN
+			}
+			add_modifier = {
+				name = kal_tribal_autonomy
+				days = 9250
 			}
 		}
 		s:STATE_BALUCHISTAN = {
@@ -49,10 +56,14 @@
 		}
 	}
 
+	scripted_button = je_annex_omani_bampur_button
+	scripted_button = je_annex_gwadar_button
+
 	can_deactivate = yes
 
 	complete = {
-		NOT = { has_law = law_type:law_devolved }
+		NOT = { has_law = law_type:law_decentralized }
+		NOT = { has_law = law_type:law_confederated }
 		#custom_tooltip = {
 		#	text = kal_abolished_chiefdoms_tt
 		#	NOT = {
@@ -61,10 +72,22 @@
 		#		}
 		#	}
 		#}
+		any_scope_state = {
+			state_region = s:STATE_BALUCHISTAN
+			is_split_state = no
+			is_incorporated = yes
+		}
 		custom_tooltip = {
 			text = kal_territory_tt
-				owns_entire_state_region = STATE_BALUCHISTAN
+			c:KAL = {
 				has_state_in_state_region = STATE_SISTAN
+				has_variable = kal_annexed_omani_bampur
+			}
+			NOT = {
+				c:OMA = {
+					has_state_in_state_region = STATE_SISTAN
+				}
+			}
 		}
 	}
 	
@@ -102,6 +125,7 @@
 	on_timeout = {
 		custom_tooltip = {
 			text = kal_disintegrate_tt
+			remove_variable = kalat_cannot_form_baluchistan
 			remove_modifier = kal_weak_khan
 			if = {
 				limit = {
@@ -213,6 +237,7 @@
 	
 	on_fail = {
 		remove_modifier = kal_weak_khan
+		remove_variable = kalat_cannot_form_baluchistan
 		custom_tooltip = {
 			text = kal_disintegrate_alt_tt
 		}

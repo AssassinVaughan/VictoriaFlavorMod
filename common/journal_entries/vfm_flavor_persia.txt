@@ -63,11 +63,6 @@
 					NOT = {
 						exists = c:HER
 					}
-					NOT = {
-						c:HER = {
-							is_subject_of = c:PER
-						}
-					}
 					c:PER = {
 						has_state_in_state_region = STATE_HERAT
 					}
@@ -508,7 +503,7 @@ je_the_siege_of_herat = {
 }
 
 je_integrate_khanate_subjects_iran = {
-	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	icon = "gfx/interface/icons/objectives/great_game.dds"
     group = je_group_historical_content
 
 	immediate = {
@@ -659,17 +654,17 @@ je_integrate_khanate_subjects_iran = {
 			}
 		}
 		custom_tooltip = {
-			text = custom_tooltip_annexed_kohistan
-			owns_entire_state_region = STATE_SISTAN
-			has_variable = annexed_kohistan_var
-		}
-		custom_tooltip = {
 			text = custom_tooltip_annexed_bastak
 			has_variable = annexed_bastak_var
 			AND = {
 				NOT = { exists = c:ARB }
 				owns_entire_state_region = STATE_LARISTAN
 			}
+		}
+		any_scope_state = {
+			state_region = s:STATE_SISTAN
+			is_split_state = no
+			is_incorporated = yes
 		}
 		custom_tooltip = {
 			text = custom_tooltip_annexed_maku

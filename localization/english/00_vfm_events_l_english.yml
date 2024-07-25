@@ -1,9 +1,4 @@
 ﻿l_english:
-  #Refer to these as a WIP text using event_name.#.(letter):"$(insert WIP tag)$"
-  DESC_WIP: "@information! #light_green This #italic description#! is unfinished!#!"
-  FLAVOR_WIP: "@information! #light_green This #italic flavor text#! is unfinished!#!"
-  OPTION_WIP: "@information! #light_green This #italic option#! is unfinished! Select at your own risk!#!"
-
  #Central American Events
   central_america.4.t:0 "The Nicaraguan Secession"
   central_america.4.d:1 "The Federal Republic stands divided. With tensions rising, Nicaragua has now declared their secession Union."
@@ -638,11 +633,6 @@
   journal_flavor_argentina.9.f: "The army of the north has been victorious over the armies of the [SCOPE.sCountry('bol_scope').GetAdjectiveNoFlag] confederation...\n\nAlthough the main reason of the war was economically, recovering the province had a strategical reason, as many unitary incursions crossed the northern border coming from [SCOPE.sCountry('bol_scope').GetNameNoFlag] to depose our government. Ending the dispute over Tarija has allowed to increase our prestige, as we have proven the [SCOPE.sCountry('bue_scope').GetAdjectiveNoFlag] strength in the battlefield..."
   journal_flavor_argentina.9.a: "Viva la Patria!"
 
-  journal_flavor_argentina.3.t: "Malón Grande"
-  journal_flavor_argentina.3.d: "A massive [SCOPE.sCountry('pat_scope').GetAdjectiveNoFlag] raid has assolated our provinces, [SCOPE.sCountry('pat_scope').GetAdjectiveNoFlag] from different tribes have united under the command of Namuncurá"
-  journal_flavor_argentina.3.f: "Although the damage of the provinces was substancial, our army was capable to organize a counter attack, and defeated the [SCOPE.sCountry('pat_scope').GetAdjectiveNoFlag] in the battle of Paragüil, recovering cattle and finishing the last try of the [SCOPE.sCountry('pat_scope').GetAdjectiveNoFlag] to stop the colonization of the Patagonia.\n\nThe malones was the tactic that the tribes of the south used against the Spanish, Chilean and Argentinine territories since the 17th century. They usually plunder the cattle and the villages with their horses and then returned to the south."
-  journal_flavor_argentina.3.a: "The conquest of the desert is one step closer!"
-
   journal_flavor_switzerland.1.t: "Switzerland United"
   journal_flavor_switzerland.1.d: "[ROOT.GetCountry.GetNameNoFlag] proclaims the everlasting unity of the Swiss Cantons"
   journal_flavor_switzerland.1.f: "[ROOT.GetCountry.GetNameNoFlag] has championed the effort to pass a new constitution which will establish Switzerland as a federal state with a proper central government. \n\n[ROOT.GetCountry.GetRuler.GetFullName] has been lauded as a national hero for resolving the issues of religion and legal differences peacefully, long may the history books remember his name."
@@ -995,7 +985,7 @@
   journal_flavor_iran.12.d: "'There is no God but God,\n\n And no one but God can be King'"
   journal_flavor_iran.12.f: "An influential clergyman by the name of #bold Mohammad Bagher Shafti#! has launched an uprising against us in #bold Isfahan!#!\n\nCiting our supposed warmongering at Herat, as well as the apparent decadence at our court, he has begun to utilize his considerable amount of wealth to rally the citizens of Isfahan and called for the populace to oppose the Qajar Dynasty by any means necessary, a message that seems to have especially drawn in the local #bold Luti#! tribes in the area."
   journal_flavor_iran.12.a: "Deal with it already!"
-  journal_flavor_iran.12.a: "Make him disappear quietly..."
+  journal_flavor_iran.12.b: "Make him disappear quietly..."
  
   journal_flavor_iran.13.t: "The Iranian Constitutional Revolution"
   journal_flavor_iran.13.d: "#WHITE Long live the National Soldiers!\n\nLong live the National Consultative Assembly!\n\nLong live the National Constitution!#!"
@@ -1061,7 +1051,7 @@
   journal_flavor_iran.23.f: "The port towns of Langeh, Bushehr and Kangan have been in British hands for a while; Bushehr has served as a headquarter for the British Agency in the Gulf to contain piracy, while the other ports were acquired after the subsequent incorporation of the local sheikhs into the federation of Trucial States who now exist under British protection.\n\nWhile valuable due to their strategic location, they are difficult to defend should the Persians decide to take them by force, and it may thus be more beneficial to give them up peacefully for cordial relations."
   journal_flavor_iran.23.a: "Very well, they may have it"
   journal_flavor_iran.23.b: "Very well, they may have it"
-  journal_flavor_iran.23.d: "We won't give up an inch to the Persians!"
+  journal_flavor_iran.23.c: "We won't give up an inch to the Persians!"
  
   journal_flavor_iran.24.t: "The British Refuse!"
   journal_flavor_iran.24.d: "The British have refused to give up control over the Coastal Sheikhdoms!"
@@ -1175,7 +1165,7 @@
   journal_flavor_kalat.1.e: "Onwards as Kharan!"
  
   journal_flavor_kalat.2.t: "Kalat Prevails"
-  journal_flavor_kalat.2.d: "As the realm steadily centralizes under the authority of the Khan, the chieftains lose ever more of their autonomy, become de-facto mere symbolic figureheads in the emerging Baluchi State"
+  journal_flavor_kalat.2.d: "As the realm steadily centralizes under the authority of the Khan, the chieftains lose ever more of their autonomy."
   journal_flavor_kalat.2.f: "'Balochistan has always been at the centre-stage of conflict; An important buffer between empires, its unique geography protected them thus far. However, sensing great change in the area as of recent, it may be of our utmost interest to establish relations with the Khan of Kalat.'"
   journal_flavor_kalat.2.a: "Brahui, Pashtun or Baloch, we are all Balochi now!"
   journal_flavor_kalat.2.b: "We were and always will be Kalati"
@@ -1198,44 +1188,7 @@
   journal_flavor_afghanistan.6.a: "Noted."
   journal_flavor_afghanistan.6.b: "Towards Rudbar we go!"
 
-  ### AUSTRALIA FLAVOR ###
-
-  flavor_western_australia_events.1.t: "The Colony of [SCOPE.sCountry('was_country_scope').GetNameNoFlag]"
-  flavor_western_australia_events.1.d: "Our colony is anything but old, only being founded in the year 1829. As such, our current supplies and infrastructure leave something to be desired. To add more salt to the wound, [SCOPE.sCountry('was_country_scope').GetName] is the only free colony on the continent, barring us from the cheap labor the [Concept('concept_convict_system', 'Convict System')] provides our eastern cousins."
-  flavor_western_australia_events.1.f: "$FLAVOR_WIP$"
-  flavor_western_australia_events.1.a: "Penal colony or not, [SCOPE.sCountry('was_country_scope').GetNameNoFlag] will prosper!"
-
-  ## Convict System ##
-
-  flavor_ast_convict_events.1.t: "The Convict System"
-  flavor_ast_convict_events.1.d: "For all its existence, [SCOPE.sCountry('convict_country_scope').GetNameNoFlag] has been a location to send any British convict guilty of any of the nineteen crimes. This surplus of rowdy criminals is not only a hit to our reputation, but slowly stirring disapproval from the free populace."
-  flavor_ast_convict_events.1.f: "The British established the first Australian settlement in the year 1788, shortly before the proclamation of the colony of New South Wales. Since then, thousands of convicts have arrived on the continent, enduring back-breaking labor for a chance at freedom. The colonial government would transport particularly rowdy convicts to Port Arthur, a high-security penal colony on the southeastern tip of Van Diemen’s Land."
-  flavor_ast_convict_events.1.a: "We must prove ourselves to the crown!"
-  flavor_ast_convict_events.2.t: "The Decay of Transportation"
-  flavor_ast_convict_events.3.t: "Transportation Cemented"
-  
-  ## Frontier Wars ##
-
-  frontier_war_events.1.t: "The [SCOPE.sCountry('frontier_war_country_scope').GetAdjective] Frontier Wars"
-  frontier_war_events.1.d_WAS: "[SCOPE.sCountry('frontier_war_country_scope').GetNameNoFlag] and the [SCOPE.sCountry('frontier_war_noongar_scope').GetName] have already had violent skurmishes in recent years, with the recent [context_pinjarra] as proof. Further violence is beneficial to neither party."
-  frontier_war_events.1.d_NSW: "Ever since the foundation of the colony in 1788, [SCOPE.sCountry('frontier_war_country_scope').GetNameNoFlag] and the Aboriginal Australians have not had nice relations. Even to this day, violent skirmishes have erupted between settlers and natives, with the most recent one at Darling River."
-  frontier_war_events.1.f: "“Do you see those people over there? Those are the Aboriginals. Well, you see men, those are the enemy as sworn by the King. They seek nothing but our destruction!”"
-  frontier_war_events.1.a: "In the name of King William, the natives must make way!"
-  frontier_war_events.1.b: "We all share this continent, Anglo or Aboriginal."
-
-  frontier_war_events.2.t: "At What Cost?"
-  frontier_war_events.2.d: ""
-  frontier_war_events.2.f: ""
-  frontier_war_events.2.a: "In the name of King William, the natives must make way!"
-
-  frontier_war_events.3.t: "The South Australia Company"
-  frontier_war_events.3.d: "$DESC_WIP$"
-  frontier_war_events.3.f: "$FLAVOR_WIP$"
-  frontier_war_events.3.a: "So be it."
-  frontier_war_events.3.b: "The South Australia Company you say?"
-
-  frontier_war_events.4.t: "The Northern Territory"
-  frontier_war_events.4.d: "$DESC_WIP$"
-  frontier_war_events.4.f: "$FLAVOR_WIP$"
-  frontier_war_events.4.a: "So be it."
-  frontier_war_events.4.b: "The Northern Territory you say?"
+  indigenous_raids_events.1.t: "Malón!"
+  indigenous_raids_events.1.d: "Indigenous warriors from the Patagonia have looted a village in the frontier"
+  indigenous_raids_events.1.f: "They burned the barn and took our daughters, in a matter of seconds they were back on their mounts and disappeared over the horizon leaving nothing but pain and destruction."
+  indigenous_raids_events.1.a: "Dios mío!"   

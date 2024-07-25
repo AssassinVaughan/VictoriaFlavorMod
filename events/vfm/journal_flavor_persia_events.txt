@@ -447,6 +447,12 @@ journal_flavor_iran.10 = {
 		c:HER = {
 			make_independent = yes
 		}
+		c:GBR = {
+			save_scope_as = british_influence_scope
+		}
+		c:PER = {
+			save_scope_as = british_influence_per_scope
+		}
 	}
 
 	duration = 1
@@ -454,6 +460,10 @@ journal_flavor_iran.10 = {
 	option = { #Accept the demands
 		name = journal_flavor_iran.10.a
 		
+		c:PER = { trigger_event = { id = journal_flavor_iran.3 } }
+		scope:british_influence_scope.power_bloc = {
+			add_leverage = { target = scope:british_influence_per_scope value = 25 }
+		}
 		add_modifier = {
 			name = per_caved_to_foreign_demands
 			days = 3650
@@ -464,8 +474,6 @@ journal_flavor_iran.10 = {
 			}
 			activate_law = law_type:law_legacy_slavery
 		}
-		
-		c:PER = { trigger_event = { id = journal_flavor_iran.3 } }
 		
 		set_variable = { name = british_intervention_in_iran days = 30 }
 		
@@ -501,7 +509,7 @@ journal_flavor_iran.10 = {
 					escalation = 80
 					target_country = c:HER
 					type = dp_annex_war
-					target_state = s:STATE_WESTERN_AFGHANISTAN.region_state:HER
+					target_state = s:STATE_HERAT.region_state:HER
 					
 					add_target_backers = { c:GBR }
 					add_target_backers = { c:BIC }
@@ -725,7 +733,7 @@ journal_flavor_iran.13 = {
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
 	on_opened_soundeffect = "event:/SFX/Events/unspecific/signed_contract"
 
-	icon = "gfx/interface/icons/event_icons/event_iran_flag.dds"
+	icon = "gfx/interface/icons/event_icons/event_flags/event_per_flag.dds"
 
 	duration = 3
 
@@ -1044,7 +1052,7 @@ journal_flavor_iran.18 = {
 					escalation = 60
 					target_country = c:HER
 					type = dp_annex_war
-					target_state = s:STATE_WESTERN_AFGHANISTAN.region_state:HER
+					target_state = s:STATE_HERAT.region_state:HER
 					
 					add_target_backers = { c:GBR }
 					
@@ -1276,7 +1284,7 @@ journal_flavor_iran.22 = {
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
 	on_opened_soundeffect = "event:/SFX/Events/unspecific/signed_contract"
 
-	icon = "gfx/interface/icons/event_icons/event_arab_sheikh_flag.dds"
+	icon = "gfx/interface/icons/event_icons/event_flags/event_bhn_flag.dds"
 
 	duration = 3
 
@@ -1339,7 +1347,7 @@ journal_flavor_iran.23 = {
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
 	on_opened_soundeffect = "event:/SFX/Events/unspecific/signed_contract"
 
-	icon = "gfx/interface/icons/event_icons/event_arab_sheikh_flag.dds"
+	icon = "gfx/interface/icons/event_icons/event_flags/event_bhn_flag.dds"
 
 	duration = 1
 
@@ -1481,7 +1489,7 @@ journal_flavor_iran.25 = {
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
 	on_opened_soundeffect = "event:/SFX/Events/unspecific/signed_contract"
 
-	icon = "gfx/interface/icons/event_icons/event_iran_flag.dds"
+	icon = "gfx/interface/icons/event_icons/event_flags/event_per_flag.dds"
 
 	duration = 3
 
@@ -1538,7 +1546,7 @@ journal_flavor_iran.26 = {
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
 	on_opened_soundeffect = "event:/SFX/Events/unspecific/signed_contract"
 
-	icon = "gfx/interface/icons/event_icons/event_arab_sheikh_flag.dds"
+	icon = "gfx/interface/icons/event_icons/event_flags/event_bhn_flag.dds"
 
 	duration = 3
 
@@ -1579,7 +1587,7 @@ journal_flavor_iran.27 = {
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
 	on_opened_soundeffect = "event:/SFX/Events/unspecific/signed_contract"
 
-	icon = "gfx/interface/icons/event_icons/event_arab_sheikh_flag.dds"
+	icon = "gfx/interface/icons/event_icons/event_flags/event_bhn_flag.dds"
 
 	duration = 1
 
@@ -1715,7 +1723,7 @@ journal_flavor_iran.30 = {
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
 	on_opened_soundeffect = "event:/SFX/Events/unspecific/signed_contract"
 
-	icon = "gfx/interface/icons/event_icons/event_iran_flag.dds"
+	icon = "gfx/interface/icons/event_icons/event_flags/event_per_flag.dds"
 
 	duration = 3
 
@@ -2159,7 +2167,7 @@ journal_flavor_iran.37 = {
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
 	on_opened_soundeffect = "event:/SFX/Events/unspecific/signed_contract"
 
-	icon = "gfx/interface/icons/event_icons/event_iran_flag.dds"
+	icon = "gfx/interface/icons/event_icons/event_flags/event_per_flag.dds"
 
 	duration = 3
 	
@@ -2171,11 +2179,30 @@ journal_flavor_iran.37 = {
 	
 	immediate = { 
 		remove_modifier = per_lack_of_policing
+		c:GBR = {
+			save_scope_as = british_influence_scope
+		}
+		c:PRU = {
+			save_scope_as = prussian_influence_scope
+		}
+		c:RUS = {
+			save_scope_as = russian_influence_scope
+		}
+		c:SWE = {
+			save_scope_as = swedish_influence_scope
+		}
+		c:PER = {
+			save_scope_as = influence_per_scope
+		}
 	}
 	
 	option = { #Russian Police
 		name = journal_flavor_iran.37.a
 		
+		
+		scope:russian_influence_scope.power_bloc = {
+			add_leverage = { target = scope:influence_per_scope value = 25 }
+		}
 		c:RUS = {
 			change_relations = {
 				country = ROOT
@@ -2202,6 +2229,9 @@ journal_flavor_iran.37 = {
 	option = { #British Police
 		name = journal_flavor_iran.37.b 
 		
+		scope:british_influence_scope.power_bloc = {
+			add_leverage = { target = scope:influence_per_scope value = 25 }
+		}
 		c:RUS = {
 			change_relations = {
 				country = ROOT
@@ -2228,6 +2258,10 @@ journal_flavor_iran.37 = {
 	option = { #Prussian Police
 		name = journal_flavor_iran.37.c
 		
+		
+		scope:prussian_influence_scope.power_bloc = {
+			add_leverage = { target = scope:influence_per_scope value = 25 }
+		}
 		c:RUS = {
 			change_relations = {
 				country = ROOT
@@ -2309,7 +2343,7 @@ journal_flavor_iran.38 = {
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
 	on_opened_soundeffect = "event:/SFX/Events/unspecific/signed_contract"
 
-	icon = "gfx/interface/icons/event_icons/event_iran_flag.dds"
+	icon = "gfx/interface/icons/event_icons/event_flags/event_per_flag.dds"
 
 	duration = 1
 	
@@ -2362,7 +2396,7 @@ journal_flavor_iran.40 = {
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
 	on_opened_soundeffect = "event:/SFX/Events/unspecific/signed_contract"
 
-	icon = "gfx/interface/icons/event_icons/event_iran_flag.dds"
+	icon = "gfx/interface/icons/event_icons/event_flags/event_per_flag.dds"
 
 	duration = 3
 	
@@ -2399,7 +2433,7 @@ journal_flavor_iran.50 = {
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
 	on_opened_soundeffect = "event:/SFX/Events/unspecific/signed_contract"
 
-	icon = "gfx/interface/icons/event_icons/event_iran_flag.dds"
+	icon = "gfx/interface/icons/event_icons/event_flags/event_per_flag.dds"
 
 	duration = 3
 
