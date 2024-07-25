@@ -1,0 +1,53 @@
+	namespace = indigenous_raids_events
+
+indigenous_raids_events.1 = { #Malon
+	type = state_event
+	placement = scope:malon_state
+
+	title = indigenous_raids_events.1.t
+	desc = indigenous_raids_events.1.d
+	flavor = indigenous_raids_events.1.f
+
+	duration = 3
+
+	event_image = {
+		video = "europenorthamerica_native_american"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_skull.dds"
+
+	trigger = {
+        random_neighbouring_state = {
+			limit = {
+				owner = { 
+				    country_has_primary_culture = cu:patagonian	
+				}
+			}
+		}		
+	}
+
+	immediate = {
+		random_scope_state = {
+			limit = {
+                random_neighbouring_state = {
+			        limit = {
+				        owner = { 
+				            country_has_primary_culture = cu:patagonian	
+				        }
+			        }
+		        }
+		    }    
+			save_scope_as =  malon_state 
+		    }
+		}		
+
+	option = { 
+		name = indigenous_raids_events.1.a
+		default_option = yes
+		scope:malon_state.state_region = {
+			add_devastation = 5
+		}
+	}
+}
