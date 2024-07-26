@@ -1,0 +1,30 @@
+﻿frontier_wars_sickness = {
+	type = country
+	random_valid = no
+
+	text = { #Measles
+		trigger = {
+			has_variable = aboriginal_measles_var
+		}
+		localization_key = ast_measles
+	}
+	text = { #Tubercolosis
+		trigger = {
+			has_variable = aboriginal_tb_var
+		}
+		localization_key = ast_tubercolosis
+	}
+	text = { #Influenza
+		trigger = {
+			has_variable = aboriginal_flu_var
+		}
+		localization_key = ast_influenza
+	}
+	text = { #Smallpox
+		trigger = {
+			has_variable = aboriginal_smallpox_var
+		}
+		fallback = yes
+		localization_key = ast_smallpox
+	}
+}

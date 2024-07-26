@@ -148,7 +148,7 @@ journal_flavor_frontier_war_events.2 = {
 		}
     }
 }
-
+#South Australia
 journal_flavor_frontier_war_events.3 = { 
 	type = country_event
 	placement = ROOT
@@ -158,7 +158,7 @@ journal_flavor_frontier_war_events.3 = {
 	flavor = journal_flavor_frontier_war_events.3.f
 
 	event_image = {
-		video = "gfx/event_pictures/southamerica_aristocrats.bk2"
+		video = "gfx/event_pictures/africa_construction_colony.bk2"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -290,7 +290,7 @@ journal_flavor_frontier_war_events.3 = {
 		}
     }
 }
-
+#North Australia
 journal_flavor_frontier_war_events.4 = { 
 	type = country_event
 	placement = ROOT
@@ -300,7 +300,7 @@ journal_flavor_frontier_war_events.4 = {
 	flavor = journal_flavor_frontier_war_events.4.f
 
 	event_image = {
-		video = "gfx/event_pictures/southamerica_aristocrats.bk2"
+		video = "gfx/event_pictures/africa_construction_colony.bk2"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -313,6 +313,7 @@ journal_flavor_frontier_war_events.4 = {
 	duration = 1
 
 	trigger = {
+		year >= 1840
 		THIS = c:NSW
 		NOT = {
 			exists = c:NAU
@@ -409,6 +410,8 @@ journal_flavor_frontier_war_events.4 = {
 		}
     }
 }
+
+#Aboriginal Smallpox Epidemic
 journal_flavor_frontier_war_events.5 = { 
 	type = country_event
 	placement = ROOT
@@ -418,34 +421,266 @@ journal_flavor_frontier_war_events.5 = {
 	flavor = journal_flavor_frontier_war_events.5.f
 
 	event_image = {
-		video = "gfx/event_pictures/southamerica_aristocrats.bk2"
+		video = "gfx/event_pictures/unspecific_sick_in_hospital.bk2"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
 	on_opened_soundeffect = "event:/SFX/Events/unspecific/military_parade"
 
-	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+	icon = "gfx/interface/icons/event_icons/event_skull.dds"
 
 	dlc = dlc_vfm
 
 	duration = 1
 
+	trigger = {
+		any_neighbouring_state = {
+			owner = {
+				country_has_primary_culture = cu:aborigine
+				NOR = {
+					has_variable = aboriginal_smallpox_var
+					has_variable = aboriginal_tb_var
+					has_variable = aboriginal_flu_var
+					has_variable = aboriginal_measles_var
+				}
+			}
+		}
+	}
+
+	cooldown = {
+		years = 2
+	}
+
+	immediate = {
+		random_neighbouring_state = {
+			limit = {
+				owner = {
+					country_has_primary_culture = cu:aborigine
+					NOT = { has_variable = aboriginal_sickness_var }
+				}
+			}
+			save_scope_as = aboriginal_sick_state_scope
+			owner = {
+				save_scope_as = aboriginal_sick_country_scope
+				random_list = {
+					1 = {
+						set_variable = {
+							name = aboriginal_smallpox_var
+							value = yes
+							years = 2
+						}
+					}
+					1 = {
+						set_variable = {
+							name = aboriginal_tb_var
+							value = yes
+							years = 2
+						}
+					}
+					1 = {
+						set_variable = {
+							name = aboriginal_flu_var
+							value = yes
+							years = 2
+						}
+					}
+					2 = {
+						set_variable = {
+							name = aboriginal_measles_var
+							value = yes
+							years = 2
+						}
+					}
+				}
+			}
+		}
+	}
+
 	option = {
 		name = journal_flavor_frontier_war_events.5.a
 		default_option = yes
-		set_variable = {
-			name = the_bung_var
-			value = 1
+		scope:aboriginal_sick_state_scope = {
+			add_modifier = {
+				name = aboriginal_foreign_epidemic
+				years = 1
+			}
 		}
-		#remove_variable = the_bung_var
 	}
 	option = {
 		name = journal_flavor_frontier_war_events.5.b
+
+		scope:aboriginal_sick_state_scope = {
+			owner = {
+				change_tension = {
+					country = ROOT
+					value = -10
+				}
+			}
+			add_modifier = {
+				name = aboriginal_foreign_epidemic
+				months = 8
+				divide = 2
+			}
+		}
+	}
+}
+
+#Aboriginal Massacre
+journal_flavor_frontier_war_events.6 = { 
+	type = country_event
+	placement = ROOT
+
+	title = journal_flavor_frontier_war_events.6.t
+	desc = journal_flavor_frontier_war_events.6.d
+	flavor = journal_flavor_frontier_war_events.6.f
+
+	event_image = {
+		video = "gfx/event_pictures/southamerica_war_civilians.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/unspecific/military_parade"
+
+	icon = "gfx/interface/icons/event_icons/event_skull.dds"
+
+	dlc = dlc_vfm
+
+	duration = 1
+
+	trigger = {
+		any_scope_state = {
+			is_split_state = yes
+			any_neighbouring_state = {
+				owner = {
+					country_has_primary_culture = cu:aborigine
+				}
+			}
+		}
+	}
+
+	cooldown = {
+		years = 1
+	}
+
+	immediate = {
+		random_scope_state = {
+			limit = {
+				is_split_state = yes
+				any_neighbouring_state = {
+					owner = {
+						country_has_primary_culture = cu:aborigine
+					}
+				}
+			}
+			save_scope_as = massacre_location_state_scope
+			random_neighbouring_state = {
+				limit = {
+					owner = {
+						country_has_primary_culture = cu:aborigine
+					}
+				}
+				owner = {
+					save_scope_as = massacre_location_country_scope
+				}
+			}
+		}
+	}
+
+	option = {
+		name = journal_flavor_frontier_war_events.6.a
 		default_option = yes
-		#set_variable = {
-		#	name = the_bung_var
-		#	value = 1
-		#}
-		remove_variable = the_bung_var
+		scope:massacre_location_state_scope = {
+			kill_population_percent_in_state = {
+				percent = 0.05
+				culture = cu:aborigine
+			}
+		}
+		scope:massacre_location_country_scope = {
+			change_tension = {
+				country = ROOT
+				value = 10
+			}
+		}
+	}
+}
+#Aboriginal Raid
+journal_flavor_frontier_war_events.7 = { 
+	type = country_event
+	placement = ROOT
+
+	title = journal_flavor_frontier_war_events.7.t
+	desc = journal_flavor_frontier_war_events.7.d
+	flavor = journal_flavor_frontier_war_events.7.f
+
+	event_image = {
+		video = "gfx/event_pictures/unspecific_vandalized_storefront.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/unspecific/military_parade"
+
+	icon = "gfx/interface/icons/event_icons/event_skull.dds"
+
+	dlc = dlc_vfm
+
+	duration = 1
+
+	trigger = {
+		any_scope_state = {
+			is_split_state = yes
+			any_neighbouring_state = {
+				owner = {
+					country_has_primary_culture = cu:aborigine
+				}
+			}
+			any_scope_pop = {
+				has_pop_culture = cu:australian
+			}
+		}
+	}
+
+	cooldown = {
+		years = 2
+	}
+
+	immediate = {
+		random_scope_state = {
+			limit = {
+				is_split_state = yes
+				any_neighbouring_state = {
+					owner = {
+						country_has_primary_culture = cu:aborigine
+					}
+				}
+			}
+			save_scope_as = raid_location_state_scope
+			random_neighbouring_state = {
+				limit = {
+					owner = {
+						country_has_primary_culture = cu:aborigine
+					}
+				}
+				owner = {
+					save_scope_as = raid_location_country_scope
+				}
+			}
+		}
+	}
+
+	option = {
+		name = journal_flavor_frontier_war_events.7.a
+		default_option = yes
+		scope:raid_location_state_scope = {
+			kill_population_percent_in_state = {
+				percent = 0.015
+				culture = cu:australian
+			}
+		}
+		scope:raid_location_country_scope = {
+			change_tension = {
+				country = ROOT
+				value = 10
+			}
+		}
 	}
 }

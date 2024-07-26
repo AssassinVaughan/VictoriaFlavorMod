@@ -9,11 +9,14 @@ je_frontier_wars = {
 			save_scope_as = frontier_war_country_je
 		}
 	}
-	on_weekly_pulse = {
+	on_monthly_pulse = {
 		random_events = {
-			10 = 0
-			10 = vfm_frontier_war_events.3
-			10 = vfm_frontier_war_events.4
+			100 = 0
+			15 = journal_flavor_frontier_war_events.3
+			15 = journal_flavor_frontier_war_events.4
+			5 = journal_flavor_frontier_war_events.5
+			5 = journal_flavor_frontier_war_events.6
+			2 = journal_flavor_frontier_war_events.7
 		}
 	}
 	complete = {
@@ -30,7 +33,7 @@ je_frontier_wars = {
 
 	on_complete = {
 		trigger_event = {
-			id = vfm_frontier_war_events.2
+			id = journal_flavor_frontier_war_events.2
 		}
 	}
 
