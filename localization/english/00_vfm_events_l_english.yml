@@ -1,9 +1,4 @@
 ﻿l_english:
-  #Refer to these as a WIP text using event_name.#.(letter):"$(insert WIP tag)$"
-  DESC_WIP: "@information! #light_green This #italic description#! is unfinished!#!"
-  FLAVOR_WIP: "@information! #light_green This #italic flavor text#! is unfinished!#!"
-  OPTION_WIP: "@information! #light_green This #italic option#! is unfinished! Select at your own risk!#!"
-
  #Central American Events
   central_america.4.t:0 "The Nicaraguan Secession"
   central_america.4.d:1 "The Federal Republic stands divided. With tensions rising, Nicaragua has now declared their secession Union."
@@ -1197,3 +1192,45 @@
   indigenous_raids_events.1.d: "Indigenous warriors from the Patagonia have looted a village in the frontier"
   indigenous_raids_events.1.f: "They burned the barn and took our daughters, in a matter of seconds they were back on their mounts and disappeared over the horizon leaving nothing but pain and destruction."
   indigenous_raids_events.1.a: "Dios mío!"   
+
+  ### AUSTRALIA FLAVOR ###
+
+  flavor_western_australia_events.1.t: "The Colony of [SCOPE.sCountry('was_country_scope').GetNameNoFlag]"
+  flavor_western_australia_events.1.d: "Our colony is anything but old, only being founded in the year 1829. As such, our current supplies and infrastructure leave something to be desired. To add more salt to the wound, [SCOPE.sCountry('was_country_scope').GetName] is the only free colony on the continent, barring us from the cheap labor the [Concept('concept_convict_system', 'Convict System')] provides our eastern cousins."
+  flavor_western_australia_events.1.f: "$FLAVOR_WIP$"
+  flavor_western_australia_events.1.a: "Penal colony or not, [SCOPE.sCountry('was_country_scope').GetNameNoFlag] will prosper!"
+
+  ## Convict System ##
+
+  flavor_australia_events.1.t: "The Convict System"
+  flavor_australia_events.1.d: "For all its existence, [SCOPE.sCountry('convict_country_scope').GetNameNoFlag] has been a location to send any British convict guilty of any of the nineteen crimes. This surplus of rowdy criminals is not only a hit to our reputation, but slowly stirring disapproval from the free populace."
+  flavor_australia_events.1.f: "The British established the first Australian settlement in the year 1788, shortly before the proclamation of the colony of New South Wales. Since then, thousands of convicts have arrived on the continent, enduring back-breaking labor for a chance at freedom. The colonial government would transport particularly rowdy convicts to Port Arthur, a high-security penal colony on the southeastern tip of Van Diemen’s Land."
+  flavor_australia_events.1.a: "We must prove ourselves to the crown!"
+  flavor_australia_events.2.t: "The Decay of Transportation"
+  flavor_australia_events.3.t: "Transportation Cemented"
+  
+  ## Frontier Wars ##
+
+  vfm_frontier_war_events.1.t: "The [SCOPE.sCountry('frontier_war_country_scope').GetAdjective] Frontier Wars"
+  vfm_frontier_war_events.1.d_WAS: "[SCOPE.sCountry('frontier_war_country_scope').GetNameNoFlag] and the [SCOPE.sCountry('frontier_war_noongar_scope').GetName] have already had violent skurmishes in recent years, with the recent [context_pinjarra] as proof. Further violence is beneficial to neither party."
+  vfm_frontier_war_events.1.d_NSW: "Ever since the foundation of the colony in 1788, [SCOPE.sCountry('frontier_war_country_scope').GetNameNoFlag] and the Aboriginal Australians have not had nice relations. Even to this day, violent skirmishes have erupted between settlers and natives, with the most recent one at Darling River."
+  vfm_frontier_war_events.1.f: "“Do you see those people over there? Those are the Aboriginals. Well, you see men, those are the enemy as sworn by the King. They seek nothing but our destruction!”"
+  vfm_frontier_war_events.1.a: "In the name of King William, the natives must make way!"
+  vfm_frontier_war_events.1.b: "We all share this continent, Anglo or Aboriginal."
+
+  vfm_frontier_war_events.2.t: "At What Cost?"
+  vfm_frontier_war_events.2.d: ""
+  vfm_frontier_war_events.2.f: ""
+  vfm_frontier_war_events.2.a: "In the name of King William, the natives must make way!"
+
+  vfm_frontier_war_events.3.t: "The South Australia Company"
+  vfm_frontier_war_events.3.d: "$DESC_WIP$"
+  vfm_frontier_war_events.3.f: "$FLAVOR_WIP$"
+  vfm_frontier_war_events.3.a: "So be it."
+  vfm_frontier_war_events.3.b: "The South Australia Company you say?"
+
+  vfm_frontier_war_events.4.t: "The Northern Territory"
+  vfm_frontier_war_events.4.d: "$DESC_WIP$"
+  vfm_frontier_war_events.4.f: "$FLAVOR_WIP$"
+  vfm_frontier_war_events.4.a: "So be it."
+  vfm_frontier_war_events.4.b: "The Northern Territory you say?"

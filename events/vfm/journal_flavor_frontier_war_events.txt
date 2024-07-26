@@ -1,26 +1,26 @@
-﻿namespace = frontier_war_events
+﻿namespace = journal_flavor_frontier_war_events
 
 #Frontier Wars Intro
-frontier_war_events.1 = { 
+journal_flavor_frontier_war_events.1 = { 
 	type = country_event
 	placement = ROOT
 
-	title = frontier_war_events.1.t
+	title = journal_flavor_frontier_war_events.1.t
 	desc = {
 		triggered_desc = {
-			desc = frontier_war_events.1.d_WAS
+			desc = journal_flavor_frontier_war_events.1.d_WAS
 			trigger = {
 				ROOT = c:WAS
 			}
 		}
 		triggered_desc = {
-			desc = frontier_war_events.1.d_NSW
+			desc = journal_flavor_frontier_war_events.1.d_NSW
 			trigger = {
 				ROOT = c:NSW
 			}
 		}
 	}
-	flavor = frontier_war_events.1.f
+	flavor = journal_flavor_frontier_war_events.1.f
 
 	event_image = {
 		video = "gfx/event_pictures/southamerica_war_civilians.bk2"
@@ -49,7 +49,7 @@ frontier_war_events.1 = {
 	}
 
 	option = {
-		name = frontier_war_events.1.a
+		name = journal_flavor_frontier_war_events.1.a
 		default_option = yes
 		add_journal_entry = { type = je_frontier_wars }
 		
@@ -62,7 +62,7 @@ frontier_war_events.1 = {
 		}
     }
 	option = {
-		name = frontier_war_events.1.b
+		name = journal_flavor_frontier_war_events.1.b
 		add_journal_entry = { type = je_frontier_wars }
 		
 		custom_tooltip = {
@@ -76,26 +76,26 @@ frontier_war_events.1 = {
 }
 
 #Frontier Wars Conclusion
-frontier_war_events.2 = { 
+journal_flavor_frontier_war_events.2 = { 
 	type = country_event
 	placement = ROOT
 
-	title = frontier_war_events.2.t
+	title = journal_flavor_frontier_war_events.2.t
 	desc = {
 		triggered_desc = {
-			desc = frontier_war_events.2.d_WAS
+			desc = journal_flavor_frontier_war_events.2.d_WAS
 			trigger = {
 				ROOT = c:WAS
 			}
 		}
 		triggered_desc = {
-			desc = frontier_war_events.2.d_NSW
+			desc = journal_flavor_frontier_war_events.2.d_NSW
 			trigger = {
 				ROOT = c:NSW
 			}
 		}
 	}
-	flavor = frontier_war_events.2.f
+	flavor = journal_flavor_frontier_war_events.2.f
 
 	event_image = {
 		video = "gfx/event_pictures/southamerica_war_civilians.bk2"
@@ -124,7 +124,7 @@ frontier_war_events.2 = {
 	}
 
 	option = {
-		name = frontier_war_events.2.a
+		name = journal_flavor_frontier_war_events.2.a
 		default_option = yes
 		add_journal_entry = { type = je_frontier_wars }
 		
@@ -137,7 +137,7 @@ frontier_war_events.2 = {
 		}
     }
 	option = {
-		name = frontier_war_events.1.b
+		name = journal_flavor_frontier_war_events.1.b
 		
 		custom_tooltip = {
 			text = ast_frontier_1_tt
@@ -149,13 +149,13 @@ frontier_war_events.2 = {
     }
 }
 
-frontier_war_events.3 = { 
+journal_flavor_frontier_war_events.3 = { 
 	type = country_event
 	placement = ROOT
 
-	title = frontier_war_events.3.t
-	desc = frontier_war_events.3.d
-	flavor = frontier_war_events.3.f
+	title = journal_flavor_frontier_war_events.3.t
+	desc = journal_flavor_frontier_war_events.3.d
+	flavor = journal_flavor_frontier_war_events.3.f
 
 	event_image = {
 		video = "gfx/event_pictures/southamerica_aristocrats.bk2"
@@ -258,7 +258,7 @@ frontier_war_events.3 = {
 	}
 
 	option = {
-		name = frontier_war_events.3.a
+		name = journal_flavor_frontier_war_events.3.a
 		default_option = yes
 		custom_tooltip = ast_frontier_2_tt
 		hidden_effect = {
@@ -274,7 +274,7 @@ frontier_war_events.3 = {
 		}
 	}
 	option = {
-		name = frontier_war_events.3.b
+		name = journal_flavor_frontier_war_events.3.b
 		custom_tooltip = ast_frontier_2_tt
 		hidden_effect = {
 			s:STATE_SOUTH_AUSTRALIA.region_state:NSW = {
@@ -291,14 +291,13 @@ frontier_war_events.3 = {
     }
 }
 
-
-frontier_war_events.4 = { 
+journal_flavor_frontier_war_events.4 = { 
 	type = country_event
 	placement = ROOT
 
-	title = frontier_war_events.4.t
-	desc = frontier_war_events.4.d
-	flavor = frontier_war_events.4.f
+	title = journal_flavor_frontier_war_events.4.t
+	desc = journal_flavor_frontier_war_events.4.d
+	flavor = journal_flavor_frontier_war_events.4.f
 
 	event_image = {
 		video = "gfx/event_pictures/southamerica_aristocrats.bk2"
@@ -316,7 +315,7 @@ frontier_war_events.4 = {
 	trigger = {
 		THIS = c:NSW
 		NOT = {
-			exists = c:NTT
+			exists = c:NAU
 		}
 	}
 
@@ -331,26 +330,26 @@ frontier_war_events.4 = {
 
 	after = {
 		create_country = {
-            tag = NTT
-            origin = c:NSW
+            tag = NAU
+            origin = c:WAS
             state = s:STATE_NORTHERN_TERRITORY.region_state:NSW
 		}
 		s:STATE_NORTHERN_TERRITORY = {
 			remove_claim = c:NSW
-			add_claim = c:NTT
+			add_claim = c:NAU
 	    }
 	    if = {
 	    	limit = { has_variable = wanna_north_ast }
 	    	remove_variable = wanna_north_ast
-			play_as = c:NTT
+			play_as = c:NAU
 	    }
 	    c:GBR = {
 	        create_diplomatic_pact = {
-	            country = c:NTT
+	            country = c:NAU
 	            type = dependency
 	        }	
 	    }	
-	    s:STATE_NORTHERN_TERRITORY.region_state:NTT = {
+	    s:STATE_NORTHERN_TERRITORY.region_state:NAU = {
 			create_pop = {
 				pop_type = peasants
 				culture = british
@@ -362,7 +361,7 @@ frontier_war_events.4 = {
 				size = 9000
 			}
 	    }
-	    c:NTT = {
+	    c:NAU = {
 			add_journal_entry = { type = je_frontier_wars }
 	    	add_modifier = {
 	    		name = colonial_boom
@@ -378,7 +377,7 @@ frontier_war_events.4 = {
 	}
 
 	option = {
-		name = frontier_war_events.4.a
+		name = journal_flavor_frontier_war_events.4.a
 		default_option = yes
 		custom_tooltip = ast_frontier_3_tt
 		hidden_effect = {
@@ -394,7 +393,7 @@ frontier_war_events.4 = {
 		}
 	}
 	option = {
-		name = frontier_war_events.4.b
+		name = journal_flavor_frontier_war_events.4.b
 		custom_tooltip = ast_frontier_3_tt
 		hidden_effect = {
 			s:STATE_NORTHERN_TERRITORY.region_state:NSW = {
@@ -410,13 +409,13 @@ frontier_war_events.4 = {
 		}
     }
 }
-frontier_war_events.5 = { 
+journal_flavor_frontier_war_events.5 = { 
 	type = country_event
 	placement = ROOT
 
-	title = frontier_war_events.5.t
-	desc = frontier_war_events.5.d
-	flavor = frontier_war_events.5.f
+	title = journal_flavor_frontier_war_events.5.t
+	desc = journal_flavor_frontier_war_events.5.d
+	flavor = journal_flavor_frontier_war_events.5.f
 
 	event_image = {
 		video = "gfx/event_pictures/southamerica_aristocrats.bk2"
@@ -432,7 +431,7 @@ frontier_war_events.5 = {
 	duration = 1
 
 	option = {
-		name = frontier_war_events.5.a
+		name = journal_flavor_frontier_war_events.5.a
 		default_option = yes
 		set_variable = {
 			name = the_bung_var
@@ -441,7 +440,7 @@ frontier_war_events.5 = {
 		#remove_variable = the_bung_var
 	}
 	option = {
-		name = frontier_war_events.5.b
+		name = journal_flavor_frontier_war_events.5.b
 		default_option = yes
 		#set_variable = {
 		#	name = the_bung_var

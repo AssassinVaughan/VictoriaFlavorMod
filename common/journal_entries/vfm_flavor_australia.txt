@@ -12,8 +12,8 @@ je_frontier_wars = {
 	on_weekly_pulse = {
 		random_events = {
 			10 = 0
-			10 = frontier_war_events.3
-			10 = frontier_war_events.4
+			10 = vfm_frontier_war_events.3
+			10 = vfm_frontier_war_events.4
 		}
 	}
 	complete = {
@@ -30,7 +30,7 @@ je_frontier_wars = {
 
 	on_complete = {
 		trigger_event = {
-			id = frontier_war_events.2
+			id = vfm_frontier_war_events.2
 		}
 	}
 
@@ -70,7 +70,7 @@ je_convict_system = {
 	icon = "gfx/interface/icons/event_icons/event_scales.dds"
     group = je_group_internal_affairs
 
-	timeout = 3650
+	timeout = 7300
 	scripted_progress_bar = convict_system_progress_bar
 
 	scripted_button = je_import_convicts_button
@@ -96,7 +96,7 @@ je_convict_system = {
 				}
 				set_variable = {
 					name = convict_progress_var
-					value = -1
+					value = -0.5
 				}
 			}
 			else_if = {
@@ -105,7 +105,7 @@ je_convict_system = {
 				}
 				set_variable = {
 					name = convict_progress_var
-					value = 1
+					value = 0.5
 				}
 			}
 		}
@@ -113,15 +113,15 @@ je_convict_system = {
 	on_monthly_pulse = {
 		random_events = {
 			185 = 0
-			5 = flavor_ast_convict_events.4 
-			5 = flavor_ast_convict_events.5 
+			5 = flavor_australia_events.4 
+			5 = flavor_australia_events.5 
 			#Anti-transportation League
-			5 = flavor_ast_convict_events.6 
+			5 = flavor_australia_events.6 
 		}
 	}
 
 	on_timeout = {
-		trigger_event = { id = flavor_ast_convict_events.3 }
+		trigger_event = { id = flavor_australia_events.3 }
 	}
 
 	complete = {
@@ -139,7 +139,7 @@ je_convict_system = {
 
 	on_complete = {
 		trigger_event = {
-			id = flavor_ast_convict_events.2
+			id = flavor_australia_events.2
 			days = 0
 		}
 	}
