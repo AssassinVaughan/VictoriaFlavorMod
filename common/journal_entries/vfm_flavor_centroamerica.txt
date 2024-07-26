@@ -233,19 +233,52 @@
 	}
 	
 	fail = {
-		custom_tooltip = {
-			text = frca_lost_war_tt
-			has_variable = frca_lost_war
+		OR = {
+			custom_tooltip = {
+				text = frca_lost_war_tt
+				has_variable = frca_lost_war
+			}
+			NOT = { has_law = law_type:law_federal }
 		}
 	}
 	
 	on_fail = {
+		hidden_effect = { 
+			ig:ig_landowners = {
+				remove_ideology = ideology_central_american_reactionary
+				add_ideology = ideology_caudillismo
+			}
 		
+			ig:ig_armed_forces = {
+				remove_ideology = ideology_central_american_reactionary
+			}
+
+			ig:ig_devout = {
+				add_ideology = ideology_paternalistic
+				remove_ideology = ideology_central_american_reactionary
+			}
+		}
 	}
 
 	on_complete = {
 		remove_variable = uca_cholera_pandemic
-		hidde_effect = { trigger_event = { id = journal_flavor_central_america.17 } }
+		hidden_effect = { 
+			ig:ig_landowners = {
+				remove_ideology = ideology_central_american_reactionary
+				add_ideology = ideology_caudillismo
+			}
+		
+			ig:ig_armed_forces = {
+				remove_ideology = ideology_central_american_reactionary
+			}
+
+			ig:ig_devout = {
+				add_ideology = ideology_paternalistic
+				remove_ideology = ideology_central_american_reactionary
+			}
+			
+			trigger_event = { id = journal_flavor_central_america.17 } 
+		}
 	}
 	
 	current_value = {
