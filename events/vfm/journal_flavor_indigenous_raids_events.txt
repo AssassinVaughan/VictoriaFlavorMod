@@ -25,7 +25,8 @@ indigenous_raids_events.1 = { #Malon
 				    country_has_primary_culture = cu:patagonian	
 				}
 			}
-		}		
+		}
+		NOT = { has_variable = malon_var } 		
 	}
 
 	immediate = {
@@ -37,13 +38,12 @@ indigenous_raids_events.1 = { #Malon
 				            country_has_primary_culture = cu:patagonian	
 				        }
 			        }
-		        }
-		        owner = {
-					is_country_type = decentralized
-				}	
+		        }	
 		    }    
 			save_scope_as =  malon_state 
 		    }
+		set_variable = malon_var
+		months = normal_modifier_time
 		}		
 
 	option = { 
