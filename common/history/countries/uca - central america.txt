@@ -32,13 +32,14 @@
 		
 		trigger_event = { id = journal_flavor_central_america.1 days = 3 }
 		
+		
 		ig:ig_intelligentsia = {
 			add_ruling_interest_group = yes
 		}
 		
 		ig:ig_landowners = {
 			remove_ideology = ideology_paternalistic
-			add_ideology = ideology_caudillismo
+			add_ideology = ideology_central_american_reactionary
 			set_interest_group_name = ig_hacendados
 		}
 		
@@ -47,6 +48,7 @@
 		}
 
 		ig:ig_devout = {
+			add_ideology = ideology_central_american_reactionary
 			set_interest_group_name = ig_catholic_church
 			set_ig_suppression = yes
 		}
@@ -56,12 +58,15 @@
 		}
 		
 		#Main Journal Entry Variables
+		set_variable = is_frca_var
 		set_variable = gua_support_var
 		set_variable = je_gua_support_var
 		set_variable = els_support_var
 		set_variable = je_els_support_var
 		set_variable = hon_support_var
 		set_variable = je_hon_support_var
+		set_variable = nic_support_var
+		set_variable = je_nic_support_var
 		set_variable = cos_support_var
 		set_variable = je_cos_support_var
 		
