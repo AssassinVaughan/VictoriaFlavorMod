@@ -67,6 +67,7 @@ DAG = {
 AZB = {
 	states = {
 		STATE_AZERBAIJAN
+		STATE_ELIZAVETPOL
 	}
 	
 	ai_will_do = { always = no }
@@ -121,7 +122,7 @@ LAT = {
 LIT = {
 	states = {
 		STATE_KAUNAS
-		STATE_VILNA
+		STATE_VILNIUS
 	}
 
 	ai_will_do = { always = no }
@@ -304,7 +305,18 @@ JAN = {
 }
 
 POL = {
-	use_culture_states = yes
+
+	states = { 
+		STATE_MAZOVIA
+		STATE_UPPER_SILESIA
+		STATE_GREATER_POLAND
+		STATE_LESSER_POLAND
+		STATE_WEST_PRUSSIA
+		STATE_EAST_PRUSSIA
+		STATE_POSEN
+		STATE_WEST_GALICIA
+		STATE_EAST_GALICIA
+	}
 	
 	required_num_states = 3
 
@@ -385,8 +397,8 @@ BYE = {
 		STATE_VITEBSK
 		STATE_MOGILEV
 		STATE_MINSK
-		STATE_VILNA
 		STATE_GRODNO
+		STATE_BREST
 	}
 	required_num_states = 2
 
@@ -978,6 +990,7 @@ TNS = {
 
 FER = {
 	states = {
+		STATE_AMUR
 		STATE_OKHOTSK
 		STATE_KAMCHATKA
 		STATE_CHUKOTKA
@@ -1161,7 +1174,7 @@ UCA = {
 }
 
 SLO = {
-	provinces = { x31E041 x44F127 x56C78A x792B8A x777F33 x3060BF xB0E040 xF0A040 x36B2E3 xB061C0 }
+	provinces = { x31E041 x44F127 x56C78A x792B8A x777F33 x3060BF xB0E040 xF0A040 x36B2E3 xB061C0 x124D73 xA709B7 }
 	
 	ai_will_do = { always = no }
 }
@@ -2222,7 +2235,7 @@ WAL = {
 
 KLM = {
 	states = { 
-		STATE_ASTRAKHAN
+		STATE_KALMYKIA
 	}
 
 	ai_will_do = { always = no }
@@ -2234,6 +2247,7 @@ CAU = {
 		STATE_ARMENIA
 		STATE_AZERBAIJAN
 		STATE_KARS
+		STATE_ELIZAVETPOL
 	}
 
 	required_num_states = 3
