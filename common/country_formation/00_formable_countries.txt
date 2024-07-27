@@ -209,11 +209,21 @@ WIN = {
 	STATES = {
 		STATE_WEST_INDIES
 		STATE_JAMAICA
+		STATE_WINDWARD_ISLANDS
+		STATE_BAHAMAS
+		STATE_BERMUDA
+		STATE_GUAYANA
+		STATE_VIRGIN_ISLANDS
+		STATE_ABC_ISLANDS
 	}
 
-	required_states_fraction = 1
+	required_states_fraction = 0.75
 	
 	ai_will_do = { always = yes }
+
+	possible = {
+		has_technology_researched = pan-nationalism
+	}
 }
 
 IBE = {
