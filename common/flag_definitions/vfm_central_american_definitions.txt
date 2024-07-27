@@ -1,4 +1,81 @@
-﻿NIC = { # Nicaragua
+﻿UCA = { # Central America
+	flag_definition = {
+		coa = UCA
+		subject_canton = UCA
+		coa_with_overlord_canton = UCA_subject
+		allow_overlord_canton = yes				
+		priority = 1
+	}
+	flag_definition = {
+		coa = UCA_centralist
+		subject_canton = UCA_centralist
+		priority = 25
+		trigger = {
+			scope:actor ?= {
+				coa_republic_trigger = yes
+				OR = {
+					has_law = law_type:law_devolved
+					has_law = law_type:law_unitary
+					AND = {
+						has_variable = is_frca_var
+						has_law = law_type:law_confederated
+					}
+				}
+			}
+		}
+	}	
+	flag_definition = {
+		coa = UCA_1836_federal
+		priority = 25
+		trigger = { 
+			scope:actor ?= {
+			    has_variable = is_frca_var
+				coa_republic_trigger = yes
+				has_law = law_type:law_federal
+			}
+		}
+	}	
+	flag_definition = {
+		coa = UCA_republic
+		priority = 20
+		trigger = { 
+			scope:actor ?= {
+			    NOT = { has_variable = is_frca_var }
+				coa_republic_trigger = yes
+			}
+		}
+	}	
+	flag_definition = {
+		coa = UCA_absolute_monarchy			
+		priority = 20
+		trigger = { 
+			coa_def_absolute_monarchy_flag_trigger = yes
+		}
+	}	
+	flag_definition = {
+		coa = UCA_subject_SPA
+		priority = 30
+		trigger = { 
+			coa_def_spanish_ensign_trigger = yes
+		}
+	}	
+	flag_definition = {
+		coa = UCA_communist
+		priority = 1500
+		trigger = { 
+			coa_def_communist_flag_trigger = yes
+		}
+	}
+	flag_definition = {
+		coa = UCA_subject_USA
+		priority = 50
+		trigger = { 
+			coa_def_american_ensign_trigger = yes
+		}
+	}	
+}
+
+NIC = { # Nicaragua
 	flag_definition = {
 		coa = NIC
 		subject_canton = NIC	

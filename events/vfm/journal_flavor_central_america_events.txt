@@ -286,7 +286,7 @@ journal_flavor_central_america.4 = {
 		}
 		create_diplomatic_pact = {
             country = c:NIC
-            type = confederation
+            type = autonomous_province
         }
 		c:NIC = {
 			set_relations = { country = c:UCA value = -50 }
@@ -386,7 +386,7 @@ journal_flavor_central_america.5 = {
 		}
 		create_diplomatic_pact = {
             country = c:COS
-            type = confederation
+            type = autonomous_province
         }
 		c:COS = {
 			set_relations = { country = c:UCA value = -50 }
@@ -485,7 +485,7 @@ journal_flavor_central_america.6 = {
 		}
 		create_diplomatic_pact = {
             country = c:GUA
-            type = confederation
+            type = autonomous_province
         }
 		c:GUA = {
 			set_relations = { country = c:UCA value = -50 }
@@ -583,7 +583,7 @@ journal_flavor_central_america.7 = {
 		}
 		create_diplomatic_pact = {
             country = c:HON
-            type = confederation
+            type = autonomous_province
         }
 		c:HON = {
 			set_relations = { country = c:UCA value = -50 }
@@ -664,23 +664,23 @@ journal_flavor_central_america.8 = {
 	immediate = {
 		remove_diplomatic_pact = {
 			country = c:COS
-			type = confederation
+			type = autonomous_province
 		}
 		remove_diplomatic_pact = {
 			country = c:NIC
-			type = confederation
+			type = autonomous_province
 		}
 		remove_diplomatic_pact = {
 			country = c:HON
-			type = confederation
+			type = autonomous_province
 		}
 		remove_diplomatic_pact = {
 			country = c:GUA
-			type = confederation
+			type = autonomous_province
 		}
 		remove_diplomatic_pact = {
 			country = c:LOS
-			type = confederation
+			type = autonomous_province
 		}
 		remove_diplomatic_pact = {
 			country = c:COS
@@ -1125,11 +1125,14 @@ journal_flavor_central_america.14 = {
 	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
 
 	trigger = {
+		is_at_war = no
+		is_active_in_diplomatic_play = no
 		any_interest_group = {
 			is_in_government = yes
 			OR = {
 				has_ideology = ideology:ideology_elitist
 				has_ideology = ideology:ideology_pious
+				has_ideology = ideology:ideology_central_american_reactionary
 			}
 		}		
 	}
