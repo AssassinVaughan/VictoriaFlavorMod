@@ -763,6 +763,28 @@ journal_flavor_central_america.8 = {
 					set_state_owner = c:GUA
 				}
 			}
+			
+			ruler = {
+				kill_character = yes
+			}
+			
+			c:COS = { trigger_event = { id = journal_flavor_central_america.22 } }
+			
+			create_character = {
+				# Juan Lindo - First President of El Salvador, will need to get replaced with Francisco Malespín
+				first_name = "Juan"
+				last_name = "Lindo"
+				historical = yes
+				ruler = yes
+				ig_leader = yes
+				birth_date = 1790.5.5
+				interest_group = ig_landowners
+				ideology = ideology_reformer
+				traits = {
+					meticulous
+				}
+			}
+			
 		}
 		
 		change_tag = ELS
@@ -841,6 +863,9 @@ journal_flavor_central_america.9 = {
 
 	immediate = {
 		set_variable = frca_lost_war
+		ruler = {
+            kill_character = yes
+        }
 		create_country = {
             tag = HON
 			origin = c:UCA
@@ -873,7 +898,43 @@ journal_flavor_central_america.9 = {
 		change_tag = ELS
 		
 		hidden_effect = {
+			s:STATE_CHIAPAS = {
+				remove_claim = ROOT
+			}
+			s:STATE_GUATEMALA = {
+				remove_claim = ROOT
+			}
+			s:STATE_HONDURAS = {
+				remove_claim = ROOT
+			}
+			s:STATE_NICARAGUA = {
+				remove_claim = ROOT
+			}
+			s:STATE_COSTA_RICA = {
+				remove_claim = ROOT
+			}
+			
+			activate_law = law_type:law_freedom_of_conscience
 			activate_law = law_type:law_unitary
+			activate_law = law_type:law_mercantilism
+			
+			create_character = {
+				# Juan Lindo - First President of El Salvador, will need to get replaced with Francisco Malespín
+				first_name = "Juan"
+				last_name = "Lindo"
+				historical = yes
+				ruler = yes
+				ig_leader = yes
+				birth_date = 1790.5.5
+				interest_group = ig_landowners
+				ideology = ideology_reformer
+				traits = {
+					meticulous
+				}
+			}
+			
+			c:COS = { trigger_event = { id = journal_flavor_central_america.22 } }
+			
 		}
 		
 		ai_chance = {
@@ -1437,6 +1498,55 @@ journal_flavor_central_america.21 = { #Carrera flees to Mexico
 			
 			set_variable = gua_support_var
 		}
+	
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+journal_flavor_central_america.22 = { #Morazan takes over Costa Rica
+	type = country_event
+	placement = ROOT
+	title = journal_flavor_central_america.22.t
+	desc = journal_flavor_central_america.22.d
+	flavor = journal_flavor_central_america.22.f
+
+	duration = 2
+
+	event_image = {
+		video = "europenorthamerica_before_the_battle"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+
+	immediate = {
+		create_character = {
+			# Francisco Morazan
+			first_name = "Francisco"
+			last_name = "Morazan"
+			historical = yes
+			ruler = yes
+			ig_leader = yes
+			birth_date = 1792.10.3
+			dna = dna_president_francisco_morazan
+			interest_group = ig_intelligentsia
+			ideology = ideology_radical
+			traits = {
+				meticulous
+			}
+			on_created = {
+				set_variable = is_morazan
+			}
+		}
+		activate_law = law_type:law_autocracy
+	}
+
+	option = {
+		name = journal_flavor_central_america.22.a
+		default_option = yes
 	
 		ai_chance = {
 			base = 100

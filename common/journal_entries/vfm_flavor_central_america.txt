@@ -1,4 +1,6 @@
-﻿je_frca_situation = { 
+﻿#FRCA / 1836 United Central America Content
+
+je_frca_situation = { #The more I look at this Journal, the more I regret it
 	icon = "gfx\interface\icons\event_icons\event_flags\event_uca_flag.dds"
 	
 	group = je_group_historical_content	
@@ -40,7 +42,7 @@
 		events = {
 			journal_flavor_central_america.9 #Civil War Result
 			journal_flavor_central_america.10 #Civil War Result
-			journal_flavor_central_america.14 #Central American Dissolution -> Confederation via Conservatives
+			journal_flavor_central_america.14 #Central American Dissolution -> Confederation via Conservatives in government
 		}
 		effect = {
 			if = {
@@ -182,15 +184,15 @@
 	}
 
 	complete = {
-		custom_tooltip = {
+		custom_tooltip = { #Morazan's Presidency Modifier - Expires around the time the next elections kick in
 			text = uca_election_tt
 			NOT = { has_modifier = uca_morazan_presidency }
 		}
 		OR = {
-			custom_tooltip = {
+			custom_tooltip = { 
 				text = uca_won_war_tt
 				OR = {
-					has_variable = frca_won_war
+					has_variable = frca_won_war #Misleading var name, it's used also if you just dissolve the country or do something else that is accounted for
 					AND = {
 						has_variable = second_frca_civil_war_var
 						is_at_war = no
@@ -298,4 +300,39 @@
 	invalid = {
 		NOT = { exists = c:UCA }
 	}
+}
+
+# Morazan in Costa Rica
+
+je_cos_morazan_situation = {
+	icon = "gfx\interface\icons\event_icons\event_flags\event_uca_flag.dds"
+	
+	group = je_group_historical_content	
+
+	should_be_pinned_by_default = yes
+	
+	complete = {
+		
+	}
+	
+	fail = {
+		
+	}
+	
+	on_fail = {
+		
+	}
+
+	on_complete = {
+		
+	}
+	
+	weight = 100
+	
+	transferable = no
+
+	invalid = {
+		NOT = { exists = c:UCA }
+	}
+	
 }
