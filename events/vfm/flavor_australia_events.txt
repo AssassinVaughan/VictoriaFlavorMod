@@ -10,7 +10,7 @@ flavor_australia_events.1 = {
 	flavor = flavor_australia_events.1.f
 
 	event_image = {
-		video = "gfx/event_pictures/southamerica_aristocrats.bk2"
+		video = "gfx/event_pictures/votp_hostile_court.bk2"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -25,16 +25,17 @@ flavor_australia_events.1 = {
 	immediate = {
 		ROOT = {
 			save_scope_as = convict_country_scope
-			set_variable = {
-				name = convict_var
-				value = 0
-			}
+			#set_variable = {
+			#	name = convict_var
+			#	value = 0
+			#}
 		}
 	}
 
 	option = {
 		name = flavor_australia_events.1.a
 		default_option = yes
+		
 		add_journal_entry = { type = je_convict_system }
     }
 }
@@ -62,13 +63,6 @@ flavor_australia_events.2 = {
 	duration = 1
 
 	immediate = {
-		ROOT = {
-			save_scope_as = convict_country_scope
-			set_variable = {
-				name = convict_var
-				value = 0
-			}
-		}
 	}
 
 	option = {
@@ -101,17 +95,41 @@ flavor_australia_events.3 = {
 	duration = 1
 
 	immediate = {
-		ROOT = {
-			save_scope_as = convict_country_scope
-			set_variable = {
-				name = convict_var
-				value = 0
-			}
-		}
 	}
 
 	option = {
 		name = flavor_australia_events.3.a
+		default_option = yes
+    }
+}
+
+#Transportation Endures
+flavor_australia_events.4 = {
+	type = country_event
+	placement = ROOT
+
+	title = flavor_australia_events.4.t
+	desc = flavor_australia_events.4.d
+	flavor = flavor_australia_events.4.f
+
+	event_image = {
+		video = "gfx/event_pictures/southamerica_aristocrats.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/unspecific/military_parade"
+
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+
+	dlc = dlc_vfm
+
+	duration = 1
+
+	immediate = {
+	}
+
+	option = {
+		name = flavor_australia_events.4.a
 		default_option = yes
     }
 }

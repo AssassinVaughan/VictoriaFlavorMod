@@ -23,7 +23,7 @@ journal_flavor_frontier_war_events.1 = {
 	flavor = journal_flavor_frontier_war_events.1.f
 
 	event_image = {
-		video = "gfx/event_pictures/southamerica_war_civilians.bk2"
+		video = "gfx/event_pictures/ep1_redcoats.bk2"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -38,13 +38,12 @@ journal_flavor_frontier_war_events.1 = {
 	immediate = {
 		ROOT = {
 			save_scope_as = frontier_war_country_scope
-			set_variable = {
-				name = frontier_var
-				value = 0
-			}
 		}
 		c:NNG = {
 			save_scope_as = frontier_war_noongar_scope
+		}
+		cu:aborigine = {
+			save_scope_as = frontier_war_aboriginals_scope
 		}
 	}
 
@@ -52,26 +51,6 @@ journal_flavor_frontier_war_events.1 = {
 		name = journal_flavor_frontier_war_events.1.a
 		default_option = yes
 		add_journal_entry = { type = je_frontier_wars }
-		
-		custom_tooltip = {
-			text = ast_frontier_1_tt
-			set_variable = {
-				name = frontier_var
-				value = 1
-			}
-		}
-    }
-	option = {
-		name = journal_flavor_frontier_war_events.1.b
-		add_journal_entry = { type = je_frontier_wars }
-		
-		custom_tooltip = {
-			text = ast_frontier_1_tt
-			set_variable = {
-				name = frontier_var
-				value = 2
-			}
-		}
     }
 }
 
@@ -535,7 +514,7 @@ journal_flavor_frontier_war_events.6 = {
 	flavor = journal_flavor_frontier_war_events.6.f
 
 	event_image = {
-		video = "gfx/event_pictures/southamerica_war_civilians.bk2"
+		video = "gfx/event_pictures/ep1_redcoats.bk2"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"

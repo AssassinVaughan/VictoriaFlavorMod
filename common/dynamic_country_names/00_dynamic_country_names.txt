@@ -2250,6 +2250,31 @@ TAS = { # Tasmania
 		priority = 0
 		
 		trigger = {
+			scope:actor ?= {
+				has_law = law_type:law_debt_slavery
+			}
+			exists = c:GBR
+			c:GBR = {
+				has_diplomatic_pact = {
+					who = c:TAS
+					type = dependency
+					is_initiator = yes
+				}
+			}
+		}
+	}
+}
+
+NAU = { # Northern Australia
+	dynamic_country_name = {
+		name = dyn_c_essington
+		adjective = dyn_c_essington_adj
+
+		is_main_tag_only = yes
+		priority = 0
+		
+		trigger = {
+			has_variable = is_port_essington
 			exists = c:GBR
 			c:GBR = {
 				has_diplomatic_pact = {

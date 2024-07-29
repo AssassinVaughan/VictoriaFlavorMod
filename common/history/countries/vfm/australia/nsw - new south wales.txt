@@ -31,14 +31,19 @@
 
 		ig:ig_landowners = {
 			set_interest_group_name = ig_squattocracy
+			remove_ideology = ideology_pro_slavery
+			add_ideology = ideology_pro_transport
+		}
+		ig:ig_petty_bourgeoisie = {
+			add_ideology = ideology_pro_transport
 		}
 
 		#Flavor Events
 		trigger_event = {
-			id = flavor_ast_convict_events.1
+			id = flavor_australia_events.1
 		}
 		trigger_event = {
-			id = frontier_war_events.1
+			id = journal_flavor_frontier_war_events.1
 		}
 		add_modifier = {
 			name = terra_nullius
