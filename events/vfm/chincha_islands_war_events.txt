@@ -15,7 +15,7 @@ chincha_events.1 = {
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
 	on_opened_soundeffect = "event:/SFX/Events/southamerica/war_civilians"
 
-	icon = "gfx/interface/icons/event_icons/event_fire.dds"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
 
 	duration = 1
 
@@ -49,7 +49,7 @@ chincha_events.1 = {
 		}
     }
 
-	option = { #We owe apologies to Spain
+	option = { #We owe apologies to Spain; reparations to Spain?
 		name = chincha_events.1.b
 
         change_relations = {
@@ -57,13 +57,60 @@ chincha_events.1 = {
 			value = 20
         }
 
-        c:PEU = {
-		    add_modifier = {
+		add_modifier = {
 			    name = apologies_spain
-			    months = normal_modifier_time
-			}    
+			    months = normal_modifier_time    
 		}
     }
 }
 
+chincha_events.2 = { 
+	type = country_event
+	placement = root
+
+	title = chincha_events.2.t
+	desc = chincha_events.2.d
+	flavor = chincha_events.2.f
+
+	event_image = {
+		video = "votp_gunboat_diplomacy"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+
+	duration = 1
+
+	trigger = {	     	
+	}
+
+	immediate = {
+	}
+
+	option = { #The empire strikes back
+		default_option = yes
+		name = chincha_events.2.a
+
+        create_diplomatic_play = {
+
+            name = chincha_islands
+
+            target_country = c:PEU
+
+            war = no
+
+            type = dp_make_protectorate
+        }
+    }
+
+	option = { #We are not prepared
+		name = chincha_events.2.b
+
+		add_modifier = {
+			    name = no_chincha_islands_war
+			    months = normal_modifier_time    
+		}
+    }
+}
    
