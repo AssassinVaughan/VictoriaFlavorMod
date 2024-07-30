@@ -9313,12 +9313,22 @@ STATES = {
 	s:STATE_ANTOFAGASTA = {
 		create_state = {
 			country = c:BOL
-			owned_provinces = { x291C71 xEE0067 x7984DF x8BA717 xF5E20E x20E574 x40D35C x2000F0 xCC472E x8F918A xF39FDA x8238EF x82A274 xCAECEF x3FDC05 x1B2EC2 x6B33D0 x208070 x2DF128 xE96CF4 x4DCF72 xDE43F7 xCE7F3B x71C02C x694D06 }
+			owned_provinces = { xCC472E x8F918A xF39FDA x8238EF x2DF128 xE96CF4 x4DCF72 xDE43F7 xCE7F3B x71C02C x694D06 }
 		}
-		
+		create_state = {
+			country = c:CHL
+			owned_provinces = { x291C71 }
+		}
+
+		create_state = {
+			country = c:ATM
+			owned_provinces = { xEE0067 xF5E20E x40D35C x82A274 xCAECEF x3FDC05 x1B2EC2 x6B33D0 x208070 x8BA717 x2000F0 x20E574 x7984DF }
+		}
+
 		add_homeland = cu:south_andean
 		add_homeland = cu:aimara		
 		add_claim = c:CHL
+		add_claim = c:BOL		
 	}
 	s:STATE_BREST = {
 		create_state = {
