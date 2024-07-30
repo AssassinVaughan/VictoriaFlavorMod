@@ -2087,11 +2087,11 @@ pm_military_shipbuilding_wooden = { # wooden
 	building_modifiers = {
 		workforce_scaled = {
 			#input goods
-			goods_input_hardwood_add = 20
-			goods_input_wood_add = 20
-			goods_input_fabric_add = 20
+			goods_input_hardwood_add = 15 # *40 = 600
+			goods_input_wood_add = 20     # *20 = 400
+			goods_input_fabric_add = 20   # *20 = 400 == 1400
 			# output goods
-			goods_output_manowars_add = 30
+			goods_output_manowars_add = 25# *70 = 1750
 		}
 	
 		level_scaled = {
@@ -2111,8 +2111,9 @@ pm_military_shipbuilding_wooden_1 = { # reinforced_wooden_ships
 		workforce_scaled = {
 			#input goods
 			goods_input_hardwood_add = 20
+			goods_input_wood_add = 5
 			goods_input_fabric_add = 20
-			goods_input_iron_add = 10
+			goods_input_iron_add = 10    # *40 = 400 
 			# output goods
 			goods_output_manowars_add = 35
 		}

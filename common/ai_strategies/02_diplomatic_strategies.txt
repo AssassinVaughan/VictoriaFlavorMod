@@ -1418,7 +1418,20 @@ ai_strategy_unify_germany = {
 				}
 				can_reach_target_state = yes					
 			}
-			add = 100
+			add = 50
+		}
+		if = {
+			limit = {
+				scope:target_state = {
+					state_region = {
+						OR = {
+							is_homeland = cu:north_german
+							is_homeland = cu:south_german
+						}
+					}
+				}				
+			}
+			add = 50
 		}
 	}
 	
@@ -1478,6 +1491,10 @@ ai_strategy_unify_germany = {
 			}			
 		}
 	}	
+	
+	wargoal_weights = {
+		liberate_subject = 2.0
+	}
 
 	possible = {
 		is_subject = no
