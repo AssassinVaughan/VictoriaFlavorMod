@@ -1817,6 +1817,16 @@ GLOBAL = {
 			name = jizya_state
 		}
 	}
+	
+	# Revolution Safety Check
+	every_country = {
+		limit = {
+			total_population <= 100000
+            is_ai = yes
+		}
+		set_variable = revolution_safety_check_var
+		set_immune_to_revolutions = yes
+	}
 
 #	every_state = {
 #		limit = {

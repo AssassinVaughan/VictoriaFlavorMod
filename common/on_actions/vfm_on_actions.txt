@@ -357,6 +357,28 @@ vfm_barracks_colony_created = {
 	}
 }
 
+revolution_safety_check_on_action = {
+	effect = {
+		if = {
+			limit = {
+				total_population <= 100000
+				NOT = { has_variable = revolution_safety_check_var }
+                is_ai = yes
+			}
+			set_variable = revolution_safety_check_var
+			set_immune_to_revolutions = yes
+		}
+		else_if = {
+			limit = {
+				total_population >= 150000
+				has_variable = revolution_safety_check_var
+			}
+			remove_variable = revolution_safety_check_var
+			set_immune_to_revolutions = no
+		}
+	}
+}
+
 #vfm_colonial_dismantlement = {
 #	effect = {
 #		if = {

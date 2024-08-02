@@ -32,9 +32,15 @@
 			state_region = s:STATE_ANHALT
 			has_building = building_railway
 		}
-		any_scope_state = {
-			state_region = s:STATE_BRUNSWICK
-			has_building = building_railway
+		OR = {
+			any_scope_state = {
+				state_region = s:STATE_BRUNSWICK
+				has_building = building_railway
+			}
+			any_scope_state = {
+				state_region = s:STATE_ELBE
+				has_building = building_railway
+			}
 		}
 		OR = {
 			any_scope_state = {
@@ -187,6 +193,7 @@ je_prussian_guard = {
 
 	weight = 50
 }
+
 je_establish_german_colonial_department = {
 	icon = "gfx/interface/icons/event_icons/event_map.dds"
     group = je_group_foreign_affairs
@@ -210,4 +217,87 @@ je_establish_german_colonial_department = {
 		exists = c:GER
 		this = c:GER
 	}
+}
+
+je_the_zollverein = {
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+    group = je_group_internal_affairs
+	is_shown_when_inactive = {
+	    NOT = { has_global_variable = zollverein_done }
+		OR = {
+			country_has_primary_culture = cu:north_german
+			country_has_primary_culture = cu:south_german
+		}
+		is_power_bloc_leader = yes
+		game_date < 1870.1.1
+		OR = {
+		    owns_entire_state_region = STATE_BRANDENBURG
+			owns_entire_state_region = STATE_WESTPHALIA
+			owns_entire_state_region = STATE_HESSE
+		}
+	}
+	
+	# TODO: spawn events that represent opportunities or crisis among bloc members
+	
+	complete = {
+        any_state = {
+            filter = {
+                OR = {
+                    state_region = s:STATE_BRANDENBURG
+                    state_region = s:STATE_WESTPHALIA
+                    state_region = s:STATE_HESSE
+                    state_region = s:STATE_HANNOVER
+                    state_region = s:STATE_BRUNSWICK
+                    state_region = s:STATE_ELBE
+                    state_region = s:STATE_SCHLESWIG_HOLSTEIN
+                    state_region = s:STATE_POMERANIA
+                    state_region = s:STATE_MECKLENBURG
+                    state_region = s:STATE_ANHALT
+                    state_region = s:STATE_SAXONY
+					state_region = s:STATE_WESTPHALIA
+					state_region = s:STATE_THURINGIA
+					state_region = s:STATE_FRANCONIA
+					state_region = s:STATE_BAVARIA
+					state_region = s:STATE_RHINELAND
+					state_region = s:STATE_NORTH_RHINE
+					state_region = s:STATE_WURTTEMBERG
+					state_region = s:STATE_BADEN
+                }
+            }
+			custom_tooltip = {
+				text = completely_owned_by_this_country_or_bloc_tt
+				OR = {
+					owner = ROOT
+					owner = {
+						is_subject_of = ROOT
+					}
+					owner = { is_in_customs_union_with = ROOT }
+				}
+				NOT = {
+					this.state_region = {
+						any_scope_state = {
+							owner = {
+								NOR = {
+									this = ROOT
+									is_subject_of = ROOT
+									is_in_customs_union_with = ROOT
+								}
+							}
+						}
+					}
+				}
+			}
+            percent = 0.75
+        }
+	}
+	
+	on_complete = {
+		set_global_variable = zollverein_done
+		show_as_tooltip = {
+			# TODO: give bonuses to random bloc member, give obligation from random members?
+		}
+		trigger_event = { id = journal_flavor_germany.3 }
+	}
+
+	weight = 50
 }
