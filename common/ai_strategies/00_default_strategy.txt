@@ -195,15 +195,16 @@ ai_strategy_default = {
 		### Ottomans vs Egypt - Great Powers pick sides
 		if = {
 			limit = {
+				country_rank >= major_power
 				OR = {
 					AND = {
-						scope:country = { c:TUR ?= this }
-						scope:enemy_country = { c:EGY ?= this }
+						scope:country = { c:TUR = this }
+						scope:enemy_country = { c:EGY = this }
 					}
 					AND = {
-						scope:country = { c:EGY ?= this }
-						scope:enemy_country = { c:TUR ?= this }
-					}				
+						scope:country = { c:EGY = this }
+						scope:enemy_country = { c:TUR = this }
+					}
 				}
 				c:TUR ?= {
 					OR = {
@@ -756,17 +757,18 @@ ai_strategy_default = {
 			}
 			subtract = 30
 		}
-		if = {
-			limit = {
-				any_diplomatic_play = {
-					any_scope_play_involved = {
-						OR = { is_diplomatic_play_initiator = yes is_diplomatic_play_target = yes }
-						is_in_customs_union_with = ROOT
-					}						
-				}	
-			}
-			subtract = 20
-		}
+		# Customs unions were removed
+		#if = {
+		#	limit = {
+		#		any_diplomatic_play = {
+		#			any_scope_play_involved = {
+		#				OR = { is_diplomatic_play_initiator = yes is_diplomatic_play_target = yes }
+		#				is_in_customs_union_with = ROOT
+		#			}						
+		#		}	
+		#	}
+		#	subtract = 20
+		#}
 		# unite against non-muslim invaders
 		if = {
 			limit = {
@@ -775,21 +777,24 @@ ai_strategy_default = {
 					country_has_state_religion = rel:shiite
 				}
 				any_diplomatic_play = {
-				    any_scope_play_involved = {
-						is_diplomatic_play_target = yes
-						OR = {
-				            country_has_state_religion = rel:sunni
-				    	    country_has_state_religion = rel:shiite
-				        }
+				    #any_scope_play_involved = {
+				    target = {
 						has_strategic_land_adjacency = ROOT
-					}
-					any_scope_play_involved = {
-						is_diplomatic_play_initiator = yes
+						OR = {
+							country_has_state_religion = rel:sunni
+					   	    country_has_state_religion = rel:shiite
+						}
+				    }
+				    initiator = {
 						NOR = {
-				            country_has_state_religion = rel:sunni
-				    	    country_has_state_religion = rel:shiite
-				        }
-					}
+					       	country_has_state_religion = rel:sunni
+					   		country_has_state_religion = rel:shiite
+						}
+				    }
+					#}
+					#any_scope_play_involved = {
+					#	is_diplomatic_play_initiator = yes
+					#}
 				}
 			}
 			subtract = 30
@@ -2594,32 +2599,29 @@ ai_strategy_default = {
 		# Ottomans should be extremely confident against owners of Syria and Egypt when they have the relevant JE's
 		if = {
 			limit = {
+				ROOT = c:TUR
 				OR = {
 					AND = {
 						has_journal_entry = je_sick_man_syria
 						scope:target_country = {
-							any_scope_state = {
-								OR = {
-									state_region = s:STATE_ALEPPO
-									state_region = s:STATE_SYRIA
-									state_region = s:STATE_LEBANON
-									state_region = s:STATE_PALESTINE
-									state_region = s:STATE_TRANSJORDAN
-									state_region = s:STATE_ADANA
-								}	
+							OR = {
+								has_state_in_state_region = s:STATE_ADANA
+								has_state_in_state_region = s:STATE_TRANSJORDAN
+								has_state_in_state_region = s:STATE_PALESTINE
+								has_state_in_state_region = s:STATE_LEBANON
+								has_state_in_state_region = s:STATE_SYRIA
+								has_state_in_state_region = s:STATE_ALEPPO
 							}
 						}
 					}
 					AND = {
 						has_journal_entry = je_sick_man_egypt
 						scope:target_country = {
-							any_scope_state = {
-								OR = {
-									state_region = s:STATE_SINAI
-									state_region = s:STATE_UPPER_EGYPT
-									state_region = s:STATE_MIDDLE_EGYPT
-									state_region = s:STATE_LOWER_EGYPT
-								}	
+							OR = {
+								has_state_in_state_region = s:STATE_SINAI
+								has_state_in_state_region = s:STATE_UPPER_EGYPT
+								has_state_in_state_region = s:STATE_MIDDLE_EGYPT
+								has_state_in_state_region = s:STATE_LOWER_EGYPT
 							}
 						}
 					}
@@ -2631,6 +2633,7 @@ ai_strategy_default = {
 		# USA should be confident against owners of their Manifest Destiny states
 		if = {
 			limit = {
+				ROOT = c:USA
 				has_journal_entry = je_manifest_destiny_mexico
 				scope:target_country = {
 					any_scope_state = {
@@ -3947,26 +3950,29 @@ ai_strategy_default = {
 			}
 			multiply = 1.25
 		}
-
-		if = { #VFM, AI major powers and up want larger militaries if their direct neighbors are trying to unify or expand
+		#VFM, AI major powers and up want larger militaries if their direct neighbors are trying to unify or expand
+		if = { 
 			limit = {
-				any_country = {
-				    country_rank >= rank_value:major_power
-					OR = {
-						has_strategy = ai_strategy_territorial_expansion 
-						has_strategy = ai_strategy_unify_germany
-						has_strategy = ai_strategy_unify_italy
-						has_strategy = ai_strategy_unify_ethiopia
-						has_strategy = ai_strategy_unify_china
+				country_rank >= rank_value:major_power
+				#NOR = {
+				#	has_strategy = ai_strategy_territorial_expansion 
+				#	has_strategy = ai_strategy_unify_germany
+				#	has_strategy = ai_strategy_unify_italy
+				#	has_strategy = ai_strategy_unify_ethiopia
+				#	has_strategy = ai_strategy_unify_china
+				#}
+				any_neighbouring_state = {
+					# This strategy would make more sense for home territories
+					is_homeland_of_country_cultures = ROOT
+					owner = {
+						OR = {
+							has_strategy = ai_strategy_territorial_expansion 
+							has_strategy = ai_strategy_unify_germany
+							has_strategy = ai_strategy_unify_italy
+							has_strategy = ai_strategy_unify_ethiopia
+							has_strategy = ai_strategy_unify_china
+						}
 					}
-					has_strategic_land_adjacency = ROOT
-				}
-				NOR = {
-					has_strategy = ai_strategy_territorial_expansion 
-					has_strategy = ai_strategy_unify_germany
-					has_strategy = ai_strategy_unify_italy
-					has_strategy = ai_strategy_unify_ethiopia
-					has_strategy = ai_strategy_unify_china
 				}
 			}
 			multiply = 1.1
