@@ -281,6 +281,18 @@ je_north_german_unification = {
 		}				
 	}
 
+	fail = {
+		custom_tooltip = {
+			text = je_german_unification_german_hegemony_has_been_decided
+			any_country = {
+				has_variable = je_german_confederate_unifier
+			}	
+		}	
+	}
+
+	on_fail = {
+	}
+
 	on_monthly_pulse = {
 		events = {
 			german_unification.3 # Bismarck
@@ -299,6 +311,14 @@ je_north_german_unification = {
 		remove_variable = je_unification_progress
 	}
 
+	invalid = {
+		OR = {
+			exists = c:GER
+			exists = c:SGF
+			exists = c:NGF
+		}
+    }
+
 	status_desc = {
 		first_valid = {
 			triggered_desc = { 
@@ -315,6 +335,18 @@ je_south_german_unification = {
 	icon = "gfx/interface/icons/event_icons/event_flags/event_ger2_flag.dds"
 	
 	group = je_group_historical_content
+
+	fail = {
+		custom_tooltip = {
+			text = je_german_unification_german_hegemony_has_been_decided
+			any_country = {
+				has_variable = je_german_confederate_unifier
+			}	
+		}	
+	}
+
+	on_fail = {
+	}
 
 	complete = {
 		custom_tooltip = {
@@ -347,7 +379,22 @@ je_south_german_unification = {
 	}
 
 	on_complete = {
-		trigger_event = { id = german_unification.1 } # South German Confederation
+		if = {
+			limit = {
+				NOT = {
+					country_tier = empire
+				}
+			}
+			trigger_event = { id = german_unification.1 } # South German Confederation for German minors
+
+		}
+		if = {
+			limit = {
+					country_tier = empire
+			}
+			trigger_event = { id = german_unification.100 } # South German Confederation for Austria
+
+		}
 		remove_variable = je_unification_progress
 	}
 
@@ -394,6 +441,24 @@ je_german_unification = {
 			trigger_event = { id = german_unification.4 popup = yes } # German Unification
 		}
 		remove_variable = je_unification_progress
+		
+		every_state = {
+			limit = {
+				state_region = {
+					OR = {
+						is_homeland = cu:north_german
+						is_homeland = cu:south_german
+					}
+				}
+				NOR = {
+					owner = ROOT
+					owner = { c:AUS ?= this }
+				}
+			}
+			state_region = {
+				add_claim = ROOT
+			}
+		}	
 	}
 
 	status_desc = {

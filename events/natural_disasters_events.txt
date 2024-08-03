@@ -362,10 +362,7 @@ natural_disaster_events.5 = { #Crop Failure
   					}
 
 			}
-			NOR = {
-				has_modifier = modifier_crop_failure
-				has_modifier = modifier_crop_failure_relief_effect
-			}
+			has_agricultural_disaster = no
 		}
 	}
 
@@ -378,11 +375,8 @@ natural_disaster_events.5 = { #Crop Failure
   						is_plantation_building = yes
   					}
 				}
-				NOR = {
-					has_modifier = modifier_crop_failure
-					has_modifier = modifier_crop_failure_relief_effect
-					}
-				}
+				has_agricultural_disaster = no
+			}
 			save_scope_as = crop_fail_state
 			random_scope_building = {
 				limit = {

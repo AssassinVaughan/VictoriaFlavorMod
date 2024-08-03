@@ -214,3 +214,102 @@ journal_flavor_germany.102 = {
 		}
 	}
 }
+
+journal_flavor_germany.3 = {
+	type = country_event
+	event_image = {
+		video = "ep1_printing_press"
+	}
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	duration = 3
+	placement = ROOT
+	title = journal_flavor_germany.3.t
+	desc = journal_flavor_germany.3.d
+	flavor = journal_flavor_germany.3.f
+
+	trigger = {
+	}
+
+	immediate = {
+	    random_country = {
+			limit = {
+				OR = {
+				    is_subject_of = ROOT
+					is_in_customs_union_with = ROOT
+				}
+				NOR = {
+					has_variable = var_member_two
+					has_variable = var_member_three
+				}
+			}
+			save_scope_as = scope_random_member_one
+			set_variable = var_member_one
+		}
+
+		random_country = {
+			limit = {
+				OR = {
+				    is_subject_of = ROOT
+					is_in_customs_union_with = ROOT
+				}
+				NOR = {
+					has_variable = var_member_one
+					has_variable = var_member_three
+				}
+			}
+			save_scope_as = scope_random_member_two
+			set_variable = var_member_two
+		}
+		
+		random_country = {
+			limit = {
+				OR = {
+				    is_subject_of = ROOT
+					is_in_customs_union_with = ROOT
+				}
+				NOR = {
+					has_variable = var_member_one
+					has_variable = var_member_two
+				}
+			}
+			save_scope_as = scope_random_member_three
+			set_variable = var_member_three
+		}
+	}
+	
+	option = {
+		name = journal_flavor_germany.3.a
+		default_option = yes
+		scope:scope_random_member_one = {
+		    set_owes_obligation_to = {
+				country = ROOT
+				setting = yes
+			}
+		}
+		
+		scope:scope_random_member_two = {
+		    change_relations = {
+				country = ROOT
+				value = 20
+			}
+			add_modifier = {
+				name = generic_production_tech_research
+				months = long_modifier_time
+			}
+		}
+		
+		scope:scope_random_member_three = {
+		    change_relations = {
+				country = ROOT
+				value = 20
+			}
+			add_modifier = {
+				name = generic_production_tech_research
+				months = long_modifier_time
+			}
+		}
+	}
+}

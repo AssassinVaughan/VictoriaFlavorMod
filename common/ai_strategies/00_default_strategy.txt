@@ -110,13 +110,13 @@ ai_strategy_default = {
 				    has_technology_researched = nationalism
 				}
 				add = {
-					value = 50
+					value = 80
 					desc = "german_leadership_neutrality"
 			    }
 			}
 			else = {
 			    add = {
-					value = 25
+					value = 50
 					desc = "german_leadership_neutrality"
 			    }
 			}
@@ -709,7 +709,15 @@ ai_strategy_default = {
                     }						
 				}	
 			}
-			subtract = 20
+			if = {
+			    limit = {
+				    has_technology_researched = nationalism
+				}
+			    subtract = 30
+			}
+			else = {
+			    subtract = 15
+			}
 		}
 		if = {
 			limit = {
@@ -3992,7 +4000,7 @@ ai_strategy_default = {
 		
 		if = {
 			limit = { 
-				has_journal_entry = je_prussian_guard game_date > 1840.1.1
+				has_journal_entry = je_prussian_guard game_date > 1839.7.1
 			}
 			min = 125
 		}	
@@ -4033,15 +4041,16 @@ ai_strategy_default = {
 			multiply = cached_ai_incorporated_coastal_population
 			divide = 700000 
 		}
+		
+		if = {
+			limit = { country_is_in_europe = yes gdp > 1000000 cached_ai_incorporated_coastal_population > 500000 }
+			add = 2
+		}
 
         # Need to favor industrial buildup early game
 		if = {
-			limit = { game_date < 1855.1.1 }
-			multiply = 0.9
-		}
-		if = {
-			limit = { game_date < 1843.1.1 }
-			multiply = 0.9
+			limit = { game_date < 1846.1.1 }
+			multiply = 0.85
 		}		
 
 		# More advanced navies are expensive and should be smaller relative to population
@@ -4263,7 +4272,7 @@ ai_strategy_default = {
 		building_power_plant = must_have
 		building_railway = must_have
 		building_trade_center = must_have		
-		building_military_shipyards = wants_to_have	
+		building_military_shipyards = must_have	
 	}
 	
 	# Specifying values here will override subsidy priorities while at war

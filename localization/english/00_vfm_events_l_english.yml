@@ -140,9 +140,9 @@
   journal_flavor_chile.1.b: "Unfortunatly, it seems lightning struck the munity leader and the rest have sworn loyalty to Freire's under fear of futher divine wrath"
 
   journal_flavor_chile.3.t: ""Magallanes! Magallanes! Magallanes!""
-  journal_flavor_chile.3.d: "The strait of Magallanes have been occupied by [SCOPE.sCountry('chl_scope').GetAdjectiveNoFlag] forces who have established a fort in the area"
-  journal_flavor_chile.3.f: "After many attempts we have finally done an effective settling in the strait of Magellan by creating a penal colony in the area, we will send the worst prisoners to the colony, that way we will colonize the strait while cleaning the metropoli from scum.\n\nIn time, Punta Arenas will develop into an important port for [SCOPE.sCountry('chl_scope').GetNameNoFlag] and the international commerce; also, by colonizing the strait we prevent future colonizations by any othey state that might have our same ambitions, this is the first step into [SCOPE.sCountry('chl_scope').GetAdjectiveNoFlag] control over the south west Pacific!"
-  journal_flavor_chile.3.a: "We have secured the passage"
+  journal_flavor_chile.3.d: "The Strait of Magellan has been occupied by [SCOPE.sCountry('chl_scope').GetAdjectiveNoFlag] forces, who have established a fort in the area"
+  journal_flavor_chile.3.f: "After numerous endeavors, a successful establishment has been achieved in the Strait of Magellan through the establishment of a penal colony in the region. The most notorious criminals will be dispatched to the colony, thereby facilitating the colonization of the Strait and purging the metropolis of undesirables.\n\nIn the fullness of time, the nascent settlement of Punta Arenas is anticipated to flourish into a pivotal port for [SCOPE.sCountry('chl_scope').GetNameNoFlag], thereby bolstering both national and international trade. Furthermore, by securing dominion over the Strait, we forestall any rival state from pursuing similar aspirations, marking the initial stride towards [SCOPE.sCountry('chl_scope').GetAdjectiveNoFlag] sovereignty over the southwest Pacific."
+  journal_flavor_chile.3.a: "Excellent! This secures our land and cleanses the country"
 
   journal_flavor_chile.4.t: "The Purchase of Rapa Nui"
   journal_flavor_chile.4.d: "Since times of the colony, many men have explored the island and many nations have wished to annex it, but now, Rapa Nui is property of our government"
@@ -809,7 +809,31 @@
  journal_flavor_germany.2.f:0 "Thousands of soldiers march in perfect harmony to the sound of the drums and trumpets!"
  journal_flavor_germany.2.a:0 "The [SCOPE.gsInterestGroup('armed_forces_ig').GetName] deserves credit."
  journal_flavor_germany.2.b:0 "The [SCOPE.gsInterestGroup('devout_ig').GetName] deserves credit."
+ 
+ journal_flavor_germany.3.t:0 "Flourishing Zollverein"
+ journal_flavor_germany.3.d:0 ""
+ journal_flavor_germany.3.f:0 ""
+ journal_flavor_germany.3.a:0 ""
+ journal_flavor_germany.3.b:0 ""
 
+ je_german_unification_german_hegemony_has_been_decided:0 "Another country has asserted its authority in Germany."
+ german_unification.100.t:0 "The Sole Hegemon of the South"
+ german_unification.100.d2:0 "With competing powers out of the picture, we can now reshape our closest neighbours according to the [ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle]'s wishes.'
+ german_unification.100.f:0 "'Politics is the art of the possible, the attainable — the art of the next best. While we cannot style us masters of the world just yet, we have doubtlessly achieved supremacy at home. [ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle] [ROOT.GetCountry.GetRuler.GetFullName] reigns supreme and nobody dare contest this self-evident arrangement.'"
+ german_unification.100.a:0 "Forge a Federation in the South that follows our every whim."
+ german_unification.100.b:0 "Nothing less than full integration will suffice."
+ german_unification.100.c:0 "Leave them be. They may be useful yet."
+ german_sgf_tt:0 "The South German Federation shall be formed as our dominion."
+ german_unification.101.t:0 "The Offer To Bow"
+ german_unification.101.d2:0 "We have been offered to bend the knee before [SCOPE.sCountry('german_unification_candidate').GetName]. Should we join as their vassal, we could at least maintain a degree of independence."
+ german_unification.101.f:0 "'Politics is the art of the possible, the attainable — the art of the next best. While we cannot style us masters of the world just yet, we have doubtlessly achieved supremacy at home. [ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle] [ROOT.GetCountry.GetRuler.GetFullName] reigns supreme and nobody dare contest this self-evident arrangement.'"
+ german_unification.101.a:0 "We kneel."
+ german_unification.101.b:0 "We shall never bend the knee!"
+ german_unification.102.t:0 "South German Federation"
+ german_unification.102.d:0 "The unification of Southern Germany is complete. The various bickering governments have been integrated into one, under the administration of [SCOPE.sCountry('SGF_country').GetName] and with the enthusiastic approval of [ROOT.GetCountry.GetName]."
+ german_unification.102.f:0 "The dream of a unified South German Federation has finally been achieved. The threat of encroaching powers and the destructive forces of North German nationalism have united these people. The Austrian order is renewed."
+ german_unification.102.a:0 "The South stands tall!"
+ 
  journal_flavor_argentina.11.t: "Recovering The Rebel Province"
  journal_flavor_argentina.11.d: "Uruguay declared independence in 1830, after the Preliminary Peace Convention, intended to end the Cisplatine War. While it stopped the carnage, the peace created Uruguay as a whole new buffer state, separating our brothers from us.\n\nIt is likely that [SCOPE.sCountry('brz_scope').GetNameNoFlag] won't be happy with our decision, and might draw their attention to the La Plata again..."
  journal_flavor_argentina.11.f: "Article II: "The government of the Republic of the United Provinces of the Río de la Plata agrees to declare, for its part, the independence of the Province of Montevideo, today called Cisplatina, and that it constitutes a free and independent State in the terms declared in the preceding article." Crap!"
@@ -1191,7 +1215,20 @@
   indigenous_raids_events.1.t: "Malón!"
   indigenous_raids_events.1.d: "Indigenous warriors from the Patagonia have looted a village in the frontier"
   indigenous_raids_events.1.f: "They burned the barn and took our daughters, in a matter of seconds they were back on their mounts and disappeared over the horizon leaving nothing but pain and destruction."
+
   indigenous_raids_events.1.a: "Dios mío!"   
+
+  chincha_events.1.t: "Talambo Incident"  
+  chincha_events.1.d: "Shooting between landowner's men and colonists have entailed a diplomatic crisis with Spain"
+  chincha_events.1.f: "In the hacienda of Talambo, a severe altercation erupts between Peruvian citizens and Spanish colonists, resulting in several casualties. The clash ignites after the colonists resist the authority of the Peruvian landowner, leading to a violent exchange of fire.\n\nThis unfortunate event has sparked a diplomatic crisis with Spain, which demands apologies for the harm inflicted upon its nationals. The incident complicates relations with Spain, highlighting the pressing need for a resolution to prevent further diplomatic strain. Do we owe apologies to Spain even though it is a national matter? This will result in our humilliation to the international eyes."
+  chincha_events.1.a: "It's a national matter. We won't be threatened"
+  chincha_events.1.b: "We owe apologies to Spain"
+
+  chincha_events.2.t: "News From Peru"  
+  chincha_events.2.d: "A Call for Justice and Spanish Patriotism"
+  chincha_events.2.f: "In Peru, a grievous affront has been committed against our noble nation. Spanish colonists, peacefully engaged in agriculture, were brutally attacked by Peruvian forces over a minor dispute. This barbarity, sanctioned by the Peruvian government, cannot be tolerated.\n\nOur compatriots, seeking prosperity in South America, were besieged. This stain upon Spain's honor demands swift redress. Should diplomacy fail, Spain must defend her honor and citizens.\n\nThe outrage at Talambo is a rallying cry for all Spaniards. Our honor is at stake. Spain never surrenders. Our resolve is unbreakable, our spirit indomitable. Justice must prevail."
+  chincha_events.2.a: "The empire must strike back!"
+  chincha_events.2.b: "We have to avoid the path to the dark side..."
 
   ### AUSTRALIA FLAVOR ###
 

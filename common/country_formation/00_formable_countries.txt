@@ -397,6 +397,7 @@ GCO = {
 	states = {
 		STATE_CUNDINAMARCA
 		STATE_ECUADOR
+		STATE_GALAPAGOS
 		STATE_MIRANDA
 		STATE_ANTIOQUIA
 		STATE_GUAVIARE
@@ -726,22 +727,9 @@ RHN = {
 }
 
 PLT = {
-	states = {
-		STATE_BUENOS_AIRES
-		STATE_CHACO
-		STATE_PATAGONIA
-		STATE_SANTA_FE
-		STATE_URUGUAY
-		STATE_BAJO_PARAGUAY
-		STATE_ALTO_PARAGUAY
-		STATE_RIO_NEGRO
-		STATE_LA_PAMPA
-		STATE_TUCUMAN
-		STATE_JUJUY
-		STATE_CORRIENTES
-	}
+	use_culture_states = yes
 
-	required_states_fraction = 0.85
+	required_states_fraction = 0.5
 	
 	ai_will_do = { always = yes }
 	
