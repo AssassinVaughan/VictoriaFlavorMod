@@ -1300,10 +1300,16 @@ ai_strategy_unify_germany = {
 						country_has_primary_culture = cu:north_german
 						country_has_primary_culture = cu:south_german
 					}
+                    OR = {
 					any_diplomatic_play = {
 						is_diplomatic_play_type = dp_annex_subject
 						target_is = c:SCH					
 					}	
+                    any_diplomatic_play = {
+						is_diplomatic_play_type = dp_annex_subject
+						target_is = c:HOL					
+					}	
+                    }
 				}
 			}
 			add = -30
@@ -1324,8 +1330,9 @@ ai_strategy_unify_germany = {
 						country_has_primary_culture = cu:north_german
 						country_has_primary_culture = cu:south_german
 					}
-					NOT = {
+					NOR = {
 						c:SCH ?= THIS
+						c:HOL ?= THIS
 					}
 				}
 			}
