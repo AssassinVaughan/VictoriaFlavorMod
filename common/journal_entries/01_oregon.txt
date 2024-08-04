@@ -15,6 +15,12 @@
 					OR = {
 						c:GBR = THIS
 						is_subject_of = c:GBR
+						AND = {
+							c:HBC ?= {
+								is_subject_of = c:GBR
+							}
+							is_subject_of = c:HBC
+						}
 					}
 				}
 			}
@@ -25,20 +31,16 @@
 					OR = {
 						c:GBR = THIS
 						is_subject_of = c:GBR
+						AND = {
+							c:HBC ?= {
+								is_subject_of = c:GBR
+							}
+							is_subject_of = c:HBC
+						}
 					}
 				}
 			}
 		}
-#		s:STATE_IDAHO = {
-#			any_scope_state = {
-#				owner = {
-#					OR = {
-#						c:GBR = THIS
-#						is_subject_of = c:GBR
-#					}
-#				}
-#			}
-#		}
 	}
 
 	possible = { 
@@ -62,16 +64,15 @@
 					has_global_variable = oregon_trail_mapped
 				}
 				has_state_in_state_region = STATE_MONTANA
-				s:STATE_MONTANA = {
-					NOT = {
-						any_scope_state = {
-							owner = {
-								country_rank = 0
-							}
-						}
-					}
-				}
-				
+#				s:STATE_MONTANA = {
+#					NOT = {
+#						any_scope_state = {
+#							owner = {
+#								country_rank = 0
+#							}
+#						}
+#					}
+#				}
 				has_state_in_state_region = STATE_WYOMING
 				s:STATE_WYOMING = {
 					NOT = {
@@ -82,6 +83,7 @@
 						}
 					}
 				}
+				has_state_in_state_region = STATE_IDAHO
 				c:GBR = {
 					relations:ROOT >= relations_threshold:cordial
 				}
@@ -103,6 +105,12 @@
 							OR = {
 								c:GBR = THIS
 								is_subject_of = c:GBR
+								AND = {
+									c:HBC ?= {
+										is_subject_of = c:GBR
+									}
+									is_subject_of = c:HBC
+								}
 							}
 						}
 					}
@@ -113,16 +121,12 @@
 							OR = {
 								c:GBR = THIS
 								is_subject_of = c:GBR
-							}
-						}
-					}
-				}
-				s:STATE_IDAHO = {
-					any_scope_state = {
-						owner = {
-							OR = {
-								c:GBR = THIS
-								is_subject_of = c:GBR
+								AND = {
+									c:HBC ?= {
+										is_subject_of = c:GBR
+									}
+									is_subject_of = c:HBC
+								}
 							}
 						}
 					}
