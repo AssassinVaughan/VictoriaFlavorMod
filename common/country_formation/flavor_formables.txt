@@ -59,17 +59,19 @@ ETH = {
 			country_has_primary_culture = cu:oromo
 			country_has_primary_culture = cu:sidama
 			country_has_primary_culture = cu:afar
-		}	
-		any_country = {
-			OR = {
-				country_has_primary_culture = cu:tigray
-				country_has_primary_culture = cu:amhara
-				country_has_primary_culture = cu:oromo
-				country_has_primary_culture = cu:sidama
-				country_has_primary_culture = cu:afar
-			}			
-			has_technology_researched = nationalism
 		}
+		has_technology_researched = nationalism
+		#sr:region_ethiopia = {
+		#	any_scope_country = {
+		#		OR = {
+		#			country_has_primary_culture = cu:tigray
+		#			country_has_primary_culture = cu:amhara
+		#			country_has_primary_culture = cu:oromo
+		#			country_has_primary_culture = cu:sidama
+		#			country_has_primary_culture = cu:afar
+		#		}			
+		#	}
+		#}
 	}
 }
 
@@ -130,32 +132,35 @@ SWN = {
 	}
 }
 
+#I believe whoever did this had little idea how formables work
 BHT = {
-	states = {
-		STATE_ASSAM 
-		STATE_AWADH 
-		STATE_BALUCHISTAN
-		STATE_BIHAR 
-		STATE_BOMBAY 
-		STATE_CENTRAL_INDIA 
-		STATE_CEYLON 
-		STATE_CIRCARS
-		STATE_DELHI 
-		STATE_GUJARAT 
-		STATE_HYDERABAD 
-		STATE_KASHMIR 
-		STATE_MADRAS 
-		STATE_MYSORE 
-		STATE_NAGPUR 
-		STATE_NORTH_BENGAL 
-		STATE_ORISSA 
-		STATE_PASHTUNISTAN
-		STATE_PUNJAB 
-		STATE_RAJPUTANA 
-		STATE_SINDH 
-		STATE_SOUTH_BENGAL 
-		STATE_TRAVANCORE
-	}
+	#states = {
+	#	STATE_ASSAM 
+	#	STATE_AWADH 
+	#	STATE_BALUCHISTAN
+	#	STATE_BIHAR 
+	#	STATE_BOMBAY 
+	#	STATE_CENTRAL_INDIA 
+	#	STATE_CEYLON 
+	#	STATE_CIRCARS
+	#	STATE_DELHI 
+	#	STATE_GUJARAT 
+	#	STATE_HYDERABAD 
+	#	STATE_KASHMIR 
+	#	STATE_MADRAS 
+	#	STATE_MYSORE 
+	#	STATE_NAGPUR 
+	#	STATE_NORTH_BENGAL 
+	#	STATE_ORISSA 
+	#	STATE_PASHTUNISTAN
+	#	STATE_PUNJAB 
+	#	STATE_RAJPUTANA 
+	#	STATE_SINDH 
+	#	STATE_SOUTH_BENGAL 
+	#	STATE_TRAVANCORE
+	#}
+	# Just for ease
+	use_culture_states = yes
 
 	is_major_formation = yes
 	unification_play = dp_unify_india
@@ -166,57 +171,94 @@ BHT = {
 	ai_will_do = { always = yes }
 
 	possible = {
-			custom_tooltip = {
-				text = not_bic
-				NOT = { 
-					AND = {
-						exists = c:BIC
-						this = c:BIC
-					}
-				}
-			}
+		# East India company isn't even offered??
 
-		OR = {      
-			country_has_primary_culture = cu:assamese
-			country_has_primary_culture = cu:avadhi
-			country_has_primary_culture = cu:baluchi
-			country_has_primary_culture = cu:bengali
-			country_has_primary_culture = cu:bihari
-			country_has_primary_culture = cu:gujarati
-			country_has_primary_culture = cu:kanauji
-			country_has_primary_culture = cu:kannada
-			country_has_primary_culture = cu:malayalam
-			country_has_primary_culture = cu:marathi
-			country_has_primary_culture = cu:oriya
-			country_has_primary_culture = cu:panjabi
-			country_has_primary_culture = cu:pashtun
-			country_has_primary_culture = cu:rajput
-			country_has_primary_culture = cu:sindi
-			country_has_primary_culture = cu:tamil
-			country_has_primary_culture = cu:telegu
-		}	
-		any_country = {
-			OR = {
-			country_has_primary_culture = cu:assamese
-			country_has_primary_culture = cu:avadhi
-			country_has_primary_culture = cu:baluchi
-			country_has_primary_culture = cu:bengali
-			country_has_primary_culture = cu:bihari
-			country_has_primary_culture = cu:gujarati
-			country_has_primary_culture = cu:kanauji
-			country_has_primary_culture = cu:kannada
-			country_has_primary_culture = cu:malayalam
-			country_has_primary_culture = cu:marathi
-			country_has_primary_culture = cu:oriya
-			country_has_primary_culture = cu:panjabi
-			country_has_primary_culture = cu:pashtun
-			country_has_primary_culture = cu:rajput
-			country_has_primary_culture = cu:sindi
-			country_has_primary_culture = cu:tamil
-			country_has_primary_culture = cu:telegu
-			}			
-			has_technology_researched = pan-nationalism
-		}
+		#custom_tooltip = {
+		#	text = not_bic
+		#	NAND = {
+		#		exists = c:BIC
+		#		this = c:BIC
+		#	}
+		#}
+
+		#Muslim countries should not be able to form India
+		has_technology_researched = pan-nationalism
+		country_has_state_religion = rel:hindu
+		# Below check doesn't make sense, only said cultures are offered already. It is redundant. Its like saying "okay, only X people are allowed" and then asking once they are inside (after showing they are X people) if they can prove they are X people. It is checking twice.
+
+		#OR = {
+		#	country_has_primary_culture = cu:assamese
+		#	country_has_primary_culture = cu:avadhi
+
+		# Baluchistan should not be able to form india
+		#	#country_has_primary_culture = cu:baluchi
+
+		#	country_has_primary_culture = cu:bengali
+		#	country_has_primary_culture = cu:bihari
+		#	country_has_primary_culture = cu:gujarati
+		#	country_has_primary_culture = cu:kanauji
+		#	country_has_primary_culture = cu:kannada
+		#	country_has_primary_culture = cu:malayalam
+		#	country_has_primary_culture = cu:marathi
+		#	country_has_primary_culture = cu:oriya
+		#	country_has_primary_culture = cu:panjabi
+		#	country_has_primary_culture = cu:pashtun
+		#	country_has_primary_culture = cu:rajput
+		#	country_has_primary_culture = cu:sindi
+		#	country_has_primary_culture = cu:tamil
+		#	country_has_primary_culture = cu:telegu
+		#}	
+
+		# Again, as above comment
+
+		#OR = {
+		#	sr:region_north_india = {
+		#		any_scope_country = {
+		#			OR = {
+		#				country_has_primary_culture = cu:assamese
+		#				country_has_primary_culture = cu:avadhi
+		#				country_has_primary_culture = cu:baluchi
+		#				country_has_primary_culture = cu:bengali
+		#				country_has_primary_culture = cu:bihari
+		#				country_has_primary_culture = cu:gujarati
+		#				country_has_primary_culture = cu:kanauji
+		#				country_has_primary_culture = cu:kannada
+		#				country_has_primary_culture = cu:malayalam
+		#				country_has_primary_culture = cu:marathi
+		#				country_has_primary_culture = cu:oriya
+		#				country_has_primary_culture = cu:panjabi
+		#				country_has_primary_culture = cu:pashtun
+		#				country_has_primary_culture = cu:rajput
+		#				country_has_primary_culture = cu:sindi
+		#				country_has_primary_culture = cu:tamil
+		#				country_has_primary_culture = cu:telegu
+		#			}
+		#		}
+		#	}
+		#	sr:region_south_india = {
+		#		any_scope_country = {
+		#			OR = {
+		#				country_has_primary_culture = cu:assamese
+		#				country_has_primary_culture = cu:avadhi
+		#				country_has_primary_culture = cu:baluchi
+		#				country_has_primary_culture = cu:bengali
+		#				country_has_primary_culture = cu:bihari
+		#				country_has_primary_culture = cu:gujarati
+		#				country_has_primary_culture = cu:kanauji
+		#				country_has_primary_culture = cu:kannada
+		#				country_has_primary_culture = cu:malayalam
+		#				country_has_primary_culture = cu:marathi
+		#				country_has_primary_culture = cu:oriya
+		#				country_has_primary_culture = cu:panjabi
+		#				country_has_primary_culture = cu:pashtun
+		#				country_has_primary_culture = cu:rajput
+		#				country_has_primary_culture = cu:sindi
+		#				country_has_primary_culture = cu:tamil
+		#				country_has_primary_culture = cu:telegu
+		#			}
+		#		}
+		#	}
+		#}
 	}
 }
 
@@ -544,4 +586,10 @@ RHO = {
 	required_states_fraction = 1
 	
 	ai_will_do = { always = yes }
+	possible = { 
+		country_has_primary_culture = cu:british 
+		sr:region_southern_africa = {
+			can_have_declared_interest_here = ROOT
+		}
+	}
 }

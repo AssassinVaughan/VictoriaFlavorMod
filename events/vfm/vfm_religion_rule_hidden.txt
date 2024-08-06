@@ -11,17 +11,6 @@ religion_rule_hidden.1 = {
 		if = {
 			limit = {
 				OR = {
-					country_has_state_religion = rel:reformed
-					country_has_state_religion = rel:anglican
-					country_has_state_religion = rel:lutheran
-				}
-			}
-			set_state_religion = rel:protestant
-		}
-		if = {
-			limit = {
-				OR = {
-					country_has_state_religion = rel:taoist
 					country_has_state_religion = rel:alcheringa
 					country_has_state_religion = rel:generic_african
 					country_has_state_religion = rel:generic_native_american
@@ -32,19 +21,10 @@ religion_rule_hidden.1 = {
 		if = {
 			limit = {
 				OR = {
-					country_has_state_religion = rel:druze
 					country_has_state_religion = rel:ibadi
 				}
 			}
 			set_state_religion = rel:sunni
-		}
-		if = {
-			limit = {
-				OR = {
-					country_has_state_religion = rel:taoist
-				}
-			}
-			set_state_religion = rel:mahayana
 		}
 	}
 }
@@ -60,7 +40,6 @@ religion_rule_hidden.2 = {
 		every_scope_pop = {
 			limit = {
 				OR = {
-					has_pop_religion = taoist
 					has_pop_religion = alcheringa
 					has_pop_religion = generic_african
 					has_pop_religion = generic_native_american
@@ -71,29 +50,10 @@ religion_rule_hidden.2 = {
 		every_scope_pop = {
 			limit = {
 				OR = {
-					has_pop_religion = reformed
-					has_pop_religion = anglican
-					has_pop_religion = lutheran
-				}
-			}
-			change_pop_religion = { target = rel:protestant value = 1.0 }
-		}
-		every_scope_pop = {
-			limit = {
-				OR = {
-					has_pop_religion = druze
 					has_pop_religion = ibadi
 				}
 			}
 			change_pop_religion = { target = rel:sunni value = 1.0 }
-		}
-		every_scope_pop = {
-			limit = {
-				OR = {
-					has_pop_religion = taoist
-				}
-			}
-			change_pop_religion = { target = rel:mahayana value = 1.0 }
 		}
 	}
 }
