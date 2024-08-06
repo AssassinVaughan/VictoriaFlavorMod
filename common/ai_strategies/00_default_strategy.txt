@@ -2407,7 +2407,18 @@ ai_strategy_default = {
 				is_in_customs_union_with = scope:overlord
 			}
 			add = 10
-		}			
+		}	
+
+        if = {
+			limit = {
+				scope:overlord = {
+					capital = {
+						is_homeland_of_country_cultures = root
+					}
+				}
+			}
+			add = 20
+		}		 		
 		
 		add = {
 			if = {
@@ -4041,6 +4052,19 @@ ai_strategy_default = {
 		if = {
 			limit = { country_is_in_europe = yes gdp > 1000000 cached_ai_incorporated_coastal_population > 500000 }
 			add = 2
+		}
+		
+		if = {
+			limit = { 
+			    exists = c:AUS
+				this = c:AUS 
+				country_rank = rank_value:major_power
+		    }
+			add = 5
+			if = {
+				limit = { game_date > 1850.1.1 }
+				add = 8
+		    }
 		}
 
         # Need to favor industrial buildup early game
