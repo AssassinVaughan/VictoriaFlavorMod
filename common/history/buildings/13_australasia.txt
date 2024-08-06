@@ -124,7 +124,20 @@
 		}
 	}
 	s:STATE_WESTERN_AUSTRALIA={
-		region_state:WAS={		
+		region_state:WAS={	
+            create_building={
+				building="building_wheat_farm"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:WAS"
+						levels=1
+						region="STATE_WESTERN_AUSTRALIA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_simple_farming"  "pm_tools_disabled" "pm_citrus_orchards" }
+			}		
 		}
 	}
 	s:STATE_NORTHERN_TERRITORY={

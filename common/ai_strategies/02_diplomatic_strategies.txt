@@ -1292,10 +1292,32 @@ ai_strategy_unify_germany = {
 	
 	diplomatic_play_neutrality = {
 		value = 0
+
+		if = {
+			limit = {
+				AND = {
+					OR = {
+						country_has_primary_culture = cu:north_german
+						country_has_primary_culture = cu:south_german
+					}
+                    OR = {
+					any_diplomatic_play = {
+						is_diplomatic_play_type = dp_annex_subject
+						target_is = c:SCH					
+					}	
+                    any_diplomatic_play = {
+						is_diplomatic_play_type = dp_annex_subject
+						target_is = c:HOL					
+					}	
+                    }
+				}
+			}
+			add = -30
+		}
 	}
 	
 	diplomatic_play_boldness = {
-		value = 75
+		value = 50
 	}
 
 	obligation_value = {
@@ -1308,21 +1330,56 @@ ai_strategy_unify_germany = {
 						country_has_primary_culture = cu:north_german
 						country_has_primary_culture = cu:south_german
 					}
+					NOR = {
+						c:SCH ?= THIS
+						c:HOL ?= THIS
+					}
 				}
 			}
 			add = 25
 		}
+
+		if = {
+			limit = { 
+				scope:target_country = {
+					NOT = { is_unification_candidate = GER }			
+					OR = {
+						country_has_primary_culture = cu:north_german
+						country_has_primary_culture = cu:south_german
+					}
+				}
+				NOR = {
+					scope:target_country = { is_subject = yes }
+					is_in_customs_union_with = scope:target_country
+				}
+			}
+			add = 25
+		}		
 	}	
 
 	recklessness = {
-		value = 0.5
+		value = 0.3
+
 		if = {
 			limit = {
 				has_technology_researched = pan-nationalism
 			}
 			add = 0.25
 		}
-		
+		if = {
+			limit = {
+				scope:target_country = {
+					OR = {
+						country_has_primary_culture = cu:north_german
+						country_has_primary_culture = cu:south_german
+					}
+					NOT = { is_unification_candidate = GER }
+					is_subject = yes
+				}
+			}
+			add = 0.75
+		}	
+
 		if = {
 			limit = { 
 				wants_to_solve_schleswig_holstein = yes
@@ -1335,7 +1392,8 @@ ai_strategy_unify_germany = {
 	}
 	
 	aggression = {
-		value = 0.25
+		# Total aggression calculated here is multiplied by UNIFICATION_AGGRESSION_MULT_HIGHER_TIER in defines for the purpose of Unification/Leadership plays # VANILLA = 20.0
+		value = 0
 		
 		if = {
 			limit = { 
@@ -1343,7 +1401,7 @@ ai_strategy_unify_germany = {
 					is_unification_candidate = GER
 				}
 			}
-			add = 10
+			add = 8
 		}
 		else_if = {
 			limit = { 
@@ -1354,18 +1412,153 @@ ai_strategy_unify_germany = {
 					}
 				}
 			}
-			add = 2.75
-		}	
-		
+			add = 2.25
+		}		
 		if = {
 			limit = {
-				has_journal_entry = je_schleswig_holstein_question
 				scope:target_country = {
-					is_oppressor_of_schleswig_holstein = yes
+					any_scope_state = {
+						state_region = s:STATE_SCHLESWIG_HOLSTEIN
+					}
+				}	
+				NOT = { has_global_variable = schleswig_holstein_question_solved }
+			}
+			add = 2.5
+		}
+
+		if = {
+			limit = {
+				scope:target_country = {
+					any_scope_state = {
+						state_region = s:STATE_SCHLESWIG_HOLSTEIN
+					}
+				}	
+				has_technology_researched = pan-nationalism
+			}
+			add = 15
+		}
+
+		if = {
+			limit = {
+				has_journal_entry = je_north_german_unification
+				NOT = {
+					has_journal_entry = je_schleswig_holstein_question
+				}
+				scope:target_country = {
+					is_unification_candidate = GER
 				}													
 			}
-			add = 10
+			add = 2
 		}
+
+		if = {
+			limit = {
+				scope:target_country = {
+					OR = {
+						country_has_primary_culture = cu:north_german
+						country_has_primary_culture = cu:south_german
+					}
+					NOT = { is_unification_candidate = GER }
+					is_subject = yes
+				}
+				scope:target_country.top_overlord = {
+					NOR = {
+						country_has_primary_culture = cu:north_german
+						country_has_primary_culture = cu:south_german
+					}
+				}
+			}
+			add = 4
+		}	
+
+		if = {
+			limit = {
+				scope:target_country = {
+					OR = {
+						country_has_primary_culture = cu:north_german
+						country_has_primary_culture = cu:south_german
+					}
+					NOT = { is_unification_candidate = GER }
+					is_subject = yes
+				}
+				scope:target_country.top_overlord = {
+					NOR = {
+						country_has_primary_culture = cu:north_german
+						country_has_primary_culture = cu:south_german
+					}
+				}
+				has_technology_researched = organized_sports
+			}
+			multiply = 2
+		}	
+
+		if = {
+			limit = {
+				NOT = { is_unification_candidate = GER }
+				scope:target_country = {
+					OR = {
+						country_has_primary_culture = cu:north_german
+						country_has_primary_culture = cu:south_german
+					}
+					NOT = { is_unification_candidate = GER }
+					is_subject = yes
+				}
+				scope:target_country.top_overlord = {
+					OR = {
+						country_has_primary_culture = cu:north_german
+						country_has_primary_culture = cu:south_german
+					}
+				}
+				has_technology_researched = organized_sports
+			}
+			multiply = 2
+		}	
+
+		if = {
+			limit = {
+				has_technology_researched = pan-nationalism
+				scope:target_country = {
+					is_unification_candidate = GER
+				}
+			}
+			add = 5
+		}
+
+		if = {
+			limit = {
+				scope:target_country = {
+					is_unification_candidate = GER
+				}
+				has_technology_researched = pan-nationalism
+				has_global_variable = schleswig_holstein_question_solved
+			}
+			multiply = 50.0
+		}
+
+		if = {
+			limit = { 
+				has_journal_entry = je_german_unification
+				scope:target_country = {
+					NOR = {
+						country_has_primary_culture = cu:north_german
+						country_has_primary_culture = cu:south_german
+					}
+					country_rank >= rank_value:major_power		
+					any_scope_state = {
+						OR = {
+							state_region = {
+								is_homeland = cu:north_german
+							}
+							state_region = {
+								is_homeland = cu:south_german	
+							}
+						}
+					
+					}	
+				}
+			}
+			add = 10
+		}	
 
 		# Less aggressive against countries we're just antagonistic against, rather than belligerent/domineering
 		if = {
@@ -1375,7 +1568,7 @@ ai_strategy_unify_germany = {
 					attitude = antagonistic
 				}					
 			}
-			multiply = 0.5
+			multiply = 0.25
 		}	
 
 		# More aggressive against ideological enemies, a bit less aggressive against ideological allies
@@ -1422,10 +1615,199 @@ ai_strategy_unify_germany = {
 		}
 	}
 	
-	wargoal_scores = {	
+	wargoal_scores = {
+		conquer_state = {
+			multiply = 0.0
+			if = {
+				limit = {
+					NOT = {
+						scope:target_country = {
+							is_unification_candidate = GER
+						}
+					}
+					scope:target_state = {
+						state_region = {
+							OR = {
+								is_homeland = cu:north_german
+								is_homeland = cu:south_german
+							}
+						}
+					}
+					is_adjacent_to_state = scope:target_state				
+				}
+				add = 10
+			}
+			if = {
+				limit = {
+						scope:target_country = {
+							any_scope_state = {
+								state_region = s:STATE_SCHLESWIG_HOLSTEIN
+							}
+						}
+					scope:target_state = {
+						state_region = s:STATE_SCHLESWIG_HOLSTEIN
+					}		
+					has_global_variable = scandis_successful
+				}
+				add = 10
+			}
+			if = {
+				limit = {
+					scope:target_country = {
+						OR = {
+							country_has_primary_culture = cu:north_german
+							country_has_primary_culture = cu:south_german
+						}
+						NOT = { is_unification_candidate = GER }
+						is_subject = yes
+					}
+					scope:target_country.top_overlord = {
+						NOR = {
+							country_has_primary_culture = cu:north_german
+							country_has_primary_culture = cu:south_german
+						}
+					}
+				}
+				add = 5
+			}	
+	
+			if = {
+				limit = {
+					scope:target_country = {
+						OR = {
+							country_has_primary_culture = cu:north_german
+							country_has_primary_culture = cu:south_german
+						}
+						NOT = { is_unification_candidate = GER }
+						is_subject = yes
+					}
+					scope:target_country.top_overlord = {
+						NOR = {
+							country_has_primary_culture = cu:north_german
+							country_has_primary_culture = cu:south_german
+						}
+					}
+					has_technology_researched = organized_sports
+				}
+				multiply = 10
+			}
+
+			if = {
+				limit = {
+					scope:target_country = {
+						is_unification_candidate = GER
+					}
+					scope:target_state = {
+						NOT = {
+						state_region = s:STATE_SCHLESWIG_HOLSTEIN		
+						}
+					}
+				}
+				add = -5000
+			}
+		}
+		return_state = {
+			value = 0
+			if = {
+				limit = {
+					NOT = {
+						scope:target_country = {
+							is_unification_candidate = GER
+						}
+					}
+					scope:target_state = {
+						state_region = {
+							OR = {
+								is_homeland = cu:north_german
+								is_homeland = cu:south_german
+							}
+						}	
+					}
+					is_adjacent_to_state = scope:target_state
+				}
+				add = 25
+			}
+		}
 		unification_leadership = {
-			value = 1000
+			if = {
+				limit = {
+					scope:target_country = {
+						is_unification_candidate = GER
+					}
+				}
+				value = 10
+			}
+			if = {
+				limit = {
+					has_technology_researched = pan-nationalism
+					has_global_variable = schleswig_holstein_question_solved
+				}
+				multiply = 100.0
+			}
+		}
+		unification = {
+			value = 1.0
+			if = {
+				limit = {
+					has_technology_researched = pan-nationalism
+				}
+				add = 1000
+			}
+		}
+		liberate_subject = {
+			if = { # We dont like German states that are subjects to non-Germans
+				limit = {
+					scope:target_country = {
+						OR = {
+							country_has_primary_culture = cu:north_german
+							country_has_primary_culture = cu:south_german
+						}
+					}
+					scope:target_country.top_overlord = {
+						NOR = {
+							country_has_primary_culture = cu:north_german
+							country_has_primary_culture = cu:south_german						
+						}
+					}
+				}
+				add = 200
+			}
+			
+			if = { # We dont like German states that are subjects to Germans
+				limit = {
+					scope:target_country = {
+						OR = {
+							country_has_primary_culture = cu:north_german
+							country_has_primary_culture = cu:south_german
+						}
+					}
+					scope:target_country.top_overlord = {
+						OR = {
+							country_has_primary_culture = cu:north_german
+							country_has_primary_culture = cu:south_german						
+						}
+					}
+				}
+				add = 100
+			}
 		}	
+		humiliation = {
+			if = {
+				limit = {
+					scope:target_country = {
+						is_unification_candidate = GER
+					}
+				}
+				value = 10
+			}
+			if = {
+				limit = {
+					has_technology_researched = pan-nationalism
+					has_global_variable = schleswig_holstein_question_solved
+				}
+				multiply = 100.0
+			}
+		}
 	}
 	
 	secret_goal_scores = {
@@ -1441,7 +1823,7 @@ ai_strategy_unify_germany = {
 						OR = { 
 							is_supporting_unification_candidate = { who = root country_formation = GER }
 							is_subject_of = root
-							is_in_customs_union_with = root							
+							is_in_customs_union_with = root
 						}						
 					}
 				}
@@ -1460,7 +1842,7 @@ ai_strategy_unify_germany = {
 						NOR = { 
 							is_supporting_unification_candidate = { who = root country_formation = GER }
 							is_subject_of = root
-							is_in_customs_union_with = root							
+							is_in_customs_union_with = root
 						}	
 					}
 				}
@@ -1476,13 +1858,129 @@ ai_strategy_unify_germany = {
 				}
 				add = 1000
 			}			
-		}
-	}	
+			if = {
+				limit = { 
+					wants_to_solve_schleswig_holstein = yes
+					NOT = {
+						exists = c:SCH
+					}
+					scope:target_country = { 
+						is_oppressor_of_schleswig_holstein = yes
+					}
+				}
+				add = 1000
+			}	
 
+			if = {
+				limit = { 
+					wants_to_solve_schleswig_holstein = yes
+					scope:target_country.top_overlord = {
+						NOR = {
+							country_has_primary_culture = cu:north_german
+							country_has_primary_culture = cu:south_german
+						}
+					}
+					has_technology_researched = pan-nationalism
+				}
+				add = 1000
+			}
+			
+			if = {
+				limit = { 
+					has_journal_entry = je_german_unification
+					scope:target_country = {
+						OR = {
+							country_has_primary_culture = cu:north_german
+							country_has_primary_culture = cu:south_german
+						}
+						country_rank < rank_value:great_power
+						any_scope_state = {
+							OR = {
+								state_region = {
+									is_homeland = cu:north_german
+								}
+								state_region = {
+									is_homeland = cu:south_german	
+								}
+							}
+						
+						}	
+					}
+				}
+				add = 1000
+			}
+		}	
+		antagonize = {				
+			if = {
+				limit = {
+					scope:target_country = {
+						is_unification_candidate = GER
+					}
+				}
+				add = 200
+
+			}
+			if = {
+				limit = {
+					has_journal_entry = je_north_german_unification
+					scope:target_country = {
+						is_unification_candidate = GER
+					}					
+				}
+				multiply = 1.5
+			}
+			if = {
+				limit = { 
+					wants_to_solve_schleswig_holstein = yes
+					scope:target_country = { 
+						is_oppressor_of_schleswig_holstein = yes
+					}
+					exists = c:SCH
+				}
+				add = 500
+			}				
+			if = {
+				limit = {
+					scope:target_country = {
+						is_unification_candidate = GER
+					}
+					has_technology_researched = pan-nationalism
+				}
+				multiply = 0.10
+			}
+
+			if = {
+				limit = {
+					NOT = { is_unification_candidate = GER }
+					scope:target_country = {
+						is_unification_candidate = GER
+					}
+					has_technology_researched = pan-nationalism
+				}
+				add = 200
+			}
+		}					
+	}	
+	
 	possible = {
 		is_subject = no
-		is_unification_candidate = GER	
-		NOT = { country_tier = empire }
+		OR = {
+			AND = {
+				has_technology_researched = nationalism
+				has_journal_entry = je_schleswig_holstein_question
+				country_rank = rank_value:great_power
+				NOT =  { country_tier = empire	}
+			}
+			AND = {
+				is_unification_candidate = GER	
+				NOT = { country_tier = empire }
+			}
+			AND = {
+				has_technology_researched = pan-nationalism
+				exists = c:NGF
+				THIS = c:NGF
+			}
+		}
 	}
 
 	weight = {

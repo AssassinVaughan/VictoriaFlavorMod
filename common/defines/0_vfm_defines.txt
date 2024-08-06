@@ -27,14 +27,18 @@ NAI = {
 	PRODUCTION_BUILDING_RANDOM_FACTOR = 5
 	VIOLATE_SOVEREIGNTY_RANDOM_FACTOR = 1.5
 	
+	DIPLO_PLAY_SAME_POWER_BLOC_INITIATOR_FACTOR = 20 #15 Added to desire for fellow power bloc member of initiator to join their side
+	DIPLO_PLAY_SAME_POWER_BLOC_TARGET_FACTOR = 30 #25 Added to desire for fellow power bloc member of target to join their side
+	
+	DIPLO_PLAY_SWAY_THRESHOLD = 7.0 # If AI has this much military strength compared to enemy, don't bother trying to sway anyone
 	DIPLO_PLAY_SECESSION_OWN_SECESSION_RISK_FACTOR = 0 #-100 Add this amount of reluctance for AI to back a secession of a culture that has enough pops in their own country to secede
 	
 	CONSTRUCTION_RESERVES_NEW_CONSTRUCTIONS = 0.02 #0.2 If gold reserves are less than this after adding the cost of a new construction, don't queue it	
 	CONSTRUCTION_DEBT_RESUME_CRITICAL_CONSTRUCTION = 0.05 #0.75 If critical constructions are paused, resume once debt is this low relative to ceiling
 	CONSTRUCTION_DEBT_PAUSE_CRITICAL_CONSTRUCTION = 0.15 #0.9 If in this much relative debt to debt ceiling, pause all critical constructions 
-	
-	MONEY_SPENDING_SUPPLY_NETWORK_DESIRED_THRESHOLD = 1.15 # If supply network is worse than this, AI wants to improve it
 
+	MONEY_SPENDING_SUPPLY_NETWORK_DESIRED_THRESHOLD = 1.15 # If supply network is worse than this, AI wants to improve it
+    MONEY_SPENDING_MILITARY_CRITICAL_THRESHOLD = 1.3 # If actual-to-wanted number of barracks/naval bases is below this, AI will not consider downsizing them further
 	MONEY_SPENDING_CONSTRUCTION_CRITICAL_THRESHOLD = 0.88 # If actual-to-wanted number of construction sector buildings is below this, AI considers it very important to get more
 	
 	MONEY_SPENDING_WANTED_CONVOYS_PER_BARRACKS_LEVEL = 4 # If the AI has fewer free convoys than this per level of barracks, it wants more ports
@@ -142,6 +146,8 @@ NEconomy = {
 	TRADE_ROUTE_AUTO_INCREASE_LOW_PRODUCTIVITY_THRESHOLD = 4 #6 If trade route's productivity would drop below this, don't automatically increase its level (regardless of total revenue)
 	TRADE_ROUTE_AUTO_INCREASE_HIGH_PRODUCTIVITY_THRESHOLD = 7 #10 If trade route's productivity is above this, it's always fine to automatically increase its level (regardless of total revenue)
 	TRADE_ROUTE_AUTO_REDUCTION_ACCEPTABLE_REVENUE_DIFFERENCE = 1.2 # Multiply revenue of current trade route level by this for the purpose of considering whether we should auto-decrease level (means that trade routes won't level down just for the purpose of a small revenue increase)
+
+    COMPANY_PRODUCTIVITY_ABSOLUTE_HIGH_THRESHOLD = 10	# Companies whose productivity exceeds this amount will ALWAYS be considered high-productivity companies
 } 
 
 NMilitary = {

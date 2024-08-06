@@ -429,9 +429,7 @@ exile_character = {
 
 	possible = {
 		owner = {
-			NOT = {
-				has_law = law_type:law_protected_speech
-			}
+			NOT = { has_law = law_type:law_protected_speech }
 		}
 		OR = {
 			interest_group = {
@@ -651,7 +649,7 @@ exile_character = {
 		}
 	}
 
-	cooldown = { months = normal_modifier_time }
+	cooldown = { months = long_modifier_time }
 	show_confirmation_box = yes
 
 	ai_chance = {
