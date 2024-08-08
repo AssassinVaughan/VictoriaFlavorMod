@@ -1300,10 +1300,16 @@ ai_strategy_unify_germany = {
 						country_has_primary_culture = cu:north_german
 						country_has_primary_culture = cu:south_german
 					}
+                    OR = {
 					any_diplomatic_play = {
 						is_diplomatic_play_type = dp_annex_subject
 						target_is = c:SCH					
 					}	
+                    any_diplomatic_play = {
+						is_diplomatic_play_type = dp_annex_subject
+						target_is = c:HOL					
+					}	
+                    }
 				}
 			}
 			add = -30
@@ -1311,7 +1317,7 @@ ai_strategy_unify_germany = {
 	}
 	
 	diplomatic_play_boldness = {
-		value = 75
+		value = 50
 	}
 
 	obligation_value = {
@@ -1324,8 +1330,9 @@ ai_strategy_unify_germany = {
 						country_has_primary_culture = cu:north_german
 						country_has_primary_culture = cu:south_german
 					}
-					NOT = {
+					NOR = {
 						c:SCH ?= THIS
+						c:HOL ?= THIS
 					}
 				}
 			}
@@ -1351,7 +1358,7 @@ ai_strategy_unify_germany = {
 	}	
 
 	recklessness = {
-		value = 0.5
+		value = 0.3
 
 		if = {
 			limit = {
@@ -1394,7 +1401,7 @@ ai_strategy_unify_germany = {
 					is_unification_candidate = GER
 				}
 			}
-			add = 10
+			add = 8
 		}
 		else_if = {
 			limit = { 
@@ -1405,36 +1412,30 @@ ai_strategy_unify_germany = {
 					}
 				}
 			}
-			add = 2.75
+			add = 2.25
 		}		
 		if = {
 			limit = {
-					scope:target_country = {
-						any_scope_state = {
-							state_region = s:STATE_SCHLESWIG_HOLSTEIN
-						}
+				scope:target_country = {
+					any_scope_state = {
+						state_region = s:STATE_SCHLESWIG_HOLSTEIN
 					}
-				scope:target_state = {
-					state_region = s:STATE_SCHLESWIG_HOLSTEIN
-				}		
+				}	
 				NOT = { has_global_variable = schleswig_holstein_question_solved }
 			}
-			add = 3
+			add = 2.5
 		}
 
 		if = {
 			limit = {
-					scope:target_country = {
-						any_scope_state = {
-							state_region = s:STATE_SCHLESWIG_HOLSTEIN
-						}
+				scope:target_country = {
+					any_scope_state = {
+						state_region = s:STATE_SCHLESWIG_HOLSTEIN
 					}
-				scope:target_state = {
-					state_region = s:STATE_SCHLESWIG_HOLSTEIN
-				}		
+				}	
 				has_technology_researched = pan-nationalism
 			}
-			add = 20
+			add = 15
 		}
 
 		if = {
@@ -1467,7 +1468,7 @@ ai_strategy_unify_germany = {
 					}
 				}
 			}
-			add = 5
+			add = 4
 		}	
 
 		if = {
@@ -1531,7 +1532,7 @@ ai_strategy_unify_germany = {
 				has_technology_researched = pan-nationalism
 				has_global_variable = schleswig_holstein_question_solved
 			}
-			multiply = 100.0
+			multiply = 50.0
 		}
 
 		if = {

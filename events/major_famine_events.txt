@@ -408,9 +408,8 @@ famine_events.4 = { #donations
 		name = famine_events.4.b
 		trigger = {
 			any_country = {
-				relations:root > relations_threshold:neutral
-				NOT = { has_variable = neighbor_country_1_var }
-			}
+				relations:root > relations_threshold:cordial
+				NOT = { has_variable = neighbor_country_1_var }			}
 		}
 		change_relations = {
 			country = scope:neighbor_country_2
