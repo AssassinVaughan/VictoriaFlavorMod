@@ -110,13 +110,13 @@ ai_strategy_default = {
 				    has_technology_researched = nationalism
 				}
 				add = {
-					value = 80
+					value = 75
 					desc = "german_leadership_neutrality"
 			    }
 			}
 			else = {
 			    add = {
-					value = 50
+					value = 40
 					desc = "german_leadership_neutrality"
 			    }
 			}
@@ -126,7 +126,12 @@ ai_strategy_default = {
 		if = {
 			# Non-Germans should stay out of the leadership war unless they have a good reason to intervene
 			limit = {
-				scope:diplomatic_play_type = play_type:dp_leadership_germany
+			    OR = {
+					scope:diplomatic_play_type = play_type:dp_leadership_germany
+					scope:country = {
+						is_oppressor_of_schleswig_holstein = yes
+					}
+				}
 				NOR = {
 					country_has_primary_culture = cu:north_german
 					country_has_primary_culture = cu:south_german
@@ -1001,13 +1006,14 @@ ai_strategy_default = {
 								state_region = s:STATE_NEW_MEXICO
 								state_region = s:STATE_TEXAS
 								state_region = s:STATE_KANSAS
+								state_region = s:STATE_WYOMING
 							    state_region = s:STATE_OKLAHOMA # if they somehow lose it
 							}
 						}
                     }
                 }
             }
-            add = 0.3
+            add = 0.25
         }
 		
 		# France should very aggressively go for Algeria.
@@ -1605,6 +1611,7 @@ ai_strategy_default = {
 								state_region = s:STATE_COLORADO
 								state_region = s:STATE_UTAH
 								state_region = s:STATE_TEXAS
+								state_region = s:STATE_WYOMING
 								state_region = s:STATE_KANSAS
 								state_region = s:STATE_OKLAHOMA
 								state_region = s:STATE_ARIZONA						
