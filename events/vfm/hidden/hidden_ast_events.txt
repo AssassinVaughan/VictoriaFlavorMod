@@ -1,52 +1,46 @@
 ﻿namespace = hidden_ast_events
 
-#Make convicts appear
+# Make convicts appear
 hidden_ast_events.1 = { 
 	type = country_event
 	placement = ROOT
-
 	hidden = yes
 
+	trigger = {
+		has_variable = importing_convicts_var
+	}
+
 	immediate = {
-		if = {
-			limit = {
-				scope:je_convict_country_scope = {
-					has_variable = importing_convicts_var
-				}
-			}
-			scope:je_convict_country_scope = {
-				every_scope_state = {
-					random_list = {
-						5 = {
-							create_pop = {
-								pop_type = slaves
-								culture = british
-								size = 1000
-							}
-						}
-						3 = {
-							create_pop = {
-								pop_type = slaves
-								culture = irish
-								size = 1000
-							}
-						}
-						1 = {
-							create_pop = {
-								pop_type = slaves
-								culture = scottish
-								size = 1000
-							}
-						}
-						1 = {
-							create_pop = {
-								pop_type = slaves
-								culture = welsh
-								size = 1000
-							}
-						}
+		every_scope_state = {
+			random_list = {
+				5 = {
+					create_pop = {
+						pop_type = slaves
+						culture = british
+						size = 300
 					}
-				} 
+				}
+				3 = {
+					create_pop = {
+						pop_type = slaves
+						culture = irish
+						size = 300
+					}
+				}
+				1 = {
+					create_pop = {
+						pop_type = slaves
+						culture = scottish
+						size = 300
+					}
+				}
+				1 = {
+					create_pop = {
+						pop_type = slaves
+						culture = welsh
+						size = 300
+					}
+				}
 			}
 		}
 	}

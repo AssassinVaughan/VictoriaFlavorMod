@@ -72,7 +72,7 @@ flavor_australia_events.2 = {
     }
 }
 
-#Transportation Endures
+#City protest
 flavor_australia_events.3 = { 
 	type = country_event
 	placement = ROOT
@@ -103,7 +103,7 @@ flavor_australia_events.3 = {
     }
 }
 
-#Transportation Endures
+# Molesworth Committee
 flavor_australia_events.4 = {
 	type = country_event
 	placement = ROOT
@@ -123,13 +123,51 @@ flavor_australia_events.4 = {
 
 	dlc = dlc_vfm
 
-	duration = 1
+	duration = 2
+
+	trigger = {
+		year = 1837
+		c:NSW = ROOT
+	}
 
 	immediate = {
+		#Set variable for JE
 	}
 
 	option = {
 		name = flavor_australia_events.4.a
+		default_option = yes
+    }
+}
+
+# Order-in-council
+flavor_australia_events.5 = {
+	type = country_event
+	placement = ROOT
+
+	title = flavor_australia_events.5.t
+	desc = flavor_australia_events.5.d
+	flavor = flavor_australia_events.5.f
+
+	event_image = {
+		video = "gfx/event_pictures/southamerica_aristocrats.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/unspecific/military_parade"
+
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+
+	dlc = dlc_vfm
+
+	duration = 1
+
+	immediate = {
+		remove_variable = importing_convicts_var
+	}
+
+	option = {
+		name = flavor_australia_events.5.a
 		default_option = yes
     }
 }

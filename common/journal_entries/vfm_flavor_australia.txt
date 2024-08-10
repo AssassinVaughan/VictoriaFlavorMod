@@ -1,7 +1,7 @@
 ﻿#The Frontier Wars
 je_frontier_wars = {
 	icon = "gfx/interface/icons/event_icons/event_colonial.dds"
-    group = je_group_internal_affairs
+    group = je_group_historical_content
 
 	immediate = {
 		ROOT = {
@@ -41,6 +41,96 @@ je_frontier_wars = {
 	weight = 20
 }
 
+#The Southern Prison
+je_convict_system = {
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+	group = je_group_internal_affairs
+
+	#timeout = 7300
+	scripted_progress_bar = convict_system_progress_bar
+
+	#scripted_button = je_import_convicts_button
+	scripted_button = je_sway_settlers_button
+	scripted_button = je_reform_freedom_button
+	scripted_button = je_end_assignment_button
+
+	immediate = {
+		ROOT = {
+			save_scope_as = je_convict_country_scope
+			set_variable = {
+				name = convict_progress_var
+				value = 0
+			}
+			set_variable = {
+				name = swaying_settlers_var
+				value = 1
+			}
+		}
+	}
+
+	on_weekly_pulse = {
+		events = {
+			hidden_ast_events.1
+		}
+		effect = {
+			if = {
+				limit = {
+					has_variable = importing_convicts_var
+				}
+				set_variable = {
+					name = convict_progress_var
+					value = -0.5
+				}
+			}
+			if = {
+				limit = {
+					has_variable = swaying_settlers_var
+				}
+				set_variable = {
+					name = convict_progress_var
+					value = 1
+				}
+			}
+		}
+	}
+	on_monthly_pulse = {
+		random_events = {
+			100 = 0
+			5 = flavor_australia_events.3 #City protest
+			5 = flavor_australia_events.6 #Government Lobby 1
+			5 = flavor_australia_events.7 #Government Lobby 2
+			5 = flavor_australia_events.8 #Squatters Sabatoge Reform
+		}
+	}
+	on_yearly_pulse = {
+		events = {
+			#Key Events
+			flavor_australia_events.4
+		}
+	}
+
+	#on_timeout = {
+	#	trigger_event = { id = flavor_australia_events.3 }
+	#}
+
+	complete = {
+		NOT = {
+			has_law = law_type:law_debt_slavery 
+		}
+	}
+
+
+	on_complete = {
+		trigger_event = {
+			id = flavor_australia_events.2
+			days = 0
+		}
+	}
+
+    should_be_pinned_by_default = yes
+	weight = 20
+}
+
 #The Royal Claims
 je_western_australia_claim = {
 	icon = "gfx/interface/icons/event_icons/event_map.dds"
@@ -61,88 +151,6 @@ je_western_australia_claim = {
 	on_complete = {
 		trigger_event = {
 			id = journal_flavor_australia.2
-			days = 0
-		}
-	}
-
-    should_be_pinned_by_default = yes
-	weight = 20
-}
-#The Southern Prison
-je_convict_system = {
-	icon = "gfx/interface/icons/event_icons/event_scales.dds"
-    group = je_group_internal_affairs
-
-	timeout = 7300
-	scripted_progress_bar = convict_system_progress_bar
-
-	scripted_button = je_import_convicts_button
-	scripted_button = je_sway_settlers_button
-
-	immediate = {
-		ROOT = {
-			save_scope_as = je_convict_country_scope
-			set_variable = {
-				name = convict_progress_var
-				value = 0
-			}
-		}
-	}
-	on_weekly_pulse = {
-		events = {
-			hidden_ast_events.1
-		}
-		effect = {
-			if = {
-				limit = {
-					has_variable = importing_convicts_var
-				}
-				set_variable = {
-					name = convict_progress_var
-					value = -0.5
-				}
-			}
-			else_if = {
-				limit = {
-					has_variable = swaying_settlers_var
-				}
-				set_variable = {
-					name = convict_progress_var
-					value = 0.5
-				}
-			}
-		}
-	}
-	on_monthly_pulse = {
-		random_events = {
-			185 = 0
-			5 = flavor_australia_events.4 
-			5 = flavor_australia_events.5 
-			#Anti-transportation League
-			5 = flavor_australia_events.6 
-		}
-	}
-
-	on_timeout = {
-		trigger_event = { id = flavor_australia_events.3 }
-	}
-
-	complete = {
-		OR = {
-			pop_type_percent_country = {
-				pop_type = slaves
-				percent < 0.1
-			}
-			NOT = {
-				has_law = law_type:law_debt_slavery 
-			}
-		}
-	}
-
-
-	on_complete = {
-		trigger_event = {
-			id = flavor_australia_events.2
 			days = 0
 		}
 	}
