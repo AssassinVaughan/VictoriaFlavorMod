@@ -1,14 +1,40 @@
 ﻿STATE_ECUADOR = {
     id = 351
     subsistence_building = "building_subsistence_farms"
-    provinces = { "x0582C9" "x071415" "x08149E" "x10BCFE" "x15959C" "x1A243F" "x1B533D" "x248C22" "x29EE91" "x2F44A7" "x3C5C5E" "x4000D0" "x459CD5" "x464276" "x55DF94" "x5A704F" "x60C210" "x697D35" "x6D9C0C" "x71A577" "x755FE4" "x7DCF6B" "x7EC991" "x8D6B95" "x92111D" "x98A7D9" "x9C2C85" "xAAA314" "xB37B33" "xB8908A" "xBC2EA9" "xBCA8C3" "xC00050" "xC08050" "xC48C3C" "xC734B8" "xC8F0FB" "xC962DE" "xCC826C" "xDAEE9F" "xE3A387" "xE873F1" "xE9C0F3" "xEB4AA0" "xF36B5E" "xF5B8CC" "xFD39FD" "xFF2114" }
+    provinces = { x0582C9 xFD39FD x29EE91 x10BCFE x7EC991 x5A704F x92111D x71A577 x60C210 xC8F0FB xC00050 xFF2114 x98A7D9 xE3A387 x464276 x248C22 x4000D0 x697D35 x459CD5 xEB4AA0 x08149E xC962DE x15959C x755FE4 x2F44A7 x9C2C85 x1A243F x55DF94 xC08050 }
     traits = { "state_trait_andes" "state_trait_la_costa" }
     city = "x92111D"
     port = "x0582C9"
     farm = "x5A704F"
     mine = "x9C2C85"
     wood = "x7EC991"
-    arable_land = 50
+    arable_land = 55
+    arable_resources = { "bg_maize_farms" "bg_livestock_ranches" "bg_coffee_plantations" "bg_cotton_plantations" "bg_dye_plantations" "bg_tobacco_plantations" "bg_sugar_plantations" "bg_banana_plantations" }
+    capped_resources = {
+        bg_coal_mining = 28
+        bg_iron_mining = 30
+        bg_logging = 14
+        bg_fishing = 6
+        bg_whaling = 4
+    }
+    resource = {
+        type = "bg_rubber"
+        undiscovered_amount = 12
+    }
+    naval_exit_id = 3024
+}
+
+STATE_EL_ORIENTE = {
+    id = 4010
+    subsistence_building = "building_subsistence_farms"
+    provinces = { x071415 x1B533D x3C5C5E x6D9C0C x7DCF6B x8D6B95 xAAA314 xB37B33 xB8908A xBC2EA9 xBCA8C3 xC48C3C xC734B8  xCC826C xDAEE9F xE873F1 xE9C0F3 xF36B5E xF5B8CC }
+    traits = { "state_trait_amazon_rainforest" }
+    city = "x92111D"
+    port = "x0582C9"
+    farm = "x5A704F"
+    mine = "x9C2C85"
+    wood = "x7EC991"
+    arable_land = 25
     arable_resources = { "bg_maize_farms" "bg_livestock_ranches" "bg_coffee_plantations" "bg_cotton_plantations" "bg_dye_plantations" "bg_tobacco_plantations" "bg_sugar_plantations" "bg_banana_plantations" }
     capped_resources = {
         bg_coal_mining = 28
@@ -34,7 +60,7 @@ STATE_GALAPAGOS = {
     farm = "x6ECA62"
     mine = "x6ECA62"
     wood = "x6ECA62"
-    arable_land = 25
+    arable_land = 15
     arable_resources = { "bg_maize_farms" "bg_livestock_ranches" "bg_tobacco_plantations" "bg_sugar_plantations" "bg_banana_plantations" }
     capped_resources = {
         bg_fishing = 6
@@ -250,13 +276,38 @@ STATE_CAUCA = {
 STATE_PASTAZA = {
     id = 360
     subsistence_building = "building_subsistence_farms"
-    provinces = { "x0080D0" "x01CA2C" "x096D46" "x0EA863" "x248E5D" "x2521E8" "x272E8C" "x27EF71" "x299588" "x3799DE" "x38C3BD" "x3C0D20" "x3DBF3C" "x3E32E2" "x411597" "x439628" "x4F0E85" "x51F069" "x598DEB" "x60DC96" "x63ED6E" "x6675F2" "x667AE7" "x6B096B" "x6B0A5B" "x6D7047" "x6DCE38" "x737C7E" "x7AC512" "x7E3539" "x7FE0D2" "x804050" "x8080D0" "x877BF7" "x8A1A0D" "x8C41E2" "x8CD643" "x8FE675" "x9110AC" "x917883" "x97F39F" "x9B0B43" "x9EAA88" "x9FEB80" "xA28606" "xA29A00" "xA54AD4" "xA5ACFD" "xB16F01" "xB47529" "xB7C18D" "xC5B9B8" "xC778AE" "xCF5C7B" "xD0BAEC" "xD0D212" "xD18F33" "xD21383" "xD37CBF" "xD61646" "xDCA8CF" "xDF9283" "xE043D2" "xE05359" "xE85DC6" "xEB5ADD" "xF2735E" "xF479D2" "xF73F96" "xF86ADF" "xFB499C" "xFD054C" "xFD33D9" }
+    provinces = { x6675F2 x8A1A0D xEB5ADD x9110AC x2521E8 xD18F33 xD21383 xA29A00 x9FEB80 x7AC512 x8080D0 x63ED6E x6B096B x8FE675 x60DC96 x3DBF3C x598DEB x248E5D xFB499C xE043D2 xE85DC6 x667AE7 xE05359 xB7C18D xFD054C xDF9283 x917883 x7FE0D2 xC5B9B8 xD37CBF x877BF7 x9B0B43 x27EF71 x38C3BD x9EAA88 x8CD643 xA28606 x97F39F xC778AE x0080D0 x272E8C xDCA8CF xCF5C7B xF2735E x6DCE38 x7E3539 xD0D212 }
     traits = { "state_trait_amazon_rainforest" }
     city = "xDF9283"
     farm = "xE043D2"
     mine = "x6675F2"
     wood = "xF479D2"
-    arable_land = 30
+    arable_land = 20
+    arable_resources = { "bg_maize_farms" "bg_livestock_ranches" "bg_coffee_plantations" "bg_dye_plantations" "bg_sugar_plantations" }
+    capped_resources = {
+        bg_coal_mining = 28
+        bg_logging = 25
+    }
+    resource = {
+        type = "bg_rubber"
+        undiscovered_amount = 15
+        discovered_amount = 1
+    }
+    resource = {
+        type = "bg_oil_extraction"
+        undiscovered_amount = 5
+    }
+}
+STATE_REQUENA = {
+    id = 4011
+    subsistence_building = "building_subsistence_farms"
+    provinces = { x0EA863 x439628 x804050 x6B0A5B x3C0D20 x01CA2C xF479D2 xD61646 x737C7E x51F069 xA54AD4 xB16F01 x411597 x3E32E2 xF73F96 xF86ADF x3799DE xA5ACFD x8C41E2 x096D46 x6D7047 x4F0E85 x299588 xFD33D9 xB47529 xD0BAEC }
+    traits = { "state_trait_amazon_rainforest" }
+    city = "xDF9283"
+    farm = "xE043D2"
+    mine = "x6675F2"
+    wood = "xF479D2"
+    arable_land = 25
     arable_resources = { "bg_maize_farms" "bg_livestock_ranches" "bg_coffee_plantations" "bg_dye_plantations" "bg_sugar_plantations" }
     capped_resources = {
         bg_coal_mining = 28
