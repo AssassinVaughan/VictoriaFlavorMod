@@ -36,135 +36,86 @@ meiji.1 = {
 		}
 		if = {
 			limit = {
-				year < 1852
+				year < 1846
 			}
 			create_character = {
 				# Emperor Ninko
-				first_name = "Ninko"
-				last_name = "Yamato"
-				historical = yes
+				template = jap_ninko_yamato_template
 				ruler = yes
-				birth_date = 1800.1.1
-				dna = dna_ninko
-				interest_group = ig_landowners # beholden to the Shogun
-				ideology = ideology_traditionalist
-				traits = {
-					reserved # not very active in affairs of state
-				}
 			}
 			create_character = {
-				first_name = "Komei"
-				last_name = Yamato
-				historical = yes
+				# Emperor Komei
+				template = jap_komei_yamato_template
 				heir = yes
-				birth_date = 1831.1.1
-				dna = dna_emperor_komei
-				interest_group = ig_armed_forces
-				traits = {
-					reserved # ditto
+			}
+		}
+		else_if = {
+			limit = {
+				year >= 1846
+				year < 1867
+			}
+			create_character = {
+				#Emperor Komei
+				template = jap_komei_yamato_template
+				ruler = yes
+			}
+			if = {
+				limit = {
+					year >= 1852
+				}
+				create_character = {
+					#Emperor Meiji
+					template = jap_meiji_yamato_template
+					heir = yes
 				}
 			}
 		}
 		else_if = {
 			limit = {
-				year >= 1852
-				year < 1879
-			}
-			create_character = {
-				first_name = "Komei"
-				last_name = "Yamato"
-				historical = yes
-				ruler = yes
-				birth_date = 1831.1.1
-				dna = dna_emperor_komei
-				interest_group = ig_armed_forces
-				traits = {
-					reserved # ditto
-				}
-			}
-			create_character = {
-				first_name = "Meiji"
-				last_name = "Yamato"
-				historical = yes
-				heir = yes
-				birth_date = 1852.1.1
-				dna = dna_emperor_meiji
-				interest_group = ig_industrialists
-				traits = {
-					innovative
-					charismatic
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				year >= 1879
+				year >= 1867
 				year < 1912
 			}
 			create_character = {
-				first_name = "Meiji"
-				last_name = "Yamato"
-				historical = yes
+				#Emperor Meiji
+				template = jap_meiji_yamato_template
 				ruler = yes
-				birth_date = 1852.1.1
-				dna = dna_emperor_meiji
-				interest_group = ig_industrialists
-				traits = {
-					innovative
-					charismatic
-				}
 			}
-			create_character = {
-				first_name = "Taisho"
-				last_name = "Yamato"
-				historical = yes
-				heir = yes
-				birth_date = 1879.1.1
-				interest_group = ig_industrialists
-				traits = {
+			if = {
+				limit = {
+					year >= 1879
+				}
+				create_character = {
+					#Emperor Taisho
+					template = jap_taisho_yamato_template
+					heir = yes
 				}
 			}
 		}
 		else_if = {
 			limit = {
 				year >= 1912
-				year < 1928
+				year < 1926
 			}
 			create_character = {
-				first_name = "Taisho"
-				last_name = "Yamato"
-				historical = yes
+				#Emperor Taisho
+				template = jap_taisho_yamato_template
 				ruler = yes
-				birth_date = 1879.1.1
-				interest_group = ig_industrialists
-				traits = {
-				}
 			}
 			create_character = {
-				first_name = "Showa" # Hirohito
-				last_name = "Yamato"
-				historical = yes
+				#Emperor Showa (Hirohito)
+				template = jap_showa_yamato_template
 				heir = yes
-				birth_date = 1901.1.1
-				interest_group = ig_armed_forces
-				traits = {
-				}
 			}
 		}
 		else_if = {
 			limit = {
-				year >= 1928
+				year >= 1926
 				year < 1989
 			}
 			create_character = {
-				first_name = "Showa" # Hirohito
-				last_name = "Yamato"
-				historical = yes
-				heir = yes
-				birth_date = 1901.1.1
-				interest_group = ig_armed_forces
-				traits = {
-				}
+				#Emperor Showa (Hirohito)
+				template = jap_showa_yamato_template
+				ruler = yes
 			}
 		}
 		ruler = {
@@ -181,7 +132,7 @@ meiji.1 = {
 		ig:ig_industrialists = {
 			add_modifier = {
 				name = meiji_favored_ig
-				months = very_long_modifier_time
+				months = normal_modifier_time
 			}
 		}
 		set_capital = STATE_KANTO
@@ -232,8 +183,8 @@ meiji.1 = {
 						is_building_type = building_barracks
 						OR = {
 							has_active_production_method = pm_no_organization
-							# has_active_production_method = pm_no_artillery
-							# has_active_production_method = pm_cannon_artillery
+							#has_active_production_method = pm_no_artillery
+							#has_active_production_method = pm_cannon_artillery
 						}
 					}
 				}
@@ -323,8 +274,8 @@ meiji.1 = {
 						is_building_type = building_barracks
 						OR = {
 							has_active_production_method = pm_no_organization
-							# has_active_production_method = pm_no_artillery
-							# has_active_production_method = pm_cannon_artillery
+							#has_active_production_method = pm_no_artillery
+							#has_active_production_method = pm_cannon_artillery
 						}
 					}
 				}
