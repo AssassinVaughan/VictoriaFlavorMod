@@ -559,7 +559,7 @@
 						type="building_manor_house"
 						country="c:GBR"
 						levels=3
-						region="STATE_WEST_INDIES"
+						region="STATE_EAST_ANGLIA"
 					}
 				}
 				reserves=1
@@ -572,7 +572,7 @@
 						type="building_manor_house"
 						country="c:GBR"
 						levels=1
-						region="STATE_WEST_INDIES"
+						region="STATE_HOME_COUNTIES"
 					}
 				}
 				reserves=1
@@ -585,7 +585,7 @@
 						type="building_manor_house"
 						country="c:GBR"
 						levels=1
-						region="STATE_WEST_INDIES"
+						region="STATE_HIGHLANDS"
 					}
 				}
 				reserves=1
@@ -608,13 +608,27 @@
 		region_state:FRA={
 			create_building={
 				building="building_coffee_plantation"
-				level=1
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:FRA"
+						levels=1
+						region="STATE_ILE_DE_FRANCE"
+					}
+				}
 				reserves=1
 				activate_production_methods={ "default_building_coffee_plantation" "pm_road_carts"  }
 			}
 			create_building={
 				building="building_tobacco_plantation"
-				level=1
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:FRA"
+						levels=1
+						region="STATE_ILE_DE_FRANCE"
+					}
+				}
 				reserves=1
 				activate_production_methods={ "default_building_tobacco_plantation" "pm_road_carts"  }
 			}
@@ -628,13 +642,27 @@
 		region_state:GBR={
 			create_building={
 				building="building_sugar_plantation"
-				level=1
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:GBR"
+						levels=1
+						region="STATE_HIGHLANDS"
+					}
+				}
 				reserves=1
 				activate_production_methods={ "default_building_sugar_plantation" "pm_road_carts"  }
 			}
 			create_building={
 				building="building_coffee_plantation"
-				level=1
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:GBR"
+						levels=1
+						region="STATE_HOME_COUNTIES"
+					}
+				}
 				reserves=1
 				activate_production_methods={ "default_building_coffee_plantation" "pm_road_carts"  }
 			}
@@ -656,7 +684,14 @@
 		region_state:DEN={
 			create_building={
 				building="building_sugar_plantation"
-				level=1
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:DEN"
+						levels=1
+						region="STATE_ZEALAND"
+					}
+				}
 				reserves=1
 				activate_production_methods={ "default_building_sugar_plantation" "pm_road_carts"  }
 			}
@@ -670,7 +705,14 @@
 		region_state:GBR={
 			create_building={
 				building="building_sugar_plantation"
-				level=1
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:GBR"
+						levels=1
+						region="STATE_HOME_COUNTIES"
+					}
+				}
 				reserves=1
 				activate_production_methods={ "default_building_sugar_plantation" "pm_road_carts"  }
 			}
