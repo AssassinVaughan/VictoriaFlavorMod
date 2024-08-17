@@ -118,52 +118,52 @@ je_canada_gbr = {
 	should_be_pinned_by_default = yes
 }
 
-je_australia_aus = {
-	icon = "gfx/interface/icons/event_icons/event_flags/event_ast_flag.dds"
-	
-	scripted_button = je_australia_aus_claim_new_zealand_button
-	scripted_button = je_australia_aus_claim_eastern_new_guinea_button
-
-	group = je_group_historical_content
-
-	is_shown_when_inactive = {
-		OR = {
-			country_has_primary_culture = cu:australian
-			country_has_primary_culture = cu:maori
-		}
-		is_subject = yes
-	}
-
-	possible = {
-		has_technology_researched = nationalism
-	}
-
-	complete = {
-		calc_true_if = {
-			amount >= 7
-			owns_entire_state_region = STATE_NEW_SOUTH_WALES
-			owns_entire_state_region = STATE_VICTORIA
-			owns_entire_state_region = STATE_TASMANIA
-			owns_entire_state_region = STATE_QUEENSLAND
-			owns_entire_state_region = STATE_SOUTH_AUSTRALIA
-			owns_entire_state_region = STATE_WESTERN_AUSTRALIA
-			owns_entire_state_region = STATE_NORTHERN_TERRITORY
-			owns_entire_state_region = STATE_NORTH_ISLAND
-			owns_entire_state_region = STATE_SOUTH_ISLAND
-		}
-	}
-
-	on_complete = {
-		trigger_event = { id = can_aus.7 }
-	}
-
-	invalid = {
-		is_subject = no
-	}
-
-	should_be_pinned_by_default = yes
-}
-
+#je_australia_aus = {
+#	icon = "gfx/interface/icons/event_icons/event_flags/event_ast_flag.dds"
+#	
+#	scripted_button = je_australia_aus_claim_new_zealand_button
+#	scripted_button = je_australia_aus_claim_eastern_new_guinea_button
+#
+#	group = je_group_historical_content
+#
+#	is_shown_when_inactive = {
+#		OR = {
+#			country_has_primary_culture = cu:australian
+#			country_has_primary_culture = cu:maori
+#		}
+#		is_subject = yes
+#	}
+#
+#	possible = {
+#		has_technology_researched = nationalism
+#	}
+#
+#	complete = {
+#		calc_true_if = {
+#			amount >= 7
+#			owns_entire_state_region = STATE_NEW_SOUTH_WALES
+#			owns_entire_state_region = STATE_VICTORIA
+#			owns_entire_state_region = STATE_TASMANIA
+#			owns_entire_state_region = STATE_QUEENSLAND
+#			owns_entire_state_region = STATE_SOUTH_AUSTRALIA
+#			owns_entire_state_region = STATE_WESTERN_AUSTRALIA
+#			owns_entire_state_region = STATE_NORTHERN_TERRITORY
+#			owns_entire_state_region = STATE_NORTH_ISLAND
+#			owns_entire_state_region = STATE_SOUTH_ISLAND
+#		}
+#	}
+#
+#	on_complete = {
+#		trigger_event = { id = can_aus.7 }
+#	}
+#
+#	invalid = {
+#		is_subject = no
+#	}
+#
+#	should_be_pinned_by_default = yes
+#}
+#
 #je_australia_gbr = {
 #	icon = "gfx/interface/icons/event_icons/event_flags/event_ast_flag.dds"
 #

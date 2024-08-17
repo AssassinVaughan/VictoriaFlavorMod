@@ -20,11 +20,24 @@ je_frontier_wars = {
 		}
 	}
 	complete = {
-		scope:frontier_war_country_je = {
-			NOT = {
-				any_neighbouring_state {
-					owner = {
-						country_has_primary_culture = cu:aborigine
+		any_scope_state = {
+			count = all
+			is_under_colonization = no
+		}
+		custom_tooltip = {
+			text = ast_frontier_1_tt
+			sr:region_oceania = {
+				any_scope_state = {
+					count = all
+					OR = {
+						AND = {
+							has_claim_by = ROOT
+							owner = ROOT
+							
+						}
+						NOT = {
+							has_claim_by = ROOT
+						}
 					}
 				}
 			}
