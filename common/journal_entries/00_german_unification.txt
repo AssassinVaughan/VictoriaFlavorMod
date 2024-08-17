@@ -278,7 +278,57 @@ je_north_german_unification = {
 					is_unification_candidate = GER
 				}
 			}	
-		}				
+		}
+
+        any_state = {
+            filter = {
+                OR = {
+                    state_region = s:STATE_BRANDENBURG
+                    state_region = s:STATE_WESTPHALIA
+                    state_region = s:STATE_HESSE
+                    state_region = s:STATE_HANNOVER
+                    state_region = s:STATE_BRUNSWICK
+                    state_region = s:STATE_ELBE
+                    state_region = s:STATE_SCHLESWIG_HOLSTEIN
+                    state_region = s:STATE_POMERANIA
+                    state_region = s:STATE_MECKLENBURG
+					state_region = s:STATE_POSEN
+					state_region = s:STATE_WEST_PRUSSIA
+					state_region = s:STATE_EAST_PRUSSIA
+                    state_region = s:STATE_ANHALT
+                    state_region = s:STATE_SAXONY
+					state_region = s:STATE_WESTPHALIA
+					state_region = s:STATE_THURINGIA
+					state_region = s:STATE_RHINELAND
+					state_region = s:STATE_NORTH_RHINE
+                }
+            }
+			custom_tooltip = {
+				text = completely_owned_by_this_country_or_bloc_tt
+				OR = {
+					owner = ROOT
+					owner = {
+						is_subject_of = ROOT
+					}
+					owner = { is_in_customs_union_with = ROOT }
+				}
+				NOT = {
+					this.state_region = {
+						any_scope_state = {
+							owner = {
+								NOR = {
+									this = ROOT
+									is_subject_of = ROOT
+									is_in_customs_union_with = ROOT
+								}
+							}
+						}
+					}
+				}
+			}
+            percent >= 0.55
+        }		
+        		
 	}
 
 	fail = {
@@ -367,6 +417,51 @@ je_south_german_unification = {
 				}
 			}	
 		}	
+		
+		any_state = {
+            filter = {
+                OR = {
+                    state_region = s:STATE_HESSE
+                    state_region = s:STATE_SAXONY
+					state_region = s:STATE_WESTPHALIA
+					state_region = s:STATE_THURINGIA
+					state_region = s:STATE_FRANCONIA
+					state_region = s:STATE_BAVARIA
+					state_region = s:STATE_RHINELAND
+					state_region = s:STATE_NORTH_RHINE
+					state_region = s:STATE_WURTTEMBERG
+					state_region = s:STATE_BADEN
+					state_region = s:STATE_AUSTRIA
+					state_region = s:STATE_BOHEMIA
+					state_region = s:STATE_STYRIA
+					state_region = s:STATE_TYROL
+                }
+            }
+			custom_tooltip = {
+				text = completely_owned_by_this_country_or_bloc_tt
+				OR = {
+					owner = ROOT
+					owner = {
+						is_subject_of = ROOT
+					}
+					owner = { is_in_customs_union_with = ROOT }
+				}
+				NOT = {
+					this.state_region = {
+						any_scope_state = {
+							owner = {
+								NOR = {
+									this = ROOT
+									is_subject_of = ROOT
+									is_in_customs_union_with = ROOT
+								}
+							}
+						}
+					}
+				}
+			}
+            percent >= 0.55
+        }
 	}
 
 	on_monthly_pulse = {
