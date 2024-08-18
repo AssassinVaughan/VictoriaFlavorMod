@@ -28,6 +28,12 @@ meiji.1 = {
 			name = meiji_var
 			value = 0
 		}
+		hidden_effect = {
+			if = {
+				limit = { has_modifier = shogun_ig_forced_to_open_market }
+				remove_modifier = shogun_ig_forced_to_open_market
+			}	
+		}
 		ig:ig_landowners = {
 			save_scope_as = shogunate_ig
 			leader = {
@@ -36,7 +42,7 @@ meiji.1 = {
 		}
 		if = {
 			limit = {
-				year < 1846
+				game_date < 1846.2.21
 			}
 			create_character = {
 				# Emperor Ninko
@@ -51,8 +57,8 @@ meiji.1 = {
 		}
 		else_if = {
 			limit = {
-				year >= 1846
-				year < 1867
+				game_date >= 1846.2.21
+				game_date < 1867.1.30
 			}
 			create_character = {
 				#Emperor Komei
@@ -61,7 +67,7 @@ meiji.1 = {
 			}
 			if = {
 				limit = {
-					year >= 1852
+					game_date >= 1852.11.3
 				}
 				create_character = {
 					#Emperor Meiji
@@ -72,8 +78,8 @@ meiji.1 = {
 		}
 		else_if = {
 			limit = {
-				year >= 1867
-				year < 1912
+				game_date >= 1867.1.30
+				game_date < 1912.7.30
 			}
 			create_character = {
 				#Emperor Meiji
@@ -82,7 +88,7 @@ meiji.1 = {
 			}
 			if = {
 				limit = {
-					year >= 1879
+					game_date >= 1879.9.31
 				}
 				create_character = {
 					#Emperor Taisho
@@ -93,8 +99,8 @@ meiji.1 = {
 		}
 		else_if = {
 			limit = {
-				year >= 1912
-				year < 1926
+				game_date >= 1912.7.30
+				game_date < 1926.12.25
 			}
 			create_character = {
 				#Emperor Taisho
@@ -109,8 +115,8 @@ meiji.1 = {
 		}
 		else_if = {
 			limit = {
-				year >= 1926
-				year < 1989
+				game_date >= 1926.12.25
+				game_date < 1989.1.7
 			}
 			create_character = {
 				#Emperor Showa (Hirohito)
