@@ -59,6 +59,17 @@
 	}
 	s:STATE_TASMANIA={
 		region_state:TAS={	
+		    create_building={
+				building="building_port"
+				add_ownership={
+					country={
+						country="c:TAS"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_anchorage" }
+			}
 		}
 	}
 	s:STATE_QUEENSLAND={
@@ -138,6 +149,17 @@
 				reserves=1
 				activate_production_methods={ "pm_simple_farming"  "pm_tools_disabled" "pm_citrus_orchards" }
 			}		
+			create_building={
+				building="building_port"
+				add_ownership={
+					country={
+						country="c:WAS"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_anchorage" }
+			}
 		}
 	}
 	s:STATE_NORTHERN_TERRITORY={

@@ -332,12 +332,14 @@ types country_panel_types
 				# 3D flag, we want to render at a high resolution and downscale
 				# This increases the quality of the rendered gui flag
 				# Size can be modified but needs to be 16:9 due to how its rendered (converted 3d object)
-				flag_3d_animated = {
+				flag_3d_faded_animated = {
 					position = { 5 13 }
-					size = { 550 309 }  # Rendersize
-					scale = 0.57        # Downscale
+					size = { 550 309 }	# Rendersize
+					scale = 0.57		# Downscale
 				}
 			}
+
+			
 
 			flowcontainer = {
 				parentanchor = bottom
@@ -348,7 +350,7 @@ types country_panel_types
 					parentanchor = right
 
 					spacing = -2 #this flowcontainer is a BIT too wide compared to the government info below it
-
+ 
 					# DIPLOMATIC PACTS
 					flowcontainer = {
 						datamodel = "[Country.AccessActiveDiplomaticPactTypes]"
@@ -518,7 +520,6 @@ types country_panel_types
 					}
 				}
 			}
-
 
 			#MILITARY
 			flowcontainer = {

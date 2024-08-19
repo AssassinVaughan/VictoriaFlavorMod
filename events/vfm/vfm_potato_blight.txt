@@ -26,11 +26,11 @@ vfm_potato_blight.1 = {
 		every_scope_state = {
 			limit = {
 				in_potato_blight_zone = yes
-				NOT = {
-					any_scope_building = {
-  			     	   is_building_type = building_wheat_farm
-	           		}
-				}
+				#NOT = {
+				#	any_scope_building = {
+  			    # 	   is_building_type = building_wheat_farm
+	           	#	}
+				#}
 				NOT = { has_modifier = modifier_potato_blight }
 				NOT = { has_modifier = modifier_potato_blight_mild }
 			}
@@ -42,11 +42,11 @@ vfm_potato_blight.1 = {
 		every_scope_state = {
 			limit = {
 				in_potato_blight_mild_zone = yes
-				NOT = {
-					any_scope_building = {
-  			     	   is_building_type = building_wheat_farm
-	           		}
-				}
+				#NOT = {
+				#	any_scope_building = {
+  			    # 	   is_building_type = building_wheat_farm
+	           	#	}
+				#}
 				NOT = { has_modifier = modifier_potato_blight }
 				NOT = { has_modifier = modifier_potato_blight_mild }
 			}
@@ -64,11 +64,11 @@ vfm_potato_blight.1 = {
 			every_scope_state = {
 				limit = {
 					in_potato_blight_zone = yes
-					NOT = {
-						any_scope_building = {
-  			     		   is_building_type = building_wheat_farm
-	           			}
-					}
+					#NOT = {
+					#	any_scope_building = {
+  			     	#	   is_building_type = building_wheat_farm
+	           		#	}
+					#}
 				}
 				add_modifier = {
 					name = modifier_potato_blight
@@ -78,11 +78,11 @@ vfm_potato_blight.1 = {
 			every_scope_state = {
 				limit = {
 					in_potato_blight_mild_zone = yes
-					NOT = {
-						any_scope_building = {
-  			     		   is_building_type = building_wheat_farm
-	           			}
-					}
+					#NOT = {
+					#	any_scope_building = {
+  			     	#	   is_building_type = building_wheat_farm
+	           		#	}
+					#}
 				}
 				add_modifier = {
 					name = modifier_potato_blight_mild
@@ -115,12 +115,12 @@ vfm_potato_blight.2 = {
 	trigger = {
 	    has_agricultural_disaster = no
 		OR = {
-			state_region = { in_potato_blight_zone = yes }
-			state_region = { in_potato_blight_mild_zone = yes }
+			in_potato_blight_zone_2 = yes
+			in_potato_blight_mild_zone_2 = yes
 		}
-		any_scope_building = {
-  			is_building_type = building_rye_farm
-		}
+		#any_scope_building = {
+  		#	is_building_type = building_rye_farm
+		#}
 	}
 
 	immediate = {
@@ -133,7 +133,7 @@ vfm_potato_blight.2 = {
 		default_option = yes
 		if = { 
 		    limit = {
-				state_region = { in_potato_blight_zone = yes }
+				in_potato_blight_zone = yes
 			}
 			add_modifier = {
 			    name = modifier_potato_blight
@@ -151,13 +151,13 @@ vfm_potato_blight.2 = {
 			    has_agricultural_disaster = no
 				owner = scope:state_owner
 				OR = {
-					state_region = { in_potato_blight_zone = yes }
-					state_region = { in_potato_blight_mild_zone = yes }
+					in_potato_blight_zone = yes
+					in_potato_blight_mild_zone = yes
 				}
 			}
 			if = { 
 				limit = {
-				    state_region = { in_potato_blight_zone = yes }
+				    in_potato_blight_zone = yes
 				}
 				add_modifier = {
 			        name = modifier_potato_blight
@@ -210,11 +210,11 @@ vfm_potato_blight.100 = {
 						in_potato_blight_zone = yes
 						in_potato_blight_mild_zone = yes
 					}
-					NOT = {
-						any_scope_building = {
-  			     		   is_building_type = building_wheat_farm
-	           			}
-					}
+					#NOT = {
+					#	any_scope_building = {
+  			     	#	   is_building_type = building_wheat_farm
+	           		#	}
+					#}
 				}
 			}
 			trigger_event = { id = vfm_potato_blight.1 }
