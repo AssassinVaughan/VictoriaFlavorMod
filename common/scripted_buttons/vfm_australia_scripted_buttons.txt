@@ -153,7 +153,7 @@ je_sway_settlers_button = {
 
 	possible = {
 		custom_tooltip = {
-			text = ast_convict_button_4_tt
+			text = ast_convict_button_1_tt
 			NOT = { has_variable = importing_convicts_var }
 		}
 	}
@@ -222,40 +222,6 @@ je_sway_settlers_button = {
 	}
 }
 
-je_end_assignment_button = {
-	name = "je_end_assignment_button"
-	desc = "je_end_assignment_button_desc"
-	visible = {
-		has_variable = reformed_assignment_var
-	}
-
-	possible = {
-		custom_tooltip = {
-			text = ast_convict_button_2_tt
-			has_law = law_type:law_debt_slavery
-		}
-		if = {
-			limit = {
-				ROOT = c:NSW
-			}
-			custom_tooltip = {
-				text = ast_convict_button_3_tt
-				NOT = { has_variable = illegal_squatting_var }
-			}
-		}
-	}
-
-	effect = {
-		trigger_event = {
-			id = flavor_australia_events.2
-		}
-	}
-
-	ai_chance = {
-		base = 0
-	}
-}
-
 je_reform_freedom_button = {
 	name = "je_reform_freedom_button"
 	desc = "je_reform_freedom_button_desc"
@@ -274,6 +240,36 @@ je_reform_freedom_button = {
 		set_variable = {
 			name = reformed_assignment_var
 			value = 0
+		}
+	}
+
+	ai_chance = {
+		base = 0
+	}
+}
+
+je_end_assignment_button = {
+	name = "je_end_assignment_button"
+	desc = "je_end_assignment_button_desc"
+
+	visible = {
+		has_variable = reformed_assignment_var
+	}
+
+	possible = {
+		custom_tooltip = {
+			text = ast_convict_button_3_tt
+			has_law = law_type:law_debt_slavery
+		}
+		custom_tooltip = {
+			text = ast_convict_button_4_tt
+			NOT = { has_variable = illegal_squatting_var }
+		}
+	}
+
+	effect = {
+		trigger_event = {
+			id = flavor_australia_events.2
 		}
 	}
 
