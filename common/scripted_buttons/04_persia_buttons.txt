@@ -19,15 +19,18 @@
 						exists = c:HER
 					}
 					NOT = {
-						c:HER = {
+						c:HER ?= {
 							is_subject_of = c:PER
 						}
 					}
 					c:PER = {
 						has_state_in_state_region = STATE_HERAT
 					}
-					NOT = {
-						c:AFG = {
+					NOR = {
+					    c:KAB ?= {
+							has_state_in_state_region = STATE_HERAT
+						}
+						c:AFG ?= {
 							has_state_in_state_region = STATE_HERAT
 						}
 					}
