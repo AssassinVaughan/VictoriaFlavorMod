@@ -228,6 +228,7 @@ je_the_zollverein = {
                     state_region = s:STATE_SCHLESWIG_HOLSTEIN
                     state_region = s:STATE_POMERANIA
                     state_region = s:STATE_MECKLENBURG
+					state_region = s:STATE_WEST_PRUSSIA
                     state_region = s:STATE_ANHALT
                     state_region = s:STATE_SAXONY
 					state_region = s:STATE_WESTPHALIA
@@ -263,9 +264,17 @@ je_the_zollverein = {
 					}
 				}
 			}
-            percent = 0.75
+            percent >= 0.5
         }
 	}
+	
+	invalid = {
+		OR = {
+			exists = c:GER
+			exists = c:SGF
+			exists = c:NGF
+		}
+    }
 	
 	on_complete = {
 		set_global_variable = zollverein_done

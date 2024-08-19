@@ -105,11 +105,34 @@ jap_ienari_tokugawa_template = {
         expensive_tastes # bit of corruption
     }
 }
+jap_ninko_yamato_template = {
+    first_name = "Ninko"
+    last_name = "Yamato"
+    historical = yes
+    culture = cu:japanese
+    birth_date = 1800.1.1
+    dna = dna_ninko
+    interest_group = ig_landowners # beholden to the Shogun
+    ideology = ideology_traditionalist
+    traits = {
+        reserved # not very active in affairs of state
+    }
+}
+jap_komei_yamato_template = {
+    first_name = "Komei"
+    last_name = "Yamato"
+    historical = yes
+    birth_date = 1831.1.1
+    dna = dna_emperor_komei
+    interest_group = ig_armed_forces
+    traits = {
+        reserved # ditto
+    }
+}
 jap_meiji_yamato_template = {
     first_name = "Meiji"
     last_name = "Yamato"
     historical = yes
-    heir = yes
     birth_date = 1852.1.1
     dna = dna_emperor_meiji
     interest_group = ig_industrialists
@@ -118,18 +141,27 @@ jap_meiji_yamato_template = {
         charismatic
     }
 }
-jap_komei_yamato_template = {
-    first_name = "Komei"
+jap_taisho_yamato_template = {
+    first_name = "Taisho"
     last_name = "Yamato"
     historical = yes
-    ruler = yes
-    birth_date = 1831.1.1
-    dna = dna_emperor_komei
-    interest_group = ig_armed_forces
+    culture = cu:japanese
+    birth_date = 1879.1.1
+    interest_group = ig_industrialists
     traits = {
-        reserved # ditto
     }
 }
+jap_showa_yamato_template = {
+    first_name = "Showa" # Hirohito
+    last_name = "Yamato"
+    historical = yes
+    culture = cu:japanese
+    birth_date = 1901.1.1
+    interest_group = ig_armed_forces
+    traits = {
+    }
+}
+
 
 # Persia - PER
 per_mohammad_shah_qajar_template = {

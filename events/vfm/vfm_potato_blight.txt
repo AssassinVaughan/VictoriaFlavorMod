@@ -25,12 +25,14 @@ vfm_potato_blight.1 = {
 	immediate = {
 		every_scope_state = {
 			limit = {
-				in_potato_blight_zone_2 = yes
+				in_potato_blight_zone = yes
 				NOT = {
 					any_scope_building = {
   			     	   is_building_type = building_wheat_farm
 	           		}
 				}
+				NOT = { has_modifier = modifier_potato_blight }
+				NOT = { has_modifier = modifier_potato_blight_mild }
 			}
 			add_modifier = {
 				name = modifier_potato_blight
@@ -45,6 +47,8 @@ vfm_potato_blight.1 = {
   			     	   is_building_type = building_wheat_farm
 	           		}
 				}
+				NOT = { has_modifier = modifier_potato_blight }
+				NOT = { has_modifier = modifier_potato_blight_mild }
 			}
 			add_modifier = {
 				name = modifier_potato_blight_mild
@@ -59,7 +63,7 @@ vfm_potato_blight.1 = {
 		show_as_tooltip = {
 			every_scope_state = {
 				limit = {
-					in_potato_blight_zone_2 = yes
+					in_potato_blight_zone = yes
 					NOT = {
 						any_scope_building = {
   			     		   is_building_type = building_wheat_farm
