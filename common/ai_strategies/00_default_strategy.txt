@@ -110,13 +110,13 @@ ai_strategy_default = {
 				    has_technology_researched = nationalism
 				}
 				add = {
-					value = 80
+					value = 75
 					desc = "german_leadership_neutrality"
 			    }
 			}
 			else = {
 			    add = {
-					value = 50
+					value = 40
 					desc = "german_leadership_neutrality"
 			    }
 			}
@@ -126,7 +126,12 @@ ai_strategy_default = {
 		if = {
 			# Non-Germans should stay out of the leadership war unless they have a good reason to intervene
 			limit = {
-				scope:diplomatic_play_type = play_type:dp_leadership_germany
+			    OR = {
+					scope:diplomatic_play_type = play_type:dp_leadership_germany
+					scope:country = {
+						is_oppressor_of_schleswig_holstein = yes
+					}
+				}
 				NOR = {
 					country_has_primary_culture = cu:north_german
 					country_has_primary_culture = cu:south_german
@@ -195,15 +200,16 @@ ai_strategy_default = {
 		### Ottomans vs Egypt - Great Powers pick sides
 		if = {
 			limit = {
+				country_rank >= rank_value:major_power
 				OR = {
 					AND = {
-						scope:country = { c:TUR ?= this }
-						scope:enemy_country = { c:EGY ?= this }
+						scope:country = { c:TUR = this }
+						scope:enemy_country = { c:EGY = this }
 					}
 					AND = {
-						scope:country = { c:EGY ?= this }
-						scope:enemy_country = { c:TUR ?= this }
-					}				
+						scope:country = { c:EGY = this }
+						scope:enemy_country = { c:TUR = this }
+					}
 				}
 				c:TUR ?= {
 					OR = {
@@ -756,17 +762,6 @@ ai_strategy_default = {
 			}
 			subtract = 30
 		}
-		if = {
-			limit = {
-				any_diplomatic_play = {
-					any_scope_play_involved = {
-						OR = { is_diplomatic_play_initiator = yes is_diplomatic_play_target = yes }
-						is_in_customs_union_with = ROOT
-					}						
-				}	
-			}
-			subtract = 20
-		}
 		# unite against non-muslim invaders
 		if = {
 			limit = {
@@ -775,21 +770,24 @@ ai_strategy_default = {
 					country_has_state_religion = rel:shiite
 				}
 				any_diplomatic_play = {
-				    any_scope_play_involved = {
-						is_diplomatic_play_target = yes
-						OR = {
-				            country_has_state_religion = rel:sunni
-				    	    country_has_state_religion = rel:shiite
-				        }
+				    #any_scope_play_involved = {
+				    target = {
 						has_strategic_land_adjacency = ROOT
-					}
-					any_scope_play_involved = {
-						is_diplomatic_play_initiator = yes
+						OR = {
+							country_has_state_religion = rel:sunni
+					   	    country_has_state_religion = rel:shiite
+						}
+				    }
+				    initiator = {
 						NOR = {
-				            country_has_state_religion = rel:sunni
-				    	    country_has_state_religion = rel:shiite
-				        }
-					}
+					       	country_has_state_religion = rel:sunni
+					   		country_has_state_religion = rel:shiite
+						}
+				    }
+					#}
+					#any_scope_play_involved = {
+					#	is_diplomatic_play_initiator = yes
+					#}
 				}
 			}
 			subtract = 30
@@ -1008,13 +1006,14 @@ ai_strategy_default = {
 								state_region = s:STATE_NEW_MEXICO
 								state_region = s:STATE_TEXAS
 								state_region = s:STATE_KANSAS
+								state_region = s:STATE_WYOMING
 							    state_region = s:STATE_OKLAHOMA # if they somehow lose it
 							}
 						}
                     }
                 }
             }
-            add = 0.3
+            add = 0.25
         }
 		
 		# France should very aggressively go for Algeria.
@@ -1612,6 +1611,7 @@ ai_strategy_default = {
 								state_region = s:STATE_COLORADO
 								state_region = s:STATE_UTAH
 								state_region = s:STATE_TEXAS
+								state_region = s:STATE_WYOMING
 								state_region = s:STATE_KANSAS
 								state_region = s:STATE_OKLAHOMA
 								state_region = s:STATE_ARIZONA						
@@ -2414,7 +2414,18 @@ ai_strategy_default = {
 				is_in_customs_union_with = scope:overlord
 			}
 			add = 10
-		}			
+		}	
+
+        if = {
+			limit = {
+				scope:overlord = {
+					capital = {
+						is_homeland_of_country_cultures = root
+					}
+				}
+			}
+			add = 20
+		}		 		
 		
 		add = {
 			if = {
@@ -2571,6 +2582,7 @@ ai_strategy_default = {
 		# Opium wars participants should both be confident
 		if = {
 			limit = {
+				country_rank >= rank_value:major_power
 				has_journal_entry = je_opium_wars
 				scope:target_country = {
 					has_variable = opium_wars_target
@@ -2594,32 +2606,29 @@ ai_strategy_default = {
 		# Ottomans should be extremely confident against owners of Syria and Egypt when they have the relevant JE's
 		if = {
 			limit = {
+				ROOT = c:TUR
 				OR = {
 					AND = {
 						has_journal_entry = je_sick_man_syria
 						scope:target_country = {
-							any_scope_state = {
-								OR = {
-									state_region = s:STATE_ALEPPO
-									state_region = s:STATE_SYRIA
-									state_region = s:STATE_LEBANON
-									state_region = s:STATE_PALESTINE
-									state_region = s:STATE_TRANSJORDAN
-									state_region = s:STATE_ADANA
-								}	
+							OR = {
+								has_state_in_state_region = STATE_ADANA
+								has_state_in_state_region = STATE_TRANSJORDAN
+								has_state_in_state_region = STATE_PALESTINE
+								has_state_in_state_region = STATE_LEBANON
+								has_state_in_state_region = STATE_SYRIA
+								has_state_in_state_region = STATE_ALEPPO
 							}
 						}
 					}
 					AND = {
 						has_journal_entry = je_sick_man_egypt
 						scope:target_country = {
-							any_scope_state = {
-								OR = {
-									state_region = s:STATE_SINAI
-									state_region = s:STATE_UPPER_EGYPT
-									state_region = s:STATE_MIDDLE_EGYPT
-									state_region = s:STATE_LOWER_EGYPT
-								}	
+							OR = {
+								has_state_in_state_region = STATE_SINAI
+								has_state_in_state_region = STATE_UPPER_EGYPT
+								has_state_in_state_region = STATE_MIDDLE_EGYPT
+								has_state_in_state_region = STATE_LOWER_EGYPT
 							}
 						}
 					}
@@ -2631,6 +2640,7 @@ ai_strategy_default = {
 		# USA should be confident against owners of their Manifest Destiny states
 		if = {
 			limit = {
+				ROOT = c:USA
 				has_journal_entry = je_manifest_destiny_mexico
 				scope:target_country = {
 					any_scope_state = {
@@ -2669,6 +2679,7 @@ ai_strategy_default = {
 		# Schleswig-Holstein question
 		if = {
 			limit = { 
+				has_journal_entry = je_schleswig_holstein_question 
 				wants_to_solve_schleswig_holstein = yes
 				scope:target_country = { 
 					is_oppressor_of_schleswig_holstein = yes
@@ -2810,8 +2821,8 @@ ai_strategy_default = {
 		
 		if = { 
 			limit = {
-				exists = c:SPA
 				this = c:SPA
+				exists = c:SPA
 				OR = {
 					AND = {	
 						exists = c:MGD
@@ -4244,26 +4255,29 @@ ai_strategy_default = {
 			}
 			multiply = 1.25
 		}
-
-		if = { #VFM, AI major powers and up want larger militaries if their direct neighbors are trying to unify or expand
+		#VFM, AI major powers and up want larger militaries if their direct neighbors are trying to unify or expand
+		if = { 
 			limit = {
-				any_country = {
-				    country_rank >= rank_value:major_power
-					OR = {
-						has_strategy = ai_strategy_territorial_expansion 
-						has_strategy = ai_strategy_unify_germany
-						has_strategy = ai_strategy_unify_italy
-						has_strategy = ai_strategy_unify_ethiopia
-						has_strategy = ai_strategy_unify_china
+				country_rank >= rank_value:major_power
+				#NOR = {
+				#	has_strategy = ai_strategy_territorial_expansion 
+				#	has_strategy = ai_strategy_unify_germany
+				#	has_strategy = ai_strategy_unify_italy
+				#	has_strategy = ai_strategy_unify_ethiopia
+				#	has_strategy = ai_strategy_unify_china
+				#}
+				any_neighbouring_state = {
+					# This strategy would make more sense for home territories
+					is_homeland_of_country_cultures = ROOT
+					owner = {
+						OR = {
+							has_strategy = ai_strategy_territorial_expansion 
+							has_strategy = ai_strategy_unify_germany
+							has_strategy = ai_strategy_unify_italy
+							has_strategy = ai_strategy_unify_ethiopia
+							has_strategy = ai_strategy_unify_china
+						}
 					}
-					has_strategic_land_adjacency = ROOT
-				}
-				NOR = {
-					has_strategy = ai_strategy_territorial_expansion 
-					has_strategy = ai_strategy_unify_germany
-					has_strategy = ai_strategy_unify_italy
-					has_strategy = ai_strategy_unify_ethiopia
-					has_strategy = ai_strategy_unify_china
 				}
 			}
 			multiply = 1.1
@@ -4342,6 +4356,19 @@ ai_strategy_default = {
 		if = {
 			limit = { country_is_in_europe = yes gdp > 1000000 cached_ai_incorporated_coastal_population > 500000 }
 			add = 2
+		}
+		
+		if = {
+			limit = { 
+			    exists = c:AUS
+				this = c:AUS 
+				country_rank = rank_value:major_power
+		    }
+			add = 5
+			if = {
+				limit = { game_date > 1850.1.1 }
+				add = 8
+		    }
 		}
 
         # Need to favor industrial buildup early game

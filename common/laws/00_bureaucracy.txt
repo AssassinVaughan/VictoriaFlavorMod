@@ -46,22 +46,6 @@
 		}
 	}
 
-	can_impose = {
-		OR = {
-			AND = {
-				is_in_same_power_bloc = scope:target_country
-				AND = {
-					modifier:country_can_impose_same_lawgroup_bureaucracy_in_power_bloc_bool = yes
-					has_law = scope:law
-				}
-			}
-			can_impose_law_default = yes
-		}
-	}
-
-	on_impose = { 
-	} 
-
 	ai_will_do = {
 		exists = ruler
 		ruler = {
@@ -136,22 +120,6 @@ law_appointed_bureaucrats = {
 		}
 	}
 
-	can_impose = {
-		OR = {
-			AND = {
-				is_in_same_power_bloc = scope:target_country
-				AND = {
-					modifier:country_can_impose_same_lawgroup_bureaucracy_in_power_bloc_bool = yes
-					has_law = scope:law
-				}
-			}
-			can_impose_law_default = yes
-		}
-	}
-
-	on_impose = { 
-	} 
-
 	ai_enact_weight_modifier = { #Petitions
 		value = 0
 		
@@ -166,7 +134,7 @@ law_appointed_bureaucrats = {
 				has_law = law_type:law_hereditary_bureaucrats
 			}
 			add = 1000
-		}	
+		}		
 	}
 }
 
@@ -196,6 +164,7 @@ law_elected_bureaucrats = {
 	
 	modifier = {
 		country_bureaucracy_investment_cost_factor_mult = -0.15
+		interest_group_ig_petty_bourgeoisie_pol_str_mult = 0.1
 	}
 	
 	possible_political_movements = {
@@ -217,28 +186,12 @@ law_elected_bureaucrats = {
 		}
 	}
 
-	can_impose = {
-		OR = {
-			AND = {
-				is_in_same_power_bloc = scope:target_country
-				AND = {
-					modifier:country_can_impose_same_lawgroup_bureaucracy_in_power_bloc_bool = yes
-					has_law = scope:law
-				}
-			}
-			can_impose_law_default = yes
-		}
-	} 
-
-	on_impose = { 
-	} 
-
 	ai_enact_weight_modifier = { #Petitions
 		value = 0
 		
 		if = {
 			limit = { ai_has_enact_weight_modifier_journal_entries = yes }
 			add = 750
-		}
+		}		
 	}
 }

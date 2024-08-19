@@ -150,19 +150,35 @@
 			limit = {
 				OR = {
 					c:DEI ?= this
-					has_government_type = gov_chartered_company
-				}
-			}
-			multiply = 0.1
-		}
-        if = {
-			limit = {
-				OR = {
 					c:BIC ?= this
 					has_government_type = gov_chartered_company
 				}
 			}
 			multiply = 0.1
+		}
+		if = {
+			limit = {
+				this.overlord ?= c:BIC
+				country_has_primary_culture = cu:british
+			}
+			multiply = 0.1
+		}
+		if = {
+			limit = {
+				this.overlord ?= c:DEI
+				country_has_primary_culture = cu:dutch
+			}
+			multiply = 0.1
+		}
+        if = {
+			limit = {
+			    game_date < 1890.1.1
+				OR = {
+					c:DEN ?= this
+					c:MCH ?= this
+				}
+			}
+			multiply = 0.4
 		}		
 
 		# Subjects should not start the game wanting independence unless we specifically script this strategy for them
@@ -343,7 +359,22 @@ ai_strategy_subject_strengthen_self = {
 				}
 			}
 			multiply = 0.25
-		}			
+		}
+
+        if = {
+			limit = {
+				this.overlord ?= c:BIC
+				country_has_primary_culture = cu:british
+			}
+			multiply = 0.25
+		}
+		if = {
+			limit = {
+				this.overlord ?= c:DEI
+				country_has_primary_culture = cu:dutch
+			}
+			multiply = 0.25
+		}		
 	}
 }
 

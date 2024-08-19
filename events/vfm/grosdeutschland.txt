@@ -105,7 +105,7 @@ grosdeutschland.1 = {
 
 		if = {
 			limit = {
-				tag = c:AUS
+				this = c:AUS
 			}
 			change_tag = BOH
 		}
@@ -740,11 +740,7 @@ grosdeutschland.3 = {
 				has_variable = former_austria 
 				is_capital = yes
 			} 
-			order_by = {
-				owner = {
-					add = GetTotalPopulation
-				}
-			}
+			order_by = state_population
 			position = 0
 			save_scope_as = war_goal_state
 			owner = {
@@ -1339,11 +1335,7 @@ grosdeutschland.5 = {
 				has_variable = former_austria 
 				is_capital = yes
 			} 
-			order_by = {
-				owner = {
-					add = GetTotalPopulation
-				}
-			}
+			order_by = state_population
 			position = 0
 			save_scope_as = war_goal_state
 			owner = {

@@ -218,7 +218,7 @@ journal_flavor_germany.102 = {
 journal_flavor_germany.3 = {
 	type = country_event
 	event_image = {
-		video = "ep1_printing_press"
+		video = "votp_monarch_holding_court"
 	}
 	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
 
@@ -236,10 +236,8 @@ journal_flavor_germany.3 = {
 	immediate = {
 	    random_country = {
 			limit = {
-				OR = {
-				    is_subject_of = ROOT
-					is_in_customs_union_with = ROOT
-				}
+				is_in_same_power_bloc = ROOT
+				NOT = { this = ROOT }
 				NOR = {
 					has_variable = var_member_two
 					has_variable = var_member_three
@@ -251,10 +249,8 @@ journal_flavor_germany.3 = {
 
 		random_country = {
 			limit = {
-				OR = {
-				    is_subject_of = ROOT
-					is_in_customs_union_with = ROOT
-				}
+				is_in_same_power_bloc = ROOT
+				NOT = { this = ROOT }
 				NOR = {
 					has_variable = var_member_one
 					has_variable = var_member_three
@@ -266,10 +262,8 @@ journal_flavor_germany.3 = {
 		
 		random_country = {
 			limit = {
-				OR = {
-				    is_subject_of = ROOT
-					is_in_customs_union_with = ROOT
-				}
+				is_in_same_power_bloc = ROOT
+				NOT = { this = ROOT }
 				NOR = {
 					has_variable = var_member_one
 					has_variable = var_member_two
@@ -288,6 +282,11 @@ journal_flavor_germany.3 = {
 				country = ROOT
 				setting = yes
 			}
+			add_modifier = {
+				name = generic_production_tech_research
+				months = long_modifier_time
+			}
+			trigger_event = { id = journal_flavor_germany.103 }
 		}
 		
 		scope:scope_random_member_two = {
@@ -299,11 +298,93 @@ journal_flavor_germany.3 = {
 				name = generic_production_tech_research
 				months = long_modifier_time
 			}
+			trigger_event = { id = journal_flavor_germany.104 }
 		}
 		
 		scope:scope_random_member_three = {
 		    change_relations = {
 				country = ROOT
+				value = 20
+			}
+			add_modifier = {
+				name = generic_production_tech_research
+				months = long_modifier_time
+			}
+			trigger_event = { id = journal_flavor_germany.104 }
+		}
+	}
+}
+
+journal_flavor_germany.103 = {
+	type = country_event
+	event_image = {
+		video = "votp_monarch_holding_court"
+	}
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	duration = 3
+	placement = ROOT
+	title = journal_flavor_germany.3.t
+	desc = journal_flavor_germany.103.d
+	flavor = journal_flavor_germany.3.f
+
+	trigger = {
+	}
+	
+	immediate = {
+	    power_bloc = {
+            power_bloc_leader = { save_scope_as = german_overlord }
+		}
+	}
+	
+	option = {
+		name = journal_flavor_germany.3.a
+		default_option = yes
+		show_as_tooltip = {
+		    set_owes_obligation_to = {
+				country = scope:german_overlord
+				setting = yes
+			}
+			add_modifier = {
+				name = generic_production_tech_research
+				months = long_modifier_time
+			}
+		}
+	}
+}
+
+journal_flavor_germany.104 = {
+	type = country_event
+	event_image = {
+		video = "votp_monarch_holding_court"
+	}
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	duration = 3
+	placement = ROOT
+	title = journal_flavor_germany.3.t
+	desc = journal_flavor_germany.103.d
+	flavor = journal_flavor_germany.3.f
+
+	trigger = {
+	}
+	
+	immediate = {
+	    power_bloc = {
+            power_bloc_leader = { save_scope_as = german_overlord }
+		}
+	}
+	
+	option = {
+		name = journal_flavor_germany.3.a
+		default_option = yes
+		show_as_tooltip = {
+		    change_relations = {
+				country = scope:german_overlord
 				value = 20
 			}
 			add_modifier = {

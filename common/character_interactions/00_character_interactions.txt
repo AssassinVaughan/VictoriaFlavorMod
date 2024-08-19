@@ -1,4 +1,4 @@
-﻿#icon					Path to icon for both right click menu and character panel buttons
+#icon					Path to icon for both right click menu and character panel buttons
 #clicksound				Clicksound for both right click menu and character panel buttons
 
 #						All scopes are character scopes with the interacting country stored as the actor
@@ -429,9 +429,7 @@ exile_character = {
 
 	possible = {
 		owner = {
-			NOT = {
-				has_law = law_type:law_protected_speech
-			}
+			NOT = { has_law = law_type:law_protected_speech }
 		}
 		OR = {
 			interest_group = {
@@ -443,38 +441,36 @@ exile_character = {
 		}
 		custom_tooltip = {
 			text = ideology_not_too_close_tt
-			NOT = {
-				OR = {
-					AND = {
-						owner.ruler = {
-							has_socialist_ideology = yes
-						}
+			NOR = {
+				AND = {
+					owner.ruler = {
 						has_socialist_ideology = yes
 					}
-					AND = {
-						owner.ruler = {
-							has_progressive_ideology = yes
-						}
+					has_socialist_ideology = yes
+				}
+				AND = {
+					owner.ruler = {
 						has_progressive_ideology = yes
 					}
-					AND = {
-						owner.ruler = {
-							has_liberal_ideology = yes
-						}
+					has_progressive_ideology = yes
+				}
+				AND = {
+					owner.ruler = {
 						has_liberal_ideology = yes
 					}
-					AND = {
-						owner.ruler = {
-							has_reactionary_ideology = yes
-						}
+					has_liberal_ideology = yes
+				}
+				AND = {
+					owner.ruler = {
 						has_reactionary_ideology = yes
 					}
-					AND = {
-						owner.ruler = {
-							has_conservative_ideology = yes
-						}
+					has_reactionary_ideology = yes
+				}
+				AND = {
+					owner.ruler = {
 						has_conservative_ideology = yes
 					}
+					has_conservative_ideology = yes
 				}
 			}
 		}
