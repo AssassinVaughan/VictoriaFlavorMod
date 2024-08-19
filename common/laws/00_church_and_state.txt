@@ -10,9 +10,8 @@ law_state_religion = {
 	
 	progressiveness = -50
 	
-	on_enact = {
-		recalculate_pop_ig_support = yes
 
+	on_activate = {
 		if = {
 			limit = {
 				any_scope_state = {
@@ -41,6 +40,7 @@ law_state_religion = {
 			}
 			remove_modifier = antireligious_policies
 		}
+		recalculate_pop_ig_support = yes
 	}
 	
 	religious_acceptance_rule = {
@@ -80,8 +80,8 @@ law_state_religion = {
 				limit = {
 					is_pop_type = clergymen
 				}
+				value = 0.25
 			}
-			value = 0.25
 		}
 	}
 	
@@ -144,8 +144,7 @@ law_jizya = {
 		}
 	}
 
-	on_enact = {
-		recalculate_pop_ig_support = yes
+	on_activate = {
 
 		custom_tooltip = {
 			text = jizya_add_tt
@@ -201,7 +200,7 @@ law_jizya = {
 				}
 			}
 		}
-
+        recalculate_pop_ig_support = yes
 	}
 	
 	religious_acceptance_rule = {
@@ -272,8 +271,7 @@ law_denominational_exclusion = {
 		law_theocracy
 	}
 	
-	on_enact = {
-		recalculate_pop_ig_support = yes
+	on_activate = {
 
 		if = {
 			limit = {
@@ -291,6 +289,7 @@ law_denominational_exclusion = {
 				}
 			}
 		}
+        recalculate_pop_ig_support = yes
 	}
 	
 	religious_acceptance_rule = {
@@ -371,10 +370,8 @@ law_freedom_of_conscience = {
 	disallowing_laws = {
 		law_theocracy
 	}
-	
-	on_enact = {
-		recalculate_pop_ig_support = yes
 
+	on_activate = {
 		if = {
 			limit = {
 				any_scope_state = {
@@ -404,8 +401,9 @@ law_freedom_of_conscience = {
 			}
 			remove_modifier = antireligious_policies
 		}
+		recalculate_pop_ig_support = yes
 	}
-	
+
 	religious_acceptance_rule = {
 		custom_tooltip = {
 			text = freedom_of_conscience_tt
@@ -513,10 +511,8 @@ law_total_separation = {
 			}
 		}
 	}
-	
-	on_enact = {
-		recalculate_pop_ig_support = yes
 
+	on_activate = {
 		if = {
 			limit = {
 				any_scope_state = {
@@ -545,6 +541,7 @@ law_total_separation = {
 			}
 			remove_modifier = antireligious_policies
 		}
+       	recalculate_pop_ig_support = yes
 	}
 	
 	religious_acceptance_rule = {
@@ -642,8 +639,8 @@ law_state_atheism = {
 		state_conversion_mult = 0.25
 		country_authority_add = 200
 	}
-	
-	on_enact = {
+
+	on_activate = {
 		set_state_religion = rel:atheist
 		add_modifier = {
 			name = antireligious_policies

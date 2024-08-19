@@ -124,6 +124,9 @@ je_alaska = {
 	is_shown_when_inactive = {
 		has_interest_marker_in_region = region_pacific_coast
 		has_technology_researched = nationalism
+		NOT = {
+			owns_entire_state_region = STATE_ALASKA
+		}
 	}
 
 	scripted_button = je_buy_alaska_button
@@ -134,9 +137,6 @@ je_alaska = {
 			is_incorporated = yes
 			region = sr:region_pacific_coast
 			is_homeland_of_country_cultures = ROOT
-		}
-		NOT = {
-			owns_entire_state_region = STATE_ALASKA
 		}
 		country_rank >= rank_value:great_power
 	}
