@@ -407,6 +407,7 @@ types politics_panel_types
 			layoutpolicy_vertical = expanding
 			spacing = 5
 			margin_left = 5
+			datacontext = "[Country.GetRuler]"
 		
 			character_portrait_medium_torso = {
 				using = tooltip_below
@@ -416,7 +417,7 @@ types politics_panel_types
 			}
 			
 			vbox = {
-				layoutpolicy_horizontal = preferred
+				layoutpolicy_horizontal = expanding
 				layoutpolicy_vertical = preferred
 
 				### TITLE + NAME
@@ -495,234 +496,320 @@ types politics_panel_types
 						layoutpolicy_vertical = expanding
 					}
 				}
-			}
-			hbox = {
-				layoutpolicy_horizontal = expanding
-				layoutpolicy_vertical = expanding
-				spacing = 15
-				margin_left = 5
-				margin_right = 5
 			
 				### HEIR
-				vbox = {
+				hbox = {
 					layoutpolicy_horizontal = expanding
-					layoutpolicy_vertical = shrinking
+					layoutpolicy_vertical = preferred
 					margin_bottom = 10
 					visible = "[Country.HasHeir]"
-					datacontext = "[AccessPlayer.AccessHeir]"
-
-					textbox = {
+					
+					character_portrait_small = {
+						datacontext = "[AccessPlayer.AccessHeir]"
+					}
+					
+					vbox = {
 						layoutpolicy_horizontal = expanding
-						size = { 0 25 }
-						datacontext = "[Character.GetInterestGroup]"
-						text = "[Character.GetPrimaryRoleTitle]"
-						default_format = "#title"
-						align = center|nobaseline
-					}
-					character_portrait_medium = {
-					}
-					hbox = {
-						### IG ICON
-						character_ig_button = {
-							margin_top = 30
-							size = { 40 40 }
-							blockoverride "in_government_icon" {}
+						layoutpolicy_vertical = preferred
+						spacing = -15
+						
+						textbox = {
+							raw_text = "#title [Country.GetHeir.GetPrimaryRoleTitle]#!"
+							layoutpolicy_horizontal = expanding
+							margin_left = 5
+							size = { 0 25 }
+							elide = right
+							align = left|nobaseline
 						}
-						### IDEOLOGY
-						icon = {
-							size = { 40 40 }
-							datacontext = "[Character.GetIdeology]"					
-							texture = "[Ideology.GetTexture]"
-							tooltipwidget = {
-								FancyTooltip_Ideology = {}
-							}
+						block "additional_info_top_right" {}
+						
+						textbox = {
+							layoutpolicy_horizontal = expanding
+							size = { 0 25 }
+							fontsize_min = 10
+							elide = right
+							margin_left = 5
+							margin_right = 0
+							datacontext = "[Country.GetHeir]"
+							raw_text = "#BOLD [Character.GetFullNameNoFormatting]#!"
+							default_format = "#title [Character.GetPrimaryRoleTitle]#! \n #BOLD [Character.GetFullNameNoFormatting]#!"
+							align = left|nobaseline
 						}
 					}
+					
 				}
-				#Overlord's overlord
-				vbox = {
+				### PARTY (REPUBLICS ONLY)
+				hbox = {
 					layoutpolicy_horizontal = expanding
-					layoutpolicy_vertical = shrinking
+					layoutpolicy_vertical = preferred
 					margin_bottom = 10
-					visible = "[Country.GetOverlord.IsSubject]"
-					datacontext = "[Country.GetOverlord.GetOverlord.GetRuler]"
-
-					textbox = {
-						layoutpolicy_horizontal = expanding
-						size = { 0 25 }
-						datacontext = "[Character.GetInterestGroup]"
-						text = "[Character.GetPrimaryRoleTitle]"
-						default_format = "#title"
-						align = center|nobaseline
+					visible = "[Not(Country.HasHeir)]"
+					
+					icon = {
+						size = { 40 40 }
+						visible = "[InterestGroup.GetParty.IsValid]"
+						datacontext = "[Character.GetInterestGroup]"					
+						texture = "[InterestGroup.GetParty.GetIcon]"
 					}
-					character_portrait_medium = {
-						blockoverride "show_hat" {}
-						blockoverride "highlight" {}
-						blockoverride "rank_icon" {}
-					}
-					hbox = {
-						### IG ICON
-						character_ig_button = {
-							margin_top = 30
-							size = { 40 40 }
-							blockoverride "in_government_icon" {}
-						}
-						### IDEOLOGY
-						icon = {
-							size = { 40 40 }
-							datacontext = "[Character.GetIdeology]"					
-							texture = "[Ideology.GetTexture]"
-							tooltipwidget = {
-								FancyTooltip_Ideology = {}
-							}
-						}
-					}
-				}
-				#Overlord
-				vbox = {
-					layoutpolicy_horizontal = expanding
-					layoutpolicy_vertical = shrinking
-					margin_bottom = 10
-					visible = "[Country.IsSubject]"
-					datacontext = "[Country.GetOverlord.GetRuler]"
-
-					textbox = {
-						layoutpolicy_horizontal = expanding
-						size = { 0 25 }
-						datacontext = "[Character.GetInterestGroup]"
-						text = "[Character.GetPrimaryRoleTitle]"
-						default_format = "#title"
-						align = center|nobaseline
-					}
-					character_portrait_medium = {
-						blockoverride "show_hat" {}
-						blockoverride "highlight" {}
-						blockoverride "rank_icon" {}
-					}
-					hbox = {
-						### IG ICON
-						character_ig_button = {
-							margin_top = 30
-							size = { 40 40 }
-							blockoverride "in_government_icon" {}
-						}
-						### IDEOLOGY
-						icon = {
-							size = { 40 40 }
-							datacontext = "[Character.GetIdeology]"					
-							texture = "[Ideology.GetTexture]"
-							tooltipwidget = {
-								FancyTooltip_Ideology = {}
-							}
-						}
-					}
-				}
-				vbox = {
-					layoutpolicy_horizontal = expanding
-					layoutpolicy_vertical = shrinking
-					margin_bottom = 10
-					visible = "[Country.MakeScope.Var('vice_president').IsSet]"
-					datacontext = "[GetPlayer.MakeScope.GetVariable('vice_president').GetCharacter]"
 					
 					textbox = {
 						layoutpolicy_horizontal = expanding
 						size = { 0 25 }
+						visible = "[InterestGroup.GetParty.IsValid]"
 						datacontext = "[Character.GetInterestGroup]"
-						text = "[Character.GetCustom('politician_role')]"
-						default_format = "#title"
-						align = center|nobaseline
-					}					
-					character_portrait_medium = {
-					}
-					hbox = {
-						### IG ICON
-						character_ig_button = {
-							margin_top = 30
-							size = { 40 40 }
-							blockoverride "in_government_icon" {}
-						}
-						### IDEOLOGY
-						icon = {
-							size = { 40 40 }
-							datacontext = "[Character.GetIdeology]"					
-							texture = "[Ideology.GetTexture]"
-							tooltipwidget = {
-								FancyTooltip_Ideology = {}
-							}
-						}
+						raw_text = "#title [InterestGroup.GetParty.GetName]#!"
+						default_format = "#title [InterestGroup.GetParty.GetName]#!"
+						align = left|nobaseline
 					}
 				}
-				vbox = {
-					layoutpolicy_horizontal = expanding
-					layoutpolicy_vertical = shrinking
-					margin_bottom = 10
-					visible = "[Country.MakeScope.Var('prime_minister').IsSet]"
-					datacontext = "[GetPlayer.MakeScope.GetVariable('prime_minister').GetCharacter]"
-
-					textbox = {
-						layoutpolicy_horizontal = expanding
-						size = { 0 25 }
-						datacontext = "[Character.GetInterestGroup]"
-						text = "[Character.GetCustom('politician_role')]"
-						default_format = "#title"
-						align = center|nobaseline
-					}					
-					character_portrait_medium = {
-					}
-					hbox = {
-						### IG ICON
-						character_ig_button = {
-							margin_top = 30
-							size = { 40 40 }
-							blockoverride "in_government_icon" {}
-						}
-						### IDEOLOGY
-						icon = {
-							size = { 40 40 }
-							datacontext = "[Character.GetIdeology]"					
-							texture = "[Ideology.GetTexture]"
-							tooltipwidget = {
-								FancyTooltip_Ideology = {}
-							}
-						}
-					}
-				}
-				vbox = {
-					layoutpolicy_horizontal = expanding
-					layoutpolicy_vertical = shrinking
-					margin_bottom = 10
-					visible = "[Country.MakeScope.Var('secretary_of_state').IsSet]"
-					datacontext = "[GetPlayer.MakeScope.GetVariable('secretary_of_state').GetCharacter]"
-
-					textbox = {
-						layoutpolicy_horizontal = expanding
-						size = { 0 25 }
-						datacontext = "[Character.GetInterestGroup]"
-						text = "[Character.GetCustom('politician_role')]"
-						default_format = "#title"
-						align = center|nobaseline
-					}					
-					character_portrait_medium = {
-					}
-					hbox = {
-						### IG ICON
-						character_ig_button = {
-							margin_top = 30
-							size = { 40 40 }
-							blockoverride "in_government_icon" {}
-						}
-						### IDEOLOGY
-						icon = {
-							size = { 40 40 }
-							datacontext = "[Character.GetIdeology]"					
-							texture = "[Ideology.GetTexture]"
-							tooltipwidget = {
-								FancyTooltip_Ideology = {}
-							}
-						}
-					}
-				}
+			}
+			### PRIME MINISTER
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				spacing = 5
+				size = { 50% -1 }
+				margin_right = 5
+				visible = "[Country.MakeScope.Var('prime_minister').IsSet]"
+				datacontext = "[Country.MakeScope.Var('prime_minister').GetCharacter]"
+							
 			
+				character_portrait_medium_torso = {
+					using = tooltip_below
+					blockoverride "show_hat" {}
+					blockoverride "highlight" {}
+					blockoverride "commander_order_icon" {}
+				}
+				
+				vbox = {
+					layoutpolicy_horizontal = expanding
+					layoutpolicy_vertical = preferred
+
+					### TITLE + NAME
+					vbox = {
+						layoutpolicy_horizontal = expanding
+						layoutpolicy_vertical = preferred
+						margin_top = 10
+						
+						hbox = {
+							layoutpolicy_horizontal = expanding
+							layoutpolicy_vertical = preferred
+							
+							textbox = {
+								text = "#title [Character.GetAllRoleNames]"
+								layoutpolicy_horizontal = expanding
+								size = { 0 16 }
+								elide = right
+								align = left|nobaseline
+							}
+							block "additional_info_top_right" {}
+						}
+						
+						textbox = {
+							raw_text = "#BOLD [Character.GetFullNameNoFormatting]#!"
+							layoutpolicy_horizontal = expanding
+							size = { 0 20 }
+							fontsize_min = 14
+							elide = right
+							align = left|nobaseline
+							using = fontsize_large
+						}
+					}
+					
+					### ICONS
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						layoutpolicy_vertical = preferred
+						spacing = 10
+						
+						### TRAITS
+						flowcontainer = {
+							datamodel = "[Character.AccessTraits]"
+							spacing = 2
+
+							item = {
+								icon = {
+									size = { 30 42 }
+									texture = "[CharacterTrait.GetTexture]"
+									using = tooltip_above
+
+									tooltipwidget = {
+										FancyTooltip_CharacterTrait = {}
+									}
+								}
+							}
+						}
+						
+						### IG ICON
+						character_ig_button = {
+							size = { 40 40 }
+							blockoverride "in_government_icon" {}
+						}
+						
+						### IDEOLOGY
+						icon = {
+							size = { 40 40 }
+							datacontext = "[Character.GetIdeology]"					
+							texture = "[Ideology.GetTexture]"
+							tooltipwidget = {
+								FancyTooltip_Ideology = {}
+							}
+						}
+						
+						widget = {
+							layoutpolicy_horizontal = expanding
+							layoutpolicy_vertical = expanding
+						}
+					}
+					
+					### PARTY
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						layoutpolicy_vertical = preferred
+						margin_bottom = 10
+						
+						icon = {
+							size = { 40 40 }
+							visible = "[InterestGroup.GetParty.IsValid]"
+							datacontext = "[Character.GetInterestGroup]"					
+							texture = "[InterestGroup.GetParty.GetIcon]"
+						}
+						
+						textbox = {
+							layoutpolicy_horizontal = expanding
+							size = { 0 25 }
+							visible = "[InterestGroup.GetParty.IsValid]"
+							datacontext = "[Character.GetInterestGroup]"
+							raw_text = "#title [InterestGroup.GetParty.GetName]#!"
+							default_format = "#title [InterestGroup.GetParty.GetName]#!"
+							align = left|nobaseline
+						}
+					}
+				}
+			}
+			### VICE PRESIDENT
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				spacing = 5
+				size = { 50% -1 }
+				margin_right = 5
+				visible = "[Country.MakeScope.Var('vice_president').IsSet]"
+				datacontext = "[Country.MakeScope.Var('vice_president').GetCharacter]"
+							
+			
+				character_portrait_medium_torso = {
+					using = tooltip_below
+					blockoverride "show_hat" {}
+					blockoverride "highlight" {}
+					blockoverride "commander_order_icon" {}
+				}
+				
+				vbox = {
+					layoutpolicy_horizontal = expanding
+					layoutpolicy_vertical = preferred
+
+					### TITLE + NAME
+					vbox = {
+						layoutpolicy_horizontal = expanding
+						layoutpolicy_vertical = preferred
+						margin_top = 10
+						
+						hbox = {
+							layoutpolicy_horizontal = expanding
+							layoutpolicy_vertical = preferred
+							
+							textbox = {
+								text = "#title [Character.GetAllRoleNames]"
+								layoutpolicy_horizontal = expanding
+								size = { 0 16 }
+								elide = right
+								align = left|nobaseline
+							}
+							block "additional_info_top_right" {}
+						}
+						
+						textbox = {
+							raw_text = "#BOLD [Character.GetFullNameNoFormatting]#!"
+							layoutpolicy_horizontal = expanding
+							size = { 0 20 }
+							fontsize_min = 14
+							elide = right
+							align = left|nobaseline
+							using = fontsize_large
+						}
+					}
+					
+					### ICONS
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						layoutpolicy_vertical = preferred
+						spacing = 10
+						
+						### TRAITS
+						flowcontainer = {
+							datamodel = "[Character.AccessTraits]"
+							spacing = 2
+
+							item = {
+								icon = {
+									size = { 30 42 }
+									texture = "[CharacterTrait.GetTexture]"
+									using = tooltip_above
+
+									tooltipwidget = {
+										FancyTooltip_CharacterTrait = {}
+									}
+								}
+							}
+						}
+						
+						### IG ICON
+						character_ig_button = {
+							size = { 40 40 }
+							blockoverride "in_government_icon" {}
+						}
+						
+						### IDEOLOGY
+						icon = {
+							size = { 40 40 }
+							datacontext = "[Character.GetIdeology]"					
+							texture = "[Ideology.GetTexture]"
+							tooltipwidget = {
+								FancyTooltip_Ideology = {}
+							}
+						}
+						
+						widget = {
+							layoutpolicy_horizontal = expanding
+							layoutpolicy_vertical = expanding
+						}
+					}
+					
+					### PARTY
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						layoutpolicy_vertical = preferred
+						margin_bottom = 10
+						
+						icon = {
+							size = { 40 40 }
+							visible = "[InterestGroup.GetParty.IsValid]"
+							datacontext = "[Character.GetInterestGroup]"					
+							texture = "[InterestGroup.GetParty.GetIcon]"
+						}
+						
+						textbox = {
+							layoutpolicy_horizontal = expanding
+							size = { 0 25 }
+							visible = "[InterestGroup.GetParty.IsValid]"
+							datacontext = "[Character.GetInterestGroup]"
+							raw_text = "#title [InterestGroup.GetParty.GetName]#!"
+							default_format = "#title [InterestGroup.GetParty.GetName]#!"
+							align = left|nobaseline
+						}
+					}
+				}
 			}
 		}
 	}
@@ -739,6 +826,14 @@ types politics_panel_types
 			spacing = 10
 			datacontext = "[Country.GetGovernmentLegitimacyLevel]"
 			tooltip = "LEGITIMACY_LEVEL_ACTIVE_TOOLTIP"
+
+			icon = {
+				visible = "[LessThan_int32(Country.GetGovernmentLegitimacy, '(int32)25')]"
+				size = { 25 25 }
+				using = tooltip_above
+				tooltip = "ILLEGITIMATE_GOVERNMENT_WARNING"
+				texture = "gfx/interface/icons/generic_icons/warning.dds"
+			}
 
 			block "text" {
 				textbox = {
@@ -957,9 +1052,7 @@ types politics_panel_types
 						
 						blockoverride "text" {
 							textbox = {
-								layoutpolicy_horizontal = expanding
-								size = { 0 25 }
-								using = fontsize_large
+								autoresize = yes
 								raw_text = "[LegitimacyLevel.GetNameNoFormatting|v] #variable [Country.GetGovernmentLegitimacy]#!"
 								align = center|nobaseline
 								elide = right
@@ -1559,45 +1652,97 @@ types politics_panel_types
 										}
 									}
 
-									### POLITICAL MOVEMENTS
 									vbox = {
 										layoutpolicy_horizontal = expanding
 										layoutpolicy_vertical = preferred
-										
-										default_header_clean_faded = {
-											layoutpolicy_horizontal = expanding
-											size = { 0 44 }
-											blockoverride "text" {
-												text = "POLITICAL_MOVEMENTS"
-											}
-										}
-										
+
+										### POLITICAL MOVEMENTS
 										vbox = {
 											layoutpolicy_horizontal = expanding
 											layoutpolicy_vertical = preferred
-											visible = "[Not(IsDataModelEmpty(AccessPlayer.AccessPoliticalMovements))]"
-											datamodel = "[AccessPlayer.AccessPoliticalMovements]"
-											spacing = 10
-											margin = { 10 10 }
+											
+											default_header_clean_faded = {
+												layoutpolicy_horizontal = expanding
+												size = { 0 44 }
+												blockoverride "text" {
+													text = "POLITICAL_MOVEMENTS"
+												}
+											}
+											
+											vbox = {
+												layoutpolicy_horizontal = expanding
+												layoutpolicy_vertical = preferred
+												visible = "[Not(IsDataModelEmpty(AccessPlayer.AccessPoliticalMovements))]"
+												datamodel = "[AccessPlayer.AccessPoliticalMovements]"
+												spacing = 10
+												margin = { 10 10 }
 
-											item = {
-												politics_panel_political_movement_item = {}
+												item = {
+													politics_panel_political_movement_item = {}
+												}
+											}
+											
+											empty_state_dynamic_width = {
+												layoutpolicy_vertical = expanding
+												size = { 0 50 }
+												visible = "[IsDataModelEmpty(AccessPlayer.AccessPoliticalMovements)]"
+												text = "NO_POLITICAL_MOVEMENTS"
+											}
+											
+											widget = {
+												visible = "[Not(IsDataModelEmpty(AccessPlayer.AccessPoliticalMovements))]"
+												layoutpolicy_horizontal = expanding
+												layoutpolicy_vertical = expanding
 											}
 										}
-										
-										empty_state_dynamic_width = {
-											layoutpolicy_vertical = expanding
-											size = { 0 0 }
-											visible = "[IsDataModelEmpty(AccessPlayer.AccessPoliticalMovements)]"
-											text = "NO_POLITICAL_MOVEMENTS"
-										}
-										
-										widget = {
-											visible = "[Not(IsDataModelEmpty(AccessPlayer.AccessPoliticalMovements))]"
+
+										### POLITICAL LOBBIES
+										vbox = {
+											name = "tutorial_highlight_lobbies_list"
 											layoutpolicy_horizontal = expanding
-											layoutpolicy_vertical = expanding
+											layoutpolicy_vertical = preferred
+											
+											default_header_clean_faded = {
+												layoutpolicy_horizontal = expanding
+												size = { 0 44 }
+												blockoverride "text" {
+													text = "POLITICAL_LOBBIES"
+												}
+											}
+											
+											vbox = {
+												layoutpolicy_horizontal = expanding
+												layoutpolicy_vertical = preferred
+												visible = "[Not(IsDataModelEmpty(AccessPlayer.GetPoliticalLobbies))]"
+												datamodel = "[AccessPlayer.GetPoliticalLobbies]"
+												spacing = 10
+												margin = { 10 10 }
+
+												item = {
+													political_lobby_list_item = {
+														widgetid = "[Concatenate('tutorial_highlight_lobby_', PoliticalLobby.GetNameNoFormatting)]"
+														layoutpolicy_horizontal = expanding
+													}
+												}
+											}
+											
+											empty_state_dynamic_width = {
+												layoutpolicy_vertical = expanding
+												size = { 0 50 }
+
+												visible = "[IsDataModelEmpty(AccessPlayer.GetPoliticalLobbies)]"
+												text = "NO_POLITICAL_LOBBIES"
+											}
+											
+											widget = {
+												visible = "[Not(IsDataModelEmpty(AccessPlayer.GetPoliticalLobbies))]"
+												layoutpolicy_horizontal = expanding
+												layoutpolicy_vertical = expanding
+											}
 										}
 									}
+
+									
 									
 									vertical_divider_full = {
 										size = { 2 0 }
@@ -1751,8 +1896,7 @@ types politics_panel_types
 												using = tooltip_above
 											}
 										}
-
-										
+																				
 										widget = {
 											layoutpolicy_horizontal = expanding
 											layoutpolicy_vertical = expanding
@@ -1937,6 +2081,10 @@ types politics_panel_types
 													blockoverride "empty_state_visibility" {
 														visible = "[Not(AccessPlayer.HasElectionTrendData)]"
 													}
+													blockoverride "everything_that_is_not_empty_state_visibility" {
+														visible = "[AccessPlayer.HasElectionTrendData]"
+													}
+
 													blockoverride "empty_state_text" {
 														text = "GRAPH_NOT_INITIALIZED"
 													}
