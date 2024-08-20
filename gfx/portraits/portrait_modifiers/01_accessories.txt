@@ -1376,19 +1376,19 @@
                         has_template = agitator_susan_b_anthony
                         has_template = agitator_emiliano_zapata
                     }
-                    OR = {
-                        AND = {
-                            home_country ?= {
-                                c:AUS ?= this
-                            }
-                        }
-                        AND = {
-                            home_country ?= {
-                                was_formed_from = AUS
-                            }
+                    home_country ?= {
+                        OR = {
+                            c:AUS ?= this
+                            was_formed_from = AUS
                         }
                     }
-                    military_clothes_trigger = yes
+                    OR = {
+                        military_clothes_trigger = yes
+                        AND = {
+                            has_role = politician
+                            is_interest_group_type = ig_armed_forces
+                        }
+                    }
                 }
             }
         }
