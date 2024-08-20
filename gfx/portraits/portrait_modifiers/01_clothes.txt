@@ -5210,17 +5210,8 @@ home_country = {
             base = 0
             modifier = {
                 add = 10001
+                austrian_clothes_trigger = yes
                 scope:character ?= {
-                    home_country ?= {
-                        OR = {
-                            AND = {
-                                c:AUS ?= this
-                                is_subject = no # preventing uniform conflicts if AUS becomes a subject of another country with puppet uniforms
-                            }
-                            is_subject_of = c:AUS
-                            was_formed_from = AUS
-                        }
-                    }
                     age > 10
                     OR = {
                         AND = {
@@ -5279,20 +5270,9 @@ home_country = {
             base = 0
             modifier = {
                 add = 10002
+                austrian_clothes_trigger = yes
                 scope:character ?= {
-                    home_country ?= {
-                        OR = {
-                            AND = {
-                                c:AUS ?= this
-                                is_subject = no # preventing uniform conflicts if AUS becomes a subject of another country with puppet uniforms
-                            }
-                            is_subject_of = c:AUS
-                            was_formed_from = AUS
-                        }
-                    }
-                    scope:character ?= {
-                        age > 10
-                    }
+                    age > 10
                     OR = {
                         AND = {
                             is_ruler = yes
@@ -5357,20 +5337,9 @@ home_country = {
                 add = 12000
                 has_dlc_feature = ep1_cosmetics
                 late_military_clothes_trigger = yes
+                austrian_clothes_trigger = yes
                 scope:character ?= {
-                    home_country ?= {
-                        OR = {
-                            AND = {
-                                c:AUS ?= this
-                                is_subject = no # preventing uniform conflicts if AUS becomes a subject of another country with puppet uniforms
-                            }
-                            is_subject_of = c:AUS
-                            was_formed_from = AUS
-                        }
-                    }
-                    scope:character ?= {
-                        age > 10
-                    }
+                    age > 10
                     AND = {
                         has_role = politician
                         is_interest_group_type = ig_armed_forces
@@ -7693,29 +7662,17 @@ indigenous_oceanic_pop_clothes = {
                 add = 10000
                 OR = {
                     AND = {
-                        scope:pop ?= {
-                            home_country ?= {
-                                OR = {
-                                    c:AUS ?= this
-                                    was_formed_from = AUS
-                                }
-                            }
-                        }      
+                        austrian_clothes_pop_trigger = yes
                         OR = {
                             soldier_clothes_pop_trigger = yes
                             officers_clothes_pop_trigger = yes
                         }
                     }
                     AND = {
+                        austrian_clothes_trigger = yes
                         scope:character ?= {
                             age >= define:NCharacters|ADULT_AGE
                             has_role = general
-                            home_country ?= {
-                                OR = {
-                                    c:AUS ?= this
-                                    was_formed_from = AUS
-                                }
-                            }
                         }       
                     }
                 }
@@ -7765,14 +7722,7 @@ indigenous_oceanic_pop_clothes = {
                 OR = {
                     AND = {
                         late_military_clothes_pop_trigger = yes
-                        scope:pop ?= {
-                            home_country ?= {
-                                OR = {
-                                    c:AUS ?= this
-                                    was_formed_from = AUS
-                                }
-                            }
-                        }      
+                        austrian_clothes_pop_trigger = yes
                         OR = {
                             soldier_clothes_pop_trigger = yes
                             officers_clothes_pop_trigger = yes
@@ -7780,15 +7730,10 @@ indigenous_oceanic_pop_clothes = {
                     }
                     AND = {
                         late_military_clothes_trigger = yes
+                        austrian_clothes_trigger = yes
                         scope:character ?= {
                             age >= define:NCharacters|ADULT_AGE
                             has_role = general
-                            home_country ?= {
-                                OR = {
-                                    c:AUS ?= this
-                                    was_formed_from = AUS
-                                }
-                            }
                         }       
                     }
                 }
