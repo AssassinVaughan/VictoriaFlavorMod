@@ -7779,17 +7779,16 @@ indigenous_oceanic_pop_clothes = {
             base = 0
             modifier = {
                 add = 10000
-                    scope:character ?= {
-                        age >= define:NCharacters|ADULT_AGE
-                        has_role = admiral
-                        home_country ?= {
-                            OR = {
-                                c:AUS ?= this
-                                was_formed_from = AUS
-                            }
+                scope:character ?= {
+                    age >= define:NCharacters|ADULT_AGE
+                    has_role = admiral
+                    home_country ?= {
+                        OR = {
+                            c:AUS ?= this
+                            was_formed_from = AUS
                         }
-                    }  
-                }
+                    }
+                }  
             }
         }
     }
