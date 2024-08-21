@@ -3566,44 +3566,66 @@ home_country = {
             base = 0
             modifier = {
                 add = 2000
-                american_clothes_trigger = no
-                arabic_clothes_trigger = no
-                british_empire_clothes_trigger = no
-                french_empire_clothes_trigger = no
                 OR = {
-                    european_clothes_trigger = yes
                     AND = {
-                        exists = scope:character
-                        scope:character = {
-                            OR = {
-                                culture = cu:cherokee
-                                culture = cu:muskogean
+                        american_clothes_trigger = no
+                        arabic_clothes_trigger = no
+                        british_empire_clothes_trigger = no
+                        french_empire_clothes_trigger = no
+                        OR = {
+                            european_clothes_trigger = yes
+                            AND = {
+                                exists = scope:character
+                                scope:character = {
+                                    OR = {
+                                        culture = cu:cherokee
+                                        culture = cu:muskogean
+                                    }
+                                }
+                            }
+                            african_diaspora_clothes_trigger = yes
+                        }
+                        OR = {
+                            scope:character ?= {
+                                has_role = general
+                            }
+                            AND = {
+                                armed_forces_clothes_trigger = yes
+                                politician_clothes_trigger = yes
+                                monarchy_clothes_trigger = no
                             }
                         }
-                    }
-                    african_diaspora_clothes_trigger = yes
-                }
-                OR = {
-                    scope:character ?= {
-                        has_role = general
+                        scope:character = {
+                            NOT = {
+                                AND = {
+                                    exists = c:PRU
+                                    exists = home_country
+                                    home_country = c:PRU 
+                                }
+                            }
+                            owner ?= {
+                                has_dlc_feature = ep1_cosmetics
+                                has_technology_researched = bolt_action_rifles
+                            }
+                        }
+
                     }
                     AND = {
-                        armed_forces_clothes_trigger = yes
-                        politician_clothes_trigger = yes
-                        monarchy_clothes_trigger = no
-                    }
-                }
-                scope:character = {
-                    NOT = {
-                        AND = {
-                            exists = c:PRU
-                            exists = home_country
-                            home_country = c:PRU 
+                        OR = {
+                            integrated_south_american_natives_pop_trigger = yes
+                            european_clothes_pop_trigger = yes
+                            african_diaspora_pop_clothes_trigger = yes
                         }
-                    }
-                    owner ?= {
-                        has_dlc_feature = ep1_cosmetics
-                        has_technology_researched = bolt_action_rifles
+                        OR = {
+                            soldier_clothes_pop_trigger = yes
+                            officers_clothes_pop_trigger = yes
+                        }
+                        scope:pop ?= {
+                            owner ?= {
+                                has_dlc_feature = ep1_cosmetics
+                                has_technology_researched = bolt_action_rifles
+                            }
+                        } 
                     }
                 }
             }
