@@ -22,24 +22,21 @@
 }
 
 age_of_caudillos_trigger = {
-	exists = scope:character
-	scope:character = {
+	scope:character ?= {
 		NOR = {
 			has_variable = is_francia
 			has_variable = is_rocafuerte
 		}
-		exists = home_country
-		home_country = {
+		home_country ?= {
 			has_modifier = age_of_caudillos_modifier	
 		}
 	}
 }
 
 brazilian_clothes_trigger = {
-	exists = scope:character
-	scope:character = {
-		exists = home_country
-		home_country = {
+	scope:character ?= {
+		exists = c:BRZ
+		home_country ?= {
 			OR = {
 				AND = {
 					c:BRZ = this
@@ -52,10 +49,9 @@ brazilian_clothes_trigger = {
 }
 
 brazilian_clothes_pop_trigger = {
-	exists = scope:pop
-	scope:pop = {
-		exists = home_country
-		home_country = {
+	scope:pop ?= {
+		exists = c:BRZ
+		home_country ?= {
 			OR = {
 				AND = {
 					c:BRZ = this
@@ -67,136 +63,85 @@ brazilian_clothes_pop_trigger = {
 	}
 }
 
-brazilian_clothes_p_trigger = {
-	exists = scope:pop
-	scope:pop = {
-		exists = c:BRZ
-		home_country = {
-			OR = {
-				AND = {
-					c:BRZ = this
-					is_subject = yes # preventing uniform conflicts if BRZ becomes a subject of another country with puppet uniforms
-				}
-				is_subject_of = c:BRZ
-			}		
-		}
-	}
-}
-
 mexican_monarch_clothes_trigger = {
-	exists = scope:character
-	scope:character = {
+	scope:character ?= {
 		AND = {
 			is_ruler = yes
-			exists = home_country
-			home_country = {
-			exists = c:MEX
-			c:MEX = this
-			is_subject = no
-		}
-     			exists = home_country
-				home_country = {
+			home_country ?= {
+				c:MEX ?= this
+				is_subject = no
      			has_law = law_type:law_monarchy
-			
 			}
 		}
 	}
 }
 
 caxias_clothes_trigger = {
-	exists = scope:character
-	scope:character = {
-		AND = {
-			has_role = general
-			has_variable = is_caxias
-			exists = home_country
-			home_country = {
-			exists = c:BRZ
-			c:BRZ = this
-			}			
+	scope:character ?= {
+		has_role = general
+		has_variable = is_caxias
+		home_country ?= {
+			c:BRZ ?= this
 		}
 	}				
 }
 
 goncalves_da_silva_clothes_trigger = {
-	exists = scope:character
-	scope:character = {
-			has_variable = is_goncalves_da_silva			
+	scope:character ?= {
+		has_variable = is_goncalves_da_silva			
 	}				
 }
 
 hispanic_clothes_trigger = {
-	exists = scope:character
-	scope:character = {
-		exists = home_country
-		home_country = {
+	scope:character ?= {
+		home_country ?= {
 			coa_def_hispanic_american_trigger = yes
 		}
 	}
 }
 
 hispanic_clothes_pop_trigger = {
-	exists = scope:pop
-	scope:pop = {
-		exists = home_country
-		home_country = {
+	scope:pop ?= {
+		home_country ?= {
 			coa_def_hispanic_american_trigger = yes		
 		}
 	}
 }
 
 dictator_clothes_trigger = {
-	exists = scope:character
-	scope:character = {
-		AND = {
-			is_ruler = yes
-			exists = home_country
-			home_country = {
-			OR = {
-			AND = {exists = c:ARG
-			c:ARG = this}
-			}
+	scope:character ?= {
+		is_ruler = yes
+		home_country ?= {
+			c:ARG ?= this
 			is_subject = no
-			has_law = law_type:law_autocracy
-			}		
+			coa_autocracy_trigger = yes
 		}
 	}
 }
 
 south_american_clothes_trigger = {
-	exists = scope:character
-	scope:character = {
-		AND = {
-			exists = home_country
-			home_country = {
+	scope:character ?= {
+		home_country ?= {
 			coa_def_hispanic_american_trigger = yes
-			}				
 		}
 	}
 }
 
 south_american_dictator_clothes_trigger = {
-	exists = scope:character
-	scope:character = {
-		AND = {
-			is_ruler = yes
-			OR = {
-			exists = home_country
-			home_country = {
-			has_law = law_type:law_autocracy
+	scope:character ?= {
+		is_ruler = yes
+		OR = {
+			home_country ?= {
+				coa_autocracy_trigger = yes
 			}
 			has_role = general
-			}			
-			exists = home_country
-			home_country = {
+		}
+		home_country ?= {
 			coa_def_hispanic_american_trigger = yes
-			NOT = {c:BRZ = this}
-			OR = {
-				has_law = law_type:law_presidential_republic
-				has_law = law_type:law_parliamentary_republic
-				has_law = law_type:law_council_republic
-				}
+			NOT = {
+				c:BRZ ?= this
 			}
+			coa_republic_trigger = yes
 		}
 	}
 }
@@ -204,51 +149,39 @@ south_american_dictator_clothes_trigger = {
 oribe_clothes_trigger = {
     exists = scope:character
     scope:character = {
-        AND = {
-			has_variable = is_oribe
-            OR = {
-            is_ruler = yes
-            has_role = general
-            has_role = admiral
-            }
-            exists = home_country
-			home_country = {
-            exists = c:URU
-            c:URU = this
-            OR = {
-                has_law = law_type:law_presidential_republic
-                has_law = law_type:law_parliamentary_republic
-                has_law = law_type:law_council_republic
-                }
-            }
-        }
+		has_variable = is_oribe
+		OR = {
+			is_ruler = yes
+			has_role = general
+			has_role = admiral
+		}
+		home_country ?= {
+			c:URU ?= this
+			coa_republic_trigger = yes
+		}
     }
 }
 
 south_american_admiral_clothes_trigger = {
-	exists = scope:character
-	scope:character = {
-		AND = {
-			has_role = admiral
-			exists = home_country
-			home_country = {
+	scope:character ?= {
+		has_role = admiral
+		home_country ?= {
 			coa_def_hispanic_american_trigger = yes
-			NOT = {c:BRZ = this}
+			NOT = {
+				c:BRZ ?= this
 			}
 		}
 	}
 }
 
 south_american_admiral_headgear_trigger = {
-	exists = scope:character
-	scope:character = {
-		AND = {
-			has_role = admiral
-			exists = home_country
-			home_country = {
+	scope:character ?= {
+		has_role = admiral
+		home_country ?= {
 			coa_def_hispanic_american_trigger = yes
-			NOT = {c:BRZ = this}
-			}			
+			NOT = {
+				c:BRZ ?= this
+			}
 		}
 	}
 }
@@ -284,11 +217,9 @@ austrian_clothes_pop_trigger = {
 }
 
 british_empire_clothes_trigger = {
-	exists = scope:character
-	scope:character = {
+	scope:character ?= {
 		exists = c:GBR
-		exists = home_country
-		home_country = {
+		home_country ?= {
 			OR = {
 				AND = {
 					c:GBR = this
@@ -301,8 +232,7 @@ british_empire_clothes_trigger = {
 }
 
 british_empire_clothes_pop_trigger = {
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		exists = c:GBR
 		home_country = {
 			OR = {
@@ -317,8 +247,7 @@ british_empire_clothes_pop_trigger = {
 }
 
 british_empire_clothes_p_trigger = {
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		exists = c:GBR
 		home_country = {
 			OR = {
@@ -333,11 +262,9 @@ british_empire_clothes_p_trigger = {
 }
 
 gaucho_clothes_trigger = {
-	exists = scope:character
-	scope:character = {
+	scope:character ?= {
 		exists = c:PNI
-		exists = home_country
-		home_country = {
+		home_country ?= {
 			OR = {
 				AND = {
 					c:PNI = this
@@ -350,8 +277,7 @@ gaucho_clothes_trigger = {
 }
 
 gaucho_clothes_pop_trigger = {
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		exists = c:PNI
 		home_country = {
 			OR = {
@@ -366,11 +292,9 @@ gaucho_clothes_pop_trigger = {
 }
 
 french_empire_clothes_trigger = {
-	exists = scope:character
-	scope:character = {
+	scope:character ?= {
 		exists = c:FRA
-		exists = home_country
-		home_country = {
+		home_country ?= {
 			OR = {
 				AND = {
 					c:FRA = this
@@ -383,8 +307,7 @@ french_empire_clothes_trigger = {
 }
 
 french_empire_clothes_pop_trigger = {
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		exists = c:FRA
 		home_country = {
 			OR = {
@@ -399,11 +322,9 @@ french_empire_clothes_pop_trigger = {
 }
 
 russian_empire_clothes_trigger = {
-	exists = scope:character
-	scope:character = {
+	scope:character ?= {
 		exists = c:RUS
-		exists = home_country
-		home_country = {
+		home_country ?= {
 			OR = {
 				AND = {
 					c:RUS = this
@@ -416,8 +337,7 @@ russian_empire_clothes_trigger = {
 }
 
 russian_empire_clothes_pop_trigger = {
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		exists = c:RUS
 		home_country = {
 			OR = {
@@ -432,10 +352,8 @@ russian_empire_clothes_pop_trigger = {
 }
 
 german_clothes_trigger = {
-	exists = scope:character
-	scope:character = {
-		exists = home_country
-		home_country = {
+	scope:character ?= {
+		home_country ?= {
 			is_subject = no
 			OR = {
 				country_has_primary_culture = cu:north_german
@@ -446,8 +364,7 @@ german_clothes_trigger = {
 }
 
 german_clothes_pop_trigger = {
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		home_country = {
 			is_subject = no
 			OR = {
@@ -460,8 +377,7 @@ german_clothes_pop_trigger = {
 
 
 native_american_clothes_trigger = {
-	exists = scope:character
-	scope:character = {
+	scope:character ?= {
 		culture = {
 			has_discrimination_trait = indigenous_american_heritage
 		}
@@ -469,8 +385,7 @@ native_american_clothes_trigger = {
 }
 
 native_north_american_clothes_trigger = {
-	exists = scope:character
-	scope:character = {
+	scope:character ?= {
 		culture = {
 			has_discrimination_trait = north_american_group
 		}
@@ -496,15 +411,13 @@ jewish_clothes_pop_trigger = {
 }
 
 hindu_clothes_pop_trigger = {
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		religion = rel:hindu
 	}
 }
 
 african_diaspora_clothes_trigger = {
-	exists = scope:character
-	scope:character = {
+	scope:character ?= {
 		OR = {
 			culture = cu:afro_caribbean
 			culture = cu:afro_antillean
@@ -516,8 +429,7 @@ african_diaspora_clothes_trigger = {
 }
 
 african_diaspora_pop_clothes_trigger = {
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		OR = {
 			culture = cu:afro_caribbean
 			culture = cu:afro_antillean
@@ -529,11 +441,9 @@ african_diaspora_pop_clothes_trigger = {
 }
 
 japanese_imperial_clothes_trigger = {
-	exists = scope:character
-	scope:character = {
+	scope:character ?= {
 		is_ruler = yes
-		exists = home_country
-     	home_country = {
+     	home_country ?= {
      		has_law = law_type:law_monarchy
      	}
 		OR = {
@@ -563,8 +473,7 @@ japanese_imperial_clothes_trigger = {
 }
 
 chinese_imperial_clothes_trigger = {
-	exists = scope:character
-	scope:character = {
+	scope:character ?= {
 		is_ruler = yes
 		exists = home_country
      	home_country = {
@@ -583,8 +492,7 @@ chinese_imperial_clothes_trigger = {
 }
 
 chinese_manchu_queue_hairstyle_character_trigger = { # hairsyle for Manchu characters not living living under discriminatory Han rule, and Han characters living under discriminatory Manchu rule
-	exists = scope:character
-	scope:character = {
+	scope:character ?= {
 		exists = home_country
 		OR = {
 			AND = {
@@ -622,8 +530,7 @@ chinese_manchu_queue_hairstyle_character_trigger = { # hairsyle for Manchu chara
 }
 
 chinese_manchu_queue_hairstyle_pops_trigger = { # hairsyle for Manchu pops not living living under discriminatory Han rule, and Han pops living under discriminatory Manchu rule
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		OR = {
 			AND = {
 				home_country = { 
@@ -660,8 +567,7 @@ chinese_manchu_queue_hairstyle_pops_trigger = { # hairsyle for Manchu pops not l
 }
 
 chinese_court_clothes_trigger = {
-	exists = scope:character
-	scope:character = {
+	scope:character ?= {
 		NOT = {
 			AND = {
 				exists = home_country
@@ -693,8 +599,7 @@ chinese_court_clothes_trigger = {
 }
 
 chinese_court_clothes_pop_trigger = {
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		culture = {
 			OR = {
 				has_discrimination_trait = sinosphere
@@ -710,8 +615,7 @@ chinese_court_clothes_pop_trigger = {
 
 
 african_clothes_trigger = {
-	exists = scope:character
-	scope:character = {
+	scope:character ?= {
 		culture = {
 			OR = {
 				has_discrimination_trait = central_african_culture_group
@@ -725,8 +629,7 @@ african_clothes_trigger = {
 }
 
 arabic_fez_trigger = {
-	exists = scope:character
-	scope:character = {
+	scope:character ?= {
 		exists = home_country
 		OR = {
 			home_country = {
@@ -753,8 +656,7 @@ arabic_fez_trigger = {
 }
 
 arabic_military_fez_pop_trigger = {
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		OR = {
 			OR = {
 				home_country = {
@@ -806,8 +708,7 @@ arabic_military_fez_pop_trigger = {
 }
 
 arabic_clothes_trigger = {
-	exists = scope:character
-	scope:character = {
+	scope:character ?= {
 		OR = {
 			culture = {
 				OR = {
@@ -837,8 +738,7 @@ arabic_clothes_trigger = {
 }
 
 ethiopian_clothes_trigger = {
-	exists = scope:character
-	scope:character = {
+	scope:character ?= {
 		culture = {
 			has_discrimination_trait = ethiopian
 		}
@@ -846,8 +746,7 @@ ethiopian_clothes_trigger = {
 }
 
 european_clothes_trigger = {
-	exists = scope:character
-	scope:character = {
+	scope:character ?= {
 		OR = {
 			AND = {
 				culture = cu:japanese
@@ -890,8 +789,7 @@ european_clothes_trigger = {
 }
 
 indian_clothes_trigger = {
-	exists = scope:character
-	scope:character = {
+	scope:character ?= {
 		OR = {
 			culture = {
 				has_discrimination_trait = south_asian_heritage
@@ -902,8 +800,7 @@ indian_clothes_trigger = {
 }
 
 siamese_clothes_trigger = { #Pretty sure this is actual burmese
-	exists = scope:character
-	scope:character = {
+	scope:character ?= {
 		culture = {
 			has_discrimination_trait = southeast_asian_heritage
 		}
@@ -911,10 +808,8 @@ siamese_clothes_trigger = { #Pretty sure this is actual burmese
 }
 
 american_clothes_trigger = {
-	exists = scope:character
-	scope:character = {
-		exists = home_country
-		home_country = {
+	scope:character ?= {
+		home_country ?= {
 			exists = c:USA
 			c:USA = this
 			is_subject = no
@@ -923,8 +818,7 @@ american_clothes_trigger = {
 }
 
 american_clothes_pop_trigger = {
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		home_country = {
 			exists = c:USA
 			c:USA = this
@@ -934,8 +828,7 @@ american_clothes_pop_trigger = {
 }
 
 politician_clothes_trigger = {
-	exists = scope:character
-	scope:character = {
+	scope:character ?= {
 		AND = {
 			has_role = politician
 		}
@@ -943,8 +836,7 @@ politician_clothes_trigger = {
 }
 
 recognized_country_trigger = {
-	exists = scope:character
-	scope:character = {
+	scope:character ?= {
 		exists = home_country
 		OR = {
 			home_country = {
@@ -966,8 +858,7 @@ recognized_country_trigger = {
 }
 
 recognized_country_pop_trigger = {
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		OR = {
 			home_country = {
 				OR = {
@@ -997,29 +888,25 @@ christian_clothes_trigger = {
 }
 
 devout_clothes_trigger = {
-	exists = scope:character
-	scope:character = {
+	scope:character ?= {
 		is_interest_group_type = ig_devout
 	}
 }
 
 armed_forces_clothes_trigger = {
-	exists = scope:character
-	scope:character = {
+	scope:character ?= {
 		is_interest_group_type = ig_armed_forces
 	}
 }
 
 ruler_clothes_trigger = {
-	exists = scope:character
-	scope:character = {
+	scope:character ?= {
 		is_ruler = yes
 	}
 }
 
 military_clothes_trigger = {
-	exists = scope:character
-	scope:character = {
+	scope:character ?= {
 		OR = {
 			has_role = general
 			has_role = admiral
@@ -1028,8 +915,7 @@ military_clothes_trigger = {
 }
 
 monarchy_clothes_trigger = {
-	exists = scope:character
-	scope:character = {
+	scope:character ?= {
 		exists = owner
 		OR = {
 	     	is_ruler = yes
@@ -1042,8 +928,7 @@ monarchy_clothes_trigger = {
 }
 
 republic_clothes_trigger = {
-	exists = scope:character
-	scope:character = {
+	scope:character ?= {
 		exists = home_country
 		is_ruler = yes
 		home_country = {
@@ -1053,15 +938,13 @@ republic_clothes_trigger = {
 }
 
 overweight_trigger = {
-	exists = scope:character
-	scope:character = {
+	scope:character ?= {
      	has_trait = expensive_tastes
      }
 }
 
 army_traits_trigger = {
-	exists = scope:character
-	scope:character = {
+	scope:character ?= {
 		OR = {
 			has_trait = resupply_commander
 			has_trait = surveyor
@@ -1088,8 +971,7 @@ army_traits_trigger = {
 }
 
 navy_traits_trigger = {
-	exists = scope:character
-	scope:character = {
+	scope:character ?= {
 		OR = {
 			has_trait = basic_naval_commander
 			has_trait = experienced_naval_commander
@@ -1105,8 +987,7 @@ navy_traits_trigger = {
 #Pop 
 
 east_asian_clothes_pop_trigger = {
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		NOR = { 
 			culture = cu:yakut 
 			culture = cu:siberian
@@ -1121,8 +1002,7 @@ east_asian_clothes_pop_trigger = {
 }
 
 central_asian_clothes_pop_trigger = {
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		culture = {
 			has_discrimination_trait = central_asian_heritage
 		}   
@@ -1130,8 +1010,7 @@ central_asian_clothes_pop_trigger = {
 }
 
 european_clothes_pop_trigger = {
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		culture = {
 			has_discrimination_trait = european_heritage
 		}
@@ -1142,8 +1021,7 @@ european_clothes_pop_trigger = {
 }
 
 arabic_clothes_pop_trigger = {
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		OR = {
 			culture = {
 				has_discrimination_trait = middle_eastern_heritage
@@ -1175,8 +1053,7 @@ indigenous_oceanic_clothes_trigger = {
 }
 
 circumpolar_clothes_pop_trigger = {
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		OR = {
 			culture = cu:inuit
 			culture = {
@@ -1188,16 +1065,14 @@ circumpolar_clothes_pop_trigger = {
 }
 
 sami_clothes_pop_trigger = {
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		culture = cu:sami
 	}
 }
 
 
 african_clothes_pop_trigger = {
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		culture = {
 			OR = {
 				has_discrimination_trait = central_african_culture_group
@@ -1211,8 +1086,7 @@ african_clothes_pop_trigger = {
 }
 
 native_american_clothes_pop_trigger = {
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		culture = {
 			has_discrimination_trait = indigenous_american_heritage
 		}   
@@ -1222,8 +1096,7 @@ native_american_clothes_pop_trigger = {
 bulnes_clothes_trigger = {
     exists = scope:character
 	scope:character = {
-		exists = home_country
-		home_country = {
+		home_country ?= {
 			exists = c:CHL
 			c:CHL = this
 		}
@@ -1232,8 +1105,7 @@ bulnes_clothes_trigger = {
 }  
 
 south_east_asia_clothes_pop_trigger = {
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		culture = {
 			has_discrimination_trait = southeast_asian_heritage
 		}   
@@ -1241,8 +1113,7 @@ south_east_asia_clothes_pop_trigger = {
 }
 
 south_american_clothes_character_trigger = {
-	exists = scope:character
-	scope:character = {
+	scope:character ?= {
 		OR = {
 			culture = cu:platinean
 			culture = cu:brazilian
@@ -1256,8 +1127,7 @@ south_american_clothes_character_trigger = {
 }
 
 south_american_clothes_pop_trigger = {
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		OR = {
 			culture = cu:platinean
 			culture = cu:brazilian
@@ -1271,8 +1141,7 @@ south_american_clothes_pop_trigger = {
 }
 
 integrated_south_american_natives_pop_trigger = { # Represents those South American native groups that had long been integrated into wider South and Central American society.
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		culture = {
 			OR = {
 				has_discrimination_trait = native_mesoamerican_culture_group
@@ -1289,8 +1158,7 @@ integrated_south_american_natives_pop_trigger = { # Represents those South Ameri
 }
 
 integrated_mesoamerican_pop_trigger = { # Represents those groups that had long been integrated into wider South and Central American society.
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		culture = {
 			OR = {
 				has_discrimination_trait = native_mesoamerican_culture_group
@@ -1300,8 +1168,7 @@ integrated_mesoamerican_pop_trigger = { # Represents those groups that had long 
 }
 
 commoner_tawantinsuyan_pop_trigger = { # Represents those groups that had long been integrated into wider South and Central American society.
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		culture = {
 			OR = {
 				has_discrimination_trait = indigenous_tawantinsuyan
@@ -1311,8 +1178,7 @@ commoner_tawantinsuyan_pop_trigger = { # Represents those groups that had long b
 }
 
 cold_clothes_pop_trigger = {
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		OR = {
 			has_pop_culture = inuit
 			has_pop_culture = athabaskan
@@ -1322,8 +1188,7 @@ cold_clothes_pop_trigger = {
 }
 
 japanese_clothes_pop_trigger = {
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		OR = {
 			culture = cu:japanese
 			culture = cu:ainu
@@ -1333,8 +1198,7 @@ japanese_clothes_pop_trigger = {
 
 
 japanese_clothes_trigger = {
-	exists = scope:character
-	scope:character = {
+	scope:character ?= {
           OR = {
           	culture = cu:japanese
           	culture = cu:ainu
@@ -1343,8 +1207,7 @@ japanese_clothes_trigger = {
 }
 
 indian_clothes_pop_trigger = {
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		OR = {
 			culture = {
 				has_discrimination_trait = south_asian_heritage
@@ -1434,8 +1297,7 @@ soldier_clothes_pop_trigger = {
 }
 
 officers_clothes_pop_trigger = {
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		is_pop_type = officers
 	} 
 }
@@ -1546,8 +1408,7 @@ buddhist_clothes_pop_trigger = {
 }
 
 slightly_underweight_pop_trigger = {
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		OR = {
 			AND = {
 				pop_weight_modifier_scale < 25	
@@ -1568,8 +1429,7 @@ slightly_underweight_pop_trigger = {
 }
 
 underweight_pop_trigger = {
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		OR = {
 			AND = {
 				pop_weight_modifier_scale < 25
@@ -1586,16 +1446,14 @@ underweight_pop_trigger = {
 }
 
 very_underweight_pop_trigger = {
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		pop_weight_modifier_scale < 25
 		standard_of_living < 5	
     }
 }
 
 slightly_overweight_pop_trigger = {
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		OR = {
 			AND = {
 				standard_of_living >= 15
@@ -1618,8 +1476,7 @@ slightly_overweight_pop_trigger = {
 }
 
 overweight_pop_trigger = {
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		OR = {
 			AND = {
 				standard_of_living >= 15
@@ -1642,8 +1499,7 @@ overweight_pop_trigger = {
 }
 
 very_overweight_pop_trigger = {
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		OR = {
 			AND = {
 				standard_of_living >= 20
@@ -1659,8 +1515,7 @@ very_overweight_pop_trigger = {
 }
 
 struggling_pop_trigger = {
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
 		standard_of_living < 10
 	}
 }
@@ -1672,8 +1527,7 @@ agitator_character_trigger = {
 }
 
 should_be_naked_trigger = {
-	exists = scope:pop
-	scope:pop = {
+	scope:pop ?= {
        	OR = {
 			is_pop_type = farmers
 			is_pop_type = peasants

@@ -1884,8 +1884,7 @@
             base = 0
             modifier = {
                 add = 10002
-                exists = scope:character
-                scope:character = {
+                scope:character ?= {
                     exists = home_country
 home_country = {
                         exists = c:MEX
@@ -2057,8 +2056,7 @@ home_country = {
             base = 0
             modifier = {
                 add = 10002
-                exists = scope:character
-                scope:character = {
+                scope:character ?= {
                     exists = home_country
 home_country = {
                         exists = c:BUE
@@ -2089,8 +2087,7 @@ home_country = {
             base = 0
             modifier = {
                 add = 10002
-                exists = scope:character
-                scope:character = {               
+                scope:character ?= {               
                     has_variable = is_bulnes
                 }
             }
@@ -2116,8 +2113,7 @@ home_country = {
             base = 0
             modifier = {
                 add = 10002
-                exists = scope:character
-                scope:character = {               
+                scope:character ?= {               
                     has_variable = is_huachaca
                 }
             }
@@ -2143,8 +2139,7 @@ home_country = {
             base = 0
             modifier = {
                 add = 10002
-                exists = scope:character
-                scope:character = {               
+                scope:character ?= {               
                     has_variable = is_ohiggins
                 }
             }
@@ -2170,8 +2165,7 @@ home_country = {
             base = 0
             modifier = {
                 add = 10002
-                exists = scope:character
-                scope:character = {               
+                scope:character ?= {               
                     has_variable = is_tounens
                 }
             }
@@ -2203,8 +2197,7 @@ home_country = {
             base = 0
             modifier = {
                 add = 10002
-                exists = scope:character
-                scope:character = {               
+                scope:character ?= {               
                     has_variable = is_portales
                 }
             }
@@ -2621,7 +2614,7 @@ home_country = {
         weight = {
             base = 0
             modifier = {
-                add = 10001
+                add = 10002
                 brazilian_clothes_trigger = yes
                 republic_clothes_trigger = yes
                 armed_forces_clothes_trigger = yes
@@ -2655,71 +2648,71 @@ home_country = {
         }
     }
 
-	brazilian_military_clothes = {
-        dna_modifiers = {
-            accessory = {
-                mode = add
-                gene = coats
-                template = brazilian_coats
-                range = { 0 1 } # limiting the set to single-breasted coats, so aiguillettes work
-            }
-            accessory = {
-                mode = add
-                gene = legwear
-                template = latin_american_legwear
-                range = { 0.34 1 } # For the randomness to work correctly
-            }
-            accessory = {
-                mode = add
-                gene = aiguillettes
-                template = all_aiguillettes
-                range = { 0 1 } # For the randomness to work correctly
-            }
-        }
-        weight = {
-            base = 0
-            modifier = {
-                add = 10001
-                OR = {
-                    brazilian_clothes_trigger = yes
-                    brazilian_clothes_pop_trigger = yes
-                }
-			    OR = {
-				    military_clothes_trigger = yes
-				    officers_clothes_pop_trigger = yes
-				    AND = {
-                        armed_forces_clothes_trigger = yes
-                        politician_clothes_trigger = yes
-				    }
-			    }
-            }
-        }
-    }
+	# brazilian_military_clothes = {  # VFM
+    #     dna_modifiers = {
+    #         accessory = {
+    #             mode = add
+    #             gene = coats
+    #             template = brazilian_coats
+    #             range = { 0 1 } # limiting the set to single-breasted coats, so aiguillettes work
+    #         }
+    #         accessory = {
+    #             mode = add
+    #             gene = legwear
+    #             template = latin_american_legwear
+    #             range = { 0.34 1 } # For the randomness to work correctly
+    #         }
+    #         accessory = {
+    #             mode = add
+    #             gene = aiguillettes
+    #             template = all_aiguillettes
+    #             range = { 0 1 } # For the randomness to work correctly
+    #         }
+    #     }
+    #     weight = {
+    #         base = 0
+    #         modifier = {
+    #             add = 10000
+    #             OR = {
+    #                 brazilian_clothes_trigger = yes
+    #                 brazilian_clothes_pop_trigger = yes
+    #             }
+	# 		    OR = {
+	# 			    military_clothes_trigger = yes
+	# 			    officers_clothes_pop_trigger = yes
+	# 			    AND = {
+    #                     armed_forces_clothes_trigger = yes
+    #                     politician_clothes_trigger = yes
+	# 			    }
+	# 		    }
+    #         }
+    #     }
+    # }
 
-    brazilian_soldier_clothes = {
-        dna_modifiers = {
-            accessory = {
-                mode = add
-                gene = coats
-                template = brazilian_coats
-                range = { 0 0.75 } # limiting the set to single-breasted coats, so aiguillettes work
-            }
-            accessory = {
-                mode = add
-                gene = legwear
-                template = latin_american_legwear
-                range = { 0.34 1 } # For the randomness to work correctly
-            }
-        }
-        weight = {
-            base = 0
-            modifier = {
-                add = 10000
-                brazilian_clothes_pop_trigger = yes
-                soldier_clothes_pop_trigger = yes
-            }
-        }
-    }
+    # brazilian_soldier_clothes = {   # VFM
+    #     dna_modifiers = {
+    #         accessory = {
+    #             mode = add
+    #             gene = coats
+    #             template = brazilian_coats
+    #             range = { 0 0.75 } # limiting the set to single-breasted coats, so aiguillettes work
+    #         }
+    #         accessory = {
+    #             mode = add
+    #             gene = legwear
+    #             template = latin_american_legwear
+    #             range = { 0.34 1 } # For the randomness to work correctly
+    #         }
+    #     }
+    #     weight = {
+    #         base = 0
+    #         modifier = {
+    #             add = 10000
+    #             brazilian_clothes_pop_trigger = yes
+    #             soldier_clothes_pop_trigger = yes
+    #         }
+    #     }
+    # }
 
 	hispanic_military_ruler_clothes = {
         dna_modifiers = {
@@ -2797,7 +2790,7 @@ home_country = {
         weight = {
             base = 0
             modifier = {
-                add = 2000
+                add = 10001
                 agitator_character_trigger = no
                 OR = {
                     AND = {
@@ -2877,7 +2870,7 @@ home_country = {
         weight = {
             base = 0
             modifier = {
-                add = 10000
+                add = 11000
                 gaucho_clothes_pop_trigger = yes
                 OR = {
                     soldier_clothes_pop_trigger = yes
@@ -3414,8 +3407,7 @@ home_country = {
             base = 0
             modifier = {
                 add = 10000
-                exists = scope:character
-                scope:character = {
+                scope:character ?= {
                     is_female = no
 
                     owner ?= {
@@ -4736,7 +4728,7 @@ home_country = {
 
 
 
-    brazilian_military_clothes = {
+    brazilian_military_clothes = {  # VANILLA
         dna_modifiers = {
              accessory = {
                 mode = add
@@ -4805,7 +4797,7 @@ home_country = {
         }
     }
 
-    brazilian_military_clothes_soldier = {
+    brazilian_military_clothes_soldier = {  # VANILLA
         dna_modifiers = {
              accessory = {
                 mode = add
@@ -5379,8 +5371,7 @@ home_country = {
             modifier = {
                 add = 10001
                 #german_clothes_trigger = yes
-                exists = scope:character
-                scope:character = {
+                scope:character ?= {
 					exists = home_country
 					OR = {
                         AND = {
@@ -5580,8 +5571,7 @@ home_country = {
             modifier = {
                 add = 5000
                 #german_clothes_trigger = yes
-                exists = scope:character
-                scope:character = {
+                scope:character ?= {
 					exists = home_country
 					OR = {
                         AND = {
@@ -6207,8 +6197,7 @@ home_country = {
             modifier = {
                 add = 5000
                 military_clothes_trigger = no
-                exists = scope:character
-                scope:character = {
+                scope:character ?= {
                     NOT = { has_template = FRA_francois-rene_de_chateaubriand }
                     OR = {
                         AND = {
@@ -6310,8 +6299,7 @@ home_country = {
             }
             modifier = {
                 add = 500
-                exists = scope:character
-                scope:character = {
+                scope:character ?= {
                     OR = {
                         culture = cu:inuit
                         culture = cu:siberian
@@ -6353,8 +6341,7 @@ home_country = {
             }
             modifier = {
                 add = 100
-                exists = scope:character
-                scope:character = {
+                scope:character ?= {
                     culture = cu:sami
                 }
             }
@@ -7705,6 +7692,12 @@ indigenous_oceanic_pop_clothes = {
                 gene = belts
                 template = late_military_belts
                 range = { 0 1 } # For the randomness to work correctly
+            }
+            accessory = {
+                mode = add
+                gene = sashes
+                template = no_sash
+                range = { 1 1 } # For the randomness to work correctly
             }
             accessory = {
                 mode = add
