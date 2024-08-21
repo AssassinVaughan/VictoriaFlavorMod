@@ -167,7 +167,7 @@ liberty_desire_weekly_change = {
 				desc = "LIBERTY_DESIRE_WEEKLY_CHANGE_PRESTIGE_DIFFERENCE_1_5_NEGATIVE"
 			}
 		}
-		else_if = {
+		else = {
 			add = {
 				add = root.second_country.prestige
 				multiply = 1.5
@@ -203,7 +203,7 @@ liberty_desire_weekly_change = {
 				desc = "LIBERTY_DESIRE_WEEKLY_CHANGE_PRESTIGE_DIFFERENCE_2_0_NEGATIVE"
 			}
 		}
-		else_if = {
+		else = {
 			add = {
 				add = root.second_country.prestige
 				multiply = 2.0
@@ -239,7 +239,7 @@ liberty_desire_weekly_change = {
 				desc = "LIBERTY_DESIRE_WEEKLY_CHANGE_PRESTIGE_DIFFERENCE_3_0_NEGATIVE"
 			}
 		}
-		else_if = {
+		else = {
 			add = {
 				add = root.second_country.prestige
 				multiply = 3
@@ -401,21 +401,26 @@ liberty_desire_weekly_change = {
 	}	
 	
 	save_temporary_value_as = pre_mult_modifiers_value
-	
-	multiply = {
-		value = 1
-		if = {
-			limit = { scope:pre_mult_modifiers_value > 0 }
+
+	if = {
+		limit = { scope:pre_mult_modifiers_value > 0 }
+		multiply = {
+			value = 1
 			add = root.second_country.modifier:country_liberty_desire_increase_mult
+			min = 0
+			desc = "LIBERTY_DESIRE_WEEKLY_CHANGE_DESC_ADDITIONAL_MULTS_INCREASE"
 		}
-		else_if = {
-			limit = { scope:pre_mult_modifiers_value < 0 }
-			add = root.second_country.modifier:country_liberty_desire_decrease_mult
-		}
-		min = 0
-		desc = "LIBERTY_DESIRE_WEEKLY_CHANGE_DESC_ADDITIONAL_MULTS"
 	}
-	
+	else_if = {
+		limit = { scope:pre_mult_modifiers_value < 0 }
+		multiply = {
+			value = 1
+			add = root.second_country.modifier:country_liberty_desire_decrease_mult
+			min = 0
+			desc = "LIBERTY_DESIRE_WEEKLY_CHANGE_DESC_ADDITIONAL_MULTS_DECREASE"
+		}
+	}
+
 	if = {
 		limit = {
 			root.second_country = {

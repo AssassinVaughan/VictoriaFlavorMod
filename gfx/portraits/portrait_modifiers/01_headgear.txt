@@ -1508,7 +1508,7 @@
                     AND = {
                         scope:character ?= {
                             culture = cu:korean
-                            owner = {
+                            owner ?= {
                                 has_variable = KOR_korean_empire_declared
                             }
                         }
@@ -1689,9 +1689,9 @@
         weight = {
             base = 0
             modifier = {
-                add = 101
+                add = 10001
                 austrian_clothes_trigger = yes
-                ww1_clothes_trigger = no
+                late_military_clothes_trigger = no
                 OR = {
                     scope:character = {
                         has_role = general
@@ -1717,9 +1717,9 @@
         weight = {
             base = 0
             modifier = {
-                add = 101
+                add = 12000
                 austrian_clothes_trigger = yes
-                ww1_clothes_trigger = yes
+                late_military_clothes_trigger = yes
                 OR = {
                     scope:character = {
                         has_role = general
@@ -1745,10 +1745,10 @@
         weight = {
             base = 0
             modifier = {
-                add = 1001
+                add = 10002
                 austrian_clothes_pop_trigger = yes
                 officers_clothes_pop_trigger = yes
-                ww1_clothes_pop_trigger = no
+                late_military_clothes_pop_trigger = no
             }
         }
     }
@@ -1765,10 +1765,10 @@
         weight = {
             base = 0
             modifier = {
-                add = 1001
+                add = 12001
                 austrian_clothes_pop_trigger = yes
                 officers_clothes_pop_trigger = yes
-                ww1_clothes_pop_trigger = yes
+                late_military_clothes_pop_trigger = yes
             }
         }
     }
@@ -1788,7 +1788,7 @@
                 add = 1001
                 austrian_clothes_pop_trigger = yes
                 soldier_clothes_pop_trigger = yes
-                ww1_clothes_pop_trigger = yes
+                late_military_clothes_pop_trigger = yes
             }
         }
     }
@@ -1806,8 +1806,7 @@
         weight = {
             base = 0
             modifier = {
-                add = 101
-                austrian_clothes_trigger = no
+                add = 100
                 german_clothes_trigger = yes
                 agitator_character_trigger = no
                 OR = {
@@ -1836,7 +1835,6 @@
             base = 0
             modifier = {
                 add = 1000
-                austrian_clothes_pop_trigger = no
                 german_clothes_pop_trigger = yes
                 officers_clothes_pop_trigger = yes
             }

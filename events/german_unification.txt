@@ -98,9 +98,9 @@ german_unification.1 = {
 			limit = {
 				country_has_primary_culture = cu:north_german
 				NOT = { exists = c:NGF }
-				OR = {
-					country_tier = kingdom
-					country_tier = principality
+				NOR = { #PBF
+					country_tier = hegemony
+					country_tier = empire
 				}
 			}
 			
@@ -132,9 +132,9 @@ german_unification.1 = {
 			limit = {
 				country_has_primary_culture = cu:south_german
 				NOT = { exists = c:SGF }
-				OR = {
-					country_tier = kingdom
-					country_tier = principality
+				NOR = { #PBF
+					country_tier = hegemony
+					country_tier = empire
 				}
 			}
 			change_tag = SGF
@@ -150,9 +150,9 @@ german_unification.1 = {
 			limit = {
 				country_has_primary_culture = cu:north_german
 				NOT = { exists = c:NGF }
-				OR = {
-					country_tier = kingdom
-					country_tier = principality
+				NOR = { #PBF
+					country_tier = hegemony
+					country_tier = empire
 				}
 			}
 			change_tag = NGF
@@ -165,9 +165,9 @@ german_unification.1 = {
 					NOT = { exists = c:AUS }
 					NOT = { THIS = c:AUS }
 				}
-				OR = {
-					country_tier = kingdom
-					country_tier = principality
+				NOR = { #PBF
+					country_tier = hegemony
+					country_tier = empire
 				}
 			}
 			change_tag = SGF
