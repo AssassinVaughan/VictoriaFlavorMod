@@ -1700,18 +1700,24 @@ should_be_fully_naked_portrait_trigger = {
 #	should_show_nudity = yes
 #}
 
-ww1_clothes_trigger = {
+late_military_clothes_trigger = {
 	scope:character ?= {
 		home_country ?= {
-			has_technology_researched = trench_works
+			OR = {
+				has_technology_researched = bolt_action_rifles
+				has_technology_researched = trench_works
+			}
 		}
 	}
 }
 
-ww1_clothes_pop_trigger = {
+late_military_clothes_pop_trigger = {
 	scope:pop ?= {
 		home_country ?= {
-			has_technology_researched = trench_works
+			OR = {
+				has_technology_researched = bolt_action_rifles
+				has_technology_researched = trench_works
+			}
 		}
 	}
 }
