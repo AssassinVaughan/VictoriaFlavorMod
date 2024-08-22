@@ -3620,12 +3620,12 @@ home_country = {
                             soldier_clothes_pop_trigger = yes
                             officers_clothes_pop_trigger = yes
                         }
-                        scope:pop ?= {
-                            owner ?= {
-                                has_dlc_feature = ep1_cosmetics
-                                has_technology_researched = bolt_action_rifles
-                            }
-                        } 
+                        # scope:pop ?= {
+                        #     owner ?= {
+                        #         has_dlc_feature = ep1_cosmetics
+                        #         has_technology_researched = bolt_action_rifles
+                        #     }
+                        # } 
                     }
                 }
             }
@@ -5226,7 +5226,7 @@ home_country = {
                 add = 10001
                 austrian_clothes_trigger = yes
                 scope:character ?= {
-                    age > 10
+                    age > define:NCharacters|ADULT_AGE
                     OR = {
                         AND = {
                             is_ruler = yes
@@ -5286,7 +5286,7 @@ home_country = {
                 add = 10002
                 austrian_clothes_trigger = yes
                 scope:character ?= {
-                    age > 10
+                    age > define:NCharacters|ADULT_AGE
                     OR = {
                         AND = {
                             is_ruler = yes

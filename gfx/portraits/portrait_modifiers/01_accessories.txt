@@ -1284,13 +1284,19 @@
                  template = austrian_sashes
                  range = { 0.9 1 } # For the randomness to work correctly
             }
+            accessory = {
+                mode = add
+                gene = headgear
+                template = no_headgear
+                range = { 0 1 } # For the randomness to work correctly
+            }
         }
         weight = {
             base = 0
             modifier = {
                add = 90001
                 scope:character ?= {
-                    age > 12
+                    age > define:NCharacters|ADULT_AGE
                     OR = {
                         AND = {
                             home_country ?= {
@@ -1342,7 +1348,7 @@
                add = 10001
                 agitator_character_trigger = no
                 scope:character ?= {
-                    age > 12
+                    age > define:NCharacters|ADULT_AGE
                     NOR = {
                         has_template = agitator_jules_brunet
                         has_template = rus_leon_trotsky_character_template

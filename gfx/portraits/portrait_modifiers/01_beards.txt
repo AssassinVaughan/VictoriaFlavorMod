@@ -263,4 +263,31 @@
             }
         }
     }
+    adult_franz_joseph = {
+        dna_modifiers = {
+            accessory = {
+                mode = replace
+                gene = beards
+                template = european_beards
+                accessory = male_beard_european_11_alt
+            }
+            accessory = {
+                mode = replace
+                gene = mustaches
+                template = european_mustaches
+                accessory = male_mustache_european_12
+            }
+        } 
+        weight = {
+            base = 0
+            modifier = {
+                add = 90000
+
+                scope:character ?= {
+                    has_template = aus_franz_josef_I_habsburg_template
+                    age >= 20
+                }
+            }
+        }
+    }
 }
