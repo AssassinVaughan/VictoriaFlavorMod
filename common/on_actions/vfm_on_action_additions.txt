@@ -282,13 +282,13 @@ on_country_formed = {
 			}
 			trigger_event = { id = german_unification.4 popup = yes }
 			trigger_event = { id = grosdeutschland.3 days = 1 }
-		}
-		if = {
-			limit = {
-				exists = c:AUS
-			}
-			c:AUS = {
-				trigger_event = { id = grosdeutschland.5 days = 1 }
+			if = {
+				limit = {
+					exists = c:AUS
+				}
+				c:AUS = {
+					trigger_event = { id = grosdeutschland.5 days = 1 }
+				}
 			}
 		}
 	}
