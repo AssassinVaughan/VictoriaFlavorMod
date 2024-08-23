@@ -156,6 +156,32 @@ prospecting = {
 	}
 }
 
+rotating_crops = {
+    # Unlocks pm_rotating_crops PM on Rye Farms, Wheat Farms, Rice Farms, Maize Farms, Millet Farms
+	# Unlocks pm_rotating_crops_ranch PM on Livestock Ranches
+	era = era_1
+	texture = "gfx/interface/icons/invention_icons/enclosure.dds"
+	category = production
+	
+	unlocking_technologies = {
+		enclosure
+	}
+	
+	ai_weight = {
+		value = 2.5 # Important tech for everyone
+		
+		if = {
+			limit = {
+				OR = {
+					has_strategy = ai_strategy_agricultural_expansion 
+					has_strategy = ai_strategy_plantation_economy
+				}		
+			}
+			add = 1.5
+		}
+	}
+}
+
 ### ERA 2
 
 crystal_glass = {
@@ -182,7 +208,7 @@ intensive_agriculture = {
 	category = production
 	
 	unlocking_technologies = {
-		enclosure
+		rotating_crops
 	}
 	
 	ai_weight = {
