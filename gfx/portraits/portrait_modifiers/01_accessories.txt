@@ -734,8 +734,7 @@
                 scope:character ?= {
                     age > 12
                 }
-                exists = scope:character
-                scope:character = {
+                scope:character ?= {
                     exists = home_country
                     home_country = {
                         exists = c:SPU
@@ -808,8 +807,7 @@
                 scope:character ?= {
                     age > 12
                 }
-                exists = scope:character
-                scope:character = {
+                scope:character ?= {
                     exists = home_country
                     home_country = {
                         exists = c:BOL
@@ -882,8 +880,7 @@
                 scope:character ?= {
                     age > 12
                 }
-                exists = scope:character
-                scope:character = {
+                scope:character ?= {
                     exists = home_country
                     home_country = {
                         exists = c:PBC
@@ -956,8 +953,7 @@
                 scope:character ?= {
                     age > 12
                 }
-                exists = scope:character
-                scope:character = {
+                scope:character ?= {
                     exists = home_country
                     home_country = {
                         exists = c:PRG
@@ -1029,13 +1025,8 @@
                 add = 10002
                 scope:character ?= {
                     age > 12
-                }
-                exists = scope:character
-                scope:character = {
-                    exists = home_country
-                    home_country = {
-                        exists = c:ARG
-                        c:ARG = this
+                    home_country ?= {
+                        c:ARG ?= this
                     }
                 }
                 OR = {
@@ -1053,9 +1044,6 @@
                         republic_clothes_trigger = yes
                     }
                     AND = {
-                        scope:character ?= {
-                            age > 12
-                        }
                         hispanic_clothes_trigger = yes
                         monarchy_clothes_trigger = yes
                     }
@@ -1089,18 +1077,12 @@
             base = 0
             modifier = {
                 add = 10003
-                exists = scope:character
-                scope:character = {
+                scope:character ?= {
                     has_variable = is_rosas
-                    exists = home_country
-                    OR = {
-                        home_country = {
-                            exists = c:ARG
-                            c:ARG = this
-                        }
-                        home_country = {
-                            exists = c:BUE
-                            c:BUE = this
+                    home_country ?= {
+                        OR = {
+                            c:ARG ?= this
+                            c:BUE ?= this
                         }
                     }
                 }
@@ -1133,8 +1115,7 @@
             base = 0
             modifier = {
                 add = 10002
-                exists = scope:character
-                scope:character = {
+                scope:character ?= {
                     has_variable = is_bulnes
                 }
             }
@@ -1154,8 +1135,7 @@
             base = 0
             modifier = {
                 add = 10002
-                exists = scope:character
-                scope:character = {
+                scope:character ?= {
                     has_variable = is_huachaca
                 }
             }
@@ -1187,8 +1167,7 @@
             base = 0
             modifier = {
                 add = 10002
-                exists = scope:character
-                scope:character = {
+                scope:character ?= {
                     has_variable = is_ohiggins
                 }
             }
@@ -1208,8 +1187,7 @@
             base = 0
             modifier = {
                 add = 10002
-                exists = scope:character
-                scope:character = {
+                scope:character ?= {
                     has_variable = is_tounens
                 }
             }
@@ -1243,8 +1221,7 @@
                 add = 10003
                 brazilian_clothes_trigger = yes
                 military_clothes_trigger = yes
-                exists = scope:character
-                scope:character = {
+                scope:character ?= {
                     has_variable = is_caxias
                 }
             }
@@ -1264,8 +1241,7 @@
             base = 0
             modifier = {
                 add = 10002
-                exists = scope:character
-                scope:character = {
+                scope:character ?= {
                     exists = home_country
                     home_country = {
                         exists = c:MEX
@@ -1308,13 +1284,19 @@
                  template = austrian_sashes
                  range = { 0.9 1 } # For the randomness to work correctly
             }
+            accessory = {
+                mode = add
+                gene = headgear
+                template = no_headgear
+                range = { 0 1 } # For the randomness to work correctly
+            }
         }
         weight = {
             base = 0
             modifier = {
                add = 90001
                 scope:character ?= {
-                    age > 12
+                    age > define:NCharacters|ADULT_AGE
                     OR = {
                         AND = {
                             home_country ?= {
@@ -1366,7 +1348,7 @@
                add = 10001
                 agitator_character_trigger = no
                 scope:character ?= {
-                    age > 12
+                    age > define:NCharacters|ADULT_AGE
                     NOR = {
                         has_template = agitator_jules_brunet
                         has_template = rus_leon_trotsky_character_template
@@ -1876,8 +1858,7 @@
                 scope:character ?= {
                     age > 12
                 }
-                exists = scope:character
-                scope:character = {
+                scope:character ?= {
 				    exists = home_country
                     home_country = {
                         OR = {

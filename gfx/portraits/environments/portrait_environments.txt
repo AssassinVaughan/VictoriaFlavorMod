@@ -23,7 +23,7 @@ environment_standard = {
 			type = "spot_light"	# Valid types are "spot_light", "point_light", and "directional_light"
 			affected_by_shadow = yes
 
-			color = hsv{ 0.2 0.1 1.0 }	# Hue, saturation, value. Increase value for more intense lights
+			color = hsv{ 0.2 0.1 2.5 }	# Hue, saturation, value. Increase value for more intense lights
 			position = cylindrical{ 100 200 15 } # Radius, height, angle
 
 			# For spot lights and directional lights
@@ -66,7 +66,7 @@ environment_standard = {
 			type = "spot_light"
 			affected_by_shadow = yes
 
-			color = hsv{ 0.1 0.5 5.6 }
+			color = hsv{ 0.1 0.4 5.6 }
 			position = cylindrical{ 100 250 -80 }
 
 			look_at = { 0 18 0 }
@@ -90,7 +90,7 @@ environment_standard = {
 		look_at = { 0 0 0 }
 		look_at_node = camera_torso_look_at
 		fov = 50
-		camera_near_far = { 100 1350 }
+		camera_near_far = { 15 290 }
 	}
 }
 
@@ -313,8 +313,8 @@ cubemap = "gfx/portraits/environments/events_farms_01.dds"
  			type = "spot_light"	# Valid types are "spot_light", "point_light", and "directional_light"
  			affected_by_shadow = yes
 
- 			color = hsv{ 0.09 0.5 9 }	# Hue, saturation, value. Increase value for more intense lights
- 			position = cylindrical{ @main_light_radius  450 -50 }	# Radius, height, angle
+ 			color = hsv{ 0.09 0.3 6 }	# Hue, saturation, value. Increase value for more intense lights
+ 			position = cylindrical{ @main_light_radius  450 -45 }	# Radius, height, angle
 
  			# For spot lights and directional lights
  			look_at = { 0 0 0 }
@@ -322,7 +322,7 @@ cubemap = "gfx/portraits/environments/events_farms_01.dds"
 
  			# For spot lights and point lights
 			radius = 440
- 			falloff = 30
+ 			falloff = 20
 
 
  			# For point lights
@@ -337,8 +337,8 @@ cubemap = "gfx/portraits/environments/events_farms_01.dds"
  			type = "spot_light"
  			affected_by_shadow = yes
 
- 			color = hsv{ 0.05 0.8 7 }
- 			position = cylindrical{ 200 200 199 }
+ 			color = hsv{ 0.05 0.5 3 }
+ 			position = cylindrical{ 200 200 220 }
 
  			look_at = { 0 -35 0 }
  			look_at_node = camera_torso_look_at
@@ -357,7 +357,7 @@ cubemap = "gfx/portraits/environments/events_farms_01.dds"
  			type = "spot_light"
  			affected_by_shadow = yes
 
- 			color = hsv{ 1 0.9 2 }
+ 			color = hsv{ 0.2 0.3 2 }
  			position = cylindrical{ 200 -100 100 }
 
  			look_at = { 0 -35 0 }
@@ -392,7 +392,7 @@ cubemap = "gfx/portraits/environments/events_farms_01.dds"
  			type = "spot_light"	# Valid types are "spot_light", "point_light", and "directional_light"
  			affected_by_shadow = yes
 
- 			color = hsv{ 0.1 0.4 6 }	# Hue, saturation, value. Increase value for more intense lights
+ 			color = hsv{ 0.1 0.3 6 }	# Hue, saturation, value. Increase value for more intense lights
  			position = cylindrical{ @main_light_radius  650 0 }	# Radius, height, angle
 
  			# For spot lights and directional lights
@@ -401,7 +401,7 @@ cubemap = "gfx/portraits/environments/events_farms_01.dds"
 
  			# For spot lights and point lights
 			radius = 600
- 			falloff = 30
+ 			falloff = 20
 
 
  			# For point lights
@@ -416,8 +416,8 @@ cubemap = "gfx/portraits/environments/events_farms_01.dds"
  			type = "spot_light"
  			affected_by_shadow = yes
 
- 			color = hsv{ 0.05 0.7 16 }
- 			position = cylindrical{ 200 300 140 }
+ 			color = hsv{ 0.05 0.4 8 }
+ 			position = cylindrical{ 200 280 140 }
 
  			look_at = { 0 -35 0 }
  			look_at_node = camera_torso_look_at
@@ -436,8 +436,8 @@ cubemap = "gfx/portraits/environments/events_farms_01.dds"
  			type = "spot_light"
  			affected_by_shadow = yes
 
- 			color = hsv{ 0.1 0.7 8 }
- 			position = cylindrical{ 200 300 -140 }
+ 			color = hsv{ 0.1 0.4 8 }
+ 			position = cylindrical{ 200 280 -140 }
 
  			look_at = { 0 -35 0 }
  			look_at_node = camera_torso_look_at
@@ -471,8 +471,8 @@ cubemap = "gfx/portraits/environments/events_farms_01.dds"
  			type = "spot_light"	# Valid types are "spot_light", "point_light", and "directional_light"
  			affected_by_shadow = yes
 
- 			color = hsv{ 0.1 0.4 6 }	# Hue, saturation, value. Increase value for more intense lights
- 			position = cylindrical{ @main_light_radius  450 -60 }	# Radius, height, angle
+ 			color = hsv{ 0.1 0.2 4 }	# Hue, saturation, value. Increase value for more intense lights
+ 			position = cylindrical{ @main_light_radius  250 -60 }	# Radius, height, angle
 
  			# For spot lights and directional lights
  			look_at = { 0 0 0 }
@@ -495,7 +495,7 @@ cubemap = "gfx/portraits/environments/events_farms_01.dds"
  			type = "spot_light"
  			affected_by_shadow = yes
 
- 			color = hsv{ 0.04 0.8 3 }
+ 			color = hsv{ 0.04 0.4 3 }
  			position = cylindrical{ 200 200 100 }
 
  			look_at = { 0 -35 0 }
@@ -515,14 +515,14 @@ cubemap = "gfx/portraits/environments/events_farms_01.dds"
  			type = "spot_light"
  			affected_by_shadow = yes
 
- 			color = hsv{ 0.1 0.8 6 }
+ 			color = hsv{ 0.1 0.6 6 }
  			position = cylindrical{ 200 300 -160 }
 
  			look_at = { 0 -35 0 }
  			look_at_node = camera_torso_look_at
 
  			radius = 350
- 			falloff = 100
+ 			falloff = 200
 
 			outer_cone_angle = 48
 			inner_cone_angle = 0
@@ -629,21 +629,22 @@ cubemap = "gfx/portraits/environments/castle_interior_01.dds"
  			type = "spot_light"	# Valid types are "spot_light", "point_light", and "directional_light"
  			affected_by_shadow = yes
 
- 			color = hsv{ 0.1 0.3 5 }	# Hue, saturation, value. Increase value for more intense lights
- 			position = cylindrical{ 150  240 -50 }	# Radius, height, angle
+ 			color = hsv{ 0.1 0.2 3 }	# Hue, saturation, value. Increase value for more intense lights
+ 			position = cylindrical{ 140 200 -50 }	# Radius, height, angle
 
  			# For spot lights and directional lights
  			look_at = { 0 0 0 }
 			look_at_node = camera_torso_look_at
 
+ 			#
  			# For spot lights and point lights
-			radius = 540
- 			falloff = 30
+			radius = 280
+ 			falloff = 40
 
 
  			# For point lights
- 			outer_cone_angle = 30
-			inner_cone_angle = 0
+ 			outer_cone_angle = 50
+			inner_cone_angle = 35
  		}
 
  		#########################################################################
@@ -653,8 +654,8 @@ cubemap = "gfx/portraits/environments/castle_interior_01.dds"
  			type = "spot_light"
  			affected_by_shadow = yes
 
- 			color = hsv{ 0.1 0.6 10 }
- 			position = cylindrical{ 300 290 -145 }
+ 			color = hsv{ 0.1 0.6 2 }
+ 			position = cylindrical{ 300 180 -145 }
 
  			look_at = { 0 -35 0 }
  			look_at_node = camera_torso_look_at
@@ -673,8 +674,8 @@ cubemap = "gfx/portraits/environments/castle_interior_01.dds"
  			type = "spot_light"
  			affected_by_shadow = yes
 
- 			color = hsv{ 0.2 0.3 15 }
- 			position = cylindrical{ 220 -100 -90 }
+ 			color = hsv{ 0.7 0.3 6 }
+ 			position = cylindrical{ 220 250 -90 }
 
  			look_at = { 0 -35 0 }
  			look_at_node = camera_torso_look_at
@@ -692,14 +693,14 @@ cubemap = "gfx/portraits/environments/castle_interior_01.dds"
  		look_at = { 0 0 0 }
  		look_at_node = camera_torso_look_at
  		fov = 50
- 		camera_near_far = { 10 400 }
+ 		camera_near_far = { 10 250 }
 	}
  }
 
 
 ruler_environment = {
 cubemap = "gfx/portraits/environments/castle_interior_01.dds"
- 	cubemap_intensity = 1.2
+ 	cubemap_intensity = 1.6
 
  	lights = {
  		#########################################################################
@@ -709,32 +710,35 @@ cubemap = "gfx/portraits/environments/castle_interior_01.dds"
  			type = "spot_light"	# Valid types are "spot_light", "point_light", and "directional_light"
  			affected_by_shadow = yes
 
- 			color = hsv{ 0.1 0.6 7 }	# Hue, saturation, value. Increase value for more intense lights
- 			position = cylindrical{ 140 270 -70 }	# Radius, height, angle
+ 			color = hsv{ 0.1 0.2 3 }	# Hue, saturation, value. Increase value for more intense lights
+ 			position = cylindrical{ 140 170 -50 }	# Radius, height, angle
 
  			# For spot lights and directional lights
  			look_at = { 0 0 0 }
 			look_at_node = camera_torso_look_at
 
+ 			#
  			# For spot lights and point lights
-			radius = 350
+			radius = 280
  			falloff = 40
 
 
  			# For point lights
- 			outer_cone_angle = 30
-			inner_cone_angle = 0
+ 			outer_cone_angle = 50
+			inner_cone_angle = 35
  		}
 
  		#########################################################################
  		#							RIGHT RIM LIGHT								#
  		#########################################################################
+ 		#	RIM LIGHT FROM THE LEFT
+
  		1 = {
  			type = "spot_light"
  			affected_by_shadow = yes
 
- 			color = hsv{ 0.02 0.6 10 }
- 			position = cylindrical{ 500 180 160 }
+ 			color = hsv{ 0.02 0.2 1 }
+ 			position = cylindrical{ 300 180 160 }
 
  			look_at = { 0 -35 0 }
  			look_at_node = camera_torso_look_at
@@ -753,8 +757,8 @@ cubemap = "gfx/portraits/environments/castle_interior_01.dds"
  			type = "spot_light"
  			affected_by_shadow = yes
 
- 			color = hsv{ 0.7 0.3 20 }
- 			position = cylindrical{ 170 250 -130 }
+ 			color = hsv{ 0.7 0.3 6 }
+ 			position = cylindrical{ 160 250 -50 }
 
  			look_at = { 0 -35 0 }
  			look_at_node = camera_torso_look_at
@@ -768,11 +772,11 @@ cubemap = "gfx/portraits/environments/castle_interior_01.dds"
  	}
 
  	shadow_camera = {
- 		position = cylindrical{ 80 315 -15 }
- 		look_at = { 0 0 0 }
+ 		position = cylindrical{ 580 45 -75 }
+ 		look_at = { 20 0 0 }
  		look_at_node = camera_torso_look_at
- 		fov = 50
- 		camera_near_far = { 10 400 }
+ 		fov = 120
+ 		camera_near_far = { 10 200 }
 	}
  }
 
@@ -788,8 +792,8 @@ cubemap = "gfx/portraits/environments/castle_interior_01.dds"
  			type = "spot_light"	# Valid types are "spot_light", "point_light", and "directional_light"
  			affected_by_shadow = yes
 
- 			color = hsv{ 0.1 0.3 8 }	# Hue, saturation, value. Increase value for more intense lights
- 			position = cylindrical{ 190 340 -40 }	# Radius, height, angle
+ 			color = hsv{ 0.1 0.2 4 }	# Hue, saturation, value. Increase value for more intense lights
+ 			position = cylindrical{ 190 240 -40 }	# Radius, height, angle
 
  			# For spot lights and directional lights
  			look_at = { 0 0 0 }
@@ -797,12 +801,12 @@ cubemap = "gfx/portraits/environments/castle_interior_01.dds"
 
  			# For spot lights and point lights
 			radius = 290
- 			falloff = 50
+ 			falloff = 40
 
 
  			# For point lights
- 			outer_cone_angle = 30
-			inner_cone_angle = 0
+ 			outer_cone_angle = 50
+			inner_cone_angle = 35
  		}
 
  		#########################################################################
@@ -813,7 +817,7 @@ cubemap = "gfx/portraits/environments/castle_interior_01.dds"
  			affected_by_shadow = yes
 
  			color = hsv{ 0.1 0.6 2 }
- 			position = cylindrical{ 500 350 150 }
+ 			position = cylindrical{ 500 300 150 }
 
  			look_at = { 0 -35 0 }
  			look_at_node = camera_torso_look_at
@@ -832,13 +836,13 @@ cubemap = "gfx/portraits/environments/castle_interior_01.dds"
  			type = "spot_light"
  			affected_by_shadow = yes
 
- 			color = hsv{ 0.05 0.8 30 }
- 			position = cylindrical{ 200 -100 -80 }
+ 			color = hsv{ 0.05 0.6 14 }
+ 			position = cylindrical{ 200 -80 -80 }
 
  			look_at = { 0 -35 0 }
  			look_at_node = camera_torso_look_at
 
- 			radius = 320
+ 			radius = 300
  			falloff = 100
 
 			outer_cone_angle = 48
@@ -851,7 +855,7 @@ cubemap = "gfx/portraits/environments/castle_interior_01.dds"
  		look_at = { 0 0 0 }
  		look_at_node = camera_torso_look_at
  		fov = 50
- 		camera_near_far = { 10 400 }
+ 		camera_near_far = { 10 300 }
 	}
  }
 
@@ -867,8 +871,8 @@ cubemap = "gfx/portraits/environments/castle_interior_01.dds"
  			type = "spot_light"	# Valid types are "spot_light", "point_light", and "directional_light"
  			affected_by_shadow = yes
 
- 			color = hsv{ 0.1 0.3 6 }	# Hue, saturation, value. Increase value for more intense lights
- 			position = cylindrical{ 200  420 -50 }	# Radius, height, angle
+ 			color = hsv{ 0.1 0.2 5 }	# Hue, saturation, value. Increase value for more intense lights
+ 			position = cylindrical{ 200  260 -30 }	# Radius, height, angle
 
  			# For spot lights and directional lights
  			look_at = { 0 0 0 }
@@ -880,8 +884,8 @@ cubemap = "gfx/portraits/environments/castle_interior_01.dds"
 
 
  			# For point lights
- 			outer_cone_angle = 30
-			inner_cone_angle = 0
+ 			outer_cone_angle = 50
+			inner_cone_angle = 35
  		}
 
  		#########################################################################
@@ -891,7 +895,7 @@ cubemap = "gfx/portraits/environments/castle_interior_01.dds"
  			type = "spot_light"
  			affected_by_shadow = yes
 
- 			color = hsv{ 0.1 0.6 17 }
+ 			color = hsv{ 0.1 0.3 3 }
  			position = cylindrical{ 100 155 -130 }
 
  			look_at = { 0 -35 0 }
@@ -911,7 +915,7 @@ cubemap = "gfx/portraits/environments/castle_interior_01.dds"
  			type = "spot_light"
  			affected_by_shadow = yes
 
- 			color = hsv{ 0.03 0.8 10 }
+ 			color = hsv{ 0.03 0.4 8 }
  			position = cylindrical{ 200 -100 -70 }
 
  			look_at = { 0 -35 0 }
@@ -930,7 +934,7 @@ cubemap = "gfx/portraits/environments/castle_interior_01.dds"
  		look_at = { 0 0 0 }
  		look_at_node = camera_torso_look_at
  		fov = 50
- 		camera_near_far = { 10 400 }
+ 		camera_near_far = { 10 300 }
 	}
  }
 
@@ -946,7 +950,7 @@ cubemap = "gfx/portraits/environments/events_battlefield_01.dds"
  			type = "spot_light"	# Valid types are "spot_light", "point_light", and "directional_light"
  			affected_by_shadow = yes
 
- 			color = hsv{ 0.1 0.5 9 }	# Hue, saturation, value. Increase value for more intense lights
+ 			color = hsv{ 0.1 0.4 7 }	# Hue, saturation, value. Increase value for more intense lights
  			position = cylindrical{ 100  300 -20 }	# Radius, height, angle
 
  			# For spot lights and directional lights
@@ -990,8 +994,8 @@ cubemap = "gfx/portraits/environments/events_battlefield_01.dds"
  			type = "spot_light"
  			affected_by_shadow = yes
 
- 			color = hsv{ 0.05 0.8 30 }
- 			position = cylindrical{ 200 -40 120 }
+ 			color = hsv{ 0.05 0.4 10 }
+ 			position = cylindrical{ 200 0 120 }
 
  			look_at = { 0 -35 0 }
  			look_at_node = camera_torso_look_at

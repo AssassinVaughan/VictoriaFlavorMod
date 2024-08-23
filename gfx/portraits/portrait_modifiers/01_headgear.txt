@@ -231,8 +231,7 @@
             base = 0
             modifier = {
                 add = 10002
-                exists = scope:character
-                scope:character = {
+                scope:character ?= {
                     has_variable = is_bulnes
                 }
             }
@@ -252,8 +251,7 @@
             base = 0
             modifier = {
                 add = 10002
-                exists = scope:character
-                scope:character = {
+                scope:character ?= {
                     has_variable = is_ohiggins
                 }
             }
@@ -273,8 +271,7 @@
             base = 0
             modifier = {
                 add = 10002
-                exists = scope:character
-                scope:character = {
+                scope:character ?= {
                     has_variable = is_tounens
                 }
             }
@@ -294,8 +291,7 @@
             base = 0
             modifier = {
                 add = 10002
-                exists = scope:character
-                scope:character = {
+                scope:character ?= {
                     has_variable = is_portales
                 }
             }
@@ -315,8 +311,7 @@
             base = 0
             modifier = {
                 add = 10002
-                exists = scope:character
-                scope:character = {
+                scope:character ?= {
                     has_variable = is_huachaca
                 }
             }
@@ -1347,6 +1342,33 @@
         }
     }
 
+    french_military_headgear_soldier_late = { # only officers wear the horizon blue cylindrical kepi, for now
+        dna_modifiers = {
+            accessory = {
+                mode = add
+                gene = headgear
+                template = french_late_military_headgear
+                range = { 0 1 }
+            }
+        }
+        weight = {
+            base = 0
+            modifier = {
+                add = 20000
+
+                has_dlc_feature = ep1_cosmetics
+                has_dlc_feature = voice_of_the_people_content
+
+                french_empire_clothes_pop_trigger = yes
+                soldier_clothes_pop_trigger = yes
+
+                c:FRA ?= {
+                    has_technology_researched = automatic_machine_guns
+                }
+            }
+        }
+    }
+
     japanese_meiji_military_headgear = {
         dna_modifiers = {
             accessory = {
@@ -2065,8 +2087,7 @@
             base = 0
             modifier = {
                 add = 6000
-                exists = scope:character
-                scope:character = {
+                scope:character ?= {
                     exists = home_country
 home_country = {
                         exists = c:TUR
@@ -2299,6 +2320,7 @@ home_country = {
                             NOR = {
                                 has_role = general
                                 has_role = admiral
+                                is_heir = yes
                             }
                             is_ruler = no
                         }
