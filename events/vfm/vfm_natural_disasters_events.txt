@@ -492,7 +492,7 @@ vfm_natural_disaster_events.6 = { #Storm - any state
 	duration = 3
 
 	event_image = {
-		texture = "gfx/state_pictures/ocean.dds"
+		video = "unspecific_devastation"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -501,6 +501,7 @@ vfm_natural_disaster_events.6 = { #Storm - any state
 	icon = "gfx/interface/icons/event_icons/event_skull.dds"
 
 	trigger = {
+	    is_coastal = no
 		any_scope_building = {
 			is_building_type = building_logging_camp
 		}
