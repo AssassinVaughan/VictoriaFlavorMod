@@ -115,14 +115,40 @@ distillation = {
 	}
 }
 
-steelworking = {
-	# Unlocks Steel Mills
+metal_tools = {
+	# Unlocks iron tools and saw mills
 	era = era_1
-	texture = "gfx/interface/icons/invention_icons/steelworking.dds"
+	texture = "gfx/interface/icons/invention_icons/metal_tools.dds"
 	category = production
 	
 	unlocking_technologies = {
 		shaft_mining
+	}
+	
+	ai_weight = {
+		value = 1
+		
+		if = {
+			limit = { 
+				OR = {
+					 has_strategy = ai_strategy_industrial_expansion
+					 has_strategy = ai_strategy_resource_expansion
+					 has_strategy = ai_strategy_mining_exporter
+				}
+			}
+			add = 1
+		}		
+	}
+}
+
+steelworking = {
+	# Unlocks Steel Mills
+	era = era_2
+	texture = "gfx/interface/icons/invention_icons/steelworking.dds"
+	category = production
+	
+	unlocking_technologies = {
+		metal_tools
 	}
 	
 	ai_weight = {
@@ -386,7 +412,7 @@ nitroglycerin = {
 bessemer_process = {
 	# Unlocks Bessemer Process PM in Steel Mills
 	# Unlocks Steel [Tools] PM in Tooling Workshops
-	era = era_2
+	era = era_3
 	texture = "gfx/interface/icons/invention_icons/bessemer_process.dds"
 	category = production
 	
@@ -673,7 +699,7 @@ aniline = {
 
 open_hearth_process = {
 	# Unlocks Open Hearth Process PM in Steel Mills
-	era = era_3
+	era = era_4
 	texture = "gfx/interface/icons/invention_icons/open_hearth_process.dds"
 	category = production
 	
@@ -971,7 +997,7 @@ nitrogen_fixation = {
 
 electric_arc_process = {
 	# Unlocks the Electric Arc Process PM in Steel Mills
-	era = era_4
+	era = era_5
 	texture = "gfx/interface/icons/invention_icons/electric_arc_process.dds"
 	category = production
 	
