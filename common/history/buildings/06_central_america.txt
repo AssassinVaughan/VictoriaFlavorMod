@@ -725,13 +725,13 @@
 		}
 	}
 	s:STATE_JAMAICA={
-		region_state:GBR={
+		region_state:JAM={
 			create_building={
 				building="building_banana_plantation"
 				add_ownership={
 					building={
 						type="building_manor_house"
-						country="c:GBR"
+						country="c:JAM"
 						levels=1
 						region="STATE_JAMAICA"
 					}
@@ -744,9 +744,17 @@
 				add_ownership={
 					building={
 						type="building_manor_house"
-						country="c:GBR"
-						levels=3
+						country="c:JAM"
+						levels=1
 						region="STATE_JAMAICA"
+					}
+				}
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:GBR"
+						levels=1
+						region="STATE_LOWLANDS"
 					}
 				}
 				reserves=1
@@ -758,8 +766,16 @@
 					building={
 						type="building_manor_house"
 						country="c:GBR"
-						levels=5
-						region="STATE_JAMAICA"
+						levels=2
+						region="STATE_YORKSHIRE"
+					}
+				}
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:GBR"
+						levels=1
+						region="STATE_WEST_COUNTRY"
 					}
 				}
 				reserves=1
@@ -769,7 +785,7 @@
 				building="building_port"
 				add_ownership={
 					country={
-						country="c:GBR"
+						country="c:JAM"
 						levels=1
 					}
 				}

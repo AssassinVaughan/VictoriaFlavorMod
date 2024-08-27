@@ -66,14 +66,12 @@
 					c:PER = {
 						has_state_in_state_region = STATE_HERAT
 					}
-					if = {
-						limit = {
-							exists = c:AFG
+					NOR = {
+					    c:KAB ?= {
+							has_state_in_state_region = STATE_HERAT
 						}
-						c:AFG = {
-							NOT = {
-								has_state_in_state_region = STATE_HERAT
-							}
+						c:AFG ?= {
+							has_state_in_state_region = STATE_HERAT
 						}
 					}
 				}

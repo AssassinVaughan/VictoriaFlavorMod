@@ -82,10 +82,10 @@ ai_has_enact_weight_modifier_journal_entries = {
 		}
 		AND = {
 			has_journal_entry = je_gyojo_shinwon
-			OR = {
-				scope:law = scope:donghak_desired_law_1
-				scope:law = scope:donghak_desired_law_2
-				scope:law = scope:donghak_desired_law_3
+			OR = { #PBF: Check for existence
+				scope:donghak_desired_law_1 ?= scope:law
+				scope:donghak_desired_law_2 ?= scope:law
+				scope:donghak_desired_law_3 ?= scope:law
 			}
 		}
 	}
