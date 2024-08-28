@@ -62,6 +62,10 @@ NAI = {
 	
 	PRODUCTION_BUILDING_INCREASE_SHORTAGE_MULT = 0.25 #0.01 Multiply score by this if we're increasing the state region's shortages
 	
+	# Government construction applies this multiplier to domestic states when determining where to construct
+	GOVERNMENT_CONSTRUCTION_DOMESTIC_INVESTMENT_BIAS = 2.2 #2.0 VFM Favor domestic more over foreign
+	GOVERNMENT_CONSTRUCTION_SUBJECT_INVESTMENT_BIAS = 1.65 #1.5 VFM Favor subject more
+	
 	# Below data is used to calculate how much weight the AI places on promoting an IG
     PROMOTION_BASE_VALUE = 40 # 50
     
@@ -225,14 +229,14 @@ NPops = {
 ### Pop Growth Constants
 ## Base Values per month
 @min_birthrate = 0.00055			# Minimum base birthrate per month (at POP_GROWTH_STABLE_SOL)
-@max_birthrate = 0.00460			#0.00450 Maximum base birthrate per month (at SOL = 0 if not modified by malnourishment)
+@max_birthrate = 0.00455			#0.00450 Maximum base birthrate per month (at SOL = 0 if not modified by malnourishment)
 @min_mortality = 0.00045			# Minimum base mortality per month (at POP_GROWTH_STABLE_SOL)
 @max_mortality = 0.00645			#0.00600 Maximum base mortality per month (at SOL = 0 if not modified by malnourishment)
 
 ## SoL Thresholds
 @pop_growth_equilibrium_sol = 5		# Equilibrium is pops stop starving and where growth first becomes positive
 @pop_growth_transition_sol = 10     # Transition determines how long birthrate "lags" behind mortality before starting to drop. Setting to same as equilibrium leads to no "lag" (only matters for birthrate)
-@pop_growth_max_sol = 14 #20			# Growth Max is where net growth generally is at it's highest (only matters for mortality)
+@pop_growth_max_sol = 15 #20			# Growth Max is where net growth generally is at it's highest (only matters for mortality)
 @pop_growth_stable_sol = 17 #20 #30			# Stable is where birthrate and mortality stop changing and hit their minimum values
 
 ## Others

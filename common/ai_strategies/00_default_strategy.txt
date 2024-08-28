@@ -3785,16 +3785,16 @@ ai_strategy_default = {
 	# How much construction output should the AI aim for
 	# Using this value in other strategies will function additively
 	wanted_construction_output = {
-		value = 2 # Accounts for the 2 free construction from base modifiers
+		value = 3 # Accounts for the 3 free construction from base modifiers
 
 		add = {
 			value = investment_pool_income
-			divide = 1700 # 1 construction output per this much into the investment pool				
+			divide = 1600 # 1 construction output per this much into the investment pool				
 		}
 		
 		add = {
 			value = income		
-			divide = 9500 # 1 construction output per this much income
+			divide = 8000 # 1 construction output per this much income
 			min = 0
 		}	
 		
@@ -3805,7 +3805,7 @@ ai_strategy_default = {
 		
 		add = {
 			value = gdp
-			divide = 1400000 # 1 construction point per 1.4 million gdp								
+			divide = 1300000 # 1 construction point per 1.3 million gdp								
 		}	
 		
 		if = {
@@ -3825,12 +3825,16 @@ ai_strategy_default = {
 		
 		if = {
 			limit = { 
-				OR = {
-					has_law = law_type:law_land_based_taxation 
-					has_law = law_type:law_consumption_based_taxation
-				}
+				has_law = law_type:law_consumption_based_taxation
 			}
 			multiply = 0.85
+		}
+		
+		if = {
+			limit = { 
+				has_law = law_type:law_land_based_taxation 
+			}
+			multiply = 0.75
 		}
 				
 		if = {
@@ -3845,9 +3849,8 @@ ai_strategy_default = {
 
         if = {
 			limit = { 
-			    game_date > 1860.1.1
+			    game_date > 1856.1.1
 				OR = {
-					has_law = law_type:law_per_capita_based_taxation  #better tax laws = more construction
 					has_law = law_type:law_proportional_taxation
 					has_law = law_type:law_graduated_taxation
 				}
@@ -3869,8 +3872,13 @@ ai_strategy_default = {
 		
 		if = {
 			limit = { has_strategy = ai_strategy_maintain_mandate_of_heaven }
-			multiply = 0.5		
+			multiply = 0.45		
 		}	
+		
+		if = {
+			limit = { has_technology_researched = atmospheric_engine gdp > 8000000 } # over 8 million GDP
+			multiply = 1.1
+		}
 
 		if = {
 			limit = { has_technology_researched = steel_frame_buildings }
