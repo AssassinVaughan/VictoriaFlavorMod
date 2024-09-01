@@ -5,10 +5,10 @@
 	subsistence_income = yes
 	can_always_hire = yes
 	ignores_employment_proportionality = yes
-	start_quality_of_life = 4.5
-	wage_weight = 0.4
+	start_quality_of_life = 5
+	wage_weight = 0.2
 	paid_private_wage = yes
-	consumption_mult = 0.12 	# The portion of Peasant buy packages that are added as state region consumption
+	consumption_mult = 0.05 	# The portion of Peasant buy packages that are added as state region consumption
 	dependent_wage = 0.25	# per year
 	unemployment = no
 
@@ -17,29 +17,23 @@
 	political_engagement_literacy_factor = 0.5
 	
 	political_engagement_mult = {
-		value = 1	
-		
-		add = {
-			desc = "POP_STARVATION"	
-			
-			if = {
-				limit = { 
-					standard_of_living < 5
-				}
-				value = 1
-			}		
-		}
+		value = 1
 
-		multiply = {
-			desc = "HAS_POLITICAL_AGITATION"	
-			value = 1.0
-			
-			if = {
-				limit = { 
-					owner = {
-						has_technology_researched = political_agitation # VFM bugfix
-					}
+		if = {
+			limit = { standard_of_living < 5 }
+			add = {
+				desc = "POP_STARVATION"
+				value = 1
+			}
+		}
+		if = {
+			limit = { 
+				owner = {
+					has_technology_researched = political_agitation # VFM bugfix
 				}
+			}
+			multiply = {
+				desc = "HAS_POLITICAL_AGITATION"
 				value = 1.5
 			}		
 		}			

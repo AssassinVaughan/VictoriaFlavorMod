@@ -303,6 +303,22 @@ dp_reduce_autonomy = {
 	
 	texture = "gfx/interface/icons/war_goals/reduce_autonomy.dds"
 	
+	possible = {
+		OR = {
+			NOT = {
+				scope:target_country = { is_subject_type = subject_type_personal_union }
+			} 
+			has_technology_researched = nationalism
+		}		
+
+		OR = {
+			NOT = {
+				scope:target_country = { has_government_type = gov_chartered_company }
+			} 
+			has_technology_researched = civilizing_mission
+		}	
+	}
+	
 	on_weekly_pulse = {}
 	
 	on_war_begins = {}

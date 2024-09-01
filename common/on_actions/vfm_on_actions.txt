@@ -70,6 +70,14 @@ vfm_events_usa = {
 		flavor_usa_events.2
 	}
 }
+filibuster_events = {
+	events = {
+		filibuster.1
+		filibuster.2
+		filibuster.3
+		filibuster.4
+	}
+}
 
 vfm_events_new_zealand = {
 	events = {
@@ -125,7 +133,7 @@ vfm_discrimination_yearly_country = {
 vfm_natural_disaster_yearly = {
 	random_events = {
 	    # TODO: make flooding state events?
-		261 = 0
+		271 = 0
 		3 = vfm_natural_disaster_events.5 # coastal state storm
 		2 = vfm_natural_disaster_events.1 # drought in more arrid regions
 		1 = vfm_natural_disaster_events.6 # storm
@@ -138,7 +146,7 @@ vfm_natural_disaster_yearly = {
 
 vfm_natural_disaster_decade = {
 	random_events = {
-		124 = 0
+		129 = 0
         1 = vfm_natural_disaster_events.4 # BIG drought
 	}
 }
@@ -737,4 +745,29 @@ vfm_prime_ministers = {
 			}
 		}
 	}
+}
+
+# Root = Country
+# This action is triggered after `on_revolution_end`
+on_civil_war_won = {
+	on_actions = {
+		fra_birth_modifier_on_action
+	}
+}
+
+fra_birth_modifier_on_action = { # from VTM, maybe add this as a tech instead?
+	effect = {
+		if = { # URGENT
+			limit = {
+			    OR = {
+					c:FRA ?= this
+					c:BEL ?= this
+				}
+				NOT = {
+					has_modifier = fra_secular_legacy
+				}
+			}
+			add_modifier = fra_secular_legacy
+		}
+	}	
 }

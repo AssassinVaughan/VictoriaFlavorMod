@@ -417,45 +417,57 @@ in_potato_blight_zone = {
 		region = sr:region_gaelic
 		region = sr:region_north_germany
 		region = sr:region_low_countries
+		state_region = s:STATE_GOTALAND
 	}
+	NOT = { state_region = s:STATE_SCHLESWIG_HOLSTEIN }
 }
 
 in_potato_blight_mild_zone = {
 	OR = {
-		region = sr:region_rhine
-		region = sr:region_france
 		region = sr:region_england
 		region = sr:region_north_sea_coast
 		region = sr:region_scandinavia
-		region = sr:region_south_germany
 		region = sr:region_poland
 		region = sr:region_baltic
 		region = sr:region_belarus
 		region = sr:region_hungary
+		# North america
+		region = sr:region_new_england
+		state_region = s:STATE_QUEBEC
+		state_region = s:STATE_ONTARIO
+		state_region = s:STATE_NEWFOUNDLAND
+		state_region = s:STATE_SCHLESWIG_HOLSTEIN
+		state_region = s:STATE_NORTH_RHINE
 	}
+	NOT = { state_region = s:STATE_GOTALAND }
 }
 
-in_potato_blight_zone_2 = { # TEST
+in_potato_blight_zone_2 = { ## needs different triggers...
 	OR = {
-		region = sr:region_gaelic
-		region = sr:region_north_germany
-		region = sr:region_low_countries
+		state_region = { region = sr:region_gaelic }
+		state_region = { region = sr:region_north_germany }
+		state_region = { region = sr:region_low_countries }
 		state_region = s:STATE_GOTALAND
 	}
+	NOT = { state_region = s:STATE_SCHLESWIG_HOLSTEIN }
 }
 
 in_potato_blight_mild_zone_2 = {
 	OR = {
-		region = sr:region_rhine
-		region = sr:region_france
-		region = sr:region_england
-		region = sr:region_north_sea_coast
-		region = sr:region_scandinavia
-		region = sr:region_south_germany
-		region = sr:region_poland
-		region = sr:region_baltic
-		region = sr:region_belarus
-		region = sr:region_hungary
+		state_region = { region = sr:region_england }
+		state_region = { region = sr:region_north_sea_coast }
+		state_region = { region = sr:region_scandinavia }
+		state_region = { region = sr:region_poland }
+		state_region = { region = sr:region_baltic }
+		state_region = { region = sr:region_belarus }
+		state_region = { region = sr:region_hungary }
+		# North america
+		state_region = { region = sr:region_new_england }
+		state_region = s:STATE_QUEBEC
+		state_region = s:STATE_ONTARIO
+		state_region = s:STATE_NEWFOUNDLAND
+		state_region = s:STATE_SCHLESWIG_HOLSTEIN
+		state_region = s:STATE_NORTH_RHINE
 	}
 	NOT = { state_region = s:STATE_GOTALAND }
 }
@@ -491,6 +503,7 @@ on_river = {
 		has_state_trait = state_trait_danube_river
 		has_state_trait = state_trait_drava_river
 		has_state_trait = state_trait_volga_river
+		has_state_trait = state_trait_don_river
 		has_state_trait = state_trait_elbe_river
 		has_state_trait = state_trait_oder_river
 		has_state_trait = state_trait_dnieper_river

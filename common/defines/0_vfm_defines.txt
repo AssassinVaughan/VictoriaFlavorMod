@@ -62,6 +62,10 @@ NAI = {
 	
 	PRODUCTION_BUILDING_INCREASE_SHORTAGE_MULT = 0.25 #0.01 Multiply score by this if we're increasing the state region's shortages
 	
+	# Government construction applies this multiplier to domestic states when determining where to construct
+	GOVERNMENT_CONSTRUCTION_DOMESTIC_INVESTMENT_BIAS = 2.2 #2.0 VFM Favor domestic more over foreign
+	GOVERNMENT_CONSTRUCTION_SUBJECT_INVESTMENT_BIAS = 1.65 #1.5 VFM Favor subject more
+	
 	# Below data is used to calculate how much weight the AI places on promoting an IG
     PROMOTION_BASE_VALUE = 40 # 50
     
@@ -125,11 +129,17 @@ NEconomy = {
 	
 	FIRED_POP_RADICALIZATION_FRACTION = 0.05				# This percentage of a pop becomes radicalized when they lose their job, for instance due to a building being downsized
 	
-	DEFAULT_MIN_HIRING_RATE = 0.03 				# Default weekly min hiring limit applied in a building per profession as a ratio of full employment
-	DEFAULT_MAX_HIRING_RATE = 0.1 				# Default weekly max hiring limit applied in a building per profession as a ratio of full employment
-	HIRING_RANGE_WEEKLY_CHANGE = 0.01 			# Weekly hiring range of a building is decreased or increased by this based on whether it is failing to hire at its current rate or not
-	EMPLOYMENT_PROPORTIONALITY_LIMIT = 0.1		# A building cannot have a difference of ratio of full employment between any two professions greater than this limit
-	MINIMUM_EMPLOYEES = 10						# If a building has fewer employees than this, it will always attempt to hire
+	JOB_SATISFACTION_BASE = -150							# Base job satisfaction
+	JOB_SATISFACTION_PER_SOL_ABOVE_STATE_STRATA_SOL = 4		#2 Job satisfaction gained per level of SoL above the state average for your strata
+	JOB_SATISFACTION_PER_SOL_ABOVE_COUNTRY_STRATA_SOL = 2	#1 Job satisfaction gained per level of SoL above the country average for your strata
+	JOB_SATISFACTION_FROM_CAN_AFFORD_EXPENSES = 1000		# Job satisfaction gained from being able to afford your bug package (and taxes)
+	JOB_SATISFACTION_FROM_CANNOT_AFFORD_EXPENSES = -1000	#-100 Job satisfaction gained from not being able to afford your bug package (and taxes)
+	JOB_SATISFACTION_PER_PERCENT_HIGHER_STRATA_QUALIFICATION = -2 #-1 Job satisfaction gained per percent of workforce qualified for a higher strata. Note that qualifications are assumed to overlap and the largest qualification is used in this calculation
+
+	JOB_SATISFACTION_DIVIDENDS_BASE = 20					# Base value to be multiplied by the ratio between dividends and wages
+	JOB_SATISFACTION_LOSSES_MIN_MULT = -10					# Min multiplier from the ratio between pop losses and wages (or if you will, max magnitude)
+	JOB_SATISFACTION_GOVERNMENT = 75						# Government jobs need a bit more stability
+
 	BUILDING_RAISE_WAGES_MIN_RELEVANT_POP_SIZE = 50 # Pops with less workforce than this are ignored when checking whether a profitable building should raise wages because of radicalizing workers
 	BUILDING_RAISE_WAGES_DISCRIMINATION_FACTOR = 0.66 # Profitable buildings only care to raise wages for discriminated pops if their wealth to expected SoL ratio is less than this
 	BUILDING_LOWER_WAGES_TARGET_WEALTH_MULT = 1.33 # Buildings will consider lowering wages if all significant pops working in them have this * the target wealth to expected SoL ratio
@@ -138,8 +148,6 @@ NEconomy = {
 	BUILDING_MAX_EMPLOYMENT_FRACTION_TO_RAISE_WAGES = 0.5 # If the employment fraction of a building is above this, don't raise wages just to try and snipe employees from other buildings
 	BUILDING_WEEKS_BETWEEN_PAY_CHANGES = 8		# Cooldown between changes in pay, so buildings don't overcompensate for a temporary change in circumstances. If the building is unprofitable it uses BUILDING_WEEKS_BETWEEN_PAY_CHANGES_WHEN_UNPROFITABLE instead.
 	BUILDING_WEEKS_BETWEEN_PAY_CHANGES_WHEN_UNPROFITABLE = 3 # Cooldown between changes in pay, so buildings don't overcompensate for a temporary change in circumstances. Only used when unprofitable.
-	
-	STARTING_WAGE_RATE_MULTIPLIER = 2.0
 	
 	TRADE_ROUTE_AUTO_INCREASE_ACCEPTABLE_REVENUE_DIFFERENCE = 1.15 #1.1 Multiply revenue of new trade route level by this for the purpose of considering whether it's OK to auto-increase level (means that trade routes can level up even when slightly decreasing overall revenue)
 	TRADE_ROUTE_AUTO_INCREASE_VERY_LOW_PRODUCTIVITY_THRESHOLD = 2.25 #3 If trade route's productivity is below this, always automatically decrease its level (regardless of total revenue)
@@ -204,9 +212,9 @@ NPops = {
 	
 	## Mass Migrations ##
 	# Mass Migration Setup #
-	MASS_MIGRATION_SPAWN_CHANCE = 0.75 					# Per week for each potential mass migration, scales with turmoil (1 = 1%)
+	MASS_MIGRATION_SPAWN_CHANCE = 0.6 					# Per week for each potential mass migration, scales with turmoil (1 = 1%)
 	MASS_MIGRATION_SPAWN_CHANCE_STRUGGLING_FACTOR = 0.2 # Chance increases by this for each point of SoL below 10 for a culture in a country
-	MASS_MIGRATION_SPAWN_CHANCE_STARVING_FACTOR = 0.8 	# Chance increases by this for each point of SoL below 5 for a culture in a country 
+	MASS_MIGRATION_SPAWN_CHANCE_STARVING_FACTOR = 0.75 	# Chance increases by this for each point of SoL below 5 for a culture in a country 
 	MASS_MIGRATION_DURATION_MONTHS = 36					# How long does a mass migration last in months
 	MASS_MIGRATION_COOLDOWN_MONTHS = 24					# How many months before the same culture can mass migrate from a country again
 	MASS_MIGRATION_TARGET_MAX_TURMOIL = 0.15			# Must have this or less turmoil among the culture for a country to be picked as a mass migration target
@@ -221,9 +229,9 @@ NPops = {
 ### Pop Growth Constants
 ## Base Values per month
 @min_birthrate = 0.00055			# Minimum base birthrate per month (at POP_GROWTH_STABLE_SOL)
-@max_birthrate = 0.00470			#0.00450 Maximum base birthrate per month (at SOL = 0 if not modified by malnourishment)
+@max_birthrate = 0.00455			#0.00450 Maximum base birthrate per month (at SOL = 0 if not modified by malnourishment)
 @min_mortality = 0.00045			# Minimum base mortality per month (at POP_GROWTH_STABLE_SOL)
-@max_mortality = 0.00650			#0.00600 Maximum base mortality per month (at SOL = 0 if not modified by malnourishment)
+@max_mortality = 0.00645			#0.00600 Maximum base mortality per month (at SOL = 0 if not modified by malnourishment)
 
 ## SoL Thresholds
 @pop_growth_equilibrium_sol = 5		# Equilibrium is pops stop starving and where growth first becomes positive

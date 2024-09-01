@@ -1,0 +1,348 @@
+﻿UCA = { # Central America
+	flag_definition = {
+		coa = UCA
+		subject_canton = UCA
+		coa_with_overlord_canton = UCA_subject
+		allow_overlord_canton = yes				
+		priority = 1
+	}
+	flag_definition = {
+		coa = UCA_centralist
+		subject_canton = UCA_centralist
+		priority = 25
+		trigger = {
+			scope:actor ?= {
+				coa_republic_trigger = yes
+				OR = {
+					has_law = law_type:law_devolved
+					has_law = law_type:law_unitary
+					AND = {
+						has_variable = is_frca_var
+						has_law = law_type:law_confederated
+					}
+				}
+			}
+		}
+	}	
+	flag_definition = {
+		coa = UCA_1836_federal
+		priority = 25
+		trigger = { 
+			scope:actor ?= {
+			    has_variable = is_frca_var
+				coa_republic_trigger = yes
+				has_law = law_type:law_federal
+			}
+		}
+	}	
+	flag_definition = {
+		coa = UCA_republic
+		priority = 20
+		trigger = { 
+			scope:actor ?= {
+			    NOT = { has_variable = is_frca_var }
+				coa_republic_trigger = yes
+			}
+		}
+	}	
+	flag_definition = {
+		coa = UCA_absolute_monarchy			
+		priority = 20
+		trigger = { 
+			coa_def_absolute_monarchy_flag_trigger = yes
+		}
+	}	
+	flag_definition = {
+		coa = UCA_subject_SPA
+		priority = 30
+		trigger = { 
+			coa_def_spanish_ensign_trigger = yes
+		}
+	}	
+	flag_definition = {
+		coa = UCA_communist
+		priority = 1500
+		trigger = { 
+			coa_def_communist_flag_trigger = yes
+		}
+	}
+	flag_definition = {
+		coa = UCA_subject_USA
+		priority = 50
+		trigger = { 
+			coa_def_american_ensign_trigger = yes
+		}
+	}	
+}
+
+NIC = { # Nicaragua
+	flag_definition = {
+		coa = NIC
+		subject_canton = NIC	
+		coa_with_overlord_canton = NIC_subject	
+		allow_overlord_canton = yes		
+		priority = 1
+	}
+	flag_definition = {
+		coa = NIC_subject_MEX
+		priority = 30
+		trigger = { 
+			coa_def_mexican_ensign_trigger = yes
+		}
+	}	
+	flag_definition = {
+		coa = NIC_absolute_monarchy			
+		priority = 20
+		trigger = { 
+			coa_def_absolute_monarchy_flag_trigger = yes
+		}
+	}	
+	flag_definition = {
+		coa = NIC_dictatorship	
+		priority = 20
+		trigger = { 
+			coa_def_dictatorship_flag_trigger = yes
+		}
+	}
+	flag_definition = {
+		coa = NIC_theocracy		
+		priority = 20
+		trigger = { 
+			coa_def_theocracy_flag_trigger = yes
+		}
+	}	
+	flag_definition = {
+		coa = NIC_republic			
+		priority = 20
+		trigger = { 
+			coa_def_republic_flag_trigger = yes
+		}
+	}
+	flag_definition = {
+		coa = NIC_communist
+		priority = 1500
+		trigger = { 
+			coa_def_communist_flag_trigger = yes
+		}
+	}
+	flag_definition = {
+		coa = NIC_subject_UCA
+		priority = 30
+		trigger = { 
+			coa_def_frca_ensign_trigger = yes
+		}
+	}
+}
+
+#Walker's Nicaragua
+WNG = {
+	flag_definition = {
+		coa = WNG
+		subject_canton = WNG
+		allow_overlord_canton = yes
+		coa_with_overlord_canton = WNG_subject				
+		priority = 1
+	}
+}
+
+# Chiapas
+CIP = {
+	flag_definition = {
+		coa = CIP
+		subject_canton = CIP
+		coa_with_overlord_canton = CIP_subject	
+		allow_overlord_canton = yes		
+		priority = 1
+	}
+	flag_definition = {
+		coa = CIP_subject_MEX
+		priority = 30
+		trigger = { 
+			coa_def_mexican_ensign_trigger = yes
+		}
+	}	
+	flag_definition = {
+		coa = CIP_subject_frca
+		priority = 30
+		trigger = { 
+			coa_def_frca_ensign_trigger = yes
+		}
+	}
+	flag_definition = {
+		coa = CIP_soconosco_frca
+		priority = 40
+		trigger = { 
+			coa_def_soconosco_uca_trigger = yes
+		}
+	}
+	flag_definition = {
+		coa = CIP_soconosco	
+		priority = 40
+		trigger = { 
+			coa_def_soconosco_trigger = yes
+		}
+	}	
+	flag_definition = {
+		coa = CIP_absolute_monarchy			
+		priority = 20
+		trigger = { 
+			coa_def_absolute_monarchy_flag_trigger = yes
+		}
+	}	
+	flag_definition = {
+		coa = CIP_dictatorship	
+		priority = 20
+		trigger = { 
+			coa_def_dictatorship_flag_trigger = yes
+		}
+	}
+	flag_definition = {
+		coa = CIP_theocracy		
+		priority = 20
+		trigger = { 
+			coa_def_theocracy_flag_trigger = yes
+		}
+	}	
+	flag_definition = {
+		coa = CIP_republic			
+		priority = 20
+		trigger = { 
+			coa_def_republic_flag_trigger = yes
+		}
+	}
+	flag_definition = {
+		coa = CIP_communist
+		priority = 1500
+		trigger = { 
+			coa_def_communist_flag_trigger = yes
+		}
+	}
+}
+
+#Los Altos
+ALT = {
+	flag_definition = {
+		coa = ALT
+		allow_overlord_canton = yes	
+		coa_with_overlord_canton = ALT_subject	
+		overlord_canton_scale = { 0.337 0.5 }		
+		subject_canton = ALT
+		priority = 1
+	}
+	flag_definition = {
+		coa = ALT_subject_MEX
+		priority = 30
+		trigger = { 
+			coa_def_mexican_ensign_trigger = yes
+		}
+	}		
+	flag_definition = {
+		coa = ALT_subject_UCA
+		priority = 30
+		trigger = { 
+			coa_def_frca_ensign_trigger = yes
+		}
+	}	
+}
+
+#Guatemala
+GUA = { # Guatemala
+	flag_definition = {
+		coa = GUA
+		allow_overlord_canton = yes	
+		coa_with_overlord_canton = GUA_subject	
+		overlord_canton_scale = { 0.337 0.5 }		
+		subject_canton = GUA
+		priority = 1
+	}
+	flag_definition = {
+		coa = GUA_republic
+		priority = 10
+		trigger = { 
+			coa_def_republic_flag_trigger = yes
+		}
+	}	
+	flag_definition = {
+		coa = GUA_absolute_monarchy
+		priority = 10
+		trigger = { 
+			coa_def_absolute_monarchy_flag_trigger = yes
+		}
+	}	
+	flag_definition = {
+		coa = GUA_subject_SPA
+		priority = 30
+		trigger = { 
+			coa_def_spanish_ensign_trigger = yes
+		}
+	}	
+	flag_definition = {
+		coa = GUA_subject_MEX
+		priority = 30
+		trigger = { 
+			coa_def_mexican_ensign_trigger = yes
+		}
+	}		
+	flag_definition = {
+		coa = GUA_subject_UCA
+		priority = 30
+		trigger = { 
+			coa_def_frca_ensign_trigger = yes
+		}
+	}	
+}
+
+HON = { # Honduras
+	flag_definition = {
+		coa = HON
+		subject_canton = HON	
+		allow_overlord_canton = yes		
+		coa_with_overlord_canton = HON_subject			
+		priority = 1
+	}
+	flag_definition = {
+		coa = HON_communist
+		priority = 1500
+		trigger = { 
+			coa_def_communist_flag_trigger = yes
+		}
+	}	
+	flag_definition = {
+		coa = HON_subject_MEX
+		priority = 30
+		trigger = { 
+			coa_def_mexican_ensign_trigger = yes
+		}
+	}	
+	flag_definition = {
+		coa = HON_subject_UCA
+		priority = 30
+		trigger = { 
+			coa_def_frca_ensign_trigger = yes
+		}
+	}	
+}
+
+COS = { # Costa Rica
+	flag_definition = {
+		coa = COS
+		subject_canton = COS	
+		allow_overlord_canton = yes		
+		coa_with_overlord_canton = COS_subject			
+		priority = 1
+	}
+	flag_definition = {
+		coa = COS_subject_MEX
+		priority = 30
+		trigger = { 
+			coa_def_mexican_ensign_trigger = yes
+		}
+	}	
+	flag_definition = {
+		coa = COS_subject_UCA
+		priority = 30
+		trigger = { 
+			coa_def_frca_ensign_trigger = yes
+		}
+	}	
+}

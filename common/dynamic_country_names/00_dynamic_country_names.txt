@@ -670,11 +670,11 @@ BIC = { # British East India Company
 						type = puppet
 						is_initiator = yes
 					}
-					has_diplomatic_pact = {
-						who = c:BIC
-						type = dependency
-						is_initiator = yes
-					}
+					#has_diplomatic_pact = {
+					#	who = c:BIC
+					#	type = dependency
+					#	is_initiator = yes
+					#}
 				}
 
 			}
@@ -1870,9 +1870,14 @@ ONT = { # Ontario
 		trigger = {
 			exists = c:GBR
 			c:GBR = {
+				#has_diplomatic_pact = {
+				#	who = c:ONT
+				#	type = dependency
+				#	is_initiator = yes
+				#}
 				has_diplomatic_pact = {
 					who = c:ONT
-					type = dependency
+					type = puppet
 					is_initiator = yes
 				}
 			}
@@ -1986,9 +1991,14 @@ PHI = {
 		trigger = {
 			exists = c:SPA
 			c:SPA = {
+				#has_diplomatic_pact = {
+				#	who = c:PHI
+				#	type = dependency
+				#	is_initiator = yes
+				#}
 				has_diplomatic_pact = {
 					who = c:PHI
-					type = dependency
+					type = puppet
 					is_initiator = yes
 				}
 			}
@@ -2045,9 +2055,14 @@ QUE = { # Quebec
 		trigger = {
 			exists = c:GBR
 			c:GBR = {
+				#has_diplomatic_pact = {
+				#	who = c:QUE
+				#	type = dependency
+				#	is_initiator = yes
+				#}
 				has_diplomatic_pact = {
 					who = c:QUE
-					type = dependency
+					type = puppet
 					is_initiator = yes
 				}
 			}
@@ -2093,9 +2108,14 @@ SAF = { # South Africa
 		trigger = {
 			exists = c:GBR
 			c:GBR = {
+				#has_diplomatic_pact = {
+				#	who = c:SAF
+				#	type = dependency
+				#	is_initiator = yes
+				#}
 				has_diplomatic_pact = {
 					who = c:SAF
-					type = dependency
+					type = puppet
 					is_initiator = yes
 				}
 			}
@@ -2277,9 +2297,14 @@ NAU = { # Northern Australia
 			has_variable = is_port_essington
 			exists = c:GBR
 			c:GBR = {
+				#has_diplomatic_pact = {
+				#	who = c:TAS
+				#	type = dependency
+				#	is_initiator = yes
+				#}
 				has_diplomatic_pact = {
 					who = c:TAS
-					type = dependency
+					type = puppet
 					is_initiator = yes
 				}
 			}

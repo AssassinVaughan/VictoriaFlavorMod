@@ -1639,11 +1639,9 @@ ai_strategy_unify_germany = {
 			}
 			if = {
 				limit = {
-						scope:target_country = {
-							any_scope_state = {
-								state_region = s:STATE_SCHLESWIG_HOLSTEIN
-							}
-						}
+					scope:target_country = {
+						has_state_in_state_region = STATE_SCHLESWIG_HOLSTEIN
+					}
 					scope:target_state = {
 						state_region = s:STATE_SCHLESWIG_HOLSTEIN
 					}		
@@ -1699,7 +1697,7 @@ ai_strategy_unify_germany = {
 					}
 					scope:target_state = {
 						NOT = {
-						state_region = s:STATE_SCHLESWIG_HOLSTEIN		
+							state_region = s:STATE_SCHLESWIG_HOLSTEIN		
 						}
 					}
 				}

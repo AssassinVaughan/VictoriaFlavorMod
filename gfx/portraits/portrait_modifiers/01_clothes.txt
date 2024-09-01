@@ -1884,8 +1884,7 @@
             base = 0
             modifier = {
                 add = 10002
-                exists = scope:character
-                scope:character = {
+                scope:character ?= {
                     exists = home_country
 home_country = {
                         exists = c:MEX
@@ -2057,8 +2056,7 @@ home_country = {
             base = 0
             modifier = {
                 add = 10002
-                exists = scope:character
-                scope:character = {
+                scope:character ?= {
                     exists = home_country
 home_country = {
                         exists = c:BUE
@@ -2089,8 +2087,7 @@ home_country = {
             base = 0
             modifier = {
                 add = 10002
-                exists = scope:character
-                scope:character = {               
+                scope:character ?= {               
                     has_variable = is_bulnes
                 }
             }
@@ -2116,8 +2113,7 @@ home_country = {
             base = 0
             modifier = {
                 add = 10002
-                exists = scope:character
-                scope:character = {               
+                scope:character ?= {               
                     has_variable = is_huachaca
                 }
             }
@@ -2143,8 +2139,7 @@ home_country = {
             base = 0
             modifier = {
                 add = 10002
-                exists = scope:character
-                scope:character = {               
+                scope:character ?= {               
                     has_variable = is_ohiggins
                 }
             }
@@ -2170,8 +2165,7 @@ home_country = {
             base = 0
             modifier = {
                 add = 10002
-                exists = scope:character
-                scope:character = {               
+                scope:character ?= {               
                     has_variable = is_tounens
                 }
             }
@@ -2203,8 +2197,7 @@ home_country = {
             base = 0
             modifier = {
                 add = 10002
-                exists = scope:character
-                scope:character = {               
+                scope:character ?= {               
                     has_variable = is_portales
                 }
             }
@@ -2621,7 +2614,7 @@ home_country = {
         weight = {
             base = 0
             modifier = {
-                add = 10001
+                add = 10002
                 brazilian_clothes_trigger = yes
                 republic_clothes_trigger = yes
                 armed_forces_clothes_trigger = yes
@@ -2655,71 +2648,71 @@ home_country = {
         }
     }
 
-	brazilian_military_clothes = {
-        dna_modifiers = {
-            accessory = {
-                mode = add
-                gene = coats
-                template = brazilian_coats
-                range = { 0 1 } # limiting the set to single-breasted coats, so aiguillettes work
-            }
-            accessory = {
-                mode = add
-                gene = legwear
-                template = latin_american_legwear
-                range = { 0.34 1 } # For the randomness to work correctly
-            }
-            accessory = {
-                mode = add
-                gene = aiguillettes
-                template = all_aiguillettes
-                range = { 0 1 } # For the randomness to work correctly
-            }
-        }
-        weight = {
-            base = 0
-            modifier = {
-                add = 10001
-                OR = {
-                    brazilian_clothes_trigger = yes
-                    brazilian_clothes_pop_trigger = yes
-                }
-			    OR = {
-				    military_clothes_trigger = yes
-				    officers_clothes_pop_trigger = yes
-				    AND = {
-                        armed_forces_clothes_trigger = yes
-                        politician_clothes_trigger = yes
-				    }
-			    }
-            }
-        }
-    }
+	# brazilian_military_clothes = {  # VFM
+    #     dna_modifiers = {
+    #         accessory = {
+    #             mode = add
+    #             gene = coats
+    #             template = brazilian_coats
+    #             range = { 0 1 } # limiting the set to single-breasted coats, so aiguillettes work
+    #         }
+    #         accessory = {
+    #             mode = add
+    #             gene = legwear
+    #             template = latin_american_legwear
+    #             range = { 0.34 1 } # For the randomness to work correctly
+    #         }
+    #         accessory = {
+    #             mode = add
+    #             gene = aiguillettes
+    #             template = all_aiguillettes
+    #             range = { 0 1 } # For the randomness to work correctly
+    #         }
+    #     }
+    #     weight = {
+    #         base = 0
+    #         modifier = {
+    #             add = 10000
+    #             OR = {
+    #                 brazilian_clothes_trigger = yes
+    #                 brazilian_clothes_pop_trigger = yes
+    #             }
+	# 		    OR = {
+	# 			    military_clothes_trigger = yes
+	# 			    officers_clothes_pop_trigger = yes
+	# 			    AND = {
+    #                     armed_forces_clothes_trigger = yes
+    #                     politician_clothes_trigger = yes
+	# 			    }
+	# 		    }
+    #         }
+    #     }
+    # }
 
-    brazilian_soldier_clothes = {
-        dna_modifiers = {
-            accessory = {
-                mode = add
-                gene = coats
-                template = brazilian_coats
-                range = { 0 0.75 } # limiting the set to single-breasted coats, so aiguillettes work
-            }
-            accessory = {
-                mode = add
-                gene = legwear
-                template = latin_american_legwear
-                range = { 0.34 1 } # For the randomness to work correctly
-            }
-        }
-        weight = {
-            base = 0
-            modifier = {
-                add = 10000
-                brazilian_clothes_pop_trigger = yes
-                soldier_clothes_pop_trigger = yes
-            }
-        }
-    }
+    # brazilian_soldier_clothes = {   # VFM
+    #     dna_modifiers = {
+    #         accessory = {
+    #             mode = add
+    #             gene = coats
+    #             template = brazilian_coats
+    #             range = { 0 0.75 } # limiting the set to single-breasted coats, so aiguillettes work
+    #         }
+    #         accessory = {
+    #             mode = add
+    #             gene = legwear
+    #             template = latin_american_legwear
+    #             range = { 0.34 1 } # For the randomness to work correctly
+    #         }
+    #     }
+    #     weight = {
+    #         base = 0
+    #         modifier = {
+    #             add = 10000
+    #             brazilian_clothes_pop_trigger = yes
+    #             soldier_clothes_pop_trigger = yes
+    #         }
+    #     }
+    # }
 
 	hispanic_military_ruler_clothes = {
         dna_modifiers = {
@@ -2797,7 +2790,7 @@ home_country = {
         weight = {
             base = 0
             modifier = {
-                add = 2000
+                add = 10001
                 agitator_character_trigger = no
                 OR = {
                     AND = {
@@ -2877,7 +2870,7 @@ home_country = {
         weight = {
             base = 0
             modifier = {
-                add = 10000
+                add = 11000
                 gaucho_clothes_pop_trigger = yes
                 OR = {
                     soldier_clothes_pop_trigger = yes
@@ -3414,8 +3407,7 @@ home_country = {
             base = 0
             modifier = {
                 add = 10000
-                exists = scope:character
-                scope:character = {
+                scope:character ?= {
                     is_female = no
 
                     owner ?= {
@@ -3574,44 +3566,66 @@ home_country = {
             base = 0
             modifier = {
                 add = 2000
-                american_clothes_trigger = no
-                arabic_clothes_trigger = no
-                british_empire_clothes_trigger = no
-                french_empire_clothes_trigger = no
                 OR = {
-                    european_clothes_trigger = yes
                     AND = {
-                        exists = scope:character
-                        scope:character = {
-                            OR = {
-                                culture = cu:cherokee
-                                culture = cu:muskogean
+                        american_clothes_trigger = no
+                        arabic_clothes_trigger = no
+                        british_empire_clothes_trigger = no
+                        french_empire_clothes_trigger = no
+                        OR = {
+                            european_clothes_trigger = yes
+                            AND = {
+                                exists = scope:character
+                                scope:character = {
+                                    OR = {
+                                        culture = cu:cherokee
+                                        culture = cu:muskogean
+                                    }
+                                }
+                            }
+                            african_diaspora_clothes_trigger = yes
+                        }
+                        OR = {
+                            scope:character ?= {
+                                has_role = general
+                            }
+                            AND = {
+                                armed_forces_clothes_trigger = yes
+                                politician_clothes_trigger = yes
+                                monarchy_clothes_trigger = no
                             }
                         }
-                    }
-                    african_diaspora_clothes_trigger = yes
-                }
-                OR = {
-                    scope:character ?= {
-                        has_role = general
+                        scope:character = {
+                            NOT = {
+                                AND = {
+                                    exists = c:PRU
+                                    exists = home_country
+                                    home_country = c:PRU 
+                                }
+                            }
+                            owner ?= {
+                                has_dlc_feature = ep1_cosmetics
+                                has_technology_researched = bolt_action_rifles
+                            }
+                        }
+
                     }
                     AND = {
-                        armed_forces_clothes_trigger = yes
-                        politician_clothes_trigger = yes
-                        monarchy_clothes_trigger = no
-                    }
-                }
-                scope:character = {
-                    NOT = {
-                        AND = {
-                            exists = c:PRU
-                            exists = home_country
-                            home_country = c:PRU 
+                        OR = {
+                            integrated_south_american_natives_pop_trigger = yes
+                            european_clothes_pop_trigger = yes
+                            african_diaspora_pop_clothes_trigger = yes
                         }
-                    }
-                    owner ?= {
-                        has_dlc_feature = ep1_cosmetics
-                        has_technology_researched = bolt_action_rifles
+                        OR = {
+                            soldier_clothes_pop_trigger = yes
+                            officers_clothes_pop_trigger = yes
+                        }
+                        # scope:pop ?= {
+                        #     owner ?= {
+                        #         has_dlc_feature = ep1_cosmetics
+                        #         has_technology_researched = bolt_action_rifles
+                        #     }
+                        # } 
                     }
                 }
             }
@@ -3940,6 +3954,12 @@ home_country = {
             }
             accessory = {
                 mode = add
+                gene = sashes
+                template = no_sash
+                range = { 1 1 } # For the randomness to work correctly
+            }
+            accessory = {
+                mode = add
                 gene = legwear
                 template = european_late_military_legwear
                 accessory = male_legwear_american_military_01
@@ -4254,6 +4274,12 @@ home_country = {
                 gene = belts
                 template = late_military_belts
                 range = { 0 1 }
+            }
+            accessory = {
+                mode = add
+                gene = sashes
+                template = no_sash
+                range = { 1 1 } # For the randomness to work correctly
             }
             accessory = {
                 mode = add
@@ -4724,7 +4750,7 @@ home_country = {
 
 
 
-    brazilian_military_clothes = {
+    brazilian_military_clothes = {  # VANILLA
         dna_modifiers = {
              accessory = {
                 mode = add
@@ -4793,7 +4819,7 @@ home_country = {
         }
     }
 
-    brazilian_military_clothes_soldier = {
+    brazilian_military_clothes_soldier = {  # VANILLA
         dna_modifiers = {
              accessory = {
                 mode = add
@@ -5164,7 +5190,7 @@ home_country = {
                 mode = add
                 gene = coats
                 template = austrian_coats
-                range = { 0 1 } # For the randomness to work correctly
+                range = { 0 0.5 } # For the randomness to work correctly
             }
 
             # no aiguillettes because they don't work with double-breasted coats
@@ -5179,7 +5205,13 @@ home_country = {
                 mode = add
                 gene = legwear
                 template = austrian_legwear
-                range = { 0 1 } # For the randomness to work correctly
+                accessory = male_legwear_european_01_red
+            }
+            accessory = {
+                mode = add
+                gene = epaulettes
+                template = no_epaulette
+                range = { 0.1 0.2 } # For the randomness to work correctly
             }
             accessory = {
                 mode = add
@@ -5192,22 +5224,9 @@ home_country = {
             base = 0
             modifier = {
                 add = 10001
+                austrian_clothes_trigger = yes
                 scope:character ?= {
-                    OR = {
-                        AND = {
-                            home_country ?= {
-                                c:AUS ?= this
-                            }
-                        }
-                        AND = {
-                            home_country ?= {
-                                was_formed_from = AUS
-                            }
-                        }
-                    }
-                    scope:character ?= {
-                        age > 10
-                    }
+                    age > define:NCharacters|ADULT_AGE
                     OR = {
                         AND = {
                             is_ruler = yes
@@ -5237,7 +5256,7 @@ home_country = {
                 mode = add
                 gene = coats
                 template = austrian_coats
-                range = { 0.5 0.5 } # For the randomness to work correctly
+                accessory = male_coat_austrian_06
             }
 
             # no aiguillettes because they don't work with double-breasted coats
@@ -5252,7 +5271,7 @@ home_country = {
                 mode = add
                 gene = legwear
                 template = austrian_legwear
-                range = { 0 1 } # For the randomness to work correctly
+                accessory = male_legwear_european_01_red
             }
             accessory = {
                 mode = add
@@ -5265,22 +5284,9 @@ home_country = {
             base = 0
             modifier = {
                 add = 10002
+                austrian_clothes_trigger = yes
                 scope:character ?= {
-                    OR = {
-                        AND = {
-                            home_country ?= {
-                                c:AUS ?= this
-                            }
-                        }
-                        AND = {
-                            home_country ?= {
-                                was_formed_from = AUS
-                            }
-                        }
-                    }
-                    scope:character ?= {
-                        age > 10
-                    }
+                    age > define:NCharacters|ADULT_AGE
                     OR = {
                         AND = {
                             is_ruler = yes
@@ -5300,56 +5306,54 @@ home_country = {
         }
     }
     
-    austrian_clothes_ww1 = {
+    austrian_clothes_late = {
         dna_modifiers = {
             accessory = {
                 mode = add
                 gene = coats
-                template = austrian_coats_ww1
-                range = { 0 0 } # For the randomness to work correctly
-            }
-
-            accessory = {
-                mode = add
-                gene = aiguillettes
-                template = all_aiguillettes
-                range = { 0 0 } # For the randomness to work correctly
-            }
-
-            accessory = {
-                mode = add
-                gene = legwear
-                template = austrian_legwear_ww1
-                range = { 0 1 } # For the randomness to work correctly
+                template = male_coat_late_austrian
+                accessory = male_coat_late_austrian_military_01
             }
             accessory = {
                 mode = add
                 gene = epaulettes
-                template = all_epaulettes
-                range = { 0 0 } # For the randomness to work correctly
+                template = late_military_epaulettes
+                accessory = male_epaulettes_late_austrian_military_01
+            }
+            accessory = {
+                mode = add
+                gene = aiguillettes
+                template = no_aiguillettes
+                range = { 0 1 } # For the randomness to work correctly
+            }
+            accessory = {
+                mode = add
+                gene = belts
+                template = late_military_belts
+                range = { 0 1 } # For the randomness to work correctly
+            }
+            accessory = {
+                mode = add
+                gene = sashes
+                template = no_sash
+                range = { 1 1 } # For the randomness to work correctly
+            }
+            accessory = {
+                mode = add
+                gene = legwear
+                template = european_late_military_legwear
+                accessory = male_legwear_late_austrian_military_01
             }
         }
         weight = {
             base = 0
             modifier = {
-                add = 10002
-                ww1_clothes_trigger = yes
+                add = 12000
+                has_dlc_feature = ep1_cosmetics
+                late_military_clothes_trigger = yes
+                austrian_clothes_trigger = yes
                 scope:character ?= {
-                    OR = {
-                        AND = {
-                            home_country ?= {
-                                c:AUS ?= this
-                            }
-                        }
-                        AND = {
-                            home_country ?= {
-                                was_formed_from = AUS
-                            }
-                        }
-                    }
-                    scope:character ?= {
-                        age > 10
-                    }
+                    age > 10
                     AND = {
                         has_role = politician
                         is_interest_group_type = ig_armed_forces
@@ -5365,7 +5369,7 @@ home_country = {
                 mode = add
                 gene = coats
                 template = prussian_coats
-                range = { 0.5 1 } # For the randomness to work correctly
+                range = { 0 1 } # For the randomness to work correctly
             }
 
             # no aiguillettes because they don't work with double-breasted coats, which is all the Prussians have
@@ -5387,10 +5391,9 @@ home_country = {
         weight = {
             base = 0
             modifier = {
-                add = 5000
+                add = 10001
                 #german_clothes_trigger = yes
-                exists = scope:character
-                scope:character = {
+                scope:character ?= {
 					exists = home_country
 					OR = {
                         AND = {
@@ -5590,8 +5593,7 @@ home_country = {
             modifier = {
                 add = 5000
                 #german_clothes_trigger = yes
-                exists = scope:character
-                scope:character = {
+                scope:character ?= {
 					exists = home_country
 					OR = {
                         AND = {
@@ -6217,8 +6219,7 @@ home_country = {
             modifier = {
                 add = 5000
                 military_clothes_trigger = no
-                exists = scope:character
-                scope:character = {
+                scope:character ?= {
                     NOT = { has_template = FRA_francois-rene_de_chateaubriand }
                     OR = {
                         AND = {
@@ -6320,8 +6321,7 @@ home_country = {
             }
             modifier = {
                 add = 500
-                exists = scope:character
-                scope:character = {
+                scope:character ?= {
                     OR = {
                         culture = cu:inuit
                         culture = cu:siberian
@@ -6363,8 +6363,7 @@ home_country = {
             }
             modifier = {
                 add = 100
-                exists = scope:character
-                scope:character = {
+                scope:character ?= {
                     culture = cu:sami
                 }
             }
@@ -7323,6 +7322,12 @@ indigenous_oceanic_pop_clothes = {
             }
             accessory = {
                 mode = add
+                gene = sashes
+                template = no_sash
+                range = { 1 1 } # For the randomness to work correctly
+            }
+            accessory = {
+                mode = add
                 gene = legwear
                 template = european_late_military_legwear
                 accessory = male_legwear_british_late_military_01
@@ -7644,18 +7649,18 @@ indigenous_oceanic_pop_clothes = {
                 mode = add
                 gene = coats
                 template = austrian_coats
-                range = { 0 1 } # For the randomness to work correctly
+                range = { 0 0.5 } # For the randomness to work correctly
             }
             accessory = {
                 mode = add
                 gene = legwear
                 template = austrian_legwear
-                range = { 0 1 } # For the randomness to work correctly
+                accessory = male_legwear_european_01_red
             }
             accessory = {
                 mode = add
                 gene = epaulettes
-                template = all_epaulettes
+                template = no_epaulette
                 range = { 0.1 0.2 } # For the randomness to work correctly
             }
         }
@@ -7663,43 +7668,20 @@ indigenous_oceanic_pop_clothes = {
         weight = {
             base = 0
             modifier = {
-                add = 10001
+                add = 10000
                 OR = {
                     AND = {
-                        scope:pop ?= {
-                            OR = {
-                                home_country ?= {
-                                    c:AUS ?= this
-                                }
-                                home_country ?= {
-                                    was_formed_from = AUS
-                                }
-                            }
-                        }      
+                        austrian_clothes_pop_trigger = yes
                         OR = {
                             soldier_clothes_pop_trigger = yes
                             officers_clothes_pop_trigger = yes
                         }
                     }
                     AND = {
+                        austrian_clothes_trigger = yes
                         scope:character ?= {
-                            age > 10
-                            OR = {
-                                has_role = general
-                                has_role = admiral
-                            }
-                            OR = {
-                                AND = {
-                                    home_country ?= {
-                                        c:AUS ?= this
-                                    }
-                                }
-                                AND = {
-                                    home_country ?= {
-                                        was_formed_from = AUS
-                                    }
-                                }
-                            }
+                            age >= define:NCharacters|ADULT_AGE
+                            has_role = general
                         }       
                     }
                 }
@@ -7707,90 +7689,128 @@ indigenous_oceanic_pop_clothes = {
         }
     }
 
-    austrian_soldier_clothes_ww1 = {
+    austrian_soldier_clothes_late = {
         dna_modifiers = {
             accessory = {
                 mode = add
                 gene = coats
-                template = austrian_coats_ww1
-                range = { 0 1 } # For the randomness to work correctly
-            }
-            #no aiguillettes because they don't work with double-breasted coats, which is all the Prussians have
-            accessory = {
-               mode = add
-               gene = aiguillettes
-               template = all_aiguillettes
-               range = { 1 1 } # For the randomness to work correctly
-            }
-            accessory = {
-                mode = add
-                gene = legwear
-                template = austrian_legwear_ww1
-                range = { 0 1 } # For the randomness to work correctly
+                template = male_coat_late_austrian
+                accessory = male_coat_late_austrian_military_01
             }
             accessory = {
                 mode = add
                 gene = epaulettes
-                template = all_epaulettes
-                range = { 0 0 } # For the randomness to work correctly
+                template = late_military_epaulettes
+                accessory = male_epaulettes_late_austrian_military_01
             }
             accessory = {
-                 mode = add
-                 gene = sashes
-                 template = european_sashes
-                 range = { 0 0 } # For the randomness to work correctly
+                mode = add
+                gene = aiguillettes
+                template = no_aiguillettes
+                range = { 0 1 } # For the randomness to work correctly
+            }
+            accessory = {
+                mode = add
+                gene = belts
+                template = late_military_belts
+                range = { 0 1 } # For the randomness to work correctly
+            }
+            accessory = {
+                mode = add
+                gene = sashes
+                template = no_sash
+                range = { 1 1 } # For the randomness to work correctly
+            }
+            accessory = {
+                mode = add
+                gene = legwear
+                template = european_late_military_legwear
+                accessory = male_legwear_late_austrian_military_01
             }
         }
 
         weight = {
             base = 0
             modifier = {
-                add = 10002
+                add = 12000
+                has_dlc_feature = ep1_cosmetics
                 OR = {
                     AND = {
-                        ww1_clothes_pop_trigger = yes
-                        scope:pop ?= {
-                            OR = {
-                                home_country ?= {
-                                    c:AUS ?= this
-                                }
-                                home_country ?= {
-                                    was_formed_from = AUS
-                                }
-                            }
-                        }      
+                        late_military_clothes_pop_trigger = yes
+                        austrian_clothes_pop_trigger = yes
                         OR = {
                             soldier_clothes_pop_trigger = yes
                             officers_clothes_pop_trigger = yes
                         }
                     }
                     AND = {
-                        ww1_clothes_trigger = yes
+                        late_military_clothes_trigger = yes
+                        austrian_clothes_trigger = yes
                         scope:character ?= {
-                            age > 10
-                            OR = {
-                                has_role = general
-                                has_role = admiral
-                            }
-                            OR = {
-                                AND = {
-                                    home_country ?= {
-                                        c:AUS ?= this
-                                    }
-                                }
-                                AND = {
-                                    home_country ?= {
-                                        was_formed_from = AUS
-                                    }
-                                }
-                            }
+                            age >= define:NCharacters|ADULT_AGE
+                            has_role = general
                         }       
                     }
                 }
             }
         }
     }
+
+    austrian_navy_clothes = {
+        dna_modifiers = {
+            accessory = {
+                mode = add
+                gene = coats
+                template = austrian_coats
+                range = { 0.5 1 } # For the randomness to work correctly
+            }
+            accessory = {
+                mode = add
+                gene = legwear
+                template = austrian_legwear
+                range = { 0.34 1 } # For the randomness to work correctly
+            }
+            accessory = {
+                mode = add
+                gene = epaulettes
+                template = all_epaulettes
+                accessory = male_epaulettes_04
+            }
+            accessory = {
+                mode = add
+                gene = sashes
+                template = no_sash
+                range = { 1 1 } # For the randomness to work correctly
+            }
+            accessory = {
+                mode = add
+                gene = belts
+                template = no_belt
+                range = { 1 1 } # For the randomness to work correctly
+            }
+        }
+
+        weight = {
+            base = 0
+            modifier = {
+                add = 10000
+                scope:character ?= {
+                    age >= define:NCharacters|ADULT_AGE
+                    has_role = admiral
+                    home_country ?= {
+                        OR = {
+                            c:AUS ?= this
+                            was_formed_from = AUS
+                        }
+                    }
+                }  
+            }
+        }
+    }
 # End VFM
+
+
+    
 
     prussian_soldier_clothes = { 
         dna_modifiers = {
@@ -7798,7 +7818,7 @@ indigenous_oceanic_pop_clothes = {
                 mode = add
                 gene = coats
                 template = prussian_coats
-                range = { 0 0.2 } # For the randomness to work correctly
+                range = { 0 1 } # For the randomness to work correctly
             }
             accessory = {
                 mode = add
@@ -7821,31 +7841,13 @@ indigenous_oceanic_pop_clothes = {
                 add = 10000
                 OR = {
                     AND = {
-                        exists = scope:pop
-                        scope:pop = {
-							OR = {
-                                AND = {
-                                    exists = home_country
-                                    home_country = {
-                                        exists = c:PRU
-                                        c:PRU = this
-                                    }
-								}
-                                AND = {
-                                    exists = home_country
-                                    home_country = {
-                                        exists = c:NGF
-                                        c:NGF = this
-                                    }
+                        scope:pop ?= {
+                            home_country ?= {
+                                OR = {
+                                    c:PRU ?= this
+                                    was_formed_from = PRU
                                 }
-                                AND = {
-                                    exists = home_country
-                                    home_country = {
-                                        exists = c:GER
-                                        c:GER = this
-                                    }
-                                }
-							}
+                            }
                         }       
                         OR = {
                             soldier_clothes_pop_trigger = yes
@@ -7853,37 +7855,18 @@ indigenous_oceanic_pop_clothes = {
                         }
                     }
                     AND = {
-                        exists = scope:character
-                        scope:character = {
+                        scope:character ?= {
                             age >= define:NCharacters|ADULT_AGE
                             OR = {
                                 has_role = general
                                 has_role = admiral
                             }
-							exists = home_country
-							OR = {
-                                AND = {
-                                    exists = home_country
-                                    home_country = {
-                                        exists = c:PRU
-                                        c:PRU = this
-                                    }
+                            home_country ?= {
+                                OR = {
+                                    c:PRU ?= this
+                                    was_formed_from = PRU
                                 }
-                                AND = {
-                                    exists = home_country
-                                    home_country = {
-                                        exists = c:NGF
-                                        c:NGF = this
-                                    }
-                                }
-                                AND = {
-                                    exists = home_country
-                                    home_country = {
-                                        exists = c:GER
-                                        c:GER = this
-                                    }
-                                }
-							}
+                            }
                         }       
                     }
                 }

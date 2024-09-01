@@ -16,10 +16,23 @@
 
 	fail = {
 		has_any_secessionists_broken_out = yes
+        #any_country = {
+		#		limit = {
+		#			is_secessionist = yes
+		#			any_scope_state = {
+		#				state_region = s:STATE_DELHI
+		#				state_region = s:STATE_SOUTH_BENGAL
+		#				state_region = s:STATE_CENTRAL_INDIA
+		#				state_region = s:NORTH_BENGAL
+		#				state_region = s:STATE_AWADH
+		#			}
+		#		}
+		#}
 	}
 
 	invalid = {
-		NOT = {
+		NOR = {
+			owns_entire_state_region = STATE_NORTH_BENGAL
 			owns_entire_state_region = STATE_DELHI
 		}
 	}

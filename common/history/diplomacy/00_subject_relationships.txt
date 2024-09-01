@@ -68,23 +68,39 @@ DIPLOMACY = {
 			country = c:PEU
 			type = confederative_partner
 		}
+		#create_diplomatic_pact = {
+		#	country = c:IQU
+		#	type = dependency
+		#}
 		create_diplomatic_pact = {
 			country = c:IQU
-			type = dependency
+			type = puppet
 		}
 	}
 	c:SPA = {
+		#create_diplomatic_pact = {
+		#	country = c:CUB
+		#	type = dependency
+		#}
+		#create_diplomatic_pact = {
+		#	country = c:PHI
+		#	type = dependency
+		#}
+		#create_diplomatic_pact = {
+		#	country = c:PCO
+		#	type = dependency
+		#}
 		create_diplomatic_pact = {
 			country = c:CUB
-			type = dependency
+			type = puppet
 		}
 		create_diplomatic_pact = {
 			country = c:PHI
-			type = dependency
+			type = puppet
 		}
 		create_diplomatic_pact = {
 			country = c:PCO
-			type = dependency
+			type = puppet
 		}
 	}
 	c:NET = {
@@ -118,9 +134,13 @@ DIPLOMACY = {
 			has_game_rule = yes_polish_subjects
 			}
 		c:AUS = {
+			#create_diplomatic_pact = {
+			#	country = c:GAL
+			#	type = dependency
+			#}
 			create_diplomatic_pact = {
 				country = c:GAL
-				type = dependency
+				type = puppet
 			}
 		}
 	}
@@ -225,29 +245,45 @@ DIPLOMACY = {
 			country = c:TIB
 			type = vassal
 		}
+		#create_diplomatic_pact = {
+		#	country = c:MCH
+		#	type = dependency
+		#}
 		create_diplomatic_pact = {
 			country = c:MCH
-			type = dependency
+			type = vassal
 		}
 		create_diplomatic_pact = {
 			country = c:OMG
 			type = vassal
 		}
+		#create_diplomatic_pact = {
+		#	country = c:IMG
+		#	type = dependency
+		#}
 		create_diplomatic_pact = {
 			country = c:IMG
-			type = dependency
+			type = vassal
 		}
 		create_diplomatic_pact = {
 			country = c:TUV
 			type = vassal
 		}
+		#create_diplomatic_pact = {
+		#	country = c:XIN
+		#	type = dependency
+		#}
+		#create_diplomatic_pact = {
+		#	country = c:QIN
+		#	type = dependency
+		#}
 		create_diplomatic_pact = {
 			country = c:XIN
-			type = dependency
+			type = vassal
 		}
 		create_diplomatic_pact = {
 			country = c:QIN
-			type = dependency
+			type = vassal
 		}
 		create_diplomatic_pact = {
 			country = c:ATI
@@ -300,9 +336,13 @@ DIPLOMACY = {
 		}
 	}
 	c:USA = {
+		#create_diplomatic_pact = {
+		#	country = c:SEQ
+		#	type = dependency
+		#}
 		create_diplomatic_pact = {
 			country = c:SEQ
-			type = dependency
+			type = puppet
 		}
 		create_diplomatic_pact = {
 			country = c:LIB
@@ -322,47 +362,85 @@ DIPLOMACY = {
 			country = c:BIC
 			type = chartered_company
 		}
+		#create_diplomatic_pact = {
+		#	country = c:SIL
+		#	type = dependency
+		#}
 		create_diplomatic_pact = {
 			country = c:SIL
-			type = dependency
+			type = puppet
 		}
 		create_diplomatic_pact = {
 			country = c:HAN
 			type = personal_union
 		}
+		#create_diplomatic_pact = {
+		#	country = c:SAF
+		#	type = dependency
+		#}
+		#create_diplomatic_pact = {
+		#	country = c:CEY
+		#	type = dependency
+		#}
+		#create_diplomatic_pact = {
+		#	country = c:NEW
+		#	type = dependency
+		#}
 		create_diplomatic_pact = {
 			country = c:SAF
-			type = dependency
+			type = puppet
 		}
 		create_diplomatic_pact = {
 			country = c:CEY
-			type = dependency
+			type = puppet
 		}
 		create_diplomatic_pact = {
 			country = c:NEW
-			type = dependency
+			type = puppet
 		}
 
 		### OH CANADA ###
 		# Province of Upper Canada
+		#create_diplomatic_pact = {
+		#	country = c:ONT
+		#	type = dependency
+		#}
+		# Province of Lower Canada
+		#create_diplomatic_pact = {
+		#	country = c:QUE
+		#	type = dependency
+		#}
+		# New Brunswick
+		#create_diplomatic_pact = {
+		#	country = c:NBS
+		#	type = dependency
+		#}
+		# Nova Scotia
+		#create_diplomatic_pact = {
+		#	country = c:NVS
+		#	type = dependency
+
+		#}
+		# Province of Upper Canada
 		create_diplomatic_pact = {
 			country = c:ONT
-			type = dependency
+			type = puppet
 		}
 		# Province of Lower Canada
 		create_diplomatic_pact = {
 			country = c:QUE
-			type = dependency
+			type = puppet
 		}
 		# New Brunswick
 		create_diplomatic_pact = {
 			country = c:NBS
-			type = dependency
+			type = puppet
 		}
 		# Nova Scotia
 		create_diplomatic_pact = {
 			country = c:NVS
-			type = dependency
+			type = puppet
+
 		}
 		# Hudson Bay Company has a weird autonomous charter
 		create_diplomatic_pact = {
@@ -372,19 +450,31 @@ DIPLOMACY = {
 
 		### AUSTRALIA ###
 		# Colony of New South Wales
+		#create_diplomatic_pact = {
+		#	country = c:NSW
+		#	type = dependency
+		#}
 		create_diplomatic_pact = {
 			country = c:NSW
-			type = dependency
+			type = puppet
 		}
 		# Colony of Western Australia
+		#create_diplomatic_pact = {
+		#	country = c:WAS
+		#	type = dependency
+		#}
 		create_diplomatic_pact = {
 			country = c:WAS
-			type = dependency
+			type = puppet
 		}
 		# Colony of Tasmania, historically called Van Dieman's Land until 1856
+		#create_diplomatic_pact = {
+		#	country = c:TAS
+		#	type = dependency
+		#}
 		create_diplomatic_pact = {
 			country = c:TAS
-			type = dependency
+			type = puppet
 		}
 		# United Tribes of New Zealand
 		create_diplomatic_pact = {
@@ -401,29 +491,49 @@ DIPLOMACY = {
 			country = c:MKT
 			type = protectorate
 		}
+		#create_diplomatic_pact = {
+		#	country = c:JAM
+		#	type = dependency
+		#}
+		#create_diplomatic_pact = {
+		#	country = c:BAH
+		#	type = dependency
+		#}
 		create_diplomatic_pact = {
 			country = c:JAM
-			type = dependency
+			type = puppet
 		}
 		create_diplomatic_pact = {
 			country = c:BAH
-			type = dependency
+			type = puppet
 		}
 	}
 	c:HBC = {
+		#create_diplomatic_pact = {
+		#	country = c:COL
+		#	type = dependency
+		#}	
+		#create_diplomatic_pact = {
+		#	country = c:NWT
+		#	type = dependency
+		#}
 		create_diplomatic_pact = {
 			country = c:COL
-			type = dependency
+			type = puppet
 		}	
 		create_diplomatic_pact = {
 			country = c:NWT
-			type = dependency
+			type = puppet
 		}
 	}
 	c:DAI = {
+		#create_diplomatic_pact = {
+		#	country = c:CAM
+		#	type = dependency
+		#}
 		create_diplomatic_pact = {
 			country = c:CAM
-			type = dependency
+			type = puppet
 		}
 	}
 	c:SIA = {
@@ -550,13 +660,21 @@ DIPLOMACY = {
 		}
 	}
 	c:BIC = {
+#		create_diplomatic_pact = {
+#			country = c:MPR
+#			type = dependency
+#		}
+#		create_diplomatic_pact = {
+#			country = c:BPR
+#			type = dependency
+#		}
 		create_diplomatic_pact = {
 			country = c:MPR
-			type = dependency
+			type = puppet
 		}
 		create_diplomatic_pact = {
 			country = c:BPR
-			type = dependency
+			type = puppet
 		}
 		create_diplomatic_pact = {
 			country = c:KUT

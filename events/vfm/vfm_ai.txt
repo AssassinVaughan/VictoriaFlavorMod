@@ -175,6 +175,23 @@ vfm_ai.2 = {
 		    }
 		}
 		}
+		if = {
+			limit = {
+			    c:USA ?= {
+					is_ai = yes
+				}
+			}
+			c:USA = {
+				random_scope_state = {
+					limit = {
+						state_region = s:STATE_FLORIDA
+						is_incorporated = no
+					}
+					# Civil war will be a mess without florida
+					set_state_type = incorporated
+				}
+			}
+		}
 	}
 }
 

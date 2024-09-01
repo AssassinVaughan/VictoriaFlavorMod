@@ -219,6 +219,14 @@ ideology_papal_moralist = {
 		law_cultural_exclusion = disapprove
 		law_multicultural = strongly_disapprove	
 	}
+	
+	lawgroup_centralization = {
+		law_decentralized = strongly_disapprove
+		law_confederated = strongly_disapprove
+		law_federal = neutral
+		law_devolved = strongly_approve
+		law_unitary = strongly_approve
+	}
 }
 
 ideology_confucian = {
@@ -250,20 +258,6 @@ ideology_confucian = {
 
 ideology_bakufu = { #NFM EDITS BROAD
 	icon = "gfx/interface/icons/ideology_icons/bakufu.dds"
-
-	lawgroup_policing = {
-		law_militarized_police = strongly_approve
-		law_dedicated_police = approve
-		law_local_police = neutral
-		law_no_police = disapprove
-	}	
-
-	lawgroup_internal_security = {
-		law_secret_police = approve
-		law_national_guard = approve
-		law_no_home_affairs = disapprove
-		law_guaranteed_liberties = strongly_disapprove
-	}	
 	
 	lawgroup_free_speech = {
 		law_outlawed_dissent = strongly_approve
@@ -352,10 +346,12 @@ ideology_caudillismo = {
 		law_council_republic = strongly_disapprove
 	}
 	
-	lawgroup_distribution_of_power = {
-		law_census_voting = disapprove
-		law_universal_suffrage = strongly_disapprove
-		law_anarchy = strongly_disapprove
+	lawgroup_centralization = {
+		law_decentralized = strongly_disapprove
+		law_confederated = neutral
+		law_federal = neutral
+		law_devolved = approve
+		law_unitary = strongly_approve
 	}
 }
 

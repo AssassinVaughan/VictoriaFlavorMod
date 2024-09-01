@@ -69,8 +69,7 @@
 		}
 	}
 	s:STATE_TASMANIA={
-		region_state:TAS={	
-			create_building={
+		region_state:TAS={
 				building="building_port"
 				add_ownership={
 					country={
@@ -79,7 +78,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_basic_port" }
+				activate_production_methods={ "pm_anchorage" }
 			}
 		}
 	}
@@ -111,24 +110,18 @@
 				level=1
 				reserves=1
 				activate_production_methods={ "pm_basic_port" }
+			}	
+			create_building={
+				building="building_port"
+				add_ownership={
+					country={
+						country="c:WAS"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_anchorage" }
 			}
-		#region_state:WAS={	
-        #    create_building={
-		#		building="building_livestock_ranch"
-		#		add_ownership={
-		#			building={
-		#				type="building_manor_house"
-		#				country="c:WAS"
-		#				levels=1
-		#				region="STATE_WESTERN_AUSTRALIA"
-		#			}
-		#		}
-		#		reserves=1
-		#	}
-		#}
-	}
-	s:STATE_NORTHERN_TERRITORY={
-		region_state:NSW={
 		}
 	}
 	s:STATE_NORTH_ISLAND={
