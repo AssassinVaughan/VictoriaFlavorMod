@@ -10,7 +10,7 @@ journal_flavor_iran.1 = {
 	flavor = journal_flavor_iran.1.f
 
 	event_image = {
-		video = "gfx/event_pictures/middleeast_battlefield_trenches.bk2"
+		video = "gfx/event_pictures/ep1_ca_mountain_pass_military.bk2"
 	}
 	
 	immediate = {
@@ -164,7 +164,7 @@ journal_flavor_iran.4 = {
 	flavor = journal_flavor_iran.4.f
 
 	event_image = {
-		video = "gfx/event_pictures/middleeast_battlefield_trenches.bk2"
+		video = "gfx/event_pictures/ep1_ca_mountain_pass_military.bk2"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -269,7 +269,7 @@ journal_flavor_iran.6 = {
 	flavor = journal_flavor_iran.6.f
 
 	event_image = {
-		video = "gfx/event_pictures/middleeast_courtroom_upheaval.bk2"
+		video = "gfx/event_pictures/ep1_persian_court.bk2"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -390,7 +390,7 @@ journal_flavor_iran.9 = {
 	flavor = journal_flavor_iran.9.f
 
 	event_image = {
-		video = "gfx/event_pictures/middleeast_battlefield_trenches.bk2"
+		video = "gfx/event_pictures/ep1_ca_mountain_pass_military.bk2"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -564,7 +564,7 @@ journal_flavor_iran.11 = {
 	flavor = journal_flavor_iran.11.f
 
 	event_image = {
-		video = "gfx/event_pictures/middleeast_courtroom_upheaval.bk2"
+		video = "gfx/event_pictures/ep1_persian_court.bk2"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -668,7 +668,7 @@ journal_flavor_iran.12 = {
 	flavor = journal_flavor_iran.12.f
 
 	event_image = {
-		video = "gfx/event_pictures/middleeast_battlefield_trenches.bk2"
+		video = "gfx/event_pictures/ep1_ca_mountain_pass_military.bk2"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -731,7 +731,7 @@ journal_flavor_iran.13 = {
 	flavor = journal_flavor_iran.13.f
 
 	event_image = {
-		video = "gfx/event_pictures/unspecific_military_parade.bk2"
+		video = "gfx/event_pictures/ep1_transfer_of_authority.bk2"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -763,7 +763,7 @@ journal_flavor_iran.14 = {
 	flavor = journal_flavor_iran.14.f
 
 	event_image = {
-		video = "gfx/event_pictures/middleeast_battlefield_trenches.bk2"
+		video = "gfx/event_pictures/ep1_ca_mountain_pass_military.bk2"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -866,7 +866,7 @@ journal_flavor_iran.16 = {
 	flavor = journal_flavor_iran.16.f
 
 	event_image = {
-		video = "gfx/event_pictures/middleeast_battlefield_trenches.bk2"
+		video = "gfx/event_pictures/ep1_ca_mountain_pass_military.bk2"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -889,6 +889,10 @@ journal_flavor_iran.16 = {
 				c:SDL = { 
 					annex = c:ZFL 
 					set_variable = become_khorasan_var
+					add_modifier = {
+			            name = nationalist_fervor
+			            months = 25
+		            }
 				}
 			}
 		}
@@ -898,6 +902,10 @@ journal_flavor_iran.16 = {
 			}
 			c:SDL = { 
 				set_variable = become_khorasan_var
+				add_modifier = {
+			        name = nationalist_fervor
+			        months = 25
+		        }
 			}
 		}
 		c:PER = {
@@ -1005,7 +1013,7 @@ journal_flavor_iran.18 = {
 	flavor = journal_flavor_iran.18.f
 
 	event_image = {
-		video = "gfx/event_pictures/middleeast_battlefield_trenches.bk2"
+		video = "gfx/event_pictures/ep1_ca_mountain_pass_military.bk2"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -1113,7 +1121,7 @@ journal_flavor_iran.19 = {
 	flavor = journal_flavor_iran.19.f
 
 	event_image = {
-		video = "gfx/event_pictures/middleeast_battlefield_trenches.bk2"
+		video = "gfx/event_pictures/ep1_ca_mountain_pass_military.bk2"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -1214,7 +1222,7 @@ journal_flavor_iran.21 = {
 	flavor = journal_flavor_iran.21.f
 
 	event_image = {
-		video = "gfx/event_pictures/middleeast_battlefield_trenches.bk2"
+		video = "gfx/event_pictures/ep1_central_asian_city.bk2"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -1282,7 +1290,7 @@ journal_flavor_iran.22 = {
 	flavor = journal_flavor_iran.22.f
 
 	event_image = {
-		video = "gfx/event_pictures/unspecific_military_parade.bk2"
+		video = "gfx/event_pictures/ep1_central_asian_city.bk2"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -1345,7 +1353,7 @@ journal_flavor_iran.23 = {
 	flavor = journal_flavor_iran.23.f
 
 	event_image = {
-		video = "gfx/event_pictures/middleeast_upperclass_party.bk2"
+		video = "gfx/event_pictures/ep1_persian_court.bk2"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -1487,7 +1495,7 @@ journal_flavor_iran.25 = {
 	flavor = journal_flavor_iran.25.f
 
 	event_image = {
-		video = "gfx/event_pictures/middleeast_upperclass_party.bk2"
+		video = "gfx/event_pictures/ep1_persian_court.bk2"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -1585,7 +1593,7 @@ journal_flavor_iran.27 = {
 	flavor = journal_flavor_iran.27.f
 
 	event_image = {
-		video = "gfx/event_pictures/middleeast_upperclass_party.bk2"
+		video = "gfx/event_pictures/ep1_persian_court.bk2"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -1690,7 +1698,7 @@ journal_flavor_iran.29 = {
 	flavor = journal_flavor_iran.29.f
 
 	event_image = {
-		video = "gfx/event_pictures/unspecific_military_parade.bk2"
+		video = "gfx/event_pictures/ep1_central_asian_city.bk2"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -1721,7 +1729,7 @@ journal_flavor_iran.30 = {
 	flavor = journal_flavor_iran.30.f
 
 	event_image = {
-		video = "gfx/event_pictures/unspecific_military_parade.bk2"
+		video = "gfx/event_pictures/ep1_ca_mountain_pass_civilian.bk2"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -2165,7 +2173,7 @@ journal_flavor_iran.37 = {
 	flavor = journal_flavor_iran.37.f
 
 	event_image = {
-		video = "gfx/event_pictures/unspecific_military_parade.bk2"
+		video = "gfx/event_pictures/ep1_ca_mountain_pass_civilian.bk2"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -2341,7 +2349,7 @@ journal_flavor_iran.38 = {
 	flavor = journal_flavor_iran.38.f
 
 	event_image = {
-		video = "gfx/event_pictures/unspecific_military_parade.bk2"
+		video = "gfx/event_pictures/ep1_ca_mountain_pass_civilian.bk2"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -2394,7 +2402,7 @@ journal_flavor_iran.40 = {
 	flavor = journal_flavor_iran.40.f
 
 	event_image = {
-		video = "gfx/event_pictures/unspecific_military_parade.bk2"
+		video = "gfx/event_pictures/ep1_transfer_of_authority.bk2"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -2431,7 +2439,7 @@ journal_flavor_iran.50 = {
 	flavor = journal_flavor_iran.50.f
 
 	event_image = {
-		video = "gfx/event_pictures/europenorthamerica_art_gallery.bk2"
+		video = "gfx/event_pictures/ep1_central_asian_city.bk2"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"

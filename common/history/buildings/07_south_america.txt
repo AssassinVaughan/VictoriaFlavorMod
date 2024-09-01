@@ -1313,12 +1313,12 @@
 		}
 		region_state:JUJ={
 		}
-		region_state:ARG={
+		region_state:SLT={
 			create_building={
 				building="building_gold_mine"
 				add_ownership={
 					country={
-						country="c:ARG"
+						country="c:SLT"
 						levels=1
 					}
 				}
@@ -1493,6 +1493,19 @@
 				activate_production_methods={ "pm_open_air_stockyards" "pm_rotating_crops_ranch" "pm_standard_fences" "pm_unrefrigerated"  }
 			}
 			create_building={
+				building="building_wheat_farm"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:BUE"
+						levels=1
+						region="STATE_LA_PAMPA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_rotating_crops" "pm_no_secondary"  "pm_tools" }
+			}
+			create_building={
 				building="building_fishing_wharf"
 				add_ownership={
 					building={
@@ -1539,32 +1552,6 @@
 				}
 				reserves=1
 				activate_production_methods={ "pm_scholastic_education" "pm_secular_academia" }
-			}
-			create_building={
-				building="building_artillery_foundries"
-				add_ownership={
-					building={
-						type="building_financial_district"
-						country="c:BUE"
-						levels=1
-						region="STATE_BUENOS_AIRES"
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_cannons" "pm_automation_disabled"  }
-			}
-			create_building={
-				building="building_arms_industry"
-				add_ownership={
-					building={
-						type="building_financial_district"
-						country="c:BUE"
-						levels=1
-						region="STATE_BUENOS_AIRES"
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_muskets" "pm_automation_disabled"  }
 			}
 		}
 		region_state:PAT={
@@ -1614,12 +1601,25 @@
 					building={
 						type="building_manor_house"
 						country="c:CDA"
-						levels=2
+						levels=1
 						region="STATE_LA_PAMPA"
 					}
 				}
 				reserves=1
 				activate_production_methods={ "pm_rotating_crops" "pm_no_secondary"  "pm_tools" }
+			}
+			create_building={
+				building="building_sugar_plantation"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:CDA"
+						levels=1
+						region="STATE_TUCUMAN"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "default_building_sugar_plantation" "pm_road_carts"  }
 			}
 			create_building={
 				building="building_textile_mills"
@@ -1678,6 +1678,17 @@
 				}
 				reserves=1
 				activate_production_methods={ "pm_handcrafted_furniture" "pm_no_luxuries" "pm_automation_disabled"  }
+			}
+			create_building={ 
+				building="building_construction_sector"
+				add_ownership={
+					country={
+						country="c:ENT"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_wooden_buildings" }
 			}
 			create_building={
 				building="building_logging_camp"
@@ -1767,58 +1778,6 @@
 	}
 	s:STATE_TUCUMAN = {
 		region_state:TUC={
-			create_building={
-				building="building_furniture_manufacturies"
-				add_ownership={
-					building={
-						type="building_furniture_manufacturies"
-						country="c:TUC"
-						levels=1
-						region="STATE_TUCUMAN"
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_handcrafted_furniture" "pm_no_luxuries" "pm_automation_disabled"  }
-			}
-			create_building={
-				building="building_livestock_ranch"
-				add_ownership={
-					building={
-						type="building_manor_house"
-						country="c:TUC"
-						levels=1
-						region="STATE_TUCUMAN"
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_open_air_stockyards" "pm_rotating_crops_ranch" "pm_standard_fences" "pm_unrefrigerated"  }
-			}
-			create_building={
-				building="building_vineyard_plantation"
-				add_ownership={
-					building={
-						type="building_manor_house"
-						country="c:TUC"
-						levels=2
-						region="STATE_TUCUMAN"
-					}
-				}
-				reserves=1
-				activate_production_methods={ "default_building_vineyard_plantation" "pm_road_carts"  }
-			}
-			create_building={
-				building="building_sugar_plantation"
-				add_ownership={
-					building={
-						type="building_manor_house"
-						country="c:TUC"
-						levels=1
-						region="STATE_TUCUMAN"
-					}
-				}
-				reserves=1
-				activate_production_methods={ "default_building_sugar_plantation" "pm_road_carts"  }
-			}
 		}
 		region_state:CMA={
 			create_building={
