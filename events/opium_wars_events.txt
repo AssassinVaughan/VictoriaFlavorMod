@@ -359,10 +359,7 @@ opium_wars.3 = {
 	}
 
 	immediate = {
-		random_primary_culture = {
-			limit = {
-				has_cultural_obsession = opium
-			}
+		cu:han = {
 			save_scope_as = addicted_culture
 		}
 		if = {
@@ -387,7 +384,7 @@ opium_wars.3 = {
 	option = {
 		name = opium_wars.3.a
 		default_option = yes
-		every_primary_culture = {
+		cu:han = {
 			remove_cultural_obsession = opium
 		}
 		add_modifier = {
@@ -399,7 +396,7 @@ opium_wars.3 = {
 
 	option = {
 		name = opium_wars.3.b
-		every_primary_culture = {
+		cu:han = {
 			remove_cultural_obsession = opium
 		}
 		add_modifier = {
