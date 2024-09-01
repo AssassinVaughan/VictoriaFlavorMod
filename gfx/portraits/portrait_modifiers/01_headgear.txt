@@ -3045,98 +3045,98 @@ home_country = {
                 slavic_clothes_pop_trigger = no
             }
         }
-        weight = {
-            base = 0
-            modifier = {
-                add = 90000
-                OR = {
-                    european_clothes_trigger = yes
-                    african_diaspora_clothes_trigger = yes
-                }
-                ruler_clothes_trigger = yes
-                scope:character ?= {
-                    OR = {
-                        AND = {
-                            has_trait = erudite
-                            owner ?= {
-                                is_in_power_bloc = yes
-                                power_bloc ?= {
-                                    has_principle = principle:principle_advanced_research_1
-                                }
-                            }
-                        }
-                        AND = {
-                            OR = {
-                                has_trait = erudite
-                                has_trait = literary
-                            }
-                            owner ?= {
-                                is_in_power_bloc = yes
-                                power_bloc ?= {
-                                    has_principle = principle:principle_advanced_research_2
-                                }
-                            }
-                        }
-                        AND = {
-                            OR = {
-                                has_trait = erudite
-                                has_trait = literary
-                                has_trait = master_bureaucrat
-                            }
-                            owner ?= {
-                                is_in_power_bloc = yes
-                                power_bloc ?= {
-                                    has_principle = principle:principle_advanced_research_3
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        # weight = {
+        #     base = 0
+        #     modifier = {
+        #         add = 90000
+        #         OR = {
+        #             european_clothes_trigger = yes
+        #             african_diaspora_clothes_trigger = yes
+        #         }
+        #         ruler_clothes_trigger = yes
+        #         scope:character ?= {
+        #             OR = {
+        #                 AND = {
+        #                     has_trait = erudite
+        #                     owner ?= {
+        #                         is_in_power_bloc = yes
+        #                         power_bloc ?= {
+        #                             has_principle = principle:principle_advanced_research_1
+        #                         }
+        #                     }
+        #                 }
+        #                 AND = {
+        #                     OR = {
+        #                         has_trait = erudite
+        #                         has_trait = literary
+        #                     }
+        #                     owner ?= {
+        #                         is_in_power_bloc = yes
+        #                         power_bloc ?= {
+        #                             has_principle = principle:principle_advanced_research_2
+        #                         }
+        #                     }
+        #                 }
+        #                 AND = {
+        #                     OR = {
+        #                         has_trait = erudite
+        #                         has_trait = literary
+        #                         has_trait = master_bureaucrat
+        #                     }
+        #                     owner ?= {
+        #                         is_in_power_bloc = yes
+        #                         power_bloc ?= {
+        #                             has_principle = principle:principle_advanced_research_3
+        #                         }
+        #                     }
+        #                 }
+        #             }
+        #         }
+        #     }
+        # }
     }
 
-    power_bloc_crown = {
-        dna_modifiers = {
-            accessory = {
-                mode = add
-                gene = headgear
-                template = crown
-                range = { 0 1 } # For the randomness to work correctly
-            } 
-        }
-        weight = {
-            base = 0
-            modifier = {
-                add = 1000
-                academics_clothes_pop_trigger = yes
-                OR = {
-                    european_clothes_pop_trigger = yes
-                    african_diaspora_pop_clothes_trigger = yes
-                }
-            }
-        }
-        weight = {
-            base = 0
-            modifier = {
-                add = 90000
+    # power_bloc_crown = {
+    #     dna_modifiers = {
+    #         accessory = {
+    #             mode = add
+    #             gene = headgear
+    #             template = crown
+    #             range = { 0 1 } # For the randomness to work correctly
+    #         } 
+    #     }
+    #     weight = {
+    #         base = 0
+    #         modifier = {
+    #             add = 1000
+    #             academics_clothes_pop_trigger = yes
+    #             OR = {
+    #                 european_clothes_pop_trigger = yes
+    #                 african_diaspora_pop_clothes_trigger = yes
+    #             }
+    #         }
+    #     }
+    #     weight = {
+    #         base = 0
+    #         modifier = {
+    #             add = 90000
 
-                OR = {
-                    european_clothes_trigger = yes
-                    african_diaspora_clothes_trigger = yes
-                }
-                monarchy_clothes_trigger = yes
-                scope:character ?= {
-                    is_ruler = yes
-                    is_female = yes
+    #             OR = {
+    #                 european_clothes_trigger = yes
+    #                 african_diaspora_clothes_trigger = yes
+    #             }
+    #             monarchy_clothes_trigger = yes
+    #             scope:character ?= {
+    #                 is_ruler = yes
+    #                 is_female = yes
 
-                    owner ?= {
-                        is_in_power_bloc = yes
-                    }
-                }
-            }
-        }
-    }
+    #                 owner ?= {
+    #                     is_in_power_bloc = yes
+    #                 }
+    #             }
+    #         }
+    #     }
+    # }
 
     papal_headgear = {
         dna_modifiers = {
