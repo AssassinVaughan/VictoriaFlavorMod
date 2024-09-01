@@ -14,6 +14,20 @@ vfm_ai.1 = {
 
 	immediate = {
 	    # root = swe, change this
+		if = {
+		limit = {
+			has_game_rule = vanilla_construction_rate
+		}
+		every_country = {
+			limit = {
+				is_ai = no
+                country_rank <= rank_value:minor_power
+			}
+			add_modifier = {
+				name = modifier_vanilla_more_construction
+			}
+		}
+	    }
 	    if = {
 			limit = {
 			    c:SWE = {
