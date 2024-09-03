@@ -1,0 +1,99 @@
+﻿PBC = { # Peru-Bolivia -> Andine Republic
+	dynamic_country_name = {
+		name = dyn_c_andine_republic
+		adjective = dyn_c_andine_republic_adj
+		
+		is_main_tag_only = yes
+		priority = 0
+		
+		trigger = {
+			exists = scope:actor
+			scope:actor ?= {
+				OR = {
+					has_law = law_type:law_presidential_republic
+					has_law = law_type:law_parliamentary_republic
+				}
+				OR = {
+					has_law = law_type:law_no_central_authority
+					has_law = law_type:law_devolved
+					has_law = law_type:law_unitary
+				}
+			}
+		}
+	}
+	dynamic_country_name = {
+		name = dyn_c_andine_federal_republic
+		adjective = dyn_c_andine_federal_republic_adj
+		
+		is_main_tag_only = yes
+		priority = 0
+		
+		trigger = {
+			exists = scope:actor
+			scope:actor ?= {
+				OR = {
+					has_law = law_type:law_presidential_republic
+					has_law = law_type:law_parliamentary_republic
+				}
+				has_law = law_type:law_federal
+			}
+		}
+	}
+	dynamic_country_name = {
+		name = dyn_c_pbc
+		adjective = dyn_c_pbc_adj
+		
+		is_main_tag_only = yes
+		priority = 0
+		
+		trigger = {
+			exists = scope:actor
+			scope:actor ?= {
+				OR = {
+					has_law = law_type:law_presidential_republic
+					has_law = law_type:law_parliamentary_republic
+				}
+				has_law = law_type:law_confederated
+			}
+		}
+	}
+}
+
+ARG = { #
+	dynamic_country_name = {
+		name = dyn_c_argentine_confederation
+		adjective = dyn_c_argentine_confederation_adj
+		
+		is_main_tag_only = yes
+		priority = 0
+		
+		trigger = {
+			exists = scope:actor
+			scope:actor ?= {
+				OR = {
+					has_law = law_type:law_presidential_republic
+					has_law = law_type:law_parliamentary_republic
+				}
+				has_law = law_type:law_confederated
+			}
+		}
+	}
+	dynamic_country_name = {
+		name = dyn_c_argentine_federal_republic
+		adjective = dyn_c_argentine_federal_republic_adj
+		
+		is_main_tag_only = yes
+		priority = 0
+		
+		trigger = {
+			exists = scope:actor
+			scope:actor ?= {
+				OR = {
+					has_law = law_type:law_presidential_republic
+					has_law = law_type:law_parliamentary_republic
+				}
+				has_law = law_type:law_federal
+			}
+		}
+	}
+}

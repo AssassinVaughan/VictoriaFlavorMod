@@ -103,10 +103,7 @@ PBC = { # Peru-Bolivia
 		trigger = { 
 			scope:actor ?= {
 				coa_def_republic_flag_trigger = yes
-				OR = {
-					has_law = law_type:law_confederated
-					has_law = law_type:law_federal
-				}
+				has_law = law_type:law_confederated
 			}
 		}
 	}	
@@ -121,6 +118,7 @@ PBC = { # Peru-Bolivia
 				coa_def_republic_flag_trigger = yes
 				OR = {
 					has_law = law_type:law_no_central_authority
+					has_law = law_type:law_federal
 					has_law = law_type:law_devolved
 					has_law = law_type:law_unitary
 				}
