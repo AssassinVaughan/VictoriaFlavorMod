@@ -1,3 +1,35 @@
+ARG_confederal = {	#Argentine Confederation
+	# 1829 Flag
+
+	pattern = "pattern_solid.tga"
+	color1 = "blue"
+
+	colored_emblem = {
+		texture = "ce_tricolor_horizontal.dds"
+		color1 = "white"
+		color2 = "blue"
+	}
+	colored_emblem = {
+		texture = "ce_inti.dds"
+		color1 = "red_light"
+		color2 = "red_light"
+		instance = { scale = { 0.35 0.35 }	position = { 0.5 0.5 }	}
+	}
+	colored_emblem = {
+		texture = "ce_phrygian_cap_tilted.dds"
+		color1 = "red_light"
+		color2 = "red_light"
+		#top left
+		instance = { scale = { 0.3 0.3 }	position = { @[1/8] @[1/6] }	}
+		#top right
+		instance = { scale = { -0.3 0.3 }	position = { @[7/8] @[1/6] }	}
+		#bottom left
+		instance = { scale = { 0.3 -0.3 }	position = { @[1/8] @[5/6] }	}
+		#bottom right
+		instance = { scale = { -0.3 -0.3 }	position = { @[7/8] @[5/6] }	}
+	}
+}
+
 BRZ = { # Brazil
 	# 1822-89
 	
@@ -34,7 +66,25 @@ PRA = {	#Cabanos
 
 }
 
-PBC = {	#Peru-Bolivia Confederation
+PBC = { #Peru-Bolivia
+	
+	pattern = "pattern_solid.tga"
+	color1 = "green"
+
+	textured_emblem = {
+		texture = "te_coa_peru_bolivia.dds"
+		instance = { scale = { 0.35	 0.35 }	position = { 0.5 0.5 }	}
+	}
+	
+	colored_emblem = {
+		texture = "ce_tricolor_horizontal.dds"
+		color1 = "red"
+		color2 = "yellow"
+		instance = { scale = { 1 1 }	position = { 0.5 0.5 }	}
+	}
+}
+
+PBC_confederal = {	#Peru-Bolivia Confederation
 
 	pattern = "pattern_solid.tga"
 	color1 = "red_light"
@@ -43,6 +93,132 @@ PBC = {	#Peru-Bolivia Confederation
 		texture = "te_coa_peru_bolivia.dds"
 		instance = { scale = { 0.8	 0.8 }	position = { 0.5 0.5 }	}
 	}
+}
+
+PBC_republic = {	#Peru-Bolivia Unitary
+
+	pattern = "pattern_solid.tga"
+	color1 = "red_light"
+
+	colored_emblem = {
+		texture = "ce_laurel.dds"
+		color1 = "green"
+		color2 = "yellow"
+		instance = { scale = { 0.625	 0.575 }	position = { 0.5 0.5 }	}
+	}
+
+	colored_emblem = {
+		texture = "ce_laurel_knot.dds"
+		color1 = "yellow"
+		color2 = "yellow"
+		instance = { scale = { 0.15	 0.15 }	position = { 0.5 0.655 }	}
+	}
+
+	colored_emblem = {
+		texture = "ce_sun_peru.dds"
+		color1 = "yellow"
+		color2 = "yellow"
+		instance = { scale = { 0.35	 0.35 }	position = { 0.5 0.45 }	}
+	}
+	
+	colored_emblem = {
+		texture = "ce_moon_face.dds"
+		color1 = "yellow"
+		color2 = "yellow"
+		color3 = "yellow"
+		instance = { scale = { 0.15	 0.15 }	position = { 0.5 0.45 }	}
+	}
+	
+	colored_emblem = {
+		texture = "ce_stripe_bottom.dds"
+		color1 = "green"
+		color2 = "green"
+		instance = { scale = { 1 1 }	position = { 0.5 0.5 }	}
+		instance = { scale = { 1 1 }	position = { 0.5 0.5 }	rotation = 180 }
+	}
+	
+
+}
+
+PBC_dictatorship = {
+
+	pattern = "pattern_solid.tga"
+	color1 = "red"
+
+	textured_emblem = {
+		texture = "te_coa_peru_bolivia.dds"
+		instance = { scale = { 0.75 0.75 } position = { 0.5 0.5 } }
+	}
+
+}
+
+PBC_absolute_monarchy = {
+
+	pattern = "pattern_solid.tga"
+	color1 = "red"
+	
+	colored_emblem = {
+		texture = "ce_bicolor_left.dds"
+		color1 = "green"
+		color2 = "green"
+		instance = { scale = { 1 1 }	position = { 0.5 0.5 }	}
+	}
+	
+	colored_emblem = {
+		texture = "ce_rhombus.dds"
+		color1 = "yellow_light"
+		color2 = "yellow_light"
+		instance = { scale = { 1 1 }	position = { 0.5 0.5 }	}
+	}
+	
+	colored_emblem = {
+		texture = "ce_crown_simple.dds"
+		color1 = "yellow"
+		color2 = "green"
+		color3 = "red"
+		instance = { scale = { 0.35 0.35 }	position = { 0.5 0.2 }	}
+	}
+	
+	colored_emblem = {
+		texture = "ce_cross_order_christ.dds"
+		color1 = "yellow_light"
+		color2 = "yellow_light"
+		instance = { scale = { 0.3 0.3 }	position = { 0.125 0.175 }	}
+		instance = { scale = { 0.3 0.3 }	position = { 0.875 0.175 } 	}
+		instance = { scale = { 0.3 0.3 }	position = { 0.125 0.825 }	}
+		instance = { scale = { 0.3 0.3 }	position = {  0.875 0.825 } }
+	}
+	
+	textured_emblem = {
+		texture = "te_coa_mantle_pbc.dds"
+		instance = { scale = { 0.75 0.75 }	position = { 0.5 0.55 }	}
+	}
+	
+	textured_emblem = {
+		texture = "te_coa_peru_bolivia.dds"
+		instance = { scale = { 0.425 0.425 }	position = { 0.5 0.55 }	}
+	}
+
+}
+
+PBC_communist = {
+
+	pattern = "pattern_solid.tga"
+	color1 = "red"
+
+	colored_emblem = {
+		texture = "ce_sun_peru.dds"
+		color1 = "yellow"
+		instance = { scale = { 0.75 0.75 } position = { 0.5 0.5 } }
+	}
+	
+	colored_emblem = {
+		texture = "ce_star_05.dds"
+		color1 = "yellow"
+		instance = { scale = { 0.2 0.2 } position = { 0.2 0.5 } }
+		instance = { scale = { 0.2 0.2 } position = { 0.8 0.5 } }
+	}
+
 }
 
 PRG_francia = { 
