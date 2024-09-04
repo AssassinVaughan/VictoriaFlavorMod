@@ -1,26 +1,8 @@
 ﻿je_switzerland_constitution = {
-	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+	icon = "gfx/interface/icons/event_icons/event_swi_coa.dds"
     group = je_group_internal_affairs
-	is_shown_when_inactive = {
-		country_has_primary_culture = cu:alemannic
-		OR={
-			is_subject_type = subject_type_confederative_partner
-			any_country = {
-				is_subject_type = subject_type_confederative_partner
-				overlord = ROOT
-			}
-		}
-	}
 
-	possible = {
-		custom_tooltip = {
-			text = swiss_confederation_tt
-			any_country = {
-				is_subject_type = subject_type_confederative_partner
-				overlord = ROOT
-			}
-		}
-	}
+	scripted_progress_bar = swiss_confederation_progress_bar
 
 	can_deactivate = yes
 
@@ -28,75 +10,12 @@
 		AND = {
 			bureaucracy > 0
 			approaching_bureaucracy_shortage = no
-			NOT = { has_law = law_type:law_unitary }
+			has_law = law_type:law_federal
 		}
 
 		OR = {
 			has_law = law_type:law_freedom_of_conscience
 			has_law = law_type:law_total_separation
-		}
-		
-
-		custom_tooltip = {
-			text = swiss_constitution_complete_tt
-			OR = {
-				AND = {
-					country_has_state_religion = rel:reformed
-					OR = {
-						NOT = {
-							any_country = {
-								capital = {
-									region = sr:region_switzerland
-								}
-								country_has_state_religion = rel:catholic
-	
-								relations:root < relations_threshold:amicable
-							}
-						}
-						
-						NOT = {
-							any_country = {
-								is_subject_type = subject_type_confederative_partner
-								country_has_state_religion = rel:catholic
-								overlord = ROOT
-							}
-						}
-					}
-				}
-				AND = {
-					country_has_state_religion = rel:catholic
-					OR = {
-						NOT = {
-							any_country = {
-								capital = {
-									region = sr:region_switzerland
-								}
-								country_has_state_religion = rel:reformed
-		
-								relations:root < relations_threshold:amicable
-
-							}
-						}
-					
-						NOT = {
-							any_country = {
-								is_subject_type = subject_type_confederative_partner
-								country_has_state_religion = rel:reformed
-								overlord = ROOT
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-
-	invalid = {
-		NOT = {
-			any_country = {
-				is_subject_type = subject_type_confederative_partner
-				overlord = ROOT
-			}
 		}
 	}
 
@@ -104,7 +23,7 @@
 		trigger_event = { id = journal_flavor_switzerland.1 }
 	}
 
-	timeout = 4383
+	timeout = 4380
 
 	on_timeout = {
 		trigger_event = { id = journal_flavor_switzerland.2 }
