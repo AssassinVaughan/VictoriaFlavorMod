@@ -1,0 +1,71 @@
+﻿SWI = { # Switzerland
+	flag_definition = {
+		coa = SWI
+		subject_canton = SWI
+		allow_overlord_canton = yes		
+		coa_with_overlord_canton = SWI_subject			
+		priority = 1
+	}
+	flag_definition = {
+		coa = SWI_centralist_republic
+		priority = 25
+		trigger = {
+			scope:actor ?= {
+				coa_republic_trigger = yes
+				OR = {
+					has_law = law_type:law_devolved
+					has_law = law_type:law_unitary
+				}
+			}
+		}
+	}	
+	flag_definition = {
+		coa = SWI_confederation
+		subject_canton = SWI_confederation
+		priority = 20
+		trigger = {
+			scope:actor ?= {
+				coa_republic_trigger = yes
+			    has_law = law_type:law_confederated
+			}
+		}
+	}	
+	flag_definition = {
+		coa = SWI_republic
+		priority = 20
+		trigger = { 
+			scope:actor ?= {
+				coa_republic_trigger = yes
+			    OR = {
+					has_law = law_type:law_decentralized
+					has_law = law_type:law_federal
+				}
+			}
+		}
+	}
+	flag_definition = {
+		coa = SWI_fascist
+		subject_canton = SWI_fascist
+		priority = 1500
+		trigger = { 
+			coa_def_fascist_flag_trigger = yes
+		}
+	}	
+	flag_definition = {
+		coa = SWI_communist
+		priority = 1500
+		trigger = { 
+			coa_def_communist_flag_trigger = yes
+		}
+	}	
+	flag_definition = {
+		coa = SWI_subject	
+		allow_overlord_canton = yes	
+		overlord_canton_offset = { 0.01 0.015 }
+		overlord_canton_scale = { 0.48 0.47 }			
+		priority = 50
+		trigger = { 
+			coa_def_french_ensign_trigger = yes
+		}
+	}	
+}
