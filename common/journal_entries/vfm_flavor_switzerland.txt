@@ -5,29 +5,93 @@
 	scripted_progress_bar = swiss_confederation_progress_bar
 
 	can_deactivate = yes
+	
+	scripted_button = je_swiss_conservative_button
+	scripted_button = je_swiss_confederate_button
 
 	complete = {
-		AND = {
-			bureaucracy > 0
-			approaching_bureaucracy_shortage = no
+		OR = {
+			custom_tooltip = {
+				text = je_swiss_constitution_complete_tt
+				scope:journal_entry = {
+					"scripted_bar_progress(swiss_confederation_progress_bar)" <= 50
+				}
+			}
 			has_law = law_type:law_federal
 		}
-
+	}
+	
+	fail = {
 		OR = {
-			has_law = law_type:law_freedom_of_conscience
-			has_law = law_type:law_total_separation
+			custom_tooltip = {
+				text = je_swiss_constitution_fail_tt
+				scope:journal_entry = {
+					"scripted_bar_progress(swiss_confederation_progress_bar)" >= 350
+				}
+			}
+			has_law = law_type:law_decentralized
+		}
+	}
+	
+	invalid = {
+		OR = {
+			has_law = law_type:law_devolved
+			has_law = law_type:law_unitary
+			has_law = law_type:law_monarchy
+			has_law = law_type:law_theocracy
 		}
 	}
 
 	on_complete = {
 		trigger_event = { id = journal_flavor_switzerland.1 }
+		hidden_effect = { 
+			if = {
+				limit = {
+					NOT = { has_law = law_type:law_federal }
+				}
+				activate_law = law_type:law_federal
+			}
+		}
 	}
-
-	timeout = 4380
-
+	
 	on_timeout = {
 		trigger_event = { id = journal_flavor_switzerland.2 }
+		hidden_effect = { 
+			if = {
+				limit = {
+					NOT = { has_law = law_type:law_federal }
+				}
+				activate_law = law_type:law_federal
+			}
+		}
 	}
+
+	#on_fail = {
+	#	trigger_event = { id = journal_flavor_switzerland.3 }
+	#}
+
+	timeout = 4400
+
+	status_desc = {
+        first_valid = {
+            triggered_desc = {
+                desc = je_swiss_constitution_conservative_advantage
+                trigger = {
+                    scope:journal_entry = {
+						"scripted_bar_progress(swiss_confederation_progress_bar)" >= 200
+					}
+                }
+            }
+            triggered_desc = {
+                desc = je_swiss_constitution_confederate_advantage
+                trigger = {
+                    scope:journal_entry = {
+						"scripted_bar_progress(swiss_confederation_progress_bar)" <= 200
+					}
+                }
+            }
+        }
+    }
 
     should_be_pinned_by_default = yes
 	weight = 20

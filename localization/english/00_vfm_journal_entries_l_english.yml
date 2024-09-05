@@ -580,13 +580,44 @@
   
   
   ###Swiss Content###
-  #Swiss Constitution / Helvetic Legacy Stuff
+  #Swiss Constitution / Helvetic Confederation Stuff
   
-  je_switzerland_constitution: "The Helvetic Legacy"
-  je_switzerland_constitution_reason: "The Swiss Confederation is made up of 25 cantons, many of which were newly created during the Napoleonic era from former subject territories, each posessing their own constitution, government and a high degree of autonomy.\n\nWhile the Congress of Vienna in 1815 has guaranteed a neutral Swiss Confederacy similar in structure to its pre-napoleonic predecessor, the fundamental changes brought about in recent years are increasingly undermining the re-established confederation from within.\n\nTensions are growing between the #BOLD Catholic Conservative#! cantons, who wish to preserve their autonomy and catholic traditions by keeping the country decentralized, and #BOLD Protestant Confederate#! cantons, who wish to unite the country by forming a permanent federal government."
+  je_switzerland_constitution: "The Helvetic Confederation"
+  je_switzerland_constitution_reason: "Switzerland is made up of a series of independent $swi_cantons$, many of whom were only recently created or admitted into the confederation. There exists no federal constitution; Instead, the cantons are only loosely united via treaties, rather than through a common government.\n\nAlthough the Congress of Vienna has guaranteed the independence of a neutral Swiss Confederacy, the fundamental changes brought about in recent years by the Napoleonic Wars are increasingly undermining the re-established confederation from within.\n\nTensions are growing between the $swi_catholic_cantons$, who wish to preserve their autonomy and catholic traditions by keeping the country decentralized, and the $swi_protestant_cantons$, who wish to unite the country by forming a permanent federal government.\n\nThis conflict between #BLUE #BOLD Conservatives#!#! and #RED #BOLD Confederates#!#! will shape the political landscape for the following decade."
   
-  swiss_confederation_progress_bar_name: "Conservative-Confederate Influence"
-  swiss_confederation_progress_bar_desc: "Conservatives                                                                                          Confederates" #This is cursed I know
+  swiss_confederation_progress_bar_name: "Conservative - Confederate Influence"
+  swiss_confederation_progress_bar_desc: ""
+  
+  #Swiss Tooltips
+  je_swiss_constitution_complete_tt: "#RED The Confederates are consolidated#!"
+  je_swiss_constitution_fail_tt: "#BLUE The Conservatives are consolidated#!"
+  je_swiss_constitution_confederate_advantage: "#RED The Confederates are dominant#!"
+  je_swiss_constitution_conservative_advantage: "#BLUE The Conservatives are dominant#!"
+  
+  swiss_constitution_landowner_gov_progress_tt: "[GetInterestGroupVariant('ig_landowners',GetPlayer).GetNameWithCountryVariant] in [concept_in_government]"
+  swiss_constitution_rural_folk_gov_progress_tt: "[GetInterestGroupVariant('ig_rural_folk',GetPlayer).GetNameWithCountryVariant] in [concept_in_government]"
+  swiss_constitution_intelligentsia_gov_progress_tt: "[GetInterestGroupVariant('ig_intelligentsia',GetPlayer).GetNameWithCountryVariant] in [concept_in_government]"
+  swiss_constitution_total_separation_progress_tt: "#GOLD Total Separation#!"
+  swiss_constitution_free_religion_progress_tt: "#GOLD Freedom of Conscience#!"
+  swiss_constitution_state_religion_progress_tt: "#GOLD State Religion#!"
+  swiss_constitution_autocracy_progress_tt: "#GOLD Autocratic#! #BOLD Distribution of Power#!"
+  swiss_constitution_noble_voting_progress_tt: "#GOLD Patrician#! #BOLD Distribution of Power#!"
+  swiss_constitution_popular_voting_progress_tt: "#GOLD Democratic#! #BOLD Distribution of Power#!"
+  swiss_constitution_confederated_progress_tt: "being a #GOLD Confederation#!"
+  swiss_constitution_parliament_progress_tt: "being a #GOLD Republic#!"
+  
+  #Scripted Buttons
+  je_swiss_conservative_button: "Support Conservatives"
+  je_swiss_conservative_button_desc: "#BLUE Increase Conservative Support#!"
+  je_swiss_confederate_button: "Support Confederates"
+  je_swiss_confederate_button_desc: "#RED Increase Confederate Support#!"
+  swiss_support_cooldown_cons_tt: "Is currently #BOLD not#! sponsoring Conservatives"
+  swiss_support_cooldown_conf_tt: "Is currently #BOLD not#! sponsoring Confederates"
+  swiss_conservative_support_effect_tt: "#BLUE Conservative#! support will increase"
+  swiss_confederate_support_effect_tt: "#RED Confederate#! support will increase"
+  swiss_conservative_support_progress_tt: "#YELLOW Sponsoring#! #BOLD Conservatives#!"
+  swiss_confederate_support_progress_tt: "#YELLOW Sponsoring#! #BOLD Confederates#!"
+  
   
   je_sonderbund_war: "The Sonderbund War"
   je_sonderbund_war_reason: "The Sonderbund War was sparked by increasing tensions between the Catholic and Protestant cantons in Switzerland, which had been simmering since the Reformation. The Catholic cantons felt that their rights and privileges were being threatened by the increasingly powerful Protestant cantons, and they sought to protect their interests. \n\n Tensions between the two sides continued to escalate until the Swiss federal government declared the Sonderbund Confederation illegal and demanded that the Catholic cantons disband the alliance."

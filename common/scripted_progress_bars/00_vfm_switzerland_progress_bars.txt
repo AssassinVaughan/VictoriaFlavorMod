@@ -4,22 +4,164 @@
 
  	double_sided_bad = yes
 
- 	yearly_progress = {
+ 	monthly_progress = {
 		if = {
 			limit = {
-				exists = global_var:great_game_balance_passive_var
 				NOT = {
-					global_var:great_game_balance_passive_var = 0
+					any_political_movement = {
+						is_political_movement_type = movement_to_preserve
+						this.desired_law = law_type:law_confederated
+					}
 				}
 			}
-			add = {
-			   desc = "great_game_core_progress_passive_balance"
-			   value = global_var:great_game_balance_passive_var
-		    }
+			if = {
+				limit = {
+					has_law = law_type:law_confederated
+				}
+				add = {
+					desc = "swiss_constitution_confederated_progress_tt"
+					value = 2
+				}
+			}
+			if = {
+				limit = {
+					OR = { 
+						has_law = law_type:law_parliamentary_republic
+						has_law = law_type:law_presidential_republic
+						has_law = law_type:law_council_republic
+					}
+				}
+				subtract = {
+					desc = "swiss_constitution_parliament_progress_tt"
+					value = 1
+				}
+			}
+			if = {
+				limit = {
+					OR = { 
+						has_law = law_type:law_autocracy
+						has_law = law_type:law_technocracy
+						has_law = law_type:law_oligarchy
+						has_law = law_type:law_single_party_state
+					}
+				}
+				add = {
+					desc = "swiss_constitution_autocracy_progress_tt"
+					value = 2
+				}
+			}
+			if = {
+				limit = {
+					OR = { 
+						has_law = law_type:law_landed_voting
+						has_law = law_type:law_wealth_voting
+					}
+				}
+				add = {
+					desc = "swiss_constitution_noble_voting_progress_tt"
+					value = 1
+				}
+			}
+			if = {
+				limit = {
+					OR = { 
+						has_law = law_type:law_census_voting
+						has_law = law_type:law_universal_suffrage
+					}
+				}
+				subtract = {
+					desc = "swiss_constitution_popular_voting_progress_tt"
+					value = 1
+				}
+			}
+			if = {
+				limit = {
+					OR = { 
+						has_law = law_type:law_state_religion
+						has_law = law_type:law_denominational_exclusion
+					}
+				}
+				add = {
+					desc = "swiss_constitution_state_religion_progress_tt"
+					value = 1
+				}
+			}
+			if = {
+				limit = {
+					has_law = law_type:law_freedom_of_conscience
+				}
+				subtract = {
+					desc = "swiss_constitution_free_religion_progress_tt"
+					value = 1
+				}
+			}
+			if = {
+				limit = {
+					OR = { 
+						has_law = law_type:law_total_separation
+						has_law = law_type:law_state_atheism
+					}
+				}
+				subtract = {
+					desc = "swiss_constitution_total_separation_progress_tt"
+					value = 2
+				}
+			}
+			if = {
+				limit = {
+					ig:ig_landowners = {
+						is_in_government = yes
+					}
+				}
+				add = {
+					desc = "swiss_constitution_landowner_gov_progress_tt"
+					value = 1
+				}
+			}
+			if = {
+				limit = {
+					ig:ig_intelligentsia = {
+						is_in_government = yes
+					}
+				}
+				subtract = {
+					desc = "swiss_constitution_intelligentsia_gov_progress_tt"
+					value = 1
+				}
+			}
+			if = {
+				limit = {
+					ig:ig_rural_folk = {
+						is_in_government = yes
+					}
+				}
+				add = {
+					desc = "swiss_constitution_rural_folk_gov_progress_tt"
+					value = 1
+				}
+			}
+			if = {
+				limit = {
+					has_variable = swi_confederate_var
+				}
+				subtract = {
+					desc = "swiss_confederate_support_progress_tt"
+					value = 1
+				}
+			}
+			if = {
+				limit = {
+					has_variable = swi_conservative_var
+				}
+				add = {
+					desc = "swiss_conservative_support_progress_tt"
+					value = 1
+				}
+			}
 		}
  	}
 
- 	start_value = 100
+ 	start_value = 240
  	min_value = 0
- 	max_value = 200
+ 	max_value = 400
 }

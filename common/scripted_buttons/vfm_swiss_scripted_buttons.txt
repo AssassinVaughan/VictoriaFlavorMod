@@ -1,0 +1,55 @@
+﻿je_swiss_conservative_button = {
+	name = "je_swiss_conservative_button"
+	desc = "je_swiss_conservative_button_desc"
+
+	visible = { 
+		always = yes
+	}
+	
+	ai_chance = {
+		base = 0
+	}
+
+	possible = {
+		custom_tooltip = {
+			text = swiss_support_cooldown_cons_tt
+			NOT = { has_variable = swi_conservative_var }
+		}
+	}
+
+	effect = {
+		custom_tooltip = {
+			text = swiss_conservative_support_effect_tt
+			set_variable = swi_conservative_var
+			remove_variable = swi_confederate_var
+		}
+	}
+}
+
+je_swiss_confederate_button = {
+	name = "je_swiss_confederate_button"
+	desc = "je_swiss_confederate_button_desc"
+
+	visible = { 
+		always = yes
+	}
+	
+	ai_chance = {
+		base = 0
+	}
+
+	possible = {
+		custom_tooltip = {
+			text = swiss_support_cooldown_conf_tt
+			NOT = { has_variable = swi_confederate_var }
+		}
+	}
+
+	effect = {
+		custom_tooltip = {
+			text = swiss_confederate_support_effect_tt
+			set_variable = swi_confederate_var
+			remove_variable = swi_conservative_var
+		}
+	}
+}
