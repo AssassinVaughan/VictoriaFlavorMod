@@ -141,6 +141,25 @@ vfm_ai.2 = {
 	}
 
 	immediate = {
+	    every_country = {
+			limit = {
+				literacy_rate < 0.12
+				is_ai = yes
+			}
+			every_scope_state = { # dont get stuck with butchering tools
+			    limit = {
+				has_building = building_livestock_ranch
+				can_activate_production_method = {
+					building_type = building_livestock_ranch
+					production_method = pm_intensive_grazing_ranch
+				}
+				}
+                activate_production_method = {
+				building_type = building_livestock_ranch
+				production_method = pm_intensive_grazing_ranch
+		        }				
+			}
+		}
 		
 		if = {
 			limit = {
