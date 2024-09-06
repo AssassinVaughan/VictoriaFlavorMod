@@ -336,9 +336,11 @@
 			create_building={
 				building="building_paper_mills"
 				add_ownership={
-					country={
+					building={
+						type="building_financial_district"
 						country="c:RUS"
-						levels=1
+						levels=2
+						region="STATE_LESSER_POLAND"
 					}
 				}
 				reserves=1
@@ -350,12 +352,25 @@
 					building={
 						type="building_manor_house"
 						country="c:RUS"
-						levels=3
-						region="STATE_LESSER_POLAND"
+						levels=4
+						region="STATE_MOSCOW"
 					}
 				}
 				reserves=1
 				activate_production_methods={ "pm_open_air_stockyards" "pm_rotating_crops_ranch" "pm_standard_fences" "pm_unrefrigerated"  }
+			}
+			create_building={
+				building="building_rye_farm"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:RUS"
+						levels=2
+						region="STATE_LESSER_POLAND"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_rotating_crops" "pm_potatoes" "pm_tools_disabled"  }
 			}
 			create_building={
 				building="building_glassworks"
@@ -369,6 +384,19 @@
 				}
 				reserves=1
 				activate_production_methods={ "pm_forest_glass" "pm_ceramics" "pm_manual_glassblowing"  }
+			}
+			create_building={
+				building="building_logging_camp"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:RUS"
+						levels=2
+						region="STATE_LESSER_POLAND"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_saw_mills"  "pm_no_equipment" "pm_road_carts" "pm_no_hardwood" }
 			}
 		}
 	}
