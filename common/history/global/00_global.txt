@@ -33,6 +33,9 @@ GLOBAL = {
 			name = brazilian_slavery_progress_var
 			value = 70
 		}
+		add_radicals = {
+			value = 0.08
+		}
 	}
 	
 	c:HAI = {
@@ -355,12 +358,6 @@ GLOBAL = {
             value = yes
         }
 	}
-
-	c:UCA = {
-		add_radicals = {
-			value = 1.2
-		}
-	}
 	
 	#Welcome message
 	every_country = {
@@ -396,8 +393,10 @@ GLOBAL = {
 			id = peru_bolivia_confederation.1
 			days = 4	
 		}
+		add_radicals = {
+			value = 0.05
+		}
 	}
-
 	
 	c:IQU = {
 		trigger_event = {
@@ -413,6 +412,12 @@ GLOBAL = {
 		add_radicals = {
 			value = 0.25
 			culture = cu:south_andean
+		}
+	}
+	
+	c:UCA = {
+		add_radicals = {
+			value = 0.25
 		}
 	}
 
@@ -432,14 +437,15 @@ GLOBAL = {
                 }
             }
             add_radicals_in_state = {
-                value = 1.5
+                value = 0.35
+                culture = cu:circassian
+            }
+            add_radicals_in_state = {
+                value = 0.20
                 culture = cu:north_caucasian
             }
 			add_radicals_in_state = {
-                value = very_large_radicals
-            }
-			add_radicals_in_state = {
-                value = very_large_radicals
+                value = 0.20
             }
         }
        create_bidirectional_truce = {
@@ -492,7 +498,7 @@ GLOBAL = {
             culture = cu:azerbaijani
         }
 	}
-	c:BUE = {
+	c:BUE = { # this doenst work properly in VFM because our ARG is broken into micro states
 		every_scope_state = {
 			limit = {
 				NOR = {
@@ -501,33 +507,22 @@ GLOBAL = {
 				}
 			}
 			add_radicals_in_state = {
-				value = 3
+				value = 0.33
 				strata = rich
 			}
 			add_radicals_in_state = {
-				value = 1
+				value = 0.25
 				strata = middle
 			}
 			add_radicals_in_state = {
-				value = 0.5
+				value = 0.15
 				strata = poor
-			}
-		}
-		every_scope_state = {
-			limit = {
-				OR = {
-					state_region = s:STATE_BUENOS_AIRES
-					state_region = s:STATE_SANTA_FE
-				}
-			}
-			add_radicals_in_state = {
-				value = 0.25
 			}
 		}
 	}
 	c:URU = {
 		add_radicals = {
-			value = 0.75
+			value = 0.25
 		}
 	}
 
@@ -1274,19 +1269,10 @@ GLOBAL = {
 			set_state_owner = c:MEX
 		}
 	}
-	#every_country = {# change to normal rule check, then add only to player
-	#	limit = {
-	#		has_game_rule = vanilla_construction_rate
-	#	}
-	#	add_modifier = {
-	#		name = vanilla_construction_modifier
-	#	}
-	#}
-	
 	c:SWE = {
 		trigger_event = {
 			id = vfm_ai.1
-			days = 6
+			days = 2
 		}
 	}
 

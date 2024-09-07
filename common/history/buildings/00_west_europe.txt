@@ -3400,7 +3400,7 @@
 					building={
 						type="building_manor_house"
 						country="c:FRA"
-						levels=9
+						levels=8
 						region="STATE_RHONE"
 					}
 				}
@@ -3481,7 +3481,7 @@
 					building={
 						type="building_financial_district"
 						country="c:FRA"
-						levels=2
+						levels=1
 						region="STATE_ILE_DE_FRANCE"
 					}
 				}
@@ -3494,7 +3494,7 @@
 					building={
 						type="building_manor_house"
 						country="c:FRA"
-						levels=12
+						levels=10
 						region="STATE_LOIRE"
 					}
 				}
@@ -3525,7 +3525,7 @@
 					building={
 						type="building_financial_district"
 						country="c:FRA"
-						levels=4
+						levels=3
 						region="STATE_LOIRE"
 					}
 					building={
@@ -4311,7 +4311,7 @@
 					building={
 						type="building_financial_district"
 						country="c:FRA"
-						levels=7
+						levels=6
 						region="STATE_BURGUNDY"
 					}
 					building={
@@ -4356,13 +4356,13 @@
 					building={
 						type="building_financial_district"
 						country="c:FRA"
-						levels=7
+						levels=6
 						region="STATE_BURGUNDY"
 					}
 					building={
 						type="building_manor_house"
 						country="c:FRA"
-						levels=3
+						levels=2
 						region="STATE_ILE_DE_FRANCE"
 					}
 				}
@@ -4930,7 +4930,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_military_shipbuilding_wooden"  }
+				activate_production_methods={ "pm_military_shipbuilding_wooden_1"  }
 			}
 			create_building={
 				building="building_arms_industry"
@@ -5672,7 +5672,7 @@
 				add_ownership={
 					country={
 						country="c:AUS"
-						levels=8
+						levels=7
 					}
 				}
 				reserves=1
@@ -5774,7 +5774,7 @@
 					building={
 						type="building_manor_house"
 						country="c:AUS"
-						levels=10
+						levels=8
 						region="STATE_AUSTRIA"
 					}
 				}
@@ -8265,6 +8265,17 @@
 		}
 		region_state:BRA={
 		    create_building={
+				building="building_government_administration"
+				add_ownership={
+					country={
+						country="c:BRA"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_professional_bureaucrats" "pm_religious_bureaucrats" "pm_horizontal_drawer_cabinets" }
+			}
+		    create_building={
 				building="building_arms_industry"
 				add_ownership={
 					building={
@@ -8355,7 +8366,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_forest_glass"  "pm_manual_glassblowing" "pm_ceramics" }
+				activate_production_methods={ "pm_leaded_glass"  "pm_manual_glassblowing" "pm_disabled_ceramics" }
 			}
 			create_building={
 				building="building_university"
@@ -8610,7 +8621,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_leaded_glass"  "pm_manual_glassblowing" "pm_ceramics" }
+				activate_production_methods={ "pm_leaded_glass"  "pm_manual_glassblowing" "pm_disabled_ceramics" }
 			}
 			create_building={
 				building="building_coal_mine"

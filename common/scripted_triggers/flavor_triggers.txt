@@ -96,9 +96,14 @@ coa_def_qing_subject_trigger = {
 							type = vassal
 							is_initiator = yes
 						}
+#						has_diplomatic_pact = {
+#							who = scope:target 
+#							type = dependency
+#							is_initiator = yes
+#						}
 						has_diplomatic_pact = {
 							who = scope:target 
-							type = dependency
+							type = puppet
 							is_initiator = yes
 						}
 						has_diplomatic_pact = {

@@ -362,9 +362,13 @@ je_company_bankruptcy = {
 
     on_fail = {
 		top_overlord = {
+#			create_diplomatic_pact = {
+#				country = root
+#				type = dependency
+#			}
 			create_diplomatic_pact = {
 				country = root
-				type = dependency
+				type = puppet
 			}
 		}
 		if = {
@@ -577,9 +581,13 @@ je_relocate_bic = {
 					c:MPR = ROOT
 				}
 			}
+#			create_diplomatic_pact = {
+#				country = c:MPR
+#				type = dependency
+#			}	
 			create_diplomatic_pact = {
 				country = c:MPR
-				type = dependency
+				type = puppet
 			}	
 		}
 		if = {
@@ -589,9 +597,13 @@ je_relocate_bic = {
 					c:BPR = ROOT
 				}
 			}
+#			create_diplomatic_pact = {
+#				country = c:BPR
+#				type = dependency
+#			}	
 			create_diplomatic_pact = {
 				country = c:BPR
-				type = dependency
+				type = puppet
 			}	
 		}
 	}

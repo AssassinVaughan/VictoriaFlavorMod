@@ -193,9 +193,13 @@ je_found_british_columbia_button = {
 					}
 				}
 			}
+#			create_diplomatic_pact = {
+#				country = c:COL
+#				type = dependency
+#			}
 			create_diplomatic_pact = {
 				country = c:COL
-				type = dependency
+				type = puppet
 			}
 		}
 		else_if = {
@@ -218,9 +222,13 @@ je_found_british_columbia_button = {
 				origin = this
 				state = scope:bc_state_scope
 			}
+#			create_diplomatic_pact = {
+#				country = c:COL
+#				type = dependency
+#			}
 			create_diplomatic_pact = {
 				country = c:COL
-				type = dependency
+				type = puppet
 			}
 		}
 	}

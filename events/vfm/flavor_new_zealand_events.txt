@@ -177,9 +177,13 @@ flavor_new_zealand_events.3 = { #Question of Maori citizenship
 		ai_chance = { base = 0 }
 		
 		c:GBR = {
+#			create_diplomatic_pact = {
+#				country = c:UNT
+#				type = dependency
+#			}
 			create_diplomatic_pact = {
 				country = c:UNT
-				type = dependency
+				type = puppet
 			}
 		}
 		c:UNT = {
@@ -375,9 +379,13 @@ flavor_new_zealand_events.6 = { #New Zealand Crown Colony Founded
 		}
 		
 		c:GBR = {
+#			create_diplomatic_pact = {
+#				country = c:UNT
+#				type = dependency
+#			}
 			create_diplomatic_pact = {
 				country = c:UNT
-				type = dependency
+				type = puppet
 			}
 		}
 		c:UNT = {

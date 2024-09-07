@@ -197,9 +197,13 @@ je_australia_gbr_found_south_australia_button = {
 			}
 		}
 		c:GBR = {
+#			create_diplomatic_pact = {
+#				country = c:SAS
+#				type = dependency
+#			}
 			create_diplomatic_pact = {
 				country = c:SAS
-				type = dependency
+				type = puppet
 			}
 		}
 		set_variable = {
@@ -248,9 +252,13 @@ je_australia_gbr_found_north_australia_button = {
 			}
 		}
 		c:GBR = {
+#			create_diplomatic_pact = {
+#				country = c:NAU
+#				type = dependency
+#			}
 			create_diplomatic_pact = {
 				country = c:NAU
-				type = dependency
+				type = puppet
 			}
 		}
 		set_variable = {
@@ -290,9 +298,13 @@ je_australia_gbr_found_victoria_button = {
 			state = s:STATE_VICTORIA.region_state:NSW
 		}
 		c:GBR = {
+#			create_diplomatic_pact = {
+#				country = c:VIC
+#				type = dependency
+#			}
 			create_diplomatic_pact = {
 				country = c:VIC
-				type = dependency
+				type = puppet
 			}
 		}
 		set_variable = {

@@ -1131,14 +1131,19 @@ STATES = {
 	s:STATE_HONDURAS = {
 		create_state = {
 			country = c:UCA
-			owned_provinces = { x3C64D6 x9A0C09 x964591 x90EF40 xFA595E xE521E1 x52914C x907040 xC77E76 x5C25CB x55B06A xC27057 xE2A108 xD08FCB x63D186 xEF5C1F x0E5459 x98E7D7 x3D20D1 x10EF40 x600AC6 x907080 xD496B1 }
+			owned_provinces = { x3C64D6 x9A0C09 x964591 x90EF40 xFA595E xE521E1 x52914C x907040 xC77E76 x5C25CB x55B06A xC27057 xE2A108 xD08FCB x63D186 xEF5C1F x0E5459 x98E7D7 x3D20D1 x10EF40 x600AC6 x907080 }
 		}
 		create_state = {
 			country = c:MKT
 			owned_provinces = { x528F3B }
 		}
+		create_state = {
+			country = c:GBR
+			owned_provinces = { xD496B1 }
+		}
 		add_homeland = cu:central_american
 		add_homeland = cu:miskito
+		add_homeland = cu:afro_caribbean
 		add_claim = c:UCA
 	}
 	s:STATE_NICARAGUA = {
@@ -2442,6 +2447,11 @@ STATES = {
 		create_state = {
 			country = c:GBR
 			owned_provinces = { xA52CE3 x350473 x7B4B5E x6B802F xB3512B xE600F3 x63ABD4 x8E31E8 xAA1153 x734F81 xD0678B xA350D5 xD0BA2B xE7864B }
+			state_type = unincorporated
+		}
+		create_state = {
+			country = c:VNZ
+			owned_provinces = { xE7864B xD0BA2B xA350D5 x6C6251 x805A8C x518580 x6816FF x9A88B5 xFAE8C5 xADE6C2 xE85635 x24A66B xAA1153 xB3512B xD0678B x350473 x3A069F x41552E x719492 x9FEDF7 x4AE8F7 xB1960A xB21306 xC0C0D0 }
 			state_type = unincorporated
 		}
 		
@@ -4725,7 +4735,7 @@ STATES = {
 	s:STATE_EAST_SWITZERLAND = {
 		create_state = {
 			country = c:SWI
-			owned_provinces = { xDD4739 x90C0E0 xDDCB23 x2D7760 x9E4B22 x11C0E0 xD00161 xB79561 x508060 x426B9E x54B76D x634435 x7E4B86 x9E7431 x5FB41E x9080E0 xE51E78 }
+			owned_provinces = { x33703A xDD4739 x90C0E0 xDDCB23 x2D7760 x9E4B22 x11C0E0 xD00161 xB79561 x508060 x426B9E x54B76D x634435 x7E4B86 x9E7431 x5FB41E x9080E0 xE51E78 }
 		}
 		
 		add_homeland = cu:alemannic
@@ -4733,7 +4743,7 @@ STATES = {
 	s:STATE_WEST_SWITZERLAND = {
 		create_state = {
 			country = c:SWI
-			owned_provinces = { x33703A x702B32 xCE505D xED07F7 xEBF5B1 x6DCE88 x117FE0 xD08060 xA042B5 x9041E0 x7ACC0B }
+			owned_provinces = { x702B32 xCE505D xED07F7 xEBF5B1 x6DCE88 x117FE0 xD08060 xA042B5 x9041E0 x7ACC0B }
 		}
 		
 		add_homeland = cu:alemannic
@@ -9337,11 +9347,7 @@ STATES = {
 		create_state = {
 			country = c:BAV
 			owned_provinces = { x11C021 x707505 }
-		}
-		create_state = {
-			country = c:OLD
-			owned_provinces = { x5D7A68 }
-		}		
+		}	
 		
 		add_homeland = cu:north_german
 	}

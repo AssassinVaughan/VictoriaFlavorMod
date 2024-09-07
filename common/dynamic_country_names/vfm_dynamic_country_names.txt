@@ -99,20 +99,34 @@ COL = { # British Columbia
 			OR = {
 				AND = {
 					exists = c:GBR
+					#c:GBR = {
+					#	has_diplomatic_pact = {
+					#		who = c:COL
+					#		type = dependency
+					#		is_initiator = yes
+					#	}
+					#}
 					c:GBR = {
 						has_diplomatic_pact = {
 							who = c:COL
-							type = dependency
+							type = puppet
 							is_initiator = yes
 						}
 					}
 				}
 				AND = {
 					exists = c:HBC
+					#c:HBC = {
+					#	has_diplomatic_pact = {
+					#		who = c:COL
+					#		type = dependency
+					#		is_initiator = yes
+					#	}
+					#}
 					c:HBC = {
 						has_diplomatic_pact = {
 							who = c:COL
-							type = dependency
+							type = puppet
 							is_initiator = yes
 						}
 					}
@@ -256,10 +270,17 @@ CAU = {
 		
 		trigger = {
 			exists = c:RUS
+			#c:RUS = {
+			#	has_diplomatic_pact = {
+			#		who = c:CAU
+			#		type = dependency
+			#		is_initiator = yes
+			#	}
+			#}
 			c:RUS = {
 				has_diplomatic_pact = {
 					who = c:CAU
-					type = dependency
+					type = puppet
 					is_initiator = yes
 				}
 			}
