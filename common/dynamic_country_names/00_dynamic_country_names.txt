@@ -2267,7 +2267,7 @@ TAS = { # Tasmania
 		adjective = dyn_c_van_diemans_land_adj
 
 		is_main_tag_only = yes
-		priority = 0
+		priority = 5
 		
 		trigger = {
 			scope:actor ?= {
@@ -2277,7 +2277,7 @@ TAS = { # Tasmania
 			c:GBR = {
 				has_diplomatic_pact = {
 					who = c:TAS
-					type = dependency
+					type = puppet
 					is_initiator = yes
 				}
 			}
