@@ -595,7 +595,7 @@
 				add_ownership={
 					country={
 						country="c:RUS"
-						levels=6
+						levels=5
 					}
 				}
 				reserves=1
@@ -631,12 +631,12 @@
 					building={
 						type="building_glassworks"
 						country="c:RUS"
-						levels=3
+						levels=2
 						region="STATE_INGRIA"
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_forest_glass"  "pm_manual_glassblowing" "pm_ceramics" }
+				activate_production_methods={ "pm_forest_glass"  "pm_manual_glassblowing" "pm_disabled_ceramics" }
 			}
 			create_building={
 				building="building_arts_academy"
@@ -870,7 +870,7 @@
 				add_ownership={
 					country={
 						country="c:RUS"
-						levels=7
+						levels=6
 					}
 				}
 				reserves=1
@@ -881,7 +881,7 @@
 				add_ownership={
 					country={
 						country="c:RUS"
-						levels=2
+						levels=3
 					}
 				}
 				reserves=1
@@ -945,13 +945,13 @@
 					building={
 						type="building_manor_house"
 						country="c:RUS"
-						levels=18
+						levels=16
 						region="STATE_KIEV"
 					}
 					building={
 						type="building_manor_house"
 						country="c:RUS"
-						levels=6
+						levels=5
 						region="STATE_INGRIA"
 					}
 				}
@@ -986,7 +986,7 @@
 				add_ownership={
 					country={
 						country="c:RUS"
-						levels=1
+						levels=2
 					}
 				}
 				reserves=1
@@ -1280,6 +1280,17 @@
 	s:STATE_KHARKOV={
 		region_state:RUS={
 		    create_building={
+				building="building_government_administration"
+				add_ownership={
+					country={
+						country="c:RUS"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_horizontal_drawer_cabinets" "pm_hereditary_bureaucrats" "pm_religious_bureaucrats" }
+			}
+		    create_building={
 				building="building_logging_camp"
 				add_ownership={
 					building={
@@ -1304,7 +1315,7 @@
 					building={
 						type="building_manor_house"
 						country="c:RUS"
-						levels=10
+						levels=9
 						region="STATE_KHARKOV"
 					}
 				}
@@ -1317,8 +1328,16 @@
 					building={
 						type="building_manor_house"
 						country="c:RUS"
-						levels=20
+						levels=13
 						region="STATE_KHARKOV"
+					}
+				}
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:RUS"
+						levels=3
+						region="STATE_MOSCOW"
 					}
 				}
 				reserves=1
@@ -1428,7 +1447,7 @@
 					building={
 						type="building_financial_district"
 						country="c:RUS"
-						levels=2
+						levels=1
 						region="STATE_KIEV"
 					}
 				}
@@ -1448,7 +1467,7 @@
 				add_ownership={
 					country={
 						country="c:RUS"
-						levels=2
+						levels=1
 					}
 				}
 				reserves=1
@@ -1753,7 +1772,7 @@
 				add_ownership={
 					country={
 						country="c:RUS"
-						levels=3
+						levels=2
 					}
 				}
 				reserves=1
@@ -2004,13 +2023,13 @@
 					building={
 						type="building_manor_house"
 						country="c:RUS"
-						levels=15
+						levels=12
 						region="STATE_TAURIDA"
 					}
 					building={
 						type="building_manor_house"
 						country="c:RUS"
-						levels=5
+						levels=4
 						region="STATE_KIEV"
 					}
 				}
@@ -2036,13 +2055,13 @@
 					building={
 						type="building_manor_house"
 						country="c:RUS"
-						levels=14
+						levels=2
 						region="STATE_TAURIDA"
 					}
 					building={
 						type="building_manor_house"
 						country="c:RUS"
-						levels=4
+						levels=1
 						region="STATE_KIEV"
 					}
 				}
@@ -2175,12 +2194,6 @@
 					country={
 						country="c:RUS"
 						levels=1
-					}
-					building={
-						type="building_financial_district"
-						country="c:RUS"
-						levels=1
-						region="STATE_VITEBSK"
 					}
 					building={
 						type="building_financial_district"
@@ -2465,6 +2478,19 @@
 	}
 	s:STATE_CHUVASHIA={
 		region_state:RUS={
+		    create_building={
+				building="building_logging_camp"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:RUS"
+						levels=1
+						region="STATE_CHUVASHIA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_saw_mills" "pm_hardwood" "pm_no_equipment" "pm_road_carts"  }
+			}
 		}
 	}
 	s:STATE_CHERNIHIV={
@@ -2475,13 +2501,13 @@
 					building={
 						type="building_manor_house"
 						country="c:RUS"
-						levels=15
+						levels=13
 						region="STATE_CHERNIHIV"
 					}
 					building={
 						type="building_manor_house"
 						country="c:RUS"
-						levels=5
+						levels=4
 						region="STATE_KIEV"
 					}
 				}

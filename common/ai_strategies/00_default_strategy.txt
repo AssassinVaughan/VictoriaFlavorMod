@@ -4193,7 +4193,7 @@ ai_strategy_default = {
 
 		add = {
 			value = cached_ai_incorporated_population
-			divide = 275000 # 1 level of barracks per 275k incorporated population	
+			divide = 270000 # 1 level of barracks per 270k incorporated population	
 		}		
 
 		add = {
@@ -4212,7 +4212,7 @@ ai_strategy_default = {
 		#VFM TODO: change this to actually refer to PMs in use rather than tied to tech, current way makes countries weaker even if they couldn't afford the units of the tech in the first place
 		if = {
 			limit = { has_technology_researched = line_infantry }
-			multiply = 0.8
+			multiply = 0.75
 		}
 
 		if = {
@@ -4305,10 +4305,17 @@ ai_strategy_default = {
 		# To increase base army size for small countries, capped at 1 million population
 		add = {
 			value = cached_ai_incorporated_population
-			divide = 100000 # 1 level of barracks per 100k incorporated population	
+			divide = 140000 # 1 level of barracks per 140k incorporated population	
 
 			max = 5 #VFM, dropped to 5
 		}	
+		
+		if = {
+			limit = { 
+				is_subject = yes
+			}
+			multiply = 0.8	
+		}
 		
 		if = {
 			limit = { 
@@ -4426,6 +4433,13 @@ ai_strategy_default = {
 			limit = { is_country_type = unrecognized }
 			multiply = 0.5
 		}	
+		
+		if = {
+			limit = { 
+				is_subject = yes
+			}
+			multiply = 0.75	
+		}
 
 		if = {
 			limit = { has_strategy = ai_strategy_maintain_mandate_of_heaven }

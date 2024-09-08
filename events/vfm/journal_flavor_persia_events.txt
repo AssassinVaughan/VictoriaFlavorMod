@@ -889,14 +889,10 @@ journal_flavor_iran.16 = {
 				c:SDL = { 
 					annex = c:ZFL 
 					set_variable = become_khorasan_var
-					add_modifier = {
-			            name = nationalist_fervor
-			            months = 25
-		            }
 				}
 			}
 		}
-		if = {
+		else_if = {
 			limit = {
 				NOT = { exists = c:ZFL }
 			}
