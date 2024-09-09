@@ -273,3 +273,76 @@ APK = {
 		color2 = "green"
 	}
 }
+
+CHL_dictatorship = {
+	pattern = "pattern_solid.tga"
+	color1 = "blue"
+
+	colored_emblem = {
+		texture = "ce_tricolor_horizontal.dds"
+		color1 = "white"
+		color2 = "red"
+	}	
+	textured_emblem = {
+		texture = "te_coa_chile.dds"
+		instance = { scale = { 0.54 0.54 } position = { 0.5 0.5 } }
+	}	
+}
+
+CHL_republic = { # Chile
+	@chl_width = @[0.5/1.5]
+	@chl_height = 0.5
+	@chl_star_scale = 0.6
+	# Starting/Pres. Oligarchy
+	
+	pattern = "pattern_solid.tga"
+	color1 = "white"
+
+	colored_emblem = {
+		texture = "ce_solid.dds"
+		color1 = "red"
+		color2 = "red"
+		instance = { scale = { 1 @[1/2] } position = { 0.5 0.75 } }
+	}
+	colored_emblem = {
+		texture = "ce_solid.dds"
+		color1 = "blue"
+		color2 = "blue"
+		instance = { scale = { @[chl_width] @[chl_height] } position = { @[chl_width/2] @[chl_height/2] }  }
+	}
+	colored_emblem = {
+		texture = "ce_star_05.dds"
+		color1 = "white"
+		color2 = "white"
+		instance = { scale = { @[chl_height*chl_star_scale] @[chl_height*chl_star_scale] } position = { @[chl_width/2] @[chl_height/2] }  }
+	}
+}
+
+CHL_republic_alt = { # Chile
+	@chl_width = @[0.5/1.5]
+	@chl_height = 0.5
+	@chl_star_scale = 0.6
+	# Starting/Pres. Oligarchy
+	
+	pattern = "pattern_solid.tga"
+	color1 = "white"
+
+	colored_emblem = {
+		texture = "ce_solid.dds"
+		color1 = "red"
+		color2 = "red"
+		instance = { scale = { 1 @[1/2] } position = { 0.5 0.75 } }
+	}
+	colored_emblem = {
+		texture = "ce_solid.dds"
+		color1 = "blue"
+		color2 = "blue"
+		instance = { scale = { @[chl_width] @[chl_height] } position = { @[chl_width/2] @[chl_height/2] }  }
+	}
+	colored_emblem = {
+		texture = "ce_star_05.dds"
+		color1 = "white"
+		color2 = "white"
+		instance = { scale = { 0.205 0.425 } position = { 0.175 0.25 } rotation = -90 }
+	}
+}
