@@ -28,6 +28,10 @@ meiji.1 = {
 			name = meiji_var
 			value = 0
 		}
+		set_variable = { #This is a dummy var to prevent double events
+			name = dummy_meiji_var
+			value = 1
+		}
 		hidden_effect = {
 			if = {
 				limit = { has_modifier = shogun_ig_forced_to_open_market }
@@ -135,11 +139,16 @@ meiji.1 = {
 	option = { # favour the industrialists
 		name = meiji.1.a
 		default_option = yes
+		
 		ig:ig_industrialists = {
 			add_modifier = {
 				name = meiji_favored_ig
-				months = normal_modifier_time
+				months = very_long_modifier_time
 			}
+		}
+		change_variable = {
+			name = dummy_meiji_var
+			value = 0
 		}
 		set_capital = STATE_KANTO
 		custom_tooltip = shogunate_rename.tt
@@ -226,11 +235,16 @@ meiji.1 = {
 	}
 	option = { # favour the intellectuals
 		name = meiji.1.b
+		
 		ig:ig_intelligentsia = {
 			add_modifier = {
 				name = meiji_favored_ig
 				months = very_long_modifier_time
 			}
+		}
+		change_variable = {
+			name = dummy_meiji_var
+			value = 0
 		}
 		set_capital = STATE_KANTO
 		custom_tooltip = shogunate_rename.tt
@@ -1451,7 +1465,6 @@ meiji.13 = {
 
 	icon = "gfx/interface/icons/event_icons/event_trade.dds"
 
-	icon = "gfx/interface/icons/event_icons/event_default.dds"
 	event_image = {
 		video = "asia_westerners_arriving"
 	}
