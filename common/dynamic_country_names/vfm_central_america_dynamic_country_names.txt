@@ -1,0 +1,19 @@
+﻿CIP = { # Chiapas -> Soconosco
+	dynamic_country_name = {
+		name = dyn_c_soconosco
+		adjective = dyn_c_soconosco_adj
+		
+		is_main_tag_only = yes
+		priority = 10
+		
+		trigger = {
+			exists = c:CIP
+			c:CIP = { NOT = { owns_entire_state_region = STATE_CHIAPAS } }
+			OR = {
+				c:CIP = { is_subject_of = c:UCA }
+				c:CIP = { is_subject_of = c:ALT }
+				c:CIP = { is_subject_of = c:GUA }
+			}
+		}
+	}
+}

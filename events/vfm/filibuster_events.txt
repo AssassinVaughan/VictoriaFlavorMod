@@ -1,0 +1,656 @@
+﻿namespace = filibuster
+
+# Gaston de Raousset-Boulbon's invasion of Sonora
+filibuster.1 = {
+	type = country_event
+	placement = root
+	title = filibuster.1.t
+	desc = filibuster.1.d
+	flavor = filibuster.1.f
+
+	duration = 3
+
+	event_image = {
+		video = "gfx/event_pictures/ep1_ca_mountain_pass_military.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/misc/2Characters"
+
+	icon = "gfx/interface/icons/event_icons/event_fire.dds"
+
+	trigger = {
+		c:USA ?= {
+			owns_entire_state_region = STATE_CALIFORNIA
+		}
+		OR = {
+			c:USA ?= {
+				has_state_in_state_region = STATE_TEXAS
+			}
+			exists = c:TEX
+		}	
+		exists = c:MEX
+		THIS = c:MEX
+		is_subject = no
+		is_at_war = no
+		year > 1852
+		NOT = {
+			has_global_variable = raousset_boulbon_invasion
+		}
+	}
+
+	immediate = {
+		create_country = {
+			tag = SNR
+			origin = this
+			province = p:x81A80B
+			on_created = {
+				ig:ig_landowners = {
+					set_interest_group_name = ig_boulbon_filibusters
+					add_ruling_interest_group = yes
+				}
+				create_character = {
+					first_name = "Gaston"
+					last_name = de_Raousset_Boulbon
+					historical = yes
+					ruler = yes
+					birth_date = 1817.5.13
+					culture = cu:french
+					dna = dna_lord_palmerston
+					ig_leader = yes
+					interest_group = ig_landowners
+					ideology = ideology_moderate
+					traits = {
+						imperious
+						ambitious
+					}
+				}
+				s:STATE_SONORA = {
+					add_claim = c:SNR
+					set_owner_of_provinces = {
+						country = c:SNR
+						provinces = { xC699E3 xDF50C0 x4271A2 x54B1CE x575437 x0E6844 xE51C65 }
+					}
+				}
+			}
+		}
+		set_global_variable = raousset_boulbon_invasion
+		s:STATE_SONORA.region_state:SNR = { 
+			create_pop = {
+				pop_type = smallholders
+				culture = dixie
+				size = 50
+			}
+			create_pop = {
+				pop_type = soldiers
+				culture = dixie
+				size = 5000
+			}
+			create_pop = {
+				pop_type = officers
+				culture = dixie
+				size = 50
+			}
+			create_building={
+				building="building_barracks"
+				add_ownership={
+					country={
+						country="c:SNR"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_no_organization" }
+			}
+		}
+		c:SNR = {
+			if = {
+				limit = {
+					NOT = {
+						has_law = law_type:law_oligarchy
+					}
+				}
+				activate_law = law_type:law_oligarchy
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_law = law_type:law_slave_trade
+					}
+				}
+				activate_law = law_type:law_slave_trade
+			}
+			create_military_formation = {
+				type = army
+				hq_region = sr:region_mexico
+				name = sonora_filibusters
+
+				combat_unit = {
+					type = unit_type:combat_unit_type_line_infantry
+					state_region = s:STATE_SONORA
+					count = 4
+				}
+			}
+			create_trade_route = {
+				goods = small_arms
+				level = 2
+				direction = import
+				target = c:USA.market
+			}	
+			create_trade_route = {
+				goods = artillery
+				level = 1
+				direction = import
+				target = c:USA.market
+			}
+			create_trade_route = {
+				goods = liquor
+				level = 1
+				direction = import
+				target = c:USA.market
+			}
+			create_trade_route = {
+				goods = grain
+				level = 2
+				direction = import
+				target = c:GBR.market
+			}
+			#add_modifier = {
+			#	name = filibustering_modifier
+			#	months = 6
+			#}
+		}
+		c:MEX = {
+			create_diplomatic_play = {
+				name = sonora_filibuster_war
+			
+				target_country = c:SNR
+				
+				war = yes
+				
+				type = dp_annex_war
+						
+			}
+		}
+	}
+
+
+	option = {
+		name = filibuster.1.a
+		default_option = yes
+	}
+	option = {
+		name = filibuster.1.b
+		trigger = {
+			exists = c:SNR
+		}
+		play_as = c:SNR
+	}
+}
+#William Walker invades Baja California
+filibuster.2 = {
+	type = country_event
+	placement = root
+	title = filibuster.2.t
+	desc = filibuster.2.d
+	flavor = filibuster.2.f
+
+	duration = 3
+
+	event_image = {
+		video = "gfx/event_pictures/ep1_ca_mountain_pass_military.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/misc/2Characters"
+
+	icon = "gfx/interface/icons/event_icons/event_fire.dds"
+
+	trigger = {
+		c:USA ?= {
+			owns_entire_state_region = STATE_CALIFORNIA
+		}
+		OR = {
+			c:USA ?= {
+				has_state_in_state_region = STATE_TEXAS
+			}
+			exists = c:TEX
+		}	
+		exists = c:MEX
+		this = c:MEX
+		is_subject = no
+		is_at_war = no
+		year > 1854
+		has_global_variable = raousset_boulbon_invasion
+		NOT = {
+			has_global_variable = walker_baja_invasion
+		}
+	}
+
+	immediate = {
+		set_global_variable = walker_baja_invasion
+		create_country = {
+			tag = BAJ
+			origin = this
+			state = s:STATE_BAJA_CALIFORNIA.region_state:MEX
+			#province = p:x205040
+			on_created = {
+				ig:ig_petty_bourgeoisie = {
+					set_interest_group_name = ig_walker_filibusters
+					add_ruling_interest_group = yes
+				}
+				create_character = {
+					first_name = "William"
+					last_name = "Walker"
+					historical = yes
+					ruler = yes
+					birth_date = 1824.5.1
+					culture = cu:dixie
+					dna = dna_william_walker
+					ig_leader = yes
+					interest_group = ig_petty_bourgeoisie
+					ideology = ideology_jingoist
+					traits = {
+						imperious
+						ambitious
+					}
+				}
+				s:STATE_BAJA_CALIFORNIA.region_state:MEX = {
+					set_state_owner = c:BAJ
+				#	add_claim = c:BAJ
+				#	set_owner_of_provinces = {
+				#		country = c:BAJ
+				#		provinces = { x6320AE x7546F8 x1E47C8 xC642C3 xBC4223 xD34672 xDD6E50 x9F7207 }
+				#	}
+				}
+			}
+		}
+		s:STATE_BAJA_CALIFORNIA.region_state:BAJ = {
+				create_pop = {
+					pop_type = smallholders
+					culture = dixie
+					size = 50
+				}
+				create_pop = {
+					pop_type = officers
+					culture = dixie
+					size = 50
+				}
+				create_pop = {
+					pop_type = soldiers
+					culture = dixie
+					size = 10000
+				}
+				create_building={
+					building="building_arms_industry"
+					add_ownership={
+						country={
+							country="c:BAJ"
+							levels=1
+						}
+					}
+					reserves=1
+					activate_production_methods={ "pm_muskets" "pm_automation_disabled"  }
+				}
+				create_building={
+					building="building_barracks"
+					add_ownership={
+						country={
+							country="c:BAJ"
+							levels=1
+						}
+					}
+					reserves=1
+					activate_production_methods={ "pm_no_organization" }
+				}
+		}
+		s:STATE_SONORA = { 
+			add_claim = c:BAJ
+		}
+		c:BAJ = {
+			#add_modifier = {
+			#	name = filibustering_modifier
+			#	months = 6
+			#}
+			create_trade_route = {
+				goods = small_arms
+				level = 2
+				direction = import
+				target = c:USA.market
+			}	
+			create_trade_route = {
+				goods = artillery
+				level = 1
+				direction = import
+				target = c:USA.market
+			}
+			create_trade_route = {
+				goods = liquor
+				level = 1
+				direction = import
+				target = c:USA.market
+			}
+			create_trade_route = {
+				goods = grain
+				level = 2
+				direction = import
+				target = c:USA.market
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_law = law_type:law_oligarchy
+					}
+				}
+				activate_law = law_type:law_oligarchy
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_law = law_type:law_slave_trade
+					}
+				}
+				activate_law = law_type:law_slave_trade
+			}
+			create_military_formation = {
+				type = army
+				hq_region = sr:region_pacific_coast
+				name = baja_filibusters
+
+				combat_unit = {
+					type = unit_type:combat_unit_type_line_infantry
+					state_region = s:STATE_BAJA_CALIFORNIA
+					count = 4
+				}
+			}
+			create_diplomatic_play = {
+				name = filibuster_war
+			
+				target_state = s:STATE_SONORA.region_state:MEX
+				
+				war = yes
+				
+				type = dp_return_state
+				
+				add_war_goal = {
+					holder = c:MEX
+					type = annex_country
+					target_country = c:BAJ
+				}			
+			}	
+		}
+	}
+
+
+	option = {
+		name = filibuster.2.a
+		default_option  = yes
+	}
+	option = {
+		name = filibuster.2.b
+		trigger = {
+			exists = c:BAJ
+		}
+		play_as = c:BAJ
+	}
+}
+#Walker Invades Nicaragua
+filibuster.3 = {
+	type = country_event
+	placement = root
+	title = filibuster.3.t
+	desc = filibuster.3.d
+	flavor = filibuster.3.f
+
+	duration = 3
+
+	event_image = {
+		video = "gfx/event_pictures/ep1_ca_mountain_pass_military.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/misc/2Characters"
+
+	icon = "gfx/interface/icons/event_icons/event_fire.dds"
+
+	trigger = {
+		c:USA ?= {
+			owns_entire_state_region = STATE_CALIFORNIA
+		}
+		OR = {
+			c:USA ?= {
+				has_state_in_state_region = STATE_TEXAS
+			}
+			exists = c:TEX
+			NOT = {
+				exists = c:BAJ
+			}
+		}	
+		exists = c:NIC
+		this = c:NIC
+		is_subject = no
+		is_at_war = no
+		year > 1854
+		has_global_variable = walker_baja_invasion
+		NOT = {
+			has_global_variable = walker_nicaragua_invasion
+		}
+	}
+
+	immediate = {
+		set_global_variable = walker_nicaragua_invasion
+		create_country = {
+			tag = WNG
+			origin = this
+			#state = s:STATE_NICARAGUA
+			province = p:x10EFC0
+			on_created = {
+				ig:ig_petty_bourgeoisie = {
+					set_interest_group_name = ig_walker_filibusters
+					add_ruling_interest_group = yes
+				}
+				create_character = {
+					first_name = "William"
+					last_name = "Walker"
+					historical = yes
+					ruler = yes
+					birth_date = 1824.5.1
+					culture = cu:dixie
+					dna = dna_william_walker
+					ig_leader = yes
+					interest_group = ig_petty_bourgeoisie
+					ideology = ideology_jingoist
+					traits = {
+						imperious
+						ambitious
+					}
+				}
+			}
+		}
+		s:STATE_NICARAGUA.region_state:WNG = {
+				create_pop = {
+					pop_type = smallholders
+					culture = dixie
+					size = 50
+				}
+				create_pop = {
+					pop_type = officers
+					culture = dixie
+					size = 50
+				}
+				create_pop = {
+					pop_type = soldiers
+					culture = dixie
+					size = 10000
+				}
+				create_building={
+					building="building_arms_industry"
+					add_ownership={
+						country={
+							country="c:WNG"
+							levels=1
+						}
+					}
+					reserves=1
+					activate_production_methods={ "pm_muskets" "pm_automation_disabled"  }
+				}
+				create_building={
+					building="building_barracks"
+					add_ownership={
+						country={
+							country="c:WNG"
+							levels=1
+						}
+					}
+					reserves=1
+					activate_production_methods={ "pm_no_organization" }
+				}
+		}
+		s:STATE_NICARAGUA = {
+			add_claim = c:WNG
+		}
+		c:WNG = {
+			#add_modifier = {
+			#	name = filibustering_modifier
+			#	months = 6
+			#}
+			create_diplomatic_play = {
+				name = annex_war
+				target_country = c:NIC
+				type = dp_annex_war
+
+				add_war_goal = { holder = c:NIC target_country = c:WNG type = annex_country }
+			}
+			create_trade_route = {
+				goods = small_arms
+				level = 2
+				direction = import
+				target = c:USA.market
+			}	
+			create_trade_route = {
+				goods = artillery
+				level = 1
+				direction = import
+				target = c:USA.market
+			}
+			create_trade_route = {
+				goods = liquor
+				level = 1
+				direction = import
+				target = c:USA.market
+			}
+			create_trade_route = {
+				goods = grain
+				level = 2
+				direction = import
+				target = c:USA.market
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_law = law_type:law_oligarchy
+					}
+				}
+				activate_law = law_type:law_oligarchy
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_law = law_type:law_slave_trade
+					}
+				}
+				activate_law = law_type:law_slave_trade
+			}
+			create_military_formation = {
+				type = army
+				hq_region = sr:region_central_america
+				name = nicaragua_filibusters
+
+				combat_unit = {
+					type = unit_type:combat_unit_type_line_infantry
+					state_region = s:STATE_NICARAGUA
+					count = 4
+				}
+			}
+		}
+	}
+
+
+	option = {
+		name = filibuster.3.a
+		default_option  = yes
+	}
+	option = {
+		name = filibuster.3.b
+		trigger = {
+			exists = c:WNG
+		}
+		play_as = c:WNG
+	}
+}
+#joint invasion of Walker's Nicaragua
+filibuster.4 = {
+	type = country_event
+	placement = root
+	title = filibuster.4.t
+	desc = filibuster.4.d
+	flavor = filibuster.4.f
+
+	duration = 6
+
+	gui_window = event_window_1char_tabloid
+
+	left_icon = ruler
+
+
+	event_image = {
+		video = "gfx/event_pictures/southamerica_war_civilians.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/southamerica/war_civilians"
+
+	icon = "gfx/interface/icons/event_icons/event_fire.dds"
+
+	trigger = {	
+		OR = {
+			AND = {
+				exists = c:COS
+				this = c:COS
+			}
+			AND = {
+				exists = c:HON
+				this = c:HON
+			}
+		}	
+		is_subject = no
+		is_at_war = no
+		exists = c:WNG
+		c:WNG = {
+			is_subject = no
+			is_at_war = no
+			owns_entire_state_region = STATE_NICARAGUA
+		}
+		year > 1854
+		has_global_variable = walker_nicaragua_invasion
+	}
+
+
+	option = {
+		name = filibuster.4.a
+		default_option  = yes
+		ai_chance = {
+			base = 1
+		}
+		create_diplomatic_play = {
+			name = annex_war
+			target_country = c:WNG
+			type = dp_liberate_country
+			#??
+		}
+	}
+	option = {
+		name = filibuster.4.b
+	}
+}
+

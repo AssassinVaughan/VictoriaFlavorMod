@@ -155,7 +155,9 @@ NEconomy = {
 	TRADE_ROUTE_AUTO_INCREASE_HIGH_PRODUCTIVITY_THRESHOLD = 7 #10 If trade route's productivity is above this, it's always fine to automatically increase its level (regardless of total revenue)
 	TRADE_ROUTE_AUTO_REDUCTION_ACCEPTABLE_REVENUE_DIFFERENCE = 1.2 # Multiply revenue of current trade route level by this for the purpose of considering whether we should auto-decrease level (means that trade routes won't level down just for the purpose of a small revenue increase)
 
-    COMPANY_PRODUCTIVITY_ABSOLUTE_HIGH_THRESHOLD = 10	# Companies whose productivity exceeds this amount will ALWAYS be considered high-productivity companies
+    # This company mechanic is SO dumb, different buildings will have very different prosperity potential. A tool or steel factory will have higher profit than a sawmill or grain farm...
+    COMPANY_PRODUCTIVITY_RATIO_HIGH_THRESHOLD = 1.15	#1.25 Companies whose productivity exceeds this factor of the global average will be considered high-productivity companies
+    COMPANY_PRODUCTIVITY_ABSOLUTE_HIGH_THRESHOLD = 10	#25 Companies whose productivity exceeds this amount will ALWAYS be considered high-productivity companies
 } 
 
 NMilitary = {

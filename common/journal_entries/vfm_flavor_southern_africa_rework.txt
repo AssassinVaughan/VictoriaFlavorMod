@@ -69,7 +69,14 @@ je_encourage_boer_migration_into_the_oranje_river_basin = {
 			text = form_oranje_vrystaat_2_tt
 		}
 		s:STATE_VRYSTAAT.region_state:BST = { set_state_owner = c:WIB }
-		s:STATE_VRYSTAAT.region_state:SAF = { set_state_owner = c:WIB }
+		if = {
+			limit = {
+				c:SAF = {
+					has_state_in_state_region = STATE_VRYSTAAT
+				}
+			}
+			s:STATE_VRYSTAAT.region_state:SAF = { set_state_owner = c:WIB }
+		}
 	}
 }
 

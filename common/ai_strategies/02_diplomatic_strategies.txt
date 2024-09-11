@@ -1639,20 +1639,6 @@ ai_strategy_unify_germany = {
 			}
 			if = {
 				limit = {
-						scope:target_country = {
-							any_scope_state = {
-								state_region = s:STATE_SCHLESWIG_HOLSTEIN
-							}
-						}
-					scope:target_state = {
-						state_region = s:STATE_SCHLESWIG_HOLSTEIN
-					}		
-					has_global_variable = scandis_successful
-				}
-				add = 10
-			}
-			if = {
-				limit = {
 					scope:target_country = {
 						OR = {
 							country_has_primary_culture = cu:north_german

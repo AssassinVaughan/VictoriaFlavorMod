@@ -1,0 +1,87 @@
+﻿
+je_baj_usa = {
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	group = je_group_historical_content
+	is_shown_when_inactive = {
+		exists = c:MEX
+		this = c:USA
+		year > 1850
+		NOT = {
+			has_law = law_type:law_slavery_banned
+		}
+	}
+	possible = {
+		this = c:USA
+		exists = c:BAJ
+		NOT = {
+			has_law = law_type:law_slavery_banned
+		}
+	}
+	complete = {
+		exists = c:BAJ
+		c:BAJ = {
+			relations:root >= relations_threshold:cordial
+			is_subject = no
+			is_at_war = no
+		}
+	}
+
+	on_complete = {
+		custom_tooltip = usa_annex_baj_tt
+		hidden_effect = {
+			annex = c:BAJ
+		}		
+	}
+
+	invalid = {
+		has_law = law_type:law_slavery_banned
+	}
+	
+	weight = 100
+	
+	transferable = no
+}
+je_snr_usa = {
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	group = je_group_historical_content
+	is_shown_when_inactive = {
+		exists = c:MEX
+		this = c:USA
+		year > 1850
+		NOT = {
+			has_law = law_type:law_slavery_banned
+		}
+	}
+	possible = {
+		this = c:USA
+		exists = c:SNR
+		NOT = {
+			has_law = law_type:law_slavery_banned
+		}
+	}
+	complete = {
+		exists = c:SNR
+		c:SNR = {
+			relations:root >= relations_threshold:cordial
+			is_subject = no
+			is_at_war = no
+		}
+	}
+
+	on_complete = {
+		custom_tooltip = usa_annex_snr_tt
+		hidden_effect = {
+			annex = c:SNR
+		}		
+	}
+
+	invalid = {
+		has_law = law_type:law_slavery_banned
+	}
+	
+	weight = 100
+	
+	transferable = no
+}
