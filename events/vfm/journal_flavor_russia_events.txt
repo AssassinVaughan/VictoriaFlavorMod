@@ -1,4 +1,69 @@
 ﻿namespace = journal_flavor_russia
+# window to europe (St Petersburg)
+journal_flavor_russia.1 = {
+
+	type = country_event
+	placement = root
+
+	title = journal_flavor_russia.1.t
+	desc = journal_flavor_russia.1.d
+	flavor = journal_flavor_russia.1.f
+
+
+	event_image = {
+		video = "gfx/event_pictures/europenorthamerica_russian_serfs.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/europenorthamerica/russian_serfs"
+
+	icon = "gfx/interface/icons/event_icons/event_scales.dds" 
+
+	duration = 3
+	
+	trigger = {
+	    owns_entire_state_region = STATE_INGRIA
+		s:STATE_INGRIA = {
+			any_scope_state = {
+				NOT = { has_modifier = serfs_pulled }
+			}
+		}
+	}
+	
+	immediate = {
+		s:STATE_INGRIA = {
+			random_scope_state = {
+				save_scope_as = ingria_scope
+			}
+		}
+	}
+
+	option = {
+		name = journal_flavor_russia.1.a
+		default_option = yes
+		
+		scope:ingria_scope = {
+		    add_loyalists_in_state = {
+				pop_type = aristocrats
+				value = small_radicals
+			}
+		    add_modifier = {
+				name = serfs_pulled
+				months = 25
+			}
+		}
+	}
+	option = {
+		name = journal_flavor_russia.1.b
+
+        scope:ingria_scope = {
+			add_radicals_in_state = {
+				pop_type = aristocrats
+				value = medium_radicals
+			}
+		}
+	}
+}
 
 journal_flavor_russia.5 = {
 
