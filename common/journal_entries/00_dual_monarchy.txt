@@ -1,4 +1,4 @@
-﻿je_dual_monarchy = { #Replaces vanilla dual monarchy
+﻿je_dual_monarchy = {
 	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
 
 	group = je_group_historical_content
@@ -17,11 +17,19 @@
 
 	on_complete = {
 		trigger_event = {
-			id = grosdeutschland.4
+			id = dual_monarchy.1
 		}
 	}
 
 	fail = {
+        OR = {
+        cu:hungarian = { # vanilla
+			culture_secession_progress = {
+				target = ROOT
+				value > 0.5
+			}
+		}
+        AND = { # VFM
 		is_at_war = no
 		NOT = { is_unification_candidate = GER }
 		OR = {
@@ -34,12 +42,13 @@
 			has_variable = je_german_unification_idea
 			has_global_variable = schleswig_holstein_question_solved
 		}
+        }
 	}
 
 	on_fail = {
 		set_variable = dual_monarchy_fail
 		trigger_event = {
-			id = grosdeutschland.4
+			id = dual_monarchy.1
 		}
 	}
 
