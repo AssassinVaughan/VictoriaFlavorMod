@@ -1,5 +1,5 @@
 ﻿COUNTRIES = {
-	c:USA = {
+	c:USA ?= {
 		set_next_election_date = 1836.12.7
 
 		set_tax_level = low
@@ -7,7 +7,7 @@
 		effect_starting_technology_tier_1_tech = yes
 		
 		set_market_capital = STATE_NEW_YORK
-
+		
 		set_tariffs_export_priority = g:fabric		
 		
 		set_variable = monroe_doctrine
@@ -41,15 +41,9 @@
 			institution = institution_police
 			level = 2
 		}
-		
-		ig:ig_landowners = { 
-			set_interest_group_name = ig_southern_planters
-			remove_ideology = ideology_paternalistic
-			add_ideology = ideology_republican_paternalistic
-		}
 
-		ig:ig_devout = {
-			set_interest_group_name = ig_evangelicals
+		ig:ig_rural_folk = { # Andrew Jackson, Jacksonian Democracy & Populism
+			add_ruling_interest_group = yes
 		}
 
 		add_journal_entry = { type = je_texas_usa }
