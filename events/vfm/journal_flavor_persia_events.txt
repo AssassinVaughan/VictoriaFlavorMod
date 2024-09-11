@@ -118,10 +118,15 @@ journal_flavor_iran.3 = {
 
 	immediate = {
 		remove_variable = british_intervention_in_iran
+        if = {
+				limit = {
+					exists = c:HER
+				}
 		create_bidirectional_truce = {
 			country = c:HER
 			months = 60
 		}
+        }
 	}
 
 	duration = 3
@@ -889,10 +894,6 @@ journal_flavor_iran.16 = {
 				c:SDL = { 
 					annex = c:ZFL 
 					set_variable = become_khorasan_var
-					add_modifier = {
-			            name = nationalist_fervor
-			            months = 25
-		            }
 				}
 			}
 		}
