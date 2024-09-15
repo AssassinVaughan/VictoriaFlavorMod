@@ -1,0 +1,92 @@
+namespace = saltpeter_war
+
+saltpeter_war.1 = {
+	type = country_event
+	placement = root
+
+	title = saltpeter_war.1.t
+	desc = saltpeter_war.1.d
+	flavor = saltpeter_war.1.f
+
+	event_image = {
+		video = "gfx/event_pictures/southamerica_aristocrats.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/southamerica/aristocrats" 
+
+
+	icon = "gfx/interface/icons/event_icons/waving_flag.dds"
+
+	duration = 3
+
+	trigger = {
+	}
+
+	option = {
+		name = saltpeter_war.1.a
+		default_option = yes
+		
+		ai_chance = {
+			base = 90
+		}
+
+		custom_tooltip = {
+			text = saltpeter_war_tt }
+
+		hidden_effect = {
+		c:BOL = {
+		    annex = c:ATM	
+		    }
+			s:STATE_ANTOFAGASTA = {
+				set_owner_of_provinces = {	
+				    country = c:CHL
+					provinces = { x20E574 x82A274 xEE0067 x6B33D0 x1B2EC2 xCAECEF x2000F0 }
+					}
+				}	
+
+	    if = {
+	        limit = {
+                this = c:BOL
+                }
+           create_diplomatic_pact = {
+				country = c:CHL
+				type = foreign_investment_agreement
+			}
+        } 
+	    if = {
+	        limit = {
+                this = c:CHL
+                }
+            create_diplomatic_pact = {
+				country = c:BOL
+				type = foreign_investment_agreement
+			}
+		add_journal_entry = {
+			type = je_saltpeter_war
+		    }         
+        }        
+    }     
+
+    c:CHL = {  
+		add_journal_entry = {
+			type = je_saltpeter_war
+		    }
+		}
+	}
+		    
+	option = {
+		name = saltpeter_war.1.b
+		
+		ai_chance = {
+			base = 10
+		}
+
+		c:CHL = {
+		    change_relations = {
+			    country = c:BOL
+			    value = -40
+			}    
+		}						   	
+	}	
+}

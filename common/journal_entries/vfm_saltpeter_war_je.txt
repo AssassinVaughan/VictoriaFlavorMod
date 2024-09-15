@@ -1,0 +1,51 @@
+je_saltpeter_war = {
+
+	icon = "gfx/interface/icons/event_icons/waving_flag.dds"
+    group = je_group_historical_content
+
+	immediate = {
+		set_variable = {
+			name = saltpeter_war_var
+			value = 0
+		}
+	}	
+
+	on_monthly_pulse = {
+		effect = {
+			if = {
+				limit = {
+					is_at_war = no
+					c:BOL = {
+						relations:root < relations_threshold:cordial
+					}
+				}
+				change_variable = {
+					name = saltpeter_war_var
+					add = 1
+				}
+			}
+		}
+	}
+
+	on_complete = {
+		trigger_event = {
+			id = journal_flavor_chile.5	
+	}
+}
+
+	current_value = {
+		value = root.var:saltpeter_war_va
+	}
+
+	goal_add_value = {
+		value = 60
+	}
+
+	progressbar = yes
+
+	weight = 10000
+
+	should_be_pinned_by_default = yes
+
+	timeout = 3650
+}

@@ -1,0 +1,45 @@
+antofagasta_flavor = {
+
+	is_shown = {
+	    exists = c:CHL
+		exists = c:BOL
+		OR = {
+		    this = c:BOL   
+		    this = c:CHL 
+		    }  
+		NOT = { has_variable = antofagasta_treaty }
+        }
+        
+	possible = {
+		is_at_war = no
+		has_technology_researched = corporate_charters
+        ROOT = { NOT = { owns_entire_state_region = STATE_ANTOFAGASTA }  }   
+	    }
+
+	when_taken = {
+	    if = {
+	        limit = {
+                this = c:BOL
+                }
+            c:CHL = {    
+                trigger_event = { 
+			        id = journal_flavor_saltpeter.1
+		            }
+                }
+            } 
+	    if = {
+	        limit = {
+                this = c:CHL
+                }
+            c:BOL = {    
+                trigger_event = { 
+			        id = journal_flavor_saltpeter.1
+		            }
+                }
+            }
+        }                    			
+
+	ai_chance = {
+		base = 100
+	}
+}
