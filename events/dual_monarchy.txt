@@ -131,6 +131,8 @@ dual_monarchy.1 = {
 				country = c:HUN
 				type = personal_union
 			}
+			
+			remove_modifier = the_dual_monarchy
 		}
 
 		ig:ig_landowners = {
@@ -138,11 +140,6 @@ dual_monarchy.1 = {
 			hidden_effect = {
 				set_interest_group_name = ig_landowners
 			}
-		}
-		# lose prestige
-		add_modifier = {
-			name = dual_monarchy_compromise
-			months = very_long_modifier_time
 		}
 		add_radicals = {
 			value = medium_radicals
@@ -346,6 +343,8 @@ dual_monarchy.1 = {
 			name = dual_monarchy_compromise
 			months = very_long_modifier_time
 		}
+		
+		remove_modifier = the_dual_monarchy
 
 		play_as = c:HUN
 	}
