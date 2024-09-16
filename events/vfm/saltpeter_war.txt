@@ -16,7 +16,7 @@ saltpeter_war.1 = {
 	on_opened_soundeffect = "event:/SFX/Events/southamerica/aristocrats" 
 
 
-	icon = "gfx/interface/icons/event_icons/waving_flag.dds"
+	icon = "gfx/interface/icons/event_icons/event_flags/event_chl_flag.dds"
 
 	duration = 3
 
@@ -53,7 +53,11 @@ saltpeter_war.1 = {
 				country = c:CHL
 				type = foreign_investment_agreement
 			}
-        } 
+			c:CHL = { add_journal_entry = {
+			type = je_saltpeter_war
+		    }
+		}    
+    } 
 	    if = {
 	        limit = {
                 this = c:CHL
@@ -90,3 +94,125 @@ saltpeter_war.1 = {
 		}						   	
 	}	
 }
+
+saltpeter_war.2 = {
+	type = country_event
+	placement = root
+
+	title = saltpeter_war.2.t
+	desc = saltpeter_war.2.d
+	flavor = saltpeter_war.2.f
+
+	event_image = {
+		video = "gfx/event_pictures/ep1_clandestine_meeting.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/ep1/clandestine_meeting" 
+
+
+	icon = "gfx/interface/icons/event_icons/event_flags/event_chl_flag.dds"
+
+	duration = 3
+
+	immediate = {
+	    c:GBR = {
+		    save_scope_as = gbr_scope
+	    }					
+	}
+
+	trigger = {
+	    exists = c:GBR
+	    c:GBR = {
+			relations:root < relations_threshold:cordial
+		}	
+		c:CHL = { has_journal_entry = je_saltpeter_war }
+        c:CHL = {
+            NOT = { has_diplomatic_pact = {
+                who = c:GBR
+                type = foreign_investment_agreement
+                }
+            OR = { has_diplomatic_pact = {
+                who = c:GBR
+                type = foreign_investment_rights
+                }    
+            }
+        }
+    }		
+}	
+
+	option = {
+		name = saltpeter_war.2.a
+		default_option = yes
+		
+		ai_chance = {
+			base = 80
+		}
+
+
+        custom_tooltip = {
+			text = saltpeter_war_tt.1  
+			}
+
+        hidden_effect = {			
+	    if = {
+	        limit = {
+                c:CHL = {
+                NOT = { has_diplomatic_pact = {
+                    who = c:GBR
+                    type = foreign_investment_agreement
+                    }
+                OR = { has_diplomatic_pact = {
+                    who = c:GBR
+                    type = foreign_investment_rights
+                    }    
+                }
+            }
+        } 
+    }
+        create_diplomatic_pact = {
+			country = c:GBR
+			type = foreign_investment_rights
+			}
+        }
+    }
+
+		c:CHL = {
+		    change_relations = {
+			    country = c:GBR
+			    value = 20
+			}    
+		}
+
+		custom_tooltip = {
+			text = saltpeter_war_tt.2
+			}		
+		change_variable = {
+			name = saltpeter_war_var
+			add = 12
+		}		
+	}	
+		    
+	option = {
+		name = saltpeter_war.2.b
+		
+		ai_chance = {
+			base = 20
+		}
+
+		c:CHL = {
+		    change_relations = {
+			    country = c:GBR
+			    value = -10
+			}    
+		}
+
+		custom_tooltip = {
+			text = saltpeter_war_tt.3
+			}
+		change_variable = {
+			name = saltpeter_war_var
+			add = -6
+			}
+		}										   	
+	}	

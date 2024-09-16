@@ -17,13 +17,14 @@ antofagasta_flavor = {
 	    }
 
 	when_taken = {
+	    set_variable = antofagasta_treaty
 	    if = {
 	        limit = {
                 this = c:BOL
                 }
             c:CHL = {    
                 trigger_event = { 
-			        id = journal_flavor_saltpeter.1
+			        id = saltpeter_war.1
 		            }
                 }
             } 
@@ -33,7 +34,7 @@ antofagasta_flavor = {
                 }
             c:BOL = {    
                 trigger_event = { 
-			        id = journal_flavor_saltpeter.1
+			        id = saltpeter_war.1
 		            }
                 }
             }
@@ -41,5 +42,44 @@ antofagasta_flavor = {
 
 	ai_chance = {
 		base = 100
+	}
+}
+
+british_proposal = {
+
+	is_shown = {
+		c:CHL = { has_journal_entry = je_saltpeter_war }
+        c:CHL = {
+            NOT = { has_diplomatic_pact = {
+                who = c:GBR
+                type = foreign_investment_agreement
+                }
+            OR = { has_diplomatic_pact = {
+                who = c:GBR
+                type = foreign_investment_rights
+                }    
+            }
+        }
+    }      
+		NOT = { has_variable = british_proposal_var }
+        }
+        
+	possible = {
+		has_technology_researched = corporate_charters
+	    c:CHL = {
+			relations:root > relations_threshold:cordial
+		}   
+	}
+
+	when_taken = {
+        c:CHL = { trigger_event = { 
+			    id = saltpeter_war.2
+		    }
+		set_variable = british_proposal_var      
+        }
+    }                        			
+
+	ai_chance = {
+		base = 90
 	}
 }
