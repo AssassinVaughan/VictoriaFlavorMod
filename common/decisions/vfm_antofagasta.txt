@@ -11,13 +11,14 @@ antofagasta_flavor = {
         }
         
 	possible = {
+	    hidden_effect = { NOT = { has_variable = antofagasta_treaty } }
 		is_at_war = no
 		has_technology_researched = corporate_charters
         ROOT = { NOT = { owns_entire_state_region = STATE_ANTOFAGASTA }  }   
 	    }
 
 	when_taken = {
-	    set_variable = antofagasta_treaty
+	    set_global_variable = antofagasta_treaty
 	    if = {
 	        limit = {
                 this = c:BOL
@@ -66,6 +67,7 @@ british_proposal = {
         }
         
 	possible = {
+	    hidden_effect = { NOT = { has_variable = british_proposal_var } }
 		has_technology_researched = corporate_charters
 	    c:CHL = {
 			relations:root > relations_threshold:cordial
@@ -76,7 +78,7 @@ british_proposal = {
         c:CHL = { trigger_event = { 
 			    id = saltpeter_war.2
 		    }
-		set_variable = british_proposal_var      
+		set_global_variable = british_proposal_var      
         }
     }                        			
 
@@ -94,6 +96,7 @@ peru_alliance = {
         }
         
 	possible = {
+	    hidden_effect = { NOT = { has_variable = peru_alliance_var } }
 	    c:BOL = {
 			relations:root > relations_threshold:cordial
 		}
@@ -113,7 +116,7 @@ peru_alliance = {
         c:BOL = { trigger_event = { 
 			    id = saltpeter_war.3
 		    }
-		set_variable = peru_alliance_var      
+		set_globa_variable = peru_alliance_var      
         }
         add_modifier = {
 			      name = protecting_brother_country
