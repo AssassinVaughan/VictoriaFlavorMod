@@ -18,7 +18,16 @@ saltpeter_war.1 = {
 
 	icon = "gfx/interface/icons/event_icons/event_flags/event_chl_flag.dds"
 
-	duration = 3
+	duration = 1
+
+	immediate = {
+	    c:BOL = {
+		    save_scope_as = bol_scope
+	    }
+	    c:CHL = {
+		    save_scope_as = chl_scope
+	    }
+	}    	    
 
 	trigger = {
 	}
@@ -113,7 +122,7 @@ saltpeter_war.2 = {
 
 	icon = "gfx/interface/icons/event_icons/event_flags/event_chl_flag.dds"
 
-	duration = 3
+	duration = 1
 
 	immediate = {
 	    c:GBR = {
@@ -235,7 +244,7 @@ saltpeter_war.3 = {
 
 	icon = "gfx/interface/icons/event_icons/event_flags/event_chl_flag.dds"
 
-	duration = 3
+	duration = 1
 
 	immediate = {
 	    c:PEU = {
@@ -319,7 +328,7 @@ saltpeter_war.4 = {
 
 	icon = "gfx/interface/icons/event_icons/event_flags/event_chl_flag.dds"
 
-	duration = 3
+	duration = 1
 
 	immediate = {
 	    c:PEU = {
