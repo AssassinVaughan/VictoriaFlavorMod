@@ -346,7 +346,10 @@ journal_flavor_chile.5 = { #War of the Pacific
 
 		    if = {
 			    limit = {
-			        c:PEU = { has_variable = secret_alliance_var }
+			        OR =
+			            c:PEU = { has_variable = secret_alliance_var }
+			            set_variable = secret_alliance_var
+			            }
 			        }
                 add_war_goal = {
 				    holder = c:CHL				
@@ -354,7 +357,6 @@ journal_flavor_chile.5 = { #War of the Pacific
 				    target_state = scope:tarapaca_state
 			        }
 		        }			    
-            }
 
 		add_loyalists = {
 			value = 0.15
@@ -368,7 +370,7 @@ journal_flavor_chile.5 = { #War of the Pacific
 			    months = 1
 		    }	   
 		}
-	}        				
+	}	        				
 			            
 	option = {
 		name = journal_flavor_chile.5.b
