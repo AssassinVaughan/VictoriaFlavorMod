@@ -48,6 +48,7 @@ antofagasta_flavor = {
 british_proposal = {
 
 	is_shown = {
+	    this = c:GBR
 		c:CHL = { has_journal_entry = je_saltpeter_war }
         c:CHL = {
             NOT = { has_diplomatic_pact = {
@@ -78,6 +79,47 @@ british_proposal = {
 		set_variable = british_proposal_var      
         }
     }                        			
+
+	ai_chance = {
+		base = 90
+	}
+}
+
+peru_alliance = {
+
+	is_shown = {
+	    this = c:PEU
+		c:CHL = { has_journal_entry = je_saltpeter_war }      
+		NOT = { has_variable = peru_alliance_var }
+        }
+        
+	possible = {
+	    c:BOL = {
+			relations:root > relations_threshold:cordial
+		}
+		custom_tooltip = {
+			text = peru_alliance_tt }
+		hidden_effect = {	
+		any_scope_state = {
+			any_neighbouring_state = {
+				owner = {
+					is = c:BOL
+				}
+			}
+		}   
+	}
+}
+	when_taken = {
+        c:BOL = { trigger_event = { 
+			    id = saltpeter_war.3
+		    }
+		set_variable = peru_alliance_var      
+        }
+        add_modifier = {
+			      name = protecting_brother_country
+			      months = normal_modifier_time
+		        }
+            }                        			
 
 	ai_chance = {
 		base = 90
