@@ -311,6 +311,15 @@ journal_flavor_chile.5 = { #War of the Pacific
 
 	duration = 1
 
+	event_image = {
+		video = "gfx/event_pictures/middleeast_battlefield_trenches.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/middleeast/battlefield_trenches"
+
+	icon = "gfx/interface/icons/event_icons/event_flags/event_chl_flag.dds"
+
 	immediate = {
 		c:BOL = {
 			save_scope_as = bol_scope
@@ -327,15 +336,6 @@ journal_flavor_chile.5 = { #War of the Pacific
             }
         }					
 	}
-
-	event_image = {
-		video = "gfx/event_pictures/middleeast_battlefield_trenches.bk2"
-	}
-
-	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
-	on_opened_soundeffect = "event:/SFX/Events/middleeast/battlefield_trenches"
-
-	icon = "gfx/interface/icons/event_icons/event_flags/event_chl_flag.dds"
 
 	option = {
 		default_option = yes
