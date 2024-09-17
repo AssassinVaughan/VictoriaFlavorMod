@@ -320,7 +320,12 @@ journal_flavor_chile.5 = { #War of the Pacific
 		}
 		c:PEU = {
 			save_scope_as = peu_scope
-		}			
+		}
+	    s:STATE_TARAPACA= {
+            random_scope_state = {
+                save_scope_as = tarapaca_state
+            }
+        }					
 	}
 
 	event_image = {
@@ -336,28 +341,44 @@ journal_flavor_chile.5 = { #War of the Pacific
 		default_option = yes
 		name = journal_flavor_chile.5.a
 
-        create_diplomatic_play = {
-            name = war_of_the_pacific
-            target_state = s:STATE_ANTOFAGASTA.region_state:BOL
-
-            war = no
-
-            type = dp_return_state
-
 		    if = {
 			    limit = {
-			        OR =
-			            c:PEU = { has_variable = secret_alliance_var }
-			            set_variable = secret_alliance_var
+			        has_global_variable = secret_alliance_var
 			            }
-			        }
+                create_diplomatic_play = {
+                    name = war_of_the_pacific
+                    target_state = s:STATE_ANTOFAGASTA.region_state:BOL
+
+                    war = no
+
+                    type = dp_return_state
+   
                 add_war_goal = {
-				    holder = c:CHL				
+				    holder = c:CHL			
+
 				    type = conquer_state
+
 				    target_state = scope:tarapaca_state
 			        }
 		        }			    
+            }
 
+		    if = {
+			    limit = {
+			        NOT = {  
+			        	has_global_variable = secret_alliance_var
+			                    }
+			                }
+                create_diplomatic_play = {
+                    name = war_of_the_pacific
+                    target_state = s:STATE_ANTOFAGASTA.region_state:BOL
+
+                    war = no
+
+                    type = dp_return_state
+                    }
+                }    			                              
+            
 		add_loyalists = {
 			value = 0.15
 		}
