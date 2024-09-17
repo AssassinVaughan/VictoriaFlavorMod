@@ -321,7 +321,7 @@ journal_flavor_chile.5 = { #War of the Pacific
 		c:PEU = {
 			save_scope_as = peu_scope
 		}
-	    s:STATE_TARAPACA= {
+	    s:STATE_TARAPACA = {
             random_scope_state = {
                 save_scope_as = tarapaca_state
             }
@@ -341,44 +341,56 @@ journal_flavor_chile.5 = { #War of the Pacific
 		default_option = yes
 		name = journal_flavor_chile.5.a
 
-		    if = {
-			    limit = {
-			        has_global_variable = secret_alliance_var
-			            }
-                create_diplomatic_play = {
-                    name = war_of_the_pacific
-                    target_state = s:STATE_ANTOFAGASTA.region_state:BOL
+		if = {
+		    limit = {
+		    	AND = {
+		        	OR = {
+		            	c:PEU = { has_global_variable = secret_alliance_var }
+		            	has_global_variable = secret_alliance_var
+		            }
+		        }
+		    }
+            create_diplomatic_play = {
+                name = war_of_the_pacific
+                target_state = s:STATE_ANTOFAGASTA.region_state:BOL
 
-                    war = no
+                add_target_backers = { c:PEU }
 
-                    type = dp_return_state
-   
+                war = no
+
+                type = dp_return_state
+
                 add_war_goal = {
-				    holder = c:CHL			
+                    holder = c:CHL
 
-				    type = conquer_state
+                    type = conquer_state
 
-				    target_state = scope:tarapaca_state
-			        }
-		        }			    
+                    target_state = scope:tarapaca_state
+                }
             }
+        }
 
-		    if = {
-			    limit = {
-			        NOT = {  
-			        	has_global_variable = secret_alliance_var
-			                    }
-			                }
-                create_diplomatic_play = {
-                    name = war_of_the_pacific
-                    target_state = s:STATE_ANTOFAGASTA.region_state:BOL
+		if = {
+		    limit = {
+		        NOT = { 
+		        	AND = {
+		                OR = {
+		                	c:PEU = { has_global_variable = secret_alliance_var }
+		                	has_global_variable = secret_alliance_var
+		                }
+		            }
+		        }
+		    }
+            create_diplomatic_play = {
+            	name = war_of_the_pacific
+            	target_state = s:STATE_ANTOFAGASTA.region_state:BOL
 
-                    war = no
+            	war = no
 
-                    type = dp_return_state
-                    }
-                }    			                              
-            
+            	type = dp_return_state
+            }
+        }
+
 		add_loyalists = {
 			value = 0.15
 		}
@@ -389,24 +401,23 @@ journal_flavor_chile.5 = { #War of the Pacific
 		    trigger_event = {
 			    id = journal_flavor_chile.22
 			    months = 1
-		    }	   
+		    }
 		}
 	}	        				
 			            
 	option = {
 		name = journal_flavor_chile.5.b
-
-    c:CHL = {
-        add_modifier = {
-			name = pacific_war_rejected
-			months = normal_modifier_time
+    	c:CHL = {
+        	add_modifier = {
+				name = pacific_war_rejected
+				months = normal_modifier_time
 			}
-		add_radicals = {
-			value = 0.025	
-		}
-		add_radicals = {
-			value = 0.4
-			pop_type = capitalists	
+			add_radicals = {
+				value = 0.025	
+			}
+			add_radicals = {
+				value = 0.4
+				pop_type = capitalists	
 			}
 		}					
 	}
