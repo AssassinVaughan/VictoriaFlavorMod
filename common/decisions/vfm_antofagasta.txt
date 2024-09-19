@@ -1,0 +1,130 @@
+antofagasta_flavor = {
+
+	is_shown = {
+	    exists = c:CHL
+		exists = c:BOL
+		OR = {
+		    this = c:BOL   
+		    this = c:CHL 
+		    }  
+		NOT = { has_global_variable = antofagasta_treaty }
+        }
+        
+	possible = {
+	    hidden_effect = { NOT = { has_global_variable = antofagasta_treaty } }
+		is_at_war = no
+		has_technology_researched = corporate_charters
+        ROOT = { NOT = { owns_entire_state_region = STATE_ANTOFAGASTA }  }   
+	    }
+
+	when_taken = {
+	    set_global_variable = antofagasta_treaty
+	    if = {
+	        limit = {
+                this = c:BOL
+                }
+            c:CHL = {    
+                trigger_event = { 
+			        id = saltpeter_war.1
+		            }
+                }
+            } 
+	    if = {
+	        limit = {
+                this = c:CHL
+                }
+            c:BOL = {    
+                trigger_event = { 
+			        id = saltpeter_war.1
+		            }
+                }
+            }
+        }                    			
+
+	ai_chance = {
+		base = 100
+	}
+}
+
+british_proposal = {
+
+	is_shown = {
+	    this = c:GBR
+		c:CHL = { has_journal_entry = je_saltpeter_war }
+        c:CHL = {
+            NOT = { has_diplomatic_pact = {
+                who = c:GBR
+                type = foreign_investment_agreement
+                }
+            OR = { has_diplomatic_pact = {
+                who = c:GBR
+                type = foreign_investment_rights
+                }    
+            }
+        }
+    }      
+		NOT = { has_global_variable = british_proposal_var }
+        }
+        
+	possible = {
+	    hidden_effect = { NOT = { has_global_variable = british_proposal_var } }
+		has_technology_researched = corporate_charters
+	    c:CHL = {
+			relations:root > relations_threshold:cordial
+		}   
+	}
+
+	when_taken = {
+        c:CHL = { trigger_event = { 
+			    id = saltpeter_war.2
+		    }
+		set_global_variable = british_proposal_var      
+        }
+    }                        			
+
+	ai_chance = {
+		base = 90
+	}
+}
+
+peru_alliance = {
+
+	is_shown = {
+	    this = c:PEU
+		c:CHL = { has_journal_entry = je_saltpeter_war }      
+		NOT = { has_global_variable = peru_alliance_var }
+        }
+        
+	possible = {
+	    hidden_effect = { NOT = { has_global_variable = peru_alliance_var } }
+	    c:BOL = {
+			relations:root > relations_threshold:cordial
+		}
+		custom_tooltip = {
+			text = peru_alliance_tt }
+		hidden_effect = {	
+		any_scope_state = {
+			any_neighbouring_state = {
+				owner = {
+					is = c:BOL
+				}
+			}
+		}   
+	}
+}
+	when_taken = {
+        c:BOL = { trigger_event = { 
+			    id = saltpeter_war.3
+		    }
+		set_global_variable = peru_alliance_var      
+        }
+        add_modifier = {
+			      name = protecting_brother_country
+			      months = normal_modifier_time
+		        }
+            }                        			
+
+	ai_chance = {
+		base = 90
+	}
+}

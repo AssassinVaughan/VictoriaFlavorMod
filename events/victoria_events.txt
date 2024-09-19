@@ -29,7 +29,61 @@ victoria.1 = {
 		}
 		if = {
 			limit = { exists = c:HAN }
-			c:GBR = { power_bloc ?= { add_leverage = { target = c:HAN value = -1000 } } }
+			c:GBR = { power_bloc ?= { add_leverage = { target = c:HAN value = -500 } } }
+		}
+		if = {
+			limit = { exists = c:BRA }
+			c:GBR = { power_bloc ?= { add_leverage = { target = c:BRA value = -550 } } }
+		}
+		if = {
+			limit = { exists = c:OLD }
+			c:GBR = { power_bloc ?= { add_leverage = { target = c:OLD value = -700 } } }
+			random_list = {
+			20 = {
+                set_secret_goal = {
+					country = c:PRU
+					secret_goal = befriend
+		    	}	
+				
+			}
+			5 = {
+				set_secret_goal = {
+					country = c:FRA
+					secret_goal = befriend
+		    	}			
+			}
+			5 = {
+				set_secret_goal = {
+					country = c:AUS
+					secret_goal = befriend
+		    	}			
+			}
+			}
+		}
+		if = {
+			limit = { exists = c:BRE }
+			c:GBR = { power_bloc ?= { add_leverage = { target = c:BRE value = -600 } } }
+			random_list = {
+			20 = {
+                set_secret_goal = {
+					country = c:PRU
+					secret_goal = befriend
+		    	}	
+				
+			}
+			5 = {
+				set_secret_goal = {
+					country = c:FRA
+					secret_goal = befriend
+		    	}			
+			}
+			5 = {
+				set_secret_goal = {
+					country = c:AUS
+					secret_goal = befriend
+		    	}			
+			}
+			}
 		}
 		c:HAN ?= {
 			remove_diplomatic_pact = {
@@ -64,7 +118,7 @@ victoria.1 = {
 				}
 			}
 			random_list = {
-			25 = {
+			20 = {
 				set_secret_goal = {
 					country = c:HAM
 					secret_goal = dominate
@@ -78,7 +132,7 @@ victoria.1 = {
 					secret_goal = befriend
 		    	}					
 			}
-			25 = {
+			20 = {
 				set_secret_goal = {
 					country = c:HAM
 					secret_goal = befriend
@@ -92,7 +146,7 @@ victoria.1 = {
 					secret_goal = befriend
 		    	}				
 			}
-			15 = {
+			25 = {
 				set_secret_goal = {
 					country = c:PRU
 					secret_goal = befriend

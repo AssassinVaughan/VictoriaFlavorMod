@@ -1,0 +1,374 @@
+namespace = saltpeter_war
+
+saltpeter_war.1 = {
+	type = country_event
+	placement = root
+
+	title = saltpeter_war.1.t
+	desc = saltpeter_war.1.d
+	flavor = saltpeter_war.1.f
+
+	event_image = {
+		video = "gfx/event_pictures/southamerica_aristocrats.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/southamerica/aristocrats" 
+
+
+	icon = "gfx/interface/icons/event_icons/event_flags/event_chl_flag.dds"
+
+	duration = 1
+
+	immediate = {
+	    c:BOL = {
+		    save_scope_as = bol_scope
+	    }
+	    c:CHL = {
+		    save_scope_as = chl_scope
+	    }
+	}    	    
+
+	trigger = {
+	}
+
+	option = {
+		name = saltpeter_war.1.a
+		default_option = yes
+		
+		ai_chance = {
+			base = 90
+		}
+
+		custom_tooltip = {
+			text = saltpeter_war_tt }
+
+		hidden_effect = {
+		c:BOL = {
+		    annex = c:ATM	
+		    }
+			s:STATE_ANTOFAGASTA = {
+				set_owner_of_provinces = {	
+				    country = c:CHL
+					provinces = { x20E574 x82A274 xEE0067 x6B33D0 x1B2EC2 xCAECEF x2000F0 }
+					}
+				}	
+
+	    if = {
+	        limit = {
+                this = c:BOL
+                }
+           create_diplomatic_pact = {
+				country = c:CHL
+				type = foreign_investment_agreement
+			}
+			c:CHL = { add_journal_entry = {
+			type = je_saltpeter_war
+		    }
+		}    
+    } 
+	    if = {
+	        limit = {
+                this = c:CHL
+                }
+            create_diplomatic_pact = {
+				country = c:BOL
+				type = foreign_investment_agreement
+			}
+		add_journal_entry = {
+			type = je_saltpeter_war
+		    }         
+        }        
+    }     
+
+    c:CHL = {  
+		add_journal_entry = {
+			type = je_saltpeter_war
+		    }
+		}
+	}
+		    
+	option = {
+		name = saltpeter_war.1.b
+		
+		ai_chance = {
+			base = 10
+		}
+
+		c:CHL = {
+		    change_relations = {
+			    country = c:BOL
+			    value = -40
+			}    
+		}						   	
+	}	
+}
+
+saltpeter_war.2 = {
+	type = country_event
+	placement = root
+
+	title = saltpeter_war.2.t
+	desc = saltpeter_war.2.d
+	flavor = saltpeter_war.2.f
+
+	event_image = {
+		video = "gfx/event_pictures/ep1_clandestine_meeting.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/ep1/clandestine_meeting" 
+
+
+	icon = "gfx/interface/icons/event_icons/event_flags/event_chl_flag.dds"
+
+	duration = 1
+
+	immediate = {
+	    c:GBR = {
+		    save_scope_as = gbr_scope
+	    }					
+	}
+
+	trigger = {
+	    exists = c:GBR
+	    c:GBR = {
+			relations:root < relations_threshold:cordial
+		}	
+		c:CHL = { has_journal_entry = je_saltpeter_war }
+        c:CHL = {
+            NOT = { has_diplomatic_pact = {
+                who = c:GBR
+                type = foreign_investment_agreement
+                }
+            OR = { has_diplomatic_pact = {
+                who = c:GBR
+                type = foreign_investment_rights
+                }    
+            }
+        }
+    }		
+}	
+
+	option = {
+		name = saltpeter_war.2.a
+		default_option = yes
+		
+		ai_chance = {
+			base = 80
+		}
+
+
+        custom_tooltip = {
+			text = saltpeter_war_tt.1  
+			}
+
+        hidden_effect = {			
+	    if = {
+	        limit = {
+                c:CHL = {
+                NOT = { has_diplomatic_pact = {
+                    who = c:GBR
+                    type = foreign_investment_agreement
+                    }
+                OR = { has_diplomatic_pact = {
+                    who = c:GBR
+                    type = foreign_investment_rights
+                    }    
+                }
+            }
+        } 
+    }
+        create_diplomatic_pact = {
+			country = c:GBR
+			type = foreign_investment_rights
+			}
+        }
+    }
+
+		c:CHL = {
+		    change_relations = {
+			    country = c:GBR
+			    value = 20
+			}    
+		}
+
+		custom_tooltip = {
+			text = saltpeter_war_tt.2
+			}		
+		change_variable = {
+			name = saltpeter_war_var
+			add = 12
+		}		
+	}	
+		    
+	option = {
+		name = saltpeter_war.2.b
+		
+		ai_chance = {
+			base = 20
+		}
+
+		c:CHL = {
+		    change_relations = {
+			    country = c:GBR
+			    value = -10
+			}    
+		}
+
+		custom_tooltip = {
+			text = saltpeter_war_tt.3
+			}
+		change_variable = {
+			name = saltpeter_war_var
+			add = -6
+			}
+		}										   	
+	}
+
+saltpeter_war.3 = {
+	type = country_event
+	placement = root
+
+	title = saltpeter_war.3.t
+	desc = saltpeter_war.3.d
+	flavor = saltpeter_war.3.f
+
+	event_image = {
+		video = "gfx/event_pictures/unspecific_signed_contract.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/unspecific/signed_contract" 
+
+
+	icon = "gfx/interface/icons/event_icons/event_flags/event_chl_flag.dds"
+
+	duration = 1
+
+	immediate = {
+	    c:PEU = {
+		    save_scope_as = peu_scope
+	    }
+	    c:CHL = {
+		    save_scope_as = chl_scope
+	    }	    					
+	}
+
+	trigger = {   		
+    }	
+
+	option = {
+		name = saltpeter_war.3.a
+		default_option = yes
+		
+		ai_chance = {
+			base = 80
+		}
+
+
+        custom_tooltip = {
+			text = saltpeter_war_tt.4 
+			}
+
+        set_global_variable = secret_alliance_var
+
+		c:BOL = {
+		    change_relations = {
+			    country = c:PEU
+			    value = 20
+			}    
+		}
+		hidden_effect = {
+		random_list = {
+			80 = {
+				c:CHL = {
+					trigger_event = saltpeter_war.4
+					months = 3
+				}
+			}
+
+			20 = {
+				#nothing
+			}				
+	    }
+	}    	
+}		    
+	option = {
+		name = saltpeter_war.3.b
+		
+		ai_chance = {
+			base = 20
+		}
+
+		c:BOL = {
+		    change_relations = {
+			    country = c:PEU
+			    value = -10
+			}    
+		}
+	}										   	
+}	
+
+saltpeter_war.4 = {
+	type = country_event
+	placement = root
+
+	title = saltpeter_war.4.t
+	desc = saltpeter_war.4.d
+	flavor = saltpeter_war.4.f
+
+	event_image = {
+		video = "gfx/event_pictures/unspecific_politicians_arguing.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/unspecific/politicians_arguing" 
+
+
+	icon = "gfx/interface/icons/event_icons/event_flags/event_chl_flag.dds"
+
+	duration = 1
+
+	immediate = {
+	    c:PEU = {
+		    save_scope_as = peu_scope
+	    }
+	    c:BOL = {
+		    save_scope_as = bol_scope
+	    }	    					
+	}
+
+	trigger = {   		
+    }	
+
+	option = {
+		name = saltpeter_war.4.a
+		default_option = yes
+
+		c:CHL = {
+		    change_relations = {
+			    country = c:BOL
+			    value = -30
+			}    
+		}
+		c:CHL = {
+		    change_relations = {
+			    country = c:PEU
+			    value = -30
+			}    
+		}
+
+		custom_tooltip = {
+			text = saltpeter_war_tt.2 } 
+
+		change_variable = {
+			name = saltpeter_war_var
+			add = 12
+			}
+
+		custom_tooltip = {
+			text = saltpeter_war_tt.5 }			    	
+        }
+    }    		    
+	

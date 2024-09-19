@@ -1,0 +1,80 @@
+je_saltpeter_war = {
+	icon = "gfx/interface/icons/event_icons/event_flags/event_chl_flag.dds"
+    group = je_group_historical_content
+
+	immediate = {
+		set_variable = {
+			name = saltpeter_war_var
+			value = 0
+		}
+			c:BOL = {
+				save_scope_as = bol_scope
+			}
+			c:CHL = {
+				save_scope_as = chl_scope
+			}					
+	}	
+
+	on_monthly_pulse = {
+		effect = {
+			if = {
+				limit = {
+					c:BOL = {
+						relations:root < relations_threshold:amicable
+					}
+				}
+				change_variable = {
+					name = saltpeter_war_var
+					add = 1
+				}
+			}
+		}
+	}
+
+	complete = {
+		custom_tooltip = {
+			text = je_saltpeter_war_tt.1
+		c:BOL = {
+			relations:root < relations_threshold:amicable
+			}
+		}
+		custom_tooltip = {
+			text = je_saltpeter_war_tt.2			
+		scope:journal_entry = { is_goal_complete = yes }				
+	    }	
+	}    
+
+	on_complete = {
+		trigger_event = {
+			id = journal_flavor_chile.5	
+	}
+}
+
+	current_value = {
+		value = root.var:saltpeter_war_var
+	}
+
+	goal_add_value = {
+		value = 60
+	}
+
+	progressbar = yes
+
+	weight = 10000
+
+	should_be_pinned_by_default = yes
+
+	timeout = 3650
+
+	on_timeout = {
+	    show_as_tooltip = {
+	        ROOT = {
+		        add_modifier = {
+			        name = avoided_war_pacific
+			        months = normal_modifier_time
+		        }
+		    }
+	    }	    
+		s:STATE_ANTOFAGASTA = { remove_claim = ROOT }
+    }	
+}
