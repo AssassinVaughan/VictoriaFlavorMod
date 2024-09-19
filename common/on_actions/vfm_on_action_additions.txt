@@ -1,17 +1,7 @@
 ﻿# Root = Country
 on_monthly_pulse_country = {
 	on_actions = {
-		#Prevent chugging, also make it so new countries get these
-		if = {
-			limit = {
-				NOT = { has_variable = set_vfm_lists }
-			}
-			vfm_scripted_lists #Because actual scripted lists are borked
-			set_variable = {
-				name = set_vfm_lists
-				value = 0
-			}
-		}
+		vfm_scripted_lists #Fix this later
 		vfm_colonial_dismantlement
 		vfm_vice_presidents
 		vfm_prime_ministers
