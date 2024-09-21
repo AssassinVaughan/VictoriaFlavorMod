@@ -51,6 +51,7 @@ journal_flavor_switzerland.1 = {
     }
 }
 
+# JE timeout, sonderbund separate alliance, revolt
 journal_flavor_switzerland.2 = { 
 	type = country_event
 	placement = ROOT
@@ -72,9 +73,41 @@ journal_flavor_switzerland.2 = {
 
 	immediate = {
 	}
+	
+	option = {
+	    default_option = yes
+		name = journal_flavor_switzerland.2.a
+	}
+	
+	option = {
+		name = journal_flavor_switzerland.2.b
+	}
+}
+
+journal_flavor_switzerland.3 = { 
+	type = country_event
+	placement = ROOT
+
+	title = journal_flavor_switzerland.3.t
+	desc = journal_flavor_switzerland.3.d
+	flavor = journal_flavor_switzerland.3.f
+
+	event_image = {
+		video = "gfx/event_pictures/unspecific_politicians_arguing.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/africa/leader_arguing"
+
+	icon = "gfx/interface/icons/event_icons/event_revolt.dds"
+
+	duration = 1
+
+	immediate = {
+	}
 
     option = {
-		name = journal_flavor_switzerland.2.a
+		name = journal_flavor_switzerland.3.a
 		default_option = yes
 		
 	    random_interest_group = {
@@ -103,13 +136,13 @@ journal_flavor_switzerland.2 = {
 }
 
 # sonderbund, TODO: opposite event for conservative government?
-journal_flavor_switzerland.3 = { 
+journal_flavor_switzerland.4 = { 
 	type = country_event
 	placement = ROOT
 
-	title = journal_flavor_switzerland.2.t
-	desc = journal_flavor_switzerland.2.d
-	flavor = journal_flavor_switzerland.2.f
+	title = journal_flavor_switzerland.4.t
+	desc = journal_flavor_switzerland.4.d
+	flavor = journal_flavor_switzerland.4.f
 
 	event_image = {
 		video = "gfx/event_pictures/unspecific_politicians_arguing.bk2"
@@ -138,6 +171,8 @@ journal_flavor_switzerland.3 = {
 
     # Lets goooo
     option = {
+	    name = journal_flavor_switzerland.4.a
+		default_option = yes
 	    random_interest_group = {
 			limit = {
 				is_marginal = no
@@ -164,6 +199,7 @@ journal_flavor_switzerland.3 = {
 	
 	# Appease
     option = {
+	    name = journal_flavor_switzerland.4.b
 	    random_interest_group = {
 			limit = {
 				is_marginal = no
