@@ -72,15 +72,84 @@ journal_flavor_switzerland.2 = {
 	duration = 1
 
 	immediate = {
+	    create_country = {
+			tag = SBD
+			origin = this
+			state = s:STATE_EAST_SWITZERLAND.region_state:SWI
+			on_created = {
+				change_relations = {
+					country = c:SWI
+					value = -50
+				}
+				set_ruling_interest_groups = { ig_landowners ig_rural_folk ig_devout }
+		
+		if = {
+			limit = {
+				NOT = {
+					has_law = law_type:law_autocracy
+				}
+			}
+			activate_law = law_type:law_autocracy
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_law = law_type:law_state_religion
+				}
+			}
+			activate_law = law_type:law_state_religion
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_law = law_type:law_landed_voting
+				}
+			}
+			activate_law = law_type:law_landed_voting
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_law = law_type:law_decentralized
+				}
+			}
+			activate_law = law_type:law_decentralized
+		}
+		
+				add_modifier = {
+					name = modifier_paris_commune_not_dying_economy
+					months = normal_modifier_time
+				}
+				call_election = {
+					months = 1
+				}
+			}
+			
+			# TODO: set IG leader ideologies that make sense
+		}
+				
+				
+		create_diplomatic_play = {
+			name = Sonderbund_War
+			escalation = 65
+			type = dp_annex_war
+
+			target_state = s:STATE_EAST_SWITZERLAND.region_state:SWI
+		}	
 	}
 	
-	option = {
+	option = { #"Declare the confederation illegal!"
 	    default_option = yes
 		name = journal_flavor_switzerland.2.a
 	}
 	
-	option = {
-		name = journal_flavor_switzerland.2.b
+	#option = { #"Send an envoy"
+	#	name = journal_flavor_switzerland.2.b
+	#}
+	
+	option = { #"Their cause is right!"
+		name = journal_flavor_switzerland.2.c
+		play_as = c:SBD
 	}
 }
 

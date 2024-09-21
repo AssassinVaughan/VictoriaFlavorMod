@@ -1532,13 +1532,7 @@
 			level = 1
 			direction = import
 			target = c:PRU.market
-		}	
-		create_trade_route = {
-			goods = grain
-			level = 1
-			direction = import
-			target = c:FRA.market
-		}	
+		}		
 		create_trade_route = {
 			goods = luxury_clothes
 			level = 1
@@ -1546,8 +1540,20 @@
 			target = c:FRA.market
 		}
 		create_trade_route = {
-			goods = wine
+			goods = tobacco
 			level = 1
+			direction = import
+			target = c:FRA.market
+		}
+		create_trade_route = {
+			goods = artillery
+			level = 1
+			direction = import
+			target = c:FRA.market
+		}
+		create_trade_route = {
+			goods = wine
+			level = 2
 			direction = import
 			target = c:FRA.market
 		}	
@@ -1556,6 +1562,12 @@
 			level = 1
 			direction = import
 			target = c:FRA.market
+		}	
+        create_trade_route = {
+			goods = iron
+			level = 1
+			direction = import
+			target = c:AUS.market
 		}		
 	}	
 	# german countries
