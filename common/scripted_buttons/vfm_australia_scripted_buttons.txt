@@ -1,120 +1,4 @@
-﻿#je_import_convicts_button = {
-#	name = {
-#		triggered_desc = {
-#			desc = "je_import_convicts_button_1"
-#			trigger = {
-#				NOT = {
-#					has_variable = importing_convicts_var
-#				}
-#			}
-#		}
-#		triggered_desc = {
-#			desc = "je_import_convicts_button_2"
-#			trigger = {
-#				has_variable = importing_convicts_var
-#			}
-#		}
-#	}
-#	desc = {
-#		triggered_desc = {
-#			desc = "je_import_convicts_button_1_desc"
-#			trigger = {
-#				NOT = {
-#					has_variable = importing_convicts_var
-#				}
-#			}
-#		}
-#		triggered_desc = {
-#			desc = "je_import_convicts_button_2_desc"
-#			trigger = {
-#				has_variable = importing_convicts_var
-#			}
-#		}
-#	}	
-#	
-#	visible = {
-#		always = yes
-#	}
-#
-#	possible = {
-#		custom_tooltip = {
-#			text = ast_convict_button_3_tt
-#			NOT = { has_variable = swaying_settlers_var }
-#		}
-#	}
-#
-#	effect = {
-#		if = {
-#			limit = {
-#				has_variable = importing_convicts_var
-#			}
-#			custom_tooltip = {
-#				text = ast_convict_button_1_tt
-#				remove_variable = importing_convicts_var
-#			}
-#			remove_modifier = importing_convicts
-#		}
-#		else = {
-#			custom_tooltip = {
-#				text = ast_convict_button_2_tt
-#				set_variable = {
-#					name = importing_convicts_var
-#					value = 0
-#				}
-#			}
-#			add_modifier = {
-#				name = importing_convicts
-#			}
-#		}
-#	}
-#
-#	ai_chance = {
-#		base = 0
-#		#Doesn't have button, is conservative
-#		modifier = {
-#			trigger = {
-#				AND = {
-#					has_strategy = ai_strategy_conservative_agenda
-#					NOT = { has_variable = importing_convicts_var }
-#				}
-#			}
-#			add = 50
-#			
-#		}
-#		#Has button, is conservative
-#		modifier = {
-#			trigger = {
-#				AND = {
-#					has_strategy = ai_strategy_conservative_agenda
-#					has_variable = importing_convicts_var
-#				}
-#			}
-#			subtract = 50
-#		}
-#		#Has button, running bureaucracy deficit
-#		modifier = {
-#			trigger = {
-#				AND = {
-#					bureaucracy < 0
-#					has_variable = importing_convicts_var
-#				}
-#			}
-#			add = 100
-#		}
-#		#Does not have button, running bureaucracy deficit
-#		modifier = {
-#			trigger = {
-#				AND = {
-#					bureaucracy < 0
-#					NOT = { has_variable = importing_convicts_var }
-#				}
-#			}
-#			subtract = 100
-#		}
-#	}
-#}
-
-je_sway_settlers_button = {
+﻿je_sway_settlers_button = {
 	name = {
 		triggered_desc = {
 			desc = "je_sway_settlers_button_1"
@@ -152,10 +36,6 @@ je_sway_settlers_button = {
 	}
 
 	possible = {
-		custom_tooltip = {
-			text = ast_convict_button_1_tt
-			NOT = { has_variable = importing_convicts_var }
-		}
 	}
 
 	effect = {
@@ -264,6 +144,36 @@ je_end_assignment_button = {
 		custom_tooltip = {
 			text = ast_convict_button_4_tt
 			NOT = { has_variable = illegal_squatting_var }
+		}
+	}
+
+	effect = {
+		trigger_event = {
+			id = flavor_australia_events.2
+		}
+	}
+
+	ai_chance = {
+		base = 0
+	}
+}
+
+je_reform_land_use_button = {
+	name = "je_reform_land_use_button"
+	desc = "je_reform_land_use_button_desc"
+
+	visible = {
+		always = yes
+	}
+
+	possible = {
+		custom_tooltip = {
+			text = ast_convict_button_1_tt
+			has_law = law_type:law_debt_slavery
+		}
+		custom_tooltip = {
+			text = ast_convict_button_4_tt
+			has_variable = illegal_squatting_var
 		}
 	}
 

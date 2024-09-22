@@ -3,6 +3,8 @@ je_frontier_wars = {
 	icon = "gfx/interface/icons/event_icons/event_colonial.dds"
     group = je_group_historical_content
 
+	scripted_button = je_reform_land_use_button
+
 	immediate = {
 		ROOT = {
 			# To use saved scopes in loc: JournalEntry.GetTopScope.sCountry('saved_scope_name') or SCOPE.sCountry('saved_scope_name')
@@ -112,7 +114,7 @@ je_convict_system = {
 			5 = flavor_australia_events.3 #City protest
 			5 = flavor_australia_events.6 #Government Lobby 1
 			5 = flavor_australia_events.7 #Government Lobby 2
-			5 = flavor_australia_events.8 #Squatters Sabatoge Reform
+			5 = flavor_australia_events.8 #Squatters Sabotage Reform
 		}
 	}
 	on_yearly_pulse = {
