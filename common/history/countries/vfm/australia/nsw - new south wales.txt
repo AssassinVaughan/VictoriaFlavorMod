@@ -5,8 +5,8 @@
 		
 		activate_law = law_type:law_presidential_republic
 		activate_law = law_type:law_oligarchy
-		activate_law = law_type:law_religious_schools
-		activate_law = law_type:law_freedom_of_conscience
+		activate_law = law_type:law_private_schools
+		activate_law = law_type:law_state_religion
 		activate_law = law_type:law_women_own_property
 		activate_law = law_type:law_per_capita_based_taxation
 		activate_law = law_type:law_appointed_bureaucrats
@@ -33,9 +33,6 @@
 			set_interest_group_name = ig_squattocracy
 			add_ideology = ideology_pro_transport
 		}
-		ig:ig_petty_bourgeoisie = {
-			add_ideology = ideology_pro_transport
-		}
 		ig:ig_rural_folk = {
 			add_ideology = ideology_pro_transport
 		}
@@ -48,10 +45,13 @@
 			id = journal_flavor_frontier_war_events.1
 		}
 		add_modifier = {
-			name = terra_nullius
+			name = illegal_squatters
 		}
 		add_modifier = {
 			name = settler_colony
+		}
+		add_modifier = {
+			name = colonial_boom
 		}
 
 		add_taxed_goods = g:grain

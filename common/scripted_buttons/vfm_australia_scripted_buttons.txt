@@ -111,7 +111,7 @@ je_reform_freedom_button = {
 
 	possible = {
 		custom_tooltip = {
-			text = ast_convict_button_4_tt
+			text = ast_convict_button_1_tt
 			NOT = { has_variable = reformed_assignment_var }
 		}
 	}
@@ -169,11 +169,7 @@ je_reform_land_use_button = {
 	possible = {
 		custom_tooltip = {
 			text = ast_convict_button_1_tt
-			has_law = law_type:law_debt_slavery
-		}
-		custom_tooltip = {
-			text = ast_convict_button_4_tt
-			has_variable = illegal_squatting_var
+			NOT = { has_law = law_type:law_debt_slavery }
 		}
 	}
 

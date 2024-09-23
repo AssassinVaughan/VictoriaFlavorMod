@@ -390,6 +390,54 @@ journal_flavor_frontier_war_events.4 = {
     }
 }
 
+journal_flavor_frontier_war_events.8 = {
+    type = country_event
+    placement = root
+    title = journal_flavor_frontier_war_events.8.t
+    desc = journal_flavor_frontier_war_events.8.d
+    flavor = journal_flavor_frontier_war_events.8.f
+    
+    duration = 3
+
+    event_image = {
+        video = "gfx/event_pictures/unspecific_gears_pistons.bk2"
+    }
+
+    icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+    on_opened_soundeffect = "event:/SFX/Events/unspecific/gears_pistons"
+
+    trigger = {
+    	always = yes
+    }
+
+    immediate = {
+        s:STATE_NORTHERN_TERRITORY = {
+			set_owner_of_provinces = {
+				country = c:NSW
+				provinces = { x8544DF x01BF32 x22DF3C xA4B8B3 x2E031D x6EC633 x365248 }
+			}
+        }
+    }
+    
+    after = {
+		create_country = {
+            tag = DRE
+            origin = c:KA0
+            state = s:STATE_NORTHERN_TERRITORY.region_state:NSW
+		}
+    }
+
+    option = {      
+        name = journal_flavor_frontier_war_events.8.a
+        default_option = yes
+    }
+    option = {      
+        name = journal_flavor_frontier_war_events.8.b
+    }
+}
+
 #Aboriginal Smallpox Epidemic
 journal_flavor_frontier_war_events.5 = { 
 	type = country_event

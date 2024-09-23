@@ -438,13 +438,20 @@ importing_convicts = {
 terra_nullius = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
 	state_colony_growth_speed_mult = 2
-	state_migration_pull_mult = 0.15
+	state_radicals_from_discrimination_mult = 0.2
 }
 
 settler_colony = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
 	state_migration_push_mult = -0.5
+	state_migration_pull_mult = 0.15
 	state_radicals_from_sol_change_mult = -0.35
+	country_cannot_enact_laws = yes
+}
+
+illegal_squatters = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	state_colony_growth_speed_mult = -2
 }
 
 aboriginal_foreign_epidemic = {
