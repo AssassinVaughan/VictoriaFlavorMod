@@ -23,26 +23,27 @@
 
 	fail = {
         OR = {
-        cu:hungarian = { # vanilla
-			culture_secession_progress = {
-				target = ROOT
-				value > 0.5
-			}
+            cu:hungarian = { # vanilla
+		    	culture_secession_progress = {
+		    		target = ROOT
+		    		value > 0.5
+		    	}
+		    }
+            AND = { # VFM
+		        is_at_war = no
+		        NOT = { is_unification_candidate = GER }
+		        OR = {
+			        has_law = law_type:law_autocracy
+			        has_law = law_type:law_landed_voting
+			        has_law = law_type:law_single_party_state
+		        }
+		        custom_tooltip = {
+			        text = je_dual_monarchy_german_unification_requirement
+			        has_variable = je_german_unification_idea
+			        has_global_variable = schleswig_holstein_question_solved
+		        }
+            }
 		}
-        AND = { # VFM
-		is_at_war = no
-		NOT = { is_unification_candidate = GER }
-		OR = {
-			has_law = law_type:law_autocracy
-			has_law = law_type:law_landed_voting
-			has_law = law_type:law_single_party_state
-		}
-		custom_tooltip = {
-			text = je_dual_monarchy_german_unification_requirement
-			has_variable = je_german_unification_idea
-			has_global_variable = schleswig_holstein_question_solved
-		}
-        }
 	}
 
 	on_fail = {
