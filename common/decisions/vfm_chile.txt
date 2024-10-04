@@ -1,5 +1,34 @@
-﻿#ohiggins1 = {
-#
+﻿patagonia1 = {
+	is_shown = {
+	    exists = c:CHL
+		this = c:CHL
+		    OR = {
+                any_neighbouring_state = {
+			        owner = c:THL
+		        }
+		        country_or_subject_owns_entire_state_region = STATE_PATAGONIA
+		    }       			  
+		NOT = { has_variable = patagonia_colonized_var }
+		NOT = { has_journal_entry = je_patagonia }
+        }		        
+        
+	possible = {
+        owns_entire_state_region = STATE_PATAGONIA
+	    }
+
+	when_taken = {
+		s:STATE_PATAGONIA = {
+			add_homeland = cu:south_andean
+				}
+		set_variable = patagonia_colonized_var		
+		}					
+
+	ai_chance = {
+		base = 100
+	}
+}
+
+#ohiggins1 = {
 #	is_shown = {
 #	    exists = c:CHL
 #		this = c:CHL    
