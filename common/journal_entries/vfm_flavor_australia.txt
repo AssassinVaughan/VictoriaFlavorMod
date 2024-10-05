@@ -1,9 +1,9 @@
 ﻿#The Frontier Wars
-je_frontier_wars = {
+je_ast_frontier_wars = {
 	icon = "gfx/interface/icons/event_icons/event_colonial.dds"
     group = je_group_historical_content
 
-	scripted_button = je_reform_land_use_button
+	scripted_button = je_send_settlers_button
 
 	immediate = {
 		ROOT = {
@@ -14,11 +14,15 @@ je_frontier_wars = {
 	on_monthly_pulse = {
 		random_events = {
 			100 = 0
+			#Historical
 			15 = journal_flavor_frontier_war_events.3
 			15 = journal_flavor_frontier_war_events.4
-			5 = journal_flavor_frontier_war_events.5
-			5 = journal_flavor_frontier_war_events.6
-			2 = journal_flavor_frontier_war_events.7
+			#Generic
+			2 = journal_flavor_frontier_war_events.5
+			3 = journal_flavor_frontier_war_events.6
+			3 = journal_flavor_frontier_war_events.7
+			#Confederations
+			3 = journal_flavor_frontier_war_events.8
 		}
 	}
 	complete = {
@@ -172,4 +176,22 @@ je_western_australia_claim = {
 
     should_be_pinned_by_default = yes
 	weight = 20
+}
+
+je_nsw_land_reform = {
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+    group = je_group_internal_affairs
+
+	immediate = {
+
+	}
+	complete = {
+
+	}
+
+	on_complete = {
+
+	}
+
+    should_be_pinned_by_default = yes
 }

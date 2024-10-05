@@ -50,10 +50,9 @@ journal_flavor_frontier_war_events.1 = {
 	option = {
 		name = journal_flavor_frontier_war_events.1.a
 		default_option = yes
-		add_journal_entry = { type = je_frontier_wars }
+		add_journal_entry = { type = je_ast_frontier_wars }
     }
 }
-
 #Frontier Wars Conclusion
 journal_flavor_frontier_war_events.2 = { 
 	type = country_event
@@ -90,41 +89,15 @@ journal_flavor_frontier_war_events.2 = {
 	duration = 1
 
 	immediate = {
-		ROOT = {
-			save_scope_as = frontier_war_country_scope
-			set_variable = {
-				name = frontier_var
-				value = 0
-			}
-		}
-		c:NNG = {
-			save_scope_as = frontier_war_noongar_scope
-		}
 	}
 
 	option = {
 		name = journal_flavor_frontier_war_events.2.a
 		default_option = yes
-		add_journal_entry = { type = je_frontier_wars }
-		
-		custom_tooltip = {
-			text = ast_frontier_1_tt
-			set_variable = {
-				name = frontier_var
-				value = 1
-			}
-		}
     }
 	option = {
 		name = journal_flavor_frontier_war_events.1.b
 		
-		custom_tooltip = {
-			text = ast_frontier_1_tt
-			set_variable = {
-				name = frontier_var
-				value = 2
-			}
-		}
     }
 }
 #South Australia
@@ -389,55 +362,6 @@ journal_flavor_frontier_war_events.4 = {
 		}
     }
 }
-
-journal_flavor_frontier_war_events.8 = {
-    type = country_event
-    placement = root
-    title = journal_flavor_frontier_war_events.8.t
-    desc = journal_flavor_frontier_war_events.8.d
-    flavor = journal_flavor_frontier_war_events.8.f
-    
-    duration = 3
-
-    event_image = {
-        video = "gfx/event_pictures/unspecific_gears_pistons.bk2"
-    }
-
-    icon = "gfx/interface/icons/event_icons/event_industry.dds"
-
-    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
-    on_opened_soundeffect = "event:/SFX/Events/unspecific/gears_pistons"
-
-    trigger = {
-    	always = yes
-    }
-
-    immediate = {
-        s:STATE_NORTHERN_TERRITORY = {
-			set_owner_of_provinces = {
-				country = c:NSW
-				provinces = { x8544DF x01BF32 x22DF3C xA4B8B3 x2E031D x6EC633 x365248 }
-			}
-        }
-    }
-    
-    after = {
-		create_country = {
-            tag = DRE
-            origin = c:KA0
-            state = s:STATE_NORTHERN_TERRITORY.region_state:NSW
-		}
-    }
-
-    option = {      
-        name = journal_flavor_frontier_war_events.8.a
-        default_option = yes
-    }
-    option = {      
-        name = journal_flavor_frontier_war_events.8.b
-    }
-}
-
 #Aboriginal Smallpox Epidemic
 journal_flavor_frontier_war_events.5 = { 
 	type = country_event
@@ -551,8 +475,7 @@ journal_flavor_frontier_war_events.5 = {
 		}
 	}
 }
-
-#Aboriginal Massacre
+#Generic Settler Massacre
 journal_flavor_frontier_war_events.6 = { 
 	type = country_event
 	placement = ROOT
@@ -630,7 +553,7 @@ journal_flavor_frontier_war_events.6 = {
 		}
 	}
 }
-#Aboriginal Raid
+#Generic Aboriginal Raid
 journal_flavor_frontier_war_events.7 = { 
 	type = country_event
 	placement = ROOT
@@ -710,4 +633,180 @@ journal_flavor_frontier_war_events.7 = {
 			}
 		}
 	}
+}
+#The Aboriginal Confederacies
+journal_flavor_frontier_war_events.8 = {
+    type = country_event
+    placement = root
+    title = journal_flavor_frontier_war_events.8.t
+    desc = journal_flavor_frontier_war_events.8.d
+    flavor = journal_flavor_frontier_war_events.8.f
+    
+    duration = 3
+
+    event_image = {
+        video = "gfx/event_pictures/unspecific_gears_pistons.bk2"
+    }
+
+    icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+    on_opened_soundeffect = "event:/SFX/Events/unspecific/gears_pistons"
+
+    trigger = {
+    	any_neighbouring_state = {
+    		owner = {
+	    		has_variable = centralization_counter_var
+	    		var:centralization_counter_var = {
+	    			value >= 5
+	    		}
+    		}
+    	}
+    }
+
+    immediate = {
+    	ordered_neighbouring_state = {
+			limit = { owner = { is_country_type = decentralized } }
+			order_by = owner.var:centralization_counter_var
+			owner = {
+				save_scope_as = ast_confederating_tribe_scope
+			}
+		}
+    }
+
+    option = {      
+        name = journal_flavor_frontier_war_events.8.a
+        default_option = yes
+        scope:ast_confederating_tribe_scope = {
+    		set_country_type = unrecognized
+    		activate_law = law_type:law_confederated
+        	change_tag = DRE
+        }
+    }
+    option = {      
+        name = journal_flavor_frontier_war_events.8.b
+    }
+}
+#Settler Wave in Neighboring Tribe 
+journal_flavor_frontier_war_events.9 = {
+    type = country_event
+    placement = root
+    title = journal_flavor_frontier_war_events.9.t
+    desc = journal_flavor_frontier_war_events.9.d
+    flavor = journal_flavor_frontier_war_events.9.f
+    
+    duration = 3
+
+    event_image = {
+        video = "gfx/event_pictures/unspecific_gears_pistons.bk2"
+    }
+
+    icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+    on_opened_soundeffect = "event:/SFX/Events/unspecific/gears_pistons"
+
+    trigger = {
+    	NOT = { has_variable = recently_seized_land_var }
+    }
+
+    immediate = {
+    	ordered_neighbouring_state = {
+			limit = { owner = { is_country_type = decentralized } }
+			order_by = arable_land
+			save_scope_as = ast_settler_wave_state
+		}
+    }
+
+    option = {      
+        name = journal_flavor_frontier_war_events.9.a
+        default_option = yes
+        scope:ast_settler_wave_state = {
+			create_pop = {
+				culture = australian
+				size = 4000
+			}
+        }
+    }
+}
+#Set Illegal Settlement
+journal_flavor_frontier_war_events.10 = {
+    type = country_event
+    placement = root
+    title = journal_flavor_frontier_war_events.10.t
+    desc = journal_flavor_frontier_war_events.10.d
+    flavor = journal_flavor_frontier_war_events.10.f
+    
+    duration = 3
+
+    event_image = {
+        video = "gfx/event_pictures/unspecific_gears_pistons.bk2"
+    }
+
+    icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+    on_opened_soundeffect = "event:/SFX/Events/unspecific/gears_pistons"
+
+    trigger = {
+    	NOT = { has_variable = recently_seized_land_var }
+    }
+
+    immediate = {
+    	ordered_neighbouring_state = {
+			limit = { owner = { is_country_type = decentralized } }
+			order_by = arable_land
+			save_scope_as = ast_outpost_state
+		}
+    }
+
+    option = {      
+        name = journal_flavor_frontier_war_events.10.a
+        default_option = yes
+        scope:ast_outpost_state = {
+			create_pop = {
+				culture = australian
+				size = 500
+			}
+			kill_population_percent_in_state = {
+				percent = 0.015
+				culture = cu:aborigine
+			}
+        }
+    }
+}
+#Frontier Trading
+journal_flavor_frontier_war_events.11 = {
+    type = country_event
+    placement = root
+    title = journal_flavor_frontier_war_events.11.t
+    desc = journal_flavor_frontier_war_events.11.d
+    flavor = journal_flavor_frontier_war_events.11.f
+    
+    duration = 3
+
+    event_image = {
+        video = "gfx/event_pictures/unspecific_gears_pistons.bk2"
+    }
+
+    icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+    on_opened_soundeffect = "event:/SFX/Events/unspecific/gears_pistons"
+
+    trigger = {
+    
+    }
+
+    immediate = {
+
+    }
+
+    option = {      
+        name = journal_flavor_frontier_war_events.11.a
+        default_option = yes
+    }
+    option = {      
+        name = journal_flavor_frontier_war_events.11.b
+    }
 }
