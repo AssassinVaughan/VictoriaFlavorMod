@@ -182,6 +182,10 @@ je_prussian_guard = {
 	
 	timeout = 7000
 	
+	on_timeout = {
+	    trigger_event = { id = journal_flavor_germany.1002 }
+	}
+	
 	current_value = {
 		value = var:pru_months_counter
 	}
