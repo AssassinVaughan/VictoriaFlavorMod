@@ -19,11 +19,160 @@
         trigger_event = { 
 			id = journal_flavor_chile.3
 		}
+        add_modifier = {
+            name = magellan_strait
+        }				
+	}
+
+    timeout = 2555
+
+    on_timeout = { s:STATE_ARAUCANIA = { remove_claim = ROOT } }
+
+    should_be_pinned_by_default = yes
+	weight = 100
+}
+
+je_jewel_pacific = {
+	icon = "gfx/interface/icons/event_icons/event_flags/event_chl_flag.dds"
+
+	group = je_group_historical_content
+
+#	is_shown_when_inactive = {
+#		exists = c:CHL
+#		THIS = c:CHL
+#	}
+
+	complete = {
+	    s:STATE_SANTIAGO = {
+			any_scope_building = {
+				is_building_type = building_port
+				level >= 2
+			}
+            any_scope_building = {
+				is_building_type = building_naval_base
+				level >= 5
+			}			
+	    }
+	    has_law = law_type:law_free_trade
+	    scope:journal_entry = {
+			is_goal_complete = yes
+		}
+	}    
+
+	current_value = {
+		value = root.num_trade_routes
+	}
+
+	goal_add_value = {
+		value = root.num_trade_routes
+		multiply = 0.25
+	}
+
+	on_complete = {
+        trigger_event = { 
+			id = journal_flavor_chile.3
+		}
+	custom_tooltip = je_copy_eden_advance
+		change_variable = {
+			name = copy_eden_var
+			add = 1
+		}		
+	}
+
+	progressbar = yes
+
+    should_be_pinned_by_default = yes
+	weight = 100
+}
+
+je_copy_of_eden = {
+	icon = "gfx/interface/icons/event_icons/event_flags/event_chl_flag.dds"
+
+	group = je_group_historical_content
+
+#	is_shown_when_inactive = {
+#		exists = c:CHL
+#		THIS = c:CHL
+#	}
+
+	immediate = {
+		set_variable = {
+			name = copy_eden_var
+			value = 0
+		}
+	}
+
+	complete = {
+		scope:journal_entry = {
+			is_goal_complete = yes
+		}
+	}
+
+	current_value = {
+		value = var:copy_eden_var
+	}
+
+	goal_add_value = {
+		value = 10
+	}
+
+	on_complete = {
+        trigger_event = { 
+			id = journal_flavor_chile.
+		}
+	}
+
+    timeout = 1825
+
+	progressbar = yes
+
+    should_be_pinned_by_default = yes
+	weight = 100
+}
+
+je_ppp = {
+	icon = "gfx/interface/icons/event_icons/event_flags/event_chl_flag.dds"
+
+	group = je_group_historical_content
+
+	is_shown_when_inactive = {
+		exists = c:CHL
+		THIS = c:CHL
+	}
+
+	immediate = {
+		set_variable = {
+			name = copy_eden_var
+			value = 0
+		}
+	}
+
+	complete = {
+        country_or_subject_owns_entire_state_region = STATE_ARAUCANIA
+		has_state_in_state_region = STATE_PATAGONIA
+		exists = c:CHL
+		this = c:CHL
+		    OR = {
+                any_neighbouring_state = {
+			        owner = c:THL
+		        }    
+			    country_or_subject_owns_entire_state_region = STATE_PATAGONIA
+			  }     			  
+		NOT = { has_variable = patagonia_colonized_var }
+		NOT = { has_journal_entry = je_patagonia }
+	}
+
+	on_complete = {
+        trigger_event = { 
+			id = journal_flavor_chile.3
+		}
 	}
 
     timeout = 1825
 
     on_timeout = { s:STATE_ARAUCANIA = { remove_claim = ROOT } }
+
+	progressbar = yes	
 
     should_be_pinned_by_default = yes
 	weight = 100
@@ -62,100 +211,7 @@
 #	weight = 100
 #}
 #
-#je_pacific_war_chl = {
-#	icon = "gfx/interface/icons/event_icons/event_military.dds"
-#
-#	is_shown_when_inactive = {
-#	    exists = c:BOL
-#		exists = c:CHL
-#		root= c:CHL
-#	}
-#
-#	possible = {
-#        market_capital.market = {
-#			mg:sulfur = { 
-#				market_goods_pricier > 0.25 
-#			}
-#		}
-#		OR = {  				    
-#			has_law = law_type:law_free_trade
-#			has_law = law_type:law_protectionism
-#		}
-#        ig:ig_industrialists = {
-#			is_powerful = yes
-#			is_in_government = yes
-#			}		 
-#		}    			        		        				        		        	
-#
-#	complete = {			
-#	    c:BOL = {
-#			relations:root <= -30 		
-#		}
-#        any_scope_state = {
-#			    any_scope_building = {
-#				    is_building_type = building_sulfur_mine
-#				    level >= 2
-#			    }
-#	        }
-#		}
-#
-#	on_complete = {
-#		trigger_event = { id = journal_flavor_chile.5 }
-#        c:PEU = {
-#			change_relations = {
-#				country = c:BOL
-#				value = 100
-#			}
-#		}		
-#	}
-#
-#	fail = {
-#		owns_entire_state_region = STATE_ANTOFAGASTA
-#		}
-#
-#	invalid = {
-#		ig:ig_industrialists = {
-#			is_marginal = yes
-#		}
-#	}
-#
-#	weight = 100
-#	should_be_pinned_by_default = yes
-#}
-#
-#je_1881_treaty = {
-#	icon = "gfx/interface/icons/event_icons/event_diplomacy.dds"
-#
-#	is_shown_when_inactive = {
-#	        exists = c:ARG
-#			c:ARG = this  			
-#	    }
-#
-#	complete = {
-#        c:ARG = {
-#            owns_entire_state_region = STATE_PATAGONIA
-#		}
-#        c:CHL = {
-#            owns_entire_state_region = STATE_ARAUCANIA
-#		}		
-#	}	
-#
-#	on_complete = {
-#	    c:CHL = {
-#            trigger_event = { 
-#		    	id = journal_flavor_chile.13 
-#		    }
-#		}
-#	}
-#
-#	fail = {
-#        c:BUE = {
-#            owns_entire_state_region = STATE_ARAUCANIA
-#		}
-#	}
-#    should_be_pinned_by_default = yes
-#	weight = 100
-#}    
+#   
 #
 #je_silver_rush = {
 #	icon = "gfx/interface/icons/event_icons/event_trade.dds"
@@ -220,79 +276,7 @@
 #	weight = 100   
 #}     
 #
-#je_araucania_ocupacion = {
-#	icon = "gfx/interface/icons/event_icons/event_helmet.dds"
 #
-#	complete = {
-#		owns_entire_state_region = STATE_LOS_RIOS
-#			}
-#
-#	on_complete = {
-#		custom_tooltip = {
-#			text = je_araucania_ocupacion_tt
-#		    create_country = {
-#                tag = PAT
-#		    	origin = c:APK
-#		    	state = s:STATE_PATAGONIA.region_state:APK
-#		    }
-#
-#            c:PAT = {
-#                annex = c:APK
-#	        }				
-#        }
-#		add_journal_entry = {
-#			type = je_araucania_pacificacion
-#		}	    
-#    }
-#
-#    fail = {
-#        c:APK = {
-#            owns_entire_state_region = STATE_LOS_RIOS  
-#        }
-#    }      
-#	
-#    should_be_pinned_by_default = yes
-#	weight = 100 
-#}
-#
-#je_araucania_pacificacion = {
-#	icon = "gfx/interface/icons/event_icons/event_helmet.dds"
-#
-#	complete = {
-# 	    s:STATE_LOS_RIOS = {
-#		    any_scope_state = {
-#		        any_scope_building = {
-#		        is_building_type = building_barracks
-#		        level >= 8
-#		    	}
-#		    	any_scope_building = {
-#				is_building_type = building_urban_center
-#				level >= 5			
-#			    }
-#		    }
-#	    }
-#    }
-#
-#	on_complete = {
-#	
-#        every_state = {
-#            limit = {
-#
-#            has_modifier = malones 
-#
-#            any_scope_pop = {
-#                state = { save_temporary_scope_as = S_state }
-#
-#                culture = { 
-#                    has_homeland = scope:S_state
-#                }
-#                culture = cu:south_andean
-#            }
-#        }
-#        remove_modifier = malones
-#        }
-#    }
-#}	
 #
 #je_codigo_civil = {
 #	icon = "gfx/interface/icons/event_icons/event_academia.dds"
