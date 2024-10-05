@@ -1,13 +1,13 @@
 ﻿mex_purchase_ross = {
 	is_shown = {
-		exists = c:MEX
+	    OR = {
+		    exists = c:MEX
+		    exists = c:USA
+		    }
 		exists = c:RUS
-		c:MEX = ROOT
-		is_subject = no
-		NOT = {
-			c:RUS = { has_state_in_state_region = STATE_CALIFORNIA }
-		}
-	}
+		c:RAC = { has_state_in_state_region = STATE_CALIFORNIA }
+		ROOT = { has_state_in_state_region = STATE_CALIFORNIA }
+		}           
 
 	possible = {
 		in_default = no
@@ -26,8 +26,8 @@
 		hidden_effect = {
 		    s:STATE_CALIFORNIA = {
 			    set_owner_of_provinces = {
-				    country = c:MEX
-				    provinces = { x108000 }
+				    country = ROOT
+				    provinces = { xD6A835 }
 			        }
 		        }		
 		    }
@@ -36,7 +36,7 @@
 			months = 7
 			is_decaying = no
 		}
-		c:RAC = {
+		c:RUS = {
 		add_modifier = {
 			name = ross_rus_big_money
 			months = 7
