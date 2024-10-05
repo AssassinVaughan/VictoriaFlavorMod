@@ -4019,7 +4019,7 @@ ai_strategy_default = {
 		
 		if = { #VFM, national militias are meant to be small and supported by conscripts
 			limit = { has_law = law_type:law_national_militia }
-			multiply = 0.08
+			multiply = 0.33
 		}
 
 		#VFM moved to bottom since this should be the base army size and not impacted by all of the multipliers above...
@@ -4263,22 +4263,18 @@ ai_strategy_default = {
 	# scope:military_formation = military formation
 	# Using this value in other strategies will function additively
 	conscript_battalion_ratio = {
-		value = 0
+		value = 0.5
 		if = {
 			limit = { has_law = law_type:law_national_militia }
-			add = 7.5 #VFM, bumped up from 5 to compensate for less barracks wanted by AI
-		}
-		else_if = {
-			limit = { has_law = law_type:law_professional_army }
-			add = 0.5
+			add = 2.5
 		}			
 		else_if = {
 			limit = { has_law = law_type:law_peasant_levies }
-			add = 1
+			add = 0.5
 		}	
 		else_if = {
 			limit = { has_law = law_type:law_mass_conscription }
-			add = 2
+			add = 0.5
 		}
 
         if = {
