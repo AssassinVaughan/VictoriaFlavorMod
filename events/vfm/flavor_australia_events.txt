@@ -40,7 +40,7 @@ flavor_australia_events.1 = {
     }
 }
 
-#Transportation Ended
+#Assignment Ended
 flavor_australia_events.2 = { 
 	type = country_event
 	placement = ROOT
@@ -132,12 +132,13 @@ flavor_australia_events.4 = {
 	duration = 2
 
 	trigger = {
-		year = 1837
+		has_variable = no_molesworth_var
 		c:NSW = ROOT
 	}
 
 	immediate = {
 		#Set variable for JE
+		remove_variable = no_molesworth_var
 	}
 
 	option = {
@@ -170,7 +171,6 @@ flavor_australia_events.5 = {
 
 	immediate = {
 		remove_variable = importing_convicts_var
-		
 	}
 
 	option = {

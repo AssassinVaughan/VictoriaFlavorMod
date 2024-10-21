@@ -129,6 +129,17 @@ state_is_in_southeast_asia = {
 	}
 }
 
+state_is_in_australia = {
+	OR = {
+		state = s:STATE_NEW_SOUTH_WALES
+		state = s:STATE_NORTHERN_TERRITORY
+		state = s:STATE_QUEENSLAND
+		state = s:STATE_TASMANIA
+		state = s:STATE_VICTORIA
+		state = s:STATE_WESTERN_AUSTRALIA
+	}
+}
+
 ### Country geography triggers
 # exists = capital checks are necessary only because we may test these triggers and scope switch to capitals before states are initialized properly
 
@@ -206,6 +217,13 @@ country_is_in_southeast_asia = {
 	exists = capital
 	capital = {
 		state_is_in_southeast_asia = yes
+	}
+}
+
+country_is_in_australia = {
+	exists = capital
+	capital = {
+		state_is_in_australia = yes
 	}
 }
 
