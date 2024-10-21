@@ -102,38 +102,11 @@
 	}
 }
 
-je_reform_freedom_button = {
-	name = "je_reform_freedom_button"
-	desc = "je_reform_freedom_button_desc"
-	visible = {
-		always = yes
-	}
-
-	possible = {
-		custom_tooltip = {
-			text = ast_convict_button_1_tt
-			NOT = { has_variable = reformed_assignment_var }
-		}
-	}
-
-	effect = {
-		set_variable = {
-			name = reformed_assignment_var
-			value = 0
-		}
-	}
-
-	ai_chance = {
-		base = 0
-	}
-}
-
 je_end_assignment_button = {
 	name = "je_end_assignment_button"
 	desc = "je_end_assignment_button_desc"
 
 	visible = {
-		has_variable = reformed_assignment_var
 	}
 
 	possible = {
@@ -143,7 +116,7 @@ je_end_assignment_button = {
 		}
 		custom_tooltip = {
 			text = ast_convict_button_4_tt
-			NOT = { has_variable = illegal_squatting_var }
+			NOT = { has_variable = cannot_end_assignment }
 		}
 	}
 

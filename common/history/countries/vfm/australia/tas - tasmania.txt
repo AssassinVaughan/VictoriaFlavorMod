@@ -21,11 +21,9 @@
 		# Penal Colony
 		activate_law = law_type:law_debt_slavery
 
-
 		ig:ig_landowners = {
 			add_ruling_interest_group = yes
-			# There were no squatters in Tasmania at the time
-			#set_interest_group_name = ig_squattocracy
+			# There were no squatters in Tasmania
 		}
 		ig:ig_petty_bourgeoisie = {
 			add_ideology = ideology_pro_transport
@@ -46,9 +44,8 @@
 	    add_modifier = {
 	    	name = settler_colony
 	    }
-		# Tasmania already did the black war, this isn't needed
-		#trigger_event = {
-		#	id = frontier_war_events.1
-		#}
+		set_variable = {
+			name = cannot_end_assignment
+		}
 	}
 }
