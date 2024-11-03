@@ -22,7 +22,10 @@
 
 	complete = {
 		OR = {
-			country_or_subject_owns_entire_state_region = STATE_ARAUCANIA
+		    AND = {
+			    country_or_subject_owns_entire_state_region = STATE_ARAUCANIA
+			    country_or_subject_owns_entire_state_region = STATE_LOS_RIOS
+			}    
 			AND = {
 				country_or_subject_owns_entire_state_region = STATE_PATAGONIA
 				country_or_subject_owns_entire_state_region = STATE_RIO_NEGRO
