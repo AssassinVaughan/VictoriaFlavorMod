@@ -164,3 +164,46 @@
 #    should_be_pinned_by_default = yes
 #	weight = 100
 #}
+
+je_german_immigration = {
+	icon = "gfx/interface/icons/event_icons/event_flags/event_chl_flag.dds"
+
+	group = je_group_historical_content
+
+	is_shown_when_inactive = {
+		exists = c:CHL
+		THIS = c:CHL
+		institution_investment_level = {
+			institution = institution_colonial_affairs
+			value >= 2
+		}		
+	}
+
+	complete = {
+		institution_investment_level = {
+			institution = institution_colonial_affairs
+			value >= 3
+		}
+		average_sol >= 10 #No tech required, but higher sol needed compared to 'Populating the Americas'
+		is_at_war = no
+		is_subject = no
+		OR = {
+			has_law = law_type:law_racial_segregation
+			has_law = law_type:law_cultural_exclusion
+			has_law = law_type:law_multicultural
+		}
+		NOR = {
+			has_law = law_type:law_closed_borders
+			has_law = law_type:law_isolationism
+		}
+	}
+
+	on_complete = {
+        trigger_event = { 
+			id = journal_flavor_chile.6
+		}				
+	}
+
+    should_be_pinned_by_default = yes
+	weight = 100
+}  
