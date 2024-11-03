@@ -84,8 +84,14 @@ NAI = {
     CONSUMPTION_TAX_MAX_NUM_TAXED_GOODS_BASE = 2 #0 Base max number of goods AI wants to tax
     CONSUMPTION_TAX_MAX_NUM_TAXED_GOODS_PER_MISSING_TAX_TYPE = 0 #2 Added to max number of goods AI wants to tax for each other type of tax it does not collect
 	
-	AI_PEACE_AGREEMENT_WHITE_PEACE_BASE = 20 # If no wargoals are being enforced on either side
+	AI_PEACE_AGREEMENT_WARGOAL_VALUE_BASE = 8	# How much does the AI value each wargoal (base)
+	#AI_PEACE_AGREEMENT_WHITE_PEACE_BASE = 20 # If no wargoals are being enforced on either side
 	#AI_PEACE_AGREEMENT_WHITE_PEACE_WAR_DURATION = 1 # For each month the war goes on add this to the acceptance for a white peace
+	
+	AI_PEACE_AGREEMENT_WARGOAL_VALUE_SCALED = 0.3	# How much does the AI value each wargoal (scaled with maneuver cost)
+	
+	AI_PEACE_AGREEMENT_SELF_WARGOAL_MULT = 2.5 # 3.0 # For each wargoal we have that's being pressed, apply wargoal value * this
+	AI_PEACE_AGREEMENT_ENEMY_WARGOAL_SELF_MULT = -3.5 # 8 # For each wargoal that the enemy is pressing against us, apply wargoal value * this
 	
 	TRADE_ROUTE_MIN_MARKET_SHARE = 0.05 # If the AI is junior in a customs union and has less than this market share in a market, don't make any trade routes
 	TRADE_ROUTE_MIN_ACCEPTABLE_PRODUCTIVITY = 2.4 #3 # If a potential trade route would result in lower productivity than this, don't create it unless it's to resolve a shortage

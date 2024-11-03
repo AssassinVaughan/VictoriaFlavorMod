@@ -112,30 +112,6 @@ je_luxembourg_separation = {
 		}
 	}
 }
-je_establish_belgian_colonial_department = {
-	icon = "gfx/interface/icons/event_icons/event_map.dds"
-    group = je_group_foreign_affairs
-
-
-	complete = {
-		has_technology_researched = civilizing_mission
-		flotilla_manpower > 5000
-	}
-	on_complete = {
-		activate_law = law_type:law_colonial_exploitation
-	}
-	possible = {
-		exists = c:BEL
-		this = c:BEL
-	}
-	invalid = {
-		has_law = law_type:law_colonial_exploitation
-	}
-	is_shown_when_inactive = {
-		exists = c:BEL
-		this = c:BEL
-	}
-}
 je_expedition_into_celebes = {
 	icon = "gfx/interface/icons/event_icons/event_scales.dds"
     group = je_group_historical_content

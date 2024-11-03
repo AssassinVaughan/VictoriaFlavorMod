@@ -230,6 +230,17 @@
 				activate_production_methods={ "pm_horizontal_drawer_cabinets" "pm_hereditary_bureaucrats" "pm_religious_bureaucrats" }
 			}
 			create_building={
+				building="building_construction_sector"
+				add_ownership={
+					country={
+						country="c:RUS"
+						levels=2
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_iron_frame_buildings" }
+			}
+			create_building={
 				building="building_arms_industry"
 				add_ownership={
 					country={
@@ -246,7 +257,7 @@
 					building={
 						type="building_financial_district"
 						country="c:RUS"
-						levels=2
+						levels=1
 						region="STATE_INGRIA"
 					}
 					building={
@@ -265,7 +276,7 @@
 					building={
 						type="building_logging_camp"
 						country="c:RUS"
-						levels=1
+						levels=2
 						region="STATE_SAMARA"
 					}
 				}
@@ -276,8 +287,14 @@
 					building={
 						type="building_manor_house"
 						country="c:RUS"
-						levels=4
+						levels=3
 						region="STATE_INGRIA"
+					}
+					building={
+						type="building_manor_house"
+						country="c:RUS"
+						levels=1
+						region="STATE_SAMARA"
 					}
 				}
 				reserves=1
@@ -291,6 +308,12 @@
 						country="c:RUS"
 						levels=1
 						region="STATE_SAMARA"
+					}
+					building={
+						type="building_financial_district"
+						country="c:RUS"
+						levels=1
+						region="STATE_INGRIA"
 					}
 				}
 				reserves=1
@@ -314,6 +337,17 @@
 				}
 				reserves=1
 				activate_production_methods={ "pm_picks_and_shovels_building_iron_mine" "pm_no_explosives" "pm_no_steam_automation" "pm_road_carts"  }
+			}
+			create_building={
+				building="building_construction_sector"
+				add_ownership={
+					country={
+						country="c:RUS"
+						levels=2
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_iron_frame_buildings" }
 			}
 			create_building={
 				building="building_rye_farm"

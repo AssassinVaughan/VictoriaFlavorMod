@@ -987,7 +987,7 @@ ai_strategy_default = {
 					}
 				}
 			}
-			add = 0.18
+			add = 0.16
 		}
 
 		# USA should Manifest a lot of Destiny
@@ -1474,9 +1474,11 @@ ai_strategy_default = {
 			
 			if = {
 				limit = {
-					has_journal_entry = je_sick_man_egypt
+					has_journal_entry = je_sick_man_syria
 					scope:target_state = {
 					    OR = {
+						state_region = s:STATE_ALEPPO
+						state_region = s:STATE_SYRIA
 						state_region = s:STATE_PALESTINE
 						state_region = s:STATE_TRANSJORDAN
 						state_region = s:STATE_LEBANON
@@ -1484,6 +1486,22 @@ ai_strategy_default = {
 					}
 				}
 				add = 15
+			}
+			
+			if = { ## puppet a still functioning egypt
+				limit = {
+					has_journal_entry = je_sick_man_syria
+					scope:target_state = {
+					    OR = {
+						state_region = s:STATE_UPPER_EGYPT
+						state_region = s:STATE_MIDDLE_EGYPT
+						state_region = s:STATE_LOWER_EGYPT
+						state_region = s:STATE_EGYPTIAN_DESERT
+						state_region = s:STATE_MATRUH
+						}
+					}
+				}
+				subtract = 10
 			}
 			
 			if = {
@@ -2562,337 +2580,328 @@ ai_strategy_default = {
 	# Using this value in other strategies will function additively
 	recklessness = {
 		value = 1
+		
+		# Braver against pariah countries
 		if = {
 			limit = {
-				is_country_alive = yes
-				# Ignore decentralized tags
-				NOT = {
-					is_country_type = decentralized
-				}
+				scope:target_country.infamy >= infamy_threshold:pariah		
 			}
-			# Braver against pariah countries
-			if = {
-				limit = {
-					scope:target_country.infamy >= infamy_threshold:pariah		
-				}
-				add = 1
-			}		
-			
-			# Braver against own overlord in general
-			if = {
-				limit = {
-					is_subject_of = scope:target_country				
-				}
-				add = 1
-			}		
-
-			# Opium wars participants should both be confident
-			if = {
-				limit = {
-					has_journal_entry = je_opium_wars
-					country_rank >= rank_value:major_power
-					scope:target_country = {
-						has_variable = opium_wars_target
-						is_banning_goods = g:opium
-					}
-				}
-				add = 1
+			add = 1
+		}		
+		
+		# Braver against own overlord in general
+		if = {
+			limit = {
+				is_subject_of = scope:target_country				
 			}
+			add = 1
+		}		
 
-			if = {
-				limit = {
+		# Opium wars participants should both be confident
+		if = {
+			limit = {
+				country_rank >= rank_value:major_power
+				has_journal_entry = je_opium_wars
+				scope:target_country = {
 					has_variable = opium_wars_target
 					is_banning_goods = g:opium
-					scope:target_country = {
-						has_journal_entry = je_opium_wars
-					}
 				}
-				add = 1
-			}	
-			
-			# Ottomans should be extremely confident against owners of Syria and Egypt when they have the relevant JE's
-			if = {
-				limit = {
-					ROOT = c:TUR
-					OR = {
-						AND = {
-							has_journal_entry = je_sick_man_syria
-							scope:target_country = {
-								OR = {
-									has_state_in_state_region = STATE_ADANA
-									has_state_in_state_region = STATE_TRANSJORDAN
-									has_state_in_state_region = STATE_PALESTINE
-									has_state_in_state_region = STATE_LEBANON
-									has_state_in_state_region = STATE_SYRIA
-									has_state_in_state_region = STATE_ALEPPO
-								}
-							}
-						}
-						AND = {
-							has_journal_entry = je_sick_man_egypt
-							scope:target_country = {
-								OR = {
-									has_state_in_state_region = STATE_SINAI
-									has_state_in_state_region = STATE_UPPER_EGYPT
-									has_state_in_state_region = STATE_MIDDLE_EGYPT
-									has_state_in_state_region = STATE_LOWER_EGYPT
-								}
-							}
-						}
-					}
-				}
-				add = 5
 			}
+			add = 1
+		}
 
-			# USA should be confident against owners of their Manifest Destiny states
-			if = {
-				limit = {
-					ROOT = c:USA
-					has_journal_entry = je_manifest_destiny_mexico
-					scope:target_country = {
-						any_scope_state = {
-							OR = {
-								state_region = s:STATE_CALIFORNIA
-								state_region = s:STATE_NEVADA
-								state_region = s:STATE_UTAH
-								state_region = s:STATE_ARIZONA
-								state_region = s:STATE_NEW_MEXICO
-								state_region = s:STATE_TEXAS
-								state_region = s:STATE_WYOMING
-								state_region = s:STATE_COLORADO
-								state_region = s:STATE_OKLAHOMA
-								state_region = s:STATE_KANSAS
-							}
-						}
-					}
+		if = {
+			limit = {
+				has_variable = opium_wars_target
+				is_banning_goods = g:opium
+				scope:target_country = {
+					has_journal_entry = je_opium_wars
 				}
-				add = 2
-			}	
-
-			# Greek Nationalism
-			if = {
-				limit = {
-					has_journal_entry = je_greek_nationalism
-					scope:target_country = {
-						any_state = {
-							state_region = { is_homeland = cu:greek }
-							has_claim_by = root
-						}
-					}
-				}
-				add = 1.0
 			}
-
-			# Schleswig-Holstein question
-			if = {
-				limit = { 
-					has_journal_entry = je_schleswig_holstein_question 
-					wants_to_solve_schleswig_holstein = yes
-					scope:target_country = { 
-						is_oppressor_of_schleswig_holstein = yes
-					}
-				}
-				add = 0.5
-			}			
-
-			#Italian Nightmare
-			if = {
-				limit = {
-					has_journal_entry = je_risorgimento
-					scope:target_country = {
-					    OR = {
-							has_journal_entry = je_risorgimento
-							AND = { # Not so fast austria
-								exists = c:AUS
-								this = c:AUS
-								any_scope_state = {
-									state_region = s:STATE_LOMBARDY
-							   }
-							}
-						}
-					}
-				}
-				add = 0.5
-			}
-
-			# French Natural Borders
-			if = {
-				limit = {
-					has_journal_entry = je_french_natural_borders
-					has_strategy = ai_strategy_territorial_expansion
-					scope:target_country = {
-						any_scope_state = {
-							OR = {
-								state_region = {
-									is_homeland = cu:french
-								}
-								state_region = s:STATE_WALLONIA
-								state_region = s:STATE_FLANDERS
-								state_region = s:STATE_RHINELAND
-								state_region = s:STATE_NORTH_RHINE
-							}
-						}
-					}
-				}
-				add = 0.5
-			}	
-			
-			# France should very aggressively go for Algeria.
-			if = {
-				limit = {
-					has_journal_entry = je_conquest_of_algeria
-					scope:target_country = {
-						any_scope_state = {
-							OR = {
-								state_region = s:STATE_TLEMCEN
-								state_region = s:STATE_ALGIERS
-								state_region = s:STATE_CONSTANTINE
-								state_region = s:STATE_TOUGGOURT
-								state_region = s:STATE_GHARDAIA
-								state_region = s:STATE_SAHARA
-								state_region = s:STATE_EAST_SAHARA
-							}
-						}
-					}
-				}
-				add = 5
-			}
-			
-			# Afghanistan
-			if = {
-				limit = {
-					has_journal_entry = je_unify_afghanistan
-					scope:target_country = {
-						OR = {
-							has_journal_entry = je_unify_afghanistan
-							any_scope_state = {
-								OR = {
-									state_region = s:STATE_KABUL
-									state_region = s:STATE_HERAT
-									state_region = s:STATE_KANDAHAR
-									state_region = s:STATE_CENTRAL_HIGHLANDS
-								}
-							}
-						}
-					}
-				}
-				add = 3
-			}
-			
-			# Persia
-			if = {
-				limit = {
-					has_journal_entry = je_eastern_frontier
-					scope:target_country = {
-						capital = {
-							region = sr:region_persia
-						}
-					}
-				}
-				add = 5
-			}
-
-			#Taiping
-			if = { 
-				limit = {
-					exists = c:TPG
-					THIS = c:TPG
-					scope:target_country = {
-						has_journal_entry = je_taiping
-					}
-				}
-				add = 3
-			}
+			add = 1
+		}	
 		
-			#Caucasus
-			if = {
-				limit = {
-					exists = c:CIR
-					THIS = c:CIR
-					scope:target_country = { 
-						this = c:RUS
-						}	
-					}
-				add = 5
-				}
-			if = { 
-				limit = {
-					exists = c:CHC
-					THIS = c:CHC
-					scope:target_country = {
-						this = c:RUS
-			}
-				}
-				add = 5
-			}
-			
-			if = { 
-				limit = {
-					this = c:SPA
-					exists = c:SPA
-					OR = {
-						AND = {	
-							exists = c:MGD
-							scope:target_country = {
-								this = c:MGD
+		# Ottomans should be extremely confident against owners of Syria and Egypt when they have the relevant JE's
+		if = {
+			limit = {
+				ROOT = c:TUR
+				OR = {
+					AND = {
+						has_journal_entry = je_sick_man_syria
+						scope:target_country = {
+							OR = {
+								has_state_in_state_region = STATE_ADANA
+								has_state_in_state_region = STATE_TRANSJORDAN
+								has_state_in_state_region = STATE_PALESTINE
+								has_state_in_state_region = STATE_LEBANON
+								has_state_in_state_region = STATE_SYRIA
+								has_state_in_state_region = STATE_ALEPPO
 							}
 						}
-						AND = {	
-							exists = c:SUL
-							scope:target_country = {
-								this = c:SUL
+					}
+					AND = {
+						has_journal_entry = je_sick_man_egypt
+						scope:target_country = {
+							OR = {
+								has_state_in_state_region = STATE_SINAI
+								has_state_in_state_region = STATE_UPPER_EGYPT
+								has_state_in_state_region = STATE_MIDDLE_EGYPT
+								has_state_in_state_region = STATE_LOWER_EGYPT
 							}
 						}
 					}
 				}
-				add = 2
 			}
+			add = 4
+		}
 
-			# Acre claimant wants Acre
-			if = {
-				limit = {
-					has_journal_entry = je_acre_dispute
-					scope:target_country = {
-						any_scope_state = {
-							state_region = s:STATE_ACRE
+		# USA should be confident against owners of their Manifest Destiny states
+		if = {
+			limit = {
+				ROOT = c:USA
+				has_journal_entry = je_manifest_destiny_mexico
+				scope:target_country = {
+					any_scope_state = {
+						OR = {
+							state_region = s:STATE_CALIFORNIA
+							state_region = s:STATE_NEVADA
+							state_region = s:STATE_UTAH
+							state_region = s:STATE_ARIZONA
+							state_region = s:STATE_NEW_MEXICO
+							state_region = s:STATE_TEXAS
+							state_region = s:STATE_WYOMING
+							state_region = s:STATE_COLORADO
+							state_region = s:STATE_OKLAHOMA
+							state_region = s:STATE_KANSAS
 						}
 					}
 				}
-				add = 0.5
 			}
+			add = 2
+		}	
 
-			# Italian minors will want to help San Marco if involved
-			if = { 
-				limit = {
-					exists = c:RSM
-					THIS = {
+		# Greek Nationalism
+		if = {
+			limit = {
+				has_journal_entry = je_greek_nationalism
+				scope:target_country = {
+					any_state = {
+						state_region = { is_homeland = cu:greek }
+						has_claim_by = root
+					}
+				}
+			}
+			add = 1.0
+		}
+
+		# Schleswig-Holstein question
+		if = {
+			limit = { 
+				has_journal_entry = je_schleswig_holstein_question 
+				wants_to_solve_schleswig_holstein = yes
+				scope:target_country = { 
+					is_oppressor_of_schleswig_holstein = yes
+				}
+			}
+			add = 0.5
+		}			
+
+		#Italian Nightmare
+		if = {
+			limit = {
+				has_journal_entry = je_risorgimento
+				scope:target_country = {
+				    OR = {
 						has_journal_entry = je_risorgimento
-					}
-					scope:target_country = {
-						is_diplomatic_play_enemy_of = c:RSM
+						AND = { # Not so fast austria
+							exists = c:AUS
+							this = c:AUS
+							any_scope_state = {
+								state_region = s:STATE_LOMBARDY
+						   }
+						}
 					}
 				}
-				add = 2
 			}
-			
-			# Paraguay should be very bold while they have the war JE.
-	        if = {
-	            limit = {
-	                has_journal_entry = je_expanding_paraguay
-	                scope:target_country = {
-	                    any_scope_state = {
-	                        OR = {
-	                            state_region = s:STATE_SANTA_FE
-	                            state_region = s:STATE_PARANA
-	                            state_region = s:STATE_RIO_GRANDE_DO_SUL
-	                        }
-	                    }
-	                }
-	            }
-	            add = 2
-	        }	
+			add = 0.5
+		}
+
+		# French Natural Borders
+		if = {
+			limit = {
+				has_journal_entry = je_french_natural_borders
+				has_strategy = ai_strategy_territorial_expansion
+				scope:target_country = {
+					any_scope_state = {
+						OR = {
+							state_region = {
+								is_homeland = cu:french
+							}
+							state_region = s:STATE_WALLONIA
+							state_region = s:STATE_FLANDERS
+							state_region = s:STATE_RHINELAND
+							state_region = s:STATE_NORTH_RHINE
+						}
+					}
+				}
+			}
+			add = 0.5
+		}	
+		
+		# France should very aggressively go for Algeria.
+		if = {
+			limit = {
+				has_journal_entry = je_conquest_of_algeria
+				scope:target_country = {
+					any_scope_state = {
+						OR = {
+							state_region = s:STATE_TLEMCEN
+							state_region = s:STATE_ALGIERS
+							state_region = s:STATE_CONSTANTINE
+							state_region = s:STATE_TOUGGOURT
+							state_region = s:STATE_GHARDAIA
+							state_region = s:STATE_SAHARA
+							state_region = s:STATE_EAST_SAHARA
+						}
+					}
+				}
+			}
+			add = 5
 		}
 		
+		# Afghanistan
+		if = {
+			limit = {
+				has_journal_entry = je_unify_afghanistan
+				scope:target_country = {
+					OR = {
+						has_journal_entry = je_unify_afghanistan
+						any_scope_state = {
+							OR = {
+								state_region = s:STATE_KABUL
+								state_region = s:STATE_HERAT
+								state_region = s:STATE_KANDAHAR
+								state_region = s:STATE_CENTRAL_HIGHLANDS
+							}
+						}
+					}
+				}
+			}
+			add = 3
+		}
+		
+		# Persia
+		if = {
+			limit = {
+				has_journal_entry = je_eastern_frontier
+				scope:target_country = {
+					capital = {
+						region = sr:region_persia
+					}
+				}
+			}
+			add = 5
+		}
+
+		#Taiping
+		if = { 
+			limit = {
+				exists = c:TPG
+				THIS = c:TPG
+				scope:target_country = {
+					has_journal_entry = je_taiping
+				}
+			}
+			add = 3
+		}
+	
+		#Caucasus
+		if = {
+			limit = {
+				exists = c:CIR
+				THIS = c:CIR
+				scope:target_country = { 
+					this = c:RUS
+					}	
+				}
+			add = 5
+			}
+		if = { 
+			limit = {
+				exists = c:CHC
+				THIS = c:CHC
+				scope:target_country = {
+					this = c:RUS
+		}
+			}
+			add = 5
+		}
+		
+		if = { 
+			limit = {
+				this = c:SPA
+				exists = c:SPA
+				OR = {
+					AND = {	
+						exists = c:MGD
+						scope:target_country = {
+							this = c:MGD
+						}
+					}
+					AND = {	
+						exists = c:SUL
+						scope:target_country = {
+							this = c:SUL
+						}
+					}
+				}
+			}
+			add = 2
+		}
+
+		# Acre claimant wants Acre
+		if = {
+			limit = {
+				has_journal_entry = je_acre_dispute
+				scope:target_country = {
+					any_scope_state = {
+						state_region = s:STATE_ACRE
+					}
+				}
+			}
+			add = 0.5
+		}
+
+		# Italian minors will want to help San Marco if involved
+		if = { 
+			limit = {
+				exists = c:RSM
+				THIS = {
+					has_journal_entry = je_risorgimento
+				}
+				scope:target_country = {
+					is_diplomatic_play_enemy_of = c:RSM
+				}
+			}
+			add = 2
+		}
+		
+		# Paraguay should be very bold while they have the war JE.
+        if = {
+            limit = {
+                has_journal_entry = je_expanding_paraguay
+                scope:target_country = {
+                    any_scope_state = {
+                        OR = {
+                            state_region = s:STATE_SANTA_FE
+                            state_region = s:STATE_PARANA
+                            state_region = s:STATE_RIO_GRANDE_DO_SUL
+                        }
+                    }
+                }
+            }
+            add = 2
+        }	
 	}
 	
 	# How likely is the AI to start a diplomatic play against another country if their attitude allows for it
@@ -3414,303 +3423,6 @@ ai_strategy_default = {
 			add = 50
 		}
 		
-		#VFM game rule for historical AI colonial conquest
-		if = {
-			limit = {
-				OR = {
-					has_game_rule = yes_historical_colonization_just_AI
-					has_game_rule = yes_historical_colonization
-				}
-			}
-			#French Indochina
-			if = {
-				limit = {
-					exists = c:FRA
-					this = c:FRA
-					year > 1885
-					scope:target_country = {
-						#often UK conquors Indochina early, so ommitting this part might make it so France has a chance to get it still
-						NOT = {
-							is_country_type = recognized
-						}
-						any_scope_state = {
-							OR = {
-								state_region = s:STATE_MEKONG
-								state_region = s:STATE_ANNAM
-								state_region = s:STATE_TONKIN
-								state_region = s:STATE_CAMBODIA
-								state_region = s:STATE_LAOS
-							}
-						}
-					}
-				}
-				add = 200
-			}
-			#French Africa
-			if = {
-				limit = {
-					exists = c:FRA
-					this = c:FRA
-					year > 1885
-					scope:target_country = {
-						NOT = {
-							is_country_type = recognized
-						}
-						any_scope_state = {
-							OR = {
-								state_region = s:STATE_INNER_MOROCCO
-								state_region = s:STATE_MARRAKECH
-								state_region = s:STATE_FEZ
-								state_region = s:STATE_MAURITANIA
-								state_region = s:STATE_INNER_MAURITANIA
-								state_region = s:STATE_SENEGAL
-								state_region = s:STATE_GAMBIA
-								state_region = s:STATE_EASTERN_MALI
-								state_region = s:STATE_WESTERN_MALI
-								state_region = s:STATE_TIMBUKTU
-								state_region = s:STATE_GUINEA
-								state_region = s:STATE_UPPER_COAST
-								state_region = s:STATE_WINDWARD_COAST
-								state_region = s:STATE_IVORY_COAST
-								state_region = s:STATE_VOLTA
-								state_region = s:STATE_OUTER_HAUSALAND
-								state_region = s:STATE_NIGER
-								state_region = s:STATE_DAHOMEY
-								state_region = s:STATE_CHAD
-								state_region = s:STATE_WADDAI
-								state_region = s:STATE_UBANGI_SHARI
-								state_region = s:STATE_GABON
-								state_region = s:STATE_SOUTH_MADAGASCAR
-								state_region = s:STATE_NORTH_MADAGASCAR
-								state_region = s:STATE_NORTH_SOMALILAND
-								state_region = s:STATE_TUNISIA
-							}
-						}
-					}
-				}
-				add = 200
-			}
-			#French Pacific
-			if = {
-				limit = {
-					exists = c:FRA
-					this = c:FRA
-					year > 1885
-					scope:target_country = {
-						NOT = {
-							is_country_type = recognized
-						}
-						any_scope_state = {
-							OR = {
-								state_region = s:STATE_TAHITI
-								state_region = s:STATE_KANAK
-							}
-						}
-					}
-				}
-				add = 200
-			}
-			#British Africa
-			if = {
-				limit = {
-					exists = c:GBR
-					this = c:GBR
-					year > 1885
-					scope:target_country = {
-						NOT = {
-							is_country_type = recognized
-						}
-						any_scope_state = {
-							OR = {
-								state_region = s:STATE_GHANA
-								state_region = s:STATE_NIGER_DELTA
-								state_region = s:STATE_BENIN
-								state_region = s:STATE_YORUBA_STATES
-								state_region = s:STATE_NIGERIA
-								state_region = s:STATE_EAST_HAUSALAND
-								state_region = s:STATE_BORNU
-								state_region = s:STATE_HAUSALAND
-								state_region = s:STATE_KENYA
-								state_region = s:STATE_EQUATORIA
-								state_region = s:STATE_RIFT_VALLEY
-								state_region = s:STATE_UGANDA
-								state_region = s:STATE_NYASALAND
-								state_region = s:STATE_KAZEMBE
-								state_region = s:STATE_ZAMBIA
-								state_region = s:STATE_ZAMBEZI
-							}
-						}
-					}
-				}
-				add = 50
-			}
-			#British Arabia
-			if = {
-				limit = {
-					exists = c:GBR
-					this = c:GBR
-					year > 1885
-					scope:target_country = {
-						NOT = {
-							is_country_type = recognized
-						}
-						any_scope_state = {
-							OR = {
-								state_region = s:STATE_YEMEN 
-								state_region = s:STATE_OMAN
-							}
-						}
-					}
-				}
-				add = 50
-			}
-			#British Asia/Pacific
-			if = {
-				limit = {
-					exists = c:GBR
-					this = c:GBR
-					year > 1885
-					scope:target_country = {
-						NOT = {
-							is_country_type = recognized
-						}
-						any_scope_state = {
-							OR = {
-								state_region = s:STATE_NORTH_BORNEO
-								state_region = s:STATE_VANUATU
-								state_region = s:STATE_SOLOMON_ISLANDS
-								state_region = s:STATE_FIJI
-							}
-						}
-					}
-				}
-				add = 50
-			}
-			#German Colonies
-			if = {
-				limit = {
-					exists = c:GER
-					this = c:GER
-					year > 1885
-					scope:target_country = {
-						NOT = {
-							is_country_type = recognized
-						}
-						any_scope_state = {
-							OR = {
-								state_region = s:STATE_TOGO
-								state_region = s:STATE_NORTH_CAMEROON
-								state_region = s:STATE_SOUTH_CAMEROON
-								state_region = s:STATE_NAMAQUALAND
-								state_region = s:STATE_HEREROLAND
-								state_region = s:STATE_LINDI
-								state_region = s:STATE_TANGANYIKA
-								state_region = s:STATE_EASTERN_NEW_GUINEA
-								state_region = s:STATE_BOUGAINVILLE
-								state_region = s:STATE_NAURU
-								state_region = s:STATE_TONGA
-								state_region = s:STATE_EAST_MICRONESIA
-								state_region = s:STATE_WEST_MICRONESIA
-							}
-						}
-					}
-				}
-				add = 200
-			}
-			#Italian Colonies
-			if = {
-				limit = {
-					exists = c:ITA
-					this = c:ITA
-					year > 1885
-					scope:target_country = {
-						NOT = {
-							is_country_type = recognized
-						}
-						any_scope_state = {
-							OR = {
-								state_region = s:STATE_ERITREA
-								state_region = s:STATE_LIBYAN_DESERT
-								state_region = s:STATE_TRIPOLI
-								state_region = s:STATE_LIBYA
-								state_region = s:STATE_SOMALILAND
-							}
-						}
-					}
-				}
-				add = 200
-			}
-			#Belgian Congo
-			if = {
-				limit = {
-					exists = c:BEL
-					this = c:BEL
-					year > 1885
-					scope:target_country = {
-						NOT = {
-							is_country_type = recognized
-						}
-						any_scope_state = {
-							OR = {
-								state_region = s:STATE_BAS_CONGO
-								state_region = s:STATE_EQUATEUR
-								state_region = s:STATE_KASAI
-								state_region = s:STATE_KATANGA
-								state_region = s:STATE_CONGO_ORIENTALE
-								state_region = s:STATE_KIVU
-							}
-						}
-					}
-				}
-				add = 200
-			}
-			#Portuguese Colonies
-			if = {
-				limit = {
-					exists = c:POR
-					this = c:POR
-					year > 1885
-					scope:target_country = {
-						NOT = {
-							is_country_type = recognized
-						}
-						any_scope_state = {
-							OR = {
-								state_region = s:STATE_GUINEA_BISSAU
-								state_region = s:STATE_NORTH_ANGOLA
-								state_region = s:STATE_SOUTH_ANGOLA
-								state_region = s:STATE_EAST_ANGOLA
-								state_region = s:STATE_MOCAMBIQUE
-								state_region = s:STATE_LOURENCO_MARQUES
-								state_region = s:STATE_ZAMBEZIA 
-							}
-						}
-					}
-				}
-				add = 200
-			}
-			#Spanish African Colonies
-			if = {
-				limit = {
-					exists = c:SPA
-					this = c:SPA
-					year > 1885
-					scope:target_country = {
-						NOT = {
-							is_country_type = recognized
-						}
-						any_scope_state = {
-							OR = {
-								state_region = s:STATE_WEST_SAHARA
-								state_region = s:STATE_GABON
-							}
-						}
-					}
-				}
-				add = 200
-			}
-		}
-
 		#Aggression against unrecognized countries once colonization has begun and already owns state in region
 		if = {
 			limit = {
@@ -4307,7 +4019,7 @@ ai_strategy_default = {
 		
 		if = { #VFM, national militias are meant to be small and supported by conscripts
 			limit = { has_law = law_type:law_national_militia }
-			multiply = 0.08
+			multiply = 0.33
 		}
 
 		#VFM moved to bottom since this should be the base army size and not impacted by all of the multipliers above...
@@ -4551,22 +4263,18 @@ ai_strategy_default = {
 	# scope:military_formation = military formation
 	# Using this value in other strategies will function additively
 	conscript_battalion_ratio = {
-		value = 0
+		value = 0.5
 		if = {
 			limit = { has_law = law_type:law_national_militia }
-			add = 7.5 #VFM, bumped up from 5 to compensate for less barracks wanted by AI
-		}
-		else_if = {
-			limit = { has_law = law_type:law_professional_army }
-			add = 0.5
+			add = 2.5
 		}			
 		else_if = {
 			limit = { has_law = law_type:law_peasant_levies }
-			add = 1
+			add = 0.5
 		}	
 		else_if = {
 			limit = { has_law = law_type:law_mass_conscription }
-			add = 2
+			add = 0.5
 		}
 
         if = {
@@ -4857,17 +4565,6 @@ ai_strategy_default = {
 					}								
 				}
 				add = 200
-			}
-			if = {
-				limit = {
-					exists = c:GBR
-					exists = c:FRA
-					exists = c:GER
-					this = c:GBR
-					this = c:FRA
-					this = c:GER
-				}
-				add = 200
 			}				
 		}	
 		region_arabic = {
@@ -4947,16 +4644,7 @@ ai_strategy_default = {
 					}		
 				}
 				add = 200
-			}
-			if = {
-				limit = {
-					exists = c:ITA
-					exists = c:FRA
-					this = c:ITA
-					this = c:FRA
-				}
-				add = 200
-			}	
+			}		
 		}
 		region_senegal = {
 			if = {
@@ -4970,7 +4658,7 @@ ai_strategy_default = {
 					}		
 				}
 				add = 200
-			}
+			}		
 		}
 		region_niger = {
 			if = {
@@ -4984,18 +4672,7 @@ ai_strategy_default = {
 					}		
 				}
 				add = 200
-			}
-			if = {
-				limit = {
-					exists = c:GBR
-					exists = c:FRA
-					exists = c:GER
-					this = c:GBR
-					this = c:FRA
-					this = c:GER
-				}
-				add = 200
-			}	
+			}		
 		}
 		region_congo = {
 			if = {
@@ -5009,20 +4686,7 @@ ai_strategy_default = {
 					}		
 				}
 				add = 200
-			}
-			if = {
-				limit = {
-					exists = c:BEL
-					exists = c:FRA
-					exists = c:GER
-					exists = c:SPA
-					this = c:BEL
-					this = c:FRA
-					this = c:GER
-					this = c:SPA
-				}
-				add = 200
-			}			
+			}		
 		}
 		region_southern_africa = {
 			if = {
@@ -5036,16 +4700,7 @@ ai_strategy_default = {
 					}		
 				}
 				add = 200
-			}
-			if = {
-				limit = {
-					exists = c:GBR
-					exists = c:GER
-					this = c:GBR
-					this = c:GER
-				}
-				add = 200
-			}	
+			}		
 		}
 		region_zanj = {
 			if = {
@@ -5059,18 +4714,7 @@ ai_strategy_default = {
 					}		
 				}
 				add = 200
-			}
-			if = {
-				limit = {
-					exists = c:GBR
-					exists = c:FRA
-					exists = c:GER
-					this = c:GBR
-					this = c:FRA
-					this = c:GER
-				}
-				add = 200
-			}	
+			}		
 		}
 		region_north_germany = {
 			if = {
@@ -5234,17 +4878,6 @@ ai_strategy_default = {
 
 				add = 100
 			}
-			if = {
-				limit = {
-					exists = c:GBR
-					exists = c:FRA
-					exists = c:GER
-					this = c:GBR
-					this = c:FRA
-					this = c:GER
-				}
-				add = 200
-			}	
 		}
 		region_rhine = {
 			if = {
@@ -5469,19 +5102,6 @@ ai_strategy_default = {
 					country_is_in_north_america = yes
 				}
 				add = 75
-			}	
-		}	
-		region_ethiopia = {
-			if = {
-				limit = {
-					exists = c:GBR
-					exists = c:FRA
-					exists = c:ITA
-					this = c:GBR
-					this = c:FRA
-					this = c:ITA
-				}
-				add = 200
 			}	
 		}	
 		region_the_midwest = {
@@ -7735,26 +7355,7 @@ ai_strategy_default = {
 		}		
 		
 		make_protectorate = {
-			#British Protectorate over Egypt
-			if = {
-				limit = {
-					OR = {
-						has_game_rule = yes_historical_colonization_just_AI
-						has_game_rule = yes_historical_colonization
-					}
-				}
-				if = {
-					limit = {
-						exists = c:GBR
-						this = c:GBR
-						year > 1900
-						scope:target_country = {
-							c:EGY ?= this
-						}
-					}
-					add = 50
-				}
-			}
+
 			if = {
 				limit = {
 					has_journal_entry = je_maintain_afghan_protectorate
