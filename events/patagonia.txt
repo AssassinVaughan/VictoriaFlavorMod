@@ -26,24 +26,11 @@ patagonia.1 = {
 	immediate = {	
 		if = {
 			limit = {
-				owns_entire_state_region = STATE_ARAUCANIA
+				owns_entire_state_region = STATE_PATAGONIA
 			}
-			random_state = {
-				limit = {
-					state_region = s:STATE_ARAUCANIA
-				}
 				save_scope_as = patagonia_state
 			}
 		}
-		else = {
-			random_state = {
-				limit = {
-					state_region = s:STATE_PATAGONIA
-				}
-				save_scope_as = patagonia_state
-			}
-		}
-	}
 
 	option = {
 		name = patagonia.1.a
@@ -195,6 +182,90 @@ patagonia.2 = {
 		change_tension = {
 			country = scope:patagonia_country
 			value = 25
+		}
+	}
+}
+
+# Araucania JE completion
+patagonia.3 = {
+	type = country_event
+	placement = ROOT
+
+	title = patagonia.3.t
+	desc = patagonia.3.d
+	flavor = patagonia.3.f
+
+	duration = 3
+
+	event_image = {
+		video = "europenorthamerica_native_american"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+
+	trigger = {
+		# complete je_patagonia
+	}
+
+	immediate = {	
+		if = {
+			limit = {
+				owns_entire_state_region = STATE_ARAUCANIA
+			}
+			save_scope_as = araucania_state
+			}
+		}
+
+	option = {
+		name = patagonia.3.a
+		default_option = yes
+		if = {
+			limit = {
+				country_has_primary_culture = cu:south_andean
+			}
+			scope:araucania_state = {
+				state_region = {
+					add_homeland = cu:south_andean
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				country_has_primary_culture = cu:platinean
+			}
+			scope:patagonia_state = {
+				state_region = {
+					add_homeland = cu:platinean
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				country_has_primary_culture = cu:argentine
+			}
+			scope:patagonia_state = {
+				state_region = {
+					add_homeland = cu:argentine
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				country_has_primary_culture = cu:chilean
+			}
+			scope:patagonia_state = {
+				state_region = {
+					add_homeland = cu:chilean
+				}
+			}
+		}		
+		scope:patagonia_state = {
+			add_modifier = {
+				name = patagonian_settlement
+				months = long_modifier_time
+			}
 		}
 	}
 }
