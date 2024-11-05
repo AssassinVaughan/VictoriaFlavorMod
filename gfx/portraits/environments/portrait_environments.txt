@@ -392,8 +392,8 @@ cubemap = "gfx/portraits/environments/events_farms_01.dds"
  			type = "spot_light"	# Valid types are "spot_light", "point_light", and "directional_light"
  			affected_by_shadow = yes
 
- 			color = hsv{ 0.1 0.3 6 }	# Hue, saturation, value. Increase value for more intense lights
- 			position = cylindrical{ @main_light_radius  650 0 }	# Radius, height, angle
+ 			color = hsv{ 0.1 0.2 4 }	# Hue, saturation, value. Increase value for more intense lights
+ 			position = cylindrical{ @main_light_radius 250 0 }	# Radius, height, angle
 
  			# For spot lights and directional lights
  			look_at = { 0 0 0 }
@@ -416,8 +416,8 @@ cubemap = "gfx/portraits/environments/events_farms_01.dds"
  			type = "spot_light"
  			affected_by_shadow = yes
 
- 			color = hsv{ 0.05 0.4 8 }
- 			position = cylindrical{ 200 280 140 }
+ 			color = hsv{ 0.05 0.4 2 }
+ 			position = cylindrical{ 200 300 140 }
 
  			look_at = { 0 -35 0 }
  			look_at_node = camera_torso_look_at
@@ -436,8 +436,8 @@ cubemap = "gfx/portraits/environments/events_farms_01.dds"
  			type = "spot_light"
  			affected_by_shadow = yes
 
- 			color = hsv{ 0.1 0.4 8 }
- 			position = cylindrical{ 200 280 -140 }
+ 			color = hsv{ 0.1 0.4 6 }
+ 			position = cylindrical{ 90 300 -140 }
 
  			look_at = { 0 -35 0 }
  			look_at_node = camera_torso_look_at
