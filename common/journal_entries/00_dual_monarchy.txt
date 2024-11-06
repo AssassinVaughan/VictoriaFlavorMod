@@ -4,21 +4,36 @@
 	group = je_group_historical_content
 
 	complete = {
-		cu:hungarian = {
-			NOT = { culture_is_discriminated_in = ROOT }
-		}
-		NOT = {
-			OR = {
-				has_law = law_type:law_serfdom
-				has_law = law_type:law_tenant_farmers
+		OR = {
+
+			NOT = {
+				any_scope_state = {
+					state_region = {
+						is_homeland = cu:hungarian
+					}
+				}
 			}
+
+			AND = {
+				cu:hungarian = {
+					NOT = { culture_is_discriminated_in = ROOT }
+				}
+				NOT = {
+					OR = {
+						has_law = law_type:law_serfdom
+						has_law = law_type:law_tenant_farmers
+					}
+				}
+			}
+
 		}
 	}
 
 	on_complete = {
-		trigger_event = {
-			id = dual_monarchy.1
-		}
+		# trigger_event = {
+		# 	id = dual_monarchy.1
+		# }
+	#	remove_modifier = the_dual_monarchy
 	}
 
 	fail = {
@@ -55,16 +70,16 @@
 
 	invalid = {
 		OR = {
-			custom_tooltip = {
-				text = austria_hungary_invalid
-				NOT = {
-					any_scope_state = {
-						state_region = {
-							is_homeland = cu:hungarian
-						}
-					}
-				}
-			}
+			# custom_tooltip = {
+			# 	text = austria_hungary_invalid
+			# 	NOT = {
+			# 		any_scope_state = {
+			# 			state_region = {
+			# 				is_homeland = cu:hungarian
+			# 			}
+			# 		}
+			# 	}
+			# }
 			NOT = {
 				this = c:AUS
 			}
