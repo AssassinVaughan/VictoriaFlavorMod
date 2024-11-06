@@ -43,25 +43,25 @@ dual_monarchy.1 = {
 		}
 	}
 
-	option = {
-		name = dual_monarchy.1.a
-		trigger = {
-			#NOT = { has_variable = dual_monarchy_fail }
-		}
-		default_option = yes
-		custom_tooltip = austria_hungary_tt
-		add_primary_culture = cu:hungarian
-		add_loyalists = {
-			culture = cu:hungarian
-			value = 0.1
-		}
-		ig:ig_landowners = {
-			remove_ideology = ideology_austrian_hegemony
-			hidden_effect = {
-				set_interest_group_name = ig_landowners
-			}
-		}
-	}
+	# option = {
+	# 	name = dual_monarchy.1.a
+	# 	trigger = {
+	# 		#NOT = { has_variable = dual_monarchy_fail }
+	# 	}
+	# 	default_option = yes
+	# 	custom_tooltip = austria_hungary_tt
+	# 	add_primary_culture = cu:hungarian
+	# 	add_loyalists = {
+	# 		culture = cu:hungarian
+	# 		value = 0.1
+	# 	}
+	# 	ig:ig_landowners = {
+	# 		remove_ideology = ideology_austrian_hegemony
+	# 		hidden_effect = {
+	# 			set_interest_group_name = ig_landowners
+	# 		}
+	# 	}
+	# }
 	option = { # accept compromise
 		name = dual_monarchy.1.b
 		default_option = yes
@@ -150,6 +150,7 @@ dual_monarchy.1 = {
 			culture = cu:south_german
 			pop_type = aristocrats
 		}
+		remove_modifier = the_dual_monarchy
 		# lose prestige
 		add_modifier = {
 			name = dual_monarchy_compromise
@@ -229,8 +230,9 @@ dual_monarchy.1 = {
 						target = ROOT
 						value < 0.4 # Dont start the dp if it's already secessionist
 					}
-		  	  }
+		  		}
 			}
+		}
 
 		create_diplomatic_play = {
 		
@@ -246,13 +248,15 @@ dual_monarchy.1 = {
 					target_state = s:STATE_AUSTRIA.region_state:AUS
 			}
 		}
-		}
 
         # add radicals from discrimination
 		add_radicals = {
 			value = very_large_radicals
 			culture = cu:hungarian
 		}
+			
+		remove_modifier = the_dual_monarchy
+
 	}
 	option = { # Hungary Play as
 		name = dual_monarchy.1.e

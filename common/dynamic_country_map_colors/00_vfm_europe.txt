@@ -61,28 +61,16 @@ purple_naples = {
 	}
 }
 
-austria_hungary = {
-	color = "rusty_austria"
+# austria_hungary = {
+# 	color = "rusty_austria"
 
-	possible = {
-		exists = c:AUS
-		THIS = c:AUS
-		exists = c:HUN
-		c:HUN = {
-			is_subject_of = c:AUS
-		}
-	}
-}
-
-republican_france = {
-	color = "revolutionary_blue"
-
-	possible = {
-		exists = c:FRA
-		THIS = c:FRA
-		has_law = law_type:law_council_republic
-	}
-}
+# 	possible = {
+# 		THIS ?= c:AUS
+# 		c:HUN ?= {
+# 			is_subject_of = c:AUS
+# 		}
+# 	}
+# }
 
 south_italian_italy = {
 	color = rgb{ 204 84 16 }
