@@ -914,7 +914,23 @@ GLOBAL = {
 					}
 				}
 				change_pop_religion = { target = rel:animist value = 1.0 }
+				set_state_religion = rel:animist
 			}
+			if = {
+			    limit = {
+			        OR = {
+			            country_has_state_religion = rel:generic_african
+			            country_has_state_religion = rel:generic_native_american
+			            }
+			        }
+			    set_state_religion = rel:animist
+			    }
+			if = {
+			    limit = {
+			        country_has_state_religion = rel:ibadi
+			        }
+			    set_state_religion = rel:sunni
+			    }            
 			every_scope_pop = {
 				limit = {
 					OR = {
