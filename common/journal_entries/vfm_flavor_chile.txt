@@ -21,8 +21,18 @@
 		}
         add_modifier = {
             name = magellan_strait
-        }				
-	}
+        }
+        if = {
+            limit = { 
+                exists = c:BUE 
+                }
+            s:STATE_ARAUCANIA = { remove_claim = c:BUE } }  
+        if = {
+            limit = { 
+                exists = c:ARG 
+                }
+            s:STATE_ARAUCANIA = { remove_claim = c:ARG } }          
+	        }
 
     timeout = 2555
 

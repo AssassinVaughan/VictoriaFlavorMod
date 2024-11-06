@@ -63,8 +63,8 @@ british_proposal = {
             }
         }
     }      
-		NOT = { has_global_variable = british_proposal_var }
-        }
+	NOT = { has_global_variable = british_proposal_var }
+    }
         
 	possible = {
 	    hidden_effect = { NOT = { has_global_variable = british_proposal_var } }
@@ -108,11 +108,11 @@ peru_alliance = {
 			any_neighbouring_state = {
 				owner = {
 					is = c:BOL
-				}
-			}
-		}   
-	}
-}
+				    }
+			    }
+		    }   
+	    }
+    }
 	when_taken = {
         c:BOL = { trigger_event = { 
 			    id = saltpeter_war.3
@@ -120,12 +120,12 @@ peru_alliance = {
 		set_global_variable = peru_alliance_var      
         }
         add_modifier = {
-			      name = protecting_brother_country
-			      months = normal_modifier_time
-		        }
-            }                        			
+			name = protecting_brother_country
+			years = 15
+		    }
+        }                        			
 
 	ai_chance = {
 		base = 90
-	}
-}
+	    }
+    }
