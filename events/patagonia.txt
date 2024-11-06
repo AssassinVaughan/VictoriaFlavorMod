@@ -39,43 +39,35 @@ patagonia.1 = {
 			limit = {
 				country_has_primary_culture = cu:south_andean
 			}
-			scope:patagonia_state = {
-				state_region = {
-					add_homeland = cu:south_andean
+			s:STATE_PATAGONIA = {
+				add_homeland = cu:south_andean
 				}
 			}
-		}
 		else_if = {
 			limit = {
 				country_has_primary_culture = cu:platinean
 			}
-			scope:patagonia_state = {
-				state_region = {
-					add_homeland = cu:platinean
+			s:STATE_PATAGONIA = { 
+				add_homeland = cu:platinean
 				}
 			}
-		}
 		else_if = {
 			limit = {
 				country_has_primary_culture = cu:argentine
 			}
-			scope:patagonia_state = {
-				state_region = {
-					add_homeland = cu:argentine
+			s:STATE_PATAGONIA = {
+				add_homeland = cu:argentine
 				}
 			}
-		}
 		else_if = {
 			limit = {
 				country_has_primary_culture = cu:chilean
 			}
-			scope:patagonia_state = {
-				state_region = {
+			s:STATE_PATAGONIA = { 
 					add_homeland = cu:chilean
 				}
-			}
-		}		
-		scope:patagonia_state = {
+			}		
+		s:STATE_PATAGONIA = { 
 			add_modifier = {
 				name = patagonian_settlement
 				months = long_modifier_time
@@ -225,43 +217,35 @@ patagonia.3 = {
 			limit = {
 				country_has_primary_culture = cu:south_andean
 			}
-			scope:araucania_state = {
-				state_region = {
-					add_homeland = cu:south_andean
+			s:STATE_ARAUCANIA = {
+				add_homeland = cu:south_andean
 				}
 			}
-		}
 		else_if = {
 			limit = {
 				country_has_primary_culture = cu:platinean
 			}
-			scope:patagonia_state = {
-				state_region = {
-					add_homeland = cu:platinean
+			s:STATE_ARAUCANIA = {
+				add_homeland = cu:platinean
 				}
 			}
-		}
 		else_if = {
 			limit = {
 				country_has_primary_culture = cu:argentine
 			}
-			scope:patagonia_state = {
-				state_region = {
-					add_homeland = cu:argentine
+			s:STATE_ARAUCANIA = {
+				add_homeland = cu:argentine
 				}
 			}
-		}
 		else_if = {
 			limit = {
 				country_has_primary_culture = cu:chilean
 			}
-			scope:patagonia_state = {
-				state_region = {
-					add_homeland = cu:chilean
+			s:STATE_ARAUCANIA = {
+				add_homeland = cu:chilean
 				}
-			}
-		}		
-		scope:patagonia_state = {
+			}		
+		s:STATE_ARAUCANIA = {
 			add_modifier = {
 				name = patagonian_settlement
 				months = long_modifier_time
