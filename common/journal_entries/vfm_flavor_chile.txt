@@ -139,41 +139,53 @@
 #    should_be_pinned_by_default = yes
 #	weight = 100   
 #}     
-#
-#
-#
-#je_codigo_civil = {
-#	icon = "gfx/interface/icons/event_icons/event_academia.dds"
-#
-#	is_shown_when_inactive = {
-#		exists = c:CHL
-#		root= c:CHL
-#	}
-#
-#	complete = {
-#		AND = {
-#			any_scope_building = {
-#				is_building_type = building_university
-#				occupancy > 0.9
-#				level >= 2
-#			}
-#			institution_investment_level = {
-#				institution = institution_police 
-#				value >= 2
-#			}
-#		}
-#	}
-#
-#	on_complete = {
-#        trigger_event = { 
-#			id = journal_flavor_chile.2
-#		}
-#		
-#	}
-#
-#    should_be_pinned_by_default = yes
-#	weight = 100
-#}
+
+je_codigo_civil = {
+	icon = "gfx/interface/icons/event_icons/event_flags/event_chl_flag.dds"
+
+	on_monthly_pulse = {
+		effect = {
+			change_variable = {
+				name = codigo_civil_var
+				add = 1
+			}
+		}
+	}
+
+	complete = {
+		scope:journal_entry = { is_goal_complete = yes }
+	}
+
+	on_complete = {
+	    trigger_event = { id = journal_flavor_chile.8 }
+        add_modifier = { name = codigo_civil_mod }
+		add_loyalists = {
+			value = 0.1
+			pop_type = bureaucrats	
+			}
+		add_loyalists = {
+			value = 0.01
+			pop_type = academics	
+		}		
+	}
+
+	current_value = {
+		value = root.var:codigo_civil_var
+	}
+
+	goal_add_value = {
+		value = 36
+	}	
+
+	progressbar = yes
+
+	modifiers_while_active = {
+		codigo_civil_prep
+	}
+
+    should_be_pinned_by_default = yes
+	weight = 100
+}
 
 je_german_immigration = {
 	icon = "gfx/interface/icons/event_icons/event_flags/event_chl_flag.dds"

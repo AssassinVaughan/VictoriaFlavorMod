@@ -4,6 +4,7 @@ claiming_patagonia1 = {
 	    ROOT = {
 	        NOT = { 
 	            has_claim = s:STATE_PATAGONIA 
+	            country_has_primary_culture = cu:patagonian
 	            } 
 	        }
 	    }    
@@ -29,13 +30,13 @@ claiming_patagonia1 = {
 claiming_patagonia2 = {
 	is_shown = {
 	    has_state_in_state_region = STATE_ARAUCANIA
-	    }
-
 	    ROOT = {
 	        NOT = {
 	            has_claim = s:STATE_ARAUCANIA 
+	            country_has_primary_culture = cu:patagonian
 	            } 
-	        }   
+	        }
+	    }       
 
 	possible = {
 	    has_state_in_state_region = STATE_ARAUCANIA

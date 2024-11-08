@@ -1,0 +1,39 @@
+codgio_civil = {
+	is_shown = {
+		exists = c:CHL
+		THIS = c:CHL
+		NOT = { has_variable = civil_code }
+	}
+
+	possible = {
+		institution_investment_level = {
+			institution = institution_police
+			value >= 2
+		}
+		approaching_bureaucracy_shortage = no
+		is_at_war = no
+	}
+	
+	when_taken = {
+		set_variable = {
+			name = codigo_civil_var
+			value = 0
+		}
+		add_journal_entry = {
+			type = je_codigo_civil
+		}
+		set_variable = civil_code
+	}
+
+	ai_chance = {
+		base = 10
+		modifier = {
+			trigger = { produced_bureaucracy > 0 }
+			add = 40
+		}
+		modifier = {
+			trigger = { produced_bureaucracy > 50 }
+			add = 40
+		}				
+	}
+}
