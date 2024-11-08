@@ -1,0 +1,56 @@
+claiming_patagonia1 = {
+	is_shown = {
+	    has_state_in_state_region = STATE_PATAGONIA
+	    ROOT = {
+	        NOT = { 
+	            has_claim = s:STATE_PATAGONIA 
+	            } 
+	        }
+	    }    
+
+	possible = {
+	    has_state_in_state_region = STATE_PATAGONIA
+	    ROOT = {
+	        NOT = {
+	            has_claim = s:STATE_PATAGONIA
+	            } 
+	        }
+	    }    		   	
+
+	when_taken = {
+        s:STATE_PATAGONIA = { add_claim = ROOT }
+	    }	    
+
+	ai_chance = {
+		base = 100
+	}
+}	
+
+claiming_patagonia2 = {
+	is_shown = {
+	    has_state_in_state_region = STATE_ARAUCANIA
+	    }
+
+	    ROOT = {
+	        NOT = {
+	            has_claim = s:STATE_ARAUCANIA 
+	            } 
+	        }   
+
+	possible = {
+	    has_state_in_state_region = STATE_ARAUCANIA
+	    ROOT = {
+	        NOT = {
+	            has_claim = s:STATE_ARAUCANIA 
+	            } 
+	        }
+	    }		    	
+
+	when_taken = {
+        s:STATE_ARAUCANIA = { add_claim = ROOT }
+	    }	    
+
+	ai_chance = {
+		base = 100
+	}
+}
