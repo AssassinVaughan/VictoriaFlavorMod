@@ -5,15 +5,53 @@
 		    exists = c:USA
 		    }
 		exists = c:RUS
-		c:RAC = { has_state_in_state_region = STATE_CALIFORNIA }
+		OR = {
+		    if = {
+		        limit = {
+		        exists = c:RAC
+		        } 
+		    c:RAC = { has_state_in_state_region = STATE_CALIFORNIA }
+		    }
+		    if = {
+		        limit = {
+		        exists = c:AKA
+		        } 
+		    c:AKA = { has_state_in_state_region = STATE_CALIFORNIA }
+		    }
+            if = {
+		        limit = {
+		        exists = c:RUS
+		        } 
+		    c:RUS = { has_state_in_state_region = STATE_CALIFORNIA }
+		    }
+		}
 		ROOT = { has_state_in_state_region = STATE_CALIFORNIA }
-		}           
+		}	           
 
 	possible = {
 		in_default = no
 		taking_loans = no
 		is_at_war = no
-		c:RAC = { has_state_in_state_region = STATE_CALIFORNIA }
+		OR = {
+		    if = {
+		        limit = {
+		        exists = c:RAC
+		        } 
+		    c:RAC = { has_state_in_state_region = STATE_CALIFORNIA }
+		    }
+		    if = {
+		        limit = {
+		        exists = c:AKA
+		        } 
+		    c:AKA = { has_state_in_state_region = STATE_CALIFORNIA }
+		    }
+            if = {
+		        limit = {
+		        exists = c:RUS
+		        } 
+		    c:RUS = { has_state_in_state_region = STATE_CALIFORNIA }
+		    }
+		}
 		c:RUS = {
 			relations:root >= 0
 		}		
