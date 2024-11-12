@@ -181,9 +181,13 @@ BHT = {
 		#	}
 		#}
 
-		#Muslim countries should not be able to form India
+		#"outsiders" shouldn't form india
 		has_technology_researched = pan-nationalism
-		country_has_state_religion = rel:hindu
+		OR = {
+			country_has_state_religion = rel:hindu
+			country_has_state_religion = rel:sunni
+			country_has_state_religion = rel:shiite
+		}
 		# Below check doesn't make sense, only said cultures are offered already. It is redundant. Its like saying "okay, only X people are allowed" and then asking once they are inside (after showing they are X people) if they can prove they are X people. It is checking twice.
 
 		#OR = {
