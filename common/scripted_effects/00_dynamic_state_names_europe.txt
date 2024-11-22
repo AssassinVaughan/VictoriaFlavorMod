@@ -733,6 +733,26 @@ assign_state_name_region_baltic  = { # region_baltic
     } 
 }
 
+## Danubia
+assign_state_name_region_danubia  = { # region_danubia
+    if = {
+        limit = {
+            state_region = {
+                s:STATE_WEST_SLOVAKIA ?= this
+            }
+        }
+        STATE_WEST_SLOVAKIA_state_name_assign = yes
+    } 
+    else_if = {
+        limit = {
+            state_region = {
+                s:STATE_EAST_SLOVAKIA ?= this
+            }
+        }
+        STATE_EAST_SLOVAKIA_state_name_assign = yes
+    } 
+}
+
 #######################################
 ### Specific state name assignments ###
 #######################################
@@ -1621,6 +1641,235 @@ STATE_EAST_KARELIA_state_name_assign = {
 		
 		set_state_name = STATE_EAST_KARELIA_finnish
 		set_hub_names = finnish
+	}
+}
+
+## Danubia Region
+# West Slovakia
+STATE_WEST_SLOVAKIA_state_name_assign = {
+	if = {
+		limit = {
+            owner = {
+                any_primary_culture = {
+					has_discrimination_trait = german_speaking
+                }
+				NOR = {
+					any_primary_culture = {
+						cu:czech ?= this
+					}
+					any_primary_culture = {
+						cu:slovak ?= this
+					}
+					any_primary_culture = {
+						cu:hungarian ?= this
+					}
+					any_primary_culture = {
+						cu:polish ?= this
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_WEST_SLOVAKIA_german
+        set_hub_names = german
+	}
+	else_if = {
+		limit = {
+            owner = {
+				OR = {
+					any_primary_culture = {
+						cu:czech ?= this		#for now, maybe separate later
+					}
+					any_primary_culture = {
+						cu:slovak ?= this
+					}
+				}
+				NOR = {
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+					any_primary_culture = {
+						cu:hungarian ?= this
+					}
+					any_primary_culture = {
+						cu:polish ?= this
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_WEST_SLOVAKIA_slovak
+        set_hub_names = slovak
+	}
+	else_if = {
+		limit = {
+            owner = {
+				any_primary_culture = {
+					cu:hungarian ?= this
+				}
+				NOR = {
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+					any_primary_culture = {
+						cu:czech ?= this
+					}
+					any_primary_culture = {
+						cu:slovak ?= this
+					}
+					any_primary_culture = {
+						cu:polish ?= this
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_WEST_SLOVAKIA_hungarian
+        set_hub_names = hungarian
+	}
+	else_if = {
+		limit = {
+            owner = {
+				any_primary_culture = {
+					cu:polish ?= this
+				}
+				NOR = {
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+					any_primary_culture = {
+						cu:czech ?= this
+					}
+					any_primary_culture = {
+						cu:slovak ?= this
+					}
+					any_primary_culture = {
+						cu:hungarian ?= this
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_WEST_SLOVAKIA_polish
+        set_hub_names = polish
+	}
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
+# East Slovakia
+STATE_EAST_SLOVAKIA_state_name_assign = {
+	if = {
+		limit = {
+            owner = {
+                any_primary_culture = {
+					has_discrimination_trait = german_speaking
+                }
+				NOR = {
+					any_primary_culture = {
+						cu:czech ?= this
+					}
+					any_primary_culture = {
+						cu:slovak ?= this
+					}
+					any_primary_culture = {
+						cu:hungarian ?= this
+					}
+					any_primary_culture = {
+						cu:polish ?= this
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_EAST_SLOVAKIA_german
+        set_hub_names = german
+	}
+	else_if = {
+		limit = {
+            owner = {
+				OR = {
+					any_primary_culture = {
+						cu:czech ?= this		#for now, maybe separate later
+					}
+					any_primary_culture = {
+						cu:slovak ?= this
+					}
+				}
+				NOR = {
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+					any_primary_culture = {
+						cu:hungarian ?= this
+					}
+					any_primary_culture = {
+						cu:polish ?= this
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_EAST_SLOVAKIA_slovak
+        set_hub_names = slovak
+	}
+	else_if = {
+		limit = {
+            owner = {
+				any_primary_culture = {
+					cu:hungarian ?= this
+				}
+				NOR = {
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+					any_primary_culture = {
+						cu:czech ?= this
+					}
+					any_primary_culture = {
+						cu:slovak ?= this
+					}
+					any_primary_culture = {
+						cu:polish ?= this
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_EAST_SLOVAKIA_hungarian
+        set_hub_names = hungarian
+	}
+	else_if = {
+		limit = {
+            owner = {
+				any_primary_culture = {
+					cu:polish ?= this
+				}
+				NOR = {
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+					any_primary_culture = {
+						cu:czech ?= this
+					}
+					any_primary_culture = {
+						cu:slovak ?= this
+					}
+					any_primary_culture = {
+						cu:hungarian ?= this
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_EAST_SLOVAKIA_polish
+        set_hub_names = polish
+	}
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
 	}
 }
 
@@ -2906,6 +3155,47 @@ STATE_ISTRIA_state_name_assign = {
 	}
 }
 
+STATE_SOUTH_TYROL_state_name_assign = {
+	if = {
+		limit = {
+            owner = {
+                any_primary_culture = {
+					has_discrimination_trait = german_speaking
+                }
+				NOT = {
+					any_primary_culture = {
+						has_discrimination_trait = italophone
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_SOUTH_TYROL_german
+        set_hub_names = german
+	}
+	else_if = {
+		limit = {
+            owner = {
+                any_primary_culture = {
+					has_discrimination_trait = italophone
+                }
+				NOT = {
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_SOUTH_TYROL_italian
+        set_hub_names = italian
+	}
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
 ## Rhine
 STATE_FLANDERS_state_name_assign = {
 	if = {
@@ -3518,47 +3808,6 @@ STATE_TYROL_state_name_assign = {
 		
         set_state_name = STATE_TYROL_german
         set_hub_names = german
-	}
-	else = { # switch back to defaults
-		reset_state_name = yes
-		reset_hub_names = yes
-	}
-}
-
-STATE_SOUTH_TYROL_state_name_assign = {
-	if = {
-		limit = {
-            owner = {
-                any_primary_culture = {
-					has_discrimination_trait = german_speaking
-                }
-				NOT = {
-					any_primary_culture = {
-						has_discrimination_trait = italophone
-					}
-				}
-            }
-        }
-		
-        set_state_name = STATE_SOUTH_TYROL_german
-        set_hub_names = german
-	}
-	else_if = {
-		limit = {
-            owner = {
-                any_primary_culture = {
-					has_discrimination_trait = italophone
-                }
-				NOT = {
-					any_primary_culture = {
-						has_discrimination_trait = german_speaking
-					}
-				}
-            }
-        }
-		
-        set_state_name = STATE_SOUTH_TYROL_italian
-        set_hub_names = italian
 	}
 	else = { # switch back to defaults
 		reset_state_name = yes
