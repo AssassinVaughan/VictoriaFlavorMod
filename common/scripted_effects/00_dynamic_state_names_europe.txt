@@ -385,6 +385,14 @@ assign_state_name_region_italy  = {
         }
         STATE_ISTRIA_state_name_assign = yes
     }
+    else_if = {
+        limit = {
+            state_region = {
+                s:STATE_SOUTH_TYROL ?= this
+            }
+        }
+        STATE_SOUTH_TYROL_state_name_assign = yes
+    }
 }
 
 ## Rhine
