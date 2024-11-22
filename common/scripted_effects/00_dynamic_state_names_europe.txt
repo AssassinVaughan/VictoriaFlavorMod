@@ -3463,6 +3463,18 @@ STATE_STYRIA_state_name_assign = {
             name = HUB_NAME_STATE_STYRIA_city_french
         }
 	}
+	else_if = {
+		limit = {
+            owner = {
+                any_primary_culture = {
+					has_discrimination_trait = german_speaking
+                }
+            }
+        }
+		
+        set_state_name = STATE_STYRIA_german
+        set_hub_names = german
+	}
 	else = { # switch back to defaults
 		reset_state_name = yes
 		reset_hub_names = yes
@@ -3486,6 +3498,59 @@ STATE_TYROL_state_name_assign = {
             type = farm
             name = HUB_NAME_STATE_TYROL_farm_french
         }
+	}
+	else_if = {
+		limit = {
+            owner = {
+                any_primary_culture = {
+					has_discrimination_trait = german_speaking
+                }
+            }
+        }
+		
+        set_state_name = STATE_TYROL_german
+        set_hub_names = german
+	}
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
+STATE_SOUTH_TYROL_state_name_assign = {
+	if = {
+		limit = {
+            owner = {
+                any_primary_culture = {
+					has_discrimination_trait = german_speaking
+                }
+				NOT = {
+					any_primary_culture = {
+						has_discrimination_trait = italophone
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_SOUTH_TYROL_german
+        set_hub_names = german
+	}
+	else_if = {
+		limit = {
+            owner = {
+                any_primary_culture = {
+					has_discrimination_trait = italophone
+                }
+				NOT = {
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_SOUTH_TYROL_italian
+        set_hub_names = italian
 	}
 	else = { # switch back to defaults
 		reset_state_name = yes
@@ -3546,6 +3611,18 @@ STATE_AUSTRIA_state_name_assign = {
             type = wood
             name = HUB_NAME_STATE_AUSTRIA_wood_french
         }
+	}
+	else_if = {
+		limit = {
+            owner = {
+                any_primary_culture = {
+					has_discrimination_trait = german_speaking
+                }
+            }
+        }
+		
+        set_state_name = STATE_AUSTRIA_german
+        set_hub_names = german
 	}
 	else = { # switch back to defaults
 		reset_state_name = yes
