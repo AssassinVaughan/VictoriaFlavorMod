@@ -356,7 +356,6 @@ mass_communication = {
 	
 	modifier = {
 		country_authority_mult = 0.1
-		country_max_declared_interests_mult = 0.1
 	}
 	
 	unlocking_technologies = {
@@ -440,6 +439,7 @@ pharmaceuticals = {
 	
 	modifier = {
 		country_institution_health_system_max_investment_add = 1
+		state_harvest_condition_disease_outbreak_impact_mult = -0.2
 	}
 	
 	unlocking_technologies = {
@@ -464,6 +464,7 @@ modern_sewerage = {
 		country_max_weekly_construction_progress_add = 5
 		market_land_trade_capacity_add = 10
 		state_pollution_reduction_health_mult = -0.1
+		state_harvest_condition_flood_impact_mult = -0.1
 	}
 	
 	unlocking_technologies = {
@@ -541,6 +542,39 @@ central_archives = {
 	
 	unlocking_technologies = {
 		centralization
+	}
+
+	on_researched = {
+		if = {
+			limit = {
+				NOT = {
+					any_political_movement = {
+						is_political_movement_type = movement_modernizer
+					}
+				}
+				OR = {
+					AND = {
+						OR = {
+							country_is_in_south_america = yes
+							country_is_in_central_america = yes
+						}
+						country_rank <= rank_value:major_power
+					}
+					is_country_type = colonial
+					is_country_type = unrecognized
+				}
+				AND = {
+					has_law = law_type:law_protectionism
+					OR = {
+						has_law = law_type:law_interventionism
+						has_law = law_type:law_command_economy
+						has_law = law_type:law_laissez_faire
+					}
+					has_law = law_type:law_compulsory_primary_school
+				}
+			}
+			create_political_movement = { type = movement_modernizer }
+		}
 	}
 	
 	ai_weight = {
@@ -899,6 +933,7 @@ steel_frame_buildings = {
 		state_building_construction_sector_max_level_add = 5
 		country_max_weekly_construction_progress_add = 5
 		market_land_trade_capacity_add = 5
+		state_harvest_condition_flood_impact_mult = -0.05
 	}
 	
 	unlocking_technologies = {
@@ -1060,7 +1095,7 @@ corporatism = {
 	}
 	
 	modifier = {
-		state_radicals_from_sol_change_accepted_culture_mult = -0.10
+		state_radicals_from_political_movements_mult = -0.1
 	}
 	
 	unlocking_technologies = {
@@ -1535,6 +1570,7 @@ antibiotics = {
 	
 	modifier = {
 		country_institution_health_system_max_investment_add = 1
+		state_harvest_condition_disease_outbreak_impact_mult = -0.15
 	}
 	
 	unlocking_technologies = {
@@ -1648,6 +1684,7 @@ analytical_philosophy = {
 	era = era_5
 	texture = "gfx/interface/icons/invention_icons/analytical_philosophy.dds"
 	category = society
+	should_update_map = yes # This technology adds paved roads to the map
 	
 	unlocking_technologies = {
 		psychoanalysis

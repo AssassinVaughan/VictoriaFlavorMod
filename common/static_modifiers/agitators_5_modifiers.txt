@@ -129,8 +129,12 @@ modifier_democrats_condemned_us = {
 
 modifier_not_the_good_landlords = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
-	state_political_strength_from_discrimination_mult = -0.10
-	state_radicals_from_discrimination_mult = 0.10
+	country_political_strength_violent_hostility_mult = -0.05
+	country_political_strength_cultural_erasure_mult = -0.05
+	country_political_strength_open_prejudice_mult = -0.05
+	state_radicalism_increases_violent_hostility_mult = 0.05
+	state_radicalism_increases_cultural_erasure_mult = 0.05
+	state_radicalism_increases_open_prejudice_mult = 0.05
 }
 
 modifier_opening_up_discussion = {
@@ -181,20 +185,20 @@ modifier_seditious_article_allowed = {
 
 modifier_communist_peasant_agitation = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
-	state_pop_support_law_council_republic_add = 0.10
+	state_pop_support_movement_communist_mult = 0.2
 	state_pop_pol_str_mult = 0.10
 }
 
 modifier_communist_anti_landlord_agitation = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
-	state_radicals_from_sol_change_mult = 0.20
+	state_radicals_from_political_movements_mult = 0.20
 	state_pop_pol_str_mult = 0.10
 }
 
 modifier_rampant_political_violence = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
 	state_mortality_turmoil_mult = 0.03
-	state_radicals_from_sol_change_mult = 0.05
+	state_radicals_from_political_movements_mult = 0.05
 }
 
 modifier_communists_out_of_control = {
@@ -370,18 +374,23 @@ modifier_modernization_of_regime = {
 
 modifier_industry_banned_support_agrarian_party = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
-	state_pop_support_law_industry_banned_add = 0.10
+	state_pop_support_movement_land_reform_mult = 0.15
+	state_pop_support_movement_reactionary_mult = 0.15
 }
 
 modifier_no_colonial_affairs_support_agrarian_party = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
-	state_pop_support_law_no_colonial_affairs_add = 0.10
+	state_pop_support_movement_land_reform_mult = 0.10
+	state_pop_support_movement_socialist_mult = 0.10
+	state_pop_support_movement_communist_mult = 0.10
+	state_pop_support_movement_anarchist_mult = 0.10
 }
 
 modifier_suffrage_support_socdem_party = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
-	state_pop_support_law_census_voting_add = 0.05
-	state_pop_support_law_universal_suffrage_add = 0.10
+	state_pop_support_movement_liberal_mult = 0.2
+	state_pop_support_movement_radical_mult = 0.2
+	state_pop_support_movement_modernizer_mult = 0.2
 }
 
 modifier_average_ao3_writer = {
@@ -396,18 +405,18 @@ modifier_slavers_upset_by_election = {
 
 modifier_liberal_slavery_banned_support = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_positive.dds
-	state_pop_support_law_slavery_banned_add = 0.10
+	state_pop_support_movement_anti_slavery_mult = 0.2
 }
 
 modifier_freedom_of_speech_propaganda = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_positive.dds
 	country_prestige_mult = 0.03
-	state_pop_support_law_protected_speech_mult = 0.05
+	state_pop_support_movement_radical_mult = 0.1
 }
 
 modifier_rally_freedom_of_speech = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_positive.dds
-	state_pop_support_law_right_of_assembly_mult = 0.15
+	state_pop_support_movement_radical_mult = 0.2
 }
 
 modifier_political_involvement_welcomed = {
@@ -474,7 +483,8 @@ modifier_radical_prescription_denied_devout = {
 
 modifier_just_give_them_money_smh = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
-	state_pop_support_law_wage_subsidies_add = 0.10
+	state_pop_support_movement_labor_mult = 0.2
+	state_pop_support_movement_socialist_mult = 0.2
 }
 
 modifier_agitator_hates_the_monarchy_monarch = {
@@ -496,17 +506,18 @@ modifier_agitator_hates_the_monarchy_enlightened = {
 
 modifier_radical_womens_suffrage_support = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
-	state_pop_support_law_womens_suffrage_add = 0.15
+	state_pop_support_movement_feminist_mult = 0.3
 }
 
 modifier_radical_universal_suffrage_support = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_positive.dds
-	state_pop_support_law_universal_suffrage_add = 0.15
+	state_pop_support_movement_radical_mult = 0.3
 }
 
 modifier_radical_suffrage_opposition = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_negative.dds
-	state_pop_support_law_universal_suffrage_mult = -0.05
+	state_pop_support_movement_feminist_mult = -0.15
+	state_pop_support_movement_radical_mult = -0.15
 }
 
 modifier_radical_suffrage_further_support = {
@@ -517,7 +528,8 @@ modifier_radical_suffrage_further_support = {
 
 modifier_radical_womens_universal_suffrage_support = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_positive.dds
-	state_pop_support_law_womens_suffrage_mult = 0.10
+	state_pop_support_movement_feminist_mult = 0.2
+	state_pop_support_movement_radical_mult = 0.2
 }
 
 modifier_doing_great_things = {
@@ -539,14 +551,13 @@ modifier_not_doing_great_things = {
 
 modifier_radical_republicanism_support = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
-	state_pop_support_law_parliamentary_republic_add = 0.10
-	state_pop_support_law_presidential_republic_add = 0.05
+	state_pop_support_movement_radical_mult = 0.25
 }
 
 modifier_tax_the_rich = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_positive.dds
-	state_pop_support_law_graduated_taxation_add = 0.03
-	state_pop_support_law_proportional_taxation_add = 0.03
+	state_pop_support_movement_labor_mult = 0.1
+	state_pop_support_movement_socialist_mult = 0.1
 }
 
 modifier_interfered_in_our_corruption = {
@@ -587,7 +598,7 @@ modifier_leaning_in_to_trade_unions = {
 modifier_support_for_open_borders = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
 	interest_group_ig_trade_unions_approval_add = -2
-	state_pop_support_law_no_migration_controls_mult = 0.10
+	state_pop_support_movement_liberal_mult = 0.2
 }
 
 modifier_support_for_immigrant_schools = {
@@ -598,8 +609,8 @@ modifier_support_for_immigrant_schools = {
 modifier_paris_commune_not_dying_economy = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
 	building_throughput_add = 0.25
-	state_poor_standard_of_living_add = 3
-	state_minimum_wealth_add = 3
+	state_lower_strata_standard_of_living_add = 3
+	state_welfare_payments_add = 0.15
 }
 
 modifier_paris_commune_politics = {
@@ -614,7 +625,7 @@ modifier_paris_commune_politics = {
 	interest_group_ig_devout_pol_str_mult = -0.50
 	interest_group_ig_industrialists_pol_str_mult = -0.50
 	country_legitimacy_base_add = 25
-	state_radicals_from_sol_change_mult = -0.25
+	state_radicals_from_political_movements_mult = -0.25
 }
 
 modifier_repression_of_commune = {
@@ -667,7 +678,7 @@ modifier_pankhurst_negative_popularity = {
 
 modifier_pankhurst_womens_rights_support = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_positive.dds
-	state_pop_support_law_womens_suffrage_mult = 0.10
+	state_pop_support_movement_feminist_mult = 0.2
 }
 
 modifier_pankhurst_popularity = {
@@ -694,20 +705,26 @@ modifier_maurras_popularity = {
 
 modifier_maurras_antisemitism = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
-	state_pop_support_law_national_supremacy_mult = 0.10
-	state_radicals_from_discrimination_mult = 0.10
+	state_pop_support_movement_fascist_mult = 0.25
+	state_pop_support_movement_reactionary_mult = 0.25
+	state_pop_support_movement_cultural_majority_mult = 0.25
+	state_radicalism_increases_violent_hostility_mult = 0.05
+	state_radicalism_increases_cultural_erasure_mult = 0.05
+	state_radicalism_increases_open_prejudice_mult = 0.05
 }
 
 modifier_maurras_monarchism = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
-	state_pop_support_law_monarchy_mult = 0.10
+	state_pop_support_movement_royalist_absolutist_mult = 0.25
+	state_pop_support_movement_royalist_constitutional_mult = 0.25
 	interest_group_pol_str_mult = 0.10
 }
 
 modifier_mazzini_democratism = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_positive.dds
-	state_pop_support_law_autocracy_mult = -0.10
-	state_pop_support_law_oligarchy_mult = -0.10
+	state_pop_support_movement_liberal_mult = 0.25
+	state_pop_support_movement_radical_mult = 0.25
+	state_pop_support_movement_modernizer_mult = 0.25
 }
 
 modifier_mazzini_popularity = {
@@ -809,7 +826,7 @@ modifier_agent_of_the_sovereign_ig = {
 
 modifier_abolitionist_advocacy = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
-	state_pop_support_law_slavery_banned_add = 0.10
+	state_pop_support_movement_anti_slavery_mult = 0.25
 }
 
 modifier_curly_haired_orpheus = {
@@ -1097,7 +1114,7 @@ modifier_ttdm_command_economy_support = {
 
 modifier_ttdm_command_economy = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_positive.dds
-	state_pop_support_law_command_economy_add = 0.10
+	state_pop_support_movement_communist_mult = 0.25
 }
 
 modifier_land_dispute_reparations = {
@@ -1112,16 +1129,14 @@ modifier_land_dispute_tangled = {
 
 modifier_land_dispute_tangled_rurals = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_positive.dds
-	country_law_enactment_success_add = -0.05
-	country_law_enactment_time_mult = 0.1
-	interest_group_ig_rural_folk_approval_add = -2
+	country_law_enactment_time_mult = 0.15
+	interest_group_ig_rural_folk_approval_add = -3
 }
 
 modifier_land_dispute_tangled_landowners = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_positive.dds
-	country_law_enactment_success_add = -0.05
-	country_law_enactment_time_mult = 0.1
-	interest_group_ig_landowners_approval_add = -2
+	country_law_enactment_time_mult = 0.15
+	interest_group_ig_landowners_approval_add = -3
 }
 
 modifier_peasantry_rebranded = {
@@ -1228,15 +1243,15 @@ modifier_corruption_is_very_good = {
 
 modifier_defeated_initial_socialist_movement = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
-	state_loyalists_from_sol_change_mult = 0.15
+	state_loyalists_from_political_movements_mult = 0.15
 	country_legitimacy_base_add = 5
 	country_laborers_pol_str_mult = -0.1
 }
 
 modifier_defeated_initial_socialist_movement_worries = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
-	state_loyalists_from_sol_change_mult = 0.10
+	state_loyalists_from_political_movements_mult = 0.10
 	country_laborers_pol_str_mult = -0.1
-	state_pop_support_law_secret_police_mult = 0.05
-	state_pop_support_law_militarized_police_mult = 0.05
+	state_pop_support_movement_reactionary_mult = 0.15
+	state_pop_support_movement_fascist_mult = 0.15
 }

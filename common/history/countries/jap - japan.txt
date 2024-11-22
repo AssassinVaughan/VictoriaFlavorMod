@@ -1,13 +1,13 @@
 ﻿COUNTRIES = {
-	c:JAP = {
+	c:JAP ?= {
 		effect_starting_technology_tier_4_tech = yes
-		add_technology_researched = sericulture
 
 		add_technology_researched = academia
 		add_technology_researched = urban_planning
 		add_technology_researched = centralization
 		add_technology_researched = law_enforcement
 		add_technology_researched = colonization
+		add_technology_researched = sericulture
 
 		set_tax_level = medium
 		
@@ -22,20 +22,15 @@
 		activate_law = law_type:law_no_schools
 		activate_law = law_type:law_land_based_taxation		
 		activate_law = law_type:law_censorship
-		activate_law = law_type:law_closed_borders
+		activate_law = law_type:law_closed_borders	
 		activate_law = law_type:law_frontier_colonization	
 		activate_law = law_type:law_devolved
-
-		add_journal_entry = { type = je_the_line_of_advantage	}
-		
-		add_journal_entry = { type = je_terakoya }
-
 
 		set_institution_investment_level = {
 			institution = institution_police
 			level = 1
 		}
-		
+
 		set_institution_investment_level = {
 			institution = institution_colonial_affairs
 			level = 1
@@ -60,6 +55,14 @@
 
 		ig:ig_rural_folk = {
 			set_interest_group_name = ig_peasants
+		}
+
+        add_journal_entry = { type = je_the_line_of_advantage	}
+
+		add_journal_entry = { type = je_terakoya }
+		add_modifier = {
+			name = hokkaido_colonization_modifier
+			months = very_long_modifier_time
 		}
 	}
 }

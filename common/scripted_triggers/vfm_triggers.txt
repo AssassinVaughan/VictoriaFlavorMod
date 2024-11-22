@@ -7,20 +7,6 @@
 	}
 }
 
-has_agricultural_disaster = {
-    OR = {
-		has_modifier = modifier_crop_failure
-		has_modifier = modifier_crop_failure_relief_effect
-		has_modifier = modifier_drought
-		has_modifier = modifier_big_drought
-		has_modifier = modifier_potato_blight
-		has_modifier = modifier_potato_blight_mild
-		has_modifier = crop_failure_big_modifier
-		has_modifier = crop_failure_medium_modifier
-		has_modifier = crop_failure_small_modifier
-	}
-}
-
 recognized_major_trigger = {
 	country_rank >= rank_value:major_power 
 	OR = {

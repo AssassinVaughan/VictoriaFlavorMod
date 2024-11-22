@@ -1,8 +1,6 @@
 ﻿# This is executed last among all history
 GLOBAL = {
 	
-	vfm_scripted_lists_effect = yes
-	
 	every_country = {
 		limit = { NOT = { has_law = law_type:law_slavery_banned } }
 		ig:ig_landowners = { add_ideology = ideology_pro_slavery }
@@ -24,17 +22,10 @@ GLOBAL = {
 		}
 	}
 
-	c:BRZ = {
+	c:BRZ ?= {
 		set_variable = {
 			name = pedropoints
 			value = 5
-		}
-		set_variable = {
-			name = brazilian_slavery_progress_var
-			value = 70
-		}
-		add_radicals = {
-			value = 0.08
 		}
 	}
 	
@@ -42,6 +33,53 @@ GLOBAL = {
 		add_treasury = {
 			value = gold_reserves_limit
 			multiply = -1.0
+		}
+	}
+
+	c:BIC ?= {
+		every_subject_or_below = {
+			limit = {
+				capital = {
+					OR = {
+						region = sr:region_madras
+						region = sr:region_bombay
+						region = sr:region_bengal
+						region = sr:region_central_india
+						region = sr:region_punjab
+						region = sr:region_himalayas
+						state_region = s:STATE_MANDALAY
+						state_region = s:STATE_KACHIN
+						state_region = s:STATE_SHAN_STATES
+						state_region = s:STATE_PEGU
+					}
+				}
+			}
+			set_variable = princely_state
+		}
+		add_treasury = { # EIC was slightly in debt at game start
+			value = gold_reserves_limit
+			multiply = -0.6
+		}
+	}
+
+	every_country = {
+		limit = {
+			OR = {
+				c:PRU ?= this
+				c:AUS ?= this
+				c:RUS ?= this
+			}
+		}
+		every_scope_state = {
+			limit = {
+				state_region = {
+					is_homeland = cu:polish
+				}
+			}
+			set_variable = {
+				name = lingering_plc_resistance
+				months = very_long_modifier_time
+			}
 		}
 	}
 
@@ -319,6 +357,14 @@ GLOBAL = {
 		set_variable = not_yet_lost_ach_possible
 	}
 
+	#Declaration of Independence
+	every_country = {
+		limit = {
+			is_subject = yes
+		}
+		set_variable = declaration_of_independence_ach_possible
+	}
+
 	#Event Variables
 	
 	set_global_variable = {
@@ -354,77 +400,21 @@ GLOBAL = {
             value = yes
         }
 	}
-	
-	#Welcome message
-	every_country = {
-		trigger_event = {
-			id = welcome_event.1
-			days = 1
-		}
-	}
 
-	c:SPA = {
-		trigger_event = {
-			id = journal_flavor_spain.1
-			days = 4			
-		}
-	}	
-
-	c:CAR = {
-		trigger_event = {
-			id = journal_flavor_spain.1
-			days = 4			
-		}
-	}	
-
-	c:BOL = {
-		trigger_event = {
-			id = peru_bolivia_confederation.1
-			days = 4	
-		}
-	}
-
-	c:PEU = {
-		trigger_event = {
-			id = peru_bolivia_confederation.1
-			days = 4	
-		}
-		add_radicals = {
-			value = 0.05
-		}
-	}
-	
-	c:IQU = {
-		trigger_event = {
-			id = peru_bolivia_confederation.1
-			days = 3	
-		}
-
-		add_loyalists = {
-			value = 0.25
-			culture = cu:quechua
-		}
-
-		add_radicals = {
-			value = 0.25
-			culture = cu:south_andean
-		}
-	}
-	
-	c:UCA = {
+	c:UCA ?= {
 		add_radicals = {
 			value = 0.25
 		}
 	}
 
-	c:PNI = {
+	c:PNI ?= {
 		trigger_event = {
 			id = garibaldi_events.1
 			days = 6
 		}
 	}
-
-	c:RUS = {
+	
+	c:RUS ?= {
 		every_scope_state = {
             limit = {
                 OR = {
@@ -502,7 +492,8 @@ GLOBAL = {
             culture = cu:azerbaijani
         }
 	}
-	c:BUE = { # this doenst work properly in VFM because our ARG is broken into micro states
+
+	c:ARG ?= {
 		every_scope_state = {
 			limit = {
 				NOR = {
@@ -512,7 +503,7 @@ GLOBAL = {
 			}
 			add_radicals_in_state = {
 				value = 0.33
-				strata = rich
+				strata = upper
 			}
 			add_radicals_in_state = {
 				value = 0.25
@@ -520,43 +511,56 @@ GLOBAL = {
 			}
 			add_radicals_in_state = {
 				value = 0.15
-				strata = poor
+				strata = lower
 			}
 		}
 	}
-	c:URU = {
+
+	c:URU ?= {
 		add_radicals = {
-			value = 0.25
+			value = 0.15
 		}
 	}
 
-	c:CPL ?= {
-	    add_radicals = {
-			value = medium_radicals
-			culture = cu:polish
+	c:BOL ?= {
+		trigger_event = {
+			id = peru_bolivia_events.2
+			days = 45
 		}
 	}
-	c:POS = {
-	    add_radicals = {
-			value = medium_radicals
-			culture = cu:polish
+
+	c:NPU ?= {
+		add_radicals = {
+			value = 0.20
 		}
 	}
-	
-	c:GBR = {
+
+	c:SPU ?= {
+		add_radicals = {
+			value = 0.15
+		}
+	}
+
+	c:IQU ?= {
+		add_radicals = {
+			value = 0.10
+		}
+	}
+
+    c:GBR ?= {
 	    add_radicals = {
 			value = 0.03
 			culture = cu:irish
 		}
 	}
 
-	c:CHI = {
+	c:CHI ?= {
 		random_scope_state = {
 			limit = {	
 				state_region = s:STATE_SICHUAN
 			}
 			add_radicals_in_state = {
-                value = large_radicals
+                value = 0.1
                 culture = cu:han
             }
 		}
@@ -565,7 +569,7 @@ GLOBAL = {
 				state_region = s:STATE_YUNNAN
 			}
 			add_radicals_in_state = {
-                value = small_radicals
+                value = 0.025
                 culture = cu:han
             }
 		}
@@ -574,12 +578,12 @@ GLOBAL = {
 				state_region = s:STATE_CHONGQING
 			}
 			add_radicals_in_state = {
-                value = medium_radicals
+                value = 0.05
                 culture = cu:han
             }
 		}
 		add_radicals = {
-			value = medium_radicals
+			value = 0.025
 			culture = cu:han
 		}
 		
@@ -590,6 +594,10 @@ GLOBAL = {
 	}
 	
 	c:AUS = {
+        add_radicals = {
+			value = very_large_radicals
+			culture = cu:polish
+		}
 		add_radicals = {
 			value = 0.03
 			culture = cu:czech
@@ -708,52 +716,8 @@ GLOBAL = {
 			culture = cu:sephardic
 		}
 	}
-	
-	c:CPL ?= {
-		add_radicals = {
-			value = very_large_radicals
-			culture = cu:polish
-		}
-	}
-	
-	c:POS ?= {
-		add_radicals = {
-			value = very_large_radicals
-			culture = cu:polish
-		}
-	}
-	
-	c:KRA ?= {
-		add_radicals = {
-			value = very_large_radicals
-			culture = cu:polish
-		}
-	}
-	
-	c:RUS = {
-		add_radicals = {
-			value = very_large_radicals
-			culture = cu:polish
-		}
-	}
-	
-	c:RAC = {
-		add_radicals = {
-			value = large_radicals
-			culture = cu:inuit
-		}
-		add_radicals = {
-			value = very_large_radicals
-			culture = cu:athabaskan
-		}	
-	}
-	
-	c:AUS = {
-		add_radicals = {
-			value = very_large_radicals
-			culture = cu:polish
-		}
-	}
+
+
 	
 	c:PRU = {
 		add_radicals = {
@@ -762,609 +726,12 @@ GLOBAL = {
 		}
 	}
 	
-	
-	c:USA = {
-		add_radicals = {
-			value = very_large_radicals
-			culture = cu:muskogean
-		}
-		add_radicals = {
-			value = very_large_radicals
-			culture = cu:cherokee
-		}
-		add_radicals = {
-			value = very_large_radicals
-			culture = cu:algonquian
-		}
-		add_radicals = {
-			value = very_large_radicals
-			culture = cu:dakota
-		}
-		add_radicals = {
-			value = very_large_radicals
-			culture = cu:siouan
-		}
-		add_radicals = {
-			value = very_large_radicals
-			culture = cu:paiute
-		}
-		add_radicals = {
-			value = very_large_radicals
-			culture = cu:comanche
-		}
-		
-		add_radicals = {
-			value = large_radicals
-			culture = cu:cajun
-		}
-		add_radicals = {
-			value = large_radicals
-			culture = cu:afro_american
-		}
-		
-		add_radicals = {
-			value = medium_radicals
-			culture = cu:franco_canadian
-		}
-		
-		set_variable = {
-			name = acw_progress_var
-			value = 110
-		}
-	}
-	
-	c:QUE = {
-		add_radicals = {
-			value = very_large_radicals
-			culture = cu:cree
-		}
-		
-		add_radicals = {
-			value = medium_radicals
-			culture = cu:anglo_canadian
-		}
-		add_radicals = {
-			value = medium_radicals
-			culture = cu:yankee
-		}
-	}
-	
-	c:ONT = {
-		add_radicals = {
-			value = very_large_radicals
-			culture = cu:iroquoian
-		}
-		add_radicals = {
-			value = very_large_radicals
-			culture = cu:algonquian
-		}
-		add_radicals = {
-			value = very_large_radicals
-			culture = cu:cree
-		}
-		
-		add_radicals = {
-			value = medium_radicals
-			culture = cu:franco_canadian
-		}
-	}
-
-	c:HBC = {
-		add_to_variable_list = { name = past_overlord target = top_overlord }
-		
-		add_radicals = {
-			value = very_large_radicals
-			culture = cu:siouan
-		}
-		add_radicals = {
-			value = very_large_radicals
-			culture = cu:cree
-		}
-	}
-
-	c:NWT = {
-		add_to_variable_list = { name = past_overlord target = top_overlord }
-	}
-
-	c:COL = {
-		add_to_variable_list = { name = past_overlord target = top_overlord }
-	}
-
-	c:RAC = {
-		add_to_variable_list = { name = past_overlord target = top_overlord }
-	}
-
-	c:BIC = {
-		add_to_variable_list = { name = past_overlord target = top_overlord }
-	}
 
 	
-	c:BPR = {
-		add_to_variable_list = { name = past_overlord target = top_overlord }
-	}
-
-	
-	c:MPR = {
-		add_to_variable_list = { name = past_overlord target = top_overlord }
-	}
-
-	c:RGT = {
-		add_to_variable_list = { name = past_overlord target = top_overlord }
-	}
-
-	c:URU = {
-		trigger_event = {
-			id = journal_flavor_uruguay.3
-			days = 7
-		}
-	}
-	
-	#VFM GAME RULES HISTORY
-	
-	if = {
-		limit = {
-			has_game_rule = condensed_religions
-		}
-		every_country = {
-			every_scope_pop = {
-				limit = {
-					OR = {
-						has_pop_religion = generic_african
-						has_pop_religion = generic_native_american
-					}
-				}
-				change_pop_religion = { target = rel:animist value = 1.0 }
-			}
-			every_scope_pop = {
-				limit = {
-					OR = {
-						has_pop_religion = ibadi
-					}
-				}
-				change_pop_religion = { target = rel:sunni value = 1.0 }
-			}
-			set_global_variable = condensed_religions
-		}
-	}
-	
-	if = {
-		limit = {
-			has_game_rule = no_vfm_starting_countries
-		}
-		c:AUS = {
-			annex = c:LIE
-		}
-		c:CAR = {
-			annex = c:ANR
-		}
-		c:PAP = {
-			annex = c:SRO
-		}
-		c:MEI = {
-			annex = c:GRZ
-		}
-		c:COB = {
-			annex = c:GRA
-			annex = c:ALN
-			s:STATE_SAXONY.region_state:COB = {
-				set_state_type = incorporated
-			}
-		}
-		c:SCW = {
-			annex = c:SND
-			s:STATE_BRUNSWICK.region_state:SCW = {
-				set_state_type = incorporated
-			}
-		}
-		c:HOL = {
-			annex = c:LAU
-		}
-		c:HOH = {
-			annex = c:HHN
-		}
-		c:HES = {
-			annex = c:HHB
-		}
-		c:AHD = {
-			annex = c:AHK
-			annex = c:AHB
-		}
-		c:PRU = {
-			annex = c:POS
-		}
-		c:RUS = {
-			annex = c:CAU
-			annex = c:RAC
-		}
-		c:TUR = {
-			annex = c:KOC
-			annex = c:KHA
-			annex = c:DOJ
-			annex = c:JUM
-			annex = c:MIL
-			annex = c:TAI
-			annex = c:BOK
-			annex = c:BIT
-			annex = c:BAY
-			annex = c:HAK
-			annex = c:SOR
-			annex = c:BAN
-			annex = c:KUW
-			annex = c:BHN
-		}
-		c:PER = {
-			annex = c:SHZ
-			annex = c:MUK
-		}
-		c:HBC = {
-			annex = c:NWT
-		}
-		c:CHI = {
-			annex = c:MCH
-			annex = c:OMG
-			annex = c:IMG
-			annex = c:TUV
-			annex = c:ATI
-			annex = c:XIN
-			annex = c:QIN
-		}
-		c:MJT = {
-			annex = c:HIR
-		}
-		c:DEN = {
-			annex = c:RGT
-		}
-		c:NTO = {
-			annex = c:TNK
-			annex = c:TNU
-			annex = c:THE
-			annex = c:NGA
-		}
-		c:DEI = {
-			annex = c:KOT
-			annex = c:BAU
-			annex = c:BIM
-			annex = c:BLN
-			annex = c:BON
-			annex = c:GOR
-			annex = c:PGI
-			annex = c:TOJ
-			annex = c:BGK
-			annex = c:RIA
-		}
-		c:KTI = {
-			annex = c:PAS
-		}
-		c:STG = {
-			annex = c:SLI
-		}
-		c:ACE = {
-			annex = c:BAK
-			annex = c:BAR
-		}
-		c:LUW = {
-			annex = c:TOL
-			annex = c:DGL
-			annex = c:SIG
-			annex = c:MND
-			annex = c:TOR
-			annex = c:WAJ
-			annex = c:KNA
-		}
-		c:SIA = {
-			annex = c:KED
-			annex = c:PTT
-			annex = c:KEL
-			annex = c:TRG
-		}
-		c:MCR = {
-			annex = c:YAP
-			annex = c:CUU
-			annex = c:PHN
-			annex = c:MJL
-		}
-		c:TNG = {
-			annex = c:SMO
-			annex = c:WAF
-			annex = c:NIU
-		}
-		c:PLY = {
-			annex = c:NKV
-			annex = c:THT
-			annex = c:MGV
-			annex = c:RRT
-			annex = c:BRB
-			annex = c:RAI
-			annex = c:HUA
-		}
-		c:MAS = {
-			annex = c:ZWA
-			annex = c:ONL
-			annex = c:OSC
-		}
-		c:MAD = {
-			annex = c:ANT
-			annex = c:BAA
-			annex = c:ONI
-			annex = c:ZAF
-		}
-		c:TRI = {
-			annex = c:AWG
-		}
-		c:BUR = {
-			annex = c:SHS
-			annex = c:KRI
-			annex = c:WST
-			annex = c:KGT
-			annex = c:CHH
-		}
-		c:BIC = {
-			annex = c:PTL
-			annex = c:GHW
-			annex = c:BHW
-			annex = c:KHS
-			annex = c:TRR
-			annex = c:MNP
-		}
-		c:PAN = {
-			annex = c:MQP
-		}
-	}
-	
-	if = {
-		limit = {
-			has_game_rule = no_micro_european_nations
-		}
-		c:AUS = {
-			annex = c:LIE
-		}
-		c:CAR = {
-			annex = c:ANR
-		}
-		c:PAP = {
-			annex = c:SRO
-		}
-	}
-	
-	if = {
-		limit = {
-			has_game_rule = vanilla_german_minors
-		}
-		c:MEI = {
-			annex = c:GRZ
-		}
-		c:COB = {
-			annex = c:GRA
-			annex = c:ALN
-			s:STATE_SAXONY.region_state:COB = {
-				set_state_type = incorporated
-			}
-		}
-		c:SCW = {
-			annex = c:SND
-			s:STATE_BRUNSWICK.region_state:SCW = {
-				set_state_type = incorporated
-			}
-		}
-		c:HOL = {
-			annex = c:LAU
-		}
-		c:HOH = {
-			annex = c:HHN
-		}
-		c:MEC = {
-			annex = c:MST
-		}
-		c:HES = {
-			annex = c:HHB
-		}
-		c:AHD = {
-			annex = c:AHK
-			annex = c:AHB
-		}
-	}
-
-	if = {
-		limit = {
-			has_game_rule = no_confederations
-		}
-
-		c:BUE = {
-			annex = c:COE
-			annex = c:ENT
-			annex = c:TUC
-			annex = c:MDZ
-			annex = c:SLT
-			annex = c:SDE
-			annex = c:SFE
-			annex = c:CDA
-			annex = c:JUJ
-			annex = c:CMA
-			annex = c:LRJ
-			annex = c:SJN
-			annex = c:SLU
-			s:STATE_CHACO = {
-				add_claim = c:BUE
-			}
-			s:STATE_SANTA_FE = {
-				add_claim = c:BUE
-			}
-			s:STATE_RIO_NEGRO = {
-				add_claim = c:BUE
-			}
-			change_tag = ARG
-		}
-
-		s:STATE_SANTA_FE.region_state:ARG = {
-			set_state_type = incorporated
-		}
-		s:STATE_CORRIENTES.region_state:ARG = {
-			set_state_type = incorporated
-		}
-		s:STATE_LA_PAMPA.region_state:ARG = {
-			set_state_type = incorporated
-		}
-		s:STATE_JUJUY.region_state:ARG = {
-			set_state_type = incorporated
-		}
-		s:STATE_TUCUMAN.region_state:ARG = {
-			set_state_type = incorporated
-		}
-		s:STATE_RIO_NEGRO.region_state:ARG = {
-			set_state_type = incorporated
-		}
-		s:STATE_CHACO.region_state:ARG = {
-			set_state_type = incorporated
-		}																
-	}
-
-	if = {
-		limit = {
-			has_game_rule = no_polish_subjects
-		}
-		c:RUS = {
-			annex = c:CPL
-		}
-		c:PRU = {
-			annex = c:POS
-		}
-	}
-
-	if = {
-		limit = {
-			has_game_rule = congress_polish_subjects
-		}
-		c:RUS = {
-			annex = c:CPL
-		}
-	}
-
-	if = {
-		limit = {
-			has_game_rule = yes_polish_subjects
-		}
-		create_country = {
-			tag = c:GAL
-			origin = c:AUS
-			state = s:STATE_WEST_GALICIA
-			state = s:STATE_EAST_GALICIA
-		}
-	}
-
-	
-	if = {
-		limit = {
-			has_game_rule = no_ottoman_subjects
-		}
-		c:TUR = {
-			annex = c:KOC
-			annex = c:KHA
-			annex = c:DOJ
-			annex = c:JUM
-			annex = c:MIL
-			annex = c:TAI
-			annex = c:BOK
-			annex = c:BIT
-			annex = c:BAY
-			annex = c:HAK
-			annex = c:SOR
-			annex = c:BAN
-			annex = c:KUW
-			annex = c:BHN
-		}
-	}
-	
-	#if = {
-	#	limit = {
-	#		has_game_rule = no_real_unions
-	#	}
-	#	every_country = {
-	#		while = {
-	#			limit = {
-	#				any_subject_or_below = {
-	#					count > 0
-	#					is_subject_type = subject_type_real_union
-	#				}
-	#			}
-	#			every_subject_or_below = {
-	#				limit = {
-	#					is_subject_type = subject_type_real_union
-	#				}
-	#				save_scope_as = real_union_subject
-	#				overlord = {
-	#					annex = scope:real_union_subject
-	#				}
-	#			}
-	#		}
-	#	}
-	#}
-
-	if = {
-		limit = {
-			has_game_rule = no_dependencies
-		}
-		every_country = {
-			while = {
-				limit = {
-					any_subject_or_below = {
-						count > 0
-						is_subject_type = subject_type_dependency
-					}
-				}
-				every_subject_or_below = {
-					limit = {
-						is_subject_type = subject_type_dependency
-					}
-					save_scope_as = dependency_subject
-					overlord = {
-						annex = scope:dependency_subject
-					}
-				}
-			}
-		}
-	}
-
-	if = {
-		limit = {
-			has_game_rule = no_NA_decentralized
-		}
-		c:USA = {
-			annex = c:LKT
-			annex = c:PWN
-			annex = c:ARP
-			annex = c:ABS
-			annex = c:SLS
-		}
-		c:MEX = {
-			annex = c:COM
-			annex = c:UTE
-			annex = c:NVJ
-			annex = c:APC
-		}
-		c:COL = {
-			annex = c:NZP
-		}
-		c:HBC = {
-			annex = c:IRC
-		}
-		#split states
-		s:STATE_ALBERTA.region_state:BLF = {
-			set_state_owner = c:HBC
-		}
-		s:STATE_MONTANA.region_state:BLF = {
-			set_state_owner = c:USA
-		}
-		s:STATE_IDAHO.region_state:BNN = {
-			set_state_owner = c:COL
-		}
-		s:STATE_NEVADA.region_state:BNN = {
-			set_state_owner = c:MEX
-		}
-	}
 	c:SWE = {
 		trigger_event = {
 			id = vfm_ai.1
-			days = 2
+			days = 6
 		}
 	}
 
@@ -1434,24 +801,5 @@ GLOBAL = {
 		set_variable = revolution_safety_check_var
 		set_immune_to_revolutions = yes
 	}
-
-#	every_state = {
-#		limit = {
-#
-#			NOT = { has_modifier = malones }
-#
-#			any_scope_pop = {
-#				state = { save_temporary_scope_as = p_state }
-#
-#				culture = { 
-#					has_homeland = scope:p_state
-#				}
-#				culture = cu:patagonian
-#			}
-#		}
-#		add_modifier = {
-#			name = malones
-#			years = 20
-#		}
-#	}
 }
+

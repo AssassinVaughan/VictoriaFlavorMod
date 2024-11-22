@@ -20,34 +20,6 @@ law_decentralized = {
 		country_aristocrats_pol_str_mult = 0.1
 		country_authority_add = -400
 	}
-	
-	possible_political_movements = {
-		law_confederated
-		law_federal
-	}
-
-	pop_support = {
-		value = 0
-		# Aristocrats and Rural Folk like regionalism
-		add = {
-			desc = "POP_ARISTOCRATS"			
-			if = {
-				limit = { 
-					is_pop_type = aristocrats
-				}
-				value = 0.75
-			}
-		}
-		add = {
-			desc = "POP_PEASANTS"
-			if = {
-				limit = {
-					is_pop_type = peasants
-				}
-				value = 0.5
-			}
-		}
-	}
 
 	ai_enact_weight_modifier = { #Petitions
 		value = -25
@@ -74,24 +46,6 @@ law_confederated = {
 		state_bureaucracy_population_base_cost_factor_mult = -0.15
 		country_authority_add = -200
 	}
-	
-	possible_political_movements = {
-		law_decentralized
-		law_federal
-	}
-
-	pop_support = {
-		value = 0
-		add = {
-			desc = "POP_ACADEMICS"			
-			if = {
-				limit = { 
-					is_pop_type = academics
-				}
-				value = 0.2
-			}
-		}
-	}
 
 	ai_enact_weight_modifier = { #Petitions
 		value = 0
@@ -116,34 +70,6 @@ law_federal = {
 	modifier = {
 		country_bureaucracy_investment_cost_factor_mult = -0.1
 		state_decree_cost_mult = -0.2
-	}
-	
-	possible_political_movements = {
-		law_devolved
-		law_confederated
-		law_unitary
-	}
-
-	pop_support = {
-		value = 0
-		add = {
-			desc = "POP_MIDDLE_STRATA"
-			if = {
-				limit = { 
-					strata = middle
-				}
-				value = 0.05
-			}
-		}
-		add = {
-			desc = "POP_BUREAUCRATS"
-			if = {
-				limit = {
-					is_pop_type = bureaucrats
-				}
-			}
-			value = 0.25
-		}
 	}
 
 	ai_enact_weight_modifier = { #Petitions
@@ -170,52 +96,6 @@ law_devolved = {
 		country_bureaucracy_mult = 0.1
 		country_authority_add = 100
 		country_bureaucrats_pol_str_mult = 0.025
-	}
-	
-	possible_political_movements = {
-		law_confederated
-		law_federal
-		law_unitary
-	}
-
-	pop_support = {
-		value = 0
-		add = {
-			desc = "POP_BUREAUCRATS"
-			if = {
-				limit = {
-					is_pop_type = bureaucrats
-				}
-			}
-			value = 0.25
-		}
-		add = {
-			desc = "POP_ARISTOCRATS"			
-			if = {
-				limit = { 
-					is_pop_type = aristocrats
-				}
-				value = 0.25
-			}
-		}
-		add = {
-			desc = "POP_PEASANTS"
-			if = {
-				limit = {
-					is_pop_type = peasants
-				}
-				value = 0.1
-			}
-		}
-		add = {
-			desc = "POP_MIDDLE_STRATA"
-			if = {
-				limit = { 
-					strata = middle
-				}
-				value = 0.1
-			}
-		}
 	}
 
 	ai_enact_weight_modifier = { #Petitions
@@ -245,23 +125,6 @@ law_unitary = {
 		country_bureaucracy_mult = 0.1
 		country_bureaucracy_investment_cost_factor_mult = 0.05
 		country_bureaucrats_pol_str_mult = 0.05
-	}
-	
-	possible_political_movements = {
-		law_devolved
-	}
-
-	pop_support = {
-		value = 0
-		add = {
-			desc = "POP_BUREAUCRATS"
-			if = {
-				limit = {
-					is_pop_type = bureaucrats
-				}
-			}
-			value = 0.5
-		}
 	}
 
 	ai_enact_weight_modifier = { #Petitions

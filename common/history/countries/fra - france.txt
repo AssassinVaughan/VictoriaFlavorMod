@@ -1,5 +1,5 @@
 ﻿COUNTRIES = {
-	c:FRA = {
+	c:FRA ?= {
 		set_next_election_date = 1837.11.4
 		
 		effect_starting_technology_tier_1_tech = yes
@@ -10,7 +10,7 @@
 		add_taxed_goods = g:liquor
 		
 		set_tariffs_import_priority = g:engines
-
+		
 		# Laws
 		activate_law = law_type:law_monarchy
 		activate_law = law_type:law_wealth_voting
@@ -94,6 +94,7 @@
 		add_company = company_type:company_dmc
 		company:company_dmc = {
 			set_company_establishment_date = 1746.1.1
+			set_company_state_region = s:STATE_ALSACE_LORRAINE
 		}
 	}
 }

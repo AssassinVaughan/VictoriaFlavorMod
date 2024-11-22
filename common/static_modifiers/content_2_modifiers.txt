@@ -34,8 +34,8 @@ slave_narrative_stall = {
 }
 
 slave_narrative_stall_success = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
-	country_law_enactment_success_add = 0.15
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_law_enactment_success_add = -0.05
 }
 
 slave_narrative_stall_fail = {
@@ -79,8 +79,8 @@ plantation_reaction_stall = {
 }
 
 plantation_reaction_stall_success = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
-	country_law_enactment_success_add = 0.15
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_law_enactment_success_add = -0.05
 }
 
 plantation_reaction_stall_fail = {
@@ -157,13 +157,13 @@ wave_of_negative_editorials = {
 
 placated_rally_ig = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
-	political_movement_radicalism_add = -10
+	political_movement_radicalism_add = -0.10
 }
 
 suppressed_rally_ig = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
-	political_movement_support_add = -25
-	political_movement_radicalism_add = 10
+	political_movement_pop_attraction_mult = -0.25
+	political_movement_radicalism_add = 0.10
 }
 
 violently_suppressed_rally_bad_aftermath = {
@@ -238,7 +238,7 @@ a_smashing_appearance = {
 
 the_desire_to_smash_things_up = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
-	state_loyalists_from_sol_change_mult = 0.25
+	state_loyalists_from_political_movements_mult = 0.25
 }
 
 the_desire_to_smash_things_up_has_been_denied = {
@@ -446,7 +446,8 @@ wartime_need_for_police = {
 
 unreconstructed_state = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
-	state_tax_capacity_mult = -0.25
+	state_radicals_from_political_movements_mult = 0.2
+	state_tax_capacity_mult = -0.1
 }
 
 redeemer_government = {
@@ -461,12 +462,16 @@ reconstruction_government = {
 
 paramilitary_threats = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
-	state_radicals_from_discrimination_mult = 0.2
+	state_radicalism_increases_violent_hostility_mult = 0.05
+	state_radicalism_increases_cultural_erasure_mult = 0.05
+	state_radicalism_increases_open_prejudice_mult = 0.05
 }
 
 paramilitaries_suppressed = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
-	state_radicals_from_discrimination_mult = -0.2
+	state_radicalism_increases_violent_hostility_mult = -0.05
+	state_radicalism_increases_cultural_erasure_mult = -0.05
+	state_radicalism_increases_open_prejudice_mult = -0.05
 }
 
 frontier_military_aid = {
@@ -555,7 +560,9 @@ supporting_reform_efforts_among_brothers = {
 
 turtle_island_state_of_nations = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
-	state_loyalists_from_sol_change_accepted_culture_mult = 0.1
+	state_loyalism_increases_violent_hostility_mult = 0.1
+	state_loyalism_increases_cultural_erasure_mult = 0.1
+	state_loyalism_increases_open_prejudice_mult = 0.1
 }
 
 supporting_our_man = {
@@ -627,7 +634,7 @@ famed_mountaineer = {
 
 best_of_the_best = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_positive.dds
-	character_morale_cap_add = 0.10
+	unit_morale_loss_mult = -0.10
 }
 
 leader_of_men = {

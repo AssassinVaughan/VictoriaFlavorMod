@@ -43,7 +43,8 @@
 		activate_law = law_type:law_dedicated_police
 		activate_law = law_type:law_professional_army
 		activate_law = law_type:law_tenant_farmers # enclosure acts
-		activate_law = law_type:law_unitary
+		activate_law = law_type:law_migration_controls
+        activate_law = law_type:law_unitary
 		
 		set_institution_investment_level = {
 			institution = institution_colonial_affairs
@@ -61,22 +62,22 @@
 		}
 
 		add_journal_entry = { type = je_victoria }
-		
 		if = {
 			limit = {
 				has_dlc_feature = rp1_content
 			}
 			add_journal_entry = { type = je_aberdeen_act }
 		}
-		
+
 		add_modifier = {
 			name = brazilian_slave_trade_modifier
 			months = 600 # 50 Years
 		}
-		
+
 		add_company = company_type:company_gwr
 		company:company_gwr = {
 			set_company_establishment_date = 1833.1.21
+			set_company_state_region = s:STATE_HOME_COUNTIES
 		}
 	}
 }

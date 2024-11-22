@@ -35,7 +35,7 @@ no_traitors_executed_approves = {
 
 promoted_fascist_leader_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
-	character_popularity_add = 75
+	character_popularity_add = 35
 }
 
 promoted_fascist_leader_ig_modifier = {
@@ -45,7 +45,7 @@ promoted_fascist_leader_ig_modifier = {
 
 ignored_fascist_leader_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
-	character_popularity_add = -35
+	character_popularity_add = -15
 }
 
 ignored_fascist_leader_ig_modifier = {
@@ -61,7 +61,7 @@ fascist_authority_modifier = {
 
 fascist_loyalty_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
-	state_loyalists_from_sol_change_mult = 0.5
+	state_loyalists_from_political_movements_mult = 0.5
 }
 
 infrastructure_port_modifier = {
@@ -319,7 +319,8 @@ forced_disappearance_modifier = {
 
 forced_disappearance_coverage_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
-	country_law_enactment_success_add = 0.1
+	country_law_enactment_success_add = -0.05
+	country_law_enactment_time_mult = -0.2
 }
 
 forced_disappearance_acknowledge_modifier = {
@@ -358,12 +359,12 @@ privacy_concerns_good_modifier = {
 
 privacy_concerns_movement_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
-	political_movement_support_add = 25
+	political_movement_pop_attraction_mult = 0.25
 }
 
 privacy_concerns_movement_bad_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
-	political_movement_radicalism_add = 25
+	political_movement_radicalism_add = 0.15
 }
 
 privacy_concerns_ig_modifier = {
@@ -475,8 +476,8 @@ ignored_asylums_modifier = {
 
 asylums_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_positive.dds
-	state_poor_standard_of_living_add = 1
-	state_middle_standard_of_living_add = 1
+	state_lower_strata_standard_of_living_add = 1
+	state_middle_strata_standard_of_living_add = 1
 }
 
 asylum_pay_modifier = {
@@ -607,11 +608,13 @@ krakatoa_crop_cost_modifier = {
 crop_failure_big_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_agriculture_negative.dds
 	building_group_bg_agriculture_throughput_add = -0.3
+	building_group_bg_plantations_throughput_add = -0.2
 }
 
 crop_failure_medium_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_agriculture_negative.dds
 	building_group_bg_agriculture_throughput_add = -0.2
+	building_group_bg_plantations_throughput_add = -0.1
 }
 
 crop_failure_small_modifier = {
@@ -713,7 +716,7 @@ poverty_relief_modifier = {
 
 sol_increased_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
-	state_loyalists_from_sol_change_mult = 0.75
+	state_loyalists_from_political_movements_mult = 0.75
 }
 
 sol_institution_modifier = {
@@ -864,7 +867,7 @@ new_leader_ig_modifier = {
 
 cool_rock_sinister_influence = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
-	state_radicals_from_sol_change_mult = 0.2
+	state_radicals_from_political_movements_mult = 0.2
 }
 
 infatuated_with_cool_rock_modifier = {

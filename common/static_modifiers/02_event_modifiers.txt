@@ -75,7 +75,7 @@ trade_unions_placation_modifier = {
 
 accepted_petition_TU = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
-	state_loyalists_from_sol_change_mult = 0.25
+	state_loyalists_from_political_movements_mult = 0.25
 }
 
 no_public_schools_modifier = {
@@ -199,7 +199,7 @@ expecting_riches_less = {
 expecting_riches_angry = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
 	state_standard_of_living_add = 1	# Standard of Living +1
-	state_radicals_from_sol_change_mult = -0.15
+	state_radicals_from_political_movements_mult = -0.15
 }
 
 gamble_denied_modifier = {
@@ -322,12 +322,12 @@ modifier_police_given_light = {
 
 modifier_secret_police_ignored = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
-	country_suppression_ig_attraction_mult = 0.10
+	country_suppression_attraction_mult = 0.10
 }
 
 modifier_secret_police_supported = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
-	country_suppression_ig_attraction_mult = -0.15
+	country_suppression_attraction_mult = -0.15
 }
 
 modifier_mine_regulations_enforced = {
@@ -595,7 +595,7 @@ funding_marshals = {
 modifier_train_robberies = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
 	state_migration_pull_mult = -0.5
-	state_radicals_from_sol_change_mult = 0.05
+	state_radicals_from_political_movements_mult = 0.05
 }
 
 modifier_organised_crime_suppressed = {
@@ -616,7 +616,7 @@ modifier_killer_caught = {
 
 cda_enacted = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
-	state_poor_standard_of_living_add = -2
+	state_lower_strata_standard_of_living_add = -2
 }
 
 cda_enacted_ig = {
@@ -743,7 +743,9 @@ modifier_crop_failure_relief = {
 
 modifier_crop_failure_relief_effect = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_positive.dds
-	state_minimum_wealth_add = 3
+	state_welfare_payments_add = 0.15
+	building_group_bg_agriculture_throughput_add = -0.25
+	building_group_bg_plantations_throughput_add = -0.25
 }
 
 modifier_cyclone_relief = {
@@ -846,7 +848,7 @@ missionary_schools_hospitals = {
 
 god_worshippers = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
-	state_radicals_from_sol_change_mult = 0.25
+	state_radicals_from_political_movements_mult = 0.25
 }
 
 hightened_security = {
@@ -1159,7 +1161,9 @@ modifier_devout_in_scandal = {
 
 enforced_segregation = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
-	state_radicals_from_discrimination_mult = 0.5
+	state_radicalism_increases_violent_hostility_mult = 0.20
+	state_radicalism_increases_cultural_erasure_mult = 0.20
+	state_radicalism_increases_open_prejudice_mult = 0.20
 }
 
 stab_in_the_back_myth = {
@@ -1171,13 +1175,17 @@ stab_in_the_back_myth = {
 linguistic_discrimination = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
 	state_assimilation_mult = 0.2
-	state_radicals_from_discrimination_mult = 0.2
+	state_radicalism_increases_violent_hostility_mult = 0.05
+	state_radicalism_increases_cultural_erasure_mult = 0.05
+	state_radicalism_increases_open_prejudice_mult = 0.05
 }
 
 linguistic_freedom = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
 	state_assimilation_mult = -0.1
-	state_radicals_from_discrimination_mult = -0.2
+	state_radicalism_increases_violent_hostility_mult = -0.05
+	state_radicalism_increases_cultural_erasure_mult = -0.05
+	state_radicalism_increases_open_prejudice_mult = -0.05
 }
 
 employment_discrimination = {
@@ -1187,7 +1195,7 @@ employment_discrimination = {
 
 modifier_urbanized_state = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
-	state_loyalists_from_sol_change_mult = 0.2
+	state_loyalists_from_political_movements_mult = 0.2
 }
 
 modifier_ig_urbanizing = {
@@ -1234,7 +1242,7 @@ ig_urbanization_industrialists = {
 
 modifier_heavily_urbanized = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
-	state_loyalists_from_sol_change_mult = 0.25
+	state_loyalists_from_political_movements_mult = 0.25
 }
 
 modifier_urban_centers = {
@@ -1350,24 +1358,23 @@ christian_mission = {
 
 mission_to_abolish_slavery = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
-	state_colony_growth_creation_mult = 0.2
+	state_colony_growth_creation_factor = 0.2
 	state_colony_growth_speed_mult = 0.2
 }
 
 slave_trade_collaboration = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_agriculture_positive.dds
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_positive.dds
 	building_group_bg_plantations_throughput_add = 0.3
 }
 
 improved_labor_conditions = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_negative.dds
 	building_group_bg_plantations_throughput_add = -0.2
-	state_poor_standard_of_living_add = 1
+	state_lower_strata_standard_of_living_add = 1
 }
 
 anti_colonial_sentiment = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
-	state_colony_growth_creation_mult = -0.2
 	state_colony_growth_speed_mult = -0.2
 }
 
@@ -1418,12 +1425,12 @@ approves_of_drainage_modifier = {
 
 better_drainage_levels_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_positive.dds
-	state_poor_standard_of_living_add = 1
+	state_lower_strata_standard_of_living_add = 1
 }
 
 bad_drainage_levels_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
-	state_poor_standard_of_living_add = -1
+	state_lower_strata_standard_of_living_add = -1
 }
 
 drainage_levels_cost_modifier = {
@@ -1436,7 +1443,7 @@ approves_of_ignoring_drainage_modifier = {
 	interest_group_approval_add = 1
 }
 
-repressed_sol_protestor_modifier = {
+repressed_sol_protester_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
 	interest_group_approval_add = 2
 }
@@ -1493,7 +1500,7 @@ charitable_slums_state_modifier = {
 
 bread_riots_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_positive.dds
-	state_poor_standard_of_living_add = 1
+	state_lower_strata_standard_of_living_add = 1
 }
 
 rubber_production_modifier = {
@@ -1504,7 +1511,7 @@ rubber_production_modifier = {
 
 tractor_food_for_the_poor = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_positive.dds
-	state_minimum_wealth_add = 3
+	state_welfare_payments_add = 0.15
 }
 
 tractor_production = {
@@ -1680,7 +1687,7 @@ new_vanguard_clout = {
 anarchist_utopia = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
 	country_legitimacy_base_add = 30
-	state_loyalists_from_sol_change_mult = 0.5
+	state_loyalists_from_political_movements_mult = 0.5
 }
 
 USA_paying_removal_costs = {
@@ -1818,12 +1825,12 @@ famine_migration_modifier = {
 
 famine_donations_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_positive.dds
-	state_poor_standard_of_living_add = 2
+	state_lower_strata_standard_of_living_add = 2
 }
 
 famine_internal_donations_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_positive.dds
-	state_poor_standard_of_living_add = 1
+	state_lower_strata_standard_of_living_add = 1
 }
 
 donations_ig_modifier = {
@@ -1935,7 +1942,9 @@ rebellion_conspiracy_reprisals = {
 
 attacking_hidden_communities = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
-	state_radicals_from_discrimination_mult = 0.2
+	state_radicalism_increases_violent_hostility_mult = 0.05
+	state_radicalism_increases_cultural_erasure_mult = 0.05
+	state_radicalism_increases_open_prejudice_mult = 0.05
 }
 
 national_defence_modifier = {
@@ -1960,7 +1969,7 @@ refused_condemning_slavery = {
 
 crime_wave_panic = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
-	political_movement_support_add = 25
+	political_movement_pop_attraction_mult = 0.25
 }
 
 mustard_gas = {

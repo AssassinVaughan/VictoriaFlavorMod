@@ -18,8 +18,6 @@ base_values = {
 	country_influence_add = 100
 
 	country_secession_progress_add = 0.1
-
-	state_education_access_wealth_add = 0.005
 	
 	country_law_enactment_max_setbacks_add = 3
 
@@ -30,9 +28,9 @@ base_values = {
 	state_infrastructure_add = 3
 	state_infrastructure_from_automobiles_consumption_add = 0.25
 	
-	state_poor_expected_sol = 5
-	state_middle_expected_sol = 10
-	state_rich_expected_sol = 15
+	state_lower_strata_expected_sol_add = 5
+	state_middle_strata_expected_sol_add = 10
+	state_upper_strata_expected_sol_add = 15
 	state_expected_sol_from_literacy = 5
 	
 	state_farmers_investment_pool_contribution_add = 0.05
@@ -51,8 +49,8 @@ base_values = {
 
     state_market_access_price_impact = 0.77
 	
-	country_company_throughput_bonus_add = 0.1
-	country_company_construction_efficiency_bonus_add = 0.1
+	country_company_throughput_bonus_add = 0.15
+	country_company_construction_efficiency_bonus_add = 0.15
 	
 	country_max_weekly_construction_progress_add = 10
 	
@@ -68,23 +66,17 @@ base_values = {
 # Scales with a country's global prestige rank, so at 20/100 this is multiplied by 0.8x, 50/100 by 0.5x, etc
 # Not applied if the top_prestige_ranking modifier is applied instead
 prestige_ranking = {
-	country_company_throughput_bonus_add = 0.05
-	country_company_construction_efficiency_bonus_add = 0.05
+	country_company_throughput_bonus_add = 0.1
 }
 
 # Scales with a country's prestige rank compared against TOP_PRESTIGE_RANK_BONUS_THRESHOLD
 # Multiplied by 1x if at TOP_PRESTIGE_RANK_BONUS_THRESHOLD, all the way up to TOP_PRESTIGE_RANK_BONUS_SCALE if at rank 1
 top_prestige_ranking = {
-	country_company_throughput_bonus_add = 0.05
-	country_company_construction_efficiency_bonus_add = 0.05
+	country_company_throughput_bonus_add = 0.1
 }
 
 character_base_values = {
 	character_health_add = 1	# Must be != 0. Even better if it's > 0
-}
-
-discrimination = {
-	state_political_strength_from_discrimination_mult = -0.9
 }
 
 coastal_state = {
@@ -126,16 +118,25 @@ working_conditions = {
 	building_group_bg_fishing_engineers_mortality_mult = 0.02
 }
 
-malnourishment = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_fire_negative.dds
-	state_birth_rate_mult = -0.04	# per level below equilibrium
-}
-
 literacy_penalty = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
 	state_birth_rate_mult = -0.15 	# scaled by pop literacy
 }
 
+# starvation_penalty scales by the Starvation value and will never reach 100% effect as it will be substituted by the severe_starvation_penalty instead
+# At most this will reach (FOOD_SECURITY_STARVATION_THRESHOLD - FOOD_SECURITY_SEVERE_STARVATION_THRESHOLD) * STARVATION_EFFECTS_SCALING_FACTOR
+# E.g. (40% - 20%) * 2.5 = 50% effect max
+starvation_penalty = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_fire_negative.dds
+	state_birth_rate_mult = -0.7
+	state_mortality_mult = 0.6
+}
+
+severe_starvation_penalty = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_fire_negative.dds
+	state_birth_rate_mult = -0.9
+	state_mortality_mult = 1.0
+}
 
 commander_battle_end_victory = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_positive.dds
@@ -165,7 +166,7 @@ declared_bankruptcy = {
 	country_loan_interest_rate_mult = 0.5
 	unit_offense_mult = -0.5
 	unit_defense_mult = -0.5
-	state_radicals_from_sol_change_mult = 0.25
+	state_radicals_and_loyalists_from_sol_change_mult = 0.25
 	state_construction_mult = -0.25
 	building_throughput_add = -0.1
 	country_force_privatization_bool = yes
@@ -227,13 +228,13 @@ moved_market_capital_recently = {
 tax_modifier_very_low = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
 	country_legitimacy_base_add = 10
-	state_radicals_from_sol_change_mult = -0.2
+	state_radicals_from_political_movements_mult = -0.2
 }
 
 tax_modifier_low = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
 	country_legitimacy_base_add = 5
-	state_radicals_from_sol_change_mult = -0.1
+	state_radicals_from_political_movements_mult = -0.1
 }	
 
 tax_modifier_medium = {
@@ -242,14 +243,14 @@ tax_modifier_medium = {
 tax_modifier_high = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
 	country_legitimacy_base_add = -10
-	state_radicals_from_sol_change_mult = 0.25
+	state_radicals_from_political_movements_mult = 0.25
 	interest_group_in_government_attraction_mult = -0.1
 }	
 
 tax_modifier_very_high = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
 	country_legitimacy_base_add = -20
-	state_radicals_from_sol_change_mult = 0.5
+	state_radicals_from_political_movements_mult = 0.5
 	interest_group_in_government_attraction_mult = -0.2
 }	
 
@@ -335,17 +336,12 @@ ruler_left_interest_group = {
 
 uprising_conscription = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_positive.dds
-	state_conscription_rate_mult = 1.0
+	state_conscription_rate_add = 0.5
 }
 
 revolution_lost_ig = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
 	interest_group_pol_str_factor = -1.0
-}
-
-secession_lost_state = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
-	state_radicals_from_discrimination_mult = -0.25
 }
 
 debug_ig_approval = {
@@ -420,7 +416,7 @@ legislative_efficiency = {
 political_dysfunction = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
 	country_opposition_ig_approval_add = -10
-	state_radicals_from_sol_change_mult = 0.20
+	state_radicals_from_political_movements_mult = 0.20
 
 }
 
@@ -583,7 +579,11 @@ state_region_pollution_health = {
 # Effect = state_region_pollution_health * impact
 state_region_pollution_general = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_negative.dds
-	state_migration_pull_mult = -0.1
+	state_migration_pull_mult = -0.2
+	state_harvest_condition_drought_impact_mult = 0.5
+	state_harvest_condition_flood_impact_mult = 0.5
+	state_harvest_condition_wildfire_impact_mult = 0.5
+	state_harvest_condition_heatwave_impact_mult = 0.5
 }
 
 # Scales with deficiency in tax capacity
@@ -747,7 +747,7 @@ country_authority_per_subject = {
 
 supported_law_cancelled = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fire_negative.dds
-	political_movement_radicalism_add = 15
+	political_movement_radicalism_add = 0.1
 }
 
 # Scaled by building_mobilization_cost_mult
@@ -812,4 +812,9 @@ agreeable_to_imposition = {
 successfully_met_foreign_imposition_legitimacy = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
 	country_legitimacy_base_add = 10
+}
+
+movement_suppressed_after_civil_war = {
+	icon = "gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds"
+	political_movement_pop_attraction_mult = -2.0
 }

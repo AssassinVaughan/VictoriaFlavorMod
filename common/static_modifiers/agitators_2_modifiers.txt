@@ -85,7 +85,9 @@ barbary_pirates_modifier = {
 }
 arab_bureaux_peacekeepers_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
-	state_radicals_from_discrimination_mult = -0.2
+	state_radicalism_increases_violent_hostility_mult = -0.05
+	state_radicalism_increases_cultural_erasure_mult = -0.05
+	state_radicalism_increases_open_prejudice_mult = -0.05
 }
 arab_bureaux_university_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_negative.dds
@@ -93,7 +95,9 @@ arab_bureaux_university_modifier = {
 }
 unrestricted_algerian_migration = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
-	state_radicals_from_discrimination_mult = 0.1
+	state_radicalism_increases_violent_hostility_mult = 0.05
+	state_radicalism_increases_cultural_erasure_mult = 0.05
+	state_radicalism_increases_open_prejudice_mult = 0.05
 	state_migration_pull_mult = 0.2
 }
 arab_bureaux_administrators_modifier = {
@@ -438,9 +442,11 @@ a_reputation_for_violence_modifier = {
 }
 widespread_dogmatic_intolerance = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_negative.dds
-	state_radicals_from_discrimination_mult = 0.05
+	state_radicalism_increases_violent_hostility_mult = 0.05
+	state_radicalism_increases_cultural_erasure_mult = 0.05
+	state_radicalism_increases_open_prejudice_mult = 0.05
 	country_tech_spread_mult = -0.05
-	country_tech_research_speed_mult = -0.05
+	country_weekly_innovation_mult = -0.05
 }
 embittered_writings_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
@@ -686,7 +692,7 @@ guidelines_of_engagement_modifier = {
 # Revolution Events
 sent_leader_on_military_mission_movement = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
-	political_movement_radicalism_add = 5
+	political_movement_radicalism_add = 0.2
 }
 sent_leader_on_military_mission_ig = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
@@ -710,11 +716,11 @@ transnational_requested_foreign_intervention = {
 }
 transnational_bloody_suppression = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
-	political_movement_radicalism_add = 10
+	political_movement_radicalism_add = 0.10
 }
 transnational_negotiations_not_fusillations = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
-	political_movement_radicalism_add = -5
+	political_movement_radicalism_add = -0.25
 }
 sided_with_workers_over_scrips = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
@@ -726,7 +732,7 @@ sided_with_capitalists_over_scrips = {
 }
 abolished_scrip_wages = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
-	political_movement_radicalism_add = -5
+	political_movement_radicalism_add = -0.25
 }
 seditious_garrison = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
@@ -734,15 +740,15 @@ seditious_garrison = {
 }
 hatmakersfeud_emboldened_commoners = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
-	political_movement_radicalism_add = 5
+	political_movement_radicalism_add = 0.25
 }
 hatmakersfeud_martyrs_for_the_cause = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
-	political_movement_radicalism_add = 10
+	political_movement_radicalism_add = 0.10
 }
 jailtime_blues_jail_stormed = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
-	political_movement_radicalism_add = 10
+	political_movement_radicalism_add = 0.10
 }
 jailtime_blues_martyr = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
@@ -751,14 +757,14 @@ jailtime_blues_martyr = {
 }
 modifier_scouring_countryside = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_agriculture_negative.dds
-	state_radicals_from_sol_change_mult = -0.05
+	state_radicals_from_political_movements_mult = -0.05
 	building_group_bg_agriculture_throughput_add = -0.25
 	building_group_bg_plantations_throughput_add = -0.25
 	building_group_bg_ranching_throughput_add = -0.25
 }
 modifier_scouring_cities = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fire_negative.dds
-	state_radicals_from_sol_change_mult = -0.05
+	state_radicals_from_political_movements_mult = -0.05
 	building_urban_center_throughput_add = -0.25
 }
 dreyfus_legacy_modifier = {
@@ -767,13 +773,15 @@ dreyfus_legacy_modifier = {
 }
 dreyfus_legacy_disc_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_negative.dds
-	state_radicals_from_discrimination_mult = 0.05
+	state_radicalism_increases_violent_hostility_mult = 0.05
+	state_radicalism_increases_cultural_erasure_mult = 0.05
+	state_radicalism_increases_open_prejudice_mult = 0.05
 }
 modifier_french_independence_payments_1 = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
 	country_expenses_add = 500
 	country_prestige_mult = -0.1
-	state_radicals_from_sol_change_mult = 0.05
+	state_radicals_from_political_movements_mult = 0.05
 	country_gold_reserve_limit_mult = 5.0
 }
 modifier_haitian_independence_payments_1 = {
@@ -785,7 +793,7 @@ modifier_french_independence_payments_2 = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
 	country_expenses_add = 1000
 	country_prestige_mult = -0.2
-	state_radicals_from_sol_change_mult = 0.1
+	state_radicals_from_political_movements_mult = 0.1
 	country_gold_reserve_limit_mult = 5.0
 }
 modifier_haitian_independence_payments_2 = {
@@ -797,7 +805,7 @@ modifier_french_independence_payments_3 = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
 	country_expenses_add = 1500
 	country_prestige_mult = -0.3
-	state_radicals_from_sol_change_mult = 0.15
+	state_radicals_from_political_movements_mult = 0.15
 	country_gold_reserve_limit_mult = 5.0
 }
 modifier_haitian_independence_payments_3 = {
@@ -809,7 +817,7 @@ modifier_french_independence_payments_4 = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
 	country_expenses_add = 2000
 	country_prestige_mult = -0.4
-	state_radicals_from_sol_change_mult = 0.2
+	state_radicals_from_political_movements_mult = 0.2
 	country_gold_reserve_limit_mult = 5.0
 }
 modifier_haitian_independence_payments_4 = {
@@ -832,5 +840,5 @@ pearl_of_the_antilles_modifier = {
 }
 the_country_of_our_ancestors_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
-	state_radicals_from_sol_change_mult = -0.2
+	state_radicals_from_political_movements_mult = -0.2
 }

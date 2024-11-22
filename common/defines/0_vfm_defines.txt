@@ -60,9 +60,6 @@ NAI = {
 	PRODUCTION_METHOD_REDUCE_OUTPUT_PENALTY_FACTOR = 5 #10 Multiply method score by this if we're reducing the building's output penalties
 	PRODUCTION_METHOD_INCREASE_OUTPUT_PENALTY_FACTOR = 0.45 #0.01 # Multiply method score by this if we're increasing the building's output penalties
 	
-	PRODUCTION_METHOD_STICKINESS_UPGRADE = 0.95 # Score of non-current method is multiplied by this when it produces more goods base value in total
-	PRODUCTION_METHOD_STICKINESS_DOWNGRADE = 0.85 # Score of non-current method is multiplied by this when it produces less (or equal) goods base value in total
-	
 	PRODUCTION_BUILDING_INCREASE_SHORTAGE_MULT = 0.25 #0.01 Multiply score by this if we're increasing the state region's shortages
 	
 	# Government construction applies this multiplier to domestic states when determining where to construct
@@ -84,14 +81,8 @@ NAI = {
     CONSUMPTION_TAX_MAX_NUM_TAXED_GOODS_BASE = 2 #0 Base max number of goods AI wants to tax
     CONSUMPTION_TAX_MAX_NUM_TAXED_GOODS_PER_MISSING_TAX_TYPE = 0 #2 Added to max number of goods AI wants to tax for each other type of tax it does not collect
 	
-	AI_PEACE_AGREEMENT_WARGOAL_VALUE_BASE = 8	# How much does the AI value each wargoal (base)
-	#AI_PEACE_AGREEMENT_WHITE_PEACE_BASE = 20 # If no wargoals are being enforced on either side
+	AI_PEACE_AGREEMENT_WHITE_PEACE_BASE = 20 # If no wargoals are being enforced on either side
 	#AI_PEACE_AGREEMENT_WHITE_PEACE_WAR_DURATION = 1 # For each month the war goes on add this to the acceptance for a white peace
-	
-	AI_PEACE_AGREEMENT_WARGOAL_VALUE_SCALED = 0.3	# How much does the AI value each wargoal (scaled with maneuver cost)
-	
-	AI_PEACE_AGREEMENT_SELF_WARGOAL_MULT = 2.5 # 3.0 # For each wargoal we have that's being pressed, apply wargoal value * this
-	AI_PEACE_AGREEMENT_ENEMY_WARGOAL_SELF_MULT = -3.5 # 8 # For each wargoal that the enemy is pressing against us, apply wargoal value * this
 	
 	TRADE_ROUTE_MIN_MARKET_SHARE = 0.05 # If the AI is junior in a customs union and has less than this market share in a market, don't make any trade routes
 	TRADE_ROUTE_MIN_ACCEPTABLE_PRODUCTIVITY = 2.4 #3 # If a potential trade route would result in lower productivity than this, don't create it unless it's to resolve a shortage
@@ -135,28 +126,6 @@ NPolitics = {
 }
 
 NEconomy = {
-	
-	FIRED_POP_RADICALIZATION_FRACTION = 0.05				# This percentage of a pop becomes radicalized when they lose their job, for instance due to a building being downsized
-	
-	JOB_SATISFACTION_BASE = -150							# Base job satisfaction
-	JOB_SATISFACTION_PER_SOL_ABOVE_STATE_STRATA_SOL = 4		#2 Job satisfaction gained per level of SoL above the state average for your strata
-	JOB_SATISFACTION_PER_SOL_ABOVE_COUNTRY_STRATA_SOL = 2	#1 Job satisfaction gained per level of SoL above the country average for your strata
-	JOB_SATISFACTION_FROM_CAN_AFFORD_EXPENSES = 1000		# Job satisfaction gained from being able to afford your bug package (and taxes)
-	JOB_SATISFACTION_FROM_CANNOT_AFFORD_EXPENSES = -1000	#-100 Job satisfaction gained from not being able to afford your bug package (and taxes)
-	JOB_SATISFACTION_PER_PERCENT_HIGHER_STRATA_QUALIFICATION = -2 #-1 Job satisfaction gained per percent of workforce qualified for a higher strata. Note that qualifications are assumed to overlap and the largest qualification is used in this calculation
-
-	JOB_SATISFACTION_DIVIDENDS_BASE = 20					# Base value to be multiplied by the ratio between dividends and wages
-	JOB_SATISFACTION_LOSSES_MIN_MULT = -10					# Min multiplier from the ratio between pop losses and wages (or if you will, max magnitude)
-	JOB_SATISFACTION_GOVERNMENT = 75						# Government jobs need a bit more stability
-
-	BUILDING_RAISE_WAGES_MIN_RELEVANT_POP_SIZE = 50 # Pops with less workforce than this are ignored when checking whether a profitable building should raise wages because of radicalizing workers
-	BUILDING_RAISE_WAGES_DISCRIMINATION_FACTOR = 0.66 # Profitable buildings only care to raise wages for discriminated pops if their wealth to expected SoL ratio is less than this
-	BUILDING_LOWER_WAGES_TARGET_WEALTH_MULT = 1.33 # Buildings will consider lowering wages if all significant pops working in them have this * the target wealth to expected SoL ratio
-	BUILDING_PROFIT_TARGET_TO_RAISE_WAGES = 0.25	# Required profit margin to consider raising wages for SoL or employment reasons, with BUILDING_WEEKS_BETWEEN_PAY_CHANGES weeks cooldown
-	BUILDING_PROFIT_TARGET_TO_LOWER_WAGES = 0.1 	# If profit margin is this or below, consider lowering wages for SoL or employment reasons, with BUILDING_WEEKS_BETWEEN_PAY_CHANGES weeks cooldown
-	BUILDING_MAX_EMPLOYMENT_FRACTION_TO_RAISE_WAGES = 0.5 # If the employment fraction of a building is above this, don't raise wages just to try and snipe employees from other buildings
-	BUILDING_WEEKS_BETWEEN_PAY_CHANGES = 8		# Cooldown between changes in pay, so buildings don't overcompensate for a temporary change in circumstances. If the building is unprofitable it uses BUILDING_WEEKS_BETWEEN_PAY_CHANGES_WHEN_UNPROFITABLE instead.
-	BUILDING_WEEKS_BETWEEN_PAY_CHANGES_WHEN_UNPROFITABLE = 3 # Cooldown between changes in pay, so buildings don't overcompensate for a temporary change in circumstances. Only used when unprofitable.
 	
 	TRADE_ROUTE_AUTO_INCREASE_ACCEPTABLE_REVENUE_DIFFERENCE = 1.15 #1.1 Multiply revenue of new trade route level by this for the purpose of considering whether it's OK to auto-increase level (means that trade routes can level up even when slightly decreasing overall revenue)
 	TRADE_ROUTE_AUTO_INCREASE_VERY_LOW_PRODUCTIVITY_THRESHOLD = 2.25 #3 If trade route's productivity is below this, always automatically decrease its level (regardless of total revenue)
@@ -208,31 +177,6 @@ NPops = {
     CONVERSION_RATE = 0.001						# Percentage of pops who will Convert into a different Religion each month, if eligible (halved from vanilla)
 	RADICALS_MONTHLY_FROM_DISCRIMINATION = 0.006 #0.005 # Scales by literacy
 	SOL_DECREASE_POP_IMPACT_FACTOR = 0.05		# 0.06 How large part of a pop become more radical as a result of a decrease in standard of living
-	
-	MIGRATION_MAX_EMIGRATION_AS_POPULATION_FRACTION = 0.001		#0.005 Max emigration per week is clamped to this fraction of a state's population
-	
-	MIGRATION_MAX_PER_STATE_UNEMPLOYMENT_ORIGIN_FRACTION = 0.007	#0.05 The amount of unemployed workers in a state * this value is added to how many people can move from it (after clamping from MIGRATION_MAX_EMIGRATION_AS_POPULATION_FRACTION)
-	MIGRATION_MAX_PER_STATE_UNEMPLOYMENT_TARGET_FRACTION = 0.005	#0.05 The amount of unemployed workers in a state * this value is removed from how many people can move to it (after clamping from MIGRATION_MAX_EMIGRATION_AS_POPULATION_FRACTION)
-	
-	
-	## Market Migrations ##
-	MARKET_MIGRATION_PER_WEEK_FACTOR = 4										#5 This number of individuals will migrate for each point of difference in migration pull
-	MARKET_MIGRATION_PER_WEEK_PER_TOTAL_POPULATION = 125000						#100 000 Additionally, one more individual will migrate per this number of population for each point of difference in migration pull
-	MARKET_MIGRATION_MIN_DIFFERENCE_IN_MIGRATION_ATTRACTION_TO_MOVE = 5			# Pops will not migrate if their best option is to a state with a lower delta in migration pull than this number
-	
-	
-	## Mass Migrations ##
-	# Mass Migration Setup #
-	MASS_MIGRATION_SPAWN_CHANCE = 0.6 					# Per week for each potential mass migration, scales with turmoil (1 = 1%)
-	MASS_MIGRATION_SPAWN_CHANCE_STRUGGLING_FACTOR = 0.2 # Chance increases by this for each point of SoL below 10 for a culture in a country
-	MASS_MIGRATION_SPAWN_CHANCE_STARVING_FACTOR = 0.75 	# Chance increases by this for each point of SoL below 5 for a culture in a country 
-	MASS_MIGRATION_DURATION_MONTHS = 36					# How long does a mass migration last in months
-	MASS_MIGRATION_COOLDOWN_MONTHS = 24					# How many months before the same culture can mass migrate from a country again
-	MASS_MIGRATION_TARGET_MAX_TURMOIL = 0.15			# Must have this or less turmoil among the culture for a country to be picked as a mass migration target
-	
-	# Mass Migration Processing #
-	MIGRATION_MAX_PER_STATE_MASS_EMIGRATION_MULT = 2.5		# Weekly emigration caps are multiplied by this amount by this for mass migrations (after clamping from MIGRATION_MAX_EMIGRATION_AS_POPULATION_FRACTION)
-	MIGRATION_MAX_PER_STATE_MASS_IMMIGRATION_MULT = 5.0		# Weekly immigration caps are multiplied by this amount by this for mass migrations (after clamping from MIGRATION_MAX_EMIGRATION_AS_POPULATION_FRACTION)
 	
 	INDIVIDUALS_TAXED_PER_TAX_CAPACITY = 15000			# How many pops can be taxed efficiently for each tax capacity
 }
@@ -342,10 +286,6 @@ NTechnology = {
 }
 
 NCharacters = {
-	RULER_MIN_AGE_FOR_HEIR = 20 				# Before this age, don't randomly generate heirs for rulers
-	RULER_AGE_FOR_HEIR_CHANCE_BOOST = 30 		# A year after this age start boosting chance of heir generation
-	RULER_HEIR_GENERATION_CHANCE = 0.000125 	# Per day
-	RULER_HEIR_CHANCE_BOOST_SCALE = -0.00000833	# Added to RULER_HEIR_CHANCE_BOOST for each year after RULER_AGE_FOR_HEIR_CHANCE_BOOST
 }
 
 NCommands = {

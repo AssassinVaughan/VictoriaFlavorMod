@@ -4,7 +4,6 @@
 	group = je_group_historical_content
 	
 	complete = {
-		country_or_subject_owns_entire_state_region = STATE_TLEMCEN
 		country_or_subject_owns_entire_state_region = STATE_ALGIERS
 		country_or_subject_owns_entire_state_region = STATE_CONSTANTINE
 	}
@@ -15,7 +14,6 @@
 	}
 
 	fail = {
-		NOT = { has_state_in_state_region = STATE_TLEMCEN }
 		NOT = { has_state_in_state_region = STATE_ALGIERS }
 		NOT = { has_state_in_state_region = STATE_CONSTANTINE }
 	}
@@ -52,12 +50,6 @@ je_the_algerian_departements = {
 		}
 		random_scope_state = {
 			limit = {
-				state_region = s:STATE_TLEMCEN
-			}
-			save_scope_as = je_oran_state_scope
-		}
-		random_scope_state = {
-			limit = {
 				state_region = s:STATE_CONSTANTINE
 			}
 			save_scope_as = je_constantine_state_scope
@@ -82,12 +74,6 @@ je_the_algerian_departements = {
 				turmoil < 0.1
 			}
 			any_scope_state = {
-				state_region = s:STATE_TLEMCEN
-				is_incorporated = yes
-				is_split_state = no
-				turmoil < 0.1
-			}
-			any_scope_state = {
 				state_region = s:STATE_CONSTANTINE
 				is_incorporated = yes
 				is_split_state = no
@@ -99,13 +85,6 @@ je_the_algerian_departements = {
 				text = je_the_algerian_departements_tt_3
 				any_scope_state = {
 					state_region = s:STATE_ALGIERS
-					culture_percent_state = {
-						target = cu:french
-					    value >= 0.2
-					}
-				}
-				any_scope_state = {
-					state_region = s:STATE_TLEMCEN
 					culture_percent_state = {
 						target = cu:french
 					    value >= 0.2
@@ -136,7 +115,6 @@ je_the_algerian_departements = {
 	}
 
 	fail = {
-		NOT = { has_state_in_state_region = STATE_TLEMCEN }
 		NOT = { has_state_in_state_region = STATE_ALGIERS }
 		NOT = { has_state_in_state_region = STATE_CONSTANTINE }
 	}
@@ -170,7 +148,6 @@ je_reconquest_of_algeria = {
 			exists = c:ALD
 			this = c:ALD
 		}
-		owns_entire_state_region = STATE_TLEMCEN
 		owns_entire_state_region = STATE_ALGIERS
 		owns_entire_state_region = STATE_CONSTANTINE
 	}
@@ -180,7 +157,6 @@ je_reconquest_of_algeria = {
 	}
 
 	fail = {
-		NOT = { has_state_in_state_region = STATE_TLEMCEN }
 		NOT = { has_state_in_state_region = STATE_ALGIERS }
 		NOT = { has_state_in_state_region = STATE_CONSTANTINE }
 	}
@@ -214,7 +190,6 @@ je_french_foreign_legion = {
 	}
 
 	fail = {
-		NOT = { has_state_in_state_region = STATE_TLEMCEN }
 		NOT = { has_state_in_state_region = STATE_ALGIERS }
 		NOT = { has_state_in_state_region = STATE_CONSTANTINE }
 	}

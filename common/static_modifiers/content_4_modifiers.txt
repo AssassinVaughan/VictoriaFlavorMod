@@ -6,7 +6,7 @@
 
 decree_minimum_wealth = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_positive.dds
-	state_poor_standard_of_living_add = 2
+	state_lower_strata_standard_of_living_add = 2
 }
 
 decree_agricultural_throughput = {
@@ -14,7 +14,7 @@ decree_agricultural_throughput = {
 	building_group_bg_agriculture_throughput_add = 0.1
 	building_group_bg_plantations_throughput_add = 0.1
 	building_group_bg_ranching_throughput_add = 0.1		
-	}
+}
 
 decree_resource_throughput = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_positive.dds
@@ -97,20 +97,26 @@ decree_tatics_to_ce = {
 
 decree_let_them_riot = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
-	state_radicals_from_discrimination_mult = 0.25
-	state_loyalists_from_sol_change_mult = 0.25
+	state_radicalism_increases_violent_hostility_mult = 0.10
+	state_radicalism_increases_cultural_erasure_mult = 0.10
+	state_radicalism_increases_open_prejudice_mult = 0.10
+	state_loyalists_from_political_movements_mult = 0.25
 }
 
 decree_put_the_riot_down = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
-	state_radicals_from_discrimination_mult = 0.1
-	state_radicals_from_sol_change_mult = 0.1
+	state_radicalism_increases_violent_hostility_mult = 0.05
+	state_radicalism_increases_cultural_erasure_mult = 0.05
+	state_radicalism_increases_open_prejudice_mult = 0.05
+	state_radicals_from_political_movements_mult = 0.1
 	state_mortality_mult = 0.1
 }
 
 decree_break_it_up = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
-	state_radicals_from_discrimination_mult = 0.5
+	state_radicalism_increases_violent_hostility_mult = 0.2
+	state_radicalism_increases_cultural_erasure_mult = 0.2
+	state_radicalism_increases_open_prejudice_mult = 0.2
 }
 
 decree_protests_dispersed = {
@@ -121,7 +127,9 @@ decree_protests_dispersed = {
 decree_let_them_protest = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
 	state_migration_pull_mult = 0.1
-	state_radicals_from_discrimination_mult = 0.2
+	state_radicalism_increases_violent_hostility_mult = 0.1
+	state_radicalism_increases_cultural_erasure_mult = 0.1
+	state_radicalism_increases_open_prejudice_mult = 0.1
 }
 
 decree_protests_handled = {
@@ -250,13 +258,13 @@ exile_the_monarch = {
 speech_opposition = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
 	interest_group_approval_add = 2
-	country_bolster_ig_attraction_mult = 0.05
+	interest_group_pop_attraction_mult = 0.2
 }
 
 speech_supporters = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
 	interest_group_approval_add = 2
-	country_bolster_ig_attraction_mult = 0.05
+	interest_group_pop_attraction_mult = 0.2
 }
 
 opening_up_healthcare = {
@@ -304,7 +312,9 @@ taiping_taiping_revolution = {
 taiping_taiping_rebellion = { #This is temporary
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
 	country_war_exhaustion_casualties_mult = -0.25
-	state_radicals_from_discrimination_mult = 0.15
+	state_radicalism_increases_violent_hostility_mult = 0.05
+	state_radicalism_increases_cultural_erasure_mult = 0.05
+	state_radicalism_increases_open_prejudice_mult = 0.05
 }
 
 taiping_land_socialization = {
@@ -313,7 +323,7 @@ taiping_land_socialization = {
 	country_peasants_pol_str_mult = 0.10
 	country_aristocrats_pol_str_mult = -0.50
 	state_aristocrats_mortality_mult = 0.50
-	political_movement_radicalism_mult = -0.75
+	political_movement_radicalism_add = -0.25
 	state_conversion_mult = 0.25
 }
 
@@ -345,8 +355,7 @@ modifier_second_conversion = {
 
 modifier_conversion_of_china = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
-	state_conversion_mult = 0.25
-	state_loyalists_from_sol_change_accepted_religion_mult = 0.10
+	state_conversion_mult = 0.5
 }
 
 modifier_second_crusade_against_manchu = {
@@ -401,8 +410,12 @@ modifier_slavery_forgotten = {
 
 modifier_slavery_whitewashing = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
-	state_radicals_from_discrimination_mult = 0.10
-	state_political_strength_from_discrimination_mult = -0.10
+	state_radicalism_increases_violent_hostility_mult = 0.05
+	state_radicalism_increases_cultural_erasure_mult = 0.05
+	state_radicalism_increases_open_prejudice_mult = 0.05
+	country_political_strength_violent_hostility_mult = -0.05
+	country_political_strength_cultural_erasure_mult = -0.05
+	country_political_strength_open_prejudice_mult = -0.05
 }
 
 modifier_slavery_forgotten_bad = {
@@ -413,13 +426,12 @@ modifier_slavery_forgotten_bad = {
 
 modifier_industrial_barriers_nat_supremacy = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
-	state_pop_support_law_national_supremacy_mult = 0.05
+	state_pop_support_movement_cultural_majority_mult = 0.25
 }
 
 modifier_industrial_barriers_against_nat_supremacy = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
-	state_pop_support_law_national_supremacy_add = -0.05
-	state_pop_support_law_racial_segregation_add = -0.03
+	state_pop_support_movement_cultural_majority_mult = -0.15
 }
 
 modifier_taiping_hiring_bonus = {

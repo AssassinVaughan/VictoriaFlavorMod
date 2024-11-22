@@ -17,8 +17,6 @@ lawgroup_governance_principles = {
 			is_subject = yes
 			OR = {
 				is_subject_type = subject_type_personal_union
-				is_subject_type = subject_type_real_union
-				is_subject_type = subject_type_dependency
 				has_government_type = gov_chartered_company
 			}			
 		}
@@ -32,13 +30,6 @@ lawgroup_distribution_of_power = {
 	
 	progressive_movement_chance = 3.5 # 2.5
 	regressive_movement_chance = 0.25
-
-	change_allowed_trigger = {
-		NAND = {
-			is_subject = yes
-			is_subject_type = subject_type_dependency		
-		}
-	}
 }
 
 lawgroup_centralization = {
@@ -59,6 +50,15 @@ lawgroup_citizenship = {
 	regressive_movement_chance = 0.25
 }
 
+ lawgroup_caste_hegemony = {
+	law_group_category = power_structure
+	affected_by_regime_change = yes
+	linked_social_hierarchy = british_indian_caste_system
+	
+	progressive_movement_chance = 2
+	regressive_movement_chance = 0.25
+}
+
 lawgroup_church_and_state = {
 	law_group_category = power_structure
 	affected_by_regime_change = yes
@@ -73,13 +73,6 @@ lawgroup_bureaucracy = {
 	
 	progressive_movement_chance = 1.5
 	regressive_movement_chance = 0.05
-
-	change_allowed_trigger = {
-		NAND = {
-			is_subject = yes
-			is_subject_type = subject_type_dependency		
-		}
-	}
 }
 
 lawgroup_army_model = {

@@ -482,12 +482,12 @@
 		}
 	}
 	s:STATE_ALASKA={
-		region_state:RAC={
+		region_state:ALK={
 			create_building={
 				building="building_port"
 				add_ownership={
 					country={
-						country="c:RAC"
+						country="c:RUS"
 						levels=1
 					}
 				}
@@ -499,17 +499,17 @@
 		}
 	}
 	s:STATE_WASHINGTON={
-		region_state:COL={
+		region_state:ORG={
 		}
 	}
 	s:STATE_OREGON={
-		region_state:COL={
+		region_state:ORG={
 			create_building={
 				building="building_logging_camp"
 				add_ownership={
 					building={
 						type="building_logging_camp"
-						country="c:COL"
+						country="c:ORG"
 						levels=1
 						region="STATE_OREGON"
 					}
@@ -520,7 +520,7 @@
 		}
 	}
 	s:STATE_IDAHO={
-		region_state:COL={
+		region_state:ORG={
 		}
 		region_state:NZP={
 		}
@@ -529,6 +529,10 @@
 		region_state:MEX={
 		}
 		region_state:ARP={
+		}
+		region_state:UTE={
+		}
+		region_state:USA={
 		}
 	}
 	s:STATE_WYOMING={
@@ -545,6 +549,8 @@
 		region_state:ABS={
 		}
 		region_state:LKT={
+		}
+		region_state:BLF={
 		}
 	}
 	s:STATE_NORTH_DAKOTA={
@@ -564,9 +570,15 @@
 		}
 		region_state:LKT={
 		}
+		region_state:PWN={
+		}
 	}
 	s:STATE_KANSAS={
 		region_state:USA={
+		}
+		region_state:PWN={
+		}
+		region_state:COM={
 		}
 	}
 	s:STATE_OKLAHOMA={
@@ -1725,7 +1737,7 @@
 					building={
 						type="building_manor_house"
 						country="c:USA"
-						levels=2
+						levels=3
 						region="STATE_PENNSYLVANIA"
 					}
 				}
@@ -1763,6 +1775,18 @@
 				}
 				reserves=1
 				activate_production_methods={ "pm_leblanc_process"  }
+			}
+			create_building={
+				building="building_motor_industry"
+				add_ownership={
+					company={
+						type=company_william_cramp
+						country="c:USA"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_steam_engines" "pm_automobiles_disabled" "pm_automation_disabled" }
 			}
 		}
 	}
@@ -1808,6 +1832,18 @@
 				}
 				reserves=1
 				activate_production_methods={ "pm_horizontal_drawer_cabinets" "pm_professional_bureaucrats" "pm_secular_bureaucrats" }
+			}
+			create_building={
+				building="building_shipyards"
+				add_ownership={
+					company={
+						type=company_william_cramp
+						country="c:USA"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_basic_shipbuilding"  }
 			}
 			create_building={
 				building="building_fishing_wharf"
@@ -2073,11 +2109,10 @@
 			create_building={
 				building="building_shipyards"
 				add_ownership={
-					building={
-						type="building_financial_district"
+					company={
+						type=company_william_cramp
 						country="c:USA"
 						levels=2
-						region="STATE_MASSACHUSETTS"
 					}
 				}
 				reserves=1
@@ -2158,7 +2193,7 @@
 					building={
 						type="building_financial_district"
 						country="c:USA"
-						levels=3
+						levels=2
 						region="STATE_MASSACHUSETTS"
 					}
 				}
@@ -2319,11 +2354,10 @@
 			create_building={
 				building="building_shipyards"
 				add_ownership={
-					building={
-						type="building_financial_district"
+					company={
+						type=company_william_cramp
 						country="c:USA"
 						levels=1
-						region="STATE_MAINE"
 					}
 				}
 				reserves=1
@@ -2651,7 +2685,7 @@
 					building={
 						type="building_financial_district"
 						country="c:ONT"
-						levels=2
+						levels=3
 						region="STATE_ONTARIO"
 					}
 				}
@@ -2752,19 +2786,7 @@
 				activate_production_methods={ "pm_basic_port" }
 			}
 		}
-		region_state:FRA={
-			create_building={
-				building="building_port"
-				add_ownership={
-					country={
-						country="c:FRA"
-						levels=1
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_anchorage" }
-			}
-		}
+
 		region_state:NVS={
 			create_building={
 				building="building_fishing_wharf"
@@ -2903,13 +2925,13 @@
 		}
 	}
 	s:STATE_NEWFOUNDLAND={
-		region_state:NEW={
+		region_state:GBR={
 			create_building={
 				building="building_fishing_wharf"
 				add_ownership={
 					building={
 						type="building_fishing_wharf"
-						country="c:NEW"
+						country="c:GBR"
 						levels=2
 						region="STATE_NEWFOUNDLAND"
 					}
@@ -2921,7 +2943,7 @@
 				building="building_port"
 				add_ownership={
 					country={
-						country="c:NEW"
+						country="c:GBR"
 						levels=1
 					}
 				}
@@ -2952,13 +2974,13 @@
 		}
 	}
 	s:STATE_BRITISH_COLUMBIA={
-		region_state:COL={
+		region_state:ORG={
 			create_building={
 				building="building_logging_camp"
 				add_ownership={
 					building={
 						type="building_financial_district"
-						country="c:COL"
+						country="c:ORG"
 						levels=1
 						region="STATE_BRITISH_COLUMBIA"
 					}
@@ -2994,7 +3016,7 @@
 		}
 	}
 	s:STATE_YUKON_TERRITORY={
-		region_state:NWT={
+		region_state:HBC={
 		}
 	}
 	s:STATE_NORTHWEST_TERRITORIES={
@@ -3068,6 +3090,8 @@
 		region_state:MEX={
 		}
 		region_state:NVJ={
+		}
+		region_state:APC={
 		}
 	}
 	s:STATE_NEW_MEXICO={

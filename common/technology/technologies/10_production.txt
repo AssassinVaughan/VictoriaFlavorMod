@@ -318,6 +318,13 @@ atmospheric_engine = {
 	
 	ai_weight = {
 		value = 1
+
+		if = {
+			limit = {
+				country_rank >= rank_value:unrecognized_major_power
+			}
+			add = 2
+		}
 		
 		if = {
 			limit = { 
@@ -332,7 +339,7 @@ atmospheric_engine = {
 			limit = { 
 				has_strategy = ai_strategy_mining_exporter
 			}
-			add = 3
+			add = 2
 		}
 	}
 }
@@ -355,7 +362,14 @@ railways = {
 	}
 	
 	ai_weight = {
-		value = 2 # Important tech for everyone
+		value = 1
+
+		if = {
+			limit = {
+				country_rank >= rank_value:unrecognized_major_power
+			}
+			add = 2
+		}
 		
 		if = {
 			limit = { 

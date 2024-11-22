@@ -8,7 +8,7 @@ pax_belgica = {
 
 fra_secular_legacy = { # From VTM
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
-	state_accepted_birth_rate_mult = -0.2
+	state_birth_rate_mult = -0.25 ## fix this, state_accepted_birth_rate_mult was removed in 1.8
 }
 
 control_turkestan = {
@@ -18,7 +18,7 @@ control_turkestan = {
 
 russia_welfare = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_positive.dds
-	state_minimum_wealth_add = 2
+	state_welfare_payments_add = 0.1
 }
 
 control_korea = {
@@ -53,7 +53,7 @@ south_africa_recent_unification = {
 
 south_africa_recent_unification_war = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
-	state_radicals_from_sol_change_mult = 0.15
+	state_radicals_from_political_movements_mult = 0.15
 }
 
 reclaimed_egypt = {
@@ -219,7 +219,8 @@ jizya_state = {
 	state_tax_collection_mult = 0.1
 	state_conversion_mult = -0.5
 	state_conscription_rate_mult = -0.75
-	state_radicals_from_discrimination_mult = 0.15
+	state_radicalism_increases_violent_hostility_mult = 0.1
+	state_radicalism_increases_cultural_erasure_mult = 0.1
 }
 
 decentralized_nation_signed_treaty = {
@@ -244,7 +245,7 @@ rapanui_chl_big_money = {
 
 pacific_war_rejected = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
-	country_prestige_mult = -0.2
+	country_prestige_add = -30
 }
 
 codigo_civil = {
@@ -351,7 +352,9 @@ martyr_of_chile = {
 
 malones = {
     icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_negative.dds
-    state_radicals_from_discrimination_mult = 0.2
+    state_radicalism_increases_violent_hostility_mult = 0.1
+	state_radicalism_increases_cultural_erasure_mult = 0.1
+	state_radicalism_increases_open_prejudice_mult = 0.1
     state_assimilation_mult = -0.15
     state_colony_growth_speed_mult = -0.95
 }   
@@ -396,7 +399,7 @@ caning_decried = {
 
 federal_occupation = {
     icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_negative.dds
-	state_radicals_from_sol_change_mult = 0.2
+	state_radicals_from_political_movements_mult = 0.2
 	state_political_strength_from_wealth_mult = -0.5
 }
 
@@ -412,15 +415,10 @@ union_of_south_africa_modifier = {
 
 nationalist_fervor = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
-	state_radicals_from_sol_change_mult = -0.25
+	state_radicals_from_political_movements_mult = -0.25
 	building_mobilization_cost_mult = -0.25
 	country_legitimacy_base_add = 25
 	unit_offense_mult = 0.25
 	unit_defense_mult = 0.25
 	building_training_rate_mult = 0.5
-}
-
-army_with_a_state = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_positive.dds
-	interest_group_ig_armed_forces_pol_str_mult = 0.2
 }
