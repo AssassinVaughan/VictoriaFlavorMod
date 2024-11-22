@@ -43,18 +43,12 @@
 			create_pop = {
 				pop_type = slaves
 				culture = afro_american
-				size = 92994
-			}
-			create_pop = {
-				pop_type = slaves
-				culture = afro_american
-				religion = generic_african
-				size = 10000
+				size = 102994
 			}
 			create_pop = {
 				pop_type = slaves
 				culture = afro_antillean
-				religion = generic_african
+				religion = catholic
 				size = 16000
 			}
 		}
@@ -107,25 +101,24 @@
 			create_pop = {
 				pop_type = slaves
 				culture = afro_american
-				size = 222079
-			}
-			create_pop = {
-				pop_type = slaves
-				culture = afro_american
-				religion = generic_african
-				size = 80000
+				size = 312079
 			}
 		}
 	}
 	s:STATE_ALASKA = {
-		region_state:RAC = {
+		region_state:ALK = {
 			create_pop = {
 				culture = athabaskan
-				size = 10780
+				size = 7780
+			}
+			create_pop = {
+				culture = athabaskan
+				size = 3280
+				religion = orthodox
 			}
 			create_pop = {
 				culture = russian
-				size = 192
+				size = 1000
 			}
 			create_pop = {
 				culture = inuit
@@ -135,18 +128,16 @@
 		region_state:ATB = {
 			create_pop = {
 				culture = athabaskan
-				size = 9000
+				size = 28000
 			}
-		}
-		region_state:NKT = {
 			create_pop = {
 				culture = inuit
-				size = 3000
+				size = 16000
 			}
 		}
 	}
 	s:STATE_WASHINGTON = {
-		region_state:COL = {
+		region_state:ORG = {
 			create_pop = {
 				culture = yankee
 				size = 2000
@@ -162,7 +153,7 @@
 		}
 	}
 	s:STATE_OREGON = {
-		region_state:COL = {
+		region_state:ORG = {
 			create_pop = {
 				culture = yankee
 				size = 4848
@@ -182,10 +173,18 @@
 		}
 	}
 	s:STATE_IDAHO = {
-		region_state:SLS = {
+		region_state:ORG = {
 			create_pop = {
 				culture = paiute
-				size = 4000
+				size = 3000
+			}
+			create_pop = {
+				culture = yankee
+				size = 500
+			}
+			create_pop = {
+				culture = anglo_canadian
+				size = 500
 			}
 		}
 		region_state:NZP = {
@@ -243,19 +242,13 @@
 		region_state:USA = {
 			create_pop = {
 				culture = siouan
-				size = 500
-			}
-		}
-		region_state:MEX = {
-			create_pop = {
-				culture = paiute
-				size = 2000
+				size = 8000
 			}
 		}
 		region_state:LKT = {
 			create_pop = {
 				culture = siouan
-				size = 7000
+				size = 6000
 			}
 		}
 		region_state:ARP = {
@@ -264,22 +257,23 @@
 				size = 4000
 			}
 		}
+		region_state:BNN = {
+			create_pop = {
+				culture = paiute
+				size = 12000
+			}
+		}
 		region_state:SLS = {
 			create_pop = {
 				culture = salish
-				size = 1300
+				#size = 1300 #historical increased for gameplay
+				size = 5600 
 			}
 		}
 		region_state:ABS = {
 			create_pop = {
 				culture = siouan
-				size = 11000
-			}
-		}
-		region_state:BNN = {
-			create_pop = {
-				culture = paiute
-				size = 12000
+				size = 6500
 			}
 		}
 	}
@@ -315,7 +309,8 @@
 		region_state:SLS = {
 			create_pop = {
 				culture = salish
-				size = 5500
+				#size = 5500 # historical increased for gameplay
+				size = 8600
 			}
 		}
 	}
@@ -326,6 +321,7 @@
 				size = 6000
 			}
 		}
+		# DKT had 22000
 		region_state:LKT = {
 			create_pop = {
 				culture = dakota
@@ -350,6 +346,7 @@
 				size = 4000
 			}
 		}
+		# DKT has 12000
 	}
 	s:STATE_NEBRASKA = {
 		region_state:USA = {
@@ -382,12 +379,6 @@
 				size = 12000
 			}
 		}
-		region_state:MEX = {
-			create_pop = {
-				culture = siouan
-				size = 2000
-			}
-		}
 		region_state:PWN = {
 			create_pop = {
 				culture = caddoan
@@ -397,52 +388,34 @@
 		region_state:COM = {
 			create_pop = {
 				culture = siouan
-				size = 2000
+				size = 4000
 			}
 		}
 	}
 	s:STATE_OKLAHOMA = {
 		region_state:SEQ = {
 			create_pop = {
-				pop_type = slaves # there was even a slave revolt at Webbers Falls in 1842
-				culture = afro_american
-				size = 1700
+				culture = siouan
+				size = 2000
 			}
 			create_pop = {
-				culture = algonquian
-				size = 1088
+				pop_type = slaves # there was even a slave revolt at Webbers Falls in 1842
+				culture = afro_american
+				size = 1200
+			}
+			create_pop = {
+				culture = caddoan
+				size = 8000
 			}
 			create_pop = {
 				culture = cherokee
-				size = 5000
-			}
-			create_pop = {
-				culture = comanche
-				size = 14008
-			}
-			create_pop = {
-				culture = dixie
-				size = 920
-			}
-			create_pop = {
-				culture = muskogean
-				size = 14224
-			}
-			create_pop = {
-				culture = siouan
-				size = 4000
+				size = 50800
 			}
 		}
 		region_state:COM = {
 			create_pop = {
-				culture = comanche
-				size = 1200
-			}
-		}
-		region_state:MEX = {
-			create_pop = {
-				culture = comanche
-				size = 144
+				culture = siouan
+				size = 18000
 			}
 		}
 	}
@@ -531,13 +504,7 @@
 		region_state:USA = {
 			create_pop = {
 				culture = algonquian
-				size = 14000
-			}
-		}
-		region_state:ONT = {
-			create_pop = {
-				culture = algonquian
-				size = 2000
+				size = 16000
 			}
 		}
 		region_state:LKT = {
@@ -695,13 +662,7 @@
 			create_pop = {
 				pop_type = slaves
 				culture = afro_american
-				size = 77007
-			}
-			create_pop = {
-				pop_type = slaves
-				culture = afro_american
-				religion = generic_african
-				size = 10050
+				size = 87057
 			}
 		}
 	}
@@ -718,13 +679,7 @@
 			create_pop = {
 				pop_type = slaves
 				culture = afro_american
-				size = 209900
-			}
-			create_pop = {
-				pop_type = slaves
-				culture = afro_american
-				religion = generic_african
-				size = 20098
+				size = 229998
 			}
 			create_pop = {
 				culture = dixie
@@ -737,7 +692,7 @@
 			}
 			create_pop = {
 				culture = muskogean # Creeks tallied in the "Parsons and Albert Roll" after the 1832 Treaty of Cusseta
-				size = 20240 # lets asume 2k had moved to florida by 1836
+				size = 22240
 			}
 		}
 	}
@@ -754,24 +709,18 @@
 			create_pop = {
 				pop_type = slaves
 				culture = afro_american
-				size = 26183
+				size = 31183
 			}
 			create_pop = {
-				pop_type = slaves
-				culture = afro_american
-				religion = generic_african
-				size = 5000
+				culture = muskogean
+				size = 3000
 			}
 		}
 		region_state:SML = {
 			create_pop = {
 				culture = muskogean
+				#size = 5000 # historical increased for gameplay
 				size = 10000
-			}
-			create_pop = {
-				culture = afro_american
-				religion = generic_african
-				size = 400
 			}
 		}
 	}
@@ -797,13 +746,7 @@
 			create_pop = {
 				pop_type = slaves
 				culture = afro_american
-				size = 206170
-			}
-			create_pop = {
-				pop_type = slaves
-				culture = afro_american
-				religion = generic_african
-				size = 50002
+				size = 256172
 			}
 		}
 	}
@@ -850,13 +793,7 @@
 			create_pop = {
 				pop_type = slaves
 				culture = afro_american
-				size = 50467
-			}
-			create_pop = {
-				pop_type = slaves
-				culture = afro_american
-				religion = generic_african
-				size = 8000
+				size = 58467
 			}
 		}
 	}
@@ -1001,26 +938,12 @@
 	s:STATE_MAINE = {
 		region_state:USA = {
 			create_pop = {
-				culture = franco_canadian
-				size = 92500
-			}
-			create_pop = {
-				culture = yankee
-				size = 270000
-			}
-		}
-		region_state:QUE = { # natives????
-			create_pop = {
 				culture = anglo_canadian
-				size = 3200
-			}
-			create_pop = {
-				culture = franco_canadian
-				size = 15900
+				size = 16000
 			}
 			create_pop = {
 				culture = yankee
-				size = 18000
+				size = 381228
 			}
 		}
 	}
@@ -1037,13 +960,7 @@
 			create_pop = {
 				pop_type = slaves
 				culture = afro_american
-				size = 174862
-			}
-			create_pop = {
-				pop_type = slaves
-				culture = afro_american
-				religion = generic_african
-				size = 50000
+				size = 222862
 			}
 			create_pop = {
 				culture = cherokee
@@ -1097,14 +1014,7 @@
 			create_pop = {
 				pop_type = slaves
 				culture = afro_american
-				size = 89794
-			}
-			#Gullah
-			create_pop = {
-				pop_type = slaves
-				culture = afro_american
-				religion = generic_african
-				size = 247592
+				size = 318693
 			}
 		}
 	}
@@ -1160,7 +1070,7 @@
 			}
 			create_pop = {
 				culture = franco_canadian
-				size = 24000
+				size = 23400
 			}
 			create_pop = {
 				culture = iroquoian
@@ -1169,6 +1079,11 @@
 			create_pop = {
 				culture = algonquian
 				size = 3902
+			}
+			create_pop = {
+				culture = franco_canadian
+				religion = protestant
+				size = 600
 			}
 		}
 		region_state:HBC = {
@@ -1217,31 +1132,6 @@
 				size = 3333
 			}
 		}
-		region_state:QUE = {
-			create_pop = {
-				culture = franco_canadian
-				size = 13680
-			}
-			create_pop = {
-				culture = anglo_canadian
-				size = 3720
-			}
-			create_pop = {
-				culture = yankee
-				size = 9400
-			}
-		}
-		#Moved from Newfoundland due to Nunasiavut colonization. If we split Labrador and Newfoundland we could move it back
-		region_state:FRA = {
-			create_pop = {
-				culture = anglo_canadian
-				size = 200
-			}
-			create_pop = {
-				culture = franco_canadian
-				size = 200
-			}
-		}
 	}
 	s:STATE_QUEBEC = {
 		region_state:QUE = {
@@ -1260,6 +1150,10 @@
 		}
 		region_state:HBC = {
 			create_pop = {
+				culture = inuit
+				size = 4000
+			}
+			create_pop = {
 				culture = cree
 				size = 18204
 			}
@@ -1272,31 +1166,22 @@
 				size = 8000
 			}
 		}
-		region_state:NVK = {
-			create_pop = {
-				culture = inuit
-				size = 4000
-			}
-		}
 	}
 	s:STATE_NEWFOUNDLAND = {
-		region_state:NEW = {
+		region_state:GBR = {
 			create_pop = {
-				culture = anglo_canadian
-				size = 40240
+				culture = inuit
+				size = 7980
 			}
 			create_pop = {
 				culture = irish
 				size = 40000
 			}
-		}
-		region_state:NTV = {
 			create_pop = {
-				culture = inuit
-				size = 3480
+				culture = anglo_canadian
+				size = 39996
 			}
 		}
-		#French territory moved to New Brunswick due to Nunasiavut colonization. If we split Labrador and Newfoundland we could move it back
 	}
 	s:STATE_ALBERTA = {
 		region_state:HBC = {
@@ -1310,19 +1195,7 @@
 			}
 			create_pop = {
 				culture = metis
-				size = 7000
-			}
-		}
-		region_state:NWT = {
-			create_pop = {
-				culture = metis
-				size = 2000
-			}
-		}
-		region_state:ATB = {
-			create_pop = {
-				culture = metis
-				size = 5000
+				size = 11000
 			}
 		}
 		region_state:IRC = {
@@ -1338,7 +1211,7 @@
 		region_state:BLF = {
 			create_pop = {
 				culture = siouan
-				size = 43400
+				size = 15400
 			}
 			create_pop = {
 				culture = metis
@@ -1347,7 +1220,7 @@
 		}
 	}
 	s:STATE_BRITISH_COLUMBIA = {
-		region_state:COL = {
+		region_state:ORG = {
 			create_pop = {
 				culture = anglo_canadian
 				size = 8000
@@ -1358,37 +1231,23 @@
 			}
 			create_pop = {
 				culture = athabaskan
-				size = 25200
-			}
-		}
-		region_state:NWT = {
-			create_pop = {
-				culture = athabaskan
-				size = 3000
-			}
-		}
-		region_state:ATB = {
-			create_pop = {
-				culture = athabaskan
-				size = 27000
+				size = 55200
 			}
 		}
 	}
 	s:STATE_SASKATCHEWAN = {
 		region_state:HBC = {
 			create_pop = {
+				culture = anglo_canadian
+				size = 3000
+			}			
+			create_pop = {
 				culture = siouan
 				size = 4200
 			}
 			create_pop = {
 				culture = metis
-				size = 6000
-			}
-		}
-		region_state:ATB = {
-			create_pop = {
-				culture = metis
-				size = 10000
+				size = 16000
 			}
 		}
 		region_state:IRC = {
@@ -1413,25 +1272,17 @@
 				size = 12000
 			}
 			create_pop = {
-				culture = metis #Anglican
+				culture = metis
 				religion = protestant
 				size = 3996
 			}
 			create_pop = {
+				culture = athabaskan
+				size = 16000
+			}
+			create_pop = {
 				culture = metis
 				size = 20004
-			}
-		}
-		region_state:ATB = {
-			create_pop = {
-				culture = athabaskan
-				size = 15500
-			}
-		}
-		region_state:NVT = {
-			create_pop = {
-				culture = inuit
-				size = 500
 			}
 		}
 		region_state:IRC = {
@@ -1442,50 +1293,26 @@
 		}
 	}
 	s:STATE_YUKON_TERRITORY = {
-		region_state:ATB = {
+		region_state:HBC = {
 			create_pop = {
 				culture = athabaskan
-				size = 11000
-			}
-		}
-		region_state:NKT = {
-			create_pop = {
-				culture = inuit
-				size = 1000
+				size = 12000
 			}
 		}
 	}
 	s:STATE_NORTHWEST_TERRITORIES = {
-		region_state:ATB = {
+		region_state:HBC = {
 			create_pop = {
 				culture = athabaskan
-				size = 13000
-			}
-		}
-		region_state:NVT = {
-			create_pop = {
-				culture = inuit
-				size = 1000
-			}
-		}
-		region_state:NKT = {
-			create_pop = {
-				culture = inuit
-				size = 4000
+				size = 16000
 			}
 		}
 	}
 	s:STATE_NUNAVUT = {
-		region_state:NVT = {
+		region_state:HBC = {
 			create_pop = {
 				culture = inuit
-				size = 11000
-			}
-		}
-		region_state:ATB = {
-			create_pop = {
-				culture = athabaskan
-				size = 980
+				size = 11980
 			}
 		}
 	}
@@ -1505,24 +1332,24 @@
 		region_state:TEX = {
 			create_pop = {
 				culture = dixie
-				size = 46224
+				size = 42224
 			}
 			create_pop = {
 				culture = siouan
-				size = 2196
+				size = 1996
 			}
 			create_pop = {
 				culture = caddoan
-				size = 4400
+				size = 4000
 			}
 			create_pop = {
 				pop_type = slaves
 				culture = afro_american
-				size = 6640
+				size = 6040
 			}
 			create_pop = {
 				culture = mexican
-				size = 2204
+				size = 2004
 			}
 		}
 		region_state:MEX = {
@@ -1900,21 +1727,25 @@
 		region_state:MEX = {
 			create_pop = {
 				culture = mexican
-				size = 53946
+				size = 57846
 			}
 			create_pop = {
 				culture = mayan
-				size = 68164
+				size = 72164
 			}
 		}
 		region_state:UCA = {
 			create_pop = {
+				culture = mexican
+				size = 5562
+			}
+			create_pop = {
 				culture = central_american
-				size = 10416
+				size = 1854
 			}
 			create_pop = {
 				culture = mayan
-				size = 14251
+				size = 9251
 			}
 		}
 	}

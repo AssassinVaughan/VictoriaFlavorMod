@@ -3,17 +3,7 @@
 		region_state:AUS = {
 			create_pop = {
 				culture = north_italian
-				size = 2476996
-			}
-			create_pop = {
-			    pop_type = bureaucrats
-				culture = south_german
-				size = 100
-			}
-			create_pop = {
-			    pop_type = aristocrats
-				culture = south_german
-				size = 100
+				size = 2376996
 			}
 			create_pop = {
 				culture = north_italian
@@ -26,7 +16,7 @@
 		region_state:SAR = {
 			create_pop = {
 				culture = north_italian
-				size = 3217188
+				size = 2367188
 			}
 			create_pop = {
 				culture = french
@@ -35,7 +25,7 @@
 			create_pop = {
 				culture = north_italian
 				religion = jewish
-				size = 6799 
+				size = 2804
 			}
 		}
 	}
@@ -43,7 +33,7 @@
 		region_state:SAR = {
 			create_pop = {
 				culture = south_italian
-				size = 510084
+				size = 524084
 			}
 		}
 	}
@@ -63,7 +53,7 @@
 		region_state:PAP = {
 			create_pop = {
 				culture = south_italian
-				size = 481000
+				size = 451000
 			}
 		}
 	}
@@ -71,7 +61,7 @@
 		region_state:FRA = {
 			create_pop = {
 				culture = corsican
-				size = 190660
+				size = 190540
 			}
 			create_pop = { # Ligurian
 				culture = north_italian
@@ -81,19 +71,18 @@
 				culture = french
 				size = 16723
 			}
+			create_pop = {
+				culture = corsican
+				religion = protestant
+				size = 124
+			}
 		}
 	}
 	s:STATE_CAMPANIA = {
 		region_state:SIC = {
 			create_pop = {
 				culture = south_italian
-				size = 3089948
-			}
-		}
-		region_state:PAP = {
-			create_pop = {
-				culture = south_italian
-				size = 21486
+				size = 2557396
 			}
 		}
 	}
@@ -101,7 +90,7 @@
 		region_state:SIC = {
 			create_pop = {
 				culture = south_italian
-				size = 965233
+				size = 882848
 			}
 		}
 	}
@@ -109,7 +98,7 @@
 		region_state:SIC = {
 			create_pop = {
 				culture = south_italian
-				size = 1029795
+				size = 1284392
 			}
 		}
 	}
@@ -117,7 +106,7 @@
 		region_state:SIC = {
 			create_pop = {
 				culture = south_italian
-				size = 736953
+				size = 660448
 			}
 		}
 	}
@@ -133,7 +122,7 @@
 			}
 			create_pop = {
 				culture = north_italian
-				size = 229500
+				size = 181200
 			}
 		}
 	}
@@ -147,19 +136,13 @@
 		region_state:LUC = {
 			create_pop = {
 				culture = north_italian
-				size = 102408
+				size = 108408
 			}
 		}
 		region_state:MOD = {
 			create_pop = {
 				culture = north_italian
-				size = 531400
-			}
-		}
-		region_state:TUS = {
-			create_pop = {
-				culture = north_italian
-				size = 46385
+				size = 648400
 			}
 		}
 	}
@@ -180,13 +163,7 @@
 		region_state:PAP = {
 			create_pop = {
 				culture = north_italian
-				size = 838600
-			}
-		}
-		region_state:SRO = {
-			create_pop = {
-				culture = north_italian
-				size = 5000
+				size = 803600
 			}
 		}
 	}
@@ -194,7 +171,7 @@
 		region_state:PAP = {
 			create_pop = {
 				culture = south_italian
-				size = 1383868
+				size = 1333868
 			}
 			create_pop = {
 				culture = south_italian
@@ -207,27 +184,7 @@
 		region_state:AUS = {
 			create_pop = {
 				culture = north_italian
-				size = 2020000
-			}
-			create_pop = {
-			    pop_type = bureaucrats
-				culture = south_german
-				size = 1500
-			}
-			create_pop = {
-			    pop_type = aristocrats
-				culture = south_german
-				size = 2000
-			}
-			create_pop = {
-			    pop_type = capitalists
-				culture = south_german
-				size = 1000
-			}
-			create_pop = {
-			    pop_type = officers
-				culture = south_german
-				size = 500
+				size = 1855196
 			}
 			create_pop = {
 				culture = north_italian
@@ -240,16 +197,15 @@
 		region_state:SIC = {
 			create_pop = {
 				culture = south_italian
-				size = 1705411
+				size = 1647596
 			}
 		}
 	}
-	## European Spain had roughly 12.2 million inhabitants in 1836
-	s:STATE_CASTILLA_LA_NUEVA = {
+	s:STATE_TOLEDO = {
 		region_state:SPA = {
 			create_pop = {
 				culture = spanish
-				size = 1333888
+				size = 1268400
 			}
 		}
 	}
@@ -267,171 +223,83 @@
 		}
 	}
 	s:STATE_ASTURIAS = {
-	    # added back some pop that were missing after state lost some provinces to STATE_CASTILLA_LA_VIEJA
+		# please don't ask for a source
 		region_state:SPA = {
 			create_pop = {
 				culture = spanish
-				size = 514264
+				size = 614264
 			}
 			create_pop = {
 				culture = basque
-				size = 27000
+				size = 32000
 			}
-		}
+		}	
 	}
-	s:STATE_CASTILLA_LA_VIEJA = {
-	    # added back some pop that were missing after state was changed, net gaining provinces
+	s:STATE_CASTILE = {
 		region_state:SPA = {
 			create_pop = {
 				culture = spanish
-				size = 594644
+				size = 1430808
 			}
-		}
-		region_state:CAR = {
 			create_pop = {
-				culture = spanish
-				size = 747564
+				culture = basque
+				size = 4000
 			}
 		}
 	}
 	s:STATE_NAVARRA = {
-		region_state:CAR = {
-			create_pop = {
-				culture = basque
-				size = 389200
-			}
+		region_state:SPA = {
 			create_pop = {
 				culture = spanish
-				size = 212700
+				size = 579200
+			}
+			create_pop = {
+				culture = catalan
+				size = 32220
 			}
 			create_pop = {
 				culture = basque
-				size = 544808
-			}
-			create_pop = {
-				culture = spanish
-				size = 163128
+				size = 700060
 			}
 		}
 	}
 	s:STATE_ARAGON = {
-	    # removed some pop that were duplicated after state was split into regions states, state had 579k pops before split
 		region_state:SPA = {
 			create_pop = {
-				culture = afro_caribeno
-				pop_type = slaves
-				size = 350
+				culture = spanish
+				size = 401200
+			}
+			create_pop = {
+				culture = basque
+				size = 100008
 			}
 			create_pop = {
 				culture = catalan
-				size = 27500
-			}
-			create_pop = {
-				culture = romani
-				size = 3730
-			}
-			create_pop = {
-				culture = spanish
-				size = 187260
-			}
-		}
-		region_state:CAR = {
-			create_pop = {
-				culture = afro_caribeno
-				pop_type = slaves
-				size = 1500
-			}
-			create_pop = {
-				culture = catalan
-				size = 21970
-			}
-			create_pop = {
-				culture = romani
-				size = 2100
-			}
-			create_pop = {
-				culture = spanish
-				size = 333100
+				size = 77996
 			}
 		}
 	}
 	s:STATE_CATALONIA = {
-	    # removed some pop that were duplicated after state was split into regions states, state had 1021k pops before split
 		region_state:SPA = {
 			create_pop = {
-				culture = afro_caribeno
-				pop_type = slaves
-				size = 1270
-			}
-			create_pop = {
 				culture = catalan
-				size = 483700
-			}
-			create_pop = {
-				culture = romani
-				size = 640
+				size = 704308
 			}
 			create_pop = {
 				culture = spanish
-				size = 148800
-			}
-		}
-		region_state:CAR = {
-			create_pop = {
-				culture = afro_caribeno
-				pop_type = slaves
-				size = 100
-			}
-			create_pop = {
-				culture = catalan
-				size = 290000
-			}
-			create_pop = {
-				culture = french
-				size = 100
-			}
-			create_pop = {
-				culture = occitan
-				size = 13750
-			}
-			create_pop = {
-				culture = romani
-				size = 50
-			}
-			create_pop = {
-				culture = spanish
-				size = 80600
-			}
-		}
-		region_state:ANR = {
-			create_pop = {
-				culture = catalan
-				size = 5000
-			}
-			create_pop = {
-				culture = french
-				size = 100
+				size = 316804
 			}
 		}
 	}
 	s:STATE_BALEARES = {
 		region_state:SPA = {
 			create_pop = {
-				culture = berber
-				pop_type = slaves
-				size = 172
-			}
-			create_pop = {
 				culture = catalan
-				size = 149360
-			}
-			create_pop = {
-				culture = songhai
-				size = 388
+				size = 145244
 			}
 			create_pop = {
 				culture = spanish
-				size = 52240
+				size = 78020
 			}
 		}
 	}
@@ -465,7 +333,7 @@
 			}
 		}
 	}
-	s:STATE_EXTREMADURA = {
+	s:STATE_BADAJOZ = {
 		region_state:SPA = {
 			create_pop = {
 				culture = spanish
@@ -477,27 +345,11 @@
 		region_state:SPA = {
 			create_pop = {
 				culture = spanish
-				size = 201800
+				size = 989604
 			}
 			create_pop = {
 				culture = catalan
-				size = 204808
-			}
-		}
-	}
-	s:STATE_LEON = {
-		region_state:SPA = {
-			create_pop = {
-				culture = spanish
-				size = 704020
-			}
-		}
-	}
-	s:STATE_MURCIA = {
-		region_state:SPA = {
-			create_pop = {
-				culture = spanish
-				size = 472656
+				size = 490392
 			}
 		}
 	}
@@ -580,12 +432,7 @@
 			}
 			create_pop = {
 				culture = greek
-				size = 261992
-			}
-			create_pop = {
-				pop_type = shopkeepers
-				culture = greek
-				size = 20000
+				size = 281992
 			}
 			create_pop = {
 				culture = north_italian
@@ -597,37 +444,12 @@
 			}
 			create_pop = {
 				culture = armenian
-				size = 57996
+				size = 67996
 			}
 			create_pop = {
-				pop_type = shopkeepers
-				culture = armenian
-				size = 10000
-			}			
-			create_pop = {
 				culture = sephardic
-				size = 15004
+				size = 50004
 			}
-			create_pop = {
-				pop_type = clerks
-				culture = sephardic
-				size = 20000
-			}
-			create_pop = {
-				pop_type = shopkeepers
-				culture = sephardic
-				size = 10000
-			}
-			create_pop = {
-				pop_type = machinists
-				culture = sephardic
-				size = 3000
-			}
-			create_pop = {
-				pop_type = engineers
-				culture = sephardic
-				size = 2000
-			}			
 			create_pop = {
 				pop_type = slaves
 				culture = north_caucasian
@@ -665,24 +487,24 @@
 		}
 		region_state:RUS = {
 			create_pop = {
-				culture = bulgarian
-				size = 16016
-			}
-			create_pop = {
-				culture = romanian
-				size = 30960
-			}
-			create_pop = {
-				culture = tatar
-				size = 12840
-			}
-			create_pop = {
 				culture = turkish
-				size = 6280
+				size = 2560
 			}
 			create_pop = {
 				culture = ukrainian
-				size = 12700	
+				size = 9000
+			}
+			create_pop = {
+				culture = bulgarian
+				size = 2000
+			}
+			create_pop = {
+				culture = greek
+				size = 100
+			}
+			create_pop = {
+				culture = romanian
+				size = 8000
 			}
 		}
 	}
@@ -690,21 +512,21 @@
 		region_state:TUR = {
 			create_pop = {
 				culture = albanian
-				size = 402000
+				size = 1004808
 			}
 			create_pop = {
 				culture = greek
-				size = 30000
+				size = 40000
 			}
 			create_pop = {
 				culture = albanian
 				religion = catholic
-				size = 51000
+				size = 127200
 			}
 			create_pop = {
 				culture = albanian
 				religion = orthodox
-				size = 36500
+				size = 91200
 			}
 		}
 	}
@@ -761,19 +583,11 @@
 			}
 			create_pop = {
 				culture = bulgarian
-				size = 440000
+				size = 660000
 			}
 			create_pop = {
 				culture = sephardic
 				size = 4004
-			}
-		}
-	}
-	s:STATE_WEST_BULGARIA = {
-		region_state:TUR = {
-			create_pop = {
-				culture = bulgarian
-				size = 220000
 			}
 		}
 	}
@@ -818,21 +632,11 @@
 			}
 			create_pop = {
 				culture = hungarian
-				size = 20000
-			}
-			create_pop = {
-				pop_type = aristocrats
-				culture = hungarian
-				size = 8000
+				size = 28000
 			}
 			create_pop = {
 				culture = south_german
-				size = 39000
-			}
-			create_pop = {
-			    pop_type = aristocrats
-				culture = south_german
-				size = 1396
+				size = 40396
 			}
 			create_pop = {
 				culture = serb
@@ -852,21 +656,11 @@
 			}
 			create_pop = {
 				culture = hungarian
-				size = 12000
-			}
-			create_pop = {
-				pop_type = aristocrats
-				culture = hungarian
-				size = 4000
+				size = 16000
 			}
 			create_pop = {
 				culture = south_german
-				size = 19000
-			}
-			create_pop = {
-			    pop_type = aristocrats
-				culture = south_german
-				size = 1140
+				size = 20140
 			}
 		}
 	}
@@ -878,12 +672,7 @@
 			}
 			create_pop = {
 				culture = hungarian
-				size = 2500
-			}
-			create_pop = {
-				pop_type = aristocrats
-				culture = hungarian
-				size = 1500
+				size = 4000
 			}
 			create_pop = {
 				culture = slovene
@@ -891,12 +680,7 @@
 			}
 			create_pop = {
 				culture = south_german
-				size = 7292
-			}
-			create_pop = {
-				pop_type = aristocrats
-				culture = south_german
-				size = 2500
+				size = 9792
 			}
 			create_pop = {
 				culture = croat
@@ -907,16 +691,8 @@
 	s:STATE_MONTENEGRO = {
 		region_state:TUR = {
 			create_pop = {
-				culture = albanian
-				size = 12200
-			}
-			create_pop = {
 				culture = bosniak
-				size = 39332
-			}
-			create_pop = {
-				culture = romani
-				size = 800
+				size = 43196
 			}
 			create_pop = {
 				culture = serb
@@ -929,10 +705,6 @@
 		}
 		region_state:MON = {
 			create_pop = {
-				culture = romani
-				size = 4000
-			}
-			create_pop = {
 				culture = serb
 				size = 34396
 			}
@@ -942,24 +714,24 @@
 			}			
 		}
 		# Cattaro Region, downscaled version of 1880 census, with inflated Italian numbers, and decreased German ones
-		#region_state:AUS = { # TODO: add AUS in 00_states or remove
-		#	create_pop = {
-		#		culture = serb
-		#		size = 15662
-		#	}
-		#	create_pop = {
-		#		culture = croat
-		#		size = 5261
-		#	}
-		#	create_pop = {
-		#		culture = north_italian
-		#		size = 1281
-		#	}
-		#	create_pop = {
-		#		culture = south_german
-		#		size = 524
-		#	}
-		#}
+		region_state:AUS = {
+			create_pop = {
+				culture = serb
+				size = 15662
+			}
+			create_pop = {
+				culture = croat
+				size = 5261
+			}
+			create_pop = {
+				culture = north_italian
+				size = 1281
+			}
+			create_pop = {
+				culture = south_german
+				size = 524
+			}
+		}
 	}
 	s:STATE_NORTHERN_SERBIA = {
 		region_state:SER = {
@@ -1046,34 +818,24 @@
 		region_state:TUR = {
 			create_pop = {
 				culture = turkish
-				size = 38104
+				size = 76208
 			}
 			create_pop = {
 				culture = albanian
-				size = 6000
+				size = 12000
 			}
 			create_pop = {
 				culture = greek
-				size = 460950
-			}
-			create_pop = {
-				pop_type = shopkeepers
-				culture = greek
-				size = 7000
+				size = 935900
 			}
 			create_pop = {
 				culture = sephardic
-				size = 1198
-			}
-			create_pop = {
-				pop_type = shopkeepers
-				culture = sephardic
-				size = 700
+				size = 3796
 			}
 			create_pop = {
 				culture = albanian
 				religion = orthodox
-				size = 52000
+				size = 104000
 			}
 		}
 	}
@@ -1085,12 +847,7 @@
 			}
 			create_pop = {
 				culture = sephardic
-				size = 6000
-			}
-			create_pop = {
-				pop_type = shopkeepers
-				culture = sephardic
-				size = 1996
+				size = 7996
 			}
 			create_pop = {
 				culture = bulgarian
@@ -1098,12 +855,7 @@
 			}
 			create_pop = {
 				culture = greek
-				size = 88000
-			}
-			create_pop = {
-				pop_type = shopkeepers
-				culture = greek
-				size = 4000
+				size = 92000
 			}
 			create_pop = {
 				culture = albanian
@@ -1119,12 +871,7 @@
 			}
 			create_pop = {
 				culture = greek
-				size = 260000
-			}
-			create_pop = {
-				pop_type = shopkeepers
-				culture = greek
-				size = 16000
+				size = 276000
 			}
 			create_pop = {
 				culture = bulgarian
@@ -1132,23 +879,8 @@
 			}
 			create_pop = {
 				culture = sephardic
-				size = 52102
+				size = 57204
 			}
-			create_pop = {
-				pop_type = capitalists
-				culture = sephardic
-				size = 300 
-			}
-			create_pop = {
-				pop_type = machinists
-				culture = sephardic
-				size = 2000 
-			}
-			create_pop = {
-				pop_type = shopkeepers
-				culture = sephardic
-				size = 3000 
-			}	
 			create_pop = {
 				pop_type = slaves
 				culture = north_caucasian
