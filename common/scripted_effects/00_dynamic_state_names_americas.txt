@@ -48,6 +48,38 @@ assign_state_name_region_pacific_coast = { # region_pacific_coast
         }
         STATE_BRITISH_COLUMBIA_state_name_assign = yes
     }
+    else_if = {
+        limit = {
+            state_region = {
+                s:STATE_CALIFORNIA ?= this
+            }
+        }
+        STATE_CALIFORNIA_state_name_assign = yes
+    }
+    else_if = {
+        limit = {
+            state_region = {
+                s:STATE_NEVADA ?= this
+            }
+        }
+        STATE_NEVADA_state_name_assign = yes
+    }
+    else_if = {
+        limit = {
+            state_region = {
+                s:STATE_UTAH ?= this
+            }
+        }
+        STATE_UTAH_state_name_assign = yes
+    }
+    else_if = {
+        limit = {
+            state_region = {
+                s:STATE_ARIZONA ?= this
+            }
+        }
+        STATE_ARIZONA_state_name_assign = yes
+    }
 }
 
 assign_state_name_region_dixie = { # region_dixie
@@ -58,6 +90,14 @@ assign_state_name_region_dixie = { # region_dixie
             }
         }
         STATE_DISTRICT_OF_COLUMBIA_state_name_assign = yes
+    }
+    else_if = {
+        limit = {
+            state_region = {
+                s:STATE_TEXAS ?= this
+            }
+        }
+        STATE_TEXAS_state_name_assign = yes
     }
 }
 
@@ -70,6 +110,25 @@ assign_state_name_region_brazil = { # region_brazil
         }
         STATE_SANTA_CATARINA_state_name_assign = yes
     }
+}
+
+assign_state_name_mexican_cession = { # excluding california, nevada, and texas
+    if = {
+        limit = {
+            state_region = {
+                s:STATE ?= this
+            }
+        }
+        STATE_WEST_SLOVAKIA_state_name_assign = yes
+    }
+    else_if = {
+        limit = {
+            state_region = {
+                s:STATE_WEST_SLOVAKIA ?= this
+            }
+        }
+        STATE_WEST_SLOVAKIA_state_name_assign = yes
+    } 
 }
 
 
@@ -140,6 +199,166 @@ STATE_BRITISH_COLUMBIA_state_name_assign = { # More likely that British Columbia
 	# no name reversion effect in an else statement. If the state becomes British Columbia, it stays British Columbia.
 }
 
+STATE_CALIFORNIA_state_name_assign = { # Take "alta" off if USA owns it, and didn't take baja
+    if = {
+        limit = {
+            owner = {
+                any_primary_culture = {
+                    has_discrimination_trait = anglophone
+                }
+                NOT = {
+                    any_primary_culture = {
+                        has_discrimination_trait = hispanophone
+                    }
+                }
+            }
+        }
+
+        set_state_name = STATE_CALIFORNIA_english
+    }
+    else_if = {
+        limit = {
+            owner = {
+                any_primary_culture = {
+                    has_discrimination_trait = hispanophone
+                }
+                NOT = {
+                    any_primary_culture = {
+                        has_discrimination_trait = anglophone
+                    }
+                }
+            }
+        }
+
+        set_state_name = STATE_CALIFORNIA_spanish
+        set_hub_names = spanish
+    }
+    else = { # switch back to defaults
+        reset_state_name = yes
+        reset_hub_names = yes
+    }
+}
+
+STATE_NEVADA_state_name_assign = { # Anglophone, too lazy for british-specific an such
+    if = {
+        limit = {
+            owner = {
+                any_primary_culture = {
+                    has_discrimination_trait = anglophone
+                }
+                NOT = {
+                    any_primary_culture = {
+                        has_discrimination_trait = hispanophone
+                    }
+                }
+            }
+        }
+        set_state_name = STATE_NEVADA_english
+        set_hub_names = english
+    }
+    else_if = {
+        limit = {
+            owner = {
+                any_primary_culture = {
+                    has_discrimination_trait = hispanophone
+                }
+                NOT = {
+                    any_primary_culture = {
+                        has_discrimination_trait = anglophone
+                    }
+                }
+            }
+        }
+
+        set_state_name = STATE_NEVADA_spanish
+        set_hub_names = spanish
+    }
+    else = { # switch back to defaults
+        reset_state_name = yes
+        reset_hub_names = yes
+    }
+}
+
+STATE_UTAH_state_name_assign = { # Anglophone, too lazy for british-specific an such
+    if = {
+        limit = {
+            owner = {
+                any_primary_culture = {
+                    has_discrimination_trait = anglophone
+                }
+                NOT = {
+                    any_primary_culture = {
+                        has_discrimination_trait = hispanophone
+                    }
+                }
+            }
+        }
+        set_state_name = STATE_UTAH_english
+        set_hub_names = english
+    }
+    else_if = {
+        limit = {
+            owner = {
+                any_primary_culture = {
+                    has_discrimination_trait = hispanophone
+                }
+                NOT = {
+                    any_primary_culture = {
+                        has_discrimination_trait = anglophone
+                    }
+                }
+            }
+        }
+        
+        set_state_name = STATE_UTAH_spanish
+        set_hub_names = spanish
+    }
+    else = { # switch back to defaults
+        reset_state_name = yes
+        reset_hub_names = yes
+    }
+}
+
+STATE_ARIZONA_state_name_assign = { # Anglophone, too lazy for british-specific an such
+    if = {
+        limit = {
+            owner = {
+                any_primary_culture = {
+                    has_discrimination_trait = anglophone
+                }
+                NOT = {
+                    any_primary_culture = {
+                        has_discrimination_trait = hispanophone
+                    }
+                }
+            }
+        }
+        set_state_name = STATE_ARIZONA_english
+        set_hub_names = english
+    }
+    else_if = {
+        limit = {
+            owner = {
+                any_primary_culture = {
+                    has_discrimination_trait = hispanophone
+                }
+                NOT = {
+                    any_primary_culture = {
+                        has_discrimination_trait = anglophone
+                    }
+                }
+            }
+        }
+        
+        set_state_name = STATE_ARIZONA_spanish
+        set_hub_names = spanish
+    }
+    else = { # switch back to defaults
+        reset_state_name = yes
+        reset_hub_names = yes
+    }
+}
+
 STATE_ONTARIO_state_name_assign = {	# this effect is also covered by completing je_canada_can or je_canada_gbr but I am redundantly covering all bases in a redundant manner
 	if = {
 		limit = {
@@ -204,7 +423,7 @@ STATE_SANTA_CATARINA_state_name_assign = {
             name = HUB_NAME_STATE_SANTA_CATARINA_port_bra_republic		#Florianópolis is port hub in Vanilla but city hub in VFM
         }
     }
-    else = { # switch back to defaults
+    else_if = { # switch back to defaults
         reset_state_name = yes
         reset_hub_names = yes
     }
