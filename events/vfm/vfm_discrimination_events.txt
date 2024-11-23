@@ -23,7 +23,12 @@ vfm_discrimination_events.1 = {
 		NOT = { has_law = law_type:law_multicultural }
 		any_scope_state = {
 			any_scope_culture = {
-				culture_is_discriminated_in = root
+				prev = {
+					state_cultural_acceptance = {  
+						target = prev
+						value < acceptance_status_4 
+					}
+				}
 				save_temporary_scope_as = discrim_culture
 			}
 			culture_percent_state = {
@@ -37,7 +42,12 @@ vfm_discrimination_events.1 = {
 		random_scope_state = {
 			limit = {
 				any_scope_culture = {
-					culture_is_discriminated_in = root
+					prev = {
+					state_cultural_acceptance = {  
+						target = prev
+						value < acceptance_status_4 
+					}
+				}
 					save_temporary_scope_as = discrim_culture
 				}
 				culture_percent_state = {
@@ -48,7 +58,7 @@ vfm_discrimination_events.1 = {
 			save_scope_as = discrimination_state
 			random_scope_pop = {
 				limit = { 
-					culture_accepted = no 
+					pop_acceptance < acceptance_status_4
 				}
 				culture = { save_scope_as = discriminated_culture_pop  }
 			}
@@ -147,7 +157,12 @@ vfm_discrimination_events.2 = {
 		NOT = { has_law = law_type:law_multicultural }
 		any_scope_state = {
 			any_scope_culture = {
-				culture_is_discriminated_in = root
+				prev = {
+					state_cultural_acceptance = {  
+						target = prev
+						value < acceptance_status_4 
+					}
+				}
 				save_temporary_scope_as = discrim_culture
 			}
 			culture_percent_state = {
@@ -161,7 +176,12 @@ vfm_discrimination_events.2 = {
 		ordered_scope_state = {
 			limit = {
 				any_scope_culture = {
-					culture_is_discriminated_in = root
+					prev = {
+					    state_cultural_acceptance = {  
+					    	target = prev
+					    	value < acceptance_status_4 
+				    	}
+				    }
 					save_temporary_scope_as = discrim_culture
 				}
 				culture_percent_state = {
@@ -173,7 +193,7 @@ vfm_discrimination_events.2 = {
 			save_scope_as = discrimination_state
 			random_scope_pop = {
 				limit = { 
-					culture_accepted = no 
+					pop_acceptance < acceptance_status_4
 				}
 				culture = { save_scope_as = discriminated_culture_pop }
 			}
@@ -274,7 +294,12 @@ vfm_discrimination_events.3 = {
 		has_law = law_type:law_national_supremacy
 		any_scope_state = {
 			any_scope_culture = {
-				culture_is_discriminated_in = root
+				prev = {
+					state_cultural_acceptance = {  
+						target = prev
+						value < acceptance_status_4 
+					}
+				}
 				save_temporary_scope_as = discrim_culture
 			}
 			culture_percent_state = {
@@ -289,7 +314,12 @@ vfm_discrimination_events.3 = {
 		random_scope_state = {
 			limit = {
 				any_scope_culture = {
-					culture_is_discriminated_in = root
+					prev = {
+						state_cultural_acceptance = {  
+							target = prev
+							value < acceptance_status_4 
+						}
+					}
 					save_temporary_scope_as = discrim_culture
 				}
 				culture_percent_state = {
@@ -300,7 +330,7 @@ vfm_discrimination_events.3 = {
 			save_scope_as = discrimination_state
 			random_scope_pop = {
 				limit = { 
-					culture_accepted = no 
+					pop_acceptance < acceptance_status_4
 				}
 				culture = { save_scope_as = discriminated_culture_pop  }
 			}
@@ -401,7 +431,12 @@ vfm_discrimination_events.4 = {
 		NOT = { has_law = law_type:law_multicultural }
 		any_scope_state = {
 			any_scope_culture = {
-				culture_is_discriminated_in = root
+				prev = {
+					state_cultural_acceptance = {  
+						target = prev
+						value < acceptance_status_4 
+					}
+				}
 				save_temporary_scope_as = discrim_culture
 			}
 			culture_percent_state = {
@@ -416,7 +451,12 @@ vfm_discrimination_events.4 = {
 		random_scope_state = {
 			limit = {
 				any_scope_culture = {
-					culture_is_discriminated_in = root
+					prev = {
+						state_cultural_acceptance = {  
+							target = prev
+							value < acceptance_status_4 
+						}
+					}
 					save_temporary_scope_as = discrim_culture
 				}
 				culture_percent_state = {
@@ -427,7 +467,7 @@ vfm_discrimination_events.4 = {
 			save_scope_as = discrimination_state
 			random_scope_pop = {
 				limit = { 
-					culture_accepted = no 
+					pop_acceptance < acceptance_status_4
 				}
 				culture = { save_scope_as = discriminated_culture_pop  }
 			}
