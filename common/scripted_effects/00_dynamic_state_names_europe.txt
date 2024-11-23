@@ -791,6 +791,22 @@ assign_state_name_region_danubia  = { # region_danubia
         }
         STATE_SOUTHERN_TRANSYLVANIA_state_name_assign = yes
     } 
+    else_if = {
+        limit = {
+            state_region = {
+                s:STATE_BANAT ?= this
+            }
+        }
+        STATE_BANAT_state_name_assign = yes
+    } 
+    else_if = {
+        limit = {
+            state_region = {
+                s:STATE_DELVIDEK ?= this
+            }
+        }
+        STATE_DELVIDEK_state_name_assign = yes
+    } 
 }
 
 #######################################
@@ -2146,7 +2162,7 @@ STATE_SOUTHERN_TRANSYLVANIA_state_name_assign = {
 						has_discrimination_trait = hungarian_culture_group
 					}
 					any_primary_culture = {
-						cu:romanian ?= this
+						has_discrimination_trait = romanian_culture_group
 					}
 				}
             }
@@ -2166,7 +2182,7 @@ STATE_SOUTHERN_TRANSYLVANIA_state_name_assign = {
 						has_discrimination_trait = german_speaking
 					}
 					any_primary_culture = {
-						cu:romanian ?= this
+						has_discrimination_trait = romanian_culture_group
 					}
 				}
             }
@@ -2179,7 +2195,7 @@ STATE_SOUTHERN_TRANSYLVANIA_state_name_assign = {
 		limit = {
             owner = {
 				any_primary_culture = {
-					cu:romanian ?= this
+					has_discrimination_trait = romanian_culture_group
 				}
 				NOR = {
 					any_primary_culture = {
@@ -2194,6 +2210,174 @@ STATE_SOUTHERN_TRANSYLVANIA_state_name_assign = {
 		
         set_state_name = STATE_SOUTHERN_TRANSYLVANIA_romanian
         set_hub_names = romanian
+	}
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
+# Banat
+STATE_BANAT_state_name_assign = {
+	if = {
+		limit = {
+            owner = {
+                any_primary_culture = {
+					has_discrimination_trait = german_speaking
+                }
+				NOR = {
+					any_primary_culture = {
+						has_discrimination_trait = hungarian_culture_group
+					}
+					any_primary_culture = {
+						has_discrimination_trait = romanian_culture_group
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_BANAT_german
+        set_hub_names = german
+	}
+	else_if = {
+		limit = {
+            owner = {
+				any_primary_culture = {
+					has_discrimination_trait = hungarian_culture_group
+				}
+				NOR = {
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+					any_primary_culture = {
+						has_discrimination_trait = romanian_culture_group
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_BANAT_hungarian
+        set_hub_names = hungarian
+	}
+	else_if = {
+		limit = {
+            owner = {
+				any_primary_culture = {
+					has_discrimination_trait = romanian_culture_group
+				}
+				NOR = {
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+					any_primary_culture = {
+						has_discrimination_trait = hungarian_culture_group
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_BANAT_romanian
+        set_hub_names = romanian
+	}
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
+# Délvidék
+STATE_DELVIDEK_state_name_assign = {
+	if = {
+		limit = {
+            owner = {
+                any_primary_culture = {
+					has_discrimination_trait = german_speaking
+                }
+				NOR = {
+					any_primary_culture = {
+						has_discrimination_trait = hungarian_culture_group
+					}
+					any_primary_culture = {
+						has_discrimination_trait = romanian_culture_group
+					}
+					any_primary_culture = {
+						has_discrimination_trait = jugoslav
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_DELVIDEK_german
+        set_hub_names = german
+	}
+	else_if = {
+		limit = {
+            owner = {
+				any_primary_culture = {
+					has_discrimination_trait = hungarian_culture_group
+				}
+				NOR = {
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+					any_primary_culture = {
+						has_discrimination_trait = romanian_culture_group
+					}
+					any_primary_culture = {
+						has_discrimination_trait = jugoslav
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_DELVIDEK_hungarian
+        set_hub_names = hungarian
+	}
+	else_if = {
+		limit = {
+            owner = {
+				any_primary_culture = {
+					has_discrimination_trait = romanian_culture_group
+				}
+				NOR = {
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+					any_primary_culture = {
+						has_discrimination_trait = hungarian_culture_group
+					}
+					any_primary_culture = {
+						has_discrimination_trait = jugoslav
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_DELVIDEK_romanian
+        set_hub_names = romanian
+	}
+	else_if = {
+		limit = {
+            owner = {
+				any_primary_culture = {
+					has_discrimination_trait = jugoslav
+				}
+				NOR = {
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+					any_primary_culture = {
+						has_discrimination_trait = hungarian_culture_group
+					}
+					any_primary_culture = {
+						has_discrimination_trait = romanian_culture_group
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_DELVIDEK_serb
+        set_hub_names = serb
 	}
 	else = { # switch back to defaults
 		reset_state_name = yes
