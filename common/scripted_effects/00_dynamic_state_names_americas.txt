@@ -10,14 +10,6 @@ assign_state_name_region_the_midwest = { # region_the_midwest
         }
         STATE_OHIO_state_name_assign = yes
     }
-    else_if = {
-        limit = {
-            state_region = {
-                s:STATE_WASHINGTON ?= this
-            }
-        }
-        STATE_WASHINGTON_state_name_assign = yes
-    }
 }
 
 assign_state_name_region_canada = { # region_canada
@@ -111,7 +103,7 @@ assign_state_name_region_brazil = { # region_brazil
         STATE_SANTA_CATARINA_state_name_assign = yes
     }
 }
-    if = {
+    else_if = {
         limit = {
             state_region = {
                 s:STATE_URUGUAY ?= this
@@ -477,7 +469,7 @@ STATE_URUGUAY_state_name_assign = {
         set_hub_names = portuguese
         }
     }
-    else_if = { # switch back to defaults
+    else_if = {
 		limit = {
             owner = {
 				any_primary_culture = {
