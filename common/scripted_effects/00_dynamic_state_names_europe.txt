@@ -664,6 +664,17 @@ assign_state_name_region_south_germany  = { # region_south_germany
     }
 }
 
+assign_state_name_region_occitania = { # region_occitania
+    if = {
+        limit = {
+            state_region = {
+                s:STATE_SAVOY ?= this
+            }
+        }
+        STATE_SAVOY_state_name_assign = yes
+    }
+}
+
 assign_state_name_region_iberia = { # region_iberia
     if = {
         limit = {
@@ -4754,6 +4765,25 @@ STATE_RUHR_state_name_assign = {
             type = city
             name = HUB_NAME_STATE_RUHR_city_french
         }
+    }
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
+STATE_SAVOY_state_name_assign = {
+	if = {
+		limit = {
+			owner = {
+				any_primary_culture = {
+					has_discrimination_trait = italophone
+				}
+			}
+		}
+
+        set_state_name = STATE_SAVOY_italian
+		set_hub_names = italian
     }
 	else = { # switch back to defaults
 		reset_state_name = yes
