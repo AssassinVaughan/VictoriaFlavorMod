@@ -10,14 +10,6 @@ assign_state_name_region_the_midwest = { # region_the_midwest
         }
         STATE_OHIO_state_name_assign = yes
     }
-    else_if = {
-        limit = {
-            state_region = {
-                s:STATE_WASHINGTON ?= this
-            }
-        }
-        STATE_WASHINGTON_state_name_assign = yes
-    }
 }
 
 assign_state_name_region_canada = { # region_canada
