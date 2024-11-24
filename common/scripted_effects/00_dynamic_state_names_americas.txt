@@ -112,25 +112,6 @@ assign_state_name_region_brazil = { # region_brazil
     }
 }
 
-assign_state_name_mexican_cession = { # excluding california, nevada, and texas
-    if = {
-        limit = {
-            state_region = {
-                s:STATE ?= this
-            }
-        }
-        STATE_WEST_SLOVAKIA_state_name_assign = yes
-    }
-    else_if = {
-        limit = {
-            state_region = {
-                s:STATE_WEST_SLOVAKIA ?= this
-            }
-        }
-        STATE_WEST_SLOVAKIA_state_name_assign = yes
-    } 
-}
-
 
 #######################################
 ### Specific state name assignments ###
