@@ -112,6 +112,25 @@ assign_state_name_region_great_plains = { # region_great_plains
     }
 }
 
+assign_state_name_region_caribbean = { # region_caribbean
+    if = {
+        limit = {
+            state_region = {
+                s:STATE_SANTO_DOMINGO ?= this
+            }
+        }
+        STATE_SANTO_DOMINGO_state_name_assign = yes
+    }
+    else_if = {
+        limit = {
+            state_region = {
+                s:STATE_HAITI ?= this
+            }
+        }
+        STATE_HAITI_state_name_assign = yes
+    }
+}
+
 assign_state_name_region_brazil = { # region_brazil
     if = {
         limit = {
@@ -456,6 +475,108 @@ STATE_NEW_MEXICO_state_name_assign = {
         }
         
         set_state_name = STATE_NEW_MEXICO_spanish
+        set_hub_names = spanish
+    }
+    else = { # switch back to defaults
+        reset_state_name = yes
+        reset_hub_names = yes
+    }
+}
+
+STATE_SANTO_DOMINGO_state_name_assign = {
+    if = {
+        limit = {
+            owner = {
+                any_primary_culture = {
+                    AND = {
+                        has_discrimination_trait = francophone
+                        has_discrimination_trait = african_heritage
+                    }
+                }
+                NOT = {
+                    any_primary_culture = {
+                        has_discrimination_trait = anglophone
+                    }
+                }
+            }
+        }
+        set_state_name = STATE_SANTO_DOMINGO_haitian
+        set_hub_names = haitian
+    }
+    else_if = { #If not haitian, see if they're francophone
+        limit = {
+            owner = {
+                any_primary_culture = {
+                    has_discrimination_trait = francophone
+                    NOT = {
+                        has_discrimination_trait = african_heritage
+                    }
+                }
+                NOT = {
+                    any_primary_culture = {
+                        OR = {
+                            has_discrimination_trait = hispanophone
+                        }
+                    }
+                }
+            }
+        }
+        
+        set_state_name = STATE_SANTO_DOMINGO_french
+        set_hub_names = french
+    }
+    else = { # switch back to defaults
+        reset_state_name = yes
+        reset_hub_names = yes
+    }
+}
+
+STATE_HAITI_state_name_assign = {
+    if = {
+        limit = {
+            owner = {
+                any_primary_culture = {
+                    AND = {
+                        has_discrimination_trait = francophone
+                        has_discrimination_trait = african_heritage
+                    }
+                }
+                NOT = {
+                    any_primary_culture = {
+                        has_discrimination_trait = anglophone
+                    }
+                }
+            }
+        }
+        set_state_name = STATE_HAITI_haitian
+        set_hub_names = haitian
+    }
+    else_if = { #If hispanic
+        limit = {
+            owner = {
+                any_primary_culture = {
+                    has_discrimination_trait = hispanophone
+                }
+                NOT = {
+                    any_primary_culture = {
+                        OR = {
+                            AND = {
+                                has_discrimination_trait = francophone
+                                has_discrimination_trait = african_heritage
+                            }
+                            AND = {
+                                has_discrimination_trait = francophone
+                                NOT = {
+                                    has_discrimination_trait = african_heritage
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        set_state_name = STATE_HAITI_spanish
         set_hub_names = spanish
     }
     else = { # switch back to defaults
