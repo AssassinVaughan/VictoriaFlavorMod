@@ -93,6 +93,17 @@ assign_state_name_region_dixie = { # region_dixie
     }
 }
 
+assign_state_name_region_great_plains = { # region_great_plains
+    if = {
+        limit = {
+            state_region = {
+                s:STATE_NEW_MEXICO ?= this
+            }
+        }
+        STATE_NEW_MEXICO_state_name_assign = yes
+    }
+}
+
 assign_state_name_region_brazil = { # region_brazil
     if = {
         limit = {
@@ -372,6 +383,46 @@ STATE_TEXAS_state_name_assign = { # Anglophone, too lazy for british-specific an
         }
         
         set_state_name = STATE_TEXAS_spanish
+        set_hub_names = spanish
+    }
+    else = { # switch back to defaults
+        reset_state_name = yes
+        reset_hub_names = yes
+    }
+}
+
+STATE_NEW_MEXICO_state_name_assign = {
+    if = {
+        limit = {
+            owner = {
+                any_primary_culture = {
+                    has_discrimination_trait = anglophone
+                }
+                NOT = {
+                    any_primary_culture = {
+                        has_discrimination_trait = hispanophone
+                    }
+                }
+            }
+        }
+        set_state_name = STATE_NEW_MEXICO_english
+        set_hub_names = english
+    }
+    else_if = {
+        limit = {
+            owner = {
+                any_primary_culture = {
+                    has_discrimination_trait = hispanophone
+                }
+                NOT = {
+                    any_primary_culture = {
+                        has_discrimination_trait = anglophone
+                    }
+                }
+            }
+        }
+        
+        set_state_name = STATE_NEW_MEXICO_spanish
         set_hub_names = spanish
     }
     else = { # switch back to defaults
