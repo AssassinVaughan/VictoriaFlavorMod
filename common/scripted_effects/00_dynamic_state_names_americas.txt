@@ -465,9 +465,9 @@ STATE_URUGUAY_state_name_assign = {
 				}
             }
 		
+        }
         set_state_name = STATE_URUGUAY_portuguese
         set_hub_names = portuguese
-        }
     }
     else_if = {
 		limit = {
@@ -481,8 +481,9 @@ STATE_URUGUAY_state_name_assign = {
 					any_primary_culture = {
 						has_discrimination_trait = lusophone
 					}
+                }
             }
-		
+        }
         set_state_name = STATE_URUGUAY_banda_oriental
     }
     else = { # switch back to defaults
