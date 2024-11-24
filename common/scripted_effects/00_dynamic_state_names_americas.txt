@@ -349,6 +349,46 @@ STATE_ARIZONA_state_name_assign = { # Anglophone, too lazy for british-specific 
     }
 }
 
+STATE_TEXAS_state_name_assign = { # Anglophone, too lazy for british-specific an such
+    if = {
+        limit = {
+            owner = {
+                any_primary_culture = {
+                    has_discrimination_trait = anglophone
+                }
+                NOT = {
+                    any_primary_culture = {
+                        has_discrimination_trait = hispanophone
+                    }
+                }
+            }
+        }
+        set_state_name = STATE_TEXAS_english
+        set_hub_names = english
+    }
+    else_if = {
+        limit = {
+            owner = {
+                any_primary_culture = {
+                    has_discrimination_trait = hispanophone
+                }
+                NOT = {
+                    any_primary_culture = {
+                        has_discrimination_trait = anglophone
+                    }
+                }
+            }
+        }
+        
+        set_state_name = STATE_TEXAS_spanish
+        set_hub_names = spanish
+    }
+    else = { # switch back to defaults
+        reset_state_name = yes
+        reset_hub_names = yes
+    }
+}
+
 STATE_ONTARIO_state_name_assign = {	# this effect is also covered by completing je_canada_can or je_canada_gbr but I am redundantly covering all bases in a redundant manner
 	if = {
 		limit = {
