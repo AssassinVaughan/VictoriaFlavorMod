@@ -4131,6 +4131,29 @@ STATE_BOHEMIA_state_name_assign = {
         set_state_name = STATE_BOHEMIA_czech
         set_hub_names = czech
 	}
+	else_if = {
+		limit = {
+            owner = {
+                any_primary_culture = {
+					cu:polish ?= this
+                }
+				NOR = {
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+					any_primary_culture = {
+						cu:czech ?= this
+					}
+					any_primary_culture = {
+						cu:slovak ?= this	
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_BOHEMIA_polish
+        set_hub_names = polish
+	}
 	else = { # switch back to defaults
 		reset_state_name = yes
 		reset_hub_names = yes
@@ -4196,6 +4219,29 @@ STATE_MORAVIA_state_name_assign = {
 		
         set_state_name = STATE_MORAVIA_czech
         set_hub_names = czech
+	}
+	else_if = {
+		limit = {
+            owner = {
+                any_primary_culture = {
+					cu:polish ?= this
+                }
+				NOR = {
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+					any_primary_culture = {
+						cu:czech ?= this
+					}
+					any_primary_culture = {
+						cu:slovak ?= this	
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_MORAVIA_polish
+        set_hub_names = polish
 	}
 	else = { # switch back to defaults
 		reset_state_name = yes
