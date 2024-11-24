@@ -1,41 +1,4 @@
-﻿coa_def_subject_trigger = {
-	OR = {
-		NOT = { exists = scope:target }
-		AND = {
-			exists = scope:target
-			scope:target = { 
-				OR = {
-					is_subject_type = subject_type_puppet
-					is_subject_type = subject_type_vassal
-					is_subject_type = subject_type_chartered_company
-                    is_subject_type = subject_type_dominion
-					is_subject_type = subject_type_real_union
-					is_subject_type = subject_type_dependency
-				}
-			}
-		}
-	}
-}
-
-coa_def_non_company_subject_trigger = {
-	OR = {
-		NOT = { exists = scope:target }
-		AND = {
-			exists = scope:target
-			scope:target = { 
-				OR = {
-					is_subject_type = subject_type_puppet
-					is_subject_type = subject_type_vassal
-                    is_subject_type = subject_type_dominion
-					is_subject_type = subject_type_real_union
-					is_subject_type = subject_type_dependency
-				}
-			}
-		}
-	}
-}
-
-coa_peru_bolivia_trigger = {
+﻿coa_peru_bolivia_trigger = {
 	OR = {
 		AND = {
 			exists = c:PEU
@@ -140,11 +103,6 @@ coa_def_british_colony_trigger = {
 						}
 						has_diplomatic_pact = {
 							who = scope:target 
-							type = chartered_company
-							is_initiator = yes
-						}
-						has_diplomatic_pact = {
-							who = scope:target 
 							type = dominion
 							is_initiator = yes
 						}
@@ -178,11 +136,6 @@ coa_def_german_colony_trigger = {
 								}
 								has_diplomatic_pact = {
 									who = scope:target 
-									type = chartered_company
-									is_initiator = yes
-								}
-								has_diplomatic_pact = {
-									who = scope:target 
 									type = dominion
 									is_initiator = yes
 								}
@@ -201,11 +154,6 @@ coa_def_german_colony_trigger = {
 								has_diplomatic_pact = {
 									who = scope:target 
 									type = vassal
-									is_initiator = yes
-								}
-								has_diplomatic_pact = {
-									who = scope:target 
-									type = chartered_company
 									is_initiator = yes
 								}
 								has_diplomatic_pact = {
