@@ -50,6 +50,12 @@ assign_state_hub_dynamic_names = {
 		}
 		assign_state_name_region_south_germany = yes
 	}
+	if = { # Occitania Region
+		limit = {
+			region = sr:region_occitania
+		}
+		assign_state_name_region_occitania = yes
+	}
 	if = { # Iberia Region
 		limit = {
 			region = sr:region_iberia
@@ -131,8 +137,14 @@ assign_state_hub_dynamic_names = {
 		}
 		assign_state_name_region_brazil = yes
 	}
+	if = { # Caribbean Region
+		limit = {
+			region = sr:region_caribbean
+		}
+		assign_state_name_region_caribbean = yes
+	}
 
-	### Asia
+	### Australasia
 
 	if = { # Anatolia Region
         limit = {
@@ -157,6 +169,12 @@ assign_state_hub_dynamic_names = {
         	region = sr:region_manchuria
         }
     	assign_state_name_region_manchuria = yes
+    }
+    if = { # Oceania Region
+        limit = {
+        	region = sr:region_oceania
+        }
+    	assign_state_name_region_oceania = yes
     }
 
     ### India
