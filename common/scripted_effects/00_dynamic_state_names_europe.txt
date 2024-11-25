@@ -4029,6 +4029,23 @@ STATE_POMERANIA_state_name_assign = {
 		
         set_state_name = STATE_POMERANIA_german
 	}
+	else_if = {
+		limit = {
+            owner = {
+                any_primary_culture = {
+					cu:polish ?= this
+                }
+				NOT = {
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_POMERANIA_polish
+        set_hub_names = polish
+	}
 	else = { # switch back to defaults
 		reset_state_name = yes
 		reset_hub_names = yes
