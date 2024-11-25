@@ -4609,13 +4609,15 @@ STATE_AUSTRIA_state_name_assign = {
 	}
 	else_if = {
 		limit = {
-            any_primary_culture = {
-				cu:czech ?= this
-            }
             owner = {
-                any_primary_culture = {
-					has_discrimination_trait = german_speaking
-                }
+				any_primary_culture = {
+					cu:czech ?= this
+				}
+				NOT = {
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+				}
             }
         }
 		
