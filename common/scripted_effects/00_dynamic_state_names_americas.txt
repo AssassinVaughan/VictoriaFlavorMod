@@ -495,7 +495,7 @@ STATE_SANTO_DOMINGO_state_name_assign = {
                 }
                 NOT = {
                     any_primary_culture = {
-                        has_discrimination_trait = anglophone
+                        has_discrimination_trait = hispanophone
                     }
                 }
             }
@@ -531,44 +531,93 @@ STATE_SANTO_DOMINGO_state_name_assign = {
     }
 }
 
-STATE_HAITI_state_name_assign = {
+STATE_HAITI_state_name_assign = { #Clean this the hell up later
     if = {
         limit = {
             owner = {
-                any_primary_culture = {
-                    AND = {
-                        has_discrimination_trait = francophone
-                        has_discrimination_trait = african_heritage
+                OR = {
+                    top_overlord ?= {
+                        any_primary_culture = {
+                            cu:afro_antillean ?= this
+                        }
+                        any_primary_culture = {
+                            NOT = {
+                                has_discrimination_trait = hispanophone
+                            }
+                        }
                     }
-                }
-                NOT = {
-                    any_primary_culture = {
-                        has_discrimination_trait = anglophone
+                    AND = {
+                        is_subject = no
+                        any_primary_culture = {
+                            cu:afro_antillean ?= this
+                        }
+                        any_primary_culture = {
+                            NOT = {
+                                has_discrimination_trait = hispanophone
+                            }
+                        }
                     }
                 }
             }
         }
         set_state_name = STATE_HAITI_haitian
-        set_hub_names = haitian
+
+        set_hub_name = {
+            type = city
+            name = HUB_NAME_STATE_HAITI_city_haitian
+        }
+        set_hub_name = {
+            type = farm
+            name = HUB_NAME_STATE_HAITI_farm_haitian
+        }
+        set_hub_name = {
+            type = mine
+            name = HUB_NAME_STATE_HAITI_mine_haitian
+        }
+        set_hub_name = {
+            type = wood
+            name = HUB_NAME_STATE_HAITI_wood_haitian
+        }
+        if = {
+            limit = {
+                has_law = law_type:law_monarchy
+            }
+            set_hub_name = {
+                type = port
+                name = HUB_NAME_STATE_HAITI_port_monarchy
+            }
+        }
+        else = {
+            set_hub_name = {
+                type = port
+                name = HUB_NAME_STATE_HAITI_port_republic
+            }
+        }
     }
     else_if = { #If hispanic
         limit = {
             owner = {
-                any_primary_culture = {
-                    has_discrimination_trait = hispanophone
-                }
-                NOT = {
-                    any_primary_culture = {
-                        OR = {
-                            AND = {
+                OR = {
+                    top_overlord ?= {
+                        any_primary_culture = {
+                            has_discrimination_trait = hispanophone
+                        }
+                        any_primary_culture = {
+                            NOR = {
+                                cu:afro_antillean ?= this
                                 has_discrimination_trait = francophone
-                                has_discrimination_trait = african_heritage
                             }
-                            AND = {
+                        }
+                    }
+                    AND = {
+                        is_subject = no
+                        any_primary_culture = {
+                            has_discrimination_trait = hispanophone
+                        }
+                        any_primary_culture = {
+                            NOR = {
+                                cu:afro_antillean ?= this
                                 has_discrimination_trait = francophone
-                                NOT = {
-                                    has_discrimination_trait = african_heritage
-                                }
                             }
                         }
                     }
@@ -577,11 +626,70 @@ STATE_HAITI_state_name_assign = {
         }
         
         set_state_name = STATE_HAITI_spanish
-        set_hub_names = spanish
+        set_hub_names = spanish #thank god only one spanish name
     }
     else = { # switch back to defaults
         reset_state_name = yes
-        reset_hub_names = yes
+        set_hub_name = {
+            type = city
+            name = HUB_NAME_STATE_HAITI_city
+        }
+        set_hub_name = {
+            type = farm
+            name = HUB_NAME_STATE_HAITI_farm
+        }
+        set_hub_name = {
+            type = mine
+            name = HUB_NAME_STATE_HAITI_mine
+        }
+        set_hub_name = {
+            type = wood
+            name = HUB_NAME_STATE_HAITI_wood
+        }
+        if = {
+            limit = {
+                owner = {
+                    OR = {
+                        top_overlord ?= {
+                            any_primary_culture = {
+                                has_discrimination_trait = francophone
+                            }
+                            any_primary_culture = {
+                                NOR = {
+                                    culture = cu:afro_antillean
+                                    has_discrimination_trait = hispanophone
+                                }
+                            }
+                        }
+                        AND = {
+                            is_subject = no
+                            any_primary_culture = {
+                                has_discrimination_trait = francophone
+                                NOT = {
+                                    cu:afro_antillean ?= this
+                                }
+                            }
+                            any_primary_culture = {
+                                NOR = {
+                                    culture = cu:afro_antillean
+                                    has_discrimination_trait = hispanophone
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            set_hub_name = {
+                type = port
+                name = HUB_NAME_STATE_HAITI_port_french
+            }
+        }
+        else = {
+            set_hub_name = {
+                type = port
+                name = HUB_NAME_STATE_HAITI_port
+            }
+        }
     }
 }
 
