@@ -38,15 +38,25 @@
 		set_strategy = ai_strategy_maintain_power_balance
 		set_strategy = ai_strategy_progressive_agenda
 	}
-	c:BRZ = {
+	c:PAP ?= {
+		set_strategy = ai_strategy_placate_population
+		set_strategy = ai_strategy_maintain_power_balance
+		set_strategy = ai_strategy_conservative_agenda
+	}
+	c:TUS ?= {
+		set_strategy = ai_strategy_resource_expansion
+		set_strategy = ai_strategy_maintain_power_balance
+		set_strategy = ai_strategy_progressive_agenda
+	}		
+	c:BRZ ?= {
 		random_list = {
 			75 = { set_strategy = ai_strategy_resource_expansion }
 			25 = { set_strategy = ai_strategy_plantation_economy }
-		}		
+		}	
 		set_strategy = ai_strategy_maintain_power_balance
 		set_strategy = ai_strategy_progressive_agenda
 	}
-	c:BUE ?= {
+	c:ARG ?= {
 		random_list = {
 			75 = { set_strategy = ai_strategy_industrial_expansion }
 			25 = { set_strategy = ai_strategy_plantation_economy }
@@ -59,8 +69,8 @@
 			75 = { set_strategy = ai_strategy_conservative_agenda }
 			25 = { set_strategy = ai_strategy_progressive_agenda }
 		}
-	}	
-	c:SIC = {
+	}		
+	c:SIC ?= {
 		random_list = {	
 			75 = { set_strategy = ai_strategy_resource_expansion }
 			25 = { set_strategy = ai_strategy_industrial_expansion }
@@ -71,30 +81,23 @@
 			25 = { set_strategy = ai_strategy_progressive_agenda }
 		}
 	}	
-	c:FIN = {
+	c:FIN ?= {
 		set_strategy = ai_strategy_resource_expansion	
 		set_strategy = ai_strategy_maintain_power_balance
-		set_strategy = ai_strategy_conservative_agenda
+		set_strategy = ai_strategy_subject_strengthen_self
 	}	
-	c:DEN = {
+    c:DEN = {
 		random_list = {	
 			75 = { set_strategy = ai_strategy_agricultural_expansion }
 			25 = { set_strategy = ai_strategy_resource_expansion }
 		}
 	}
-	c:AUS = {
-		random_list = {	
-			50 = { set_strategy = ai_strategy_agricultural_expansion }
-			25 = { set_strategy = ai_strategy_resource_expansion }
-			25 = { set_strategy = ai_strategy_industrial_expansion }
-		}	
+	c:AUS ?= {
+		set_strategy = ai_strategy_agricultural_expansion
 		set_strategy = ai_strategy_maintain_power_balance
-		random_list = {
-			75 = { set_strategy = ai_strategy_conservative_agenda }
-			25 = { set_strategy = ai_strategy_progressive_agenda }
-		}
+		set_strategy = ai_strategy_conservative_agenda
 	}
-	c:FRA = {
+	c:FRA ?= {
 		random_list = {	
 			50 = { set_strategy = ai_strategy_industrial_expansion }
 			25 = { set_strategy = ai_strategy_agricultural_expansion }
@@ -104,9 +107,9 @@
 		random_list = {	
 			50 = { set_strategy = ai_strategy_progressive_agenda }
 			50 = { set_strategy = ai_strategy_conservative_agenda }	
-		}				
+		}		
 	}	
-	c:PRU = {
+	c:PRU ?= {
 		random_list = {	
 			65 = { set_strategy = ai_strategy_industrial_expansion }
 			35 = { set_strategy = ai_strategy_resource_expansion }
@@ -114,16 +117,16 @@
 		set_strategy = ai_strategy_maintain_power_balance
 		set_strategy = ai_strategy_conservative_agenda
 	}
-	c:RUS = {
+	c:RUS ?= {
 		random_list = {	
 			55 = { set_strategy = ai_strategy_agricultural_expansion }
 			35 = { set_strategy = ai_strategy_placate_population }
 			10 = { set_strategy = ai_strategy_resource_expansion }
-		}			
+		}		
 		set_strategy = ai_strategy_colonial_expansion
-		set_strategy = ai_strategy_conservative_agenda
+		set_strategy = ai_strategy_reactionary_agenda
 	}	
-	c:TUR = {
+	c:TUR ?= {
 		random_list = {	
 			50 = { set_strategy = ai_strategy_agricultural_expansion }
 			25 = { set_strategy = ai_strategy_resource_expansion }
@@ -131,68 +134,61 @@
 		}			
 		random_list = {	
 			75 = { set_strategy = ai_strategy_maintain_power_balance }
-			25 = { set_strategy = ai_strategy_territorial_expansion }
-		}			
-		set_strategy = ai_strategy_progressive_agenda # To try and complete tanzimat
-	}
-	c:GRE = {
+		}	
+		set_strategy = ai_strategy_tanzimat_reforms
+	}	
+    c:GRE = {
 		random_list = {	
 			75 = { set_strategy = ai_strategy_agricultural_expansion }
 			25 = { set_strategy = ai_strategy_plantation_economy }
 		}					
 		set_strategy = ai_strategy_territorial_expansion # we just emerged from an uprising
 	}
-	c:GBR = {
+	c:GBR ?= {
 		set_strategy = ai_strategy_industrial_expansion
 		set_strategy = ai_strategy_economic_imperialism
 		set_strategy = ai_strategy_progressive_agenda
 	}
-	c:USA = {
+	c:BIC ?= {
+		set_strategy = ai_strategy_plantation_economy
+		set_strategy = ai_strategy_subject_maintain_autonomy
+		set_strategy = ai_strategy_conservative_agenda
+	}
+	c:DEI ?= {
+		set_strategy = ai_strategy_plantation_economy
+		set_strategy = ai_strategy_subject_maintain_autonomy
+		set_strategy = ai_strategy_conservative_agenda
+	}	
+	c:USA ?= {
 		random_list = {	
 			50 = { set_strategy = ai_strategy_industrial_expansion }
 			25 = { set_strategy = ai_strategy_resource_expansion }
 			25 = { set_strategy = ai_strategy_plantation_economy }
-		}		
+		}	
 		set_strategy = ai_strategy_economic_imperialism
 		set_strategy = ai_strategy_conservative_agenda
 	}
-	c:EGY = {
-		random_list = {	
-			75 = { set_strategy = ai_strategy_plantation_economy }
-			25 = { set_strategy = ai_strategy_industrial_expansion }
-		}		
+	c:EGY ?= {
+		set_strategy = ai_strategy_plantation_economy		
 		set_strategy = ai_strategy_territorial_expansion
 		set_strategy = ai_strategy_conservative_agenda
 	}	
-	c:CHI = {
+	c:CHI ?= {
 		random_list = {	
 			75 = { set_strategy = ai_strategy_placate_population }
 			25 = { set_strategy = ai_strategy_agricultural_expansion }
-		}			
+		}	
 		set_strategy = ai_strategy_armed_isolationism
 		set_strategy = ai_strategy_maintain_mandate_of_heaven
 	}
-	c:JAP = {
+	c:JAP ?= {
 		random_list = {	
 			75 = { set_strategy = ai_strategy_placate_population }
 			25 = { set_strategy = ai_strategy_agricultural_expansion }
 		}			
 		set_strategy = ai_strategy_armed_isolationism
 		set_strategy = ai_strategy_conservative_agenda
-	}		
-	c:CHL = {
-		set_strategy = ai_strategy_maintain_power_balance		
-		set_strategy = ai_strategy_resource_expansion
-		set_strategy = ai_strategy_conservative_agenda
-	}
-    if = {
-		limit = { exists = c:ENT }	
-		c:ENT = {
-			set_strategy = ai_strategy_territorial_expansion		
-			set_strategy = ai_strategy_agricultural_expansion
-			set_strategy = ai_strategy_progressive_agenda
-		}	
-	}
+	}	
 }	
 
 
