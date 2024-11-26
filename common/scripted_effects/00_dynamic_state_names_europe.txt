@@ -369,7 +369,7 @@ assign_state_name_region_italy  = {
         }
         STATE_VENETIA_state_name_assign = yes
     }
-	if = {
+	else_if = {
         limit = {
             state_region = {
                 s:STATE_LOMBARDY ?= this
@@ -377,7 +377,7 @@ assign_state_name_region_italy  = {
         }
         STATE_LOMBARDY_state_name_assign = yes
     }
-	if = {
+	else_if = {
         limit = {
             state_region = {
                 s:STATE_ISTRIA ?= this
@@ -401,6 +401,22 @@ assign_state_name_region_italy  = {
         }
         STATE_PIEDMONT_state_name_assign = yes
     }
+	else_if = {
+        limit = {
+            state_region = {
+                s:STATE_EMILIA ?= this
+            }
+        }
+        STATE_EMILIA_state_name_assign = yes
+    }
+	else_if = {
+        limit = {
+            state_region = {
+                s:STATE_ROMAGNA ?= this
+            }
+        }
+        STATE_ROMAGNA_state_name_assign = yes
+    }
     else_if = {
         limit = {
             state_region = {
@@ -408,6 +424,14 @@ assign_state_name_region_italy  = {
             }
         }
         STATE_TUSCANY_state_name_assign = yes
+    }
+    else_if = {
+        limit = {
+            state_region = {
+                s:STATE_UMBRIA ?= this
+            }
+        }
+        STATE_UMBRIA_state_name_assign = yes
     }
     else_if = {
         limit = {
@@ -3780,6 +3804,23 @@ STATE_LOMBARDY_state_name_assign = {
             name = HUB_NAME_STATE_LOMBARDY_mine
         }
     }
+	else_if = { # French
+        limit = {
+            owner = {
+            	any_primary_culture = {
+            		has_discrimination_trait = francophone
+            	}
+				NOT = { 
+					any_primary_culture = {
+						has_discrimination_trait = italophone
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_LOMBARDY_french
+        set_hub_names = french
+    }
 	else = { # By putting an else at the end that resets the names we ensure that the names are switched back to their defaults if anyone else takes the states
 		reset_state_name = yes
 		reset_hub_names = yes
@@ -3864,6 +3905,23 @@ STATE_VENETIA_state_name_assign = {
             type = port
             name = HUB_NAME_STATE_VENETIA_port_italian
         }
+    }
+	else_if = { # French
+        limit = {
+            owner = {
+            	any_primary_culture = {
+            		has_discrimination_trait = francophone
+            	}
+				NOT = { 
+					any_primary_culture = {
+						has_discrimination_trait = italophone
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_VENETIA_french
+        set_hub_names = french
     }
 	else = { # By putting an else at the end that resets the names we ensure that the names are switched back to their defaults if anyone else takes the states
 		reset_state_name = yes
@@ -3979,6 +4037,71 @@ STATE_PIEDMONT_state_name_assign = {
             name = HUB_NAME_STATE_PIEDMONT_port_italian
         }
     }
+	else_if = { # French
+        limit = {
+            owner = {
+            	any_primary_culture = {
+            		has_discrimination_trait = francophone
+            	}
+				NOT = { 
+					any_primary_culture = {
+						has_discrimination_trait = italophone
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_PIEDMONT_french
+        set_hub_names = french
+    }
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
+STATE_EMILIA_state_name_assign = {
+	if = { # French
+        limit = {
+            owner = {
+            	any_primary_culture = {
+            		has_discrimination_trait = francophone
+            	}
+				NOT = { 
+					any_primary_culture = {
+						has_discrimination_trait = italophone
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_EMILIA_french
+        set_hub_names = french
+    }
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
+STATE_ROMAGNA_state_name_assign = {
+	if = { # French
+        limit = {
+            owner = {
+            	any_primary_culture = {
+            		has_discrimination_trait = francophone
+            	}
+				NOT = { 
+					any_primary_culture = {
+						has_discrimination_trait = italophone
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_ROMAGNA_french
+        set_hub_names = french
+    }
 	else = { # switch back to defaults
 		reset_state_name = yes
 		reset_hub_names = yes
@@ -4002,6 +4125,75 @@ STATE_TUSCANY_state_name_assign = {
             name = HUB_NAME_STATE_TUSCANY_city_italian
 		}
     }
+	else_if = { # French
+        limit = {
+            owner = {
+            	any_primary_culture = {
+            		has_discrimination_trait = francophone
+            	}
+				NOT = { 
+					any_primary_culture = {
+						has_discrimination_trait = italophone
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_TUSCANY_french
+        
+        set_hub_name = {
+            type = city
+            name = HUB_NAME_STATE_TUSCANY_city_french
+		}
+		
+        set_hub_name = {
+            type = wood
+            name = HUB_NAME_STATE_TUSCANY_wood_french
+		}
+		
+        set_hub_name = {
+            type = port
+            name = HUB_NAME_STATE_TUSCANY_port_french
+		}
+    }
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
+STATE_UMBRIA_state_name_assign = {
+	if = { # French
+        limit = {
+            owner = {
+            	any_primary_culture = {
+            		has_discrimination_trait = francophone
+            	}
+				NOT = { 
+					any_primary_culture = {
+						has_discrimination_trait = italophone
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_UMBRIA_french
+        
+        set_hub_name = {
+            type = city
+            name = HUB_NAME_STATE_UMBRIA_city_french
+		}
+		
+        set_hub_name = {
+            type = mine
+            name = HUB_NAME_STATE_UMBRIA_mine_french
+		}
+		
+        set_hub_name = {
+            type = port
+            name = HUB_NAME_STATE_UMBRIA_port_french
+		}
+    }
 	else = { # switch back to defaults
 		reset_state_name = yes
 		reset_hub_names = yes
@@ -4020,6 +4212,32 @@ STATE_LAZIO_state_name_assign = {
         set_hub_name = {
             type = city
             name = HUB_NAME_STATE_LAZIO_city_italian
+		}
+    }
+	else_if = { # French
+        limit = {
+            owner = {
+            	any_primary_culture = {
+            		has_discrimination_trait = francophone
+            	}
+				NOT = { 
+					any_primary_culture = {
+						has_discrimination_trait = italophone
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_LAZIO_french
+        
+        set_hub_name = {
+            type = city
+            name = HUB_NAME_STATE_LAZIO_city_french
+		}
+		
+        set_hub_name = {
+            type = mine
+            name = HUB_NAME_STATE_LAZIO_wood_french
 		}
     }
 	else = { # switch back to defaults
