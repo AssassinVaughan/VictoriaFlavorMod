@@ -369,7 +369,7 @@ assign_state_name_region_italy  = {
         }
         STATE_VENETIA_state_name_assign = yes
     }
-	if = {
+	else_if = {
         limit = {
             state_region = {
                 s:STATE_LOMBARDY ?= this
@@ -377,7 +377,7 @@ assign_state_name_region_italy  = {
         }
         STATE_LOMBARDY_state_name_assign = yes
     }
-	if = {
+	else_if = {
         limit = {
             state_region = {
                 s:STATE_ISTRIA ?= this
@@ -396,10 +396,90 @@ assign_state_name_region_italy  = {
     else_if = {
         limit = {
             state_region = {
+                s:STATE_PIEDMONT ?= this
+            }
+        }
+        STATE_PIEDMONT_state_name_assign = yes
+    }
+	else_if = {
+        limit = {
+            state_region = {
+                s:STATE_EMILIA ?= this
+            }
+        }
+        STATE_EMILIA_state_name_assign = yes
+    }
+	else_if = {
+        limit = {
+            state_region = {
+                s:STATE_ROMAGNA ?= this
+            }
+        }
+        STATE_ROMAGNA_state_name_assign = yes
+    }
+    else_if = {
+        limit = {
+            state_region = {
+                s:STATE_TUSCANY ?= this
+            }
+        }
+        STATE_TUSCANY_state_name_assign = yes
+    }
+    else_if = {
+        limit = {
+            state_region = {
+                s:STATE_UMBRIA ?= this
+            }
+        }
+        STATE_UMBRIA_state_name_assign = yes
+    }
+    else_if = {
+        limit = {
+            state_region = {
+                s:STATE_LAZIO ?= this
+            }
+        }
+        STATE_LAZIO_state_name_assign = yes
+    }
+    else_if = {
+        limit = {
+            state_region = {
                 s:STATE_CORSICA ?= this
             }
         }
         STATE_CORSICA_state_name_assign = yes
+    }
+    else_if = {
+        limit = {
+            state_region = {
+                s:STATE_SARDINIA ?= this
+            }
+        }
+        STATE_SARDINIA_state_name_assign = yes
+    }
+    else_if = {
+        limit = {
+            state_region = {
+                s:STATE_APULIA ?= this
+            }
+        }
+        STATE_APULIA_state_name_assign = yes
+    }
+    else_if = {
+        limit = {
+            state_region = {
+                s:STATE_CAMPANIA ?= this
+            }
+        }
+        STATE_CAMPANIA_state_name_assign = yes
+    }
+    else_if = {
+        limit = {
+            state_region = {
+                s:STATE_SICILY ?= this
+            }
+        }
+        STATE_SICILY_state_name_assign = yes
     }
 }
 
@@ -669,6 +749,49 @@ assign_state_name_region_south_germany  = { # region_south_germany
             }
         }
         STATE_EAST_SWITZERLAND_state_name_assign = yes
+    }
+}
+
+assign_state_name_region_france = { # region_france
+    if = {
+        limit = {
+            state_region = {
+                s:STATE_BRITTANY ?= this
+            }
+        }
+        STATE_BRITTANY_state_name_assign = yes
+    }
+    else_if = {
+        limit = {
+            state_region = {
+                s:STATE_NORMANDY ?= this
+            }
+        }
+        STATE_NORMANDY_state_name_assign = yes
+    }
+    else_if = {
+        limit = {
+            state_region = {
+                s:STATE_PICARDY ?= this
+            }
+        }
+        STATE_PICARDY_state_name_assign = yes
+    }
+    else_if = {
+        limit = {
+            state_region = {
+                s:STATE_FRENCH_LOW_COUNTRIES ?= this
+            }
+        }
+        STATE_FRENCH_LOW_COUNTRIES_state_name_assign = yes
+    }
+    else_if = {
+        limit = {
+            state_region = {
+                s:STATE_BURGUNDY ?= this
+            }
+        }
+        STATE_BURGUNDY_state_name_assign = yes
     }
 }
 
@@ -1170,6 +1293,23 @@ STATE_GREATER_POLAND_state_name_assign = {
         set_state_name = STATE_GREATER_POLAND_german
         set_hub_names = german
     }
+	else_if = {
+        limit = {
+            owner = {
+                any_primary_culture = {
+					cu:russian ?= this
+                }
+				NOT = {
+					any_primary_culture = {
+						cu:polish ?= this
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_GREATER_POLAND_russian
+        set_hub_names = russian
+    }
 	else = { # By putting an else at the end that resets the names we ensure that the names are switched back to their defaults if anyone else takes the states
 		reset_state_name = yes
 		reset_hub_names = yes
@@ -1193,6 +1333,23 @@ STATE_LESSER_POLAND_state_name_assign = {
 		
         set_state_name = STATE_LESSER_POLAND_german
         set_hub_names = german
+    }
+	else_if = {
+        limit = {
+            owner = {
+                any_primary_culture = {
+					cu:russian ?= this
+                }
+				NOT = {
+					any_primary_culture = {
+						cu:polish ?= this
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_LESSER_POLAND_russian
+        set_hub_names = russian
     }
 	else = { # By putting an else at the end that resets the names we ensure that the names are switched back to their defaults if anyone else takes the states
 		reset_state_name = yes
@@ -1218,6 +1375,23 @@ STATE_MAZOVIA_state_name_assign = {
         set_state_name = STATE_MAZOVIA_german
         set_hub_names = german
     }
+	else_if = {
+        limit = {
+            owner = {
+                any_primary_culture = {
+					cu:russian ?= this
+                }
+				NOT = {
+					any_primary_culture = {
+						cu:polish ?= this
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_MAZOVIA_russian
+        set_hub_names = russian
+    }
 	else = { # By putting an else at the end that resets the names we ensure that the names are switched back to their defaults if anyone else takes the states
 		reset_state_name = yes
 		reset_hub_names = yes
@@ -1241,6 +1415,23 @@ STATE_WEST_GALICIA_state_name_assign = {
 		
         set_state_name = STATE_WEST_GALICIA_german
         set_hub_names = german
+    }
+	else_if = {
+        limit = {
+            owner = {
+                any_primary_culture = {
+					cu:russian ?= this
+                }
+				NOT = {
+					any_primary_culture = {
+						cu:polish ?= this
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_WEST_GALICIA_russian
+        set_hub_names = russian
     }
 	else_if = {
         limit = {
@@ -1294,6 +1485,23 @@ STATE_EAST_GALICIA_state_name_assign = {
 		
         set_state_name = STATE_EAST_GALICIA_polish
         set_hub_names = polish
+    }
+	else_if = {
+        limit = {
+            owner = {
+                any_primary_culture = {
+					cu:russian ?= this
+                }
+				NOT = {
+					any_primary_culture = {
+						cu:ukrainian ?= this
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_EAST_GALICIA_russian
+        set_hub_names = russian
     }
 	else_if = {
         limit = {
@@ -3535,6 +3743,11 @@ STATE_LOMBARDY_state_name_assign = {
             	any_primary_culture = {
             		has_discrimination_trait = german_speaking
             	}
+				NOT = {
+					any_primary_culture = {
+						has_discrimination_trait = italophone
+					}
+				}
             }
         }
 		
@@ -3560,6 +3773,54 @@ STATE_LOMBARDY_state_name_assign = {
             name = HUB_NAME_STATE_LOMBARDY_mine_german
         }
     }
+	else_if = { # Italian
+        limit = {
+            owner = {
+            	any_primary_culture = {
+            		has_discrimination_trait = italophone
+            	}
+            }
+        }
+		
+        set_state_name = STATE_LOMBARDY_italian
+        
+        set_hub_name = {
+            type = city
+            name = HUB_NAME_STATE_LOMBARDY_city_italian
+        }
+		
+        set_hub_name = {
+            type = farm
+            name = HUB_NAME_STATE_LOMBARDY_farm
+        }
+		
+        set_hub_name = {
+            type = wood
+            name = HUB_NAME_STATE_LOMBARDY_wood
+        }
+
+        set_hub_name = {
+            type = mine
+            name = HUB_NAME_STATE_LOMBARDY_mine
+        }
+    }
+	else_if = { # French
+        limit = {
+            owner = {
+            	any_primary_culture = {
+            		has_discrimination_trait = francophone
+            	}
+				NOT = { 
+					any_primary_culture = {
+						has_discrimination_trait = italophone
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_LOMBARDY_french
+        set_hub_names = french
+    }
 	else = { # By putting an else at the end that resets the names we ensure that the names are switched back to their defaults if anyone else takes the states
 		reset_state_name = yes
 		reset_hub_names = yes
@@ -3574,6 +3835,11 @@ STATE_VENETIA_state_name_assign = {
             	any_primary_culture = {
             		has_discrimination_trait = german_speaking
             	}
+				NOT = {
+					any_primary_culture = {
+						has_discrimination_trait = italophone
+					}
+				}
             }
         }
 		
@@ -3603,6 +3869,59 @@ STATE_VENETIA_state_name_assign = {
             type = port
             name = HUB_NAME_STATE_VENETIA_port_german
         }
+    }
+	else_if = { # Italian
+        limit = {
+            owner = {
+            	any_primary_culture = {
+            		has_discrimination_trait = italophone
+            	}
+            }
+        }
+		
+        set_state_name = STATE_VENETIA_italian
+        
+        set_hub_name = {
+            type = city
+            name = HUB_NAME_STATE_VENETIA_city
+        }
+		
+        set_hub_name = {
+            type = farm
+            name = HUB_NAME_STATE_VENETIA_farm_italian
+        }
+		
+        set_hub_name = {
+            type = wood
+            name = HUB_NAME_STATE_VENETIA_wood
+        }
+
+        set_hub_name = {
+            type = mine
+            name = HUB_NAME_STATE_VENETIA_mine
+        }
+
+        set_hub_name = {
+            type = port
+            name = HUB_NAME_STATE_VENETIA_port_italian
+        }
+    }
+	else_if = { # French
+        limit = {
+            owner = {
+            	any_primary_culture = {
+            		has_discrimination_trait = francophone
+            	}
+				NOT = { 
+					any_primary_culture = {
+						has_discrimination_trait = italophone
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_VENETIA_french
+        set_hub_names = french
     }
 	else = { # By putting an else at the end that resets the names we ensure that the names are switched back to their defaults if anyone else takes the states
 		reset_state_name = yes
@@ -3696,6 +4015,237 @@ STATE_SOUTH_TYROL_state_name_assign = {
 	}
 }
 
+STATE_PIEDMONT_state_name_assign = {
+	if = { # Italian
+        limit = {
+            owner = {
+            	any_primary_culture = {
+            		has_discrimination_trait = italophone
+            	}
+            }
+        }
+		
+        set_state_name = STATE_PIEDMONT_italian
+        
+        set_hub_name = {
+            type = city
+            name = HUB_NAME_STATE_PIEDMONT_city_italian
+		}
+		
+        set_hub_name = {
+            type = port
+            name = HUB_NAME_STATE_PIEDMONT_port_italian
+        }
+    }
+	else_if = { # French
+        limit = {
+            owner = {
+            	any_primary_culture = {
+            		has_discrimination_trait = francophone
+            	}
+				NOT = { 
+					any_primary_culture = {
+						has_discrimination_trait = italophone
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_PIEDMONT_french
+        set_hub_names = french
+    }
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
+STATE_EMILIA_state_name_assign = {
+	if = { # French
+        limit = {
+            owner = {
+            	any_primary_culture = {
+            		has_discrimination_trait = francophone
+            	}
+				NOT = { 
+					any_primary_culture = {
+						has_discrimination_trait = italophone
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_EMILIA_french
+        set_hub_names = french
+    }
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
+STATE_ROMAGNA_state_name_assign = {
+	if = { # French
+        limit = {
+            owner = {
+            	any_primary_culture = {
+            		has_discrimination_trait = francophone
+            	}
+				NOT = { 
+					any_primary_culture = {
+						has_discrimination_trait = italophone
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_ROMAGNA_french
+        set_hub_names = french
+    }
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
+STATE_TUSCANY_state_name_assign = {
+	if = { # Italian
+        limit = {
+            owner = {
+            	any_primary_culture = {
+            		has_discrimination_trait = italophone
+            	}
+            }
+        }
+		
+        set_state_name = STATE_TUSCANY_italian
+        
+        set_hub_name = {
+            type = city
+            name = HUB_NAME_STATE_TUSCANY_city_italian
+		}
+    }
+	else_if = { # French
+        limit = {
+            owner = {
+            	any_primary_culture = {
+            		has_discrimination_trait = francophone
+            	}
+				NOT = { 
+					any_primary_culture = {
+						has_discrimination_trait = italophone
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_TUSCANY_french
+        
+        set_hub_name = {
+            type = city
+            name = HUB_NAME_STATE_TUSCANY_city_french
+		}
+		
+        set_hub_name = {
+            type = wood
+            name = HUB_NAME_STATE_TUSCANY_wood_french
+		}
+		
+        set_hub_name = {
+            type = port
+            name = HUB_NAME_STATE_TUSCANY_port_french
+		}
+    }
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
+STATE_UMBRIA_state_name_assign = {
+	if = { # French
+        limit = {
+            owner = {
+            	any_primary_culture = {
+            		has_discrimination_trait = francophone
+            	}
+				NOT = { 
+					any_primary_culture = {
+						has_discrimination_trait = italophone
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_UMBRIA_french
+        
+        set_hub_name = {
+            type = city
+            name = HUB_NAME_STATE_UMBRIA_city_french
+		}
+		
+        set_hub_name = {
+            type = mine
+            name = HUB_NAME_STATE_UMBRIA_mine_french
+		}
+		
+        set_hub_name = {
+            type = port
+            name = HUB_NAME_STATE_UMBRIA_port_french
+		}
+    }
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
+STATE_LAZIO_state_name_assign = {
+	if = { # Italian
+        limit = {
+            owner = {
+            	any_primary_culture = {
+            		has_discrimination_trait = italophone
+            	}
+            }
+        }
+        set_hub_name = {
+            type = city
+            name = HUB_NAME_STATE_LAZIO_city_italian
+		}
+    }
+	else_if = { # French
+        limit = {
+            owner = {
+            	any_primary_culture = {
+            		has_discrimination_trait = francophone
+            	}
+				NOT = { 
+					any_primary_culture = {
+						has_discrimination_trait = italophone
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_LAZIO_french
+        
+        set_hub_name = {
+            type = city
+            name = HUB_NAME_STATE_LAZIO_city_french
+		}
+		
+        set_hub_name = {
+            type = mine
+            name = HUB_NAME_STATE_LAZIO_wood_french
+		}
+    }
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
 STATE_CORSICA_state_name_assign = {
 	if = {
 		limit = {
@@ -3714,6 +4264,80 @@ STATE_CORSICA_state_name_assign = {
 		
         set_state_name = STATE_CORSICA_french
 	}
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
+STATE_SARDINIA_state_name_assign = {
+	if = { # Italian
+        limit = {
+            owner = {
+            	any_primary_culture = {
+            		has_discrimination_trait = italophone
+            	}
+            }
+        }
+		
+        set_state_name = STATE_SARDINIA_italian
+    }
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
+STATE_APULIA_state_name_assign = {
+	if = { # Italian
+        limit = {
+            owner = {
+            	any_primary_culture = {
+            		has_discrimination_trait = italophone
+            	}
+            }
+        }
+		
+        set_state_name = STATE_APULIA_italian
+    }
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
+STATE_CAMPANIA_state_name_assign = {
+	if = { # Italian
+        limit = {
+            owner = {
+            	any_primary_culture = {
+            		has_discrimination_trait = italophone
+            	}
+            }
+        }
+        set_hub_name = {
+            type = city
+            name = HUB_NAME_STATE_CAMPANIA_city_italian
+		}
+    }
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
+STATE_SICILY_state_name_assign = {
+	if = { # Italian
+        limit = {
+            owner = {
+            	any_primary_culture = {
+            		has_discrimination_trait = italophone
+            	}
+            }
+        }
+		
+        set_state_name = STATE_SICILY_italian
+    }
 	else = { # switch back to defaults
 		reset_state_name = yes
 		reset_hub_names = yes
@@ -4513,10 +5137,8 @@ STATE_AUSTRIA_state_name_assign = {
 	else_if = {
 		limit = {
             owner = {
-				NOT = {
-					any_primary_culture = {
-						has_discrimination_trait = german_speaking
-					}
+				any_primary_culture = {
+					has_discrimination_trait = german_speaking
 				}
             }
         }
@@ -4526,13 +5148,15 @@ STATE_AUSTRIA_state_name_assign = {
 	}
 	else_if = {
 		limit = {
-            any_primary_culture = {
-				cu:czech ?= this
-            }
             owner = {
-                any_primary_culture = {
-					has_discrimination_trait = german_speaking
-                }
+				any_primary_culture = {
+					cu:czech ?= this
+				}
+				NOT = {
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+				}
             }
         }
 		
@@ -4963,6 +5587,100 @@ STATE_RUHR_state_name_assign = {
             type = city
             name = HUB_NAME_STATE_RUHR_city_french
         }
+    }
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
+STATE_BRITTANY_state_name_assign = {
+	if = {
+		limit = {
+			owner = {
+				any_primary_culture = {
+					has_discrimination_trait = francophone
+				}
+			}
+		}
+
+        set_state_name = STATE_BRITTANY_french
+    }
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
+STATE_NORMANDY_state_name_assign = {
+	if = {
+		limit = {
+			owner = {
+				any_primary_culture = {
+					has_discrimination_trait = francophone
+				}
+			}
+		}
+
+        set_state_name = STATE_NORMANDY_french
+    }
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
+STATE_PICARDY_state_name_assign = {
+	if = {
+		limit = {
+			owner = {
+				any_primary_culture = {
+					has_discrimination_trait = francophone
+				}
+			}
+		}
+
+        set_state_name = STATE_PICARDY_french
+    }
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
+STATE_FRENCH_LOW_COUNTRIES_state_name_assign = {
+	if = {
+		limit = {
+			owner = {
+				any_primary_culture = {
+					has_discrimination_trait = francophone
+				}
+			}
+		}
+
+        set_state_name = STATE_FRENCH_LOW_COUNTRIES_french
+        set_hub_name = {
+            type = port
+            name = HUB_NAME_STATE_FRENCH_LOW_COUNTRIES_port_french
+        }
+    }
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
+STATE_BURGUNDY_state_name_assign = {
+	if = {
+		limit = {
+			owner = {
+				any_primary_culture = {
+					has_discrimination_trait = francophone
+				}
+			}
+		}
+
+        set_state_name = STATE_BURGUNDY_french
     }
 	else = { # switch back to defaults
 		reset_state_name = yes
