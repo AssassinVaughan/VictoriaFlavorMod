@@ -728,6 +728,49 @@ assign_state_name_region_south_germany  = { # region_south_germany
     }
 }
 
+assign_state_name_region_france = { # region_france
+    if = {
+        limit = {
+            state_region = {
+                s:STATE_BRITTANY ?= this
+            }
+        }
+        STATE_BRITTANY_state_name_assign = yes
+    }
+    else_if = {
+        limit = {
+            state_region = {
+                s:STATE_NORMANDY ?= this
+            }
+        }
+        STATE_NORMANDY_state_name_assign = yes
+    }
+    else_if = {
+        limit = {
+            state_region = {
+                s:STATE_PICARDY ?= this
+            }
+        }
+        STATE_PICARDY_state_name_assign = yes
+    }
+    else_if = {
+        limit = {
+            state_region = {
+                s:STATE_FRENCH_LOW_COUNTRIES ?= this
+            }
+        }
+        STATE_FRENCH_LOW_COUNTRIES_state_name_assign = yes
+    }
+    else_if = {
+        limit = {
+            state_region = {
+                s:STATE_BURGUNDY ?= this
+            }
+        }
+        STATE_BURGUNDY_state_name_assign = yes
+    }
+}
+
 assign_state_name_region_occitania = { # region_occitania
     if = {
         limit = {
@@ -5326,6 +5369,100 @@ STATE_RUHR_state_name_assign = {
             type = city
             name = HUB_NAME_STATE_RUHR_city_french
         }
+    }
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
+STATE_BRITTANY_state_name_assign = {
+	if = {
+		limit = {
+			owner = {
+				any_primary_culture = {
+					has_discrimination_trait = francophone
+				}
+			}
+		}
+
+        set_state_name = STATE_BRITTANY_french
+    }
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
+STATE_NORMANDY_state_name_assign = {
+	if = {
+		limit = {
+			owner = {
+				any_primary_culture = {
+					has_discrimination_trait = francophone
+				}
+			}
+		}
+
+        set_state_name = STATE_NORMANDY_french
+    }
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
+STATE_PICARDY_state_name_assign = {
+	if = {
+		limit = {
+			owner = {
+				any_primary_culture = {
+					has_discrimination_trait = francophone
+				}
+			}
+		}
+
+        set_state_name = STATE_PICARDY_french
+    }
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
+STATE_FRENCH_LOW_COUNTRIES_state_name_assign = {
+	if = {
+		limit = {
+			owner = {
+				any_primary_culture = {
+					has_discrimination_trait = francophone
+				}
+			}
+		}
+
+        set_state_name = STATE_FRENCH_LOW_COUNTRIES_french
+        set_hub_name = {
+            type = port
+            name = HUB_NAME_STATE_FRENCH_LOW_COUNTRIES_port_french
+        }
+    }
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
+STATE_BURGUNDY_state_name_assign = {
+	if = {
+		limit = {
+			owner = {
+				any_primary_culture = {
+					has_discrimination_trait = francophone
+				}
+			}
+		}
+
+        set_state_name = STATE_BURGUNDY_french
     }
 	else = { # switch back to defaults
 		reset_state_name = yes
