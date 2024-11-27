@@ -818,6 +818,15 @@ assign_state_name_region_iberia = { # region_iberia
     else_if = {
         limit = {
             state_region = {
+                s:STATE_ARAGON ?= this
+            }
+        }
+        STATE_ARAGON_state_name_assign = yes
+    }
+}
+    else_if = {
+        limit = {
+            state_region = {
                 s:STATE_NAVARRA ?= this
             }
         }
@@ -4352,7 +4361,13 @@ STATE_FLANDERS_state_name_assign = {
 				any_primary_culture = {
 					cu:french ?= this
 				}
-				NOT = { c:HRE ?= this } # I don't want to even think about how that would work
+				NOR = {
+					c:HRE ?= this
+					any_primary_culture = {
+						has_discrimination_trait = beneluxian_culture_group
+						NOT = { has_discrimination_trait = francophone }
+					}
+				}
 			}
 		}
 		
@@ -4369,6 +4384,20 @@ STATE_FLANDERS_state_name_assign = {
         set_hub_name = {
             type = wood
             name = HUB_NAME_STATE_FLANDERS_wood_french
+        }
+	}
+	else_if = {
+		limit = {
+			owner = {
+				any_primary_culture = {	#if there's any primary culture that is beneluxian and not francophone
+					has_discrimination_trait = beneluxian_culture_group
+					NOT = { has_discrimination_trait = francophone }
+				}
+			}
+		}
+
+        set_state_name = STATE_FLANDERS_dutch
+        set_hub_names = dutch
         }
 	}
 	else = { # switch back to defaults
@@ -4422,6 +4451,25 @@ STATE_WALLONIA_state_name_assign = {
             name = HUB_NAME_STATE_WALLONIA_wood_german
         }
     }
+	else_if = {
+		limit = {
+			owner = {
+				any_primary_culture = {	#if there's any primary culture that is beneluxian and not francophone
+					has_discrimination_trait = beneluxian_culture_group
+					NOT = { has_discrimination_trait = francophone }
+				}
+				NOT = { #if there's no francophone primary culture
+					any_primary_culture = {
+						has_discrimination_trait = francophone
+					}
+				}
+			}
+		}
+
+        set_state_name = STATE_WALLONIA_dutch
+        set_hub_names = dutch
+        }
+	}
 	else = { # switch back to defaults
 		reset_state_name = yes
 		reset_hub_names = yes
@@ -4435,7 +4483,13 @@ STATE_GELRE_state_name_assign = {
 				any_primary_culture = {
 					cu:french ?= this
 				}
-				NOT = { c:HRE ?= this }
+				NOR = {
+					c:HRE ?= this
+					any_primary_culture = {
+						has_discrimination_trait = beneluxian_culture_group
+						NOT = { has_discrimination_trait = francophone }
+					}
+				}
 			}
 		}
 		
@@ -4451,6 +4505,19 @@ STATE_GELRE_state_name_assign = {
             name = HUB_NAME_STATE_GELRE_farm_french
         }
 	}
+	else_if = {
+		limit = {
+			owner = {
+				any_primary_culture = {	#if there's any primary culture that is beneluxian and not francophone
+					has_discrimination_trait = beneluxian_culture_group
+					NOT = { has_discrimination_trait = francophone }
+				}
+			}
+		}
+
+        set_state_name = STATE_GELRE_dutch
+        }
+	}
 	else = { # switch back to defaults
 		reset_state_name = yes
 		reset_hub_names = yes
@@ -4464,7 +4531,13 @@ STATE_FRIESLAND_state_name_assign = {
 				any_primary_culture = {
 					cu:french ?= this
 				}
-				NOT = { c:HRE ?= this }
+				NOR = {
+					c:HRE ?= this
+					any_primary_culture = {
+						has_discrimination_trait = beneluxian_culture_group
+						NOT = { has_discrimination_trait = francophone }
+					}
+				}
 			}
 		}
 		
@@ -4473,6 +4546,19 @@ STATE_FRIESLAND_state_name_assign = {
         set_hub_name = {
             type = city
             name = HUB_NAME_STATE_FRIESLAND_city_french
+        }
+	}
+	else_if = {
+		limit = {
+			owner = {
+				any_primary_culture = {	#if there's any primary culture that is beneluxian and not francophone
+					has_discrimination_trait = beneluxian_culture_group
+					NOT = { has_discrimination_trait = francophone }
+				}
+			}
+		}
+
+        set_state_name = STATE_FRIESLAND_dutch
         }
 	}
 	else = { # switch back to defaults
@@ -4488,7 +4574,13 @@ STATE_HOLLAND_state_name_assign = {
 				any_primary_culture = {
 					cu:french ?= this
 				}
-				NOT = { c:HRE ?= this }
+				NOR = {
+					c:HRE ?= this
+					any_primary_culture = {
+						has_discrimination_trait = beneluxian_culture_group
+						NOT = { has_discrimination_trait = francophone }
+					}
+				}
 			}
 		}
 		
@@ -4583,7 +4675,12 @@ STATE_SCHLESWIG_HOLSTEIN_state_name_assign = {
 				any_primary_culture = {
 					cu:french ?= this
 				}
-				NOT = { c:HRE ?= this }
+				NOR = {
+					c:HRE ?= this
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+				}
 			}
 		}
 		
@@ -4607,7 +4704,12 @@ STATE_MECKLENBURG_state_name_assign = {
 				any_primary_culture = {
 					cu:french ?= this
 				}
-				NOT = { c:HRE ?= this }
+				NOR = {
+					c:HRE ?= this
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+				}
 			}
 		}
 		
@@ -4631,7 +4733,12 @@ STATE_POMERANIA_state_name_assign = {
 				any_primary_culture = {
 					cu:french ?= this
 				}
-				NOT = { c:HRE ?= this }
+				NOR = {
+					c:HRE ?= this
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+				}
 			}
 		}
 		
@@ -4683,11 +4790,33 @@ STATE_BRANDENBURG_state_name_assign = {
 				any_primary_culture = {
 					cu:french ?= this
 				}
-				NOT = { c:HRE ?= this }
+				NOR = {
+					c:HRE ?= this
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+				}
 			}
 		}
 		
         set_state_name = STATE_BRANDENBURG_french
+	}
+	else_if = {
+		limit = {
+            owner = {
+                any_primary_culture = {
+					cu:polish ?= this
+                }
+				NOT = {
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_BRANDENBURG_polish
+        set_hub_names = polish
 	}
 	else = { # switch back to defaults
 		reset_state_name = yes
@@ -4702,7 +4831,12 @@ STATE_SAXONY_state_name_assign = {
 				any_primary_culture = {
 					cu:french ?= this
 				}
-				NOT = { c:HRE ?= this }
+				NOR = {
+					c:HRE ?= this
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+				}
 			}
 		}
 		
@@ -4737,7 +4871,12 @@ STATE_FRANCONIA_state_name_assign = {
 				any_primary_culture = {
 					cu:french ?= this
 				}
-				NOT = { c:HRE ?= this }
+				NOR = {
+					c:HRE ?= this
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+				}
 			}
 		}
 		
@@ -4785,7 +4924,16 @@ STATE_BOHEMIA_state_name_assign = {
 				any_primary_culture = {
 					cu:french ?= this
 				}
-				NOT = { c:HRE ?= this }
+				NOR = {
+					c:HRE ?= this
+					any_primary_culture = {
+						OR = {
+							has_discrimination_trait = german_speaking
+							cu:czech ?= this
+							cu:slovak ?= this
+						}
+					}
+				}
 			}
 		}
 		
@@ -4878,7 +5026,16 @@ STATE_MORAVIA_state_name_assign = {
 				any_primary_culture = {
 					cu:french ?= this
 				}
-				NOT = { c:HRE ?= this }
+				NOR = {
+					c:HRE ?= this
+					any_primary_culture = {
+						OR = {
+							has_discrimination_trait = german_speaking
+							cu:czech ?= this
+							cu:slovak ?= this
+						}
+					}
+				}
 			}
 		}
 		
@@ -4967,7 +5124,12 @@ STATE_BAVARIA_state_name_assign = {
 				any_primary_culture = {
 					cu:french ?= this
 				}
-				NOT = { c:HRE ?= this }
+				NOR = {
+					c:HRE ?= this
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+				}
 			}
 		}
 		
@@ -5015,7 +5177,12 @@ STATE_STYRIA_state_name_assign = {
 				any_primary_culture = {
 					cu:french ?= this
 				}
-				NOT = { c:HRE ?= this }
+				NOR = {
+					c:HRE ?= this
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+				}
 			}
 		}
 		
@@ -5051,7 +5218,12 @@ STATE_TYROL_state_name_assign = {
 				any_primary_culture = {
 					cu:french ?= this
 				}
-				NOT = { c:HRE ?= this }
+				NOR = {
+					c:HRE ?= this
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+				}
 			}
 		}
 		
@@ -5074,6 +5246,23 @@ STATE_TYROL_state_name_assign = {
         set_state_name = STATE_TYROL_german
         set_hub_names = german
 	}
+	else_if = {
+		limit = {
+            owner = {
+                any_primary_culture = {
+					has_discrimination_trait = italophone
+                }
+				NOT = {
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+				}
+            }
+        }
+		
+        set_state_name = STATE_TYROL_italian
+        set_hub_names = italian
+	}
 	else = { # switch back to defaults
 		reset_state_name = yes
 		reset_hub_names = yes
@@ -5087,7 +5276,12 @@ STATE_WURTTEMBERG_state_name_assign = {
 				any_primary_culture = {
 					cu:french ?= this
 				}
-				NOT = { c:HRE ?= this }
+				NOR = {
+					c:HRE ?= this
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+				}
 			}
 		}
 		
@@ -5115,7 +5309,12 @@ STATE_AUSTRIA_state_name_assign = {
 				any_primary_culture = {
 					cu:french ?= this
 				}
-				NOT = { c:HRE ?= this }
+				NOR = {
+					c:HRE ?= this
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+				}
 			}
 		}
 
@@ -5176,7 +5375,12 @@ STATE_BADEN_state_name_assign = {
 				any_primary_culture = {
 					cu:french ?= this
 				}
-				NOT = { c:HRE ?= this }
+				NOR = {
+					c:HRE ?= this
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+				}
 			}
 		}
         
@@ -5292,7 +5496,12 @@ STATE_RHINELAND_state_name_assign = {
 				any_primary_culture = {
 					cu:french ?= this
 				}
-				NOT = { c:HRE ?= this }
+				NOR = {
+					c:HRE ?= this 
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+				}
 			}
 		}
 
@@ -5322,6 +5531,25 @@ STATE_RHINELAND_state_name_assign = {
 		
         set_state_name = STATE_RHINELAND_german
 	}
+	else_if = {
+		limit = {
+			owner = {
+				any_primary_culture = {	#if there's any primary culture that is beneluxian and not francophone
+					has_discrimination_trait = beneluxian_culture_group
+					NOT = { has_discrimination_trait = francophone }
+				}
+				NOT = { #if there's no german_speaking primary culture
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+				}
+			}
+		}
+
+        set_state_name = STATE_RHINELAND_dutch
+        set_hub_names = dutch
+        }
+	}
 	else = { # switch back to defaults
 		reset_state_name = yes
 		reset_hub_names = yes
@@ -5335,7 +5563,12 @@ STATE_HESSE_state_name_assign = {
 				any_primary_culture = {
 					cu:french ?= this
 				}
-				NOT = { c:HRE ?= this }
+				NOR = {
+					c:HRE ?= this
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+				}
 			}
 		}
         
@@ -5378,7 +5611,12 @@ STATE_ANHALT_state_name_assign = {
 				any_primary_culture = {
 					cu:french ?= this
 				}
-				NOT = { c:HRE ?= this }
+				NOR = {
+					c:HRE ?= this
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+				}
 			}
 		}
         
@@ -5400,7 +5638,12 @@ STATE_ELBE_state_name_assign = {
 				any_primary_culture = {
 					cu:french ?= this
 				}
-				NOT = { c:HRE ?= this }
+				NOR = {
+					c:HRE ?= this
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+				}
 			}
 		}
         
@@ -5426,7 +5669,12 @@ STATE_HANNOVER_state_name_assign = {
 				any_primary_culture = {
 					cu:french ?= this
 				}
-				NOT = { c:HRE ?= this }
+				NOR = {
+					c:HRE ?= this
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+				}
 			}
 		}
 
@@ -5435,6 +5683,25 @@ STATE_HANNOVER_state_name_assign = {
         set_hub_name = {
             type = city
             name = HUB_NAME_STATE_HANNOVER_city_french
+        }
+	}
+	else_if = {
+		limit = {
+			owner = {
+				any_primary_culture = {	#if there's any primary culture that is beneluxian and not francophone
+					has_discrimination_trait = beneluxian_culture_group
+					NOT = { has_discrimination_trait = francophone }
+				}
+				NOT = { #if there's no german_speaking primary culture
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+				}
+			}
+		}
+
+        set_state_name = STATE_HANNOVER_dutch
+        set_hub_names = dutch
         }
 	}
 	else = { # switch back to defaults
@@ -5450,7 +5717,12 @@ STATE_BRUNSWICK_state_name_assign = {
 				any_primary_culture = {
 					cu:french ?= this
 				}
-				NOT = { c:HRE ?= this }
+				NOR = {
+					c:HRE ?= this
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+				}
 			}
 		}
 
@@ -5493,7 +5765,12 @@ STATE_WESTPHALIA_state_name_assign = {
 				any_primary_culture = {
 					cu:french ?= this
 				}
-				NOT = { c:HRE ?= this }
+				NOR = {
+					c:HRE ?= this
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+				}
 			}
 		}
 
@@ -5532,7 +5809,12 @@ STATE_NORTH_RHINE_state_name_assign = {
 				any_primary_culture = {
 					cu:french ?= this
 				}
-				NOT = { c:HRE ?= this }
+				NOR = {
+					c:HRE ?= this
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+				}
 			}
 		}
 
@@ -5566,6 +5848,25 @@ STATE_NORTH_RHINE_state_name_assign = {
             name = HUB_NAME_STATE_NORTH_RHINE_city_german
         }
 	}
+	else_if = {
+		limit = {
+			owner = {
+				any_primary_culture = {	#if there's any primary culture that is beneluxian and not francophone
+					has_discrimination_trait = beneluxian_culture_group
+					NOT = { has_discrimination_trait = francophone }
+				}
+				NOT = { #if there's no german_speaking primary culture
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+				}
+			}
+		}
+
+        set_state_name = STATE_NORTH_RHINE_dutch
+        set_hub_names = dutch
+        }
+	}
 	else = { # switch back to defaults
 		reset_state_name = yes
 		reset_hub_names = yes
@@ -5579,7 +5880,12 @@ STATE_RUHR_state_name_assign = {
 				any_primary_culture = {
 					cu:french ?= this
 				}
-				NOT = { c:HRE ?= this }
+				NOR = {
+					c:HRE ?= this
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+				}
 			}
 		}
         
@@ -5588,6 +5894,25 @@ STATE_RUHR_state_name_assign = {
             name = HUB_NAME_STATE_RUHR_city_french
         }
     }
+	else_if = {
+		limit = {
+			owner = {
+				any_primary_culture = {	#if there's any primary culture that is beneluxian and not francophone
+					has_discrimination_trait = beneluxian_culture_group
+					NOT = { has_discrimination_trait = francophone }
+				}
+				NOT = { #if there's no german_speaking primary culture
+					any_primary_culture = {
+						has_discrimination_trait = german_speaking
+					}
+				}
+			}
+		}
+
+        set_state_name = STATE_RUHR_dutch
+        set_hub_names = dutch
+        }
+	}
 	else = { # switch back to defaults
 		reset_state_name = yes
 		reset_hub_names = yes
@@ -5664,6 +5989,25 @@ STATE_FRENCH_LOW_COUNTRIES_state_name_assign = {
             name = HUB_NAME_STATE_FRENCH_LOW_COUNTRIES_port_french
         }
     }
+	else_if = {
+		limit = {
+			owner = {
+				any_primary_culture = {	#if there's any primary culture that is beneluxian and not francophone
+					has_discrimination_trait = beneluxian_culture_group
+					NOT = { has_discrimination_trait = francophone }
+				}
+				NOT = { #if there's no francophone primary culture
+					any_primary_culture = {
+						has_discrimination_trait = francophone
+					}
+				}
+			}
+		}
+
+        set_state_name = STATE_FRENCH_LOW_COUNTRIES_dutch
+		set_hub_names = dutch
+        }
+	}
 	else = { # switch back to defaults
 		reset_state_name = yes
 		reset_hub_names = yes
@@ -5725,7 +6069,6 @@ STATE_CATALONIA_state_name_assign = {
 		limit = {
 			owner = {
 				country_has_primary_culture = cu:catalan
-				NOT = { country_has_primary_culture = cu:spanish }
 			}
 		}
 
@@ -5735,6 +6078,44 @@ STATE_CATALONIA_state_name_assign = {
             type = farm
             name = HUB_NAME_STATE_CATALONIA_farm_catalan
         }
+	}
+	else_if = {
+		limit = {
+			owner = {
+				country_has_primary_culture = cu:spanish
+				NOT = { country_has_primary_culture = cu:catalan }
+			}
+		}
+
+        set_state_name = STATE_CATALONIA_spanish
+	}
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
+STATE_ARAGON_state_name_assign = {
+	if = {
+		limit = {
+			owner = {
+				country_has_primary_culture = cu:spanish
+				NOT = { country_has_primary_culture = cu:catalan }
+			}
+		}
+
+        set_state_name = STATE_ARAGON_spanish
+	}
+	else_if = {
+		limit = {
+			owner = {
+				country_has_primary_culture = cu:catalan
+				NOT = { country_has_primary_culture = cu:spanish }
+			}
+		}
+
+        set_state_name = STATE_ARAGON_catalan
+		set_hub_names = catalan
 	}
 	else = { # switch back to defaults
 		reset_state_name = yes
