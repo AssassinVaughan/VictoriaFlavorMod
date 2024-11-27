@@ -407,6 +407,10 @@ is_vulnerable_to_heatwaves = {
 	}
 }
 
+is_extra_vulnerable_to_heatwaves = {
+	OR = { has_state_trait = state_medeteranean_climate has_state_trait = state_trait_bad_soils }
+}
+
 is_vulnerable_to_disease_outbreak = {
 	always = yes
 }
