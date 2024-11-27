@@ -1,0 +1,39 @@
+﻿je_mohammarah_situation = {
+	icon = "gfx/interface/icons/event_icons/event_flags/event_bhn_flag.dds"
+    group = je_group_internal_affairs
+
+	immediate = {
+		c:PER = {
+			save_scope_as = per_scope
+		}
+		c:ARB = {
+			save_scope_as = arb_scope
+		}
+		c:TUR = {
+			save_scope_as = tur_scope
+		}
+	}
+
+	can_deactivate = yes
+
+	complete = {
+		custom_tooltip = {
+			text = complete_arabistan_je_tt
+			is_at_war = no
+			is_active_in_diplomatic_play = no
+			NOT = {
+				c:ARB = {
+					is_subject_of = c:PER
+				}
+			}
+		}
+	}
+	
+	on_complete = {
+		trigger_event = { id = journal_flavor_iran.22 popup = yes }
+		set_variable = become_arabistan_var
+	}
+
+    weight = 10000
+	should_be_pinned_by_default = yes
+}
