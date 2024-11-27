@@ -33,9 +33,9 @@ drought = {
 		building_group_bg_ranching_throughput_add = -0.05
 
 		#Infrastructure
-		building_group_bg_agriculture_infrastructure_usage_mult = 0.1
-		building_group_bg_plantations_infrastructure_usage_mult = 0.1
-		building_group_bg_ranching_infrastructure_usage_mult = 0.1
+		#building_group_bg_agriculture_infrastructure_usage_mult = 0.1
+		#building_group_bg_plantations_infrastructure_usage_mult = 0.1
+		#building_group_bg_ranching_infrastructure_usage_mult = 0.1
 
 		#Subsistence
 		state_peasants_consumption_multiplier_add= 0.025
@@ -49,16 +49,22 @@ drought = {
 	}
 
 	chance = {
-		value = 0.0025
+		value = 0.002
 		if = {
 			limit = {
 				has_harvest_condition = optimal_sunlight
 			}
-			multiply = 1.2
+			multiply = 1.3
 		}
 		if = {
 			limit = {
 				has_harvest_condition = heatwave
+			}
+			multiply = 2
+		}
+		if = {
+			limit = {
+				is_extra_vulnerable_to_heatwaves = yes
 			}
 			multiply = 1.5
 		}
@@ -104,10 +110,7 @@ flood = {
 		state_market_access_price_impact = -0.05
 
 		#Throughput
-		building_group_bg_agriculture_throughput_add = -0.05
-		building_group_bg_plantations_throughput_add = -0.05
-		building_group_bg_ranching_throughput_add = -0.05
-		building_group_bg_extraction_throughput_add = -0.05
+		building_throughput_add = -0.05
 
 		#Subsistence
 		state_peasants_consumption_multiplier_add = 0.025
@@ -124,12 +127,9 @@ flood = {
 		value = 0.0025
 		if = {
 			limit = {
-				OR = {
-					has_harvest_condition = moderate_rainfall
-					has_harvest_condition = heatwave
-				}
+				has_harvest_condition = moderate_rainfall
 			}
-			multiply = 1.2
+			multiply = 1.25
 		}
 		if = {
 			limit = {
@@ -141,7 +141,7 @@ flood = {
 			limit = {
 				has_harvest_condition = torrential_rains
 			}
-			multiply = 1.5
+			multiply = 1.6
 		}
 	}
 
@@ -247,9 +247,9 @@ wildfire = {
 		building_group_bg_extraction_throughput_add = -0.05
 
 		# Infra - Building
-		building_group_bg_agriculture_infrastructure_usage_mult = 0.1
-		building_group_bg_plantations_infrastructure_usage_mult = 0.1
-		building_group_bg_ranching_infrastructure_usage_mult = 0.1
+		#building_group_bg_agriculture_infrastructure_usage_mult = 0.1
+		#building_group_bg_plantations_infrastructure_usage_mult = 0.1
+		#building_group_bg_ranching_infrastructure_usage_mult = 0.1
 
 		# Infra - State
 		state_infrastructure_mult = -0.05
@@ -321,9 +321,7 @@ hailstorm = {
 
 	modifier = {
 		# Throughput
-		building_group_bg_agriculture_throughput_add = -0.05
-		building_group_bg_plantations_throughput_add = -0.05
-		building_group_bg_ranching_throughput_add = -0.05
+		building_throughput_add = -0.05
 		building_group_bg_logging_throughput_add = -0.05
 	}
 
@@ -454,6 +452,12 @@ heatwave = {
 		if = {
 			limit = {
 				has_harvest_condition = optimal_sunlight
+			}
+			multiply = 1.4
+		}
+		if = {
+			limit = {
+				is_extra_vulnerable_to_heatwaves = yes
 			}
 			multiply = 1.4
 		}
@@ -659,7 +663,7 @@ pollinator_surge = {
 
 	modifier = {
 		#Throughput
-		building_group_bg_plantations_throughput_add = 0.1
+		building_group_bg_plantations_throughput_add = 0.05
 
 		#Output
 		goods_output_fruit_mult = 0.05
@@ -721,7 +725,7 @@ optimal_sunlight = {
 	intensity = {
 		fixed_range = {
 			min = 2
-			max = 5
+			max = 4
 		}
 	}
 
@@ -774,7 +778,7 @@ moderate_rainfall = {
 	intensity = {
 		fixed_range = {
 			min = 2
-			max = 4
+			max = 3
 		}
 	}
 
