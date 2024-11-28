@@ -56,7 +56,7 @@ assign_state_name_region_dnieper  = {
             }
         }
         STATE_CHERNIHIV_state_name_assign = yes
-    }	
+    }
 }
 
 # Belarus Region
@@ -823,7 +823,6 @@ assign_state_name_region_iberia = { # region_iberia
         }
         STATE_ARAGON_state_name_assign = yes
     }
-}
     else_if = {
         limit = {
             state_region = {
@@ -857,7 +856,7 @@ assign_state_name_region_russia = { # region_russia
 }
 
 ## Baltic/Scandinavia
-assign_state_name_region_baltic  = { # region_baltic
+assign_state_name_region_baltic = { # region_baltic
     if = {
         limit = {
             state_region = {
@@ -885,7 +884,7 @@ assign_state_name_region_baltic  = { # region_baltic
 }
 
 ## Danubia
-assign_state_name_region_danubia  = { # region_danubia
+assign_state_name_region_danubia = { # region_danubia
     if = {
         limit = {
             state_region = {
@@ -4392,14 +4391,13 @@ STATE_FLANDERS_state_name_assign = {
 				any_primary_culture = {	#if there's any primary culture that is beneluxian and not francophone
 					has_discrimination_trait = beneluxian_culture_group
 					NOT = { has_discrimination_trait = francophone }
-				}
+                }
 			}
 		}
 
         set_state_name = STATE_FLANDERS_dutch
         set_hub_names = dutch
-        }
-	}
+    }
 	else = { # switch back to defaults
 		reset_state_name = yes
 		reset_hub_names = yes
@@ -4468,8 +4466,7 @@ STATE_WALLONIA_state_name_assign = {
 
         set_state_name = STATE_WALLONIA_dutch
         set_hub_names = dutch
-        }
-	}
+    }
 	else = { # switch back to defaults
 		reset_state_name = yes
 		reset_hub_names = yes
@@ -4516,8 +4513,7 @@ STATE_GELRE_state_name_assign = {
 		}
 
         set_state_name = STATE_GELRE_dutch
-        }
-	}
+    }
 	else = { # switch back to defaults
 		reset_state_name = yes
 		reset_hub_names = yes
@@ -4557,9 +4553,7 @@ STATE_FRIESLAND_state_name_assign = {
 				}
 			}
 		}
-
         set_state_name = STATE_FRIESLAND_dutch
-        }
 	}
 	else = { # switch back to defaults
 		reset_state_name = yes
@@ -5548,7 +5542,6 @@ STATE_RHINELAND_state_name_assign = {
 
         set_state_name = STATE_RHINELAND_dutch
         set_hub_names = dutch
-        }
 	}
 	else = { # switch back to defaults
 		reset_state_name = yes
@@ -5702,7 +5695,6 @@ STATE_HANNOVER_state_name_assign = {
 
         set_state_name = STATE_HANNOVER_dutch
         set_hub_names = dutch
-        }
 	}
 	else = { # switch back to defaults
 		reset_state_name = yes
@@ -5865,7 +5857,6 @@ STATE_NORTH_RHINE_state_name_assign = {
 
         set_state_name = STATE_NORTH_RHINE_dutch
         set_hub_names = dutch
-        }
 	}
 	else = { # switch back to defaults
 		reset_state_name = yes
@@ -5911,7 +5902,6 @@ STATE_RUHR_state_name_assign = {
 
         set_state_name = STATE_RUHR_dutch
         set_hub_names = dutch
-        }
 	}
 	else = { # switch back to defaults
 		reset_state_name = yes
@@ -6006,7 +5996,6 @@ STATE_FRENCH_LOW_COUNTRIES_state_name_assign = {
 
         set_state_name = STATE_FRENCH_LOW_COUNTRIES_dutch
 		set_hub_names = dutch
-        }
 	}
 	else = { # switch back to defaults
 		reset_state_name = yes
