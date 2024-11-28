@@ -1,0 +1,51 @@
+﻿GYA = { # Guyana
+	flag_definition = {
+		coa = GYA
+		subject_canton = GYA
+		coa_with_overlord_canton = GYA_subject
+		allow_overlord_canton = yes				
+		priority = 1
+	}
+	flag_definition = {
+		coa = GYA_subject_GBR
+		allow_overlord_canton = yes	
+		priority = 30
+		trigger = { 
+			coa_def_british_ensign_trigger = yes
+		}
+	}	
+}
+
+SRM = { # Suriname
+	flag_definition = {
+		coa = SRM
+		subject_canton = SRM
+		coa_with_overlord_canton = SRM_subject
+		allow_overlord_canton = yes				
+		priority = 1
+	}
+	flag_definition = {
+		coa = SRM_subject_NET
+		priority = 30
+		trigger = { 
+			coa_def_netherlands_ensign_trigger = yes
+		}
+	}	
+}
+
+GIA = { # French Guiana 
+	flag_definition = {
+		coa = GIA
+		subject_canton = GIA
+		coa_with_overlord_canton = GIA_subject
+		allow_overlord_canton = yes				
+		priority = 1
+	}
+	flag_definition = {
+		coa = GIA_subject_FRA
+		priority = 30
+		trigger = { 
+			coa_def_french_ensign_trigger = yes
+		}
+	}	
+}
