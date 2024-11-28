@@ -18,14 +18,14 @@ company_krupp = {
 	attainable = {
 		hidden_trigger = { # Hide attainable if it's always fulfilled by possible
 			any_scope_state = {
-				state_region = s:STATE_RHINELAND
+				state_region = s:STATE_RUHR
 			}
 		}
 	}	
 	
 	possible = { 
 		any_scope_state = {
-			state_region = s:STATE_RHINELAND
+			state_region = s:STATE_RUHR
 			is_incorporated = yes
 			any_scope_building = {
 				OR = {
@@ -33,7 +33,7 @@ company_krupp = {
 					is_building_type = building_arms_industry
 					is_building_type = building_artillery_foundries
 				}
-				level >= 7
+				level >= 5
 			}
 		}
 		has_technology_researched = steelworking
@@ -70,7 +70,7 @@ company_rheinmetall = {
 		hidden_trigger = { # Hide attainable if it's always fulfilled by possible
 			any_scope_state = {
 				OR = {
-					state_region = s:STATE_RHINELAND
+					state_region = s:STATE_RUHR
 					state_region = s:STATE_NORTH_RHINE
 				}
 			}
@@ -80,7 +80,7 @@ company_rheinmetall = {
 	possible = {
 		any_scope_state = {
 			OR = {
-				state_region = s:STATE_RHINELAND
+				state_region = s:STATE_RUHR
 				state_region = s:STATE_NORTH_RHINE
 			}
 			is_incorporated = yes
@@ -90,7 +90,7 @@ company_rheinmetall = {
 					is_building_type = building_artillery_foundries
 					is_building_type = building_munition_plants
 				}
-				level >= 7
+				level >= 5
 			}
 		}
 		has_technology_researched = automatic_machine_guns
@@ -138,7 +138,7 @@ company_schichau = {
 			is_incorporated = yes
 			any_scope_building = {
 				is_building_type = building_motor_industry
-				level >= 5
+				level >= 4
 			}
 		}
 		has_technology_researched = atmospheric_engine
@@ -268,7 +268,7 @@ company_basf = {
 			is_incorporated = yes
 			any_scope_building = {
 				is_building_type = building_synthetics_plants
-				level >= 5
+				level >= 4
 			}
 		}
 	}

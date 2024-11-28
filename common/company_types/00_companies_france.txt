@@ -27,7 +27,7 @@ company_societe_mokta_el_hadid = {
 			state_region = s:STATE_CONSTANTINE
 			any_scope_building = {
 				is_building_type = building_iron_mine
-				level >= 7
+				level >= 4
 			}
 		}
 		has_technology_researched = bessemer_process
@@ -119,7 +119,7 @@ company_dmc = {
 			is_incorporated = yes
 			any_scope_building = {
 				is_building_type = building_textile_mills
-				level >= 8
+				level >= 7
 			}
 		}
 		has_technology_researched = cotton_gin
@@ -206,7 +206,7 @@ company_saint_etienne = {
 			is_incorporated = yes
 			any_scope_building = {
 				is_building_type = building_arms_industry
-				level >= 5
+				level >= 4
 			}
 		}
 		has_technology_researched = bolt_action_rifles
@@ -257,7 +257,7 @@ company_fcm = {
 					is_building_type = building_shipyards
 					is_building_type = building_military_shipyards
 				}
-				level >= 5
+				level >= 3
 			}
 		}
 		has_technology_researched = ironclad_tech
@@ -291,18 +291,18 @@ company_mines_anzin = {
 	attainable = {
 		hidden_trigger = { # Hide attainable if it's always fulfilled by possible
 			any_scope_state = {
-				state_region = s:STATE_CALAIS
+				state_region = s:STATE_FRENCH_LOW_COUNTRIES
 			}
 		}
 	}			
 	
 	possible = { 
 		any_scope_state = {
-			state_region = s:STATE_CALAIS
+			state_region = s:STATE_FRENCH_LOW_COUNTRIES
 			is_incorporated = yes
 			any_scope_building = {
 				is_building_type = building_coal_mine
-				level >= 8
+				level >= 7
 			}
 		}
 	}
