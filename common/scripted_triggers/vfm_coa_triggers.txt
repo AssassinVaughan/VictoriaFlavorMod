@@ -2,6 +2,23 @@
 	scope:actor = {  is_country_type = recognized }
 }
 
+coa_def_lesser_subject_trigger = {
+	OR = {
+		NOT = { exists = scope:actor }
+		AND = {
+			exists = scope:actor
+			scope:actor ?= { 
+				OR = {
+					is_subject_type = subject_type_colony
+					is_subject_type = subject_type_puppet
+					is_subject_type = subject_type_vassal
+					is_subject_type = subject_type_dependency
+				}
+			}
+		}
+	}
+}
+
 coa_def_protectorate_trigger = {
 	OR = {
 		NOT = { exists = scope:target }
@@ -16,13 +33,43 @@ coa_def_protectorate_trigger = {
 	}
 }
 
+coa_def_netherlands_ensign_trigger = {
+	OR = {
+		AND = {
+			c:NET ?= { save_temporary_scope_as = custom_overlord }
+			coa_def_ensign_trigger = yes
+		}
+		AND = {
+			c:UNL ?= { save_temporary_scope_as = custom_overlord }
+			coa_def_ensign_trigger = yes
+		}
+	}
+}
+
+coa_def_hispanic_trigger = {
+    any_primary_culture = {
+    	has_discrimination_trait = hispanophone
+    	has_discrimination_trait = european_heritage
+    }
+}
+
+coa_SWE_karl_johan_is_king_trigger = {
+	exists = c:SWE
+	c:SWE ?= {
+		NOT = {
+			ruler = {
+				has_variable = is_johan
+			}
+		}
+	}
+}
+
 coa_time_bol_trigger = {
 	game_date > 1888.1.1
 }
 
 coa_def_time_bol_flag_trigger = {
-	exists = scope:actor
-	scope:actor = { coa_time_bol_trigger  = yes }
+	scope:actor ?= { coa_time_bol_trigger  = yes }
 }
 
 coa_def_argentina_ensign_trigger = {
@@ -37,6 +84,32 @@ coa_def_argentina_ensign_trigger = {
 			}
 		}
 	 }
+}
+
+coa_def_frca_ensign_trigger = {
+	exists = c:UCA
+	c:UCA = { has_variable = is_frca_var }
+	c:UCA ?= { save_temporary_scope_as = custom_overlord }
+	coa_def_ensign_trigger = yes
+}
+
+coa_def_soconosco_uca_trigger = {
+	exists = c:CIP
+	c:CIP = { 
+		is_subject_of = c:UCA
+		NOT = { owns_entire_state_region = STATE_CHIAPAS } 
+	}
+}
+
+coa_def_soconosco_trigger = {
+	exists = c:CIP
+	c:CIP = { 
+		NOT = { owns_entire_state_region = STATE_CHIAPAS } 
+	}
+	OR = {
+		c:CIP = { is_subject_of = c:ALT }
+		c:CIP = { is_subject_of = c:GUA }
+	}
 }
 
 coa_def_german_ensign_trigger = {
