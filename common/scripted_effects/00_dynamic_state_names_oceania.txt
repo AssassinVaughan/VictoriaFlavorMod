@@ -1,0 +1,166 @@
+﻿### Culture name assignments
+## Oceania Region
+assign_state_name_region_oceania = {
+    if = {
+        limit = {
+            state_region = {
+                s:STATE_NEW_SOUTH_WALES ?= this
+            }
+        }
+        STATE_NEW_SOUTH_WALES_state_name_assign = yes
+    }
+    if = {
+        limit = {
+            state_region = {
+                s:STATE_VICTORIA ?= this
+            }
+        }
+        STATE_VICTORIA_state_name_assign = yes
+    }
+    if = {
+        limit = {
+            state_region = {
+                s:STATE_QUEENSLAND ?= this
+            }
+        }
+        STATE_QUEENSLAND_state_name_assign = yes
+    }
+    if = {
+        limit = {
+            state_region = {
+                s:STATE_SOUTH_AUSTRALIA ?= this
+            }
+        }
+        STATE_SOUTH_AUSTRALIA_state_name_assign = yes
+    }
+    if = {
+        limit = {
+            state_region = {
+                s:STATE_NORTHERN_TERRITORY ?= this
+            }
+        }
+        STATE_NORTHERN_TERRITORY_state_name_assign = yes
+    }
+    if = {
+        limit = {
+            state_region = {
+                s:STATE_WESTERN_AUSTRALIA ?= this
+            }
+        }
+        STATE_WESTERN_AUSTRALIA_state_name_assign = yes
+    }
+}
+# New South Wales
+STATE_NEW_SOUTH_WALES_state_name_assign = {
+    if = {
+        limit = {
+            owner = {
+                any_primary_culture = {
+                    has_discrimination_trait = aboriginal_australian
+                }
+            }
+        }
+        
+        set_state_name = STATE_NEW_SOUTH_WALES_aboriginal
+        set_hub_names = aboriginal
+    }
+    else = { # By putting an else at the end that resets the names we ensure that the names are switched back to their defaults if anyone else takes the states
+        reset_state_name = yes
+        reset_hub_names = yes
+    }
+}
+# Victoria
+STATE_VICTORIA_state_name_assign = {
+    if = {
+        limit = {
+            owner = {
+                any_primary_culture = {
+                    has_discrimination_trait = aboriginal_australian
+                }
+            }
+        }
+        
+        set_state_name = STATE_VICTORIA_aboriginal
+        set_hub_names = aboriginal
+    }
+    else = { # By putting an else at the end that resets the names we ensure that the names are switched back to their defaults if anyone else takes the states
+        reset_state_name = yes
+        reset_hub_names = yes
+    }
+}
+# Queensland
+STATE_QUEENSLAND_state_name_assign = {
+    if = {
+        limit = {
+            owner = {
+                any_primary_culture = {
+                    has_discrimination_trait = aboriginal_australian
+                }
+            }
+        }
+        
+        set_state_name = STATE_QUEENSLAND_aboriginal
+        set_hub_names = aboriginal
+    }
+    else = { # By putting an else at the end that resets the names we ensure that the names are switched back to their defaults if anyone else takes the states
+        reset_state_name = yes
+        reset_hub_names = yes
+    }
+}
+# South Australia
+STATE_SOUTH_AUSTRALIA_state_name_assign = {
+    if = {
+        limit = {
+            owner = {
+                any_primary_culture = {
+                    has_discrimination_trait = aboriginal_australian
+                }
+            }
+        }
+        
+        set_state_name = STATE_SOUTH_AUSTRALIA_aboriginal
+        set_hub_names = aboriginal
+    }
+    else = { # By putting an else at the end that resets the names we ensure that the names are switched back to their defaults if anyone else takes the states
+        reset_state_name = yes
+        reset_hub_names = yes
+    }
+}
+# Northern Territory
+STATE_NORTHERN_TERRITORY_state_name_assign = {
+    if = {
+        limit = {
+            owner = {
+                any_primary_culture = {
+                    has_discrimination_trait = aboriginal_australian
+                }
+            }
+        }
+        
+        set_state_name = STATE_NORTHERN_TERRITORY_aboriginal
+        set_hub_names = aboriginal
+    }
+    else = { # By putting an else at the end that resets the names we ensure that the names are switched back to their defaults if anyone else takes the states
+        reset_state_name = yes
+        reset_hub_names = yes
+    }
+}
+# Western Australia
+STATE_WESTERN_AUSTRALIA_state_name_assign = {
+    if = { 
+        limit = {
+            owner = {
+                any_primary_culture = {
+                    has_discrimination_trait = aboriginal_australian
+                }
+            }
+        }
+        
+        set_state_name = STATE_WESTERN_AUSTRALIA_aboriginal
+        set_hub_names = aboriginal
+    }
+    else = { # By putting an else at the end that resets the names we ensure that the names are switched back to their defaults if anyone else takes the states
+        reset_state_name = yes
+        reset_hub_names = yes
+    }
+}

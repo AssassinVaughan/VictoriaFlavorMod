@@ -22,6 +22,64 @@ state_is_in_europe = {
 	}
 }
 
+in_potato_blight_zone = {
+	OR = {
+		region = sr:region_north_sea_coast
+		region = sr:region_north_germany
+		region = sr:region_low_countries
+		state_region = s:STATE_GOTALAND
+	}
+	NOT = { state_region = s:STATE_SCHLESWIG_HOLSTEIN }
+}
+
+in_potato_blight_mild_zone = {
+	OR = {
+		region = sr:region_england
+		region = sr:region_scandinavia
+		region = sr:region_poland
+		region = sr:region_baltic
+		region = sr:region_belarus
+		region = sr:region_hungary
+		# North america
+		region = sr:region_new_england
+		state_region = s:STATE_QUEBEC
+		state_region = s:STATE_ONTARIO
+		state_region = s:STATE_NEWFOUNDLAND
+		state_region = s:STATE_SCHLESWIG_HOLSTEIN
+		state_region = s:STATE_NORTH_RHINE
+	}
+	NOT = { state_region = s:STATE_GOTALAND }
+}
+
+in_potato_blight_zone_2 = { ## needs different triggers...
+	OR = {
+		state_region = { region = sr:region_north_sea_coast }
+		state_region = { region = sr:region_north_germany }
+		state_region = { region = sr:region_low_countries }
+		state_region = s:STATE_GOTALAND
+	}
+	NOT = { state_region = s:STATE_SCHLESWIG_HOLSTEIN }
+}
+
+in_potato_blight_mild_zone_2 = {
+	OR = {
+		state_region = { region = sr:region_england }
+		state_region = { region = sr:region_scandinavia }
+		state_region = { region = sr:region_poland }
+		state_region = { region = sr:region_baltic }
+		state_region = { region = sr:region_belarus }
+		state_region = { region = sr:region_hungary }
+		# North america
+		state_region = { region = sr:region_new_england }
+		state_region = s:STATE_QUEBEC
+		state_region = s:STATE_ONTARIO
+		state_region = s:STATE_NEWFOUNDLAND
+		state_region = s:STATE_SCHLESWIG_HOLSTEIN
+		state_region = s:STATE_NORTH_RHINE
+	}
+	NOT = { state_region = s:STATE_GOTALAND }
+}
+
 state_is_in_north_america = {
 	OR = {
 		region = sr:region_canada
@@ -405,6 +463,10 @@ is_vulnerable_to_heatwaves = {
 		region = sr:region_himalayas
 		region = sr:region_arctic_russia
 	}
+}
+
+is_extra_vulnerable_to_heatwaves = {
+	any_scope_state = { OR = { has_state_trait = state_medeteranean_climate has_state_trait = state_trait_bad_soils } }
 }
 
 is_vulnerable_to_disease_outbreak = {
