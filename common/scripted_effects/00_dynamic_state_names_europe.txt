@@ -881,6 +881,14 @@ assign_state_name_region_baltic = { # region_baltic
         }
         STATE_EASTERN_NORWAY_state_name_assign = yes
     } 
+    else_if = {
+        limit = {
+            state_region = {
+                s:STATE_JUTLAND ?= this
+            }
+        }
+        STATE_JUTLAND_state_name_assign = yes
+    } 
 }
 
 ## Danubia
@@ -6330,4 +6338,231 @@ STATE_EASTERN_NORWAY_state_name_assign = {
         reset_state_name = yes
         reset_hub_names = yes
     }
+}
+
+STATE_NORRLAND_state_name_assign = {
+	if = {
+		limit = {
+			owner = {
+				country_has_primary_culture = cu:danish
+				NOT = { country_has_primary_culture = cu:swedish }
+			}
+		}
+
+        set_state_name = STATE_NORRLAND_danish
+        set_hub_names = danish
+	}
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
+STATE_GOTALAND_state_name_assign = {
+	if = {
+		limit = {
+			owner = {
+				country_has_primary_culture = cu:danish
+				NOT = { country_has_primary_culture = cu:swedish }
+			}
+		}
+
+        set_state_name = STATE_GOTALAND_danish
+        set_hub_names = danish
+	}
+	else_if = {
+		limit = {
+			owner = {
+				country_has_primary_culture = cu:swedish
+			}
+		}
+
+        set_hub_name = {
+            type = port
+            name = HUB_NAME_STATE_GOTLAND_port_swedish
+        }
+	}
+	else_if = {
+		limit = {
+			owner = {
+				any_primary_culture = {
+					has_discrimination_trait = german_speaking
+				}
+				NOT = { country_has_primary_culture = cu:swedish }
+			}
+		}
+
+        set_hub_name = {
+            type = port
+            name = HUB_NAME_STATE_GOTALAND_port_german
+        }
+	}
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
+STATE_GOTLAND_state_name_assign = {
+	if = {
+		limit = {
+			owner = {
+				country_has_primary_culture = cu:danish
+				NOT = { country_has_primary_culture = cu:swedish }
+			}
+		}
+
+        set_state_name = STATE_GOTLAND_danish
+        set_hub_names = danish
+	}
+	else_if = {
+		limit = {
+			owner = {
+				any_primary_culture = {
+					has_discrimination_trait = german_speaking
+				}
+				NOT = { country_has_primary_culture = cu:swedish }
+			}
+		}
+
+        set_hub_name = {
+            type = city
+            name = HUB_NAME_STATE_GOTLAND_port_german
+        }
+	}
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
+STATE_SCANIA_state_name_assign = {
+	if = {
+		limit = {
+			owner = {
+				country_has_primary_culture = cu:swedish
+				NOT = { country_has_primary_culture = cu:danish }
+			}
+		}
+
+        set_state_name = STATE_SCANIA_swedish
+	}
+	else_if = {
+		limit = {
+			owner = {
+				country_has_primary_culture = cu:danish
+				NOT = { country_has_primary_culture = cu:swedish }
+			}
+		}
+
+        set_state_name = STATE_SCANIA_danish
+        set_hub_names = danish
+	}
+	else_if = {
+		limit = {
+			owner = {
+				any_primary_culture = {
+					has_discrimination_trait = german_speaking
+				}
+				NOR = { 
+					country_has_primary_culture = cu:danish
+					country_has_primary_culture = cu:swedish
+				}
+			}
+		}
+
+        set_state_name = STATE_SCANIA_german
+        set_hub_name = {
+            type = city
+            name = HUB_NAME_STATE_SCANIA_city_german
+        }
+	}
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
+STATE_ZEALAND_state_name_assign = {
+	if = {
+		limit = {
+			owner = {
+				country_has_primary_culture = cu:swedish
+				NOT = { country_has_primary_culture = cu:danish }
+			}
+		}
+
+        set_state_name = STATE_ZEALAND_swedish
+        set_hub_names = swedish
+	}
+	else_if = {
+		limit = {
+			owner = {
+				country_has_primary_culture = cu:danish
+			}
+		}
+
+        set_state_name = STATE_ZEALAND_danish
+        set_hub_name = {
+            type = city
+            name = HUB_NAME_STATE_ZEALAND_city_danish
+        }
+	}
+	else_if = {
+		limit = {
+			owner = {
+				any_primary_culture = {
+					has_discrimination_trait = german_speaking
+				}
+				NOT = { country_has_primary_culture = cu:danish }
+			}
+		}
+
+        set_state_name = STATE_ZEALAND_german
+        set_hub_names = german
+	}
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
+STATE_JUTLAND_state_name_assign = {
+	if = {
+		limit = {
+			owner = {
+				country_has_primary_culture = cu:swedish
+				NOT = { country_has_primary_culture = cu:danish }
+			}
+		}
+
+        set_state_name = STATE_JUTLAND_swedish
+        set_hub_names = swedish
+	}
+	else_if = {
+		limit = {
+			owner = {
+				country_has_primary_culture = cu:danish
+			}
+		}
+
+        set_state_name = STATE_JUTLAND_danish
+	}
+	else_if = {
+		limit = {
+			owner = {
+				any_primary_culture = {
+					has_discrimination_trait = german_speaking
+				}
+				NOT = { country_has_primary_culture = cu:danish }
+			}
+		}
+
+        set_state_name = STATE_JUTLAND_german
+        set_hub_names = german
+	}
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
 }
