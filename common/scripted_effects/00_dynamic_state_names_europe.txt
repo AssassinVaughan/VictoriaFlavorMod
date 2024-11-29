@@ -889,6 +889,54 @@ assign_state_name_region_baltic = { # region_baltic
         }
         STATE_JUTLAND_state_name_assign = yes
     } 
+    else_if = {
+        limit = {
+            state_region = {
+                s:STATE_ZEALAND ?= this
+            }
+        }
+        STATE_ZEALAND_state_name_assign = yes
+    } 
+    else_if = {
+        limit = {
+            state_region = {
+                s:STATE_SCANIA ?= this
+            }
+        }
+        STATE_SCANIA_state_name_assign = yes
+    } 
+    else_if = {
+        limit = {
+            state_region = {
+                s:STATE_GOTLAND ?= this
+            }
+        }
+        STATE_GOTLAND_state_name_assign = yes
+    } 
+    else_if = {
+        limit = {
+            state_region = {
+                s:STATE_GOTALAND ?= this
+            }
+        }
+        STATE_GOTALAND_state_name_assign = yes
+    } 
+    else_if = {
+        limit = {
+            state_region = {
+                s:STATE_SVEALAND ?= this
+            }
+        }
+        STATE_SVEALAND_state_name_assign = yes
+    } 
+    else_if = {
+        limit = {
+            state_region = {
+                s:STATE_NORRLAND ?= this
+            }
+        }
+        STATE_NORRLAND_state_name_assign = yes
+    } 
 }
 
 ## Danubia
@@ -6358,6 +6406,23 @@ STATE_NORRLAND_state_name_assign = {
 	}
 }
 
+STATE_SVEALAND_state_name_assign = {
+	if = {
+		limit = {
+			owner = {
+				country_has_primary_culture = cu:danish
+				NOT = { country_has_primary_culture = cu:swedish }
+			}
+		}
+		
+        set_hub_names = danish
+	}
+	else = { # switch back to defaults
+		reset_state_name = yes
+		reset_hub_names = yes
+	}
+}
+
 STATE_GOTALAND_state_name_assign = {
 	if = {
 		limit = {
@@ -6379,7 +6444,7 @@ STATE_GOTALAND_state_name_assign = {
 
         set_hub_name = {
             type = port
-            name = HUB_NAME_STATE_GOTLAND_port_swedish
+            name = HUB_NAME_STATE_GOTALAND_port_swedish
         }
 	}
 	else_if = {
