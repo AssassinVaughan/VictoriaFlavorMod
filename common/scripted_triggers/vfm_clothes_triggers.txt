@@ -322,9 +322,16 @@ commoner_tawantinsuyan_pop_trigger = { # Represents those groups that had long b
 
 ### WW1 era uniform triggers
 
+late_military_trigger = {
+	OR = {
+		has_technology_researched = bolt_action_rifles
+		has_technology_researched = trench_works
+	}
+}
+
 late_military_clothes_trigger = {
 	scope:character ?= {
-		home_country ?= {
+		owner ?= {
 			OR = {
 				has_technology_researched = bolt_action_rifles
 				has_technology_researched = trench_works
@@ -335,7 +342,7 @@ late_military_clothes_trigger = {
 
 late_military_clothes_pop_trigger = {
 	scope:pop ?= {
-		home_country ?= {
+		owner ?= {
 			OR = {
 				has_technology_researched = bolt_action_rifles
 				has_technology_researched = trench_works

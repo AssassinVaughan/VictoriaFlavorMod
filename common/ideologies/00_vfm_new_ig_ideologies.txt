@@ -16,3 +16,119 @@
 		law_free_trade = strongly_disapprove
 	}	
 }
+
+ideology_usfp_abolitionist_radical = {
+	icon = "gfx/interface/icons/ideology_icons/ideology_leader/ideology_leader_abolitionist.dds"
+	
+	character_ideology = yes
+	
+	lawgroup_slavery = {
+		law_slavery_banned = strongly_approve
+		law_legacy_slavery = strongly_disapprove
+		law_debt_slavery = strongly_disapprove
+		law_slave_trade = strongly_disapprove
+	}
+
+	lawgroup_land_reform = {
+		law_serfdom = strongly_disapprove
+		law_tenant_farmers = disapprove
+		law_homesteading = neutral
+		law_collectivized_agriculture = neutral
+		law_commercialized_agriculture = neutral
+	}
+
+	lawgroup_citizenship = {
+		law_ethnostate = strongly_disapprove
+		law_national_supremacy = disapprove
+		law_racial_segregation = disapprove
+		law_cultural_exclusion = strongly_approve
+		law_multicultural = neutral
+	}
+
+	country_trigger = {
+		OR = {
+		    country_has_primary_culture = cu:yankee
+		    country_has_primary_culture = cu:dixie
+	    }
+		NOT = { has_law = law_type:law_slavery_banned } 
+		NOR = {
+			has_law = law_type:law_multicultural
+			has_law = law_type:law_cultural_exclusion
+		}
+	}
+
+	interest_group_leader_trigger = {
+		OR = {
+			is_interest_group_type = ig_trade_unions
+			is_interest_group_type = ig_intelligentsia
+			is_interest_group_type = ig_petty_bourgeoisie
+			is_interest_group_type = ig_industrialists
+			is_interest_group_type = ig_devout
+		}
+	}
+
+	non_interest_group_leader_trigger = {
+		interest_group = {
+			OR = {
+				is_interest_group_type = ig_trade_unions
+				is_interest_group_type = ig_intelligentsia
+				is_interest_group_type = ig_petty_bourgeoisie
+				is_interest_group_type = ig_industrialists
+				is_interest_group_type = ig_devout
+			}
+		}
+	}
+	
+	
+	interest_group_leader_weight = {
+		value = 10
+		if = {
+			limit = { is_interest_group_type = ig_trade_unions }
+			add = 75
+		}	
+		if = {
+			limit = { is_interest_group_type = ig_intelligentsia }
+			add = 75
+			
+			if = {
+				limit = {
+					owner = { has_journal_entry = je_acw_countdown }
+				}
+				add = 75
+			}		
+		}		
+		if = {
+			limit = {
+				owner = { has_journal_entry = je_acw_countdown }
+			}
+			add = 100
+		}
+		if = {
+			limit = {
+				ig_hasnt_chosen_ideology_trigger = no
+			}
+			multiply = 0.1
+		}
+	}
+
+	non_interest_group_leader_weight = {
+		value = 100
+		
+		if = {
+			limit = { has_trait = tactful }
+			add = 75
+		}
+		if = {
+			limit = {
+				culture = cu:afro_american
+			}
+			add = 500
+		}
+		if = {
+			limit = {
+				ig_hasnt_chosen_ideology_trigger = no
+			}
+			multiply = 0.1
+		}
+	}	
+}

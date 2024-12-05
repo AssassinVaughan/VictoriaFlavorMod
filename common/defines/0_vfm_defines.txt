@@ -30,7 +30,7 @@ NAI = {
 	DIPLO_PLAY_SAME_POWER_BLOC_INITIATOR_FACTOR = 25 #15 Added to desire for fellow power bloc member of initiator to join their side
 	DIPLO_PLAY_SAME_POWER_BLOC_TARGET_FACTOR = 35 #25 Added to desire for fellow power bloc member of target to join their side
 	
-	DIPLO_PLAY_SWAY_THRESHOLD = 7.0 # If AI has this much military strength compared to enemy, don't bother trying to sway anyone
+	DIPLO_PLAY_SWAY_THRESHOLD = 10.0 # If AI has this much military strength compared to enemy, don't bother trying to sway anyone
 	DIPLO_PLAY_SECESSION_OWN_SECESSION_RISK_FACTOR = 0 #-100 Add this amount of reluctance for AI to back a secession of a culture that has enough pops in their own country to secede
 	
 	CONSTRUCTION_RESERVES_NEW_CONSTRUCTIONS = 0.02 #0.2 If gold reserves are less than this after adding the cost of a new construction, don't queue it	
@@ -139,12 +139,15 @@ NEconomy = {
 } 
 
 NMilitary = {
-	MANPOWER_LOST_DUE_TO_ATTRITION_PER_WEEK_MIN = 0.01 	#0.04 The minimum percentage of manpower a unit can lose each week due to attrition
-	MANPOWER_LOST_DUE_TO_ATTRITION_PER_WEEK_MAX = 0.03 	#0.12 The maximum percentage of manpower a unit can lose each week due to attrition
-	BATTLE_LETHALITY_MIN = 0.0002 # 0.001
-	BATTLE_LETHALITY_MAX = 0.002  # 0.005
+	MANPOWER_LOST_DUE_TO_ATTRITION_PER_WEEK_MIN = 0.025 	#0.04 The minimum percentage of manpower a unit can lose each week due to attrition
+	MANPOWER_LOST_DUE_TO_ATTRITION_PER_WEEK_MAX = 0.1 	#0.12 The maximum percentage of manpower a unit can lose each week due to attrition
+	BATTLE_LETHALITY_MIN = 0.0005 # 0.001
+	BATTLE_LETHALITY_MAX = 0.003  # 0.005
 	
-	MANPOWER_RATIO_REQUIRED_TO_CLEAR_DEFEATED_ADMIRALS = 0.75 #0.5	# A Defeated fleet without at least this ratio of current/max manpower will remain Defeated
+	BATTLE_RAW_MANPOWER_INFLICTED_CASUALTY_RATIO = 0.45 # 0.5		# applied to the number of casualties caused by raw number of troops, ie without considering Offense/Defense - increasing this makes CE less important and battles more lethal
+	BATTLE_COMBAT_EFFICIENCY_INFLICTED_CASUALTY_RATIO = 1.6 # 1.5	# applied to the number of casualties caused by troops with Offense/Defense also factored in - increasing this makes CE more important and battles more lethal
+	
+	MANPOWER_RATIO_REQUIRED_TO_CLEAR_DEFEATED_ADMIRALS = 0.8 #0.5	# A Defeated fleet without at least this ratio of current/max manpower will remain Defeated
 }
 
 NDiplomacy = {

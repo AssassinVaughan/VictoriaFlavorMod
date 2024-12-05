@@ -98,7 +98,7 @@
 				add_ownership={
 					country={
 						country="c:USA"
-						levels=7
+						levels=6
 					}
 				}
 				reserves=1
@@ -711,7 +711,7 @@
 				add_ownership={
 					country={
 						country="c:USA"
-						levels=2
+						levels=1
 					}
 				}
 				reserves=1
@@ -983,7 +983,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_bakery" "pm_disabled_canning" "pm_disabled_distillery" "pm_manual_dough_processing"  }
+				activate_production_methods={ "pm_sweeteners" "pm_disabled_canning" "pm_pot_stills" "pm_manual_dough_processing"  }
 			}
 			create_building={
 				building="building_coal_mine"
@@ -1230,17 +1230,6 @@
 				activate_production_methods={ "pm_steam_trains" "pm_wooden_passenger_carriages" }
 			}
 			create_building={
-				building="building_government_administration"
-				add_ownership={
-					country={
-						country="c:USA"
-						levels=1
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_horizontal_drawer_cabinets" "pm_professional_bureaucrats" "pm_secular_bureaucrats" }
-			}
-			create_building={
 				building="building_maize_farm"
 				add_ownership={
 					building={
@@ -1322,7 +1311,7 @@
 				add_ownership={
 					country={
 						country="c:USA"
-						levels=2
+						levels=1
 					}
 				}
 				reserves=1
@@ -1522,17 +1511,6 @@
 	}
 	s:STATE_DELAWARE={
 		region_state:USA={
-			create_building={
-				building="building_government_administration"
-				add_ownership={
-					country={
-						country="c:USA"
-						levels=1
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_horizontal_drawer_cabinets" "pm_professional_bureaucrats" "pm_secular_bureaucrats" }
-			}
 			create_building={
 				building="building_fishing_wharf"
 				add_ownership={
@@ -1938,17 +1916,6 @@
 				activate_production_methods={ "pm_dye_workshops" "pm_no_luxury_clothes" "pm_traditional_looms"  }
 			}
 			create_building={
-				building="building_government_administration"
-				add_ownership={
-					country={
-						country="c:USA"
-						levels=1
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_horizontal_drawer_cabinets" "pm_professional_bureaucrats" "pm_secular_bureaucrats" }
-			}
-			create_building={
 				building="building_glassworks"
 				add_ownership={
 					building={
@@ -2218,17 +2185,6 @@
 				activate_production_methods={ "pm_dye_workshops" "pm_no_luxury_clothes" "pm_traditional_looms"  }
 			}
 			create_building={
-				building="building_government_administration"
-				add_ownership={
-					country={
-						country="c:USA"
-						levels=1
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_horizontal_drawer_cabinets" "pm_professional_bureaucrats" "pm_secular_bureaucrats" }
-			}
-			create_building={
 				building="building_logging_camp"
 				add_ownership={
 					building={
@@ -2269,7 +2225,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_pot_stills" "pm_disabled_canning" "pm_bakery" "pm_manual_dough_processing"  }
+				activate_production_methods={ "pm_pot_stills" "pm_disabled_canning" "pm_sweeteners" "pm_manual_dough_processing"  }
 			}
 			create_building={
 				building="building_logging_camp"
@@ -2673,9 +2629,36 @@
 			}
 		}
 		region_state:ONT={
+            create_building={
+				building="building_government_administration"
+				add_ownership={
+					country={
+						country="c:ONT"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_vertical_filing_cabinets" }
+			}
+            create_building={
+				building="building_university"
+				add_ownership={
+					country={
+						country="c:ONT"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_scholastic_education" "pm_religious_academia" }
+			}
 		    create_building={
 				building="building_construction_sector"
-				level=1
+				add_ownership={
+					country={
+						country="c:ONT"
+						levels=1
+					}
+				}
 				reserves=1
 				activate_production_methods={ "pm_wooden_buildings" }
 			}
@@ -2822,6 +2805,17 @@
 				reserves=1
 				activate_production_methods={ "pm_wooden_buildings" }
 			}
+            create_building={
+				building="building_government_administration"
+				add_ownership={
+					country={
+						country="c:QUE"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_vertical_filing_cabinets" }
+			}
 			create_building={
 				building="building_university"
 				add_ownership={
@@ -2847,17 +2841,6 @@
 				activate_production_methods={ "pm_basic_shipbuilding"  }
 			}
 			create_building={
-				building="building_military_shipyards"
-				add_ownership={
-					country={
-						country="c:QUE"
-						levels=1
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_military_shipbuilding_wooden"  }
-			}
-			create_building={
 				building="building_iron_mine"
 				add_ownership={
 					building={
@@ -2876,7 +2859,7 @@
 					building={
 						type="building_financial_district"
 						country="c:QUE"
-						levels=1
+						levels=2
 						region="STATE_QUEBEC"
 					}
 				}
@@ -3213,7 +3196,7 @@
 				add_ownership={
 					country={
 						country="c:MEX"
-						levels=3
+						levels=2
 					}
 				}
 				reserves=1
@@ -3325,7 +3308,7 @@
 				add_ownership={
 					country={
 						country="c:MEX"
-						levels=6
+						levels=5
 					}
 				}
 				reserves=1
@@ -3702,7 +3685,7 @@
 				add_ownership={
 					country={
 						country="c:MEX"
-						levels=3
+						levels=2
 					}
 				}
 				reserves=1

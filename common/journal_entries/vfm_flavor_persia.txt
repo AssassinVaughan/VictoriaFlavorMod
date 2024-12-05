@@ -268,6 +268,8 @@ je_herat_situation = {
 	icon = "gfx/interface/icons/event_icons/event_centralization.dds"
     group = je_group_internal_affairs
 	is_shown_when_inactive = {
+	    exists = c:PER
+		this = c:PER
 		country_has_primary_culture = cu:persian
 		any_country = {
 			is_subject_type = subject_type_tributary
@@ -301,7 +303,7 @@ je_herat_situation = {
 							exists = c:HER
 							c:HER = {
 								is_subject_of = c:PER
-								has_truce_with = c:PER
+								is_subject_type = subject_type_vassal
 							}
 						}
 					}
@@ -329,7 +331,6 @@ je_herat_situation = {
 	}
 
 	invalid = {
-		exists = c:HER
 		NOT = {
 			c:HER = {
 				is_subject_of = c:PER

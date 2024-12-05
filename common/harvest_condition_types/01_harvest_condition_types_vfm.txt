@@ -1,6 +1,6 @@
 ﻿potato_blight = {
 	trigger = {
-		is_vulnerable_to_disease_outbreak = yes
+		OR = { in_potato_blight_zone = yes in_potato_blight_mild_zone = yes }
 	}
 	
 	incompatible_with = disease_outbreak
@@ -37,13 +37,13 @@
 			limit = {
 				in_potato_blight_zone = yes
 			}
-			multiply = 3
+			multiply = 5
 		}
 		if = {
 			limit = {
 				has_global_variable = potato_blight_var
 			}
-			multiply = 6
+			multiply = 10
 		}
 	}
 

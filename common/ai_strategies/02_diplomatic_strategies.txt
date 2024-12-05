@@ -129,7 +129,7 @@
 	}
 	 
 	building_group_weights = {
-		bg_technology = 1.25
+		bg_technology = 1.1
 	}
 	
 	secret_goal_weights = {
@@ -457,24 +457,55 @@ ai_strategy_colonial_expansion = {
 					value >= 1
 				}					
 			}
-			add = 0.75	
+			add = 0.25
 
 			if = {
 				limit = {
 					power_bloc ?= { has_principle = principle:principle_colonial_offices_3 }
 				}
-				add = 1.0
+				add = 0.75
 			}			
 			
 			if = {
 				limit = { has_technology_researched = civilizing_mission }
-				add = 1.0
+				add = 1.5
 				
 				if = {
 					limit = { has_strategic_adjacency = scope:target_country }
 					add = 1.0
-				}				
+				}
+
+				if = {
+					limit = { has_technology_researched = malaria_prevention }
+				}
+				add = 1
+			}
+
+			if = {
+				limit = {
+					scope:target_country = {
+						is_subject = yes
+						is_country_type = unrecognized
+						top_overlord ?= {
+							NOT = { is_country_type = unrecognized }
+						}
+					}
+				}
+				multiply = 0.1
 			}			
+		}
+		if = {
+			limit = {
+				country_has_primary_culture = cu:british
+				has_technology_researched = malaria_prevention
+				any_subject_or_below = {
+					capital.region = sr:region_southern_africa
+				}
+				scope:target_country = {
+					capital.region = sr:region_southern_africa
+				}
+			}
+			add = 10
 		}
 
 		# Less aggressive against countries we're just antagonistic against, rather than belligerent/domineering
@@ -554,7 +585,20 @@ ai_strategy_colonial_expansion = {
 					scope:target_country = { is_country_type = unrecognized }
 				}
 				add = 200
-			}	
+			}
+			if = {
+				limit = {
+					country_has_primary_culture = cu:british
+					has_technology_researched = malaria_prevention
+					any_subject_or_below = {
+						capital.region = sr:region_southern_africa
+					}
+					scope:target_country = {
+						capital.region = sr:region_southern_africa
+					}
+				}
+				add = 200
+			}		
 		}		
 		conquer = {
 			if = {
@@ -570,6 +614,19 @@ ai_strategy_colonial_expansion = {
 					scope:target_country = { is_country_type = unrecognized }
 				}
 				add = 200
+			}
+			if = {
+				limit = {
+					country_has_primary_culture = cu:british
+					has_technology_researched = malaria_prevention
+					any_subject_or_below = {
+						capital.region = sr:region_southern_africa
+					}
+					scope:target_country = {
+						capital.region = sr:region_southern_africa
+					}
+				}
+				add = 400
 			}	
 		}		
 	}
@@ -898,7 +955,20 @@ ai_strategy_economic_imperialism = {
 					limit = { has_strategic_adjacency = scope:target_country }
 					add = 0.5
 				}				
-			}			
+			}
+
+			if = {
+				limit = {
+					scope:target_country = {
+						is_subject = yes
+						is_country_type = unrecognized
+						top_overlord ?= {
+							NOT = { is_country_type = unrecognized }
+						}
+					}
+				}
+				multiply = 0.1
+			}				
 		}
 		
 		# Very aggressive about opening up Japan
@@ -1392,16 +1462,22 @@ ai_strategy_unify_germany = {
 	}
 	
 	aggression = {
-		# Total aggression calculated here is multiplied by UNIFICATION_AGGRESSION_MULT_HIGHER_TIER in defines for the purpose of Unification/Leadership plays # VANILLA = 20.0
 		value = 0
 		
 		if = {
-			limit = { 
+			limit = {
 				scope:target_country = {			
 					is_unification_candidate = GER
 				}
 			}
-			add = 8
+			add = 0.5
+
+			if = {
+				limit = {
+					has_technology_researched = triage
+				}
+				add = 8
+			}	
 		}
 		else_if = {
 			limit = { 
@@ -1412,7 +1488,14 @@ ai_strategy_unify_germany = {
 					}
 				}
 			}
-			add = 2.25
+			add = 0.75
+
+			if = {
+				limit = {
+					has_technology_researched = logistics
+				}
+				add = 1.5
+			}				
 		}		
 		if = {
 			limit = {
@@ -1423,7 +1506,7 @@ ai_strategy_unify_germany = {
 				}	
 				NOT = { has_global_variable = schleswig_holstein_question_solved }
 			}
-			add = 2.5
+			add = 4
 		}
 
 		if = {
@@ -1595,7 +1678,7 @@ ai_strategy_unify_germany = {
 	}
 
 	building_group_weights = {
-		bg_army = 1.5
+		bg_army = 1.25
 	}
 	
 	state_value = {
@@ -1613,11 +1696,18 @@ ai_strategy_unify_germany = {
 			}
 			add = 100
 		}
+        if = {
+			limit = {
+				scope:target_state = {
+					state_region = s:STATE_SCHLESWIG_HOLSTEIN ## COMMON, YOU CAN DO IT
+				}			
+			}
+			add = 100
+		}
 	}
 	
 	wargoal_scores = {
 		conquer_state = {
-			multiply = 0.0
 			if = {
 				limit = {
 					NOT = {
@@ -1634,18 +1724,6 @@ ai_strategy_unify_germany = {
 						}
 					}
 					is_adjacent_to_state = scope:target_state				
-				}
-				add = 10
-			}
-			if = {
-				limit = {
-					scope:target_country = {
-						has_state_in_state_region = STATE_SCHLESWIG_HOLSTEIN
-					}
-					scope:target_state = {
-						state_region = s:STATE_SCHLESWIG_HOLSTEIN
-					}		
-					has_global_variable = scandis_successful
 				}
 				add = 10
 			}
@@ -2090,7 +2168,7 @@ ai_strategy_unify_italy = {
 	}
 
 	building_group_weights = {
-		bg_army = 1.5
+		bg_army = 1.25
 	}
 	
 	state_value = {
@@ -2280,7 +2358,7 @@ ai_strategy_unify_ethiopia = {
 	}
 
 	building_group_weights = {
-		bg_army = 1.5
+		bg_army = 1.25
 	}
 	
 	state_value = {
@@ -2465,7 +2543,7 @@ ai_strategy_unify_china = {
 	}
 
 	building_group_weights = {
-		bg_army = 1.5
+		bg_army = 1.25
 	}
 	
 	state_value = {
@@ -2631,8 +2709,8 @@ ai_strategy_socialism_in_one_country = {
 	}
 	
 	building_group_weights = {
-		bg_army = 1.25
-		bg_technology = 1.25
+		bg_army = 1.15
+		bg_technology = 1.15
 	}
 	
 	secret_goal_scores = {
@@ -2816,7 +2894,7 @@ ai_strategy_world_revolution = {
 	}
 
 	building_group_weights = {
-		bg_army = 1.5
+		bg_army = 1.25
 	}
 	
 	secret_goal_scores = {
@@ -3107,7 +3185,7 @@ ai_strategy_anti_imperialism = {
 	}
 	 
 	building_group_weights = {
-		bg_technology = 1.25
+		bg_technology = 1.1
 	}
 	
 	secret_goal_scores = {
@@ -3321,7 +3399,7 @@ ai_strategy_restore_natural_borders = {
 	}
 
 	building_group_weights = {
-		bg_army = 1.5
+		bg_army = 1.25
 	}
 	
 	secret_goal_weights = {

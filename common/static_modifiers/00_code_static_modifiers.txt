@@ -20,11 +20,11 @@ base_values = {
 	country_secession_progress_add = 0.1
 	
 	country_law_enactment_max_setbacks_add = 3
-
+	
 	country_minting_add = 500
 	country_government_dividends_efficiency_add = 0.25
 
-	state_tax_capacity_add = 50
+	state_tax_capacity_add = 100
 	state_infrastructure_add = 3
 	state_infrastructure_from_automobiles_consumption_add = 0.25
 	
@@ -39,7 +39,7 @@ base_values = {
 	state_aristocrats_investment_pool_contribution_add = 0.20
 	state_capitalists_investment_pool_contribution_add = 0.30	
 	
-	state_unincorporated_starting_wages_mult = -0.15 # To balance for unincorporated states not paying taxes
+	state_unincorporated_starting_wages_mult = -0.2 # To balance for unincorporated states not paying taxes
 
 	country_construction_add = 3
 	
@@ -60,7 +60,7 @@ base_values = {
 	
 	state_urbanization_per_level_add = 100
 	
-	unit_experience_gain_add = 1.0
+	unit_experience_gain_add = 0.5
 }
 
 # Scales with a country's global prestige rank, so at 20/100 this is multiplied by 0.8x, 50/100 by 0.5x, etc
@@ -184,7 +184,7 @@ unincorporated_state = {
 	state_pop_pol_str_mult = -0.50
 	building_group_bg_manufacturing_throughput_add = -0.1
 	building_group_bg_government_throughput_add = -0.1
-	building_group_bg_military_throughput_add = -0.1
+	building_group_bg_military_throughput_add = -0.1		
 	state_market_access_price_impact = -0.1
 }
 
@@ -377,6 +377,7 @@ pm_offense_defense_readjustment_minor = {
 	unit_defense_mult = -0.20
 }
 
+
 insufficient_urbanization = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_negative.dds
 	building_throughput_add = -0.05
@@ -392,7 +393,6 @@ surplus_convoys = {
 insufficient_convoys = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_negative.dds
 }
-
 
 # Excess BUR increases construction speed by +10% at 2x production to usage
 efficient_bureaucracy = {
@@ -418,7 +418,6 @@ political_dysfunction = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
 	country_opposition_ig_approval_add = -10
 	state_radicals_from_political_movements_mult = 0.20
-
 }
 
 # Excess DIP increases Infamy decay by up to 25% at 2x production to usage
@@ -432,7 +431,7 @@ diplomatic_mitigation = {
 # Capped at COUNTRY_POPULATION_LEVERAGE_RESISTANCE_MODIFIER_MAX_MULTIPLIER
 country_leverage_resistance_per_population_add = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
-	country_leverage_resistance_add = 50
+	country_leverage_resistance_add = 25
 }
 
 # Insufficient DIP reduces prestige by up to 50% at 2x usage to production
@@ -508,21 +507,20 @@ battle_average_provinces_lost = {
 
 battle_army_experience = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_positive.dds
-	unit_army_experience_gain_add = 2.0
+	unit_army_experience_gain_add = 5.0
 }
 
 battle_navy_experience = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_positive.dds
-	unit_navy_experience_gain_add = 2.0
+	unit_navy_experience_gain_add = 5.0
 }
 
 battle_unit_experience = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_positive.dds
-	unit_experience_gain_add = 2.0
+	unit_experience_gain_add = 5.0
 }
 
 # Scales with how much population is under low pop threshold
-# We need to rework how high and low population work in a state, but save it until after 1.2 fixes migration and arable land
 low_pop_state = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
 	state_birth_rate_mult = 0.5
@@ -536,7 +534,7 @@ high_pop_state = {
 # Multiplies unemployment rate in state by this
 unemployment_birth_penalty_state = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
-	state_birth_rate_mult = -0.4
+	state_birth_rate_mult = -0.3
 }
 
 # if this bonus changes need code support
@@ -566,7 +564,7 @@ state_region_devastation = {
 	state_infrastructure_mult = -1.0
 	state_mortality_mult = 2.0
 	state_migration_pull_mult = -2.0
-	building_throughput_add = -0.5
+	building_throughput_add = -0.4
 }
 
 # Scales with pollution impact, reduced by state_pollution_reduction_health_mult
@@ -596,7 +594,7 @@ insufficient_tax_capacity = {
 # Applied if state is above 'in turmoil' threshold
 state_turmoil = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
-	building_throughput_add = -0.125
+	building_throughput_add = -0.1
 	state_tax_waste_add = 0.2
 	state_migration_pull_mult = -0.25
 }
@@ -604,7 +602,7 @@ state_turmoil = {
 # Applied if state is above 'high turmoil' threshold
 state_turmoil_high = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
-	building_throughput_add = -0.225
+	building_throughput_add = -0.2
 	state_tax_waste_add = 0.35
 	state_migration_pull_mult = -0.35
 }
@@ -612,7 +610,7 @@ state_turmoil_high = {
 # Applied if state is above 'extreme turmoil' threshold
 state_turmoil_extreme = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
-	building_throughput_add = -0.3
+	building_throughput_add = -0.25
 	state_tax_waste_add = 0.5
 	state_migration_pull_mult = -0.5
 }
@@ -640,6 +638,7 @@ country_navy_power_projection = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_positive.dds
 	country_max_declared_interests_add = 0.01
 }
+
 
 # Scales with country literacy rate
 country_literacy_rate = {
@@ -730,7 +729,7 @@ repudiated_obligation = {
 }
 
 base_army_attrition = {
-	military_formation_attrition_risk_add = 0.2
+	military_formation_attrition_risk_add = 0.1
 }
 
 base_navy_attrition = {
@@ -748,7 +747,7 @@ country_authority_per_subject = {
 
 supported_law_cancelled = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fire_negative.dds
-	political_movement_radicalism_add = 0.1
+	political_movement_radicalism_add = 0.10
 }
 
 # Scaled by building_mobilization_cost_mult

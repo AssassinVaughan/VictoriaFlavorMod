@@ -1983,7 +1983,7 @@
                     }
                 }
                 c:PER ?= {
-                    has_technology_researched = bolt_action_rifles
+                    late_military_trigger = yes
                 }
             }
         }
@@ -4372,7 +4372,7 @@
                     }
                     owner ?= {
                         has_dlc_feature = ep1_cosmetics
-                        has_technology_researched = bolt_action_rifles
+                        late_military_trigger = yes
                     }
                 }
             }
@@ -4382,7 +4382,7 @@
                 has_dlc_feature = ep1_cosmetics
 
                 c:RUS ?= {
-                    has_technology_researched = bolt_action_rifles
+                    late_military_trigger = yes
                 }
                 OR = {
                     AND = {
@@ -4440,7 +4440,7 @@
 
                     exists = owner
                     owner = {
-                        NOT = { has_technology_researched = bolt_action_rifles }
+                        NOT = { late_military_trigger = yes }
                     }
 
 
@@ -4471,7 +4471,7 @@
                         }
                     }
                     owner ?= {
-                        NOT = { has_technology_researched = bolt_action_rifles }
+                        NOT = { late_military_trigger = yes }
                     }
                 }
             }
@@ -4514,7 +4514,7 @@
 
                     exists = owner
                     owner = {
-                        has_technology_researched = bolt_action_rifles
+                        late_military_trigger = yes
                     }
 
                     OR = {
@@ -4659,7 +4659,7 @@
             modifier = {
                 add = 20000
                 c:USA ?= {
-                    has_technology_researched = bolt_action_rifles
+                    late_military_trigger = yes
                 }
                 american_clothes_pop_trigger = yes
                 OR = {
@@ -4718,7 +4718,7 @@
                 has_dlc_feature = ep1_cosmetics
 
                 c:USA ?= {
-                    has_technology_researched = bolt_action_rifles
+                    late_military_trigger = yes
                 }
                 OR = {
                     AND = {
@@ -5069,7 +5069,7 @@
                     AND = {
                         # innovative generals wear modern uniforms slightly earlier
                         c:FRA ?= {
-                            has_technology_researched = bolt_action_rifles
+                            late_military_trigger = yes
                         }
                         scope:character ?= { has_trait = innovative }
                     }
@@ -5130,7 +5130,7 @@
                 add = 10000
 
                 c:PER ?= {
-                    NOT = { has_technology_researched = bolt_action_rifles }
+                    NOT = { late_military_trigger = yes }
                 }
 
                 scope:character ?= {
@@ -7838,7 +7838,7 @@ indigenous_oceanic_pop_clothes = {
                             AND = {
                                 has_dlc_feature = ep1_cosmetics
                                 has_technology_researched = repeaters
-                                NOT = { has_technology_researched = bolt_action_rifles }
+                                NOT = { late_military_trigger = yes }
                             }
                         }
                     }
@@ -7902,7 +7902,7 @@ indigenous_oceanic_pop_clothes = {
 
                 scope:pop ?= {
                     owner ?= {
-                        has_technology_researched = bolt_action_rifles
+                        late_military_trigger = yes
                     }
                 }
             }
@@ -7917,7 +7917,7 @@ indigenous_oceanic_pop_clothes = {
                     age >= define:NCharacters|ADULT_AGE
                     has_role = general
                     owner ?= {
-                        has_technology_researched = bolt_action_rifles
+                        late_military_trigger = yes
                     }
                 }
 
@@ -7963,7 +7963,7 @@ indigenous_oceanic_pop_clothes = {
 
                 scope:pop ?= {
                     owner ?= {
-                        NOT = { has_technology_researched = bolt_action_rifles } # Defaults to khaki in era 4
+                        NOT = { late_military_trigger = yes } # Defaults to khaki in era 4
                     }
                 }
             }

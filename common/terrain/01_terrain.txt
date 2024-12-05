@@ -236,12 +236,12 @@ hills = {
 		}
 		{
 			weight = {
-				value = 0 # VFM, dont displai too much jungle hill in japan/korea
+				value = 0 # VFM, dont display too much jungle hill in japan/korea
 				if = {
 					limit = {
 						scope:region = {
-							is_jungle_hills = yes
-							is_asian_jungle = no
+							is_asian_farmland = yes
+							is_jungle_hills = no
 						}
 					}
 					add = 1
@@ -257,7 +257,7 @@ hills = {
 					limit = {
 						scope:region = {
 							AND = {
-								is_jungle_hills = no
+							    is_asian_farmland = no
 								is_subtropic_farmland = no
 							}
 						}

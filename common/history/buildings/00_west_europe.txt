@@ -8790,7 +8790,7 @@
 					building={
 						type="building_manor_house"
 						country="c:MEC"
-						levels=1
+						levels=2
 						region="STATE_MECKLENBURG"
 					}
 				}
@@ -8807,45 +8807,6 @@
 				}
 				reserves=1
 				activate_production_methods={ "pm_basic_port" }
-			}
-		}
-		region_state:MST={
-			create_building={
-				building="building_rye_farm"
-				add_ownership={
-					building={
-						type="building_manor_house"
-						country="c:MST"
-						levels=1
-						region="STATE_MECKLENBURG"
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_rotating_crops" "pm_no_secondary" "pm_tools_disabled"  }
-			}
-			create_building={
-				building="building_livestock_ranch"
-				add_ownership={
-					building={
-						type="building_manor_house"
-						country="c:MST"
-						levels=1
-						region="STATE_MECKLENBURG"
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_open_air_stockyards" "pm_rotating_crops_ranch" "pm_standard_fences" "pm_unrefrigerated"  }
-			}
-			create_building={
-				building="building_barracks"
-				add_ownership={
-					country={
-						country="c:MST"
-						levels=1
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_no_organization" }
 			}
 		}
 	}
