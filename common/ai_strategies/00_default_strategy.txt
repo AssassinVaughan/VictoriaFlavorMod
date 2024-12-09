@@ -111,14 +111,37 @@ ai_strategy_default = {
 				}
 				add = {
 					value = 75
-					desc = "german_leadership_neutrality"
+					desc = "north_german_support"
 			    }
 			}
 			else = {
 			    add = {
 					value = 40
-					desc = "german_leadership_neutrality"
+					desc = "north_german_support"
 			    }
+			}
+		}
+		
+		### North German War
+		if = {
+			limit = { 
+				exists = scope:is_initiator
+				scope:diplomatic_play_type = play_type:dp_liberate_subject
+				root = {
+					country_has_primary_culture = cu:north_german
+				}
+				scope:country = {
+					country_has_primary_culture = cu:north_german
+				}
+				scope:enemy_country = {
+					NOT = {
+						country_has_primary_culture = cu:north_german
+					}
+				}
+			}
+			add = {
+				value = 100
+				desc = "north_german_support"
 			}
 		}
 		
@@ -3523,7 +3546,7 @@ ai_strategy_default = {
 					}
 				}
 			}
-			add = 5
+			add = 20
 		}
 
 		#Aggression against unrecognized countries once colonization has begun and already owns state in region
@@ -4156,78 +4179,72 @@ ai_strategy_default = {
 	# Using this value in other strategies will function additively
 	wanted_navy_size = {
 		value = 0
-
-		# 1 level of naval base per 375k coastal incorporated population							
+	
+		# 1 level of naval base per 500k coastal incorporated population							
 		add = {
 			value = cached_ai_incorporated_coastal_population
-			divide = 360000 
+			divide = 450000 
 		}
 
-		# 1 level of naval base per 1 million coastal unincorporated population					
+		# 1 level of naval base per 2 million coastal unincorporated population					
 		add = {
 			value = cached_ai_unincorporated_coastal_population
-			divide = 1100000 
+			divide = 1800000 
 		}
 
-		# 1 level of naval base per 1 million population in direct overseas subjects	
+		# 1 level of naval base per 10 million population in direct overseas subjects	
 		add = {
 			value = cached_ai_overseas_subject_population
-			divide = 1100000 
+			divide = 8000000 
 		}	
 
-		max = 250 # No more than 250 from population		
+		max = 100 # No more than 100 from population		
 
-		# 1 level of naval base per 700k gdp, multiplied by relative incorporated coastal population to total incorporated population
+		# 1 level of naval base per 5k income, multiplied by relative incorporated coastal population to total incorporated population
 		add = {
-			value = gdp
+			value = income
 			divide = cached_ai_incorporated_population
 			multiply = cached_ai_incorporated_coastal_population
-			divide = 700000 
+			divide = 5000
+		}	
+	
+		# Special logic for british isles - this should be reworked to be less specific later
+		if = {
+			limit = {
+			    country_rank = rank_value:great_power
+				capital = {
+					OR = {
+						region = sr:region_england
+						region = sr:region_north_sea_coast
+					}
+				}
+			}
+			
+			add = 40
+		}
+		else_if = { # GPs and MPs should want to maintain a bit of a navy
+			limit = { country_rank = rank_value:great_power }
+			add = 20		
+		}
+		else_if = {
+			limit = { country_rank = rank_value:major_power }
+			add = 8
 		}
 		
-		if = {
-			limit = { country_is_in_europe = yes gdp > 1000000 cached_ai_incorporated_coastal_population > 500000 }
-			add = 2
-		}
-		
-		if = {
-			limit = { country_rank = rank_value:major_power country_is_in_europe = yes gdp > 10000000 cached_ai_incorporated_coastal_population > 1500000 }
-			add = 12
-		}
-		
-		if = {
-			limit = { 
-			    exists = c:AUS
-				this = c:AUS 
-				country_rank = rank_value:major_power
-		    }
-			add = 5
-			if = {
-				limit = { game_date > 1850.1.1 }
-				add = 8
-		    }
-		}
-
-        # Need to favor industrial buildup early game
-		if = {
-			limit = { game_date < 1846.1.1 }
-			multiply = 0.85
-		}		
-
 		# More advanced navies are expensive and should be smaller relative to population
 		if = {
 			limit = { has_technology_researched = ironclad_tech }
-			multiply = 0.8
+			multiply = 0.75
 		}
 
 		if = {
 			limit = { has_technology_researched = dreadnought }
-			multiply = 0.8
+			multiply = 0.75
 		}
 
 		if = {
 			limit = { has_technology_researched = battleship_tech }
-			multiply = 0.8
+			multiply = 0.75
 		}
 
 		# Factor in strategies
@@ -4238,37 +4255,35 @@ ai_strategy_default = {
 					has_strategy = ai_strategy_economic_imperialism
 				}
 			}
+			multiply = 1.2
+		}
+		
+		if = {
+			limit = { OR = {country_is_in_europe = yes country_is_in_north_america } }
 			multiply = 1.25
 		}
 
 		if = {
 			limit = { has_strategy = ai_strategy_armed_isolationism }
 			multiply = 0.75
-		}
-
+		}	
+		
 		if = {
-			limit = { country_rank < rank_value:major_power }
-			multiply = 0.75
+			limit = { country_rank < rank_value:major_power NOR = { this ?= c:SWE this ?= c:DEN this ?= c:HAN this ?= c:NET  this ?= c:NOR } }
+			multiply = 0.6
 		}						
-
+		
 		if = {
 			limit = { is_country_type = unrecognized }
 			multiply = 0.5
 		}	
 		
 		if = {
-			limit = { 
-				is_subject = yes
-			}
-			multiply = 0.75	
-		}
-
-		if = {
 			limit = { has_strategy = ai_strategy_maintain_mandate_of_heaven }
-			multiply = 0.2
+			multiply = 0.25
 		}		
-
-		max = 500 #VFM, from 500
+		
+		max = 400
 		min = 0		
 	}
 	
@@ -4364,23 +4379,19 @@ ai_strategy_default = {
 	# scope:military_formation = military formation
 	# Using this value in other strategies will function additively
 	conscript_battalion_ratio = {
-		value = 0
+		value = 0.3
 		if = {
 			limit = { has_law = law_type:law_national_militia }
-			add = 7.5 #VFM, bumped up from 5 to compensate for less barracks wanted by AI
-		}
-		else_if = {
-			limit = { has_law = law_type:law_professional_army }
-			add = 0.5
+			add = 1.5
 		}			
 		else_if = {
 			limit = { has_law = law_type:law_peasant_levies }
-			add = 1
+			add = 0.3
 		}	
 		else_if = {
 			limit = { has_law = law_type:law_mass_conscription }
-			add = 2
-		}
+			add = 0.3
+		}	
 
         if = {
 			limit = { 
