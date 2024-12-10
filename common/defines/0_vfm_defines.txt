@@ -127,6 +127,8 @@ NPolitics = {
 
 NEconomy = {
 	
+	DECLARE_BANKRUPTCY_RADICALIZATION_BASE_FACTOR = 0.1 # VFM, AI cannot handle this yet # Radicalize this percentage of all pops when declaring bankruptcy
+	
 	TRADE_ROUTE_AUTO_INCREASE_ACCEPTABLE_REVENUE_DIFFERENCE = 1.15 #1.1 Multiply revenue of new trade route level by this for the purpose of considering whether it's OK to auto-increase level (means that trade routes can level up even when slightly decreasing overall revenue)
 	TRADE_ROUTE_AUTO_INCREASE_VERY_LOW_PRODUCTIVITY_THRESHOLD = 2.25 #3 If trade route's productivity is below this, always automatically decrease its level (regardless of total revenue)
 	TRADE_ROUTE_AUTO_INCREASE_LOW_PRODUCTIVITY_THRESHOLD = 4 #6 If trade route's productivity would drop below this, don't automatically increase its level (regardless of total revenue)

@@ -3395,6 +3395,13 @@ ai_strategy_default = {
 				}
 			}
 			add = 25
+
+			if = {
+				limit = {
+					has_journal_entry = je_scramble_for_africa
+				}
+				add = 25
+			}	
 		}
 
 		if = { # Dutch East Indies
@@ -3440,6 +3447,13 @@ ai_strategy_default = {
 				}
 			}
 			add = 25
+
+			if = {
+				limit = {
+					has_journal_entry = je_scramble_for_africa
+				}
+				add = 25
+			}
 		}
 
 		# Aggression against radical leftists
@@ -4259,7 +4273,7 @@ ai_strategy_default = {
 		}
 		
 		if = {
-			limit = { OR = {country_is_in_europe = yes country_is_in_north_america } }
+			limit = { OR = {country_is_in_europe = yes country_is_in_north_america = yes } }
 			multiply = 1.25
 		}
 
