@@ -4283,7 +4283,16 @@ ai_strategy_default = {
 		}	
 		
 		if = {
-			limit = { country_rank < rank_value:major_power NOR = { this ?= c:SWE this ?= c:DEN this ?= c:HAN this ?= c:NET  this ?= c:NOR } }
+			limit = { 
+			    country_rank < rank_value:major_powe
+			    NOR = { 
+				    AND = { exists = c:SWE this = c:SWE }
+					AND = { exists = c:DEN this = c:DEN }
+					AND = { exists = c:HAN this = c:HAN }
+					AND = { exists = c:NET this = c:NET }
+					AND = { exists = c:NOR this = c:NOR }
+				}
+			}
 			multiply = 0.6
 		}						
 		
