@@ -52,7 +52,26 @@ building_arts_academy = {
 	
 	ownership_type = self
 
-	ai_value = 600 # vfm, 1000 is default
+	ai_value = {
+		value = 200
+
+		if = { # Don't overbuild these
+			limit = {
+				owner = {
+					has_technology = realism
+				}
+			}
+			add = 300
+		}
+		if = {
+			limit = {
+				owner = {
+					gdp > 11000000 # 11 mil
+				}
+			}
+			add = 300
+		}
+	}
 
 	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_monuments.dds"
 }

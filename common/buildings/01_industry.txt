@@ -272,6 +272,19 @@ building_steel_mills = {
 		}
 	}
 	ownership_type = self
+	
+	ai_value = {
+		value = 300
+
+		if = { # Rather import if smaller country
+			limit = {
+				owner = {
+					gdp > 3000000 # 3 mil
+				}
+			}
+			add = 700
+		}
+	}
 
 	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_heavy_industry.dds"
 }
@@ -305,6 +318,19 @@ building_motor_industry = {
 		}
 	}
 	ownership_type = self
+	
+	ai_value = {
+		value = 300
+
+		if = { # Rather import if smaller country
+			limit = {
+				owner = {
+					gdp > 3000000 # 3 mil
+				}
+			}
+			add = 700
+		}
+	}
 
 	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_heavy_industry.dds"
 }
@@ -330,6 +356,19 @@ building_shipyards = {
 		is_coastal = yes
 	}
 	ownership_type = self
+	
+	ai_value = {
+		value = 500
+
+		if = { # Rather import if smaller country
+			limit = {
+				owner = {
+					gdp > 1500000 # 1.5 mil
+				}
+			}
+			add = 500
+		}
+	}
 
 	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_harbour.dds"
 }
@@ -355,6 +394,19 @@ building_military_shipyards = {
 		is_coastal = yes
 	}
 	ownership_type = self
+	
+	ai_value = {
+		value = 400
+
+		if = { # Rather import if smaller country
+			limit = {
+				owner = {
+					gdp > 2000000 # 2 mil
+				}
+			}
+			add = 600
+		}
+	}
 
 	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_harbour.dds"
 }
@@ -442,6 +494,19 @@ building_arms_industry = {
 		pmg_automation_building_arms_industry
 	}
 	
+	ai_value = {
+		value = 400
+
+		if = { # Rather import if smaller country
+			limit = {
+				owner = {
+					gdp > 1500000 # 1.5 mil
+				}
+			}
+			add = 600
+		}
+	}
+	
 	required_construction = construction_cost_high
 	ownership_type = self
 
@@ -467,6 +532,19 @@ building_artillery_foundries = {
 	
 	required_construction = construction_cost_high
 	ownership_type = self
+	
+	ai_value = {
+		value = 300
+
+		if = { # Rather import if smaller country
+			limit = {
+				owner = {
+					gdp > 5000000 # 5 mil
+				}
+			}
+			add = 700
+		}
+	}
 
 	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_heavy_industry.dds"
 }
@@ -501,6 +579,19 @@ building_munition_plants = {
 		}
 	}
 	ownership_type = self
+	
+	ai_value = {
+		value = 500
+
+		if = { # Rather import if smaller country
+			limit = {
+				owner = {
+					gdp > 5000000 # 5 mil
+				}
+			}
+			add = 500
+		}
+	}
 
 	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_heavy_industry.dds"
 }
