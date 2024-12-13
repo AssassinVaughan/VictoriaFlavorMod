@@ -1,0 +1,59 @@
+﻿# Determine whether a type of goods is cheap enough to be exported
+#
+# If a goods has `wants_high_supply` in default strategy and `wants_export` in admin strategy,
+# the admin strategy would overwrite the default stance.
+# This is undesirable, since the `wants_export` stance has lower evaluation score than `wants_high_supply`.
+#
+# Supported Scopes: country
+kai_has_high_supply = {
+	market = {
+		mg:$GOODS$ = {
+			market_goods_cheaper > {
+				value = 1
+				subtract = define:NAI|PRODUCTION_BUILDING_OUTPUT_HIGH_PRICE_THRESHOLD
+			}
+		}
+	}
+}
+
+# Determine whether the country is big enough to use goods stances
+#
+# Small countries are excluded because since they cannot afford to maintain trade routes.
+#
+# Supported Scopes: country
+kai_should_use_goods_stances = {
+	total_population >= 1000000
+}
+
+# Determine whether the country is eligible for the American migration Journal Entries
+#
+# Supported Scopes: country
+kai_eligible_for_american_migration_je = {
+	any_primary_culture = {
+		has_discrimination_trait = european_heritage
+	}
+	OR = {
+		# South America
+		country_is_in_south_america = yes
+		# Central America, excluding the Caribbean
+		capital = {
+			OR = {
+				region = sr:region_mexico
+				region = sr:region_central_america
+			}
+		}
+		# American west
+		AND = {
+			OR = {
+				country_is_in_north_america = yes
+				country_is_in_central_america = yes
+			}
+			any_scope_state = {
+				OR = {
+					region = sr:region_pacific_coast
+					region = sr:region_great_plains
+				}
+			}
+		}
+	}
+}

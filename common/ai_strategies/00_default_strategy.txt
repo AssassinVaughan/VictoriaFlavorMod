@@ -1102,13 +1102,13 @@ ai_strategy_default = {
 			value = 10		
 		}		
 		institution_schools = {	
-			value = 10	
+			value = 20	
 		}		
 		institution_police = {	
 			value = 10		
 		}		
 		institution_health_system = {	
-			value = 10	
+			value = 20	
 		}		
 		institution_home_affairs = {	
 			value = 10		
@@ -3937,108 +3937,50 @@ ai_strategy_default = {
 	
 	# How much construction output should the AI aim for
 	# Using this value in other strategies will function additively
+	# How much construction output should the AI aim for
+	# Using this value in other strategies will function additively
 	wanted_construction_output = {
-		value = 3 # Accounts for the 3 free construction from base modifiers
+		value = 0
 
 		add = {
 			value = investment_pool_income
-			divide = 1600 # 1 construction output per this much into the investment pool				
+			divide = 550 # 1 construction output per this much into the investment pool				
 		}
 		
 		add = {
-			value = income		
-			divide = 8000 # 1 construction output per this much income
-			min = 0
-		}	
-		
-		add = {
-			value = total_population
-			divide = 650000 # 1 construction point per 650k pop				
-		}
-		
-		add = {
-			value = gdp
-			divide = 1300000 # 1 construction point per 1.3 million gdp								
-		}	
-		
-		if = {
-			limit = {
-				OR = {
-					has_journal_entry = je_meiji_restoration
-					has_journal_entry = je_meiji_main
-				}
-			}			
-			multiply = 1.3
-		}
-		
-		if = {
-			limit = { has_law = law_type:law_traditionalism }
-			multiply = 0.85
-		}
-		
-		if = {
-			limit = { 
-				has_law = law_type:law_consumption_based_taxation
+			value = weekly_net_fixed_income
+			divide = 550
+
+			min = {
+				value = kai_state_income
+				divide = 2750 # 1 construction output per this much income
 			}
-			multiply = 0.85
 		}
-		
+
+		# Improved technology enables cheaper construction
 		if = {
-			limit = { 
-				has_law = law_type:law_land_based_taxation 
-			}
+			limit = { NOT = { has_technology_researched = urban_planning } }
 			multiply = 0.75
 		}
-				
-		if = {
-			limit = { 
-				OR = {
-					has_strategy = ai_strategy_resource_expansion
-					has_strategy = ai_strategy_industrial_expansion				
-				}
-			}
-			multiply = 1.15		
-		}
-
-        if = {
-			limit = { 
-			    game_date > 1856.1.1
-				OR = {
-					has_law = law_type:law_proportional_taxation
-					has_law = law_type:law_graduated_taxation
-				}
-			}
-			multiply = 1.1
-		}		
-		
-		if = {
-			limit = { 
-				has_law = law_type:law_laissez_faire
-			}
-			multiply = 1.15		
-		}
 
 		if = {
-			limit = { has_strategy = ai_strategy_placate_population }
-			multiply = 0.8	
-		}
-		
-		if = {
-			limit = { has_strategy = ai_strategy_maintain_mandate_of_heaven }
-			multiply = 0.45		
-		}	
-		
-		if = {
-			limit = { has_technology_researched = atmospheric_engine gdp > 8000000 } # over 8 million GDP
-			multiply = 1.1
+			limit = { NOT = { has_technology_researched = steel_frame_buildings } }
+			multiply = 0.8
 		}
 
-		if = {
-			limit = { has_technology_researched = steel_frame_buildings }
-			multiply = 1.15
-		}		
+		add = 3 # Accounts for the 3 free construction from base modifiers
 
-		min = 1
+		# KAI: Scale the wanted construction capacity with gold reserve
+		# This is to fix a bug where AI simply refuses to build construction sectors
+		multiply = {
+			value = gold_reserves
+			divide = gold_reserves_limit
+			multiply = 1.3
+			min = 1
+			max = 1.3
+		}
+
+		min = 3
 		max = 800
 	}
 	
@@ -4473,9 +4415,7 @@ ai_strategy_default = {
 	# Which buildings should the AI subsidize
 	# Using a different value in a strategy will override this value
 	subsidies = {
-		building_power_plant = must_have
-		building_railway = must_have
-		building_trade_center = must_have		
+		building_railway = must_have	
 		building_military_shipyards = must_have	
 	}
 	
@@ -4490,12 +4430,14 @@ ai_strategy_default = {
 			stance = wants_high_supply
 			trigger = {
 				has_technology_researched = line_infantry
+				kai_should_use_goods_stances = yes
 			}
 		}
 		artillery = {
 			stance = wants_high_supply
 			trigger = {
 				has_technology_researched = artillery
+				kai_should_use_goods_stances = yes
 				total_population > 2000000
 				gdp > 3000000
 			}
@@ -4504,6 +4446,7 @@ ai_strategy_default = {
 			stance = wants_high_supply
 			trigger = {
 				has_technology_researched = general_staff
+				kai_should_use_goods_stances = yes
 				total_population > 2000000
 				gdp > 3000000
 			}
@@ -4512,6 +4455,7 @@ ai_strategy_default = {
 			stance = wants_high_supply
 			trigger = {
 				has_technology_researched = military_aviation
+				kai_should_use_goods_stances = yes
 				country_rank >= rank_value:major_power
 			}
 		}
@@ -4519,6 +4463,7 @@ ai_strategy_default = {
 			stance = wants_high_supply
 			trigger = {
 				has_technology_researched = mobile_armor
+				kai_should_use_goods_stances = yes
 				country_rank >= rank_value:major_power
 			}
 		}
@@ -4526,6 +4471,7 @@ ai_strategy_default = {
 			stance = wants_high_supply
 			trigger = {
 				has_technology_researched = navigation
+				kai_should_use_goods_stances = yes
 				NAND = {
 					has_technology_researched = ironclad_tech
 					has_technology_researched = gantry_cranes				
@@ -4538,6 +4484,7 @@ ai_strategy_default = {
 			stance = wants_high_supply
 			trigger = {
 				has_technology_researched = admiralty
+				kai_should_use_goods_stances = yes
 				NAND = {
 					has_technology_researched = ironclad_tech
 					has_technology_researched = gantry_cranes				
@@ -4548,6 +4495,7 @@ ai_strategy_default = {
 		}	
 		steamers = {
 			stance = wants_high_supply
+			kai_should_use_goods_stances = yes
 			trigger = {
 				has_technology_researched = ironclad_tech
 				has_technology_researched = gantry_cranes
@@ -4557,6 +4505,7 @@ ai_strategy_default = {
 		}			
 		ironclads = {
 			stance = wants_high_supply
+			kai_should_use_goods_stances = yes
 			trigger = {
 				has_technology_researched = ironclad_tech
 				has_technology_researched = gantry_cranes
@@ -4568,31 +4517,37 @@ ai_strategy_default = {
 			stance = wants_high_supply
 			trigger = {
 				has_technology_researched = centralization
+				kai_should_use_goods_stances = yes
 				total_population >= 1000000
+				NOT = { has_law = law_type:law_traditionalism }
 			}
 		}
 		telephones = {
 			stance = wants_high_supply
 			trigger = {
 				has_technology_researched = central_planning
+				kai_should_use_goods_stances = yes
 			}
 		}
 		electricity = { 
 			stance = wants_high_supply
 			trigger = {
 				has_technology_researched = electrical_generation
+				kai_should_use_goods_stances = yes
 			}
 		}			
 		coal = { 
 			stance = wants_high_supply
 			trigger = {
 				has_technology_researched = atmospheric_engine
+				kai_should_use_goods_stances = yes
 			}
 		}	
 		engines = { 
 			stance = wants_high_supply
 			trigger = {
 				has_technology_researched = railways
+				kai_should_use_goods_stances = yes
 			}
 		}		
 		dye = { 
@@ -4600,31 +4555,117 @@ ai_strategy_default = {
 			trigger = {
 				has_building = building_textile_mills
 				has_technology_researched = lathe
+				kai_should_use_goods_stances = yes
 			}
 		}
 		silk = { 
 			stance = wants_high_supply 
 			trigger = {
 				has_building = building_textile_mills
-				total_population >= 1000000
+				kai_should_use_goods_stances = yes
 			}
 		}
 		hardwood = { 
 			stance = wants_high_supply
 			trigger = {
-				OR = {
-					has_building = building_arms_industry
-					has_building = building_artillery_foundries
-				}
+				has_building = building_furniture_manufacturies
+				kai_should_use_goods_stances = yes
 			}
 		}
-        explosives = {
+		sugar = {
 			stance = wants_high_supply
 			trigger = {
-				has_building = building_munition_plants
+				has_building = building_food_industry
+				has_technology_researched = distillation
+				kai_should_use_goods_stances = yes
 			}
-		}	
-        grain = {
+		}
+		rubber = {
+			stance = wants_high_supply
+			trigger = {
+				has_technology_researched = vulcanization
+				kai_should_use_goods_stances = yes
+			}
+		}
+		oil = {
+			stance = wants_high_supply
+			trigger = {
+				has_technology_researched = pumpjacks
+				kai_should_use_goods_stances = yes
+			}
+		}
+		lead = {
+			stance = wants_high_supply
+			trigger = {
+				OR = {
+					AND = {
+						has_building = building_glassworks
+						has_technology_researched = lathe
+					}
+					has_building = building_munition_plants
+				}
+				kai_should_use_goods_stances = yes
+			}
+		}
+		sulfur = {
+			stance = wants_high_supply
+			trigger = {
+				has_technology_researched = intensive_agriculture
+				kai_should_use_goods_stances = yes
+			}
+		}
+		fertilizer = { 
+			stance = wants_high_supply
+			trigger = {
+				has_technology_researched = intensive_agriculture
+				kai_should_use_goods_stances = yes
+			}
+		}
+		explosives = {
+			stance = wants_high_supply
+			trigger = {
+				OR = {
+					has_technology_researched = nitroglycerin
+					has_building = building_munition_plants
+				}
+				kai_should_use_goods_stances = yes
+			}
+		}
+		tools = {
+			stance = wants_high_supply
+			trigger = {
+				has_technology_researched = urban_planning
+				kai_should_use_goods_stances = yes
+			}
+		}
+		wood = {
+			stance = wants_high_supply
+			trigger = {
+				kai_should_use_goods_stances = yes
+			}
+		}
+		iron = {
+			stance = wants_high_supply
+			trigger = {
+				has_technology_researched = urban_planning
+				kai_should_use_goods_stances = yes
+			}
+		}
+		steel = {
+			stance = wants_high_supply
+			trigger = {
+				has_technology_researched = mechanical_tools
+				kai_should_use_goods_stances = yes
+			}
+		}
+		glass = {
+			stance = wants_high_supply
+			trigger = {
+				has_technology_researched = steel_frame_buildings
+				kai_should_use_goods_stances = yes
+			}
+		}
+		grain = {
 			stance = wants_high_supply
 			trigger = {
 				has_famine = yes

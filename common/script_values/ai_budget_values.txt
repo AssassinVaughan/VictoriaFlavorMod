@@ -1,0 +1,45 @@
+﻿# Get the country's treasury income excluding investment pool transfer.
+#
+# Input Scopes: country
+# Output Scopes: value
+kai_state_income = {
+	value = income
+	subtract = {
+		value = investment_pool_gross_income
+		subtract = investment_pool_net_income
+	}
+}
+
+# Get the country's treasury income multiplier due to tax level.
+#
+# Input Scopes: country
+# Output Scopes: value
+kai_state_income_normal_multi = {
+	value = 1.0
+	if = {
+		limit = {
+			tax_level = very_high
+		}
+		add = 0.3
+	}
+	else_if = {
+		limit = {
+			tax_level = high
+		}
+		add = 0.15
+	}
+	else_if = {
+		limit = {
+			tax_level = low
+		}
+		add = -0.15
+	}
+	else_if = {
+		limit = {
+			tax_level = very_low
+		}
+		add = -0.3
+	}
+}
+
+

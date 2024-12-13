@@ -163,6 +163,21 @@ law_per_capita_based_taxation = {
 			add = 750
 		}
 		
+		# KAI: Tax reform is important
+		if = {
+			limit = {
+				OR = {
+					has_law = law_type:law_consumption_based_taxation
+					has_law = law_type:law_land_based_taxation
+				}
+				pop_type_percent_country = {
+					pop_type = peasants
+					percent < 0.75
+				}
+			}
+			add = 400
+		}
+		
 		if = {
 			limit = { 
 				OR = {
@@ -229,6 +244,32 @@ law_proportional_taxation = {
 		if = {
 			limit = { ai_has_enact_weight_modifier_journal_entries = yes }
 			add = 750
+		}
+		
+		# KAI: Tax reform is important
+		if = {
+			limit = {
+				OR = {
+					has_law = law_type:law_consumption_based_taxation
+					has_law = law_type:law_land_based_taxation
+				}
+				pop_type_percent_country = {
+					pop_type = peasants
+					percent < 0.6
+				}
+			}
+			add = 400
+		}
+
+		if = {
+			limit = {
+				has_law = law_type:law_per_capita_based_taxation
+				pop_type_percent_country = {
+					pop_type = peasants
+					percent < 0.4
+				}
+			}
+			add = 400
 		}
 		
 		if = {
