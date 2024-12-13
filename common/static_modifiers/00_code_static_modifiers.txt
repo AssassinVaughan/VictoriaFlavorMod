@@ -33,8 +33,8 @@ base_values = {
 	state_upper_strata_expected_sol_add = 15
 	state_expected_sol_from_literacy = 5
 	
-	state_farmers_investment_pool_contribution_add = 0.10
-	state_shopkeepers_investment_pool_contribution_add = 0.20
+	state_farmers_investment_pool_contribution_add = 0.05
+	state_shopkeepers_investment_pool_contribution_add = 0.05
 	state_clergymen_investment_pool_contribution_add = 0.20
 	state_aristocrats_investment_pool_contribution_add = 0.20
 	state_capitalists_investment_pool_contribution_add = 0.30	
@@ -164,11 +164,10 @@ in_default = {
 declared_bankruptcy = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
 	country_prestige_mult = -0.5
-	country_leverage_generation_mult = -0.5
-	country_loan_interest_rate_mult = 0.25
+	country_loan_interest_rate_mult = 0.5
 	unit_offense_mult = -0.5
 	unit_defense_mult = -0.5
-	state_migration_pull_mult = -0.25
+	state_radicals_and_loyalists_from_sol_change_mult = 0.25
 	state_construction_mult = -0.25
 	state_welfare_payments_mult = -1
 	state_market_access_price_impact = -0.1
@@ -340,7 +339,7 @@ ruler_left_interest_group = {
 
 uprising_conscription = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_positive.dds
-	state_conscription_rate_add = 1.0
+	state_conscription_rate_add = 0.5
 }
 
 revolution_lost_ig = {

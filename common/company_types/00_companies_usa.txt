@@ -51,8 +51,8 @@ company_united_fruit = {
 	flavored_company = yes
 	
 	building_types = {  
-		building_sugar_plantation
 		building_banana_plantation
+		building_sugar_plantation
 	}	
 	
 	potential = {
@@ -63,66 +63,34 @@ company_united_fruit = {
 	}
 	
 	possible = {
-		any_country = {
+		OR = {
+			any_scope_state = {
 				OR = {
-					country_is_in_south_america = yes
-					country_is_in_central_america = yes
+					state_is_in_south_america = yes
+					state_is_in_central_america = yes
 				}
 				any_scope_building = {
-						is_building_type = building_banana_plantation
-						levels_owned_by_country = {
-							target = ROOT 
-							value  > 15
-						}
+					is_building_type = building_banana_plantation
+					level >= 5
 				}
-		}	
+			}
+		}
+		any_subject_or_below = {
+			OR = {
+				country_is_in_south_america = yes
+				country_is_in_central_america = yes
+			}
+			any_scope_state = {
+				any_scope_building = {
+					is_building_type = building_banana_plantation
+					level >= 5
+				}
+			}
+		}
 	}
 	
 	prosperity_modifier = {
 		building_group_bg_plantations_throughput_add = 0.2
-		country_infamy_decay_mult = -0.25
-	}	
-	
-	ai_weight = {
-		value = 3 # Higher base value for flavored companies
-	}
-}# United Fruit Company
-company_united_fruit = {
-	icon = "gfx/interface/icons/company_icons/historical_company_icons/american_united_fruit_co.dds"
-	background = "gfx/interface/icons/company_icons/company_backgrounds/comp_illu_plantation.dds"
-	
-	flavored_company = yes
-	
-	building_types = {  
-		building_sugar_plantation
-		building_banana_plantation
-	}	
-	
-	potential = {
-		OR = {
-			country_has_primary_culture = cu:yankee
-			country_has_primary_culture = cu:dixie
-		}
-	}
-	
-	possible = {
-		any_country = {
-				OR = {
-					country_is_in_south_america = yes
-					country_is_in_central_america = yes
-				}
-				any_scope_building = {
-						is_building_type = building_banana_plantation
-						levels_owned_by_country = {
-							target = ROOT 
-							value  > 12
-						}
-				}
-		}	
-	}
-	
-	prosperity_modifier = {
-		building_group_bg_plantations_throughput_add = 0.15
 		country_infamy_decay_mult = -0.25
 	}	
 	
