@@ -146,6 +146,11 @@ NEconomy = {
     # This company mechanic is SO dumb, different buildings will have very different prosperity potential. A tool or steel factory will have higher profit than a sawmill or grain farm...
     COMPANY_PRODUCTIVITY_RATIO_HIGH_THRESHOLD = 1.15	#1.25 Companies whose productivity exceeds this factor of the global average will be considered high-productivity companies
     COMPANY_PRODUCTIVITY_ABSOLUTE_HIGH_THRESHOLD = 10	#25 Companies whose productivity exceeds this amount will ALWAYS be considered high-productivity companies
+	
+	COMPANY_INITIAL_LEVELS = 1							# How many levels of ownership in other buildings required to establish a company
+	COMPANY_ON_ESTABLISH_COOLDOWN_MONTHS = 60			# Cooldown in months after establishing a company before you can disband it
+	COMPANY_ON_DISBAND_COOLDOWN_MONTHS = 48				# Cooldown in months after disbanding a company before you can re-establish it
+	COMPANY_MIN_LEVELS_OWNED = 1							# Min amount of ownerships that company can have, more can't be nationalized or privatized
 } 
 
 NMilitary = {
