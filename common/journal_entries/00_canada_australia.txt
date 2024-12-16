@@ -17,7 +17,7 @@
 
 	complete = {
 		calc_true_if = {
-			amount >= 9
+			amount >= 8
 			owns_entire_state_region = STATE_ONTARIO
 			owns_entire_state_region = STATE_NEW_BRUNSWICK
 			owns_entire_state_region = STATE_QUEBEC
@@ -30,6 +30,7 @@
 			owns_entire_state_region = STATE_NORTHWEST_TERRITORIES
 			owns_entire_state_region = STATE_NUNAVUT
 		}
+        is_diplomatic_play_committed_participant = no
 	}
 
 	on_complete = {
@@ -92,9 +93,8 @@ je_canada_gbr = {
 
 	complete = {
 		any_subject_or_below = {
-            has_technology_researched = nationalism
 			calc_true_if = {
-				amount >= 9
+				amount >= 8
 				owns_entire_state_region = STATE_ONTARIO
 				owns_entire_state_region = STATE_NEW_BRUNSWICK
 				owns_entire_state_region = STATE_QUEBEC
@@ -108,6 +108,7 @@ je_canada_gbr = {
 				owns_entire_state_region = STATE_NUNAVUT
 			}
 		}
+		is_at_war = no
 	}
 
 	on_complete = {

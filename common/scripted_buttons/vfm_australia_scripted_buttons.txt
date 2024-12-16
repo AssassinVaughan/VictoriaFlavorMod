@@ -37,6 +37,12 @@ je_australia_gbr_revoke_van_diemens_button = {
 	visible = {
 		exists = c:NSW
 		exists = c:TAS
+		c:NSW = {
+			is_subject_of = c:GBR
+		}
+		c:TAS = {
+			is_subject_of = c:GBR
+		}
 	}
 
 	possible = {
@@ -119,18 +125,17 @@ je_australia_gbr_what_to_do_nzl = {
 	visible = {
 		exists = c:NSW
 		exists = c:UNT
-		exists = c:GBR
-		c:GBR = ROOT
+		c:NSW ?= {
+			is_subject_of = c:GBR
+		}
+		c:UNT ?= {
+			is_subject_of = c:GBR
+		}
 	}
 
 	possible = {
 		c:NSW ?= {
 		    is_ai = yes
-			is_subject_of = c:GBR
-		}
-		c:UNT ?= {
-		    has_technology_researched = nationalism
-			is_subject_of = c:GBR
 		}
 		game_date > 1840.1.1
 		NOT = { has_variable = recently_revoked_colony }
