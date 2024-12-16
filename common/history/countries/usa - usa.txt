@@ -8,7 +8,7 @@
 		
 		set_market_capital = STATE_NEW_YORK
 		
-		set_tariffs_export_priority = g:fabric
+		set_tariffs_export_priority = g:fabric		
 		
 		set_variable = monroe_doctrine
 		
@@ -26,13 +26,6 @@
 		activate_law = law_type:law_local_police
 		activate_law = law_type:law_no_womens_rights # Women couldn't hold property until ~1839
 		activate_law = law_type:law_federal
-		start_enactment = law_type:law_universal_suffrage #states are in the middle of piecemeal removing tax obligations at the start date
-		activate_law = law_type:law_freedom_of_conscience #de jure total separation, but de facto anti-catholicism, oppression of animists
-		# add_enactment_phase = 1
-		add_enactment_modifier = {
-			name = successful_law_slide
-			multiplier = 3
-		}
 		
 		set_institution_investment_level = {
 			institution = institution_colonial_affairs
@@ -53,17 +46,14 @@
 			add_ruling_interest_group = yes
 		}
 
-		# add_journal_entry = { type = je_texas_usa }
-		# add_journal_entry = { type = je_acw_countdown }
+		add_journal_entry = { type = je_texas_usa }
+		add_journal_entry = { type = je_acw_countdown }
+		add_journal_entry = { type = je_seminole_wars }
 
 		add_modifier = {
-			name = usfp_missouri_compromise_decaying
-			years = 25
+			name = missouri_compromise
+			years = 50
 			is_decaying = yes
-		}
-		add_modifier = {
-			name = albany_regency_uscwf
-			months = 50
 		}
 		
 		add_company = company_type:company_william_cramp
@@ -71,114 +61,10 @@
 			set_company_establishment_date = 1830.1.1
 			set_company_state_region = s:STATE_PENNSYLVANIA
 		}
-		####USFP####
-		add_journal_entry = {type = je_acw_countdown}
-		add_journal_entry = {type = je_usfp_a_house_divided_missouri_compromise}
-		add_journal_entry = {type = je_usfp_a_house_divided_voting_rights}
-		add_journal_entry = {type = je_indian_removal}
 
-		#DEBUG
-		# add_journal_entry = {
-		# 	type = je_usfp_a_house_divided_border_states
-		# }
-
-		add_radicals = {
-			value = 0.01
-			religion = rel:protestant
-		}
 		add_radicals = {
 			value = 0.05
 			pop_type = slaves
 		}
-		add_modifier = {
-			name = usfp_second_great_awakening
-			is_decaying = yes
-			years = 5
-		}
-		add_modifier = {
-			name = usfp_second_party_system_modifier
-		}
-		add_modifier = {
-			name = usfp_victory_over_nullification_crisis_modifier
-			is_decaying = yes
-			years = 2	
-		}
-		set_variable = { name = gov_petition_fired months = 150 }
-		ig:ig_armed_forces = { 
-			add_ideology = ideology_republican
-		}
-		ig:ig_devout = {
-			remove_ideology = ideology_moralist
-			add_ideology = ideology_usfp_evangelical_moralist
-			set_ig_trait = ig_trait:usfp_ig_trait_postmillennialism
-			set_ig_trait = ig_trait:usfp_ig_trait_revivalism
-		}
-		ig:ig_landowners = {
-			add_ideology = ideology_reactionary_segregationist
-			add_ideology = ideology_anti_tariff
-			set_ig_trait = ig_trait:usfp_ig_trait_king_cotton
-			set_ig_trait = ig_trait:ig_trait_profitable_estates
-			set_ig_trait = ig_trait:usfp_ig_trait_peculiar_institution
-		}
-		ig:ig_industrialists = {
-			add_ideology = ideology_pro_tariff
-			set_ig_trait = ig_trait:ig_trait_patrician_philanthropy
-		}
-		ig:ig_intelligentsia = {
-			add_ideology = ideology_american_school
-			add_ideology = ideology_empire_of_liberty
-			remove_ideology = ideology_anti_clerical
-			add_ideology = ideology_usfp_accomodationist
-			set_ig_trait = ig_trait:usfp_ig_trait_american_exceptionalism
-			set_ig_trait = ig_trait:usfp_ig_trait_democratic_experiment
-		}
-		ig:ig_petty_bourgeoisie = {
-			remove_ideology = ideology_reactionary
-			remove_ideology = ideology_republican_reactionary
-			add_ideology = ideology_reactionary_segregationist
-			add_ideology = ideology_republican
-			# add_ideology = ideology_empire_of_liberty
-		}
-		ig:ig_rural_folk = {
-			remove_ideology = ideology_particularist
-			add_ideology = ideology_usfp_localist
-			set_ig_trait = ig_trait:usfp_ig_trait_go_west
-			set_ig_trait = ig_trait:usfp_ig_trait_republican_virtue
-		}
-		create_diplomatic_pact = {
-			country = c:LIB
-			type = grant_own_market
-		}
-		create_diplomatic_pact = {
-			country = c:SEQ
-			type = decrease_payments
-		}
-		create_diplomatic_pact = {
-			country = c:SEQ
-			type = exempt_from_service
-		}
-		create_diplomatic_pact = {
-			country = c:SEQ
-			type = grant_own_market
-		}
-		change_relations = {
-			country = c:SEQ
-			value = 100
-		}
-		create_diplomatic_pact = {
-			country = c:SEQ
-			type = bankroll
-		}
-		create_unidirectional_truce = {
-			country = c:LIB
-			months = 240
-		}
-
-		set_variable = usfp_achievements_possible
-		set_variable = {
-			name = usfp_dead_presidents_var
-			value = 0
-		}
-		trigger_event = usfp_usa.23
 	}
 }

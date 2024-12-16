@@ -1,0 +1,93 @@
+﻿je_unify_two_canadas_gbr_button = {
+	name = "je_unify_two_canadas_button"
+	desc = "je_unify_two_canadas_button_desc"
+
+	visible = { 
+		exists = c:ONT
+		exists = c:QUE
+		#NOT = { exists = c:CAN }
+		#c:ONT ?= {
+		#	is_subject_of = root
+		#	has_revolution = no
+		#}
+		#c:QUE ?= {
+		#	is_subject_of = root
+		#	has_revolution = no
+		#}
+	}
+
+	possible = {
+	    NOT = { exists = c:CAN }
+		c:ONT ?= {
+			is_subject_of = root
+			has_technology_researched = nationalism
+			has_revolution = no
+			is_ai = yes
+		}
+		c:QUE ?= {
+			is_subject_of = root
+			has_technology_researched = nationalism
+			has_revolution = no
+			is_ai = yes
+		}
+	}
+
+	effect = {
+		c:ONT = { 
+			annex_with_incorporation = c:QUE
+			add_primary_culture = cu:franco_canadian
+			#set_variable = canadas_unified
+			if = {
+				limit = {
+					NOT = { exists = c:CAN }
+				}
+				change_tag = CAN
+			}
+		}
+	}
+	
+	ai_chance = {
+		base = 5
+	}
+}
+
+je_maritime_union_gbr_button = {
+	name = "je_maritime_union_button"
+	desc = "je_maritime_union_button_desc"
+
+	visible = { 
+		exists = c:NBS
+		exists = c:NVS
+		#c:NBS ?= {
+		#	is_subject_of = root
+		#	has_revolution = no
+		#}
+		#c:NVS ?= {
+		#	is_subject_of = root
+		#	has_revolution = no
+		#}
+	}
+
+	possible = {
+		c:NBS ?= {
+			is_subject_of = root
+			has_technology_researched = nationalism
+			has_revolution = no
+			is_ai = yes
+		}
+		c:NVS ?= {
+			is_subject_of = root
+			has_technology_researched = nationalism
+			has_revolution = no
+			is_ai = yes
+		}
+	}
+
+	effect = {
+		c:NVS = { annex_with_incorporation = c:NBS }
+	}
+	
+	ai_chance = {
+		base = 1
+	}
+}

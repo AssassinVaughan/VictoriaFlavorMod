@@ -4495,20 +4495,20 @@ ai_strategy_default = {
 		}	
 		steamers = {
 			stance = wants_high_supply
-			kai_should_use_goods_stances = yes
 			trigger = {
 				has_technology_researched = ironclad_tech
 				has_technology_researched = gantry_cranes
+				kai_should_use_goods_stances = yes
 				has_port = yes
 				OR = { country_rank >= rank_value:major_power gdp > 12000000 }
 			}
 		}			
 		ironclads = {
 			stance = wants_high_supply
-			kai_should_use_goods_stances = yes
 			trigger = {
 				has_technology_researched = ironclad_tech
 				has_technology_researched = gantry_cranes
+				kai_should_use_goods_stances = yes
 				has_port = yes
 				OR = { country_rank >= rank_value:major_power gdp > 12000000 }			
 			}

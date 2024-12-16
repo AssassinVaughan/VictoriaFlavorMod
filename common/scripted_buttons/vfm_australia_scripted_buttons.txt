@@ -1,0 +1,150 @@
+﻿
+je_australia_aus_claim_eastern_new_guinea_button = {
+	name = "je_australia_aus_claim_eastern_new_guinea_button"
+	desc = "je_australia_aus_claim_eastern_new_guinea_button_desc"
+	
+	visible = {
+		has_state_in_state_region = STATE_QUEENSLAND
+		overlord = {
+			OR = {
+				has_state_in_state_region = STATE_EASTERN_NEW_GUINEA
+				any_subject_or_below = {
+					has_state_in_state_region = STATE_EASTERN_NEW_GUINEA
+				}
+			}
+		}
+	}
+
+	possible = {
+		has_technology_researched = nationalism
+	}
+
+	effect = {
+		overlord = {
+			#trigger_event for new guinea claim
+		}
+	}
+
+	ai_chance = {
+		base = 0
+	}
+}
+
+je_australia_gbr_revoke_van_diemens_button = {
+	name = "je_australia_gbr_revoke_van_diemens_button"
+	desc = "je_australia_gbr_revoke_van_diemens_button_desc"
+	
+	visible = {
+		exists = c:NSW
+		exists = c:TAS
+	}
+
+	possible = {
+	    game_date > 1840.1.1
+		c:TAS ?= {
+			is_ai = yes
+		}
+		NOT = { has_variable = recently_revoked_colony }
+	}
+
+	effect = {
+		c:NSW = {
+			annex = c:TAS
+		}
+		set_variable = {
+			name = recently_revoked_colony
+			months = 24
+		}
+	}
+
+	ai_chance = {
+		base = 0
+		modifier = {
+		    trigger = { game_date > 1844.1.1 }
+		    add = 1
+		}
+	}
+}
+
+#je_australia_gbr_revoke_new_zealand_button = { # should be united tribes?
+
+je_australia_gbr_revoke_south_australia_button = {
+	name = "je_australia_gbr_revoke_south_australia_button"
+	desc = "je_australia_gbr_revoke_south_australia_button_desc"
+	
+	visible = {
+		exists = c:NSW
+		exists = c:WAS
+		c:NSW = {
+			is_subject_of = c:GBR
+		}
+		c:WAS = {
+			is_subject_of = c:GBR
+		}
+	}
+
+	possible = {
+	    game_date > 1840.1.1
+		c:WAS ?= {
+			is_ai = yes
+		}
+		NOT = { has_variable = recently_revoked_colony }
+	}
+
+	effect = {
+		c:NSW = {
+			annex = c:WAS
+		}
+		set_variable = {
+			name = recently_revoked_colony
+			months = 24
+		}
+	}
+
+	ai_chance = {
+		base = 1
+	}
+}
+
+#je_australia_gbr_found_south_australia_button = { # This one already exists on game start now
+
+#je_australia_gbr_found_north_australia_button = { # Hmmm? This tag does not exist anymore
+
+#je_australia_gbr_found_victoria_button = { # Hmmm? This tag does not exist anymore
+
+je_australia_gbr_what_to_do_nzl = {
+	name = "The_Idependence_of_New_Zeeland"
+	desc = "je_australia_gbr_revoke_south_australia_button_desc"
+	
+	visible = {
+		exists = c:NSW
+		exists = c:UNT
+		exists = c:GBR
+		c:GBR = ROOT
+	}
+
+	possible = {
+		c:NSW ?= {
+		    is_ai = yes
+			is_subject_of = c:GBR
+		}
+		c:UNT ?= {
+		    has_technology_researched = nationalism
+			is_subject_of = c:GBR
+		}
+		game_date > 1840.1.1
+		NOT = { has_variable = recently_revoked_colony }
+	}
+
+	effect = {
+		trigger_event = flavor_new_zealand_events.1
+		set_variable = {
+			name = recently_revoked_colony
+			months = 24
+		}
+	}
+
+	ai_chance = {
+		base = 1
+	}
+}
