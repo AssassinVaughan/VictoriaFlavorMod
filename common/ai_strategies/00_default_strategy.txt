@@ -149,12 +149,7 @@ ai_strategy_default = {
 		if = {
 			# Non-Germans should stay out of the leadership war unless they have a good reason to intervene
 			limit = {
-			    OR = {
-					scope:diplomatic_play_type = play_type:dp_leadership_germany
-					scope:country = {
-						is_oppressor_of_schleswig_holstein = yes
-					}
-				}
+				scope:diplomatic_play_type = play_type:dp_leadership_germany
 				NOR = {
 					country_has_primary_culture = cu:north_german
 					country_has_primary_culture = cu:south_german
@@ -216,6 +211,55 @@ ai_strategy_default = {
 				add = {
 					value = -100
 					desc = "german_leadership_neutrality"
+				}
+			}
+		}
+		
+		### Stay out of north german war
+		if = {
+			# Non-Germans should stay out of the leadership war unless they have a good reason to intervene
+			limit = {
+				scope:country = {
+					is_oppressor_of_schleswig_holstein = yes
+				}
+				NOR = {
+					country_has_primary_culture = cu:north_german
+					country_has_primary_culture = cu:south_german
+				}	
+                scope:enemy_country = { 	
+                OR = {
+					country_has_primary_culture = cu:north_german
+					country_has_primary_culture = cu:south_german
+				}
+                }				
+			}
+			
+			if = {
+				limit = {				
+					NOR = {
+						has_diplomatic_pact = {
+							who = scope:country
+							type = alliance
+						}
+						AND = {
+							NOT = { exists = scope:is_initiator }
+							OR = {
+								has_diplomatic_pact = {
+									who = scope:country
+									type = defensive_pact
+								}
+								has_diplomatic_pact = {
+									who = scope:country
+									type = guarantee_independence
+								}								
+							}
+						}							
+					}
+				}
+				
+				add = {
+					value = -50
+					desc = "north_german_neutrality"
 				}
 			}
 		}
@@ -598,12 +642,42 @@ ai_strategy_default = {
 				desc = "alignment_politics"
 			}
 		}
+		
+		if = { # Monroe USA will step in and defend cross-ocean invasion of americas
+			limit = {
+				c:USA ?= this
+				scope:country = {
+				    OR = {
+						country_is_in_south_america = yes
+						country_is_in_central_america = yes
+					}
+				}
+				scope:enemy_country = {
+					NOR = { country_is_in_south_america = yes country_is_in_central_america = yes }
+				}
+			}
+			if = {
+			    limit = {
+				    has_variable = monroe_doctrine
+				}
+			    add = {
+					value = 75
+					desc = "monroe_doctrine_support"
+		    	}
+			}
+			else = {
+			    add = {
+					value = 40
+					desc = "monroe_doctrine_support"
+		    	}
+			}
+		}
 	}	
 	
 	# Added to base neutrality in diplomatic plays	
 	# Using this value in other strategies will function additively
 	diplomatic_play_neutrality = {
-		value = 55	
+		value = 60	
 		
 		# Ottomans should avoid unnecessary entanglements while trying to pursue the Tanzimat reforms
 		if = {
@@ -647,16 +721,6 @@ ai_strategy_default = {
 				is_at_war = yes
 			}
 			add = 15
-		}
-		
-		if = {
-			limit = {
-				exists = c:SPA
-				exists = c:CAR
-				c:SPA = this
-				has_war_with = c:CAR
-			}
-			add = 50
 		}
 				
 		# challenge rivals
@@ -768,8 +832,8 @@ ai_strategy_default = {
 		if = {
 			limit = {
 				OR = {
-					country_has_primary_culture = cu:north_italian
-					country_has_primary_culture = cu:south_italian
+					country_has_primary_culture = cu:north_german
+					country_has_primary_culture = cu:south_german
 				}
 				has_technology_researched = nationalism
 				any_diplomatic_play = {
@@ -782,7 +846,7 @@ ai_strategy_default = {
 					}						
 				}	
 			}
-			subtract = 30
+			subtract = 20
 		}
 		# unite against non-muslim invaders
 		if = {
@@ -814,6 +878,21 @@ ai_strategy_default = {
 			}
 			subtract = 30
 		}
+		
+		# Don't get involed in european conflicts if you dont have a navy
+	    if = {
+			limit = {
+				OR = { country_is_in_central_america = yes country_is_in_south_america = yes }
+				any_diplomatic_play = {
+					any_scope_play_involved = {
+						is_diplomatic_play_initiator = yes
+						NOR = { country_is_in_central_america = yes country_is_in_south_america = yes }
+						
+					}						
+				}
+			}
+			add = 30
+		}
 	}
 	
 	# Added to base boldness in diplomatic plays	
@@ -839,7 +918,7 @@ ai_strategy_default = {
 				}
 			}
 			
-			add = 100
+			add = 50
 		}
 
 		if = { # Isolationist Japan should tend to back down against market opening plays
