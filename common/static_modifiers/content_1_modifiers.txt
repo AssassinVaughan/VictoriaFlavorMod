@@ -599,17 +599,21 @@ temporary_tax_cut_per_capita = {
 
 bismarck_popular = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
-	character_popularity_add = 75
+	character_popularity_add = 50
 }
 
 bismarck_unpopular = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
-	character_popularity_add = -50
+	character_popularity_add = -25
 }
 
 realpolitik = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
-	country_infamy_decay_mult = 0.2
+	interest_group_in_opposition_approval_add = 2
+    country_prestige_mult = -0.1
+    country_authority_add = -100
+	country_influence_add = 100
+	country_infamy_generation_mult = 0.25
 }
 
 schleswig_holstein_question_solver = {
@@ -620,6 +624,7 @@ schleswig_holstein_question_solver = {
 germany_aggressive_expansion = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
 	country_damage_relations_speed_mult = 0.5
+	country_influence_add = -100
 }
 
 partial_german_unification_influence_prestige = {

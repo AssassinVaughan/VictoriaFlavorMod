@@ -182,6 +182,10 @@ je_prussian_guard = {
 	
 	timeout = 7000
 	
+	on_timeout = {
+	    trigger_event = { id = journal_flavor_germany.1002 }
+	}
+	
 	current_value = {
 		value = var:pru_months_counter
 	}
@@ -206,10 +210,10 @@ je_the_zollverein = {
 		}
 		is_power_bloc_leader = yes
 		game_date < 1870.1.1
-		OR = {
-		    owns_entire_state_region = STATE_BRANDENBURG
-			owns_entire_state_region = STATE_WESTPHALIA
-			owns_entire_state_region = STATE_HESSE
+		NOR = {
+			exists = c:GER
+			exists = c:SGF
+			exists = c:NGF
 		}
 	}
 	
