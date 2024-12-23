@@ -1,13 +1,17 @@
 ﻿je_peru_bolivia_the_feeble_union = { 
 	icon = "gfx/interface/icons/event_icons/event_fire.dds"
     group = je_group_internal_affairs
+	
 	immediate = {
+		ROOT = {
+			save_scope_as = bol_scope
+		}
+
 	    if = { 
 			limit = {
 	   			c:NPU ?= {
 					is_subject_of = ROOT
 					is_subject_type = subject_type_confederative_partner
-					relations:root < relations_threshold:cordial
 				}
 			}
 			c:NPU = {
@@ -19,28 +23,10 @@
 	   			c:PEU ?= {
 					is_subject_of = ROOT
 					is_subject_type = subject_type_confederative_partner
-					relations:root < relations_threshold:cordial
 				}
 			}
 			c:PEU = {
 				save_scope_as = npu_scope
-			}
-		}
-	}
-
-	on_monthly_pulse = {
-		effect = {
-			if = {
-				limit = {
-					is_at_war = no
-					scope:npu_scope = {
-						relations:root < relations_threshold:cordial
-					}
-				}
-				change_variable = {
-					name = peru_the_feeble_union_var
-					add = 1
-				}
 			}
 		}
 	}
@@ -72,9 +58,8 @@
 	}
 
 	complete = {
-		scope:journal_entry = { is_goal_complete = yes }
 		scope:npu_scope = {
-			is_at_war = no
+			liberty_desire >= 75
 		}
 	}
 
@@ -90,22 +75,19 @@
 	}
 
 	fail = {
-		NOT = {
-			scope:npu_scope = {
-				is_subject_of = c:BOL
+		scope:npu_scope = {
+			OR = {
+				NOT = {
+					is_subject_of = c:BOL
+
+				}
+				custom_tooltip = {
+					text = peru_bolivia_feeble_union_f
+					is_diplomatic_play_enemy_of = c:BOL
+				}
 			}
 		}
 	}
-
-	current_value = {
-		value = root.var:peru_the_feeble_union_var
-	}
-
-	goal_add_value = {
-		value = 20
-	}
-
-	progressbar = yes
 
 	weight = 10000
 

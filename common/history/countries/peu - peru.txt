@@ -19,25 +19,29 @@
 		activate_law = law_type:law_no_police
 		activate_law = law_type:law_peasant_levies
 		activate_law = law_type:law_charitable_health_system
+		activate_law = law_type:law_unitary
 
 		set_tariffs_import_priority = g:artillery
 		set_tariffs_import_priority = g:small_arms
 
 		ig:ig_armed_forces = {
-			add_ideology = ideology_caudillismo
+			 
 		}
 
         ig:ig_intelligentsia = {
 			remove_ideology = ideology_liberal
-			add_ideology = ideology_liberalismo
+			remove_ideology = ideology_anti_clerical
+			add_ideology = ideology_liberal_criollist
+			add_ideology = ideology_secularist
 			add_ideology = ideology_soberania_aristocratica
 			add_ruling_interest_group = yes
 		}
 
 		ig:ig_landowners = {
-			remove_ideology = ideology_paternalistic
+			remove_ideology = ideology_republican_paternalistic
 			remove_ideology = ideology_stratocratic
-			add_ideology = ideology_conservadurismo
+			add_ideology = ideology_criollo_paternalistic
+			add_ideology = ideology_criollo_stratocratic
 			add_ideology = ideology_soberania_aristocratica
 			add_modifier = { #Consequence of the Peruvian Civil War of 1834
 				name = revolution_lost_ig
@@ -45,6 +49,16 @@
 				months = normal_modifier_time
 				is_decaying = yes
 			}
+		}
+
+		ig:ig_rural_folk = {
+			remove_ideology = ideology_agrarian
+			remove_ideology = ideology_isolationist
+			remove_ideology = ideology_particularist
+			add_ideology = ideology_agroexportadores
+			add_ideology = ideology_pious
+			add_ideology = ideology_patriarchal
+			add_ideology = ideology_communalist
 		}
 
 		ig:ig_petty_bourgeoisie = {

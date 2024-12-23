@@ -33,13 +33,17 @@
 		}
 
 		ig:ig_armed_forces = {
-			add_ideology = ideology_caudillismo
 			set_ig_suppression = yes			
 		}
 		
 		ig:ig_devout = {
 			set_interest_group_name = ig_catholic_church
 			add_ruling_interest_group = yes
+		}
+
+		ig:ig_rural_folk = {
+			remove_ideology = ideology_isolationist
+			add_ideology = ideology_isolationist_expansionism
 		}		
 
 		ig:ig_landowners = {

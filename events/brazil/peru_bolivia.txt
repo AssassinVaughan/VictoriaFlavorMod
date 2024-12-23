@@ -98,6 +98,14 @@ peru_bolivia_events.1 = {
 			}
 			annex = c:PEU
 		}
+		if = {
+			limit = {
+				NOT = {
+					has_law = law_type:law_confederated
+				}
+			}
+			activate_law = law_type:law_confederated
+		}
 		change_tag = PBC
 		root = {
 			save_scope_as = pbc_scope

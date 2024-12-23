@@ -40,10 +40,6 @@ peru_bolivia_confederation.1 = { #Historical Context
 	}
 
 	immediate = {
-		set_variable = {
-			name = peru_the_feeble_union_var
-			value = 0
-		}
 		c:PEU = {
 			save_scope_as = peu_scope
 		}
@@ -382,19 +378,38 @@ peru_bolivia_confederation.3 = { #Division of Peru
 		}
 
 		ai_chance = {
-			base = 90
+			base = 100
 		}
 	}	
 
 	option = {  #Undivided Peru
 		name = peru_bolivia_confederation.3.b
+		
 		trigger_event = {
 			id = peru_bolivia_confederation.6
 			months = 7
 		}
 
+		c:PEU = {
+			random_scope_state = {
+				limit = {
+					state_region = s:STATE_AREQUIPA
+					state_region = s:STATE_ICA
+					state_region = s:STATE_TARAPACA
+				}
+			}	
+			add_radicals = {
+				strata = poor 
+				value = 0.2
+			}
+			add_radicals = {
+				strata = rich 
+				value = 0.03
+			}
+		}
+
 		ai_chance = {
-			base = 10
+			base = 1
 		}
 	}
 }
@@ -462,8 +477,9 @@ peru_bolivia_confederation.4 = { #South Peru Declaration of Independence
 			id = peru_bolivia_confederation.5
 			months = 7
 		}
-		c.SPU = {
-			set_relations = { country = c:BOL value = 80 }
+		change_relations = {
+			country = c:SPU
+			value = 50
 		}
 		hidden_effect = {
             c:SPU = { 
@@ -474,7 +490,7 @@ peru_bolivia_confederation.4 = { #South Peru Declaration of Independence
 		        }
 
 				ig:ig_armed_forces = {
-					add_ideology = ideology_caudillismo
+					 
 				}
 		
 				ig:ig_intelligentsia = {
@@ -485,7 +501,7 @@ peru_bolivia_confederation.4 = { #South Peru Declaration of Independence
 
 				ig:ig_landowners = {
 					add_ruling_interest_group = yes
-					remove_ideology = ideology_paternalistic
+					remove_ideology = ideology_republican_paternalistic
 					remove_ideology = ideology_stratocratic
 					add_ideology = ideology_conservadurismo
 					add_ideology = ideology_soberania_aristocratica
@@ -882,7 +898,7 @@ peru_bolivia_confederation.11 = { #Bolivian reaction/notification of Aliaga - Wo
 		add_radicals = {
 			value = 0.05	
 		}
-		ai_chance = 25
+		ai_chance = 1
 	}
 
 	option = {
@@ -910,7 +926,7 @@ peru_bolivia_confederation.11 = { #Bolivian reaction/notification of Aliaga - Wo
 		add_loyalists = {
 			value = 0.025
 		}
-		ai_chance = 75
+		ai_chance = 100
 	}
 }
 
@@ -946,7 +962,7 @@ peru_bolivia_confederation.12 = { #Bolivian reaction/notification of Aliaga - Be
 		add_radicals = {
 			value = 0.025	
 		}
-		ai_chance = 25
+		ai_chance = 1
 	}
 
 	option = {
@@ -963,7 +979,7 @@ peru_bolivia_confederation.12 = { #Bolivian reaction/notification of Aliaga - Be
 		add_loyalists = {
 			value = 0.01
 		}
-		ai_chance = 75
+		ai_chance = 100
 	}
 }
 
@@ -1146,6 +1162,7 @@ peru_bolivia_confederation.16 = { #Proof of Santa Cruz's involvement in the plot
 
 		c:BOL = {
 			post_notification = chile_found_proof_of_the_plot
+			change_infamy = 25
 		}
 	}
 }
