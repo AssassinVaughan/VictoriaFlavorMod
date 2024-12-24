@@ -214,8 +214,8 @@ ai_strategy_default = {
 				}
 			}
 		}
-		
-		### Stay out of north german war
+
+				### Stay out of north german war
 		if = {
 			# Non-Germans should stay out of the leadership war unless they have a good reason to intervene
 			limit = {
@@ -642,7 +642,7 @@ ai_strategy_default = {
 				desc = "alignment_politics"
 			}
 		}
-		
+
 		if = { # Monroe USA will step in and defend cross-ocean invasion of americas
 			limit = {
 				c:USA ?= this
@@ -878,21 +878,21 @@ ai_strategy_default = {
 			}
 			subtract = 30
 		}
-		
-		# Don't get involed in european conflicts if you dont have a navy
-	    if = {
-			limit = {
-				OR = { country_is_in_central_america = yes country_is_in_south_america = yes }
-				any_diplomatic_play = {
-					any_scope_play_involved = {
-						is_diplomatic_play_initiator = yes
-						NOR = { country_is_in_central_america = yes country_is_in_south_america = yes }
-						
-					}						
-				}
-			}
-			add = 30
-		}
+
+		# Don't get involed in european conflicts if you dont have a navy #The code as is only adds netruality to south and central america permanently without checking if they do in fact have a navy
+	    #if = {
+		#	limit = {
+		#		OR = { country_is_in_central_america = yes country_is_in_south_america = yes }
+		#		any_diplomatic_play = {
+		#			any_scope_play_involved = {
+		#				is_diplomatic_play_initiator = yes
+		#				NOR = { country_is_in_central_america = yes country_is_in_south_america = yes }
+		#				
+		#			}						
+		#		}
+		#	}
+		#	add = 30
+		#}
 	}
 	
 	# Added to base boldness in diplomatic plays	
@@ -4013,7 +4013,7 @@ ai_strategy_default = {
 			multiply = 0.0
 		}	
 	}
-	
+
 	# How much construction output should the AI aim for
 	# Using this value in other strategies will function additively
 	# How much construction output should the AI aim for
@@ -4035,7 +4035,7 @@ ai_strategy_default = {
 				divide = 2750 # 1 construction output per this much income
 			}
 		}
-
+			
 		# Improved technology enables cheaper construction
 		if = {
 			limit = { NOT = { has_technology_researched = urban_planning } }
@@ -4045,9 +4045,9 @@ ai_strategy_default = {
 		if = {
 			limit = { NOT = { has_technology_researched = steel_frame_buildings } }
 			multiply = 0.8
-		}
+		}		
 
-		add = 3 # Accounts for the 3 free construction from base modifiers
+        add = 3 # Accounts for the 3 free construction from base modifiers
 
 		# KAI: Scale the wanted construction capacity with gold reserve
 		# This is to fix a bug where AI simply refuses to build construction sectors
@@ -4494,7 +4494,7 @@ ai_strategy_default = {
 	# Which buildings should the AI subsidize
 	# Using a different value in a strategy will override this value
 	subsidies = {
-		building_railway = must_have	
+		building_railway = must_have		
 		building_military_shipyards = must_have	
 	}
 	
@@ -4744,7 +4744,7 @@ ai_strategy_default = {
 				kai_should_use_goods_stances = yes
 			}
 		}
-		grain = {
+        grain = {
 			stance = wants_high_supply
 			trigger = {
 				has_famine = yes
