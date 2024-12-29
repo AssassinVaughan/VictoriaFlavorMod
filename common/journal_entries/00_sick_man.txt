@@ -30,6 +30,13 @@
 			}
 			custom_tooltip = sick_man_of_europe_lose_power_bloc
 		}
+		custom_tooltip = {
+			text = je_sick_man_main_failure_movements_tt
+			set_variable = {
+				name = failed_tanzimat
+				years = 20
+			}
+		}
 	}
 	
 	on_monthly_pulse = {
@@ -92,8 +99,6 @@ je_sick_man_syria = {
 					has_state_in_state_region = STATE_ALEPPO
 					has_state_in_state_region = STATE_SYRIA
 					has_state_in_state_region = STATE_LEBANON
-					has_state_in_state_region = STATE_PALESTINE
-					has_state_in_state_region = STATE_TRANSJORDAN
 					has_state_in_state_region = STATE_ADANA
 				}
 				c:EGY = {
@@ -103,13 +108,15 @@ je_sick_man_syria = {
 							has_state_in_state_region = STATE_ALEPPO
 							has_state_in_state_region = STATE_SYRIA
 							has_state_in_state_region = STATE_LEBANON
-							has_state_in_state_region = STATE_PALESTINE
-							has_state_in_state_region = STATE_TRANSJORDAN
 							has_state_in_state_region = STATE_ADANA
 						}
 					}
 				}
 			}
+	}
+
+	modifiers_while_active = {
+		modifier_syrian_ambitions
 	}
 
 	on_complete = {
@@ -120,49 +127,11 @@ je_sick_man_syria = {
 		}
 		set_variable = completed_syria_je
 
-		if = {
-			limit = {
-				OR = {
-					AND = {
-						exists = c:EGY
-						c:EGY = {
-							is_subject_of = ROOT
-						}
-					}
-					AND = {
-						AND = {
-							has_state_in_state_region = STATE_SINAI
-							has_state_in_state_region = STATE_UPPER_EGYPT
-							has_state_in_state_region = STATE_MIDDLE_EGYPT
-							has_state_in_state_region = STATE_LOWER_EGYPT
-							has_state_in_state_region = STATE_EGYPTIAN_DESERT
-							has_state_in_state_region = STATE_MATRUH
-						}
-						c:EGY = {
-							NOR = {
-								has_state_in_state_region = STATE_SINAI
-								has_state_in_state_region = STATE_UPPER_EGYPT
-								has_state_in_state_region = STATE_MIDDLE_EGYPT
-								has_state_in_state_region = STATE_LOWER_EGYPT
-								has_state_in_state_region = STATE_EGYPTIAN_DESERT
-								has_state_in_state_region = STATE_MATRUH
-							}
-						}
-					}
-				}
-			}
-			add_modifier = {
-				name = reclaimed_egypt # country_prestige_add = 10
-				months = normal_modifier_time
-			}
+		add_journal_entry = {
+			type = je_sick_man_egypt
 		}
-		else = {
-			add_journal_entry = {
-				type = je_sick_man_egypt
-			}
-			trigger_event = {
-				id = vilayet_events.2
-			}
+		trigger_event = {
+			id = vilayet_events.2
 		}
 		custom_tooltip = sickman_syria_egypt
 	}
@@ -230,6 +199,11 @@ je_sick_man_egypt = {
 			name = reclaimed_egypt # country_prestige_add = 10
 			months = normal_modifier_time
 		}
+		custom_tooltip = je_sick_man_advance
+		change_variable = {
+			name = sick_man_var
+			add = 1
+		}
 	}
 
 	invalid = {
@@ -290,8 +264,7 @@ je_sick_man_economy = {
 	}
 
 	goal_add_value = {
-		value = root.gdp
-		multiply = 1
+		value = 20000000
 	}
 	
 	fail = {
@@ -344,7 +317,6 @@ je_sick_man_education = {
 		scope:journal_entry = {
 			is_goal_complete = yes
 		}
-		literacy_rate >= 0.2
 	}
 
 	on_complete = {
@@ -361,7 +333,7 @@ je_sick_man_education = {
 	}
 
 	goal_add_value = {
-		add = 0.1
+		0.2
 	}
 
 	invalid = {
@@ -404,7 +376,7 @@ je_sick_man_separatism = {
 		highest_secession_progress < 0.5
 		NOT = {
 			any_scope_state = {
-				turmoil >= 0.45
+				turmoil >= 0.2
 			}
 		}
 	}
@@ -744,7 +716,6 @@ je_sick_man_kurdistan = {
 				owns_entire_state_region = STATE_DIYARBAKIR
 				owns_entire_state_region = STATE_DEIR_EZ_ZOR
 				owns_entire_state_region = STATE_MOSUL
-				owns_entire_state_region = STATE_BAGHDAD
 			}
 		}
 		any_scope_state = {

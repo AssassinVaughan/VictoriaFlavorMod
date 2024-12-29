@@ -139,7 +139,7 @@ vilayet_events.2 = { #Bringing Egypt to heel
 		default_option = yes
 		custom_tooltip = vilayet_events.2.tta
 		ai_chance = {
-			base = 85
+			base = 25
 		}
 		c:EGY = {
 			trigger_event = {
@@ -159,9 +159,9 @@ vilayet_events.2 = { #Bringing Egypt to heel
 			}
 		}
 		ai_chance = {
-			base = 15
+			base = 25
 		}
-		change_infamy = 6
+		change_infamy = 8
 	}
 	option = { #We will settle for nothing less than conquest
 		name = vilayet_events.2.c
@@ -186,7 +186,7 @@ vilayet_events.2 = { #Bringing Egypt to heel
 		ai_chance = {
 			base = 0
 		}
-		change_infamy = 10
+		change_infamy = 15
 	}
 }
 
@@ -238,7 +238,7 @@ vilayet_events.3 = { #Egypt response - Khedivate offered
 
 		set_variable = khedivate_conferred
 		ai_chance = {
-			base = 90
+			base = 60
 		}
 	}
 	
@@ -250,9 +250,24 @@ vilayet_events.3 = { #Egypt response - Khedivate offered
 				days = 3
 			}
 		}
+		if = {
+			limit = {
+				exists = c:EGY
+				c:EGY = {	
+					is_subject_of = c:TUR
+				}
+			}
+			c:EGY = {
+				make_independent = yes
+				create_bidirectional_truce = {
+					country = c:TUR
+					months = 36
+				}
+			}
+		}
 		set_variable = khedivate_conferred
 		ai_chance = {
-			base = 10
+			base = 40
 		}
 	}
 	
@@ -297,7 +312,7 @@ vilayet_events.4 = { #Egypt response - no Khedivate offered
 			}
 		}
 		ai_chance = {
-			base = 45
+			base = 25
 		}
 	}
 	option = { #Decline
@@ -306,9 +321,24 @@ vilayet_events.4 = { #Egypt response - no Khedivate offered
 		c:TUR = {
 			trigger_event = vilayet_events.6
 		}
+		if = {
+			limit = {
+				exists = c:EGY
+				c:EGY = {	
+					is_subject_of = c:TUR
+				}
+			}
+			c:EGY = {
+				make_independent = yes
+				create_bidirectional_truce = {
+					country = c:TUR
+					months = 36
+				}
+			}
+		}
 		set_variable = khedivate_conferred
 		ai_chance = {
-			base = 55
+			base = 75
 		}
 	}	
 }
@@ -372,11 +402,17 @@ vilayet_events.6 = { #Ottoman notification - Egypt rejects subjection
 		s:STATE_MATRUH = {
 			add_claim = ROOT
 		}
-		change_infamy = 8
+		change_infamy = 15
+		ai_chance = {
+			base = 50
+		}
 	}
 	
 	option = { #Clam down
 		name = vilayet_events.6.b
+		ai_chance = {
+			base = 50
+		}
 	}
 }
 

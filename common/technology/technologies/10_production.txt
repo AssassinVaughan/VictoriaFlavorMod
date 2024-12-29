@@ -316,6 +316,20 @@ atmospheric_engine = {
 		shaft_mining
 	}
 	
+	on_researched = {
+		if = {
+			limit = {
+				is_ai = yes
+			}
+			hidden_effect = { 
+				add_modifier = {
+					name = atmospheric_engine_mining
+					months = normal_modifier_time
+				}
+			} 
+		}
+	}
+	
 	ai_weight = {
 		value = 1
 
@@ -359,6 +373,20 @@ railways = {
 	unlocking_technologies = {
 		mechanical_tools
 		atmospheric_engine
+	}
+	
+	on_researched = {
+		if = {
+			limit = {
+				is_ai = yes
+			}
+			hidden_effect = { add_technology_progress = { progress = 4150 technology = steel_railway_cars } 
+			add_modifier = {
+			name = first_railway_modifier
+			months = long_modifier_time
+		    }
+			}
+		}
 	}
 	
 	ai_weight = {
@@ -567,6 +595,15 @@ dynamite = {
 		nitroglycerin
 	}
 	
+	on_researched = {
+		if = {
+			limit = {
+				is_ai = yes
+			}
+			hidden_effect = { trigger_event = { id = production_tech_events.102  } }
+		}
+	}
+	
 	ai_weight = {
 		value = 1
 		if = {
@@ -587,6 +624,15 @@ rubber_mastication = {
 	unlocking_technologies = {	
 		fractional_distillation
 		chemical_bleaching
+	}
+	
+	on_researched = {
+		if = {
+			limit = {
+				is_ai = yes
+			}
+			hidden_effect = { add_technology_progress = { progress = 4150 technology = vulcanization } }
+		}
 	}
 	
 	ai_weight = {
@@ -834,6 +880,15 @@ mechanized_farming = {
 		threshing_machine
 	}
 	
+	on_researched = {
+		if = {
+			limit = {
+				is_ai = yes
+			}
+			hidden_effect = { trigger_event = { id = production_tech_events.600  } }
+		}
+	}
+	
 	ai_weight = {
 		value = 1
 		
@@ -1047,6 +1102,20 @@ plastics = {
 	
 	unlocking_technologies = {	
 		reinforced_concrete
+	}
+	
+	on_researched = {
+		if = {
+			limit = {
+				is_ai = yes
+			}
+			hidden_effect = { 
+				add_modifier = {
+					name = plastic_production_modifier
+					months = normal_modifier_time
+				}
+			} 
+		}
 	}
 	
 	ai_weight = {

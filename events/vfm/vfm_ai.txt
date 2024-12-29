@@ -14,20 +14,6 @@ vfm_ai.1 = {
 
 	immediate = {
 	    # root = swe, change this
-		if = {
-		limit = {
-			has_game_rule = vanilla_construction_rate
-		}
-		every_country = {
-			limit = {
-				is_ai = no
-                country_rank <= rank_value:minor_power
-			}
-			add_modifier = {
-				name = modifier_vanilla_more_construction
-			}
-		}
-	    }
 	    if = {
 			limit = {
 			    c:SWE = {
@@ -141,6 +127,29 @@ vfm_ai.2 = {
 	}
 
 	immediate = {
+	    every_country = {
+			limit = {
+				is_ai = yes
+                country_rank >= rank_value:minor_power
+				has_technology_researched = railways
+			}
+			add_technology_progress = { progress = 4150 technology = steel_railway_cars } 
+			add_modifier = {
+				name = first_railway_modifier
+				months = long_modifier_time
+		    }
+		}
+		every_country = {
+			limit = {
+				is_ai = yes
+                country_rank >= rank_value:minor_power
+				has_technology_researched = atmospheric_engine
+			}
+			add_modifier = {
+				name = atmospheric_engine_mining
+			    months = normal_modifier_time
+		    }
+		}
 	    every_country = {
 			limit = {
 				literacy_rate < 0.12
@@ -285,6 +294,40 @@ vfm_ai.3 = {
 					start_building_construction = building_iron_mine
 				}
 			}
+		}
+	}
+}
+
+vfm_ai.4 = {
+	type = country_event
+	placement = root
+
+	hidden = yes
+
+	duration = 1
+
+	trigger = {
+		is_ai = yes
+	}
+
+	immediate = {
+	    if = {
+			limit = {
+				scaled_debt > 0.35
+			}
+			set_government_wage_level = very_low
+			set_military_wage_level = very_low
+		}
+		else_if = {
+			limit = {
+				scaled_debt > 0.05
+			}
+			set_government_wage_level = low
+			set_military_wage_level = low
+		}
+		else = {
+		    set_government_wage_level = medium
+			set_military_wage_level = medium
 		}
 	}
 }

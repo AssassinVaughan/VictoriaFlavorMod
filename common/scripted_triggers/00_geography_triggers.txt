@@ -475,6 +475,10 @@ is_extra_vulnerable_to_heatwaves = {
 	any_scope_state = { OR = { has_state_trait = state_medeteranean_climate has_state_trait = state_trait_bad_soils } }
 }
 
+is_extra_vulnerable_to_disease = {
+	any_scope_state = { OR = { has_state_trait = state_trait_tropical has_state_trait = state_trait_severe_malaria has_state_trait = state_trait_malaria has_state_trait = state_trait_ganges_river } }
+}
+
 is_vulnerable_to_disease_outbreak = {
 	always = yes
 }
