@@ -88,6 +88,7 @@ ai_strategy_default = {
 					country_has_primary_culture = cu:north_german
 					country_has_primary_culture = cu:south_german
 				}
+				NOT = { c:AUS ?= this }
 				scope:country = {
 				    wants_to_solve_schleswig_holstein = yes
 					OR = {
@@ -1047,6 +1048,28 @@ ai_strategy_default = {
 				}	
 			}
 			add = 75
+		}
+		
+		### North German War
+		if = {
+			limit = { 
+				exists = scope:is_initiator
+				scope:diplomatic_play_type = play_type:dp_liberate_subject
+				root = {
+					country_has_primary_culture = cu:north_german
+				}
+				scope:country = {
+					country_has_primary_culture = cu:north_german
+				}
+				scope:enemy_country = {
+					NOT = {
+						country_has_primary_culture = cu:north_german
+					}
+				}
+			}
+			add = {
+				value = 100
+			}
 		}
 	} 
 		
