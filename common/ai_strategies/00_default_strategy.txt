@@ -723,6 +723,16 @@ ai_strategy_default = {
 			add = 15
 		}
 				
+		if = {
+			limit = {
+				exists = c:SPA
+				exists = c:CAR
+				c:SPA = this
+				has_war_with = c:CAR
+			}
+			add = 50
+		}
+				
 		# challenge rivals
 		if = {
 			limit = {

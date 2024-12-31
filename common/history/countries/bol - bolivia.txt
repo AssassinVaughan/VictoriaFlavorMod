@@ -1,0 +1,67 @@
+﻿COUNTRIES = {
+	c:BOL ?= {		
+		effect_starting_technology_tier_3_tech = yes
+		effect_starting_politics_conservative = yes
+		add_technology_researched = stock_exchange #To anable Free Trade
+		add_technology_researched = empiricism
+		add_technology_researched = napoleonic_warfare #Rufake knows bout this, must ask him
+		
+		activate_law = law_type:law_presidential_republic
+		activate_law = law_type:law_legacy_slavery #The fisrt constitution of Bolivia abolished slavery but the actual liberation of the slaves was delayed until the emacipation process was reglamented which..never happened, later constitutions more or less openly ackoledged the de facto legacy slavery till it was eventually properly abolished in the 1850´s
+		activate_law = law_type:law_wealth_voting
+		activate_law = law_type:law_racial_segregation
+		activate_law = law_type:law_free_trade #Bolivia did charge tariffs on land imports and exports however their only port and hence acces to most of the global market was a free port 
+		activate_law = law_type:law_interventionism
+		activate_law = law_type:law_censorship
+		activate_law = law_type:law_per_capita_based_taxation
+		activate_law = law_type:law_religious_schools
+		activate_law = law_type:law_no_police
+		activate_law = law_type:law_freedom_of_conscience #Per the Constitution of 1834:"Artículo 6.- La religión católica, apostólica, romana, es la de la República, con exclusión de todo otro culto público. El Gobierno la protegerá y hará respetar, reconociendo el principio de que no hay poder humano sobre las conciencias."
+		activate_law = law_type:law_unitary #I actually would need to check the internal organization of Bolivia at the time, but since they were a state in the confederation I'm defaulting to unitary	
+
+		ig:ig_armed_forces = {
+			add_ruling_interest_group = yes
+		}
+		
+        ig:ig_intelligentsia = {
+			remove_ideology = ideology_liberal
+			remove_ideology = ideology_anti_clerical
+			add_ideology = ideology_criollo_liberal
+			add_ideology = ideology_secularist
+			add_ideology = ideology_soberania_aristocratica
+		}
+
+		ig:ig_landowners = {
+			remove_ideology = ideology_republican_paternalistic
+			remove_ideology = ideology_stratocratic
+			add_ideology = ideology_criollo_paternalistic
+			add_ideology = ideology_criollo_stratocratic
+			add_ideology = ideology_soberania_aristocratica
+		}
+
+		ig:ig_rural_folk = {
+			remove_ideology = ideology_isolationist
+			add_ideology = ideology_isolationist_expansionism
+			remove_ideology = ideology_agrarian
+			add_ideology = ideology_agroexportadores
+		}
+
+		ig:ig_petty_bourgeoisie = {
+			remove_ideology = ideology_reactionary
+			add_ideology = ideology_artesanado
+		}
+
+		ig:ig_devout = {
+			set_interest_group_name = ig_catholic_church
+		}
+
+		add_modifier = {
+			name = age_of_caudillos_modifier
+		}
+		
+		set_global_variable = {
+			name = peru_bolivia_var
+			value = 0
+		}
+	}
+}
