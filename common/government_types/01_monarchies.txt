@@ -965,6 +965,22 @@ gov_kurdish_state = {
 	}		
 }
 
+gov_royal_revolt = {
+	transfer_of_power = hereditary
+
+	male_ruler = "RULER_TITLE_INFANTE"
+	female_ruler = "RULER_TITLE_INFANTE"
+	
+	male_heir = "RULER_TITLE_HEIR_APPARENT"
+	female_heir = "RULER_TITLE_HEIR_APPARENT"
+	
+	possible = {
+		exists = c:CAR
+		c:CAR = ROOT
+		has_law = law_type:law_monarchy
+	}
+}
+
 gov_vilayet = {								
 	transfer_of_power = dictatorial
 	

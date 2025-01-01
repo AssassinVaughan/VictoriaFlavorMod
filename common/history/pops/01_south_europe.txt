@@ -235,7 +235,7 @@
 		region_state:SPA = {
 			create_pop = {
 				culture = spanish
-				size = 1268400
+				size = 1333888
 			}
 		}
 	}
@@ -253,83 +253,171 @@
 		}
 	}
 	s:STATE_ASTURIAS = {
-		# please don't ask for a source
+	    # State changes were discarded but I'm just gonna go ahead with these numbers # added back some pop that were missing after state lost some provinces to STATE_CASTILLA_LA_VIEJA
 		region_state:SPA = {
 			create_pop = {
 				culture = spanish
-				size = 614264
+				size = 514264
 			}
 			create_pop = {
 				culture = basque
-				size = 32000
+				size = 27000
 			}
 		}	
 	}
 	s:STATE_CASTILE = {
+	    # added back some pop that were missing after state was changed, net gaining provinces
 		region_state:SPA = {
 			create_pop = {
 				culture = spanish
-				size = 1430808
+				size = 1298664
 			}
+		}
+		region_state:CAR = {
 			create_pop = {
-				culture = basque
-				size = 4000
+				culture = spanish
+				size = 747564
 			}
 		}
 	}
 	s:STATE_NAVARRA = {
-		region_state:SPA = {
+		region_state:CAR = {
 			create_pop = {
-				culture = spanish
-				size = 579200
+				culture = basque
+				size = 389200
 			}
 			create_pop = {
-				culture = catalan
-				size = 32220
+				culture = spanish
+				size = 212700
 			}
 			create_pop = {
 				culture = basque
-				size = 700060
+				size = 544808
+			}
+			create_pop = {
+				culture = spanish
+				size = 163128
 			}
 		}
 	}
 	s:STATE_ARAGON = {
+	    # removed some pop that were duplicated after state was split into regions states, state had 579k pops before split
 		region_state:SPA = {
 			create_pop = {
-				culture = spanish
-				size = 401200
-			}
-			create_pop = {
-				culture = basque
-				size = 100008
+				culture = afro_caribeno
+				pop_type = slaves
+				size = 350
 			}
 			create_pop = {
 				culture = catalan
-				size = 77996
+				size = 27500
+			}
+			create_pop = {
+				culture = romani
+				size = 3730
+			}
+			create_pop = {
+				culture = spanish
+				size = 187260
+			}
+		}
+		region_state:CAR = {
+			create_pop = {
+				culture = afro_caribeno
+				pop_type = slaves
+				size = 1500
+			}
+			create_pop = {
+				culture = catalan
+				size = 21970
+			}
+			create_pop = {
+				culture = romani
+				size = 2100
+			}
+			create_pop = {
+				culture = spanish
+				size = 333100
 			}
 		}
 	}
 	s:STATE_CATALONIA = {
+	    # removed some pop that were duplicated after state was split into regions states, state had 1021k pops before split
 		region_state:SPA = {
 			create_pop = {
+				culture = afro_caribeno
+				pop_type = slaves
+				size = 1270
+			}
+			create_pop = {
 				culture = catalan
-				size = 704308
+				size = 483700
+			}
+			create_pop = {
+				culture = romani
+				size = 640
 			}
 			create_pop = {
 				culture = spanish
-				size = 316804
+				size = 148800
+			}
+		}
+		region_state:CAR = {
+			create_pop = {
+				culture = afro_caribeno
+				pop_type = slaves
+				size = 100
+			}
+			create_pop = {
+				culture = catalan
+				size = 290000
+			}
+			create_pop = {
+				culture = french
+				size = 100
+			}
+			create_pop = {
+				culture = occitan
+				size = 13750
+			}
+			create_pop = {
+				culture = romani
+				size = 50
+			}
+			create_pop = {
+				culture = spanish
+				size = 80600
+			}
+		}
+		region_state:ANR = {
+			create_pop = {
+				culture = catalan
+				size = 5000
+			}
+			create_pop = {
+				culture = french
+				size = 100
 			}
 		}
 	}
 	s:STATE_BALEARES = {
 		region_state:SPA = {
 			create_pop = {
+				culture = berber
+				pop_type = slaves
+				size = 172
+			}
+			create_pop = {
 				culture = catalan
-				size = 145244
+				size = 149360
+			}
+			create_pop = {
+				culture = songhai
+				size = 388
 			}
 			create_pop = {
 				culture = spanish
-				size = 78020
+				size = 52240
 			}
 		}
 	}
@@ -375,11 +463,11 @@
 		region_state:SPA = {
 			create_pop = {
 				culture = spanish
-				size = 989604
+				size = 674456
 			}
 			create_pop = {
 				culture = catalan
-				size = 490392
+				size = 204808
 			}
 		}
 	}
