@@ -1,0 +1,33 @@
+﻿je_peru_restoration = { 
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+    group = je_group_internal_affairs
+	is_shown_when_inactive = {
+		c:NPU ?= THIS
+		exists = c:SPU
+	}
+
+	possible = {
+		is_subject_of = c:BOL
+	}
+
+	complete = {
+		is_subject = no 
+		OR = {
+			c:SPU = { is_subject = no }	
+		}
+	}
+
+	on_complete = {
+        annex = c:SPU
+	}
+
+	fail = {
+		OR = {
+			NOT = { exists = c:SPU }
+		}
+	}
+
+	weight = 10000
+
+	should_be_pinned_by_default = yes
+}
