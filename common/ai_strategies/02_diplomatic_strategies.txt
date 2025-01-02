@@ -28,7 +28,7 @@
 	}
 	
 	diplomatic_play_boldness = {
-		value = -25
+		value = -15
 	}
 	
 	recklessness = {
@@ -213,7 +213,7 @@ ai_strategy_territorial_expansion = {
 	}
 
 	building_group_weights = {
-		bg_army = 1.5
+		bg_army = 1.3
 	}
 	
 	secret_goal_weights = {
@@ -346,7 +346,7 @@ ai_strategy_colonial_expansion = {
 	}
 	
 	diplomatic_play_boldness = {
-		value = -15
+		value = -10
 	}
 	
 	recklessness = {
@@ -449,7 +449,7 @@ ai_strategy_colonial_expansion = {
 	}
 	
 	building_group_weights = {
-		bg_navy = 1.5
+		bg_navy = 1.3
 	}
 	
 	colonial_interest_ratio = {
@@ -682,7 +682,7 @@ ai_strategy_armed_isolationism = {
 	}
 	
 	building_group_weights = {
-		bg_army = 1.5
+		bg_army = 1.1
 	}
 	
 	secret_goal_weights = {
@@ -730,6 +730,11 @@ ai_strategy_armed_isolationism = {
 				}			
 			}
 			multiply = 0.1
+		}	
+
+        if = {
+			limit = { country_has_primary_culture = cu:north_german }
+			multiply = 0.5
 		}		
 
 		if = {
@@ -890,7 +895,7 @@ ai_strategy_economic_imperialism = {
 	}
 	
 	building_group_weights = {
-		bg_navy = 1.5
+		bg_navy = 1.25
 	}
 	
 	colonial_interest_ratio = {
