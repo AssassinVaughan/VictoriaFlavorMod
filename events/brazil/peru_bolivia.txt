@@ -4,9 +4,9 @@
 peru_bolivia_events.1 = {
 	type = country_event
 	placement = ROOT
-	title = peru_bolivia_events.1.t
-	desc = peru_bolivia_events.1.d
-	flavor =  peru_bolivia_events.1.f
+	title = peru_bolivia_confederation.8.t
+	desc = peru_bolivia_confederation.8.d
+	flavor =  peru_bolivia_confederation.8.f
 
 	duration = 3
 
@@ -68,7 +68,7 @@ peru_bolivia_events.1 = {
 	}
 
 	option = { # Annex Peru
-		name = peru_bolivia_events.1.a
+		name = peru_bolivia_confederation.8.a
 		ai_chance = {
 			base = 1
 		}
@@ -109,6 +109,14 @@ peru_bolivia_events.1 = {
 			}
 			annex = c:PEU
 		}
+		if = {
+			limit = {
+				NOT = {
+					has_law = law_type:law_confederated
+				}
+			}
+			activate_law = law_type:law_confederated
+		}
 		change_tag = PBC
 		root = {
 			save_scope_as = pbc_scope
@@ -126,7 +134,7 @@ peru_bolivia_events.1 = {
 }
 
 # Peru-Bolivia Startup
-peru_bolivia_events.2 = {
+peru_bolivia_events.2 = { #"peru_bolivia_events.2" doesn't fire in VFM and it's purpose is replaced by "peru_bolivia_confederation.2 " which fires after you defeat Salaverry at the starting civil war.
 	type = country_event
 	placement = ROOT
 	title = peru_bolivia_events.2.t
@@ -472,14 +480,68 @@ peru_bolivia_events.3 = {
 peru_bolivia_events.4 = {
 	type = country_event
 	placement = ROOT
-	title = peru_bolivia_events.4.t
-	desc = peru_bolivia_events.4.d
-	flavor =  peru_bolivia_events.4.f
+	title = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					c:CHL ?= THIS
+				}
+                desc = peru_bolivia_confederation.13.t
+			}
+            triggered_desc = {
+				every_country = {
+                    limit = {
+                        NOT = { this = c:CHL }
+                    }
+                    ROOT = THIS
+                }
+                desc = peru_bolivia_events.4.t
+			}
+		}
+	}
+    desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					c:CHL ?= THIS
+				}
+                desc = peru_bolivia_confederation.13.d
+			}
+            triggered_desc = {
+				every_country = {
+                    limit = {
+                        NOT = { this = c:CHL }
+                    }
+                    ROOT = THIS
+                }
+                desc = peru_bolivia_events.4.d
+			}
+		}
+	}
+    flavor = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					c:CHL ?= THIS
+				}
+                desc = peru_bolivia_confederation.13.f
+			}
+			triggered_desc = {
+				every_country = {
+                    limit = {
+                        NOT = { this = c:CHL }
+                    }
+                    ROOT = THIS
+                }
+                desc = peru_bolivia_events.4.f
+			}
+		}
+	}
 
 	duration = 3
 
 	event_image = {
-		video = "southamerica_aristocrats"
+		video = "unspecific_politicians_arguing"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -495,12 +557,21 @@ peru_bolivia_events.4 = {
 			ruler = {
 				save_scope_as = santa_cruz_scope
 			}
+			save_scope_as = bol_scope
+		}
+		c:PEU = {
+			save_scope_as = peu_scope
 		}
 		set_variable = { name = peru_bolivia_opposition_var value = 0 }
 	}
 
 	option = {
 		name = peru_bolivia_events.4.a
+		trigger = {
+			NOT = {
+				c:CHL ?= this
+			}
+		}
 		default_option = yes
 		ai_chance = {
 			base = 25
@@ -534,7 +605,71 @@ peru_bolivia_events.4 = {
 			    }
 			}
 		}
-		if = {
+		if = { #Why? Because goal_add_value causes wonky things if we tie it directly to this variable. TODO revisit when support for a static target value in JEs.
+			limit = {
+				exists = global_var:peru_bolivia_var
+			}
+			set_variable = { name = peru_bolivia_opposition_var value = global_var:peru_bolivia_var }
+		}
+	}
+
+	option = { #Portales and the Northern Threat
+		name = peru_bolivia_confederation.13.a
+		trigger = {
+			c:CHL ?= this
+		}
+		default_option = yes
+		ai_chance = {
+			base = 25
+			modifier = {
+				trigger = {
+					c:BOL = {
+						is_player = yes
+					}
+				}
+				add = 25
+			}
+		}
+		create_diplomatic_pact = {
+			country = c:BOL
+			type = rivalry
+		}
+        change_relations = { country = c:BOL value = -20 }
+        if = {
+            limit = {
+                c:CHL ?= THIS
+            }
+            add_loyalists = {
+			    strata = rich
+			    value = 0.05	
+			}
+		}
+		add_journal_entry = {
+			type = je_war_of_the_confederation
+		}
+		add_modifier = {
+			name = modifier_against_the_confederation
+			months = short_modifier_time
+		}
+		hidden_effect = {
+			c:BOL ?= {
+				set_mutual_secret_goal = {
+					country = root
+					secret_goal = antagonize
+				}
+			    every_subject_or_below = { # Wants to assist the subjects in attaining independence
+			        set_mutual_secret_goal = {
+			        	country = root
+			        	secret_goal = befriend
+			        }
+			    }
+				trigger_event = {
+					id = peru_bolivia_confederation.14
+					months = 10
+			    }
+			}
+		}
+		if = { #Why? Because goal_add_value causes wonky things if we tie it directly to this variable. TODO revisit when support for a static target value in JEs.
 			limit = {
 				exists = global_var:peru_bolivia_var
 			}
@@ -556,6 +691,23 @@ peru_bolivia_events.4 = {
 				set_mutual_secret_goal = {
 					country = root
 					secret_goal = befriend
+				}
+			}
+		}
+		if = {
+            limit = {
+                c:CHL ?= THIS
+            }
+            add_radicals = {
+                strata = rich
+                value = 0.2
+            }
+			hidden_effect = {
+				c:BOL ?= {
+					trigger_event = {
+						id = peru_bolivia_confederation.14
+						months = 10
+					}
 				}
 			}
 		}
