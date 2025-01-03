@@ -1337,3 +1337,64 @@
   chincha_events.2.f: "In Peru, a grievous affront has been committed against our noble nation. Spanish colonists, peacefully engaged in agriculture, were brutally attacked by Peruvian forces over a minor dispute. This barbarity, sanctioned by the Peruvian government, cannot be tolerated.\n\nOur compatriots, seeking prosperity in South America, were besieged. This stain upon Spain's honor demands swift redress. Should diplomacy fail, Spain must defend her honor and citizens.\n\nThe outrage at Talambo is a rallying cry for all Spaniards. Our honor is at stake. Spain never surrenders. Our resolve is unbreakable, our spirit indomitable. Justice must prevail."
   chincha_events.2.a: "The empire must strike back!"
   chincha_events.2.b: "We have to avoid the path to the dark side..."
+
+   ### AUSTRALIA FLAVOR ###
+
+  flavor_western_australia_events.1.t: "The Colony of [SCOPE.sCountry('was_country_scope').GetNameNoFlag]"
+  flavor_western_australia_events.1.d: "Our colony is anything but old, only being founded in the year 1829. As such, our current supplies and infrastructure leave something to be desired. To add more salt to the wound, [SCOPE.sCountry('was_country_scope').GetName] is the only free colony on the continent, barring us from the cheap labor the [Concept('concept_convict_system', 'Convict System')] provides our eastern cousins."
+  flavor_western_australia_events.1.f: "$FLAVOR_WIP$"
+  flavor_western_australia_events.1.a: "Penal colony or not, [SCOPE.sCountry('was_country_scope').GetNameNoFlag] will prosper!"
+
+  ## Convict System ##
+
+  flavor_australia_events.1.t: "The Convict System"
+  flavor_australia_events.1.d: "For all its existence, [SCOPE.sCountry('convict_country_scope').GetNameNoFlag] has been a location to send any British convict guilty of any of the nineteen crimes. This surplus of rowdy criminals is not only a hit to our reputation, but slowly stirring disapproval from the free populace."
+  flavor_australia_events.1.f: "The British established the first Australian settlement in the year 1788, shortly before the proclamation of the colony of New South Wales. Since then, thousands of convicts have arrived on the continent, enduring back-breaking labor for a chance at freedom. The colonial government would transport particularly rowdy convicts to Port Arthur, a high-security penal colony on the southeastern tip of Van Diemen’s Land."
+  flavor_australia_events.1.a: "If you cannot do the time, do not do the crime."
+  flavor_australia_events.2.t: "The Decay of Transportation"
+  flavor_australia_events.3.t: "Protests in [SCOPE.sState('ast_protest_scope').GetName]"
+  flavor_australia_events.3.d: "A city-wide protest has sprung up in our capital city, with most of the protestors calling for an end to convict transportation."
+  flavor_australia_events.3.f: "“The [SCOPE.sCountry('ast_protest_country_scope').GetNameNoFormatting] government wants us to live with crooks! Will we allow them? Absolutely not! They walk these streets robbing our stores and killing innocent men and women!”"
+  
+  ## Frontier Wars ##
+
+  journal_flavor_frontier_war_events.1.t: "The [SCOPE.sCountry('frontier_war_country_scope').GetAdjective] Frontier Wars"
+  journal_flavor_frontier_war_events.1.d_WAS: "[SCOPE.sCountry('frontier_war_country_scope').GetNameNoFlag] and the [SCOPE.sCountry('frontier_war_noongar_scope').GetName] have already had violent skurmishes in recent years, with the recent [Concept('concept_history_pinjarra', 'Pinjarra Massacre')] as proof. Further violence will hinder our young colony's ability to expand."
+  journal_flavor_frontier_war_events.1.d_NSW: "Ever since the foundation of the colony in 1788, [SCOPE.sCulture('frontier_war_aboriginals_scope').GetName] conflicts with [SCOPE.sCountry('frontier_war_country_scope').GetNameNoFlag] have been nothing but the norm. Even to this day, violent skirmishes have erupted between settlers and natives, with the most recent one at Darling River."
+  journal_flavor_frontier_war_events.1.f: "“Do you see those people over there? Those are the Aboriginals. Well, you see men, those are the enemy as sworn by the King. They seek nothing but our destruction!”\n\n “I don’t know, they seem pretty friendly to me…”\n\n “You dare defy the crown, boy?”"
+  journal_flavor_frontier_war_events.1.a: "It is our duty–as [SCOPE.sCountry('frontier_war_country_scope').GetNameNoFormatting]–to conquer Terra Australis."
+
+  journal_flavor_frontier_war_events.2.t: "At What Cost?"
+  journal_flavor_frontier_war_events.2.d: "$DESC_WIP$"
+  journal_flavor_frontier_war_events.2.f: "$FLAVOR_WIP$"
+  journal_flavor_frontier_war_events.2.a: "$OPTION_WIP$"
+
+  journal_flavor_frontier_war_events.3.t: "The South Australia Company"
+  journal_flavor_frontier_war_events.3.d: "$DESC_WIP$"
+  journal_flavor_frontier_war_events.3.f: "$FLAVOR_WIP$"
+  journal_flavor_frontier_war_events.3.a: "If the crown deems it so."
+  journal_flavor_frontier_war_events.3.b: "Adelaide will be our nation's beating heart!"
+
+  journal_flavor_frontier_war_events.4.t: "The Top End"
+  journal_flavor_frontier_war_events.4.d: "$DESC_WIP$"
+  journal_flavor_frontier_war_events.4.f: "$FLAVOR_WIP$"
+  journal_flavor_frontier_war_events.4.a: "If the crown deems it so."
+  journal_flavor_frontier_war_events.4.b: "Australia's future is in the north!"
+
+  journal_flavor_frontier_war_events.5.t: "[SCOPE.sCountry('aboriginal_sick_country_scope').GetCustom('frontier_wars_sickness')] Outbreak"
+  #[SCOPE.sCountry('raid_location_country_scope').GetAdjective]
+  journal_flavor_frontier_war_events.5.d: "$DESC_WIP$"
+  journal_flavor_frontier_war_events.5.f: "$FLAVOR_WIP$"
+  journal_flavor_frontier_war_events.5.a: "Well, they're not us."
+  journal_flavor_frontier_war_events.5.b: "Send our best doctors!"
+
+  journal_flavor_frontier_war_events.6.t: "The [SCOPE.sState('massacre_location_state_scope').GetName] Massacre"
+  journal_flavor_frontier_war_events.6.d: "$DESC_WIP$"
+  journal_flavor_frontier_war_events.6.f: "$FLAVOR_WIP$"
+  journal_flavor_frontier_war_events.6.a: "Thoughts and prayers..."
+
+  journal_flavor_frontier_war_events.7.t: "[SCOPE.sCountry('raid_location_country_scope').GetAdjective] raids in [SCOPE.sCountry('raid_location_state_scope').GetAdjective]"
+  journal_flavor_frontier_war_events.7.d: "$DESC_WIP$"
+  journal_flavor_frontier_war_events.7.f: "$FLAVOR_WIP$"
+  journal_flavor_frontier_war_events.7.a: "So they want to play dirty, hmm?"
+  journal_flavor_frontier_war_events.7.b: "Well, we are only guests in this land."
