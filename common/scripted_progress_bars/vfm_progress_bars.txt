@@ -1,0 +1,25 @@
+﻿ ### For je_convict_system
+
+convict_system_progress_bar = {
+	name = "convict_system_progress_bar"
+	desc = "convict_system_progress_bar_free_desc"
+
+	default_green = yes
+
+	monthly_progress = {
+		if = {
+			limit = {
+				has_journal_entry = je_convict_system
+			}
+			add = {
+				desc = "convict_progress_from_assist"
+				value = owner.var:swaying_settlers_var
+			}
+		}
+	}
+
+	start_value = 10
+	min_value = 0
+	max_value = 300
+
+}

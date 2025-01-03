@@ -1,4 +1,162 @@
-﻿
+﻿je_sway_settlers_button = {
+	name = {
+		triggered_desc = {
+			desc = "je_sway_settlers_button_1"
+			trigger = {
+				NOT = {
+					has_variable = swaying_settlers_var
+				}
+			}
+		}
+		triggered_desc = {
+			desc = "je_sway_settlers_button_2"
+			trigger = {
+				has_variable = swaying_settlers_var
+			}
+		}
+	}
+	desc = {
+		triggered_desc = {
+			desc = "je_sway_settlers_button_1_desc"
+			trigger = {
+				NOT = {
+					has_variable = swaying_settlers_var
+				}
+			}
+		}
+		triggered_desc = {
+			desc = "je_sway_settlers_button_2_desc"
+			trigger = {
+				has_variable = swaying_settlers_var
+			}
+		}
+	}	
+	visible = {
+		always = yes
+	}
+
+	possible = {
+	}
+
+	effect = {
+		if = {
+			limit = {
+				has_variable = swaying_settlers_var
+			}
+			remove_variable = swaying_settlers_var
+			remove_modifier = colonial_boom
+		}
+		else = {
+			set_variable = {
+				name = swaying_settlers_var
+				value = 1
+			}
+			add_modifier = {
+				name = colonial_boom
+			}
+		}
+	}
+
+	ai_chance = {
+		base = 0
+		#Doesn't have button, is Liberal
+		modifier = {
+			trigger = {
+				AND = {
+					has_strategy = ai_strategy_progressive_agenda
+					NOT = { has_variable = swaying_settlers_var }
+				}
+			}
+			add = 50
+		}
+		#Has button, is liberal
+		modifier = {
+			trigger = {
+				AND = {
+					has_strategy = ai_strategy_progressive_agenda
+					has_variable = swaying_settlers_var
+				}
+			}
+			subtract = 50
+		}
+		#Has button, running bureaucracy deficit
+		modifier = {
+			trigger = {
+				AND = {
+					bureaucracy < 0
+					has_variable = importing_convicts_var
+				}
+			}
+			add = 100
+		}
+		#Doesn't have button, running bureaucracy deficit
+		modifier = {
+			trigger = {
+				AND = {
+					bureaucracy < 0
+					NOT = { has_variable = importing_convicts_var }
+				}
+			}
+			subtract = 100
+		}
+	}
+}
+
+je_end_assignment_button = {
+	name = "je_end_assignment_button"
+	desc = "je_end_assignment_button_desc"
+
+	visible = {
+	}
+
+	possible = {
+		custom_tooltip = {
+			text = ast_convict_button_3_tt
+			has_law = law_type:law_debt_slavery
+		}
+		custom_tooltip = {
+			text = ast_convict_button_4_tt
+			NOT = { has_variable = cannot_end_assignment }
+		}
+	}
+
+	effect = {
+		trigger_event = {
+			id = flavor_australia_events.2
+		}
+	}
+
+	ai_chance = {
+		base = 0
+	}
+}
+
+je_reform_land_use_button = {
+	name = "je_reform_land_use_button"
+	desc = "je_reform_land_use_button_desc"
+
+	visible = {
+		always = yes
+	}
+
+	possible = {
+		custom_tooltip = {
+			text = ast_convict_button_1_tt
+			NOT = { has_law = law_type:law_debt_slavery }
+		}
+	}
+
+	effect = {
+		trigger_event = {
+			id = flavor_australia_events.2
+		}
+	}
+
+	ai_chance = {
+		base = 0
+	}
+}
+
 je_australia_aus_claim_eastern_new_guinea_button = {
 	name = "je_australia_aus_claim_eastern_new_guinea_button"
 	desc = "je_australia_aus_claim_eastern_new_guinea_button_desc"
