@@ -1,4 +1,96 @@
-﻿je_peru_restoration = { 
+﻿je_peru_bolivia_the_feeble_union = { 
+	icon = "gfx/interface/icons/event_icons/event_fire.dds"
+    group = je_group_internal_affairs
+	
+	immediate = {
+		ROOT = {
+			save_scope_as = bol_scope
+		}
+
+	    if = { 
+			limit = {
+	   			c:NPU ?= {
+					is_subject_of = ROOT
+				}
+			}
+			c:NPU = {
+				save_scope_as = npu_scope
+			}
+		}
+		else_if = { 
+			limit = {
+	   			c:PEU ?= {
+					is_subject_of = ROOT
+				}
+			}
+			c:PEU = {
+				save_scope_as = npu_scope
+			}
+		}
+	}
+
+	is_shown_when_inactive = {
+        c:BOL ?= THIS
+		OR = {
+			c:PEU ?= {
+				is_subject_of = c:BOL
+			}
+			c:NPU ?= {
+				is_subject_of = c:BOL
+			}
+		}
+		
+	}
+
+	possible = {
+		OR = {
+			c:PEU ?= {
+				relations:root < relations_threshold:cordial
+			}
+			c:NPU ?= {
+				relations:root < relations_threshold:cordial
+			}
+		}
+	}
+
+	complete = {
+		scope:npu_scope = {
+			liberty_desire >= 75
+		}
+	}
+
+	on_complete = {
+		custom_tooltip = {
+			text = peru_bolivia_feeble_union_tt
+			scope:npu_scope = {
+				trigger_event = {
+					id = journal_flavor_peru.1
+				}
+			}
+		}
+	}
+
+	fail = {
+		scope:npu_scope = {
+			OR = {
+				NOT = {
+					is_subject_of = c:BOL
+
+				}
+				custom_tooltip = {
+					text = peru_bolivia_feeble_union_f
+					is_diplomatic_play_enemy_of = c:BOL
+				}
+			}
+		}
+	}
+
+	weight = 10000
+
+	should_be_pinned_by_default = yes
+}
+
+je_peru_restoration = { 
 	icon = "gfx/interface/icons/event_icons/event_scales.dds"
     group = je_group_internal_affairs
 	is_shown_when_inactive = {
