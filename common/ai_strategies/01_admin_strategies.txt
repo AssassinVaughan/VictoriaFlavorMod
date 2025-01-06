@@ -32,7 +32,7 @@
 	}
 	
 	weight = {
-		value = 10		
+		value = 20		
 
 		if = {
 			limit = { 
@@ -83,6 +83,13 @@
 			}
 			multiply = 1.5
 		}
+
+        if = {
+			limit = { 
+				OR = { has_law = law_type:law_industry_banned has_law = law_type:law_agrarianism has_law = law_type:law_traditionalism }
+			}
+			multiply = 1.25
+		}	
 
 		if = {
 			limit = {
@@ -157,7 +164,7 @@ ai_strategy_plantation_economy = {
 					capital.region = sr:region_dixie
 				}
 			}
-			add = 10
+			add = 15
 		}
 
 		if = {
@@ -172,7 +179,20 @@ ai_strategy_plantation_economy = {
 			}
 			multiply = 1.5
 		}	
-		
+
+        if = {
+			limit = { 
+				OR = { has_law = law_type:law_extraction_economy has_law = law_type:law_slave_trade has_law = law_type:law_legacy_slavery }
+			}
+			multiply = 1.5
+		}	
+        else_if = {
+			limit = { 
+				OR = { has_law = law_type:law_industry_banned has_law = law_type:law_agrarianism }
+			}
+			multiply = 1.25
+		}	
+	
 		if = {
 			limit = {
 				has_journal_entry = je_agricultural_development
@@ -218,7 +238,17 @@ ai_strategy_resource_expansion = {
 	}
 	
 	weight = {
-		value = 10		
+		value = 15		
+		
+		if = {
+			limit = { 
+				OR = {
+					country_is_in_europe = yes
+					country_is_in_north_america = yes
+				}
+			}
+			add = 5
+		}
 		
 		if = {
 			limit = {
@@ -390,7 +420,7 @@ ai_strategy_industrial_expansion = {
 					country_is_in_north_america = yes
 				}
 			}
-			add = 10
+			add = 15
 		}
 		
 		if = {
@@ -507,7 +537,7 @@ ai_strategy_placate_population = {
 	}
 	
 	weight = {
-		value = 5
+		value = 7
 		
 		if = {
 			limit = { has_law = law_type:law_traditionalism }
