@@ -555,7 +555,28 @@ peru_bolivia_events.4 = {
 			}
 			save_scope_as = bol_scope
 		}
-		c:PEU = {
+		if = {
+			limit = {
+				c:PEU ?= {
+					is_subject_of = c:BOL
+				}
+			}
+			save_scope_as = peu_scope
+		}
+		if = {
+			limit = {
+				c:NPU ?= {
+					is_subject_of = c:BOL
+				}
+			}
+			save_scope_as = peu_scope
+		}
+		if = {
+			limit = {
+				c:SPU ?= {
+					is_subject_of = c:BOL
+				}
+			}
 			save_scope_as = peu_scope
 		}
 		set_variable = { name = peru_bolivia_opposition_var value = 0 }
@@ -636,7 +657,7 @@ peru_bolivia_events.4 = {
                 c:CHL ?= THIS
             }
             add_loyalists = {
-			    strata = rich
+			    strata = upper
 			    value = 0.05	
 			}
 		}
@@ -695,7 +716,7 @@ peru_bolivia_events.4 = {
                 c:CHL ?= THIS
             }
             add_radicals = {
-                strata = rich
+                strata = upper
                 value = 0.2
             }
 			hidden_effect = {
