@@ -786,7 +786,19 @@ peru_bolivia_events.5 = {
 			name = modifier_confederation_war_success
 			months = normal_modifier_time
 		}
-		add_technology_progress = { progress = 3000 technology = nationalism }
+		
+		if = {
+			limit = {
+				can_research = nationalism
+			}
+			add_technology_progress = { progress = 3000 technology = nationalism }
+		}
+		else_if = {
+			limit = {
+				can_research = mass_communication
+			}
+			add_technology_progress = { progress = 3000 technology = mass_communication }
+		}
 	}
 }
 

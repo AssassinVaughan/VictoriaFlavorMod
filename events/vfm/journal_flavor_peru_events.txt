@@ -28,11 +28,21 @@ journal_flavor_peru.1 = {
 		c:BOL = {
 			save_scope_as = bol_scope
 		}
-		c:SPU = {
-			save_scope_as = spu_scope
-		}		
-		c:IQU = {
-			save_scope_as = iqu_scope
+		if = { 
+			limit = {
+	   			exists = c:SPU
+			}
+			c:SPU ?= {
+				save_scope_as = spu_scope
+			}
+		}	
+		if = { 
+			limit = {
+	   			exists = c:IQU
+			}
+			c:IQU ?= {
+				save_scope_as = iqu_scope
+			}
 		}		
 	}
 
@@ -41,12 +51,11 @@ journal_flavor_peru.1 = {
 		name = journal_flavor_peru.1.a
 
 		hidden_effect = {
-			c:PEU = {
-				set_strategy = ai_strategy_restore_peruvian_sovereignty
-			}
-
-			c:NPU = {
-				set_strategy = ai_strategy_restore_peruvian_sovereignty
+			if = { 
+				limit = {
+	   				is_ai = yes
+				}
+				#set_strategy = ai_strategy_restore_peruvian_sovereignty # This is not really needed? This is triggered for NPU, which cant even use the ai_strategy...
 			}
 
 
@@ -76,7 +85,12 @@ journal_flavor_peru.1 = {
 				}
 			}
 		}
-
+		
+		if = { 
+			limit = {
+	   			exists = c:SPU
+				exists = c:IQU
+			}
 		create_diplomatic_play = {
 			name = confederation_war
 			target_country = c:BOL
@@ -85,15 +99,52 @@ journal_flavor_peru.1 = {
 			war = no
 
 			add_war_goal = {
-				holder = c:NPU
+				holder = ROOT
 				type = annex_country
 				target_country = scope:iqu_scope	
 			}	
 			add_war_goal = {
-				holder = c:NPU
+				holder = ROOT
 				type = annex_country
 				target_country = scope:spu_scope
-			}            
+			}  		            
+		}
+		}
+		else_if = { 
+			limit = {
+	   			exists = c:SPU
+			}
+		create_diplomatic_play = {
+			name = confederation_war
+			target_country = c:BOL
+			type = dp_independence	
+
+			war = no
+
+			add_war_goal = {
+				holder = ROOT
+				type = annex_country
+				target_country = scope:spu_scope
+			}  		            
+		}
+		}
+		else_if = { 
+			limit = {
+	   			exists = c:IQU
+			}
+		create_diplomatic_play = {
+			name = confederation_war
+			target_country = c:BOL
+			type = dp_independence	
+
+			war = no
+
+			add_war_goal = {
+				holder = ROOT
+				type = annex_country
+				target_country = scope:iqu_scope	
+			} 		            
+		}
 		}
 
 		c:CHL = {
