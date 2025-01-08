@@ -1,6 +1,6 @@
 ﻿namespace = journal_flavor_peru
 
-# Trigered by Bolivias 'feeble union' JE for npu_scope
+# Trigered by Bolivias 'feeble union' JE for npu_scope #Have to make this available for both PEU and NPU
 journal_flavor_peru.1 = {
 	type = country_event
 	placement = ROOT
@@ -61,7 +61,7 @@ journal_flavor_peru.1 = {
 
 			create_character = {
 				first_name = Agustin
-				last_name = gamarra
+				last_name = Gamarra
 				historical = yes
 				interest_group = ig_armed_forces
 				birth_date = 1785.08.27
@@ -147,12 +147,12 @@ journal_flavor_peru.1 = {
 		}
 		}
 
-		c:CHL = {
-			trigger_event = { # this event does not exist???
-				id = journal_flavor_chile.14
-				days = 7
-			}
-		}									
+		#c:CHL = {
+		#	trigger_event = { 
+		#		id = journal_flavor_chile.14 #Depricated event, maybe will reintroduce later
+		#		days = 7
+		#	}
+		#}									
 
 		change_relations = {
 			country = c:CHL
@@ -186,7 +186,7 @@ journal_flavor_peru.1 = {
 }
 
 # Yes lets start the war of the confederations, still npu_scope
-# but this creates gamarra again? is this some trick?
+# but this creates gamarra again? is this some trick? #Yes, first Gamarra is used for event_window_1char_tabloid, second one is the legit Gamarra 
 journal_flavor_peru.2 = {
 	type = country_event
 	placement = ROOT
@@ -224,7 +224,7 @@ journal_flavor_peru.2 = {
 
 		create_character = {
 			first_name = Agustin
-			last_name = gamarra
+			last_name = Gamarra
 			historical = yes
 			ig_leader = yes
 			interest_group = ig_armed_forces
@@ -250,7 +250,7 @@ journal_flavor_peru.2 = {
 	}
 }
 
-journal_flavor_peru.3 = {
+journal_flavor_peru.3 = { #Guano Era event, nothing to do with PBC
 	type = country_event
 	placement = ROOT
 
