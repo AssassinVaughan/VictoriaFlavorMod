@@ -25,32 +25,43 @@ peru_bolivia_events.1 = {
 	immediate = {
 		if = {
 			limit = {
-				any_state = {
-					state_region = s:STATE_AREQUIPA
-					owner = {
-						has_variable = pbc_member
+				any_subject_or_below = {
+					has_variable = pbc_member
+					any_scope_state = {
+						state_region = s:STATE_AREQUIPA
 					}
 				}
 			}
-			random_state = {
+			random_subject_or_below = {
+				limit = {
+					has_variable = pbc_member
+					any_scope_state = {
+						state_region = s:STATE_AREQUIPA
+					}					
+				}
+				random_scope_state = {
+					limit = {
+						state_region = s:STATE_AREQUIPA
+					}
+					save_scope_as = arequipa_state	
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				any_scope_state = {
+					state_region = s:STATE_AREQUIPA
+				}
+			}
+			random_scope_state = {
 				limit = {
 					state_region = s:STATE_AREQUIPA
-					owner = {
-						has_variable = pbc_member
-					}
 				}
-				save_scope_as = arequipa_state
+				save_scope_as = arequipa_state	
 			}
 		}
 		else = {
-			ordered_state = {
-				limit = {
-					owner = {
-						has_variable = pbc_member
-					}
-					state_is_in_south_america = yes
-					is_incorporated = yes
-				}
+			capital = {
 				save_scope_as = arequipa_state
 			}
 		}
@@ -65,7 +76,6 @@ peru_bolivia_events.1 = {
 		if = {
 			limit = {
 				c:NPU ?= {
-					is_player = no
 					is_subject_of = c:BOL
 				}
 			}
@@ -74,7 +84,6 @@ peru_bolivia_events.1 = {
 		if = {
 			limit = {
 				c:SPU ?= {
-					is_player = no
 					is_subject_of = c:BOL
 				}
 			}
@@ -83,7 +92,6 @@ peru_bolivia_events.1 = {
 		if = {
 			limit = {
 				c:IQU ?= {
-					is_player = no
 					is_subject_of = c:BOL
 				}
 			}
@@ -92,7 +100,6 @@ peru_bolivia_events.1 = {
 		if = {
 			limit = {
 				c:PEU ?= {
-					is_player = no
 					is_subject_of = c:BOL
 				}
 			}
@@ -123,7 +130,7 @@ peru_bolivia_events.1 = {
 }
 
 # Peru-Bolivia Startup
-peru_bolivia_events.2 = {
+peru_bolivia_events.2 = { #"peru_bolivia_events.2" doesn't fire in VFM and it's purpose is replaced by "peru_bolivia_confederation.2 " which fires after you defeat Salaverry at the starting civil war.
 	type = country_event
 	placement = ROOT
 	title = peru_bolivia_events.2.t
@@ -142,13 +149,13 @@ peru_bolivia_events.2 = {
 	icon = "gfx/interface/icons/event_icons/event_military.dds"
 
 	trigger = {
-		c:PEU ?= {
+		c:NPU ?= {
 			is_subject_of = ROOT
 		}
 	}
 
 	immediate = {
-		c:PEU = {
+		c:NPU = {
 			save_scope_as = peru_country
 		}
 		# Armed Forces
@@ -210,7 +217,7 @@ peru_bolivia_events.2 = {
 		custom_tooltip = {
 			text = salaverry_exile_tt
 		}
-		c:PEU = {
+		c:NPU = {
 			add_radicals = {
 				value = small_radicals
 			}
@@ -530,13 +537,12 @@ peru_bolivia_events.4 = {
 	duration = 3
 
 	event_image = {
-		video = "gfx/event_pictures/unspecific_politicians_arguing.bk2"
+		video = "unspecific_politicians_arguing"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
-	on_opened_soundeffect = "event:/SFX/Events/unspecific/politicians_arguing"
 
-	icon = "gfx/interface/icons/event_icons/event_flags/event_chl_flag.dds"
+	icon = "gfx/interface/icons/event_icons/waving_flag.dds"
 
 	trigger = {
 
@@ -630,7 +636,7 @@ peru_bolivia_events.4 = {
                 c:CHL ?= THIS
             }
             add_loyalists = {
-			    strata = rich
+			    strata = upper
 			    value = 0.05	
 			}
 		}
@@ -689,7 +695,7 @@ peru_bolivia_events.4 = {
                 c:CHL ?= THIS
             }
             add_radicals = {
-                strata = rich
+                strata = upper
                 value = 0.2
             }
 			hidden_effect = {
@@ -715,7 +721,6 @@ peru_bolivia_events.4 = {
 			NOR = {
 				c:CHL ?= this
 				c:ARG ?= this
-				c:BUE ?= this
 			}
 		}
 		ai_chance = {
@@ -1008,7 +1013,7 @@ peru_bolivia_events.8 = {
 		}
 		add_radicals = {
 			value = medium_radicals
-			strata = rich
+			strata = upper
 		}
 	}
 }

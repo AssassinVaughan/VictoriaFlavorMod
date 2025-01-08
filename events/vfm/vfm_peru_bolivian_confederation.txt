@@ -393,17 +393,19 @@ peru_bolivia_confederation.3 = { #Division of Peru
 		c:PEU = {
 			random_scope_state = {
 				limit = {
+				    OR = {
 					state_region = s:STATE_AREQUIPA
 					state_region = s:STATE_ICA
 					state_region = s:STATE_TARAPACA
+					}
 				}
 			}	
 			add_radicals = {
-				strata = poor 
+				strata = lower 
 				value = 0.2
 			}
 			add_radicals = {
-				strata = rich 
+				strata = upper
 				value = 0.03
 			}
 		}
@@ -545,11 +547,11 @@ peru_bolivia_confederation.4 = { #South Peru Declaration of Independence
 		c:SPU = {
 			set_next_election_date = "1837.9.17"
 			add_loyalists = {
-				strata = poor
+				strata = lower
 				value = 0.6
 			}
 			add_loyalists = {
-				strata = rich
+				strata = upper
 				value = 0.3
 			}
 			create_character = {
@@ -826,11 +828,11 @@ peru_bolivia_confederation.10 = { #Peru - Aliaga
 			value = -20
 		}
 		add_loyalists = {
-			strata = rich
+			strata = upper
 			value = 0.15
 		}
 		add_radicals = {
-			strata = poor
+			strata = lower
 			value = 0.05
 		}
 		c:BOL = {
@@ -853,7 +855,7 @@ peru_bolivia_confederation.10 = { #Peru - Aliaga
 			value = -10
 		}
 		add_radicals = {
-			strata = rich
+			strata = upper
 			value = 0.1
 		}
 		c:BOL = {

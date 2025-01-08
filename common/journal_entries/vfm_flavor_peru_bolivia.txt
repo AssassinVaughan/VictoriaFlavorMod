@@ -98,12 +98,12 @@ je_peru_restoration = {
 	icon = "gfx/interface/icons/event_icons/event_scales.dds"
     group = je_group_internal_affairs
 	is_shown_when_inactive = {
-		c:PEU ?= THIS
+		c:NPU ?= THIS
 		exists = c:SPU
 	}
 
 	possible = {
-		is_subject_type = subject_type_confederative_partner
+		has_war_with = c:BOL
 	}
 
 	complete = {
@@ -121,10 +121,6 @@ je_peru_restoration = {
 		OR = {
 			NOT = { exists = c:SPU }
 		}
-	}
-
-	goal_add_value = {
-		value = 120
 	}
 
 	weight = 10000
