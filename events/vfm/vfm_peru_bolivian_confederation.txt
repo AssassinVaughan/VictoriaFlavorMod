@@ -485,28 +485,27 @@ peru_bolivia_confederation.4 = { #South Peru Declaration of Independence
 		}
 		hidden_effect = {
             c:SPU = { 
-				add_modifier = {
-			      name = age_of_caudillos_modifier
-			      months = very_long_modifier_time
-			      is_decaying = yes
-		        }
-
-				ig:ig_armed_forces = {
-					 
-				}
-		
 				ig:ig_intelligentsia = {
 					remove_ideology = ideology_liberal
-					add_ideology = ideology_liberalismo
+					remove_ideology = ideology_anti_clerical
+					add_ideology = ideology_criollo_liberal
+					add_ideology = ideology_secularist
 					add_ideology = ideology_soberania_aristocratica
+					add_ruling_interest_group = yes
 				}
 
 				ig:ig_landowners = {
-					add_ruling_interest_group = yes
 					remove_ideology = ideology_republican_paternalistic
 					remove_ideology = ideology_stratocratic
-					add_ideology = ideology_conservadurismo
+					add_ideology = ideology_criollo_paternalistic
+					add_ideology = ideology_criollo_stratocratic
 					add_ideology = ideology_soberania_aristocratica
+					add_modifier = { #Consequence of the Peruvian Civil War of 1834
+						name = revolution_lost_ig
+						multiplier = 0.74
+						months = normal_modifier_time
+						is_decaying = yes
+					}
 				}
 
 				ig:ig_rural_folk = {
@@ -522,6 +521,10 @@ peru_bolivia_confederation.4 = { #South Peru Declaration of Independence
 				ig:ig_petty_bourgeoisie = {
 					remove_ideology = ideology_reactionary
 					add_ideology = ideology_artesanado
+				}
+
+				add_modifier = {
+					name = age_of_caudillos_modifier
 				}
 
 				random_scope_state = {
