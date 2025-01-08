@@ -571,14 +571,6 @@ peru_bolivia_events.4 = {
 			}
 			save_scope_as = peu_scope
 		}
-		else_if = {
-			limit = {
-				c:SPU ?= {
-					is_subject_of = c:BOL
-				}
-			}
-			save_scope_as = peu_scope
-		}
 		set_variable = { name = peru_bolivia_opposition_var value = 0 }
 	}
 
