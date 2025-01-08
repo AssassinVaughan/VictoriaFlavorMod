@@ -727,9 +727,9 @@ ai_strategy_default = {
 		if = {
 			limit = {
 				exists = c:SPA
-				exists = c:CAR
+				exists = c:_CAR
 				c:SPA = this
-				has_war_with = c:CAR
+				has_war_with = c:_CAR
 			}
 			add = 50
 		}
