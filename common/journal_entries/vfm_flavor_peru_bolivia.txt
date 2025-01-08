@@ -114,11 +114,12 @@ je_peru_restoration = {
 	}
 
 	on_complete = {
-        annex = c:SPU
+        annex = c:SPU # this should rather fire an event that does a cleanup
 	}
 
 	fail = {
 		OR = {
+		    NOT = { exists = c:BOL }
 			NOT = { exists = c:SPU }
 		}
 	}

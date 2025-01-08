@@ -67,17 +67,16 @@ NAI = {
 	
 	PRODUCTION_BUILDING_FREE_INFRASTRUCTURE_TARGET_WHEN_LACKING_WORKFORCE = 2 # When lacking workforce, the AI will stop building in the state once available infrastructure is this or less
 	
-	CHANGE_LAW_POLITICAL_MOVEMENT_SUPPORT_FACTOR = 3 #2 Scales with movement support for movement that wants to enact the law
-	CHANGE_LAW_POLITICAL_MOVEMENT_RADICALISM_FACTOR = 9 #6 Scales with movement radicalism for movement that wants to enact the law
-	
-	PRODUCTION_METHOD_PROFIT_FACTOR = 1.75 #1.0 Per pound of profit the produced goods would generate
-	PRODUCTION_METHOD_DEFICIT_FACTOR = 1.4 #1.5 Per pound of deficit the produced goods would generate (multiplies a negative value)
+	PRODUCTION_METHOD_PROFIT_FACTOR = 1.5 #1.0 Per pound of profit the produced goods would generate
 	PRODUCTION_METHOD_CHANCE_TO_CHANGE = 0.2 # Chance that the AI will consider changing a production method when evaluating methods
 	
-	PRODUCTION_METHOD_REDUCE_OUTPUT_PENALTY_FACTOR = 5 #10 Multiply method score by this if we're reducing the building's output penalties
+	PRODUCTION_METHOD_REDUCE_OUTPUT_PENALTY_FACTOR = 3 #10 Multiply method score by this if we're reducing the building's output penalties
 	PRODUCTION_METHOD_INCREASE_OUTPUT_PENALTY_FACTOR = 0.45 #0.01 # Multiply method score by this if we're increasing the building's output penalties
 	
 	PRODUCTION_BUILDING_INCREASE_SHORTAGE_MULT = 0.25 #0.01 Multiply score by this if we're increasing the state region's shortages
+	
+	PRODUCTION_BUILDING_AUTONOMOUS_INVESTMENT_MILITARY_GOODS_FACTOR_MULT = 1.2 # Multiplies PRODUCTION_BUILDING_OUTPUT_NEEDED_MILITARY_GOODS_FACTOR & PRODUCTION_BUILDING_OUTPUT_WANTED_MILITARY_GOODS_FACTOR for autonomous investment pool constructions
+	PRODUCTION_BUILDING_AUTONOMOUS_INVESTMENT_INDUSTRIAL_GOODS_FACTOR_MULT = 3.0 # Multiplies PRODUCTION_BUILDING_OUTPUT_NEEDED_INDUSTRIAL_GOODS_FACTOR & PRODUCTION_BUILDING_OUTPUT_WANTED_INDUSTRIAL_GOODS_FACTOR for autonomous investment pool constructions
 	
 	# Government construction applies this multiplier to domestic states when determining where to construct
 	GOVERNMENT_CONSTRUCTION_DOMESTIC_INVESTMENT_BIAS = 2.2 #2.0 VFM Favor domestic more over foreign

@@ -44,7 +44,7 @@ drought = {
 	intensity = {
 		fixed_range = {
 			min = 2
-			max = 6
+			max = 7
 		}
 	}
 
@@ -60,13 +60,13 @@ drought = {
 			limit = {
 				has_harvest_condition = heatwave
 			}
-			multiply = 2
+			multiply = 2.2
 		}
 		if = {
 			limit = {
 				is_extra_vulnerable_to_heatwaves = yes
 			}
-			multiply = 1.5
+			multiply = 1.7
 		}
 	}
 
@@ -396,7 +396,7 @@ locust_swarm = {
 	}
 
 	chance = {
-		value = 0.0015
+		value = 0.0017
 	}
 
 	color = { 184 121 0 }
@@ -443,7 +443,7 @@ heatwave = {
 	intensity = {
 		fixed_range = {
 			min = 2
-			max = 4
+			max = 5
 		}
 	}
 
@@ -459,7 +459,7 @@ heatwave = {
 			limit = {
 				is_extra_vulnerable_to_heatwaves = yes
 			}
-			multiply = 1.4
+			multiply = 1.6
 		}
 	}
 

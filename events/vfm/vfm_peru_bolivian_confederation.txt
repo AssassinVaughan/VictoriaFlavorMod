@@ -1066,6 +1066,7 @@ peru_bolivia_confederation.14 = { #Kill Portales Plot
 	}
 }
 
+# This fires for Chile (CHL)
 peru_bolivia_confederation.15 = { #Death of Portales
 
 	type = country_event
@@ -1112,8 +1113,8 @@ peru_bolivia_confederation.15 = { #Death of Portales
 		add_loyalists = {
 			value = 0.05
 		}
-
-		c:BOL = {
+		
+		c:BOL ?= {
 			post_notification = rumors_have_spread_of_bolivias_involvement
 		}
 	}
@@ -1129,6 +1130,7 @@ peru_bolivia_confederation.15 = { #Death of Portales
 	}
 }
 
+# This fires for Chile (CHL)
 peru_bolivia_confederation.16 = { #Proof of Santa Cruz's involvement in the plot
 	
 	type = country_event
@@ -1162,7 +1164,7 @@ peru_bolivia_confederation.16 = { #Proof of Santa Cruz's involvement in the plot
 			value = -50
 		}
 
-		c:BOL = {
+		c:BOL ?= {
 			post_notification = chile_found_proof_of_the_plot
 			change_infamy = 25
 		}
