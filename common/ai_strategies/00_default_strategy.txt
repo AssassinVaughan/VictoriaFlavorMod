@@ -919,7 +919,7 @@ ai_strategy_default = {
 				}
 			}
 			
-			add = 50
+			add = 40
 		}
 
 		if = { # Isolationist Japan should tend to back down against market opening plays
@@ -1112,7 +1112,7 @@ ai_strategy_default = {
 					}
 				}
 			}
-			add = 0.18
+			add = 0.14
 		}
 
 		# USA should Manifest a lot of Destiny
@@ -2808,8 +2808,6 @@ ai_strategy_default = {
 							scope:target_country = {
 								OR = {
 									has_state_in_state_region = STATE_ADANA
-									has_state_in_state_region = STATE_TRANSJORDAN
-									has_state_in_state_region = STATE_PALESTINE
 									has_state_in_state_region = STATE_LEBANON
 									has_state_in_state_region = STATE_SYRIA
 									has_state_in_state_region = STATE_ALEPPO
@@ -2820,6 +2818,8 @@ ai_strategy_default = {
 							has_journal_entry = je_sick_man_egypt
 							scope:target_country = {
 								OR = {
+									has_state_in_state_region = STATE_TRANSJORDAN
+									has_state_in_state_region = STATE_PALESTINE
 									has_state_in_state_region = STATE_SINAI
 									has_state_in_state_region = STATE_UPPER_EGYPT
 									has_state_in_state_region = STATE_MIDDLE_EGYPT
@@ -2829,7 +2829,7 @@ ai_strategy_default = {
 						}
 					}
 				}
-				add = 5
+				add = 4
 			}
 
 			# USA should be confident against owners of their Manifest Destiny states
@@ -4821,7 +4821,7 @@ ai_strategy_default = {
 						is_adjacent_to_country = c:EGY
 					}					
 				}
-				add = 1000
+				add = 500
 			}
 		}	
 		region_caucasus = {
@@ -4848,7 +4848,7 @@ ai_strategy_default = {
 						is_adjacent_to_country = c:EGY
 					}					
 				}
-				add = 1000
+				add = 500
 			}
 		}
 		region_oceania = {	
@@ -4907,7 +4907,7 @@ ai_strategy_default = {
 						is_adjacent_to_country = c:EGY
 					}					
 				}
-				add = 1000
+				add = 500
 			}		
 			if = {
 				limit = {
@@ -5066,7 +5066,7 @@ ai_strategy_default = {
 						is_adjacent_to_country = c:EGY
 					}					
 				}
-				add = 1000
+				add = 500
 			}		
 			if = {
 				limit = {

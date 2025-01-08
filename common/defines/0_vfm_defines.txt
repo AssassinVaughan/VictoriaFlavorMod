@@ -30,7 +30,16 @@ NAI = {
 	DIPLO_PLAY_SAME_POWER_BLOC_INITIATOR_FACTOR = 25 #15 Added to desire for fellow power bloc member of initiator to join their side
 	DIPLO_PLAY_SAME_POWER_BLOC_TARGET_FACTOR = 35 #25 Added to desire for fellow power bloc member of target to join their side
 	
-	DIPLO_PLAY_SWAY_THRESHOLD = 10.0 # If AI has this much military strength compared to enemy, don't bother trying to sway anyone
+	DIPLO_PLAY_SWAY_THRESHOLD = 100.0 # If AI has this much military strength compared to enemy, don't bother trying to sway anyone
+	DIPLO_PLAY_TAKE_SIDES_CHANCE = 0.003 # Multiplied by boldness for chance of taking sides each tick
+	
+	DIPLO_PLAY_SWAY_COUNTRIES_CHANCE_SCALED = 10 # Chance each tick that the AI will try to sway someone (scaled by relative strength of the two sides)
+	DIPLO_PLAY_SWAY_COUNTRIES_CHANCE_MAX = 50 # Max chance each tick that the AI will try to sway someone
+	
+	DIPLO_PLAY_SWAY_DAYS_LEFT_MAX = 10  # AI will not answer a sway offer when it has more than this amount of days left (should map to SWAY_OFFER_TIMEOUT_DAYS)
+	DIPLO_PLAY_SWAY_DAYS_LEFT_MIN = 6	# AI will always answer a sway offer when it has this or less amount of days left (should map to SWAY_OFFER_TIMEOUT_DAYS)
+	DIPLO_PLAY_SWAY_ANSWER_CHANCE = 30 # Chance per tick of AI answering a sway offer (1 = 1%)
+	
 	DIPLO_PLAY_SECESSION_OWN_SECESSION_RISK_FACTOR = 0 #-100 Add this amount of reluctance for AI to back a secession of a culture that has enough pops in their own country to secede
 	
 	CONSTRUCTION_RESERVES_NEW_CONSTRUCTIONS = 0.02 #0.1 If gold reserves are less than this after adding the cost of a new construction, don't queue it	
@@ -58,17 +67,16 @@ NAI = {
 	
 	PRODUCTION_BUILDING_FREE_INFRASTRUCTURE_TARGET_WHEN_LACKING_WORKFORCE = 2 # When lacking workforce, the AI will stop building in the state once available infrastructure is this or less
 	
-	CHANGE_LAW_POLITICAL_MOVEMENT_SUPPORT_FACTOR = 3 #2 Scales with movement support for movement that wants to enact the law
-	CHANGE_LAW_POLITICAL_MOVEMENT_RADICALISM_FACTOR = 9 #6 Scales with movement radicalism for movement that wants to enact the law
-	
-	PRODUCTION_METHOD_PROFIT_FACTOR = 1.75 #1.0 Per pound of profit the produced goods would generate
-	PRODUCTION_METHOD_DEFICIT_FACTOR = 1.4 #1.5 Per pound of deficit the produced goods would generate (multiplies a negative value)
+	PRODUCTION_METHOD_PROFIT_FACTOR = 1.5 #1.0 Per pound of profit the produced goods would generate
 	PRODUCTION_METHOD_CHANCE_TO_CHANGE = 0.2 # Chance that the AI will consider changing a production method when evaluating methods
 	
-	PRODUCTION_METHOD_REDUCE_OUTPUT_PENALTY_FACTOR = 5 #10 Multiply method score by this if we're reducing the building's output penalties
+	PRODUCTION_METHOD_REDUCE_OUTPUT_PENALTY_FACTOR = 3 #10 Multiply method score by this if we're reducing the building's output penalties
 	PRODUCTION_METHOD_INCREASE_OUTPUT_PENALTY_FACTOR = 0.45 #0.01 # Multiply method score by this if we're increasing the building's output penalties
 	
 	PRODUCTION_BUILDING_INCREASE_SHORTAGE_MULT = 0.25 #0.01 Multiply score by this if we're increasing the state region's shortages
+	
+	PRODUCTION_BUILDING_AUTONOMOUS_INVESTMENT_MILITARY_GOODS_FACTOR_MULT = 1.2 # Multiplies PRODUCTION_BUILDING_OUTPUT_NEEDED_MILITARY_GOODS_FACTOR & PRODUCTION_BUILDING_OUTPUT_WANTED_MILITARY_GOODS_FACTOR for autonomous investment pool constructions
+	PRODUCTION_BUILDING_AUTONOMOUS_INVESTMENT_INDUSTRIAL_GOODS_FACTOR_MULT = 3.0 # Multiplies PRODUCTION_BUILDING_OUTPUT_NEEDED_INDUSTRIAL_GOODS_FACTOR & PRODUCTION_BUILDING_OUTPUT_WANTED_INDUSTRIAL_GOODS_FACTOR for autonomous investment pool constructions
 	
 	# Government construction applies this multiplier to domestic states when determining where to construct
 	GOVERNMENT_CONSTRUCTION_DOMESTIC_INVESTMENT_BIAS = 2.2 #2.0 VFM Favor domestic more over foreign
@@ -89,8 +97,62 @@ NAI = {
     CONSUMPTION_TAX_MAX_NUM_TAXED_GOODS_BASE = 2 #0 Base max number of goods AI wants to tax
     CONSUMPTION_TAX_MAX_NUM_TAXED_GOODS_PER_MISSING_TAX_TYPE = 0 #2 Added to max number of goods AI wants to tax for each other type of tax it does not collect
 	
-	AI_PEACE_AGREEMENT_WHITE_PEACE_BASE = 20 # If no wargoals are being enforced on either side
-	#AI_PEACE_AGREEMENT_WHITE_PEACE_WAR_DURATION = 1 # For each month the war goes on add this to the acceptance for a white peace
+	# Below data is used to calculate AI's desire for peace
+	AI_PEACE_AGREEMENT_BASE_VALUE = -10
+	AI_PEACE_AGREEMENT_WHITE_PEACE_BASE = 20 #10 If no wargoals are being enforced on either side
+	AI_PEACE_AGREEMENT_WHITE_PEACE_WAR_DURATION = 1 # For each month the war goes on add this to the acceptance for a white peace
+	AI_PEACE_AGREEMENT_WAR_SUPPORT_FACTOR = -1	# Each point of war support affects peace acceptance by this amoun
+	AI_PEACE_AGREEMENT_UNACCEPTABLE_WARGOAL_VALUE = -500 #1000 Fixed wargoal value that will be added to peace acceptance if an unacceptable wargoal (such as cut down to size) is being enforced on us
+	AI_PEACE_AGREEMENT_WARGOAL_VALUE_BASE = 8	# How much does the AI value each wargoal (base)
+	AI_PEACE_AGREEMENT_WARGOAL_VALUE_MIN = -1000 # Wargoal value cannot be lower than this
+	AI_PEACE_AGREEMENT_WARGOAL_VALUE_MAX = 1000	# Wargoal value cannot be higher than this
+	AI_PEACE_AGREEMENT_WARGOAL_VALUE_SCALED = 0.5	# How much does the AI value each wargoal (scaled with maneuver cost)
+	AI_PEACE_AGREEMENT_ALLY_WARGOAL_MULT = 1.5 #1 For each wargoal that our allies are pressing, apply wargoal value * this
+	AI_PEACE_AGREEMENT_SELF_WARGOAL_MULT = 3.5 #3 For each wargoal we have that's being pressed, apply wargoal value * this
+	AI_PEACE_AGREEMENT_ENEMY_WARGOAL_SELF_MULT = -4 #8 For each wargoal that the enemy is pressing against us, apply wargoal value * this
+	AI_PEACE_AGREEMENT_ENEMY_WARGOAL_ALLY_MULT = -1 # For each wargoal that's being pressed against our allies, apply wargoal value * this
+	AI_PEACE_AGREEMENT_NON_CONTESTED_ENEMY_WARGOAL_MULT = 3 #5 Value of wargoals held by enemy that aren't being contested is multiplied by this
+	AI_PEACE_AGREEMENT_ACHIEVABLE_ALLY_WARGOAL = -1.5 # For each wargoal our side holds that isn't being pressed where the target will run out of war support before the holder does (multiplies self/ally wargoal value)
+	AI_PEACE_AGREEMENT_ACHIEVABLE_ENEMY_WARGOAL = -0.9 # For each wargoal the enemy side holds (pressed or not) where the target will run out of war support before the holder does (multiplies self/ally enemy wargoal value)
+	AI_PEACE_AGREEMENT_WAR_SUPPORT_TO_HOLD_ON_TO_ACHIEVABLE_WARGOALS = 20 # Below this war support an AI will be much more open to ceding achievable wargoals to the enemy in a peace deal
+	AI_PEACE_AGREEMENT_PEACE_DESIRE_FACTOR = 1.0 # Peace desire is multiplied by this when added to peace agreement acceptance score
+
+	AI_CAPITULATE_COMPLETELY_DEFEATED = 1000 # If entire allied side is 100% occupied
+	AI_CAPITULATE_BASE_VALUE = -25
+	AI_CAPITULATE_WAR_LEADER_FACTOR = -25 # If warleader
+	AI_CAPITULATE_WAR_SUPPORT_FACTOR = -1
+	AI_CAPITULATE_SELF_WARGOAL_FACTOR = -8 # For each wargoal we hold in the war
+	AI_CAPITULATE_ENEMY_WARGOAL_FACTOR = -15 # For each wargoal targeting us in the war
+	AI_CAPITULATE_PEACE_DESIRE_FACTOR = 0.5 # Peace desire is multiplied by this when added to capitulation score
+
+	AI_MONTHS_OF_REDUCED_PEACE_DESIRE = 10 # Before this amount of months, reduce AI peace desire
+	AI_PEACE_DESIRE_FROM_SHORT_WAR = -10 # Subtract this amount of peace desire for the above number of months (multiplied by AI_MONTHS_OF_REDUCED_PEACE_DESIRE - months of war duration)
+	AI_PEACE_DESIRE_FROM_TURMOIL = 25 # Add this amount of peace desire at 100% radicals
+	AI_PEACE_DESIRE_FROM_DEVASTATION = 50 # Add this amount of peace desire at 100% devastation
+	AI_PEACE_DESIRE_FROM_LOYALISTS = -25 # Subtract this amount of peace desire at 100% loyalists
+	AI_PEACE_DESIRE_FROM_DEBT_LEVEL = 200 #100 Add this amount of peace desire at 100% debt level
+	AI_PEACE_DESIRE_FROM_BANKRUPTCY = 100 # Add this amount of peace desire when bankrupt
+	AI_PEACE_DESIRE_FROM_GOLD_RESERVES = -25 # Subtract this amount of peace desire at 100% gold reserves
+	AI_PEACE_DESIRE_FROM_FORCE_BALANCE = 70 #50 Up to this amount is added or subtracted from war support based on DIPLO_PLAY_FORCE_BALANCE_SCALE of the two sides
+	AI_PEACE_DESIRE_FACTOR_FROM_ANNEXATION = 0.5 # If peace will cause the country to be annexed then all positive peace desire factors will be multiplied by this value
+	
+	DIPLO_PLAY_FORCE_BALANCE_SCALE = 5.0 # At this military-strength-to-enemies ratio, max effects from the balance of the two sides' militaries is applied
+
+	DIPLO_PLAY_BACK_DOWN_CHANCE_THRESHOLD = 0 # If ( confidence + boldness ) is less than this, consider backing down
+	DIPLO_PLAY_BACK_DOWN_CHANCE_ESCALATION = 30 # Above this escalation, AI will consider backing down
+	DIPLO_PLAY_BACK_DOWN_INCREASE_CHANCE_THRESHOLD = -50 # If ( confidence + boldness ) is less than this, increase the chance of backing down
+	DIPLO_PLAY_BACK_DOWN_INCREASE_CHANCE_MULTIPLIER = 4.0 # If ( confidence + boldness ) is less than DIPLO_PLAY_BACK_DOWN_INCREASE_CHANCE_THRESHOLD, increase the chance of backing down by this factor
+	DIPLO_PLAY_BACK_DOWN_GUARANTEED_THRESHOLD = -75 # If ( confidence + boldness ) is less than this, always back down before the play goes to war
+	DIPLO_PLAY_BACK_DOWN_GUARANTEED_ESCALATION = 95 # Above this escalation, AI will always back down if it's supposed to
+	DIPLO_PLAY_BACK_DOWN_CHANCE_LOW_ESCALATION = 0.2 #0.1 1.0 = 1% (chance each tick) - used before countdown to war starts
+	DIPLO_PLAY_BACK_DOWN_CHANCE_HIGH_ESCALATION = 0.7 #0.5 1.0 = 1% (chance each tick) - used after countdown to war starts
+	
+	# Confidence is added to boldness to determine whether the AI is willing to back down
+	DIPLO_PLAY_CONFIDENCE_FORCE_BALANCE_FACTOR = 85	 # Confidence level if force balance to the enemy is at DIPLO_PLAY_FORCE_BALANCE_SCALE, scaled down if lower
+	
+	DIPLO_PLAY_NEUTRALITY_WEAK_ARMY_FACTOR = 10 # Scaled by our relative forces compared to DIPLO_PLAY_WEAK_ARMY_THRESHOLD
+	DIPLO_PLAY_BOLDNESS_WEAK_ARMY_FACTOR = -15 	# Scaled by our relative forces compared to DIPLO_PLAY_WEAK_ARMY_THRESHOLD
+	DIPLO_PLAY_TAKE_SIDES_MIN_BOLDNESS = 2 # Boldness must be at least this for AI to want to take a side with no gain (ignored for Great Powers in containment plays)
 	
 	TRADE_ROUTE_MIN_MARKET_SHARE = 0.05 # If the AI is junior in a customs union and has less than this market share in a market, don't make any trade routes
 	TRADE_ROUTE_MIN_ACCEPTABLE_PRODUCTIVITY = 2.4 #3 # If a potential trade route would result in lower productivity than this, don't create it unless it's to resolve a shortage
@@ -192,6 +254,10 @@ NDiplomacy = {
 	WAR_GOAL_INFAMY_REBELLING_SUBJECT_MULT = 0.5 # Infamy is multiplied by this for wargoals targeting a rebellious subject
 	WAR_GOAL_INFAMY_LOW_LIBERTY_DESIRE_SUBJECT_MULT = 0.5 # Infamy is multiplied by this for wargoals targeting a subject whose LD is below WAR_GOAL_INFAMY_LOW_LIBERTY_DESIRE_THRESHOLD
 	WAR_GOAL_INFAMY_LOW_LIBERTY_DESIRE_THRESHOLD = 25 # Threshold for WAR_GOAL_INFAMY_LOW_LIBERTY_DESIRE_SUBJECT_MULT
+	
+	SWAY_OFFER_TIMEOUT_DAYS = 12
+	SWAY_OFFER_REJECTED_COOLDOWN_DAYS = 5 # Must wait this many days before trying to sway a country that rejected your previous sway
+	SWAY_OFFER_CALL_IN_OBLIGATION_MANEUVERS_COST = 5
 }
 
 NPops = {

@@ -285,3 +285,50 @@ on_country_formed = {
 		}
 	}
 }
+
+
+# Fires when a diplomatic play is started
+# root = The diplomatic play that has been started
+# scope:initiator = Initiator of the play
+# scope:target = Target of the play
+on_diplomatic_play_started = {
+	effect = {
+		if = {
+			limit = { 
+			    is_diplomatic_play_type = dp_liberate_subject 
+				exists = c:MEC
+				scope:initiator = {
+					OR = { country_has_primary_culture = cu:north_german country_has_primary_culture = cu:south_german }
+					is_in_same_power_bloc = c:MEC
+					is_ai = yes
+				}
+				scope:target ?= {
+					OR = { c:DEN ?= this c:HOL ?= this c:SCH ?= this }
+				}
+				c:MEC ?= {
+				    NOT = { is_subject_of = scope:initiator }	
+				    is_ai = yes
+					is_at_war = no
+					is_active_in_diplomatic_play = no
+		        }
+			}
+			
+			if = { # sanity check, dont drag in UK puppet
+				limit = {
+			   	    exists = c:HAN
+			   	    c:MEC ?= {
+						has_diplomatic_pact = {
+							who = c:HAN
+							type = alliance
+						}
+					}
+				}
+				remove_diplomatic_pact = {
+					country = c:HAN
+					type = alliance
+				}
+		    }
+			add_initiator_backers = { c:MEC }
+		}
+	}
+}
