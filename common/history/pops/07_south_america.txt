@@ -270,7 +270,7 @@ POPS = {
 		}
 	}
 	s:STATE_TARAPACA = {
-		region_state:PEU = {
+		region_state:PES = {
 			create_pop = {
 				culture = south_andean
 				size = 12000
@@ -311,11 +311,11 @@ POPS = {
 				culture = aimara
 				split_religion = {
 					aimara = {
-						catholic = 0.55
-						animist = 0.45
+						catholic = 0.65
+						animist = 0.35
 					}
 				}
-				size = 64200
+				size = 40200
 			}
 			create_pop = {
 				culture = afro_caribeno
@@ -334,15 +334,15 @@ POPS = {
 		region_state:ATM = {
 			create_pop = {
 				culture = aimara
+				split_religion = {
+					aimara = {
+						catholic = 0.3
+						animist = 0.7
+					}
+				}
 				size = 25031
 			}
-		}
-		region_state:CHL = {
-			create_pop = {
-				culture = south_andean
-				size = 15036
-			}
-		}				
+		}		
 	}
 	s:STATE_SANTA_CRUZ = {
 		region_state:BOL = {
@@ -490,12 +490,6 @@ POPS = {
 				size = 16000
 			}
 		}
-		region_state:PES = {
-			create_pop = {
-				culture = south_andean
-				size = 300
-			}
-		}
 	}
 	s:STATE_ICA = {
 		region_state:PEU = {
@@ -534,70 +528,33 @@ POPS = {
 		}
 	}
 	s:STATE_AREQUIPA = {
-		region_state:PEU = {
-			create_pop = {
-				culture = south_andean
-				size = 27400
-			}
-			create_pop = {
-				culture = aimara
-				size = 17447
-			}
-			create_pop = {
-				culture = aimara
-				religion = catholic
-				size = 44381
-			}
-			create_pop = {
-				culture = quechua
-				size = 75096
-			}
-			create_pop = {
-				culture = quechua
-				religion = catholic
-				size = 137148
-			}
-			create_pop = {
-				culture = afro_caribeno
-				size = 300
-			}
-			create_pop = {
-				pop_type = slaves
-				culture = afro_caribeno
-				size = 100
-			}
-		}
 		region_state:PES = {
 			create_pop = {
 				culture = south_andean
-				size = 20600
+				size = 48000
 			}
 			create_pop = {
 				culture = aimara
-				size = 778
-			}
-			create_pop = {
-				culture = aimara
-				religion = catholic
-				size = 295
-			}
-			create_pop = {
-				culture = quechua
-				size = 2774
+				split_religion = {
+					aimara = {
+						catholic = 0.65
+						animist = 0.35
+					}
+				}
+				size = 80400
 			}
 			create_pop = {
 				culture = quechua
-				religion = catholic
-				size = 387
+				size = 146500
 			}
 			create_pop = {
 				culture = afro_caribeno
-				size = 1700
+				size = 2000
 			}
 			create_pop = {
 				pop_type = slaves
 				culture = afro_caribeno
-				size = 400
+				size = 500
 			}
 		}
 	}
