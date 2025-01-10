@@ -1042,3 +1042,90 @@ peru_bolivia_events.8 = {
 		}
 	}
 }
+
+# Native uprising, event for IQU to support
+peru_bolivia_events.101 = {
+	type = country_event
+	placement = ROOT
+	title = peru_bolivia_events.101.t
+	desc = peru_bolivia_events.101.d
+	flavor =  peru_bolivia_events.101.f
+
+	duration = 3
+
+	event_image = {
+		video = "middleeast_battlefield_trenches"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	trigger = {
+		# Triggered by on_action
+	}
+
+	immediate = {
+	    random_country = {
+			limit = {
+				has_variable = peru_rebel_country_var
+			}
+			save_scope_as = peru_rebel_country_scope
+		}
+	}
+
+	option = {
+		name = peru_bolivia_events.101.a
+		default_option = yes
+		play_as = scope:peru_rebel_country_scope
+		scope:peru_rebel_country_scope = {
+			annex = C:IQU
+		}
+		
+		if = {
+			limit = {
+				exists = c:NPU
+			}
+			c:NPU ?= { trigger_event = { id = peru_bolivia_events.102 days = 2 popup = yes } }
+		}
+		else_if = {
+			limit = {
+				exists = c:PEU
+			}
+			c:PEU ?= { trigger_event = { id = peru_bolivia_events.102 days = 2 popup = yes } }
+		}
+	}
+	option = {
+		name = peru_bolivia_events.101.b
+	}
+}
+
+# Native uprising, IQU joins in, notification event for PEU/NPU
+peru_bolivia_events.102 = {
+	type = country_event
+	placement = ROOT
+	title = peru_bolivia_events.102.t
+	desc = peru_bolivia_events.102.d
+	flavor =  peru_bolivia_events.102.f
+
+	duration = 3
+
+	event_image = {
+		video = "middleeast_battlefield_trenches"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	trigger = {
+		# Triggered by on_action
+	}
+
+	immediate = {
+	}
+
+    option = {
+		name = peru_bolivia_events.102.a
+	}
+}

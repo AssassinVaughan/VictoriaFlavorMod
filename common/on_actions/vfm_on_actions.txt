@@ -291,3 +291,42 @@ fra_birth_modifier_on_action = { # from VTM, maybe add this as a tech instead?
 		}
 	}	
 }
+
+# Root = Country
+# scope:target = Uprising country
+on_secession_start = {
+	on_actions = {
+		IQU_joins_secession
+	}
+}
+
+IQU_joins_secession = {
+    effect = {
+		if = {
+			limit = {
+				exists = c:IQU
+				scope:target ?= {
+					OR = {
+			            c:TWT ?= this
+			            c:AYM ?= this
+			        }
+				}
+				ROOT = {
+					OR = {
+			            c:NPU ?= this
+			            c:PEU ?= this
+			        }
+				}
+			}
+			scope:target ?= {
+				set_variable = {
+					name = peru_rebel_country_var
+					months = short_modifier_time
+				}
+			}
+			c:IQU = {
+				trigger_event = { id = italian_unification.7 days = 5 }
+			}
+		}
+	}	
+}
