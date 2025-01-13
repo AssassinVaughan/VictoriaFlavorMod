@@ -4,6 +4,7 @@
 	}
 	
 	incompatible_with = disease_outbreak
+	incompatible_with = potato_blight_strong
 
 	range = {
 		integer_range = {
@@ -22,6 +23,7 @@
 	modifier = {
 		building_rye_farm_throughput_add = -0.05
 	    building_subsistence_farms_throughput_add = -0.05
+		state_peasants_consumption_multiplier_add= 0.03
 	}
 
 	intensity = {
@@ -51,4 +53,99 @@
 	icon = "gfx/interface/icons/harvest_condition_icons/disease_outbreak.dds"
 	map_texture = "gfx/map/map_painting/harvest_conditions_map_patterns/harvest_conditions_bad.dds"
 	graphics = disease_outbreak
+}
+
+
+potato_blight_strong = {
+	trigger = {
+		in_potato_blight_zone = yes
+	}
+	
+	incompatible_with = disease_outbreak
+	incompatible_with = potato_blight
+
+	range = {
+		integer_range = {
+			min = 1
+			max = 1
+		}
+	}
+
+	duration = {
+		fixed_range = {
+			min = 144
+			max = 196
+		}
+	}
+
+	modifier = {
+		building_rye_farm_throughput_add = -0.05
+	    building_subsistence_farms_throughput_add = -0.05
+		state_peasants_consumption_multiplier_add= 0.03
+	}
+
+	intensity = {
+		fixed_range = {
+			min = 11
+			max = 14
+		}
+	}
+
+	chance = {
+		value = 0.0001
+	}
+
+	color = { 78 70 57 }
+	icon = "gfx/interface/icons/harvest_condition_icons/disease_outbreak.dds"
+	map_texture = "gfx/map/map_painting/harvest_conditions_map_patterns/harvest_conditions_bad.dds"
+	graphics = disease_outbreak
+}
+# Not really a harvest condition but okay...
+earthquake = {
+	trigger = {
+		is_vulnerable_to_earthquake = yes
+	}
+
+	range = {
+		integer_range = {
+			min = 1
+			max = 1
+		}
+	}
+
+	duration = {
+		fixed_range = {
+			min = 48
+			max = 72
+		}
+	}
+
+	modifier = {
+	    state_mortality_mult = 0.05
+		state_infrastructure_mult = -0.05
+		state_market_access_price_impact = -0.05
+		state_peasants_consumption_multiplier_add = 0.05
+	}
+
+	intensity = {
+		fixed_range = {
+			min = 2
+			max = 4
+		}
+	}
+
+	chance = {
+		value = 0.001
+		if = {
+			limit = { 
+				is_extra_vulnerable_to_earthquake = yes }
+			}
+			multiply = 3
+		}
+	}
+
+	color = { 214 50 42 }
+	icon = "gfx/interface/icons/state_trait_icons/poor_soils.dds"
+	graphics = drought
+	map_texture = "gfx/map/map_painting/harvest_conditions_map_patterns/harvest_conditions_bad.dds"
 }

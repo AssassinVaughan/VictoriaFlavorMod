@@ -2873,10 +2873,7 @@
                 scope:character ?= {
                     has_variable = is_rosas
                     home_country ?= {
-                        OR = {
-                            c:ARG ?= this
-                            c:BUE ?= this
-                        }
+                        c:ARG ?= this
                     }
                 }
             }
