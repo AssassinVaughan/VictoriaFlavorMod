@@ -547,6 +547,20 @@ GLOBAL = {
 		}
 	}
 
+	c:ECU ?= {
+		add_radicals = {
+			value = small_radicals
+			#interest_group = ig_devout  #I was unable to make this piece of code work, but the radicals should belong to the devout ig so if you find a way to make it so please and thank you
+		}
+
+		add_treasury = { #Ecuador was 1,200,000 pounds on debt in 1835, however their starting maximum credit is half of that so I'll base the amount of debt on how much Ecuador needs to be crippled in order to stop them from joning the Confederation war on the side of Bolivia.
+			value = gold_reserves_limit
+			multiply = -5.0
+		}
+
+		start_enactment = law_type:law_freedom_of_conscience
+	}
+
 	c:BOL ?= {
 		trigger_event = {
 			id = peru_bolivia_confederation.1

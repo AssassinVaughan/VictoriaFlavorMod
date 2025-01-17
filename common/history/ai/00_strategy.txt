@@ -56,6 +56,14 @@
 		set_strategy = ai_strategy_maintain_power_balance
 		set_strategy = ai_strategy_progressive_agenda
 	}
+	c:ECU ?= {
+		random_list = {
+			25 = { set_strategy = ai_strategy_industrial_expansion }
+			75 = { set_strategy = ai_strategy_plantation_economy }
+		}	
+		set_strategy = ai_strategy_maintain_power_balance
+		set_strategy = ai_strategy_progressive_agenda
+	}
 	c:ARG ?= {
 		random_list = {
 			75 = { set_strategy = ai_strategy_industrial_expansion }
