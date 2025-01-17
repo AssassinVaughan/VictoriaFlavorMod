@@ -331,3 +331,24 @@ vfm_ai.4 = {
 		}
 	}
 }
+
+
+vfm_ai.5 = {
+	type = country_event
+	placement = root
+
+	hidden = yes
+
+	duration = 1
+
+	trigger = {
+		is_ai = no
+	}
+
+	immediate = {
+	    set_variable = {
+			name = je_potential_sch_hol_solver 
+			years = 4
+		}
+	}
+}

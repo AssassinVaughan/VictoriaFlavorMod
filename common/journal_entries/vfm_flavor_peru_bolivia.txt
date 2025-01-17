@@ -96,16 +96,17 @@ je_peru_restoration = {
 	is_shown_when_inactive = {
 		c:NPU ?= THIS
 		exists = c:SPU
+		exists = c:BOL
 	}
 
 	possible = {
-		is_subject_of = c:BOL
+		is_subject_of ?= c:BOL
 	}
 
 	complete = {
 		is_subject = no 
 		OR = {
-			c:SPU = { is_subject = no }	
+			c:SPU ?= { is_subject = no }	
 		}
 	}
 
@@ -114,11 +115,18 @@ je_peru_restoration = {
 	}
 
 	fail = {
-		OR = {
-		    NOT = { exists = c:BOL }
-			NOT = { exists = c:SPU }
+		NOR = {
+		    exists = c:BOL
+			exists = c:SPU
 		}
 	}
+	
+	invalid = {
+		NOR = {
+		    exists = c:BOL
+			exists = c:SPU
+		}
+    }
 
 	weight = 10000
 

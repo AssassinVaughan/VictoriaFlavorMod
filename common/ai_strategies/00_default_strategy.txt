@@ -4357,8 +4357,8 @@ ai_strategy_default = {
 		}
 
 		if = {
-			limit = { has_strategy = ai_strategy_armed_isolationism }
-			multiply = 0.75
+			limit = { exists = c:USA this = c:USA game_date < 1875.1.1 } # need to focus on other things
+			multiply = 0.5
 		}	
 		
 		if = {
@@ -4612,7 +4612,7 @@ ai_strategy_default = {
 					has_technology_researched = gantry_cranes				
 				}
 				has_port = yes
-				OR = { country_rank >= rank_value:major_power gdp > 12000000 }
+				OR = { country_rank >= rank_value:major_power gdp > 12000000 } # 12 mil
 			}
 		}
 		manowars = {
@@ -4625,7 +4625,7 @@ ai_strategy_default = {
 					has_technology_researched = gantry_cranes				
 				}
 				has_port = yes
-				OR = { country_rank >= rank_value:major_power gdp > 12000000 }
+				OR = { country_rank >= rank_value:major_power gdp > 12000000 } # 12 mil
 			}
 		}	
 		steamers = {
@@ -4635,7 +4635,7 @@ ai_strategy_default = {
 				has_technology_researched = gantry_cranes
 				kai_should_use_goods_stances = yes
 				has_port = yes
-				OR = { country_rank >= rank_value:major_power gdp > 12000000 }
+				OR = { country_rank >= rank_value:major_power gdp > 12000000 } # 12 mil
 			}
 		}			
 		ironclads = {
@@ -4645,7 +4645,7 @@ ai_strategy_default = {
 				has_technology_researched = gantry_cranes
 				kai_should_use_goods_stances = yes
 				has_port = yes
-				OR = { country_rank >= rank_value:major_power gdp > 12000000 }			
+				OR = { country_rank >= rank_value:major_power gdp > 12000000 } # 12 mil			
 			}
 		}	
 		paper = {
