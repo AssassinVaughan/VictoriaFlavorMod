@@ -22,6 +22,7 @@
 	complete = {
 		trigger_if = {
 			limit = {
+			    has_variable = je_potential_sch_hol_solver
 				OR = {
 					c:HOL ?= this
 					c:SCH ?= this
@@ -37,7 +38,10 @@
 			}
 			custom_tooltip = {
 				text = je_schleswig_holstein_question_state_ownership_desc
-				any_scope_state = { state_region = s:STATE_SCHLESWIG_HOLSTEIN }
+				OR = {
+					any_scope_state = { state_region = s:STATE_SCHLESWIG_HOLSTEIN }
+					has_variable = je_potential_sch_hol_solver
+				}
 				s:STATE_SCHLESWIG_HOLSTEIN = {
 					NOT = {
 						any_scope_state = {

@@ -890,26 +890,43 @@ ai_strategy_default = {
 			subtract = 30
 		}
 
-		# Don't get involed in european conflicts if you dont have a navy #The code as is only adds netruality to south and central america permanently without checking if they do in fact have a navy
-	    #if = {
-		#	limit = {
-		#		OR = { country_is_in_central_america = yes country_is_in_south_america = yes }
-		#		any_diplomatic_play = {
-		#			any_scope_play_involved = {
-		#				is_diplomatic_play_initiator = yes
-		#				NOR = { country_is_in_central_america = yes country_is_in_south_america = yes }
-		#				
-		#			}						
-		#		}
-		#	}
-		#	add = 30
-		#}
+		# Don't get involed in european conflicts if you dont have a navy
+	    if = {
+			limit = {
+				OR = { country_is_in_central_america = yes country_is_in_south_america = yes }
+				navy_size < 6
+				any_diplomatic_play = {
+					any_scope_play_involved = {
+						is_diplomatic_play_initiator = yes
+						NOR = { country_is_in_central_america = yes country_is_in_south_america = yes }
+						
+					}						
+				}
+			}
+			add = 30
+		}
 	}
 	
 	# Added to base boldness in diplomatic plays	
 	# Using this value in other strategies will function additively
 	diplomatic_play_boldness = {
 		value = 50 
+		
+		if = { # Be careful when the great potato famine is active
+			limit = {
+			    has_global_variable = potato_blight_var
+			    OR = {
+				    c:PRU ?= this
+					c:SWE ?= this
+					c:DEN ?= this
+					c:NET ?= this
+					c:POL ?= this
+					c:BEL ?= this
+					c:NOR ?= this
+				}
+			}
+			add = -30
+		}
 		
 		# Great Powers with the appropriate flags should get involved in Egypt vs Ottomans
 		if = {
@@ -4044,7 +4061,23 @@ ai_strategy_default = {
 				is_subject_of = scope:target_country
 			}
 			multiply = 0.0
-		}	
+		}
+
+        if = { # Be careful when the great potato famine is active
+			limit = {
+			    has_global_variable = potato_blight_var
+			    OR = {
+				    c:PRU ?= this
+					c:SWE ?= this
+					c:DEN ?= this
+					c:NET ?= this
+					c:POL ?= this
+					c:BEL ?= this
+					c:NOR ?= this
+				}
+			}
+			multiply = 0.4
+		}		
 	}
 
 	# How much construction output should the AI aim for
@@ -4334,8 +4367,8 @@ ai_strategy_default = {
 		}
 
 		if = {
-			limit = { has_strategy = ai_strategy_armed_isolationism }
-			multiply = 0.75
+			limit = { exists = c:USA this = c:USA game_date < 1875.1.1 } # need to focus on other things
+			multiply = 0.5
 		}	
 		
 		if = {
@@ -4589,7 +4622,7 @@ ai_strategy_default = {
 					has_technology_researched = gantry_cranes				
 				}
 				has_port = yes
-				OR = { country_rank >= rank_value:major_power gdp > 12000000 }
+				OR = { country_rank >= rank_value:major_power gdp > 12000000 } # 12 mil
 			}
 		}
 		manowars = {
@@ -4602,7 +4635,7 @@ ai_strategy_default = {
 					has_technology_researched = gantry_cranes				
 				}
 				has_port = yes
-				OR = { country_rank >= rank_value:major_power gdp > 12000000 }
+				OR = { country_rank >= rank_value:major_power gdp > 12000000 } # 12 mil
 			}
 		}	
 		steamers = {
@@ -4612,7 +4645,7 @@ ai_strategy_default = {
 				has_technology_researched = gantry_cranes
 				kai_should_use_goods_stances = yes
 				has_port = yes
-				OR = { country_rank >= rank_value:major_power gdp > 12000000 }
+				OR = { country_rank >= rank_value:major_power gdp > 12000000 } # 12 mil
 			}
 		}			
 		ironclads = {
@@ -4622,7 +4655,7 @@ ai_strategy_default = {
 				has_technology_researched = gantry_cranes
 				kai_should_use_goods_stances = yes
 				has_port = yes
-				OR = { country_rank >= rank_value:major_power gdp > 12000000 }			
+				OR = { country_rank >= rank_value:major_power gdp > 12000000 } # 12 mil			
 			}
 		}	
 		paper = {

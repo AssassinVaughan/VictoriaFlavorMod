@@ -358,15 +358,29 @@ building_shipyards = {
 	ownership_type = self
 	
 	ai_value = {
-		value = 500
+		value = 350
 
 		if = { # Rather import if smaller country
 			limit = {
 				owner = {
 					gdp > 1500000 # 1.5 mil
+					NOT = {
+						any_scope_building = { 
+            				is_building_type = building_shipyards
+            				occupancy <= 0.6
+       		       		}
+					}
 				}
 			}
-			add = 500
+			add = 350
+		}
+		else_if = {
+			limit = {
+				owner = {
+					gdp > 10000000 # 10 mil
+				}
+			}
+			add = 200
 		}
 	}
 
@@ -396,15 +410,21 @@ building_military_shipyards = {
 	ownership_type = self
 	
 	ai_value = {
-		value = 400
+		value = 300
 
-		if = { # Rather import if smaller country
+		if = { # AI still keeps overbuilding these...
 			limit = {
 				owner = {
-					gdp > 2000000 # 2 mil
+				    gdp > 2000000 # 2 mil
+					NOT = {
+						any_scope_building = { 
+            				is_building_type = building_military_shipyards
+            				occupancy <= 0.6
+       		       		}
+					}
 				}
 			}
-			add = 600
+			add = 500
 		}
 	}
 

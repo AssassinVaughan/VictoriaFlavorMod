@@ -300,6 +300,31 @@ grosdeutschland_on_action = {
 on_diplomatic_play_started = {
     on_actions = {
 		prussian_ai_on_action
+		schleswig_holstein_solver_check
+	}
+}
+
+schleswig_holstein_solver_check = {
+	effect = {
+		if = {
+			limit = { 
+			    scope:initiator = {
+					OR = {
+						country_has_primary_culture = cu:north_german
+						country_has_primary_culture = cu:south_german
+					}
+				}
+			    scope:target ?= {
+					OR = { c:DEN ?= this c:HOL ?= this c:SCH ?= this }
+				}
+			}
+			scope:initiator = {
+				set_variable = {
+					name = je_potential_sch_hol_solver 
+					years = 4
+				}
+			}
+		}
 	}
 }
 

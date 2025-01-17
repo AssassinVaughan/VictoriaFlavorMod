@@ -163,26 +163,6 @@
 			save_scope_as = regular_army
 		}
 
-       create_character = {
-			first_name = Alexander
-			last_name = Macomb
-			historical = yes
-			culture = cu:yankee
-			commander_rank = commander_rank_1
-			is_general = yes
-			interest_group = ig_armed_forces
-			birth_date = 1782.4.3
-			traits = {
-				brave
-				surveyor
-			}
-			save_scope_as = macomb_gen
-		}
-		
-		scope:macomb_gen = {
-			transfer_to_formation = scope:regular_army
-		}
-
 		create_character = {
 			is_general = yes
 			first_name = Edmund_P
@@ -225,36 +205,6 @@
 				state_region = s:STATE_TENNESSEE
 				count = 1
 			}
-			
-			save_scope_as = florida_army
-		}
-
-        create_character = {
-			first_name = Winfield
-			last_name = Scott
-			historical = yes
-			culture = cu:dixie
-			birth_date = 1786.6.13
-			dna = dna_winfield_scott
-			is_general = yes
-			ig_leader = yes
-			interest_group = ig_armed_forces
-			ideology = ideology_abolitionist
-			hq = region_new_england
-			commander_rank = commander_rank_1
-			traits = {
-				traditionalist_commander
-				basic_diplomat
-				experienced_political_operator
-			}
-			on_created = {
-				set_variable = memento_mori_immunity
-			}
-            save_scope_as = scott_gen
-		}
-		
-		scope:scott_gen = {
-			transfer_to_formation = scope:florida_army
 		}
 
 		create_military_formation = {
