@@ -1,4 +1,35 @@
 ﻿
+peru_bolivia_2 = {#duplicate name exists in vanilla file
+	
+	color = { 235  20  9 }
+
+	possible = {
+		OR = {
+			AND = {
+			    exists = c:PEU
+				THIS = c:PEU
+				c:BOL ?= {
+					is_subject_of = c:PEU 
+				}
+			}
+			AND = {
+			    exists = c:BOL
+				THIS = c:BOL
+				OR = {
+
+					c:PEU ?= {
+				    	is_subject_of = c:BOL
+					}	
+
+					c:NPU ?= {
+				    	is_subject_of = c:BOL
+					}
+				}			
+			}
+		}
+	}
+}
+
 brazil_democratic_republic = {
 	color = "modern_brazil_green"
 

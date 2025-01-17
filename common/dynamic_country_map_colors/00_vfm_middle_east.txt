@@ -1,0 +1,21 @@
+﻿qajar_monarchy_blue = {
+	color = { 78 107 237 }
+	possible = {
+		exists = c:PER
+		this = c:PER 
+		c:PER = { 
+			has_variable = qajar_dynasty 
+		}
+	}
+}
+
+iranian_gold = {
+	color = { 242 185 53 }
+	possible = {
+		exists = c:PER
+		this = c:PER 
+		c:PER = { 
+			NOT = { has_variable = qajar_dynasty }
+		}
+	}
+}
