@@ -100,7 +100,6 @@ je_peru_restoration = {
 	is_shown_when_inactive = {
 		c:NPU ?= THIS
 		exists = c:SPU
-		exists = c:BOL
 	}
 
 	possible = {
@@ -119,15 +118,13 @@ je_peru_restoration = {
 	}
 
 	fail = {
-		NOR = {
-		    exists = c:BOL
+		NOT = {
 			exists = c:SPU
 		}
 	}
 	
 	invalid = {
-		NOR = {
-		    exists = c:BOL
+		NOT = {
 			exists = c:SPU
 		}
     }

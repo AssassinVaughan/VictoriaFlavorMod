@@ -618,13 +618,13 @@
 		}
 	}
 	s:STATE_TARAPACA={
-		region_state:PES={
+		region_state:PEU={
 			create_building={
 				building="building_livestock_ranch"
 				add_ownership={
 					building={
 						type="building_manor_house"
-						country="c:PES"
+						country="c:PEU"
 						levels=1
 						region="STATE_TARAPACA"
 					}
@@ -660,6 +660,8 @@
 				reserves=1
 				activate_production_methods={ "pm_basic_port" }
 			}
+		}
+		region_state:CHL={
 		}
 		region_state:ATM={
 		}
@@ -818,6 +820,20 @@
 				reserves=1
 				activate_production_methods={ "default_building_coffee_plantation" "pm_road_carts"  }
 			}
+			create_building={ #Several sources say something like "in 1826 Monsieur Tardiveau was hired by the Bolivian government to come and establish a glass factory in Cochabamba", I have not found anything about whether said Monsieur was successful with the commission but 10 years seems enough to build at At least one small factory, especially considering the relative stability of Bolivia during that period.
+				building="building_glassworks"
+
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:BOL"
+						levels=1
+						region="STATE_LA_PAZ"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_forest_glass" "pm_ceramics" "pm_manual_glassblowing"  }
+			}
 		}
 	}
 	s:STATE_POTOSI={
@@ -828,7 +844,7 @@
 					building={
 						type="building_manor_house"
 						country="c:BOL"
-						levels=1
+						levels=2
 						region="STATE_POTOSI"
 					}
 				}
@@ -840,7 +856,7 @@
 				add_ownership={
 					country={
 						country="c:BOL"
-						levels=2
+						levels=3
 					}
 				}
 				reserves=1
@@ -888,6 +904,28 @@
 				}
 				reserves=1
 				activate_production_methods={ "default_building_vineyard_plantation" "pm_road_carts"  }
+			}
+			create_building={
+				building="building_port"
+				add_ownership={
+					country={
+						country="c:PEU"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_anchorage" }
+			}
+			create_building={
+				building="building_government_administration"
+				add_ownership={
+					country={
+						country="c:PEU"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_simple_organization" "pm_religious_bureaucrats" "pm_professional_bureaucrats" }
 			}
 			create_building={
 				building="building_textile_mills"
@@ -1166,13 +1204,13 @@
 		}
 	}
 	s:STATE_AREQUIPA={
-		region_state:PES={
+		region_state:PEU={
 			create_building={
 				building="building_livestock_ranch"
 				add_ownership={
 					building={
 						type="building_manor_house"
-						country="c:PES"
+						country="c:PEU"
 						levels=1
 						region="STATE_AREQUIPA"
 					}
@@ -1185,7 +1223,7 @@
 				add_ownership={
 					building={
 						type="building_manor_house"
-						country="c:PES"
+						country="c:PEU"
 						levels=1
 						region="STATE_AREQUIPA"
 					}
@@ -1193,6 +1231,8 @@
 				reserves=1
 				activate_production_methods={ "default_building_tobacco_plantation" "pm_road_carts"  }
 			}
+		}
+		region_state:PES={
 			create_building={
 				building="building_dye_plantation"
 				add_ownership={
