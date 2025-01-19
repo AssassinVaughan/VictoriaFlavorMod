@@ -58,7 +58,7 @@ building_arts_academy = {
 		if = { # Don't overbuild these
 			limit = {
 				owner = {
-					has_technology = realism
+					has_technology_researched = realism
 				}
 			}
 			add = 200
@@ -75,13 +75,13 @@ building_arts_academy = {
 			limit = {
 				average_sol > 11
 			}
-			multiplay = 1.25
+			multiply = 1.25
 		}
 		if = {
 			limit = {
 				average_sol > 14
 			}
-			multiplay = 1.25
+			multiply = 1.25
 		}
 	}
 
