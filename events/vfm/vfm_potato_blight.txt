@@ -52,8 +52,8 @@ vfm_potato_blight.100 = {
 	icon = "gfx/interface/icons/event_icons/event_skull.dds"
 
 	trigger = {
-	    NOT = { has_global_variable = potato_blight_var }
-		game_date > 1841.1.1 # happened 1845 historically
+	    NOT = { has_global_variable = potato_blight_has_started_var }
+		#game_date > 1841.1.1 # happened 1845 historically
 		any_scope_state = {
 			state_region = s:STATE_CONNAUGHT
 		}
@@ -61,6 +61,16 @@ vfm_potato_blight.100 = {
 	
 	immediate = {
 	    set_global_variable = { name = potato_blight_var months = 48 }
+		set_global_variable = { name = potato_blight_has_started_var }
+		
+		every_scope_state = {
+			limit = {
+				in_potato_blight_zone_2 = yes
+			}
+			state_region = {
+				start_harvest_condition = potato_blight_strong
+			}
+		}
 		every_country = {
 			limit = {
 				any_scope_state = {

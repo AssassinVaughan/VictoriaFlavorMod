@@ -471,12 +471,37 @@ is_vulnerable_to_heatwaves = {
 	}
 }
 
+is_vulnerable_to_earthquake = {
+	OR = {
+		region = sr:region_oceania
+		region = sr:region_anatolia
+		region = sr:region_arabic
+		region = sr:region_persia
+		region = sr:region_caucasus
+		region = sr:region_mexico
+		region = sr:region_la_plata
+		region = sr:region_pacific_coast
+		region = sr:region_central_america
+		region = sr:region_indonesia
+		region = sr:region_japan
+	}
+}
+
 is_extra_vulnerable_to_heatwaves = {
 	any_scope_state = { OR = { has_state_trait = state_medeteranean_climate has_state_trait = state_trait_bad_soils } }
 }
 
 is_extra_vulnerable_to_disease = {
 	any_scope_state = { OR = { has_state_trait = state_trait_tropical has_state_trait = state_trait_severe_malaria has_state_trait = state_trait_malaria has_state_trait = state_trait_ganges_river } }
+}
+
+is_extra_vulnerable_to_earthquake = {
+	OR = {
+		region = sr:region_la_plata
+		region = sr:region_pacific_coast
+		region = sr:region_indonesia
+		region = sr:region_japan
+	}
 }
 
 is_vulnerable_to_disease_outbreak = {

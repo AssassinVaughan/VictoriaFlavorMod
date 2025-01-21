@@ -4,9 +4,9 @@
 peru_bolivia_events.1 = {
 	type = country_event
 	placement = ROOT
-	title = peru_bolivia_events.1.t
-	desc = peru_bolivia_events.1.d
-	flavor =  peru_bolivia_events.1.f
+	title = peru_bolivia_confederation.8.t
+	desc = peru_bolivia_confederation.8.d
+	flavor =  peru_bolivia_confederation.8.f
 
 	duration = 3
 
@@ -68,7 +68,7 @@ peru_bolivia_events.1 = {
 	}
 
 	option = { # Annex Peru
-		name = peru_bolivia_events.1.a
+		name = peru_bolivia_confederation.8.a
 		ai_chance = {
 			base = 1
 		}
@@ -76,7 +76,6 @@ peru_bolivia_events.1 = {
 		if = {
 			limit = {
 				c:NPU ?= {
-					is_player = no
 					is_subject_of = c:BOL
 				}
 			}
@@ -85,7 +84,6 @@ peru_bolivia_events.1 = {
 		if = {
 			limit = {
 				c:SPU ?= {
-					is_player = no
 					is_subject_of = c:BOL
 				}
 			}
@@ -94,7 +92,6 @@ peru_bolivia_events.1 = {
 		if = {
 			limit = {
 				c:IQU ?= {
-					is_player = no
 					is_subject_of = c:BOL
 				}
 			}
@@ -103,11 +100,18 @@ peru_bolivia_events.1 = {
 		if = {
 			limit = {
 				c:PEU ?= {
-					is_player = no
 					is_subject_of = c:BOL
 				}
 			}
 			annex = c:PEU
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_law = law_type:law_confederated
+				}
+			}
+			activate_law = law_type:law_confederated
 		}
 		change_tag = PBC
 		root = {
@@ -126,7 +130,7 @@ peru_bolivia_events.1 = {
 }
 
 # Peru-Bolivia Startup
-peru_bolivia_events.2 = {
+peru_bolivia_events.2 = { #"peru_bolivia_events.2" doesn't fire in VFM and it's purpose is replaced by "peru_bolivia_confederation.2 " which fires after you defeat Salaverry at the starting civil war.
 	type = country_event
 	placement = ROOT
 	title = peru_bolivia_events.2.t
@@ -472,14 +476,68 @@ peru_bolivia_events.3 = {
 peru_bolivia_events.4 = {
 	type = country_event
 	placement = ROOT
-	title = peru_bolivia_events.4.t
-	desc = peru_bolivia_events.4.d
-	flavor =  peru_bolivia_events.4.f
+	title = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					c:CHL ?= THIS
+				}
+                desc = peru_bolivia_confederation.13.t
+			}
+            triggered_desc = {
+				every_country = {
+                    limit = {
+                        NOT = { this = c:CHL }
+                    }
+                    ROOT = THIS
+                }
+                desc = peru_bolivia_events.4.t
+			}
+		}
+	}
+    desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					c:CHL ?= THIS
+				}
+                desc = peru_bolivia_confederation.13.d
+			}
+            triggered_desc = {
+				every_country = {
+                    limit = {
+                        NOT = { this = c:CHL }
+                    }
+                    ROOT = THIS
+                }
+                desc = peru_bolivia_events.4.d
+			}
+		}
+	}
+    flavor = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					c:CHL ?= THIS
+				}
+                desc = peru_bolivia_confederation.13.f
+			}
+			triggered_desc = {
+				every_country = {
+                    limit = {
+                        NOT = { this = c:CHL }
+                    }
+                    ROOT = THIS
+                }
+                desc = peru_bolivia_events.4.f
+			}
+		}
+	}
 
 	duration = 3
 
 	event_image = {
-		video = "southamerica_aristocrats"
+		video = "unspecific_politicians_arguing"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -495,12 +553,34 @@ peru_bolivia_events.4 = {
 			ruler = {
 				save_scope_as = santa_cruz_scope
 			}
+			save_scope_as = bol_scope
+		}
+		if = {
+			limit = {
+				c:PEU ?= {
+					is_subject_of = c:BOL
+				}
+			}
+			save_scope_as = peu_scope
+		}
+		else_if = {
+			limit = {
+				c:NPU ?= {
+					is_subject_of = c:BOL
+				}
+			}
+			save_scope_as = peu_scope
 		}
 		set_variable = { name = peru_bolivia_opposition_var value = 0 }
 	}
 
 	option = {
 		name = peru_bolivia_events.4.a
+		trigger = {
+			NOT = {
+				c:CHL ?= this
+			}
+		}
 		default_option = yes
 		ai_chance = {
 			base = 25
@@ -534,7 +614,71 @@ peru_bolivia_events.4 = {
 			    }
 			}
 		}
-		if = {
+		if = { #Why? Because goal_add_value causes wonky things if we tie it directly to this variable. TODO revisit when support for a static target value in JEs.
+			limit = {
+				exists = global_var:peru_bolivia_var
+			}
+			set_variable = { name = peru_bolivia_opposition_var value = global_var:peru_bolivia_var }
+		}
+	}
+
+	option = { #Portales and the Northern Threat
+		name = peru_bolivia_confederation.13.a
+		trigger = {
+			c:CHL ?= this
+		}
+		default_option = yes
+		ai_chance = {
+			base = 25
+			modifier = {
+				trigger = {
+					c:BOL = {
+						is_player = yes
+					}
+				}
+				add = 25
+			}
+		}
+		create_diplomatic_pact = {
+			country = c:BOL
+			type = rivalry
+		}
+        change_relations = { country = c:BOL value = -20 }
+        if = {
+            limit = {
+                c:CHL ?= THIS
+            }
+            add_loyalists = {
+			    strata = upper
+			    value = 0.05	
+			}
+		}
+		add_journal_entry = {
+			type = je_war_of_the_confederation
+		}
+		add_modifier = {
+			name = modifier_against_the_confederation
+			months = short_modifier_time
+		}
+		hidden_effect = {
+			c:BOL ?= {
+				set_mutual_secret_goal = {
+					country = root
+					secret_goal = antagonize
+				}
+			    every_subject_or_below = { # Wants to assist the subjects in attaining independence
+			        set_mutual_secret_goal = {
+			        	country = root
+			        	secret_goal = befriend
+			        }
+			    }
+				trigger_event = {
+					id = peru_bolivia_confederation.14
+					months = 10
+			    }
+			}
+		}
+		if = { #Why? Because goal_add_value causes wonky things if we tie it directly to this variable. TODO revisit when support for a static target value in JEs.
 			limit = {
 				exists = global_var:peru_bolivia_var
 			}
@@ -556,6 +700,23 @@ peru_bolivia_events.4 = {
 				set_mutual_secret_goal = {
 					country = root
 					secret_goal = befriend
+				}
+			}
+		}
+		if = {
+            limit = {
+                c:CHL ?= THIS
+            }
+            add_radicals = {
+                strata = upper
+                value = 0.2
+            }
+			hidden_effect = {
+				c:BOL ?= {
+					trigger_event = {
+						id = peru_bolivia_confederation.14
+						months = 10
+					}
 				}
 			}
 		}
@@ -617,7 +778,19 @@ peru_bolivia_events.5 = {
 			name = modifier_confederation_war_success
 			months = normal_modifier_time
 		}
-		add_technology_progress = { progress = 3000 technology = nationalism }
+		
+		if = {
+			limit = {
+				can_research = nationalism
+			}
+			add_technology_progress = { progress = 3000 technology = nationalism }
+		}
+		else_if = {
+			limit = {
+				can_research = mass_communication
+			}
+			add_technology_progress = { progress = 3000 technology = mass_communication }
+		}
 	}
 }
 
@@ -867,5 +1040,92 @@ peru_bolivia_events.8 = {
 			value = medium_radicals
 			strata = upper
 		}
+	}
+}
+
+# Native uprising, event for IQU to support
+peru_bolivia_events.101 = {
+	type = country_event
+	placement = ROOT
+	title = peru_bolivia_events.101.t
+	desc = peru_bolivia_events.101.d
+	flavor =  peru_bolivia_events.101.f
+
+	duration = 3
+
+	event_image = {
+		video = "middleeast_battlefield_trenches"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	trigger = {
+		# Triggered by on_action
+	}
+
+	immediate = {
+	    random_country = {
+			limit = {
+				has_variable = peru_rebel_country_var
+			}
+			save_scope_as = peru_rebel_country_scope
+		}
+	}
+
+	option = {
+		name = peru_bolivia_events.101.a
+		default_option = yes
+		play_as = scope:peru_rebel_country_scope
+		scope:peru_rebel_country_scope = {
+			annex = C:IQU
+		}
+		
+		if = {
+			limit = {
+				exists = c:NPU
+			}
+			c:NPU ?= { trigger_event = { id = peru_bolivia_events.102 days = 2 popup = yes } }
+		}
+		else_if = {
+			limit = {
+				exists = c:PEU
+			}
+			c:PEU ?= { trigger_event = { id = peru_bolivia_events.102 days = 2 popup = yes } }
+		}
+	}
+	option = {
+		name = peru_bolivia_events.101.b
+	}
+}
+
+# Native uprising, IQU joins in, notification event for PEU/NPU
+peru_bolivia_events.102 = {
+	type = country_event
+	placement = ROOT
+	title = peru_bolivia_events.102.t
+	desc = peru_bolivia_events.102.d
+	flavor =  peru_bolivia_events.102.f
+
+	duration = 3
+
+	event_image = {
+		video = "middleeast_battlefield_trenches"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	trigger = {
+		# Triggered by on_action
+	}
+
+	immediate = {
+	}
+
+    option = {
+		name = peru_bolivia_events.102.a
 	}
 }

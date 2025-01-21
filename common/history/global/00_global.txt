@@ -535,26 +535,77 @@ GLOBAL = {
 
 	c:BOL ?= {
 		trigger_event = {
-			id = peru_bolivia_events.2
-			days = 45
+			id = peru_bolivia_confederation.1
+			days = -1
+		}
+        add_radicals = {
+			value = medium_radicals
+			culture = cu:aimara
+		}
+        add_radicals = {
+			value = medium_radicals
+			culture = cu:quechua
+        }
+		add_radicals = {
+			value = large_radicals
+			culture = cu:amazonian
 		}
 	}
 
-	c:NPU ?= {
+	c:PEU ?= {
+		trigger_event = {
+			id = peru_bolivia_confederation.1
+			days = -1	
+		}
 		add_radicals = {
-			value = 0.20
+			value = 0.1
+		}
+        add_radicals = {
+			value = medium_radicals
+			culture = cu:aimara
+		}
+        add_radicals = {
+			value = medium_radicals
+			culture = cu:quechua
+        }
+		add_radicals = {
+			value = large_radicals
+			culture = cu:amazonian
 		}
 	}
 
-	c:SPU ?= {
+	c:PES ?= {
 		add_radicals = {
-			value = 0.15
+			value = 0.12
+		}
+        add_radicals = {
+			value = medium_radicals
+			culture = cu:aimara
+		}
+        add_radicals = {
+			value = medium_radicals
+			culture = cu:quechua
+        }
+		add_radicals = {
+			value = large_radicals
+			culture = cu:amazonian
 		}
 	}
 
 	c:IQU ?= {
+		trigger_event = {
+			id = peru_bolivia_confederation.1
+			days = -1	
+		}
+
+		add_loyalists = {
+			value = 0.25
+			culture = cu:quechua
+		}
+
 		add_radicals = {
-			value = 0.10
+			value = 0.25
+			culture = cu:south_andean
 		}
 	}
 

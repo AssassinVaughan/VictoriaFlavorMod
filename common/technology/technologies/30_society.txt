@@ -89,11 +89,17 @@ tech_bureaucracy = {
 	}
 }
 
+#Uncharted expeditions # colony size +1
+
 currency_standards = {
 	# Unlocks Payroll Tax - Income Taxation Law
 	era = era_1
 	texture = "gfx/interface/icons/invention_icons/currency_standards.dds"
 	category = society
+	
+	modifier = {
+		building_economy_of_scale_level_cap_add = 5
+	}
 	
 	unlocking_technologies = {
 		international_trade
@@ -266,7 +272,7 @@ colonization = {
 	category = society
 
 	modifier = {
-		country_institution_colonial_affairs_max_investment_add = 2
+		country_institution_colonial_affairs_max_investment_add = 1
 		country_max_declared_interests_add = 1
 	}	
 	
@@ -522,6 +528,51 @@ quinine = {
 					any_scope_state = {
 						state_is_in_africa = yes
 					}
+				}
+				add = 3
+			}
+		}
+	}
+}
+
+colonial_administration = {
+	# Unlocks Colonial Administration
+	# Unlocks various expedition decisions
+	# Unlocks the Suez Canal
+	era = era_2
+	texture = "gfx/interface/icons/invention_icons/colonization.dds"
+	category = society
+
+	modifier = {
+		country_institution_colonial_affairs_max_investment_add = 1
+		country_max_declared_interests_add = 1
+	}	
+	
+	unlocking_technologies = {
+		colonization
+		central_archives
+	}
+	
+	ai_weight = {
+		value = 1
+		
+		# Important for colonizers
+		if = {
+			limit = { 
+				navy_size >= 25
+				is_country_type = recognized
+			}
+			add = 1
+		}
+		if = {
+			limit = { 
+				has_strategy = ai_strategy_colonial_expansion
+			}
+			add = 1
+
+			if = {
+				limit = {
+					OR = { navy_size >= 100 country_is_in_north_america = yes }
 				}
 				add = 3
 			}
@@ -1010,6 +1061,7 @@ civilizing_mission = {
 	unlocking_technologies = {
 		quinine
 		nationalism
+		colonial_administration
 	}
 	
 	ai_weight = {
@@ -1451,6 +1503,7 @@ central_planning = {
 		country_government_dividends_efficiency_add = 0.05
         building_construction_sector_throughput_add = -0.05
         state_market_access_price_impact = 0.03
+		building_economy_of_scale_level_cap_add = 5
 	}
 	
 	unlocking_technologies = {

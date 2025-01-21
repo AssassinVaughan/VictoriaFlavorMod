@@ -99,7 +99,6 @@ POPS = {
 				culture = guajiro
 				size = 4004
 			}
-			
 		}
 	}
 	s:STATE_MIRANDA = {
@@ -241,7 +240,7 @@ POPS = {
 		}
 	}
 	s:STATE_PASTAZA = {
-		region_state:NPU = {
+		region_state:PEU = {
 			create_pop = {
 				culture = amazonian
 				size = 40000
@@ -271,14 +270,25 @@ POPS = {
 		}
 	}
 	s:STATE_TARAPACA = {
-		region_state:SPU = {
+		region_state:PES = {
 			create_pop = {
 				culture = south_andean
 				size = 12000
 			}
 			create_pop = {
 				culture = aimara
-				size = 38500
+				split_religion = {
+					aimara = {
+						catholic = 0.65
+						animist = 0.35
+					}
+				}
+				size = 38710
+			}
+			create_pop = {
+				culture = aimara
+				religion = catholic
+				size = 20790
 			}
 			create_pop = {
 				culture = afro_caribeno
@@ -299,7 +309,13 @@ POPS = {
 			}
 			create_pop = {
 				culture = aimara
-				size = 64200
+				split_religion = {
+					aimara = {
+						catholic = 0.65
+						animist = 0.35
+					}
+				}
+				size = 40200
 			}
 			create_pop = {
 				culture = afro_caribeno
@@ -307,9 +323,26 @@ POPS = {
 			}
 			create_pop = {
 				culture = quechua
-				size = 3400
+				size = 1972
+			}
+			create_pop = {
+				culture = quechua
+				religion = catholic
+				size = 1428
 			}
 		}
+		region_state:ATM = {
+			create_pop = {
+				culture = aimara
+				split_religion = {
+					aimara = {
+						catholic = 0.3
+						animist = 0.7
+					}
+				}
+				size = 25031
+			}
+		}		
 	}
 	s:STATE_SANTA_CRUZ = {
 		region_state:BOL = {
@@ -323,7 +356,12 @@ POPS = {
 			}
 			create_pop = {
 				culture = quechua
-				size = 102800
+				size = 38036
+			}
+			create_pop = {
+				culture = quechua
+				religion = catholic
+				size = 64764
 			}
 			create_pop = {
 				culture = guarani
@@ -339,10 +377,21 @@ POPS = {
 			}
 			create_pop = {
 				culture = quechua
-				size = 318000
+				size = 128400
+			}
+			create_pop = {
+				culture = quechua
+				religion = catholic 
+				size = 192600
 			}
 			create_pop = {
 				culture = aimara
+				split_religion = {
+					aimara = {
+						catholic = 0.65
+						animist = 0.35
+					}
+				}
 				size = 268004
 			}
 			create_pop = {
@@ -363,16 +412,27 @@ POPS = {
 			}
 			create_pop = {
 				culture = aimara
+				split_religion = {
+					aimara = {
+						catholic = 0.65
+						animist = 0.35
+					}
+				}
 				size = 121996
 			}
 			create_pop = {
 				culture = quechua
-				size = 14000
+				size = 3080
+			}
+			create_pop = {
+				culture = quechua
+				religion = catholic
+				size = 10920
 			}
 		}
 	}
 	s:STATE_CAJAMARCA = {
-		region_state:NPU = {
+		region_state:PEU = {
 			create_pop = {
 				culture = south_andean
 				size = 91804
@@ -392,19 +452,29 @@ POPS = {
 			}
 			create_pop = {
 				culture = quechua
-				size = 186696
+				size = 88681
+			}
+			create_pop = {
+				culture = quechua
+				religion = catholic
+				size = 22016
 			}
 		}
 	}
 	s:STATE_LIMA = {
-		region_state:NPU = {
+		region_state:PEU = {
 			create_pop = {
 				culture = south_andean
-				size = 248000
+				size = 247700
 			}
 			create_pop = {
 				culture = quechua
-				size = 212000
+				size = 75030
+			}
+			create_pop = {
+				culture = quechua
+				religion = catholic
+				size = 131970
 			}
 			create_pop = {
 				culture = afro_caribeno
@@ -422,7 +492,7 @@ POPS = {
 		}
 	}
 	s:STATE_ICA = {
-		region_state:SPU = {
+		region_state:PEU = {
 			create_pop = {
 				culture = south_andean
 				size = 92904
@@ -438,7 +508,12 @@ POPS = {
 			}
 			create_pop = {
 				culture = quechua
-				size = 242804
+				size = 42504
+			}
+			create_pop = {
+				culture = quechua
+				religion = catholic
+				size = 202304
 			}
 			create_pop = {
 				culture = amazonian
@@ -453,13 +528,19 @@ POPS = {
 		}
 	}
 	s:STATE_AREQUIPA = {
-		region_state:SPU = {
+		region_state:PES = {
 			create_pop = {
 				culture = south_andean
 				size = 48000
 			}
 			create_pop = {
 				culture = aimara
+				split_religion = {
+					aimara = {
+						catholic = 0.65
+						animist = 0.35
+					}
+				}
 				size = 80400
 			}
 			create_pop = {
@@ -506,7 +587,12 @@ POPS = {
 			}
 			create_pop = {
 				culture = quechua
-				size = 51000
+				size = 39780
+			}
+			create_pop = {
+				culture = quechua
+				religion = catholic
+				size = 11220
 			}
 			create_pop = {
 				culture = platinean
@@ -520,10 +606,15 @@ POPS = {
 			}
 			create_pop = {
 				culture = quechua
-				size = 1100
+				religion = catholic
+				size = 836
+			}
+						create_pop = {
+				culture = quechua
+				religion = catholic
+				size = 264
 			}
 		}
-
 	}
 	s:STATE_ALTO_PARAGUAY = {
 		region_state:GNI = {
@@ -906,14 +997,12 @@ POPS = {
 			}
 			create_pop = {
 				culture = guarani
-				size = 30000
+				size = 32500
 			}
 			create_pop = {
 				culture = amazonian
-				size = 44000
+				size = 46560
 			}
-		}
-		region_state:BOL = {
 			create_pop = {
 				culture = quechua
 				size = 2300
@@ -921,14 +1010,6 @@ POPS = {
 			create_pop = {
 				culture = south_andean
 				size = 500
-			}
-			create_pop = {
-				culture = guarani
-				size = 2500
-			}
-			create_pop = {
-				culture = amazonian
-				size = 2560
 			}
 		}
 	}

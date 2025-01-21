@@ -53,15 +53,15 @@ building_arts_academy = {
 	ownership_type = self
 
 	ai_value = {
-		value = 200
+		value = 100
 
 		if = { # Don't overbuild these
 			limit = {
 				owner = {
-					has_technology = realism
+					has_technology_researched = realism
 				}
 			}
-			add = 300
+			add = 200
 		}
 		if = {
 			limit = {
@@ -69,7 +69,19 @@ building_arts_academy = {
 					gdp > 11000000 # 11 mil
 				}
 			}
-			add = 300
+			add = 200
+		}
+		if = {
+			limit = {
+				average_sol > 11
+			}
+			multiply = 1.25
+		}
+		if = {
+			limit = {
+				average_sol > 14
+			}
+			multiply = 1.25
 		}
 	}
 

@@ -275,6 +275,24 @@ stupify = {
 				}
 			}
 		}
+		#Buffs for South Americans
+		every_country = {
+			limit = {
+				country_is_in_south_america = yes 
+			}
+			every_scope_pop = {
+				limit = {
+					pop_acceptance > acceptance_status_3
+					state = { is_incorporated = yes }
+				}
+				set_pop_literacy = {
+					literacy_rate = {
+						value = literacy_rate
+						multiply = 1.2
+					}
+				}
+			}
+		}
 		set_global_variable = stupify_complete
 	}
 
