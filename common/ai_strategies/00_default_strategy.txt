@@ -81,6 +81,17 @@ ai_strategy_default = {
 	# NOTE: You need to include a description when adding values here so there are correct tooltips, this is different from most of ai strategy data!
 	diplomatic_play_support = {
 		value = 0		
+
+        # Argentina should support enemies of the peru-bolivia confederation
+		if = {
+			limit = {
+				scope:country = { has_journal_entry = je_war_of_the_confederation }
+				scope:enemy_country = {
+					has_journal_entry = je_peru_bolivia
+				}
+			}
+			add = 50
+		}
 					
 		if = {
 			limit = {
@@ -688,6 +699,14 @@ ai_strategy_default = {
 			
 			add = 50
 		}
+		
+		# Argentina should support enemies of the peru-bolivia confederation
+		if = {
+			limit = {
+				has_journal_entry = je_war_of_the_confederation
+			}
+			subtract = 40
+		}
 
 		#GPs don't want to get involved with too many other GPs in the early game
 		if = {
@@ -1093,7 +1112,7 @@ ai_strategy_default = {
 	# How many maneuvers are we OK with using up in the initial phase to add more wargoals
 	# Using this value in other strategies will function additively (values below 0 or above 1 have no further effect)
 	wargoal_maneuvers_fraction = {
-		value = 0.35
+		value = 0.3
 		
 		if = {
 			limit = { 
@@ -1129,7 +1148,7 @@ ai_strategy_default = {
 					}
 				}
 			}
-			add = 0.14
+			add = 0.15
 		}
 
 		# USA should Manifest a lot of Destiny
@@ -4252,6 +4271,13 @@ ai_strategy_default = {
 		
 		if = {
 			limit = { 
+				has_strategy = ai_strategy_colonial_extraction
+			}
+			multiply = 0.7	
+		}
+		
+		if = {
+			limit = { 
 				has_journal_entry = je_sick_man_army game_date > 1840.1.1
 			}
 			min = 100
@@ -4381,7 +4407,7 @@ ai_strategy_default = {
 		}	
 		
 		if = {
-			limit = { has_strategy = ai_strategy_maintain_mandate_of_heaven }
+			limit = { OR = { has_strategy = ai_strategy_maintain_mandate_of_heaven has_strategy = ai_strategy_colonial_extraction } }
 			multiply = 0.25
 		}		
 		
