@@ -6,10 +6,10 @@
 		priority = 1
 	}
 	flag_definition = {
-		coa = WAD_dictatorship	
+		coa = WAD_absolute_monarchy	
 		priority = 20
 		trigger = { 
-			coa_def_dictatorship_flag_trigger = yes
+			coa_def_absolute_monarchy_flag_trigger = yes
 		}
 	}
 	flag_definition = {
@@ -253,5 +253,74 @@ ANK = { # Ankore / Nkore
 		subject_canton = ANK
 		allow_overlord_canton = no
 		priority = 1
+	}
+}
+
+RWD = { # Ruanda / Rwanda
+	flag_definition = {
+		coa = RWD
+		subject_canton = RWD
+		allow_overlord_canton = no
+		priority = 1
+	}
+	flag_definition = {
+		coa = RWD_absolute_monarchy
+		priority = 20
+		trigger = { 
+			coa_def_absolute_monarchy_flag_trigger = yes
+		}
+	}
+	flag_definition = {
+		coa = RWD_republic			
+		priority = 20
+		trigger = { 
+			coa_def_republic_flag_trigger = yes
+		}
+	}
+	flag_definition = {
+		coa = RWD_dictatorship	
+		priority = 30
+		trigger = { 
+			coa_def_dictatorship_flag_trigger = yes
+		}
+	}
+}
+
+BRD = { # Burundi / Urundi / Rundi
+	flag_definition = {
+		coa = BRD
+		subject_canton = BRD
+		allow_overlord_canton = no
+		priority = 1
+	}
+	flag_definition = {
+		coa = BRD_absolute_monarchy
+		priority = 20
+		trigger = { 
+			coa_def_absolute_monarchy_flag_trigger = yes
+		}
+	}
+	flag_definition = {
+		coa = BRD_republic			
+		priority = 20
+		trigger = { 
+			coa_def_republic_flag_trigger = yes
+		}
+	}
+}
+
+KRG = { # Karagwe 
+	flag_definition = {
+		coa = KRG
+		subject_canton = KRG
+		allow_overlord_canton = no
+		priority = 1
+	}
+	flag_definition = {
+		coa = KRG_absolute_monarchy
+		priority = 20
+		trigger = { 
+			coa_def_absolute_monarchy_flag_trigger = yes
+		}
 	}
 }

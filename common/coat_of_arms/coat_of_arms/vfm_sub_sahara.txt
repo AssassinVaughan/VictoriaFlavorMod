@@ -312,10 +312,10 @@ BUG = {	# Buganda
 	}
 	
 	colored_emblem = {
-		texture = "ce_masai_shield.dds"
+		texture = "ce_buganda_emblem.dds"
 		color1 = "yellow"
-		color2 = "yellow"
-		color3 = "white"
+		color2 = "yellow_dark"
+		color3 = "purple"
 		instance = { scale = { 0.7 0.7 } position = { 0.5 0.45 } }	
 	}
 	
@@ -342,41 +342,21 @@ BUG_absolute_monarchy = {	# Buganda
 	color1 = "red"
 
 	colored_emblem = {
-		texture = "ce_masai_shield.dds"
+		texture = "ce_buganda_emblem.dds"
+		color1 = "white"
+		color2 = "red"
+		color3 = "white"
+		instance = { scale = { 0.85 0.85 } position = { 0.475 0.5 } }	
+	}
+	
+	colored_emblem = {
+		texture = "ce_border_of_3_thin.dds"
 		color1 = "white"
 		color2 = "white"
-		instance = { scale = { 0.9 0.9 } position = { 0.5 0.5 } }	
 	}
 }
 
 BNY = {	# Bunyoro
-	pattern = "pattern_solid.tga"
-	color1 = "white"
-
-	colored_emblem = {
-		texture = "ce_stripes_04.dds"
-		color1 = "azure"
-		color2 = "azure"
-	}
-
-	colored_emblem = {
-		texture = "ce_stripe_hoist_bendy.dds"
-		color1 = "red"
-		color2 = "red"
-	}
-}
-BNY_republic = {
-	pattern = "pattern_solid.tga"
-	color1 = "yellow_light"
-
-	colored_emblem = {
-		texture = "ce_stripes_04.dds"
-		color1 = "azure"
-		color2 = "azure"
-	}
-	
-}
-BNY_absolute_monarchy = {
 	pattern = "pattern_solid.tga"
 	color1 = "white"
 
@@ -393,10 +373,38 @@ BNY_absolute_monarchy = {
 		instance = { scale = { 0.5 0.5 } position = { 0.15 0.25 } }	
 	}
 	colored_emblem = {
-		texture = "ce_masai_shield.dds"
+		texture = "ce_bunyoro_emblem.dds"
 		color1 = "white"
-		color2 = "white"
-		instance = { scale = { 0.45 0.45 } position = { 0.2 0.25 } }	
+		color2 = "black"
+		instance = { scale = { 0.45 0.45 } position = { 0.205 0.26 } }	
+	}
+}
+BNY_republic = {
+	pattern = "pattern_solid.tga"
+	color1 = "white"
+
+	colored_emblem = {
+		texture = "ce_stripes_04.dds"
+		color1 = "azure"
+		color2 = "azure"
+	}
+
+	colored_emblem = {
+		texture = "ce_stripe_hoist_bendy.dds"
+		color1 = "red"
+		color2 = "red"
+	}
+	
+}
+BNY_absolute_monarchy = {
+	pattern = "pattern_solid.tga"
+	color1 = "red_light"
+
+	colored_emblem = {
+		texture = "ce_bunyoro_emblem.dds"
+		color1 = "white"
+		color2 = "black"
+		instance = { scale = { 0.9 0.9 } position = { 0.5 0.5 } }	
 	}
 }
 
@@ -424,4 +432,168 @@ ANK = {	# Ankore / Nkore
 		instance = { scale = { 0.225 0.17 } position = { 0.6 0.55 } rotation = 15 }	
 		instance = { scale = { 0.225 0.17 } position = { 0.4 0.55 } rotation = -15 }	
 	}
+}
+
+RWD = {	# Ruanda / Rwanda
+	pattern = "pattern_solid.tga"
+	color1 = "red"
+
+	colored_emblem = {
+		texture = "ce_tricolor_vertical.dds"
+		color1 = "yellow"
+		color2 = "green"
+	}
+}
+RWD_dictatorship = {
+	pattern = "pattern_solid.tga"
+	color1 = "red"
+
+	colored_emblem = {
+		texture = "ce_tricolor_vertical.dds"
+		color1 = "yellow"
+		color2 = "green"
+	}
+	colored_emblem = {
+		texture = "ce_letter_r.dds"
+		color1 = "black"
+		color2 = "black"
+		instance = { scale = { 0.75 0.75 } position = { 0.5 0.5 } }	
+	}
+	
+}
+RWD_republic = {
+	pattern = "pattern_solid.tga"
+	color1 = "blue_light"
+
+	colored_emblem = {
+		texture = "ce_solid.dds"
+		color1 = "yellow"
+		color2 = "yellow"
+		instance = { scale = { 1.0 0.25 } position = { 0.5 0.625 } }			
+	}	
+	colored_emblem = {
+		texture = "ce_solid.dds"
+		color1 = "green"
+		color2 = "green"
+		instance = { scale = { 1.0 0.25 } position = { 0.5 0.875 } }			
+	}
+	colored_emblem = {
+		texture = "ce_sun_radiant.dds"
+		color1 = "yellow"
+		color3 = "blue_light"
+		instance = { scale = { 0.425 0.425 } position = { 0.8 0.25 } }	
+	}
+	
+}
+RWD_absolute_monarchy = {
+	pattern = "pattern_solid.tga"
+	color1 = "white"
+
+	colored_emblem = {
+		texture = "ce_border_thin.dds"
+		color1 = "green"
+		color2 = "green"
+	}
+
+	colored_emblem = {
+		texture = "ce_ruanda_emblem.dds"
+		color1 = "green"
+		color2 = "yellow_light"
+		color3 = "yellow_dark"
+		instance = { scale = { 0.95 0.95 } position = { 0.5 0.5 } }	
+	}
+}
+
+BRD = {	# Burundi / Rundi / Urundi
+	pattern = "pattern_solid.tga"
+	color1 = "red"
+	
+	colored_emblem = {
+		texture = "ce_per_saltire.dds"
+		color1 = "green_light"
+		color2 = "green_light"
+	}
+	
+	colored_emblem = {
+		texture = "ce_saltire.dds"
+		color1 = "white"
+		color2 = "white"
+	}
+	
+	colored_emblem = {
+		texture = "ce_frame_circle.dds"
+		color1 = "white"
+		color2 = "white"
+		instance = { scale = { 0.525 0.525 } position = { 0.5 0.5 } }
+	}
+	
+	colored_emblem = {
+		texture = "ce_burundi_emblem.dds"
+		color1 = "yellow_dark"
+		color2 = "green_light"
+		color3 = "red"
+		instance = { scale = { 0.5 0.5 } position = { 0.5 0.5 } }	
+	}
+}
+BRD_republic = {
+	pattern = "pattern_solid.tga"
+	color1 = "red"
+	
+	colored_emblem = {
+		texture = "ce_per_saltire.dds"
+		color1 = "green_light"
+		color2 = "green_light"
+	}
+	
+	colored_emblem = {
+		texture = "ce_saltire.dds"
+		color1 = "white"
+		color2 = "white"
+	}
+	
+	colored_emblem = {
+		texture = "ce_frame_circle.dds"
+		color1 = "white"
+		color2 = "white"
+		instance = { scale = { 0.525 0.525 } position = { 0.5 0.5 } }
+	}
+	
+	colored_emblem = {
+		texture = "ce_star_08_eureka.dds"
+		color1 = "red"
+		color2 = "green_light"
+		instance = { scale = { 0.15 0.15 } position = { 0.5 0.4 } }	
+		instance = { scale = { 0.15 0.15 } position = { 0.585 0.575 } }	
+		instance = { scale = { 0.15 0.15 } position = { 0.415 0.575 } }	
+	}
+	
+}
+BRD_absolute_monarchy = {
+	pattern = "pattern_solid.tga"
+	color1 = "white"
+	
+	colored_emblem = {
+		texture = "ce_burundi_emblem.dds"
+		color1 = "yellow_dark"
+		color2 = "green_light"
+		color3 = "red"
+		instance = { scale = { 0.9 0.9 } position = { 0.5 0.5 } }	
+	}
+}
+
+KRG = { # Karagwe
+	pattern = "pattern_solid.tga"
+	color1 = "brown_light"
+	
+	colored_emblem = {
+		texture = "ce_tricolor_horizontal.dds"
+		color1 = "white"
+		color2 = "brown_light"	
+	}
+}
+
+KRG_absolute_monarchy = { # Karagwe
+	pattern = "pattern_solid.tga"
+	color1 = "brown_light"
+	
 }
