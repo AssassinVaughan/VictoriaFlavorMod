@@ -81,6 +81,17 @@ ai_strategy_default = {
 	# NOTE: You need to include a description when adding values here so there are correct tooltips, this is different from most of ai strategy data!
 	diplomatic_play_support = {
 		value = 0		
+
+        # Argentina should support enemies of the peru-bolivia confederation
+		if = {
+			limit = {
+				scope:country = { has_journal_entry = je_war_of_the_confederation }
+				scope:enemy_country = {
+					has_journal_entry = je_peru_bolivia
+				}
+			}
+			add = 50
+		}
 					
 		if = {
 			limit = {
@@ -688,6 +699,14 @@ ai_strategy_default = {
 			
 			add = 50
 		}
+		
+		# Argentina should support enemies of the peru-bolivia confederation
+		if = {
+			limit = {
+				has_journal_entry = je_war_of_the_confederation
+			}
+			subtract = 40
+		}
 
 		#GPs don't want to get involved with too many other GPs in the early game
 		if = {
@@ -1103,7 +1122,7 @@ ai_strategy_default = {
 	# How many maneuvers are we OK with using up in the initial phase to add more wargoals
 	# Using this value in other strategies will function additively (values below 0 or above 1 have no further effect)
 	wargoal_maneuvers_fraction = {
-		value = 0.35
+		value = 0.25
 		
 		if = {
 			limit = { 
@@ -1139,7 +1158,7 @@ ai_strategy_default = {
 					}
 				}
 			}
-			add = 0.14
+			add = 0.15
 		}
 
 		# USA should Manifest a lot of Destiny
@@ -2856,7 +2875,7 @@ ai_strategy_default = {
 						}
 					}
 				}
-				add = 2
+				add = 1.5
 			}
 
 			# USA should be confident against owners of their Manifest Destiny states
@@ -3179,7 +3198,7 @@ ai_strategy_default = {
 					}
 				}
 			}
-			add = 10
+			add = 5
 		}
 
 		# Schleswig-Holstein question
@@ -3224,7 +3243,7 @@ ai_strategy_default = {
 					THIS = c:EGY
 				}
 			}
-			add = 50
+			add = 40
 		}
 
 		# USA should be extremely aggressive against owners of their Manifest Destiny states
@@ -3674,7 +3693,7 @@ ai_strategy_default = {
 					}
 				}
 			}
-			add = 10
+			add = 8
 		}
 		
 		# France should very aggressively go for Algeria.
@@ -3691,7 +3710,7 @@ ai_strategy_default = {
 					}
 				}
 			}
-			add = 20
+			add = 50
 		}
 
 		#Aggression against unrecognized countries once colonization has begun and already owns state in region
@@ -3850,7 +3869,7 @@ ai_strategy_default = {
 					}
 				}
 			}
-			add = 50
+			add = 25
 		}
 		
         # Paraguay should be highly aggressive while they have the war JE.
@@ -3876,7 +3895,7 @@ ai_strategy_default = {
 					has_state_in_state_region = STATE_ACRE
 				}
 			}
-			add = 25
+			add = 15
 		}
 		
         # Great Powers with slavery banned should be more aggressive against an openly slave trading Brazil
@@ -4018,7 +4037,7 @@ ai_strategy_default = {
 					}
 				}
 			}
-			add = 35
+			add = 25
 		}
 
         # Neutral Switzerland
@@ -4262,6 +4281,13 @@ ai_strategy_default = {
 		
 		if = {
 			limit = { 
+				has_strategy = ai_strategy_colonial_extraction
+			}
+			multiply = 0.7	
+		}
+		
+		if = {
+			limit = { 
 				has_journal_entry = je_sick_man_army game_date > 1840.1.1
 			}
 			min = 100
@@ -4391,7 +4417,7 @@ ai_strategy_default = {
 		}	
 		
 		if = {
-			limit = { has_strategy = ai_strategy_maintain_mandate_of_heaven }
+			limit = { OR = { has_strategy = ai_strategy_maintain_mandate_of_heaven has_strategy = ai_strategy_colonial_extraction } }
 			multiply = 0.25
 		}		
 		
@@ -4444,19 +4470,6 @@ ai_strategy_default = {
 			if = {
 				limit = { has_technology_researched = mobile_armor }
 				add = 10
-			}
-			
-			if = {
-				limit = { has_law = law_type:law_national_militia }
-				multiply = 0.5
-			}
-			else_if = {
-				limit = { has_law = law_type:law_professional_army }
-				multiply = 1.25
-			}			
-			else_if = {
-				limit = { has_law = law_type:law_peasant_levies }
-				multiply = 1.5
 			}				
 		}
 		combat_unit_group_light_ship = {
@@ -4494,11 +4507,11 @@ ai_strategy_default = {
 		value = 0.3
 		if = {
 			limit = { has_law = law_type:law_national_militia }
-			add = 1.5
+			add = 1.0
 		}			
 		else_if = {
 			limit = { has_law = law_type:law_peasant_levies }
-			add = 0.3
+			add = 0.2
 		}	
 		else_if = {
 			limit = { has_law = law_type:law_mass_conscription }
@@ -4864,7 +4877,7 @@ ai_strategy_default = {
 						is_adjacent_to_country = c:EGY
 					}					
 				}
-				add = 500
+				add = 350
 			}
 		}	
 		region_caucasus = {
