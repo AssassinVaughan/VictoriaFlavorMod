@@ -56,6 +56,43 @@ vfm_ai.1 = {
 		}
 		if = {
 			limit = {
+			    c:CHI = {
+					exists = yes
+					is_ai = yes
+				}
+			}
+			c:CHI = {
+				set_government_wage_level = very_low
+				set_military_wage_level = low
+			}
+		}
+		if = {
+			limit = {
+			    c:JAP = {
+					exists = yes
+					is_ai = yes
+				}
+			}
+			c:JAP = {
+				set_government_wage_level = very_low
+				set_military_wage_level = low
+				s:STATE_KANSAI = {
+					random_scope_state = {
+						start_building_construction = building_government_administration
+						start_building_construction = building_cotton_plantation
+						start_building_construction = building_government_administration
+					}
+				}
+				s:STATE_CHUBU = {
+					random_scope_state = {
+						start_building_construction = building_government_administration
+						start_building_construction = building_government_administration
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
 			    c:PRU = {
 					exists = yes
 					is_ai = yes
@@ -312,6 +349,24 @@ vfm_ai.4 = {
 
 	immediate = {
 	    if = {
+			limit = {
+			    OR = {
+			    AND = {
+			        exists = c:CHI
+					this = c:CHI
+				}
+				AND = {
+			        exists = c:JAP
+					this = c:JAP
+				}
+				}
+				gold_reserves < 1000000 # 1 mil
+				scaled_debt <= 0.35
+			}
+			set_government_wage_level = very_low
+			set_military_wage_level = low
+		}
+	    else_ifif = {
 			limit = {
 				scaled_debt > 0.35
 			}

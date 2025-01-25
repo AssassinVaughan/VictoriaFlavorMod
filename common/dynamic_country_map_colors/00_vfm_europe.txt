@@ -12,47 +12,47 @@
 
 }
 
-yellow_prussia_rule = {
-	color = "yellow"
+#yellow_prussia_rule = {
+#	color = "yellow"
+#
+#	possible = {
+#		exists = c:PRU
+#		THIS = c:PRU
+#		OR = {
+#			has_game_rule = yellow_prussia
+#		}
+#		
+#	}
+#}
 
-	possible = {
-		exists = c:PRU
-		THIS = c:PRU
-		OR = {
-			has_game_rule = yellow_prussia
-		}
-		
-	}
-}
+#blue_romania_rule = {
+#	color = rgb{ 21  96  178 }
+#
+#	possible = {
+#		exists = c:ROM
+#		THIS = c:ROM
+#		OR = {
+#			has_game_rule = blue_romania
+#		}
+#		
+#	}
+#}
 
-blue_romania_rule = {
-	color = rgb{ 21  96  178 }
-
-	possible = {
-		exists = c:ROM
-		THIS = c:ROM
-		OR = {
-			has_game_rule = blue_romania
-		}
-		
-	}
-}
-
-red_ottomans_rule = {
-	color = "red"
-
-	possible = {
-		exists = c:TUR
-		THIS = c:TUR
-		has_game_rule = red_ottomans
-		NOR = {
-			has_law = law_type:law_parliamentary_republic
-			has_law = law_type:law_presidential_republic
-			has_law = law_type:law_council_republic
-		}
-		
-	}
-}
+#red_ottomans_rule = {
+#	color = "red"
+#
+#	possible = {
+#		exists = c:TUR
+#		THIS = c:TUR
+#		has_game_rule = red_ottomans
+#		NOR = {
+#			has_law = law_type:law_parliamentary_republic
+#			has_law = law_type:law_presidential_republic
+#			has_law = law_type:law_council_republic
+#		}
+#		
+#	}
+#}
 
 purple_naples = {
 	color = "naples_purple"
