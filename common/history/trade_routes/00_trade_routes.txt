@@ -341,7 +341,13 @@
 			level = 1
 			direction = import
 			target = c:GBR.market
-		}		
+		}	
+        create_trade_route = {
+			goods = artillery
+			level = 1
+			direction = import
+			target = c:NET.market
+		}	
 	}
 
 	# Peru
@@ -371,6 +377,22 @@
 			target = c:USA.market
 		}	
 	}	
+	
+	# Argentina
+	c:ARG = {
+		create_trade_route = {
+			goods = small_arms
+			level = 1
+			direction = import
+			target = c:CHL.market
+		}
+		create_trade_route = {
+			goods = artillery
+			level = 1
+			direction = import
+			target = c:PRU.market
+		}	
+	}
 	
 	# Grao-Para
 	c:PRA = {		
