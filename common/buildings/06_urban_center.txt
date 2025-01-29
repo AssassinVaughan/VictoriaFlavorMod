@@ -106,7 +106,35 @@ building_power_plant = {
 	required_construction = construction_cost_very_high
 
 	ai_value = {
-		value = 1000 
+		value = 200 
+		
+		if = {
+			limit = {
+				owner = {
+					has_technology_researched = electric_railway
+				}
+				has_building = building_railway
+			}
+			add = 500
+		}
+		
+		if = {
+			limit = {
+				owner = {
+					has_technology_researched = pasteurization
+				}
+			}
+			add = 250
+		}
+		
+		if = {
+			limit = {
+				owner = {
+					has_technology_researched = electrical_capacitors
+				}
+			}
+			add = 250
+		}
 
 		# Need 1 level of Power Plants everywhere as its a local good and a prerequisite to enabling electricity PMs to begin with
 		if = {
@@ -119,7 +147,7 @@ building_power_plant = {
 					}
 				}
 			}
-			add = 4000
+			multiply = 2
 		}
 	}
 
