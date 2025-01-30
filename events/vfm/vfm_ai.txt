@@ -366,7 +366,7 @@ vfm_ai.4 = {
 			set_government_wage_level = very_low
 			set_military_wage_level = low
 		}
-	    else_ifif = {
+	    else_if = {
 			limit = {
 				scaled_debt > 0.35
 			}
@@ -383,6 +383,58 @@ vfm_ai.4 = {
 		else = {
 		    set_government_wage_level = medium
 			set_military_wage_level = medium
+		}
+	}
+}
+
+
+vfm_ai.5 = {
+	type = country_event
+	placement = root
+
+	hidden = yes
+
+	duration = 1
+
+	trigger = {
+		is_ai = yes
+		country_rank >= rank_value:major_power
+		any_scope_state = {
+		    is_incorporated = yes
+			tax_capacity_balance < 0
+			gdp >= 900000 # 900k
+		}
+		any_scope_state = {
+		    is_incorporated = yes
+			is_capital = no
+			has_building = building_government_administration
+			gdp >= 1500000 # 1.5 mil
+			tax_capacity_balance > 0.3
+		}
+	}
+
+	immediate = {
+	    random_scope_state = {
+		    limit = {
+				is_incorporated = yes
+				is_capital = no
+			    has_building = building_government_administration
+			    tax_capacity_balance > 0.3
+				gdp >= 1500000 # 1.5 mil
+			}
+			remove_building = building_government_administration
+		}
+	    random_scope_state = {
+		    limit = {
+			    is_incorporated = yes
+				tax_capacity_balance < 0
+				gdp >= 900000 # 900k
+			}
+			create_building={
+ 				building="building_government_administration"
+ 				level=1
+ 				reserves=1
+ 			}
 		}
 	}
 }
