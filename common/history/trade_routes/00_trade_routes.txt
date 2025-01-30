@@ -698,6 +698,12 @@
 			direction = import
 			target = c:SWE.market
 		}		
+		create_trade_route = {
+			goods = sugar
+			level = 2
+			direction = import
+			target = c:SPA.market
+		}	
 	}
 	
 	c:OLD = {
@@ -1082,7 +1088,7 @@
 		}			
 		create_trade_route = {
 			goods = iron
-			level = 5
+			level = 2
 			direction = import
 			target = c:SAR.market
 		}		
@@ -1097,6 +1103,12 @@
 			level = 2
 			direction = import
 			target = c:TUR.market
+		}	
+        create_trade_route = {
+			goods = dye
+			level = 1
+			direction = import
+			target = c:GBR.market
 		}		
 	}
 
@@ -1336,9 +1348,15 @@
 		}	
         create_trade_route = {
 			goods = silk
-			level = 4
+			level = 3
 			direction = import
 			target = c:CHI.market
+		}	
+        create_trade_route = {
+			goods = silk
+			level = 2
+			direction = import
+			target = c:TUR.market
 		}		
 	}
 

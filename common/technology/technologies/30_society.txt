@@ -11,6 +11,21 @@ sickle_cell = {
 	}
 }
 
+#contraceptives = {
+#	era = era_3
+#	texture = "gfx/interface/icons/invention_icons/quinine.dds"
+#	category = society
+#	can_research = no
+#	
+#	modifier = {
+#		state_birth_rate_mult = -0.15
+#	}
+#	
+#	ai_weight = {
+#		value = 1
+#	}
+#}
+
 urbanization = {
 	# Unlocks Urban Centers building
 	era = era_1
@@ -99,6 +114,7 @@ currency_standards = {
 	
 	modifier = {
 		building_economy_of_scale_level_cap_add = 5
+		country_free_trade_routes_add = 1
 	}
 	
 	unlocking_technologies = {
@@ -418,6 +434,7 @@ egalitarianism = {
 	modifier = {
 		state_expected_sol_from_literacy = 1
 		country_institution_social_security_max_investment_add = 1	
+		country_minting_mult = -0.1
 	}
 	
 	unlocking_technologies = {
@@ -745,11 +762,10 @@ psychiatry = {
 }
 
 #Lithography
-
-realism = {
-	# Unlocks Realist Art PM in Art Academies
+lithography = {
+	# Unlocks Lithography Art PM in Art Academies
 	era = era_2
-	texture = "gfx/interface/icons/invention_icons/realism.dds"
+	texture = "gfx/interface/icons/invention_icons/lithography.dds"
 	category = society
 	
 	modifier = {
@@ -758,20 +774,6 @@ realism = {
 	
 	unlocking_technologies = {
 		romanticism
-	}
-	
-	on_researched = {
-		if = {
-			limit = {
-				is_ai = yes
-			}
-			hidden_effect = { 
-			    add_modifier = {
-			name = realist_art
-			months = normal_modifier_time
-		}
-			}
-		}
 	}
 	
 	ai_weight = {
@@ -783,7 +785,7 @@ realism = {
 				    has_cultural_obsession = fine_art
 			    }			
 			}
-			add = 3
+			add = 4
 		}
 	}
 }
@@ -862,6 +864,7 @@ labor_movement = {
 		country_institution_workplace_safety_max_investment_add = 3
 		country_agitator_slots_add = 1
 		building_construction_sector_throughput_add = -0.1
+		
 	}
 	
 	unlocking_technologies = {
@@ -968,6 +971,10 @@ feminism = {
 	era = era_3
 	texture = "gfx/interface/icons/invention_icons/feminism.dds"
 	category = society
+	
+	modifier = {
+		country_influence_add = 100
+	}
 	
 	on_researched = {
 		if = {
@@ -1196,6 +1203,8 @@ corporatism = {
 	
 	modifier = {
 		state_radicals_from_political_movements_mult = -0.1
+		state_shopkeepers_investment_pool_efficiency_mult = 0.1
+		state_clergymen_investment_pool_efficiency_mult = 0.1
 	}
 	
 	unlocking_technologies = {
@@ -1263,8 +1272,10 @@ mutual_funds = {
 	category = society
 	
 	modifier = {
-		country_minting_mult = 0.1
-		country_loan_interest_rate_add = -0.02
+		country_loan_interest_rate_add = -0.01
+		state_shopkeepers_investment_pool_efficiency_mult = 0.1
+		state_clergymen_investment_pool_efficiency_mult = 0.1
+		state_farmers_investment_pool_contribution_add = 0.1
 	}
 	
 	on_researched = {
@@ -1306,10 +1317,10 @@ investment_banks = {
 	}
 }
 
-camera = {
-	# Unlocks Photographic Art, Improved Propaganda Centers PMs in Art Academy
+realism = {
+	# Unlocks Realist Art PM in Art Academies
 	era = era_3
-	texture = "gfx/interface/icons/invention_icons/camera.dds"
+	texture = "gfx/interface/icons/invention_icons/realism.dds"
 	category = society
 	
 	modifier = {
@@ -1317,7 +1328,7 @@ camera = {
 	}
 	
 	unlocking_technologies = {
-		realism
+		lithography
 	}
 	
 	on_researched = {
@@ -1325,7 +1336,12 @@ camera = {
 			limit = {
 				is_ai = yes
 			}
-			hidden_effect = { trigger_event = { id = camera_film_pm_events.1 } }
+			hidden_effect = { 
+			    add_modifier = {
+			name = realist_art
+			months = normal_modifier_time
+		}
+			}
 		}
 	}
 	
@@ -1338,7 +1354,7 @@ camera = {
 				    has_cultural_obsession = fine_art
 			    }			
 			}
-			add = 2
+			add = 3
 		}
 	}
 }
@@ -1396,7 +1412,6 @@ elevator = {
 		state_infrastructure_from_population_max_add = 20
 		state_building_construction_sector_max_level_add = 5
 		country_max_weekly_construction_progress_add = 5
-		market_land_trade_capacity_add = 10
 	}	
 	
 	on_researched = {
@@ -1423,7 +1438,8 @@ zeppelins = {
 	category = society
 	
 	modifier = {
-		state_market_access_price_impact = 0.05
+		state_market_access_price_impact = 0.03
+		market_land_trade_capacity_add = 10
 	}
 	
 	unlocking_technologies = {
@@ -1563,8 +1579,8 @@ international_exchange_standards = {
 	category = society
 	
 	modifier = {
-		country_minting_mult = 0.1
-		country_loan_interest_rate_add = -0.02
+		state_market_access_price_impact = 0.03
+		country_free_trade_routes_add = 2
 	}
 	
 	unlocking_technologies = {
@@ -1616,10 +1632,10 @@ psychoanalysis = {
 	}
 }
 
-film = {
-	# Unlocks Film Propaganda Center PM in Arts Academies
+camera = {
+	# Unlocks Photographic Art, Improved Propaganda Centers PMs in Art Academy
 	era = era_4
-	texture = "gfx/interface/icons/invention_icons/film.dds"
+	texture = "gfx/interface/icons/invention_icons/camera.dds"
 	category = society
 	
 	modifier = {
@@ -1627,7 +1643,7 @@ film = {
 	}
 	
 	unlocking_technologies = {
-		camera
+		realism
 	}
 	
 	on_researched = {
@@ -1635,7 +1651,7 @@ film = {
 			limit = {
 				is_ai = yes
 			}
-			hidden_effect = { trigger_event = { id = camera_film_pm_events.2 } }
+			hidden_effect = { trigger_event = { id = camera_film_pm_events.1 } }
 		}
 	}
 	
@@ -1782,7 +1798,7 @@ macroeconomics = {
 	
 	modifier = {
 		country_max_companies_add = 1
-		state_market_access_price_impact = 0.05
+		state_market_access_price_impact = 0.04
 	}
 	
 	unlocking_technologies = {
@@ -1813,6 +1829,43 @@ behaviorism = {
 	
 	ai_weight = {
 		value = 1
+	}
+}
+
+film = {
+	# Unlocks Film Propaganda Center PM in Arts Academies
+	era = era_5
+	texture = "gfx/interface/icons/invention_icons/film.dds"
+	category = society
+	
+	modifier = {
+		country_prestige_mult = 0.05
+	}
+	
+	unlocking_technologies = {
+		camera
+	}
+	
+	on_researched = {
+		if = {
+			limit = {
+				is_ai = yes
+			}
+			hidden_effect = { trigger_event = { id = camera_film_pm_events.2 } }
+		}
+	}
+	
+	ai_weight = {
+		value = 1
+		# Austria
+		if = {
+			limit = { 
+				any_primary_culture = {
+				    has_cultural_obsession = fine_art
+			    }			
+			}
+			add = 2
+		}
 	}
 }
 
