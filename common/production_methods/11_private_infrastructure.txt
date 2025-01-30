@@ -32,13 +32,13 @@ pm_steam_trains = {
 
 	building_modifiers = {
 		workforce_scaled = {
-			goods_input_engines_add = 8
-			goods_input_coal_add = 8
-			goods_output_transportation_add = 45
+			goods_input_engines_add = 7
+			goods_input_coal_add = 7
+			goods_output_transportation_add = 40
 		}
 		level_scaled = {
-			building_employment_laborers_add = 3000
-			building_employment_machinists_add = 1000
+			building_employment_laborers_add = 2750
+			building_employment_machinists_add = 1250
 			building_employment_clerks_add = 750
 		}
 	}
@@ -65,13 +65,13 @@ pm_steam_trains_principle_transport_3 = {
 
 	building_modifiers = {
 		workforce_scaled = {
-			goods_input_engines_add = 6 # 300
-			goods_input_coal_add = 6 # 150
-			goods_output_transportation_add = 30 # 750
+			goods_input_engines_add = 7
+			goods_input_coal_add = 7
+			goods_output_transportation_add = 45
 		}
 		level_scaled = {
-			building_employment_laborers_add = 2500
-			building_employment_machinists_add = 1500
+			building_employment_laborers_add = 2750
+			building_employment_machinists_add = 1250
 			building_employment_clerks_add = 750
 		}
 	}
@@ -79,7 +79,7 @@ pm_steam_trains_principle_transport_3 = {
 	state_modifiers = {
 		workforce_scaled = {
 			state_infrastructure_add = 30
-			state_pollution_generation_add = 25
+			state_pollution_generation_add = 20
 		}
 	}
 }
@@ -94,12 +94,12 @@ pm_electric_trains = {
 
 	building_modifiers = {
 		workforce_scaled = {
-			goods_input_engines_add = 8
-			goods_input_electricity_add = 12
-			goods_output_transportation_add = 60
+			goods_input_engines_add = 7 # 420
+			goods_input_electricity_add = 10 # 300
+			goods_output_transportation_add = 50 # 1050
 		}
 		level_scaled = {
-			building_employment_laborers_add = 2000
+			building_employment_laborers_add = 1750
 			building_employment_machinists_add = 2000
 			building_employment_clerks_add = 750
 		}
@@ -128,12 +128,12 @@ pm_electric_trains_principle_transport_3 = {
 
 	building_modifiers = {
 		workforce_scaled = {
-			goods_input_engines_add = 6 # 300
-			goods_input_electricity_add = 12 # 300
-			goods_output_transportation_add = 45 # 1050
+			goods_input_engines_add = 7 # 420
+			goods_input_electricity_add = 10 # 300
+			goods_output_transportation_add = 55 # 1050
 		}
 		level_scaled = {
-			building_employment_laborers_add = 2000
+			building_employment_laborers_add = 1750
 			building_employment_machinists_add = 2000
 			building_employment_clerks_add = 750
 		}
@@ -141,7 +141,7 @@ pm_electric_trains_principle_transport_3 = {
 
 	state_modifiers = {
 		workforce_scaled = {
-			state_infrastructure_add = 40
+			state_infrastructure_add = 35
 		}
 	}
 
@@ -158,20 +158,20 @@ pm_diesel_trains = {
 
 	building_modifiers = {
 		workforce_scaled = {
-			goods_input_engines_add = 12
-			goods_input_oil_add = 14
-			goods_output_transportation_add = 75
+			goods_input_engines_add = 7 # 300
+			goods_input_oil_add = 10 # 400
+			goods_output_transportation_add = 60 # 1200
 		}
 		level_scaled = {
-			building_employment_laborers_add = 1500
-			building_employment_machinists_add = 2500
+			building_employment_laborers_add = 1250
+			building_employment_machinists_add = 2250
 			building_employment_clerks_add = 750
 		}
 	}
 
 	state_modifiers = {
 		workforce_scaled = {
-			state_infrastructure_add = 40
+			state_infrastructure_add = 35
 			state_pollution_generation_add = 15
 		}
 	}
@@ -191,24 +191,23 @@ pm_diesel_trains_principle_transport_3 = {
 
 	building_modifiers = {
 		workforce_scaled = {
-			goods_input_engines_add = 6 # 300
+			goods_input_engines_add = 7 # 300
 			goods_input_oil_add = 10 # 400
-			goods_output_transportation_add = 55 # 1200
+			goods_output_transportation_add = 65 # 1200
 		}
 		level_scaled = {
-			building_employment_laborers_add = 1500
-			building_employment_machinists_add = 2500
+			building_employment_laborers_add = 1250
+			building_employment_machinists_add = 2250
 			building_employment_clerks_add = 750
 		}
 	}
 
 	state_modifiers = {
 		workforce_scaled = {
-			state_infrastructure_add = 55
-			state_pollution_generation_add = 20
+			state_infrastructure_add = 40
+			state_pollution_generation_add = 15
 		}
-	}
-}
+	}}
 
 pm_no_passenger_trains = {
 	texture = "gfx/interface/icons/production_method_icons/no_passenger_trains.dds"
