@@ -1,0 +1,1555 @@
+﻿namespace = journal_flavor_central_america
+
+# The Livingston Penal Code
+journal_flavor_central_america.1 = {
+	type = country_event
+	placement = ROOT
+	title = journal_flavor_central_america.1.t
+	desc = journal_flavor_central_america.1.d
+	flavor =  journal_flavor_central_america.1.f
+
+	duration = 2
+
+	event_image = {
+		video = "europenorthamerica_capitalists_meeting"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+
+	trigger = {
+		this = c:UCA
+	}
+	
+	immediate = {
+		set_variable = {
+			name = frca_guatemala_peace_var
+			days = 50
+		}
+		set_variable = {
+			name = frca_nicaragua_peace_var
+			days = 90
+		}
+		set_variable = {
+			name = frca_honduras_peace_var
+			days = 130
+		}
+	}
+
+	option = { #Adopt it
+		name = journal_flavor_central_america.1.a
+		default_option = yes
+		
+		add_modifier = {
+			name = uca_new_penal_code
+			years = 10
+			is_decaying = yes
+		}
+		
+		ai_chance = {
+			base = 50
+		}
+	}
+
+	option = { #Leave it be
+		name = journal_flavor_central_america.1.b
+		
+		ai_chance = {
+			base = 50
+		}
+	}
+}
+
+# Cholera Outbreak in Guatemala
+journal_flavor_central_america.2 = {
+	type = country_event
+	placement = ROOT
+	title = journal_flavor_central_america.2.t
+	desc = journal_flavor_central_america.2.d
+	flavor =  journal_flavor_central_america.2.f
+
+	duration = 2
+
+	event_image = {
+		video = "southamerica_war_civilians"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_skull.dds"
+
+	trigger = {
+		game_date >= 1836.2.2
+		NOT = { has_variable = uca_cholera_pandemic }
+		any_scope_state = {
+			state_region = { is_homeland = cu:central_american }
+			NOT = { has_variable = cholera_affect }
+		}
+	}
+	
+	immediate = {
+		set_variable = uca_cholera_pandemic
+		random_scope_state = {
+			limit = {
+				NOT = { has_variable = cholera_affect }
+			}
+			save_scope_as = cholera_affect_state
+		}
+	}
+	
+	option = { #Quarantine!
+		name = journal_flavor_central_america.2.a
+		default_option = yes 
+		scope:cholera_affect_state = {
+			set_variable = cholera_affect
+			add_modifier = {
+				name = uca_cholera
+				days = 365
+			}
+			add_modifier = {
+				name = uca_quarantine
+				days = 370
+			}
+		}
+		
+		ai_chance = {
+			base = 10
+		}
+	}
+	
+	option = { #Let it ravage the country
+		name = journal_flavor_central_america.2.b
+		scope:cholera_affect_state = {
+			set_variable = cholera_affect
+			add_modifier = {
+				name = uca_cholera
+				days = 365
+			}
+		}
+		
+		ai_chance = {
+			base = 90
+		}
+	}
+
+}
+
+# Cholera Outbreak Spreads
+journal_flavor_central_america.3 = {
+	type = country_event
+	placement = ROOT
+	title = journal_flavor_central_america.3.t
+	desc = journal_flavor_central_america.3.d
+	flavor =  journal_flavor_central_america.3.f
+
+	duration = 2
+
+	event_image = {
+		video = "southamerica_war_civilians"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_skull.dds"
+
+	cooldown = { months = 4 }
+
+	trigger = {
+		has_variable = uca_cholera_pandemic
+		any_scope_state = {
+			has_modifier = uca_cholera
+			NOT = { has_modifier = uca_quarantine }
+			any_neighbouring_state = {
+				owner = ROOT
+				NOT = {
+					has_variable = cholera_affect
+				}
+			}
+		}
+	}
+	
+	immediate = {
+		random_scope_state = {
+			limit = {
+				has_variable = cholera_affect
+				any_neighbouring_state = {
+					owner = ROOT
+					NOT = {
+						has_variable = cholera_affect
+					}
+				}
+			}
+			save_scope_as = cholera_state
+			random_neighbouring_state = {
+				limit = {
+					owner = ROOT
+					NOT = {
+						has_variable = cholera_affect
+					}
+				}
+				save_scope_as = cholera_state_spread_to
+				set_variable = {
+					name = cholera_affect
+				}
+			}
+		}
+	}
+	
+	option = { #Let it spread
+		name = journal_flavor_central_america.3.a
+		default_option = yes 
+		scope:cholera_state_spread_to = {
+			add_modifier = {
+				name = uca_cholera 
+				days = 365
+			}
+		}
+		
+		ai_chance = {
+			base = 50
+		}
+	}
+	
+	option = { #Contain it
+		name = journal_flavor_central_america.3.b
+		default_option = yes 
+		scope:cholera_state_spread_to = {
+			add_modifier = {
+				name = uca_cholera 
+				days = 365
+			}
+			add_modifier = {
+				name = uca_quarantine
+				days = 370
+			}
+		}
+		every_state = {
+			limit = {
+				has_modifier = uca_cholera 
+				NOT = { has_modifier = uca_quarantine } 
+			}
+			add_modifier = {
+				name = uca_quarantine
+				days = 370
+			}
+		}
+		
+		ai_chance = {
+			base = 50
+		}
+	}
+}
+
+# Nicaragua Declares Independence
+journal_flavor_central_america.4 = {
+	type = country_event
+	placement = ROOT
+	title = journal_flavor_central_america.4.t
+	desc = journal_flavor_central_america.4.d
+	flavor =  journal_flavor_central_america.4.f
+
+	duration = 2
+
+	event_image = {
+		video = "southamerica_aristocrats"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_fire.dds"
+
+	trigger = {
+		this = c:UCA
+		is_at_war = no
+		is_active_in_diplomatic_play = no
+		game_date >= 1838.1.1
+		NOT = { exists = c:NIC }
+		OR = {
+			NOT = { has_variable = nic_support_var }
+			exists = c:HON
+			exists = c:COS
+			exists = c:GUA
+		}
+		NOT = { has_variable = frca_recent_independence_event_var }
+	}
+
+	immediate = {
+		set_variable = {
+			name = frca_recent_independence_event_var
+			days = 40
+		}
+		create_country = {
+            tag = NIC
+			origin = c:UCA
+			state = s:STATE_NICARAGUA.region_state:UCA
+		}
+		create_diplomatic_pact = {
+            country = c:NIC
+            type = autonomous_province
+        }
+		c:NIC = {
+			set_relations = { country = c:UCA value = -50 }
+			create_character = {
+				first_name = jose
+				last_name = nunez
+				historical = yes
+				ig_leader = yes
+				interest_group = ig_landowners
+				ruler = yes
+				birth_date = 1800.02.02
+				female = no
+				culture = cu:central_american
+				ideology = ideology_meritocratic
+				religion = rel:catholic
+				traits = {
+					basic_diplomat
+				}
+		    }
+			activate_law = law_type:law_freedom_of_conscience
+			activate_law = law_type:law_unitary
+			activate_law = law_type:law_mercantilism
+			activate_law = law_type:law_wealth_voting
+			activate_law = law_type:law_censorship
+		}
+		s:STATE_NICARAGUA = {
+			add_claim = ROOT
+		}
+		remove_variable = cos_support_var
+		remove_variable = je_central_america_setup_cos_var
+		remove_variable = je_central_america_setup_nic_var
+	}
+
+	option = { #Damnit!
+		name = journal_flavor_central_america.4.a
+		default_option = yes
+		
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	option = { #Switch tags
+		name = journal_flavor_central_america.4.b
+		
+		play_as = c:NIC
+		
+		ai_chance = {
+			base = 0
+		}
+	}
+
+}
+
+# Costa Rica Declares Independence
+journal_flavor_central_america.5 = {
+	type = country_event
+	placement = ROOT
+	title = journal_flavor_central_america.5.t
+	desc = journal_flavor_central_america.5.d
+	flavor =  journal_flavor_central_america.5.f
+
+	duration = 2
+
+	event_image = {
+		video = "unspecific_signed_contract"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_fire.dds"
+
+	trigger = {
+		this = c:UCA
+		is_at_war = no
+		is_active_in_diplomatic_play = no
+		game_date >= 1838.1.1
+		NOT = { exists = c:COS }
+		OR = {
+			NOT = { has_variable = cos_support_var }
+			exists = c:HON
+			exists = c:NIC
+			exists = c:GUA
+		}
+		NOT = { has_variable = frca_recent_independence_event_var }
+	}
+
+	immediate = {
+		set_variable = {
+			name = frca_recent_independence_event_var
+			days = 40
+		}
+		create_country = {
+            tag = COS
+			origin = c:UCA
+			state = s:STATE_COSTA_RICA.region_state:UCA
+		}
+		create_diplomatic_pact = {
+            country = c:COS
+            type = autonomous_province
+        }
+		c:COS = {
+			set_relations = { country = c:UCA value = -50 }
+			create_character = {
+				first_name = braulio
+				last_name = carrillo_colina
+				historical = yes
+				ig_leader = yes
+				interest_group = ig_landowners
+				ruler = yes
+				birth_date = 1800.03.03
+				female = no
+				culture = cu:central_american
+				ideology = ideology_reformer
+				religion = rel:catholic
+				traits = {
+					basic_diplomat
+				}
+		    }
+			activate_law = law_type:law_freedom_of_conscience
+			activate_law = law_type:law_unitary
+			activate_law = law_type:law_mercantilism
+			activate_law = law_type:law_wealth_voting
+		}
+		s:STATE_COSTA_RICA = {
+			add_claim = ROOT
+		}
+	}
+
+	option = { #Damnit!
+		name = journal_flavor_central_america.5.a
+		default_option = yes
+		
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	option = { #Switch tags
+		name = journal_flavor_central_america.5.b
+		
+		play_as = c:COS
+		
+		ai_chance = {
+			base = 0
+		}
+	}
+
+}
+
+# Guatemala Declares Independence
+journal_flavor_central_america.6 = {
+	type = country_event
+	placement = ROOT
+	title = journal_flavor_central_america.6.t
+	desc = journal_flavor_central_america.6.d
+	flavor =  journal_flavor_central_america.6.f
+
+	duration = 2
+
+	event_image = {
+		video = "unspecific_politicians_arguing"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_fire.dds"
+
+	trigger = {
+		this = c:UCA
+		is_at_war = no
+		is_active_in_diplomatic_play = no
+		game_date >= 1838.6.6
+		NOT = { exists = c:GUA }
+		OR = {
+			NOT = { has_variable = gua_support_var }
+			exists = c:HON
+			exists = c:NIC
+			exists = c:COS
+		}
+		NOT = { has_variable = frca_recent_independence_event_var }
+	}
+
+	immediate = {
+		set_variable = {
+			name = frca_recent_independence_event_var
+			days = 40
+		}
+		create_country = {
+            tag = GUA
+			origin = c:UCA
+			state = s:STATE_GUATEMALA.region_state:UCA
+		}
+		s:STATE_CHIAPAS.region_state:UCA = {
+			set_state_owner = c:GUA
+		}
+		create_diplomatic_pact = {
+            country = c:GUA
+            type = autonomous_province
+        }
+		c:GUA = {
+			set_relations = { country = c:UCA value = -50 }
+			create_character = {
+				first_name = rafael
+				last_name = carrera
+				historical = yes
+				ig_leader = yes
+				interest_group = ig_landowners
+				ruler = yes
+				birth_date = 1814.04.04
+				female = no
+				culture = cu:central_american
+				ideology = ideology_traditionalist
+				religion = rel:catholic
+				traits = {
+					basic_diplomat
+				}
+		    }
+			activate_law = law_type:law_freedom_of_conscience
+			activate_law = law_type:law_unitary
+			activate_law = law_type:law_landed_voting
+			activate_law = law_type:law_mercantilism
+			activate_law = law_type:law_censorship
+			activate_law = law_type:law_religious_schools
+		}
+		s:STATE_GUATEMALA = {
+			add_claim = ROOT
+		}
+	}
+
+	option = { #Damnit!
+		name = journal_flavor_central_america.6.a
+		default_option = yes
+		
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	option = { #Switch tags
+		name = journal_flavor_central_america.6.b
+		
+		play_as = c:GUA
+		
+		ai_chance = {
+			base = 0
+		}
+	}
+
+}
+
+# Honduras Declares Independence
+journal_flavor_central_america.7 = {
+	type = country_event
+	placement = ROOT
+	title = journal_flavor_central_america.7.t
+	desc = journal_flavor_central_america.7.d
+	flavor =  journal_flavor_central_america.7.f
+
+	duration = 2
+
+	event_image = {
+		video = "southamerica_war_civilians"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_fire.dds"
+
+	trigger = {
+		this = c:UCA
+		is_at_war = no
+		is_active_in_diplomatic_play = no
+		game_date >= 1838.6.6
+		NOT = { exists = c:HON }
+		OR = {
+			NOT = { has_variable = hon_support_var }
+			exists = c:GUA
+			exists = c:NIC
+			exists = c:COS
+		}
+		NOT = { has_variable = frca_recent_independence_event_var }
+	}
+
+	immediate = {
+		set_variable = {
+			name = frca_recent_independence_event_var
+			days = 40
+		}
+		create_country = {
+            tag = HON
+			origin = c:UCA
+			state = s:STATE_HONDURAS.region_state:UCA
+		}
+		create_diplomatic_pact = {
+            country = c:HON
+            type = autonomous_province
+        }
+		c:HON = {
+			set_relations = { country = c:UCA value = -50 }
+			create_character = {
+				first_name = juan
+				last_name = franscisco_de_molina
+				historical = yes
+				ig_leader = yes
+				interest_group = ig_landowners
+				ruler = yes
+				birth_date = 1779.04.04
+				female = no
+				culture = cu:central_american
+				ideology = ideology_traditionalist
+				religion = rel:catholic
+				traits = {
+					basic_diplomat
+				}
+		    }
+			activate_law = law_type:law_freedom_of_conscience
+			activate_law = law_type:law_unitary
+			activate_law = law_type:law_landed_voting
+			activate_law = law_type:law_mercantilism
+		}
+		s:STATE_HONDURAS = {
+			add_claim = ROOT
+		}
+	}
+
+	option = { #Damnit!
+		name = journal_flavor_central_america.7.a
+		default_option = yes
+		
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	option = { #Switch tags
+		name = journal_flavor_central_america.7.b
+		
+		play_as = c:HON
+		
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+# Second Central American Civil War/ End of the Union?
+journal_flavor_central_america.8 = {
+	type = country_event
+	placement = ROOT
+	title = journal_flavor_central_america.8.t
+	desc = journal_flavor_central_america.8.d
+	flavor =  journal_flavor_central_america.8.f
+
+	duration = 2
+
+	event_image = {
+		video = "europenorthamerica_before_the_battle"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_fire.dds"
+
+	trigger = {
+		this = c:UCA
+		AND = {
+			exists = c:GUA
+			exists = c:HON
+			exists = c:NIC
+			exists = c:COS
+		}
+	}
+
+	immediate = {
+		remove_diplomatic_pact = {
+			country = c:COS
+			type = autonomous_province
+		}
+		remove_diplomatic_pact = {
+			country = c:NIC
+			type = autonomous_province
+		}
+		remove_diplomatic_pact = {
+			country = c:HON
+			type = autonomous_province
+		}
+		remove_diplomatic_pact = {
+			country = c:GUA
+			type = autonomous_province
+		}
+		remove_diplomatic_pact = {
+			country = c:LOS
+			type = autonomous_province
+		}
+		remove_diplomatic_pact = {
+			country = c:COS
+			type = puppet
+		}
+		remove_diplomatic_pact = {
+			country = c:NIC
+			type = puppet
+		}
+		remove_diplomatic_pact = {
+			country = c:HON
+			type = puppet
+		}
+		remove_diplomatic_pact = {
+			country = c:GUA
+			type = puppet
+		}
+		remove_diplomatic_pact = {
+			country = c:LOS
+			type = puppet
+		}
+	}
+
+	option = { #Fight for the Federation!
+		name = journal_flavor_central_america.8.a
+		default_option = yes
+		
+		set_variable = second_frca_civil_war_var
+		
+		create_diplomatic_play = {
+			name = guatemala_intervention
+			type = dp_annex_war
+			escalation = 80
+			target_state = s:STATE_GUATEMALA.region_state:GUA
+		}
+		
+		create_diplomatic_play = {
+			name = honduras_intervention
+			type = dp_annex_war
+			escalation = 60
+			target_state = s:STATE_HONDURAS.region_state:HON
+		}
+		
+		create_diplomatic_play = {
+			name = nicaraguan_intervention
+			type = dp_annex_war
+			escalation = 40
+			target_state = s:STATE_NICARAGUA.region_state:NIC	
+		}
+		
+		create_diplomatic_play = {
+			name = costa_rica_intervention
+			type = dp_annex_war
+			escalation = 20
+			target_state = s:STATE_COSTA_RICA.region_state:COS
+		}
+	
+		ai_chance = {
+			base = 0
+		}
+	}
+	
+	option = { #Continue as El Salvador
+		name = journal_flavor_central_america.8.b
+		
+		hidden_effect = { 
+			if = {
+				limit = { 
+					this = c:UCA 
+				}
+				s:STATE_CHIAPAS.region_state:UCA = {
+					set_state_owner = c:GUA
+				}
+			}
+			if = {
+				limit = { 
+					this = c:ELS
+				}
+				s:STATE_CHIAPAS.region_state:ELS = {
+					set_state_owner = c:GUA
+				}
+			}
+			
+			ruler = {
+				kill_character = yes
+			}
+			
+			c:COS = { trigger_event = { id = journal_flavor_central_america.22 } }
+			
+			create_character = {
+				# Juan Lindo - First President of El Salvador, will need to get replaced with Francisco Malespín
+				first_name = "Juan"
+				last_name = "Lindo"
+				historical = yes
+				ruler = yes
+				ig_leader = yes
+				birth_date = 1790.5.5
+				interest_group = ig_landowners
+				ideology = ideology_reformer
+				traits = {
+					meticulous
+				}
+			}
+			
+		}
+		
+		change_tag = ELS
+		
+		s:STATE_CHIAPAS = {
+			remove_claim = ROOT
+		}
+		s:STATE_GUATEMALA = {
+			remove_claim = ROOT
+		}
+		s:STATE_HONDURAS = {
+			remove_claim = ROOT
+		}
+		s:STATE_NICARAGUA = {
+			remove_claim = ROOT
+		}
+		s:STATE_COSTA_RICA = {
+			remove_claim = ROOT
+		}
+		
+		activate_law = law_type:law_freedom_of_conscience
+		activate_law = law_type:law_unitary
+		activate_law = law_type:law_mercantilism
+		
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# Defeat in the Second Civil War
+journal_flavor_central_america.9 = {
+	type = country_event
+	placement = ROOT
+	title = journal_flavor_central_america.9.t
+	desc = journal_flavor_central_america.9.d
+	flavor =  journal_flavor_central_america.9.f
+
+	duration = 2
+
+	event_image = {
+		video = "unspecific_devastation"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/bicorne_hat.dds"
+
+	trigger = {
+		this = c:UCA
+		is_at_war = no
+		is_active_in_diplomatic_play = no
+		OR = {
+			AND = {
+				has_variable = second_frca_civil_war_var
+				OR = {
+					exists = c:GUA
+					exists = c:HON
+					exists = c:NIC
+					exists = c:COS
+				}
+			}
+			AND = {
+				exists = c:NIC
+				c:NIC ?= {
+					NOT = {
+						is_subject_of = ROOT
+					}
+				}
+			}
+			any_civil_war = {
+				civil_war_progress > 0.5
+			}
+		}
+	}
+
+	immediate = {
+		set_variable = frca_lost_war
+		ruler = {
+            kill_character = yes
+        }
+		create_country = {
+            tag = HON
+			origin = c:UCA
+			state = s:STATE_HONDURAS.region_state:UCA
+		}
+		create_country = {
+            tag = GUA
+			origin = c:UCA
+			state = s:STATE_GUATEMALA.region_state:UCA
+		}
+		create_country = {
+            tag = NIC
+			origin = c:UCA
+			state = s:STATE_NICARAGUA.region_state:UCA
+		}
+		create_country = {
+            tag = COS
+			origin = c:UCA
+			state = s:STATE_COSTA_RICA.region_state:UCA
+		}
+		s:STATE_CHIAPAS.region_state:UCA = {
+			set_state_owner = c:GUA
+		}
+	}
+
+	option = { #Continue as El Salvador
+		name = journal_flavor_central_america.9.a
+		default_option = yes
+		
+		change_tag = ELS
+		
+		hidden_effect = {
+			s:STATE_CHIAPAS = {
+				remove_claim = ROOT
+			}
+			s:STATE_GUATEMALA = {
+				remove_claim = ROOT
+			}
+			s:STATE_HONDURAS = {
+				remove_claim = ROOT
+			}
+			s:STATE_NICARAGUA = {
+				remove_claim = ROOT
+			}
+			s:STATE_COSTA_RICA = {
+				remove_claim = ROOT
+			}
+			
+			activate_law = law_type:law_freedom_of_conscience
+			activate_law = law_type:law_unitary
+			activate_law = law_type:law_mercantilism
+			
+			create_character = {
+				# Juan Lindo - First President of El Salvador, will need to get replaced with Francisco Malespín
+				first_name = "Juan"
+				last_name = "Lindo"
+				historical = yes
+				ruler = yes
+				ig_leader = yes
+				birth_date = 1790.5.5
+				interest_group = ig_landowners
+				ideology = ideology_reformer
+				traits = {
+					meticulous
+				}
+			}
+			
+			c:COS = { trigger_event = { id = journal_flavor_central_america.22 } }
+			
+		}
+		
+		ai_chance = {
+			base = 100
+		}
+	}
+
+}
+
+# Victory in the Second Civil War
+journal_flavor_central_america.10 = {
+	type = country_event
+	placement = ROOT
+	title = journal_flavor_central_america.10.t
+	desc = journal_flavor_central_america.10.d
+	flavor =  journal_flavor_central_america.10.f
+
+	duration = 2
+
+	event_image = {
+		video = "unspecific_military_parade"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/bicorne_hat.dds"
+
+	trigger = {
+		this = c:UCA
+		has_variable = second_frca_civil_war_var
+		is_at_war = no
+		is_active_in_diplomatic_play = no
+		AND = {
+			NOT = { exists = c:GUA }
+			NOT = { exists = c:HON }
+			NOT = { exists = c:NIC }
+			NOT = { exists = c:COS }
+		}
+	}
+
+	immediate = {
+
+	}
+
+	option = { #The Union has prevailed for now
+		name = journal_flavor_central_america.10.a
+		default_option = yes
+		
+		set_variable = frca_won_war
+	
+		ai_chance = {
+			base = 100
+		}
+	}
+
+}
+
+
+# Civil War in Guatemala
+journal_flavor_central_america.11 = {
+	type = country_event
+	placement = ROOT
+	title = journal_flavor_central_america.11.t
+	desc = journal_flavor_central_america.11.d
+	flavor =  journal_flavor_central_america.11.f
+
+	duration = 2
+
+	event_image = {
+		video = "europenorthamerica_before_the_battle"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+
+	trigger = {
+		NOT = { exists = c:GUA }
+		has_variable = gua_civil_peace_var	
+		NOT = { has_variable = frca_guatemala_peace_var }
+		OR = {
+			has_modifier = uca_new_penal_code
+			any_scope_state = {
+				state_region = { is_homeland = cu:central_american }
+				has_modifier = uca_quarantine
+			}
+		}
+	}
+
+	immediate = {	
+		remove_variable = gua_civil_peace_var	
+		remove_variable = gua_support_var	
+		remove_variable = je_central_america_setup_gua_var
+	}
+
+	option = { #Morazan invades
+		name = journal_flavor_central_america.11.a
+		default_option = yes
+		
+		custom_tooltip = {
+			text = uca_pos_gua_civil_war_tt
+			
+			trigger_event = { id = journal_flavor_central_america.19 days = 120 } #Establishment of Los Altos
+		}
+	
+		ai_chance = {
+			base = 95
+		}
+	}
+
+	option = { #Galvez is left on his own
+		name = journal_flavor_central_america.11.b
+		
+		custom_tooltip = {
+			text = uca_neg_gua_civil_war_tt
+			
+			trigger_event = { id = journal_flavor_central_america.20 days = 365 } #Carrera gets himself killed
+		}
+		
+		ai_chance = {
+			base = 5
+		}
+	}
+}
+
+# Secessionists in Nicaragua
+journal_flavor_central_america.12 = {
+	type = country_event
+	placement = ROOT
+	title = journal_flavor_central_america.12.t
+	desc = journal_flavor_central_america.12.d
+	flavor =  journal_flavor_central_america.12.f
+
+	duration = 2
+
+	event_image = {
+		video = "europenorthamerica_political_extremism"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+
+	trigger = {
+		NOT = { exists = c:NIC }
+		has_variable = nic_civil_peace_var	
+		NOT = { has_variable = frca_nicaragua_peace_var }
+		NOT = { has_variable = gua_civil_peace_var }
+	}
+
+	immediate = {	
+		remove_variable = nic_support_var	
+		remove_variable = nic_civil_peace_var
+	}
+
+	option = { #Intervene
+		name = journal_flavor_central_america.12.a
+		
+		custom_tooltip = {
+			text = uca_pos_nic_civil_war_tt
+			
+			trigger_event = { id = journal_flavor_central_america.15 days = 60 } #Conservatives rejoin the Federalist cause
+		}
+		
+		#hidden_effect = { trigger_event = { id = journal_flavor_central_america.15 days = 60 } }
+		
+		ai_chance = {
+			base = 5
+		}
+	}
+	
+	option = { #Let them be
+		name = journal_flavor_central_america.12.b
+		default_option = yes
+		
+		custom_tooltip = {
+			text = uca_neg_nic_civil_war_tt
+			
+			trigger_event = { id = journal_flavor_central_america.16 days = 30 } #Conservatives take over Nicaragua
+		}
+		
+		#hidden_effect = { trigger_event = { id = journal_flavor_central_america.16 days = 30 } }
+		
+		ai_chance = {
+			base = 95
+		}
+	}
+
+}
+
+# Separatism in Honduras
+journal_flavor_central_america.13 = {
+	type = country_event
+	placement = ROOT
+	title = journal_flavor_central_america.13.t
+	desc = journal_flavor_central_america.13.d
+	flavor =  journal_flavor_central_america.13.f
+
+	duration = 2
+
+	event_image = {
+		video = "unspecific_politicians_arguing"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_protest.dds"
+
+	trigger = {
+		NOT = { exists = c:HON }
+		has_variable = hon_civil_peace_var
+		NOT = { has_variable = frca_honduras_peace_var }
+		NOT = { has_variable = nic_civil_peace_var }		
+	}
+
+	immediate = {	
+		remove_variable = hon_support_var	
+		remove_variable = je_central_america_setup_hon_var
+		remove_variable = hon_civil_peace_var		
+	}
+
+	option = { #Welp
+		name = journal_flavor_central_america.13.a
+		default_option = yes
+		
+		ai_chance = {
+			base = 100
+		}
+	}
+
+}
+
+# Dissolution of Central America
+journal_flavor_central_america.14 = {
+	type = country_event
+	placement = ROOT
+	title = journal_flavor_central_america.14.t
+	desc = journal_flavor_central_america.14.d
+	flavor =  journal_flavor_central_america.14.f
+
+	duration = 2
+
+	event_image = {
+		video = "europenorthamerica_capitalists_meeting"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	trigger = {
+		is_at_war = no
+		is_active_in_diplomatic_play = no
+		any_interest_group = {
+			is_in_government = yes
+			OR = {
+				has_ideology = ideology:ideology_elitist
+				has_ideology = ideology:ideology_pious
+				has_ideology = ideology:ideology_central_american_reactionary
+			}
+		}		
+	}
+
+	immediate = {	
+		set_variable = frca_lost_war
+		create_country = {
+            tag = HON
+			origin = c:UCA
+			state = s:STATE_HONDURAS.region_state:UCA
+		}
+		create_country = {
+            tag = GUA
+			origin = c:UCA
+			state = s:STATE_GUATEMALA.region_state:UCA
+		}
+		create_country = {
+            tag = NIC
+			origin = c:UCA
+			state = s:STATE_NICARAGUA.region_state:UCA
+		}
+		create_country = {
+            tag = COS
+			origin = c:UCA
+			state = s:STATE_COSTA_RICA.region_state:UCA
+		}
+		s:STATE_CHIAPAS.region_state:UCA = {
+			set_state_owner = c:GUA
+		}
+	}
+
+	option = { #Welp
+		name = journal_flavor_central_america.14.a
+		default_option = yes
+		
+		change_tag = ELS
+		
+		hidden_effect = {
+			activate_law = law_type:law_unitary
+		}
+		
+		ai_chance = {
+			base = 100
+		}
+	}
+
+}
+
+# Nicaragua appreciates intervention
+journal_flavor_central_america.15 = {
+	type = country_event
+	placement = ROOT
+	title = journal_flavor_central_america.15.t
+	desc = journal_flavor_central_america.15.d
+	flavor =  journal_flavor_central_america.15.f
+
+	duration = 2
+
+	event_image = {
+		video = "unspecific_military_parade"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	immediate = {	
+		set_variable = nic_support_var
+	}
+
+	option = { #Hurray
+		name = journal_flavor_central_america.15.a
+		default_option = yes
+		
+		ai_chance = {
+			base = 100
+		}
+	}
+
+}
+
+# Nicaragua falls to secessionists
+journal_flavor_central_america.16 = {
+	type = country_event
+	placement = ROOT
+	title = journal_flavor_central_america.16.t
+	desc = journal_flavor_central_america.16.d
+	flavor =  journal_flavor_central_america.16.f
+
+	duration = 2
+
+	event_image = {
+		video = "southamerica_aristocrats"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	immediate = {	
+		remove_variable = nic_support_var
+	}
+
+	option = { #Hurray
+		name = journal_flavor_central_america.16.a
+		default_option = yes
+		
+		ai_chance = {
+			base = 100
+		}
+	}
+
+}
+
+# Morazan's term has ended
+journal_flavor_central_america.17 = {
+	type = country_event
+    hidden = yes
+
+	trigger = {
+		this = c:UCA
+		NOT = { has_variable = morazan_is_gone }
+		NOT = { has_modifier = uca_morazan_presidency }
+	}
+
+	immediate = {	
+		set_variable = morazan_is_gone
+	}
+
+	option = { #Hurray
+		name = journal_flavor_central_america.17.a
+		default_option = yes
+		
+		hidden_effect = {
+			ruler = {
+                kill_character = yes
+            }
+			trigger_event = { id = journal_flavor_central_america.18 days = 3060 }
+		}
+		
+		ai_chance = {
+			base = 100
+		}
+	}
+
+}
+
+# The Father of the Nation
+journal_flavor_central_america.18 = {
+	type = country_event
+	placement = ROOT
+	title = journal_flavor_central_america.18.t
+	desc = journal_flavor_central_america.18.d
+	flavor =  journal_flavor_central_america.18.f
+
+	duration = 2
+
+	trigger = {
+		this = c:UCA
+	}
+	
+	event_image = {
+		video = "europenorthamerica_art_gallery"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	option = { #Hurray
+		name = journal_flavor_central_america.18.a
+		default_option = yes
+		
+		add_modifier = {
+			name = unification_prestige
+			months = very_long_modifier_time
+		}
+		
+		add_loyalists = {
+			value = medium_radicals
+			strata = rich
+		}
+		add_loyalists = {
+			value = medium_radicals
+			strata = middle
+		}
+		add_loyalists = {
+			value = medium_radicals
+			strata = poor
+		}
+		
+		ai_chance = {
+			base = 100
+		}
+	}
+
+}
+
+journal_flavor_central_america.19 = { #Establishment of Los Altos
+	type = country_event
+	placement = ROOT
+	title = journal_flavor_central_america.19.t
+	desc = journal_flavor_central_america.19.d
+	flavor =  journal_flavor_central_america.19.f
+
+	duration = 2
+
+	event_image = {
+		video = "europenorthamerica_before_the_battle"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+
+	option = { #Establish Los Altos
+		name = journal_flavor_central_america.19.a
+		default_option = yes
+		
+		custom_tooltip = {
+			text = uca_pos_alt_civil_war_tt
+			
+			set_variable = uca_morazan_invades_gua_var
+		}
+	
+		ai_chance = {
+			base = 80
+		}
+	}
+
+	option = { #Leave Guatemala whole
+		name = journal_flavor_central_america.19.b
+		
+		custom_tooltip = {
+			text = uca_neg_alt_civil_war_tt
+			
+			trigger_event = { id = journal_flavor_central_america.21 days = 365 } #Carrera leaves for Mexico
+		}
+		
+		ai_chance = {
+			base = 20
+		}
+	}
+}
+
+journal_flavor_central_america.20 = { #Carrera dies in Guatemala
+	type = country_event
+	placement = ROOT
+	title = journal_flavor_central_america.20.t
+	desc = journal_flavor_central_america.20.d
+	flavor =  journal_flavor_central_america.20.f
+
+	duration = 2
+
+	event_image = {
+		video = "europenorthamerica_before_the_battle"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+
+	option = {
+		name = journal_flavor_central_america.20.a
+		default_option = yes
+		
+		custom_tooltip = {
+			text = uca_gua_civil_war_resolved_tt
+			
+			set_variable = gua_support_var
+		}
+	
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+journal_flavor_central_america.21 = { #Carrera flees to Mexico
+	type = country_event
+	placement = ROOT
+	title = journal_flavor_central_america.21.t
+	desc = journal_flavor_central_america.21.d
+	flavor =  journal_flavor_central_america.21.f
+
+	duration = 2
+
+	event_image = {
+		video = "europenorthamerica_before_the_battle"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+
+	option = {
+		name = journal_flavor_central_america.21.a
+		default_option = yes
+		
+		custom_tooltip = {
+			text = uca_gua_civil_war_resolved_tt
+			
+			set_variable = gua_support_var
+		}
+	
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+journal_flavor_central_america.22 = { #Morazan takes over Costa Rica
+	type = country_event
+	placement = ROOT
+	title = journal_flavor_central_america.22.t
+	desc = journal_flavor_central_america.22.d
+	flavor = journal_flavor_central_america.22.f
+
+	duration = 2
+
+	event_image = {
+		video = "europenorthamerica_before_the_battle"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+
+	immediate = {
+		create_character = {
+			# Francisco Morazan
+			first_name = "Francisco"
+			last_name = "Morazan"
+			historical = yes
+			ruler = yes
+			ig_leader = yes
+			birth_date = 1792.10.3
+			dna = dna_president_francisco_morazan
+			interest_group = ig_intelligentsia
+			ideology = ideology_radical
+			traits = {
+				meticulous
+			}
+			on_created = {
+				set_variable = is_morazan
+			}
+		}
+		activate_law = law_type:law_autocracy
+	}
+
+	option = {
+		name = journal_flavor_central_america.22.a
+		default_option = yes
+	
+		ai_chance = {
+			base = 100
+		}
+	}
+}

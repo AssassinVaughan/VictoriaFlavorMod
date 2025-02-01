@@ -357,6 +357,17 @@
 				activate_production_methods={ "pm_simple_farming_building_rice_farm" "pm_no_secondary" "pm_tools_disabled"  }
 			}
 			create_building={
+				building="building_barracks"
+				add_ownership={
+					country={
+						country="c:HAI"
+						levels=3
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_no_organization" }
+			}
+			create_building={
 				building="building_port"
 				add_ownership={
 					country={
@@ -365,7 +376,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_basic_port" }
+				activate_production_methods={ "pm_anchorage" }
 			}
 		}
 	}
@@ -430,7 +441,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_basic_port" }
+				activate_production_methods={ "pm_anchorage" }
 			}
 		}
 	}
@@ -682,8 +693,16 @@
 					building={
 						type="building_manor_house"
 						country="c:GBR"
-						levels=3
+						levels=1
 						region="STATE_JAMAICA"
+					}
+				}
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:GBR"
+						levels=1
+						region="STATE_LOWLANDS"
 					}
 				}
 				reserves=1
@@ -695,8 +714,16 @@
 					building={
 						type="building_manor_house"
 						country="c:GBR"
-						levels=5
-						region="STATE_JAMAICA"
+						levels=2
+						region="STATE_YORKSHIRE"
+					}
+				}
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:GBR"
+						levels=1
+						region="STATE_WEST_COUNTRY"
 					}
 				}
 				reserves=1
@@ -717,6 +744,12 @@
 	}
 	s:STATE_CUBA={
 		region_state:CUB={
+		    create_building={
+				building="building_construction_sector"
+				level=1
+				reserves=1
+				activate_production_methods={ "pm_wooden_buildings" }
+			}
 			create_building={
 				building="building_rice_farm"
 				add_ownership={

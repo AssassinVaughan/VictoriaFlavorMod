@@ -1,0 +1,209 @@
+﻿je_restore_order_gua_button = {
+	name = restore_order_gua_button
+	desc = restore_order_gua_button_desc
+
+	visible = {
+		NOT = { has_variable = je_central_america_setup_gua_var }
+		NOT = { exists = c:GUA }
+		has_variable = uca_morazan_invades_gua_var
+	}
+
+	possible = {
+		NOT = { exists = c:GUA }
+		custom_tooltip = {
+			text = controls_gua_tt
+			this = c:UCA
+			NOT = { has_variable = gua_support_var }
+		}
+		custom_tooltip = {
+			text = uca_restore_order_cooldown_tt
+			NOT = { has_variable = uca_recentled_restored_order_var }
+		}
+	}
+
+	effect = {
+		custom_tooltip = {
+			text = restore_order_gua_tt
+			set_variable = gua_support_var
+			set_variable = {
+				name = uca_recentled_restored_order_var
+				days = 60
+			}
+		}
+	}
+
+	ai_chance = {
+		base = 100
+	}
+}
+
+je_restore_order_hon_button = {
+	name = restore_order_hon_button
+	desc = restore_order_hon_button_desc
+
+	visible = {
+		NOT = { has_variable = je_central_america_setup_hon_var }
+		NOT = { exists = c:HON }
+	}
+
+	possible = {
+		NOT = { exists = c:HON }
+		custom_tooltip = {
+			text = controls_hon_tt
+			this = c:UCA
+			NOT = { has_variable = hon_support_var }
+		}
+		custom_tooltip = {
+			text = uca_restore_order_cooldown_tt
+			NOT = { has_variable = uca_recentled_restored_order_var }
+		}
+	}
+
+	effect = {
+		custom_tooltip = {
+			text = restore_order_hon_tt
+			set_variable = hon_support_var
+			set_variable = {
+				name = uca_recentled_restored_order_var
+				days = 60
+			}
+		}
+	}
+
+	ai_chance = {
+		base = 100
+	}
+}
+
+je_restore_order_nic_button = {
+	name = restore_order_nic_button
+	desc = restore_order_nic_button_desc
+
+	visible = {
+		OR = {
+			NOT = { has_variable = je_central_america_setup_nic_var }
+			NOT = { has_modifier = uca_morazan_presidency }
+		}
+		NOT = { exists = c:NIC }
+	}
+
+	possible = {
+		NOT = { exists = c:NIC }
+		custom_tooltip = {
+			text = controls_nic_tt
+			this = c:UCA
+			NOT = { has_variable = nic_support_var }
+		}
+		custom_tooltip = {
+			text = uca_restore_order_cooldown_tt
+			NOT = { has_variable = uca_recentled_restored_order_var }
+		}
+	}
+
+	effect = {
+		custom_tooltip = {
+			text = restore_order_nic_tt
+			set_variable = nic_support_var
+			set_variable = {
+				name = uca_recentled_restored_order_var
+				days = 60
+			}
+		}
+	}
+
+	ai_chance = {
+		base = 100
+	}
+}
+
+je_restore_order_cos_button = {
+	name = restore_order_cos_button
+	desc = restore_order_cos_button_desc
+
+	visible = { 
+		NOT = { has_variable = je_central_america_setup_cos_var }
+		NOT = { exists = c:COS }
+	}
+
+	possible = {
+		NOT = { exists = c:COS }
+		custom_tooltip = {
+			text = controls_cos_tt
+			this = c:UCA
+			NOT = { has_variable = cos_support_var }
+		}
+		custom_tooltip = {
+			text = uca_restore_order_cooldown_tt
+			NOT = { has_variable = uca_recentled_restored_order_var }
+		}
+	}
+
+	effect = {
+		custom_tooltip = {
+			text = restore_order_cos_tt
+			set_variable = cos_support_var
+			set_variable = {
+				name = uca_recentled_restored_order_var
+				days = 60
+			}
+		}
+	}
+
+	ai_chance = {
+		base = 100
+	}
+}
+
+je_nicaragua_intervention_central_america_button = {
+	name = nicaragua_intervention_central_america_button
+	desc = nicaragua_intervention_central_america_button_desc
+
+	visible = { 
+		NOT = { has_variable = je_central_america_setup_nic_var }
+		exists = c:NIC
+		c:NIC ?= {
+			is_subject_of = ROOT
+		}
+	}
+
+	possible = {
+		is_at_war = no
+		is_active_in_diplomatic_play = no
+		custom_tooltip = {
+			text = nicaragua_subject_frca_tt
+			c:NIC ?= {
+				is_subject_of = ROOT
+			}
+		}
+		custom_tooltip = {
+			text = invade_nicaragua_frca_stab_tt
+			this = c:UCA
+			exists = c:NIC
+			has_variable = gua_support_var
+			has_variable = hon_support_var
+			has_variable = els_support_var
+		}
+		custom_tooltip = {
+			text = invade_nicaragua_frca_cos_support_tt
+			this = c:UCA
+			exists = c:NIC
+			has_variable = cos_support_var
+		}
+	}
+
+	effect = {
+		custom_tooltip = {
+			text = invade_nicaragua_frca_tt
+			create_diplomatic_play = {
+				name = nicaraguan_intervention
+				type = dp_annex_war
+				escalation = 20
+				target_state = s:STATE_NICARAGUA.region_state:NIC
+			
+			}
+	}
+
+	ai_chance = {
+		base = 0
+	}
+}

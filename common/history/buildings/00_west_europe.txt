@@ -1037,7 +1037,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_traditional_art" }
+				activate_production_methods={ "pm_lithography_art" }
 			}
 			create_building={
 				building="building_construction_sector"
@@ -2751,7 +2751,7 @@
 				add_ownership={
 					country={
 						country="c:FRA"
-						levels=13
+						levels=11
 					}
 				}
 				reserves=1
@@ -2790,7 +2790,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_traditional_art" }
+				activate_production_methods={ "pm_lithography_art" }
 			}
 			create_building={
 				building="building_furniture_manufacturies"
@@ -3039,7 +3039,7 @@
 					building={
 						type="building_shipyards"
 						country="c:FRA"
-						levels=3
+						levels=2
 						region="STATE_NORMANDY"
 					}
 				}
@@ -3227,7 +3227,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_rotating_crops" "pm_no_secondary" "pm_tools_disabled"  }
+				activate_production_methods={ "pm_rotating_crops" "pm_citrus_orchards" "pm_tools_disabled"  }
 			}
 			create_building={
 				building="building_vineyard_plantation"
@@ -3404,7 +3404,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_soil_enriching_farming" "pm_no_secondary" "pm_tools_disabled"  }
+				activate_production_methods={ "pm_rotating_crops" "pm_no_secondary" "pm_tools_disabled"  }
 			}
 			create_building={
 				building="building_vineyard_plantation"
@@ -3524,7 +3524,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_simple_farming" "pm_no_secondary" "pm_tools_disabled"  }
+				activate_production_methods={ "pm_rotating_crops" "pm_no_secondary" "pm_tools_disabled"  }
 			}
 			create_building={
 				building="building_livestock_ranch"
@@ -3814,6 +3814,17 @@
 	}
 	s:STATE_POITOU={
 		region_state:FRA={
+		    create_building={
+				building="building_government_administration"
+				add_ownership={
+					country={
+						country="c:FRA"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_professional_bureaucrats" "pm_religious_bureaucrats" "pm_vertical_filing_cabinets" }
+			}
 			create_building={
 				building="building_paper_mills"
 				add_ownership={
@@ -3885,6 +3896,17 @@
 	}
 	s:STATE_GUYENNE={
 		region_state:FRA={
+		    create_building={
+				building="building_government_administration"
+				add_ownership={
+					country={
+						country="c:FRA"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_professional_bureaucrats" "pm_religious_bureaucrats" "pm_vertical_filing_cabinets" }
+			}
 			create_building={
 				building="building_textile_mills"
 				add_ownership={
@@ -4204,7 +4226,7 @@
 				add_ownership={
 					country={
 						country="c:FRA"
-						levels=4
+						levels=3
 					}
 				}
 				reserves=1
@@ -4302,7 +4324,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_soil_enriching_farming" "pm_no_secondary" "pm_tools_disabled"  }
+				activate_production_methods={ "pm_rotating_crops" "pm_no_secondary" "pm_tools_disabled"  }
 			}
 			create_building={
 				building="building_vineyard_plantation"
@@ -8936,7 +8958,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_simple_farming" "pm_no_secondary" "pm_tools_disabled"  }
+				activate_production_methods={ "pm_rotating_crops" "pm_no_secondary" "pm_tools_disabled"  }
 			}
 			create_building={
 				building="building_vineyard_plantation"
