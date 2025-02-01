@@ -224,10 +224,20 @@ secession_escalation_on_action = {
 			#}
 		}
 		
+		if = {
+			limit = {
+			    NOT = {
+			        exists = c:CSA
+				    scope:target = {
+				    	c:CSA ?= this
+				    }
+				}
+			}
 		scope:target = {
 		    add_modifier = {
 			    name = nationalist_fervor
 			    months = 25
+				is_decaying = yes
 		    }
 			random_primary_culture = {
 				save_temporary_scope_as = discrim_culture
@@ -260,7 +270,25 @@ secession_escalation_on_action = {
 				value = 0.1
 		    }
 		}
-		
+		}
+		else_if = {
+		    limit = {
+			    exists = c:USA
+				exists = c:CSA
+			    c:USA ?= this
+			}
+		scope:target = {
+		    add_modifier = {
+			    name = nationalist_fervor
+			    months = 9
+				is_decaying = yes
+		    }
+		}
+		s:STATE_FLORIDA.region_state:USA = {
+			set_state_owner = c:CSA
+		}
+		# TODO: give Florida to CSA?
+		}
 		
 		# TODO: any country with this tag AND/OR? primary culture should auto support this in most cases?
 	}

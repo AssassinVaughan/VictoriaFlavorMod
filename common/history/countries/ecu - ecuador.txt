@@ -1,0 +1,69 @@
+﻿COUNTRIES = {
+	c:ECU ?= {
+		set_next_election_date = 1839.3.31
+		
+		effect_starting_technology_tier_3_tech = yes
+		effect_starting_politics_conservative = yes
+		add_technology_researched = empiricism
+		add_technology_researched = stock_exchange
+		
+		activate_law = law_type:law_presidential_republic
+		activate_law = law_type:law_legacy_slavery
+		activate_law = law_type:law_landed_voting
+		activate_law = law_type:law_racial_segregation
+		activate_law = law_type:law_mercantilism
+		activate_law = law_type:law_interventionism
+		activate_law = law_type:law_censorship
+		activate_law = law_type:law_per_capita_based_taxation
+		activate_law = law_type:law_religious_schools
+		activate_law = law_type:law_no_police
+		activate_law = law_type:law_unitary
+		activate_law = law_type:law_national_guard
+		
+		set_tariffs_import_priority = g:artillery
+		set_tariffs_import_priority = g:small_arms
+
+		ig:ig_landowners = {
+			add_modifier = { #Consequence of the Ecuadorian Civil War of 1835
+				name = revolution_lost_ig
+				multiplier = 0.81
+				months = normal_modifier_time
+				is_decaying = yes
+			}
+		}
+
+		ig:ig_armed_forces = {
+			add_ruling_interest_group = yes
+		}
+
+		ig:ig_intelligentsia = {
+			add_ruling_interest_group = yes
+		}
+
+		ig:ig_devout = { 
+			add_modifier = { #Consequence of the Ecuadorian Civil War of 1835, in their case it's a bit more of a streech to say that they were a losing revolutionary ig but it's a way of dissempowering them enough to allow Rocafuerte to have a shot at passing the historical secular reforms he did.
+				name = revolution_lost_ig
+				multiplier = 0.81
+				months = normal_modifier_time
+				is_decaying = yes
+			}
+			add_modifier = { #Excluded from Constituional Assembly of 1835
+				name = modifier_expelled_from_government_petition
+				months = 49
+			}
+			add_modifier = { #Priests Exiled
+				name = deporting_disloyal_church_leaders
+				months = 49
+			}
+			add_modifier = { #Vicar Exiled
+				name = modifier_exiled_leader
+				months = 49
+				is_decaying = yes
+			}
+		}
+
+		add_modifier = {
+			name = age_of_caudillos_modifier
+		}
+	}
+}
