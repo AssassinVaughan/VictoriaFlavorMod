@@ -36,6 +36,38 @@
 			}
 			multiply = 2
 		}
+		if = {
+				limit = {
+					NOR = {
+						AND = {
+							country_rank = rank_value:great_power
+						}
+						AND = {
+						    is_country_type = recognized
+							capital = {
+								OR = {
+								    state_is_in_africa = yes
+									country_is_in_north_america
+									OR = {
+										region = sr:region_brazil	
+										region = sr:region_la_plata
+										region = sr:region_andes	
+										region = sr:region_gran_colombia
+										region = sr:region_oceania
+										region = sr:region_indonesia
+									}		
+						    	}
+					    	}
+						}
+					}
+					NOT = {
+                    any_neighbouring_state = {	
+					    owner = { is_country_type = decentralized }
+                    }
+                    }					
+				}
+				add = 1000
+			}
 	}
 	ai_impose_chance = {
 		value = 0
@@ -352,6 +384,30 @@ law_frontier_colonization = {
 		if = {
 			limit = { ai_has_enact_weight_modifier_journal_entries = yes }
 			add = 750
+		}
+		
+		if = {
+			limit = { 
+			    OR = { 
+				    c:SAF ?= this
+					c:ORA ?= this
+					c:TRN ?= this
+					c:NSW ?= this
+					c:WAS ?= this
+					c:USA ?= this
+					c:CAN ?= this
+					c:ONT ?= this
+					c:HBC ?= this
+					c:QUE ?= this
+					c:ORG ?= this
+					c:ARG ?= this
+					c:NZL ?= this
+				}
+			    any_neighbouring_state = {	
+					owner = { is_country_type = decentralized }
+                }
+			}
+			add = 100
 		}
 	}
 
