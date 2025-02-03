@@ -312,10 +312,9 @@ integrated_mesoamerican_pop_trigger = { # Represents those groups that had long 
 
 commoner_tawantinsuyan_pop_trigger = { # Represents those groups that had long been integrated into wider South and Central American society.
 	scope:pop ?= {
-		culture = {
-			OR = {
-				has_discrimination_trait = central_andes_group
-			}
+	    OR = {
+		    culture = cu:aimara
+		    culture = quechua
 		}
 	}
 }
