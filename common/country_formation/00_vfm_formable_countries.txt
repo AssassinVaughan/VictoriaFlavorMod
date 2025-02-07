@@ -11,3 +11,35 @@
 	
 	ai_will_do = { always = yes }
 }
+
+SWN = {
+	use_culture_states = yes
+
+	required_states_fraction = 0.85
+	
+	ai_will_do = { always = yes }
+
+	possible = {
+		NOT = {
+			AND = {
+				exists = c:SWE
+				exists = c:NOR
+				c:SWE = ROOT
+				OR = {
+					c:SWE = {
+						has_diplomatic_pact = {
+							who = c:NOR
+							type = personal_union
+						}
+					}
+					c:SWE = {
+						has_diplomatic_pact = {
+							who = c:NOR
+							type = dominion
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -38,6 +38,11 @@
 			institution = institution_schools
 			level = 3
 		}	
+		
+		set_institution_investment_level = {
+			institution = institution_police
+			level = 2
+		}
 
 		add_journal_entry = {
 			type = je_swedish_guilds
@@ -56,17 +61,20 @@
 			add_ruling_interest_group = yes
 		}
 
-		ig:ig_landowners = {
-			add_ruling_interest_group = yes
-		}
-
 		ig:ig_petty_bourgeoisie = {
 			set_interest_group_name = ig_guilds
 			add_ruling_interest_group = yes
+			remove_ideology = ideology_meritocratic
 			add_ideology = ideology_guilds
 
 			add_modifier = {
 				name = guild_dominance
+			}
+		}
+		
+		ig:ig_rural_folk = {
+			add_modifier = {
+				name = modifier_sweden_dalakarlarna
 			}
 		}
 
@@ -75,6 +83,11 @@
 				name = guild_dominance_industrialists
 			}
 		}
-
+		
+		add_modifier = {
+			name = modifier_lost_imperial_ambitions
+		    years = 50
+			is_decaying = yes
+		}
 	}
 }

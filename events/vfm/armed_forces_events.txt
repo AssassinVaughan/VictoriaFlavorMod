@@ -1,0 +1,81 @@
+﻿namespace = armed_forces_events
+
+armed_forces_events.1 = {
+	type = country_event
+
+	title = armed_forces_events.1.t
+	desc = armed_forces_events.1.d
+	flavor = armed_forces_events.1.f
+
+	event_image = {
+		video = "unspecific_military_parade"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+
+	duration = 3
+	
+	cooldown = { months = long_modifier_time }
+
+	trigger = {
+	    country_rank >= rank_value:major_power
+		is_revolutionary = no
+		is_at_war = no
+		
+		OR = {
+		    AND = {
+			has_technology_researched = nco_training
+			army_size < {
+    			value = total_population
+    			divide = 300000
+			}
+			army_size < {
+    			value = gdp
+    			divide = 450000
+			}
+			}
+		    AND = {
+			has_technology_researched = trench_works
+			army_size < {
+    			value = total_population
+    			divide = 250000
+			}
+			army_size < {
+    			value = gdp
+    			divide = 375000
+			}
+			}
+		    AND = {
+			army_size < {
+    			value = total_population
+    			divide = 200000
+			}
+			army_size < {
+    			value = gdp
+    			divide = 300000
+			}
+			}
+		}
+	}
+
+	immediate = {
+		ig:ig_armed_forces = {
+			save_scope_as = armed_forces_ig
+			leader = {
+				save_scope_as = armed_forces_leader
+			}
+		}
+	}
+
+	option = {
+		name = armed_forces_events.1.a
+        default_option = yes
+
+		add_modifier = {
+			name = armed_forces_insufficient_army
+			months = normal_modifier_time
+		}
+	}
+}

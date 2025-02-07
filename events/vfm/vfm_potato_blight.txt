@@ -65,7 +65,16 @@ vfm_potato_blight.100 = {
 		
 		every_scope_state = {
 			limit = {
-				in_potato_blight_zone_2 = yes
+				OR = {
+					region = sr:region_north_sea_coast
+				    region = sr:region_north_germany
+					region = sr:region_rhine
+					state_region = s:STATE_GOTALAND
+					state_region = s:STATE_SVEALAND
+					state_region = s:STATE_SCANIA
+					state_region = s:STATE_EASTERN_NORWAY
+				}
+				NOT = { state_region = s:STATE_SCHLESWIG_HOLSTEIN }
 			}
 			state_region = {
 				start_harvest_condition = potato_blight_strong

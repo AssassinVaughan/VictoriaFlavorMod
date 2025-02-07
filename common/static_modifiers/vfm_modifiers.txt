@@ -97,7 +97,7 @@ scandinavian_monetary_union = {
 
 guild_dominance = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
-	interest_group_pol_str_mult = 0.20
+	interest_group_pol_str_mult = 0.15
 }
 
 lingering_guild_dominance = {
@@ -109,12 +109,13 @@ lingering_guild_dominance = {
 guild_dominance_industrialists = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
 	interest_group_pol_str_mult = -0.25
+	interest_group_approval_add = -2
 }
 
 lingering_guild_dominance_industrialists = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
 	interest_group_pol_str_mult = -0.15
-	interest_group_approval_add = 5
+	interest_group_approval_add = 2
 }
 
 renovating_christiana_palace = {
@@ -161,6 +162,19 @@ swedish_norwegian_unifier = {
 	country_prestige_mult = 0.1
 }
 
+modifier_sweden_dalakarlarna = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_negative.dds
+	interest_group_pol_str_mult = 0.25
+	interest_group_approval_add = -3
+}
+
+modifier_lost_imperial_ambitions = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
+	country_prestige_mult = -0.2
+	country_legitimacy_base_add = -15
+	country_military_tech_research_speed_mult = -0.33
+}
+
 china_let_korea_go = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds	
 	country_legitimacy_base_add = -10
@@ -178,9 +192,9 @@ us_rejected_hawaii_involvement = {
 
 canton_system = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_positive.dds
-	country_authority_mult = 0.10
-	building_group_bg_manufacturing_tax_mult = 0.1
+	state_tax_capacity_mult = 0.5
 	country_tech_spread_mult = -0.2
+	state_market_access_price_impact = -0.05
 }
 
 modernized_army = {
@@ -468,8 +482,8 @@ settler_colony = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
 	state_migration_push_mult = -0.5
 	state_migration_pull_mult = 0.15
-	state_radicals_from_sol_change_mult = -0.35
-	country_cannot_enact_laws = yes
+	state_radicals_from_political_movements_mult = -0.33
+	country_law_enactment_success_add = -0.15
 }
 
 illegal_squatters = {
@@ -485,4 +499,11 @@ aboriginal_foreign_epidemic = {
 aboriginal_aid = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds	
 	country_expenses_add = 750
+}
+
+armed_forces_insufficient_army = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_negative.dds
+	interest_group_ig_armed_forces_approval_add = -4
+	unit_offense_mult = -0.05
+	unit_defense_mult = -0.05
 }

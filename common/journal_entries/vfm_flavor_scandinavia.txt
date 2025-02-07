@@ -76,7 +76,7 @@ je_swedish_guilds = {
 						ig_clout > 0.1
 					}
 					ig:ig_petty_bourgeoisie = {
-						ig_clout < 0.1
+						ig_clout < 0.15
 					}
 				}
 			}
@@ -86,7 +86,7 @@ je_swedish_guilds = {
 					is_powerful = yes
 				}
 				ig:ig_petty_bourgeoisie = {
-					ig_clout < 0.05
+					ig_clout < 0.1
 				}
 			}
 		}
@@ -94,6 +94,12 @@ je_swedish_guilds = {
 	}
 
 	on_complete = {
+	    show_as_tooltip = {
+	        scope:guilds_ig  = {
+		    	remove_ideology = ideology_guilds
+		    	add_ideology = ideology_meritocratic
+	    	}
+		}
 		trigger_event = { id = journal_flavor_scandinavia.2 }
 	}
 

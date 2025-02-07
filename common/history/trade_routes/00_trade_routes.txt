@@ -1168,6 +1168,12 @@
 			direction = import
 			target = c:NET.market
 		}
+		create_trade_route = {
+			goods = fabric
+			level = 2
+			direction = import
+			target = c:USA.market
+		}
 	}
 	
 	# Finland	
@@ -2048,5 +2054,14 @@
 			target = c:GBR.market
 		}
 	}
-
+	
+	# China
+	c:CHI = {
+		create_trade_route = {
+			goods = silk
+			level = 3
+			direction = export
+			target = c:RUS.market
+		}
+	}
 }
