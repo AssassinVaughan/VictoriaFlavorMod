@@ -77,7 +77,7 @@
 					building={
 						type="building_manor_house"
 						country="c:SWE"
-						levels=6
+						levels=5
 						region="STATE_SVEALAND"
 					}
 				}
@@ -190,7 +190,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_atmospheric_engine_pump_building_iron_mine" "pm_no_explosives" "pm_no_steam_automation" "pm_road_carts"  }
+				activate_production_methods={ "pm_picks_and_shovels_building_iron_mine" "pm_no_explosives" "pm_no_steam_automation" "pm_road_carts"  }
 			}
 			create_building={
 				building="building_fishing_wharf"
@@ -230,7 +230,7 @@
 					building={
 						type="building_manor_house"
 						country="c:SWE"
-						levels=3
+						levels=2
 						region="STATE_GOTALAND"
 					}
 				}
@@ -354,7 +354,7 @@
 					building={
 						type="building_manor_house"
 						country="c:SWE"
-						levels=5
+						levels=4
 						region="STATE_SCANIA"
 					}
 				}
@@ -380,7 +380,7 @@
 					building={
 						type="building_fishing_wharf"
 						country="c:SWE"
-						levels=3
+						levels=2
 						region="STATE_SCANIA"
 					}
 				}
@@ -421,7 +421,7 @@
 					building={
 						type="building_fishing_wharf"
 						country="c:SWE"
-						levels=2
+						levels=1
 						region="STATE_NORRLAND"
 					}
 				}
@@ -477,7 +477,7 @@
 					building={
 						type="building_rye_farm"
 						country="c:DEN"
-						levels=9
+						levels=8
 						region="STATE_JUTLAND"
 					}
 				}
@@ -718,7 +718,7 @@
 					building={
 						type="building_fishing_wharf"
 						country="c:NOR"
-						levels=4
+						levels=2
 						region="STATE_WESTERN_NORWAY"
 					}
 				}
@@ -802,6 +802,19 @@
 				}
 				reserves=1
 				activate_production_methods={ "pm_fishing_trawlers" "pm_unrefrigerated"  }
+			}
+			create_building={
+				building="building_whaling_station"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:NOR"
+						levels=1
+						region="STATE_WESTERN_NORWAY"
+					}
+				}
+				reserves=1
+				activate_production_methods={  "pm_unrefrigerated" "pm_wooden_whaling_ships" }
 			}
 			create_building={
 				building="building_government_administration"

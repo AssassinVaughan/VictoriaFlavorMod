@@ -645,7 +645,7 @@ journal_flavor_scandinavia.10 = { #Götavarven
 						is_building_type = building_military_shipyards
 					}
 					occupancy > 0.9
-					level >= 4
+					level >= 2
 				}
 			}
 			save_scope_as = shipyard_state
@@ -731,8 +731,7 @@ journal_flavor_scandinavia.11 = {
 		random_scope_character = {
 			limit = { has_variable = is_johan }
 			add_trait = arrogant
-		}
-		
-		
+			set_character_immortal = no
+		}	
 	}
 }

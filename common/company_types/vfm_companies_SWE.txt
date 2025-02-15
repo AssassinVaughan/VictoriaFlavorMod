@@ -99,3 +99,61 @@ company_glasriket = {
 		value = 3
 	}
 }
+
+# Bofors arms
+company_bofors = {
+	icon = "gfx/interface/icons/company_icons/basic_munitions.dds"
+	background = "gfx/interface/icons/company_icons/company_backgrounds/comp_illu_manufacturing_heavy.dds"
+	
+	flavored_company = yes
+	
+	building_types = {
+		building_munition_plants
+		building_artillery_foundries
+	}
+	
+	potential = {
+		OR = {
+			country_has_primary_culture = cu:swedish
+			country_has_primary_culture = cu:danish
+			country_has_primary_culture = cu:norwegian
+		}
+		owns_entire_state_region = STATE_SVEALAND
+	}
+	
+	attainable = {
+		hidden_trigger = { # Hide attainable if it's always fulfilled by possible
+			any_scope_state = {
+				state_region = s:STATE_SVEALAND
+			}
+		}
+	}		
+	
+	possible = {
+		any_scope_state = {
+			is_incorporated = yes
+			any_scope_building = {
+				is_building_type = building_munition_plants
+				level >= 2
+			}
+		}
+		has_technology_researched = breech_loading_artillery
+	}
+	
+	prosperity_modifier = {
+		unit_defense_mult = 0.05
+		unit_offense_mult = 0.05
+
+	}	
+	
+	ai_weight = {
+		value = 3 # Higher base value for flavored companies
+	}
+}
+
+# Vattenfall - Hydro Power
+# Scania - Trucks
+# Volvo - cars
+# Husqvarna - home appliances
+# Landsverk - tanks
+# SAAB - airplanes

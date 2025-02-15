@@ -278,6 +278,9 @@ in_potato_blight_zone_2 = {
 		region = sr:region_north_germany
 		region = sr:region_rhine
 		state_region = s:STATE_GOTALAND
+		state_region = s:STATE_SVEALAND
+		state_region = s:STATE_SCANIA
+		state_region = s:STATE_EASTERN_NORWAY
 	}
 	NOT = { state_region = s:STATE_SCHLESWIG_HOLSTEIN }
 }
@@ -298,7 +301,12 @@ in_potato_blight_mild_zone_2 = {
 		state_region = s:STATE_SCHLESWIG_HOLSTEIN
 		state_region = s:STATE_NORTH_RHINE
 	}
-	NOT = { state_region = s:STATE_GOTALAND }
+	NOR = { 
+	    state_region = s:STATE_GOTALAND
+		state_region = s:STATE_SVEALAND
+		state_region = s:STATE_SCANIA
+		state_region = s:STATE_EASTERN_NORWAY
+	}
 }
 
 in_potato_blight_zone = {
@@ -308,6 +316,9 @@ in_potato_blight_zone = {
 		region = sr:region_rhine
 		any_scope_state = {
 			state_region = s:STATE_GOTALAND
+			state_region = s:STATE_SVEALAND
+			state_region = s:STATE_SCANIA
+			state_region = s:STATE_EASTERN_NORWAY
 		}
 	}
 	NOT = { any_scope_state = { state_region = s:STATE_SCHLESWIG_HOLSTEIN } }
@@ -333,7 +344,14 @@ in_potato_blight_mild_zone = {
 	    	}
 		}
 	}
-	NOT = { any_scope_state = { state_region = s:STATE_GOTALAND } }
+	NOT = { 
+	    any_scope_state = { 
+		    state_region = s:STATE_GOTALAND 
+			state_region = s:STATE_SVEALAND
+			state_region = s:STATE_SCANIA
+			state_region = s:STATE_EASTERN_NORWAY
+		} 
+	}
 }
 
 is_vulnerable_to_droughts = {
@@ -490,6 +508,10 @@ is_vulnerable_to_earthquake = {
 
 is_extra_vulnerable_to_heatwaves = {
 	any_scope_state = { OR = { has_state_trait = state_medeteranean_climate has_state_trait = state_trait_bad_soils } }
+}
+
+is_extra_vulnerable_to_frost = {
+	any_scope_state = { OR = { has_state_trait = state_trait_sub_arctic_inland has_state_trait = state_trait_sub_arctic has_state_trait = state_trait_tundra_inland has_state_trait = state_trait_tundra has_state_trait = state_trait_cold_water_ports } }
 }
 
 is_extra_vulnerable_to_disease = {
