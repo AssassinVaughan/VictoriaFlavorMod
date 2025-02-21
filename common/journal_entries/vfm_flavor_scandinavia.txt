@@ -146,9 +146,9 @@ je_matter_of_norway = {
 
 	fail = {
 		c:NOR ?= {
-			has_attitude = {
-				who ?= c:SWE
-				attitude = rebellious
+			NOR = { 
+				is_subject_type = subject_type_personal_union
+				is_subject_type = subject_type_puppet 
 			}
 		}
 	}
@@ -158,12 +158,7 @@ je_matter_of_norway = {
 	}
 
 	invalid = {
-		OR = {
-			NOT = { exists = c:NOR }
-			c:NOR ?= {
-				NOT = { is_subject_type = subject_type_personal_union }
-			}
-		}
+		NOT = { exists = c:NOR }
 	}
 
 	on_monthly_pulse = {

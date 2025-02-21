@@ -9,7 +9,7 @@ journal_flavor_scandinavia.1 = {
 	flavor = journal_flavor_scandinavia.1.f
 
 	event_image = {
-		video = "gfx/event_pictures/unspecific_signed_contract.bk2"
+		video = "gfx/event_pictures/ep1_transfer_of_authority.bk2"
 	}
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -168,11 +168,6 @@ journal_flavor_scandinavia.3 = { #Christiana Palace
 		name = journal_flavor_scandinavia.3.a
 		default_option = yes
 
-		change_relations = {
-			country = C:NOR
-			value = 30
-		}
-
 		add_modifier = {
 			name = renovating_christiana_palace
 			multiplier = money_amount_multiplier_medium
@@ -185,10 +180,13 @@ journal_flavor_scandinavia.3 = { #Christiana Palace
 	
 	option = {
 		name = journal_flavor_scandinavia.3.b
+		C:NOR = {
+			add_liberty_desire = 5
+		}
 
 		change_relations = {
 			country = C:NOR
-			value = -50
+			value = -15
 		}
 
 	}
@@ -235,7 +233,7 @@ journal_flavor_scandinavia.4 = { #Norway Flag Question
 
 		change_relations = {
 			country = C:NOR
-			value = 30
+			value = 15
 		}
 
 		add_modifier = {
@@ -257,9 +255,8 @@ journal_flavor_scandinavia.4 = { #Norway Flag Question
 	option = {
 		name = journal_flavor_scandinavia.4.b
 
-		change_relations = {
-			country = C:NOR
-			value = -50
+		C:NOR = {
+			add_liberty_desire = 10
 		}
 
 		add_modifier = {
@@ -321,11 +318,6 @@ journal_flavor_scandinavia.5 = { #Western Swedish Conservatives demand protectio
 		name = journal_flavor_scandinavia.5.a
 		default_option = yes
 
-		change_relations = {
-			country = C:NOR
-			value = 30
-		}
-
 		ig:ig_industrialists = {
 			add_modifier = {
 				name = norway_border_protectionism_denied
@@ -338,9 +330,8 @@ journal_flavor_scandinavia.5 = { #Western Swedish Conservatives demand protectio
 	option = {
 		name = journal_flavor_scandinavia.5.b
 
-		change_relations = {
-			country = C:NOR
-			value = -50
+		C:NOR = {
+			add_liberty_desire = 10
 		}
 
 		ig:ig_industrialists = {
@@ -389,14 +380,8 @@ journal_flavor_scandinavia.6 = { #Norway Demands Autonomy
 		name = journal_flavor_scandinavia.6.a
 		default_option = yes
 
-		create_diplomatic_pact = {
-			country = c:NOR
-			type = dominion
-		}
-
-		change_relations = {
-			country = C:NOR
-			value = 60
+		C:NOR = {
+			add_liberty_desire = 15
 		}
 
 	}
@@ -408,7 +393,7 @@ journal_flavor_scandinavia.6 = { #Norway Demands Autonomy
 		create_diplomatic_play = {
 				name = norwegian_independence_war
 				target_country = c:NOR
-				type = dp_make_protectorate
+				type = dp_reduce_autonomy
 
 			add_war_goal = {
 				holder = c:NOR
@@ -430,7 +415,7 @@ journal_flavor_scandinavia.7 = { #Form Norway-Sweden
 	flavor = journal_flavor_scandinavia.7.f
 
 	event_image = {
-		video = "gfx/event_pictures/unspecific_military_parade.bk2"
+		video = "gfx/event_pictures/ep1_transfer_of_authority.bk2"
 	}
 
 	icon = "gfx/interface/icons/event_icons/event_scales.dds"
@@ -696,14 +681,14 @@ journal_flavor_scandinavia.10 = { #Götavarven
 # Bedchamber arrangement - the french king rules from his bed
 journal_flavor_scandinavia.11 = {
 	type = country_event
-	placement = scope:shipyard_state
+	placement = root
 
 	title = journal_flavor_scandinavia.11.t
 	desc = journal_flavor_scandinavia.11.d
 	flavor = journal_flavor_scandinavia.11.f
 
 	event_image = {
-		video = "gfx/event_pictures/southamerica_factory_opening.bk2"
+		video = "gfx/event_pictures/votp_monarch_holding_court.bk2"
 	}
 
 	icon = "gfx/interface/icons/event_icons/event_trade.dds"
@@ -732,6 +717,26 @@ journal_flavor_scandinavia.11 = {
 			limit = { has_variable = is_johan }
 			add_trait = arrogant
 			set_character_immortal = no
+		}
+		
+		add_modifier = {
+			name = rule_from_the_bed
+			years = 5
 		}	
+	}
+	
+	option = {
+		name = journal_flavor_scandinavia.11.a
+		default_option = yes
+		random_scope_character = {
+			limit = { has_variable = is_johan }
+			add_trait = arrogant
+			set_character_immortal = no
+		}	
+		
+		add_modifier = {
+			name = rule_from_the_bed_2
+			years = 5
+		}
 	}
 }
