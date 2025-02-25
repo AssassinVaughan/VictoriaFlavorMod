@@ -73,7 +73,7 @@ je_swedish_guilds = {
 				}
 				AND = {
 					ig:ig_industrialists = {
-						ig_clout > 0.1
+						ig_clout > 0.15
 					}
 					ig:ig_petty_bourgeoisie = {
 						ig_clout < 0.15
@@ -91,6 +91,13 @@ je_swedish_guilds = {
 			}
 		}
 
+	}
+	
+	on_monthly_pulse = {
+		random_events = {
+			25 = 0
+			1 = journal_flavor_scandinavia.12
+		}
 	}
 
 	on_complete = {

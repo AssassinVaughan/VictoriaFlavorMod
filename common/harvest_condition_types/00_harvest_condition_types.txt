@@ -31,6 +31,7 @@ drought = {
 		building_group_bg_agriculture_throughput_add = -0.05
 		building_group_bg_plantations_throughput_add = -0.05
 		building_group_bg_ranching_throughput_add = -0.05
+		state_food_security_add = -0.02
 
 		#Infrastructure
 		#building_group_bg_agriculture_infrastructure_usage_mult = 0.1
@@ -49,7 +50,7 @@ drought = {
 	}
 
 	chance = {
-		value = 0.002
+		value = 0.003
 		if = {
 			limit = {
 				has_harvest_condition = optimal_sunlight
@@ -66,7 +67,7 @@ drought = {
 			limit = {
 				is_extra_vulnerable_to_heatwaves = yes
 			}
-			multiply = 1.7
+			multiply = 1.9
 		}
 	}
 
@@ -123,7 +124,7 @@ flood = {
 	}
 
 	chance = {
-		value = 0.0025
+		value = 0.0035
 		if = {
 			limit = {
 				has_harvest_condition = moderate_rainfall
@@ -196,12 +197,18 @@ frost = {
 	}
 
 	chance = {
-		value = 0.0025
+		value = 0.0035
 		if = {
 			limit = {
 				has_harvest_condition = hailstorm
 			}
 			multiply = 1.5
+		}
+		if = {
+			limit = {
+				is_extra_vulnerable_to_frost = yes
+			}
+			multiply = 2
 		}
 	}
 
@@ -265,7 +272,7 @@ wildfire = {
 	}
 
 	chance = {
-		value = 0.0008
+		value = 0.001
 		if = {
 			limit = {
 				has_harvest_condition = optimal_sunlight
@@ -332,7 +339,7 @@ hailstorm = {
 	}
 
 	chance = {
-		value = 0.0025
+		value = 0.0035
 		if = {
 			limit = {
 				OR = {
@@ -382,6 +389,7 @@ locust_swarm = {
 		building_group_bg_agriculture_throughput_add = -0.05
 		building_group_bg_plantations_throughput_add = -0.05
 		building_group_bg_ranching_throughput_add = -0.05
+		state_food_security_add = -0.02
 
 		#Subsistence
 		state_peasants_consumption_multiplier_add= 0.03
@@ -390,12 +398,12 @@ locust_swarm = {
 	intensity = {
 		fixed_range = {
 			min = 3
-			max = 5
+			max = 6
 		}
 	}
 
 	chance = {
-		value = 0.0017
+		value = 0.0025
 	}
 
 	color = { 184 121 0 }
@@ -447,7 +455,7 @@ heatwave = {
 	}
 
 	chance = {
-		value = 0.0025
+		value = 0.0035
 		if = {
 			limit = {
 				has_harvest_condition = optimal_sunlight
@@ -458,7 +466,7 @@ heatwave = {
 			limit = {
 				is_extra_vulnerable_to_heatwaves = yes
 			}
-			multiply = 1.6
+			multiply = 1.8
 		}
 	}
 
@@ -495,6 +503,7 @@ disease_outbreak = {
 		building_group_bg_agriculture_throughput_add = -0.05
 		building_group_bg_plantations_throughput_add = -0.05
 		building_group_bg_ranching_throughput_add = -0.05
+		state_mortality_mult = 0.05
 
 		#Subsistence
 		state_peasants_consumption_multiplier_add= 0.03
@@ -508,12 +517,18 @@ disease_outbreak = {
 	}
 
 	chance = {
-		value = 0.0008
+		value = 0.002
 		if = {
 			limit = {
 				is_extra_vulnerable_to_disease = yes
 			}
 			multiply = 1.5
+		}
+		multiply = {
+			value = state_population
+			divide = 2000000
+			min = 1
+			max = 3						
 		}
 	}
 
@@ -561,7 +576,7 @@ extreme_winds = {
 	}
 
 	chance = {
-		value = 0.0025
+		value = 0.0035
 	}
 
 	color = { 79 204 169 }
@@ -615,7 +630,7 @@ torrential_rains = {
 	}
 
 	chance = {
-		value = 0.003
+		value = 0.004
 		if = {
 			limit = {
 				OR = {
@@ -682,7 +697,7 @@ pollinator_surge = {
 	}
 
 	chance = {
-		value = 0.0025
+		value = 0.003
 	}
 
 	color = { 90 140 0 }
@@ -735,7 +750,7 @@ optimal_sunlight = {
 	}
 
 	chance = {
-		value = 0.003
+		value = 0.0035
 	}
 
 	color = { 125 255 62 }
@@ -788,7 +803,7 @@ moderate_rainfall = {
 	}
 
 	chance = {
-		value = 0.003
+		value = 0.004
 	}
 
 	color = { 65 100 250 }

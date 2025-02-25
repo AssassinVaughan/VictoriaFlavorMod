@@ -21,32 +21,31 @@
 	}
 
 	modifier = {
-		building_rye_farm_throughput_add = -0.05
-	    building_subsistence_farms_throughput_add = -0.05
-		state_peasants_consumption_multiplier_add= 0.03
+		building_rye_farm_throughput_add = -0.1
+	    building_subsistence_farms_throughput_add = -0.1
 		state_food_security_add = -0.03
 	}
 
 	intensity = {
 		fixed_range = {
-			min = 7
-			max = 12
+			min = 3
+			max = 5
 		}
 	}
 
 	chance = {
-		value = 0.0005
+		value = 0.001
 		if = {
 			limit = {
 				in_potato_blight_zone = yes
 			}
-			multiply = 5
+			multiply = 4
 		}
 		if = {
 			limit = {
 				has_global_variable = potato_blight_var
 			}
-			multiply = 40
+			multiply = 25
 		}
 	}
 
@@ -80,20 +79,20 @@ potato_blight_strong = {
 	}
 
 	modifier = {
-		building_rye_farm_throughput_add = -0.05
-	    building_subsistence_farms_throughput_add = -0.05
-		state_peasants_consumption_multiplier_add= 0.03
+		building_rye_farm_throughput_add = -0.1
+	    building_subsistence_farms_throughput_add = -0.1
+		state_food_security_add = -0.05
 	}
 
 	intensity = {
 		fixed_range = {
-			min = 11
-			max = 14
+			min = 5
+			max = 6
 		}
 	}
 
 	chance = {
-		value = 0.0001
+		value = 0.0003
 	}
 
 	color = { 78 70 57 }
@@ -136,7 +135,7 @@ earthquake = {
 	}
 
 	chance = {
-		value = 0.001
+		value = 0.002
 		if = {
 			limit = { 
 				is_extra_vulnerable_to_earthquake = yes

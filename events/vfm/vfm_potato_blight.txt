@@ -65,7 +65,14 @@ vfm_potato_blight.100 = {
 		
 		every_state = {
 			limit = {
-				region = sr:region_north_sea_coast
+			    OR = {
+					state_region = s:STATE_HIGHLANDS
+					state_region = s:STATE_LOWLANDS
+					state_region = s:STATE_ULSTER
+					state_region = s:STATE_LEINSTER
+					state_region = s:STATE_CONNAUGHT
+					state_region = s:STATE_MUNSTER
+				}
 			}
 			state_region = {
 				start_harvest_condition = potato_blight_strong
@@ -113,7 +120,10 @@ vfm_potato_blight.100 = {
 		every_state = {
 			limit = {
 				OR = {
-				    region = sr:region_new_england
+				    state_region = s:STATE_MAINE
+				    state_region = s:STATE_VERMONT
+				    state_region = s:STATE_NEW_HAMPSHIRE
+				    state_region = s:STATE_NEW_BRUNSWICK
 				    state_region = s:STATE_QUEBEC
 					state_region = s:STATE_ONTARIO
 					state_region = s:STATE_NEWFOUNDLAND

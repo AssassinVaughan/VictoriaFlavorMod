@@ -109,7 +109,7 @@ NAI = {
 	AI_PEACE_AGREEMENT_WARGOAL_VALUE_SCALED = 0.5	# How much does the AI value each wargoal (scaled with maneuver cost)
 	AI_PEACE_AGREEMENT_ALLY_WARGOAL_MULT = 1.5 #1 For each wargoal that our allies are pressing, apply wargoal value * this
 	AI_PEACE_AGREEMENT_SELF_WARGOAL_MULT = 3.5 #3 For each wargoal we have that's being pressed, apply wargoal value * this
-	AI_PEACE_AGREEMENT_ENEMY_WARGOAL_SELF_MULT = -4 #8 For each wargoal that the enemy is pressing against us, apply wargoal value * this
+	AI_PEACE_AGREEMENT_ENEMY_WARGOAL_SELF_MULT = -5 #8 For each wargoal that the enemy is pressing against us, apply wargoal value * this
 	AI_PEACE_AGREEMENT_ENEMY_WARGOAL_ALLY_MULT = -1 # For each wargoal that's being pressed against our allies, apply wargoal value * this
 	AI_PEACE_AGREEMENT_NON_CONTESTED_ENEMY_WARGOAL_MULT = 3 #5 Value of wargoals held by enemy that aren't being contested is multiplied by this
 	AI_PEACE_AGREEMENT_ACHIEVABLE_ALLY_WARGOAL = -1.5 # For each wargoal our side holds that isn't being pressed where the target will run out of war support before the holder does (multiplies self/ally wargoal value)
@@ -274,19 +274,19 @@ NPops = {
 
 ### Pop Growth Constants
 ## Base Values per month
-@min_birthrate = 0.00060			# Minimum base birthrate per month (at POP_GROWTH_STABLE_SOL)
-@max_birthrate = 0.00475			#0.00450 Maximum base birthrate per month (at SOL = 0 if not modified by malnourishment)
+@min_birthrate = 0.00055			# Minimum base birthrate per month (at POP_GROWTH_STABLE_SOL)
+@max_birthrate = 0.00460			#0.00450 Maximum base birthrate per month (at SOL = 0 if not modified by malnourishment)
 @min_mortality = 0.00045			# Minimum base mortality per month (at POP_GROWTH_STABLE_SOL)
-@max_mortality = 0.00645			#0.00600 Maximum base mortality per month (at SOL = 0 if not modified by malnourishment)
+@max_mortality = 0.00610			#0.00600 Maximum base mortality per month (at SOL = 0 if not modified by malnourishment)
 
 ## SoL Thresholds
 @pop_growth_equilibrium_sol = 5		# Equilibrium is pops stop starving and where growth first becomes positive
-@pop_growth_transition_sol = 10     # Transition determines how long birthrate "lags" behind mortality before starting to drop. Setting to same as equilibrium leads to no "lag" (only matters for birthrate)
-@pop_growth_max_sol = 15 #20			# Growth Max is where net growth generally is at it's highest (only matters for mortality)
-@pop_growth_stable_sol = 19 #20 #30			# Stable is where birthrate and mortality stop changing and hit their minimum values
+@pop_growth_transition_sol = 12     # Transition determines how long birthrate "lags" behind mortality before starting to drop. Setting to same as equilibrium leads to no "lag" (only matters for birthrate)
+@pop_growth_max_sol = 14 #20			# Growth Max is where net growth generally is at it's highest (only matters for mortality)
+@pop_growth_stable_sol = 25 #20 #30			# Stable is where birthrate and mortality stop changing and hit their minimum values
 
 ## Others
-@transition_birthrate_mult = 1 		# If you want the birthrate "lag" to go to a higher or lower value than max_birthrate. (you can also just change it directly below)
+@transition_birthrate_mult = 0.95 	# If you want the birthrate "lag" to go to a higher or lower value than max_birthrate. (you can also just change it directly below)
 @max_growth_mortality_mult = 0.4	#0.35 What proportion of birthrate_at_growth_max mortality should be at. Higher means lower growth
 
 ### Pop Growth Derived values
@@ -339,6 +339,17 @@ NPops = {
 # else { birthrate = POP_GROWTH_MIN_BIRTHRATE } 
 
 NPops = {
+
+    @starvation_threshold = 0.5 # 0.4 VFM
+	@starvation_scaling_factor = @[1/starvation_threshold]
+	
+	FOOD_SECURITY_MODERATE_THRESHOLD = 0.75							#0.6 If Food Security is lower than this, the pop is marked as having moderate food security
+	FOOD_SECURITY_STARVATION_THRESHOLD = @starvation_threshold		# If Food Security is lower than this, the pop is considered to be in a starving state
+	FOOD_SECURITY_SEVERE_STARVATION_THRESHOLD = 0.25				#0.2 If Food Security is lower than this, the pop is considered to be in a severe starving state
+	STARVATION_EFFECTS_SCALING_FACTOR = @starvation_scaling_factor  # Acts as a scaling factor when converting food security to starvation effects: StarvationValue = CLAMP( (StarvationThreshold - FoodSecurity) * ScalingFactor, 0, 1)
+	FAMINE_POPULATION_SHARE_IN_STARVATION = 0.35					# If at least this % of state population is in starvation, the state is considered to have a famine
+	FAMINE_POPULATION_SHARE_IN_SEVERE_STARVATION = 0.15				# If at least this % of state population is in severe starvation, the state is considered to have a famine
+	
 	## Birthrate
 	POP_GROWTH_BIRTHRATE_PRETRANSITION_SLOPE = @birthrate_pretransition_slope
 	POP_GROWTH_BIRTHRATE_TRANSITION_SLOPE = @birthrate_transition_slope
