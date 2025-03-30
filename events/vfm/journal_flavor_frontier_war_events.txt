@@ -189,8 +189,11 @@ journal_flavor_frontier_war_events.4 = {
 	duration = 1
 
 	trigger = {
-		year >= 1844
 		THIS = c:NSW
+		year >= 1844
+		NOT = {
+			has_variable = north_australia_territory
+		}
 	}
 
 	immediate = {
@@ -205,6 +208,7 @@ journal_flavor_frontier_war_events.4 = {
 	option = {
 		name = journal_flavor_frontier_war_events.4.a
 		default_option = yes
+		set_variable = north_australia_territory
 		custom_tooltip = ast_frontier_3_tt
 		s:STATE_NORTHERN_TERRITORY.region_state:NSW = {
 			create_pop = {

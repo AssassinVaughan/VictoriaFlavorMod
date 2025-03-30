@@ -1,0 +1,38 @@
+﻿je_realism_movement = {
+	icon = "gfx/interface/icons/event_icons/event_protest.dds"
+
+	group = je_group_internal_affairs
+	
+	immediate = {
+	    trigger_event = { id = vfm_france.1 }
+	}
+
+	complete = {
+		has_technology_researched = realism
+	}
+
+	on_complete = {
+	    add_loyalists = {
+			value = 0.04
+		}
+	}
+
+	on_yearly_pulse = {
+		random_events = {
+		    20 = 0
+			10 = vfm_france.2
+			10 = vfm_france.3
+		}
+		events = {
+		    vfm_france.4
+		}
+	}
+	
+	
+
+	transferable = no
+    should_be_pinned_by_default = yes
+	weight = 5000
+}
+
+

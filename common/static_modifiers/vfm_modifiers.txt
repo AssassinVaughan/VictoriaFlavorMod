@@ -9,11 +9,17 @@ pax_belgica = {
 fra_secular_legacy = { # From VTM
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
 	state_birth_rate_mult = -0.1 ## fix this, state_accepted_birth_rate_mult was removed in 1.8
+	state_radicals_from_political_movements_mult = 0.1
+	state_pop_support_movement_radical_mult = 0.1
+	state_pop_support_movement_liberal_mult = 0.1
 }
 
 fra_secular_legacy_2 = { # From VTM
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
 	state_birth_rate_mult = -0.2 ## fix this, state_accepted_birth_rate_mult was removed in 1.8
+	state_radicals_from_political_movements_mult = 0.2
+	state_pop_support_movement_radical_mult = 0.2
+	state_pop_support_movement_liberal_mult = 0.2
 }
 
 control_turkestan = {
@@ -515,6 +521,12 @@ aboriginal_foreign_epidemic = {
 aboriginal_aid = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds	
 	country_expenses_add = 750
+}
+
+colonial_boom_2 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
+	state_migration_pull_mult = 0.5
+	state_colony_growth_speed_mult = 0.5
 }
 
 armed_forces_insufficient_army = {

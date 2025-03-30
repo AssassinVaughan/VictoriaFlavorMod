@@ -1,0 +1,245 @@
+﻿namespace = vfm_france
+vfm_france.1 = {
+	type = country_event
+
+	title = vfm_france.1.t
+	desc = vfm_france.1.d
+	flavor = vfm_france.1.f
+
+	event_image = {
+		video = "southamerica_christianity"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_protest.dds"
+
+	duration = 3
+
+	immediate = {
+		ig:ig_devout = {
+			save_scope_as = devout_ig
+		}
+	}
+
+	option = { 
+		name = vfm_france.1.a
+		default_option = yes
+		random_scope_state = {
+			limit = {
+				has_building = building_university
+			}
+			add_radicals_in_state = {
+				strata = middle
+				value = medium_radicals
+			}
+		}
+		
+		add_technology_progress = {
+			progress = 2000
+			technology = realism
+		}
+	}
+}
+
+vfm_france.2 = { #Outrageous act of protest, Devout demand repressions
+	type = country_event
+
+	title = nihilism.8.t
+	desc = nihilism.8.d
+	flavor = nihilism.8.f
+
+	event_image = {
+		video = "southamerica_christianity"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_protest.dds"
+
+	duration = 3
+
+	trigger = {
+	    NOR = { 
+		    has_modifier = fra_republican_sentiment
+			has_modifier = modifier_constitutionalist_dissent
+			has_modifier = govt_administration_burned
+		}
+		ig:ig_intelligentsia = {
+			ig_approval < 3	
+		}
+	}
+
+	immediate = {
+		ig:ig_devout = {
+			save_scope_as = devout_ig
+		}
+	}
+
+	option = { 
+		name = nihilism.8.a
+		default_option = yes
+		ig:ig_devout = {
+			add_modifier = {
+				name = modifier_respect_enforced_pos
+				months = normal_modifier_time
+			}
+		}
+		random_scope_state = {
+			limit = {
+				has_building = building_university
+			}
+			add_radicals_in_state = {
+				strata = middle
+				value = medium_radicals
+			}
+		}
+		add_modifier = {
+			name = fra_republican_sentiment
+			months = 37
+		}
+		add_technology_progress = {
+			progress = 1000
+			technology = realism
+		}
+	}
+	option = { 
+		name = nihilism.8.b
+		ig:ig_devout = {
+			add_modifier = {
+				name = modifier_respect_unenforced_neg
+				months = normal_modifier_time
+			}
+		}
+		capital = {
+			add_radicals_in_state = {
+				strata = upper
+				value = small_radicals
+			}
+		}
+		add_modifier = {
+			name = fra_republican_sentiment
+			months = 16
+		}
+		add_technology_progress = {
+			progress = 1000
+			technology = realism
+		}
+	}
+}
+
+vfm_france.3 = { #Academics are mighty upset, demand more influence
+	type = country_event
+
+	title = vfm_france.3.t
+	desc = vfm_france.3.d
+	flavor = vfm_france.3.f
+
+	event_image = {
+		video = "southamerica_christianity"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_protest.dds"
+
+	duration = 3
+
+	trigger = {
+	    NOR = { 
+		    has_modifier = fra_republican_sentiment
+			has_modifier = modifier_constitutionalist_dissent
+			has_modifier = govt_administration_burned
+		}
+		ig:ig_intelligentsia = {
+			ig_approval >= 0	
+		}
+	}
+
+	immediate = {
+		ig:ig_intelligentsia = {
+			save_scope_as = intelligentsia_ig
+		}
+	}
+
+	option = { 
+		name = vfm_france.3.a
+		default_option = yes
+		add_technology_progress = {
+			progress = 1000
+			technology = realism
+		}
+		add_modifier = {
+			name = modifier_constitutionalist_dissent
+			months = 25
+		}
+	}
+	option = { 
+		name = vfm_france.3.b
+		add_modifier = {
+			name = govt_administration_burned
+			months = 25
+		}
+	}
+}
+
+
+vfm_france.4 = { #Preparation for 1848, swap ideology from liberal to radical
+	type = country_event
+
+	title = vfm_france.4.t
+	desc = vfm_france.4.d
+	flavor = vfm_france.4.f
+
+	event_image = {
+		video = "southamerica_christianity"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_protest.dds"
+
+	duration = 3
+
+	trigger = {
+	    has_modifier = fra_secular_legacy
+		game_date > 1844.1.1	
+	}
+	
+	immediate = {
+		ig:ig_intelligentsia = {
+			save_scope_as = intelligentsia_ig
+		}
+	}
+
+	option = { 
+		name = vfm_france.4.a
+		default_option = yes
+		remove_modifier = fra_secular_legacy
+		add_modifier = fra_secular_legacy_2
+		if = {
+			limit = {
+			    NOT = { has_global_variable = delescluze_spawn }
+				empty_agitator_slots >= 1
+			}
+			trigger_event = { id = historical_agitators.2 popup = yes }
+		}
+		if = {
+			limit = {
+				ig:ig_intelligentsia = {
+					leader = {
+						NOT = {
+							has_ideology = ideology:ideology_radical
+						}
+					}
+				}
+	        }
+			ig:ig_intelligentsia = {
+				leader = {
+					set_ideology = ideology:ideology_radical
+				}
+			}
+		}
+	}
+}
+
