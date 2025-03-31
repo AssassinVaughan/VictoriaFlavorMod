@@ -38,6 +38,7 @@ armed_forces_events.1 = {
 			}
 		    AND = {
 			has_technology_researched = trench_works
+			NOT = { has_technology_researched = nco_training }
 			army_size < {
     			value = total_population
     			divide = 250000
@@ -48,6 +49,7 @@ armed_forces_events.1 = {
 			}
 			}
 		    AND = {
+			NOT = { has_technology_researched = trench_works }
 			army_size < {
     			value = total_population
     			divide = 200000
@@ -75,7 +77,7 @@ armed_forces_events.1 = {
 
 		add_modifier = {
 			name = armed_forces_insufficient_army
-			months = normal_modifier_time
+			months = 37
 		}
 	}
 }

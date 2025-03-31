@@ -15,6 +15,9 @@
 	    add_loyalists = {
 			value = 0.04
 		}
+		add_journal_entry = {
+			type = je_secular_legacy
+		}
 	}
 
 	on_yearly_pulse = {
@@ -26,6 +29,44 @@
 		events = {
 		    vfm_france.4
 		}
+	}
+	
+	
+
+	transferable = no
+    should_be_pinned_by_default = yes
+	weight = 5000
+}
+
+je_secular_legacy = {
+	icon = "gfx/interface/icons/event_icons/event_protest.dds"
+
+	group = je_group_internal_affairs
+	
+	immediate = {
+	    trigger_event = { id = vfm_france.5 } # TODO
+	}
+
+	complete = {
+		NOT = { 
+			has_law = law_type:law_child_labor_allowed
+		}
+		institution_investment_level = {
+			institution = institution_health_system
+			value >= 3
+		}
+		institution_investment_level = {
+			institution = institution_social_security
+			value >= 3
+		}
+	}
+
+	on_complete = {
+	    add_loyalists = {
+			value = 0.04
+		}
+		remove_modifier = fra_secular_legacy_2
+		add_modifier = fra_secular_legacy_3
 	}
 	
 	
