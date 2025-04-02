@@ -42,26 +42,38 @@ vfm_discrimination_events.1 = {
 		random_scope_state = {
 			limit = {
 				any_scope_culture = {
-					prev = {
-					state_cultural_acceptance = {  
-						target = prev
-						value < acceptance_status_4 
+					PREV = {
+						state_cultural_acceptance = {  
+							target = PREV
+							value < acceptance_status_4 
+						}
 					}
-				}
 					save_temporary_scope_as = discrim_culture
 				}
 				culture_percent_state = {
-					target = scope:discrim_culture
+				    target = scope:discrim_culture
 					value >= 0.05
 				}
-			}
+		    }
 			save_scope_as = discrimination_state
 			random_scope_pop = {
 				limit = { 
-					pop_acceptance < acceptance_status_4
+					PREV = {
+						state_cultural_acceptance = {  
+							target = PREV.culture
+							value < acceptance_status_4 
+						}
+					}
 				}
-				culture = { save_scope_as = discriminated_culture_pop  }
+				culture = { save_scope_as = discriminated_culture_pop }
 			}
+		}
+	}
+	
+	cancellation_trigger = {
+		NOR = {
+			exists = scope:discriminated_culture_pop
+			exists = scope:discrimination_state 
 		}
 	}
 
@@ -170,22 +182,29 @@ vfm_discrimination_events.2 = {
 			    value >= 0.05
 			}
 		}
+		any_interest_group = {
+			law_stance = {
+				law = law_type:law_national_supremacy
+				value > neutral
+			}
+			is_marginal = no
+		}
 	}
 
 	immediate = {
 		ordered_scope_state = {
 			limit = {
 				any_scope_culture = {
-					prev = {
-					    state_cultural_acceptance = {  
-					    	target = prev
-					    	value < acceptance_status_4 
-				    	}
-				    }
+					PREV = {
+						state_cultural_acceptance = {  
+							target = PREV
+							value < acceptance_status_4 
+						}
+					}
 					save_temporary_scope_as = discrim_culture
 				}
 				culture_percent_state = {
-					target = scope:discrim_culture
+				    target = scope:discrim_culture
 					value >= 0.05
 				}
 		    }
@@ -193,10 +212,22 @@ vfm_discrimination_events.2 = {
 			save_scope_as = discrimination_state
 			random_scope_pop = {
 				limit = { 
-					pop_acceptance < acceptance_status_4
+					PREV = {
+						state_cultural_acceptance = {  
+							target = PREV.culture
+							value < acceptance_status_4 
+						}
+					}
 				}
 				culture = { save_scope_as = discriminated_culture_pop }
 			}
+		}
+	}
+	
+	cancellation_trigger = {
+		NOR = {
+			exists = scope:discriminated_culture_pop
+			exists = scope:discrimination_state 
 		}
 	}
 
@@ -314,9 +345,9 @@ vfm_discrimination_events.3 = {
 		random_scope_state = {
 			limit = {
 				any_scope_culture = {
-					prev = {
+					PREV = {
 						state_cultural_acceptance = {  
-							target = prev
+							target = PREV
 							value < acceptance_status_4 
 						}
 					}
@@ -326,14 +357,26 @@ vfm_discrimination_events.3 = {
 					target = scope:discrim_culture
 					value >= 0.1
 				}
-			}
+		    }
 			save_scope_as = discrimination_state
 			random_scope_pop = {
 				limit = { 
-					pop_acceptance < acceptance_status_4
+					PREV = {
+						state_cultural_acceptance = {  
+							target = PREV.culture
+							value < acceptance_status_4 
+						}
+					}
 				}
-				culture = { save_scope_as = discriminated_culture_pop  }
+				culture = { save_scope_as = discriminated_culture_pop }
 			}
+		}
+	}
+	
+	cancellation_trigger = {
+		NOR = {
+			exists = scope:discriminated_culture_pop
+			exists = scope:discrimination_state 
 		}
 	}
 
@@ -451,9 +494,9 @@ vfm_discrimination_events.4 = {
 		random_scope_state = {
 			limit = {
 				any_scope_culture = {
-					prev = {
+					PREV = {
 						state_cultural_acceptance = {  
-							target = prev
+							target = PREV
 							value < acceptance_status_4 
 						}
 					}
@@ -463,14 +506,26 @@ vfm_discrimination_events.4 = {
 					target = scope:discrim_culture
 					value >= 0.1
 				}
-			}
+		    }
 			save_scope_as = discrimination_state
 			random_scope_pop = {
 				limit = { 
-					pop_acceptance < acceptance_status_4
+					PREV = {
+						state_cultural_acceptance = {  
+							target = PREV.culture
+							value < acceptance_status_4 
+						}
+					}
 				}
-				culture = { save_scope_as = discriminated_culture_pop  }
+				culture = { save_scope_as = discriminated_culture_pop }
 			}
+		}
+	}
+	
+	cancellation_trigger = {
+		NOR = {
+			exists = scope:discriminated_culture_pop
+			exists = scope:discrimination_state 
 		}
 	}
 

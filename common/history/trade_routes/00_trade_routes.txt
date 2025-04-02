@@ -341,7 +341,13 @@
 			level = 1
 			direction = import
 			target = c:GBR.market
-		}		
+		}	
+        create_trade_route = {
+			goods = artillery
+			level = 1
+			direction = import
+			target = c:NET.market
+		}	
 	}
 
 	# Peru
@@ -371,6 +377,22 @@
 			target = c:USA.market
 		}	
 	}	
+	
+	# Argentina
+	c:ARG = {
+		create_trade_route = {
+			goods = small_arms
+			level = 1
+			direction = import
+			target = c:CHL.market
+		}
+		create_trade_route = {
+			goods = artillery
+			level = 1
+			direction = import
+			target = c:PRU.market
+		}	
+	}
 	
 	# Grao-Para
 	c:PRA = {		
@@ -676,6 +698,12 @@
 			direction = import
 			target = c:SWE.market
 		}		
+		create_trade_route = {
+			goods = sugar
+			level = 2
+			direction = import
+			target = c:SPA.market
+		}	
 	}
 	
 	c:OLD = {
@@ -1060,7 +1088,7 @@
 		}			
 		create_trade_route = {
 			goods = iron
-			level = 5
+			level = 2
 			direction = import
 			target = c:SAR.market
 		}		
@@ -1075,6 +1103,12 @@
 			level = 2
 			direction = import
 			target = c:TUR.market
+		}	
+        create_trade_route = {
+			goods = dye
+			level = 1
+			direction = import
+			target = c:GBR.market
 		}		
 	}
 
@@ -1133,6 +1167,12 @@
 			level = 2
 			direction = import
 			target = c:NET.market
+		}
+		create_trade_route = {
+			goods = fabric
+			level = 2
+			direction = import
+			target = c:USA.market
 		}
 	}
 	
@@ -1314,9 +1354,15 @@
 		}	
         create_trade_route = {
 			goods = silk
-			level = 4
+			level = 3
 			direction = import
 			target = c:CHI.market
+		}	
+        create_trade_route = {
+			goods = silk
+			level = 2
+			direction = import
+			target = c:TUR.market
 		}		
 	}
 
@@ -1445,6 +1491,12 @@
 			level = 5
 			direction = import
 			target = c:FRA.market
+		}
+		create_trade_route = {
+			goods = artillery
+			level = 2
+			direction = import
+			target = c:BEL.market
 		}
 	}
 
@@ -1928,7 +1980,13 @@
 			level = 4
 			direction = import
 			target = c:GBR.market
-		}			
+		}	
+        create_trade_route = {
+			goods = porcelain
+			level = 3
+			direction = import
+			target = c:PRU.market
+		}		
 	}
 
 	# Netherlands
@@ -2030,5 +2088,14 @@
 			target = c:GBR.market
 		}
 	}
-
+	
+	# China
+	c:CHI = {
+		create_trade_route = {
+			goods = silk
+			level = 3
+			direction = export
+			target = c:RUS.market
+		}
+	}
 }

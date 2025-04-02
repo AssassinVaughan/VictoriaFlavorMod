@@ -171,7 +171,7 @@
 					building={
 						type="building_glassworks"
 						country="c:CHI"
-						levels=8
+						levels=7
 						region="STATE_GUIZHOU"
 					}
 				}
@@ -466,6 +466,19 @@
 				}
 				reserves=1
 				activate_production_methods={ "pm_wooden_buildings" }
+			}
+			create_building={
+				building="building_glassworks"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:CHI"
+						levels=2
+						region="STATE_BEIJING"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_forest_glass"  "pm_manual_glassblowing" "pm_ceramics" }
 			}
 			create_building={
 				building="building_paper_mills"

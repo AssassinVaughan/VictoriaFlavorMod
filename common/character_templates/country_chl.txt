@@ -6,6 +6,7 @@ CHL_Jose_Joaquin_Prieto = {
 	last_name = "Prieto"
 	ig_leader = yes
     historical = yes
+	culture = primary_culture
     is_general = yes
     ruler = yes
 	birth_date = 1786.8.20
@@ -50,6 +51,7 @@ CHL_Diego_Portales = {
 	first_name = "Diego_Jose"
 	last_name = "Portales"
 	historical = yes
+	culture = primary_culture
 	ig_leader = yes
 	birth_date = 1793.7.5
 	dna = dna_diego_jose_portales
@@ -63,14 +65,7 @@ CHL_Diego_Portales = {
 	on_created = {
 		set_variable = {
 			name = is_portales
-		}
-		set_variable = prime_minister_trigger
-		owner = {
-			set_variable = {
-				name = prime_minister
-				value = PREV
-			}
-		}								
+		}						
 	}	
 }
 
@@ -79,6 +74,7 @@ CHL_Joaquin_Tocornal = {
 	first_name = Joaquin
 	last_name = Tocornal
 	historical = yes
+	culture = primary_culture
 	age = 48 # Born in 1788, actual birth date unknown
 	ig_leader = yes
 	interest_group = ig_landowners
@@ -96,6 +92,7 @@ CHL_Manuel_Rengifo = {
 	first_name = Manuel
 	last_name = Rengifo
 	historical = yes
+	culture = primary_culture
 	birth_date = 1793.12.31
 	ig_leader = yes
 	interest_group = ig_industrialists
@@ -113,6 +110,7 @@ CHL_francisco_vicuna = {
 	first_name = Francisco
 	last_name = VicuN_a
 	historical = yes
+	culture = primary_culture
 	age = 61 # exact birth date unknown
 	ig_leader = yes
 	interest_group = ig_intelligentsia
@@ -130,6 +128,7 @@ CHL_Manuel_Vicuna_Larrain = {
 	first_name = Manuel
 	last_name = VicuN_a_y_LarraI_n
 	historical = yes
+	culture = primary_culture
 	birth_date = 1778.5.3
 	dna = dna_manuel_vicuna_larrain
 	ig_leader = yes
@@ -831,6 +830,7 @@ CHL_Victorino_Garrido = { # Sea
 	first_name = "Victorino"
 	last_name = "Garrido"
 	historical = yes
+	culture = primary_culture
 	female = no
 	commander_rank = default
 	interest_group = ig_armed_forces
@@ -1440,6 +1440,9 @@ CHL_joaquin_edwards_bello = { #Víctor Lorenzo Joaquín Edwards Bello
 	}
     agitator_usage = {
         country_trigger = {
+			NOT = {
+				has_variable = joaquin_edwards_bello_spawn
+			}
 			OR = {
 				c:CHL ?= THIS
 				AND = {
@@ -1465,6 +1468,11 @@ CHL_joaquin_edwards_bello = { #Víctor Lorenzo Joaquín Edwards Bello
         latest_usage_date = 1936.1.1
         chance = 50
     }   
+	on_created = {
+		owner = {
+			set_variable = joaquin_edwards_bello_spawn
+		}
+	}
 }
 
 CHL_jose_victorino_lastarria = { #José Victorino Lastarria

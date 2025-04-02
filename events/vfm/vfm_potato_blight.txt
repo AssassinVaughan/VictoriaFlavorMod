@@ -53,7 +53,7 @@ vfm_potato_blight.100 = {
 
 	trigger = {
 	    NOT = { has_global_variable = potato_blight_has_started_var }
-		#game_date > 1841.1.1 # happened 1845 historically
+		game_date > 1841.1.1 # happened 1845 historically
 		any_scope_state = {
 			state_region = s:STATE_CONNAUGHT
 		}
@@ -63,12 +63,95 @@ vfm_potato_blight.100 = {
 	    set_global_variable = { name = potato_blight_var months = 48 }
 		set_global_variable = { name = potato_blight_has_started_var }
 		
-		every_scope_state = {
+		every_state = {
 			limit = {
-				in_potato_blight_zone_2 = yes
+			    OR = {
+					state_region = s:STATE_HIGHLANDS
+					state_region = s:STATE_LOWLANDS
+					state_region = s:STATE_ULSTER
+					state_region = s:STATE_LEINSTER
+					state_region = s:STATE_CONNAUGHT
+					state_region = s:STATE_MUNSTER
+				}
 			}
 			state_region = {
 				start_harvest_condition = potato_blight_strong
+			}
+		}
+		every_state = {
+			limit = {
+				OR = {
+				    region = sr:region_north_germany
+					region = sr:region_rhine
+				}
+				NOT = { state_region = s:STATE_SCHLESWIG_HOLSTEIN }
+			}
+			state_region = {
+				start_harvest_condition = potato_blight_strong
+			}
+		}
+		every_state = {
+			limit = {
+				OR = {
+					state_region = s:STATE_GOTALAND
+					state_region = s:STATE_SVEALAND
+					state_region = s:STATE_SCANIA
+					state_region = s:STATE_EASTERN_NORWAY
+				}
+			}
+			state_region = {
+				start_harvest_condition = potato_blight_strong
+			}
+		}
+		every_state = {
+			limit = {
+				region = sr:region_baltic
+				NOR = {
+					state_region = s:STATE_GOTALAND
+					state_region = s:STATE_SVEALAND
+					state_region = s:STATE_SCANIA
+					state_region = s:STATE_EASTERN_NORWAY
+				}
+			}
+			state_region = {
+				start_harvest_condition = potato_blight
+			}
+		}
+		every_state = {
+			limit = {
+				OR = {
+				    state_region = s:STATE_MAINE
+				    state_region = s:STATE_VERMONT
+				    state_region = s:STATE_NEW_HAMPSHIRE
+				    state_region = s:STATE_NEW_BRUNSWICK
+				    state_region = s:STATE_QUEBEC
+					state_region = s:STATE_ONTARIO
+					state_region = s:STATE_NEWFOUNDLAND
+				}
+			}
+			state_region = {
+				start_harvest_condition = potato_blight
+			}
+		}
+		every_state = {
+			limit = {
+				OR = {
+				    region = sr:region_poland
+				    region = sr:region_baltic_states
+				    region = sr:region_belarus
+			    	region = sr:region_danubia
+				}
+			}
+			state_region = {
+				start_harvest_condition = potato_blight
+			}
+		}
+		every_state = {
+			limit = {
+				region = sr:region_england
+			}
+			state_region = {
+				start_harvest_condition = potato_blight
 			}
 		}
 		every_country = {

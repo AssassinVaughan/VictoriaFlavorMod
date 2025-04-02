@@ -1,12 +1,11 @@
 ﻿COUNTRIES = {
-	c:UCA ?= {
+	c:UCA = {
 		set_next_election_date = 1839.2.1
 		
 		effect_starting_technology_tier_3_tech = yes
 		
 		add_technology_researched = empiricism
-		add_technology_researched = stock_exchange #To enable law_protectionism
-		
+
 		activate_law = law_type:law_presidential_republic
 		activate_law = law_type:law_census_voting
 		activate_law = law_type:law_tenant_farmers
@@ -33,6 +32,7 @@
 		
 		trigger_event = { id = journal_flavor_central_america.1 days = 3 }
 		
+		
 		ig:ig_intelligentsia = {
 			add_ruling_interest_group = yes
 		}
@@ -41,6 +41,10 @@
 			remove_ideology = ideology_paternalistic
 			add_ideology = ideology_central_american_reactionary
 			set_interest_group_name = ig_hacendados
+		}
+		
+		ig:ig_armed_forces = {
+			remove_ideology = ideology_paternalistic
 		}
 
 		ig:ig_devout = {
@@ -76,5 +80,6 @@
 		set_variable = gua_civil_peace_var	
 		set_variable = nic_civil_peace_var	
 		set_variable = hon_civil_peace_var	
+
 	}
 }

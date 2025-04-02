@@ -74,7 +74,37 @@
 	
 	institution_scores = {
 		institution_colonial_affairs = {	
-			value = 150			
+			value = 0			
+			if = {
+				limit = {
+					country_rank = rank_value:great_power
+                    any_neighbouring_state = {	
+					    owner = { is_country_type = decentralized }
+                    }					
+				}
+				add = 110
+			}
+			if = {
+				limit = {
+				    is_country_type = recognized
+					capital = {
+						OR = {
+							state_is_in_africa = yes
+							state_is_in_north_america = yes
+							region = sr:region_brazil	
+							region = sr:region_la_plata
+							region = sr:region_andes	
+							region = sr:region_gran_colombia
+							region = sr:region_oceania
+							region = sr:region_indonesia		
+						}
+					}
+                    any_neighbouring_state = {	
+					    owner = { is_country_type = decentralized }
+                    }					
+				}
+				add = 80
+			}
 		}				
 		institution_social_security = {	
 			value = 50			
@@ -92,7 +122,7 @@
 			value = 100		
 		}		
 		institution_home_affairs = {	
-			value = 150		
+			value = 125		
 		}				
 	}
 
@@ -213,7 +243,37 @@ ai_strategy_reactionary_agenda = {
 	
 	institution_scores = {
 		institution_colonial_affairs = {	
-			value = 200			
+			value = 0			
+			if = {
+				limit = {
+					country_rank = rank_value:great_power
+                    any_neighbouring_state = {	
+					    owner = { is_country_type = decentralized }
+                    }					
+				}
+				add = 175
+			}
+			if = {
+				limit = {
+				    is_country_type = recognized
+					capital = {
+						OR = {
+							state_is_in_africa = yes
+							state_is_in_north_america = yes
+							region = sr:region_brazil	
+							region = sr:region_la_plata
+							region = sr:region_andes	
+							region = sr:region_gran_colombia
+							region = sr:region_oceania
+							region = sr:region_indonesia		
+						}
+					}
+                    any_neighbouring_state = {	
+					    owner = { is_country_type = decentralized }
+                    }					
+				}
+				add = 80
+			}
 		}				
 		institution_social_security = {	
 			value = 50			
@@ -225,13 +285,13 @@ ai_strategy_reactionary_agenda = {
 			value = 75		
 		}		
 		institution_police = {	
-			value = 200			
+			value = 175			
 		}		
 		institution_health_system = {	
 			value = 75			
 		}		
 		institution_home_affairs = {	
-			value = 200			
+			value = 150			
 		}				
 	}
 
@@ -385,7 +445,37 @@ ai_strategy_progressive_agenda = {
 
 	institution_scores = {
 		institution_colonial_affairs = {	
-			value = 75	
+			value = 0			
+			if = {
+				limit = {
+					country_rank = rank_value:great_power
+                    any_neighbouring_state = {	
+					    owner = { is_country_type = decentralized }
+                    }					
+				}
+				add = 80
+			}
+			if = {
+				limit = {
+				    is_country_type = recognized
+					capital = {
+						OR = {
+							state_is_in_africa = yes
+							state_is_in_north_america = yes
+							region = sr:region_brazil	
+							region = sr:region_la_plata
+							region = sr:region_andes	
+							region = sr:region_gran_colombia
+							region = sr:region_oceania
+							region = sr:region_indonesia		
+						}
+					}
+                    any_neighbouring_state = {	
+					    owner = { is_country_type = decentralized }
+                    }					
+				}
+				add = 50
+			}
 		}				
 		institution_social_security = {	
 			value = 100			
@@ -394,7 +484,7 @@ ai_strategy_progressive_agenda = {
 			value = 100			
 		}		
 		institution_schools = {	
-			value = 150			
+			value = 175			
 		}		
 		institution_police = {	
 			value = 75			
@@ -557,16 +647,46 @@ ai_strategy_egalitarian_agenda = {
 	
 	institution_scores = {
 		institution_colonial_affairs = {	
-			value = 50			
+			value = 0			
+			if = {
+				limit = {
+					country_rank = rank_value:great_power
+                    any_neighbouring_state = {	
+					    owner = { is_country_type = decentralized }
+                    }					
+				}
+				add = 60
+			}
+			if = {
+				limit = {
+				    is_country_type = recognized
+					capital = {
+						OR = {
+							state_is_in_africa = yes
+							state_is_in_north_america = yes
+							region = sr:region_brazil	
+							region = sr:region_la_plata
+							region = sr:region_andes	
+							region = sr:region_gran_colombia
+							region = sr:region_oceania
+							region = sr:region_indonesia		
+						}
+					}
+                    any_neighbouring_state = {	
+					    owner = { is_country_type = decentralized }
+                    }					
+				}
+				add = 30
+			}
 		}				
-		institution_social_security = {	
+		institution_social_security = {
 			value = 150			
 		}
 		institution_workplace_safety = {	
 			value = 150			
 		}		
 		institution_schools = {	
-			value = 150			
+			value = 175			
 		}		
 		institution_police = {	
 			value = 50			
@@ -725,7 +845,37 @@ ai_strategy_nationalist_agenda = {
 	
 	institution_scores = {
 		institution_colonial_affairs = {	
-			value = 150			
+			value = 0			
+			if = {
+				limit = {
+					country_rank = rank_value:great_power
+                    any_neighbouring_state = {	
+					    owner = { is_country_type = decentralized }
+                    }					
+				}
+				add = 125
+			}
+			if = {
+				limit = {
+				    is_country_type = recognized
+					capital = {
+						OR = {
+							state_is_in_africa = yes
+							state_is_in_north_america = yes
+							region = sr:region_brazil	
+							region = sr:region_la_plata
+							region = sr:region_andes	
+							region = sr:region_gran_colombia
+							region = sr:region_oceania
+							region = sr:region_indonesia		
+						}
+					}
+                    any_neighbouring_state = {	
+					    owner = { is_country_type = decentralized }
+                    }					
+				}
+				add = 100
+			}
 		}				
 		institution_social_security = {	
 			value = 75	
@@ -737,13 +887,13 @@ ai_strategy_nationalist_agenda = {
 			value = 100			
 		}		
 		institution_police = {	
-			value = 200			
+			value = 175		
 		}		
 		institution_health_system = {	
 			value = 100			
 		}		
 		institution_home_affairs = {	
-			value = 150			
+			value = 125			
 		}				
 	}	
 
@@ -914,13 +1064,13 @@ ai_strategy_maintain_mandate_of_heaven = {
 			value = 50			
 		}		
 		institution_police = {	
-			value = 200			
+			value = 175			
 		}		
 		institution_health_system = {	
 			value = 50		
 		}		
 		institution_home_affairs = {	
-			value = 200			
+			value = 175		
 		}				
 	}	
 	
@@ -1056,7 +1206,15 @@ ai_strategy_meiji_restoration = {
 
 	institution_scores = {
 		institution_colonial_affairs = {	
-			value = 50	
+			value = 0			
+			if = {
+				limit = {
+                    any_neighbouring_state = {	
+					    owner = { is_country_type = decentralized }
+                    }					
+				}
+				add = 60
+			}
 		}				
 		institution_social_security = {	
 			value = 100			

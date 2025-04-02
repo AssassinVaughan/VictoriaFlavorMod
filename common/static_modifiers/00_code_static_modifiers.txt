@@ -9,7 +9,7 @@ base_values = {
 	country_weekly_innovation_max_add = 50
 	country_tech_spread_add = 25
 	
-	country_loan_interest_rate_add = 0.2
+	country_loan_interest_rate_add = 0.1
 	
 	country_legitimacy_govt_size_add = 1
 	
@@ -36,7 +36,7 @@ base_values = {
 	state_shopkeepers_investment_pool_contribution_add = 0.20
 	state_clergymen_investment_pool_contribution_add = 0.20
 	state_aristocrats_investment_pool_contribution_add = 0.20
-	state_capitalists_investment_pool_contribution_add = 0.30	
+	state_capitalists_investment_pool_contribution_add = 0.25	
 	
 	state_unincorporated_starting_wages_mult = -0.2 # To balance for unincorporated states not paying taxes
 
@@ -128,14 +128,14 @@ literacy_penalty = {
 # E.g. (40% - 20%) * 2.5 = 50% effect max
 starvation_penalty = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fire_negative.dds
-	state_birth_rate_mult = -0.7
-	state_mortality_mult = 0.6
+	state_birth_rate_mult = -0.5
+	state_mortality_mult = 0.5
 }
 
 severe_starvation_penalty = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fire_negative.dds
-	state_birth_rate_mult = -0.9
-	state_mortality_mult = 1.0
+	state_birth_rate_mult = -0.8
+	state_mortality_mult = 0.8
 }
 
 commander_battle_end_victory = {
@@ -155,7 +155,7 @@ opposition_agitator_popularity = {
 in_default = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_negative.dds
 	state_construction_mult = -0.3
-	building_throughput_add = -0.1
+	state_capitalists_investment_pool_efficiency_mult = -0.5
 	unit_offense_mult = -0.5
 	unit_defense_mult = -0.5
 }
@@ -171,7 +171,7 @@ declared_bankruptcy = {
 	state_construction_mult = -0.25
 	state_welfare_payments_mult = -1
 	state_market_access_price_impact = -0.1
-	country_institution_size_change_speed_mult = -0.9
+	state_capitalists_investment_pool_efficiency_mult = -0.5
 	country_force_privatization_bool = yes
 }
 
@@ -604,7 +604,7 @@ state_turmoil = {
 # Applied if state is above 'high turmoil' threshold
 state_turmoil_high = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
-	building_throughput_add = -0.2
+	building_throughput_add = -0.15
 	state_tax_waste_add = 0.35
 	state_migration_pull_mult = -0.35
 }
@@ -612,7 +612,7 @@ state_turmoil_high = {
 # Applied if state is above 'extreme turmoil' threshold
 state_turmoil_extreme = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
-	building_throughput_add = -0.25
+	building_throughput_add = -0.2
 	state_tax_waste_add = 0.5
 	state_migration_pull_mult = -0.5
 }
@@ -652,7 +652,7 @@ country_literacy_rate = {
 # Scales with number of excess innovation points
 excess_innovation = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_positive.dds
-	country_tech_spread_add = 0.2
+	country_tech_spread_add = 0.15
 }
 
 # Scales with admiral convoy raiding strength

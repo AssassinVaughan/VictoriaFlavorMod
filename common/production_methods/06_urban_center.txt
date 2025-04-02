@@ -3,8 +3,8 @@
 
 	building_modifiers = {
 		workforce_scaled = {
-			goods_input_wood_add = 4
-			goods_output_services_add = 16
+			goods_input_wood_add = 3
+			goods_output_services_add = 14
 		}
 
 		level_scaled = {
@@ -22,9 +22,9 @@ pm_market_squares = {
 
 	building_modifiers = {
 		workforce_scaled = {
-			goods_input_wood_add = 4
-			goods_input_glass_add = 4
-			goods_output_services_add = 26
+			goods_input_wood_add = 3
+			goods_input_glass_add = 3
+			goods_output_services_add = 24
 		}
 
 		level_scaled = {
@@ -46,9 +46,9 @@ pm_covered_markets = {
 	building_modifiers = {
 		workforce_scaled = {
 			goods_input_wood_add = 2
-			goods_input_glass_add = 6
-			goods_input_steel_add = 6
-			goods_output_services_add = 38
+			goods_input_glass_add = 4
+			goods_input_steel_add = 4
+			goods_output_services_add = 35
 		}
 
 		level_scaled = {
@@ -70,10 +70,10 @@ pm_arcades = {
 	building_modifiers = {
 		workforce_scaled = {
 			goods_input_wood_add = 2
-			goods_input_glass_add = 8
-			goods_input_steel_add = 8
-			goods_input_electricity_add = 8
-			goods_output_services_add = 52
+			goods_input_glass_add = 5
+			goods_input_steel_add = 5
+			goods_input_electricity_add = 2
+			goods_output_services_add = 48
 		}
 
 		level_scaled = {
@@ -96,6 +96,24 @@ pm_no_street_lighting = {
 	city_lights_color_index = 0	# Needs to match city_graphics_data.settings color array
 }
 
+pm_oil_streetlights = {
+	texture = "gfx/interface/icons/production_method_icons/gas_streetlights.dds"
+	
+	unlocking_technologies = {
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_oil_add = 3
+			goods_output_services_add = 10
+		}
+
+		level_scaled = {
+			building_employment_laborers_add = 225
+		}
+	}
+}
+
 pm_gas_streetlights = {
 	texture = "gfx/interface/icons/production_method_icons/gas_streetlights.dds"
 
@@ -106,12 +124,12 @@ pm_gas_streetlights = {
 
 	building_modifiers = {
 		workforce_scaled = {
-			goods_input_coal_add = 5
-			goods_output_services_add = 15
+			goods_input_coal_add = 4
+			goods_output_services_add = 12
 		}
 
 		level_scaled = {
-			building_employment_laborers_add = 250
+			building_employment_laborers_add = 225
 			building_employment_engineers_add = 25
 		}
 	}
@@ -135,11 +153,11 @@ pm_electric_streetlights = {
 	building_modifiers = {
 		workforce_scaled = {
 			goods_input_electricity_add = 3
-			goods_output_services_add = 10
+			goods_output_services_add = 15
 		}
 
 		level_scaled = {
-			building_employment_laborers_add = 200
+			building_employment_laborers_add = 50
 			building_employment_engineers_add = 50
 		}
 	}
@@ -260,10 +278,33 @@ pm_traditional_art = {
 
 	building_modifiers = {
 		workforce_scaled = {
+			goods_input_paper_add = 3
+			goods_output_fine_art_add = 2
+		}
+		
+		level_scaled = {
+			building_employment_clerks_add = 250
+			building_employment_laborers_add = 250
+		}
+	}
+}
+
+pm_lithography_art = {
+	texture = "gfx/interface/icons/production_method_icons/bleached_paper.dds"
+
+	unlocking_technologies = {
+		lithography
+	}
+
+	building_modifiers = {
+
+		workforce_scaled = {
 			goods_input_paper_add = 5
 			goods_output_fine_art_add = 3
 		}
 	}
+	
+	ai_value = 1400
 }
 
 pm_realist_art = {
@@ -281,7 +322,7 @@ pm_realist_art = {
 		}
 	}
 	
-	ai_value = 1400
+	ai_value = 1800
 }
 
 pm_photographic_art = {
@@ -301,7 +342,7 @@ pm_photographic_art = {
 		}
 	}
 	
-	ai_value = 1900
+	ai_value = 2500
 }
 
 pm_film_art = {
@@ -322,7 +363,7 @@ pm_film_art = {
 		}
 	}
 	
-	ai_value = 2500
+	ai_value = 3000
 }	
 
 	required_input_goods = electricity
@@ -360,9 +401,9 @@ pm_traditional_patronage = {
 
 	building_modifiers = {
 		level_scaled = {
-			building_employment_academics_add = 1000
-			building_employment_clerks_add = 3000
-			building_employment_laborers_add = 1000
+			building_employment_academics_add = 750
+			building_employment_clerks_add = 2500
+			building_employment_laborers_add = 500
 		}
 	}
 }
@@ -382,8 +423,8 @@ pm_bourgeoisie_patronage = {
 	building_modifiers = {
 		level_scaled = {
 			building_employment_academics_add = 1500
-			building_employment_clerks_add = 2500
-			building_employment_laborers_add = 1000
+			building_employment_clerks_add = 2000
+			building_employment_laborers_add = 500
 		}
 	}
 }
@@ -398,8 +439,8 @@ pm_independent_artists = {
 	building_modifiers = {
 		level_scaled = {
 			building_employment_academics_add = 2000
-			building_employment_clerks_add = 2000
-			building_employment_laborers_add = 1000		
+			building_employment_clerks_add = 1500
+			building_employment_laborers_add = 500	
 		}
 	}
 }
@@ -420,9 +461,9 @@ pm_hydroelectric_plant = {
 		}
 
 		level_scaled = {
-			building_employment_laborers_add = 2500
-			building_employment_machinists_add = 1800
-			building_employment_engineers_add = 1200
+			building_employment_laborers_add = 1000
+			building_employment_machinists_add = 750
+			building_employment_engineers_add = 500
 		}
 	}
 }
@@ -448,9 +489,9 @@ pm_coal-fired_plant = {
 		}
 
 		level_scaled = {
-			building_employment_laborers_add = 2000
-			building_employment_machinists_add = 1500
-			building_employment_engineers_add = 1400
+			building_employment_laborers_add = 1000
+			building_employment_machinists_add = 750
+			building_employment_engineers_add = 500
 		}
 	}
 }
@@ -476,9 +517,9 @@ pm_oil-fired_plant = {
 		}
 
 		level_scaled = {
-			building_employment_laborers_add = 2000
-			building_employment_machinists_add = 1500
-			building_employment_engineers_add = 1400
+			building_employment_laborers_add = 1000
+			building_employment_machinists_add = 750
+			building_employment_engineers_add = 500
 		}
 	}
 }

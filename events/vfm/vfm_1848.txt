@@ -1,0 +1,49 @@
+﻿namespace = vfm_1848
+
+vfm_1848.1 = { #Preparation for 1848, swap ideology from liberal to radical
+	type = country_event
+
+	title = vfm_1848.1.t
+	desc = vfm_1848.1.d
+	flavor = vfm_1848.1.f
+
+	event_image = {
+		video = "southamerica_christianity"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_protest.dds"
+
+	duration = 3
+
+	trigger = {
+		game_date > 1843.1.1	
+		game_date < 1848.6.1
+		NOT = { this = c:FRA }
+		ig:ig_intelligentsia = {
+		    leader = {
+						NOT = {
+							has_ideology = ideology:ideology_radical
+						}
+					}
+		}
+	}
+	
+	immediate = {
+		ig:ig_intelligentsia = {
+			save_scope_as = intelligentsia_ig
+		}
+	}
+
+	option = { 
+		name = vfm_1848.1.a
+		default_option = yes
+			ig:ig_intelligentsia = {
+				leader = {
+					set_ideology = ideology:ideology_radical
+				}
+			}
+	}
+}
+

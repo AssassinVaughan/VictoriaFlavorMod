@@ -73,10 +73,10 @@ je_swedish_guilds = {
 				}
 				AND = {
 					ig:ig_industrialists = {
-						ig_clout > 0.1
+						ig_clout > 0.15
 					}
 					ig:ig_petty_bourgeoisie = {
-						ig_clout < 0.1
+						ig_clout < 0.15
 					}
 				}
 			}
@@ -86,14 +86,27 @@ je_swedish_guilds = {
 					is_powerful = yes
 				}
 				ig:ig_petty_bourgeoisie = {
-					ig_clout < 0.05
+					ig_clout < 0.1
 				}
 			}
 		}
 
 	}
+	
+	on_monthly_pulse = {
+		random_events = {
+			25 = 0
+			1 = journal_flavor_scandinavia.12
+		}
+	}
 
 	on_complete = {
+	    show_as_tooltip = {
+	        scope:guilds_ig  = {
+		    	remove_ideology = ideology_guilds
+		    	add_ideology = ideology_meritocratic
+	    	}
+		}
 		trigger_event = { id = journal_flavor_scandinavia.2 }
 	}
 
@@ -140,9 +153,9 @@ je_matter_of_norway = {
 
 	fail = {
 		c:NOR ?= {
-			has_attitude = {
-				who ?= c:SWE
-				attitude = rebellious
+			NOR = { 
+				is_subject_type = subject_type_personal_union
+				is_subject_type = subject_type_puppet 
 			}
 		}
 	}
@@ -152,12 +165,7 @@ je_matter_of_norway = {
 	}
 
 	invalid = {
-		OR = {
-			NOT = { exists = c:NOR }
-			c:NOR ?= {
-				NOT = { is_subject_type = subject_type_personal_union }
-			}
-		}
+		NOT = { exists = c:NOR }
 	}
 
 	on_monthly_pulse = {
@@ -202,7 +210,7 @@ je_swe_motala_fabriker = {
 		trigger_event = { id = journal_flavor_scandinavia.8 }
 	}
 	
-	timeout = 3650
+	timeout = 4380
 	
 	weight = 5000
 }
@@ -240,7 +248,7 @@ je_swe_glasriket = {
 		trigger_event = { id = journal_flavor_scandinavia.9 }
 	}
 	
-	timeout = 3650
+	timeout = 4380
 	
 	weight = 5000
 }
@@ -283,7 +291,7 @@ je_swe_gotavarven = {
 		trigger_event = { id = journal_flavor_scandinavia.10 }
 	}
 	
-	timeout = 5415
+	timeout = 7300
 	
 	weight = 5000
 }

@@ -944,7 +944,7 @@ ai_strategy_default = {
 					c:NOR ?= this
 				}
 			}
-			add = -30
+			add = -20
 		}
 		
 		# Great Powers with the appropriate flags should get involved in Egypt vs Ottomans
@@ -1241,7 +1241,7 @@ ai_strategy_default = {
 	# Using this value in other strategies will function additively
 	institution_scores = {
 		institution_colonial_affairs = {	
-			value = 10		
+			value = 4		
 		}				
 		institution_social_security = {	
 			value = 10		
@@ -4095,7 +4095,7 @@ ai_strategy_default = {
 					c:NOR ?= this
 				}
 			}
-			multiply = 0.4
+			multiply = 0.5
 		}		
 	}
 
@@ -4260,7 +4260,7 @@ ai_strategy_default = {
 		
 		if = { #VFM, national militias are meant to be small and supported by conscripts
 			limit = { has_law = law_type:law_national_militia }
-			multiply = 0.08
+			multiply = 0.25
 		}
 
 		#VFM moved to bottom since this should be the base army size and not impacted by all of the multipliers above...
@@ -4507,7 +4507,7 @@ ai_strategy_default = {
 		value = 0.3
 		if = {
 			limit = { has_law = law_type:law_national_militia }
-			add = 1.0
+			add = 1.2
 		}			
 		else_if = {
 			limit = { has_law = law_type:law_peasant_levies }

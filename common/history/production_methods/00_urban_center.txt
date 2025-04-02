@@ -9,6 +9,14 @@
 			production_method = pm_gas_streetlights
 		}
 	}
+	s:STATE_MASSACHUSETTS={
+		region_state:USA={
+			activate_production_method = {
+				building_type = building_urban_center
+			    production_method = pm_oil_streetlights
+			}		
+		}
+	}
 	c:GBR ?= {
 		activate_production_method = {
 			building_type = building_urban_center
@@ -91,7 +99,13 @@
 			production_method = pm_market_squares
 		}
 	}
-	c:POS ?= {
+	c:QUE ?= {
+		activate_production_method = {
+			building_type = building_urban_center
+			production_method = pm_market_squares
+		}
+	}
+	c:ONT ?= {
 		activate_production_method = {
 			building_type = building_urban_center
 			production_method = pm_market_squares
@@ -134,6 +148,31 @@
 			activate_production_method = {
 				building_type = building_urban_center
 				production_method = pm_market_squares
+			}		
+		}
+	}
+	
+	s:STATE_WESTERN_NORWAY={
+		region_state:NOR={
+			activate_production_method = {
+				building_type = building_urban_center
+			    production_method = pm_oil_streetlights
+			}		
+		}
+	}
+	s:STATE_SVEALAND={
+		region_state:SWE={
+			activate_production_method = {
+				building_type = building_urban_center
+			    production_method = pm_oil_streetlights
+			}		
+		}
+	}
+	s:STATE_SCANIA={
+		region_state:SWE={
+			activate_production_method = {
+				building_type = building_urban_center
+			    production_method = pm_oil_streetlights
 			}		
 		}
 	}
