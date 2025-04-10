@@ -184,8 +184,8 @@ NCountry = {
 }
 
 NPolitics = {
-	POP_IG_RANDOM_FACTOR = 0.3
-	MAX_POP_FRACTION_LEAVE_IG = 0.1
+	MOVEMENT_MONTHLY_RADICALS_THRESHOLD = 0.3 #0.5 At this level of radicalism, movement supporters start being radicalized each month at an amount scaled by the radicalism value
+	MOVEMENT_MONTHLY_RADICALS_SCALING_MIN = 0.003 #0.05 The minimum % of supporters radicalized each month when above the radicalization threshold
 	
 	SECESSION_CHECKPOINT_INTERVAL_BASE_WEEKS = 2	#1 secession progress will be updated every this many weeks (may be affected by modifiers)
 	
@@ -268,6 +268,7 @@ NPops = {
     CONVERSION_RATE = 0.001						# Percentage of pops who will Convert into a different Religion each month, if eligible (halved from vanilla)
 	RADICALS_MONTHLY_FROM_DISCRIMINATION = 0.006 #0.005 # Scales by literacy
 	SOL_DECREASE_POP_IMPACT_FACTOR = 0.05		# 0.06 How large part of a pop become more radical as a result of a decrease in standard of living
+	SOL_CHANGE_POP_IMPACT_FACTOR = 0.06			#0.05 How large part of a pop become more loyalist or radical as a result of a change in standard of living
 	
 	INDIVIDUALS_TAXED_PER_TAX_CAPACITY = 15000			# How many pops can be taxed efficiently for each tax capacity
 }
