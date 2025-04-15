@@ -243,3 +243,32 @@ vfm_france.4 = { #Preparation for 1848, swap ideology from liberal to radical
 	}
 }
 
+vfm_france.5 = {
+	type = country_event
+
+	title = vfm_france.5.t
+	desc = vfm_france.5.d
+	flavor = vfm_france.5.f
+
+	event_image = {
+		video = "ep1_printing_press"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_protest.dds"
+
+	duration = 3
+
+	immediate = {
+		ig:ig_devout = {
+			save_scope_as = devout_ig
+		}
+	}
+
+	option = { 
+		name = vfm_france.5.a
+		default_option = yes
+	}
+}
+

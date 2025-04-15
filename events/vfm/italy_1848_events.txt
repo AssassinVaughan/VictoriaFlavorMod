@@ -1127,12 +1127,6 @@ italy_1848.11 = {
 		default_option = yes
 
 		s:STATE_LOMBARDY = {
-			add_claim = c:AUS
-		}
-		s:STATE_VENETIA = {
-			add_claim = c:AUS
-		}
-		s:STATE_LOMBARDY = {
 			add_claim = ROOT
 		}
 		s:STATE_VENETIA = {
@@ -1150,12 +1144,12 @@ italy_1848.11 = {
 
 			add_war_goal = {
 				holder = c:AUS
-				type = return_state
+				type = conquer_state
 				target_state = scope:lombardy_scope
 			}
 			add_war_goal = {
 				holder = c:AUS
-				type = return_state
+				type = conquer_state
 				target_state = scope:venetia_scope
 			}
 			add_initiator_backers = { c:RSM }

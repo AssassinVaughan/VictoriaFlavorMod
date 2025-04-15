@@ -13,6 +13,7 @@
         bg_iron_mining = 27
         bg_lead_mining = 19
         bg_logging = 7
+		bg_hydro = 2
     }
     resource = {
         type = "bg_oil_extraction"
@@ -24,20 +25,21 @@ STATE_PIEDMONT = {
     id = 77
     subsistence_building = "building_subsistence_farms"
     provinces = { "x1140E0" "x11C061" "x54728A" "x5F6BAA" "x904061" "x90C060" "xA9397D" "xAA6958" "xACB500" "xD080E0" "xDA86EA" "xF00544" }
-    traits = { "state_trait_po_river" "state_trait_alps_mountains" }
+    traits = { "state_trait_po_river" "state_trait_alps_mountains_2" }
     city = "xA9397D"
     port = "x904061"
     farm = "x11C061"
     mine = "x1140E0"
     wood = "xD080E0"
     arable_land = 110
-    arable_resources = { "bg_wheat_farms" "bg_livestock_ranches" "bg_cotton_plantations" "bg_vineyard_plantations" }
+    arable_resources = { "bg_wheat_farms" "bg_livestock_ranches" "bg_vineyard_plantations" }
     capped_resources = {
         bg_coal_mining = 28
         bg_iron_mining = 45
         bg_lead_mining = 45
         bg_logging = 8
         bg_fishing = 6
+		bg_hydro = 2
     }
     naval_exit_id = 3032
 }
@@ -199,17 +201,18 @@ STATE_SAVOY = {
     id = 86
     subsistence_building = "building_subsistence_farms"
     provinces = { "x56B04B" "x6B4BA4" "xD000E0" "xDDDD3B" }
-    traits = { "state_trait_alps_mountains" }
+    traits = { "state_trait_alps_mountains_2" }
     city = "x56B04B"
     farm = "xD000E0"
     mine = "x56B04B"
     wood = "xD000E0"
     arable_land = 25
-    arable_resources = { "bg_wheat_farms" "bg_livestock_ranches" "bg_cotton_plantations" "bg_vineyard_plantations" }
+    arable_resources = { "bg_wheat_farms" "bg_livestock_ranches" "bg_vineyard_plantations" }
     capped_resources = {
         bg_iron_mining = 24
         bg_lead_mining = 24
         bg_logging = 11
+		bg_hydro = 1
     }
 }
 
@@ -308,6 +311,7 @@ STATE_VENETIA = {
         bg_sulfur_mining = 4
         bg_logging = 7
         bg_fishing = 12
+		bg_hydro = 1
     }
     naval_exit_id = 3033
 }
@@ -364,6 +368,7 @@ STATE_GALICIA = {
         bg_iron_mining = 14
         bg_logging = 5
         bg_fishing = 4
+		bg_hydro = 1
     }
     naval_exit_id = 3029
 }
@@ -386,6 +391,7 @@ STATE_ASTURIAS = {
         bg_iron_mining = 12
         bg_logging = 5
         bg_fishing = 7
+		bg_hydro = 1
     }
     naval_exit_id = 3029
 }
@@ -424,6 +430,7 @@ STATE_NAVARRA = {
         bg_iron_mining = 50
         bg_logging = 10
         bg_fishing = 6
+		bg_hydro = 2
     }
     resource = {
         type = "bg_oil_extraction"
@@ -448,6 +455,7 @@ STATE_ARAGON = {
         bg_lead_mining = 36
         bg_iron_mining = 12
         bg_logging = 8
+		bg_hydro = 2
     }
 }
 
@@ -467,6 +475,7 @@ STATE_CATALONIA = {
         bg_lead_mining = 24
         bg_logging = 8
         bg_fishing = 10
+		bg_hydro = 2
     }
     naval_exit_id = 3032
 }
@@ -579,6 +588,7 @@ STATE_BEIRA = {
     capped_resources = {
         bg_logging = 5
         bg_fishing = 5
+		bg_hydro = 1
     }
     naval_exit_id = 3029
 }
@@ -598,6 +608,7 @@ STATE_ESTREMADURA = {
     capped_resources = {
         bg_logging = 4
         bg_fishing = 8
+		bg_hydro = 1
     }
     naval_exit_id = 3029
 }
@@ -620,6 +631,7 @@ STATE_ALENTEJO = {
         bg_sulfur_mining = 4
         bg_logging = 2
         bg_fishing = 4
+		bg_hydro = 1
     }
     naval_exit_id = 3029
 }
@@ -730,6 +742,7 @@ STATE_DOBRUDJA = {
     capped_resources = {
         bg_logging = 11
         bg_fishing = 7
+		bg_hydro = 2
     }
     naval_exit_id = 3036
 }
@@ -772,6 +785,7 @@ STATE_BOSNIA = {
         bg_iron_mining = 48
         bg_lead_mining = 39
         bg_logging = 12
+		bg_hydro = 1
     }
 }
 
@@ -790,6 +804,7 @@ STATE_NORTHERN_THRACE = {
         bg_iron_mining = 33
         bg_logging = 12
         bg_fishing = 6
+		bg_hydro = 1
     }
     naval_exit_id = 3036
 }
@@ -809,6 +824,7 @@ STATE_BULGARIA = {
     capped_resources = {
         bg_logging = 12
         bg_fishing = 2
+		bg_hydro = 2
     }
     naval_exit_id = 3036
 }
@@ -827,6 +843,7 @@ STATE_SLOVENIA = {
     capped_resources = {
         bg_coal_mining = 60
         bg_logging = 10
+		bg_hydro = 1
     }
 }
 
@@ -845,6 +862,7 @@ STATE_DALMATIA = {
     capped_resources = {
         bg_logging = 4
         bg_fishing = 13
+		bg_hydro = 1
     }
     naval_exit_id = 3033
 }
@@ -865,6 +883,7 @@ STATE_CROATIA = {
         bg_coal_mining = 60
         bg_logging = 10
         bg_fishing = 5
+		bg_hydro = 1
     }
     naval_exit_id = 3033
 }
@@ -882,6 +901,7 @@ STATE_SLAVONIA = {
     arable_resources = { "bg_wheat_farms" "bg_livestock_ranches" "bg_vineyard_plantations" }
     capped_resources = {
         bg_logging = 12
+		bg_hydro = 1
     }
 }
 
@@ -921,6 +941,7 @@ STATE_MONTENEGRO = {
     capped_resources = {
         bg_lead_mining = 24
         bg_logging = 4
+		bg_hydro = 1
     }
     naval_exit_id = 3033
 }
@@ -939,6 +960,7 @@ STATE_NORTHERN_SERBIA = {
     capped_resources = {
         bg_iron_mining = 24
         bg_logging = 11
+		bg_hydro = 2
     }
 }
 
@@ -956,6 +978,7 @@ STATE_SOUTHERN_SERBIA = {
         bg_coal_mining = 40
         bg_lead_mining = 36
         bg_logging = 12
+		bg_hydro = 1
     }
 }
 
