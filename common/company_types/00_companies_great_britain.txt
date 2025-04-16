@@ -150,6 +150,10 @@ company_gwr = {
 		building_railway
 	}
 	
+	extension_building_types = {
+		building_coal_mine
+	}
+	
 	potential = {
 		has_interest_marker_in_region = region_england
 	}
@@ -164,24 +168,13 @@ company_gwr = {
 	
 	possible = {
 		any_scope_state = {
-			state_region = s:STATE_WEST_COUNTRY
+			region = sr:region_england
 			is_incorporated = yes
-			has_building = building_railway
-		}
-		any_scope_state = {
-			state_region = s:STATE_MIDLANDS
-			is_incorporated = yes
-			has_building = building_railway
-		}
-		any_scope_state = {
-			state_region = s:STATE_WALES
-			is_incorporated = yes
-			has_building = building_railway
-		}
-		any_scope_state = {
-			state_region = s:STATE_HOME_COUNTIES
-			is_incorporated = yes
-			has_building = building_railway
+			any_scope_building = {
+				is_building_type = building_railway
+				level >= 5
+			}
+			count >= 3
 		}
 	}
 	

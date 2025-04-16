@@ -31,6 +31,7 @@ gov_princely_state_rawalate = {
 		OR = {
 			AND = { exists = c:GBR is_subject_of = c:GBR }
 			AND = { exists = c:BIC is_subject_of = c:BIC }
+			AND = { exists = c:BHT is_subject_of = c:BHT }
 		}
 		exists = c:NAG 
 		c:NAG = ROOT
@@ -58,6 +59,7 @@ gov_princely_state_maharaja = {
 		OR = {
 			AND = { exists = c:GBR is_subject_of = c:GBR }
 			AND = { exists = c:BIC is_subject_of = c:BIC }
+			AND = { exists = c:BHT is_subject_of = c:BHT }
 		}
 		OR = {
 			AND = { exists = c:NAG c:NAG = ROOT }
@@ -93,6 +95,7 @@ gov_princely_state_diwanate = {
 		OR = {
 			AND = { exists = c:GBR is_subject_of = c:GBR }
 			AND = { exists = c:BIC is_subject_of = c:BIC }
+			AND = { exists = c:BHT is_subject_of = c:BHT }
 		}
 		OR = {
 			AND = { exists = c:PLP c:PLP = ROOT }
@@ -121,6 +124,7 @@ gov_princely_state_khanate = {
 		OR = {
 			AND = { exists = c:GBR is_subject_of = c:GBR }
 			AND = { exists = c:BIC is_subject_of = c:BIC }
+			AND = { exists = c:BHT is_subject_of = c:BHT }
 		}
 		OR = {
 			AND = { exists = c:KAL c:KAL = ROOT }
@@ -150,6 +154,7 @@ gov_princely_state_nizamate = {
 		OR = {
 			AND = { exists = c:GBR is_subject_of = c:GBR }
 			AND = { exists = c:BIC is_subject_of = c:BIC }
+			AND = { exists = c:BHT is_subject_of = c:BHT }
 		}
 		AND = { exists = c:HYD c:HYD = ROOT }
 	}
@@ -176,6 +181,7 @@ gov_princely_state_nawabate = {
 		OR = {
 			AND = { exists = c:GBR is_subject_of = c:GBR }
 			AND = { exists = c:BIC is_subject_of = c:BIC }
+			AND = { exists = c:BHT is_subject_of = c:BHT }
 		}
 		OR = {
 			AND = { exists = c:BHW c:BHW = ROOT }
@@ -212,6 +218,7 @@ gov_princely_state_maratha_raja = {
 		OR = {
 			AND = { exists = c:GBR is_subject_of = c:GBR }
 			AND = { exists = c:BIC is_subject_of = c:BIC }
+			AND = { exists = c:BHT is_subject_of = c:BHT }
 		}
 		OR = {
 			AND = { exists = c:SAT c:SAT = ROOT }
@@ -239,9 +246,11 @@ gov_princely_state_raja = {
 	
 	possible = {
 		has_law = law_type:law_monarchy
+		has_indian_primary_culture = yes
 		OR = {
 			AND = { exists = c:GBR is_subject_of = c:GBR }
 			AND = { exists = c:BIC is_subject_of = c:BIC }
+			AND = { exists = c:BHT is_subject_of = c:BHT }
 		}
 		country_has_state_religion = rel:hindu
 	}
@@ -265,13 +274,18 @@ gov_princely_state_sultan = {
 	
 	possible = {
 		has_law = law_type:law_monarchy
+		has_indian_primary_culture = yes
 		OR = {
 			AND = { exists = c:GBR is_subject_of = c:GBR }
 			AND = { exists = c:BIC is_subject_of = c:BIC }
+			AND = { exists = c:BHT is_subject_of = c:BHT }
 		}
 		OR = {
 			country_has_state_religion = rel:sunni
 			country_has_state_religion = rel:shiite
+		}
+		any_primary_culture = {
+			
 		}
 	}
 

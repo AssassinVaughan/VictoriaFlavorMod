@@ -25,10 +25,22 @@
 		
 		set_tax_level = high
 		
-		set_tariffs_import_priority = g:clippers
-		set_tariffs_import_priority = g:manowars
-		set_tariffs_import_priority = g:artillery
-		set_tariffs_import_priority = g:small_arms	
+		set_import_tariff_level = { 
+			goods = artillery
+			level = high_subventions
+		}
+		set_import_tariff_level = { 
+			goods = small_arms
+			level = high_subventions
+		}
+		set_import_tariff_level = { 
+			goods = clippers
+			level = high_subventions
+		}
+		set_import_tariff_level = { 
+			goods = manowars
+			level = high_subventions
+		}	
 
 		set_institution_investment_level = {
 			institution = institution_colonial_affairs

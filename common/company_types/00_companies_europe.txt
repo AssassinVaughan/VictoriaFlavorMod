@@ -483,7 +483,7 @@ company_gotaverken = {
 
 # Aker Mek
 company_aker_mek = {
-	icon = "gfx/interface/icons/company_icons/historical_company_icons/aker_mek.dds"
+	icon = "gfx/interface/icons/company_icons/historical_company_icons/company_aker_mek.dds"
 	background = "gfx/interface/icons/company_icons/company_backgrounds/comp_illu_harbor_shipbuilding.dds"
 	
 	flavored_company = yes
@@ -541,7 +541,7 @@ company_nokia = {
 	}
 	
 	potential = {
-		has_interest_marker_in_region = region_baltic
+		has_interest_marker_in_region = region_finland
 	}
 	
 	attainable = {
@@ -553,6 +553,7 @@ company_nokia = {
 	}		
 	
 	possible = {
+		has_technology_researched = atmospheric_engine
 		any_scope_state = {
 			state_region = s:STATE_UUSIMAA
 			is_incorporated = yes
@@ -561,7 +562,6 @@ company_nokia = {
 				level >= 3
 			}
 		}
-		has_technology_researched = atmospheric_engine
 	}
 	
 	prosperity_modifier = {
@@ -1058,14 +1058,17 @@ company_cfr = {
 				is_homeland = cu:romanian
 			}
 			is_incorporated = yes
-			has_building = building_railway
+			any_scope_building = {
+				is_building_type = building_railway
+				level >= 3
+			}
 			count >= 2
 		}
 	}
 	
 	prosperity_modifier = {
 		state_infrastructure_mult = 0.05
-		market_land_trade_capacity_add = 15
+		state_trade_capacity_mult = 0.15
 	}
 	
 	ai_weight = {

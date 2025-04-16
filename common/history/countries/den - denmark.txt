@@ -8,11 +8,26 @@
 		
 		add_taxed_goods = g:liquor
 		
-		set_tariffs_import_priority = g:artillery
-		set_tariffs_import_priority = g:small_arms
-		set_tariffs_import_priority = g:wood
-		set_tariffs_import_priority = g:hardwood
-		set_tariffs_import_priority = g:iron
+		set_import_tariff_level = { 
+			goods = artillery
+			level = high_subventions
+		}
+		set_import_tariff_level = { 
+			goods = small_arms
+			level = high_subventions
+		}
+		set_import_tariff_level = { 
+			goods = wood
+			level = high_subventions
+		}
+		set_import_tariff_level = { 
+			goods = hardwood
+			level = high_subventions
+		}
+		set_import_tariff_level = { 
+			goods = iron
+			level = high_subventions
+		}
 
 		activate_law = law_type:law_monarchy
 		activate_law = law_type:law_oligarchy

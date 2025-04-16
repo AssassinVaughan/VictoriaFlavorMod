@@ -2115,7 +2115,7 @@ ai_strategy_default = {
 					}	
 					AND = {
 						has_strategy = ai_strategy_economic_imperialism
-						"num_mutual_trade_route_levels_with_country(root)" >= 10
+						"mutual_trade_value_with_country(root)" >= 1000
 						OR = {
 							has_attitude = {
 								who = scope:target_country
@@ -4299,33 +4299,54 @@ ai_strategy_default = {
 	wanted_navy_size = {
 		value = 0
 	
-		# 1 level of naval base per 500k coastal incorporated population							
+		# 1 level of naval base per 500k coastal incorporated population	
+        if = {
+			limit = {
+				cached_ai_incorporated_coastal_population > 0
+			}		
 		add = {
 			value = cached_ai_incorporated_coastal_population
 			divide = 450000 
 		}
+		}
 
-		# 1 level of naval base per 2 million coastal unincorporated population					
+		# 1 level of naval base per 2 million coastal unincorporated population	
+        if = {
+			limit = {
+				cached_ai_unincorporated_coastal_population > 0
+			}		
 		add = {
 			value = cached_ai_unincorporated_coastal_population
 			divide = 1800000 
 		}
+		}
 
 		# 1 level of naval base per 10 million population in direct overseas subjects	
+		if = {
+			limit = {
+				cached_ai_overseas_subject_population > 0
+			}
 		add = {
 			value = cached_ai_overseas_subject_population
 			divide = 8000000 
 		}	
+		}
 
 		max = 100 # No more than 100 from population		
 
 		# 1 level of naval base per 5k income, multiplied by relative incorporated coastal population to total incorporated population
+		if = {
+			limit = {
+				cached_ai_incorporated_population > 0
+				cached_ai_incorporated_coastal_population > 0
+			}
 		add = {
 			value = income
 			divide = cached_ai_incorporated_population
 			multiply = cached_ai_incorporated_coastal_population
 			divide = 5000
 		}	
+		}
 	
 		# Special logic for british isles - this should be reworked to be less specific later
 		if = {
@@ -4563,7 +4584,9 @@ ai_strategy_default = {
 	# Which buildings should the AI subsidize
 	# Using a different value in a strategy will override this value
 	subsidies = {
-		building_railway = must_have		
+		building_power_plant = must_have
+		building_railway = must_have
+		building_port = must_have		
 		building_military_shipyards = must_have	
 	}
 	

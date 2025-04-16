@@ -210,16 +210,19 @@ company_orient_express = {
 	}			
 	
 	possible = {
-		any_scope_state = {
-			region = sr:region_balkans
-			is_incorporated = yes
-			has_building = building_railway
-			count >= 4
-		}
-		NOR = {
+	    NOR = {
 			has_modifier = sick_man_of_europe
 			is_country_type = unrecognized
 		}
+		any_scope_state = {
+			region = sr:region_balkans
+			is_incorporated = yes
+			any_scope_building = {
+				is_building_type = building_railway
+				level >= 3
+			}
+			count >= 3
+		}	
 	}
 	
 	prosperity_modifier = {
@@ -276,8 +279,11 @@ company_great_indian_railway = {
 				region = sr:region_punjab
 			}
 			is_incorporated = yes
-			has_building = building_railway
-			count >= 6
+			any_scope_building = {
+				is_building_type = building_railway
+				level >= 4
+			}
+			count >= 4
 		}
 	}
 	
