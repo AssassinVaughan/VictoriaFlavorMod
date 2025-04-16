@@ -802,6 +802,7 @@ nationalism = {
 	modifier = {
 		country_authority_mult = 0.1
 		country_infamy_generation_mult = -0.05
+		country_infamy_generation_against_unrecognized_mult = -0.1
 	}
 	
 	unlocking_technologies = {
@@ -1063,7 +1064,7 @@ civilizing_mission = {
 
 	modifier = {
 		country_institution_colonial_affairs_max_investment_add = 1
-		country_infamy_generation_against_unrecognized_mult = -0.25
+		country_infamy_generation_against_unrecognized_mult = -0.2
 		country_max_declared_interests_add = 1
 	}
 	
@@ -1357,6 +1358,18 @@ realism = {
 			    }			
 			}
 			add = 3
+		}
+		if = {
+			limit = { 
+				has_strategy = ai_strategy_egalitarian_agenda
+			}
+			add = 2
+		}
+		if = {
+			limit = { 
+				country_has_primary_culture = cu:french
+			}
+			add = 5
 		}
 	}
 }
