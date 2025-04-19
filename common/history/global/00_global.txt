@@ -460,6 +460,21 @@ GLOBAL = {
 				name = window_to_europe
 			}
 		}
+		every_scope_state = {
+			limit = {
+			    OR = {
+				state_region = s:STATE_AQUITAINE
+				state_region = s:STATE_BRITTANY
+				state_region = s:STATE_PROVENCE
+				state_region = s:STATE_LANGUEDOC
+				state_region = s:STATE_GUYENNE
+				state_region = s:STATE_AUVERGNE_LIMOUSIN
+				}
+			}
+			add_modifier = {
+				name = FRA_regional_language
+			}
+		}
        create_bidirectional_truce = {
 			country = c:CIR
 			months = 240
