@@ -116,10 +116,13 @@ grant_leadership_to_agitator = {
 		}
 		trigger_if = {
 			limit = { owner ?= { has_law = law_type:law_state_atheism } }
-			root.owner ?= {
-				country_average_cultural_acceptance = {
-					target = root.culture
-					value >= acceptance_status_4
+			OR = {
+				religion = rel:atheist
+				root.owner ?= {
+					country_average_cultural_acceptance = {
+						target = root.culture
+						value >= acceptance_status_4
+					}
 				}
 			}
 			NOR = {
@@ -670,7 +673,10 @@ exile_character = {
 		# Boring characters should be made interesting when being exiled
 		if = {
 			limit = {
-				has_ideology = ideology:ideology_moderate
+				OR = {
+					has_ideology = ideology:ideology_moderate
+					has_ideology = ideology:ideology_pacifist
+				}
 			}
 			adopt_random_antigovernment_ideology = yes
 		}
@@ -884,6 +890,14 @@ invite_exile = {
 				}
 				scope:actor ?= {
 					trigger_event = { id = historical_agitators.7 days = 3 }
+				}
+			}
+			if = {
+				limit = {
+					has_variable = nightingale_var
+				}
+				scope:actor ?= {
+					trigger_event = { id = historical_agitators.23 days = 3 }
 				}
 			}
 			if = {

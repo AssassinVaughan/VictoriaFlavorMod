@@ -41,7 +41,7 @@ fra_clemenceau_character_template = {
     historical = yes
     culture = cu:french
     female = no
-    religion = catholic
+    religion = rel:catholic
     ideology = ideology_radical
     interest_group = ig_intelligentsia
     dna = dna_georges_clemenceau
@@ -81,7 +81,7 @@ frm_grimm_character_template = {
     historical = yes
     culture = cu:north_german
     female = no
-    religion = protestant
+    religion = rel:protestant
     ideology = ideology_reformer
     interest_group = ig_intelligentsia
     birth_date = 1786.2.24
@@ -157,7 +157,7 @@ pru_bismarck_character_template = {
     historical = yes
     culture = cu:north_german
     female = no
-    religion = protestant
+    religion = rel:protestant
     ideology = ideology_royalist
     interest_group = ig_landowners
     birth_date = 1815.4.1
@@ -239,44 +239,6 @@ pru_wilhelm_IV_hohenzollern_template = {
     }
 }
 
-rus_witte_character_template = {
-    first_name = Sergei
-    last_name = Witte
-    historical = yes
-    culture = cu:russian
-    female = no
-    religion = orthodox
-    dna = dna_sergei_witte
-    ideology = ideology_reformer
-    interest_group = ig_industrialists
-    birth_date = 1849.6.29
-    traits = {
-        experienced_political_operator
-        meticulous
-        innovative
-    }   
-    interest_group_leader_usage = {
-        country_trigger = {
-            exists = c:RUS
-            this = c:RUS
-        }
-        interest_group_trigger = {
-            is_marginal = no
-            is_interest_group_type = ig_industrialists    
-            NOR = {
-				has_variable = communist_ig_var
-				has_variable = chose_vanguardism
-				has_variable = chose_fascism
-				has_variable = chose_conservatism
-				has_variable = chose_ethno_nationalism
-			}
-        }   
-        earliest_usage_date = 1879.1.1
-        latest_usage_date = 1915.1.1
-        chance = 50
-    }   
-}
-
 # Sardinia-Piedmont - SAR
 sar_benso_character_template = { # The Count of Cavour
     first_name = Camillo
@@ -284,7 +246,7 @@ sar_benso_character_template = { # The Count of Cavour
     historical = yes
     culture = cu:north_italian
     female = no
-    religion = catholic
+    religion = rel:catholic
     dna = dna_count_of_cavour
     ideology = ideology_reformer
     interest_group = ig_industrialists
@@ -349,112 +311,4 @@ sar_victor_emmanuel_template = {
     traits = {
         ambitious
     }
-}
-
-# Spain - SPA
-spa_isabel_de_borbon_template = {
-    first_name = "Isabel"
-    last_name = "de_Borbon"
-    historical = yes
-    culture = primary_culture
-    ruler = yes
-    female = yes
-    birth_date = 1830.10.10
-    dna = dna_queen_isabella_02
-    interest_group = ig_intelligentsia
-    ideology = ideology_moderate
-    traits = {
-        trait_child
-    }
-}
-
-# Sweden - SWE
-swe_karl_johan_bernadotte_template = {
-    # Charles XIV John of Sweden, born Jean Bernadotte, one of Napoleon's former marshals
-    first_name = "Karl_Johan"
-    last_name = "Bernadotte"
-    historical = yes
-    ruler = yes
-    birth_date = 1763.1.26
-    dna = dna_king_karl_14
-    culture=cu:french
-    religion = rel:protestant
-    interest_group = ig_landowners
-    ideology = ideology_pacifist
-    traits = {
-        ambitious 
-		cautious
-    }
-    on_created = {
-        set_variable = is_married
-		set_variable = is_johan
-		set_character_immortal = yes
-    }
-}
-swe_oscar_bernadotte_template = {
-    # Oscar I of Sweden
-    first_name = "Oscar"
-    last_name = "Bernadotte"
-    historical = yes
-    heir = yes
-    birth_date=1799.7.4
-    culture=cu:french # moved to Stockholm when he was 12
-    religion = rel:protestant
-    dna = dna_oscar_bernadotte
-    interest_group = ig_intelligentsia
-    ideology = ideology_moderate
-    traits = {
-        romantic
-		compliant
-    }
-    on_created = {
-        set_variable = is_married
-    }
-}
-swe_charles_bernadotte_template = {
-    #Charles XV - Carl Ludvig Eugen of Sweden
-    first_name = "Charles"
-    last_name = "Bernadotte"
-    historical = yes
-    birth_date = 1826.5.3
-    culture=cu:swedish # born in Stockholm
-    religion = rel:protestant #Charles was Lutheran
-    dna = dna_charles_bernadotte
-    interest_group = ig_intelligentsia
-    ideology = ideology_utilitarian_leader
-        traits = {
-            charismatic
-			inept
-            erudite
-        }
-}
-swe_oscar_ii_bernadotte_template = {
-    #Oscar II of Sweden
-    first_name = "Oscar"
-    last_name = "Bernadotte"
-    historical = yes
-    birth_date = 1829.1.21
-    culture=cu:swedish #born in Stockholm Palace
-    religion = rel:protestant #Oscar was Lutheran
-    dna = dna_oscar_ii_bernadotte
-    interest_group = ig_intelligentsia
-    ideology = ideology_moderate
-        traits = {
-            celebrity_commander
-            explorer
-            innovative
-        }
-}
-swe_gustaf_v_bernadotte_template = {
-    #Gustaf V of Sweden
-    first_name = "Gustaf"
-    last_name = "Bernadotte"
-    historical = yes
-    birth_date = 1858.6.16
-    culture=cu:swedish #born in Stockholm Palace
-    religion = rel:protestant #Oscar was Lutheran
-    interest_group = ig_intelligentsia
-    ideology = ideology_moderate
-        traits = {
-        }
 }

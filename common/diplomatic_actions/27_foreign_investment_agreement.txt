@@ -264,10 +264,15 @@
 			}
 
 			add = {
-				desc = "DIPLOMATIC_ACCEPTANCE_MUTUAL_TRADE_ROUTES"
-				value = "scope:actor.num_mutual_trade_route_levels_with_country(root)"
-				multiply = 0.5
-				max = 25
+				desc = "DIPLOMATIC_ACCEPTANCE_MUTUAL_TRADE_VALUE"
+				value = "mutual_trade_value_with_country(scope:actor)"
+				multiply = 50000
+				divide = { # We modulate this value by GDP, clamped to a range to ensure it remains relevant for very small/very large economies
+					value = gdp
+					max = scope:actor.gdp # We use whichever GDP is smaller
+					min = 1000000
+				}
+				max = 50
 			}
 
 			add = {

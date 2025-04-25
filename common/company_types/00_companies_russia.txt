@@ -241,14 +241,20 @@ company_john_hughes = {
 	attainable = {
 		hidden_trigger = { # Hide attainable if it's always fulfilled by possible
 			any_scope_state = {
-				state_region = s:STATE_KHARKOV
+				OR = {
+					state_region = s:STATE_KHARKOV
+					state_region = s:STATE_TAURIDA
+				}
 			}
 		}
 	}		
 	
 	possible = { 
 		any_scope_state = {
-			state_region = s:STATE_KHARKOV
+			OR = {
+				state_region = s:STATE_KHARKOV
+				state_region = s:STATE_TAURIDA
+			}
 			is_incorporated = yes
 			any_scope_building = {
 				OR = {
@@ -256,7 +262,7 @@ company_john_hughes = {
 					is_building_type = building_coal_mine
 					is_building_type = building_iron_mine
 				}
-				level >= 5
+				level >= 6
 			}
 		}
 		has_technology_researched = bessemer_process

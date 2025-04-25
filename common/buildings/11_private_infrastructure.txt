@@ -1,5 +1,33 @@
 ﻿############ PRIVATE INFRASTRUCTURE
 
+building_port = {
+	building_group = bg_private_infrastructure
+	city_type = port
+	icon = "gfx/interface/icons/building_icons/building_port.dds"
+
+	has_max_level = yes
+	ignore_stateregion_max_level = yes
+	port = yes
+
+	unlocking_technologies = { navigation }
+
+	production_method_groups = {
+		pmg_base_building_port
+	}
+
+	required_construction = construction_cost_medium
+
+	terrain_manipulator = urban_port
+	
+	potential = {
+		is_coastal = yes
+	}
+	
+	ownership_type = self
+
+	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_monuments.dds"
+}
+
 building_railway = {
 	building_group = bg_private_infrastructure	
 	icon = "gfx/interface/icons/building_icons/building_railway.dds"
@@ -164,19 +192,24 @@ building_trade_center = {
 	levels_per_mesh = 10
 
 	lens = infrastructure
+	
+	required_construction = construction_cost_very_low
 
 	icon = "gfx/interface/icons/building_icons/building_trade_center.dds"
 
 	production_method_groups = {
 		pmg_base_building_trade_center
-		pmg_ownership_building_trade_center
 	}
-
-	buildable = no
-	expandable = no
-	downsizeable = no
+	
+	possible = {
+		owner = {
+			NOT = { 
+				has_law = law_type:law_isolationism
+			}
+		}
+	}	
+	
 	ownership_type = self
-	can_switch_owner = no
 
 	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_monuments.dds"
 }
@@ -202,6 +235,12 @@ building_manor_house = {
 				value = 0.0
 			}
 		}			
+		bg_manufacturing_score = {
+			group = "bg_trade"
+			score = {
+				value = 0.0
+			}
+		}
 		bg_agriculture_score = {
 			group = "bg_agriculture"
 			score = {
@@ -364,6 +403,12 @@ building_financial_district = {
 					}
 					multiply = 0.5
 				}				
+			}
+		}
+		bg_manufacturing_score = {
+			group = "bg_trade"
+			score = {
+				value = 1.0
 			}
 		}
 		bg_agriculture_score = {
@@ -600,7 +645,7 @@ building_financial_district = {
 building_company_headquarter = {
 	building_group = bg_company_headquarter
 	city_type = city
-	levels_per_mesh = 10
+	levels_per_mesh = 50
 
 	lens = infrastructure
 
@@ -617,6 +662,30 @@ building_company_headquarter = {
 	downsizeable = no
 	ownership_type = other
 	company_headquarter = yes
+
+	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_monuments.dds"
+}
+
+building_company_regional_headquarter = {
+	building_group = bg_company_headquarter
+	city_type = city
+	levels_per_mesh = 50
+
+	lens = infrastructure
+
+	icon = "gfx/interface/icons/building_icons/building_company_regional_hq.dds"
+
+	production_method_groups = {
+		pmg_ownership_building_company_headquarter
+	}
+	
+	investment_scores = {}
+
+	buildable = no
+	expandable = no
+	downsizeable = no
+	ownership_type = other
+	regional_company_headquarter = yes
 
 	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_monuments.dds"
 }
