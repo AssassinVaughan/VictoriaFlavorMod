@@ -1,7 +1,7 @@
 ﻿movement_religious_majority = {
 	category = movement_category_religious
 	
-	ideology = ideology_traditionalist_movement
+	ideology = ideology_traditionalist
 	character_ideologies = {
 		ideology_theocrat
 		ideology_traditionalist
@@ -301,7 +301,7 @@
 movement_religious_minority = {
 	category = movement_category_religious
 	
-	ideology = ideology_traditionalist_minoritarian_movement
+	ideology = ideology_traditionalist_minoritarian	
 	character_ideologies = {
 		ideology_traditionalist_minoritarian
 	}
@@ -586,6 +586,7 @@ movement_religious_minority = {
 	
 	secession = {
 		possible = {
+			political_movement_identity_support >= 0.25
 			owner ?= {
 				any_scope_state = {
 					religion_percent_state = {
