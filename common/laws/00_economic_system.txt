@@ -249,9 +249,9 @@ law_industry_banned = {
 				}
 				if = {
 					limit = {
-						has_building = building_war_machine_industry
+						has_building = building_automotive_industry
 					}
-					remove_building = building_war_machine_industry
+					remove_building = building_automotive_industry
 				}
 				if = {
 					limit = {
@@ -356,9 +356,9 @@ law_extraction_economy = {
 				}
 				if = {
 					limit = {
-						has_building = building_war_machine_industry
+						has_building = building_automotive_industry
 					}
-					remove_building = building_war_machine_industry
+					remove_building = building_automotive_industry
 				}
 				if = {
 					limit = {
@@ -416,6 +416,7 @@ law_laissez_faire = {
 		law_serfdom
 		law_isolationism
 		law_anarchy
+		law_guild_system
 	}
 	
 	unlocking_technologies = {
@@ -434,7 +435,6 @@ law_laissez_faire = {
 		country_max_companies_add = 1
 		country_disable_nationalization_bool = yes
 		country_force_privatization_bool = yes
-		country_company_pay_to_establish_bool = yes
 	}
 
 	ai_enact_weight_modifier = { #Petitions
@@ -513,7 +513,6 @@ law_cooperative_ownership = {
 		
 		country_foreign_collectivization_bool = yes
 		country_disable_privatization_bool = yes
-		country_company_pay_to_establish_bool = yes
 	}
 	
 	ai_enact_weight_modifier = { #Petitions

@@ -533,7 +533,7 @@ bg_service = {
 bg_urban_facilities = {
 	category = urban
 	
-	lens = urban
+	lens = development
 
 	always_possible = yes
 	
@@ -560,7 +560,7 @@ bg_arts = {
 bg_power = {
 	category = development
 	
-	lens = infrastructure	
+	lens = development	
 
 	always_possible = yes
 	
@@ -611,12 +611,13 @@ bg_government = {
 	
 	economy_of_scale = yes
 	
-	lens = government
+	lens = development
 	
 	urbanization = 20
 	infrastructure_usage_per_level = 1
 	
 	economy_of_scale_ai_factor = 2.0
+
 }
 
 bg_technology = {
@@ -710,7 +711,7 @@ bg_infrastructure = {
 
 	always_possible = yes
 	
-	lens = infrastructure
+	lens = development
 	
 	stateregion_max_level = yes
 	
@@ -731,7 +732,7 @@ bg_construction = {
 
 	infrastructure_usage_per_level = 1 # vfm, vanilla increased from 0.2 to 3 in patch 1.4. Lets try 1?
 
-	lens = government
+	lens = development
 
 	is_government_funded = yes
 	
@@ -748,11 +749,7 @@ bg_private_infrastructure = {
 	is_government_funded = no
 	subsidized = yes
 	
-	economy_of_scale = yes					# Allows economy of scale to apply
-	
 	cash_reserves_max = 25000
-	
-	economy_of_scale_ai_factor = 0.5			# Stops the AI from deciding to overbuild a local good just because economy of scale applies
 	
 	urbanization = 5
 }
@@ -787,9 +784,10 @@ bg_military = {
 
 	infrastructure_usage_per_level = 0.2
 	
-	lens = military
+	lens = development
 	
 	urbanization = 2
+
 }
 
 bg_army = {

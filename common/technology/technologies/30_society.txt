@@ -37,7 +37,7 @@ urbanization = {
 		state_infrastructure_from_population_max_add = 40	
 		state_building_construction_sector_max_level_add = 10
 		country_max_weekly_construction_progress_add = 10
-		market_land_trade_capacity_add = 50
+		#market_land_trade_capacity_add = 50
 	}
 	
 	ai_weight = {
@@ -55,7 +55,7 @@ urban_planning = {
 		state_infrastructure_from_population_max_add = 20
 		state_building_construction_sector_max_level_add = 5
 		country_max_weekly_construction_progress_add = 5
-		market_land_trade_capacity_add = 10
+		#market_land_trade_capacity_add = 10
 	}
 	
 	unlocking_technologies = {
@@ -348,7 +348,7 @@ stock_exchange = {
 	category = society	
 	
 	modifier = {
-		country_trade_route_cost_mult = -0.25
+		#country_trade_route_cost_mult = -0.25
 		state_market_access_price_impact = 0.04
 	}
 	
@@ -495,7 +495,7 @@ modern_sewerage = {
 		state_infrastructure_from_population_max_add = 20
 		state_building_construction_sector_max_level_add = 5
 		country_max_weekly_construction_progress_add = 5
-		market_land_trade_capacity_add = 10
+		#market_land_trade_capacity_add = 10
 		state_pollution_reduction_health_mult = -0.1
 		state_harvest_condition_flood_impact_mult = -0.1
 		state_harvest_condition_disease_outbreak_impact_mult = -0.1
@@ -728,7 +728,7 @@ dialectics = {
 			hidden_effect = {
 			add_modifier = { # university throughput
 			name = synthesis_modifier
-			months = normal_modifier_time
+			days = normal_modifier_time
 		}
 		}
 		}
@@ -1041,7 +1041,7 @@ steel_frame_buildings = {
 		#state_infrastructure_from_population_max_add = 20
 		state_building_construction_sector_max_level_add = 5
 		country_max_weekly_construction_progress_add = 5
-		market_land_trade_capacity_add = 5
+		#market_land_trade_capacity_add = 5
 		state_harvest_condition_flood_impact_mult = -0.05
 	}
 	
@@ -1245,6 +1245,7 @@ pan-nationalism = {
 	
 	modifier = {
 		country_authority_mult = 0.1
+		country_support_separatism_strength_mult = 0.25
 	}
 	
 	unlocking_technologies = {
@@ -1342,7 +1343,7 @@ realism = {
 			hidden_effect = { 
 			    add_modifier = {
 			name = realist_art
-			months = normal_modifier_time
+			days = normal_modifier_time
 		}
 			}
 		}
@@ -1455,7 +1456,7 @@ zeppelins = {
 	
 	modifier = {
 		state_market_access_price_impact = 0.03
-		market_land_trade_capacity_add = 10
+		#market_land_trade_capacity_add = 10
 	}
 	
 	unlocking_technologies = {
@@ -1720,6 +1721,7 @@ mass_surveillance = {
 	
 	modifier = {
 		state_tax_capacity_add = 25
+		country_support_separatism_resistance_mult = 0.25
 	}
 	
 	unlocking_technologies = {
@@ -1777,6 +1779,7 @@ mass_propaganda = {
 		country_authority_mult = 0.1
 		state_expected_sol_from_literacy = 1
 		country_agitator_slots_add = 1
+		country_support_separatism_strength_mult = 0.25
 	}
 	
 	unlocking_technologies = {
@@ -1908,7 +1911,7 @@ paved_roads = {
 	
 	modifier = {
 		state_infrastructure_from_automobiles_consumption_add = 0.25
-		market_land_trade_capacity_add = 10
+		#market_land_trade_capacity_add = 10
 	}
 	
 	unlocking_technologies = {	

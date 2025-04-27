@@ -3,6 +3,10 @@
 
 	group = je_group_internal_affairs
 
+	is_shown_in_lobby = {
+		c:CHI = THIS
+	}
+
 	scripted_button = ban_opium_button
 	scripted_button = unban_opium_button
 
@@ -81,6 +85,10 @@
     timeout = 3650
     on_timeout = {
 		hidden_effect = { remove_modifier = opium_wars_addiction_modifier }
+		add_modifier = {
+			name = opium_wars_addiction_modifier
+			days = long_modifier_time
+		}
 		add_modifier = {
 			name = opium_wars_addiction_modifier
 			months = long_modifier_time

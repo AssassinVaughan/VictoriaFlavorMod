@@ -3,8 +3,20 @@
 
 	group = je_group_historical_content
 
+    is_shown_in_lobby  = {
+        country_has_primary_culture = cu:romanian
+        NOR = {
+            c:AUS ?= this
+            c:KUK ?= this
+        }
+    }
+
     is_shown_when_inactive = {
 		country_has_primary_culture = cu:romanian
+        NOR = {
+            c:AUS ?= this
+            c:KUK ?= this
+        }
     }
     scripted_button = je_unite_the_principalities_button
     possible = {

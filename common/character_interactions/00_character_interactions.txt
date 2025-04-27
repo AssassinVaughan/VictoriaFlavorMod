@@ -27,7 +27,12 @@ grant_command_to_ruler = {
 
 	possible = {
 		age >= define:NCharacters|ADULT_AGE
-		is_female = no
+		OR = {
+			is_female = no
+			owner ?= {
+				has_law = law_type:law_womens_suffrage
+			}
+		}
 		owner ?= {
 			ruler_can_have_command = yes
 		}
@@ -160,7 +165,7 @@ grant_leadership_to_agitator = {
 		}
 	}
 
-	cooldown = { months = normal_modifier_time }
+	cooldown = { days = normal_modifier_time }
 
 	ai_chance = {
 		value = -50
@@ -221,7 +226,7 @@ grant_command_to_agitator = {
 		add_character_role = general
 	}
 
-	cooldown = { months = normal_modifier_time }
+	cooldown = { days = normal_modifier_time }
 
 	ai_chance = {
 		value = 0
@@ -277,7 +282,7 @@ marry_ruler_or_heir = {
 		scope:actor ?= {
 			has_law = law_type:law_monarchy
 			religion = {
-				has_discrimination_trait = christian
+				has_discrimination_trait = heritage_christian
 			}
 		}
 		age >= 18
@@ -307,7 +312,7 @@ marry_ruler_or_heir = {
 			trigger_event = { id = wedding.2 popup = yes } 
 		}
 	}
-	cooldown = { months = normal_modifier_time }
+	cooldown = { days = normal_modifier_time }
 
 	ai_chance = {
 		value = 25
@@ -381,7 +386,7 @@ abdicate_monarch = {
 					}
 				}
 			}
-			owner.heir = {
+			owner.heir ?= {
 				age >= 18
 			}
 		}
@@ -552,7 +557,7 @@ exile_character = {
 				scope:relevant_ig = {
 					add_modifier = {
 						name = modifier_exiled_leader
-						months = normal_modifier_time
+						days = normal_modifier_time
 						is_decaying = yes
 					}
 				}
@@ -726,7 +731,7 @@ exile_character = {
 		}
 	}
 
-	cooldown = { months = normal_modifier_time }
+	cooldown = { days = normal_modifier_time }
 	show_confirmation_box = yes
 
 	ai_chance = {
@@ -907,7 +912,7 @@ invite_exile = {
 				}
 				set_variable = {
 					name = garibaldi_cooldown_var
-					months = short_modifier_time
+					days = short_modifier_time
 				}
 			}
 			if = {
@@ -946,7 +951,7 @@ invite_exile = {
 		}
 	}
 
-	cooldown = { months = normal_modifier_time }
+	cooldown = { days = normal_modifier_time }
 
 	ai_chance = {
 		value = -85
@@ -1230,7 +1235,7 @@ return_to_home_country = {
 		}
 	}
 
-	cooldown = { months = short_modifier_time }
+	cooldown = { days = short_modifier_time }
 	show_confirmation_box = yes
 
 	ai_chance = {
@@ -1238,115 +1243,3 @@ return_to_home_country = {
 	}
 }
 
-foster_national_agitation = {
-	potential = {
-		is_in_exile_pool = no
-		has_role = agitator
-		owner ?= scope:actor
-		owner ?= {
-			any_primary_culture = {
-				this = root.culture
-			}
-			has_technology_researched = nationalism
-		}
-	}
-
-	show_requirements = yes
-
-	possible = {
-		root.culture = {
-			save_temporary_scope_as = agitator_culture
-		}
-		this.interest_group = {
-			is_in_government = yes
-		}
-		any_state = {
-			this.state_region = {
-				is_homeland = root.culture
-			}
-			custom_tooltip = {
-				text = is_rival_of_owner_tt
-				OR = {
-					owner ?= {
-						has_diplomatic_pact = {
-							who = root.owner
-							type = rivalry
-						}
-					}
-					root.owner ?= {
-						has_diplomatic_pact = {
-							who = prev.owner
-							type = rivalry
-						}
-					}
-				}
-			}
-			custom_tooltip = {
-				text = not_homeland_of_states_tt
-				owner ?= {
-					NOR = {
-						this = root.owner
-						any_primary_culture = {
-							this = root.culture
-						}
-					}
-				}
-			}
-		}
-	}
-
-	effect = {
-		root.culture = {
-			save_scope_as = agitation_culture
-		}
-		root.owner ?= {
-			save_scope_as = agitation_sponsor
-		}
-		random_state = {
-			limit = {
-				state_region = {
-					is_homeland = root.culture
-				}
-				OR = {
-					owner ?= {
-						has_diplomatic_pact = {
-							who = root.owner
-							type = rivalry
-						}
-					}
-					root.owner ?= {
-						has_diplomatic_pact = {
-							who = prev.owner
-							type = rivalry
-						}
-					}
-				}
-				owner ?= {
-					NOR = {
-						this = root.owner
-						any_primary_culture = {
-							this = root.culture
-						}
-					}
-				}
-			}
-			save_scope_as = agitation_state
-			add_radicals_in_state = {
-				culture = root.culture
-				value = large_radicals
-			}
-			owner ?= {
-				post_notification = nationalism_national_agitation_occurred
-				change_relations = {
-					country = root.owner value = -10
-				}
-			}
-		}
-	}
-
-	cooldown = { months = short_modifier_time }
-
-	ai_chance = {
-		value = 100
-	}
-}

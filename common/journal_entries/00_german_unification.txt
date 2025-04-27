@@ -1,7 +1,17 @@
 ﻿je_schleswig_holstein_question = {
 	icon = "gfx/interface/icons/event_icons/event_flags/event_ger_flag.dds"
 	
-	group = je_group_historical_content
+	group = je_group_german_unification
+
+	is_shown_in_lobby = {
+		OR = {
+			country_has_primary_culture = cu:north_german
+			country_has_primary_culture = cu:south_german
+		}
+		NOT = {
+			c:AUS = THIS
+		}
+	}
 
 	is_shown_when_inactive = {
 		hidden_trigger = { NOT = { has_global_variable = schleswig_holstein_question_solved } }		
@@ -82,7 +92,7 @@
 	on_complete = {
 		add_modifier = {
 			name = schleswig_holstein_question_solver
-			months = long_modifier_time
+			days = long_modifier_time
 		}	
 		hidden_effect = { set_global_variable = schleswig_holstein_question_solved }		
 	}
@@ -102,7 +112,21 @@
 je_german_unification_idea = {
 	icon = "gfx/interface/icons/event_icons/event_flags/event_ger_flag.dds"
 	
-	group = je_group_historical_content
+	group = je_group_german_unification
+
+
+	is_shown_in_lobby = {
+		AND = {
+			OR = {
+				country_has_primary_culture = cu:north_german
+				country_has_primary_culture = cu:south_german
+			}
+			NOR = {
+				c:PRU = THIS
+				c:AUS = THIS
+			}
+		}
+	}
 
 	is_shown_when_inactive = {
 		OR = {
@@ -262,7 +286,7 @@ je_german_unification_idea = {
 je_north_german_unification = {
 	icon = "gfx/interface/icons/event_icons/event_flags/event_ger_flag.dds"
 	
-	group = je_group_historical_content
+	group = je_group_german_unification
 	
 	complete = {
 		custom_tooltip = {
@@ -387,7 +411,7 @@ je_north_german_unification = {
 je_south_german_unification = {
 	icon = "gfx/interface/icons/event_icons/event_flags/event_ger2_flag.dds"
 	
-	group = je_group_historical_content
+	group = je_group_german_unification
 
 	fail = {
 		custom_tooltip = {
@@ -514,8 +538,12 @@ je_south_german_unification = {
 je_german_unification = {
 	icon = "gfx/interface/icons/event_icons/event_flags/event_ger_flag.dds"
 	
-	group = je_group_historical_content
-	
+	group = je_group_german_unification
+
+	is_shown_in_lobby = {
+		c:PRU = THIS
+	}
+
 	is_shown_when_inactive = {
 		has_variable = je_german_confederate_unifier
 	}

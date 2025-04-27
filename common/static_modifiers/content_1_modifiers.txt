@@ -30,7 +30,7 @@ opium_wars_navy_modifier = {
 
 opium_wars_export_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_positive.dds
-	country_trade_route_competitiveness_mult = 0.10
+	state_trade_advantage_mult = 0.10
 }
 
 opium_wars_addiction_modifier = {
@@ -642,7 +642,7 @@ german_unification_popularity = {
 german_unifier_ruler = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
 	character_popularity_add = 50
-	country_authority_mult = 0.15
+	#country_authority_mult = 0.15
 }
 
 tewodros_modifier = {
@@ -679,7 +679,7 @@ institutions_of_socialism_modifier = {
 
 path_to_vanguardism = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
-	country_suppression_attraction_mult = -0.25
+	country_suppression_attraction_factor = -0.25
 }
 
 path_to_communism = {
@@ -713,6 +713,9 @@ modifier_springtime_of_the_peoples = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
 	political_movement_radicalism_add = 0.25
 	state_pop_support_movement_radical_mult = 0.25
+	state_pop_support_movement_german_national_mult = 0.25
+	state_pop_support_movement_italian_national_mult = 0.25
+	state_pop_support_movement_liberal_mult = 0.25
 	state_pop_support_movement_cultural_minority_mult = 0.25
 }
 
@@ -729,7 +732,7 @@ no_new_constitution = {
 
 suppressing_radicals = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
-	country_suppression_attraction_mult = 0.25
+	country_suppression_attraction_factor = 0.25
 }
 
 1848_popular_radical = {
@@ -937,16 +940,6 @@ rubber_protections = {
 	building_rubber_plantation_throughput_add = -0.1
 }
 
-amazon_theatre = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
-	building_arts_academy_throughput_add = 0.2
-}
-
-amazon_migration = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
-	state_migration_pull_mult = 1
-}
-
 siberia_mining = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_positive.dds
 	state_migration_pull_mult = 2
@@ -1118,11 +1111,6 @@ panama_purchase = {
 panama_sale = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_positive.dds
 	country_tax_income_add = 30000
-}
-
-greek_nationalism = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
-	country_prestige_add = 100
 }
 
 land_reclamation_complete = {
@@ -1478,7 +1466,7 @@ age_of_caudillos_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
 	interest_group_ig_armed_forces_pop_attraction_mult = 0.1
 	interest_group_ig_armed_forces_pol_str_mult = 0.5
-	country_officers_pol_str_mult = 2
+	country_officers_pol_str_mult = 2.5
 }
 
 missouri_compromise = {
@@ -1495,6 +1483,7 @@ shogun_ig_forced_to_open_market = {
 	interest_group_ig_industrialists_pol_str_mult = 0.5
 	country_legitimacy_headofstate_add = -50
 	country_legitimacy_base_add = 30 # Allows formation of alternative governments
+    state_pop_support_movement_modernizer_mult = 0.5
 }
 
 honorable_restoration_failed = {

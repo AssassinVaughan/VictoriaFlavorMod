@@ -225,7 +225,7 @@
 			}
 			add_modifier = {
 				name = modifier_herat_inspiration
-				months = long_modifier_time
+				days = long_modifier_time
 			}
 			custom_tooltip = greater_khorasan_button_tt
 			if = {
@@ -250,9 +250,9 @@
 	}
 
 	ai_chance = {
-		base = 20
-		modifier = {
-			trigger = {
+		value = 20
+		if = {
+			limit = {
 				OR = {
 					is_at_war = yes
 					in_default = yes
@@ -313,19 +313,19 @@ persian_baluchistan_button = {
 				activate_law = law_type:law_frontier_colonization
 				add_modifier = {
 					name = modifier_turkmen_subjugation
-					months = normal_modifier_time
+					days = normal_modifier_time
 				}
 			}
 			else = {
 				add_modifier = {
 					name = modifier_turkmen_subjugation
-					months = normal_modifier_time
+					days = normal_modifier_time
 					multiplier = 2
 				}
 			}
 			add_modifier = {
 				name = modifier_turkmen_logistics
-				months = normal_modifier_time
+				days = normal_modifier_time
 				multiplier = money_amount_multiplier_very_large
 			}
 			add_radicals = {
@@ -340,9 +340,9 @@ persian_baluchistan_button = {
 	}
 
 	ai_chance = {
-		base = 20
-		modifier = {
-			trigger = {
+		value = 20
+		if = {
+			limit = {
 				OR = {
 					is_at_war = yes
 					in_default = yes
@@ -433,7 +433,7 @@ persia_british_aid_button = {
 	}
 
 	ai_chance = {
-		base = 15
+		value = 15
 	}
 }
 
@@ -558,6 +558,6 @@ persia_resettle_merv_button = {
 	}
 
 	ai_chance = {
-		base = 15
+		value = 15
 	}
 }

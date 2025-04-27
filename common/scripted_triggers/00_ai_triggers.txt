@@ -391,6 +391,12 @@ has_je_subjugation_reason = {
 				}
 			}
 		}
+		AND = {
+			has_journal_entry = je_danubian_federation
+			$TARGET$ = {
+				has_variable = danubian_federation_opposed
+			}
+		}
 	}	
 }
 
@@ -455,7 +461,14 @@ has_je_befriend_reason = {
 				country_has_primary_culture = cu:korean
 				is_revolutionary = yes
 			}
-		}			
+		}	
+
+		AND = {
+			has_journal_entry = je_danubian_federation
+			$TARGET$ = {
+				has_variable = danubian_federation_receptive
+			}
+		}		
 	}	
 }
 
@@ -521,8 +534,10 @@ has_je_protect_reason = {
 }
 
 has_powerful_protectors = {
+	exists = scope:actor
 	any_diplomatically_relevant_country = {
-		NOT = { this = scope:actor }
+		exists = scope:actor
+		NOT = { scope:actor ?= this }
 		NOT = { is_in_same_power_bloc = scope:actor }
 		NOT = { is_subject_of = scope:actor }
 		OR = {

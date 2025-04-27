@@ -23,7 +23,7 @@
 				text = owner_is_christian_tt
 				owner = {
 					religion = {
-						has_discrimination_trait = christian
+						has_discrimination_trait = heritage_christian
 					}
 				}
 			}
@@ -46,7 +46,7 @@
 					is_treaty_port = yes
 					owner = {
 						religion = {
-							has_discrimination_trait = christian
+							has_discrimination_trait = heritage_christian
 						}
 					}
 				}
@@ -82,7 +82,7 @@
 							is_treaty_port = yes
 							owner = {
 								religion = {
-									has_discrimination_trait = christian
+									has_discrimination_trait = heritage_christian
 								}
 							}
 						}
@@ -124,7 +124,7 @@
 je_heavenly_kingdom_main = {
 	icon = "gfx/interface/icons/event_icons/event_religion.dds"
 	
-	group = je_group_historical_content
+	group = je_group_qing
 
 	is_shown_when_inactive = {
 		exists = c:CHI
@@ -211,7 +211,7 @@ je_heavenly_kingdom_main = {
 			}
 			add_modifier = {
 				name = god_worshippers
-				months = short_modifier_time
+				days = short_modifier_time
 			}
 		}
 		trigger_event = {
@@ -262,7 +262,7 @@ je_heavenly_kingdom_main = {
 je_taiping = {
 	icon = "gfx/interface/icons/event_icons/event_revolt.dds"
 	
-	group = je_group_historical_content
+	group = je_group_qing
 
 	complete = {
 		custom_tooltip = {

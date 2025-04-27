@@ -53,13 +53,18 @@ base_values = {
 	
 	country_max_weekly_construction_progress_add = 10
 	
-	country_free_trade_routes_add = 4
-	
 	military_formation_organization_gain_add = 0.5 # 200 days to get max organization
 	
 	state_urbanization_per_level_add = 100
 	
 	unit_experience_gain_add = 0.5
+	
+	# To account for the power derived from bearing arms
+	country_officers_pol_str_mult = 3
+	country_soldiers_pol_str_mult = 1.5
+
+	country_support_separatism_strength_mult = 1.0
+	country_support_separatism_resistance_mult = 1.0
 }
 
 # Scales with a country's global prestige rank, so at 20/100 this is multiplied by 0.8x, 50/100 by 0.5x, etc
@@ -385,10 +390,10 @@ insufficient_urbanization = {
 	building_throughput_add = -0.05
 }
 
-# Excess convoys increases trade competitiveness by +25% at 2x production to usage
+# Excess convoys increases convoy defense by +50% at 2x production to usage
 surplus_convoys = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_positive.dds
-	country_trade_route_competitiveness_mult = 0.25
+	unit_convoy_defense_mult = 0.50
 }
 
 # Insufficient convoys has no additional effect beyond weakening supply network
@@ -550,14 +555,17 @@ infamy_reputable = {}
 
 infamy_infamous = {
 	country_radicals_from_conquest_mult = 0.25
+	country_support_separatism_resistance_mult = -0.1
 }
 
 infamy_notorious = {
 	country_radicals_from_conquest_mult = 0.5
+	country_support_separatism_resistance_mult = -0.25
 }
 
 infamy_pariah = {
 	country_radicals_from_conquest_mult = 1.0
+	country_support_separatism_resistance_mult = -0.5
 }
 
 # Scales with devastation level
@@ -591,6 +599,13 @@ state_region_pollution_general = {
 insufficient_tax_capacity = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
 	state_tax_collection_mult = -1
+}
+
+# Scales from 0-100% with the state's obstinance
+state_obstinance = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
+	state_assimilation_mult = -0.1
+	state_institution_impact_add = -1.0
 }
 
 # Applied if state is above 'in turmoil' threshold

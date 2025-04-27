@@ -322,12 +322,12 @@ modifier_police_given_light = {
 
 modifier_secret_police_ignored = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
-	country_suppression_attraction_mult = 0.10
+	country_suppression_attraction_factor = 0.10
 }
 
 modifier_secret_police_supported = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
-	country_suppression_attraction_mult = -0.15
+	country_suppression_attraction_factor = -0.15
 }
 
 modifier_mine_regulations_enforced = {
@@ -574,7 +574,7 @@ exclusive_wine = {
 
 popular_wine = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_positive.dds
-	goods_output_wine_mult = 0.5
+	goods_output_wine_mult = 0.35
 }
 
 modifier_new_ideology = {
@@ -1333,6 +1333,7 @@ foreign_trade_union_influence_denied = {
 border_sovereignity_questioned = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
 	country_prestige_mult = -0.2
+	unit_morale_loss_mult = 0.2
 }
 
 slavery_practice_condemned = {
@@ -1727,7 +1728,7 @@ opium_production_modifier = {
 
 opium_exporter_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_positive.dds
-	country_trade_route_competitiveness_mult = 0.1
+	state_trade_advantage_mult = 0.1
 }
 
 horizontal_filing_cabinets_modifier = {
@@ -1790,7 +1791,7 @@ zeppelins_society_modifier = {
 
 zeppelins_trading_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_positive.dds
-	country_trade_route_quantity_mult = 0.25
+	state_trade_capacity_mult = 0.25
 }
 
 emergency_hunger_relief_modifier = {
@@ -1864,8 +1865,8 @@ dramatic_films = {
 economic_concessions = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
 	country_authority_mult = -0.10
-	country_trade_route_quantity_mult = 0.20
-	tariff_import_add = -0.05
+	state_trade_capacity_mult = 0.20
+	state_tariff_import_add = -0.10
 }
 
 made_economic_concessions = {

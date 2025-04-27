@@ -111,6 +111,38 @@ law_monarchy = {
 				fra_handle_republic_monarch_assignment = yes
 			}
 		}
+		if = {
+			limit = {
+				country_has_primary_culture = cu:vietnamese
+			}
+			if = {
+				limit = {
+					any_scope_state = {
+						state_region = s:STATE_CAMBODIA
+					}
+				}
+				random_scope_state = {
+					limit = {
+						state_region = s:STATE_CAMBODIA
+					}
+					STATE_CAMBODIA_state_name_assign = yes
+				}
+			}
+			if = {
+				limit = {
+					any_scope_state = {
+						state_region = s:STATE_LAOS
+					}
+				}
+				random_scope_state = {
+					limit = {
+						state_region = s:STATE_LAOS
+					}
+					STATE_LAOS_state_name_assign = yes
+				}
+			}
+		}
+		crown_land_republic_effect = yes
 	}
 
 	ai_enact_weight_modifier = { #Petitions
@@ -222,12 +254,32 @@ law_presidential_republic = {
 				add_ideology = ideology_republican
 			}
 		}
+		crown_land_republic_effect = yes
 	}
 	
 	ai_will_do = {
 		exists = ruler
-		ruler = {
-			has_ideology = ideology:ideology_republican_leader
+		OR = {
+			ruler = {
+				OR = {
+					has_ideology = ideology:ideology_republican_leader
+					has_ideology = ideology:ideology_radical
+					has_ideology = ideology:ideology_positivist
+					has_socialist_ideology = yes
+				}
+			}
+			any_interest_group = {
+				is_in_government = yes
+				is_powerful = yes
+				leader = {
+					OR = {
+						has_ideology = ideology:ideology_republican_leader
+						has_ideology = ideology:ideology_radical
+						has_ideology = ideology:ideology_positivist
+						has_socialist_ideology = yes
+					}
+				}
+			}
 		}
 	}
 
@@ -349,12 +401,32 @@ law_parliamentary_republic = {
 				add_ideology = ideology_republican
 			}
 		}
+		crown_land_republic_effect = yes
 	}
 	
 	ai_will_do = {
 		exists = ruler
-		ruler = {
-			has_ideology = ideology:ideology_republican_leader
+		OR = {
+			ruler = {
+				OR = {
+					has_ideology = ideology:ideology_republican_leader
+					has_ideology = ideology:ideology_radical
+					has_ideology = ideology:ideology_positivist
+					has_socialist_ideology = yes
+				}
+			}
+			any_interest_group = {
+				is_in_government = yes
+				is_powerful = yes
+				leader = {
+					OR = {
+						has_ideology = ideology:ideology_republican_leader
+						has_ideology = ideology:ideology_radical
+						has_ideology = ideology:ideology_positivist
+						has_socialist_ideology = yes
+					}
+				}
+			}
 		}
 	}
 
@@ -446,8 +518,17 @@ law_theocracy = {
 
 	ai_will_do = {
 		exists = ruler
-		ruler = {
-			has_ideology = ideology:ideology_theocrat
+		OR = {
+			ruler = {
+				has_ideology = ideology:ideology_theocrat
+			}
+			any_interest_group = {
+				is_in_government = yes
+				is_powerful = yes
+				leader = {
+					has_ideology = ideology:ideology_theocrat
+				}
+			}
 		}
 	}
 
@@ -551,7 +632,8 @@ law_council_republic = {
 				STATE_INGRIA_state_name_assign = yes
 			}
 		}
-	}		
+		crown_land_republic_effect = yes
+	}	
 
 	can_impose = {
 		OR = {
@@ -576,11 +658,7 @@ law_council_republic = {
 	ai_will_do = {
 		exists = ruler
 		ruler = {
-			OR = {
-				has_ideology = ideology:ideology_communist
-				has_ideology = ideology:ideology_anarchist
-				has_ideology = ideology:ideology_vanguardist
-			}
+			has_socialist_ideology = yes
 		}
 	}
 
@@ -666,7 +744,8 @@ law_corporate_state = {
 			}
 			add_modifier = { name = modifier_corporate_state_intelligentsia_bias }
 		}
-	}		
+		crown_land_republic_effect = yes
+	}	
 
 	on_enact = {
 		if = {
@@ -732,10 +811,22 @@ law_corporate_state = {
 	
 	ai_will_do = {
 		exists = ruler
-		ruler = {
-			OR = {
-				has_ideology = ideology:ideology_fascist
-				has_ideology = ideology:ideology_corporatist_leader
+		OR = {
+			ruler = {
+				OR = {
+					has_ideology = ideology:ideology_fascist
+					has_ideology = ideology:ideology_corporatist_leader
+				}
+			}
+			any_interest_group = {
+				is_in_government = yes
+				is_powerful = yes
+				leader = {
+					OR = {
+						has_ideology = ideology:ideology_fascist
+						has_ideology = ideology:ideology_corporatist_leader
+					}
+				}
 			}
 		}
 	}
