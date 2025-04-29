@@ -7,6 +7,10 @@ company_da_afghan_nassaji_sherkat = {
 		building_textile_mills
 	}
 
+	extension_building_types = {
+		building_cotton_plantation
+	}
+
 	potential = {
 		has_dlc_feature = ep1_content
 		has_interest_marker_in_region = region_persia
@@ -32,7 +36,7 @@ company_da_afghan_nassaji_sherkat = {
 	}
 
 	prosperity_modifier = {
-		market_land_trade_capacity_add = 5
+		state_trade_capacity_mult = 0.05
 		building_cotton_plantation_throughput_add = 0.1
 	}
 
@@ -48,6 +52,10 @@ company_iranian_state_railway = {
 
 	building_types = {
 		building_railway
+	}
+
+	extension_building_types = {
+		building_motor_industry
 	}
 
 	potential = {
@@ -69,8 +77,11 @@ company_iranian_state_railway = {
 		any_scope_state = {
 			region = sr:region_persia
 			is_incorporated = yes
-			has_building = building_railway
-			count >= 6
+			any_scope_building = {
+				is_building_type = building_railway
+				level >= 5
+			}
+			count >= 2
 		}
 	}
 
@@ -92,6 +103,10 @@ company_tashkent_railroad = {
 		building_railway
 	}
 
+	extension_building_types = {
+		building_motor_industry
+	}
+
 	potential = {
 		has_dlc_feature = ep1_content
 		has_interest_marker_in_region = region_central_asia
@@ -109,8 +124,11 @@ company_tashkent_railroad = {
 		any_scope_state = {
 			region = sr:region_central_asia
 			is_incorporated = yes
-			has_building = building_railway
-			count >= 6
+			any_scope_building = {
+				is_building_type = building_railway
+				level >= 5
+			}
+			count >= 3
 		}
 	}
 
@@ -132,6 +150,11 @@ company_west_ural_petroleum = {
 
 	building_types = {
 		building_oil_rig
+	}
+
+	extension_building_types = {
+		building_power_plant
+		building_railway
 	}
 
 	potential = {
@@ -177,6 +200,10 @@ company_sherkat_shemali = {
 		building_cotton_plantation
 	}
 
+	extension_building_types = {
+		building_textile_mills
+	}
+
 	potential = {
 		has_interest_marker_in_region = region_persia
 	}
@@ -216,6 +243,10 @@ company_opium_export_monopoly = {
 
 	building_types = {
 		building_opium_plantation
+	}
+
+	extension_building_types = {
+		building_tobacco_plantation
 	}
 
 	potential = {
@@ -263,6 +294,10 @@ company_sherkate_eslamiya = {
 		building_textile_mills
 	}
 
+	extension_building_types = {
+		building_cotton_plantation
+	}
+
 	potential = {
 		has_dlc_feature = ep1_content
 		has_interest_marker_in_region = region_persia
@@ -303,6 +338,10 @@ company_nicolas_portalis = {
 
 	building_types = {
 		building_silk_plantation
+	}
+
+	extension_building_types = {
+		building_cotton_plantation
 	}
 
 	potential = {
@@ -350,6 +389,10 @@ company_hanseong_jeongi_hoesa = {
 		building_power_plant
 	}
 
+	extension_building_types = {
+		building_railway
+	}
+
 	potential = {
 		has_dlc_feature = ep1_content
 		has_interest_marker_in_region = region_manchuria
@@ -395,6 +438,10 @@ company_kirgizian_mining_company= {
 		building_coal_mine
 	}
 
+	extension_building_types = {
+		building_iron_mine
+	}
+
 	potential = {
 		has_dlc_feature = ep1_content
 		has_interest_marker_in_region = region_central_asia
@@ -437,6 +484,10 @@ company_persshelk = {
 
 	building_types = {
 		building_silk_plantation
+	}
+
+	extension_building_types = {
+		building_textile_mills
 	}
 
 	potential = {
@@ -489,6 +540,10 @@ company_perskhlopok = {
 
 	building_types = {
 		building_cotton_plantation
+	}
+
+	extension_building_types = {
+		building_textile_mills
 	}
 
 	potential = {
@@ -544,9 +599,14 @@ company_moscow_irrigation_company = {
 		building_rice_farm
 	}
 
+	extension_building_types = {
+		building_wheat_farm
+		building_opium_plantation
+	}
+
 	potential = {
 		has_dlc_feature = ep1_content
-		has_interest_marker_in_region = region_central_asia #PBF
+		has_interest_marker_in_region = region_persia
 	}
 
 	attainable = {
@@ -554,7 +614,8 @@ company_moscow_irrigation_company = {
 			any_scope_state = {
 				state_region = s:STATE_FERGANA
 			}
-			OR = { #PBF
+
+			OR = {
 				any_scope_state = {
 					state_region = s:STATE_MOSCOW
 				}
@@ -573,7 +634,7 @@ company_moscow_irrigation_company = {
 			is_incorporated = yes
 			any_scope_building = {
 				is_building_type = building_cotton_plantation
-				level >= 8
+				level >= 6
 			}
 		}
 		OR = {
@@ -611,6 +672,10 @@ company_guinness = {
 
 	building_types = {
 		building_food_industry
+	}
+
+	extension_building_types = {
+		building_wheat_farm
 	}
 
 	potential = {
@@ -658,6 +723,11 @@ company_oriental_development_company = {
 		building_rice_farm
 		building_millet_farm
 		building_wheat_farm
+	}
+
+	extension_building_types = {
+		building_maize_farm
+		building_food_industry
 	}
 
 	potential = {
@@ -714,6 +784,10 @@ company_turkish_petroleum = {
 		building_oil_rig
 	}
 
+	extension_building_types = {
+		building_power_plant
+	}
+
 	potential = {
 		has_interest_marker_in_region = region_arabic
 	}
@@ -747,7 +821,7 @@ company_turkish_petroleum = {
 	}
 
 	prosperity_modifier = {
-		market_land_trade_capacity_add = 5
+		state_trade_capacity_mult = 0.05
 		building_railway_throughput_add = 0.05
 	}
 
@@ -765,6 +839,10 @@ company_anglo_persian_oil = {
 
 	building_types = {
 		building_oil_rig
+	}
+
+	extension_building_types = {
+		building_power_plant
 	}
 
 	potential = {
@@ -820,6 +898,10 @@ company_national_iranian_oil = {
 
 	building_types = {
 		building_oil_rig
+	}
+
+	extension_building_types = {
+		building_power_plant
 	}
 
 	potential = {

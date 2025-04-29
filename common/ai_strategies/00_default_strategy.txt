@@ -46,6 +46,15 @@ ai_strategy_default = {
 			add = 100
 		}	
 		
+		}
+
+		if = {
+			limit = {
+				has_journal_entry = je_the_grand_collapse
+			}
+			add = 100
+		}
+		
 		# Revolution aversion for July Monarchy
 		if = {
 			limit = { has_journal_entry = je_divided_monarchists }
@@ -420,6 +429,7 @@ ai_strategy_default = {
 								has_play_goal = make_protectorate
 								has_play_goal = conquer_state
 								has_play_goal = join_power_bloc
+								has_play_goal = annex_country
 							}
 						}
 					}

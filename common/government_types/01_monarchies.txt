@@ -1,4 +1,140 @@
-﻿gov_guberniya = {
+﻿gov_voivodeship = {
+	transfer_of_power = dictatorial
+
+	male_ruler = "RULER_TITLE_VOIVODE"
+	female_ruler = "RULER_TITLE_VOIVODESS"
+	
+	possible = {
+		c:BNT ?= this
+		c:BNT ?= {
+			has_law = law_type:law_monarchy
+		}
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
+	}
+
+	on_government_type_change = {
+		change_to_dictatorial = yes
+	}
+	on_post_government_type_change = {
+		post_change_to_dictatorial = yes
+	}
+}
+
+gov_crown_land_governor_generic = {
+	transfer_of_power = dictatorial
+
+	male_ruler = "RULER_TITLE_GOVERNOR"
+	female_ruler = "RULER_TITLE_GOVERNESS"
+	
+	possible = {
+		is_subject_type = subject_type_crown_land
+		overlord ?= {
+			has_law = law_type:law_monarchy
+		}
+	}
+
+	on_government_type_change = {
+		change_to_dictatorial = yes
+	}
+	on_post_government_type_change = {
+		post_change_to_dictatorial = yes
+	}
+}
+
+gov_crown_land_voivode = {
+	transfer_of_power = dictatorial
+
+	male_ruler = "RULER_TITLE_VOIVODE"
+	female_ruler = "RULER_TITLE_VOIVODESS"
+	
+	possible = {
+		is_subject_type = subject_type_crown_land
+		c:BNT ?= this
+		c:AUS ?= {
+			has_law = law_type:law_monarchy
+		}
+		is_subject_of = c:AUS
+	}
+
+	on_government_type_change = {
+		change_to_dictatorial = yes
+	}
+	on_post_government_type_change = {
+		post_change_to_dictatorial = yes
+	}
+}
+
+gov_crown_land_palatine = {
+	transfer_of_power = dictatorial
+
+	male_ruler = "RULER_TITLE_PALATINE"
+	female_ruler = "RULER_TITLE_PALATINESS"
+	
+	possible = {
+		is_subject_type = subject_type_crown_land
+		c:HUN ?= this
+		c:AUS ?= {
+			has_law = law_type:law_monarchy
+		}
+		is_subject_of = c:AUS
+	}
+
+	on_government_type_change = {
+		change_to_dictatorial = yes
+	}
+	on_post_government_type_change = {
+		post_change_to_dictatorial = yes
+	}
+}
+
+gov_crown_land_ban = {
+	transfer_of_power = dictatorial
+
+	male_ruler = "RULER_TITLE_BAN"
+	female_ruler = "RULER_TITLE_BANICA"
+	
+	possible = {
+		is_subject_type = subject_type_crown_land
+		c:CRO ?= this
+		c:AUS ?= {
+			has_law = law_type:law_monarchy
+		}
+		is_subject_of = c:AUS
+	}
+
+	on_government_type_change = {
+		change_to_dictatorial = yes
+	}
+	on_post_government_type_change = {
+		post_change_to_dictatorial = yes
+	}
+}
+
+gov_crown_land_governor = {
+	transfer_of_power = dictatorial
+
+	male_ruler = "RULER_TITLE_GOVERNOR"
+	female_ruler = "RULER_TITLE_GOVERNESS"
+	
+	possible = {
+		is_subject_type = subject_type_crown_land
+		c:AUS ?= {
+			has_law = law_type:law_monarchy
+		}
+		is_subject_of = c:AUS
+	}
+
+	on_government_type_change = {
+		change_to_dictatorial = yes
+	}
+	on_post_government_type_change = {
+		post_change_to_dictatorial = yes
+	}
+}
+
+gov_guberniya = {
 	transfer_of_power = dictatorial
 	new_leader_on_reform_government = no
 
@@ -14,6 +150,291 @@
 		c:RUS = {
 			has_law = law_type:law_monarchy
 		}
+	}
+}
+
+gov_triple_monarchy = {
+	transfer_of_power = hereditary
+	
+	male_ruler = "RULER_TITLE_EMPEROR_KING"
+	female_ruler = "RULER_TITLE_EMPRESS_QUEEN"
+
+	male_heir = "RULER_TITLE_ARCHDUKE"
+	female_heir = "RULER_TITLE_ARCHDESS"
+	
+	possible = {
+		has_law = law_type:law_monarchy
+		OR = {
+			AND = {
+				has_variable = cisleithania_var
+				any_subject_or_below = {
+					is_subject_type = subject_type_personal_union
+					OR = {
+						has_variable = transleithania_var
+						has_variable = triune_kingdom_var
+					}
+					count = 2
+				}
+			}
+			AND = {
+				is_subject_type = subject_type_personal_union
+				any_overlord_or_above = {
+					has_variable = cisleithania_var
+					any_subject_or_below = {
+						OR = {
+							has_variable = transleithania_var
+							has_variable = triune_kingdom_var
+						}
+						count = 2
+					}
+				}
+			}
+		}
+	}
+
+	on_government_type_change = {
+		change_to_hereditary = yes
+	}
+	on_post_government_type_change = {
+		post_change_to_hereditary = yes
+	}
+}
+
+gov_dual_monarchy = {
+	transfer_of_power = hereditary
+	
+	male_ruler = "RULER_TITLE_EMPEROR_KING"
+	female_ruler = "RULER_TITLE_EMPRESS_QUEEN"
+
+	male_heir = "RULER_TITLE_ARCHDUKE"
+	female_heir = "RULER_TITLE_ARCHDESS"
+	
+	possible = {
+		has_law = law_type:law_monarchy
+		OR = {
+			AND = {
+				has_variable = cisleithania_var
+				any_subject_or_below = {
+					is_subject_type = subject_type_personal_union
+					OR = {
+						has_variable = transleithania_var
+						has_variable = triune_kingdom_var
+					}
+					count = 1
+				}
+			}
+			AND = {
+				is_subject_type = subject_type_personal_union
+				has_variable = transleithania_var
+				any_overlord_or_above = {
+					has_variable = cisleithania_var
+					NOT = {
+						any_subject_or_below = {
+							has_variable = triune_kingdom_var
+						}
+					}
+				}	
+			}
+			AND = {
+				is_subject_type = subject_type_personal_union
+				has_variable = triune_kingdom_var
+				any_overlord_or_above = {
+					has_variable = cisleithania_var
+					NOT = {
+						any_subject_or_below = {
+							has_variable = transleithania_var
+						}
+					}
+				}	
+			}
+		}
+	}
+
+	on_government_type_change = {
+		change_to_hereditary = yes
+	}
+	on_post_government_type_change = {
+		post_change_to_hereditary = yes
+	}
+}
+
+gov_danubian_federation = {
+	transfer_of_power = hereditary
+	
+	male_ruler = "RULER_TITLE_EMPEROR"
+	female_ruler = "RULER_TITLE_EMPRESS"
+
+	male_heir = "RULER_TITLE_ARCHDUKE"
+	female_heir = "RULER_TITLE_ARCHDESS"
+	
+	possible = {
+		c:KUK ?= this
+		has_law = law_type:law_monarchy
+		country_has_voting_franchise = yes
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
+	}
+
+	on_government_type_change = {
+		change_to_hereditary = yes
+	}
+	on_post_government_type_change = {
+		post_change_to_hereditary = yes
+	}
+}
+
+gov_danubian_federation_technocratic = {
+	transfer_of_power = hereditary
+	
+	male_ruler = "RULER_TITLE_EMPEROR"
+	female_ruler = "RULER_TITLE_EMPRESS"
+
+	male_heir = "RULER_TITLE_ARCHDUKE"
+	female_heir = "RULER_TITLE_ARCHDESS"
+	
+	possible = {
+		c:KUK ?= this
+		has_law = law_type:law_monarchy
+		has_law = law_type:law_technocracy
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
+	}
+
+	on_government_type_change = {
+		change_to_hereditary = yes
+	}
+	on_post_government_type_change = {
+		post_change_to_hereditary = yes
+	}
+}
+
+gov_danubian_federation_absolutist = {
+	transfer_of_power = hereditary
+	
+	male_ruler = "RULER_TITLE_EMPEROR"
+	female_ruler = "RULER_TITLE_EMPRESS"
+
+	male_heir = "RULER_TITLE_ARCHDUKE"
+	female_heir = "RULER_TITLE_ARCHDESS"
+	
+	possible = {
+		c:KUK ?= this
+		has_law = law_type:law_monarchy
+		NOT = {
+			has_law = law_type:law_technocracy
+		}
+		country_has_voting_franchise = no
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
+	}
+
+	on_government_type_change = {
+		change_to_hereditary = yes
+	}
+	on_post_government_type_change = {
+		post_change_to_hereditary = yes
+	}
+}
+
+gov_ethiopia_empire = {
+	transfer_of_power = hereditary
+
+	male_ruler = "RULER_TITLE_EMPEROR"
+	female_ruler = "RULER_TITLE_EMPRESS"
+	
+	male_heir = "RULER_TITLE_PRINCE"
+	female_heir = "RULER_TITLE_PRINCESS"
+	
+	possible = {
+		has_law = law_type:law_monarchy
+		OR = {
+			c:ETH ?= this
+			AND = {
+				OR = {
+					c:SHW ?= this
+					c:WLO ?= this
+					c:TGR ?= this
+					c:BGM ?= this
+					c:GJM ?= this
+					c:QWR ?= this
+				}
+				OR = {
+					has_variable = starting_ethiopian_emperor
+					any_scope_character = {
+						is_ruler = yes
+						has_variable = ethiopian_emperor
+					}
+				}
+			}
+		}
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
+	}
+
+	on_government_type_change = {
+		change_to_hereditary = yes
+	}
+	on_post_government_type_change = {
+		post_change_to_hereditary = yes
+	}
+}
+
+gov_ethiopia_ras = {
+	transfer_of_power = hereditary
+
+	male_ruler = "RULER_TITLE_RAS"
+	female_ruler = "RULER_TITLE_RAS"
+	
+	possible = {
+		has_law = law_type:law_monarchy
+		OR = {
+			c:SHW ?= this
+			c:WLO ?= this
+			c:TGR ?= this
+			c:BGM ?= this
+			c:GJM ?= this
+			c:QWR ?= this
+		}
+	}
+
+	on_government_type_change = {
+		change_to_hereditary = yes
+	}
+	on_post_government_type_change = {
+		post_change_to_hereditary = yes
+	}
+}
+
+gov_ethiopia_kingdom = {
+	transfer_of_power = hereditary
+
+	male_ruler = "RULER_TITLE_KING"
+	female_ruler = "RULER_TITLE_QUEEN"
+	
+	male_heir = "RULER_TITLE_PRINCE"
+	female_heir = "RULER_TITLE_PRINCESS"
+	
+	possible = {
+		has_law = law_type:law_monarchy
+		any_primary_culture = {
+			has_discrimination_trait = heritage_abyssinian
+		}
+		NOR = {
+			country_has_state_religion = rel:sunni
+			country_has_state_religion = rel:shiite
+			country_has_state_religion = rel:ibadi
+		}
+	}
+
+	on_government_type_change = {
+		change_to_hereditary = yes
+	}
+	on_post_government_type_change = {
+		post_change_to_hereditary = yes
 	}
 }
 
@@ -71,6 +492,9 @@ gov_princely_state_maharaja = {
 			AND = { exists = c:JAI c:JAI = ROOT }
 			AND = { exists = c:PTA c:PTA = ROOT } # Maharaja-e Rajgan
 		}
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}	
 
 	on_government_type_change = {
@@ -99,6 +523,9 @@ gov_princely_state_diwanate = {
 		}
 		OR = {
 			AND = { exists = c:PLP c:PLP = ROOT }
+		}
+		NOT = {
+			is_subject_type = subject_type_crown_land
 		}
 	}	
 
@@ -130,6 +557,9 @@ gov_princely_state_khanate = {
 			AND = { exists = c:KAL c:KAL = ROOT }
 			AND = { exists = c:DIR c:DIR = ROOT }
 		}
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -157,6 +587,9 @@ gov_princely_state_nizamate = {
 			AND = { exists = c:BHT is_subject_of = c:BHT }
 		}
 		AND = { exists = c:HYD c:HYD = ROOT }
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -194,6 +627,9 @@ gov_princely_state_nawabate = {
 			AND = { exists = c:KNO c:KNO = ROOT }
 			AND = { exists = c:MAK c:MAK = ROOT }
 		}
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -225,6 +661,9 @@ gov_princely_state_maratha_raja = {
 			AND = { exists = c:KHP c:KHP = ROOT }
 		}
 		country_has_state_religion = rel:hindu
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -253,6 +692,9 @@ gov_princely_state_raja = {
 			AND = { exists = c:BHT is_subject_of = c:BHT }
 		}
 		country_has_state_religion = rel:hindu
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -283,9 +725,10 @@ gov_princely_state_sultan = {
 		OR = {
 			country_has_state_religion = rel:sunni
 			country_has_state_religion = rel:shiite
+			country_has_state_religion = rel:ibadi
 		}
-		any_primary_culture = {
-			
+		NOT = {
+			is_subject_type = subject_type_crown_land
 		}
 	}
 
@@ -309,6 +752,19 @@ gov_enlightened_despotate = {
 	possible = {	
 		has_law = law_type:law_monarchy
 		has_law = law_type:law_technocracy
+		NAND = {
+			is_subject_type = subject_type_personal_union
+			any_overlord_or_above = {
+				has_variable = cisleithania_var
+			}
+			OR = {
+				has_variable = transleithania_var
+				has_variable = triune_kingdom_var
+			}
+		}
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}		
 
 	on_government_type_change = {
@@ -333,6 +789,9 @@ gov_shogunate = {
 		c:JAP = ROOT
 		has_law = law_type:law_monarchy
 		NOT = { has_variable = meiji_var }
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -357,6 +816,9 @@ gov_hawaiian_monarchy_recognised = {
 		has_law = law_type:law_monarchy
 		exists = c:HAW
 		c:HAW = ROOT
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -381,6 +843,9 @@ gov_hawaiian_monarchy = {
 		has_law = law_type:law_monarchy
 		exists = c:HAW
 		c:HAW = ROOT
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -409,6 +874,9 @@ gov_malikdom = {
 				was_formed_from = KAF		
 			}
 		}
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -432,6 +900,9 @@ gov_khalsa_state = {
 		has_law = law_type:law_monarchy
 		exists = c:PAN 
 		c:PAN = ROOT
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}	
 
 	on_government_type_change = {
@@ -458,6 +929,9 @@ gov_maratha_rajya = {
 			AND = { exists = c:KHP c:KHP = ROOT }
 		}
 		country_has_state_religion = rel:hindu
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -490,6 +964,9 @@ gov_maharaja = {
 			AND = { exists = c:JAI c:JAI = ROOT }
 			AND = { exists = c:PTA c:PTA = ROOT } # Maharaja-e Rajgan
 		}
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}	
 
 	on_government_type_change = {
@@ -513,6 +990,9 @@ gov_rawalate = {
 		has_law = law_type:law_monarchy
 		exists = c:JAS 
 		c:JAS = ROOT
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -535,6 +1015,9 @@ gov_rajya = {
 	possible = {
 		has_law = law_type:law_monarchy
 		country_has_state_religion = rel:hindu
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -556,8 +1039,22 @@ gov_tsardom = {
 	
 	possible = {
 		has_law = law_type:law_monarchy
-		exists = c:RUS
-		c:RUS = ROOT
+		OR = {
+			AND = {
+				exists = c:RUS
+				c:RUS = ROOT
+			}
+			AND = {
+				exists = c:BUL
+				c:BUL = ROOT
+				Ruler ?= {
+					has_template = BUL_ferdinand_i
+				}
+			}
+		}
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -578,6 +1075,77 @@ gov_dey = {
 		has_law = law_type:law_monarchy
 		AND = { exists = c:ALD c:ALD = ROOT }
 		has_variable = algeria_deylik_restored
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
+	}
+
+	on_government_type_change = {
+		change_to_hereditary = yes
+	}
+	on_post_government_type_change = {
+		post_change_to_hereditary = yes
+	}
+}
+
+gov_wilayah = {
+	transfer_of_power = hereditary
+	
+	male_ruler = "RULER_TITLE_LIWALI"	# Swahili form of al-wali
+	female_ruler = "RULER_TITLE_LIWALI"
+
+	male_heir = "" # Empty on purpose
+	female_heir = "" # Empty on purpose
+	
+	possible = {
+		has_law = law_type:law_monarchy
+		OR = {
+			country_tier = city_state
+			country_tier = principality
+			country_tier = grand_principality
+		}
+		OR = {
+			c:MBS ?= this # the rulers of Mombasa styled themselves governors even when they were de facto independent
+			AND = {
+				country_has_primary_culture = cu:swahili
+				is_subject = yes
+				top_overlord = {
+					country_is_in_europe = no
+				}
+			}
+		}
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
+	}
+
+	on_government_type_change = {
+		change_to_hereditary = yes
+	}
+	on_post_government_type_change = {
+		post_change_to_hereditary = yes
+	}
+}
+
+gov_swahili_sultanate = {
+	transfer_of_power = hereditary
+	
+	male_ruler = "RULER_TITLE_SULTAN"
+	female_ruler = "RULER_TITLE_SULTANA"
+	
+	male_heir = "RULER_TITLE_PRINCE"
+	female_heir = "RULER_TITLE_PRINCESS"
+	
+	possible = {
+		has_law = law_type:law_monarchy
+		NOR = {
+			country_tier = hegemony
+			country_tier = empire
+		}
+		country_has_primary_culture = cu:swahili
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -635,6 +1203,9 @@ gov_sultanate = {
 			AND = { exists = c:AIT c:AIT = ROOT }
 			AND = { exists = c:ALD c:ALD = ROOT }
 		}
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -659,6 +1230,9 @@ gov_hakimate = {
 		has_law = law_type:law_monarchy
 		exists = c:BHN
 		c:BHN = ROOT
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -683,6 +1257,9 @@ gov_chitrali_monarchy = {
 		has_law = law_type:law_monarchy
 		exists = c:CHT
 		c:CHT = ROOT
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -709,6 +1286,9 @@ gov_sheikhdom = {
 			AND = { exists = c:ABU c:ABU = ROOT }
 			AND = { exists = c:ARB c:ARB = ROOT }
 		}
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -732,6 +1312,9 @@ gov_kongolese_kingdom = {
 		has_law = law_type:law_monarchy
 		exists = c:KON 
 		c:KON = ROOT
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -755,6 +1338,9 @@ gov_sunanate = {
 		has_law = law_type:law_monarchy
 		exists = c:SRK 
 		c:SRK = ROOT
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -778,6 +1364,9 @@ gov_balinese_monarchy = {
 		has_law = law_type:law_monarchy
 		exists = c:BAL 
 		c:BAL = ROOT
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -801,6 +1390,9 @@ gov_sikkimese_monarchy = {
 		has_law = law_type:law_monarchy
 		exists = c:SIK 
 		c:SIK = ROOT
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -824,6 +1416,9 @@ gov_bhutanese_monarchy = {
 		has_law = law_type:law_monarchy
 		exists = c:BHU 
 		c:BHU = ROOT
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -847,6 +1442,9 @@ gov_mughal_empire = {
 		has_law = law_type:law_monarchy
 		exists = c:MUG
 		c:MUG = ROOT
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -870,6 +1468,9 @@ gov_caliphate = {
 		has_law = law_type:law_monarchy
 		exists = c:SOK
 		c:SOK = ROOT
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -893,6 +1494,9 @@ gov_khedive = {
 		has_law = law_type:law_monarchy
 		exists = c:EGY
 		c:EGY = ROOT
+        NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -918,6 +1522,9 @@ gov_pashalik = {
 		c:EGY = ROOT
 		NOT = {
 			has_variable = khedivate_conferred
+		}
+        NOT = {
+			is_subject_type = subject_type_crown_land
 		}
 	}
 
@@ -950,6 +1557,9 @@ gov_kurdish_state = {
 				is_subject_of = c:PER
 			}
 		}
+        NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	
 	}		
 }
@@ -970,6 +1580,9 @@ gov_vilayet = {
 			country_has_state_religion = rel:orthodox
 			country_has_state_religion = rel:catholic
 			country_has_primary_culture = cu:kurdish 	#Kurds are set up to use Emir
+		}
+        NOT = {
+			is_subject_type = subject_type_crown_land
 		}
 	}
 
@@ -1000,6 +1613,9 @@ gov_eyalet = {
 			country_has_state_religion = rel:catholic	#Should stop the Serbs and Romanians being Eyalets because the @$%£^ing geographic trigger isn't checked on startup
 			country_has_primary_culture = cu:kurdish	#Kurds are set up to use Emir
 		}	
+        NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -1023,6 +1639,9 @@ gov_shah = {
 		has_law = law_type:law_monarchy
 		exists = c:PER
 		c:PER = ROOT
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}			
 
 	on_government_type_change = {
@@ -1048,6 +1667,18 @@ gov_prince = {
 			AND = { exists = c:SER c:SER = ROOT }
 			AND = { exists = c:WAL c:WAL = ROOT }
 			AND = { exists = c:MOL c:MOL = ROOT }
+			AND = { 
+				exists = c:BUL 
+				c:BUL = ROOT
+				NOT = {
+					Ruler ?= {
+						has_template = BUL_ferdinand_i
+					}
+				}
+			}
+		}
+		NOT = {
+			is_subject_type = subject_type_crown_land
 		}
 	}		
 
@@ -1074,6 +1705,9 @@ gov_bey = {
 			AND = { exists = c:TUN c:TUN = ROOT }
 			AND = { exists = c:CON c:CON = ROOT }
 		}
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -1097,6 +1731,9 @@ gov_sharif = {
 		has_law = law_type:law_monarchy
 		exists = c:HDJ
 		c:HDJ = ROOT
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -1126,6 +1763,25 @@ gov_kaiser = {
 			country_has_primary_culture = cu:north_german
 			country_has_primary_culture = cu:south_german
 		}
+		NOR = {
+			AND = {
+				has_variable = cisleithania_var
+				any_subject_or_below = {
+					has_variable = transleithania_var
+					is_subject_type = subject_type_personal_union
+				}
+			}
+			AND = {
+				has_variable = transleithania_var
+				is_subject_type = subject_type_personal_union
+				any_overlord_or_above = {
+					has_variable = cisleithania_var
+				}	
+			}
+		}
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -1148,6 +1804,9 @@ gov_confederation_of_the_rhine = {
 	possible = {
 		c:RHN ?= this
 		has_law = law_type:law_monarchy
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -1174,6 +1833,9 @@ gov_decentralized_realm = {
 		has_law = law_type:law_monarchy
 		has_law = law_type:law_autocracy 
 		#country_tier = principality
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -1198,6 +1860,9 @@ gov_hm_gov = {
 		has_law = law_type:law_monarchy
 		AND = { exists = c:GBR c:GBR = ROOT }
 		NOT = { has_global_variable = empire_of_great_britain }
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -1221,6 +1886,9 @@ gov_hm_gov_empire = {
 		has_law = law_type:law_monarchy
 		AND = { exists = c:GBR c:GBR = ROOT }
 		has_global_variable = empire_of_great_britain
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -1245,6 +1913,9 @@ gov_fra_constitutional_monarchy_orleanist = {
 		country_has_voting_franchise = yes
 		has_variable = orleanist_restoration_var
 		country_has_primary_culture = cu:french
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -1269,6 +1940,9 @@ gov_fra_constitutional_monarchy_legitimist = {
 		country_has_voting_franchise = yes
 		has_variable = legitimist_restoration_var
 		country_has_primary_culture = cu:french
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -1293,6 +1967,9 @@ gov_fra_absolute_monarchy_orleanist = {
 		country_has_voting_franchise = no
 		has_variable = orleanist_restoration_var
 		country_has_primary_culture = cu:french
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -1348,6 +2025,9 @@ gov_nawabate = {
 			AND = { exists = c:BHO c:BHO = ROOT }
 			AND = { exists = c:KNO c:KNO = ROOT }
 		}
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -1370,6 +2050,9 @@ gov_nizamate = {
 	possible = {
 		has_law = law_type:law_monarchy
 		AND = { exists = c:HYD c:HYD = ROOT }
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -1393,6 +2076,9 @@ gov_diwanate = {
 		has_law = law_type:law_monarchy
 		OR = {
 			AND = { exists = c:PLP c:PLP = ROOT }
+		}
+		NOT = {
+			is_subject_type = subject_type_crown_land
 		}
 	}	
 
@@ -1418,6 +2104,9 @@ gov_tibetan_kingdom = {
 		OR = {
 			AND = { exists = c:TIB c:TIB = ROOT }
 			AND = { exists = c:LAD c:LAD = ROOT }
+		}
+		NOT = {
+			is_subject_type = subject_type_crown_land
 		}
 	}
 
@@ -1451,6 +2140,9 @@ gov_khanate = {
 			AND = { exists = c:MAZ c:MAZ = ROOT }
 			AND = { exists = c:DIR c:DIR = ROOT }
 		}
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -1477,6 +2169,9 @@ gov_ilkhanate = {
 			has_technology_researched = nationalism
 		}
 		AND = { exists = c:LUR c:LUR = ROOT }
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -1503,6 +2198,9 @@ gov_zhuz = {
 			AND = { exists = c:UZH c:UZH = ROOT }
 			AND = { exists = c:KZH c:KZH = ROOT }
 			AND = { exists = c:OZH c:OZH = ROOT }
+		}
+		NOT = {
+			is_subject_type = subject_type_crown_land
 		}
 	}
 
@@ -1531,6 +2229,10 @@ gov_absolute_principality_muslim = {
 		OR = {
 			country_has_state_religion = rel:sunni
 			country_has_state_religion = rel:shiite
+			country_has_state_religion = rel:ibadi
+		}
+		NOT = {
+			is_subject_type = subject_type_crown_land
 		}
 	}
 
@@ -1557,10 +2259,14 @@ gov_absolute_empire = {
 		OR = {
 			country_tier = hegemony
 			country_tier = empire
+			c:HAI ?= this
 		}
 		NOR = {
 			has_variable = orleanist_restoration_var
 			has_variable = legitimist_restoration_var
+		}
+		NOT = {
+			is_subject_type = subject_type_crown_land
 		}
 	}
 
@@ -1584,6 +2290,9 @@ gov_feudal_empire = {
 	possible = {
 		has_law = law_type:law_monarchy
 		country_has_voting_franchise = no
+		NOT = {
+			has_law = law_type:law_technocracy
+		}
 		has_law = law_type:law_serfdom
 
 		OR = {
@@ -1593,6 +2302,9 @@ gov_feudal_empire = {
 		NOR = {
 			has_variable = orleanist_restoration_var
 			has_variable = legitimist_restoration_var
+		}
+		NOT = {
+			is_subject_type = subject_type_crown_land
 		}
 	}
 
@@ -1616,13 +2328,20 @@ gov_empire = {
 	possible = {
 		has_law = law_type:law_monarchy
 		country_has_voting_franchise = no
+		NOT = {
+			has_law = law_type:law_technocracy
+		}
 		OR = {
 			country_tier = hegemony
 			country_tier = empire
+			c:HAI ?= this
 		}
 		NOR = {
 			has_variable = orleanist_restoration_var
 			has_variable = legitimist_restoration_var
+		}
+		NOT = {
+			is_subject_type = subject_type_crown_land
 		}
 	}
 
@@ -1655,6 +2374,9 @@ gov_constitutional_empire = {
 			has_variable = orleanist_restoration_var
 			has_variable = legitimist_restoration_var
 		}
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -1678,6 +2400,19 @@ gov_absolute_kingdom = {
 		has_law = law_type:law_monarchy
 		has_law = law_type:law_autocracy 
 		country_tier = kingdom
+		NAND = {
+			is_subject_type = subject_type_personal_union
+			any_overlord_or_above = {
+				has_variable = cisleithania_var
+			}
+			OR = {
+				has_variable = transleithania_var
+				has_variable = triune_kingdom_var
+			}
+		}
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -1700,8 +2435,14 @@ gov_feudal_kingdom = {
 	possible = {
 		has_law = law_type:law_monarchy
 		country_has_voting_franchise = no
+		NOT = {
+			has_law = law_type:law_technocracy
+		}
 		has_law = law_type:law_serfdom
 		country_tier = kingdom
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -1724,7 +2465,23 @@ gov_kingdom = {
 	possible = {
 		has_law = law_type:law_monarchy
 		country_has_voting_franchise = no
+		NOT = {
+			has_law = law_type:law_technocracy
+		}
 		country_tier = kingdom
+		NAND = {
+			is_subject_type = subject_type_personal_union
+			any_overlord_or_above = {
+				has_variable = cisleithania_var
+			}
+			OR = {
+				has_variable = transleithania_var
+				has_variable = triune_kingdom_var
+			}
+		}
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -1747,7 +2504,23 @@ gov_constitutional_kingdom = {
 	possible = {
 		has_law = law_type:law_monarchy
 		country_has_voting_franchise = yes
-		country_tier = kingdom
+		OR = {
+			country_tier = kingdom
+			c:HAI ?= this
+		}
+		NAND = {
+			is_subject_type = subject_type_personal_union
+			any_overlord_or_above = {
+				has_variable = cisleithania_var
+			}
+			OR = {
+				has_variable = transleithania_var
+				has_variable = triune_kingdom_var
+			}
+		}
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -1773,9 +2546,10 @@ gov_absolute_county = {
 		has_law = law_type:law_monarchy
 		has_law = law_type:law_autocracy 
 		country_tier = city_state
-	
 		country_is_in_europe = yes
-			
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -1803,7 +2577,9 @@ gov_constitutional_county = {
 		country_tier = city_state
 	
 		country_is_in_europe = yes
-			
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -1828,10 +2604,15 @@ gov_county = {
 	possible = {
 		has_law = law_type:law_monarchy
 		country_has_voting_franchise = no
+		NOT = {
+			has_law = law_type:law_technocracy
+		}
 		country_tier = city_state
 
 		country_is_in_europe = yes
-			
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -1858,9 +2639,15 @@ gov_absolute_duchy = {
 		has_law = law_type:law_monarchy
 		has_law = law_type:law_autocracy 
 		country_tier = principality
-	
 		country_is_in_europe = yes
-			
+		hidden_trigger = {
+			NOT = {
+				c:MON ?= ROOT
+			}
+		}
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -1886,9 +2673,10 @@ gov_constitutional_duchy = {
 		has_law = law_type:law_monarchy
 		country_has_voting_franchise = yes
 		country_tier = principality
-	
 		country_is_in_europe = yes
-			
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -1913,10 +2701,19 @@ gov_duchy = {
 	possible = {
 		has_law = law_type:law_monarchy
 		country_has_voting_franchise = no
+		NOT = {
+			has_law = law_type:law_technocracy
+		}
 		country_tier = principality
-
 		country_is_in_europe = yes
-			
+		hidden_trigger = {
+			NOT = {
+				c:MON ?= ROOT
+			}
+		}
+		NOT = {
+			is_subject_type = subject_type_crown_land
+		}
 	}
 
 	on_government_type_change = {
@@ -1930,7 +2727,6 @@ gov_duchy = {
 
 gov_absolute_principality = {
 	transfer_of_power = hereditary
-
 	male_ruler = "RULER_TITLE_PRINCE"
 	female_ruler = "RULER_TITLE_PRINCESS"
 	
@@ -1941,7 +2737,13 @@ gov_absolute_principality = {
 		has_law = law_type:law_monarchy
 		has_law = law_type:law_autocracy 
 		country_tier = principality
-		country_is_in_europe = no
+		OR = {
+			country_is_in_europe = no
+			ROOT ?= c:MON
+		}
+		NOT = {
+			c:HAI ?= this
+		}
 	}
 
 	on_government_type_change = {
@@ -1964,7 +2766,13 @@ gov_principality = {
 	possible = {
 		has_law = law_type:law_monarchy
 		country_has_voting_franchise = no
+		NOT = {
+			has_law = law_type:law_technocracy
+		}
 		country_tier = principality
+		NOT = {
+			c:HAI ?= this
+		}
 		country_is_in_europe = no
 
 	}
@@ -1991,6 +2799,9 @@ gov_constitutional_principality = {
 		has_law = law_type:law_monarchy
 		country_has_voting_franchise = yes
 		country_tier = principality
+		NOT = {
+			c:HAI ?= this
+		}
 		country_is_in_europe = no
 
 	}
@@ -2040,6 +2851,9 @@ gov_grand_duchy = {
 	possible = {
 		has_law = law_type:law_monarchy
 		country_has_voting_franchise = no
+		NOT = {
+			has_law = law_type:law_technocracy
+		}
 		country_tier = grand_principality
 
 		country_is_in_europe = yes
@@ -2116,6 +2930,9 @@ gov_grand_principality = {
 	possible = {
 		has_law = law_type:law_monarchy
 		country_has_voting_franchise = no
+		NOT = {
+			has_law = law_type:law_technocracy
+		}
 		country_tier = grand_principality
 		country_is_in_europe = no
 	}

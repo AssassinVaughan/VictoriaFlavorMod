@@ -98,16 +98,20 @@ discrimination_events.1 = {
 			name = enforced_segregation
 			days = normal_modifier_time
 		}
-		# vfm bugfix missing scope:discriminated_culture_pop
 		if = {
-			limit = { exists = scope:discriminated_culture_pop }
+			limit = {
+				exists = scope:discriminated_culture_pop
+			}
 			add_radicals = {
 				value = small_radicals
 				culture = scope:discriminated_culture_pop.culture
 			}
 		}
+		
 		if = {
-			limit = { exists = scope:discriminated_religion_pop }
+			limit = {
+				exists = scope:discriminated_religion_pop
+			}
 			add_radicals = {
 				value = small_radicals
 				religion = scope:discriminated_religion_pop.religion
@@ -150,16 +154,20 @@ discrimination_events.1 = {
 				}
 			}
 		}
-		# vfm bugfix missing scope:discriminated_culture_pop
 		if = {
-			limit = { exists = scope:discriminated_culture_pop }
+			limit = {
+				exists = scope:discriminated_culture_pop
+			}
 			add_loyalists = {
 				value = small_radicals
 				culture = scope:discriminated_culture_pop.culture
 			}
 		}
+		
 		if = {
-			limit = { exists = scope:discriminated_religion_pop }
+			limit = {
+				exists = scope:discriminated_religion_pop
+			}
 			add_loyalists = {
 				value = small_radicals
 				religion = scope:discriminated_religion_pop.religion
@@ -429,7 +437,7 @@ discrimination_events.4 = {
 
 	trigger = {
 		any_scope_state = {
-		    is_incorporated = yes
+		    is_incorporated = yes #VFM, dont fire in colonies
 			any_scope_culture = {
 				prev = {
 					state_cultural_acceptance = {  
@@ -469,7 +477,7 @@ discrimination_events.4 = {
 		}
 		ordered_scope_state = {
 			limit = {
-			    is_incorporated = yes
+			    is_incorporated = yes #VFM, dont fire in colonies
 				any_scope_culture = {
 					PREV = {
 						state_cultural_acceptance = {  

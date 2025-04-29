@@ -19,7 +19,7 @@ hawaii_events.1 = { # Fate of Hawaii
 	duration = 3
 
 	trigger = {
-		has_global_variable = paulet_affair_fail
+		has_global_variable = paulet_affair_fail #VFM
 	}
 
 	immediate = {
@@ -71,7 +71,7 @@ hawaii_events.2 = { #JE success
 			limit = { is_incorporated = yes }
 			add_modifier = {
 				name = national_defence_modifier
-				months = short_modifier_time
+				days = short_modifier_time
 			}
 		}
 	}
@@ -203,7 +203,7 @@ hawaii_events.4 = { #Great Power makes hawaii puppet or annex's them
 		}
 		create_incident = {
 			country = c:HAW
-			value = 10
+			value = 5
 		}
 		ai_chance = {
 			base = 50
@@ -224,7 +224,7 @@ hawaii_events.4 = { #Great Power makes hawaii puppet or annex's them
 		annex = c:HAW
 		create_incident = {
 			country = c:HAW
-			value = 30
+			value = 10
 		}
 		ai_chance = {
 			base = 25

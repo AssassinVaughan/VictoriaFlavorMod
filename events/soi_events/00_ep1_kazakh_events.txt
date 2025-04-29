@@ -644,21 +644,22 @@ kazakhstan_events.3 = {
        			annex = prev
         	}
         }
-        s:STATE_UZBEKIA = {
-        	add_claim = c:RUS
-        }
-        s:STATE_KHIVA = {
-        	add_claim = c:RUS
-        }
-        s:STATE_TURKMENIA = {
-        	add_claim = c:RUS
-        }
-        s:STATE_KIRGHIZIA = {
-        	add_claim = c:RUS
-        }
-        s:STATE_TAJIKISTAN = {
-        	add_claim = c:RUS
-        }
+		every_state_region = {
+			limit = {
+				region = sr:region_central_asia
+				NOT = {
+					any_scope_state = {
+						owner = {
+							OR = {
+								country_has_primary_culture = cu:manchu
+								country_has_primary_culture = cu:han
+							}
+						}
+					}
+				}
+			}
+			add_claim = c:RUS
+		}
 	}
 	option = {
 		name = kazakhstan_events.3.b
@@ -706,7 +707,7 @@ kazakhstan_events.4 = { #Raid on Russian convoy
 
 	duration = 3
 
-	cooldown = { months = short_modifier_time }
+	cooldown = { days = short_modifier_time }
 
 	trigger = {
 		any_state = {
@@ -754,7 +755,7 @@ kazakhstan_events.4 = { #Raid on Russian convoy
         default_option = yes
         add_modifier = {
 			name = modifier_recompense_for_supply_convoy_raid
-			months = short_modifier_time
+			days = short_modifier_time
 		}
 		scope:raid_state.owner = {
 			add_modifier = {
@@ -798,7 +799,7 @@ kazakhstan_events.5 = { #Raid on Russian fortress
 
 	duration = 3
 
-	cooldown = { months = short_modifier_time }
+	cooldown = { days = short_modifier_time }
 
 	trigger = {
 		any_state = {
@@ -891,7 +892,7 @@ kazakhstan_events.6 = { #Raid on Kazakh aul
 
 	duration = 3
 
-	cooldown = { months = short_modifier_time }
+	cooldown = { days = short_modifier_time }
 
 	trigger = {
 		any_subject_or_below = {
@@ -1052,7 +1053,7 @@ kazakhstan_events.8 = { #Raid Repelled
 
 	duration = 3
 
-	cooldown = { months = short_modifier_time }
+	cooldown = { days = short_modifier_time }
 
 	trigger = {
 		any_state = {
@@ -1123,7 +1124,7 @@ kazakhstan_events.8 = { #Raid Repelled
         scope:raid_state.owner = {
         	add_modifier = {
         		name = modifier_increased_authority_kazakhstan
-        		months = short_modifier_time
+        		days = short_modifier_time
         	}
         	post_notification = kazakhstan_raid_repelled_notification
         }
@@ -1180,7 +1181,17 @@ russian_central_asia.1 = {
 	}
 
 	immediate = {
-		
+		set_variable = { name = count_casian_countries value = 0 }
+        every_country = {
+			limit = {
+				capital = {
+					region = sr:region_central_asia
+				}
+			}
+			ROOT = {
+				change_variable = { name = count_casian_countries add = 1 }
+			}
+		}
 	}
 
 	option = {
@@ -1207,9 +1218,11 @@ russian_central_asia.1 = {
 			add_modifier = {
 				name = modifier_central_asian_bribe_payments 
 				days = normal_modifier_time
+				multiplier = money_amount_multiplier_casian_bribes
 			}
 			post_notification = central_asia_bribes_notification
 		}
+		remove_variable = count_casian_countries
 	}
 
 	option = {
@@ -1228,6 +1241,7 @@ russian_central_asia.1 = {
 				value = -20
 			}
 		}
+		remove_variable = count_casian_countries
 	}
 }
 
@@ -1289,10 +1303,11 @@ russian_central_asia.2 = {
         	order_by = country_rank
         	save_scope_as = india_overlord
 		}
-		random_state = {
+		ordered_state = {
         	limit = {
         		state_region = s:STATE_KABUL
         	}
+			order_by = owner.country_rank
         	save_scope_as = kabul_state
         	owner = {
         		save_scope_as = afghan_scope
@@ -1380,10 +1395,10 @@ russian_central_asia.2 = {
 			country = c:AFG
 			value = 20
 		}
-		s:STATE_KANDAHAR = {
-			add_claim = c:RUS
-		}
-		s:STATE_KABUL = {
+		every_state_region = {
+			limit = {
+				is_homeland = cu:pashtun
+			}
 			add_claim = c:RUS
 		}
 	}
