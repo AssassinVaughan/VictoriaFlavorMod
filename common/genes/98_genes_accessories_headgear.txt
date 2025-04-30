@@ -79,15 +79,24 @@
 				index = 4
 				male = {
 					1 = male_headgear_arabic_common_02
+					2 = male_headgear_arabic_keffiyeh_01
+					1 = male_headgear_indian_radhakanta_deb
 				}
 
 				female = {
+					# this means that half the time when a male pop wears male_headgear_arabic_common_02, the paired female pop will wear female_headgear_arabic_common_02 50% of the time and _03 the other half of the time, and likewise the same with the other two headgear genes from the male section
+
+					1 = female_headgear_arabic_common_02
+					1 = female_headgear_arabic_common_03
+					2 = female_headgear_arabic_common_02
+					2 = female_headgear_arabic_common_03
 					1 = female_headgear_arabic_common_02
 					1 = female_headgear_arabic_common_03
 				}
 				boy = male
 				girl = female
 			}	
+
 
 			arabic_fez = {
 				index = 5
@@ -97,6 +106,7 @@
 
 				female = {
 					1 = female_headgear_arabic_common_01
+					1 = female_headgear_arabic_middle_tier_01
 				}
 				boy = male
 				girl = female
@@ -105,7 +115,8 @@
 			arabic_low_tier = {
 				index = 6
 				male = {
-					
+					2 = male_headgear_arabic_keffiyeh_01
+					1 = male_headgear_indian_radhakanta_deb					
 				}
 
 				female = {
@@ -115,14 +126,23 @@
 				girl = female
 			}
 
-	arabic_middle_tier = {
+			north_african_headwear = {
 				index = 7
 				male = {
-					
+					1 = male_headgear_arabic_keffiyeh_01
+					1 = male_headgear_indian_radhakanta_deb
+					1 = male_headgear_african_common_1
+					1 = male_headgear_african_common_2
 				}
 
 				female = {
-					1 = female_headgear_arabic_middle_tier_01
+					2 = female_headgear_arabic_common_03
+					1 = female_headgear_arabic_common_01
+					1 = female_headgear_arabic_common_03
+					1 = female_headgear_arabic_common_01
+					1 = female_headgear_arabic_common_03
+					1 = female_headgear_arabic_common_01
+					1 = female_headgear_arabic_common_03
 				}
 				boy = male
 				girl = female
@@ -137,7 +157,7 @@
 				}
 
 				female = {
-					1 = empty
+					1 = female_headgear_arabic_common_03
 				}
 				boy = male
 				girl = female
@@ -373,7 +393,7 @@
 				index = 22
 
 				male = {
-					1 = male_headgear_european_religious_catholic_01
+					1 = male_headgear_european_religious_catholic_01			
 				}
 
 				female = {
@@ -649,7 +669,7 @@
 				boy = male
 				girl = female
 			}
-			
+
 			european_headgear_agitators = {
 
 				index = 38
@@ -736,7 +756,6 @@
 				index = 43
 
 				male = {
-					
 					1 = male_headgear_slavic_agitator_lenin
 				}
 
@@ -757,13 +776,12 @@
 				}
 
 				female = {
-				
 					1 = female_headgear_agitator_pankhurst
 				}
 				boy = male
 				girl = female
 			}
-			
+
 			female_headgear_slavic_kokoshnik = {
 
 				index = 45
@@ -810,13 +828,15 @@
 				boy = male
 				girl = female
 			}
-			
 
 			male_headgear_gaucho_ = {
+
 				index = 48
+
 				male = {
 					1 = male_headgear_south_american_gaucho_01
 				}
+
 				female = {
 				
 					1 = female_headgear_south_american_gaucho_01
@@ -824,54 +844,65 @@
 				boy = male
 				girl = female
 			}
-			
+
 			european_military_02_colors = {
+
 				index = 49
+
 				male = {
 					1 = male_headgear_european_military_02_black
 					1 = male_headgear_european_military_02_blue
 					1 = male_headgear_european_military_02_red
 				}
+
 				female = {
 					#
 				}
 				boy = male
 				girl = female
 			}
-			
 			russian_military_headgear = {
+
 				index = 50
+
 				male = {
 					1 = empty
 					1 = male_headgear_european_military_03_russian
 					1 = male_headgear_russian_military_01
 					1 = male_headgear_european_military_03_late_russian
 				}
+
 				female = {
 					#
 				}
 				boy = male
 				girl = female
 			}
-			
+
 			brazilian_military_headgear = {
 				index = 51
+
 				male = {
-					1 = 0
-					1 = male_headgear_brazilian_military_02
+					1 = male_headgear_european_military_02_blue
+					1 = male_headgear_european_military_01
+					1 = male_prop_straw_hat
 				}
+
 				female = {
 					#
 				}
 				boy = male
 				girl = female
 			}
-			
+
 			brazil_bahiana_headgear = {
+
 				index = 52
+
 				male = {
 					1 = empty
 				}
+
 				female = {
 					1 = empty
 					2 = female_headgear_african_common_01
@@ -879,7 +910,8 @@
 				boy = male
 				girl = female
 			}
-			
+
+
 			arabic_turban_mohammad_khan = {
 				index = 53
 				male = {
@@ -929,7 +961,10 @@
 
 				male = {
 					1 = male_headgear_european_military_cap_01
-					1 = male_headgear_european_military_cap_french_01				
+					1 = male_headgear_european_military_cap_french_01
+					1 = male_headgear_european_military_cap_austrian_01	
+					1 = male_headgear_european_military_cap_hungarian_01	
+					1 = male_headgear_european_military_cap_hungarian_01_black
 				}
 
 				female = {
@@ -1141,7 +1176,8 @@
 				girl = female
 			}
 
-			headgear_muhammad_ali_jinnah = {
+
+				headgear_muhammad_ali_jinnah = {
 
 				index = 70
 
@@ -1218,7 +1254,7 @@
 				girl = female
 			}	
 
-			bhagat_singh = {
+		bhagat_singh = {
 				index = 75
 				male = {
 					1 = male_headgear_indian_bhagat_singh
@@ -1257,7 +1293,7 @@
 			}	
 
 
-			headgear_indian_high_02 = {
+				headgear_indian_high_02 = {
 				index = 78
 				male = {
 					1 = male_headgear_tatya_tope
@@ -1270,7 +1306,7 @@
 			}
 
 
-			indian_royalty_02 = {
+				indian_royalty_02 = {
 				index = 79
 				male = {
 					1 = male_headgear_indian_royalty_02
@@ -1283,7 +1319,7 @@
 			}
 
 
-			indian_royalty_03 = {
+				indian_royalty_03 = {
 				index = 80
 				male = {
 					1 = male_headgear_indian_royalty_03
@@ -1297,7 +1333,7 @@
 			}
 
 
-			jankoji_rao_scindia_2 = {
+				jankoji_rao_scindia_2 = {
 				index = 81
 				male = {
 					1 = male_headgear_jankoji_rao_scindia_ii
@@ -1312,7 +1348,7 @@
 			}
 
 
-			maharaja_singh_01 = {
+				maharaja_singh_01 = {
 				index = 82
 				male = {
 					1 = male_headgear_maharaja_singh_01
@@ -1326,7 +1362,7 @@
 				girl = female
 			}
 
-			jayaji_rao_scindia = {
+				jayaji_rao_scindia = {
 				index = 83
 				male = {
 					1 = male_headgear_jankoji_rao_scindia_02
@@ -1345,7 +1381,6 @@
 				index = 84
 				male = {
 					1 = male_headgear_indian_radhakanta_deb
-					
 					}
 
 				female = {
@@ -1359,17 +1394,90 @@
 				index = 85
 				male = {
 					1 = male_headgear_indian_dwarkanath_tagore
-					
-					}
+				}
 
 				female = {
 					1 = female_headgear_indian_high_02
 				}
 				boy = male
 				girl = female
+			}
+
+			european_executive_hats = {
+				index = 86
+				male = {
+					1 = male_headgear_european_common_02
+					1 = empty
+				}
+
+				female = {
+					1 = empty
+				}
+				boy = male
+				girl = female
 			}	
 
-			### VFM START ###
+			headgear_greek_01 = {
+				index = 87
+				male = {
+					1 = male_headgear_greek_01
+				}
+
+				female = {
+					1 = empty
+				}
+				boy = male
+				girl = female
+			}
+
+
+			male_headgear_austrian_01 = {
+				index = 88
+				male = {
+					1 = male_headgear_austrian_military_cap_01
+					1 = empty
+				}
+
+				female = {
+					1 = empty
+				}
+				boy = male
+				girl = female
+			}
+
+
+			male_headgear_austrian_02 = {
+				index = 89
+				male = {
+					1 = male_headgear_austrian_military_cap_02
+					1 = empty
+				}
+
+				female = {
+					1 = empty
+				}
+				boy = male
+				girl = female
+			}
+
+
+				headgear_serbian_01 = {
+				index = 90
+				male = {
+					1 = male_headgear_serbian_01
+					
+				}
+
+				female = {
+					1 = female_headgear_indian_high_02
+					1 = empty
+				}
+				boy = male
+				girl = female
+			}
+
+
+       ### VFM START ###
 
 			generic_military_headgear = {
 				index = 200
