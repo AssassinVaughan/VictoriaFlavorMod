@@ -1795,7 +1795,7 @@ types state_panel_types
 				alwaystransparent = no
 
 				blockoverride "texture" {
-					texture = "gfx/interface/icons/generic_icons/world_market.dds"
+					texture = "gfx/interface/icons/state_status_icons/world_market_access.dds"
 				}
 
 				blockoverride "name" {
@@ -2010,7 +2010,7 @@ types state_panel_types
 			}
 
 			state_panel_status_item_small = {
-				visible = "[State.IsFunctioningTreatyPort]"
+				visible = "[State.IsTreatyPort]"
 				tooltip = "TOOLTIP_TREATY_PORT"
 
 				blockoverride "texture" {
@@ -2021,20 +2021,7 @@ types state_panel_types
 					text = "[concept_treaty_port]"
 				}
 			}
-
-			state_panel_status_item_small = {
-				visible = "[And(Not(State.IsFunctioningTreatyPort),State.IsTreatyPort)]"
-				tooltip = "TOOLTIP_INACTIVE_TREATY_PORT"
-
-				blockoverride "texture" {
-					texture = "gfx/interface/icons/state_status_icons/treaty_port_icon.dds"
-				}
-
-				blockoverride "name" {
-					text = "TREATY_PORT_INACTIVE"
-				}
-			}
-
+			
 			state_panel_status_item_small = {
 				visible = "[State.HasClaims]"
 
@@ -3093,7 +3080,7 @@ types state_panel_types
 					}
 
 					state_panel_status_item_condensed_icon = {
-						visible = "[State.IsFunctioningTreatyPort]"
+						visible = "[State.IsTreatyPort]"
 						tooltip = "TOOLTIP_TREATY_PORT"
 
 						blockoverride "texture" {
@@ -3102,19 +3089,6 @@ types state_panel_types
 
 						blockoverride "name" {
 							text = "[concept_treaty_port]"
-						}
-					}
-
-					state_panel_status_item_condensed_icon = {
-						visible = "[And(Not(State.IsFunctioningTreatyPort),State.IsTreatyPort)]"
-						tooltip = "TOOLTIP_INACTIVE_TREATY_PORT"
-
-						blockoverride "texture" {
-							texture = "gfx/interface/icons/state_status_icons/treaty_port_icon.dds"
-						}
-
-						blockoverride "name" {
-							text = "INACTIVE_TREATY_PORT"
 						}
 					}
 				}
