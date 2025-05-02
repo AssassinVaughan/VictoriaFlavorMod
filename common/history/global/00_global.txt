@@ -3,8 +3,16 @@ GLOBAL = {
 	
 	every_country = {
 		limit = { NOT = { has_law = law_type:law_slavery_banned } }
-		ig:ig_landowners = { add_ideology = ideology_pro_slavery }
-	}
+		if = {
+			limit = {
+				has_law = law_type:law_colonial_slavery
+			}
+			ig:ig_landowners = { add_ideology = ideology_pro_slavery_colonial }
+		}
+		else = {
+			ig:ig_landowners = { add_ideology = ideology_pro_slavery }
+		}
+	
 	
 	# Jack the ripper, prevents the event from happening every game
 
@@ -20,6 +28,14 @@ GLOBAL = {
 				#Nothing Happens
 			}
 		}
+	}
+	
+	every_country = {
+		limit = {
+			has_law = law_type:law_monarchy
+			has_law = law_type:law_autocracy
+		}
+		set_variable = king_in_parliament_possible
 	}
 	
 	c:UCA ?= {
@@ -85,7 +101,7 @@ GLOBAL = {
 			}
 			set_variable = {
 				name = lingering_plc_resistance
-				months = very_long_modifier_time
+				days = very_long_modifier_time
 			}
 		}
 	}
@@ -688,6 +704,19 @@ GLOBAL = {
 		set_variable = {
 			name = china_warlord_explosion
 			value = 5
+		}
+
+		set_import_tariff_level = { # TODO PRCAL-38927 remove when this is fixed.
+			goods = opium
+			level = no_tariffs_or_subventions
+		}
+	}
+
+	s:STATE_LAOS.region_state:DAI = {
+		add_modifier = {
+			name = recently_conquered_state
+			is_decaying = yes
+			months = 60
 		}
 	}
 	

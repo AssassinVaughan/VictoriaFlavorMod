@@ -885,6 +885,36 @@
 				activate_production_methods={ "pm_horizontal_drawer_cabinets" "pm_professional_bureaucrats" "pm_religious_bureaucrats" }
 			}
 			create_building={
+				building="building_trade_center"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:CHI"
+						levels=23
+						region="STATE_GUANGDONG"
+					}
+					building={
+						type="building_financial_district"
+						country="c:CHI"
+						levels=6
+						region="STATE_BEIJING"
+					}
+					building={
+						type="building_financial_district"
+						country="c:CHI"
+						levels=2
+						region="STATE_ZHEJIANG"
+					}
+					building={
+						type="building_financial_district"
+						country="c:CHI"
+						levels=2
+						region="STATE_FUJIAN"
+					}
+				}
+				reserves=1
+			}
+			create_building={
 				building="building_paper_mills"
 				add_ownership={
 					building={
@@ -2097,6 +2127,18 @@
 				reserves=1
 				activate_production_methods={ "pm_basic_port" }
 			}
+			create_building={
+				building="building_trade_center"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:CHI"
+						levels=5
+						region="STATE_BEIJING"
+					}
+				}
+				reserves=1
+			}
 		}
 	}
 	s:STATE_ULIASTAI={
@@ -2274,6 +2316,18 @@
 				}
 				reserves=1
 				activate_production_methods={ "pm_simple_organization" "pm_hereditary_bureaucrats" "pm_religious_bureaucrats" }
+			}
+			create_building={
+				building="building_trade_center"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:DAI"
+						levels=1
+						region="STATE_MEKONG"
+					}
+				}
+				reserves=1
 			}
 			create_building={
 				building="building_rice_farm"

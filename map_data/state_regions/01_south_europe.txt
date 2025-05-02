@@ -939,46 +939,66 @@ STATE_MONTENEGRO = {
     arable_land = 13
     arable_resources = { "bg_wheat_farms" "bg_livestock_ranches" "bg_vineyard_plantations" }
     capped_resources = {
-        bg_lead_mining = 24
+        bg_lead_mining = 4
+		bg_coal_mining = 2
         bg_logging = 4
+		bg_fishing = 2
 		bg_hydro = 1
     }
     naval_exit_id = 3033
 }
 
-STATE_NORTHERN_SERBIA = {
+STATE_WESTERN_SERBIA = {
     id = 120
     subsistence_building = "building_subsistence_farms"
-    provinces = { "x10A060" "x3B6092" "x40AF95" "x4B1F45" "x4D115A" "x74F1F4" "x9061A0" "x90A061" "xEDBA20" "xF9E78E" }
+    provinces = { "x10A060" "x4773E6" "x4B1F45" "x4D115A" "x90A061" "x9DFFAF" "xEDBA20" "xF9E78E" }
+    prime_land = { "x9DFFAF" }
     traits = { "state_trait_danube_river" }
     city = "xF9E78E"
-    farm = "x3B6092"
-    mine = "x9061A0"
+    farm = "x9DFFAF"
+    mine = "x90A061"
     wood = "xEDBA20"
     arable_land = 35
     arable_resources = { "bg_wheat_farms" "bg_livestock_ranches" "bg_vineyard_plantations" }
     capped_resources = {
-        bg_iron_mining = 24
-        bg_logging = 11
+        bg_iron_mining = 12
+        bg_logging = 9
 		bg_hydro = 2
     }
 }
 
-STATE_SOUTHERN_SERBIA = {
+STATE_EASTERN_SERBIA = {
     id = 121
     subsistence_building = "building_subsistence_farms"
-    provinces = { "x18B761" "x334B53" "x45E06A" "x4773E6" "x62A730" "x9DFFAF" "xA5D3A9" "xAC083C" "xB852BB" "xD02161" "xD021E0" }
-    city = "x45E06A"
-    farm = "xD02161"
-    mine = "x334B53"
-    wood = "xD021E0"
+    provinces = { "x18B761" "x334B53" "x3B6092" "x40AF95" "x62A730" "x74F1F4" "x9061A0" "xAC083C" "xD021E0" }
+    city = "x334B53"
+    farm = "x62A730"
+    mine = "x74F1F4"
+    wood = "xAC083C"
     arable_land = 45
     arable_resources = { "bg_wheat_farms" "bg_livestock_ranches" "bg_vineyard_plantations" }
     capped_resources = {
-        bg_coal_mining = 40
-        bg_lead_mining = 36
-        bg_logging = 12
+        bg_coal_mining = 12
+        bg_lead_mining = 6
+        bg_logging = 8
 		bg_hydro = 1
+    }
+}
+
+STATE_KOSOVO = {
+    id = 923
+    subsistence_building = "building_subsistence_farms"
+    provinces = { "x45E06A" "xA5D3A9" "xB852BB" "xD02161" }
+    city = "x45E06A"
+    farm = "xA5D3A9"
+    mine = "x45E06A"
+    wood = "xA5D3A9"
+    arable_land = 45
+    arable_resources = { "bg_wheat_farms" "bg_livestock_ranches" "bg_vineyard_plantations" }
+    capped_resources = {
+        bg_coal_mining = 6
+        bg_lead_mining = 6
+        bg_logging = 4
     }
 }
 
