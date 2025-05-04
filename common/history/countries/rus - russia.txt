@@ -16,9 +16,15 @@
 	    add_technology_researched = law_enforcement
 		
 		set_tax_level = low # pre-Kankrin reform tax system
-		
-		set_tariffs_export_priority = g:wood
-		set_tariffs_export_priority = g:hardwood
+
+		set_export_tariff_level = { 
+			goods = wood
+			level = low_tariffs
+		}
+		set_export_tariff_level = { 
+			goods = fabric
+			level = hardwood
+		}
 		
 		# Laws 
 		activate_law = law_type:law_monarchy

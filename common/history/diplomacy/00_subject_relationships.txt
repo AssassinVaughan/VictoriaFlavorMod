@@ -90,6 +90,18 @@
 			country = c:KRA
 			type = puppet
 		}
+		create_diplomatic_pact = {
+			country = c:HUN
+			type = crown_land
+		}
+		create_diplomatic_pact = {
+			country = c:TRS
+			type = crown_land
+		}
+		create_diplomatic_pact = {
+			country = c:CRO
+			type = crown_land
+		}
 	}
 	c:USA ?= {
 		create_diplomatic_pact = {
@@ -203,8 +215,8 @@
 	c:DAI ?= {
 		create_diplomatic_pact = {
 			country = c:CAM
-			type = tributary
-		}
+			type = vassal
+		}		
 	}
 	c:SIA ?= {
 		create_diplomatic_pact = {
@@ -479,7 +491,11 @@
 
 	c:BOL ?= {
 		create_diplomatic_pact = {
-			country = c:PEU
+			country = c:SPU
+			type = puppet
+		}
+		create_diplomatic_pact = {
+			country = c:NPU
 			type = puppet
 		}
 		create_diplomatic_pact = {
@@ -487,63 +503,10 @@
 			type = puppet
 		}
 	}
+
 	c:PER = {
 		create_diplomatic_pact = {
-			country = c:HER
-			type = tributary
-		}	
-		create_diplomatic_pact = {
-			country = c:ZFL
-			type = autonomous_province
-		}	
-		create_diplomatic_pact = {
-			country = c:SDL
-			type = autonomous_province
-		}	
-		create_diplomatic_pact = {
-			country = c:ARD
-			type = autonomous_province
-		}
-		create_diplomatic_pact = {
-			country = c:JEL
-			type = autonomous_province
-		}
-		create_diplomatic_pact = {
 			country = c:ARB
-			type = autonomous_province
-		}
-		create_diplomatic_pact = {
-			country = c:MZK
-			type = autonomous_province
-		}
-	}
-	c:HER = {
-		create_diplomatic_pact = {
-			country = c:SIS
-			type = tributary
-		}
-		create_diplomatic_pact = {
-			country = c:MAI
-			type = tributary
-		}
-	}
-	c:KUN = {
-		create_diplomatic_pact = {
-			country = c:BDK
-			type = real_union
-		}
-		create_diplomatic_pact = {
-			country = c:WKH
-			type = vassal
-		}
-		create_diplomatic_pact = {
-			country = c:RSH
-			type = vassal
-		}
-	}
-	c:KOK = {
-		create_diplomatic_pact = {
-			country = c:DVZ
 			type = vassal
 		}
 	}
@@ -571,10 +534,6 @@
 	
 	c:NSW = {
 		add_liberty_desire = -30
-	}
-
-	c:SAF = {
-		add_liberty_desire = -20
 	}
 
 	c:WAS = {
@@ -627,6 +586,10 @@
 	
 	c:EGY = {
 		add_liberty_desire = 45
+	}
+	
+	c:CAM ?= {
+		add_liberty_desire = 20
 	}
 	
 	c:BIC ?= {

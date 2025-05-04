@@ -1,0 +1,101 @@
+﻿namespace = hungry_forties
+
+hungry_forties.1 = {
+	type = country_event
+	event_image = {
+		video = "asia_dead_cattle_poor_harvest"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_skull.dds"
+
+	title = hungry_forties.1.t
+	desc = hungry_forties.1.d
+	flavor = hungry_forties.1.f
+
+	trigger = {
+		# Triggered by on_action
+	}
+
+	immediate = {
+		random_state = {
+			limit = {
+				state_is_in_europe = yes
+				state_region = {
+					OR = { has_harvest_condition = potato_blight has_harvest_condition = potato_blight_strong } # VFM
+				}
+			}
+			save_scope_as = relevant_state
+		}
+	}
+
+	duration = 3
+
+	option = {
+		name = hungry_forties.1.a
+        default_option = yes
+		je:je_the_hungry_forties = {
+			add_modifier = {
+				name = modifier_european_potato_famine
+			}
+		}
+	}
+
+    option = {
+		name = hungry_forties.1.b
+		je:je_the_hungry_forties = {
+			add_modifier = {
+				name = modifier_european_potato_famine_relief
+			}
+		}
+		add_modifier = {
+			name = modifier_european_potato_famine_relief_costs
+			multiplier = money_amount_multiplier_small
+			days = short_modifier_time
+		}
+	}
+}
+
+hungry_forties.2 = {
+	type = country_event
+	event_image = {
+		video = "europenorthamerica_russian_serfs"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_skull.dds"
+
+	title = hungry_forties.2.t
+	desc = hungry_forties.2.d
+	flavor = hungry_forties.2.f
+
+	trigger = {
+		# Triggered by on_action
+	}
+
+	immediate = {
+		
+	}
+
+	duration = 3
+
+	option = {
+		name = hungry_forties.2.a
+        default_option = yes
+		add_modifier = {
+			name = modifier_hungry_forties_over
+			days = normal_modifier_time
+			is_decaying = yes
+		}
+	}
+
+    option = {
+		name = hungry_forties.2.b
+		add_modifier = {
+			name = modifier_hungry_forties_continued_imports
+			days = normal_modifier_time
+		}
+	}
+}
