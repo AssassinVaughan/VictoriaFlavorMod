@@ -2236,7 +2236,8 @@ ai_strategy_default = {
 
 		if = {
 			limit = {
-				has_treaty_port_in_country = scope:target_country
+				scope:target_state = { is_treaty_port = no }
+				has_treaty_port_in_market = scope:target_country.market
 			}
 			multiply = 0
 		}

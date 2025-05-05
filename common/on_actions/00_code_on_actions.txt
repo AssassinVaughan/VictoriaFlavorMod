@@ -208,6 +208,7 @@ on_monthly_pulse_country = {
 			limit = {
 				NOT = { has_global_variable = peoples_springtime_happening }
 				NOT = { has_global_variable = peoples_springtime_happened }
+				year >= 1840
 				country_is_in_europe = yes
 				has_technology_researched = egalitarianism
 				country_rank >= rank_value:major_power
