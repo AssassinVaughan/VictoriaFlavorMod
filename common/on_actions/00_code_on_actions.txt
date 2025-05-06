@@ -59,18 +59,18 @@ on_monthly_pulse = {
 		}
 
 		### Potato Famine
-		if = {
-			limit = {
-				any_state = {
-					state_is_in_europe = yes
-					state_region = {
-						OR = { has_harvest_condition = potato_blight has_harvest_condition = potato_blight_strong } #VFM
-					}
-					count >= 10
-				}
-			}
-			set_global_variable = { name = hungry_forties_var days = 1095 }
-		}
+		#if = {
+		#	limit = {
+		#		any_state = {
+		#			state_is_in_europe = yes
+		#			state_region = {
+		#				OR = { has_harvest_condition = potato_blight has_harvest_condition = potato_blight_strong } #VFM
+		#			}
+		#			count >= 10
+		#		}
+		#	}
+		#	set_global_variable = { name = hungry_forties_var days = 1095 }
+		#}
 		# Gründerzeit JE - has to happen here in order to not kill performance
 		if = {
 			limit = {

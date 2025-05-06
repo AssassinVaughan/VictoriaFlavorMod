@@ -12,6 +12,7 @@ GLOBAL = {
 		else = {
 			ig:ig_landowners = { add_ideology = ideology_pro_slavery }
 		}
+	}
 	
 	
 	# Jack the ripper, prevents the event from happening every game
@@ -29,7 +30,7 @@ GLOBAL = {
 			}
 		}
 	}
-	
+
 	every_country = {
 		limit = {
 			has_law = law_type:law_monarchy
@@ -457,7 +458,7 @@ GLOBAL = {
                 }
             }
             add_radicals_in_state = {
-                value = 0.35
+                value = 0.30
                 culture = cu:circassian
             }
             add_radicals_in_state = {
@@ -663,7 +664,7 @@ GLOBAL = {
 
     c:GBR ?= {
 	    add_radicals = {
-			value = 0.03
+			value = 0.04
 			culture = cu:irish
 		}
 	}
@@ -720,7 +721,7 @@ GLOBAL = {
 		}
 	}
 	
-	c:AUS = {
+	c:AUS ?= {
         add_radicals = {
 			value = very_large_radicals
 			culture = cu:polish
@@ -736,10 +737,6 @@ GLOBAL = {
 		}
 		add_radicals = {
 			value = 0.04
-			culture = cu:ukrainian
-		}
-		add_radicals = {
-			value = 0.04
 			culture = cu:hungarian
 		}
 		add_radicals = {
@@ -747,20 +744,12 @@ GLOBAL = {
 			culture = cu:slovak
 		}
 		add_radicals = {
-			value = 0.01
+			value = 0.02
 			culture = cu:ashkenazi
-		}
-		add_radicals = {
-			value = 0.05
-			culture = cu:serb
 		}
 		add_radicals = {
 			value = 0.04
 			culture = cu:croat
-		}
-		add_radicals = {
-			value = 0.03
-			culture = cu:romanian
 		}
 		add_radicals = {
 			value = 0.03
@@ -789,6 +778,62 @@ GLOBAL = {
 			effect_starting_pop_literacy_very_high = yes
 		}
 	}
+
+    c:HUN ?= {
+        add_radicals = {
+			value = 0.04
+			culture = cu:slovak
+		}
+		add_radicals = {
+			value = 0.02
+			culture = cu:ashkenazi
+		}
+		add_radicals = {
+			value = 0.05
+			culture = cu:serb
+		}
+        add_radicals = {
+			value = 0.03
+			culture = cu:romanian
+		}
+        add_radicals = {
+			value = 0.04
+			culture = cu:ukrainian
+		}
+    }
+
+    c:TRS ?= {
+		add_radicals = {
+			value = 0.05
+			culture = cu:serb
+		}
+        add_radicals = {
+			value = 0.04
+			culture = cu:ukrainian
+		}
+    }
+
+    c:CRO ?= {
+		add_radicals = {
+			value = 0.08
+			culture = cu:serb
+		}
+    }
+
+    c:SER ?= {
+		add_radicals = {
+			value = 0.08
+			culture = cu:croat
+		}
+        add_radicals = {
+			value = 0.1
+			culture = cu:albanian
+		}
+		add_radicals = {
+			value = 0.1
+			culture = cu:bosniak
+		}
+    }
 	
 	c:TUR = {
 	    add_radicals = {

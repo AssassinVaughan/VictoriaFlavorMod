@@ -1,15 +1,22 @@
 ﻿COUNTRIES = {
-	c:SER = {
-		effect_starting_technology_tier_4_tech = yes
+	c:SER ?= {
+		effect_starting_technology_tier_3_tech = yes
 		
 		effect_starting_politics_traditional = yes
 		
 		activate_law = law_type:law_devolved
 
-		ig:ig_devout = {
-			set_interest_group_name = ig_orthodox_church
-			remove_ideology = ideology_patriarchal
-			add_ideology = ideology_orthodox_patriarch
+		if = { 
+			limit = {
+				has_dlc_feature = ip3_content
+			}
+			trigger_event = {
+				id = serbia.1
+				days = 1
+			}
+			add_journal_entry = {
+				type = je_mon_serb_unity
+			}
 		}
 	}
 }

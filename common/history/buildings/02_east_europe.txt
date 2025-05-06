@@ -777,6 +777,19 @@
 				activate_production_methods={ "pm_iron_frame_buildings" }
 			}
 			create_building={
+				building="building_logging_camp"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:AUS"
+						levels=1
+						region="STATE_EAST_GALICIA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_saw_mills" "pm_hardwood" "pm_no_equipment" "pm_road_carts"  }
+			}
+			create_building={
 				building="building_wheat_farm"
 				add_ownership={
 					building={
@@ -1368,12 +1381,6 @@
 			create_building={
 				building="building_logging_camp"
 				add_ownership={
-					building={
-						type="building_financial_district"
-						country="c:AUS"
-						levels=1
-						region="STATE_BUKOVINA"
-					}
 					building={
 						type="building_financial_district"
 						country="c:AUS"

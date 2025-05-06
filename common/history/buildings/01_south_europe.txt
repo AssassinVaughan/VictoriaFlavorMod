@@ -1670,7 +1670,7 @@
 					building={
 						type="building_glassworks"
 						country="c:AUS"
-						levels=3
+						levels=2
 						region="STATE_VENETIA"
 					}
 					building={
@@ -1689,7 +1689,7 @@
 					building={
 						type="building_textile_mills"
 						country="c:AUS"
-						levels=4
+						levels=3
 						region="STATE_VENETIA"
 					}
 					building={
@@ -1719,7 +1719,20 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_simple_fishing" "pm_unrefrigerated"  }
+				activate_production_methods={ "pm_fishing_trawlers" "pm_unrefrigerated"  }
+			}
+			create_building={
+				building="building_logging_camp"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:AUS"
+						levels=1
+						region="STATE_VENETIA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_saw_mills"  "pm_no_equipment" "pm_road_carts" "pm_no_hardwood" }
 			}
 			create_building={
 				building="building_silk_plantation"
@@ -4086,7 +4099,7 @@
 				add_ownership={
 					building={
 						type="building_financial_district"
-						country="c:AUS"
+						country="c:CRO"
 						levels=1
 						region="STATE_ISTRIA"
 					}
@@ -4292,7 +4305,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_simple_fishing" "pm_unrefrigerated"  }
+				activate_production_methods={ "pm_fishing_trawlers" "pm_unrefrigerated"  }
 			}
 			create_building={
 				building="building_port"

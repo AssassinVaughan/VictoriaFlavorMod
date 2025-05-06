@@ -1,9 +1,7 @@
 ﻿COUNTRIES = {
-	c:MON = {
+	c:MON ?= {
 		effect_starting_technology_tier_4_tech = yes
-		effect_starting_politics_traditional = yes
-		
-		add_technology_researched = mandatory_service
+        add_technology_researched = mandatory_service
 	    add_technology_researched = army_reserves
 	    add_technology_researched = line_infantry
 		
@@ -11,25 +9,52 @@
 	    add_technology_researched = academia
 	    add_technology_researched = currency_standards
 	    add_technology_researched = urban_planning
-		
-        set_ruling_interest_groups = {
-        	ig_landowners
-        }
+		ig:ig_armed_forces = {
+			add_ruling_interest_group = yes
+		}
+		ig:ig_landowners = {
+			add_ruling_interest_group = yes
+		}
 		activate_law = law_type:law_theocracy
 		activate_law = law_type:law_state_religion
 		activate_law = law_type:law_national_supremacy
+		activate_law = law_type:law_tenant_farmers
 		activate_law = law_type:law_traditionalism
-		activate_law = law_type:law_land_based_taxation		
+		activate_law = law_type:law_censorship
+		activate_law = law_type:law_consumption_based_taxation
 		activate_law = law_type:law_devolved
-
-		ig:ig_devout = {
-			set_interest_group_name = ig_orthodox_church
-			remove_ideology = ideology_patriarchal
-			add_ideology = ideology_orthodox_patriarch
+		if = { 
+			limit = {
+				has_dlc_feature = ip3_content
+			}
+			add_journal_entry = {
+				type = je_montenegrin_raiding
+			}
+			add_journal_entry = {
+				type = je_mon_state_formation
+			}
+			add_journal_entry = {
+				type = je_mon_serb_unity
+			}
+			add_modifier = {
+				name = modifier_women_work_men_fight
+				days = stupidly_long_modifier_time
+				is_decaying = yes
+			}
+			add_modifier = {
+				name = modifier_lonely_mountain
+				months = 360
+				is_decaying = yes
+			}
+			add_modifier = {
+				name = modifier_no_minting
+				days = stupidly_long_modifier_time
+			}
+			add_modifier = {
+				name = mon_taxes_what_are
+				days = very_long_modifier_time
+			}
 		}
-
-		add_taxed_goods = g:grain
-		
-		set_variable = is_montenegro_var
 	}
 }
+ 
