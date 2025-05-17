@@ -1,0 +1,96 @@
+﻿GLOBAL = {
+	#No actual slaves guys
+	c:NSW = {
+		ig:ig_landowners = {
+			remove_ideology = ideology_pro_slavery
+		}
+	}
+	c:TAS = {
+		ig:ig_landowners = {
+			remove_ideology = ideology_pro_slavery
+		}
+	}
+	
+	every_country = {
+		limit = {
+			exists = capital
+			is_country_type = decentralized
+			capital = {
+				OR = {
+					region = sr:region_ethiopia
+					region = sr:region_senegal
+					region = sr:region_niger	
+				}
+			}
+		}
+		effect_remove_native_conscription = 1
+		effect_native_conscription_4 = yes
+	}
+	
+	every_country = {
+		limit = {
+			exists = capital
+			is_country_type = decentralized
+			capital = {
+				OR = {
+					region = sr:region_congo
+					region = sr:region_zanj		
+				}
+			}
+		}
+		effect_remove_native_conscription = 1
+		effect_native_conscription_5 = yes
+	}
+	
+	c:KSN ?= {
+		effect_remove_native_conscription = 1
+		effect_native_conscription_6 = yes
+	}
+	c:HRO ?= {
+		effect_remove_native_conscription = 1
+		effect_native_conscription_6 = yes
+	}
+	c:NAM ?= {
+		effect_remove_native_conscription = 1
+		effect_native_conscription_5 = yes
+	}
+	c:TSW ?= {
+		effect_remove_native_conscription = 1
+		effect_native_conscription_7 = yes
+	}
+	c:WBL ?= {
+		effect_remove_native_conscription = 1
+		effect_native_conscription_6 = yes
+	}
+	c:BST ?= {
+		effect_remove_native_conscription = 1
+		effect_native_conscription_7 = yes
+	}
+	c:MTB ?= {
+		effect_remove_native_conscription = 1
+		effect_native_conscription_8 = yes
+	}
+	c:MNC ?= {
+		effect_remove_native_conscription = 1
+		effect_native_conscription_6 = yes
+	}
+	c:MRV ?= {
+		effect_remove_native_conscription = 1
+		effect_native_conscription_7 = yes
+	}
+	c:WBL ?= {
+		effect_remove_native_conscription = 1
+		effect_native_conscription_6 = yes
+	}
+	c:YKA ?= {
+		effect_remove_native_conscription = 1
+		effect_native_conscription_8 = yes
+	}
+	c:BOB ?= {
+		effect_remove_native_conscription = 1
+		effect_native_conscription_8 = yes
+	}
+	c:KOG ?= {
+		add_modifier = jungle_warbands
+	}
+}
