@@ -941,11 +941,10 @@ GLOBAL = {
 						#Check for muslim cultures to identify muslims,
 						#until I can figure out how to find majority religions of cultures.
 						OR = { 
-							has_discrimination_trait = middle_eastern_heritage
-							has_discrimination_trait = malay_culture
-							has_discrimination_trait = iranian_turanian_culture_group
-							has_discrimination_trait = albanian_language
-							has_discrimination_trait = arab_speaking
+							has_discrimination_trait = language_malay
+							has_discrimination_trait = language_group_iranic
+							has_discrimination_trait = language_albanian
+							has_discrimination_trait = language_arabic
 						}
 					}
 				}
@@ -971,7 +970,7 @@ GLOBAL = {
 				}
 
 				religion = {
-					NOT = { has_discrimination_trait = muslim }
+					NOT = { has_discrimination_trait = heritage_islamic }
 				}
 			}
 		}

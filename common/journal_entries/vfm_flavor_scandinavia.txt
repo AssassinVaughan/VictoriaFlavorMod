@@ -3,7 +3,7 @@
     group = je_group_foreign_affairs
 	is_shown_when_inactive = {
 		any_primary_culture = {
-			has_discrimination_trait = scandinavian_culture_group
+			has_discrimination_trait = language_scandinavian
 		}
 	}
 
@@ -13,7 +13,7 @@
 			is_subject = no	
 			top_overlord = {
 				any_primary_culture = {
-					has_discrimination_trait = scandinavian_culture_group
+					has_discrimination_trait = language_scandinavian
 				}
 			}
 		}
@@ -63,34 +63,7 @@ je_swedish_guilds = {
 	icon = "gfx/interface/icons/event_icons/event_trade.dds"
     group = je_group_internal_affairs
 	complete = {
-		OR = {
-			AND = {
-				custom_tooltip = {
-					text = johan_died_tt
-					ruler = {
-						NOT = { has_variable = is_johan }
-					}
-				}
-				AND = {
-					ig:ig_industrialists = {
-						ig_clout > 0.15
-					}
-					ig:ig_petty_bourgeoisie = {
-						ig_clout < 0.15
-					}
-				}
-			}
-
-			AND = {
-				ig:ig_industrialists = {
-					is_powerful = yes
-				}
-				ig:ig_petty_bourgeoisie = {
-					ig_clout < 0.1
-				}
-			}
-		}
-
+	    NOT = { has_law = law_type:law_guild_system }
 	}
 	
 	on_monthly_pulse = {
