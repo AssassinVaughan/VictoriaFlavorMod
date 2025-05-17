@@ -1065,7 +1065,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_steam_engines" "pm_automobiles_disabled" "pm_automation_disabled"  }
+				activate_production_methods={ "pm_steam_engines" "pm_automation_disabled"  }
 			}
             create_building={
 				building="building_steel_mills"
@@ -6083,12 +6083,38 @@
 				activate_production_methods={ "pm_pig_iron" "pm_automation_disabled" }
 			}
 			create_building={
+				building="building_food_industry"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:AUS"
+						levels=1
+						region="STATE_AUSTRIA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_sweeteners" "pm_disabled_canning"  "pm_manual_dough_processing" "pm_pot_stills" }
+			}
+			create_building={
+				building="building_logging_camp"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:AUS"
+						levels=1
+						region="STATE_AUSTRIA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_hardwood" "pm_saw_mills" "pm_no_equipment" "pm_road_carts"  }
+			}
+			create_building={
 				building="building_wheat_farm"
 				add_ownership={
 					building={
 						type="building_manor_house"
 						country="c:AUS"
-						levels=8
+						levels=7
 						region="STATE_AUSTRIA"
 					}
 				}
@@ -6193,7 +6219,7 @@
 					building={
 						type="building_financial_district"
 						country="c:AUS"
-						levels=2
+						levels=1
 						region="STATE_BOHEMIA"
 					}
 					building={
@@ -6204,7 +6230,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_bakery" "pm_disabled_canning"  "pm_manual_dough_processing" "pm_pot_stills" }
+				activate_production_methods={ "pm_sweeteners" "pm_disabled_canning"  "pm_manual_dough_processing" "pm_pot_stills" }
 			}
 			create_building={
 				building="building_glassworks"

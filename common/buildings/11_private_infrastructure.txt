@@ -3,6 +3,7 @@
 building_port = {
 	building_group = bg_private_infrastructure
 	city_type = port
+	levels_per_mesh = 1
 	icon = "gfx/interface/icons/building_icons/building_port.dds"
 
 	has_max_level = yes
@@ -251,13 +252,13 @@ building_manor_house = {
 			score = {
 				value = 0.0
 			}
-		}			
+		}
 		bg_manufacturing_score = {
 			group = "bg_trade"
 			score = {
 				value = 0.0
 			}
-		}
+		}			
 		bg_agriculture_score = {
 			group = "bg_agriculture"
 			score = {
@@ -268,7 +269,6 @@ building_manor_house = {
 						OR = {
 							has_law = law_type:law_agrarianism
 							has_law = law_type:law_industry_banned
-							has_law = law_type:law_extraction_economy
 						}						
 					}
 					multiply = 2.0
@@ -285,7 +285,6 @@ building_manor_house = {
 						OR = {
 							has_law = law_type:law_agrarianism
 							has_law = law_type:law_industry_banned
-							has_law = law_type:law_extraction_economy
 						}						
 					}
 					multiply = 2.0
@@ -318,19 +317,31 @@ building_manor_house = {
 		bg_mining_score = {
 			group = "bg_mining"
 			score = {
-				value = 0.0
+				value = 0.1
 			}
 		}
 		bg_logging_score = {
 			group = "bg_logging"
 			score = {
-				value = 0.1
+				value = 0.2
+				if = {
+					limit = {
+					    has_law = law_type:law_extraction_economy					
+					}
+					multiply = 2.5
+				}
 			}
 		}
 		bg_rubber_score = {
 			group = "bg_rubber"
 			score = {
 				value = 0.1
+				if = {
+					limit = {
+					    has_law = law_type:law_extraction_economy					
+					}
+					multiply = 3
+				}
 			}
 		}
 		bg_whaling_score = {
@@ -422,17 +433,67 @@ building_financial_district = {
 				}				
 			}
 		}
+		bg_artillery_foundaries_score = {
+			group = bg_artillery_foundaries
+			score = {
+				value = 1.0
+				if = {
+					limit = {
+						any_scope_building = { 
+            				is_building_type = building_artillery_foundries
+            				occupancy <= 0.6
+       		       		}
+					}
+					multiply = 0.1
+				}
+			}
+		}
+		bg_arms_industries_score = {
+			group = bg_arms_industries
+			score = {
+				value = 1.0
+				if = {
+					limit = {
+						any_scope_building = { 
+            				is_building_type = building_arms_industry
+            				occupancy <= 0.6
+       		       		}
+					}
+					multiply = 0.1
+				}
+			}
+		}
+		bg_military_shipyards_score = {
+			group = bg_military_shipyards
+			score = {
+				value = 1.0
+				if = {
+					limit = {
+						any_scope_building = { 
+            				is_building_type = building_military_shipyards
+            				occupancy <= 0.6
+       		       		}
+					}
+					multiply = 0.1
+				}
+			}
+		}
 		bg_manufacturing_score = {
 			group = "bg_trade"
 			score = {
 				value = 1.0
 			}
-		}
+		}	
 		bg_agriculture_score = {
 			group = "bg_agriculture"
 			score = {
-				value = 0.5
-				
+				value = 0.75
+				if = {
+					limit = {
+						has_law = law_type:law_agrarianism
+					}
+					multiply = 1.5
+				}
 				if = {
 					limit = {
 						has_law = law_type:law_commercialized_agriculture
@@ -444,8 +505,14 @@ building_financial_district = {
 		bg_ranching_score = {
 			group = "bg_ranching"
 			score = {
-				value = 0.5
+				value = 0.75
 				
+				if = {
+					limit = {
+						has_law = law_type:law_agrarianism
+					}
+					multiply = 1.5
+				}
 				if = {
 					limit = {
 						has_law = law_type:law_traditionalism
@@ -466,6 +533,12 @@ building_financial_district = {
 			score = {
 				value = 0.75
 				
+				if = {
+					limit = {
+						has_law = law_type:law_agrarianism
+					}
+					multiply = 1.25
+				}
 				if = {
 					limit = {
 						has_law = law_type:law_traditionalism

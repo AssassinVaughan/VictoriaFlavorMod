@@ -6,14 +6,14 @@
 	is_shown_when_inactive = {
 		country_is_in_south_america = yes
 		any_primary_culture = {
-			has_discrimination_trait = european_heritage
+			has_discrimination_trait_group = heritage_group_european
 		}
 	}
 
 	possible = {
 		has_technology_researched = nationalism #VFM, because South America never researches civilizing mission until 1900+ if ever
 		country_rank >= rank_value:minor_power
-		average_sol >= 9 #VFM, dropped from 10 because that can be hard for the AI to achieve reliably
+		average_sol >= 10
 		is_at_war = no
 		is_subject = no
 		OR = {
@@ -149,16 +149,21 @@ je_central_america_migration = {
 	group = je_group_foreign_affairs
 
 	is_shown_when_inactive = {
-		country_is_in_central_america = yes
+		capital = {
+			OR = {
+				region = sr:region_mexico
+				region = sr:region_central_america
+			}
+		}
 		any_primary_culture = {
-			has_discrimination_trait = european_heritage
+			has_discrimination_trait_group = heritage_group_european
 		}
 	}
 
 	possible = {
 		has_technology_researched = nationalism #VFM, because South America never researches civilizing mission until 1900+ if ever
 		country_rank >= rank_value:minor_power
-		average_sol >= 9 #VFM, down from 10
+		average_sol >= 10
 		is_at_war = no
 		is_subject = no
 		OR = {
@@ -302,7 +307,7 @@ je_american_west_migration = {
 			country_is_in_central_america = yes
 		}
 		any_primary_culture = {
-			has_discrimination_trait = european_heritage
+			has_discrimination_trait_group = heritage_group_european
 		}
 		any_scope_state = {
 			OR = {
@@ -323,7 +328,7 @@ je_american_west_migration = {
 			}
 			count >= 3
 		}
-		average_sol >= 9 #VFM, down from 10
+		average_sol >= 10
 		is_at_war = no
 		is_subject = no
 		OR = {

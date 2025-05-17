@@ -491,11 +491,7 @@
 
 	c:BOL ?= {
 		create_diplomatic_pact = {
-			country = c:SPU
-			type = puppet
-		}
-		create_diplomatic_pact = {
-			country = c:NPU
+			country = c:PEU
 			type = puppet
 		}
 		create_diplomatic_pact = {
@@ -565,6 +561,13 @@
 		}
 	}
 	
+	c:KAL = {
+		create_diplomatic_pact = {
+			country = c:MAK
+			type = vassal
+		}
+	}
+	
 	
 	# Starting liberty desire
 	c:BIC = {
@@ -582,6 +585,10 @@
 	c:NSW = {
 		add_liberty_desire = -30
 	}
+
+	c:SAF = {
+		add_liberty_desire = -20
+	
 
 	c:WAS = {
 		add_liberty_desire = -30

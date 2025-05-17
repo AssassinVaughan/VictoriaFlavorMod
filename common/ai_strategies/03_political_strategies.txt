@@ -58,6 +58,7 @@
 				OR = {
 					has_journal_entry = je_government_petition  
 					has_journal_entry = je_law_imposition
+					has_journal_entry = je_british_dictate_law
 				}
 			}
 			add = 25
@@ -70,6 +71,34 @@
 		ig_landowners
 		ig_armed_forces
 		ig_petty_bourgeoisie
+	}
+	
+	anti_interest_groups = {
+		ig_trade_unions
+	}	
+		
+	pro_movements = {
+		movement_royalist_constitutional
+		movement_royalist_absolutist
+		movement_religious_majority
+		movement_cultural_majority
+		movement_german_national
+		movement_italian_national
+		movement_utilitarian
+		movement_corporatist
+		movement_modernizer
+		movement_orleanist
+		movement_bonapartist
+	}
+	
+	anti_movements = {
+		movement_socialist
+		movement_labor
+		movement_communist
+		movement_anarchist
+		movement_nihilist
+		movement_feminist
+		movement_radical
 	}
 	
 	institution_scores = {
@@ -86,7 +115,7 @@
 			}
 			if = {
 				limit = {
-				    is_country_type = recognized
+				    country_rank >= rank_value:minor_power
 					capital = {
 						OR = {
 							state_is_in_africa = yes
@@ -147,6 +176,14 @@
 			add = 10
 		}	
 
+		if = { # Metternich System
+			limit = { 
+				c:AUS ?= this
+				has_journal_entry = je_metternich
+			}
+			add = 20
+		}
+
 		if = {
 			limit = { 
 				exists = c:FRA
@@ -154,6 +191,13 @@
 				ruler = {
 					has_variable = orleanist_leader
 				}
+			}
+			add = 10
+		}
+
+		if = {
+			limit = { 
+				is_princely_state = yes
 			}
 			add = 10
 		}
@@ -200,7 +244,7 @@ ai_strategy_reactionary_agenda = {
 		
 		if = {
 			limit = { any_interest_group = { is_insurrectionary = yes } }
-			add = 2.5
+			add = 1.5
 		}
 		
 		if = {
@@ -222,6 +266,7 @@ ai_strategy_reactionary_agenda = {
 				OR = {
 					has_journal_entry = je_government_petition  
 					has_journal_entry = je_law_imposition
+					has_journal_entry = je_british_dictate_law
 				}
 			}
 			add = 10
@@ -240,6 +285,35 @@ ai_strategy_reactionary_agenda = {
 		ig_trade_unions
 		ig_industrialists
 	}
+	
+	pro_movements = {
+		movement_royalist_constitutional
+		movement_royalist_absolutist
+		movement_religious_majority
+		movement_cultural_majority
+		movement_reactionary
+		movement_legitimist
+		movement_pro_slavery
+	}
+	
+	anti_movements = {
+		movement_socialist
+		movement_labor
+		movement_communist
+		movement_anarchist
+		movement_nihilist
+		movement_radical
+		movement_liberal
+		movement_german_national
+		movement_italian_national
+		movement_modernizer
+		movement_feminist
+		movement_positivist
+		movement_cultural_minority
+		movement_religious_minority
+		movement_land_reform
+	}		
+	
 	
 	institution_scores = {
 		institution_colonial_affairs = {	
@@ -432,6 +506,7 @@ ai_strategy_progressive_agenda = {
 				OR = {
 					has_journal_entry = je_government_petition  
 					has_journal_entry = je_law_imposition
+					has_journal_entry = je_british_dictate_law
 				}
 			}
 			add = 25
@@ -441,7 +516,34 @@ ai_strategy_progressive_agenda = {
 	pro_interest_groups = {
 		ig_intelligentsia
 		ig_industrialists
+	}	
+	
+	anti_interest_groups = {
+		ig_landowners
+		ig_rural_folk
+	}	
+	
+	pro_movements = {
+		movement_liberal
+		movement_modernizer
+		movement_anti_slavery
+		movement_land_reform
+		movement_positivist
+		movement_utilitarian
+		movement_feminist
+		movement_radical
 	}
+	
+	anti_movements = {
+		movement_socialist
+		movement_communist
+		movement_anarchist
+		movement_nihilist
+		movement_fascist
+		movement_reactionary
+		movement_royalist_absolutist
+		movement_pro_slavery
+	}			
 
 	institution_scores = {
 		institution_colonial_affairs = {	
@@ -629,6 +731,7 @@ ai_strategy_egalitarian_agenda = {
 				OR = {
 					has_journal_entry = je_government_petition  
 					has_journal_entry = je_law_imposition
+					has_journal_entry = je_british_dictate_law
 				}
 			}
 			add = 25
@@ -644,6 +747,35 @@ ai_strategy_egalitarian_agenda = {
 		ig_industrialists
 		ig_petty_bourgeoisie
 	}
+	
+	pro_movements = {
+		movement_radical
+		movement_labor
+		movement_socialist
+		movement_communist
+		movement_nihilist
+		movement_feminist
+		movement_anti_slavery
+		movement_german_national
+		movement_italian_national
+		movement_land_reform
+	}
+	
+	anti_movements = {
+		movement_royalist_constitutional
+		movement_royalist_absolutist
+		movement_religious_majority
+		movement_cultural_majority
+		movement_corporatist
+		movement_reactionary
+		movement_fascist
+		movement_legitimist
+		movement_pro_slavery
+		movement_liberal
+		movement_orleanist
+		movement_bonapartist
+		movement_legitimist
+	}			
 	
 	institution_scores = {
 		institution_colonial_affairs = {	
@@ -827,6 +959,7 @@ ai_strategy_nationalist_agenda = {
 				OR = {
 					has_journal_entry = je_government_petition  
 					has_journal_entry = je_law_imposition
+					has_journal_entry = je_british_dictate_law
 				}
 			}
 			add = 25
@@ -842,6 +975,27 @@ ai_strategy_nationalist_agenda = {
 		ig_rural_folk
 		ig_trade_unions
 	}
+	
+	pro_movements = {
+		movement_fascist
+		movement_corporatist
+		movement_positivist
+		movement_modernizer
+		movement_bonapartist
+		movement_cultural_majority
+		movement_religious_majority
+	}
+	
+	anti_movements = {
+		movement_radical
+		movement_labor
+		movement_socialist
+		movement_communist
+		movement_nihilist
+		movement_feminist
+		movement_cultural_minority
+		movement_religious_minority
+	}	
 	
 	institution_scores = {
 		institution_colonial_affairs = {	
@@ -969,7 +1123,18 @@ ai_strategy_nationalist_agenda = {
 			}
 			
 			add = 1000
-		}		
+		}	
+
+		# High-fervour AI is inclined to become nationalistic
+		if = {
+			limit = {
+				country_fervor_primary_culture > 10
+			}
+			add = {
+				value = country_fervor_primary_culture
+				divide = 4
+			}
+		}
 	}
 }
 
@@ -1033,6 +1198,7 @@ ai_strategy_maintain_mandate_of_heaven = {
 				OR = {
 					has_journal_entry = je_government_petition  
 					has_journal_entry = je_law_imposition
+					has_journal_entry = je_british_dictate_law
 				}
 			}
 			add = 10
@@ -1050,9 +1216,30 @@ ai_strategy_maintain_mandate_of_heaven = {
 		ig_intelligentsia
 	}
 	
+	pro_movements = {
+		movement_royalist_constitutional
+		movement_royalist_absolutist
+		movement_religious_majority
+		movement_cultural_majority
+		movement_reactionary
+	}
+	
+	anti_movements = {
+		movement_socialist
+		movement_labor
+		movement_communist
+		movement_anarchist
+		movement_nihilist
+		movement_feminist
+		movement_radical
+		movement_liberal
+		movement_modernizer
+		movement_land_reform
+	}
+	
 	institution_scores = {
 		institution_colonial_affairs = {	
-			value = 0		
+			value = 50			
 		}				
 		institution_social_security = {	
 			value = 50			
@@ -1064,13 +1251,13 @@ ai_strategy_maintain_mandate_of_heaven = {
 			value = 50			
 		}		
 		institution_police = {	
-			value = 175			
+			value = 200			
 		}		
 		institution_health_system = {	
 			value = 50		
 		}		
 		institution_home_affairs = {	
-			value = 175		
+			value = 200			
 		}				
 	}	
 	
@@ -1129,11 +1316,38 @@ ai_strategy_tanzimat_reforms = {
 	
 	anti_interest_groups = {
 		ig_landowners
+	}
+
+	pro_movements = {
+		movement_liberal
+		movement_modernizer
+		movement_anti_slavery
+		movement_land_reform
+		movement_positivist
+		movement_utilitarian
+		movement_feminist
+		movement_radical
+		movement_royalist_absolutist
+		movement_royalist_constitutional
+		movement_religious_majority
+		movement_cultural_majority
+	}
+	
+	anti_movements = {
+		movement_socialist
+		movement_communist
+		movement_anarchist
+		movement_nihilist
+		movement_fascist
+		movement_reactionary
+		movement_pro_slavery
+		movement_religious_minority
+		movement_cultural_minority
 	}	
 
 	institution_scores = {
 		institution_colonial_affairs = {	
-			value = 0	
+			value = 75	
 		}				
 		institution_social_security = {	
 			value = 100			
@@ -1196,13 +1410,40 @@ ai_strategy_meiji_restoration = {
 	pro_interest_groups = {
 		ig_intelligentsia
 		ig_industrialists
-		ig_rural_folk
 	}
 	
 	anti_interest_groups = {
 		ig_landowners
 		ig_armed_forces
 	}
+	
+	pro_movements = {
+		movement_liberal
+		movement_modernizer
+		movement_anti_slavery
+		movement_land_reform
+		movement_positivist
+		movement_utilitarian
+		movement_feminist
+		movement_corporatist
+		movement_radical
+		movement_royalist_absolutist
+		movement_royalist_constitutional
+		movement_religious_majority
+		movement_cultural_majority
+	}
+	
+	anti_movements = {
+		movement_socialist
+		movement_communist
+		movement_anarchist
+		movement_nihilist
+		movement_fascist
+		movement_reactionary
+		movement_pro_slavery
+		movement_religious_minority
+		movement_cultural_minority
+	}		
 
 	institution_scores = {
 		institution_colonial_affairs = {	
@@ -1241,6 +1482,102 @@ ai_strategy_meiji_restoration = {
 			has_modifier = shogun_ig_forced_to_open_market
 			has_journal_entry = je_meiji_main
 		}
+	}
+	
+	weight = {
+		value = 10000		
+	}
+}
+
+ai_strategy_great_reforms = {
+	icon = "gfx/interface/icons/ai_strategy_icons/progressive_agenda.dds"
+	
+	type = political
+	
+	revolution_aversion = {
+		value = 10
+	}
+	
+	min_law_chance_to_pass = {
+		value = 10
+		if = {
+			limit = { ai_has_reasons_to_not_oppose_law = yes }			
+			multiply = 0.5
+		}	
+	}
+	
+	max_progressiveness = {
+		value = 100
+	}
+	
+	max_regressiveness = {
+		value = 25
+	}
+	
+	change_law_chance = { 
+		value = 100
+	}	
+	
+	pro_interest_groups = {
+		ig_intelligentsia
+		ig_industrialists
+		ig_armed_forces
+	}
+	
+	pro_movements = {
+		movement_liberal
+		movement_modernizer
+		movement_anti_slavery
+		movement_land_reform
+		movement_positivist
+		movement_utilitarian
+		movement_feminist
+		movement_corporatist
+		movement_radical
+		movement_royalist_absolutist
+		movement_royalist_constitutional
+		movement_religious_majority
+		movement_cultural_majority
+	}
+	
+	anti_movements = {
+		movement_socialist
+		movement_communist
+		movement_anarchist
+		movement_nihilist
+		movement_fascist
+		movement_reactionary
+		movement_pro_slavery
+		movement_religious_minority
+		movement_cultural_minority
+	}				
+
+	institution_scores = {
+		institution_colonial_affairs = {	
+			value = 75	
+		}				
+		institution_social_security = {	
+			value = 100			
+		}
+		institution_workplace_safety = {	
+			value = 100			
+		}		
+		institution_schools = {	
+			value = 1000
+		}		
+		institution_police = {	
+			value = 75			
+		}		
+		institution_health_system = {	
+			value = 100			
+		}		
+		institution_home_affairs = {	
+			value = 100			
+		}				
+	}
+
+	possible = {
+		has_journal_entry = je_great_reformer
 	}
 	
 	weight = {

@@ -44,6 +44,13 @@
 			}
 			add = 20
 		}
+
+		if = {
+			limit = { 
+				is_princely_state = yes
+			}
+			add = 10
+		}
 		
 		if = {
 			limit = { 
@@ -179,6 +186,13 @@ ai_strategy_plantation_economy = {
 			}
 			multiply = 1.5
 		}	
+		
+		if = {
+			limit = { 
+				is_princely_state = yes
+			}
+			add = 20
+		}
 
         if = {
 			limit = { 
@@ -461,6 +475,15 @@ ai_strategy_industrial_expansion = {
 				}
 			}
 			add = 50
+		}	
+		
+		# Metternich agenda of 1844 - inclined to industrialise
+		if = {
+			limit = {
+				c:AUS ?= this
+				has_journal_entry = je_metternich
+			}
+           add = 10
 		}	
 		
 		if = {
