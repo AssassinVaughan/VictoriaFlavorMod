@@ -489,7 +489,8 @@ blood_and_iron = {
 frankfurt_assembly = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_positive.dds
 	interest_group_ig_intelligentsia_pol_str_mult = 0.33
-	state_radicals_from_political_movements_mult = -0.1
+	state_pop_support_movement_radical_mult = 0.15
+	state_pop_support_movement_liberal_mult = 0.15
 	country_authority_mult = -0.1
 }
 
@@ -580,4 +581,11 @@ jungle_warbands = {
 	unit_morale_loss_mult = -0.5
 	unit_kill_rate_add = -0.20
 	unit_advancement_speed_mult = -0.5
+}
+
+steuerverein_breakup = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
+	country_authority_mult = 0.1
+	country_influence_add = 100
+	country_legitimacy_base_add = 10
 }

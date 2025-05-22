@@ -198,6 +198,71 @@ je_prussian_guard = {
 	weight = 50
 }
 
+je_breakup_steuerverein = {
+    icon = "gfx/interface/icons/event_icons/event_military.dds"
+    group = je_group_internal_affairs
+	is_shown_when_inactive = {
+	    NOT = { has_global_variable = breakup_steuerverein }
+		OR = {
+			country_has_primary_culture = cu:north_german
+			country_has_primary_culture = cu:south_german
+		}
+		is_power_bloc_leader = yes
+		game_date < 1870.1.1
+		NOR = {
+			exists = c:GER
+			exists = c:SGF
+			exists = c:NGF
+		}
+	}
+	
+	# TODO: spawn events that represent opportunities or crisis among bloc members
+	
+	complete = {
+        any_state = {
+            filter = {
+                OR = {
+                    state_region = s:STATE_HANNOVER
+                    state_region = s:STATE_ELBE
+                    state_region = s:STATE_MECKLENBURG
+                }
+            }
+			custom_tooltip = {
+				text = completely_not_part_of_other_bloc_tt
+				OR = {
+					owner = ROOT
+					owner = {
+						is_subject_of = ROOT
+					}
+					owner = { is_subject = no }
+				}
+			}
+        }
+	}
+	
+	invalid = {
+		OR = {
+			exists = c:GER
+			exists = c:SGF
+			exists = c:NGF
+		}
+    }
+	
+	on_complete = {
+		set_global_variable = breakup_steuerverein
+		#show_as_tooltip = {
+			# TODO: give bonuses to random bloc member, give obligation from random members?
+		#}
+		add_modifier = {
+				name = steuerverein_breakup
+				days = long_modifier_time
+		}
+		trigger_event = { id = journal_flavor_germany.4 }
+	}
+
+	weight = 50
+}
+
 
 je_the_zollverein = {
 	icon = "gfx/interface/icons/event_icons/event_military.dds"

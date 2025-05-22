@@ -113,7 +113,7 @@
 				}
 				add = 110
 			}
-			if = {
+			else_if = {
 				limit = {
 				    country_rank >= rank_value:minor_power
 					capital = {
@@ -125,7 +125,11 @@
 							region = sr:region_andes	
 							region = sr:region_gran_colombia
 							region = sr:region_oceania
-							region = sr:region_indonesia		
+							region = sr:region_indonesia
+							state_region = s:STATE_HOLLAND
+							state_region = s:STATE_ESTREMADURA
+							state_region = s:STATE_FLANDERS
+							state_region = s:STATE_TOLEDO
 						}
 					}
                     any_neighbouring_state = {	
@@ -327,7 +331,7 @@ ai_strategy_reactionary_agenda = {
 				}
 				add = 175
 			}
-			if = {
+			else_if = {
 				limit = {
 				    is_country_type = recognized
 					capital = {
@@ -339,7 +343,11 @@ ai_strategy_reactionary_agenda = {
 							region = sr:region_andes	
 							region = sr:region_gran_colombia
 							region = sr:region_oceania
-							region = sr:region_indonesia		
+							region = sr:region_indonesia
+							state_region = s:STATE_HOLLAND
+							state_region = s:STATE_ESTREMADURA
+							state_region = s:STATE_FLANDERS
+							state_region = s:STATE_TOLEDO		
 						}
 					}
                     any_neighbouring_state = {	
@@ -557,7 +565,7 @@ ai_strategy_progressive_agenda = {
 				}
 				add = 80
 			}
-			if = {
+			else_if = {
 				limit = {
 				    is_country_type = recognized
 					capital = {
@@ -569,7 +577,11 @@ ai_strategy_progressive_agenda = {
 							region = sr:region_andes	
 							region = sr:region_gran_colombia
 							region = sr:region_oceania
-							region = sr:region_indonesia		
+							region = sr:region_indonesia
+							state_region = s:STATE_HOLLAND
+							state_region = s:STATE_ESTREMADURA
+							state_region = s:STATE_FLANDERS
+							state_region = s:STATE_TOLEDO		
 						}
 					}
                     any_neighbouring_state = {	
@@ -789,7 +801,7 @@ ai_strategy_egalitarian_agenda = {
 				}
 				add = 60
 			}
-			if = {
+			else_if = {
 				limit = {
 				    is_country_type = recognized
 					capital = {
@@ -801,7 +813,11 @@ ai_strategy_egalitarian_agenda = {
 							region = sr:region_andes	
 							region = sr:region_gran_colombia
 							region = sr:region_oceania
-							region = sr:region_indonesia		
+							region = sr:region_indonesia
+							state_region = s:STATE_HOLLAND
+							state_region = s:STATE_ESTREMADURA
+							state_region = s:STATE_FLANDERS
+							state_region = s:STATE_TOLEDO	
 						}
 					}
                     any_neighbouring_state = {	
@@ -1009,7 +1025,7 @@ ai_strategy_nationalist_agenda = {
 				}
 				add = 125
 			}
-			if = {
+			else_if = {
 				limit = {
 				    is_country_type = recognized
 					capital = {
@@ -1021,7 +1037,11 @@ ai_strategy_nationalist_agenda = {
 							region = sr:region_andes	
 							region = sr:region_gran_colombia
 							region = sr:region_oceania
-							region = sr:region_indonesia		
+							region = sr:region_indonesia
+							state_region = s:STATE_HOLLAND
+							state_region = s:STATE_ESTREMADURA
+							state_region = s:STATE_FLANDERS
+							state_region = s:STATE_TOLEDO		
 						}
 					}
                     any_neighbouring_state = {	
@@ -1239,7 +1259,7 @@ ai_strategy_maintain_mandate_of_heaven = {
 	
 	institution_scores = {
 		institution_colonial_affairs = {	
-			value = 50			
+			value = 0			
 		}				
 		institution_social_security = {	
 			value = 50			
@@ -1347,7 +1367,7 @@ ai_strategy_tanzimat_reforms = {
 
 	institution_scores = {
 		institution_colonial_affairs = {	
-			value = 75	
+			value = 0	
 		}				
 		institution_social_security = {	
 			value = 100			
@@ -1454,7 +1474,7 @@ ai_strategy_meiji_restoration = {
 					    owner = { is_country_type = decentralized }
                     }					
 				}
-				add = 60
+				add = 50
 			}
 		}				
 		institution_social_security = {	
@@ -1554,7 +1574,7 @@ ai_strategy_great_reforms = {
 
 	institution_scores = {
 		institution_colonial_affairs = {	
-			value = 75	
+			value = 0
 		}				
 		institution_social_security = {	
 			value = 100			
