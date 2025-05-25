@@ -1,5 +1,62 @@
 ﻿# For on_actions launched by the code itself.
 
+# Fires when bookmark initialization is complete but players are still in the lobby
+# At this point we do not know who the players are
+# No root scope set
+on_game_started = {
+	effect = {
+		# Memento Mori
+		every_country = {
+			every_interest_group = {
+				leader = {
+					if = {
+						limit = {
+							NOT = {
+								has_variable = memento_mori_immunity
+							}
+						}
+						set_variable = {
+							name = memento_mori_immunity
+							years = 5
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+# Fires after everyone enters the game from the lobby for the first time for each campaign
+# At this point we DO know who the players are
+# No root scope set
+on_game_started_after_lobby = {
+	effect = {
+		# Game Rule: No Dynamic Naming
+		if = {
+			limit = {
+				has_game_rule = no_dynamic_naming
+			}
+			every_state = {
+				reset_state_name = yes
+			    reset_hub_names = yes
+			}
+		}
+		# The Ripper
+		every_country = {
+			if = {
+				limit = {
+					is_player = yes
+				}
+				random = {
+					chance = 10
+
+					set_variable = var_jack_ripper_possible
+				}
+			}
+		}
+	}
+}
+
 # No root scope set
 on_monthly_pulse = {
 	effect = {
@@ -97,7 +154,7 @@ on_monthly_pulse = {
 	}
 }
 
-on_yearly_pulse = { 
+on_yearly_pulse = {
 }
 
 # Root = Country
@@ -367,7 +424,7 @@ on_monthly_pulse_country = {
 				}
 				OR = {
 					any_interest_group = {
-						ig_approval < -2 
+						ig_approval < -2
 					}
 					c:AUS ?= {
 						relations:root < 0
@@ -387,7 +444,7 @@ on_monthly_pulse_country = {
 					has_active_building = building_arms_industry
 				}
 			}
-			trigger_event = { 
+			trigger_event = {
 				id = mon_state_formation.13
 				popup = yes
 			}
@@ -460,7 +517,7 @@ on_monthly_pulse_country = {
 		    	game_date >= 1872.9.29
 		    	any_scope_character = {
 		       		is_ruler = yes
-		       		has_template = swe_oscar_ii_bernadotte_template	
+		       		has_template = swe_oscar_ii_bernadotte_template
 		    	}
 		    	NOT = {
 		       		has_variable = oscar_ii_ruler_var
@@ -490,7 +547,7 @@ on_monthly_pulse_country = {
 			set_variable = { name = greek_homeland_states_owned_var value = 0 }
 		}
 		if = { # so that the variable re-counts correct number of states owned each time
-			limit = { 
+			limit = {
 				has_variable = greek_homeland_states_owned_var
 			}
 			ROOT = {
@@ -498,7 +555,7 @@ on_monthly_pulse_country = {
 	    	}
     	}
 		if = { # counts how many relevant states are owned
-			limit = { 
+			limit = {
 				has_variable = greek_homeland_states_owned_var
 			}
 			every_scope_state = {
@@ -1164,7 +1221,7 @@ on_monthly_pulse_country = {
 			set_variable = ven_trade_center_count_var
 		}
 		if = { # so that the variable re-counts correct number of trade centers each time
-			limit = { 
+			limit = {
 				c:VEN ?= THIS
 				has_variable = ven_trade_center_count_var
 			}
@@ -1204,6 +1261,55 @@ on_monthly_pulse_country = {
 				set_variable = venice_vidi_vici_achievement_happened
 				remove_variable = ven_trade_center_count_var
 			}
+		}
+		# for Swiss Bank Account Achievement
+		if = {
+			limit = {
+				c:SWI ?= THIS
+				NOT = {
+					has_variable = swiss_bank_account_happened
+				}
+				any_scope_treaty = {
+					any_scope_article = {
+						has_type = money_transfer
+					}
+				}
+			}
+			ROOT = {
+				set_variable = { name = swiss_bank_account_var value = 0 }
+				change_variable = {
+					name = swiss_bank_account_var
+					add = {
+						value = gdp
+						divide = 10
+					}
+				}
+	   		}
+	   		if = {
+				limit = {
+					transfer_money_gross_income >= root.var:swiss_bank_account_var
+				}
+				set_variable = swiss_bank_account_happened
+			}
+		}
+		# for All Quiet on the Western Front Achievement
+		if = {
+			limit = {
+				is_player = yes
+				NOT = {
+					has_variable = all_quiet_on_the_western_front_happened
+				}
+				is_at_war = yes
+				any_scope_war = {
+					any_scope_front = {
+						num_front_casualties = {
+							target = root
+							value > 1000000
+						}
+					}
+				}
+			}
+			set_variable = all_quiet_on_the_western_front_happened
 		}
 	}
 	on_actions = { # delay ensures events won't fire simultaneously
@@ -1504,7 +1610,7 @@ on_five_year_pulse_country = {
 
 on_decade_pulse_country = {
 	random_events = {
-		chance_of_no_event = 95
+		chance_to_happen = 5
 		1 = plague.1
 	}
 }
@@ -1559,14 +1665,11 @@ on_yearly_pulse_character = {
 }
 on_half_yearly_pulse_character = {}
 on_five_year_pulse_character = {}
-on_decade_pulse_character = {
-
-}
+on_decade_pulse_character = {}
 
 # Root = State
 on_monthly_pulse_state = {
 	random_events = {
-		10 = goldrush.5
 	}
 	#effect = { #VFM
 	#	if = {
@@ -1592,9 +1695,10 @@ on_half_yearly_pulse_state = {
 
 on_yearly_pulse_state = {
 	random_events = {
-		chance_of_no_event = 80
+		chance_to_happen = 20
 		10 = oil_rush.3
 		10 = oil_rush.4
+		10 = goldrush.5
 	}
 	on_actions = {
 	}
@@ -1634,7 +1738,7 @@ on_battle_won = {
 
 	}
 	random_events = {
-		chance_of_no_event = 80
+		chance_to_happen = 20
 		20 = culture_brazil.1
 	}
 }
@@ -1850,9 +1954,14 @@ on_diplomatic_play_started = {
 # Root = Character
 on_character_creation = {
 	effect = {
-		set_variable = {
-			name = memento_mori_immunity
-			years = 10
+		if = {
+			limit = {
+				NOT = { has_variable = memento_mori_immunity }
+			}
+			set_variable = {
+				name = memento_mori_immunity
+				years = 10
+			}
 		}
 		if = {
 			limit = {
@@ -2104,7 +2213,7 @@ on_character_death = {
 				trigger_event = serbia.2
 			}
 		}
-		
+
 		if = {
 			limit = {
 				has_variable = expedition_leader_var
@@ -2228,7 +2337,6 @@ on_character_death = {
 			# non-ETH rulers in the ethiopian_emperor succession will continue to style themselves 'Emperor' even if another tag forms ETH. This is fine! The other tag is obviously an upstart, and we've created two competing claims for the title. This is what wwe in the biz call 'dynamic storytelling'.
 		}
 		### Austrian Monarchs
-		# TODO: PRCAL-38244 Ensure this IP3 content on Austrian Monarchs is locked
 		if = { # if Franz Joseph I becomes ruler because Ferdinand I dies before he officially abdicates, but this is before Rudolf is born, Maximilian I becomes the new heir
 			limit = {
 				owner = {
@@ -2548,7 +2656,6 @@ on_new_ruler = {
 			}
 		}
 		### Austrian Monarchs
-		# TODO: PRCAL-38244 Ensure this IP3 content on Austrian Monarchs is locked
 		if = {
 			limit = { # if Franz Ferdinand becomes ruler, Charles I becomes heir
 				owner = {
@@ -2795,6 +2902,9 @@ on_treaty_entered_into_force = {
 	}
 }
 
+# Root = Treaty
+# scope:withdrawing_country = Withdrawing Country
+# scope:non_withdrawing_country = Non-Withdrawing Country
 on_country_withdrawn_from_treaty = {
 	effect = {
 		post_notification = country_withdrawn_from_treaty
@@ -2824,10 +2934,10 @@ on_country_released_as_independent = {
 				add_journal_entry = {
 					type = je_prussia_of_the_balkans
 				}
-				trigger_event = { 
-					id = bulgaria_events.2 
+				trigger_event = {
+					id = bulgaria_events.2
 					popup = yes
-					days = 30 
+					days = 30
 				}
 			}
 		}
@@ -3015,6 +3125,18 @@ on_country_released_as_company_subject = {
 		scope:target = {
 			set_variable = { name = newly_released_country days = 90 } # Used for the Trialist Manifesto at the moment
 		}
+		activate_law = law_type:law_presidential_republic
+		activate_law = law_type:law_oligarchy
+		activate_law = law_type:law_racial_segregation
+		activate_law = law_type:law_extraction_economy
+		activate_law = law_type:law_colonial_exploitation
+		activate_law = law_type:law_no_schools
+		activate_law = law_type:law_no_health_system
+		activate_law = law_type:law_censorship
+		activate_law = law_type:law_no_workers_rights
+		activate_law = law_type:law_child_labor_allowed
+		activate_law = law_type:law_no_social_security
+		activate_law = law_type:law_migration_controls
 	}
 }
 
@@ -3377,10 +3499,14 @@ on_migration_target_created_other = {
 
 # Root = State
 on_resource_discovered = {
+	#Notification seems to fire from code.
 	events = {
 		goldrush.1
+		goldrush.6
 		oil_rush.1
+		oil_rush.6
 		rubber_events.1
+		rubber_events.2
 	}
 }
 
@@ -3393,6 +3519,7 @@ on_resource_depleted = {
 	}
 	events = {
 		goldrush.2
+		goldrush.7
 	}
 }
 
@@ -3668,7 +3795,7 @@ on_production_method_changed = {
 on_law_enactment_started = {
 	effect = {
 		#Montenegro events
-		if = { 
+		if = {
 			limit = {
 				c:MON ?= THIS
 			}
@@ -3685,7 +3812,7 @@ on_law_enactment_started = {
 				limit = {
 					OR = {
 						is_enacting_law = law_type:law_consumption_based_taxation
-						is_enacting_law = law_type:law_land_based_taxation 
+						is_enacting_law = law_type:law_land_based_taxation
 						is_enacting_law = law_type:law_per_capita_based_taxation
 						is_enacting_law = law_type:law_proportional_taxation
 						is_enacting_law = law_type:law_graduated_taxation
@@ -4074,7 +4201,7 @@ on_law_enactment_pass = {
 			limit = {
 				THIS ?= c:MON
 				OR = {
-					ROOT.currently_enacting_law.type ?= law_type:law_religious_schools 
+					ROOT.currently_enacting_law.type ?= law_type:law_religious_schools
 					ROOT.currently_enacting_law.type ?= law_type:law_public_schools
 					ROOT.currently_enacting_law.type ?= law_type:law_private_schools
 				}
@@ -4679,55 +4806,7 @@ on_revolution_start = {
 # scope:target = Uprising country
 on_revolution_end = {
 	effect = {
-		# Haiti debts inherited by non-secessionist revolution
-		if = {
-			limit = {
-				has_journal_entry = je_haitian_debt
-				has_modifier = modifier_french_independence_payments_1
-				scope:target ?= {
-					is_secessionist = no
-				}
-			}
-			scope:target ?= {
-				add_modifier = modifier_french_independence_payments_1
-			}
-		}
-		else_if = {
-			limit = {
-				has_journal_entry = je_haitian_debt
-				has_modifier = modifier_french_independence_payments_2
-				scope:target ?= {
-					is_secessionist = no
-				}
-			}
-			scope:target ?= {
-				add_modifier = modifier_french_independence_payments_2
-			}
-		}
-		else_if = {
-			limit = {
-				has_journal_entry = je_haitian_debt
-				has_modifier = modifier_french_independence_payments_3
-				scope:target ?= {
-					is_secessionist = no
-				}
-			}
-			scope:target ?= {
-				add_modifier = modifier_french_independence_payments_3
-			}
-		}
-		else_if = {
-			limit = {
-				has_journal_entry = je_haitian_debt
-				has_modifier = modifier_french_independence_payments_4
-				scope:target ?= {
-					is_secessionist = no
-				}
-			}
-			scope:target ?= {
-				add_modifier = modifier_french_independence_payments_4
-			}
-		}
+
 	}
 }
 
@@ -4928,7 +5007,7 @@ on_secession_end = {
 				save_scope_as = rebel_culture
 			}
 		}
-		trigger_event = { 
+		trigger_event = {
 			id = bulgaria_events.3
 			days = 1
 			popup = yes
@@ -5316,17 +5395,17 @@ on_civil_war_won = {
 on_revolution_checkpoint_reached = {
 	effect = {
 	}
-	random_events = {
-		# IGs and Revolutions
-		5 = ig_revolutions.1
-		5 = ig_revolutions.2
-		5 = ig_revolutions.3
-		5 = ig_revolutions.4
-		5 = ig_revolutions.5
-		5 = ig_revolutions.6
-		5 = ig_revolutions.7
-		5 = ig_revolutions.8
-		5 = ig_revolutions.9
+	random_events = { #all these now have cooldowns of 50 years, you normally only get around 5-8 per revolution.
+		150 = 0
+		20 = ig_revolutions.1
+		20 = ig_revolutions.2
+		20 = ig_revolutions.3
+		20 = ig_revolutions.4
+		20 = ig_revolutions.5
+		20 = ig_revolutions.6
+		20 = ig_revolutions.7
+		20 = ig_revolutions.8
+		20 = ig_revolutions.9
 		10 = revolution_pulse_events.1
 		10 = revolution_pulse_events.2
 		10 = revolution_pulse_events.3
@@ -5340,13 +5419,13 @@ on_revolution_checkpoint_reached = {
 		10 = revolution_pulse_events.11
 		10 = revolution_pulse_events.12
 		10 = revolution_pulse_events.13
-		30 = revolution_pulse_events.14
-		30 = revolution_pulse_events.15
-		30 = revolution_pulse_events.16
-		30 = revolution_pulse_events.17
-		30 = revolution_pulse_events.18
-		30 = revolution_pulse_events.19
-		30 = revolution_pulse_events.20
+		50 = revolution_pulse_events.14 #these have tighter conditions
+		50 = revolution_pulse_events.15
+		50 = revolution_pulse_events.16
+		50 = revolution_pulse_events.17
+		50 = revolution_pulse_events.18
+		50 = revolution_pulse_events.19
+		50 = revolution_pulse_events.20
 		10 = revolution_pulse_events.21
 		10 = revolution_pulse_events.22
 		10 = revolution_pulse_events.23
@@ -5399,7 +5478,8 @@ on_secession_checkpoint_reached = {
 	effect = {
 	}
 	random_events = {
-		# Secession events
+		# Secession events and recycled revolution events
+		30 = 0
 		5 = secession_events.1
 		5 = secession_events.2
 		5 = secession_events.3
@@ -5733,7 +5813,7 @@ on_wargoal_enforced = {
 				set_variable = { name = forced_trialist_manifesto years = 1 }
 			}
 		}
-		
+
 		### Austrian Neo-Absolutism JE
 		if = {
 			limit = {
@@ -5742,10 +5822,10 @@ on_wargoal_enforced = {
 				}
 			}
 			scope:target ?= {
-				set_variable = { 
-					name = temp_wargoal_impact 
+				set_variable = {
+					name = temp_wargoal_impact
 					value = {
-						value = scope:wargoal_impact 
+						value = scope:wargoal_impact
 						multiply = -4
 					}
 				}
@@ -5773,10 +5853,10 @@ on_wargoal_enforced = {
 				}
 			}
 			owner = {
-				set_variable = { 
-					name = temp_wargoal_impact 
+				set_variable = {
+					name = temp_wargoal_impact
 					value = {
-						value = scope:wargoal_impact 
+						value = scope:wargoal_impact
 						multiply = 4
 					}
 				}
@@ -5797,7 +5877,7 @@ on_wargoal_enforced = {
 				}
 				scope:target ?= {
 					c:PRU ?= this
-				}				
+				}
 			}
 			owner = {
 				set_variable = has_enforced_wargoal_on_prussia_var
@@ -5810,7 +5890,7 @@ on_wargoal_enforced = {
 				}
 				scope:target ?= {
 					c:GER ?= this
-				}				
+				}
 			}
 			owner = {
 				set_variable = has_enforced_wargoal_on_germany_var
@@ -5953,7 +6033,7 @@ on_secession_country_helped_by_home_country = {
 	}
 }
 
-# Root = Home Countr
+# Root = Home Country
 # scope:target = Secession country
 on_secession_country_not_helped_by_home_country = {
 	effect = {
@@ -6067,22 +6147,12 @@ on_state_incorporation = {
 }
 on_state_owner_change = {
 	effect = {
-		if = {
-			limit = {
-				has_game_rule = allow_dynamic_naming
-			}
-			assign_state_hub_dynamic_names = yes # All dynamic naming is handled by this scripted effect
-		}
+		evaluate_and_assign_state_hub_dynamic_names = yes # All dynamic naming is handled by this scripted effect
 	}
 }
 on_state_created = {
 	effect = {
-		if = {
-			limit = {
-				has_game_rule = allow_dynamic_naming
-			}
-			assign_state_hub_dynamic_names = yes # All dynamic naming is handled by this scripted effect
-		}
+		evaluate_and_assign_state_hub_dynamic_names = yes # All dynamic naming is handled by this scripted effect
 	}
 }
 
@@ -6342,12 +6412,7 @@ on_character_recruitment = {
 on_become_subject = {
 	effect = {
 		every_scope_state = {
-			if = {
-				limit = {
-					has_game_rule = allow_dynamic_naming
-				}
-				assign_state_hub_dynamic_names = yes # All dynamic naming is handled by this scripted effect
-			}
+			evaluate_and_assign_state_hub_dynamic_names = yes # All dynamic naming is handled by this scripted effect
 		}
 	}
 }
@@ -6356,12 +6421,7 @@ on_become_subject = {
 on_become_independent = {
 	effect = {
 		every_scope_state = {
-			if = {
-				limit = {
-					has_game_rule = allow_dynamic_naming
-				}
-				assign_state_hub_dynamic_names = yes # All dynamic naming is handled by this scripted effect
-			}
+			evaluate_and_assign_state_hub_dynamic_names = yes # All dynamic naming is handled by this scripted effect
 		}
 		if = {
 			limit = {

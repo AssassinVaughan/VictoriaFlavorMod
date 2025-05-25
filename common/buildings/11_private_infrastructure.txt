@@ -194,7 +194,9 @@ building_railway = {
 					state_goods_pricier > 0.5 
 				}
 			}
-			state.market_access < 1
+			state = {
+				infrastructure_delta >= 20
+			}
 		}
 		NOT = { is_under_construction = yes }
 
@@ -217,13 +219,21 @@ building_trade_center = {
 
 	production_method_groups = {
 		pmg_base_building_trade_center
+		pmg_trade_quantity_trade_center
 	}
 	
-	possible = {
-		owner = {
-			NOT = { 
-				has_law = law_type:law_isolationism
-			}
+	possible = {	
+		NOT = { owner = { has_law = law_type:law_isolationism } }
+		trigger_if = {
+			limit = { owner = { has_law = law_type:law_canton_system } }
+			custom_tooltip = {
+				text = canton_system_trade_center_trigger_tt
+				state_region = s:STATE_GUANGDONG
+				any_scope_building = {
+					is_building_type = building_trade_center
+					level_after_queued_constructions < 50
+				}		
+			}			
 		}
 	}	
 	
@@ -751,13 +761,12 @@ building_company_headquarter = {
 	expandable = no
 	downsizeable = no
 	ownership_type = other
-	company_headquarter = yes
 
 	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_monuments.dds"
 }
 
 building_company_regional_headquarter = {
-	building_group = bg_company_headquarter
+	building_group = bg_company_regional_headquarter
 	city_type = city
 	levels_per_mesh = 50
 
@@ -775,7 +784,6 @@ building_company_regional_headquarter = {
 	expandable = no
 	downsizeable = no
 	ownership_type = other
-	regional_company_headquarter = yes
 
 	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_monuments.dds"
 }

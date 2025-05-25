@@ -13,23 +13,6 @@ GLOBAL = {
 			ig:ig_landowners = { add_ideology = ideology_pro_slavery }
 		}
 	}
-	
-	
-	# Jack the ripper, prevents the event from happening every game
-
-	every_country = {
-		if = {
-			limit = {
-				is_player = yes
-			}
-		}
-		random_list = {
-			1 = { set_variable = var_jack_ripper_possible }
-			9 = {
-				#Nothing Happens
-			}
-		}
-	}
 
 	every_country = {
 		limit = {
@@ -103,17 +86,6 @@ GLOBAL = {
 			set_variable = {
 				name = lingering_plc_resistance
 				days = very_long_modifier_time
-			}
-		}
-	}
-	
-	every_country = {
-		every_interest_group = {
-			leader = {
-				set_variable = {
-					name = memento_mori_immunity
-					years = 5
-				}
 			}
 		}
 	}

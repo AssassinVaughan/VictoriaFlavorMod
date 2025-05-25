@@ -343,7 +343,11 @@ types state_panel_types
 
 		blockoverride "window_header_name"
 		{
-			raw_text = "#BOLD [State.GetName]#!"
+			raw_text = "[LabelingHelper.CapitalizeOnlyFirst(State.GetNameNoFormatting)]"
+
+			tooltipwidget = {
+				FancyTooltip_State = {}
+			}
 		}
 
 		blockoverride "window_header_name_line_two" {
@@ -1847,9 +1851,29 @@ types state_panel_types
 				}
 
 				blockoverride "goto" {
-					datacontext = "[State.AccessBuilding('building_trade_center')]"
-					tooltip = "GO_TO_BUTTON_BUILDING"
-					onclick = "[InformationPanelBar.OpenBuildingDetailsPanel(Building.AccessSelf)]"
+					
+				}
+
+				blockoverride "navigation_button" {
+					flowcontainer = {
+						position = { -5 5 }
+						parentanchor = top|right
+						datacontext = "[State.AccessBuilding('building_trade_center')]"
+						spacing = 1
+
+						button_icon_plus_action = {
+							size = { 25 25 }
+							visible = "[IsValid( Building.QueueConstruction )]"
+							tooltip = "[Building.GetQueueConstructionTooltip]"
+							onclick = "[Execute( Building.QueueConstruction )]"
+						}
+
+						button_icon_goto = {
+							size = { 25 25 }
+							tooltip = "GO_TO_BUTTON_BUILDING"
+							onclick = "[InformationPanelBar.OpenBuildingDetailsPanel(Building.AccessSelf)]"
+						}
+					}
 				}
 
 				blockoverride "extra_widget" {

@@ -545,17 +545,23 @@ has_powerful_protectors = {
 			army_size >= scope:actor.army_size
 		}			
 		OR = {
-			has_diplomatic_pact = {
-				who = root
-				type = alliance
+			any_scope_treaty = {
+				binds = root
+				any_scope_article = {
+					has_type = alliance
+				}
 			}
-			has_diplomatic_pact = {
-				who = root
-				type = defensive_pact
+			any_scope_treaty = {
+				binds = root
+				any_scope_article = {
+					has_type = defensive_pact
+				}
 			}
-			has_diplomatic_pact = {
-				who = root
-				type = guarantee_independence
+			any_scope_treaty = {
+				binds = root
+				any_scope_article = {
+					has_type = guarantee_independence
+				}
 			}						
 		}							
 	}

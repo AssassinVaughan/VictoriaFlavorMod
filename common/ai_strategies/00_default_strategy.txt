@@ -178,20 +178,26 @@ ai_strategy_default = {
 			if = {
 				limit = {				
 					NOR = {
-						has_diplomatic_pact = {
-							who = scope:country
-							type = alliance
+						any_scope_treaty = {
+							binds = scope:country
+							any_scope_article = {
+								has_type = alliance
+							}
 						}
 						AND = {
 							NOT = { exists = scope:is_initiator }
 							OR = {
-								has_diplomatic_pact = {
-									who = scope:country
-									type = defensive_pact
+								any_scope_treaty = {
+									binds = scope:country
+									any_scope_article = {
+										has_type = defensive_pact
+									}
 								}
-								has_diplomatic_pact = {
-									who = scope:country
-									type = guarantee_independence
+								any_scope_treaty = {
+									binds = scope:country
+									any_scope_article = {
+										has_type = guarantee_independence
+									}
 								}								
 							}
 						}							
@@ -2416,9 +2422,11 @@ ai_strategy_default = {
 		if = {
 			limit = {
 				scope:target_country = {
-					has_diplomatic_pact = {
-						who = root
-						type = trade_agreement
+					any_scope_treaty = {
+						binds = root
+						any_scope_article = {
+							has_type = trade_privilege
+						}
 					}	
 				}
 			}
@@ -7932,9 +7940,11 @@ ai_strategy_default = {
 
 				if = {
 					limit = {
-						has_diplomatic_pact = {
-							who = scope:target_country
-							type = defensive_pact
+						any_scope_treaty = {
+							binds = scope:target_country
+							any_scope_article = {
+								has_type = defensive_pact
+							}
 						}	
 					}
 					multiply = 0.5
@@ -7942,9 +7952,11 @@ ai_strategy_default = {
 
 				if = {
 					limit = {
-						has_diplomatic_pact = {
-							who = scope:target_country
-							type = alliance
+						any_scope_treaty = {
+							binds = scope:target_country
+							any_scope_article = {
+								has_type = alliance
+							}
 						}		
 					}
 					multiply = 0.25
@@ -7952,9 +7964,11 @@ ai_strategy_default = {
 
 				if = {
 					limit = {
-						has_diplomatic_pact = {
-							who = scope:target_country
-							type = trade_agreement
+						any_scope_treaty = {
+							binds = scope:target_country
+							any_scope_article = {
+								has_type = trade_privilege
+							}
 						}			
 					}
 					multiply = 0.5
@@ -7962,7 +7976,7 @@ ai_strategy_default = {
 
 				if = {
 					limit = {
-						is_in_customs_union_with = scope:target_country								
+						is_in_customs_union_with = scope:target_country
 					}
 					multiply = 0.25
 				}				

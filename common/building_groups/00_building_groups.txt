@@ -22,6 +22,7 @@
 # proportionality_limit = X				How high is the building's tolerance for pop types being out of proportion? default NDefines::NEconomy::EMPLOYMENT_PROPORTIONALITY_LIMIT)
 # hires_unemployed_only = yes			If yes, buildings in this group may only hire from the unemployment pool. Default no.
 # is_shown_in_outliner = yes			If no, buildingtypes in this group will not show up in the outliner, this is for special stuff like the monuments
+# subsidized = yes						If yes, buildings of this group will by default start the game subsidized (has no effect after campaign start)
 # Manufacturing
 
 bg_manufacturing = {
@@ -651,6 +652,8 @@ bg_trade = {
 # Needed for autonomous investment to track investments separately from other ownership buildings
 bg_financial_districts = {
 	parent_group = bg_owner_buildings
+
+	urbanization = 5
 }
 
 # Needed for autonomous investment to track investments separately from other ownership buildings
@@ -662,6 +665,18 @@ bg_manor_houses = {
 
 bg_company_headquarter = {
 	parent_group = bg_owner_buildings
+	
+	company_headquarter = yes
+
+	urbanization = 5
+}
+
+bg_company_regional_headquarter = {
+	parent_group = bg_owner_buildings
+	
+	regional_company_headquarter = yes
+
+	urbanization = 5
 }
 
 bg_owner_buildings = {

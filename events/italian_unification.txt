@@ -160,7 +160,7 @@ italian_unification.2 = {
 	}
 }
 
-# Owned by Pan-Nationalist Radicals
+# Taken Over by Pan-Nationalist Radicals
 italian_unification.4 = {
 	type = country_event
 	placement = ROOT
@@ -205,8 +205,22 @@ italian_unification.4 = {
 
 	trigger = {
 		NOT = { has_variable = italian_unification_5_happened_here }
-		exists = var:italian_states_radicals_total_bar
-		var:italian_states_radicals_total_bar >= 25
+		has_revolution = yes
+		capital = { 
+			radical_fraction = {
+				value >= 0.10
+			} 
+		}
+		any_civil_war = {
+			this.political_movement ?= {
+				OR = {
+					movement_is_liberal = yes
+					movement_is_socialist = yes
+					movement_is_nationalist = yes
+				}
+			}
+			is_civil_war_type = revolution
+		}
 		any_country = {
 			NOT = {
 				this = root
@@ -217,6 +231,11 @@ italian_unification.4 = {
 			OR = {
 				country_has_primary_culture = cu:north_italian
 				country_has_primary_culture = cu:south_italian
+			}
+			NOR = {
+				c:AUS ?= this
+				c:KUK ?= this
+				c:HRE ?= this
 			}
 		}
 	}
@@ -692,26 +711,44 @@ italian_unification.8 = {
 		}
 		if = {
 			limit = {
-				has_diplomatic_pact = {
-					who = scope:rsm_revolted_scope
-					 type = alliance
+				any_scope_treaty = {
+					binds = scope:rsm_revolted_scope
+					any_scope_article = {
+						has_type = alliance
+					}
 				}
 			}
-			remove_diplomatic_pact = {
-				country = scope:rsm_revolted_scope
-				type = alliance
+			every_scope_treaty = {
+				limit = {
+					binds = scope:rsm_revolted_scope
+					any_scope_article = {
+						has_type = alliance
+					}
+				}
+				withdraw = {
+					country = root
+				}
 			}
 		}
 		if = {
 			limit = {
-				has_diplomatic_pact = {
-					who = scope:rsm_revolted_scope
-					 type = defensive_pact
+				any_scope_treaty = {
+					binds = scope:rsm_revolted_scope
+					any_scope_article = {
+						has_type = defensive_pact
+					}
 				}
 			}
-			remove_diplomatic_pact = {
-				country = scope:rsm_revolted_scope
-				type = defensive_pact
+			every_scope_treaty = {
+				limit = {
+					binds = scope:rsm_revolted_scope
+					any_scope_article = {
+						has_type = defensive_pact
+					}
+				}
+				withdraw = {
+					country = root
+				}
 			}
 		}
 		if = {
