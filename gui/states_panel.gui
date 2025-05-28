@@ -1064,10 +1064,15 @@ types state_panel_types
 					blockoverride "flag_tooltip" {}
 				}
 				flag = {
-					datacontext = "[State.GetOccupant]"
+					datacontext = "[State.GetEnemyWithHighestOccupation]"
+					visible = "[Country.IsValid]"
 					tooltip = "[State.GetOccupantsTooltip]"
-					visible = "[And(State.HasOccupant, State.IsFullyOccupied)]"
 					blockoverride "flag_tooltip" {}
+
+					blockoverride "onhover" {
+						onmousehierarchyenter = "[AccessHighlightManager.HighlightStateOccupation(State.Self,State.GetOccupant.Self)]"
+						onmousehierarchyleave = "[AccessHighlightManager.RemoveHighlight]"
+					}
 				}
 				chart = {
 					blockoverride "datamodel" {
@@ -1093,7 +1098,7 @@ types state_panel_types
 					}
 
 					blockoverride = "chart_visible" {
-						visible = "[And(State.HasOccupant, Not(State.IsFullyOccupied))]"
+						visible = "[GreaterThan_int32(GetDataModelSize(State.GetOccupationPiechartData),'(int32)1')]"
 					}
 
 					blockoverride "title" {}
@@ -2012,7 +2017,7 @@ types state_panel_types
 				tooltip = "STATE_STRATEGIC_OBJECTIVE_TOOLTIP"
 
 				blockoverride "texture" {
-					texture = "gfx/interface/icons/lens_toolbar_icons/designate_strategic_objective_lens_option.dds"
+					texture = "gfx/interface/icons/formation_order_icons/strategic_objective.dds"
 				}
 
 				blockoverride "name" {
@@ -2919,8 +2924,8 @@ types state_panel_types
 					}
 					small_flag = {
 						datacontext = "[State.GetOccupant]"
+						visible = "[State.HasOccupation]"
 						tooltip = "[State.GetOccupantsTooltip]"
-						visible = "[State.HasOccupant]"
 						blockoverride "flag_tooltip" {}
 					}
 				}
