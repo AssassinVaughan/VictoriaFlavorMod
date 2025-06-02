@@ -76,7 +76,8 @@ decree_road_maintenance = {
 			
 			}
 			multiply = 0
-		}			
+		}	
+        multiply = 2		
 	}
 }
 
@@ -133,6 +134,7 @@ decree_violent_suppression = {
 			}
 			multiply = 0.5
 		}	
+        multiply = 2		
 	}
 }
 
@@ -182,7 +184,7 @@ decree_emergency_relief = {
 	cost = 50
 	
 	ai_weight = {
-		value = 0
+		value = 10
 		
 		if = {
 			limit = { 
@@ -201,6 +203,7 @@ decree_emergency_relief = {
 			}
 			multiply = 0.5
 		}	
+        multiply = 2		
 	}
 }
 
@@ -232,7 +235,7 @@ decree_promote_social_mobility = {
 	cost = 100
 	
 	ai_weight = {
-		value = 0
+		value = 10
 
 		if = {
 			limit = { 
@@ -274,7 +277,8 @@ decree_promote_social_mobility = {
 				}
 			}
 			multiply = 1.5
-		}			
+		}	
+        multiply = 2				
 	}
 }
 
@@ -296,7 +300,7 @@ decree_promote_national_values = {
 	cost = 100
 	
 	ai_weight = {
-		value = 0
+		value = 20
 		if = {
 			limit = {
 				scope:country = {
@@ -350,7 +354,8 @@ decree_promote_national_values = {
 				}
 			}
 			multiply = 1.5
-		}		
+		}	
+        multiply = 2			
 	}
 }
 
@@ -372,11 +377,12 @@ decree_encourage_manufacturing_industry = {
 	cost = 100
 	
 	ai_weight = {
-		value = 0
+		value = 25
 		if = {
 			limit = {
 				any_scope_building = {
 					is_building_group = bg_manufacturing
+					count >= 2
 				}
 			}
 			add = 50
@@ -385,19 +391,28 @@ decree_encourage_manufacturing_industry = {
 			limit = {
 				any_scope_building = {
 					is_building_group = bg_manufacturing
-					count >= 3
+					count >= 4
 				}				
 			}
-			add = 50
+			add = 75
 		}
 		if = {
 			limit = {
 				any_scope_building = {
 					is_building_group = bg_manufacturing
-					count >= 5
+					count >= 8
 				}			
 			}
-			add = 50
+			add = 100
+		}
+		if = {
+			limit = {
+				any_scope_building = {
+					is_building_group = bg_manufacturing
+					count >= 15
+				}			
+			}
+			add = 125
 		}
 		if = {
 			limit = {
@@ -406,7 +421,8 @@ decree_encourage_manufacturing_industry = {
 				}
 			}
 			multiply = 1.5
-		}		
+		}	
+        multiply = 2			
 	}
 }
 
@@ -429,7 +445,7 @@ decree_encourage_agricultural_industry = {
 	cost = 100
 	
 	ai_weight = {
-		value = 0
+		value = 20
 		if = {
 			limit = {
 				any_scope_building = {
@@ -466,7 +482,7 @@ decree_encourage_agricultural_industry = {
 					count >= 5
 				}			
 			}
-			add = 50
+			add = 150
 		}
 		if = {
 			limit = {
@@ -478,7 +494,8 @@ decree_encourage_agricultural_industry = {
 				}
 			}
 			multiply = 1.5
-		}		
+		}	
+        multiply = 2			
 	}
 }
 
@@ -504,7 +521,7 @@ decree_encourage_resource_industry = {
 	cost = 100
 	
 	ai_weight = {
-		value = 0
+		value = 25
 		if = {
 			limit = {
 				any_scope_building = {
@@ -547,7 +564,7 @@ decree_encourage_resource_industry = {
 					count >= 5
 				}			
 			}
-			add = 50
+			add = 150
 		}
 		if = {
 			limit = {
@@ -556,8 +573,9 @@ decree_encourage_resource_industry = {
 				}
 			}
 			multiply = 1.5
-		}		
-	}
+		}	
+        multiply = 2			
+	}	
 }
 
 decree_greener_grass_campaign = {
@@ -575,7 +593,7 @@ decree_greener_grass_campaign = {
 	cost = 100
 
 	ai_weight = {
-		value = 0
+		value = 15
 		if = {
 			limit = { 
 				any_scope_building = {
@@ -615,7 +633,8 @@ decree_greener_grass_campaign = {
 				state_unemployment_rate >= 0.05 #0.1 VFM 
 			}
 			multiply = 0
-		}
+		}	
+        multiply = 2	
 	}
 }
 
@@ -631,7 +650,7 @@ decree_enlistment_efforts = {
 	cost = 100
 	
 	ai_weight = {
-		value = 0
+		value = 10
 
 		if = {
 			limit = {
@@ -690,7 +709,8 @@ decree_enlistment_efforts = {
 				}			
 			}
 			add = 50
-		}		
+		}	
+        multiply = 2			
 	}
 }
 

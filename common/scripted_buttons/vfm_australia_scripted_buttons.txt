@@ -250,8 +250,8 @@ je_australia_gbr_revoke_van_diemens_button = {
 
 	ai_chance = {
 		value = 0
-		modifier = {
-		    trigger = { game_date > 1844.1.1 }
+		if = {
+			limit = { game_date > 1844.1.1 }
 		    add = 1
 		}
 	}

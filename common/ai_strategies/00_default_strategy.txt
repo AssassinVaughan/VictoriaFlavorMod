@@ -262,20 +262,26 @@ ai_strategy_default = {
 			if = {
 				limit = {				
 					NOR = {
-						has_diplomatic_pact = {
-							who = scope:country
-							type = alliance
+						any_scope_treaty = {
+							binds = scope:country
+							any_scope_article = {
+								has_type = alliance
+							}
 						}
 						AND = {
 							NOT = { exists = scope:is_initiator }
 							OR = {
-								has_diplomatic_pact = {
-									who = scope:country
-									type = defensive_pact
+								any_scope_treaty = {
+									binds = scope:country
+									any_scope_article = {
+										has_type = defensive_pact
+									}
 								}
-								has_diplomatic_pact = {
-									who = scope:country
-									type = guarantee_independence
+								any_scope_treaty = {
+									binds = scope:country
+									any_scope_article = {
+										has_type = guarantee_independence
+									}
 								}								
 							}
 						}							

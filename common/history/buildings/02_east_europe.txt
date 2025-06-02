@@ -107,7 +107,7 @@
 					building={
 						type="building_financial_district"
 						country="c:PRU"
-						levels=1
+						levels=2
 						region="STATE_LOWER_SILESIA"
 					}
 				}
@@ -148,7 +148,7 @@
 				add_ownership={
 					country={
 						country="c:PRU"
-						levels=2
+						levels=3
 					}
 				}
 				reserves=1
@@ -246,23 +246,25 @@
 					building={
 						type="building_manor_house"
 						country="c:PRU"
-						levels=4
+						levels=3
 						region="STATE_LOWER_SILESIA"
 					}
 				}
 				reserves=1
 				activate_production_methods={ "pm_intensive_grazing_ranch" "pm_slaughterhouses" "pm_standard_fences" "pm_unrefrigerated" }
 			}
-			create_building={
-				building="building_construction_sector"
+			create_building={ # Kunern sugar beet factory
+				building="building_rye_farm"
 				add_ownership={
-					country={
+					building={
+						type="building_manor_house"
 						country="c:PRU"
-						levels=1
+						levels=2
+						region="STATE_LOWER_SILESIA"
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_iron_frame_buildings" }
+				activate_production_methods={ "pm_simple_farming" "pm_sugar_beets" "pm_tools"  }
 			}
 		}
 	}
@@ -799,7 +801,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_rotating_crops" "pm_citrus_orchards" "pm_tools_disabled"  }
+				activate_production_methods={ "pm_rotating_crops" "pm_sugar_beets" "pm_tools_disabled"  }
 			}
 			create_building={
 				building="building_livestock_ranch"

@@ -88,14 +88,21 @@ NAI = {
     # Below data is used to calculate how much weight the AI places on suppressing an IG
     SUPPRESSION_BASE_VALUE = 60 # 75
 	
-	# Below data is used to calculate how much weight the AI places on consumption taxes 
-    CONSUMPTION_TAX_INCOME_VALUE = 10 # Per percent of state expenses in taxable value (this is then multiplied by relative authority cost of the good)
-    CONSUMPTION_TAX_STAPLE_MULT = 0.7 #0.5 Multiply desire to tax staple goods by this
-    CONSUMPTION_TAX_LUXURY_MULT = 1.75 #2.0 Multiply desire to tax luxury goods by this
-    CONSUMPTION_TAX_LOW_INCOME_THRESHOLD = 1.75 #1.25 Income-to-expenses threshold below which consumption taxes are a must-have
-    CONSUMPTION_TAX_HIGH_INCOME_THRESHOLD = 2.75 #1.5 Income-to-expenses threshold at which consumption taxes should be removed (if removal would not put us below this)
-    CONSUMPTION_TAX_MAX_NUM_TAXED_GOODS_BASE = 2 #0 Base max number of goods AI wants to tax
-    CONSUMPTION_TAX_MAX_NUM_TAXED_GOODS_PER_MISSING_TAX_TYPE = 0 #2 Added to max number of goods AI wants to tax for each other type of tax it does not collect
+	NUM_FAILED_AUTHORITY_SPENDING_ATTEMPTS_FOR_UPDATE = 5 # After this many failed attempts to change authority spending, force an update of authority spending priorities
+	
+	# Below data is used to calculate how much weight the AI places on different things it can spend its authority on
+	AUTHORITY_SPENDING_RANDOM_FACTOR = 0.1 # The higher this is, the more random new AI authority spending will be
+
+	COMPANY_CHARTER_AUTHORITY_SPENDING_PERCENTAGE = 0.0 #Ratio of authority expenses that we want country to spend on authority
+	
+	# Below data is used to calculate how much weight the AI places on consumption taxes
+	CONSUMPTION_TAX_INCOME_VALUE = 18 # Per percent of state expenses in taxable value (this is then multiplied by relative authority cost of the good)
+	CONSUMPTION_TAX_STAPLE_MULT = 0.75 # Multiply desire to tax staple goods by this
+	CONSUMPTION_TAX_LUXURY_MULT = 2.5 # Multiply desire to tax luxury goods by this
+	CONSUMPTION_TAX_LOW_INCOME_THRESHOLD = 1.2 # Income-to-expenses threshold below which consumption taxes are a must-have
+	CONSUMPTION_TAX_HIGH_INCOME_THRESHOLD = 1.5 # Income-to-expenses threshold at which consumption taxes should be removed (if removal would not put us below this)
+	CONSUMPTION_TAX_MAX_NUM_TAXED_GOODS_BASE = 3 # Base max number of goods AI wants to tax
+	CONSUMPTION_TAX_MAX_NUM_TAXED_GOODS_PER_MISSING_TAX_TYPE = 1 # Added to max number of goods AI wants to tax for each other type of tax it does not collect
 	
 	# Below data is used to calculate AI's desire for peace
 	AI_PEACE_AGREEMENT_BASE_VALUE = -10

@@ -46,19 +46,19 @@ base_values = {
 	
 	building_economy_of_scale_level_cap_add = 10
 
-    state_market_access_price_impact = 0.77
+	state_market_access_price_impact = 0.75
 	
 	country_company_throughput_bonus_add = 0.15
 	country_company_construction_efficiency_bonus_add = 0.15
 	
 	country_max_weekly_construction_progress_add = 10
-	
+
 	military_formation_organization_gain_add = 0.5 # 200 days to get max organization
-	
+
 	state_urbanization_per_level_add = 100
-	
+
 	unit_experience_gain_add = 0.5
-	
+
 	# To account for the power derived from bearing arms
 	country_officers_pol_str_mult = 3
 	country_soldiers_pol_str_mult = 1.5
@@ -97,23 +97,23 @@ working_conditions = {
 	building_group_bg_mining_machinists_mortality_mult = 0.05
 	building_group_bg_mining_engineers_mortality_mult = 0.02
 	building_group_bg_mining_slaves_mortality_mult = 0.2
-	
+
 	building_group_bg_logging_laborers_mortality_mult = 0.1
 	building_group_bg_logging_machinists_mortality_mult = 0.05
 	building_group_bg_logging_engineers_mortality_mult = 0.02
 	building_group_bg_logging_slaves_mortality_mult = 0.2
-	
+
 	building_group_bg_oil_extraction_laborers_mortality_mult = 0.1
 	building_group_bg_oil_extraction_machinists_mortality_mult = 0.05
 	building_group_bg_oil_extraction_engineers_mortality_mult = 0.02
-	
+
 	building_group_bg_light_industry_laborers_mortality_mult = 0.05
 	building_group_bg_light_industry_machinists_mortality_mult = 0.02
-	
+
 	building_group_bg_heavy_industry_laborers_mortality_mult = 0.1
 	building_group_bg_heavy_industry_machinists_mortality_mult = 0.05
 	building_group_bg_heavy_industry_engineers_mortality_mult = 0.02
-	
+
 	building_group_bg_infrastructure_laborers_mortality_mult = 0.1
 	building_group_bg_infrastructure_machinists_mortality_mult = 0.05
 	building_group_bg_infrastructure_engineers_mortality_mult = 0.02
@@ -194,7 +194,7 @@ unincorporated_state = {
 	state_pop_pol_str_mult = -0.50
 	building_group_bg_manufacturing_throughput_add = -0.1
 	building_group_bg_government_throughput_add = -0.1
-	building_group_bg_military_throughput_add = -0.1		
+	building_group_bg_military_throughput_add = -0.1
 	state_market_access_price_impact = -0.1
 	state_construction_mult = -0.1
 }
@@ -293,7 +293,7 @@ government_wages_medium = {
 government_wages_high = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
 	country_government_wages_mult = 0.15
-	interest_group_ig_intelligentsia_approval_add = 1	
+	interest_group_ig_intelligentsia_approval_add = 1
 	interest_group_ig_petty_bourgeoisie_approval_add = 1
 	country_authority_mult = 0.05
 }
@@ -309,7 +309,7 @@ government_wages_very_high = {
 military_wages_very_low = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_positive.dds
 	country_military_wages_mult = -0.3
-	interest_group_ig_armed_forces_approval_add = -2	
+	interest_group_ig_armed_forces_approval_add = -2
 	building_training_rate_mult = -0.75
 	country_prestige_from_army_power_projection_mult = -0.2
 }
@@ -336,9 +336,22 @@ military_wages_high = {
 military_wages_very_high = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
 	country_military_wages_mult = 0.3
-	interest_group_ig_armed_forces_approval_add = 2	
+	interest_group_ig_armed_forces_approval_add = 2
 	country_prestige_from_army_power_projection_mult = 0.2
 	unit_morale_recovery_mult = 0.2
+}
+
+# Scales with the % of a unit's input that is prestige goods
+prestige_goods_supply_army = {
+	unit_army_offense_mult = 0.15
+	unit_army_defense_mult = 0.15
+	unit_morale_recovery_mult = 0.25
+}
+
+prestige_goods_supply_navy = {
+	unit_navy_offense_mult = 0.15
+	unit_navy_defense_mult = 0.15
+	unit_morale_recovery_mult = 0.25
 }
 
 insurrectionary_ig = {
@@ -399,10 +412,10 @@ insufficient_urbanization = {
 	building_throughput_add = -0.05
 }
 
-# Excess convoys increases convoy defense by +50% at 2x production to usage
+# Excess convoys decreases convoy raiding damage taken by -50% at 2x production to usage
 surplus_convoys = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_positive.dds
-	unit_convoy_defense_mult = 0.50
+	country_convoy_damage_taken_mult = -0.5
 }
 
 # Insufficient convoys has no additional effect beyond weakening supply network
@@ -583,7 +596,8 @@ state_region_devastation = {
 	state_infrastructure_mult = -1.0
 	state_mortality_mult = 2.0
 	state_migration_pull_mult = -2.0
-	building_throughput_add = -0.4
+	building_throughput_add = -0.3
+	state_construction_mult = -0.3
 }
 
 # Scales with pollution impact, reduced by state_pollution_reduction_health_mult
@@ -733,9 +747,17 @@ law_enactment_chance = {
 low_organization = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_negative.dds
 	unit_offense_mult = -0.25
-	unit_defense_mult = -0.1
+	unit_defense_mult = -0.15
 	unit_morale_recovery_mult = -1
 	unit_recovery_rate_add = -0.5
+	unit_blockade_mult = -0.5
+	unit_convoy_defense_mult = -0.5
+	unit_convoy_raiding_mult = -0.5
+}
+
+blockaded = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_negative.dds
+	state_migration_pull_mult = -0.5
 }
 
 battle_occupation = {

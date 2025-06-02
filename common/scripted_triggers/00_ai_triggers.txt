@@ -80,6 +80,7 @@ ai_has_reasons_to_not_oppose_law = {
 
 ai_has_enact_weight_modifier_journal_entries = {
 	OR = {
+		has_law_commitment = scope:law
 		AND = {
 			has_journal_entry = je_government_petition
 			has_variable = desired_law_var
