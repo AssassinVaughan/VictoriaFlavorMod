@@ -458,7 +458,7 @@ je_annex_btk_button = {
 						c:ABU.relations:ROOT > relations_threshold:cordial
 					}
 				}
-				c:BHN = { liberty_desire <= 25 }
+				c:MZK = { liberty_desire <= 25 }
 			}
 			AND = {
 				has_technology_researched = nationalism
@@ -510,9 +510,9 @@ je_annex_btk_button = {
 		}
 		if = {
 			limit = {
-				exists = c:BHN
+				exists = c:MZK
 			}
-			c:BHN = { trigger_event = { id = journal_flavor_iran.25 popup = yes } }
+			c:MZK = { trigger_event = { id = journal_flavor_iran.25 popup = yes } }
 		}
 	}
 }
