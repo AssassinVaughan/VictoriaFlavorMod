@@ -1,0 +1,248 @@
+﻿#Montenegrin Raiding
+
+max_raiding_income = { # Used in raiding loc trigger.
+	value = 3000 #increased from 2500.
+}
+
+raiding_income = { # Used in raiding loc trigger.
+	value = c:MON.army_power_projection
+	multiply = c:MON.var:raiding_intensity
+	multiply = 0.20 #increased from 0.15
+	round = yes
+	max = max_raiding_income
+}
+
+raiding_level = {
+	value = raiding_income
+	add = 50 #stops divide by 0 errors
+	divide = 500
+	min = 0
+	round = yes
+	max = 5
+}
+
+at_strength_battalions = {
+	value = {
+		every_military_formation = {
+ 			limit = {
+ 				is_army = yes
+ 			}
+ 			every_combat_unit = {
+  				limit = {
+   					manpower >= 1000
+  				}
+  				add = 1
+ 			}
+		}
+	}
+}
+
+test_variable = {
+	value = 1
+}
+
+barracks_levels_to_leave_unburned = {
+	#value = country_has_building_type_levels(bt:building_barracks)
+	value = {
+		c:MON ?= {
+			every_scope_building = {
+		  		limit = {
+		   			is_building_type = building_barracks
+		  		}
+		  	add = this.level
+		 	}
+		}
+	 	multiply = 0.65
+	 	round = yes
+	}
+}
+
+barracks_burned = {
+	value = {
+		c:MON ?= {
+			every_scope_building = {
+		  		limit = {
+		   			is_building_type = building_barracks
+		  		}
+		  	add = this.level
+		 	}
+		}
+	 	multiply = 0.35
+	 	round = yes
+	}
+}
+
+russian_aid_income = {
+	if = {
+		limit = {
+			c:RUS ?= {
+				is_country_alive = yes
+			}
+		}
+		if = {
+			limit = { c:RUS.relations:ROOT >= relations_threshold:friendly }
+			value = 500
+		}
+		else_if = {
+			limit = { c:RUS.relations:ROOT >= relations_threshold:amicable }
+			value = 350
+		}
+		else_if = {
+			limit = { c:RUS.relations:ROOT >= relations_threshold:cordial }
+			value = 200
+		}
+		else = {
+			value = 100
+		}
+	}
+}
+
+techs_researched_script = {
+	value = ROOT.techs_researched
+}
+
+metternich_tech_target = 52
+
+num_power_bloc_members_script = {
+	if = {
+		limit = {
+			exists = ROOT.power_bloc
+		}
+		value = ROOT.power_bloc.num_power_bloc_members
+	}
+	else = {
+		value = 0
+	}
+}
+
+power_bloc_cohesion_script = {
+	if = {
+		limit = {
+			exists = ROOT.power_bloc
+		}
+		value = ROOT.power_bloc.current_cohesion_number
+	}
+	else = {
+		value = 0
+	}
+}
+
+metternich_bloc_target = 9 # VFM
+metternich_bloc_target_2 = 12 # VFM
+
+metternich_bloc_cohesion_target = 75
+
+metternich_agenda_value = {
+	value = 0
+	if = {
+		limit = {
+			leading_producer_of = g:fine_art
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			owns_entire_state_region = STATE_WEST_GALICIA
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			techs_researched >= 52
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			NOT = {
+				any_political_movement = {
+					OR = {
+						is_political_movement_type = movement_socialist
+						is_political_movement_type = movement_anarchist
+						is_political_movement_type = movement_communist
+						is_political_movement_type = movement_nihilist
+						is_political_movement_type = movement_liberal
+						is_political_movement_type = movement_india_pan_national
+						is_political_movement_type = movement_radical
+						is_political_movement_type = movement_labor
+						is_political_movement_type = movement_feminist
+						is_political_movement_type = movement_land_reform
+						is_political_movement_type = movement_anti_slavery
+						is_political_movement_type = movement_german_national
+						is_political_movement_type = movement_italian_national
+					}
+					political_movement_support >= 0.05
+				}
+			}
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			has_law = law_type:law_autocracy
+			has_law = law_type:law_secret_police
+			has_law = law_type:law_censorship
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			institution:institution_police.investment >= 3
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			institution:institution_home_affairs.investment >= 3
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			power_bloc ?= {
+				num_power_bloc_members >= metternich_bloc_target
+			}
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			power_bloc ?= {
+				num_power_bloc_members >= metternich_bloc_target_2
+			}
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			power_bloc ?= {
+				current_cohesion_number >= metternich_bloc_cohesion_target
+			}
+		}
+		add = 1
+	}
+}
+
+grunderzeit_actual_gdp_script_value = {
+	value = 0
+	if = {
+		limit = {
+			has_global_variable = grunderzeit_ongoing_global_var
+		}
+		every_country = {
+			limit = {
+				has_journal_entry = je_grunderzeit
+			}
+			add = this.gdp
+		}
+	}
+}
+danubian_federation_remaining_cultures_to_integrate = {
+	value = 5
+	if = {
+		limit = {
+			has_variable = count_integrated_cultures
+		}
+		subtract = var:count_integrated_cultures
+	}
+}

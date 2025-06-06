@@ -174,7 +174,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_scholastic_education" "pm_religious_academia" }
+				activate_production_methods={ "pm_philosophy_department" "pm_religious_academia" }
 			}
 			create_building={
 				building="building_paper_mills"
@@ -1676,12 +1676,25 @@
 					building={
 						type="building_financial_district"
 						country="c:AUS"
-						levels=2
+						levels=1
 						region="STATE_AUSTRIA"
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_forest_glass"  "pm_manual_glassblowing" "pm_ceramics" }
+				activate_production_methods={ "pm_leaded_glass"  "pm_manual_glassblowing" "pm_ceramics" }
+			}
+			create_building={
+				building="building_shipyards"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:AUS"
+						levels=1
+						region="STATE_ISTRIA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_basic_shipbuilding"  }
 			}
 			create_building={
 				building="building_textile_mills"
@@ -1714,7 +1727,7 @@
 					building={
 						type="building_fishing_wharf"
 						country="c:AUS"
-						levels=4
+						levels=5
 						region="STATE_VENETIA"
 					}
 				}
@@ -1778,7 +1791,7 @@
 					building={
 						type="building_manor_house"
 						country="c:AUS"
-						levels=1
+						levels=2
 						region="STATE_VENETIA"
 					}					
 				}
@@ -4023,7 +4036,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_simple_forestry" "pm_hardwood" "pm_no_equipment" "pm_road_carts"  }
+				activate_production_methods={ "pm_saw_mills" "pm_hardwood" "pm_no_equipment" "pm_road_carts"  }
 			}
 		}
 	}
@@ -4295,12 +4308,25 @@
 				activate_production_methods={ "pm_military_shipbuilding_wooden"  }
 			}
 			create_building={
+				building="building_logging_camp"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:AUS"
+						levels=1
+						region="STATE_AUSTRIA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_saw_mills" "pm_hardwood" "pm_no_equipment" "pm_road_carts"  }
+			}
+			create_building={
 				building="building_fishing_wharf"
 				add_ownership={
 					building={
 						type="building_fishing_wharf"
 						country="c:AUS"
-						levels=4
+						levels=3
 						region="STATE_ISTRIA"
 					}
 				}

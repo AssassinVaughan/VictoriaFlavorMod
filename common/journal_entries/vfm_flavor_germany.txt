@@ -203,10 +203,7 @@ je_breakup_steuerverein = {
     group = je_group_internal_affairs
 	is_shown_when_inactive = {
 	    NOT = { has_global_variable = breakup_steuerverein }
-		OR = {
-			country_has_primary_culture = cu:north_german
-			country_has_primary_culture = cu:south_german
-		}
+		country_has_primary_culture = cu:north_german
 		is_power_bloc_leader = yes
 		game_date < 1870.1.1
 		NOR = {

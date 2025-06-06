@@ -6,8 +6,6 @@ building_port = {
 	levels_per_mesh = 1
 	icon = "gfx/interface/icons/building_icons/building_port.dds"
 
-	has_max_level = yes
-	ignore_stateregion_max_level = yes
 	port = yes
 
 	unlocking_technologies = { navigation }
@@ -19,11 +17,11 @@ building_port = {
 	required_construction = construction_cost_medium
 
 	terrain_manipulator = urban_port
-	
+
 	potential = {
 		is_coastal = yes
 	}
-	
+
 	ownership_type = self
 
 	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_monuments.dds"
@@ -195,7 +193,7 @@ building_railway = {
 				}
 			}
 			state = {
-				infrastructure_delta >= -20
+				infrastructure_delta <= -20
 			}
 		}
 		NOT = { is_under_construction = yes }

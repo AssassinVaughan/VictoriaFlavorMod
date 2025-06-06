@@ -339,21 +339,8 @@ je_north_german_unification = {
 					}
 					owner = { is_in_customs_union_with = ROOT }
 				}
-				NOT = {
-					this.state_region = {
-						any_scope_state = {
-							owner = {
-								NOR = {
-									this = ROOT
-									is_subject_of = ROOT
-									is_in_customs_union_with = ROOT
-								}
-							}
-						}
-					}
-				}
 			}
-            percent >= 0.55
+            percent >= 0.7
         }		
         		
 	}
@@ -448,6 +435,7 @@ je_south_german_unification = {
 		any_state = {
             filter = {
                 OR = {
+				    state_region = s:STATE_LOWER_SILESIA
                     state_region = s:STATE_HESSE
                     state_region = s:STATE_SAXONY
 					state_region = s:STATE_WESTPHALIA
@@ -464,7 +452,7 @@ je_south_german_unification = {
 					state_region = s:STATE_TYROL
                 }
             }
-			custom_tooltip = {
+			custom_tooltip = { # check this trigger, it showed as 15% for AUstria at game start???
 				text = completely_owned_by_this_country_or_bloc_tt
 				OR = {
 					owner = ROOT
@@ -473,21 +461,8 @@ je_south_german_unification = {
 					}
 					owner = { is_in_customs_union_with = ROOT }
 				}
-				NOT = {
-					this.state_region = {
-						any_scope_state = {
-							owner = {
-								NOR = {
-									this = ROOT
-									is_subject_of = ROOT
-									is_in_customs_union_with = ROOT
-								}
-							}
-						}
-					}
-				}
 			}
-            percent >= 0.55
+            percent >= 0.7
         }
 	}
 

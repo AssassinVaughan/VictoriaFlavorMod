@@ -1205,42 +1205,14 @@ on_monthly_pulse_country = {
 				AND = {
 					c:VEN ?= THIS
 					NOT = { has_variable = venice_vidi_vici_achievement_happened }
-					NOT = { has_variable = ven_trade_center_count_var }
 					any_scope_building = {
 						is_building_type = building_trade_center
 					}
 				}
 			}
-			set_variable = ven_trade_center_count_var
+			set_variable = { name = ven_trade_center_count_var value = "root.country_has_building_group_levels(bg_trade)" } # sets ven_trade_center_count_var value to the total building levels of trade centers in the country
 		}
-		if = { # so that the variable re-counts correct number of trade centers each time
-			limit = {
-				is_player = yes
-				c:VEN ?= THIS
-				has_variable = ven_trade_center_count_var
-			}
-			ROOT = {
-	    		set_variable = { name = ven_trade_center_count_var value = 0 }
-	   		}
-	   	}
-		if = { # counts how many trade centers owned
-			limit = {
-				is_player = yes
-				AND = {
-					c:VEN ?= THIS
-					has_variable = ven_trade_center_count_var
-				}
-			}
-			every_scope_building = {
-				limit = {
-					is_building_type = building_trade_center
-				}
-				owner = {
-					change_variable = { name = ven_trade_center_count_var add = 1 }
-				}
-			}
-		}
-		if = {
+		if = { # checks if ven_trade_center_count_var is higher than the total building levels of trade centers in the country
 			limit = {
 				is_player = yes
 				exists = c:VEN
@@ -1310,6 +1282,22 @@ on_monthly_pulse_country = {
 				}
 			}
 			set_variable = all_quiet_on_the_western_front_happened
+		}
+		# for It's a Blockade! Achievement
+		if = {
+			limit = {
+				is_player = yes
+				NOT = { has_variable = its_a_blockade_happened }
+				any_enemy_in_diplo_play = {
+					any_scope_state = {
+						is_blockaded_by = ROOT
+						is_world_market_hub = yes
+					    num_world_market_hub_trade_center_levels >= 100
+						blockade_level >= 1
+					}
+				}
+			}
+			set_variable = its_a_blockade_happened
 		}
 	}
 	on_actions = { # delay ensures events won't fire simultaneously

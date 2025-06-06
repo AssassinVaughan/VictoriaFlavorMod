@@ -378,17 +378,20 @@ persia_british_aid_button = {
 			has_interest_marker_in_region = region_persia
 			relations:root >= relations_threshold:amicable
 		}
-		c:GBR ?= {
-			can_create_treaty = {
-				first_country = c:GBR
-				second_country = ROOT
-				is_draft = no
-				binding_period = { years = 2 }
-				articles_to_create = {
-					{
-						article = military_assistance
-						source_country = c:GBR
-						target_country = ROOT
+		custom_tooltip = {
+			text = "can_create_treaty_MILITARY_ASSISTANCE"
+			c:GBR ?= {
+				can_create_treaty = {
+					first_country = c:GBR
+					second_country = ROOT
+					is_draft = no
+					binding_period = { years = 2 }
+					articles_to_create = {
+						{
+							article = military_assistance
+							source_country = c:GBR
+							target_country = ROOT
+						}
 					}
 				}
 			}
@@ -489,17 +492,20 @@ persia_russian_aid_button = {
 			has_interest_marker_in_region = region_persia
 			relations:root >= relations_threshold:amicable
 		}
-		c:RUS ?= {
-			can_create_treaty = {
-				first_country = c:RUS
-				second_country = ROOT
-				is_draft = no
-				binding_period = { years = 2 }
-				articles_to_create = {
-					{
-						article = military_assistance
-						source_country = c:RUS
-						target_country = ROOT
+		custom_tooltip = {
+			text = "can_create_treaty_MILITARY_ASSISTANCE"
+			c:RUS ?= {
+				can_create_treaty = {
+					first_country = c:RUS
+					second_country = ROOT
+					is_draft = no
+					binding_period = { years = 2 }
+					articles_to_create = {
+						{
+							article = military_assistance
+							source_country = c:RUS
+							target_country = ROOT
+						}
 					}
 				}
 			}
