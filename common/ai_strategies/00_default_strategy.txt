@@ -8157,25 +8157,6 @@ ai_strategy_default = {
 				max = 200				
 			}			
 		}	
-		
-		take_treaty_port = {
-			add = scope:target_state.ai_treaty_port_value:root	
-			
-			# Britain should go for Hong Kong when starting Opium Wars play against Qing
-			if = {
-				limit = {
-					has_journal_entry = je_opium_wars
-					NOT = { is_diplomatic_play_enemy_of = scope:target_country }
-					scope:target_country = {
-						has_variable = opium_wars_target
-					}
-					scope:target_state = {
-						state_region = s:STATE_SHAOZHOU
-					}					
-				}
-				add = 1000
-			}			
-		}
 
 		transfer_subject = {
 			if = {
@@ -8347,52 +8328,6 @@ ai_strategy_default = {
 			}
 		}			
 
-		war_reparations = {
-			value = 0
-			
-			add = {
-				value = "scope:target_country.ai_gdp_comparison(root)"
-				add = 1
-				multiply = 5
-				min = 0
-				max = 15
-
-				if = {
-					limit = {
-						has_diplomatic_pact = {
-							who = scope:target_country
-							type = rivalry
-						}						
-					}
-					
-					multiply = 1.5
-				}
-			}
-			
-			if = {
-				limit = {
-					has_journal_entry = je_opium_wars
-					scope:target_country = {
-						has_variable = opium_wars_target
-					}
-				}
-				add = 50
-			}	
-
-			if = {
-				limit = {
-					has_journal_entry = je_opium_obsession
-					scope:target_country = {
-						has_variable = opium_wars_aggressor
-					}
-				}
-				add = 50
-			}
-
-			min = 0
-			max = 100			
-		}	
-
 		humiliation = {
 			value = 25
 		}	
@@ -8558,109 +8493,6 @@ ai_strategy_default = {
 			min = 0
 			max = 200	
 		}	
-		
-		foreign_investment_rights = {
-			value = 0
-			
-			if = {
-				limit = {
-					scope:target_country = {
-						has_diplomatic_pact = {
-							who = root
-							type = embargo
-						}	
-					}
-					can_reach_target_country = yes
-				}
-				add = 50
-			}		
-
-            if = {
-				limit = {
-					has_journal_entry = je_opium_wars
-					scope:target_country = {
-						has_variable = opium_wars_target
-					}
-				}
-				add = 75
-			}			
-
-			# Not worth doing against very small countries
-			if = {
-				limit = {
-					scope:target_country = {
-						gdp < 500000
-					}
-				}
-				multiply = 0
-			}				
-		}	
-
-		ban_slavery = {
-			value = 0
-			
-			if = {
-				limit = {
-					country_rank >= rank_value:major_power
-					OR = {
-						has_strategy = ai_strategy_progressive_agenda
-						has_strategy = ai_strategy_egalitarian_agenda
-					}					
-				}
-
-				add = {
-					value = scope:target_country.gdp
-					divide = 100000
-					max = 25						
-				}
-
-				
-				# Relations with target
-				multiply = {
-					value = "scope:target_country.relations:root"
-					multiply = -0.01
-					add = 1
-					min = 0.5
-					max = 2.0				
-				}
-				
-				# Ideological opinion of target
-				multiply = {
-					value = "ai_ideological_opinion(scope:target_country)"
-					multiply = -0.05
-					add = 1
-					min = 0.5
-					max = 2.0
-				}				
-			}
-			
-			# Britain will prioritize ending slavery in Brazil if they have the Aberdeen Act JE
-			if = {
-				limit = {
-					has_journal_entry = je_aberdeen_act
-					scope:target_country = {
-						c:BRZ ?= this
-					}
-				}
-				add = 50
-			}
-			# Great Powers with slavery banned will prioritize ending slavery in Brazil if that country failed its slavery JE
-			if = {
-				limit = {
-					has_law = law_type:law_slavery_banned
-					country_rank >= rank_value:great_power
-					scope:target_country = {
-						c:BRZ ?= this
-						has_modifier = brazil_slaving_pariah_modifier
-						has_law = law_type:law_slave_trade
-					}
-				}
-				add = 30
-			}
-			
-			min = 0
-			max = 100
-		}		
 
 		revoke_claim = {
 			if = {

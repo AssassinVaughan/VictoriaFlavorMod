@@ -219,22 +219,15 @@ building_trade_center = {
 		pmg_base_building_trade_center
 		pmg_trade_quantity_trade_center
 	}
-	
-	possible = {	
-		NOT = { owner = { has_law = law_type:law_isolationism } }
-		trigger_if = {
-			limit = { owner = { has_law = law_type:law_canton_system } }
-			custom_tooltip = {
-				text = canton_system_trade_center_trigger_tt
-				state_region = s:STATE_GUANGDONG
-				any_scope_building = {
-					is_building_type = building_trade_center
-					level_after_queued_constructions < 50
-				}		
-			}			
-		}
-	}	
-	
+
+	can_build_government = {
+		trade_center_construction_allowed = yes
+	}
+
+	can_build_private = {
+		trade_center_construction_allowed = yes
+	}
+
 	ownership_type = self
 
 	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_monuments.dds"

@@ -55,10 +55,20 @@ ai_desires_target_state = {
 	}
 }
 
+has_enactment_je_or_law_commitment = {
+	OR = {
+		has_journal_entry = je_government_petition
+		has_journal_entry = je_law_imposition
+		has_journal_entry = je_british_dictate_law
+		has_any_law_commitment = yes
+	}
+}
+
 ai_has_reasons_to_not_oppose_law = {
 	OR = {
+		has_law_commitment = scope:law.type
 		any_political_movement = {
-			law_stance = {
+			law_enactment_stance = {
 				law = scope:law.type
 				value > neutral
 			}
@@ -80,7 +90,7 @@ ai_has_reasons_to_not_oppose_law = {
 
 ai_has_enact_weight_modifier_journal_entries = {
 	OR = {
-		has_law_commitment = scope:law
+		has_law_commitment = scope:law.type
 		AND = {
 			has_journal_entry = je_government_petition
 			has_variable = desired_law_var
@@ -194,10 +204,6 @@ has_je_conquest_reason = {
 						state_region = s:STATE_ARIZONA
 						state_region = s:STATE_NEW_MEXICO
 						state_region = s:STATE_TEXAS
-						state_region = s:STATE_WYOMING
-						state_region = s:STATE_COLORADO
-						state_region = s:STATE_OKLAHOMA
-						state_region = s:STATE_KANSAS
 					}
 				}
 			}

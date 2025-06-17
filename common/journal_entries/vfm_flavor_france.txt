@@ -76,48 +76,6 @@ je_secular_legacy = {
 	weight = 5000
 }
 
-je_asia_colonial = {
-	icon = "gfx/interface/icons/event_icons/bicorne_hat.dds"
-
-	group = je_group_historical_content
-
-	complete = {
-		any_scope_state = {
-		    OR = {
-				state_is_in_east_asia = yes
-				state_is_in_southeast_asia = yes
-				region = sr:region_oceania
-			}
-			count >= 3
-		}
-	}
-
-	on_complete = {
-		custom_tooltip = je_asia_colonial_tt
-		trigger_event = asia_colonial_events.1
-	}
-
-	fail = {
-	}
-
-	on_fail = {
-		#trigger_event = algeria_events.3
-	}
-
-	on_monthly_pulse = {
-		#random_events = {
-		#	90 = 0
-		#	10 = algeria_events.5 # Raid Event
-		#}
-	}
-
-	transferable = no
-
-	should_be_pinned_by_default = yes
-
-	weight = 5000
-}
-
 je_cultural_centralisation = {
 	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
 
