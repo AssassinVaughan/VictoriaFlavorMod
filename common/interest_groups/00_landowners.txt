@@ -13,7 +13,6 @@
 	character_ideologies = {
 		ideology_moderate
 		ideology_traditionalist
-		ideology_legitimist
 	}
 
 	enable = {
@@ -91,6 +90,16 @@
 				set_ig_trait = ig_trait:ig_trait_family_ties
 				set_ig_trait = ig_trait:ig_trait_patrician_philanthropy
 			}
+			else_if = {
+				limit = {
+					owner = {
+						country_has_primary_culture = cu:romanian
+					}
+				}
+				set_ig_trait = ig_trait:ig_trait_bad_boyars
+				set_ig_trait = ig_trait:ig_trait_family_ties
+				set_ig_trait = ig_trait:ig_trait_noblesse_oblige
+			}
 			else = {
 				set_ig_trait = ig_trait:ig_trait_noble_privileges
 				set_ig_trait = ig_trait:ig_trait_family_ties
@@ -164,6 +173,18 @@
 			}
 			ig:ig_landowners = { 
 				set_interest_group_name = ig_landed_gentry
+				remove_ideology = ideology_paternalistic
+				add_ideology = ideology_magnatial
+			}
+		}
+		# Polish Landowners
+		else_if = {
+			limit = {
+				country_has_primary_culture = cu:polish
+			}
+			ig:ig_landowners = { 
+				remove_ideology = ideology_paternalistic
+				add_ideology = ideology_magnatial
 			}
 		}
 		# Yangban Officials
@@ -260,7 +281,7 @@
 				set_ig_trait = ig_trait:ig_trait_profitable_estates
 			}
 		}
-		# VFM Colonial countries
+        # VFM Colonial countries
 		else_if = {
 			limit = {
 				OR = { 
@@ -285,6 +306,40 @@
 				add_ideology = ideology_colonialist
 			}
 		}
+		else_if = {
+			limit = {
+				c:ZAN ?= this
+				any_primary_culture = { cu:bedouin = this }
+				NOT = { any_primary_culture = { cu:swahili = this } }
+			}
+			ig:ig_landowners = {
+				set_interest_group_name = ig_wamanga
+			}
+		}
+		# Magnates
+		else_if = {
+			limit = {
+				any_primary_culture = {
+					OR = {
+						cu:polish = this
+						cu:lithuanian = this
+						cu:hungarian = this
+					}
+				}
+			}
+			ig:ig_landowners = {
+				set_interest_group_name = ig_magnates
+			}
+		}
+		# Boyars
+		else_if = {
+			limit = {
+				country_has_primary_culture = cu:romanian
+			}
+			ig:ig_landowners = {
+				set_interest_group_name = ig_boyars
+			}
+		}
 	}
 	on_disable = {}
 	
@@ -298,6 +353,16 @@
 			}
 			cultures = {
 				assamese avadhi baluchi bengali bihari gujarati kannada malayalam marathi oriya panjabi pathan rajput sindi tamil telegu hindustani bundeli pahari gondi bageli chhattisgarhi deccani
+			}
+		}
+		rule = {
+			trigger = {
+				c:ZAN ?= this
+				any_primary_culture = { cu:bedouin = this }
+				NOT = { any_primary_culture = { cu:swahili = this } }
+			}
+			cultures = {
+				bedouin
 			}
 		}
 	}
@@ -510,6 +575,10 @@
 	commander_weight = {
 		value = 2.0
 	}
+	
+	executive_weight = {
+		value = 0.25
+	}	
 
 	noble_chance = {
 		value = 1.0
@@ -518,19 +587,27 @@
 	female_commander_chance = {
 		value = 0.0
 	}
+	
+	female_executive_chance = {
+		value = 0.0
+	}	
 
 	female_politician_chance = {
 		value = 0.0
+
 
 		if = {
 			limit = {
 				owner = {
 					has_law = law_type:law_womens_suffrage
 				}
-
+				law_stance = {
+					law = law_type:law_womens_suffrage
+					value >= approve
+				}
 			}
 			add = {
-				value = 0.01
+				value = 0.02
 			}
 		}
 	}
@@ -581,4 +658,10 @@
 		value = 0.5
 		multiply = ig_commander_leader_chance_mult
 	}
+	
+	# The chance that a executive belonging to this IG takes over leadership when it changes
+	# scope:character is the most popular executive in the IG
+	executive_leader_chance = {
+		value = 0.1
+	}	
 }

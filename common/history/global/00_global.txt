@@ -3,23 +3,23 @@ GLOBAL = {
 	
 	every_country = {
 		limit = { NOT = { has_law = law_type:law_slavery_banned } }
-		ig:ig_landowners = { add_ideology = ideology_pro_slavery }
-	}
-	
-	# Jack the ripper, prevents the event from happening every game
-
-	every_country = {
 		if = {
 			limit = {
-				is_player = yes
+				has_law = law_type:law_colonial_slavery
 			}
+			ig:ig_landowners = { add_ideology = ideology_pro_slavery_colonial }
 		}
-		random_list = {
-			1 = { set_variable = var_jack_ripper_possible }
-			9 = {
-				#Nothing Happens
-			}
+		else = {
+			ig:ig_landowners = { add_ideology = ideology_pro_slavery }
 		}
+	}
+
+	every_country = {
+		limit = {
+			has_law = law_type:law_monarchy
+			has_law = law_type:law_autocracy
+		}
+		set_variable = king_in_parliament_possible
 	}
 	
 	c:UCA ?= {
@@ -36,7 +36,7 @@ GLOBAL = {
 		}
 	}
 	
-	c:HAI = {
+	c:HAI ?= {
 		add_treasury = {
 			value = gold_reserves_limit
 			multiply = -1.0
@@ -85,18 +85,7 @@ GLOBAL = {
 			}
 			set_variable = {
 				name = lingering_plc_resistance
-				months = very_long_modifier_time
-			}
-		}
-	}
-	
-	every_country = {
-		every_interest_group = {
-			leader = {
-				set_variable = {
-					name = memento_mori_immunity
-					years = 5
-				}
+				days = very_long_modifier_time
 			}
 		}
 	}
@@ -441,7 +430,7 @@ GLOBAL = {
                 }
             }
             add_radicals_in_state = {
-                value = 0.35
+                value = 0.30
                 culture = cu:circassian
             }
             add_radicals_in_state = {
@@ -458,6 +447,21 @@ GLOBAL = {
 			}
 			add_modifier = {
 				name = window_to_europe
+			}
+		}
+		every_scope_state = {
+			limit = {
+			    OR = {
+				state_region = s:STATE_AQUITAINE
+				state_region = s:STATE_BRITTANY
+				state_region = s:STATE_PROVENCE
+				state_region = s:STATE_LANGUEDOC
+				state_region = s:STATE_GUYENNE
+				state_region = s:STATE_AUVERGNE_LIMOUSIN
+				}
+			}
+			add_modifier = {
+				name = FRA_regional_language
 			}
 		}
        create_bidirectional_truce = {
@@ -632,7 +636,7 @@ GLOBAL = {
 
     c:GBR ?= {
 	    add_radicals = {
-			value = 0.03
+			value = 0.04
 			culture = cu:irish
 		}
 	}
@@ -674,9 +678,22 @@ GLOBAL = {
 			name = china_warlord_explosion
 			value = 5
 		}
+
+		set_import_tariff_level = { # TODO PRCAL-38927 remove when this is fixed.
+			goods = opium
+			level = no_tariffs_or_subventions
+		}
+	}
+
+	s:STATE_LAOS.region_state:DAI = {
+		add_modifier = {
+			name = recently_conquered_state
+			is_decaying = yes
+			months = 60
+		}
 	}
 	
-	c:AUS = {
+	c:AUS ?= {
         add_radicals = {
 			value = very_large_radicals
 			culture = cu:polish
@@ -745,6 +762,22 @@ GLOBAL = {
 			effect_starting_pop_literacy_very_high = yes
 		}
 	}
+	
+
+    c:SER ?= {
+		add_radicals = {
+			value = 0.08
+			culture = cu:croat
+		}
+        add_radicals = {
+			value = 0.1
+			culture = cu:albanian
+		}
+		add_radicals = {
+			value = 0.1
+			culture = cu:bosniak
+		}
+    }
 	
 	c:TUR = {
 	    add_radicals = {
@@ -827,7 +860,7 @@ GLOBAL = {
 	
 
 	
-	c:SWE = {
+	c:SWE ?= {
 		trigger_event = {
 			id = vfm_ai.1
 			days = 6

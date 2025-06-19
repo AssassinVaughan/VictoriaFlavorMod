@@ -58,10 +58,10 @@
 	}
 
 	ai_chance = {
-		base = 0
+		value = 0
 		#Doesn't have button, is Liberal
-		modifier = {
-			trigger = {
+		if = {
+			limit = {
 				AND = {
 					has_strategy = ai_strategy_progressive_agenda
 					NOT = { has_variable = swaying_settlers_var }
@@ -70,8 +70,8 @@
 			add = 50
 		}
 		#Has button, is liberal
-		modifier = {
-			trigger = {
+		if = {
+			limit = {
 				AND = {
 					has_strategy = ai_strategy_progressive_agenda
 					has_variable = swaying_settlers_var
@@ -80,8 +80,8 @@
 			add = -50
 		}
 		#Has button, running bureaucracy deficit
-		modifier = {
-			trigger = {
+		if = {
+			limit = {
 				AND = {
 					bureaucracy < 0
 					has_variable = importing_convicts_var
@@ -90,8 +90,8 @@
 			add = 100
 		}
 		#Doesn't have button, running bureaucracy deficit
-		modifier = {
-			trigger = {
+		if = {
+			limit = {
 				AND = {
 					bureaucracy < 0
 					NOT = { has_variable = importing_convicts_var }
@@ -124,7 +124,7 @@ je_reform_freedom_button = {
 	}
 
 	ai_chance = {
-		base = 0
+		value = 0
 	}
 }
 
@@ -154,7 +154,7 @@ je_end_assignment_button = {
 	}
 
 	ai_chance = {
-		base = 0
+		value = 0
 	}
 }
 
@@ -180,7 +180,7 @@ je_reform_land_use_button = {
 	}
 
 	ai_chance = {
-		base = 0
+		value = 0
 	}
 }
 
@@ -211,7 +211,7 @@ je_australia_aus_claim_eastern_new_guinea_button = {
 	}
 
 	ai_chance = {
-		base = 0
+		value = 0
 	}
 }
 
@@ -249,9 +249,9 @@ je_australia_gbr_revoke_van_diemens_button = {
 	}
 
 	ai_chance = {
-		base = 0
-		modifier = {
-		    trigger = { game_date > 1844.1.1 }
+		value = 0
+		if = {
+			limit = { game_date > 1844.1.1 }
 		    add = 1
 		}
 	}
@@ -293,7 +293,7 @@ je_australia_gbr_revoke_south_australia_button = {
 	}
 
 	ai_chance = {
-		base = 1
+		value = 1
 	}
 }
 
@@ -335,6 +335,6 @@ je_australia_gbr_what_to_do_nzl = {
 	}
 
 	ai_chance = {
-		base = 1
+		value = 1
 	}
 }

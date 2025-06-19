@@ -16,13 +16,16 @@
 		add_taxed_goods = g:coffee
 		add_taxed_goods = g:luxury_furniture
 
-		set_tariffs_import_priority = g:iron
+		set_import_tariff_level = { 
+			goods = g:iron
+			level = high_subventions
+		}
 		
 		activate_law = law_type:law_monarchy
 		activate_law = law_type:law_autocracy 
 		activate_law = law_type:law_freedom_of_conscience
 		activate_law = law_type:law_per_capita_based_taxation
-		activate_law = law_type:law_racial_segregation
+		activate_law = law_type:law_subjecthood
 		activate_law = law_type:law_agrarianism
 		activate_law = law_type:law_professional_army
 		activate_law = law_type:law_slave_trade

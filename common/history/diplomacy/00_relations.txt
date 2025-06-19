@@ -87,7 +87,7 @@
 	}
 	c:FRA ?= {
 		set_relations = { country = c:PLY value = 30 }
-		set_relations = { country = c:GBR value = -40 }
+		set_relations = { country = c:GBR value = -20 }
 		set_relations = { country = c:PRU value = -20 }
 		set_relations = { country = c:AUS value = 20 }
 		set_relations = { country = c:NET value = -30 }
@@ -103,7 +103,7 @@
 		set_relations = { country = c:TUG value = -20 }
 	}
 	c:GBR ?= {
-		set_relations = { country = c:TUR value = 10 }
+		set_relations = { country = c:TUR value = 30 }
         set_relations = { country = c:POR value = 50 }
         set_relations = { country = c:BIC value = 80 }
         set_relations = { country = c:ION value = 30 }
@@ -147,6 +147,12 @@
 		set_relations = { country = c:WAL value = 50 }
 		set_relations = { country = c:RUS value = 40 }
 		set_relations = { country = c:AUS value = -20 }
+	}
+	c:MON ?= { 
+		set_relations = { country = c:TUR value = -30 }
+		set_relations = { country = c:RUS value = 30 }
+		set_relations = { country = c:AUS value = -15 }
+		set_relations = { country = c:SER value = 30 }
 	}
 	c:MOR ?= {
 		set_relations = { country = c:SPA value = -30 }
@@ -234,11 +240,6 @@
 		set_relations = { country = c:KZH value = 10 }
 		set_relations = { country = c:OZH value = 10 }
 	}
-    c:ALK ?= {
-		set_relations = { country = c:RUS value = 50 }
-		set_relations = { country = c:HBC value = 30 }
-		set_relations = { country = c:COL value = 30 }
-	}
 	c:TUS ?= {
 		set_relations = { country = c:SIC value = 30 }
 	}
@@ -251,7 +252,7 @@
 		set_relations = { country = c:SAR value = 30 }
 		set_relations = { country = c:SIC value = 30 }
 		set_relations = { country = c:AUS value = 30 }
-		set_relations = { country = c:SWI value = 20 }
+		set_relations = { country = c:SWI value = 30 }
 	}
 	c:SER ?= {
 		set_relations = { country = c:TUR value = -30 }
@@ -359,5 +360,14 @@
 	c:KAN ?= {
 		set_relations = { country = c:RUS value = 10 }
 		set_relations = { country = c:HER value = -20 }
+	}
+
+	c:WTU ?= {
+		set_relations = { country = c:OMA value = -30 }
+		set_relations = { country = c:GLD value = 40 }
+	}
+
+	c:MBS ?= {
+		set_relations = { country = c:OMA value = -30 }
 	}
 }

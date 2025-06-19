@@ -319,24 +319,17 @@
 
 			if = {
 				limit = {
-					any_scope_diplomatic_pact = {
-						OR = {
-							is_diplomatic_action_type = alliance
-							is_diplomatic_action_type = defensive_pact
-						}
-
-						"diplomatic_pact_other_country(scope:actor)" = {
-							OR = {
-								country_rank >= scope:actor.country_rank
-								army_size >= scope:actor.army_size
-							}
-						}
+					scope:actor.power_bloc ?= {
+						NOT = { has_identity = identity:identity_sovereign_empire }
+					}
+					has_powerful_protectors = {
+						ACTOR_SCOPE = scope:actor
 					}
 				}
 				add = {
 					desc = "DIPLOMATIC_ACCEPTANCE_POWERFUL_PROTECTORS_THEM"
 					value = -25
-				}	
+				}
 			}		
 		}	
 		
@@ -471,24 +464,17 @@
 
 			if = {
 				limit = {
-					any_scope_diplomatic_pact = {
-						OR = {
-							is_diplomatic_action_type = alliance
-							is_diplomatic_action_type = defensive_pact
-						}
-
-						"diplomatic_pact_other_country(root)" = {
-							OR = {
-								country_rank >= root.country_rank
-								army_size >= root.army_size
-							}
-						}
+					scope:actor.power_bloc ?= {
+						NOT = { has_identity = identity:identity_sovereign_empire }
+					}
+					has_powerful_protectors = {
+						ACTOR_SCOPE = scope:actor
 					}
 				}
 				add = {
-					desc = "DIPLOMATIC_ACCEPTANCE_POWERFUL_PROTECTORS_US"
-					value = 25
-				}	
+					desc = "DIPLOMATIC_ACCEPTANCE_POWERFUL_PROTECTORS_THEM"
+					value = -25
+				}
 			}		
 		}	
 

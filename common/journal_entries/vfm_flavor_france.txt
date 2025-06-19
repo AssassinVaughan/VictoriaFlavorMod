@@ -76,25 +76,26 @@ je_secular_legacy = {
 	weight = 5000
 }
 
-je_asia_colonial = {
-	icon = "gfx/interface/icons/event_icons/bicorne_hat.dds"
+je_cultural_centralisation = {
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
 
 	group = je_group_historical_content
 
 	complete = {
-		any_scope_state = {
-		    OR = {
-				state_is_in_east_asia = yes
-				state_is_in_southeast_asia = yes
-				region = sr:region_oceania
-			}
-			count >= 3
-		}
+		literacy_rate > 0.6
+		has_law = law_type:law_public_schools
+		has_law = law_type:law_unitary
 	}
 
 	on_complete = {
-		custom_tooltip = je_asia_colonial_tt
-		trigger_event = asia_colonial_events.1
+		every_scope_state = {
+				limit = {
+					state_region = {
+						has_modifier = FRA_regional_language
+					}
+				}
+				remove_modifier = FRA_regional_language
+			}
 	}
 
 	fail = {

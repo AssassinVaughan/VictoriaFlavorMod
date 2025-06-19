@@ -27,6 +27,9 @@ NAI = {
 	PRODUCTION_BUILDING_RANDOM_FACTOR = 5
 	VIOLATE_SOVEREIGNTY_RANDOM_FACTOR = 1.5
 	
+	MONEY_SPENDING_INNOVATION_CRITICAL_THRESHOLD = 0.65 # If innovation production compared to cap is worse than this, AI considers it very important to improve
+	MONEY_SPENDING_INNOVATION_DESIRED_THRESHOLD = 0.8 # If innovation production compared to cap is worse than this, AI considers it important to improve
+	
 	DIPLO_PLAY_SAME_POWER_BLOC_INITIATOR_FACTOR = 25 #15 Added to desire for fellow power bloc member of initiator to join their side
 	DIPLO_PLAY_SAME_POWER_BLOC_TARGET_FACTOR = 35 #25 Added to desire for fellow power bloc member of target to join their side
 	
@@ -68,10 +71,12 @@ NAI = {
 	PRODUCTION_BUILDING_FREE_INFRASTRUCTURE_TARGET_WHEN_LACKING_WORKFORCE = 2 # When lacking workforce, the AI will stop building in the state once available infrastructure is this or less
 	
 	PRODUCTION_METHOD_PROFIT_FACTOR = 1.5 #1.0 Per pound of profit the produced goods would generate
+	PRODUCTION_METHOD_EMPLOYMENT_CHANGE_FACTOR = 1.9 #2.0 The total score of a PM will be multiplied or divided by 1 + ( this * the proportion of labor that is added or saved by the change )
 	PRODUCTION_METHOD_CHANCE_TO_CHANGE = 0.2 # Chance that the AI will consider changing a production method when evaluating methods
 	
 	PRODUCTION_METHOD_REDUCE_OUTPUT_PENALTY_FACTOR = 3 #10 Multiply method score by this if we're reducing the building's output penalties
 	PRODUCTION_METHOD_INCREASE_OUTPUT_PENALTY_FACTOR = 0.45 #0.01 # Multiply method score by this if we're increasing the building's output penalties
+    PRODUCTION_METHOD_LOW_POP_THRESHOLD = 90000 #50000 If a state's population is less than this, use the scoring factor below for low-pop PMs
 	
 	PRODUCTION_BUILDING_INCREASE_SHORTAGE_MULT = 0.25 #0.01 Multiply score by this if we're increasing the state region's shortages
 	
@@ -88,14 +93,21 @@ NAI = {
     # Below data is used to calculate how much weight the AI places on suppressing an IG
     SUPPRESSION_BASE_VALUE = 60 # 75
 	
-	# Below data is used to calculate how much weight the AI places on consumption taxes 
-    CONSUMPTION_TAX_INCOME_VALUE = 10 # Per percent of state expenses in taxable value (this is then multiplied by relative authority cost of the good)
-    CONSUMPTION_TAX_STAPLE_MULT = 0.7 #0.5 Multiply desire to tax staple goods by this
-    CONSUMPTION_TAX_LUXURY_MULT = 1.75 #2.0 Multiply desire to tax luxury goods by this
-    CONSUMPTION_TAX_LOW_INCOME_THRESHOLD = 1.75 #1.25 Income-to-expenses threshold below which consumption taxes are a must-have
-    CONSUMPTION_TAX_HIGH_INCOME_THRESHOLD = 2.75 #1.5 Income-to-expenses threshold at which consumption taxes should be removed (if removal would not put us below this)
-    CONSUMPTION_TAX_MAX_NUM_TAXED_GOODS_BASE = 2 #0 Base max number of goods AI wants to tax
-    CONSUMPTION_TAX_MAX_NUM_TAXED_GOODS_PER_MISSING_TAX_TYPE = 0 #2 Added to max number of goods AI wants to tax for each other type of tax it does not collect
+	NUM_FAILED_AUTHORITY_SPENDING_ATTEMPTS_FOR_UPDATE = 5 # After this many failed attempts to change authority spending, force an update of authority spending priorities
+	
+	# Below data is used to calculate how much weight the AI places on different things it can spend its authority on
+	AUTHORITY_SPENDING_RANDOM_FACTOR = 0.1 # The higher this is, the more random new AI authority spending will be
+
+	COMPANY_CHARTER_AUTHORITY_SPENDING_PERCENTAGE = 0.0 #Ratio of authority expenses that we want country to spend on authority
+	
+	# Below data is used to calculate how much weight the AI places on consumption taxes
+	CONSUMPTION_TAX_INCOME_VALUE = 18 # Per percent of state expenses in taxable value (this is then multiplied by relative authority cost of the good)
+	CONSUMPTION_TAX_STAPLE_MULT = 0.75 # Multiply desire to tax staple goods by this
+	CONSUMPTION_TAX_LUXURY_MULT = 2.5 # Multiply desire to tax luxury goods by this
+	CONSUMPTION_TAX_LOW_INCOME_THRESHOLD = 1.2 # Income-to-expenses threshold below which consumption taxes are a must-have
+	CONSUMPTION_TAX_HIGH_INCOME_THRESHOLD = 1.5 # Income-to-expenses threshold at which consumption taxes should be removed (if removal would not put us below this)
+	CONSUMPTION_TAX_MAX_NUM_TAXED_GOODS_BASE = 3 # Base max number of goods AI wants to tax
+	CONSUMPTION_TAX_MAX_NUM_TAXED_GOODS_PER_MISSING_TAX_TYPE = 1 # Added to max number of goods AI wants to tax for each other type of tax it does not collect
 	
 	# Below data is used to calculate AI's desire for peace
 	AI_PEACE_AGREEMENT_BASE_VALUE = -10
@@ -154,17 +166,6 @@ NAI = {
 	DIPLO_PLAY_BOLDNESS_WEAK_ARMY_FACTOR = -15 	# Scaled by our relative forces compared to DIPLO_PLAY_WEAK_ARMY_THRESHOLD
 	DIPLO_PLAY_TAKE_SIDES_MIN_BOLDNESS = 2 # Boldness must be at least this for AI to want to take a side with no gain (ignored for Great Powers in containment plays)
 	
-	TRADE_ROUTE_MIN_MARKET_SHARE = 0.05 # If the AI is junior in a customs union and has less than this market share in a market, don't make any trade routes
-	TRADE_ROUTE_MIN_ACCEPTABLE_PRODUCTIVITY = 2.4 #3 # If a potential trade route would result in lower productivity than this, don't create it unless it's to resolve a shortage
-	TRADE_ROUTE_MIN_WANTED_RELATIVE_VOLUME = 0.07 #0.1 # If a trade route won't account for at least this fraction of buy/sell orders in the market, don't create it
-	TRADE_ROUTE_MIN_VALUE_TO_IGNORE_VOLUME_CHECK = 500 # If a trade route is trading at least this much base value worth of goods, ignore the relative check above
-	TRADE_ROUTE_ACCEPTABLE_SPENDING = 0.004 #0.002 AI will not spend more BUR than this on trade routes (scaled by weekly GDP)
-	TRADE_ROUTE_ACCEPTABLE_SPENDING_MINIMUM = 85 #20 If TRADE_ROUTE_ACCEPTABLE_SPENDING is less than this, this is used instead (so even small countries can do some trading)
-	
-	TRADE_ROUTE_REPLACE_THRESHOLD = 3.5 #5.0 If there is a sufficiently better new trade route (old route score x this), remove the old one
-	TRADE_ROUTE_SUPPLY_NETWORK_STRENGTH_THRESHOLD = 0.9 #1.0 If supply network strength less than this, don't make new trade routes
-	TRADE_ROUTE_DURATION_FACTOR = 5.0 #10.0 # AI multiplies value of a route by ( 1 + this ) at COMPETITIVENESS_DURATION_BONUS_MAX_MONTHS (scales linearly up to this value at a lower duration)
-	
 	# Below data is used for naval invasions:
 	NAVAL_INVASION_RANDOM_FACTOR = 0.4 								# The higher this is, the more random AI naval invasion theater selection will be
 	NAVAL_INVASION_COOLDOWN_DAYS = 20 								# After launching a naval invasion, the AI will wait at least this long before launching another
@@ -200,12 +201,6 @@ NEconomy = {
     REINVESTMENT_EFFICIENCY_MAX = 2.0 # 3.0, this has a major economical impact		# Maximum conversion of reinvestment to investment pool
 	
 	DECLARE_BANKRUPTCY_RADICALIZATION_BASE_FACTOR = 0.1 # VFM, AI cannot handle this yet # Radicalize this percentage of all pops when declaring bankruptcy
-	
-	TRADE_ROUTE_AUTO_INCREASE_ACCEPTABLE_REVENUE_DIFFERENCE = 1.15 #1.1 Multiply revenue of new trade route level by this for the purpose of considering whether it's OK to auto-increase level (means that trade routes can level up even when slightly decreasing overall revenue)
-	TRADE_ROUTE_AUTO_INCREASE_VERY_LOW_PRODUCTIVITY_THRESHOLD = 2.25 #3 If trade route's productivity is below this, always automatically decrease its level (regardless of total revenue)
-	TRADE_ROUTE_AUTO_INCREASE_LOW_PRODUCTIVITY_THRESHOLD = 4 #6 If trade route's productivity would drop below this, don't automatically increase its level (regardless of total revenue)
-	TRADE_ROUTE_AUTO_INCREASE_HIGH_PRODUCTIVITY_THRESHOLD = 7 #10 If trade route's productivity is above this, it's always fine to automatically increase its level (regardless of total revenue)
-	TRADE_ROUTE_AUTO_REDUCTION_ACCEPTABLE_REVENUE_DIFFERENCE = 1.2 # Multiply revenue of current trade route level by this for the purpose of considering whether we should auto-decrease level (means that trade routes won't level down just for the purpose of a small revenue increase)
 
     # This company mechanic is SO dumb, different buildings will have very different prosperity potential. A tool or steel factory will have higher profit than a sawmill or grain farm...
     COMPANY_PRODUCTIVITY_RATIO_HIGH_THRESHOLD = 1.15	#1.25 Companies whose productivity exceeds this factor of the global average will be considered high-productivity companies
@@ -235,7 +230,7 @@ NMilitary = {
 NDiplomacy = {
 	WAR_GOAL_INFAMY_CONQUER_STATE = 6.0
 	WAR_GOAL_INFAMY_RETURN_STATE = 1.5
-	WAR_GOAL_INFAMY_TAKE_TREATY_PORT = 2.0
+	#WAR_GOAL_INFAMY_TAKE_TREATY_PORT = 2.0
 	WAR_GOAL_INFAMY_MAKE_PROTECTORATE = 4.0
 	WAR_GOAL_INFAMY_MAKE_TRIBUTARY = 4.0
 	WAR_GOAL_INFAMY_REDUCE_AUTONOMY = 2.5
@@ -402,6 +397,7 @@ NBattle = {
 }
 
 NWar = {
+	DEVASTATION_DECAY_RATE = -0.04 #-0.025 Per day, when there are no occupations
 }
 
 NText = {

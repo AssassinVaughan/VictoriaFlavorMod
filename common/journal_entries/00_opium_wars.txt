@@ -3,12 +3,16 @@
 
 	group = je_group_internal_affairs
 
+	is_shown_in_lobby = {
+		c:CHI = THIS
+	}
+
 	scripted_button = ban_opium_button
 	scripted_button = unban_opium_button
 
-	on_monthly_pulse = {
+	on_yearly_pulse = {
 		random_events = {
-			100 = 0
+			50 = 0
 			10 = opium_wars.6
 			5 = opium_wars.7
 			5 = opium_wars.8
@@ -49,13 +53,21 @@
 			any_country = {
 				custom_tooltip = {
 					text = opiumwars_fail_tt
-					has_variable = opium_wars_aggressor
+					has_journal_entry = je_opium_wars
 				}
-				any_scope_state = {
-					is_treaty_port = yes
-					state_region = {
-						any_scope_state = {
-							owner = ROOT
+				OR = {
+					any_scope_treaty = {
+						binds = root
+						any_scope_article = {
+							has_type = foreign_investment_rights
+						}
+					}
+					any_scope_state = {
+						is_treaty_port = yes
+						state_region = {
+							any_scope_state = {
+								owner = ROOT
+							}
 						}
 					}
 				}
@@ -83,6 +95,10 @@
 		hidden_effect = { remove_modifier = opium_wars_addiction_modifier }
 		add_modifier = {
 			name = opium_wars_addiction_modifier
+			days = long_modifier_time
+		}
+		add_modifier = {
+			name = opium_wars_addiction_modifier
 			months = long_modifier_time
 		}
 		add_radicals = {
@@ -106,13 +122,26 @@ je_opium_wars = {
 	group = je_group_foreign_affairs
 	
 	complete = {
-		any_scope_state = {
-			is_treaty_port = yes
-			state_region = {
-				any_scope_state = {
-					owner = scope:target
+		OR = {
+			any_scope_treaty = {
+				binds = scope:target
+				any_scope_article = {
+					has_type = foreign_investment_rights
 				}
 			}
+			any_scope_state = {
+				is_treaty_port = yes
+				state_region = {
+					any_scope_state = {
+						owner = scope:target
+					}
+				}
+			}
+		}
+		hidden_trigger = {
+			scope:target = {
+				has_modifier = opium_wars_lost
+			}			
 		}
 	}
 

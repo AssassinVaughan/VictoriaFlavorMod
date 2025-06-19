@@ -11,6 +11,10 @@
 			text = disallow_law_no_colonial_affairs_tt
 		}
 	}
+
+	modifier = {
+		country_acceptance_homeland_add = 10
+	}
 	
 	ai_will_do = {
 		has_law = law_type:law_council_republic
@@ -332,11 +336,19 @@ law_frontier_colonization = {
 	group = lawgroup_colonization
 
 	can_enact = {
-		any_scope_state = {
-			is_homeland_of_country_cultures = ROOT
-			any_neighbouring_state = {
-				owner = {
-					is_country_type = decentralized
+		OR = {
+			AND = {
+				is_country_type = colonial
+				any_decentralized_country = {
+					is_adjacent_to_country = root
+				}
+			}
+			any_scope_state = {
+				is_homeland_of_country_cultures = ROOT
+				any_neighbouring_state = {
+					owner = {
+						is_country_type = decentralized
+					}
 				}
 			}
 		}

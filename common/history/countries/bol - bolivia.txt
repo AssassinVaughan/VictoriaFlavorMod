@@ -18,8 +18,14 @@
 		activate_law = law_type:law_freedom_of_conscience #Per the Constitution of 1834:"Artículo 6.- La religión católica, apostólica, romana, es la de la República, con exclusión de todo otro culto público. El Gobierno la protegerá y hará respetar, reconociendo el principio de que no hay poder humano sobre las conciencias."
 		activate_law = law_type:law_unitary #I actually would need to check the internal organization of Bolivia at the time, but since they were a state in the confederation I'm defaulting to unitary	
 
-		set_tariffs_import_priority = g:artillery
-		set_tariffs_import_priority = g:small_arms		
+		set_import_tariff_level = { 
+			goods = g:artillery
+			level = high_subventions
+		}
+		set_import_tariff_level = { 
+			goods = g:small_arms
+			level = high_subventions
+		}	
 
 		ig:ig_armed_forces = {
 			add_ruling_interest_group = yes

@@ -15,6 +15,32 @@
 				activate_production_methods={ "pm_simple_farming_building_rice_farm" "pm_no_secondary" "pm_tools_disabled"  }
 			}
 			create_building={
+				building="building_sugar_plantation"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:JOH"
+						levels=2
+						region="STATE_MALAYA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "default_building_sugar_plantation" "pm_road_carts"  }
+			}			
+			create_building={
+				building="building_tea_plantation"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:JOH"
+						levels=2
+						region="STATE_MALAYA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "default_building_tea_plantation" "pm_road_carts"  }
+			}					
+			create_building={
 				building="building_fishing_wharf"
 				add_ownership={
 					building={
@@ -55,32 +81,30 @@
 			}
 		}
 		region_state:BIC={
-		}
-		region_state:GBR={
 			create_building={
-				building="building_tea_plantation"
+				building="building_trade_center"
+				activate_production_methods={ "pm_trade_center_trade_quantity_normal" }
 				add_ownership={
 					building={
-						type="building_manor_house"
-						country="c:GBR"
-						levels=1
+						type="building_financial_district"
+						country="c:BIC"
+						levels=2
 						region="STATE_MALAYA"
-					}
+					}				
 				}
 				reserves=1
-				activate_production_methods={ "default_building_tea_plantation" "pm_road_carts"  }
-			}
+			}			
 			create_building={
 				building="building_port"
 				add_ownership={
 					country={
-						country="c:GBR"
+						country="c:BIC"
 						levels=1
 					}
 				}
 				reserves=1
 				activate_production_methods={ "pm_basic_port" }
-			}
+			}		
 		}
 		region_state:PRK={
 			create_building={
@@ -426,6 +450,25 @@
 				}
 				reserves=1
 				activate_production_methods={ "pm_secular_bureaucrats" "pm_professional_bureaucrats" "pm_horizontal_drawer_cabinets" }
+			}
+			create_building={
+				building="building_trade_center"
+				activate_production_methods={ "pm_trade_center_trade_quantity_normal" }
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:NET"
+						levels=4
+						region="STATE_HOLLAND"
+					}
+					building={
+						type="building_financial_district"
+						country="c:DEI"
+						levels=3
+						region="STATE_WEST_JAVA"
+					}
+				}
+				reserves=1
 			}
 			create_building={
 				building="building_construction_sector"
@@ -1586,6 +1629,19 @@
 				}
 				reserves=1
 				activate_production_methods={ "pm_simple_organization" "pm_religious_bureaucrats" "pm_professional_bureaucrats" }
+			}
+			create_building={
+				building="building_trade_center"
+				activate_production_methods={ "pm_trade_center_trade_quantity_normal" }
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:SPA"
+						levels=1
+						region="STATE_TOLEDO"
+					}
+				}
+				reserves=1
 			}
 			create_building={
 				building="building_rice_farm"

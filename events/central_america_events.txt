@@ -37,7 +37,7 @@ central_america.1 = {
 		name = central_america.1.a
 		add_modifier = {
 			name = unification_prestige
-			months = very_long_modifier_time
+			days = very_long_modifier_time
 		}
 		add_loyalists = {
 			value = 0.1
@@ -525,17 +525,6 @@ central_america.3 = {
 				}
 				add_loyalists_in_state = {
 					value = 0.5
-				}
-			}
-		}
-		if = {
-			limit = {
-				OR = {
-					c:GUA = { exists = no }
-					c:ELS = { exists = no }
-					c:HON = { exists = no }
-					c:NIC = { exists = no }
-					c:COS = { exists = no }
 				}
 			}
 		}

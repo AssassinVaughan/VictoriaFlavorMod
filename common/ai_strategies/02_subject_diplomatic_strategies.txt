@@ -565,5 +565,12 @@ ai_strategy_subject_overlord_compliance = {
 		value = 90 # vfm make this really high for now?
 		subtract = liberty_desire
 		multiply = 2
+		
+		if = {
+			limit = { 
+				is_princely_state = yes
+			}
+			add = 10
+		}
 	}
 }

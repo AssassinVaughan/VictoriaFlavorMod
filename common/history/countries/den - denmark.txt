@@ -8,11 +8,26 @@
 		
 		add_taxed_goods = g:liquor
 		
-		set_tariffs_import_priority = g:artillery
-		set_tariffs_import_priority = g:small_arms
-		set_tariffs_import_priority = g:wood
-		set_tariffs_import_priority = g:hardwood
-		set_tariffs_import_priority = g:iron
+		set_import_tariff_level = { 
+			goods = g:artillery
+			level = high_subventions
+		}
+		set_import_tariff_level = { 
+			goods = g:small_arms
+			level = high_subventions
+		}
+		set_import_tariff_level = { 
+			goods = g:wood
+			level = high_subventions
+		}
+		set_import_tariff_level = { 
+			goods = g:hardwood
+			level = high_subventions
+		}
+		set_import_tariff_level = { 
+			goods = g:iron
+			level = high_subventions
+		}
 
 		activate_law = law_type:law_monarchy
 		activate_law = law_type:law_oligarchy
@@ -27,12 +42,13 @@
 		activate_law = law_type:law_religious_schools
 		activate_law = law_type:law_per_capita_based_taxation
     	activate_law = law_type:law_right_of_assembly
+		activate_law = law_type:law_colonial_slavery # Slavery in Danish colonies was only abolished in 1848
     	activate_law = law_type:law_colonial_exploitation
 		activate_law = law_type:law_devolved
 
 		set_institution_investment_level = {
 			institution = institution_colonial_affairs
-			level = 0
+			level = 1
 		}
 			
 		set_institution_investment_level = {

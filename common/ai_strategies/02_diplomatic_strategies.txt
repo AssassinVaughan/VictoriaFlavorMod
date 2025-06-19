@@ -285,6 +285,17 @@ ai_strategy_territorial_expansion = {
 			}
 			add = 5
 		}
+
+		# High-fervour AI is inclined to take its homelands
+		if = {
+			limit = {
+				country_fervor_primary_culture > 10
+			}
+			add = {
+				value = country_fervor_primary_culture
+				divide = 2
+			}
+		}
 			
 		if = {
 			limit = { ig:ig_armed_forces = { is_powerful = yes } }

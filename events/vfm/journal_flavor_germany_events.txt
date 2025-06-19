@@ -37,12 +37,12 @@ journal_flavor_germany.1 = {
 		default_option = yes
 		add_modifier = {
 			name = generic_production_tech_research
-			months = long_modifier_time
+			days = long_modifier_time
 		}
 		ig:ig_petty_bourgeoisie = {
 			add_modifier = {
 				name = symbolist_ig_good_modifier
-				months = normal_modifier_time
+				days = normal_modifier_time
 			}
 		}
 	}
@@ -50,12 +50,12 @@ journal_flavor_germany.1 = {
 		name = journal_flavor_germany.1.b
 		add_modifier = {
 			name = generic_production_tech_research
-			months = long_modifier_time
+			days = long_modifier_time
 		}
 		ig:ig_industrialists = {
 			add_modifier = {
 				name = symbolist_ig_good_modifier
-				months = normal_modifier_time
+				days = normal_modifier_time
 			}
 		}
 	}
@@ -86,7 +86,7 @@ journal_flavor_germany.101 = {
 		ig:ig_landowners = {
 			add_modifier = {
 				name = symbolist_ig_bad_modifier
-				months = normal_modifier_time
+				days = normal_modifier_time
 			}
 		}
 	}
@@ -95,7 +95,7 @@ journal_flavor_germany.101 = {
 		ig:ig_rural_folk = {
 			add_modifier = {
 				name = symbolist_ig_bad_modifier
-				months = normal_modifier_time
+				days = normal_modifier_time
 			}
 		}
 	}
@@ -134,12 +134,12 @@ journal_flavor_germany.2 = {
 		default_option = yes
 		add_modifier = {
 			name = generic_military_tech_research
-			months = long_modifier_time
+			days = long_modifier_time
 		}
 		ig:ig_armed_forces = {
 			add_modifier = {
 				name = symbolist_ig_good_modifier
-				months = normal_modifier_time
+				days = normal_modifier_time
 			}
 		}
 	}
@@ -147,12 +147,12 @@ journal_flavor_germany.2 = {
 		name = journal_flavor_germany.2.b
 		add_modifier = {
 			name = generic_military_tech_research
-			months = long_modifier_time
+			days = long_modifier_time
 		}
 		ig:ig_devout = {
 			add_modifier = {
 				name = symbolist_ig_good_modifier
-				months = normal_modifier_time
+				days = normal_modifier_time
 			}
 		}
 	}
@@ -188,13 +188,13 @@ journal_flavor_germany.102 = {
 		ig:ig_industrialists = {
 			add_modifier = {
 				name = symbolist_ig_bad_modifier
-				months = normal_modifier_time
+				days = normal_modifier_time
 			}
 		}
 		ig:ig_armed_forces = {
 			add_modifier = {
 				name = symbolist_ig_good_modifier
-				months = normal_modifier_time
+				days = normal_modifier_time
 			}
 		}
 	}
@@ -203,13 +203,13 @@ journal_flavor_germany.102 = {
 		ig:ig_industrialists = {
 			add_modifier = {
 				name = symbolist_ig_good_modifier
-				months = normal_modifier_time
+				days = normal_modifier_time
 			}
 		}
 		ig:ig_armed_forces = {
 			add_modifier = {
 				name = symbolist_ig_bad_modifier
-				months = normal_modifier_time
+				days = normal_modifier_time
 			}
 		}
 	}
@@ -245,7 +245,7 @@ journal_flavor_germany.1002 = {
 		ig:ig_armed_forces = {
 			add_modifier = {
 				name = symbolist_ig_bad_modifier
-				months = normal_modifier_time
+				days = normal_modifier_time
 			}
 		}
 	}
@@ -320,7 +320,7 @@ journal_flavor_germany.3 = {
 			}
 			add_modifier = {
 				name = generic_production_tech_research
-				months = long_modifier_time
+				days = long_modifier_time
 			}
 			trigger_event = { id = journal_flavor_germany.103 }
 		}
@@ -332,7 +332,7 @@ journal_flavor_germany.3 = {
 			}
 			add_modifier = {
 				name = generic_production_tech_research
-				months = long_modifier_time
+				days = long_modifier_time
 			}
 			trigger_event = { id = journal_flavor_germany.104 }
 		}
@@ -344,10 +344,38 @@ journal_flavor_germany.3 = {
 			}
 			add_modifier = {
 				name = generic_production_tech_research
-				months = long_modifier_time
+				days = long_modifier_time
 			}
 			trigger_event = { id = journal_flavor_germany.104 }
 		}
+	}
+}
+
+journal_flavor_germany.4 = {
+	type = country_event
+	event_image = {
+		video = "votp_monarch_holding_court"
+	}
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	duration = 3
+	placement = ROOT
+	title = journal_flavor_germany.4.t
+	desc = journal_flavor_germany.4.d
+	flavor = journal_flavor_germany.4.f
+
+	trigger = {
+	}
+
+	immediate = {
+
+	}
+	
+	option = {
+		name = journal_flavor_germany.4.a
+		default_option = yes
 	}
 }
 
@@ -385,7 +413,7 @@ journal_flavor_germany.103 = {
 			}
 			add_modifier = {
 				name = generic_production_tech_research
-				months = long_modifier_time
+				days = long_modifier_time
 			}
 		}
 	}
@@ -425,7 +453,7 @@ journal_flavor_germany.104 = {
 			}
 			add_modifier = {
 				name = generic_production_tech_research
-				months = long_modifier_time
+				days = long_modifier_time
 			}
 		}
 	}
