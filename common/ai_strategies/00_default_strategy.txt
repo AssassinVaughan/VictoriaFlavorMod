@@ -129,38 +129,15 @@ ai_strategy_default = {
 				    has_technology_researched = nationalism
 				}
 				add = {
-					value = 75
+					value = 100
 					desc = "north_german_support"
 			    }
 			}
 			else = {
 			    add = {
-					value = 40
+					value = 50
 					desc = "north_german_support"
 			    }
-			}
-		}
-		
-		### North German War
-		if = {
-			limit = { 
-				exists = scope:is_initiator
-				scope:diplomatic_play_type = play_type:dp_liberate_subject
-				root = {
-					country_has_primary_culture = cu:north_german
-				}
-				scope:country = {
-					country_has_primary_culture = cu:north_german
-				}
-				scope:enemy_country = {
-					NOT = {
-						country_has_primary_culture = cu:north_german
-					}
-				}
-			}
-			add = {
-				value = 100
-				desc = "north_german_support"
 			}
 		}
 		
@@ -240,27 +217,35 @@ ai_strategy_default = {
 			}
 		}
 
-				### Stay out of north german war
+		### Schleswig War
 		if = {
-			# Non-Germans should stay out of the leadership war unless they have a good reason to intervene
 			limit = {
-				scope:country = {
-					is_oppressor_of_schleswig_holstein = yes
-				}
 				NOR = {
 					country_has_primary_culture = cu:north_german
 					country_has_primary_culture = cu:south_german
-				}	
-                scope:enemy_country = { 	
-                OR = {
-					country_has_primary_culture = cu:north_german
-					country_has_primary_culture = cu:south_german
 				}
-                }				
+				OR = {
+					AND = {
+						scope:country = {
+							is_oppressor_of_schleswig_holstein = yes
+						}
+						scope:enemy_country = {
+							has_journal_entry = je_schleswig_holstein_question
+						}
+					}
+					AND = {
+						scope:enemy_country = {
+							is_oppressor_of_schleswig_holstein = yes
+						}
+						scope:country = {
+							has_journal_entry = je_schleswig_holstein_question
+						}
+					}
+				}
 			}
-			
+
 			if = {
-				limit = {				
+				limit = {
 					NOR = {
 						any_scope_treaty = {
 							binds = scope:country
@@ -282,15 +267,14 @@ ai_strategy_default = {
 									any_scope_article = {
 										has_type = guarantee_independence
 									}
-								}								
+								}
 							}
-						}							
+						}
 					}
 				}
-				
 				add = {
-					value = -50
-					desc = "north_german_neutrality"
+					value = -100
+					desc = "je_schleswig_holstein_question"
 				}
 			}
 		}
@@ -1260,6 +1244,18 @@ ai_strategy_default = {
 			add = {
 				value = 100
 			}
+		}
+
+		# Good luck Denmark
+		if = {
+			limit = {
+				c:DEN ?=this
+				scope:diplomatic_play.target = { c:DEN ?= this }
+				scope:diplomatic_play.initiator = {
+					has_journal_entry = je_schleswig_holstein_question
+				}
+			}
+			add = 50
 		}
 	} 
 		
@@ -3158,7 +3154,7 @@ ai_strategy_default = {
 						is_oppressor_of_schleswig_holstein = yes
 					}
 				}
-				add = 0.5
+				add = 1.5
 			}			
 
 			#Italian Nightmare
@@ -8772,9 +8768,9 @@ ai_strategy_default = {
 						wants_to_solve_schleswig_holstein = yes
 						exists = c:HOL
 						scope:target_country = { this = c:HOL }
-						can_reach_target_country = no
+						can_reach_target_country = yes
 					}
-					add = 100
+					add = 150
 				}
 
 				if = {
