@@ -46,13 +46,6 @@ ai_strategy_default = {
 			add = 100
 		}	
 
-		if = {
-			limit = {
-				has_journal_entry = je_the_grand_collapse
-			}
-			add = 100
-		}
-		
 		# Revolution aversion for July Monarchy
 		if = {
 			limit = { has_journal_entry = je_divided_monarchists }
@@ -482,22 +475,6 @@ ai_strategy_default = {
 			}
 		}
 
-		if = { # The Balkan League countries supporting each other against the Ottomans.
-			limit = {
-				has_journal_entry = je_the_balkan_league
-				scope:country = {
-					has_journal_entry = je_the_balkan_league
-				}
-				scope:enemy_country = {
-					c:TUR ?= this
-				}
-			}
-			add = {
-				value = 1000
-				desc = "support_for_balkan_league"
-			}
-		}
-		
 		if = { # Subjects of an overlord that has committed to assisting a claimant will be more inclined to help.
 			limit = {
 				overlord ?= {
@@ -672,60 +649,6 @@ ai_strategy_default = {
 			add = {
 				value = 25
 				desc = "alignment_politics"
-			}
-		}
-
-		if = { # Russia shouldn't join secession plays, since then it couldn't add wargoals of its own
-			limit = { 
-				exists = scope:is_initiator
-				scope:diplomatic_play_type = play_type:dp_secession
-				root = {
-					c:RUS ?= this
-					has_journal_entry = je_eastern_question_russia
-				}
-				OR = {
-					scope:country = {
-						country_has_primary_culture = cu:bulgarian
-					}
-					scope:enemy_country = {
-						country_has_primary_culture = cu:bulgarian
-					}
-				}
-				OR = {
-					scope:enemy_country = {
-						has_journal_entry = je_great_eastern_crisis
-					}
-					scope:country = {
-						has_journal_entry = je_great_eastern_crisis
-					}
-				}
-			}
-			add = {
-				value = -200
-				desc = "focus_on_bulgaria"
-			}
-		}	
-
-		if = { # Austria doesn't want anything except for Bosnia
-			limit = {
-				exists = scope:is_initiator
-				scope:diplomatic_play_type = play_type:dp_secession
-				root = {
-					c:AUS ?= this
-					has_journal_entry = je_eastern_question_austria
-				}
-				OR = {
-					scope:enemy_country = {
-						has_journal_entry = je_great_eastern_crisis
-					}
-					scope:country = {
-						has_journal_entry = je_great_eastern_crisis
-					}
-				}
-			}
-			add = {
-				value = -200
-				desc = "focus_on_bosnia"
 			}
 		}
 
@@ -1138,72 +1061,6 @@ ai_strategy_default = {
 			add = 50
 		}
 
-		# Second Balkan War, pitting the balkan nations against each other
-		if = {
-			limit = {
-				has_journal_entry = je_spoils_of_war
-				any_diplomatically_relevant_country = {
-					sr:region_balkans = {
-						any_scope_state = {
-							is_homeland_of_country_cultures = root
-							has_claim_by = root
-						}
-					}
-				}
-			}
-			 add = 50
-		}
-
-		# Second Balkan War, pitting the balkan nations against each other (Wallachia)
-		if = {
-			limit = {
-				has_journal_entry = je_spoils_of_war
-				country_has_primary_culture = cu:romanian
-				any_diplomatically_relevant_country = {
-					country_rank <= rank_value:minor_power
-					any_scope_state = {
-						is_homeland_of_country_cultures = root
-						has_claim_by = root
-					}
-				}
-			}
-			add = 50
-		}
-		
-		# Balkan minors are quite bold during the Eastern Question
-		if = {
-			limit = {
-				has_journal_entry = je_eastern_crisis_tracker
-				any_enemy_in_diplo_play = {
-					has_journal_entry = je_great_eastern_crisis
-				}
-			}
-			add = 10
-		}
-
-		# Ottomans will tend to back down against Austria when they have the Great Eastern Crisis
-		if = {
-			limit = {
-				has_journal_entry = je_great_eastern_crisis
-				owns_entire_state_region = STATE_BOSNIA
-				any_enemy_in_diplo_play = {
-					has_journal_entry = je_eastern_question_austria
-				}
-			}
-			add = -25
-		}
-
-		# Countries with high-fervour primary cultures are bolder by default
-		if = {
-			limit = {
-				country_fervor_primary_culture > 10
-			}
-			add = {
-				value = country_fervor_primary_culture
-				divide = 4
-			}
-		}
-		
 		# German minors should be willing to fight intruders
 		if = {
 			limit = {
@@ -1799,14 +1656,6 @@ ai_strategy_default = {
 				add = 50
 			}
 
-			if = {
-				limit = {
-					has_journal_entry = je_eastern_question_austria
-					scope:target_state = { state_region = s:STATE_BOSNIA }
-				}
-				add = 50
-			}
-			
 			if = {
 				limit = {
 					has_journal_entry = je_sick_man_egypt
@@ -3088,49 +2937,6 @@ ai_strategy_default = {
 				add = 2
 			}
 
-		# 2nd Balkan War aka the "Spoils of War" JE
-		if = {
-			limit = {
-				has_journal_entry = je_spoils_of_war
-				scope:target_country = {
-					sr:region_balkans = {
-					any_scope_state = {
-						is_homeland_of_country_cultures = root
-						has_claim_by = root
-						}
-					}
-				}
-			}
-			 add = 10
-		}
-
-		# 2nd Balkan War aka the "Spoils of War" JE (Wallachia)
-		if = {
-			limit = {
-				has_journal_entry = je_spoils_of_war
-				country_has_primary_culture = cu:romanian
-				scope:target_country = {
-					country_rank <= rank_value:minor_power
-					any_scope_state = {
-						is_homeland_of_country_cultures = root
-						has_claim_by = root
-					}
-				}
-			}
-			add = 10
-		}
-
-		# Balkan minors aggression during the Eastern Question
-		if = {
-			limit = {
-				has_journal_entry = je_eastern_crisis_tracker
-				scope:target_country = {
-					has_journal_entry = je_great_eastern_crisis
-				}
-			}
-			add = 10
-		}	
-
 			# Greek Nationalism
 			if = {
 				limit = {
@@ -3352,50 +3158,7 @@ ai_strategy_default = {
 	            add = 2
 	        }	
 		}
-
-		# Austria really, really wants to seize Bosnia
-		if = {
-			limit = {
-				has_journal_entry = je_eastern_question_austria
-				scope:target_country = {
-					owns_entire_state_region = STATE_BOSNIA
-				}
-			}
-			add = 5
-		}
-
-		# Russia really, really wants to free Bulgaria
-		if = {
-			limit = {
-				has_journal_entry = je_eastern_question_russia
-				scope:target_country = {
-					has_journal_entry = je_great_eastern_crisis
-				}
-			}
-			add = 5
-		}
-
-		# Countries with high-fervour primary cultures are more reckless against rivals or countries with homelands
-		if = {
-			limit = {
-				country_fervor_primary_culture > 10
-				scope:target_country = {
-					OR = {
-						has_diplomatic_pact = {
-							who = root
-							type = rivalry
-						}
-						any_scope_state = {
-							is_homeland_of_country_cultures = root
-						}
-					}
-				}
-			}
-			add = {
-				value = country_fervor_primary_culture
-				divide = 20
-			}
-		}
+		
 	}
 	
 	# How likely is the AI to start a diplomatic play against another country if their attitude allows for it
@@ -3461,38 +3224,6 @@ ai_strategy_default = {
 			add = 100
 		}
 
-		# Second Balkan War, pitting the balkan nations against each other
-		if = {
-			limit = {
-				has_journal_entry = je_spoils_of_war
-				scope:target_country = {
-					sr:region_balkans = {
-					any_scope_state = {
-						is_homeland_of_country_cultures = root
-						has_claim_by = root
-						}
-					}
-				}
-			}
-				add = 500
-		}
-
-		# Second Balkan War, pitting the balkan nations against each other (Wallachia)
-		if = {
-			limit = {
-				has_journal_entry = je_spoils_of_war
-				country_has_primary_culture = cu:romanian
-				scope:target_country = {
-					country_rank <= rank_value:minor_power
-					any_scope_state = {
-						is_homeland_of_country_cultures = root
-						has_claim_by = root
-					}
-				}
-			}
-				add = 500
-		}
-		
 		# Greek Nationalism
 		if = {
 			limit = {
@@ -4346,75 +4077,6 @@ ai_strategy_default = {
 			add = 25
 		}
 
-		# Countries with high-fervour primary cultures are more aggressive against rivals or countries with homelands
-		if = {
-			limit = {
-				country_fervor_primary_culture > 10
-				scope:target_country = {
-					OR = {
-						has_diplomatic_pact = {
-							who = root
-							type = rivalry
-						}
-						any_scope_state = {
-							is_homeland_of_country_cultures = root
-						}
-						NOT = {
-							any_primary_culture = {
-								is_primary_culture_of = root
-							}
-						}
-					}
-				}
-			}
-			add = {
-				value = country_fervor_primary_culture
-				divide = 20
-			}
-		}
-
-		# Austria really, really wants to seize Bosnia
-		if = {
-			limit = {
-				has_journal_entry = je_eastern_question_austria
-				scope:target_country = {
-					owns_entire_state_region = STATE_BOSNIA
-				}
-			}
-			add = 25
-		}
-
-		# Russian aggression during the Eastern Question
-		if = {
-			limit = {
-				has_journal_entry = je_eastern_question_russia
-				scope:target_country = {
-					has_journal_entry = je_great_eastern_crisis
-				}
-			}
-			add = 25
-		}
-
-		# Balkan minors aggression during the Eastern Question
-		if = {
-			limit = {
-				has_journal_entry = je_eastern_crisis_tracker
-				scope:target_country = {
-					has_journal_entry = je_great_eastern_crisis
-				}
-			}
-			add = 10
-		}
-
-		# AI Metternich is not inclined to go off on military adventures
-		if = {
-			limit = {
-				c:AUS ?= this
-				has_journal_entry = je_metternich
-			}
-            multiply = 0.5
-		}
-
         # Neutral Switzerland
         if = {
             limit = {
@@ -4659,16 +4321,6 @@ ai_strategy_default = {
 				has_strategy = ai_strategy_colonial_extraction
 			}
 			multiply = 0.7	
-		}	
-
-		if = {
-			limit = { 
-				OR = {
-					has_journal_entry = je_prussia_of_the_balkans
-					has_strategy = ai_strategy_prussia_of_the_balkans
-				}
-			}
-			multiply = 2
 		}
 		
 		if = {
@@ -4676,21 +4328,7 @@ ai_strategy_default = {
 				has_journal_entry = je_sick_man_army game_date > 1840.1.1
 			}
 			min = 100
-		}
-		
-		if = {
-			limit = { 
-				has_journal_entry = je_montenegrin_raiding
-			}
-			min = 8
-		}
-		
-		if = {
-			limit = { 
-				has_journal_entry = je_prussia_of_the_balkans
-			}
-			min = 25
-		}		
+		}	
 		
 		if = {
 			limit = { 
@@ -5296,18 +4934,6 @@ ai_strategy_default = {
 						is_oppressor_of_schleswig_holstein = yes
 					}					
 					can_reach_target_country = no
-				}
-				add = 100
-			}
-		}
-		BUL = {
-			# Russia is inclined to want to release countries from Bulgaria
-			if = {
-				limit = {
-					has_journal_entry = je_eastern_question_russia
-					scope:target_country = {
-						has_journal_entry = je_great_eastern_crisis
-					}
 				}
 				add = 100
 			}
@@ -5931,20 +5557,6 @@ ai_strategy_default = {
 		befriend = {
 			value = 200
 
-			if = {
-				limit = {
-					has_journal_entry = je_the_grand_collapse
-					any_subject_or_below = {
-						count >= 1
-					}
-					scope:target_country = {
-						relations:root <= relations_threshold:cordial
-						is_subject_of = root
-					}
-				}
-				add = 500
-			}
-			
 			if = { # To make Britain want to befriend an Asian major power
 				limit = {	
 					country_has_primary_culture = cu:british
@@ -7062,39 +6674,6 @@ ai_strategy_default = {
 					}
 					add = 1000
 				}
-
-
-			# Second Balkan War, pitting the balkan nations against each other
-			if = {
-				limit = {
-					has_journal_entry = je_spoils_of_war
-					scope:target_country = {
-						sr:region_balkans = {
-						any_scope_state = {
-							is_homeland_of_country_cultures = root
-							has_claim_by = root
-							}
-						}
-					}
-				}
-				 add = 10000
-			}
-
-			# Second Balkan War, pitting the balkan nations against each other (Wallachia)
-			if = {
-				limit = {
-					has_journal_entry = je_spoils_of_war
-					country_has_primary_culture = cu:romanian
-					scope:target_country = {
-						country_rank <= rank_value:minor_power
-						any_scope_state = {
-							is_homeland_of_country_cultures = root
-							has_claim_by = root
-						}
-					}
-				}
-				 add = 10000
-			}
 
 				if = {
 					limit = {
