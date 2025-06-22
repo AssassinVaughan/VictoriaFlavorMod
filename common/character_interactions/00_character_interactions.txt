@@ -129,7 +129,6 @@ grant_leadership_to_agitator = {
 				has_ideology = ideology:ideology_theocrat
 				has_ideology = ideology:ideology_integralist
 				has_ideology = ideology:ideology_traditionalist
-				has_ideology = ideology:ideology_traditionalist_minoritarian
 			}
 		}
 		trigger_else = {
@@ -277,7 +276,6 @@ marry_ruler_or_heir = {
 		}
 		scope:actor ?= {
 			has_law = law_type:law_monarchy
-			has_gov_regency = no
 			religion = {
 				has_discrimination_trait = heritage_christian
 			}
@@ -326,7 +324,6 @@ abdicate_monarch = {
 		is_ruler = yes
 		owner ?= {
 			has_law = law_type:law_monarchy
-			has_gov_regency = no
 		}
 		exists = owner.heir
 		is_immortal = no
@@ -559,27 +556,6 @@ exile_character = {
 		}
 		if = {
 			limit = {
-				owner = {
-					has_journal_entry = je_ip4_coup
-				}
-				root = {
-					has_variable = golpista_var
-				}
-			}
-			owner = {
-				set_variable = exile_golpista_var
-				set_variable = preempetive_coup_var
-				trigger_event = { id = ip4_coup.2 popup = yes }
-				custom_tooltip = pronunciamento_immediately_tt
-				show_as_tooltip = {
-					custom_tooltip = if_coup_is_successful_tt
-					ip4_coup_victory_effect_interaction_display = yes
-				}
-			}
-		}
-		else = {
-			if = {
-				limit = {
 					has_role = politician
 				}
 				owner ?= {
@@ -759,7 +735,6 @@ exile_character = {
 				exile_character_with_martyrdom = yes
 			}
 		}
-	}
 
 	cooldown = { days = normal_modifier_time }
 	show_confirmation_box = yes
@@ -1066,27 +1041,6 @@ retire_commander = {
 	}
 
 	effect = {
-		if = {
-			limit = {
-				owner = {
-					has_journal_entry = je_ip4_coup
-				}
-				root = {
-					has_variable = golpista_var
-				}
-			}
-			owner = {
-				set_variable = retire_golpista_var
-				set_variable = preempetive_coup_var
-				trigger_event = { id = ip4_coup.2 popup = yes }
-				custom_tooltip = pronunciamento_immediately_tt
-				show_as_tooltip = {
-					custom_tooltip = if_coup_is_successful_tt
-					ip4_coup_victory_effect_interaction_display = yes
-				}
-			}
-		}
-		else = {
 			hidden_effect = {
 				if = {
 					limit = {

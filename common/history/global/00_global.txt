@@ -514,6 +514,27 @@ GLOBAL = {
             culture = cu:azerbaijani
         }
 	}
+	
+	c:FRA ?= {
+	    every_scope_state = {
+			limit = {
+			    OR = {
+				state_region = s:STATE_AQUITAINE
+				state_region = s:STATE_BRITTANY
+				state_region = s:STATE_PROVENCE
+				state_region = s:STATE_LANGUEDOC
+				state_region = s:STATE_GUYENNE
+				state_region = s:STATE_AUVERGNE_LIMOUSIN
+				}
+			}
+			add_modifier = {
+				name = FRA_regional_language
+			}
+			add_radicals_in_state = {
+				value = 0.03
+			}
+		}
+	}
 
 	c:ARG ?= {
 		every_scope_state = {
@@ -524,15 +545,15 @@ GLOBAL = {
 				}
 			}
 			add_radicals_in_state = {
-				value = 0.33
+				value = 0.25
 				strata = upper
 			}
 			add_radicals_in_state = {
-				value = 0.25
+				value = 0.2
 				strata = middle
 			}
 			add_radicals_in_state = {
-				value = 0.15
+				value = 0.1
 				strata = lower
 			}
 		}
@@ -540,7 +561,7 @@ GLOBAL = {
 
 	c:URU ?= {
 		add_radicals = {
-			value = 0.15
+			value = 0.1
 		}
 	}
 
