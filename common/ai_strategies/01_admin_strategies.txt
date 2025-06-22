@@ -477,6 +477,15 @@ ai_strategy_industrial_expansion = {
 			add = 50
 		}	
 		
+		# Metternich agenda of 1844 - inclined to industrialise
+		if = {
+			limit = {
+				c:AUS ?= this
+				has_journal_entry = je_metternich
+			}
+           add = 10
+		}	
+		
 		if = {
 			limit = {
 				has_law = law_type:law_command_economy	

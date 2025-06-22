@@ -709,10 +709,6 @@ GLOBAL = {
 		}
 		add_radicals = {
 			value = 0.04
-			culture = cu:ukrainian
-		}
-		add_radicals = {
-			value = 0.04
 			culture = cu:hungarian
 		}
 		add_radicals = {
@@ -720,20 +716,12 @@ GLOBAL = {
 			culture = cu:slovak
 		}
 		add_radicals = {
-			value = 0.01
+			value = 0.02
 			culture = cu:ashkenazi
-		}
-		add_radicals = {
-			value = 0.05
-			culture = cu:serb
 		}
 		add_radicals = {
 			value = 0.04
 			culture = cu:croat
-		}
-		add_radicals = {
-			value = 0.03
-			culture = cu:romanian
 		}
 		add_radicals = {
 			value = 0.03
@@ -762,7 +750,47 @@ GLOBAL = {
 			effect_starting_pop_literacy_very_high = yes
 		}
 	}
-	
+
+    c:HUN ?= {
+        add_radicals = {
+			value = 0.04
+			culture = cu:slovak
+		}
+		add_radicals = {
+			value = 0.02
+			culture = cu:ashkenazi
+		}
+		add_radicals = {
+			value = 0.05
+			culture = cu:serb
+		}
+        add_radicals = {
+			value = 0.03
+			culture = cu:romanian
+		}
+        add_radicals = {
+			value = 0.04
+			culture = cu:ukrainian
+		}
+    }
+
+    c:TRS ?= {
+		add_radicals = {
+			value = 0.05
+			culture = cu:serb
+		}
+        add_radicals = {
+			value = 0.04
+			culture = cu:ukrainian
+		}
+    }
+
+    c:CRO ?= {
+		add_radicals = {
+			value = 0.08
+			culture = cu:serb
+		}
+    }
 
     c:SER ?= {
 		add_radicals = {
@@ -885,11 +913,12 @@ GLOBAL = {
 						#Check for muslim cultures to identify muslims,
 						#until I can figure out how to find majority religions of cultures.
 						OR = { 
-							has_discrimination_trait = middle_eastern_heritage
-							has_discrimination_trait = malay_culture
-							has_discrimination_trait = iranian_turanian_culture_group
-							has_discrimination_trait = albanian_language
-							has_discrimination_trait = arab_speaking
+							has_discrimination_trait = language_malay
+							has_discrimination_trait = language_persian
+							has_discrimination_trait = language_tabari
+							has_discrimination_trait = language_baluchi
+							has_discrimination_trait = language_albanian
+							has_discrimination_trait = language_arabic
 						}
 					}
 				}
@@ -915,7 +944,7 @@ GLOBAL = {
 				}
 
 				religion = {
-					NOT = { has_discrimination_trait = muslim }
+					NOT = { has_discrimination_trait = heritage_islamic }
 				}
 			}
 		}

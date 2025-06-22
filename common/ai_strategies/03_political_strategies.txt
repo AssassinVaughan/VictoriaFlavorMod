@@ -176,6 +176,14 @@
 			add = 10
 		}	
 
+		if = { # Metternich System
+			limit = { 
+				c:AUS ?= this
+				has_journal_entry = je_metternich
+			}
+			add = 20
+		}
+
 		if = {
 			limit = { 
 				exists = c:FRA

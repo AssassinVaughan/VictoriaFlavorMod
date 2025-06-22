@@ -46,6 +46,15 @@
 				years = 20
 			}
 		}
+	if = { # TODO: PRCAL-38244 Ensure IP3 content is locked
+			limit = {
+				has_dlc_feature = ip3_content
+			}
+			custom_tooltip = {
+				text = eastern_crisis_consequence_tt
+				set_variable = failed_sick_man_main
+			}
+		}
 	}
 	
 	on_monthly_pulse = {
@@ -421,6 +430,18 @@ je_sick_man_separatism = {
 		highest_secession_progress > 0.5
 	}
 	
+	on_fail = {
+		if = { # TODO: PRCAL-38244 Ensure IP3 content is locked
+			limit = {
+				has_dlc_feature = ip3_content
+			}
+			custom_tooltip = {
+				text = eastern_crisis_consequence_tt
+				set_variable = failed_sick_man_separatism
+			}
+		}
+	}
+
 	current_value = {
 		value = var:sick_man_separatist_var
 	}

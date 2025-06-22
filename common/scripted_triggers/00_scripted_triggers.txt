@@ -868,18 +868,29 @@ will_be_accepted_culture = {
         }
         AND = {
             owner = { is_enacting_law = law_type:law_national_supremacy }
-            AND = {
-				culture = { shares_heritage_trait_with_any_primary_culture = root }
-				culture = { shares_non_heritage_trait_with_any_primary_culture = root }
+			culture = {
+				AND = {
+					shares_heritage_trait_group_with_any_primary_culture = root
+					OR = {
+						shares_language_trait_group_with_any_primary_culture = root
+						shares_tradition_trait_with_any_primary_culture = root
+					}
+				}
 			}
         }
         AND = {
             owner = { is_enacting_law = law_type:law_racial_segregation }
-            culture = { shares_heritage_trait_with_any_primary_culture = root }
+            culture = { shares_heritage_trait_group_with_any_primary_culture = root }
         }
         AND = {
             owner = { is_enacting_law = law_type:law_cultural_exclusion }
-            culture = { shares_trait_with_any_primary_culture = root }
+            culture = {
+				OR = {
+					shares_heritage_trait_group_with_any_primary_culture = root
+					shares_language_trait_group_with_any_primary_culture = root
+					shares_tradition_trait_with_any_primary_culture = root
+				}
+			}
         }
         owner = { is_enacting_law = law_type:law_multicultural }
     }
@@ -1782,6 +1793,7 @@ can_impose_law_default = {
 			is_subject_type = subject_type_dominion
 			is_subject_type = subject_type_personal_union
 			is_subject_type = subject_type_vassal
+			is_subject_type = subject_type_crown_land
 		}
 	}
 }
@@ -1958,7 +1970,264 @@ is_byzantium_state_region = {
 	}
 }
 
+# Balkan Wars
 
+#Check to show the JE to countries.
+is_balkan_league_candidate = {
+	OR  = {
+		c:GRE ?= this
+		c:SER ?= this
+		c:MON ?= this
+		c:BUL ?= this
+	}
+}
+
+#Check to make the JE possible and activated.
+are_all_balkan_league_countries_independent = {
+		trigger_if = {
+			limit = {
+				exists = c:GRE
+			}
+			c:GRE ?= {
+				is_subject = no
+				hidden_trigger = {
+					NOT = {
+					has_variable = first_balkan_war_successful
+					}
+				}
+			}
+		}
+		trigger_if = {
+			limit = {
+				exists = c:SER
+			}
+			c:SER ?= {
+				is_subject = no
+				hidden_trigger = {
+					NOT = {
+					has_variable = first_balkan_war_successful
+					}
+				}
+			}
+		}
+		trigger_if = {
+			limit = {
+				exists = c:MON
+			}
+			c:MON ?= {
+				is_subject = no
+				hidden_trigger = {
+					NOT = {
+					has_variable = first_balkan_war_successful
+					}
+				}
+			}
+		}
+		trigger_if = {
+			limit = {
+				exists = c:BUL
+			}
+			c:BUL ?= {
+				is_subject = no
+				hidden_trigger = {
+					NOT = {
+					has_variable = first_balkan_war_successful
+					}
+				}
+			}
+		}
+}
+
+#Checks for; if other league members are all subjects or do not exist, JE gets invalid.
+are_all_balkan_league_nations_subjects_gre = {
+AND = {
+    c:MON ?= {
+    OR = {
+    		is_subject = yes
+    		NOT = {
+    		exists = c:MON
+    		}
+    	}
+    }
+    c:BUL ?= {
+    OR = {
+    		is_subject = yes
+    		NOT = {
+    		exists = c:BUL
+    		}
+    	}
+    }
+   	c:SER ?= {
+   	OR = {
+   			is_subject = yes
+   			NOT = {
+   			exists = c:SER
+    			}
+    		}
+    	}
+	}
+}
+
+are_all_balkan_league_nations_subjects_mon = {
+AND = {
+    c:GRE ?= {
+    OR = {
+    		is_subject = yes
+    		NOT = {
+    		exists = c:GRE
+    		}
+    	}
+    }
+    c:BUL ?= {
+    OR = {
+    		is_subject = yes
+    		NOT = {
+    		exists = c:BUL
+    		}
+    	}
+    }
+   	c:SER ?= {
+   	OR = {
+   			is_subject = yes
+   			NOT = {
+   			exists = c:SER
+    			}
+    		}
+    	}
+	}
+}
+
+are_all_balkan_league_nations_subjects_bul = {
+AND = {
+    c:GRE ?= {
+    OR = {
+    		is_subject = yes
+    		NOT = {
+    		exists = c:GRE
+    		}
+    	}
+    }
+    c:MON ?= {
+    OR = {
+    		is_subject = yes
+    		NOT = {
+    		exists = c:MON
+    		}
+    	}
+    }
+   	c:SER ?= {
+   	OR = {
+   			is_subject = yes
+   			NOT = {
+   			exists = c:SER
+    			}
+    		}
+    	}
+	}
+}
+
+are_all_balkan_league_nations_subjects_ser = {
+AND = {
+    c:GRE ?= {
+    	OR = {
+    		is_subject = yes
+    		NOT = {
+    			exists = c:GRE
+    		}
+    	}
+    }
+    c:MON ?= {
+    	OR = {
+    		is_subject = yes
+    		NOT = {
+    			exists = c:MON
+    		}
+    	}
+    }
+    c:BUL ?= {
+  	  OR = {
+    		is_subject = yes
+    		NOT = {
+    			exists = c:BUL
+    			}
+    		}
+    	}
+	}
+}
+
+#Checks for; picking the right country to operate possible/complete triggers for the 2nd balkan wars JE
+
+spoils_of_war_complete_gre = {
+	sr:region_balkans = {
+		any_scope_state = {
+			state_region = {
+			is_homeland = cu:greek
+			}
+ 			owner = root
+ 			count >= 8
+		}
+	}
+}
+
+spoils_of_war_complete_ser = {
+	sr:region_balkans = {
+		any_scope_state = {
+			state_region = {
+			is_homeland = cu:serb
+			}
+ 			owner = root
+ 			count >= 5
+		}
+	}
+}
+
+spoils_of_war_complete_bul = {
+	sr:region_balkans = {
+		any_scope_state = {
+			state_region = {
+			is_homeland = cu:bulgarian
+			}
+ 			owner = root
+ 			count >= 4
+		}
+	}
+}
+
+spoils_of_war_complete_mon = {
+	sr:region_balkans = {
+		any_scope_state = {
+			state_region = {
+			is_homeland = cu:serb
+			}
+ 			owner = root
+ 			count >= 5
+		}
+	}
+}
+
+spoils_of_war_complete_alb = {
+	sr:region_balkans = {
+		any_scope_state = {
+			state_region = {
+				is_homeland = cu:albanian
+			}
+ 			owner = root
+ 			count >= 4
+		}
+	}
+}
+
+spoils_of_war_complete_wal = {
+	sr:region_danubia = {
+		any_scope_state = {
+			state_region = {
+				is_homeland = cu:romanian
+			}
+ 			owner = root
+ 			count >= 3
+		}
+	}
+}
 
 movement_is_socialist = {
 	OR = {
@@ -2005,4 +2274,19 @@ movement_is_conservative = {
 	}
 }
 
-
+serbia_throne_campaign_state_check = {
+	OR = {
+		has_modifier = serbia_auth_fund_campaigned_state_a_mod
+		has_modifier = serbia_auth_fund_campaigned_state_b_mod
+		has_modifier = serbia_auth_fund_campaigned_state_c_mod
+		has_modifier = serbia_auth_fund_campaigned_state_e_mod
+		has_modifier = serbia_med_fund_campaigned_state_a_mod
+		has_modifier = serbia_med_fund_campaigned_state_b_mod
+		has_modifier = serbia_med_fund_campaigned_state_c_mod
+		has_modifier = serbia_med_fund_campaigned_state_e_mod
+		has_modifier = serbia_high_fund_campaigned_state_a_mod
+		has_modifier = serbia_high_fund_campaigned_state_b_mod
+		has_modifier = serbia_high_fund_campaigned_state_c_mod
+		has_modifier = serbia_high_fund_campaigned_state_e_mod
+	}
+}

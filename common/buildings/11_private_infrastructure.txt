@@ -143,6 +143,23 @@ building_railway = {
 			}
 			add = 10000
 		}
+		else_if = { # AI Metternich wants railways
+			limit = {
+				owner ?= {
+					c:AUS ?= this
+					has_journal_entry = je_metternich
+				}
+				is_incorporated = yes
+				NOR = {
+					has_building = building_railway
+					any_scope_building = {
+						is_building_type = building_railway
+						is_under_construction = yes
+					}
+				}
+			}
+            add = 10000
+		}
 
 		if = { # Manchurian Railway
 			limit = {

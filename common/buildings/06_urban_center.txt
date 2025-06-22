@@ -83,6 +83,15 @@ building_arts_academy = {
 			}
 			multiply = 1.25
 		}
+		if = { # AI Metternich really wants arts academies
+			limit = {
+				owner ?= {
+					c:AUS ?= this
+					has_journal_entry = je_metternich
+				}
+			}
+            add = 400
+		}
 	}
 
 	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_monuments.dds"
