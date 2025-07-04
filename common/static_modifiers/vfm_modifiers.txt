@@ -370,7 +370,7 @@ portales_executed= {
 
 french_blockade= {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
-	country_trade_route_competitiveness_mult = -0.5
+	state_trade_advantage_mult = -0.5
 	country_expenses_add = 1250 	
 }	
 
@@ -489,7 +489,8 @@ blood_and_iron = {
 frankfurt_assembly = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_positive.dds
 	interest_group_ig_intelligentsia_pol_str_mult = 0.33
-	state_radicals_from_political_movements_mult = -0.1
+	state_pop_support_movement_radical_mult = 0.15
+	state_pop_support_movement_liberal_mult = 0.15
 	country_authority_mult = -0.1
 }
 
@@ -510,8 +511,9 @@ importing_convicts = {
 
 terra_nullius = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
-	state_colony_growth_speed_mult = 1
-	state_radicals_from_discrimination_mult = 0.2
+	state_colony_growth_speed_mult = 0.5
+	state_radicalism_increases_violent_hostility_mult = 0.1
+	state_radicalism_increases_cultural_erasure_mult = 0.1
 }
 
 settler_colony = {
@@ -548,4 +550,42 @@ armed_forces_insufficient_army = {
 	interest_group_ig_armed_forces_approval_add = -4
 	unit_offense_mult = -0.05
 	unit_defense_mult = -0.05
+}
+
+colonial_failure_tahiti = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
+	country_prestige_mult = -0.05
+}
+
+FRA_regional_language = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
+	state_tax_collection_mult = -0.2
+	state_radicals_from_political_movements_mult = 0.2
+	state_assimilation_mult = -0.33
+}
+
+FRA_the_new_rome = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_positive.dds
+	state_radicals_from_political_movements_mult = 0.25
+	interest_group_ig_intelligentsia_pop_attraction_mult = 0.5
+	state_upper_strata_expected_sol_add = 5
+	state_middle_strata_expected_sol_add = 2
+}
+
+jungle_warbands = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_positive.dds
+	unit_defense_mult = 1.0
+	unit_offense_mult = 0.5
+	military_formation_mobilization_speed_mult = 1.0
+	building_training_rate_add = 50
+	unit_morale_loss_mult = -0.5
+	unit_kill_rate_add = -0.20
+	unit_advancement_speed_mult = -0.5
+}
+
+steuerverein_breakup = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
+	country_authority_mult = 0.1
+	country_influence_add = 100
+	country_legitimacy_base_add = 10
 }

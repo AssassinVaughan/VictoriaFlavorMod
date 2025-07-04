@@ -1021,7 +1021,7 @@
 	s:STATE_HAWAIIAN_ISLANDS = {
 		region_state:HAW = {
 			create_pop = {
-				pop_type = clergy
+				pop_type = clergymen
 				culture = yankee
 				religion = protestant
 				size = 100
@@ -1120,7 +1120,7 @@
 		}
 	}
 	s:STATE_NEW_BRUNSWICK = {
-		# New Brunswick: 119457 in 1834
+		# New Brunswick: 119457 in 1834, not counting First Nations
 		region_state:NBS = {
 			create_pop = {
 				culture = anglo_canadian
@@ -1134,8 +1134,13 @@
 				culture = franco_canadian
 				size = 52800
 			}
+			# 1871 census figure; not easy to get numbers or estimates before the 1871 census, and changes afterwards make it hard to say if 1836-1871 should following a growing trend or shrinking trend for First Nations in Canada
+			create_pop = {
+				culture = algonquian
+				size = 1403
+			}
 		}
-		# Nova Scotia: 199906 in 1837
+		# Nova Scotia: 199906 in 1837, not counting First Nations
 		region_state:NVS = {
 			create_pop = {
 				culture = anglo_canadian
@@ -1144,6 +1149,11 @@
 			create_pop = {
 				culture = afro_american
 				size = 3333
+			}
+			# 1871 census figure; not easy to get numbers or estimates before the 1871 census, and changes afterwards make it hard to say if 1836-1871 should following a growing trend or shrinking trend for First Nations in Canada
+			create_pop = {
+				culture = algonquian
+				size = 1666
 			}
 		}
 	}
@@ -1237,7 +1247,7 @@
 		region_state:ORG = {
 			create_pop = {
 				culture = anglo_canadian
-				size = 8000
+				size = 6500
 			}		
 			create_pop = {
 				culture = salish
@@ -1245,8 +1255,24 @@
 			}
 			create_pop = {
 				culture = athabaskan
-				size = 55200
+				size = 7000
 			}
+		}
+		region_state:ATB = {
+			create_pop = {
+				culture = athabaskan
+				size = 35200
+			}
+		}
+		region_state:HBC = {
+			create_pop = {
+				culture = anglo_canadian
+				size = 1500
+			}
+			create_pop = {
+				culture = athabaskan
+				size = 13000
+			}	
 		}
 	}
 	s:STATE_SASKATCHEWAN = {
@@ -1310,7 +1336,13 @@
 		region_state:HBC = {
 			create_pop = {
 				culture = athabaskan
-				size = 12000
+				size = 5500
+			}
+		}
+		region_state:ATB = {
+			create_pop = {
+				culture = athabaskan
+				size = 6500
 			}
 		}
 	}

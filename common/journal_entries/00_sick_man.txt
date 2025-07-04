@@ -1,7 +1,11 @@
 ﻿je_sick_man_main = {
 	icon = "gfx/interface/icons/event_icons/event_skull.dds"
 
-	group = je_group_historical_content
+	group = je_group_tanzimat
+
+	is_shown_in_lobby = {
+		c:TUR = THIS
+    }
 	
 	complete = {
 		scope:journal_entry = {
@@ -20,6 +24,11 @@
 
 	on_timeout = {
 		remove_modifier = sick_man_of_europe
+		add_modifier = {
+			name = dead_man_of_europe
+			days = very_long_modifier_time
+			is_decaying = yes
+		}
 		trigger_event = {
 			id = sick_man.3
 		}
@@ -35,6 +44,15 @@
 			set_variable = {
 				name = failed_tanzimat
 				years = 20
+			}
+		}
+	if = { # TODO: PRCAL-38244 Ensure IP3 content is locked
+			limit = {
+				has_dlc_feature = ip3_content
+			}
+			custom_tooltip = {
+				text = eastern_crisis_consequence_tt
+				set_variable = failed_sick_man_main
 			}
 		}
 	}
@@ -91,7 +109,7 @@
 je_sick_man_syria = {
 	icon = "gfx/interface/icons/event_icons/event_military.dds"
 
-	group = je_group_historical_content
+	group = je_group_tanzimat
 	
 	complete = {
 			AND = {
@@ -120,7 +138,6 @@ je_sick_man_syria = {
 	}
 
 	on_complete = {
-		custom_tooltip = je_sick_man_advance
 		change_variable = {
 			name = sick_man_var
 			add = 1
@@ -159,7 +176,7 @@ je_sick_man_syria = {
 je_sick_man_egypt = {
 	icon = "gfx/interface/icons/event_icons/event_military.dds"
 
-	group = je_group_historical_content
+	group = je_group_tanzimat
 	
 	complete = {
 		OR = {
@@ -223,7 +240,7 @@ je_sick_man_egypt = {
 je_sick_man_economy = {
 	icon = "gfx/interface/icons/event_icons/event_industry.dds"
 	
-	group = je_group_historical_content
+	group = je_group_tanzimat
 		
 	is_shown_when_inactive = {
 		country_has_primary_culture = cu:turkish
@@ -293,7 +310,7 @@ je_sick_man_economy = {
 je_sick_man_education = {
 	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
 
-	group = je_group_historical_content
+	group = je_group_tanzimat
 	
 	is_shown_when_inactive = {
 		country_has_primary_culture = cu:turkish
@@ -354,7 +371,7 @@ je_sick_man_education = {
 je_sick_man_separatism = {
 	icon = "gfx/interface/icons/event_icons/event_fire.dds"
 
-	group = je_group_historical_content
+	group = je_group_tanzimat
 	
 	is_shown_when_inactive = {
 		country_has_primary_culture = cu:turkish
@@ -412,6 +429,18 @@ je_sick_man_separatism = {
 	fail = {
 		highest_secession_progress > 0.5
 	}
+	
+	on_fail = {
+		if = { # TODO: PRCAL-38244 Ensure IP3 content is locked
+			limit = {
+				has_dlc_feature = ip3_content
+			}
+			custom_tooltip = {
+				text = eastern_crisis_consequence_tt
+				set_variable = failed_sick_man_separatism
+			}
+		}
+	}
 
 	current_value = {
 		value = var:sick_man_separatist_var
@@ -439,7 +468,7 @@ je_sick_man_separatism = {
 je_sick_man_army = {
 	icon = "gfx/interface/icons/event_icons/event_military.dds"
 
-	group = je_group_historical_content
+	group = je_group_tanzimat
 	
 	is_shown_when_inactive = {
 		country_has_primary_culture = cu:turkish
@@ -509,7 +538,7 @@ je_sick_man_army = {
 je_sick_man_navy = {
 	icon = "gfx/interface/icons/event_icons/event_trade.dds"
 
-	group = je_group_historical_content
+	group = je_group_tanzimat
 	
 	is_shown_when_inactive = {
 		country_has_primary_culture = cu:turkish
@@ -575,7 +604,7 @@ je_sick_man_navy = {
 je_sick_man_bureaucracy = {
 	icon = "gfx/interface/icons/event_icons/event_scales.dds"
 
-	group = je_group_historical_content
+	group = je_group_tanzimat
 	
 	is_shown_when_inactive = {
 		country_has_primary_culture = cu:turkish
@@ -633,7 +662,7 @@ je_sick_man_bureaucracy = {
 je_sick_man_vilayets = {
 	icon = "gfx/interface/icons/event_icons/event_map.dds"
 	
-	group = je_group_historical_content
+	group = je_group_tanzimat
 
 	is_shown_when_inactive = {
 		country_has_primary_culture = cu:turkish
@@ -697,7 +726,7 @@ je_sick_man_vilayets = {
 je_sick_man_kurdistan = {
 	icon = "gfx/interface/icons/event_icons/event_scales.dds"
 
-	group = je_group_historical_content
+	group = je_group_tanzimat
 
 	complete = {
 		OR = {

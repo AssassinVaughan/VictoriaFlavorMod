@@ -44,7 +44,7 @@ je_secular_legacy = {
 	group = je_group_internal_affairs
 	
 	immediate = {
-	    trigger_event = { id = vfm_france.5 } # TODO
+	    trigger_event = { id = vfm_france.5 }
 	}
 
 	complete = {
@@ -76,4 +76,45 @@ je_secular_legacy = {
 	weight = 5000
 }
 
+je_cultural_centralisation = {
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
 
+	group = je_group_historical_content
+
+	complete = {
+		literacy_rate > 0.6
+		has_law = law_type:law_public_schools
+		has_law = law_type:law_unitary
+	}
+
+	on_complete = {
+		every_scope_state = {
+				limit = {
+					state_region = {
+						has_modifier = FRA_regional_language
+					}
+				}
+				remove_modifier = FRA_regional_language
+			}
+	}
+
+	fail = {
+	}
+
+	on_fail = {
+		#trigger_event = algeria_events.3
+	}
+
+	on_monthly_pulse = {
+		#random_events = {
+		#	90 = 0
+		#	10 = algeria_events.5 # Raid Event
+		#}
+	}
+
+	transferable = no
+
+	should_be_pinned_by_default = yes
+
+	weight = 5000
+}

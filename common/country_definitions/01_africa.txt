@@ -395,14 +395,14 @@ MNB = {
 	capital = STATE_CONGO_ORIENTALE
 }
 
-NYM = {
+NYM = {	# Unymanwezi. Nyamwezi is the name of the people, the U- prefix turns it into the name of a land
 	color = { 164 125 26 }
 	
 	country_type = decentralized
 	
 	tier = principality
 	
-	cultures = { unyamwezi }
+	cultures = { nyamwezi }
 	capital = STATE_TANGANYIKA
 }
 
@@ -598,7 +598,7 @@ ANK = {
 ACH = {
 	color = { 166 225 217 }
 	
-	country_type = unrecognized
+	country_type = decentralized
 	
 	tier = principality
 	
@@ -844,7 +844,7 @@ AWS = {
 	
 	tier = principality
 	
-	cultures = { afar tigray }
+	cultures = { afar }
 	capital = STATE_GONDER
 }
 
@@ -866,17 +866,19 @@ HAR = {
 	
 	tier = principality
 	
-	cultures = { somali amhara }
+	cultures = { amhara }
+	religion = sunni
 	capital = STATE_OROMIA
 }
 
 BRN = {
 	color = { 236 236 104 }
-	country_type = unrecognized
+	country_type = decentralized
 	
 	tier = principality
 	
 	cultures = { oromo }
+	religion = sunni
 	capital = STATE_AMHARA
 }
 
@@ -887,6 +889,7 @@ KFA = {
 	tier = principality
 	
 	cultures = { sidama oromo }
+	religion = oriental_orthodox
 	capital = STATE_AMHARA
 }
 
@@ -896,7 +899,8 @@ SDM = {
 	
 	tier = principality
 	
-	cultures = { sidama oromo }
+	cultures = { sidama }
+	religion = oriental_orthodox
 	capital = STATE_AMHARA
 }
 
@@ -926,7 +930,7 @@ GJM = {
 	
 	tier = principality
 	
-	cultures = { amhara oromo }
+	cultures = { amhara }
 	capital = STATE_AMHARA
 }
 
@@ -1416,7 +1420,7 @@ SUD = { # Sudanese
 	capital = STATE_BLUE_NILE
 }
 
-SKM = { # Sukuma
+SKM = { # Usukuma. Sukuma is the name of the people, the U- prefix turns it into the name of a land
 	color = { 101 122 158 }
 	
 	country_type = decentralized
@@ -1616,4 +1620,188 @@ MGB = {
 	
 	cultures = { maghrebi berber bidan }
 	capital = STATE_TUNISIA
+}
+
+WTU = { # Witu/Wituland/Sultanate of Pate in exile
+	color = { 255 164 7 }
+	
+	country_type = unrecognized
+	
+	tier = principality
+	
+	cultures = { swahili }
+	capital = STATE_KENYA
+}
+
+MBS = { # Mombasa
+	color = { 127 177 72 }
+	
+	country_type = unrecognized
+	
+	tier = principality
+	
+	cultures = { swahili }
+	religion = ibadi			# the Mazrui were Ibadis /until/ the Busaidi conquest of Mombasa in 1837
+	capital = STATE_KENYA
+	is_named_from_capital = yes
+}
+
+AJR = { # Ajuran, also spelled Ajuuraan
+	color = { 124 128 93 }
+	
+	country_type = decentralized
+	
+	tier = principality
+	
+	cultures = { somali }
+	religion = sunni
+	capital = STATE_KENYA
+}
+
+AUL = { # Aulihan, also sometimes spelled Awlihan
+	color = { 196 227 240 }
+	
+	country_type = decentralized
+	
+	tier = principality
+	
+	cultures = { somali }
+	religion = sunni
+	capital = STATE_KENYA
+}
+
+MJK = { # Mijikenda
+	color = { 144 33 155 }
+	
+	country_type = decentralized
+	
+	tier = principality
+	
+	cultures = { lacustrine_bantu }
+	capital = STATE_KENYA
+}
+
+ORM = { # Orma
+	color = { 101 95 188 }
+	
+	country_type = decentralized
+	
+	tier = principality
+	
+	cultures = { oromo }
+	religion = animist
+	capital = STATE_KENYA
+}
+
+SKY = { # Sakuye
+	color = { 122 131 130 }
+	
+	country_type = decentralized
+	
+	tier = principality
+	
+	cultures = { oromo }
+	religion = animist
+	capital = STATE_KENYA
+}
+
+UTR = { # Utetera
+	color = { 1 140 80 }
+	
+	country_type = unrecognized
+	
+	tier = principality
+	
+	cultures = { swahili }
+	religion = ibadi
+	capital = STATE_CONGO_ORIENTALE # 'Lualaba' in-game
+}
+
+OGD = { # Ogaden
+	color = { 155 188 99 }
+	
+	country_type = decentralized
+	
+	tier = principality
+	
+	cultures = { somali }
+	
+	capital = STATE_OROMIA
+}
+
+QWR = { # Qwara, sometimes spelled 'Quara' in literature, or even 'Quoara' if you're unfortunately French
+	color = { 112 169 199 }
+	
+	country_type = unrecognized
+	
+	tier = principality
+	
+	cultures = { amhara }
+	capital = STATE_GONDER
+}
+
+TGI = { # Tungi
+	color = { 72 92 12 }
+	
+	country_type = unrecognized
+	
+	tier = principality
+	
+	cultures = { swahili }
+	capital = STATE_MOCAMBIQUE
+}
+
+WLT = {
+	color = { 212 230 54 }
+	country_type = unrecognized
+	
+	tier = principality
+	
+	cultures = { sidama }
+	religion = oriental_orthodox
+	capital = STATE_AMHARA
+}
+
+HDY = {
+	color = { 34 128 89 }
+	country_type = unrecognized
+	
+	tier = principality
+	
+	cultures = { oromo }
+	religion = sunni
+	capital = STATE_AMHARA
+}
+
+ARS = {
+	color = { 255 197 179 }
+	country_type = unrecognized
+	
+	tier = principality
+	
+	cultures = { oromo }
+	religion = sunni
+	capital = STATE_OROMIA
+}
+
+ANU = {
+	color = { 128 98 89 }
+	country_type = decentralized
+	
+	tier = principality
+	
+	cultures = { luo }
+	religion = animist
+	capital = STATE_AMHARA
+}
+
+OMO = {
+	color = { 71 121 128 }
+	country_type = decentralized
+	
+	tier = principality
+	
+	cultures = { sidama }
+	religion = animist
+	capital = STATE_AMHARA
 }

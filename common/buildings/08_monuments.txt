@@ -136,24 +136,24 @@ building_hagia_sophia = {
 	downsizeable = no
 	unique = yes
 	locator = "hagia_sophia_locator"
-	
+
 	entity_not_constructed = { }
 	entity_under_construction = { "building_construction_3x3_entity" }
-	entity_constructed = { "wonder_hagia_sophia_01_entity"}
-	
+	entity_constructed = { "wonder_hagia_sophia_02_entity"}
+
 	city_gfx_interactions = {
 		clear_size_area = yes
-		size = 3
+		size = 4
 	}
-	
+
 	production_method_groups = {
 		pmg_base_building_hagia_sophia
 	}
-	
+
 	potential = {
 		state_region = s:STATE_EASTERN_THRACE
 	}
-	
+
 	required_construction = construction_cost_monument
 
 	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_monuments.dds"
@@ -755,7 +755,6 @@ building_power_bloc_statue = {
 	expandable = no
 	
 	statue = yes
-	centerpiece_mesh_weight = 1
 
 	production_method_groups = {
 		pmg_base_building_power_bloc_statue
@@ -855,8 +854,6 @@ building_halloween_castledracula = {
 	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_monuments.dds"
 }
 
-# TODO PRCAL-34369 Add Chhatrapati Shivaji Terminus 3D model to the game
-# TODO PRCAL-34386 Building Icon for Chhatrapati Shivaji Terminus
 building_victoria_terminus = {
 	building_group = bg_monuments
 	icon = "gfx/interface/icons/building_icons/building_victoria_terminus.dds"
@@ -879,7 +876,7 @@ building_victoria_terminus = {
 	}
 
 	unlocking_technologies = { 
-		pneumatic_tools 
+		steel_frame_buildings
 	}
 	
 	required_construction = construction_cost_monument
@@ -889,11 +886,7 @@ building_victoria_terminus = {
 	}
 
 	possible = {
-		owner = {
-			NOT = {
-				has_law = law_type:law_state_atheism
-			}
-		}
+		always = yes
 	}
 	ai_value = 10000
 

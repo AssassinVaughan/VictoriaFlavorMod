@@ -90,6 +90,18 @@
 			country = c:KRA
 			type = puppet
 		}
+		create_diplomatic_pact = {
+			country = c:HUN
+			type = crown_land
+		}
+		create_diplomatic_pact = {
+			country = c:TRS
+			type = crown_land
+		}
+		create_diplomatic_pact = {
+			country = c:CRO
+			type = crown_land
+		}
 	}
 	c:USA ?= {
 		create_diplomatic_pact = {
@@ -203,8 +215,8 @@
 	c:DAI ?= {
 		create_diplomatic_pact = {
 			country = c:CAM
-			type = tributary
-		}
+			type = vassal
+		}		
 	}
 	c:SIA ?= {
 		create_diplomatic_pact = {
@@ -250,6 +262,10 @@
 		create_diplomatic_pact = {
 			country = c:EGY
 			type = protectorate
+		}
+		create_diplomatic_pact = {
+			country = c:EGY
+			type = grant_own_market
 		}
 	}
 	c:BIC ?= {
@@ -487,6 +503,7 @@
 			type = puppet
 		}
 	}
+
 	c:PER = {
 		create_diplomatic_pact = {
 			country = c:HER
@@ -530,7 +547,7 @@
 	c:KUN = {
 		create_diplomatic_pact = {
 			country = c:BDK
-			type = real_union
+			type = personal_union
 		}
 		create_diplomatic_pact = {
 			country = c:WKH
@@ -575,7 +592,7 @@
 
 	c:SAF = {
 		add_liberty_desire = -20
-	}
+	
 
 	c:WAS = {
 		add_liberty_desire = -30
@@ -627,6 +644,10 @@
 	
 	c:EGY = {
 		add_liberty_desire = 45
+	}
+	
+	c:CAM ?= {
+		add_liberty_desire = 20
 	}
 	
 	c:BIC ?= {

@@ -1,0 +1,130 @@
+﻿on_yearly_pulse_country = {
+	on_actions = {
+		spawn_movements
+	}
+}
+
+spawn_movements = {
+	effect = {
+		# Labour movement
+		if = {
+			limit = {
+				has_technology_researched = labor_movement
+			}
+
+			create_political_movement = {
+				type = movement_labor
+			}
+		}
+
+		# Socialist movement
+		if = {
+			limit = {
+				has_technology_researched = socialism
+				# Same bug type, movement has autodisband but not the same in the create trigger
+				NOT = {
+					any_interest_group = {
+						OR = {
+							has_variable = chose_anarchism
+							has_variable = chose_communism
+							has_variable = chose_vanguardism
+						}
+					}
+				}
+			}
+			create_political_movement = {
+				type = movement_socialist
+			}
+		}
+
+		# Anarchist movement
+		if = {
+			limit = {
+				has_technology_researched = anarchism
+			}
+
+			create_political_movement = {
+				type = movement_anarchist
+			}
+		}
+
+		# Communist movement
+		if = {
+			limit = {
+				has_technology_researched = socialism
+			}
+
+			create_political_movement = {
+				type = movement_communist
+			}
+		}
+
+		# Fascist movement
+		if = {
+			limit = {
+				has_technology_researched = political_agitation
+			}
+
+			create_political_movement = {
+				type = movement_fascist
+			}
+		}
+
+		# Corporatist movement
+		if = {
+			limit = {
+				has_technology_researched = corporatism
+			}
+
+			create_political_movement = {
+				type = movement_corporatist
+			}
+		}
+
+		# Nihilist movement
+		if = {
+			limit = {
+				# Actually doesn't have the bug
+				has_technology_researched = realism
+				NAND = {
+					has_technology_researched = socialism
+					has_technology_researched = anarchism
+				}
+			}
+
+			create_political_movement = {
+				type = movement_nihilist
+			}
+		}
+
+		# Positivist movement
+		## MAJOR BUG: The "positivism_invented" flag is never set
+		## so this movement can never spawn
+		## I have temporarily commented this out to save performance
+		# if = {
+		# 	limit = {
+		# 		has_variable = positivism_invented
+		# 		has_technology_researched = empiricism
+		# 	}
+
+		# 	create_political_movement = {
+		# 		type = movement_positivist
+		# 	}
+		# }
+
+		# Feminist movement
+		if = {
+			limit = {
+				has_technology_researched = feminism
+			}
+
+			create_political_movement = {
+				type = movement_feminist
+			}
+		}
+
+		# Modernizer movement
+		# I will not force spawn this in, since the law requirements seem too strict
+		# For example, having Coops doesn't disband the movement
+	}
+}

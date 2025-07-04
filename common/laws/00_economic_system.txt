@@ -76,6 +76,7 @@ law_interventionism = {
 		building_nationalization_investment_return_add = 0.5
 		country_government_dividends_reinvestment_add = 0.5
 		country_government_dividends_efficiency_add = 0.25
+		country_free_charters_add = 2
 	}
 
 	ai_enact_weight_modifier = { #Petitions
@@ -107,7 +108,7 @@ law_interventionism = {
 				OR = {
 					NOT = { has_strategy = ai_strategy_conservative_agenda }
 					any_political_movement = {
-						law_stance = {
+						law_enactment_stance = {
 							law = law_type:law_interventionism
 							value > neutral
 						}	
@@ -189,7 +190,7 @@ law_agrarianism = {
 				OR = {
 					NOT = { has_strategy = ai_strategy_conservative_agenda }
 					any_political_movement = {
-						law_stance = {
+						law_enactment_stance = {
 							law = law_type:law_agrarianism
 							value > neutral
 						}	
@@ -249,9 +250,9 @@ law_industry_banned = {
 				}
 				if = {
 					limit = {
-						has_building = building_war_machine_industry
+						has_building = building_automotive_industry
 					}
-					remove_building = building_war_machine_industry
+					remove_building = building_automotive_industry
 				}
 				if = {
 					limit = {
@@ -356,9 +357,9 @@ law_extraction_economy = {
 				}
 				if = {
 					limit = {
-						has_building = building_war_machine_industry
+						has_building = building_automotive_industry
 					}
-					remove_building = building_war_machine_industry
+					remove_building = building_automotive_industry
 				}
 				if = {
 					limit = {
@@ -416,6 +417,7 @@ law_laissez_faire = {
 		law_serfdom
 		law_isolationism
 		law_anarchy
+		law_guild_system
 	}
 	
 	unlocking_technologies = {
@@ -434,26 +436,28 @@ law_laissez_faire = {
 		country_max_companies_add = 1
 		country_disable_nationalization_bool = yes
 		country_force_privatization_bool = yes
-		country_company_pay_to_establish_bool = yes
+		country_forbid_monopoly_bool = yes
 	}
 
 	ai_enact_weight_modifier = { #Petitions
 		value = 0
-		
+
 		if = {
 			limit = { ai_has_enact_weight_modifier_journal_entries = yes }
 			add = 750
 		}
-		
+
 		if = {
-			limit = { 
-				has_modifier = shogun_ig_forced_to_open_market
-				has_journal_entry = je_meiji_main
+			limit = {
+				OR = {
+					has_modifier = shogun_ig_forced_to_open_market
+					has_journal_entry = je_meiji_main
+					has_journal_entry = je_great_reforms_serfdom
+				}
 				has_law = law_type:law_traditionalism
-				has_journal_entry = je_great_reforms_serfdom
 			}
 			add = 10000 # Top priority for Tanzimat/Meiji AI is to get out of Traditionalism
-		}	
+		}
 
 		# AI should really try to get out of Traditionalism under the right circumstances
 		if = {
@@ -463,17 +467,17 @@ law_laissez_faire = {
 				OR = {
 					NOT = { has_strategy = ai_strategy_conservative_agenda }
 					any_political_movement = {
-						law_stance = {
+						law_enactment_stance = {
 							law = law_type:law_laissez_faire
 							value > neutral
-						}	
+						}
 						political_movement_support >= 0.10
-					}			
-				}	
+					}
+				}
 			}
 			add = 1000
-		}		
-	}	
+		}
+	}
 }
 
 law_cooperative_ownership = {
@@ -512,8 +516,6 @@ law_cooperative_ownership = {
 		building_group_bg_arts_allowed_collectivization_add = 1.0
 		
 		country_foreign_collectivization_bool = yes
-		country_disable_privatization_bool = yes
-		country_company_pay_to_establish_bool = yes
 	}
 	
 	ai_enact_weight_modifier = { #Petitions

@@ -70,9 +70,27 @@ pmg_ownership_building_arts_academy = {
 
 pmg_base_building_power_plant = {
 	texture = "gfx/interface/icons/generic_icons/mixed_icon_base.dds"
+	ai_selection = most_productive
 	production_methods = {
-		pm_hydroelectric_plant
 		pm_coal-fired_plant
 		pm_oil-fired_plant
 	}
 }
+
+pmg_base_building_hydroelectric_power_plant = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_base.dds"
+	ai_selection = most_productive
+	production_methods = {
+		pm_hydroelectric_plant
+	}
+}
+
+pm_transmission_method = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_base.dds"
+	ai_selection = most_productive
+	production_methods = {
+		pm_transmission_method_direct_current
+		pm_transmission_method_alternating_current
+	}
+}
+

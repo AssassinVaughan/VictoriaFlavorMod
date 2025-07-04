@@ -148,6 +148,7 @@ law_technocracy = {
 			}
 			remove_modifier = missouri_compromise
 		}
+		add_journal_entry = { type = je_technocracy }
 	}
 	
 	modifier = {
@@ -461,6 +462,16 @@ law_landed_voting = {
 
 	on_activate = {
 		scripted_effect_parties_emergence = yes
+		if = {
+			limit = {
+				has_law = law_type:law_monarchy
+				has_variable = king_in_parliament_possible
+				NOT = {
+					has_journal_entry = je_king_in_parliament
+				}
+			}
+			add_journal_entry = { type = je_king_in_parliament }
+		}
 	}
 	
 	can_impose = {
@@ -567,6 +578,16 @@ law_wealth_voting = {
 
 	on_activate = {
 		scripted_effect_parties_emergence = yes
+		if = {
+			limit = {
+				has_law = law_type:law_monarchy
+				has_variable = king_in_parliament_possible
+				NOT = {
+					has_journal_entry = je_king_in_parliament
+				}
+			}
+			add_journal_entry = { type = je_king_in_parliament }
+		}
 	}
 	
 	can_impose = {
@@ -667,6 +688,16 @@ law_census_voting = {
 
 	on_activate = {
 		scripted_effect_parties_emergence = yes
+		if = {
+			limit = {
+				has_law = law_type:law_monarchy
+				has_variable = king_in_parliament_possible
+				NOT = {
+					has_journal_entry = je_king_in_parliament
+				}
+			}
+			add_journal_entry = { type = je_king_in_parliament }
+		}
 	}
 	
 	can_impose = {
@@ -764,6 +795,16 @@ law_universal_suffrage = {
 
 	on_activate = {
 		scripted_effect_parties_emergence = yes
+		if = {
+			limit = {
+				has_law = law_type:law_monarchy
+				has_variable = king_in_parliament_possible
+				NOT = {
+					has_journal_entry = je_king_in_parliament
+				}
+			}
+			add_journal_entry = { type = je_king_in_parliament }
+		}
 	}
 	
 	can_impose = {
@@ -1003,11 +1044,28 @@ law_single_party_state = {
 				add_ruling_interest_group = yes
 			}
 		}
+		
+		if = {
+			limit = {
+				has_law = law_type:law_monarchy
+				has_variable = king_in_parliament_possible
+				NOT = {
+					has_journal_entry = je_king_in_parliament
+				}
+			}
+			add_journal_entry = { type = je_king_in_parliament }
+		}
 	}
 	
 	on_deactivate = {
 		unset_only_legal_party = yes
 		update_party_support = yes
+		if = {
+			limit = {
+				has_variable = fatherland_front_var
+			}
+			remove_variable = fatherland_front_var
+		}
 	}
 	
 	ai_will_do = {

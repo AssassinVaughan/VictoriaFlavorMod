@@ -6,12 +6,30 @@
 		
 		add_taxed_goods = g:liquor
 		
-		set_tariffs_export_priority = g:iron
-		set_tariffs_export_priority = g:wood
-		set_tariffs_export_priority = g:hardwood
-		set_tariffs_import_priority = g:coffee
-		set_tariffs_import_priority = g:luxury_clothes
-		set_tariffs_import_priority = g:luxury_furniture
+		set_export_tariff_level = { 
+			goods = g:iron
+			level = no_tariffs_or_subventions
+		}
+		set_export_tariff_level = { 
+			goods = g:wood
+			level = low_tariffs
+		}
+		set_export_tariff_level = { 
+			goods = g:hardwood
+			level = low_tariffs
+		}
+		set_import_tariff_level = { 
+			goods = g:coffee
+			level = high_subventions
+		}
+		set_import_tariff_level = { 
+			goods = g:luxury_clothes
+			level = high_subventions
+		}
+		set_import_tariff_level = { 
+			goods = g:luxury_furniture
+			level = high_subventions
+		}
 		
 		# Laws 
 		activate_law = law_type:law_monarchy
@@ -27,6 +45,7 @@
 		activate_law = law_type:law_local_police
 		activate_law = law_type:law_religious_schools
 
+        activate_law = law_type:law_guild_system
 		activate_law = law_type:law_no_workers_rights
 		activate_law = law_type:law_censorship						# Indragningsmakten
 		activate_law = law_type:law_no_womens_rights				# Changed from "Propertied Women", because Sweden enacted equal inheritance rights in 1845.

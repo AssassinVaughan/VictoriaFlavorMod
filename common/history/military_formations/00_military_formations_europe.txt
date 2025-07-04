@@ -182,31 +182,31 @@
 			# VI. Armee-Korps
 			combat_unit = {
 				type = unit_type:combat_unit_type_skirmish_infantry
-				state_region = s:STATE_SILESIA
+				state_region = s:STATE_LOWER_SILESIA
 				count = 9
 			}
 
 			combat_unit = {
 				type = unit_type:combat_unit_type_cuirassiers
-				state_region = s:STATE_SILESIA
+				state_region = s:STATE_LOWER_SILESIA
 				count = 1
 			}
 
 			combat_unit = {
 				type = unit_type:combat_unit_type_hussars
-				state_region = s:STATE_SILESIA
+				state_region = s:STATE_LOWER_SILESIA
 				count = 2
 			}
 
 			combat_unit = {
 				type = unit_type:combat_unit_type_lancers
-				state_region = s:STATE_SILESIA
+				state_region = s:STATE_LOWER_SILESIA
 				count = 1
 			}
 
 			combat_unit = {
 				type = unit_type:combat_unit_type_mobile_artillery
-				state_region = s:STATE_SILESIA
+				state_region = s:STATE_LOWER_SILESIA
 				count = 1
 			}
 
@@ -398,282 +398,7 @@
 	}
 
 	c:AUS ?= {
-		create_military_formation = {
-			type = army
-			hq_region = sr:region_south_germany
-			name = I_Korpskommando
-
-			combat_unit = {
-				type = unit_type:combat_unit_type_line_infantry
-				state_region = s:STATE_BOHEMIA
-				count = 30
-			}
-
-			combat_unit = {
-				type = unit_type:combat_unit_type_line_infantry
-				state_region = s:STATE_AUSTRIA
-				count = 20
-			}
-
-			combat_unit = {
-				type = unit_type:combat_unit_type_lancers
-				state_region = s:STATE_MORAVIA
-				count = 10
-			}
-
-			combat_unit = {
-				type = unit_type:combat_unit_type_mobile_artillery
-				state_region = s:STATE_STYRIA
-				count = 10
-			}
-			save_scope_as = i_korps
-		}
-
-		create_character = { # General
-			is_general = yes
-			first_name = Josef
-			last_name = Radetzky
-			historical = yes
-			birth_date = 1766.11.2
-			hq = region_south_germany
-			commander_rank = commander_rank_4
-			traits = {
-				persistent
-				surveyor
-			}
-			save_scope_as = josef_gen
-		}
-
-		scope:josef_gen = {
-			transfer_to_formation = scope:i_korps
-		}
-
-		create_military_formation = {
-			type = army
-			hq_region = sr:region_danubia
-			name = II_Korpskommando
-
-			combat_unit = {
-				type = unit_type:combat_unit_type_line_infantry
-				state_region = s:STATE_TRANSDANUBIA
-				count = 15
-			}
-
-			combat_unit = {
-				type = unit_type:combat_unit_type_line_infantry
-				state_region = s:STATE_CENTRAL_HUNGARY
-				count = 15
-			}
-
-			combat_unit = {
-				type = unit_type:combat_unit_type_line_infantry
-				state_region = s:STATE_BEKES
-				count = 10
-			}
-
-			combat_unit = {
-				type = unit_type:combat_unit_type_line_infantry
-				state_region = s:STATE_SOUTHERN_TRANSYLVANIA
-				count = 5
-			}
-			
-			combat_unit = {
-				type = unit_type:combat_unit_type_line_infantry
-				state_region = s:STATE_BANAT
-				count = 2
-			}
-			
-			combat_unit = {
-				type = unit_type:combat_unit_type_line_infantry
-				state_region = s:STATE_NORTHERN_TRANSYLVANIA
-				count = 3
-			}
-
-			combat_unit = {
-				type = unit_type:combat_unit_type_lancers
-				state_region = s:STATE_NORTHERN_TRANSYLVANIA
-				count = 5
-			}
-
-			combat_unit = {
-				type = unit_type:combat_unit_type_lancers
-				state_region = s:STATE_WEST_SLOVAKIA
-				count = 5
-			}
-			
-			combat_unit = {
-				type = unit_type:combat_unit_type_mobile_artillery
-				state_region = s:STATE_WEST_SLOVAKIA
-				count = 2
-			}
-
-			combat_unit = {
-				type = unit_type:combat_unit_type_mobile_artillery
-				state_region = s:STATE_EAST_SLOVAKIA
-				count = 3
-			}
-
-			combat_unit = {
-				type = unit_type:combat_unit_type_mobile_artillery
-				state_region = s:STATE_DELVIDEK
-				count = 2
-			}
-			
-			combat_unit = {
-				type = unit_type:combat_unit_type_mobile_artillery
-				state_region = s:STATE_BANAT
-				count = 3
-			}
-			save_scope_as = ii_korps
-		}
-
-		create_character = { # AUS, General
-			is_general = yes
-			first_name = Karl_Ludwig
-			last_name = von_Ficquelmont
-			historical = yes
-			culture = cu:french
-			interest_group = ig_landowners
-			ideology = ideology_royalist
-			birth_date = 1777.3.23
-			hq = region_balkans
-			commander_rank = commander_rank_2
-			traits = {
-				experienced_diplomat
-				charismatic
-			}
-			save_scope_as = karl_gen
-		}
-
-		create_character = { # General
-			is_general = yes
-			first_name = Julius
-			last_name = von_Haynau
-			historical = yes
-			birth_date = 1786.10.14
-			hq = region_poland
-			commander_rank = commander_rank_1
-			traits = {
-				wrathful
-				cruel
-			}
-			save_scope_as = haynau_gen
-		}
-
-		scope:karl_gen = {
-			transfer_to_formation = scope:ii_korps
-		}
-
-		scope:haynau_gen = {
-			transfer_to_formation = scope:ii_korps
-		}
-
-		create_military_formation = {
-			type = army
-			hq_region = sr:region_italy
-			name = III_Korpskommando
-
-			combat_unit = {
-				type = unit_type:combat_unit_type_line_infantry
-				state_region = s:STATE_LOMBARDY
-				count = 15
-			}
-
-			combat_unit = {
-				type = unit_type:combat_unit_type_lancers
-				state_region = s:STATE_VENETIA
-				count = 5
-			}
-
-			combat_unit = {
-				type = unit_type:combat_unit_type_mobile_artillery
-				state_region = s:STATE_VENETIA
-				count = 5
-			}
-			save_scope_as = iii_korps
-		}
-
-		create_character = { # General
-			is_general = yes
-			first_name = Heinrich
-			last_name = von_Hess
-			historical = yes
-			birth_date = 1788.3.17
-			hq = region_danubia
-			traits = {
-				meticulous
-				resupply_commander
-			}
-			save_scope_as = heinr_gen
-		}
-
-		scope:heinr_gen = {
-			transfer_to_formation = scope:iii_korps
-		}
-
-		create_military_formation = {
-			type = army
-			hq_region = sr:region_balkans
-			name = IV_Korpskommando
-
-			combat_unit = {
-				type = unit_type:combat_unit_type_line_infantry
-				state_region = s:STATE_CROATIA
-				count = 8
-			}
-			
-			combat_unit = {
-				type = unit_type:combat_unit_type_line_infantry
-				state_region = s:STATE_SLAVONIA
-				count = 4
-			}
-
-			combat_unit = {
-				type = unit_type:combat_unit_type_lancers
-				state_region = s:STATE_CROATIA
-				count = 2
-			}
-			
-			combat_unit = {
-				type = unit_type:combat_unit_type_lancers
-				state_region = s:STATE_DELVIDEK
-				count = 2
-			}
-
-			combat_unit = {
-				type = unit_type:combat_unit_type_mobile_artillery
-				state_region = s:STATE_SLAVONIA
-				count = 2
-			}
-			combat_unit = {
-				type = unit_type:combat_unit_type_mobile_artillery
-				state_region = s:STATE_CROATIA
-				count = 2
-			}
-			save_scope_as = iiii_korps
-		}
-
-		create_character = { # AUS, General
-			is_general = yes
-			first_name = Laval_Nugent
-			last_name = von_Westmeath
-			historical = yes
-			culture = cu:irish
-			interest_group = ig_armed_forces
-			ideology = ideology_royalist
-			birth_date = 1777.11.3
-			hq = region_italy
-			traits = {
-				basic_offensive_planner
-				tactful
-			}
-			save_scope_as = laval_gen
-		}
-
-		scope:laval_gen = {
-			transfer_to_formation = scope:iiii_korps
-		}
-
+		# Due to their size, each IR and Art-reg consists of two in-game regiments
 		create_military_formation = {
 			type = fleet
 			hq_region = sr:region_italy
@@ -690,6 +415,386 @@
 				state_region = s:STATE_ISTRIA
 				count = 1
 			}
+		}
+
+		create_military_formation = {
+			type = army
+			hq_region = sr:region_poland
+			name = "generalkommando_lemberg"
+
+			save_scope_as = generalkommando_lemberg
+
+			# "German" Line Regiments
+
+			combat_unit = { # IR 9, IR 15, IR 20, IR 24, IR 27, IR 30, IR 47, IR 58
+				type = unit_type:combat_unit_type_line_infantry
+				state_region = s:STATE_EAST_GALICIA
+				count = 16
+			}
+
+			# Cavalry Regiments
+
+			# Cuirassiers
+			combat_unit = { # 6. Cuirassier
+				type = unit_type:combat_unit_type_cuirassiers
+				state_region = s:STATE_MORAVIA
+				count = 1
+			}
+
+			# Uhlans
+			combat_unit = { # 1. Uhlans, 2. Uhlans
+				type = unit_type:combat_unit_type_lancers
+				state_region = s:STATE_WEST_GALICIA
+				count = 2
+			}
+
+			# Artillery
+
+			# Field Artillery
+			combat_unit = { # 3. Feld-Art.-Reg., 
+				type = unit_type:combat_unit_type_cannon_artillery
+				state_region = s:STATE_MORAVIA
+				count = 2
+			}
+		}
+
+		create_military_formation = {
+			type = army
+			hq_region = sr:region_south_germany
+			name = "generalkommando_wien"
+
+			# "German" Line Regiments
+
+			combat_unit = { # IR 1, IR 29
+				type = unit_type:combat_unit_type_line_infantry
+				state_region = s:STATE_UPPER_SILESIA
+				count = 4
+			}
+			combat_unit = { # IR 3, IR 17, IR 35, IR 54
+				type = unit_type:combat_unit_type_line_infantry
+				state_region = s:STATE_MORAVIA
+				count = 8
+			}
+
+			# Cavalry
+
+			# Dragoons
+			combat_unit = { # 2. Dragoons, 4. Dragoons
+				type = unit_type:combat_unit_type_dragoons
+				state_region = s:STATE_AUSTRIA
+				count = 2
+			}
+			combat_unit = { # 3. Dragoons, 6. Dragoons
+				type = unit_type:combat_unit_type_dragoons
+				state_region = s:STATE_MORAVIA
+				count = 2
+			}
+
+			# Artillery
+
+			# Field Artillery
+			combat_unit = { # 1. Feld-Art.-Reg.
+				type = unit_type:combat_unit_type_cannon_artillery
+				state_region = s:STATE_BOHEMIA
+				count = 2
+			}
+		}
+
+		create_military_formation = {
+			type = army
+			hq_region = sr:region_italy
+			name = "armee_in_italien"
+
+			save_scope_as = armee_in_italien_scope
+
+			# Italian ("German") Line Regiments
+
+			combat_unit = { # IR 13, IR 38, IR 43, IR 44 
+				type = unit_type:combat_unit_type_line_infantry
+				state_region = s:STATE_LOMBARDY
+				count = 8
+			}
+			combat_unit = { # IR 15, IR 23, IR 26, IR 45
+				type = unit_type:combat_unit_type_line_infantry
+				state_region = s:STATE_VENETIA
+				count = 8
+			}
+
+			# "German" Line Regiments
+
+			combat_unit = { # IR 1, IR 29
+				type = unit_type:combat_unit_type_line_infantry
+				state_region = s:STATE_UPPER_SILESIA
+				count = 4
+			}
+			combat_unit = { # IR 3, IR 17, IR 35, IR 54
+				type = unit_type:combat_unit_type_line_infantry
+				state_region = s:STATE_MORAVIA
+				count = 8
+			}
+			combat_unit = { # IR 4, IR 49
+				type = unit_type:combat_unit_type_line_infantry
+				state_region = s:STATE_AUSTRIA
+				count = 4
+			}
+			combat_unit = { # IR 7
+				type = unit_type:combat_unit_type_line_infantry
+				state_region = s:STATE_STYRIA
+				count = 2
+			}
+			combat_unit = { # IR 8, IR 11, IR 18, IR 21, IR 25, IR 28, IR 42
+				type = unit_type:combat_unit_type_line_infantry
+				state_region = s:STATE_BOHEMIA
+				count = 14
+			}
+			combat_unit = { # IR 10, IR 12, IR 40, IR 56, IR 57
+				type = unit_type:combat_unit_type_line_infantry
+				state_region = s:STATE_WEST_GALICIA
+				count = 10
+			}
+			combat_unit = { # IR 14, IR 59
+				type = unit_type:combat_unit_type_line_infantry
+				state_region = s:STATE_TYROL
+				count = 4
+			}
+			combat_unit = { # IR 22, IR 41
+				type = unit_type:combat_unit_type_line_infantry
+				state_region = s:STATE_BUKOVINA
+				count = 4
+			}
+
+			# Cavalry Regiments
+
+			# Cuirassiers
+			combat_unit = { # 1. Cuirassier, 2. Cuirassier, 7. Cuirassier, 8. Cuirassier
+				type = unit_type:combat_unit_type_cuirassiers
+				state_region = s:STATE_BOHEMIA
+				count = 4
+			}
+			combat_unit = { # 3. Cuirassier, 4. Cuirassier
+				type = unit_type:combat_unit_type_cuirassiers
+				state_region = s:STATE_AUSTRIA
+				count = 2
+			}
+			combat_unit = { # 5. Cuirassier
+				type = unit_type:combat_unit_type_cuirassiers
+				state_region = s:STATE_STYRIA
+				count = 1
+			}
+
+			# Uhlans
+			combat_unit = { # 3. Uhlans, 4. Uhlans
+				type = unit_type:combat_unit_type_lancers
+				state_region = s:STATE_EAST_GALICIA
+				count = 2
+			}
+
+			# Dragoons
+			combat_unit = { # 1. Dragoons
+				type = unit_type:combat_unit_type_dragoons
+				state_region = s:STATE_EAST_GALICIA
+				count = 1
+			}
+			combat_unit = { # 5. Dragoons
+				type = unit_type:combat_unit_type_dragoons
+				state_region = s:STATE_BOHEMIA
+				count = 1
+			}
+
+			# Chevauxlegers
+			combat_unit = { # 1. Chevauxlegers
+				type = unit_type:combat_unit_type_dragoons
+				state_region = s:STATE_AUSTRIA
+				count = 1
+			}
+			combat_unit = { # 2. Chevauxlegers, 4. Chevauxlegers, 5. Chevauxlegers
+				type = unit_type:combat_unit_type_dragoons
+				state_region = s:STATE_BOHEMIA
+				count = 3
+			}
+			combat_unit = { # 3. Chevauxlegers, 6. Chevauxlegers
+				type = unit_type:combat_unit_type_dragoons
+				state_region = s:STATE_EAST_GALICIA
+				count = 2
+			}
+			combat_unit = { # 7. Dragoons
+				type = unit_type:combat_unit_type_dragoons
+				state_region = s:STATE_LOMBARDY
+				count = 1
+			}
+
+			# Artillery
+
+			# Field Artillery
+			combat_unit = { # Bombardiers-Corps, 2. Feld-Art.-Reg., 4. Feld-Art.-Reg.
+				type = unit_type:combat_unit_type_cannon_artillery
+				state_region = s:STATE_AUSTRIA
+				count = 6
+			}
+		}
+		create_character = { # General
+			template = aus_general_von_hess
+			save_scope_as = heinr_gen
+		}
+		create_character = { # General
+			template = aus_general_radetzky_von_radetz
+			save_scope_as = radetzky_gen
+		}
+		create_character = { # General
+			template = aus_general_von_westmeath
+			save_scope_as = von_westmeath_gen
+		}
+		scope:radetzky_gen = {
+			transfer_to_formation = scope:armee_in_italien_scope
+		}	
+		scope:heinr_gen = {
+			transfer_to_formation = scope:armee_in_italien_scope
+		}
+		scope:von_westmeath_gen = {
+			transfer_to_formation = scope:generalkommando_lemberg
+		}
+	}
+
+	c:HUN ?= {
+		create_military_formation = {
+			type = army
+			hq_region = sr:region_danubia
+			name = "generalkommando_ofen"
+
+			# Hungarian Line Regiments
+
+			combat_unit = { # IR 2, IR 31, IR 33, 
+				type = unit_type:combat_unit_type_line_infantry
+				state_region = s:STATE_SLOVAKIA
+				count = 6
+			}
+			combat_unit = { # IR 19, IR 48, IR 52
+				type = unit_type:combat_unit_type_line_infantry
+				state_region = s:STATE_TRANSDANUBIA
+				count = 6
+			}
+			combat_unit = { # IR 19, IR 34, IR 60, IR 36 (may be German)
+				type = unit_type:combat_unit_type_line_infantry
+				state_region = s:STATE_CENTRAL_HUNGARY
+				count = 8
+			}
+			combat_unit = { # IR 61
+				type = unit_type:combat_unit_type_line_infantry
+				state_region = s:STATE_BANAT
+				count = 2
+			}
+
+			# Grenzer Regiments
+
+			combat_unit = { # 12. Deutsch-Banater, 13. Wallachisch-Illirisch
+				type = unit_type:combat_unit_type_line_infantry
+				state_region = s:STATE_BANAT
+				count = 4
+			}
+
+			# Cavalry Regiments
+
+			# Hussars
+			combat_unit = { # 1. Hussar, 5. Hussar, 7. Hussar
+				type = unit_type:combat_unit_type_hussars
+				state_region = s:STATE_TRANSDANUBIA
+				count = 3
+			}
+			combat_unit = { # 3. Hussar, 6. Hussar, 12. Hussar
+				type = unit_type:combat_unit_type_hussars
+				state_region = s:STATE_CENTRAL_HUNGARY
+				count = 3
+			}
+			combat_unit = { # 8. Hussar, 9. Hussar, 10. Hussar
+				type = unit_type:combat_unit_type_hussars
+				state_region = s:STATE_SLOVAKIA
+				count = 3
+			}
+
+			# Artillery
+
+			# Field Artillery
+			combat_unit = { # 5. Feld-Art.-Reg., 
+				type = unit_type:combat_unit_type_cannon_artillery
+				state_region = s:STATE_CENTRAL_HUNGARY
+				count = 2
+			}
+		}
+	}
+
+	c:TRS ?= {
+		create_military_formation = {
+			type = army
+			hq_region = sr:region_danubia
+			name = "generalkommando_hermannstadt"
+
+			# "Hungarian" Line Regiments
+
+			combat_unit = { # IR 39, IR 51, IR 62, IR 63
+				type = unit_type:combat_unit_type_line_infantry
+				state_region = s:STATE_NORTHERN_TRANSYLVANIA
+				count = 8
+			}
+
+			# Grenzer Regiments
+
+			combat_unit = { # 1. Székler, 2. Székler
+				type = unit_type:combat_unit_type_line_infantry
+				state_region = s:STATE_NORTHERN_TRANSYLVANIA
+				count = 4
+			}
+			combat_unit = { # 1. Wallachisches, 2. Wallachisches
+				type = unit_type:combat_unit_type_line_infantry
+				state_region = s:STATE_SOUTHERN_TRANSYLVANIA
+				count = 4
+			}
+
+			# Cavalry Regiments
+
+			combat_unit = { # 4. Hussar, 11. Hussar
+				type = unit_type:combat_unit_type_hussars
+				state_region = s:STATE_NORTHERN_TRANSYLVANIA
+				count = 2
+			}
+			combat_unit = { # 2. Hussar
+				type = unit_type:combat_unit_type_hussars
+				state_region = s:STATE_SOUTHERN_TRANSYLVANIA
+				count = 1
+			}
+		}
+	}
+
+	c:CRO ?= {
+		create_military_formation = {
+			type = army
+			hq_region = sr:region_balkans
+			name = "generalkommando_agram"
+
+			# "Hungarian" Line Regiments
+
+			combat_unit = { # IR 53
+				type = unit_type:combat_unit_type_line_infantry
+				state_region = s:STATE_SLAVONIA
+				count = 2
+			}
+
+			# Grenzer Regiments
+
+			combat_unit = { # 1. Liccaner, 2. Otocaner, 3. Oguliner, 4. Szluiner, 5. Warasdiner-Kreuzer, 6. Warasdiner-St. Georger, 1. Banal, 2. Banal
+				type = unit_type:combat_unit_type_line_infantry
+				state_region = s:STATE_CROATIA
+				count = 12
+			}
+			combat_unit = { # 1. Banal, 2. Banal
+				type = unit_type:combat_unit_type_line_infantry
+				state_region = s:STATE_CROATIA
+				count = 4
+			}
+			combat_unit = { # 7. Brooder, 8. Gradiscaner, 9. Peterwardiner
+				type = unit_type:combat_unit_type_line_infantry
+				state_region = s:STATE_SLAVONIA
+				count = 6
+			}	
 		}
 	}
 
@@ -771,7 +876,7 @@
 		create_character = {
 			template = FRA_honore-charles_reille
 			first_name = Honore_Charles
-			commander_rank = commander_rank_5
+			commander_rank = commander_rank_4
 			save_scope_as = reille_gen
 		}
 
@@ -1437,7 +1542,7 @@
 
 			combat_unit = {
 				type = unit_type:combat_unit_type_frigate
-				state_region = s:STATE_MALAYA
+				state_region = s:STATE_EAST_ANGLIA
 				count = 6
 			}
 
@@ -3264,20 +3369,20 @@
 
 			combat_unit = {
 				type = unit_type:combat_unit_type_line_infantry
-				state_region = s:STATE_NORTHERN_SERBIA
-				count = 6
+				state_region = s:STATE_WESTERN_SERBIA
+				count = 2
 			}
 
 			combat_unit = {
 				type = unit_type:combat_unit_type_hussars
-				state_region = s:STATE_NORTHERN_SERBIA
+				state_region = s:STATE_WESTERN_SERBIA
 				count = 1
 			}
 
 			combat_unit = {
 				type = unit_type:combat_unit_type_cannon_artillery
-				state_region = s:STATE_NORTHERN_SERBIA
-				count = 2
+				state_region = s:STATE_WESTERN_SERBIA
+				count = 1
 			}
 		}
 	}
@@ -3298,6 +3403,20 @@
 				type = unit_type:combat_unit_type_hussars
 				state_region = s:STATE_WALLACHIA
 				count = 2
+			}
+		}
+	}
+
+	c:MON ?= {
+		create_military_formation = {
+			type = army
+			hq_region = sr:region_balkans
+			name = Montengrin_Raiders
+
+			combat_unit = {
+				type = unit_type:combat_unit_type_irregular_infantry
+				state_region = s:STATE_MONTENEGRO
+				count = 4
 			}
 		}
 	}

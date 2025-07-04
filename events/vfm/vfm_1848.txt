@@ -44,6 +44,15 @@ vfm_1848.1 = { #Preparation for 1848, swap ideology from liberal to radical
 					set_ideology = ideology:ideology_radical
 				}
 			}
+		if = {
+			limit = {
+				has_technology_researched = egalitarianism
+			}
+
+			create_political_movement = {
+				type = movement_radical
+			}
+		}
 	}
 }
 

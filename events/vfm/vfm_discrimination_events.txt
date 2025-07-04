@@ -9,6 +9,8 @@ vfm_discrimination_events.1 = {
 	flavor = vfm_discrimination_events.1.f
 
 	duration = 3
+	
+	cooldown = { days = normal_modifier_time }
 
 	event_image = {
 		video = "europenorthamerica_russian_serfs"
@@ -18,10 +20,10 @@ vfm_discrimination_events.1 = {
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
 	on_opened_soundeffect = "event:/SFX/Events/unspecific/gears_pistons"
-	cooldown = { months = normal_modifier_time }
 	trigger = {
 		NOT = { has_law = law_type:law_multicultural }
 		any_scope_state = {
+		    is_incorporated = yes
 			any_scope_culture = {
 				prev = {
 					state_cultural_acceptance = {  
@@ -41,6 +43,7 @@ vfm_discrimination_events.1 = {
 	immediate = {
 		random_scope_state = {
 			limit = {
+			    is_incorporated = yes
 				any_scope_culture = {
 					PREV = {
 						state_cultural_acceptance = {  
@@ -155,6 +158,8 @@ vfm_discrimination_events.2 = {
 	flavor = vfm_discrimination_events.2.f
 
 	duration = 3
+	
+	cooldown = { days = normal_modifier_time }
 
 	event_image = {
 		video = "votp_hostile_court"
@@ -164,10 +169,10 @@ vfm_discrimination_events.2 = {
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
 	on_opened_soundeffect = "event:/SFX/Events/unspecific/gears_pistons"
-	cooldown = { months = normal_modifier_time }
 	trigger = {
 		NOT = { has_law = law_type:law_multicultural }
 		any_scope_state = {
+		    is_incorporated = yes
 			any_scope_culture = {
 				prev = {
 					state_cultural_acceptance = {  
@@ -194,6 +199,7 @@ vfm_discrimination_events.2 = {
 	immediate = {
 		ordered_scope_state = {
 			limit = {
+			    is_incorporated = yes
 				any_scope_culture = {
 					PREV = {
 						state_cultural_acceptance = {  
@@ -310,6 +316,8 @@ vfm_discrimination_events.3 = {
 	flavor = vfm_discrimination_events.2.f
 
 	duration = 3
+	
+	cooldown = { days = normal_modifier_time }
 
 	event_image = {
 		video = "europenorthamerica_russian_serfs"
@@ -319,7 +327,6 @@ vfm_discrimination_events.3 = {
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
 	on_opened_soundeffect = "event:/SFX/Events/unspecific/gears_pistons"
-	cooldown = { months = normal_modifier_time }
 	trigger = {
 	    total_population > 10000000
 		has_law = law_type:law_national_supremacy
@@ -459,6 +466,8 @@ vfm_discrimination_events.4 = {
 	flavor = vfm_discrimination_events.1.f
 
 	duration = 3
+	
+	cooldown = { days = normal_modifier_time }
 
 	event_image = {
 		video = "votp_hostile_court"
@@ -468,11 +477,11 @@ vfm_discrimination_events.4 = {
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
 	on_opened_soundeffect = "event:/SFX/Events/unspecific/gears_pistons"
-	cooldown = { months = normal_modifier_time }
 	trigger = {
 	    total_population > 10000000
 		NOT = { has_law = law_type:law_multicultural }
 		any_scope_state = {
+		    is_incorporated = yes
 			any_scope_culture = {
 				prev = {
 					state_cultural_acceptance = {  
@@ -493,6 +502,7 @@ vfm_discrimination_events.4 = {
 	immediate = {
 		random_scope_state = {
 			limit = {
+			    is_incorporated = yes
 				any_scope_culture = {
 					PREV = {
 						state_cultural_acceptance = {  

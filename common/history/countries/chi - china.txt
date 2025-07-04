@@ -5,16 +5,17 @@
 		
 		set_market_capital = STATE_GUANGDONG	
 		
-		activate_law = law_type:law_denominational_exclusion
 		activate_law = law_type:law_monarchy
 		activate_law = law_type:law_autocracy 
 		activate_law = law_type:law_serfdom
 		activate_law = law_type:law_land_based_taxation
 		activate_law = law_type:law_appointed_bureaucrats
-		activate_law = law_type:law_racial_segregation
+		activate_law = law_type:law_subjecthood
 		activate_law = law_type:law_traditionalism
 		activate_law = law_type:law_censorship	
 		activate_law = law_type:law_closed_borders
+		activate_law = law_type:law_canton_system
+		activate_law = law_type:law_freedom_of_conscience
 		activate_law = law_type:law_devolved
 		
 		set_government_wage_level = high
@@ -26,6 +27,10 @@
 		set_variable = {
 			name = china_warlord_explosion
 			value = 0
+		}
+		set_import_tariff_level = { 
+			goods = g:opium
+			level = no_tariffs_or_subventions
 		}
 
 		add_modifier = {

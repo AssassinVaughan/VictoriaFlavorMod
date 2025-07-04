@@ -125,7 +125,7 @@ tahiti_events.2 = {
 		ig:ig_armed_forces = {
 			add_modifier = {
 				name = vanquished_barbary
-				months = normal_modifier_time
+				days = normal_modifier_time
 			}
 		}
 		add_loyalists = {
@@ -155,7 +155,7 @@ tahiti_events.2 = {
 		ig:ig_devout = {
 			add_modifier = {
 				name = vanquished_barbary
-				months = normal_modifier_time
+				days = normal_modifier_time
 			}
 		}
 		add_loyalists = {
@@ -240,14 +240,46 @@ tahiti_events.3 = {
 	option = {
 		name = tahiti_events.3.a
 		default_option = yes
+		
+		if = {
+			limit = {
+			    has_journal_entry = je_divided_monarchists
+				ruler_is_bonapartist = yes
+			}
+			custom_tooltip = {
+				text = bonapartist_progress_decrease_tick_1_tt
+				change_variable = { name = bonapartist_progress_from_effects add = -1 }
+			}
+		}
+		if = {
+			limit = {
+			    has_journal_entry = je_divided_monarchists
+				ruler_is_orleanist = yes
+			}
+			custom_tooltip = {
+				text = orleanist_progress_decrease_tick_1_tt
+				change_variable = { name = orleanist_progress_from_effects add = -1 }
+			}
+		}
+		if = {
+			limit = {
+			    has_journal_entry = je_divided_monarchists
+				ruler_is_legitimist = yes
+			}
+			custom_tooltip = {
+				text = legitimist_progress_decrease_tick_1_tt
+				change_variable = { name = legitimist_progress_from_effects add = -1 }
+			}
+		}
+		
 		add_modifier = {
-			name = government_admits_failure
+			name = colonial_failure_tahiti
 			months = 60
 		}
 		ig:ig_devout = {
 			add_modifier = {
 				name = ig_minor_setback
-				months = normal_modifier_time
+				days = normal_modifier_time
 			}
 		}
 		add_radicals = {
