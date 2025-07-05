@@ -604,7 +604,7 @@ ai_strategy_default = {
 			limit = {
 				c:JAP ?= this
 				NOT = {
-					has_law = law_type:law_isolationism
+					has_law_or_variant = law_type:law_isolationism
 					has_law = law_type:law_closed_borders
 				}
 				scope:country = {
@@ -1034,10 +1034,11 @@ ai_strategy_default = {
 
 		if = { # Isolationist Japan should tend to back down against market opening plays
 			limit = {
-				c:JAP ?= this
-				has_law = law_type:law_isolationism 
-				scope:diplomatic_play = { 
-					has_play_goal = open_market	
+				exists = c:JAP
+				this = c:JAP
+				has_law_or_variant = law_type:law_isolationism
+				scope:diplomatic_play = {
+					has_play_goal = open_market
 				}
 			}
 			add = -75
@@ -2441,6 +2442,7 @@ ai_strategy_default = {
 							binds = root
 							any_scope_article = {
 								has_type = trade_privilege
+								source_country = scope:target_country
 							}
 						}
 					}
@@ -2744,10 +2746,10 @@ ai_strategy_default = {
 		if = {
 			limit = {
 				has_strategy = ai_strategy_economic_imperialism
-				scope:target_country = { 
-					has_law = law_type:law_isolationism
+				scope:target_country = {
+					has_law_or_variant = law_type:law_isolationism
 					gdp >= 5000000
-				} 			
+				}
 			}
 			multiply = 0.0
 		}
@@ -3136,7 +3138,7 @@ ai_strategy_default = {
 				limit = {
 					has_journal_entry = je_greek_nationalism
 					scope:target_country = {
-						any_state = {
+						any_scope_state = {
 							state_region = { is_homeland = cu:greek }
 							has_claim_by = root
 						}
@@ -3498,7 +3500,7 @@ ai_strategy_default = {
 			limit = {
 				has_journal_entry = je_greek_nationalism
 				scope:target_country = {
-					any_state = {
+					any_scope_state = {
 						state_region = { is_homeland = cu:greek }
 						has_claim_by = root
 					}
@@ -3515,7 +3517,7 @@ ai_strategy_default = {
 					is_oppressor_of_schleswig_holstein = yes
 				}
 			}
-			add = 25
+			add = 15
 		}		
 
 		if = { #Carving up China
@@ -3582,7 +3584,7 @@ ai_strategy_default = {
 				has_variable = haiti_stops_paying_france_aggressor				
 				scope:target_country = {
 					has_variable = haiti_stops_paying_france_target
-					any_state = {
+					any_scope_state = {
 						has_claim_by = root
 					}
 				}				
@@ -3828,7 +3830,7 @@ ai_strategy_default = {
 			limit = {
 				country_has_primary_culture = cu:japanese
 				NOT = {
-					has_law = law_type:law_isolationism
+					has_law_or_variant = law_type:law_isolationism
 					has_law = law_type:law_closed_borders
 				}
 				scope:target_country = {
@@ -5369,7 +5371,7 @@ ai_strategy_default = {
 				limit = {
 					exists = c:JAP
 					game_date > 1858.1.1
-					c:JAP = { has_law = law_type:law_isolationism }
+					c:JAP = { has_law_or_variant = law_type:law_isolationism }
 					has_technology_researched = nationalism	
 					country_rank = rank_value:great_power
 					navy_size >= 60
@@ -5379,7 +5381,7 @@ ai_strategy_default = {
 			if = {
 				limit = {
 					exists = c:JAP
-					c:JAP = { has_law = law_type:law_isolationism }
+					c:JAP = { has_law_or_variant = law_type:law_isolationism }
 					NOT = { country_rank = rank_value:great_power }
 				}
 				add = -50
@@ -5662,7 +5664,7 @@ ai_strategy_default = {
 				limit = {
 					exists = c:CHI
 					game_date > 1870.1.1
-					c:CHI = { has_law = law_type:law_isolationism }
+					c:CHI = { has_law_or_variant = law_type:law_isolationism }
 					has_technology_researched = nationalism	
 					country_rank = rank_value:great_power
 					navy_size >= 150
@@ -6197,7 +6199,7 @@ ai_strategy_default = {
 			# Don't befriend isolationists
 			if = {
 				limit = { 			
-					has_law = law_type:law_isolationism	
+					has_law_or_variant = law_type:law_isolationism
 				}	
 
 				multiply = 0.5
@@ -7966,6 +7968,7 @@ ai_strategy_default = {
 							binds = scope:target_country
 							any_scope_article = {
 								has_type = trade_privilege
+								source_country = scope:target_country
 							}
 						}			
 					}
@@ -8054,7 +8057,7 @@ ai_strategy_default = {
 		}
 
 		military_defense = {
-			value = 3
+			value = 4
 		}
 
 		ideology = {
@@ -8177,8 +8180,18 @@ ai_strategy_default = {
 				}			
 			}			
 			
+			if = {
+				limit = {
+					has_journal_entry = je_opium_wars
+					scope:target_country = {
+						has_variable = opium_wars_target
+					}
+				}
+				multiply = 0
+			}			
+
 			min = 0
-			max = 100			
+			max = 100		
 		}		
 		
 		make_protectorate = {

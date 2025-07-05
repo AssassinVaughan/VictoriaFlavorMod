@@ -10,9 +10,9 @@
 	scripted_button = ban_opium_button
 	scripted_button = unban_opium_button
 
-	on_yearly_pulse = {
+	on_monthly_pulse = {
 		random_events = {
-			50 = 0
+			200 = 0
 			10 = opium_wars.6
 			5 = opium_wars.7
 			5 = opium_wars.8
@@ -56,20 +56,8 @@
 					has_journal_entry = je_opium_wars
 				}
 				OR = {
-					any_scope_treaty = {
-						binds = root
-						any_scope_article = {
-							has_type = foreign_investment_rights
-						}
-					}
-					any_scope_state = {
-						is_treaty_port = yes
-						state_region = {
-							any_scope_state = {
-								owner = ROOT
-							}
-						}
-					}
+					has_treaty_foreign_investment_rights_with = { TARGET = root }
+					has_treaty_port_in_market = root.market
 				}
 			}
 		}
@@ -123,12 +111,10 @@ je_opium_wars = {
 	
 	complete = {
 		OR = {
-			any_scope_treaty = {
-				binds = scope:target
-				any_scope_article = {
-					has_type = foreign_investment_rights
-				}
+			scope:target ?= {
+				has_law = law_type:law_free_trade
 			}
+			has_treaty_foreign_investment_rights_with = { TARGET = scope:target }
 			any_scope_state = {
 				is_treaty_port = yes
 				state_region = {
@@ -141,7 +127,7 @@ je_opium_wars = {
 		hidden_trigger = {
 			scope:target = {
 				has_modifier = opium_wars_lost
-			}			
+			}
 		}
 	}
 

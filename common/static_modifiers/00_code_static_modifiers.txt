@@ -40,7 +40,7 @@ base_values = {
 	
 	state_unincorporated_starting_wages_mult = -0.2 # To balance for unincorporated states not paying taxes
 
-	country_construction_add = 2
+	country_construction_add = 1
 	
 	building_mobilization_cost_mult = 0.5
 	
@@ -88,7 +88,8 @@ character_base_values = {
 
 coastal_state = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_positive.dds
-	state_infrastructure_add = 2
+	state_infrastructure_from_population_max_add = 10
+	state_infrastructure_from_population_mult = 0.05
 }
 
 working_conditions = {
@@ -196,7 +197,7 @@ unincorporated_state = {
 	building_group_bg_government_throughput_add = -0.1
 	building_group_bg_military_throughput_add = -0.1
 	state_market_access_price_impact = -0.1
-	state_construction_mult = -0.1
+	state_construction_mult = -0.15
 }
 
 treaty_port_state = {
