@@ -62,11 +62,14 @@ je_secular_legacy = {
 	}
 
 	on_complete = {
+	    trigger_event = { id = vfm_france.6 } # TODO: display effect in event
+		show_as_tooltip = {
 	    add_loyalists = {
 			value = 0.04
 		}
 		remove_modifier = fra_secular_legacy_2
 		add_modifier = fra_secular_legacy_3
+		}
 	}
 	
 	
@@ -82,34 +85,79 @@ je_cultural_centralisation = {
 	group = je_group_historical_content
 
 	complete = {
-		literacy_rate > 0.6
+		any_scope_state = {
+			state_region = s:STATE_AQUITAINE
+			literacy_rate > 0.6
+		}
+		any_scope_state = {
+			state_region = s:STATE_BRITTANY
+			literacy_rate > 0.6
+		}
+		any_scope_state = {
+			state_region = s:STATE_PROVENCE
+			literacy_rate > 0.6
+		}
+		any_scope_state = {
+			state_region = s:STATE_GUYENNE
+			literacy_rate > 0.6
+		}
+		any_scope_state = {
+			state_region = s:STATE_AUVERGNE_LIMOUSIN
+			literacy_rate > 0.6
+		}
 		has_law = law_type:law_public_schools
 		has_law = law_type:law_unitary
 	}
 
 	on_complete = {
-		every_scope_state = {
-				limit = {
-					state_region = {
-						has_modifier = FRA_regional_language
-					}
-				}
-				remove_modifier = FRA_regional_language
+	    show_as_tooltip = {
+		random_scope_state = {
+			limit = {
+				state_region = s:STATE_AQUITAINE
+				has_modifier = FRA_regional_language
 			}
+			remove_modifier = FRA_regional_language
+		}
+		random_scope_state = {
+			limit = {
+				state_region = s:STATE_BRITTANY
+				has_modifier = FRA_regional_language
+			}
+			remove_modifier = FRA_regional_language
+		}
+		random_scope_state = {
+			limit = {
+				state_region = s:STATE_PROVENCE
+				has_modifier = FRA_regional_language
+			}
+			remove_modifier = FRA_regional_language
+		}
+		random_scope_state = {
+			limit = {
+				state_region = s:STATE_GUYENNE
+				has_modifier = FRA_regional_language
+			}
+			remove_modifier = FRA_regional_language
+		}
+		random_scope_state = {
+			limit = {
+				state_region = s:STATE_AUVERGNE_LIMOUSIN
+				has_modifier = FRA_regional_language
+			}
+			remove_modifier = FRA_regional_language
+		}
+		}
+		trigger_event = vfm_france.7
 	}
 
 	fail = {
 	}
 
 	on_fail = {
-		#trigger_event = algeria_events.3
+		#trigger_event = vfm_france.8
 	}
 
 	on_monthly_pulse = {
-		#random_events = {
-		#	90 = 0
-		#	10 = algeria_events.5 # Raid Event
-		#}
 	}
 
 	transferable = no

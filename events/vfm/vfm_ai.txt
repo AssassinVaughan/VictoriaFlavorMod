@@ -404,3 +404,225 @@ vfm_ai.5 = {
 		}
 	}
 }
+
+vfm_ai.55 = {
+	type = country_event
+	placement = root
+
+	title = vfm_ai.55.t
+	desc = vfm_ai.55.d
+	flavor = vfm_ai.55.f
+	
+	event_image = {
+		video = "votp_realist_household"
+	}
+	
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	
+	duration = 1
+
+	trigger = {
+		country_rank >= rank_value:major_power
+		institution_investment_level = {
+			institution = institution_colonial_affairs
+			value >= 1
+		}
+		any_scope_state = {
+		    NOT = {is_homeland_of_country_cultures = ROOT}
+		    is_incorporated = no
+			is_isolated_from_market = no
+		}
+	}
+
+	immediate = {
+	    random_scope_culture = {
+		    limit = {
+				is_primary_culture_of = ROOT
+			}
+			save_scope_as = primary_culture_scope
+		}
+	    random_scope_state = {
+		    limit = {
+				is_incorporated = yes
+				state_population > 400000
+			    tax_capacity_balance > 0.05
+				gdp >= 300000 # 300k
+				any_scope_culture = {
+                    is_primary_culture_of = ROOT
+                }
+			}
+		}
+	    random_scope_state = {
+		    limit = {
+			    NOT = {is_homeland_of_country_cultures = ROOT}
+			    is_incorporated = no
+				is_isolated_from_market = no
+			}
+			save_scope_as = move_to_state
+		}
+	}
+	
+	option = {
+		name = vfm_ai.55.a
+		random_scope_state = {
+            limit = {
+                is_incorporated = yes
+				state_population > 400000
+			    tax_capacity_balance > 0.05
+				gdp >= 300000 # 300k
+				any_scope_culture = {
+                    is_primary_culture_of = ROOT
+                }
+            }
+            every_scope_culture = {
+                limit = {
+                    is_primary_culture_of = ROOT
+                }
+                ordered_scope_pop = {
+                    order_by = total_size
+                    move_partial_pop = {
+                        state = scope:move_to_state
+                        population_ratio = {
+                            value = 0.02
+                        }
+                    }
+                }
+            }
+        }
+	}
+}
+
+vfm_ai.6 = {
+    type = country_event
+	placement = ROOT
+	#hidden = yes
+	
+	title = vfm_ai.6.t
+	desc = vfm_ai.6.d
+	flavor = vfm_ai.6.f
+	
+	event_image = {
+		video = "votp_realist_household"
+	}
+	
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	
+	duration = 1
+    
+    trigger = {
+		is_player = yes
+        any_scope_state = {
+            NOT = {is_homeland_of_country_cultures = ROOT}
+			is_incorporated = no
+			is_isolated_from_market = no
+			has_decree = decree_greener_grass_campaign
+        }
+    }  
+    immediate = {
+        random_scope_state = {
+            limit = {
+				owner = ROOT
+				NOT = {is_homeland_of_country_cultures = ROOT}
+				is_incorporated = no
+				is_isolated_from_market = no
+				has_decree = decree_greener_grass_campaign
+            }
+            save_scope_as = move_to_state
+        }
+    }
+	
+	option = {
+		custom_tooltip = vfm_ai.6_tt
+		custom_tooltip = greener_grass_campaign_events_2_tt
+		name = vfm_ai.6.a
+		random_scope_state = { #Move some pops from random incorporated state with >200k population to the choosen unincorporated state
+            limit = {
+                is_incorporated = yes
+                owner = ROOT
+                state_population > 500000
+                any_scope_culture = {
+                    is_primary_culture_of = ROOT
+                }
+            }
+            every_scope_culture = {
+                limit = {
+                    is_primary_culture_of = ROOT
+                }
+                ordered_scope_pop = {
+                    order_by = total_size
+                    move_partial_pop = {
+                        state = scope:move_to_state
+                        population_ratio = {
+                            value = 0.03
+                        }
+                    }
+                }
+            }
+        }
+	}
+}
+
+vfm_ai.97 = {
+	type = country_event
+	placement = root
+
+	hidden = yes
+
+	duration = 1
+
+	trigger = {
+	    c:FRA ?= this
+		any_scope_state = {
+			state_region = s:STATE_AQUITAINE
+			literacy_rate > 0.2
+		}
+	}
+
+	immediate = {
+	}
+}
+
+vfm_ai.98 = {
+	type = country_event
+	placement = root
+
+	hidden = yes
+
+	duration = 1
+
+	trigger = {
+	    c:FRA ?= this
+		any_scope_state = {
+			state_region = s:STATE_AQUITAINE
+			literacy_rate > 0.6
+		}
+	}
+
+	immediate = {
+	}
+}
+
+vfm_ai.99 = {
+	type = country_event
+	placement = root
+
+	hidden = yes
+
+	duration = 1
+
+	trigger = {
+	    c:FRA ?= this
+		s:STATE_AQUITAINE = {
+		every_scope_state = {
+		literacy_rate > 0.6
+		}
+		}
+	}
+
+	immediate = {
+	}
+}

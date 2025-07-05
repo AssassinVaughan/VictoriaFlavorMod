@@ -4707,41 +4707,26 @@ ai_strategy_default = {
 	# Using this value in other strategies will function additively
 	wanted_navy_size = {
 		value = 0
-	
-		# 1 level of naval base per 500k coastal incorporated population	
-        if = {
-			limit = {
-				cached_ai_incorporated_coastal_population > 0
-			}		
+
+		# 1 level of naval base per 500k coastal incorporated population
 		add = {
 			value = cached_ai_incorporated_coastal_population
 			divide = 450000 
 		}
-		}
 
-		# 1 level of naval base per 2 million coastal unincorporated population	
-        if = {
-			limit = {
-				cached_ai_unincorporated_coastal_population > 0
-			}		
+		# 1 level of naval base per 2 million coastal unincorporated population
 		add = {
 			value = cached_ai_unincorporated_coastal_population
 			divide = 1800000 
 		}
-		}
 
-		# 1 level of naval base per 10 million population in direct overseas subjects	
-		if = {
-			limit = {
-				cached_ai_overseas_subject_population > 0
-			}
+		# 1 level of naval base per 10 million population in direct overseas subjects
 		add = {
 			value = cached_ai_overseas_subject_population
 			divide = 8000000 
-		}	
 		}
 
-		max = 100 # No more than 100 from population		
+		max = 100 # No more than 100 from population
 
 		# 1 level of naval base per 5k income, multiplied by relative incorporated coastal population to total incorporated population
 		if = {
@@ -4749,14 +4734,15 @@ ai_strategy_default = {
 				cached_ai_incorporated_population > 0
 				cached_ai_incorporated_coastal_population > 0
 			}
-		add = {
-			value = income
-			divide = cached_ai_incorporated_population
-			multiply = cached_ai_incorporated_coastal_population
-			divide = 5000
-		}	
+
+			add = {
+				value = income
+				divide = cached_ai_incorporated_population
+				multiply = cached_ai_incorporated_coastal_population
+				divide = 5000
+			}
 		}
-	
+
 		# Special logic for british isles - this should be reworked to be less specific later
 		if = {
 			limit = {
@@ -4798,13 +4784,18 @@ ai_strategy_default = {
 
 		# Factor in strategies
 		if = {
-			limit = { 
+			limit = {
 				OR = {
-					has_strategy = ai_strategy_colonial_expansion 
+					has_strategy = ai_strategy_colonial_expansion
 					has_strategy = ai_strategy_economic_imperialism
 				}
 			}
 			multiply = 1.2
+		}
+
+		if = {
+			limit = { has_strategy = ai_strategy_armed_isolationism }
+			multiply = 0.75
 		}
 		
 		if = {
@@ -4813,36 +4804,27 @@ ai_strategy_default = {
 		}
 
 		if = {
+			limit = { country_rank < rank_value:major_power }
+			multiply = 0.5
+		}
+
+		if = {
 			limit = { exists = c:USA this = c:USA game_date < 1875.1.1 } # need to focus on other things
 			multiply = 0.5
-		}	
-		
-		if = {
-			limit = { 
-			    country_rank < rank_value:major_power
-			    NOR = { 
-				    AND = { exists = c:SWE this = c:SWE }
-					AND = { exists = c:DEN this = c:DEN }
-					AND = { exists = c:HAN this = c:HAN }
-					AND = { exists = c:NET this = c:NET }
-					AND = { exists = c:NOR this = c:NOR }
-				}
-			}
-			multiply = 0.6
-		}						
-		
+		}
+
 		if = {
 			limit = { is_country_type = unrecognized }
 			multiply = 0.5
-		}	
-		
+		}
+
 		if = {
 			limit = { OR = { has_strategy = ai_strategy_maintain_mandate_of_heaven has_strategy = ai_strategy_colonial_extraction } }
 			multiply = 0.25
-		}		
-		
+		}
+
 		max = 400
-		min = 0		
+		min = 0
 	}
 	
 	# Set the weights for combat unit groups, this determines the ratio that the AI aims to have of each, and thus what unit types it adds to formations
