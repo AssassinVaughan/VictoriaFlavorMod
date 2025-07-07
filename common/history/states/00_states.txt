@@ -171,17 +171,17 @@ STATES = {
 	s:STATE_MEKONG = {
 		create_state = {
 			country = c:DAI
-			owned_provinces = { x246E58 x474B0B x4080B0 x223DD3 x1D9718 x4923A3 xDF070D xE5A4DA x217F68 x0C662E x7D46C6 xB366DB x00C0B0 x70B060 x3C8C22 }
+			owned_provinces = { x246E58 x474B0B x4080B0 x223DD3 x1D9718 x4923A3 xDF070D xE5A4DA x217F68 x0C662E x7D46C6 xB366DB x00C0B0 x70B060 x3C8C22 xA4DBB7 x248BCA xC080B0 x58B174 x841E31 x5E16EB xD8BFF1 x72E436 x47ADCE x1C5BE6 x5F0DAB xFD66E6 }
 		}
-		create_state = {
-			country = c:DGR
-			owned_provinces = { xA4DBB7 x248BCA xC080B0 x58B174 x841E31 x5E16EB xD8BFF1 x72E436 x47ADCE x1C5BE6 x5F0DAB xFD66E6 }
-		}
+		#create_state = {
+		#	country = c:DGR
+		#	owned_provinces = { xA4DBB7 x248BCA xC080B0 x58B174 x841E31 x5E16EB xD8BFF1 x72E436 x47ADCE x1C5BE6 x5F0DAB xFD66E6 }
+		#}
 		
 		add_homeland = cu:vietnamese
 		add_homeland = cu:khmer
 		add_homeland = cu:champa
-		add_claim = c:DAI
+		#add_claim = c:DAI #unnecessary since DGR no longer exists and DAi controls all the state
 	}
 	s:STATE_SHANDONG = {
 		create_state = {
@@ -1768,12 +1768,12 @@ STATES = {
 		}
 		create_state = {
 			country = c:CAM
-			owned_provinces = { xA0B065 x36D7BA xDF21D5 x712EFF x7A5B5E xEFEF20 x989BA9 x2E84A3 x810F9E xFA2C44 xD45279 x81EF79 xA3B8D9 xA9542D xB5755C x65369D x20D113 x7070A0 x9EEF57 }
+			owned_provinces = { xA0B065 x36D7BA xDF21D5 x712EFF x7A5B5E xEFEF20 x989BA9 x2E84A3 x810F9E xFA2C44 xD45279 x81EF79 xA3B8D9 xA9542D xB5755C x65369D x20D113 x7070A0 x9EEF57 xD125AB x73E2F0 x4BA220 x319927 xF0FC47 }
 		}
-		create_state = {
-			country = c:KLO
-			owned_provinces = { xD125AB x73E2F0 x4BA220 x319927 xF0FC47 }
-		}
+		#create_state = {
+		#	country = c:KLO
+		#	owned_provinces = { xD125AB x73E2F0 x4BA220 x319927 xF0FC47 }
+		#}
 		
 		add_homeland = cu:khmer
 		add_homeland = cu:champa
@@ -6257,17 +6257,17 @@ STATES = {
 	s:STATE_TONKIN = {
 		create_state = {
 			country = c:DAI
-			owned_provinces = { x88BB78 x70B09F xCF906A x7B8217 x32BFFB x65FE48 x799EA4 xF0E531 x61145A x60458E xF0B0A0 x64BE62 xD49EE0 x4BB178 x5AB75C xC37AF1 xF031A0 }
+			owned_provinces = { x88BB78 x70B09F xCF906A x7B8217 x32BFFB x65FE48 x799EA4 xF0E531 x61145A x60458E xF0B0A0 x64BE62 xD49EE0 x4BB178 x5AB75C xC37AF1 xF031A0 x5083AB x36F847 xD27C1B xCD0D1D x98FD84 x738D72 }
 		}
-		create_state = {
-			country = c:SCT
-			owned_provinces = { x5083AB x36F847 xD27C1B xCD0D1D x98FD84 x738D72 }
-		}
+		#create_state = {
+		#	country = c:SCT
+		#	owned_provinces = { x5083AB x36F847 xD27C1B xCD0D1D x98FD84 x738D72 }
+		#}
 		
 		add_homeland = cu:vietnamese
 		add_homeland = cu:zhuang
 
-		add_claim = c:DAI
+		#add_claim = c:DAI #unnecessary since SCT no longer exists and DAi controls all the state
 	}
 	s:STATE_ANNAM = {
 		create_state = {
@@ -6280,7 +6280,7 @@ STATES = {
 	s:STATE_LAOS = {
 		create_state = {
 			country = c:LUA
-			owned_provinces = { x3130A0 x89F1F9 xDFCAA8 x70B3CE xED7937 x874BED xCD2D5D x1F8AE4 x8D0FE2 x6BA60C xDA6CAB xE8A817 x8D4D75 x1E6D3C xEAEF3A xDE87E1 x46CCB6 x6C400A }
+			owned_provinces = { x3130A0 x89F1F9 xDFCAA8 x70B3CE xED7937 x874BED xCD2D5D x1F8AE4 x8D0FE2 x6BA60C xDA6CAB xE8A817 x8D4D75 x1E6D3C xEAEF3A xDE87E1 x46CCB6 x6C400A x625009 x578898 x61478F }
 		}
 		create_state = {
 			country = c:SIA
@@ -6296,10 +6296,10 @@ STATES = {
 			owned_provinces = { xB07020 x02CE70 xB246DC x987E5B xF3D3B6 x2DE84E x8BFF1F x0B160B x1957E0 xB0B020 }
 			state_type = unincorporated
 		}
-		create_state = {
-			country = c:SCT
-			owned_provinces = { x625009 x578898 x61478F }
-		}
+		#create_state = {
+		#	country = c:SCT
+		#	owned_provinces = { x625009 x578898 x61478F }
+		#}
 		
 		add_homeland = cu:lao
 		add_homeland = cu:khmu
