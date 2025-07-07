@@ -1177,10 +1177,10 @@
 				reserves=1
 				activate_production_methods={ "pm_rotating_crops" "pm_citrus_orchards" "pm_tools_disabled"  }
 			}
-		}
-	}
-	s:STATE_RUTHENIA={
-		region_state:HUN={
+		#}
+	#}
+	#s:STATE_RUTHENIA={
+		#region_state:HUN={
 			create_building={
 				building="building_wheat_farm"
 				add_ownership={
@@ -1201,7 +1201,7 @@
 						type="building_logging_camp"
 						country="c:HUN"
 						levels=3
-						region="STATE_RUTHENIA"
+						region= "STATE_EAST_SLOVAKIA" #"STATE_RUTHENIA"
 					}
 				}
 				reserves=1
