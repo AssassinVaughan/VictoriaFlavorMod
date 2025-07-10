@@ -10,7 +10,7 @@
 				size = 29910
 			}
 			create_pop = {
-				culture = east_german
+				culture = north_german
 				size = 29910
 			}
 			create_pop = {
@@ -39,7 +39,7 @@
 				size = 1220711
 			}
 			create_pop = {
-				culture = east_german
+				culture = north_german
 				size = 18590
 			}
 		}
@@ -111,7 +111,7 @@
 				size = 801499
 			}
 			create_pop = {
-				culture = east_german
+				culture = north_german
 				size = 6562
 			}
 			create_pop = {
@@ -140,7 +140,7 @@
 				size = 179840
 			}
 			create_pop = {
-				culture = east_german
+				culture = south_german
 				size = 8960
 			}
 			create_pop = {
@@ -350,7 +350,22 @@
 		region_state:AUS = {
 			create_pop = {
 				culture = hungarian
-				size = 989200
+				size = 1001700
+			}
+			create_pop = {
+			    pop_type = aristocrat
+				culture = hungarian
+				size = 500
+			}
+			create_pop = {
+			    pop_type = bureaucrats
+				culture = hungarian
+				size = 500
+			}
+			create_pop = {
+			    pop_type = shopkeepers
+				culture = hungarian
+				size = 1500
 			}
 			create_pop = {
 				culture = hungarian
@@ -382,7 +397,22 @@
 		region_state:AUS = {
 			create_pop = {
 				culture = hungarian
-				size = 189292
+				size = 189000
+			}
+			create_pop = {
+			    pop_type = aristocrat
+				culture = hungarian
+				size = 100
+			}
+			create_pop = {
+			    pop_type = bureaucrats
+				culture = hungarian
+				size = 100
+			}
+			create_pop = {
+			    pop_type = shopkeepers
+				culture = hungarian
+				size = 100
 			}
 			create_pop = {
 				culture = ashkenazi
@@ -420,7 +450,22 @@
 		region_state:AUS = {
 			create_pop = {
 				culture = hungarian
-				size = 1375796
+				size = 1374196
+			}
+			create_pop = {
+			    pop_type = aristocrat
+				culture = hungarian
+				size = 400
+			}
+			create_pop = {
+			    pop_type = bureaucrats
+				culture = hungarian
+				size = 400
+			}
+			create_pop = {
+			    pop_type = shopkeepers
+				culture = hungarian
+				size = 800
 			}
 			create_pop = {
 				culture = croat
@@ -464,6 +509,21 @@
 			create_pop = {
 				culture = hungarian
 				size = 160000
+			}
+			create_pop = {
+			    pop_type = aristocrat
+				culture = hungarian
+				size = 100
+			}
+			create_pop = {
+			    pop_type = bureaucrats
+				culture = hungarian
+				size = 100
+			}
+			create_pop = {
+			    pop_type = shopkeepers
+				culture = hungarian
+				size = 100
 			}
 			create_pop = {
 				culture = slovak
@@ -589,61 +649,6 @@
 				culture = south_german
 				size = 40080
 			}
-		#}
-	#}
-	#s:STATE_RUTHENIA = {
-		#region_state:AUS = {
-			create_pop = {
-				culture = ukrainian # Rusyns etc.
-				size = 102035
-			}
-			create_pop = {
-				culture = ukrainian # Rusyns etc.
-				religion = catholic # greek catholic
-				size = 68023
-			}
-			create_pop = {
-				culture = slovak
-				religion = protestant
-				size = 1267
-			}
-			create_pop = {
-				culture = slovak
-				religion = catholic # greek catholic
-				size = 5068
-			}
-			create_pop = {
-				culture = south_german
-				religion = catholic
-				size = 8013
-			}
-			create_pop = {
-				culture = south_german
-				religion = protestant
-				size = 5342
-			}
-			create_pop = {
-				culture = hungarian
-				religion = catholic
-				size = 51501
-			}
-			create_pop = {
-				culture = hungarian
-				religion = protestant
-				size = 47501
-			}
-			create_pop = {
-				culture = romanian
-				size = 12296
-			}
-			create_pop = {
-				culture = ashkenazi
-				size = 40687
-			}
-			create_pop = {
-				culture = polish
-				size = 421
-			}
 		}
 	}
 	s:STATE_SOUTHERN_TRANSYLVANIA = {
@@ -722,38 +727,6 @@
 			}
 		}
 	}
-	s:STATE_BUKOVINA = {
-		region_state:AUS = {
-			create_pop = {
-				culture = polish
-				size = 20008
-			}
-			create_pop = {
-				culture = romanian
-				size = 144000
-			}
-			create_pop = {
-				culture = ashkenazi
-				size = 20004
-			}
-			create_pop = {
-				culture = szekely
-				size = 10012
-			}
-			create_pop = {
-				culture = hungarian
-				size = 1986
-			}
-			create_pop = {
-				culture = ukrainian
-				size = 144400
-			}
-			create_pop = {
-				culture = south_german
-				size = 32000
-			}
-		}
-	}
 	s:STATE_MOLDAVIA = {
 		region_state:AUS = {
 			create_pop = {
@@ -788,7 +761,11 @@
 		region_state:MOL = { # Ballpark estimate: 1,358,409 total for 1836, guessing that its recorded 1859 census marked a 7.77% growth over 1836 or that 1836 is 92.79% of the 1859 census, drawn from a trendline of Transylvanian censuses 1784-1850
 			create_pop = {
 				culture = romanian
-				size = 1241552
+				size = 1221552
+			}
+			create_pop = {
+				culture = ukrainian
+				size = 20000
 			}
 			create_pop = {
 				pop_type = slaves

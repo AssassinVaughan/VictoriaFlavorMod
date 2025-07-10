@@ -2,10 +2,6 @@
 	icon = "gfx/interface/icons/event_icons/event_skull.dds"
 
 	group = je_group_tanzimat
-
-	is_shown_in_lobby = {
-		c:TUR = THIS
-    }
 	
 	complete = {
 		scope:journal_entry = {
@@ -44,15 +40,6 @@
 			set_variable = {
 				name = failed_tanzimat
 				years = 20
-			}
-		}
-	if = { # TODO: PRCAL-38244 Ensure IP3 content is locked
-			limit = {
-				has_dlc_feature = ip3_content
-			}
-			custom_tooltip = {
-				text = eastern_crisis_consequence_tt
-				set_variable = failed_sick_man_main
 			}
 		}
 	}
@@ -138,6 +125,7 @@ je_sick_man_syria = {
 	}
 
 	on_complete = {
+		custom_tooltip = je_sick_man_advance
 		change_variable = {
 			name = sick_man_var
 			add = 1
@@ -214,7 +202,7 @@ je_sick_man_egypt = {
 	on_complete = {
 		add_modifier = {
 			name = reclaimed_egypt # country_prestige_add = 10
-			months = normal_modifier_time
+			days = normal_modifier_time
 		}
 		custom_tooltip = je_sick_man_advance
 		change_variable = {
@@ -430,18 +418,6 @@ je_sick_man_separatism = {
 		highest_secession_progress > 0.5
 	}
 	
-	on_fail = {
-		if = { # TODO: PRCAL-38244 Ensure IP3 content is locked
-			limit = {
-				has_dlc_feature = ip3_content
-			}
-			custom_tooltip = {
-				text = eastern_crisis_consequence_tt
-				set_variable = failed_sick_man_separatism
-			}
-		}
-	}
-
 	current_value = {
 		value = var:sick_man_separatist_var
 	}

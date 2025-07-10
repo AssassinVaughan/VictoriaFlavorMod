@@ -1,17 +1,7 @@
 ﻿je_schleswig_holstein_question = {
 	icon = "gfx/interface/icons/event_icons/event_flags/event_ger_flag.dds"
 	
-	group = je_group_german_unification
-
-	is_shown_in_lobby = {
-		OR = {
-			country_has_primary_culture = cu:north_german
-			country_has_primary_culture = cu:south_german
-		}
-		NOT = {
-			c:AUS = THIS
-		}
-	}
+	group = je_group_historical_content
 
 	is_shown_when_inactive = {
 		hidden_trigger = { NOT = { has_global_variable = schleswig_holstein_question_solved } }		
@@ -112,21 +102,7 @@
 je_german_unification_idea = {
 	icon = "gfx/interface/icons/event_icons/event_flags/event_ger_flag.dds"
 	
-	group = je_group_german_unification
-
-
-	is_shown_in_lobby = {
-		AND = {
-			OR = {
-				country_has_primary_culture = cu:north_german
-				country_has_primary_culture = cu:south_german
-			}
-			NOR = {
-				c:PRU = THIS
-				c:AUS = THIS
-			}
-		}
-	}
+	group = je_group_historical_content
 
 	is_shown_when_inactive = {
 		OR = {
@@ -435,7 +411,6 @@ je_south_german_unification = {
 		any_state = {
             filter = {
                 OR = {
-				    state_region = s:STATE_LOWER_SILESIA
                     state_region = s:STATE_HESSE
                     state_region = s:STATE_SAXONY
 					state_region = s:STATE_WESTPHALIA
@@ -513,12 +488,8 @@ je_south_german_unification = {
 je_german_unification = {
 	icon = "gfx/interface/icons/event_icons/event_flags/event_ger_flag.dds"
 	
-	group = je_group_german_unification
-
-	is_shown_in_lobby = {
-		c:PRU = THIS
-	}
-
+	group = je_group_historical_content
+	
 	is_shown_when_inactive = {
 		has_variable = je_german_confederate_unifier
 	}

@@ -26,7 +26,6 @@
 		activate_law = law_type:law_land_based_taxation
 		activate_law = law_type:law_secret_police
 		activate_law = law_type:law_unitary
-		activate_law = law_type:law_guild_system # Heavily restricted, but still extant until 1859
 
 		set_institution_investment_level = {
 			institution = institution_schools
@@ -46,6 +45,7 @@
 		# Geheime Staatskonferenz
 		ig:ig_landowners = {
 			add_ruling_interest_group = yes
+			add_ideology = ideology_austrian_hegemony
 			set_interest_group_name = austrian_aristocracy
 		}
 		ig:ig_armed_forces = {
@@ -56,7 +56,7 @@
 		}
 
 		add_journal_entry = {
-			type = je_matter_of_hungary
+			type = je_dual_monarchy
 		}
 		add_journal_entry = {
 			type = je_holy_alliance

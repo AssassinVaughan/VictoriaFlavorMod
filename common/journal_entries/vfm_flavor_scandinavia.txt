@@ -3,7 +3,7 @@
     group = je_group_foreign_affairs
 	is_shown_when_inactive = {
 		any_primary_culture = {
-			has_discrimination_trait = language_scandinavian
+			has_discrimination_trait = scandinavian_culture_group
 		}
 	}
 
@@ -13,7 +13,7 @@
 			is_subject = no	
 			top_overlord = {
 				any_primary_culture = {
-					has_discrimination_trait = language_scandinavian
+					has_discrimination_trait = scandinavian_culture_group
 				}
 			}
 		}
@@ -63,12 +63,39 @@ je_swedish_guilds = {
 	icon = "gfx/interface/icons/event_icons/event_trade.dds"
     group = je_group_internal_affairs
 	complete = {
-	    NOT = { has_law = law_type:law_guild_system }
+		OR = {
+			AND = {
+				custom_tooltip = {
+					text = johan_died_tt
+					ruler = {
+						NOT = { has_variable = is_johan }
+					}
+				}
+				AND = {
+					ig:ig_industrialists = {
+						ig_clout > 0.15
+					}
+					ig:ig_petty_bourgeoisie = {
+						ig_clout < 0.15
+					}
+				}
+			}
+
+			AND = {
+				ig:ig_industrialists = {
+					is_powerful = yes
+				}
+				ig:ig_petty_bourgeoisie = {
+					ig_clout < 0.1
+				}
+			}
+		}
+
 	}
 	
 	on_monthly_pulse = {
 		random_events = {
-			45 = 0
+			25 = 0
 			1 = journal_flavor_scandinavia.12
 		}
 	}
@@ -97,7 +124,7 @@ je_matter_of_norway = {
 				who ?= c:SWE
 				attitude = loyal
 			}
-		relations:root >= 49
+		relations:root >= relations_threshold:friendly
 
 		}
 
@@ -253,7 +280,7 @@ je_swe_gotavarven = {
 				is_building_type = building_shipyards
 				is_building_type = building_military_shipyards
 			}
-			level >= 3
+			level >= 4
 			occupancy > 0.9
 		}
 		}
