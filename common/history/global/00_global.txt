@@ -3,24 +3,10 @@ GLOBAL = {
 	
 	every_country = {
 		limit = { NOT = { has_law = law_type:law_slavery_banned } }
-		if = {
-			limit = {
-				has_law = law_type:law_colonial_slavery
-			}
-			ig:ig_landowners = { add_ideology = ideology_pro_slavery_colonial }
-		}
-		else = {
-			ig:ig_landowners = { add_ideology = ideology_pro_slavery }
-		}
+		ig:ig_landowners = { add_ideology = ideology_pro_slavery }
 	}
+	
 
-	every_country = {
-		limit = {
-			has_law = law_type:law_monarchy
-			has_law = law_type:law_autocracy
-		}
-		set_variable = king_in_parliament_possible
-	}
 	
 	c:UCA ?= {
 		set_variable = {
@@ -449,21 +435,6 @@ GLOBAL = {
 				name = window_to_europe
 			}
 		}
-		every_scope_state = {
-			limit = {
-			    OR = {
-				state_region = s:STATE_AQUITAINE
-				state_region = s:STATE_BRITTANY
-				state_region = s:STATE_PROVENCE
-				state_region = s:STATE_LANGUEDOC
-				state_region = s:STATE_GUYENNE
-				state_region = s:STATE_AUVERGNE_LIMOUSIN
-				}
-			}
-			add_modifier = {
-				name = FRA_regional_language
-			}
-		}
        create_bidirectional_truce = {
 			country = c:CIR
 			months = 240
@@ -514,6 +485,38 @@ GLOBAL = {
             culture = cu:azerbaijani
         }
 	}
+	
+	c:FRA ?= {
+	    every_scope_state = {
+			limit = {
+			    OR = {
+				state_region = s:STATE_AQUITAINE
+				state_region = s:STATE_BRITTANY
+				state_region = s:STATE_PROVENCE
+				state_region = s:STATE_LANGUEDOC
+				state_region = s:STATE_GUYENNE
+				state_region = s:STATE_AUVERGNE_LIMOUSIN
+				}
+			}
+			add_modifier = {
+				name = FRA_regional_language
+			}
+			add_radicals_in_state = {
+				value = 0.03
+			}
+		}
+		
+		every_scope_state = {
+			limit = {
+				state_region = s:STATE_ILE_DE_FRANCE
+			}
+			add_modifier = {
+				name = FRA_the_new_rome
+			}
+		}
+		
+		
+	}
 
 	c:ARG ?= {
 		every_scope_state = {
@@ -524,15 +527,15 @@ GLOBAL = {
 				}
 			}
 			add_radicals_in_state = {
-				value = 0.33
+				value = 0.25
 				strata = upper
 			}
 			add_radicals_in_state = {
-				value = 0.25
+				value = 0.2
 				strata = middle
 			}
 			add_radicals_in_state = {
-				value = 0.15
+				value = 0.1
 				strata = lower
 			}
 		}
@@ -554,7 +557,7 @@ GLOBAL = {
 
 	c:URU ?= {
 		add_radicals = {
-			value = 0.15
+			value = 0.1
 		}
 	}
 
@@ -806,7 +809,7 @@ GLOBAL = {
 		}
     }
 
-    c:CRO ?= {
+    c:AUS ?= { #CRO
 		add_radicals = {
 			value = 0.08
 			culture = cu:serb
@@ -934,12 +937,11 @@ GLOBAL = {
 						#Check for muslim cultures to identify muslims,
 						#until I can figure out how to find majority religions of cultures.
 						OR = { 
-							has_discrimination_trait = language_malay
-							has_discrimination_trait = language_persian
-							has_discrimination_trait = language_tabari
-							has_discrimination_trait = language_baluchi
-							has_discrimination_trait = language_albanian
-							has_discrimination_trait = language_arabic
+							has_discrimination_trait = middle_eastern_heritage
+							has_discrimination_trait = malay_culture
+							has_discrimination_trait = iranian_turanian_culture_group
+							has_discrimination_trait = albanian_language
+							has_discrimination_trait = arab_speaking
 						}
 					}
 				}
@@ -965,7 +967,7 @@ GLOBAL = {
 				}
 
 				religion = {
-					NOT = { has_discrimination_trait = heritage_islamic }
+					NOT = { has_discrimination_trait = muslim }
 				}
 			}
 		}

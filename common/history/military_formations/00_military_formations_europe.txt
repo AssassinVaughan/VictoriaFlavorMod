@@ -665,7 +665,7 @@
 
 			combat_unit = { # IR 2, IR 31, IR 33, 
 				type = unit_type:combat_unit_type_line_infantry
-				state_region = s:STATE_SLOVAKIA
+				state_region = s:STATE_EAST_SLOVAKIA #STATE_SLOVAKIA
 				count = 6
 			}
 			combat_unit = { # IR 19, IR 48, IR 52
@@ -707,7 +707,7 @@
 			}
 			combat_unit = { # 8. Hussar, 9. Hussar, 10. Hussar
 				type = unit_type:combat_unit_type_hussars
-				state_region = s:STATE_SLOVAKIA
+				state_region = s:STATE_EAST_SLOVAKIA #STATE_SLOVAKIA
 				count = 3
 			}
 
@@ -764,7 +764,7 @@
 		}
 	}
 
-	c:CRO ?= {
+	c:AUS ?= { #CRO
 		create_military_formation = {
 			type = army
 			hq_region = sr:region_balkans

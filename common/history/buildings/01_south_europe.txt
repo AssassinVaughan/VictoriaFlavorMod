@@ -4272,7 +4272,7 @@
 						type="building_manor_house"
 						country="c:AUS"
 						levels=1
-						region="STATE_AUSTRIA"
+						region="STATE_CENTRAL_HUNGARY"
 					}
 				}
 				reserves=1
@@ -4292,12 +4292,12 @@
 		}
 	}
 	s:STATE_CROATIA={
-		region_state:CRO={
+		region_state:AUS={
 			create_building={
 				building="building_government_administration"
 				add_ownership={
 					country={
-						country="c:CRO"
+						country="c:AUS"
 						levels=3
 					}
 				}
@@ -4309,7 +4309,7 @@
 				add_ownership={
 					building={
 						type="building_financial_district"
-						country="c:CRO"
+						country="c:AUS"
 						levels=1
 						region="STATE_CROATIA"
 					}
@@ -4321,7 +4321,7 @@
 				add_ownership={
 					building={
 						type="building_manor_house"
-						country="c:CRO"
+						country="c:AUS"
 						levels=1
 						region="STATE_CROATIA"
 					}
@@ -4329,7 +4329,7 @@
 						type="building_manor_house"
 						country="c:AUS"
 						levels=1
-						region="STATE_STYRIA"
+						region="STATE_AUSTRIA"
 					}
 				}
 				reserves=1
@@ -4340,9 +4340,9 @@
 				add_ownership={
 					building={
 						type="building_manor_house"
-						country="c:CRO"
+						country="c:AUS"
 						levels=1
-						region="STATE_CROATIA"
+						region="STATE_AUSTRIA"
 					}
 				}
 				reserves=1
@@ -4353,7 +4353,7 @@
 				add_ownership={
 					building={
 						type="building_manor_house"
-						country="c:CRO"
+						country="c:AUS"
 						levels=1
 						region="STATE_CROATIA"
 					}
@@ -4366,7 +4366,7 @@
 				add_ownership={
 					building={
 						type="building_financial_district"
-						country="c:CRO"
+						country="c:AUS"
 						levels=1
 						region="STATE_CROATIA"
 					}
@@ -4385,7 +4385,7 @@
 				add_ownership={
 					building={
 						type="building_fishing_wharf"
-						country="c:CRO"
+						country="c:AUS"
 						levels=2
 						region="STATE_CROATIA"
 					}
@@ -4397,7 +4397,7 @@
 				building="building_port"
 				add_ownership={
 					country={
-						country="c:CRO"
+						country="c:AUS"
 						levels=1
 					}
 				}
@@ -4407,12 +4407,12 @@
 		}
 	}
 	s:STATE_SLAVONIA={
-		region_state:CRO={
+		region_state:AUS={
 			create_building={
 				building="building_government_administration"
 				add_ownership={
 					country={
-						country="c:CRO"
+						country="c:AUS"
 						levels=2
 					}
 				}
@@ -4424,9 +4424,9 @@
 				add_ownership={
 					building={
 						type="building_manor_house"
-						country="c:HUN"
+						country="c:AUS"
 						levels=1
-						region="STATE_TRANSDANUBIA"
+						region="STATE_AUSTRIA"
 					}
 				}
 				reserves=1
@@ -4437,7 +4437,7 @@
 				add_ownership={
 					building={
 						type="building_manor_house"
-						country="c:CRO"
+						country="c:AUS"
 						levels=1
 						region="STATE_SLAVONIA"
 					}
@@ -4588,7 +4588,7 @@
 			}
 		}
 	}
-	s:STATE_WESTERN_SERBIA={
+	s:STATE_NORTHERN_SERBIA={
 		region_state:SER={
 			create_building={
 				building="building_livestock_ranch"
@@ -4596,31 +4596,12 @@
 					building={
 						type="building_manor_house"
 						country="c:SER"
-						levels=1
-						region="STATE_WESTERN_SERBIA"
+						levels=2
+						region="STATE_NORTHERN_SERBIA"
 					}
 				}
 				reserves=1
 				activate_production_methods={ "pm_open_air_stockyards" "pm_rotating_crops_ranch" "pm_standard_fences" "pm_unrefrigerated"  }
-			}
-			create_building={
-				building="building_wheat_farm"
-				add_ownership={
-					building={
-						type="building_manor_house"
-						country="c:SER"
-						levels=1
-						region="STATE_WESTERN_SERBIA"
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_rotating_crops" "pm_no_secondary" "pm_tools_disabled"  }
-			}
-			create_building={
-				building="building_construction_sector"
-				level=1
-				reserves=1
-				activate_production_methods={ "pm_wooden_buildings" }
 			}
 			create_building={
 				building="building_logging_camp"
@@ -4629,28 +4610,34 @@
 						type="building_logging_camp"
 						country="c:SER"
 						levels=1
-						region="STATE_WESTERN_SERBIA"
+						region="STATE_NORTHERN_SERBIA"
 					}
 				}
 				reserves=1
 				activate_production_methods={ "pm_simple_forestry" "pm_no_hardwood" "pm_no_equipment" "pm_road_carts"  }
 			}
 			create_building={
-				building="building_vineyard_plantation"
+				building="building_construction_sector"
+				level=1
+				reserves=1
+				activate_production_methods={ "pm_wooden_buildings" }
+			}
+			create_building={
+				building="building_wheat_farm"
 				add_ownership={
 					building={
 						type="building_manor_house"
 						country="c:SER"
 						levels=1
-						region="STATE_WESTERN_SERBIA"
+						region="STATE_NORTHERN_SERBIA"
 					}
 				}
 				reserves=1
-				activate_production_methods={ "default_building_vineyard_plantation" "pm_road_carts"  }
+				activate_production_methods={ "pm_rotating_crops" "pm_no_secondary" "pm_tools_disabled"  }
 			}
 		}
 	}
-	s:STATE_EASTERN_SERBIA={
+	s:STATE_SOUTHERN_SERBIA={
 		region_state:TUR={
 			create_building={
 				building="building_livestock_ranch"
@@ -4659,7 +4646,7 @@
 						type="building_manor_house"
 						country="c:TUR"
 						levels=1
-						region="STATE_EASTERN_SERBIA"
+						region="STATE_SOUTHERN_SERBIA"
 					}
 					building={
 						type="building_manor_house"
@@ -4678,7 +4665,7 @@
 						type="building_manor_house"
 						country="c:TUR"
 						levels=1
-						region="STATE_EASTERN_SERBIA"
+						region="STATE_SOUTHERN_SERBIA"
 					}
 				}
 				reserves=1
@@ -4758,129 +4745,6 @@
 				}
 				reserves=1
 				activate_production_methods={ "pm_simple_fishing" "pm_unrefrigerated"  }
-			}
-		}
-	}
-	s:STATE_ATTICA={
-		region_state:GRE={
-			create_building={
-				building="building_government_administration"
-				add_ownership={
-					country={
-						country="c:GRE"
-						levels=2
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_simple_organization" "pm_religious_bureaucrats" "pm_professional_bureaucrats" }
-			}
-			create_building={
-				building="building_shipyards"
-				add_ownership={
-					building={
-						type="building_financial_district"
-						country="c:GRE"
-						levels=1
-						region="STATE_ATTICA"
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_basic_shipbuilding"  }
-			}
-			create_building={
-				building="building_wheat_farm"
-				add_ownership={
-					building={
-						type="building_manor_house"
-						country="c:GRE"
-						levels=1
-						region="STATE_ATTICA"
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_simple_farming" "pm_no_secondary" "pm_tools_disabled"  }
-			}
-			create_building={
-				building="building_vineyard_plantation"
-				add_ownership={
-					building={
-						type="building_manor_house"
-						country="c:GRE"
-						levels=1
-						region="STATE_ATTICA"
-					}
-				}
-				reserves=1
-				activate_production_methods={ "default_building_vineyard_plantation" "pm_road_carts"  }
-			}
-			create_building={
-				building="building_fishing_wharf"
-				add_ownership={
-					building={
-						type="building_fishing_wharf"
-						country="c:GRE"
-						levels=1
-						region="STATE_ATTICA"
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_fishing_trawlers" "pm_unrefrigerated"  }
-			}
-			create_building={
-				building="building_tobacco_plantation"
-				add_ownership={
-					building={
-						type="building_manor_house"
-						country="c:GRE"
-						levels=1
-						region="STATE_ATTICA"
-					}
-				}
-				reserves=1
-				activate_production_methods={ "default_building_tobacco_plantation" "pm_road_carts"  }
-			}
-			create_building={
-				building="building_logging_camp"
-				add_ownership={
-					building={
-						type="building_logging_camp"
-						country="c:GRE"
-						levels=1
-						region="STATE_ATTICA"
-					}
-					building={
-						type="building_financial_district"
-						country="c:GRE"
-						levels=1
-						region="STATE_ATTICA"
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_simple_forestry" "pm_no_hardwood" "pm_no_equipment" "pm_road_carts"  }
-			}
-			create_building={
-				building="building_cotton_plantation"
-				add_ownership={
-					building={
-						type="building_manor_house"
-						country="c:GRE"
-						levels=2
-						region="STATE_ATTICA"
-					}
-				}
-				reserves=1
-				activate_production_methods={ "default_building_cotton_plantation" "pm_road_carts"  }
-			}
-			create_building={
-				building="building_port"
-				add_ownership={
-					country={
-						country="c:GRE"
-						levels=1
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_basic_port" }
 			}
 		}
 	}

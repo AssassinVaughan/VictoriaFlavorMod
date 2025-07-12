@@ -111,38 +111,6 @@ law_monarchy = {
 				fra_handle_republic_monarch_assignment = yes
 			}
 		}
-		if = {
-			limit = {
-				country_has_primary_culture = cu:vietnamese
-			}
-			if = {
-				limit = {
-					any_scope_state = {
-						state_region = s:STATE_CAMBODIA
-					}
-				}
-				random_scope_state = {
-					limit = {
-						state_region = s:STATE_CAMBODIA
-					}
-					STATE_CAMBODIA_state_name_assign = yes
-				}
-			}
-			if = {
-				limit = {
-					any_scope_state = {
-						state_region = s:STATE_LAOS
-					}
-				}
-				random_scope_state = {
-					limit = {
-						state_region = s:STATE_LAOS
-					}
-					STATE_LAOS_state_name_assign = yes
-				}
-			}
-		}
-		crown_land_republic_effect = yes
 	}
 
 	ai_enact_weight_modifier = { #Petitions
@@ -254,7 +222,6 @@ law_presidential_republic = {
 				add_ideology = ideology_republican
 			}
 		}
-		crown_land_republic_effect = yes
 	}
 	
 	ai_will_do = {
@@ -401,7 +368,6 @@ law_parliamentary_republic = {
 				add_ideology = ideology_republican
 			}
 		}
-		crown_land_republic_effect = yes
 	}
 	
 	ai_will_do = {
@@ -518,7 +484,6 @@ law_theocracy = {
 
 	ai_will_do = {
 		exists = ruler
-		OR = {
 			ruler = {
 				has_ideology = ideology:ideology_theocrat
 			}
@@ -632,7 +597,6 @@ law_council_republic = {
 				STATE_INGRIA_state_name_assign = yes
 			}
 		}
-		crown_land_republic_effect = yes
 	}	
 
 	can_impose = {
@@ -744,7 +708,6 @@ law_corporate_state = {
 			}
 			add_modifier = { name = modifier_corporate_state_intelligentsia_bias }
 		}
-		crown_land_republic_effect = yes
 	}	
 
 	on_enact = {
