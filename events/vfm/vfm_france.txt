@@ -36,7 +36,7 @@ vfm_france.1 = {
 		}
 		
 		add_technology_progress = {
-			progress = 2000
+			progress = 3000
 			technology = realism
 		}
 	}
@@ -269,6 +269,128 @@ vfm_france.5 = {
 	option = { 
 		name = vfm_france.5.a
 		default_option = yes
+	}
+}
+
+vfm_france.6 = {
+	type = country_event
+
+	title = vfm_france.6.t
+	desc = vfm_france.6.d
+	flavor = vfm_france.6.f
+
+	event_image = {
+		video = "votp_agitator_speaking"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_protest.dds"
+
+	duration = 3
+
+	immediate = {
+	}
+
+	option = { 
+		name = vfm_france.6.a
+		default_option = yes
+		add_loyalists = {
+			value = 0.04
+		}
+		remove_modifier = fra_secular_legacy_2
+		add_modifier = fra_secular_legacy_3
+	}
+	
+	option = { 
+		name = vfm_france.6.b
+		default_option = yes
+		trigger = {
+		    NOT = { has_technology_researched = camera }
+		}
+		remove_modifier = fra_secular_legacy_2
+		add_modifier = fra_secular_legacy_3
+		
+		add_technology_progress = {
+			progress = 3000
+			technology = camera
+		}
+	}
+	
+	option = { 
+		name = vfm_france.6.c
+		default_option = yes
+		trigger = {
+		    NOT = { has_technology_researched = film }
+		}
+		remove_modifier = fra_secular_legacy_2
+		add_modifier = fra_secular_legacy_3
+		
+		add_technology_progress = {
+			progress = 3000
+			technology = film
+		}
+	}
+}
+
+vfm_france.7 = {
+	type = country_event
+
+	title = vfm_france.7.t
+	desc = vfm_france.7.d
+	flavor = vfm_france.7.f
+
+	event_image = {
+		video = "votp_agitator_speaking" #"ip3_villageschool"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_protest.dds"
+
+	duration = 3
+
+	immediate = {
+	}
+
+	option = { 
+		name = vfm_france.7.a
+		default_option = yes
+		random_scope_state = {
+			limit = {
+				state_region = s:STATE_AQUITAINE
+				has_modifier = FRA_regional_language
+			}
+			remove_modifier = FRA_regional_language
+		}
+		random_scope_state = {
+			limit = {
+				state_region = s:STATE_BRITTANY
+				has_modifier = FRA_regional_language
+			}
+			remove_modifier = FRA_regional_language
+		}
+		random_scope_state = {
+			limit = {
+				state_region = s:STATE_PROVENCE
+				has_modifier = FRA_regional_language
+			}
+			remove_modifier = FRA_regional_language
+		}
+		random_scope_state = {
+			limit = {
+				state_region = s:STATE_GUYENNE
+				has_modifier = FRA_regional_language
+			}
+			remove_modifier = FRA_regional_language
+		}
+		random_scope_state = {
+			limit = {
+				state_region = s:STATE_AUVERGNE_LIMOUSIN
+				has_modifier = FRA_regional_language
+			}
+			remove_modifier = FRA_regional_language
+		}
 	}
 }
 
