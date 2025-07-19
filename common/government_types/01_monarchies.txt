@@ -1507,34 +1507,6 @@ gov_khedive = {
 	}
 }
 
-gov_pashalik = {
-	transfer_of_power = hereditary
-	
-	male_ruler = "RULER_TITLE_PASHA"
-	female_ruler = "" # Empty on purpose
-
-	male_heir = "RULER_TITLE_PRINCE"
-	female_heir = "" # Empty on purpose
-	
-	possible = {
-		has_law = law_type:law_monarchy
-		exists = c:EGY
-		c:EGY = ROOT
-		NOT = {
-			has_variable = khedivate_conferred
-		}
-        NOT = {
-			is_subject_type = subject_type_crown_land
-		}
-	}
-
-	on_government_type_change = {
-		change_to_hereditary = yes
-	}
-	on_post_government_type_change = {
-		post_change_to_hereditary = yes
-	}
-}
 
 gov_kurdish_state = {								
 	transfer_of_power = hereditary
