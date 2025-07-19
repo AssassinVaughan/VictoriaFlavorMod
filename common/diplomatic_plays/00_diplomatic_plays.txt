@@ -135,7 +135,7 @@ dp_return_state = {
 		NOT = { is_subject_of = scope:target_country }
 		scope:target_country = {
 			NOT = { is_country_type = decentralized }
-			NOT = { is_subject_type = subject_type_autonomous_province }
+			NOT = { is_subject_type = subject_type_autonomous_province } # VFM
 		}
 		diplomatic_play_has_no_relations_blockers = yes
 	}
