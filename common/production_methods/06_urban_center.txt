@@ -455,14 +455,13 @@ pm_hydroelectric_plant = {
 	
 	building_modifiers = { 
 		workforce_scaled = {
-			goods_input_engines_add = 23				#x60 = 1380
-			goods_output_electricity_add = 109		#x30 = 3270
+			goods_input_engines_add = 20
+			goods_output_electricity_add = 120
 		}
-		#vanilla profit 7.09		#mod profit 102.818		#mod profit with D.C 13		#mod profit with A.C 15.62
 		level_scaled = {
-			building_employment_laborers_add = 250
-			building_employment_machinists_add = 180
-			building_employment_engineers_add = 120
+			building_employment_laborers_add = 200
+			building_employment_machinists_add = 200
+			building_employment_engineers_add = 100
 		}
 	}
 }
@@ -477,16 +476,15 @@ pm_coal-fired_plant = {
 	
 	building_modifiers = { 
 		workforce_scaled = {
-			goods_input_engines_add = 50				#x60 = 3000
-			goods_input_coal_add = 50				#x30 = 1500		#total 4500
-			goods_output_electricity_add = 211		#x30 = 6330
+			goods_input_engines_add = 20
+			goods_input_coal_add = 40
+			goods_output_electricity_add = 100
 		}
 		
-		#vanilla profit 5.5			#mod profit 112.61 		#mod profit with dc 10.92	#mod profit with dc 14.39
 		level_scaled = {
 			building_employment_laborers_add = 200
 			building_employment_machinists_add = 150
-			building_employment_engineers_add = 140
+			building_employment_engineers_add = 150
 		}
 	}
 }
@@ -495,7 +493,7 @@ pm_oil-fired_plant = {
 	texture = "gfx/interface/icons/production_method_icons/power_plant.dds"
 	state_modifiers = {
 		workforce_scaled = {
-			state_pollution_generation_add = 75
+			state_pollution_generation_add = 50
 		}
 	}
 	
@@ -505,15 +503,14 @@ pm_oil-fired_plant = {
 	
 	building_modifiers = { 
 		workforce_scaled = {
-			goods_input_engines_add = 60				#x60 = 3600
-			goods_input_oil_add = 29					#x40 = 1160	#total 4760
-			goods_output_electricity_add = 220		#x30 = 6600
+			goods_input_engines_add = 20
+			goods_input_oil_add = 30
+			goods_output_electricity_add = 120
 		}
-		#vanilla profit 9.8			# mod profit 113.23		# mod profit with dc 11.33	# mod profit with ac 14.64
 		level_scaled = {
-			building_employment_laborers_add = 200
+			building_employment_laborers_add = 100
 			building_employment_machinists_add = 150
-			building_employment_engineers_add = 140
+			building_employment_engineers_add = 175
 		}
 	}
 }
@@ -523,15 +520,12 @@ pm_transmission_method_direct_current = {
 	
 	building_modifiers = { 
 		workforce_scaled = {
-			goods_input_wood_add = 1					#x20 = 20
-			goods_input_tools_add = 1				#x40 = 40
-			goods_output_electricity_add = -50		#x30 = 1500
+			goods_input_wood_add = 5
+			goods_input_tools_add = 2
 		}
-		#profit -184
 		level_scaled = {
-			building_employment_laborers_add = 125
-			building_employment_machinists_add = 90
-			building_employment_engineers_add = 60
+			building_employment_laborers_add = 200
+			building_employment_machinists_add = 100
 		}
 	}
 }
@@ -542,23 +536,21 @@ pm_transmission_method_alternating_current = {
 		steel_frame_buildings
 	}
 	
-	unlocking_production_methods = {
-		pm_hydroelectric_plant
-		pm_coal-fired_plant
-		pm_oil-fired_plant
+	unlocking_technologies = {
+		electrical_capacitors
 	}
 	
 	building_modifiers = {
 		workforce_scaled = {
-			goods_input_wood_add = 10				#x20 = 200
-			goods_input_tools_add = 10				#x40 = 400
-			goods_input_steel_add = 13				#x50 = 650 #total 1250
+			goods_input_wood_add = 5
+			goods_input_tools_add = 2
+			goods_output_lead_add = 5
+			goods_output_electricity_add = 25
 		}
 		#profit -52
 		level_scaled = {
-			building_employment_laborers_add = 500
-			building_employment_machinists_add = 250
-			building_employment_engineers_add = 125
+			building_employment_machinists_add = 100
+			building_employment_engineers_add = 100
 		}
 	}
 }
