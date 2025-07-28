@@ -1,0 +1,396 @@
+﻿namespace = vfm_colonial_migration
+
+vfm_colonial_migration.1 = {
+	type = country_event
+	placement = root
+
+	title = vfm_colonial_migration.1.t
+	desc = vfm_colonial_migration.1.d
+	flavor = vfm_colonial_migration.1.f
+	
+	event_image = {
+		video = "africa_construction_colony"
+	}
+	
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	
+	duration = 1
+
+	trigger = {
+		country_rank >= rank_value:major_power
+		institution_investment_level = {
+			institution = institution_colonial_affairs
+			value >= 1
+		}
+		any_scope_state = {
+		    NOT = {is_homeland_of_country_cultures = ROOT}
+		    is_incorporated = no
+			is_isolated_from_market = no
+			OR = {
+			NOT = {
+				any_scope_culture = {
+					is_primary_culture_of = ROOT
+					save_temporary_scope_as = primary_culture
+				}
+				culture_percent_state = {
+				    target = scope:primary_culture
+				    value >= 0.1
+				}
+			}
+			has_decree = decree_greener_grass_campaign
+			}
+		}
+		any_scope_state = {
+		    is_incorporated = yes
+			state_population > 500000
+			gdp >= 300000 # 300k
+			any_scope_culture = {
+                is_primary_culture_of = ROOT
+            }
+		}
+	}
+
+	immediate = {
+	    random_scope_culture = {
+		    limit = {
+				is_primary_culture_of = ROOT
+			}
+			save_scope_as = primary_culture_scope
+		}
+	    random_scope_state = {
+		    limit = {
+				is_incorporated = yes
+				state_population > 500000
+				gdp >= 300000 # 300k
+				culture_percent_state = {
+			  		target = scope:primary_culture_scope
+			 		value >= 0.2
+				}
+			}
+		}
+	    random_scope_state = {
+		    limit = {
+			    NOT = {is_homeland_of_country_cultures = ROOT}
+			    is_incorporated = no
+				is_isolated_from_market = no
+				NOT = {
+					any_scope_culture = {
+						is_primary_culture_of = ROOT
+						save_temporary_scope_as = primary_culture
+					}
+					culture_percent_state = {
+			  		   target = scope:primary_culture
+			 		   value >= 0.1
+					}
+				}
+			}
+			save_scope_as = move_to_state
+		}
+	}
+	
+	option = { # Yes move some pops
+		name = vfm_colonial_migration.1.a
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+		    institution_investment_level = {
+				institution = institution_colonial_affairs
+				value = 1
+			}
+		}
+		random_scope_state = {
+            limit = {
+                is_incorporated = yes
+				state_population > 500000
+				gdp >= 300000 # 300k
+				culture_percent_state = {
+			  		target = scope:primary_culture_scope
+			 		value >= 0.2
+				}
+            }
+            scope:primary_culture_scope = {
+                ordered_scope_pop = {
+                    order_by = total_size
+                    move_partial_pop = {
+                        state = scope:move_to_state
+                        population_ratio = {
+                            value = 0.01
+                        }
+                    }
+                }
+            }
+			#add_modifier = {
+			#	name = modifier_colonial_migration_cost
+			#	multiplier = "culture_percent_state(scope:primary_culture_scope)"
+			#	days = short_modifier_time
+			#}
+        }
+	}
+	
+	option = { # Yes move a lot of pops
+		name = vfm_colonial_migration.1.b
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+		    institution_investment_level = {
+				institution = institution_colonial_affairs
+				value = 2
+			}
+		}
+		random_scope_state = {
+            limit = {
+                is_incorporated = yes
+				state_population > 500000
+				gdp >= 300000 # 300k
+				culture_percent_state = {
+			  		target = scope:primary_culture_scope
+			 		value >= 0.2
+				}
+            }
+            scope:primary_culture_scope = {
+                ordered_scope_pop = {
+                    order_by = total_size
+                    move_partial_pop = {
+                        state = scope:move_to_state
+                        population_ratio = {
+                            value = 0.02
+                        }
+                    }
+                }
+            }
+			#add_modifier = {
+			#	name = modifier_colonial_migration_cost
+			#	multiplier = "culture_percent_state(scope:primary_culture_scope)"
+			#	days = short_modifier_time
+			#}
+        }
+	}
+	
+	option = { # Yes move a lot of pops
+		name = vfm_colonial_migration.1.c
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+		    institution_investment_level = {
+				institution = institution_colonial_affairs
+				value >= 3
+			}
+		}
+		random_scope_state = {
+            limit = {
+                is_incorporated = yes
+				state_population > 500000
+				gdp >= 300000 # 300k
+				culture_percent_state = {
+			  		target = scope:primary_culture_scope
+			 		value >= 0.2
+				}
+            }
+            scope:primary_culture_scope = {
+                ordered_scope_pop = {
+                    order_by = total_size
+                    move_partial_pop = {
+                        state = scope:move_to_state
+                        population_ratio = {
+                            value = 0.03
+                        }
+                    }
+                }
+            }
+			#add_modifier = {
+			#	name = modifier_colonial_migration_cost
+			#	multiplier = "culture_percent_state(scope:primary_culture_scope)"
+			#	days = short_modifier_time
+			#}
+        }
+	}
+	
+	option = { # Don't move pops
+		name = vfm_colonial_migration.1.e
+		default_option = yes
+	}
+}
+
+vfm_colonial_migration.2 = {
+	type = country_event
+	placement = root
+
+	title = vfm_colonial_migration.2.t
+	desc = vfm_colonial_migration.2.d
+	flavor = vfm_colonial_migration.2.f
+	
+	event_image = {
+		video = "africa_construction_colony"
+	}
+	
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	
+	duration = 1
+
+	trigger = {
+		country_rank >= rank_value:major_power
+		institution_investment_level = {
+			institution = institution_colonial_affairs
+			value >= 4
+		}
+		any_scope_state = {
+		    NOT = {is_homeland_of_country_cultures = ROOT}
+		    is_incorporated = no
+			is_isolated_from_market = no
+			OR = {
+			NOT = {
+				any_scope_culture = {
+					is_primary_culture_of = ROOT
+					save_temporary_scope_as = primary_culture
+				}
+				culture_percent_state = {
+				    target = scope:primary_culture
+				    value >= 0.1
+				}
+			}
+			has_decree = decree_greener_grass_campaign
+			}
+		}
+		any_scope_state = {
+		    is_incorporated = yes
+			state_population > 500000
+			gdp >= 300000 # 300k
+			any_scope_culture = {
+                is_primary_culture_of = ROOT
+            }
+		}
+	}
+
+	immediate = {
+	    random_scope_culture = {
+		    limit = {
+				is_primary_culture_of = ROOT
+			}
+			save_scope_as = primary_culture_scope
+		}
+	    random_scope_state = {
+		    limit = {
+				is_incorporated = yes
+				state_population > 500000
+				gdp >= 300000 # 300k
+				culture_percent_state = {
+			  		target = scope:primary_culture_scope
+			 		value >= 0.2
+				}
+			}
+		}
+	    random_scope_state = {
+		    limit = {
+			    NOT = {is_homeland_of_country_cultures = ROOT}
+			    is_incorporated = no
+				is_isolated_from_market = no
+				NOT = {
+					any_scope_culture = {
+						is_primary_culture_of = ROOT
+						save_temporary_scope_as = primary_culture
+					}
+					culture_percent_state = {
+			  		   target = scope:primary_culture
+			 		   value >= 0.1
+					}
+				}
+			}
+			save_scope_as = move_to_state
+		}
+	}
+	
+	option = { # Yes move some pops
+		name = vfm_colonial_migration.2.a
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+		    institution_investment_level = {
+				institution = institution_colonial_affairs
+				value = 4
+			}
+		}
+		random_scope_state = {
+            limit = {
+                is_incorporated = yes
+				state_population > 500000
+				gdp >= 300000 # 300k
+				culture_percent_state = {
+			  		target = scope:primary_culture_scope
+			 		value >= 0.2
+				}
+            }
+            scope:primary_culture_scope = {
+                ordered_scope_pop = {
+                    order_by = total_size
+                    move_partial_pop = {
+                        state = scope:move_to_state
+                        population_ratio = {
+                            value = 0.01
+                        }
+                    }
+                }
+            }
+			#add_modifier = {
+			#	name = modifier_colonial_migration_cost
+			#	multiplier = "culture_percent_state(scope:primary_culture_scope)"
+			#	days = short_modifier_time
+			#}
+        }
+	}
+	
+	option = { # Yes move a lot of pops
+		name = vfm_colonial_migration.2.b
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+		    institution_investment_level = {
+				institution = institution_colonial_affairs
+				value = 5
+			}
+		}
+		random_scope_state = {
+            limit = {
+                is_incorporated = yes
+				state_population > 500000
+				gdp >= 300000 # 300k
+				culture_percent_state = {
+			  		target = scope:primary_culture_scope
+			 		value >= 0.2
+				}
+            }
+            scope:primary_culture_scope = {
+                ordered_scope_pop = {
+                    order_by = total_size
+                    move_partial_pop = {
+                        state = scope:move_to_state
+                        population_ratio = {
+                            value = 0.02
+                        }
+                    }
+                }
+            }
+			#add_modifier = {
+			#	name = modifier_colonial_migration_cost
+			#	multiplier = "culture_percent_state(scope:primary_culture_scope)"
+			#	days = short_modifier_time
+			#}
+        }
+	}
+	
+	option = { # Don't move pops
+		name = vfm_colonial_migration.2.e
+		default_option = yes
+		ai_chance = {
+			base = 10
+		}
+	}
+}
