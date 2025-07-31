@@ -425,7 +425,7 @@
 					building={
 						type="building_manor_house"
 						country="c:CHI"
-						levels=2
+						levels=1
 						region="STATE_ALXA"
 					}
 				}
@@ -448,6 +448,19 @@
 				}
 				reserves=1
 				activate_production_methods={ "pm_open_air_stockyards" "pm_simple_ranch" "pm_standard_fences" "pm_unrefrigerated"  }
+			}
+			create_building={
+				building="building_wheat_farm"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:CHI"
+						levels=1
+						region="STATE_HINGGAN"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_simple_farming"  "pm_tools_disabled" "pm_no_secondary" }
 			}
 		}
 	}
@@ -867,6 +880,19 @@
 				reserves=1
 				activate_production_methods={ "pm_open_air_stockyards" "pm_simple_ranch" "pm_standard_fences" "pm_unrefrigerated"  }
 			}
+			create_building={
+				building="building_rice_farm"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:CHI"
+						levels=2
+						region="STATE_GANSU"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_simple_farming_building_rice_farm" "pm_no_secondary" "pm_tools_disabled"  }
+			}
 		}
 	}
 	s:STATE_XIAN={
@@ -1032,7 +1058,7 @@
 					building={
 						type="building_financial_district"
 						country="c:CHI"
-						levels=16
+						levels=14
 						region="STATE_GUANGDONG"
 					}
 					building={
@@ -1126,7 +1152,7 @@
 					building={
 						type="building_manor_house"
 						country="c:CHI"
-						levels=20
+						levels=18
 						region="STATE_GUANGDONG"
 					}
 				}
@@ -1152,7 +1178,7 @@
 					building={
 						type="building_manor_house"
 						country="c:CHI"
-						levels=8
+						levels=7
 						region="STATE_GUANGDONG"
 					}
 				}
@@ -1186,7 +1212,7 @@
 				add_ownership={
 					country={
 						country="c:CHI"
-						levels=3
+						levels=4
 					}
 				}
 				reserves=1
@@ -1194,6 +1220,18 @@
 			}
 		}
 		region_state:POR={
+		    create_building={
+				building="building_trade_center"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:POR"
+						levels=1
+						region="STATE_GUANGDONG"
+					}
+				}
+				reserves=1
+			}
 			create_building={
 				building="building_rice_farm"
 				add_ownership={
@@ -2406,7 +2444,7 @@
 					building={
 						type="building_manor_house"
 						country="c:CHI"
-						levels=3
+						levels=2
 						region="STATE_ULIASTAI"
 					}
 				}
@@ -2423,7 +2461,7 @@
 					building={
 						type="building_manor_house"
 						country="c:CHI"
-						levels=5
+						levels=3
 						region="STATE_URGA"
 					}
 				}
@@ -2436,7 +2474,7 @@
 					building={
 						type="building_manor_house"
 						country="c:CHI"
-						levels=3
+						levels=1
 						region="STATE_URGA"
 					}
 				}
