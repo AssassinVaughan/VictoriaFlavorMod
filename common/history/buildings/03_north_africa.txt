@@ -928,7 +928,7 @@
 				add_ownership={
 					country={
 						country="c:CON"
-						levels=2
+						levels=1
 					}
 				}
 				reserves=1
@@ -940,25 +940,12 @@
 					building={
 						type="building_manor_house"
 						country="c:CON"
-						levels=2
+						levels=3
 						region="STATE_CONSTANTINE"
 					}
 				}
 				reserves=1
 				activate_production_methods={ "pm_simple_farming" "pm_no_secondary" "pm_tools_disabled"  }
-			}
-			create_building={
-				building="building_vineyard_plantation"
-				add_ownership={
-					building={
-						type="building_manor_house"
-						country="c:CON"
-						levels=1
-						region="STATE_CONSTANTINE"
-					}
-				}
-				reserves=1
-				activate_production_methods={ "default_building_vineyard_plantation" "pm_road_carts"  }
 			}
 			create_building={
 				building="building_livestock_ranch"
@@ -972,17 +959,6 @@
 				}
 				reserves=1
 				activate_production_methods={ "pm_open_air_stockyards" "pm_simple_ranch" "pm_standard_fences" "pm_unrefrigerated"  }
-			}
-			create_building={
-				building="building_barracks"
-				add_ownership={
-					country={
-						country="c:CON"
-						levels=6
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_no_organization" }
 			}
 		}
 		region_state:FRA={
@@ -1085,7 +1061,7 @@
 					building={
 						type="building_manor_house"
 						country="c:MAS"
-						levels=3
+						levels=2
 						region="STATE_ORAN"
 					}
 				}
