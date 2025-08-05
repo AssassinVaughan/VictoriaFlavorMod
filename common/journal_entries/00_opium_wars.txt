@@ -49,7 +49,7 @@
 
 	fail = {
 		OR = {
-			has_law = law_type:law_free_trade
+			has_law_or_variant = law_type:law_free_trade
 			any_country = {
 				custom_tooltip = {
 					text = opiumwars_fail_tt
@@ -77,7 +77,7 @@
 	goal_add_value = {
 		add = 60
 	}
-	
+
     timeout = 3650
     on_timeout = {
 		hidden_effect = { remove_modifier = opium_wars_addiction_modifier }
@@ -91,14 +91,15 @@
 		}
 		add_radicals = {
 			value = large_radicals
-		}		
+		}
 		if = {
 			limit = { has_journal_entry = je_warlord_china }
 			chi_remove_1_fragile_unity = yes
-		}	
-    }	
+		}
+    }
 
 	progressbar = yes
+	display_progressbar_as_months = yes
 
 	weight = 10000
 	should_be_pinned_by_default = yes
@@ -108,11 +109,11 @@ je_opium_wars = {
 	icon = "gfx/interface/icons/event_icons/event_military.dds"
 
 	group = je_group_foreign_affairs
-	
+
 	complete = {
 		OR = {
 			scope:target ?= {
-				has_law = law_type:law_free_trade
+				has_law_or_variant = law_type:law_free_trade
 			}
 			has_treaty_foreign_investment_rights_with = { TARGET = scope:target }
 			any_scope_state = {

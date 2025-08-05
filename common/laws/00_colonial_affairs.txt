@@ -17,7 +17,7 @@
 	}
 	
 	ai_will_do = {
-		has_law = law_type:law_council_republic
+		has_law_or_variant = law_type:law_council_republic
 	}	
 
 	ai_enact_weight_modifier = { #Petitions
@@ -30,7 +30,7 @@
 
 		if = {
 			limit = {
-				has_law = law_type:law_council_republic
+				has_law_or_variant = law_type:law_council_republic
 			}
 			add = 100
 		}
@@ -112,7 +112,7 @@ law_colonial_administration = {
 				is_in_same_power_bloc = scope:target_country
 				AND = {
 					modifier:country_can_impose_same_lawgroup_colonization_in_power_bloc_bool = yes
-					has_law = scope:law
+					has_law_or_variant = scope:law
 				}
 			}
 			can_impose_law_default = yes
@@ -121,9 +121,9 @@ law_colonial_administration = {
 	
 	ai_will_do = {
 		OR = {
-			has_law = law_type:law_colonial_resettlement
-			has_law = law_type:law_colonial_exploitation
-			has_law = law_type:law_frontier_colonization
+			has_law_or_variant = law_type:law_colonial_resettlement
+			has_law_or_variant = law_type:law_colonial_exploitation
+			has_law_or_variant = law_type:law_frontier_colonization
 		}
 	}
 
@@ -142,11 +142,11 @@ law_colonial_administration = {
 		if = {
 			limit = {
 				OR = {
-					has_law = law_type:law_colonial_administration
-					has_law = law_type:law_frontier_colonization
+					has_law_or_variant = law_type:law_colonial_administration
+					has_law_or_variant = law_type:law_frontier_colonization
 				}
 				scope:target_country = {
-					has_law = law_type:law_no_colonial_affairs
+					has_law_or_variant = law_type:law_no_colonial_affairs
 				}
 				power_bloc ?= { has_principle_group = principle_group:principle_group_colonial_offices }
 			}
@@ -192,7 +192,7 @@ law_colonial_resettlement = {
 				is_in_same_power_bloc = scope:target_country
 				AND = {
 					modifier:country_can_impose_same_lawgroup_colonization_in_power_bloc_bool = yes
-					has_law = scope:law
+					has_law_or_variant = scope:law
 				}
 			}
 			can_impose_law_default = yes
@@ -201,8 +201,8 @@ law_colonial_resettlement = {
 	
 	ai_will_do = {
 		OR = {
-			has_law = law_type:law_colonial_exploitation
-			has_law = law_type:law_colonial_administration
+			has_law_or_variant = law_type:law_colonial_exploitation
+			has_law_or_variant = law_type:law_colonial_administration
 			navy_size >= 50
 		}
 	}
@@ -222,11 +222,11 @@ law_colonial_resettlement = {
 		if = {
 			limit = {
 				OR = {
-					has_law = law_type:law_colonial_resettlement
-					has_law = law_type:law_frontier_colonization
+					has_law_or_variant = law_type:law_colonial_resettlement
+					has_law_or_variant = law_type:law_frontier_colonization
 				}
 				scope:target_country = {
-					has_law = law_type:law_no_colonial_affairs
+					has_law_or_variant = law_type:law_no_colonial_affairs
 				}
 				power_bloc ?= { has_principle_group = principle_group:principle_group_colonial_offices }
 			}
@@ -283,7 +283,7 @@ law_colonial_exploitation = {
 				is_in_same_power_bloc = scope:target_country
 				AND = {
 					modifier:country_can_impose_same_lawgroup_colonization_in_power_bloc_bool = yes
-					has_law = scope:law
+					has_law_or_variant = scope:law
 				}
 			}
 			can_impose_law_default = yes
@@ -292,7 +292,7 @@ law_colonial_exploitation = {
 
 	ai_will_do = {
 		OR = {
-			has_law = law_type:law_colonial_resettlement
+			has_law_or_variant = law_type:law_colonial_resettlement
 			navy_size >= 50
 		}
 	}
@@ -311,9 +311,9 @@ law_colonial_exploitation = {
 		
 		if = {
 			limit = {
-				has_law = law_type:law_colonial_exploitation
+				has_law_or_variant = law_type:law_colonial_exploitation
 				scope:target_country = {
-					has_law = law_type:law_no_colonial_affairs
+					has_law_or_variant = law_type:law_no_colonial_affairs
 				}
 				power_bloc ?= { has_principle_group = principle_group:principle_group_colonial_offices }
 			}
@@ -378,7 +378,7 @@ law_frontier_colonization = {
 				is_in_same_power_bloc = scope:target_country
 				AND = {
 					modifier:country_can_impose_same_lawgroup_colonization_in_power_bloc_bool = yes
-					has_law = scope:law
+					has_law_or_variant = scope:law
 				}
 			}
 			can_impose_law_default = yes
@@ -387,8 +387,8 @@ law_frontier_colonization = {
 	
 	ai_will_do = {
 		NOR = {
-			has_law = law_type:law_colonial_exploitation
-			has_law = law_type:law_colonial_resettlement
+			has_law_or_variant = law_type:law_colonial_exploitation
+			has_law_or_variant = law_type:law_colonial_resettlement
 		}
 	}
 	
@@ -431,11 +431,11 @@ law_frontier_colonization = {
 		if = {
 			limit = {
 				OR = {
-					has_law = law_type:law_colonial_resettlement
-					has_law = law_type:law_frontier_colonization
+					has_law_or_variant = law_type:law_colonial_resettlement
+					has_law_or_variant = law_type:law_frontier_colonization
 				}
 				scope:target_country = {
-					has_law = law_type:law_no_colonial_affairs
+					has_law_or_variant = law_type:law_no_colonial_affairs
 				}
 				power_bloc ?= { has_principle_group = principle_group:principle_group_colonial_offices }
 			}

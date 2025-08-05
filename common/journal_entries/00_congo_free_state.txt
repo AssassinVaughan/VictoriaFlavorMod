@@ -5,12 +5,12 @@
 
 	is_shown_when_inactive = {
 		has_variable = scramble_for_africa_complete
-		has_law = law_type:law_monarchy #Check there is a Monarch
+		has_law_or_variant = law_type:law_monarchy #Check there is a Monarch
 		NOT = { has_global_variable = free_state_created }
 	}
 
 	possible = {
-	    has_law = law_type:law_colonial_exploitation
+	    has_law = law_type:law_colonial_exploitation # VFM, performance
 		ruler ?= {
 			OR = {
 				has_trait = cruel
@@ -21,20 +21,20 @@
 			is_incorporated = no
 			custom_tooltip = {
 				text = in_africa_tt
-				state_in_africa = yes
+				state_is_in_africa = yes
 			}
 			any_neighbouring_state = {
 				is_incorporated = no
 				custom_tooltip = {
 					text = in_africa_tt
-					state_in_africa = yes
+					state_is_in_africa = yes
 				}
 			}
 		}
 	}
 
 	immediate = {
-		custom_tooltip = { 
+		custom_tooltip = {
 			text = free_state_immediate_tooltip
 			trigger_event = { id = congo_free_state_events.1 popup = yes }
 		}
@@ -48,10 +48,10 @@
 		random_scope_state = {
 			limit = {
 				is_incorporated = no
-				state_in_africa = yes
+				state_is_in_africa = yes
 				any_neighbouring_state = {
 					is_incorporated = no
-					state_in_africa = yes
+					state_is_in_africa = yes
 				}
 			}
 			save_scope_as = colonial_state
@@ -63,7 +63,7 @@
 			scope:journal_entry = {
 				is_goal_complete = yes
 			}
-			NOT = { has_law = law_type:law_monarchy }
+			NOT = { has_law_or_variant = law_type:law_monarchy }
 			custom_tooltip = {
 				text = free_state_monarch_dead_tooltip
 				ruler = {
@@ -71,7 +71,7 @@
 						has_variable = free_state_monarch
 					}
 				}
-			}	
+			}
 		}
 	}
 
@@ -91,8 +91,8 @@
 		effect = {
 			if = {
 				limit = { #check if the possible conditions are still true
-					has_law = law_type:law_monarchy
-					has_law = law_type:law_colonial_exploitation
+					has_law_or_variant = law_type:law_monarchy
+					has_law_or_variant = law_type:law_colonial_exploitation
 					exists = c:AFS
 					c:AFS = {
 						is_subject_of = ROOT
@@ -135,7 +135,7 @@
 			}
 		}
 	}
-	
+
 	invalid = {
 		custom_tooltip = {
 			text = free_state_journal_complete_tt
@@ -154,12 +154,12 @@
 				}
 			}
 		}
-		NOT = { has_law = law_type:law_colonial_exploitation }
+		NOT = { has_law_or_variant = law_type:law_colonial_exploitation }
 	}
 
 	weight = 200
 	should_be_pinned_by_default = yes
-	
+
 	current_value = {
 		value = root.var:free_state_international_opinion
 	}
@@ -167,7 +167,7 @@
 	goal_add_value = {
 		add = 120 #10 years of monthly ticks
 	}
-	
+
 	progressbar = yes
 
 	transferable = no

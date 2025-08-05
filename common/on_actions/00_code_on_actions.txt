@@ -106,7 +106,7 @@ on_monthly_pulse = {
 		clear_global_variable_list = aes_country_list
 		every_country = {
 			limit = {
-				has_law = law_type:law_council_republic
+				has_law_or_variant = law_type:law_council_republic
 				country_rank > rank_value:minor_power
 			}
 			add_to_global_variable_list = {
@@ -265,7 +265,7 @@ on_monthly_pulse_country = {
 			limit = {
 				NOT = { has_global_variable = peoples_springtime_happening }
 				NOT = { has_global_variable = peoples_springtime_happened }
-				year >= 1840
+				year >= 1840 # VFM
 				country_is_in_europe = yes
 				has_technology_researched = egalitarianism
 				country_rank >= rank_value:major_power
@@ -610,7 +610,7 @@ on_monthly_pulse_country = {
 			limit = {
 				c:JAP ?= this
 				has_variable = meiji_restoration_complete
-				has_law = law_type:law_monarchy
+				has_law_or_variant = law_type:law_monarchy
 			}
 			if = {
 				limit = {
@@ -1149,7 +1149,7 @@ on_monthly_pulse_country = {
 			limit = {
 				country_has_primary_culture = cu:russian
 				has_technology_researched = nationalism
-				NOT = { has_law = law_type:law_council_republic }
+				NOT = { has_law_or_variant = law_type:law_council_republic }
 
 				OR = {
 					any_rival_country = {
@@ -1181,7 +1181,7 @@ on_monthly_pulse_country = {
 
 						owner = {
 							country_has_primary_culture = cu:russian
-							has_law = law_type:law_council_republic
+							has_law_or_variant = law_type:law_council_republic
 						}
 					}
 
@@ -2011,14 +2011,14 @@ on_character_death = {
 				NAND = {
 					is_ruler = yes
 					owner ?= {
-						has_law = law_type:law_monarchy
+						has_law_or_variant = law_type:law_monarchy
 					}
 				}
 
   				## the IG must be at least okay with the status quo regarding cultures in order to potentially accept a minority culture character as a leader, and not want to move things back
   				OR = {
   					AND = {
-  						ROOT.owner = { has_law = law_type:law_national_supremacy }
+  						ROOT.owner = { has_law_or_variant = law_type:law_national_supremacy }
   						NOT = {
 							interest_group = {
 								law_stance = {
@@ -2029,7 +2029,7 @@ on_character_death = {
 		  				}
 	  				}
   					AND = {
-  						ROOT.owner = { has_law = law_type:law_racial_segregation }
+  						ROOT.owner = { has_law_or_variant = law_type:law_racial_segregation }
   						NOT = {
 							interest_group = {
 								law_stance = {
@@ -2040,7 +2040,7 @@ on_character_death = {
 			  			}
 	  				}
   					AND = {
-  						ROOT.owner = { has_law = law_type:law_subjecthood }
+  						ROOT.owner = { has_law_or_variant = law_type:law_subjecthood }
   						NOT = {
 							interest_group = {
 								law_stance = {
@@ -2051,7 +2051,7 @@ on_character_death = {
 			  			}
 	  				}
   					AND = {
-  						ROOT.owner = { has_law = law_type:law_cultural_exclusion }
+  						ROOT.owner = { has_law_or_variant = law_type:law_cultural_exclusion }
   						NOT = {
 							interest_group = {
 								law_stance = {
@@ -2062,7 +2062,7 @@ on_character_death = {
 			  			}
 	  				}
   					AND = {
-  						ROOT.owner = { has_law = law_type:law_multicultural }
+  						ROOT.owner = { has_law_or_variant = law_type:law_multicultural }
   						NOT = {
 							interest_group = {
 								law_stance = {
@@ -2079,7 +2079,7 @@ on_character_death = {
 			if = {
 				limit = {
 					owner ?= {
-						has_law = law_type:law_womens_suffrage
+						has_law_or_variant = law_type:law_womens_suffrage
 					}
 					interest_group = {
 						law_stance = {
@@ -2152,7 +2152,7 @@ on_character_death = {
 				exists = c:HAW
 				owner = c:HAW
 				owner = {
-					has_law = law_type:law_monarchy
+					has_law_or_variant = law_type:law_monarchy
 					NOT = { has_variable = death_of_kamehameha }
 					NOT = { has_global_variable = gp_hawaii_interest }
 				}
@@ -2234,7 +2234,7 @@ on_character_death = {
 			limit = {
 				is_ruler = yes
 				owner = {
-					has_law = law_type:law_monarchy
+					has_law_or_variant = law_type:law_monarchy
 					NOT = {
 						any_scope_character = {
 							is_heir = yes
@@ -2322,7 +2322,7 @@ on_character_death = {
 			limit = {
 				is_ruler = yes
 				owner ?= {
-					has_law = law_type:law_monarchy
+					has_law_or_variant = law_type:law_monarchy
 					any_scope_character = {
 						is_heir = yes
 					}
@@ -2338,6 +2338,23 @@ on_character_death = {
 				}
 			}
 			# non-ETH rulers in the ethiopian_emperor succession will continue to style themselves 'Emperor' even if another tag forms ETH. This is fine! The other tag is obviously an upstart, and we've created two competing claims for the title. This is what wwe in the biz call 'dynamic storytelling'.
+		}
+		### Greek Monarch
+		if = {
+			limit = {
+				owner = {
+					c:GRE ?= this
+					has_law = law_type:law_monarchy
+				}
+				is_ruler = yes
+				has_template = GRE_otto_von_wittelsbach
+				game_date >= 1863.3.30
+			}
+			owner = {
+				create_character = {
+					template = GRE_george_i_of_greece
+				}
+			}
 		}
 		### Austrian Monarchs
 		if = { # if Franz Joseph I becomes ruler because Ferdinand I dies before he officially abdicates, but this is before Rudolf is born, Maximilian I becomes the new heir
@@ -2484,7 +2501,7 @@ on_new_ruler = {
 		if = {
 			limit = {
 				owner = {
-					has_law = law_type:law_theocracy
+					has_law_or_variant = law_type:law_theocracy
 				}
 				NOT = { religion = owner.religion }
 			}
@@ -2494,7 +2511,7 @@ on_new_ruler = {
 			limit = {
 				owner = {
 					c:RUS ?= this
-					has_law = law_type:law_monarchy
+					has_law_or_variant = law_type:law_monarchy
 				}
 				is_ruler = yes
 			}
@@ -2559,7 +2576,7 @@ on_new_ruler = {
 			limit = {
 				owner = {
 					c:SWE ?= this
-					has_law = law_type:law_monarchy
+					has_law_or_variant = law_type:law_monarchy
 				}
 				is_ruler = yes
 			}
@@ -3064,9 +3081,9 @@ on_country_released_as_independent = {
 						country_has_primary_culture = cu:afro_brazilian
 					}
 					OR = {
-						has_law = law_type:law_legacy_slavery
-                        has_law = law_type:law_colonial_slavery
-						has_law = law_type:law_slave_trade
+						has_law_or_variant = law_type:law_legacy_slavery
+                        has_law_or_variant = law_type:law_colonial_slavery
+						has_law_or_variant = law_type:law_slave_trade
 					}
 				}
 			}
@@ -3183,7 +3200,7 @@ on_country_released_as_own_subject = {
 					country_has_state_religion = rel:sikh
 				}
 				ig:ig_devout = {
-					set_interest_group_name = ig_sikh_priesthood
+					set_interest_group_name = ig_granthis
 					remove_ideology = ideology_moralist
 					add_ideology = ideology_sikh_moralist
 				}
@@ -3321,7 +3338,7 @@ on_country_released_as_overlord_subject = {
 					country_has_state_religion = rel:sikh
 				}
 				ig:ig_devout = {
-					set_interest_group_name = ig_sikh_priesthood
+					set_interest_group_name = ig_granthis
 					remove_ideology = ideology_moralist
 					add_ideology = ideology_sikh_moralist
 				}
@@ -3913,7 +3930,7 @@ on_law_enactment_started = {
 		#Abolishing Monarchy
 		if = {
 			limit = {
-				has_law = law_type:law_monarchy
+				has_law_or_variant = law_type:law_monarchy
 				OR = {
 					is_enacting_law = law_type:law_presidential_republic
 					is_enacting_law = law_type:law_parliamentary_republic
@@ -4337,7 +4354,7 @@ on_law_enactment_pass = {
 		if = {
 			limit = {
 				has_modifier = brazil_slaving_pariah_modifier
-				has_law = law_type:law_slave_trade
+				has_law_or_variant = law_type:law_slave_trade
 				OR = {
 					is_enacting_law = law_type:law_debt_slavery
 					is_enacting_law = law_type:law_legacy_slavery
@@ -4355,7 +4372,7 @@ on_law_enactment_pass = {
 					has_modifier = slave_shipments_intercepted_small
 					has_modifier = slave_shipments_intercepted_large
 				}
-				has_law = law_type:law_slave_trade
+				has_law_or_variant = law_type:law_slave_trade
 				OR = {
 					is_enacting_law = law_type:law_debt_slavery
 					is_enacting_law = law_type:law_legacy_slavery
@@ -4452,9 +4469,9 @@ on_law_activated = {
 						has_modifier = slave_shipments_intercepted_large
 					}
 					OR = {
-						has_law = law_type:law_debt_slavery
-						has_law = law_type:law_legacy_slavery
-						has_law = law_type:law_colonial_slavery
+						has_law_or_variant = law_type:law_debt_slavery
+						has_law_or_variant = law_type:law_legacy_slavery
+						has_law_or_variant = law_type:law_colonial_slavery
 					}
 				}
 			}
@@ -4496,9 +4513,9 @@ on_law_activated = {
 				c:BRZ = {
 					has_journal_entry = je_matter_of_slavery
 					OR = {
-						has_law = law_type:law_debt_slavery
-						has_law = law_type:law_legacy_slavery
-						has_law = law_type:law_colonial_slavery
+						has_law_or_variant = law_type:law_debt_slavery
+						has_law_or_variant = law_type:law_legacy_slavery
+						has_law_or_variant = law_type:law_colonial_slavery
 					}
 					any_interest_group = {
 						has_modifier = restricted_slave_trade_ig_modifier
@@ -4538,17 +4555,17 @@ on_revolution_start = {
 		scope:target ?= {
 			if = {
 				limit = {
-					has_law = law_type:law_single_party_state
+					has_law_or_variant = law_type:law_single_party_state
 				}
 				handle_revolutionary_sps = yes
 			}
 		}
 		if = {
 			limit = {
-				has_law = law_type:law_monarchy
+				has_law_or_variant = law_type:law_monarchy
 				scope:target ?= {
 					NOT = {
-						has_law = law_type:law_monarchy
+						has_law_or_variant = law_type:law_monarchy
 					}
 				}
 			}
@@ -4621,7 +4638,7 @@ on_revolution_start = {
 				limit = {
 					scope:target ?= {
 						is_secessionist = no
-						has_law = law_type:law_monarchy
+						has_law_or_variant = law_type:law_monarchy
 						any_interest_group = {
 							is_in_government = yes
 							is_strongest_ig_in_government = yes
@@ -4664,7 +4681,7 @@ on_revolution_start = {
 				limit = {
 					scope:target ?= {
 						is_secessionist = no
-						has_law = law_type:law_monarchy
+						has_law_or_variant = law_type:law_monarchy
 						any_interest_group = {
 							is_in_government = yes
 							is_strongest_ig_in_government = yes
@@ -4707,7 +4724,7 @@ on_revolution_start = {
 				limit = {
 					scope:target ?= {
 						is_secessionist = no
-						has_law = law_type:law_monarchy
+						has_law_or_variant = law_type:law_monarchy
 						any_interest_group = {
 							is_in_government = yes
 							is_strongest_ig_in_government = yes
@@ -4822,7 +4839,7 @@ on_revolution_start = {
 				if = {
 					limit = {
 						NOT = {
-							has_law = law_type:law_state_atheism
+							has_law_or_variant = law_type:law_state_atheism
 						}
 					}
 					if = {
@@ -5016,7 +5033,7 @@ on_secession_start = {
 				if = {
 					limit = {
 						NOT = {
-							has_law = law_type:law_state_atheism
+							has_law_or_variant = law_type:law_state_atheism
 						}
 					}
 					if = {
@@ -5131,7 +5148,7 @@ on_civil_war_won = {
 			if = {
 				limit = {
 					NOT = {
-						has_law = law_type:law_monarchy
+						has_law_or_variant = law_type:law_monarchy
 					}
 				}
 				set_variable = {
@@ -5149,7 +5166,7 @@ on_civil_war_won = {
 		if = {
 			limit = {
 				c:FRA ?= this
-				has_law = law_type:law_monarchy
+				has_law_or_variant = law_type:law_monarchy
 				any_interest_group = {
 					is_in_government = yes
 					is_strongest_ig_in_government = yes
@@ -5257,7 +5274,7 @@ on_civil_war_won = {
 		else_if = {
 			limit = {
 				c:FRA ?= this
-				has_law = law_type:law_monarchy
+				has_law_or_variant = law_type:law_monarchy
 				any_interest_group = {
 					is_in_government = yes
 					is_strongest_ig_in_government = yes
@@ -5365,7 +5382,7 @@ on_civil_war_won = {
 		else_if = {
 			limit = {
 				c:FRA ?= this
-				has_law = law_type:law_monarchy
+				has_law_or_variant = law_type:law_monarchy
 				any_interest_group = {
 					is_in_government = yes
 					is_strongest_ig_in_government = yes
@@ -6003,7 +6020,7 @@ on_ig_resigned_government = {
 		if = {
 			limit = {
 				owner = {
-					has_law = law_type:law_single_party_state
+					has_law_or_variant = law_type:law_single_party_state
 					any_active_party = {
 						any_member = {
 							is_in_government = no
@@ -6521,7 +6538,7 @@ on_become_independent = {
 			if = {
 				limit = {
 					NOT = {
-						has_law = law_type:law_state_atheism
+						has_law_or_variant = law_type:law_state_atheism
 					}
 				}
 				set_state_religion = rel:theravada

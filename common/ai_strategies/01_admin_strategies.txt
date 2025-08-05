@@ -93,7 +93,7 @@
 
         if = {
 			limit = { 
-				OR = { has_law = law_type:law_industry_banned has_law = law_type:law_agrarianism has_law = law_type:law_traditionalism }
+				OR = { has_law = law_type:law_industry_banned has_law = law_type:law_agrarianism has_law_or_variant = law_type:law_traditionalism }
 			}
 			multiply = 1.25
 		}	
@@ -105,7 +105,7 @@
 					OR = { 
 						AND = {
 							is_ai = no
-							NOT = { has_law = law_type:law_traditionalism }				
+							NOT = { has_law_or_variant = law_type:law_traditionalism }			
 						}						
 						has_strategy = ai_strategy_resource_expansion
 						has_strategy = ai_strategy_industrial_expansion
@@ -300,7 +300,7 @@ ai_strategy_resource_expansion = {
 					OR = { 
 						AND = {
 							is_ai = no
-							NOT = { has_law = law_type:law_traditionalism }				
+							NOT = { has_law_or_variant = law_type:law_traditionalism }			
 						}						
 						has_strategy = ai_strategy_resource_expansion
 						has_strategy = ai_strategy_industrial_expansion
@@ -399,7 +399,7 @@ ai_strategy_mining_exporter = {
 					OR = { 
 						AND = {
 							is_ai = no
-							NOT = { has_law = law_type:law_traditionalism }				
+							NOT = { has_law_or_variant = law_type:law_traditionalism }				
 						}						
 						has_strategy = ai_strategy_resource_expansion
 						has_strategy = ai_strategy_mining_exporter
@@ -488,7 +488,7 @@ ai_strategy_industrial_expansion = {
 		
 		if = {
 			limit = {
-				has_law = law_type:law_command_economy	
+				has_law_or_variant = law_type:law_command_economy
 			}
 			multiply = 2
 		}	
@@ -566,7 +566,7 @@ ai_strategy_placate_population = {
 		value = 7
 		
 		if = {
-			limit = { has_law = law_type:law_traditionalism }
+			limit = { has_law_or_variant = law_type:law_traditionalism }
 			add = 5
 		}
 		
@@ -643,7 +643,7 @@ ai_strategy_placate_population = {
 					OR = { 
 						AND = {
 							is_ai = no
-							NOT = { has_law = law_type:law_traditionalism }				
+							NOT = { has_law_or_variant = law_type:law_traditionalism }				
 						}						
 						has_strategy = ai_strategy_resource_expansion
 						has_strategy = ai_strategy_industrial_expansion

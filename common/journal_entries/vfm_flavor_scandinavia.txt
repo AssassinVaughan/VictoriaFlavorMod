@@ -63,7 +63,7 @@ je_swedish_guilds = {
 	icon = "gfx/interface/icons/event_icons/event_trade.dds"
     group = je_group_internal_affairs
 	complete = {
-	    NOT = { has_law = law_type:law_guild_system }
+	    NOT = { has_law_or_variant = law_type:law_guild_system }
 	}
 	
 	on_monthly_pulse = {
@@ -104,13 +104,13 @@ je_matter_of_norway = {
 		is_at_war = no
 
 		OR = {
-			has_law = law_type:law_right_of_assembly
-			has_law = law_type:law_protected_speech
+			has_law_or_variant = law_type:law_right_of_assembly
+			has_law_or_variant = law_type:law_protected_speech
 		}
 
 		OR = {
-			has_law = law_type:law_universal_suffrage
-			has_law = law_type:law_census_voting
+			has_law_or_variant = law_type:law_universal_suffrage
+			has_law_or_variant = law_type:law_census_voting
 		}
 		
 

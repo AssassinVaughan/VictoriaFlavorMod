@@ -2,6 +2,7 @@
 decrease_autonomy_liberty_desire_to_add = 10 	# When you decrease autonomy of one of your subject, other direct subjects increase their liberty desire by this
 
 annex_subject_max_liberty_desire_change = 25
+annex_subject_intermediate_desire_change = 15
 
 annex_subject_base_liberty_desire_change = {
 	scope:target_country ?= {
@@ -31,9 +32,33 @@ liberty_desire_weekly_change = {
 		}	
 	}
 
+	# Fervour
+	if = {
+		limit = {
+			root.second_country = {
+				NOT = {
+					has_law_or_variant = law_type:law_subjecthood
+				}
+			}
+			NOT = {
+				root.second_country = {
+					any_primary_culture = {
+						is_primary_culture_of = root.first_country
+					}
+				}
+			}
+		}
+		add = {
+			desc = "LIBERTY_DESIRE_WEEKLY_CHANGE_CULTURAL_FERVOUR"
+			value = root.second_country.country_fervor_primary_culture
+			subtract = 25
+			divide = 100
+		}
+	}
+
 	# Special - DEI collapses if independent
 	if = {
-		limit = { 
+		limit = {
 			root.first_country = { c:NET ?= this } 
 			root.second_country = { c:DEI ?= this } 
 		}
@@ -179,7 +204,7 @@ liberty_desire_weekly_change = {
 				desc = "LIBERTY_DESIRE_WEEKLY_CHANGE_PRESTIGE_DIFFERENCE_1_5_NEGATIVE"
 			}
 		}
-		else = {
+		else_if = {
 			add = {
 				add = root.second_country.prestige
 				multiply = 1.5
@@ -188,7 +213,7 @@ liberty_desire_weekly_change = {
 				max = 2.5
 				desc = "LIBERTY_DESIRE_WEEKLY_CHANGE_PRESTIGE_DIFFERENCE_1_5_POSITIVE"
 			}
-		}	
+		}
 	}
 	else_if = {
 		limit = {
@@ -196,9 +221,9 @@ liberty_desire_weekly_change = {
 				is_diplomatic_action_type = personal_union
 				is_diplomatic_action_type = dominion
 			}
-		}				
+		}
 		if = {
-			limit = { 	
+			limit = {
 				root.first_country.prestige > {
 					add = root.second_country.prestige
 					# determines the multiple of prestige the overlord must have achieved in order for prestige advantage to have a negative impact on Liberty Desire rather than positive
@@ -215,7 +240,7 @@ liberty_desire_weekly_change = {
 				desc = "LIBERTY_DESIRE_WEEKLY_CHANGE_PRESTIGE_DIFFERENCE_2_0_NEGATIVE"
 			}
 		}
-		else = {
+		else_if = {
 			add = {
 				add = root.second_country.prestige
 				multiply = 2.0
@@ -224,17 +249,17 @@ liberty_desire_weekly_change = {
 				max = 2.5
 				desc = "LIBERTY_DESIRE_WEEKLY_CHANGE_PRESTIGE_DIFFERENCE_2_0_POSITIVE"
 			}
-		}	
-	}	
+		}
+	}
 	else_if = {
 		limit = {
 			OR = {
 				is_diplomatic_action_type = puppet
 				is_diplomatic_action_type = vassal
 			}
-		}				
+		}
 		if = {
-			limit = { 	
+			limit = {
 				root.first_country.prestige > {
 					add = root.second_country.prestige
 					# determines the multiple of prestige the overlord must have achieved in order for prestige advantage to have a negative impact on Liberty Desire rather than positive
@@ -251,7 +276,7 @@ liberty_desire_weekly_change = {
 				desc = "LIBERTY_DESIRE_WEEKLY_CHANGE_PRESTIGE_DIFFERENCE_3_0_NEGATIVE"
 			}
 		}
-		else = {
+		else_if = {
 			add = {
 				add = root.second_country.prestige
 				multiply = 3
@@ -260,9 +285,9 @@ liberty_desire_weekly_change = {
 				max = 2.5
 				desc = "LIBERTY_DESIRE_WEEKLY_CHANGE_PRESTIGE_DIFFERENCE_3_0_POSITIVE"
 			}
-		}	
-	}		
-	
+		}
+	}
+
 	second_country = {
 		add = {
 			ordered_interest_group = {
@@ -369,26 +394,31 @@ liberty_desire_weekly_change = {
 				religion = root.second_country.religion
 			}
 		}
-		add = { 
-		 	value = -0.1 desc = 
+		 add = {
+		 	value = -0.1 desc =
 		 	"LIBERTY_DESIRE_WEEKLY_CHANGE_SACRED_CIVICS"
-		}
-	}	
-	
+		 }
+	}
+
+	add = {
+		value = root.second_country.liberty_desire_weekly_progress_from_support_independence
+		desc = "LIBERTY_DESIRE_WEEKLY_CHANGE_FROM_SUPPORTING_INDEPENDENCE"
+	}
+
 	add = {
 		value = root.second_country.modifier:country_liberty_desire_add
 		desc = "LIBERTY_DESIRE_WEEKLY_CHANGE_DESC_ADDITIONAL_ADDS"
 	}
-	
+
 	add = {
 		value = root.first_country.modifier:country_liberty_desire_of_subjects_add
 		desc = "LIBERTY_SUBJECT_DESIRE_WEEKLY_CHANGE_DESC_ADDITIONAL_ADDS"
 	}
-	
+
 	save_temporary_value_as = pre_scaling_value
-	
+
 	if = {
-		limit = { 
+		limit = {
 			scope:pre_scaling_value < 0
 			second_country = {
 				liberty_desire < 50
@@ -402,7 +432,7 @@ liberty_desire_weekly_change = {
 		max = -0.01
 	}
 	else_if = {
-		limit = { 
+		limit = {
 			scope:pre_scaling_value > 0
 			second_country = {
 				liberty_desire > 50
@@ -415,27 +445,22 @@ liberty_desire_weekly_change = {
 			desc = "LIBERTY_DESIRE_WEEKLY_CHANGE_SCALING_HIGH"
 		}
 		min = 0.01
-	}	
-	
+	}
+
 	save_temporary_value_as = pre_mult_modifiers_value
 
-	if = {
-		limit = { scope:pre_mult_modifiers_value > 0 }
-		multiply = {
-			value = 1
+	multiply = {
+		value = 1
+		if = {
+			limit = { scope:pre_mult_modifiers_value > 0 }
 			add = root.second_country.modifier:country_liberty_desire_increase_mult
-			min = 0
-			desc = "LIBERTY_DESIRE_WEEKLY_CHANGE_DESC_ADDITIONAL_MULTS_INCREASE"
 		}
-	}
-	else_if = {
-		limit = { scope:pre_mult_modifiers_value < 0 }
-		multiply = {
-			value = 1
+		else_if = {
+			limit = { scope:pre_mult_modifiers_value < 0 }
 			add = root.second_country.modifier:country_liberty_desire_decrease_mult
-			min = 0
-			desc = "LIBERTY_DESIRE_WEEKLY_CHANGE_DESC_ADDITIONAL_MULTS_DECREASE"
 		}
+		min = 0
+		desc = "LIBERTY_DESIRE_WEEKLY_CHANGE_DESC_ADDITIONAL_MULTS"
 	}
 
 	if = {
@@ -450,4 +475,63 @@ liberty_desire_weekly_change = {
 			desc = "LIBERTY_DESIRE_WEEKLY_CHANGE_TRUCE"
 		}
 	}
+}
+
+# root = pop
+support_separatism_total_pop_support = {
+	value = 10
+
+	owner = {
+		every_scope_diplomatic_pact = {
+			limit = {
+				is_diplomatic_action_type = support_separatism
+				second_country = prev
+				"diplomatic_pact_other_country(prev)" = {
+					country_has_primary_culture = root.culture
+				}
+			}
+			add = {
+				value = 10
+				add = this.first_country.country_rank
+				subtract = this.second_country.country_rank
+				multiply = {
+					value = 1
+					add = this.first_country.modifier:country_support_separatism_strength_mult
+					subtract = this.second_country.modifier:country_support_separatism_resistance_mult
+				}
+			}
+		}
+	}
+
+	max = 100 # ya never know
+}
+
+# root = movement
+support_separatism_radicalism = {
+	value = 0.05
+
+	owner = {
+		every_scope_diplomatic_pact = {
+			limit = {
+				is_diplomatic_action_type = support_separatism
+				second_country = prev
+				"diplomatic_pact_other_country(prev)" = {
+					country_has_primary_culture = root.culture
+				}
+			}
+			add = {
+				value = 10
+				add = this.first_country.country_rank
+				subtract = this.second_country.country_rank
+				multiply = {
+					value = 1
+					add = this.first_country.modifier:country_support_separatism_strength_mult
+					subtract = this.second_country.modifier:country_support_separatism_resistance_mult
+				}
+				divide = 100
+			}
+		}
+	}
+
+	max = 0.5
 }

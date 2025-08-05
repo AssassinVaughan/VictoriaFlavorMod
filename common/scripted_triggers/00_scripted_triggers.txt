@@ -54,7 +54,7 @@ country_can_form_power_bloc = {
 			is_revolutionary = no
 		}
 		country_rank >= rank_value:unrecognized_major_power
-		NOT = { has_law = law_type:law_isolationism }
+		NOT = { has_law_or_variant = law_type:law_isolationism }
 	}
 }
 
@@ -92,9 +92,9 @@ country_is_power_struggle_rival = {
 
 country_has_education_system = {
 	OR = {
-		has_law = law_type:law_religious_schools
-		has_law = law_type:law_public_schools
-		has_law = law_type:law_private_schools
+		has_law_or_variant = law_type:law_religious_schools
+		has_law_or_variant = law_type:law_public_schools
+		has_law_or_variant = law_type:law_private_schools
 	}
 }
 
@@ -1080,18 +1080,18 @@ can_reach_target_state = {
 is_peasant_under_serfdom = {
 	is_pop_type = peasants
 	owner = {
-		has_law = law_type:law_serfdom
+		has_law_or_variant = law_type:law_serfdom
 	}
 }
 
 has_radical_leftist_government = {
-	has_law = law_type:law_council_republic
+	has_law_or_variant = law_type:law_council_republic
 }
 
 has_radical_leftist_economy = {
 	OR = {
-		has_law = law_type:law_command_economy
-		has_law = law_type:law_cooperative_ownership
+		has_law_or_variant = law_type:law_command_economy
+		has_law_or_variant = law_type:law_cooperative_ownership
 	}
 }
 
@@ -1891,35 +1891,35 @@ accepted_cultural_minority_check_character_scope = {
 				prev = {
 					OR  = {
 						AND = {
-							ROOT.owner = { has_law = law_type:law_national_supremacy }
+							ROOT.owner = { has_law_or_variant = law_type:law_national_supremacy }
 							state_cultural_acceptance = {
 								target = prev
 								value >= acceptance_status_5
 							}
 						}
 						AND = {
-							ROOT.owner = { has_law = law_type:law_racial_segregation }
+							ROOT.owner = { has_law_or_variant = law_type:law_racial_segregation }
 							state_cultural_acceptance = {
 								target = prev
 								value >= acceptance_status_4
 							}
 						}
 						AND = {
-							ROOT.owner = { has_law = law_type:law_subjecthood }
+							ROOT.owner = { has_law_or_variant = law_type:law_subjecthood }
 							state_cultural_acceptance = {
 								target = prev
 								value >= acceptance_status_4
 							}
 						}
 						AND = {
-							ROOT.owner = { has_law = law_type:law_cultural_exclusion }
+							ROOT.owner = { has_law_or_variant = law_type:law_cultural_exclusion }
 							state_cultural_acceptance = {
 								target = prev
 								value >= acceptance_status_3
 							}
 						}
 						AND = {
-							ROOT.owner = { has_law = law_type:law_multicultural }
+							ROOT.owner = { has_law_or_variant = law_type:law_multicultural }
 							state_cultural_acceptance = {
 								target = prev
 								value >= acceptance_status_2

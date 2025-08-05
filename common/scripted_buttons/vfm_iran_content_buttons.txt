@@ -235,8 +235,8 @@ je_annex_khr_button = {
 		}
 		OR = {
 			AND = {
-				NOT = { has_law = law_type:law_local_police }
-				NOT = { has_law = law_type:law_devolved }
+				NOT = { has_law_or_variant = law_type:law_local_police }
+				NOT = { has_law_or_variant = law_type:law_devolved }
 			}
 			has_technology_researched = pan-nationalism
 		}

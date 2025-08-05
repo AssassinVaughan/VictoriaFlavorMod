@@ -11,7 +11,7 @@ matter_of_hungary_dual_monarchy_button = {
 	}
 
 	possible = {
-		has_law = law_type:law_monarchy
+		has_law_or_variant = law_type:law_monarchy
 		custom_tooltip = {
 			text = matter_of_hungary_hungarian_homelands_tt
 			country_or_subject_owns_entire_state_region = STATE_SOUTHERN_TRANSYLVANIA
@@ -171,7 +171,7 @@ austrian_neo_absolutism_abolish_crown_land_autonomy_button = {
 		NOT = {
 			exists = c:HUN
 		}
-		has_law = law_type:law_appointed_bureaucrats
+		has_law_or_variant = law_type:law_appointed_bureaucrats
 		any_scope_state = {
 			state_region = {
 				OR = {
@@ -238,10 +238,10 @@ austrian_neo_absolutism_abolish_feudal_obligations_button = {
 
 	possible = {
 		NOT = {
-			has_law = law_type:law_serfdom
+			has_law_or_variant = law_type:law_serfdom
 		}
 		NOT = {
-			has_law = law_type:law_hereditary_bureaucrats
+			has_law_or_variant = law_type:law_hereditary_bureaucrats
 		}
 	}
 
@@ -341,7 +341,7 @@ austrian_neo_absolutism_papal_concordat_button = {
 		if = {
 			limit = {
 				NOT = {
-					has_law = law_type:law_state_religion
+					has_law_or_variant = law_type:law_state_religion
 				}
 			}
 			activate_law = law_type:law_state_religion
@@ -349,7 +349,7 @@ austrian_neo_absolutism_papal_concordat_button = {
 		if = {
 			limit = {
 				NOT = {
-					has_law = law_type:law_religious_schools
+					has_law_or_variant = law_type:law_religious_schools
 				}
 			}
 			activate_law = law_type:law_religious_schools

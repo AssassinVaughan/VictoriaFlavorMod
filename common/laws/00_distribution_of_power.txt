@@ -17,17 +17,17 @@ law_autocracy = {
 	on_activate = {
 		if = {
 			limit = {
-				has_law = law_type:law_elected_bureaucrats
-				has_law = law_type:law_monarchy
+				has_law_or_variant = law_type:law_elected_bureaucrats
+				has_law_or_variant = law_type:law_monarchy
 			}
 			deactivate_law = law_type:law_elected_bureaucrats
 			activate_law = law_type:law_appointed_bureaucrats
 		}
 		else_if = {
 			limit = {
-				has_law = law_type:law_elected_bureaucrats
+				has_law_or_variant = law_type:law_elected_bureaucrats
 				NOT = {
-					has_law = law_type:law_monarchy
+					has_law_or_variant = law_type:law_monarchy
 				}
 			}
 			deactivate_law = law_type:law_elected_bureaucrats
@@ -70,7 +70,7 @@ law_autocracy = {
 				is_in_same_power_bloc = scope:target_country
 				AND = {
 					modifier:country_can_impose_same_lawgroup_distribution_of_power_in_power_bloc_bool = yes
-					has_law = scope:law
+					has_law_or_variant = scope:law
 				}
 			}
 			can_impose_law_default = yes
@@ -91,7 +91,7 @@ law_autocracy = {
 		
 		if = {
 			limit = {
-				has_law = law_type:law_autocracy
+				has_law_or_variant = law_type:law_autocracy
 				OR = {
 					AND = {
 						power_bloc ?= { has_identity = identity:identity_ideological_union }
@@ -101,8 +101,8 @@ law_autocracy = {
 				}
 				scope:target_country = { 
 					NOR = { # Is their law different enough from what we want to impose?
-						has_law = law_type:law_oligarchy
-						has_law = law_type:law_landed_voting
+						has_law_or_variant = law_type:law_oligarchy
+						has_law_or_variant = law_type:law_landed_voting
 					}
 				}
 			}
@@ -136,7 +136,7 @@ law_technocracy = {
 	on_activate = {
 		if = {
 			limit = {
-				has_law = law_type:law_elected_bureaucrats
+				has_law_or_variant = law_type:law_elected_bureaucrats
 			}
 			deactivate_law = law_type:law_elected_bureaucrats
 			activate_law = law_type:law_appointed_bureaucrats
@@ -185,7 +185,7 @@ law_technocracy = {
 				is_in_same_power_bloc = scope:target_country
 				AND = {
 					modifier:country_can_impose_same_lawgroup_distribution_of_power_in_power_bloc_bool = yes
-					has_law = scope:law
+					has_law_or_variant = scope:law
 				}
 			}
 			can_impose_law_default = yes
@@ -206,10 +206,10 @@ law_technocracy = {
 		
 		if = {
 			limit = {
-				has_law = law_type:law_technocracy
+				has_law_or_variant = law_type:law_technocracy
 				"ai_ideological_opinion(scope:target_country)" >= 25 # Only want to do this on ideologically similar countries
 				scope:target_country = { # Is their law different enough from what we want to impose?
-					NOT = { has_law = law_type:law_single_party_state }
+					NOT = { has_law_or_variant = law_type:law_single_party_state }
 				}
 			}
 			
@@ -242,17 +242,17 @@ law_oligarchy = {
 	on_activate = {
 		if = {
 			limit = {
-				has_law = law_type:law_elected_bureaucrats
-				has_law = law_type:law_monarchy
+				has_law_or_variant = law_type:law_elected_bureaucrats
+				has_law_or_variant = law_type:law_monarchy
 			}
 			deactivate_law = law_type:law_elected_bureaucrats
 			activate_law = law_type:law_appointed_bureaucrats
 		}
 		else_if = {
 			limit = {
-				has_law = law_type:law_elected_bureaucrats
+				has_law_or_variant = law_type:law_elected_bureaucrats
 				NOT = {
-					has_law = law_type:law_monarchy
+					has_law_or_variant = law_type:law_monarchy
 				}
 			}
 			deactivate_law = law_type:law_elected_bureaucrats
@@ -299,7 +299,7 @@ law_oligarchy = {
 				is_in_same_power_bloc = scope:target_country
 				AND = {
 					modifier:country_can_impose_same_lawgroup_distribution_of_power_in_power_bloc_bool = yes
-					has_law = scope:law
+					has_law_or_variant = scope:law
 				}
 			}
 			can_impose_law_default = yes
@@ -320,7 +320,7 @@ law_oligarchy = {
 		
 		if = {
 			limit = {
-				has_law = law_type:law_oligarchy
+				has_law_or_variant = law_type:law_oligarchy
 				OR = {
 					AND = {
 						power_bloc ?= { has_identity = identity:identity_ideological_union }
@@ -330,8 +330,8 @@ law_oligarchy = {
 				}
 				scope:target_country = { 
 					NOR = { # Is their law different enough from what we want to impose?
-						has_law = law_type:law_autocracy
-						has_law = law_type:law_landed_voting
+						has_law_or_variant = law_type:law_autocracy
+						has_law_or_variant = law_type:law_landed_voting
 					}
 				}
 			}
@@ -373,17 +373,17 @@ law_elder_council = {
 	on_activate = {
 		if = {
 			limit = {
-				has_law = law_type:law_elected_bureaucrats
-				has_law = law_type:law_monarchy
+				has_law_or_variant = law_type:law_elected_bureaucrats
+				has_law_or_variant = law_type:law_monarchy
 			}
 			deactivate_law = law_type:law_elected_bureaucrats
 			activate_law = law_type:law_appointed_bureaucrats
 		}
 		else_if = {
 			limit = {
-				has_law = law_type:law_elected_bureaucrats
+				has_law_or_variant = law_type:law_elected_bureaucrats
 				NOT = {
-					has_law = law_type:law_monarchy
+					has_law_or_variant = law_type:law_monarchy
 				}
 			}
 			deactivate_law = law_type:law_elected_bureaucrats
@@ -464,7 +464,7 @@ law_landed_voting = {
 		scripted_effect_parties_emergence = yes
 		if = {
 			limit = {
-				has_law = law_type:law_monarchy
+				has_law_or_variant = law_type:law_monarchy
 				has_variable = king_in_parliament_possible
 				NOT = {
 					has_journal_entry = je_king_in_parliament
@@ -481,7 +481,7 @@ law_landed_voting = {
 				is_in_same_power_bloc = scope:target_country
 				AND = {
 					modifier:country_can_impose_same_lawgroup_distribution_of_power_in_power_bloc_bool = yes
-					has_law = scope:law
+					has_law_or_variant = scope:law
 				}
 			}
 			can_impose_law_default = yes
@@ -502,7 +502,7 @@ law_landed_voting = {
 		
 		if = {
 			limit = {
-				has_law = law_type:law_landed_voting
+				has_law_or_variant = law_type:law_landed_voting
 				OR = {
 					AND = {
 						power_bloc ?= { has_identity = identity:identity_ideological_union }
@@ -512,8 +512,8 @@ law_landed_voting = {
 				}
 				scope:target_country = { 
 					NOR = { # Is their law different enough from what we want to impose?
-						has_law = law_type:law_oligarchy
-						has_law = law_type:law_autocracy
+						has_law_or_variant = law_type:law_oligarchy
+						has_law_or_variant = law_type:law_autocracy
 					}
 				}
 			}
@@ -580,7 +580,7 @@ law_wealth_voting = {
 		scripted_effect_parties_emergence = yes
 		if = {
 			limit = {
-				has_law = law_type:law_monarchy
+				has_law_or_variant = law_type:law_monarchy
 				has_variable = king_in_parliament_possible
 				NOT = {
 					has_journal_entry = je_king_in_parliament
@@ -597,7 +597,7 @@ law_wealth_voting = {
 				is_in_same_power_bloc = scope:target_country
 				AND = {
 					modifier:country_can_impose_same_lawgroup_distribution_of_power_in_power_bloc_bool = yes
-					has_law = scope:law
+					has_law_or_variant = scope:law
 				}
 			}
 			can_impose_law_default = yes
@@ -618,12 +618,12 @@ law_wealth_voting = {
 		
 		if = {
 			limit = {
-				has_law = law_type:law_wealth_voting
+				has_law_or_variant = law_type:law_wealth_voting
 				has_strategy = ai_strategy_progressive_agenda	
 				scope:target_country = { # Is their law different enough from what we want to impose?
 					NOR = { 
-						has_law = law_type:law_census_voting 
-						has_law = law_type:law_landed_voting 
+						has_law_or_variant = law_type:law_census_voting 
+						has_law_or_variant = law_type:law_landed_voting 
 					}
 				}
 			}
@@ -690,7 +690,7 @@ law_census_voting = {
 		scripted_effect_parties_emergence = yes
 		if = {
 			limit = {
-				has_law = law_type:law_monarchy
+				has_law_or_variant = law_type:law_monarchy
 				has_variable = king_in_parliament_possible
 				NOT = {
 					has_journal_entry = je_king_in_parliament
@@ -707,7 +707,7 @@ law_census_voting = {
 				is_in_same_power_bloc = scope:target_country
 				AND = {
 					modifier:country_can_impose_same_lawgroup_distribution_of_power_in_power_bloc_bool = yes
-					has_law = scope:law
+					has_law_or_variant = scope:law
 				}
 			}
 			can_impose_law_default = yes
@@ -728,12 +728,12 @@ law_census_voting = {
 		
 		if = {
 			limit = {
-				has_law = law_type:law_census_voting
+				has_law_or_variant = law_type:law_census_voting
 				has_strategy = ai_strategy_progressive_agenda			
 				scope:target_country = { # Is their law different enough from what we want to impose?
 					NOR = { 
-						has_law = law_type:law_wealth_voting 
-						has_law = law_type:law_universal_suffrage 
+						has_law_or_variant = law_type:law_wealth_voting 
+						has_law_or_variant = law_type:law_universal_suffrage 
 					}
 				}
 			}
@@ -797,7 +797,7 @@ law_universal_suffrage = {
 		scripted_effect_parties_emergence = yes
 		if = {
 			limit = {
-				has_law = law_type:law_monarchy
+				has_law_or_variant = law_type:law_monarchy
 				has_variable = king_in_parliament_possible
 				NOT = {
 					has_journal_entry = je_king_in_parliament
@@ -814,7 +814,7 @@ law_universal_suffrage = {
 				is_in_same_power_bloc = scope:target_country
 				AND = {
 					modifier:country_can_impose_same_lawgroup_distribution_of_power_in_power_bloc_bool = yes
-					has_law = scope:law
+					has_law_or_variant = scope:law
 				}
 			}
 			can_impose_law_default = yes
@@ -835,12 +835,12 @@ law_universal_suffrage = {
 		
 		if = {
 			limit = {
-				has_law = law_type:law_universal_suffrage
+				has_law_or_variant = law_type:law_universal_suffrage
 				has_strategy = ai_strategy_egalitarian_agenda	
 				scope:target_country = { # Is their law different enough from what we want to impose?
 					NOR = { 
-						has_law = law_type:law_census_voting				 
-						has_law = law_type:law_anarchy
+						has_law_or_variant = law_type:law_census_voting				 
+						has_law_or_variant = law_type:law_anarchy
 					}
 				}
 			}
@@ -923,11 +923,11 @@ law_anarchy = {
 				is_in_same_power_bloc = scope:target_country
 				AND = {
 					modifier:country_can_impose_same_lawgroup_distribution_of_power_in_power_bloc_bool = yes
-					has_law = scope:law
+					has_law_or_variant = scope:law
 				}
 			}
 			AND = { # modification of the standard trigger, only other anarchic countries can impose anarchy on their subjects
-				has_law = scope:law
+				has_law_or_variant = scope:law
 				can_impose_law_default = yes
 			}
 		}
@@ -947,10 +947,10 @@ law_anarchy = {
 		
 		if = {
 			limit = {
-				has_law = law_type:law_anarchy
+				has_law_or_variant = law_type:law_anarchy
 				has_strategy = ai_strategy_egalitarian_agenda	
 				scope:target_country = { # Is their law different enough from what we want to impose?
-					NOT = { has_law = law_type:law_universal_suffrage }
+					NOT = { has_law_or_variant = law_type:law_universal_suffrage }
 				}
 			}
 			
@@ -1047,7 +1047,7 @@ law_single_party_state = {
 		
 		if = {
 			limit = {
-				has_law = law_type:law_monarchy
+				has_law_or_variant = law_type:law_monarchy
 				has_variable = king_in_parliament_possible
 				NOT = {
 					has_journal_entry = je_king_in_parliament
@@ -1086,11 +1086,11 @@ law_single_party_state = {
 				is_in_same_power_bloc = scope:target_country
 				AND = {
 					modifier:country_can_impose_same_lawgroup_distribution_of_power_in_power_bloc_bool = yes
-					has_law = scope:law
+					has_law_or_variant = scope:law
 				}
 			}
 			AND = { # modification of the standard trigger, only other single-party states countries can impose single-party states on their subjects
-				has_law = scope:law
+				has_law_or_variant = scope:law
 				can_impose_law_default = yes
 			}
 		}
@@ -1110,10 +1110,10 @@ law_single_party_state = {
 		
 		if = {
 			limit = {
-				has_law = law_type:law_single_party_state
+				has_law_or_variant = law_type:law_single_party_state
 				"ai_ideological_opinion(scope:target_country)" >= 25 # Only want to do this on ideologically similar countries
 				scope:target_country = { # Is their law different enough from what we want to impose?
-					NOT = { has_law = law_type:law_technocracy }
+					NOT = { has_law_or_variant = law_type:law_technocracy }
 				}				
 			}
 			

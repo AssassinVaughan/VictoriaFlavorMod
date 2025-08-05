@@ -2,10 +2,10 @@
 GLOBAL = {
 	
 	every_country = {
-		limit = { NOT = { has_law = law_type:law_slavery_banned } }
+		limit = { NOT = { has_law_or_variant = law_type:law_slavery_banned } }
 		if = {
 			limit = {
-				has_law = law_type:law_colonial_slavery
+				has_law_or_variant = law_type:law_colonial_slavery
 			}
 			ig:ig_landowners = { add_ideology = ideology_pro_slavery_colonial }
 		}
@@ -16,8 +16,8 @@ GLOBAL = {
 
 	every_country = {
 		limit = {
-			has_law = law_type:law_monarchy
-			has_law = law_type:law_autocracy
+			has_law_or_variant = law_type:law_monarchy
+			has_law_or_variant = law_type:law_autocracy
 		}
 		set_variable = king_in_parliament_possible
 	}
@@ -94,7 +94,7 @@ GLOBAL = {
 	
 	#Serf's Up
 	every_country = {
-	   limit = { has_law = law_type:law_serfdom }
+	   limit = { has_law_or_variant = law_type:law_serfdom }
 	   set_variable = serfs_up_ach_possible
 	}
 	

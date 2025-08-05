@@ -5,25 +5,25 @@ building_urban_center = {
 	icon = "gfx/interface/icons/building_icons/urban_center.dds"
 	city_type = city
 	residence_points_per_level = 0
-	
-	unlocking_technologies = { 
+
+	unlocking_technologies = {
 		urbanization
 	}
-	
+
 	production_method_groups = {
 		pmg_amenities
 		pmg_street_lighting
 		pmg_public_transport
 		pmg_urban_clergy
 	}
-	
+
 	buildable = no
 	expandable = no
 	downsizeable = no
 	can_switch_owner = no
-	
+
 	terrain_manipulator = urban_city
-	
+
 	ownership_type = self
 
 	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_monuments.dds"
@@ -33,7 +33,7 @@ building_arts_academy = {
 	building_group = bg_arts
 
 	city_type = city
-	
+
 	levels_per_mesh = 50
 
 	unlocking_technologies = {
@@ -45,13 +45,14 @@ building_arts_academy = {
 		pmg_ownership_building_arts_academy
 		pmg_principle_freedom_of_movement_3
 	}
-	
+
 	icon = "gfx/interface/icons/building_icons/building_arts_academy.dds"
 
 	required_construction = construction_cost_medium
-	
+
 	ownership_type = self
 
+	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_monuments.dds"
 	ai_value = {
 		value = 100
 
@@ -93,8 +94,6 @@ building_arts_academy = {
             add = 400
 		}
 	}
-
-	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_monuments.dds"
 }
 
 building_power_plant = {
@@ -112,8 +111,8 @@ building_power_plant = {
 		pmg_base_building_power_plant
 		pm_transmission_method
 	}
-	
-	required_construction = 900
+
+	required_construction = construction_cost_high
 
 	ai_value = {
 		value = 200 
@@ -163,10 +162,10 @@ building_power_plant = {
 
 	possible = {
 		owner = {
-			NOT = { has_law = law_type:law_industry_banned } 
+			NOT = { has_law_or_variant = law_type:law_industry_banned }
 		}
 	}
-	
+
 	ownership_type = self
 
 	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_monuments.dds"

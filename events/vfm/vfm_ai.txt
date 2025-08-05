@@ -358,7 +358,7 @@ vfm_ai.5 = {
 	type = country_event
 	placement = root
 
-	hidden = yes
+	#hidden = yes
 
 	duration = 1
 
@@ -371,8 +371,8 @@ vfm_ai.5 = {
 			gdp >= 900000 # 900k
 		}
 		any_scope_state = {
-		    is_incorporated = yes
-			is_capital = no
+		    #is_incorporated = yes
+			#is_capital = no
 			has_building = building_government_administration
 			gdp >= 1500000 # 1.5 mil
 			tax_capacity_balance > 0.3
@@ -380,15 +380,37 @@ vfm_ai.5 = {
 	}
 
 	immediate = {
-	    random_scope_state = {
+	    
+	}
+	
+	option = {
+		name = vfm_ai.5.a
+		random_scope_state = {
 		    limit = {
-				is_incorporated = yes
-				is_capital = no
+				#is_incorporated = yes
+				#is_capital = no
 			    has_building = building_government_administration
 			    tax_capacity_balance > 0.3
 				gdp >= 1500000 # 1.5 mil
 			}
+			save_temporary_scope_value_as = {
+				name = government_administration_amount
+				value = {
+					every_scope_building = {
+		  				limit = {
+		   					is_building_type = building_government_administration
+		  				}
+		 		 		add = this.level
+		 			}
+	 				add = -1
+				}
+			}
 			remove_building = building_government_administration
+			create_building = {
+				building = "building_government_administration"
+				level = scope:government_administration_amount
+				reserves = 1
+			}
 		}
 	    random_scope_state = {
 		    limit = {
@@ -490,26 +512,6 @@ vfm_ai.97 = {
 		any_scope_state = {
 			state_region = s:STATE_AQUITAINE
 			literacy_rate > 0.2
-		}
-	}
-
-	immediate = {
-	}
-}
-
-vfm_ai.98 = {
-	type = country_event
-	placement = root
-
-	hidden = yes
-
-	duration = 1
-
-	trigger = {
-	    c:FRA ?= this
-		any_scope_state = {
-			state_region = s:STATE_AQUITAINE
-			literacy_rate > 0.6
 		}
 	}
 

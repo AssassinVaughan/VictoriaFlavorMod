@@ -605,7 +605,7 @@ ai_strategy_default = {
 				c:JAP ?= this
 				NOT = {
 					has_law_or_variant = law_type:law_isolationism
-					has_law = law_type:law_closed_borders
+					has_law_or_variant = law_type:law_closed_borders
 				}
 				scope:country = {
 					country_has_primary_culture = cu:korean
@@ -2036,7 +2036,7 @@ ai_strategy_default = {
 			if = {
 				limit = {
 					country_has_primary_culture = cu:russian
-					has_law = law_type:law_national_supremacy
+					has_law_or_variant = law_type:law_national_supremacy
 					has_technology_researched = nationalism
 					scope:target_state = {
 						owner = {
@@ -2613,7 +2613,7 @@ ai_strategy_default = {
 			if = {
 				limit = {
 					country_has_primary_culture = cu:russian
-					has_law = law_type:law_national_supremacy
+					has_law_or_variant = law_type:law_national_supremacy
 					has_technology_researched = nationalism
 					OR = {
 						AND = {	
@@ -3363,7 +3363,7 @@ ai_strategy_default = {
 					owns_entire_state_region = STATE_BOSNIA
 				}
 			}
-			add = 5
+			add = 10
 		}
 
 		# Russia really, really wants to free Bulgaria
@@ -3374,7 +3374,7 @@ ai_strategy_default = {
 					has_journal_entry = je_great_eastern_crisis
 				}
 			}
-			add = 5
+			add = 10
 		}
 
 		# Countries with high-fervour primary cultures are more reckless against rivals or countries with homelands
@@ -3797,7 +3797,7 @@ ai_strategy_default = {
 		if = { #Russian Central Asia
 			limit = {
 				country_has_primary_culture = cu:russian
-				has_law = law_type:law_national_supremacy
+				has_law_or_variant = law_type:law_national_supremacy
 				scope:target_country = {
 					any_scope_state = {
 						OR = {
@@ -3831,7 +3831,7 @@ ai_strategy_default = {
 				country_has_primary_culture = cu:japanese
 				NOT = {
 					has_law_or_variant = law_type:law_isolationism
-					has_law = law_type:law_closed_borders
+					has_law_or_variant = law_type:law_closed_borders
 				}
 				scope:target_country = {
 					is_country_type = unrecognized
@@ -4209,11 +4209,11 @@ ai_strategy_default = {
         # Great Powers with slavery banned should be more aggressive against an openly slave trading Brazil
 		if = {
 			limit = {
-				has_law = law_type:law_slavery_banned
+				has_law_or_variant = law_type:law_slavery_banned
 				country_rank >= rank_value:great_power
 				scope:target_country = {
 					has_modifier = brazil_slaving_pariah_modifier
-					has_law = law_type:law_slave_trade
+					has_law_or_variant = law_type:law_slave_trade
 				}
 			}
 			add = 10
@@ -4383,7 +4383,7 @@ ai_strategy_default = {
 					owns_entire_state_region = STATE_BOSNIA
 				}
 			}
-			add = 25
+			add = 35
 		}
 
 		# Russian aggression during the Eastern Question
@@ -4394,7 +4394,7 @@ ai_strategy_default = {
 					has_journal_entry = je_great_eastern_crisis
 				}
 			}
-			add = 25
+			add = 35
 		}
 
 		# Balkan minors aggression during the Eastern Question
@@ -4405,7 +4405,7 @@ ai_strategy_default = {
 					has_journal_entry = je_great_eastern_crisis
 				}
 			}
-			add = 10
+			add = 15
 		}
 
 		# AI Metternich is not inclined to go off on military adventures
@@ -4636,7 +4636,7 @@ ai_strategy_default = {
 		}
 		
 		if = { #VFM, national militias are meant to be small and supported by conscripts
-			limit = { has_law = law_type:law_national_militia }
+			limit = { has_law_or_variant = law_type:law_national_militia }
 			multiply = 0.25
 		}
 
@@ -4857,15 +4857,15 @@ ai_strategy_default = {
 			}
 			
 			if = {
-				limit = { has_law = law_type:law_peasant_levies }
+				limit = { has_law_or_variant = law_type:law_peasant_levies }
 				multiply = 0.5
 			}			
 			else_if = {
-				limit = { has_law = law_type:law_national_militia }
+				limit = { has_law_or_variant = law_type:law_national_militia }
 				multiply = 0.75
 			}
 			else_if = {
-				limit = { has_law = law_type:law_professional_army }
+				limit = { has_law_or_variant = law_type:law_professional_army }
 				multiply = 1.25
 			}			
 		}
@@ -4910,15 +4910,15 @@ ai_strategy_default = {
 	conscript_battalion_ratio = {
 		value = 0.3
 		if = {
-			limit = { has_law = law_type:law_national_militia }
+			limit = { has_law_or_variant = law_type:law_national_militia }
 			add = 1.2
 		}			
 		else_if = {
-			limit = { has_law = law_type:law_peasant_levies }
+			limit = { has_law_or_variant = law_type:law_peasant_levies }
 			add = 0.2
 		}	
 		else_if = {
-			limit = { has_law = law_type:law_mass_conscription }
+			limit = { has_law_or_variant = law_type:law_mass_conscription }
 			add = 0.3
 		}	
 
@@ -4963,7 +4963,7 @@ ai_strategy_default = {
 	
 		if = {
 			limit = {
-				has_law = law_type:law_command_economy
+				has_law_or_variant = law_type:law_command_economy
 			}
 			
 			add = 100
@@ -5083,7 +5083,7 @@ ai_strategy_default = {
 				has_technology_researched = centralization
 				kai_should_use_goods_stances = yes
 				total_population >= 1000000
-				NOT = { has_law = law_type:law_traditionalism }
+				NOT = { has_law_or_variant = law_type:law_traditionalism }
 			}
 		}
 		telephones = {
@@ -5873,7 +5873,7 @@ ai_strategy_default = {
 			if = { # Monarchist Austria really does not want revolutions or secessions
 				limit = {
 					c:AUS ?= this
-					has_law = law_type:law_monarchy
+					has_law_or_variant = law_type:law_monarchy
 					scope:target_country = {
 						OR = {
 							is_revolutionary = yes
@@ -6133,7 +6133,7 @@ ai_strategy_default = {
 					exists = c:SPA
 					scope:target_country = {
 						c:SPA = this
-						has_law = law_type:law_monarchy
+						has_law_or_variant = law_type:law_monarchy
 					}
 				}
 				multiply = 1.5
@@ -6444,7 +6444,7 @@ ai_strategy_default = {
 			if = { # Monarchist Austria really does not want revolutions or secessions
 				limit = {
 					c:AUS ?= this
-					has_law = law_type:law_monarchy
+					has_law_or_variant = law_type:law_monarchy
 					scope:target_country = {
 						OR = {
 							is_revolutionary = yes
@@ -6553,7 +6553,7 @@ ai_strategy_default = {
 					exists = c:PAP
 					scope:target_country = {
 						c:PAP = this
-						has_law = law_type:law_theocracy
+						has_law_or_variant = law_type:law_theocracy
 					}
 				}
 				multiply = 1.5
@@ -7265,7 +7265,7 @@ ai_strategy_default = {
 			if = {
 				limit = {
 					country_has_primary_culture = cu:russian
-					has_law = law_type:law_national_supremacy
+					has_law_or_variant = law_type:law_national_supremacy
 					scope:target_country = {
 						any_scope_state = {
 							OR = {
@@ -7281,7 +7281,7 @@ ai_strategy_default = {
 			if = {
 				limit = {
 					country_has_primary_culture = cu:russian
-					has_law = law_type:law_national_supremacy
+					has_law_or_variant = law_type:law_national_supremacy
 					has_technology_researched = nationalism
 					OR = {
 						AND = {	
@@ -7866,7 +7866,7 @@ ai_strategy_default = {
 			if = {
 				limit = {
 					country_has_primary_culture = cu:russian
-					has_law = law_type:law_national_supremacy
+					has_law_or_variant = law_type:law_national_supremacy
 					has_technology_researched = nationalism
 					scope:target_country = {
 						OR = {
@@ -8304,7 +8304,7 @@ ai_strategy_default = {
 			if = {
 				limit = {
 					country_has_primary_culture = cu:russian
-					has_law = law_type:law_national_supremacy
+					has_law_or_variant = law_type:law_national_supremacy
 					has_technology_researched = nationalism
 					scope:target_country = {
 						OR = {
@@ -8320,7 +8320,18 @@ ai_strategy_default = {
 		}			
 
 		humiliation = {
-			value = 25
+			value = 0
+			
+			if = {
+				limit = {
+					has_diplomatic_pact = {
+						who = scope:target_country
+						type = rivalry
+					}				
+				}
+				
+				add = 5
+			}
 		}	
 		
 		join_power_bloc = {

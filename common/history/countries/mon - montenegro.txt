@@ -53,6 +53,35 @@
 			add_modifier = {
 				name = mon_taxes_what_are
 				days = very_long_modifier_time
+				is_decaying = yes
+			}
+			trigger_event = {
+				id = mon_state_formation.15
+			}
+			set_tax_level = very_low
+			set_import_tariff_level = { 
+				goods = g:merchant_marine
+				level = max_subventions
+			}	
+			set_import_tariff_level = { 
+				goods = g:small_arms
+				level = high_subventions
+			}
+			set_import_tariff_level = { 
+				goods = g:artillery
+				level = high_subventions
+			}
+			set_import_tariff_level = { 
+				goods = g:clothes
+				level = high_subventions
+			}
+			set_import_tariff_level = { 
+				goods = g:liquor
+				level = high_subventions
+			}
+			set_import_tariff_level = { 
+				goods = g:fruit
+				level = high_subventions
 			}
 		}
 	}

@@ -588,8 +588,8 @@ ai_strategy_colonial_expansion = {
 		is_subject = no
 		is_country_type = recognized
 		OR = {
-			has_law = law_type:law_colonial_resettlement
-			has_law = law_type:law_colonial_exploitation
+			has_law_or_variant = law_type:law_colonial_resettlement
+			has_law_or_variant = law_type:law_colonial_exploitation
 		}
 	}
 
@@ -732,7 +732,7 @@ ai_strategy_armed_isolationism = {
 		}
 		
 		if = {
-			limit = { has_law = law_type:law_national_militia }
+			limit = { has_law_or_variant = law_type:law_national_militia }
 			add = 50
 		}
 
@@ -992,7 +992,7 @@ ai_strategy_economic_imperialism = {
 					scope:target_country.country_rank < rank_value:major_power
 					scope:target_country = {
 						NOR = { 
-							has_law = law_type:law_free_trade 
+							has_law_or_variant = law_type:law_free_trade
 							has_law_or_variant = law_type:law_isolationism
 						}
 					}
@@ -2761,7 +2761,7 @@ ai_strategy_socialism_in_one_country = {
 		}
 		
 		if = {
-			limit = { has_law = law_type:law_national_militia }
+			limit = { has_law_or_variant = law_type:law_national_militia }
 			add = 50
 		}
 
@@ -2960,8 +2960,8 @@ ai_strategy_world_revolution = {
 		if = {
 			limit = { 
 				OR = {
-					has_law = law_type:law_professional_army 
-					has_law = law_type:law_mass_conscription 
+					has_law_or_variant = law_type:law_professional_army
+					has_law_or_variant = law_type:law_mass_conscription
 				}
 			}
 			add = 25

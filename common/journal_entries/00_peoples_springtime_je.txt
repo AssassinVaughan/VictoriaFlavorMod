@@ -94,7 +94,7 @@
 		}
 		set_variable = { name = springtime_timer_var value = 0 }
 		trigger_event = { id = 1848.4 popup = yes }
-		
+
 		springtime_save_conservative_laws = yes
 	}
 
@@ -114,10 +114,10 @@
 				}
 			}
 			OR = {
-				has_law = law_type:law_census_voting
-				has_law = law_type:law_universal_suffrage
+				has_law_or_variant = law_type:law_census_voting
+				has_law_or_variant = law_type:law_universal_suffrage
 			}
-		}		
+		}
 	}
 
 	on_complete = {
@@ -140,13 +140,13 @@
 			limit = {
 				exists = var:springtime_timer_var
 			}
-			custom_tooltip = { 
+			custom_tooltip = {
 				text = springtime_of_the_peoples_timer_tt
 				var:springtime_timer_var >= 12
 			}
 		}
 		trigger_else = {
-			custom_tooltip = { 
+			custom_tooltip = {
 				text = springtime_of_the_peoples_timer_dummy_tt
 				always = no
 			}
@@ -318,7 +318,7 @@ je_red_summer = {
 		modifier_red_summer
 	}
 
-	complete = {	
+	complete = {
 		OR = {
 			custom_tooltip = {
 				text = red_summer_liberal_victory_tt
@@ -382,7 +382,7 @@ je_red_summer = {
 	}
 
 	on_monthly_pulse = {
-		
+
 	}
 
 	invalid = {

@@ -87,6 +87,9 @@ NAI = {
 	GOVERNMENT_CONSTRUCTION_DOMESTIC_INVESTMENT_BIAS = 2.2 #2.0 VFM Favor domestic more over foreign
 	GOVERNMENT_CONSTRUCTION_SUBJECT_INVESTMENT_BIAS = 1.65 #1.5 VFM Favor subject more
 	
+	DECLARE_INTEREST_RANDOM_FACTOR = 0.25 # The higher this is, the more random AI declare interest will be
+	DECLARE_INTEREST_BASE_SCORE = 200
+	
 	# Below data is used to calculate how much weight the AI places on promoting an IG
     PROMOTION_BASE_VALUE = 40 # 50
     
@@ -98,7 +101,8 @@ NAI = {
 	# Below data is used to calculate how much weight the AI places on different things it can spend its authority on
 	AUTHORITY_SPENDING_RANDOM_FACTOR = 0.1 # The higher this is, the more random new AI authority spending will be
 
-	COMPANY_CHARTER_AUTHORITY_SPENDING_PERCENTAGE = 0.0 #Ratio of authority expenses that we want country to spend on authority
+	COMPANY_CHARTER_AUTHORITY_SPENDING_PERCENTAGE = 0.02 #Ratio of authority expenses that we want country to spend on authority
+	COMPANY_CHARTER_AUTHORITY_COST = 50				# VFM: AI will just spam these???? Cost of establishing a company charter
 	
 	# Below data is used to calculate how much weight the AI places on consumption taxes
 	CONSUMPTION_TAX_INCOME_VALUE = 18 # Per percent of state expenses in taxable value (this is then multiplied by relative authority cost of the good)
