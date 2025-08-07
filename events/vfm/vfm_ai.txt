@@ -358,7 +358,7 @@ vfm_ai.5 = {
 	type = country_event
 	placement = root
 
-	hidden = yes
+	#hidden = yes
 
 	duration = 1
 
@@ -368,39 +368,86 @@ vfm_ai.5 = {
 		any_scope_state = {
 		    is_incorporated = yes
 			tax_capacity_balance < 0
-			gdp >= 900000 # 900k
+			gdp >= 600000 # 600k
 		}
 		any_scope_state = {
-		    is_incorporated = yes
-			is_capital = no
-			has_building = building_government_administration
-			gdp >= 1500000 # 1.5 mil
-			tax_capacity_balance > 0.3
+		    has_building = building_government_administration
+			OR = {
+			    AND = {
+					is_capital = no
+			    	tax_capacity_balance > 0.25
+				}
+				AND = {
+					is_capital = yes
+					tax_capacity_balance > 0.5
+				}
+			}
 		}
 	}
 
 	immediate = {
-	    random_scope_state = {
+	    
+	}
+	
+	option = {
+		name = vfm_ai.5.a
+		random_scope_state = {
 		    limit = {
-				is_incorporated = yes
-				is_capital = no
 			    has_building = building_government_administration
-			    tax_capacity_balance > 0.3
-				gdp >= 1500000 # 1.5 mil
+				OR = {
+			        AND = {
+				    	is_capital = no
+			        	tax_capacity_balance > 0.25
+				    }
+				    AND = {
+				    	is_capital = yes
+				    	tax_capacity_balance > 0.5
+				    }
+			    }
+			}
+			save_temporary_scope_value_as = {
+				name = government_administration_amount_1
+				value = {
+					every_scope_building = {
+		  				limit = {
+		   					is_building_type = building_government_administration
+		  				}
+		 		 		add = this.level
+		 			}
+	 				add = -1
+				}
 			}
 			remove_building = building_government_administration
+			create_building = {
+				building = "building_government_administration"
+				level = scope:government_administration_amount_1
+				reserves = 1
+			}
 		}
-	    random_scope_state = {
+		random_scope_state = {
 		    limit = {
 			    is_incorporated = yes
 				tax_capacity_balance < 0
-				gdp >= 900000 # 900k
+				gdp >= 600000 # 600k
 			}
-			create_building={
- 				building="building_government_administration"
- 				level=1
- 				reserves=1
- 			}
+			save_temporary_scope_value_as = {
+				name = government_administration_amount_2
+				value = {
+					every_scope_building = {
+		  				limit = {
+		   					is_building_type = building_government_administration
+		  				}
+		 		 		add = this.level
+		 			}
+	 				add = 1
+				}
+			}
+			remove_building = building_government_administration
+			create_building = {
+				building = "building_government_administration"
+				level = scope:government_administration_amount_2
+				reserves = 1
+			}
 		}
 	}
 }
