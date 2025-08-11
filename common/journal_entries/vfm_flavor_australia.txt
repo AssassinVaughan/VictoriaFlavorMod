@@ -35,7 +35,7 @@ je_ast_frontier_wars = {
 						AND = {
 							has_claim_by = ROOT
 							owner = ROOT
-							
+
 						}
 						NOT = {
 							has_claim_by = ROOT
@@ -116,9 +116,9 @@ je_convict_system = {
 		random_events = {
 			100 = 0
 			5 = flavor_australia_events.3 #City protest
-			5 = flavor_australia_events.6 #Government Lobby 1
-			5 = flavor_australia_events.7 #Government Lobby 2
-			5 = flavor_australia_events.8 #Squatters Sabotage Reform
+			#5 = flavor_australia_events.6 #Government Lobby 1 #VFM TODO - event not present in the files
+			#5 = flavor_australia_events.7 #Government Lobby 2 #VFM TODO - event not present in the files
+			#5 = flavor_australia_events.8 #Squatters Sabotage Reform #VFM TODO - event not present in the files
 		}
 	}
 	on_yearly_pulse = {
@@ -134,7 +134,7 @@ je_convict_system = {
 
 	complete = {
 		NOT = {
-			has_law = law_type:law_debt_slavery 
+			has_law = law_type:law_debt_slavery
 		}
 	}
 
@@ -163,7 +163,7 @@ je_western_australia_claim = {
 	}
 	complete = {
 		scope:west_australia_je = {
-			owns_entire_state_region = STATE_WESTERN_AUSTRALIA 
+			owns_entire_state_region = STATE_WESTERN_AUSTRALIA
 		}
 	}
 
