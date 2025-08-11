@@ -89,38 +89,38 @@
 			}
 		}
 	}
-	
+
 	fail = {
 		NOT = { has_state_in_state_region = STATE_BALUCHISTAN }
 	}
-	
+
 	on_monthly_pulse = {
 		effect = {
-		
+
 		}
 		events = {
 
 		}
 	}
-	
+
 	on_weekly_pulse = {
 		effect = {
-		
+
 		}
 		events = {
 
 		}
 	}
-	
+
 	on_complete = {
 		remove_modifier = kal_weak_khan
 		custom_tooltip = {
 			text = kal_change_name_to_bal_tt
-			set_variable = baluchistan_name_var 
+			set_variable = baluchistan_name_var
 		}
 		trigger_event = { id = journal_flavor_kalat.2 }
 	}
-	
+
 	on_timeout = {
 		custom_tooltip = {
 			text = kal_disintegrate_tt
@@ -193,8 +193,8 @@
 					}
 				}
 			}
-			if = { 
-				limit = {	
+			if = {
+				limit = {
 					exists = s:STATE_SISTAN.region_state:KAL
 					exists = s:STATE_KERMAN.region_state:PER
 				}
@@ -203,8 +203,8 @@
 				}
 				c:PER = { trigger_event = { id = journal_flavor_iran.29 } }
 			}
-			if = { 
-				limit = {	
+			if = {
+				limit = {
 					exists = s:STATE_LARISTAN.region_state:KAL
 					exists = s:STATE_KERMAN.region_state:PER
 				}
@@ -212,8 +212,8 @@
 					set_state_owner = c:PER
 				}
 			}
-			if = { 
-				limit = {	
+			if = {
+				limit = {
 					exists = s:STATE_SISTAN.region_state:KAL
 					NOT = { exists = s:STATE_KERMAN.region_state:PER }
 				}
@@ -221,8 +221,8 @@
 					set_state_owner = c:MAK
 				}
 			}
-			if = { 
-				limit = {	
+			if = {
+				limit = {
 					exists = s:STATE_LARISTAN.region_state:KAL
 					NOT = { exists = s:STATE_KERMAN.region_state:PER }
 				}
@@ -233,16 +233,16 @@
 		}
 		trigger_event = { id = journal_flavor_kalat.1 }
 	}
-	
+
 	on_fail = {
 		remove_modifier = kal_weak_khan
-		remove_variable = kalat_cannot_form_baluchistan
+		#remove_variable = kalat_cannot_form_baluchistan - #VFM TODO - used but never set
 		custom_tooltip = {
 			text = kal_disintegrate_alt_tt
 		}
 		custom_tooltip = {
 			text = kal_weird_situation_tt
-			set_variable = kohistan_name_var 
+			set_variable = kohistan_name_var
 		}
 	}
 

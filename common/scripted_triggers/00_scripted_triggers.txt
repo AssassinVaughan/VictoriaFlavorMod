@@ -54,7 +54,7 @@ country_can_form_power_bloc = {
 			is_revolutionary = no
 		}
 		country_rank >= rank_value:unrecognized_major_power
-		NOT = { has_law = law_type:law_isolationism }
+		NOT = { has_law_or_variant = law_type:law_isolationism }
 	}
 }
 
@@ -607,6 +607,7 @@ italian_treaty_ports = {
 		owns_treaty_port_in = STATE_VENETIA
 		owns_treaty_port_in = STATE_ISTRIA
 		owns_treaty_port_in = STATE_EMILIA
+		owns_treaty_port_in = STATE_CORSICA
 	}
 }
 
@@ -622,6 +623,7 @@ iberian_treaty_ports = {
 		owns_treaty_port_in = STATE_BEIRA
 		owns_treaty_port_in = STATE_ESTREMADURA
 		owns_treaty_port_in = STATE_ALENTEJO
+		owns_treaty_port_in = STATE_ASTURIAS
 	}
 }
 
@@ -868,29 +870,18 @@ will_be_accepted_culture = {
         }
         AND = {
             owner = { is_enacting_law = law_type:law_national_supremacy }
-			culture = {
-				AND = {
-					shares_heritage_trait_group_with_any_primary_culture = root
-					OR = {
-						shares_language_trait_group_with_any_primary_culture = root
-						shares_tradition_trait_with_any_primary_culture = root
-					}
-				}
+            AND = {
+				culture = { shares_heritage_trait_with_any_primary_culture = root }
+				culture = { shares_non_heritage_trait_with_any_primary_culture = root }
 			}
         }
         AND = {
             owner = { is_enacting_law = law_type:law_racial_segregation }
-            culture = { shares_heritage_trait_group_with_any_primary_culture = root }
+            culture = { shares_heritage_trait_with_any_primary_culture = root }
         }
         AND = {
             owner = { is_enacting_law = law_type:law_cultural_exclusion }
-            culture = {
-				OR = {
-					shares_heritage_trait_group_with_any_primary_culture = root
-					shares_language_trait_group_with_any_primary_culture = root
-					shares_tradition_trait_with_any_primary_culture = root
-				}
-			}
+            culture = { shares_trait_with_any_primary_culture = root }
         }
         owner = { is_enacting_law = law_type:law_multicultural }
     }
@@ -1034,6 +1025,7 @@ is_in_civil_war = {
 has_paternalist_ideology = {
 	OR = {
 		has_ideology = ideology:ideology_paternalistic
+		has_ideology = ideology:ideology_magnatial
 		has_ideology = ideology:ideology_scholar_paternalistic
 		has_ideology = ideology:ideology_junker_paternalistic
 		has_ideology = ideology:ideology_papal_paternalistic
@@ -1555,42 +1547,31 @@ interest_group_has_conservative_ideology = {
 }
 
 has_liberal_ideology = {
-	custom_tooltip = {
-		text = has_liberal_ideology_tt
-		OR = {
-			has_ideology = ideology:ideology_republican_leader
-			has_ideology = ideology:ideology_radical
-			has_ideology = ideology:ideology_reformer
-			has_ideology = ideology:ideology_abolitionist
-			has_ideology = ideology:ideology_market_liberal
-		}
+	OR = {
+		has_ideology = ideology:ideology_republican_leader
+		has_ideology = ideology:ideology_radical
+		has_ideology = ideology:ideology_reformer
+		has_ideology = ideology:ideology_abolitionist
+		has_ideology = ideology:ideology_market_liberal
 	}
 }
 
 has_progressive_ideology = {
-	custom_tooltip = {
-		text = has_progressive_ideology_tt
-		OR = {
-			has_ideology = ideology:ideology_nihilist
-			has_ideology = ideology:ideology_radical
-			has_ideology = ideology:ideology_feminist
-			has_ideology = ideology:ideology_social_democrat
-			has_ideology = ideology:ideology_humanitarian
-			has_ideology = ideology:ideology_humanitarian_royalist
-		}
+	OR = {
+		has_ideology = ideology:ideology_nihilist
+		has_ideology = ideology:ideology_radical
+		has_ideology = ideology:ideology_feminist
+		has_ideology = ideology:ideology_social_democrat
+		has_ideology = ideology:ideology_humanitarian
+		has_ideology = ideology:ideology_humanitarian_royalist
 	}
 }
 
 has_socialist_ideology = {
-	custom_tooltip = {
-		text = has_socialist_ideology_tt
-		OR = {
-			has_ideology = ideology:ideology_communist
-			has_ideology = ideology:ideology_vanguardist
-			has_ideology = ideology:ideology_anarchist
-			has_ideology = ideology:ideology_nihilist
-			has_ideology = ideology:ideology_utopian
-		}
+	OR = {
+		has_ideology = ideology:ideology_communist
+		has_ideology = ideology:ideology_vanguardist
+		has_ideology = ideology:ideology_anarchist
 	}
 }
 
@@ -1695,9 +1676,17 @@ wants_to_solve_schleswig_holstein = {
 }
 
 is_oppressor_of_schleswig_holstein = {
-	NOR = {
-		country_has_primary_culture = cu:north_german
-		country_has_primary_culture = cu:south_german
+	OR = {
+		top_overlord ?= {
+			NOR = {
+				country_has_primary_culture = cu:north_german
+				country_has_primary_culture = cu:south_german
+			}
+		}
+		NOR = {
+			country_has_primary_culture = cu:north_german
+			country_has_primary_culture = cu:south_german
+		}
 	}
 	OR = {
 		any_scope_state = { state_region = s:STATE_SCHLESWIG_HOLSTEIN }
@@ -1813,6 +1802,7 @@ anti_foreign_imposition_country = {
 }
 
 # Princely States
+
 is_princely_state = {
 	country_is_in_india = yes
 	OR = {
@@ -1976,4 +1966,3 @@ movement_is_conservative = {
 		is_political_movement_type = movement_cultural_majority
 	}
 }
-

@@ -2862,6 +2862,18 @@
 	}
 	s:STATE_NEW_BRUNSWICK={
 		region_state:NBS={
+		    create_building={
+				building="building_trade_center"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:NBS"
+						levels=1
+						region="STATE_NEW_BRUNSWICK"
+					}
+				}
+				reserves=1
+			}
 			create_building={
 				building="building_lead_mine"
 				add_ownership={

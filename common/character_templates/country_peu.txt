@@ -4,15 +4,21 @@ PEU_Luis_Jose_de_Orbegoso = { #North Peru
 	# Luis Jose de Orbegoso
 	first_name = "Luis_2_Jose"
 	last_name = "de_Orbegoso"
+	ig_leader = yes
 	historical = yes
+	culture = primary_culture
 	ruler = yes
-	age = 41
+	birth_date = 1795.08.25
 	dna = dna_luis_jose_de_orbegoso
 	interest_group = ig_intelligentsia
 	ideology = ideology_market_liberal
 	traits = {
 		honorable
 		reserved
+		erudite
+		popular_commander
+		basic_offensive_planner
+		experienced_diplomat
 		experienced_political_operator
 	}
 	trait_generation = { }
@@ -23,6 +29,7 @@ PEU_Nicolas_Fernandez_de_Pierola = { #South Peru
 	first_name = "Nicolas_2"
 	last_name = "de_Pierola_y_Flores"
 	historical = yes
+	culture = primary_culture
 	ruler = yes
 	age = 48
 	interest_group = ig_intelligentsia
@@ -55,7 +62,6 @@ PEU_Antonio_Huachaca = { #Iquichia
 		expert_defensive_strategist
 		bandit
 		persistent
-		
 	}
 	on_created = {
 		set_variable = {
@@ -69,9 +75,12 @@ PEU_Antonio_Huachaca = { #Iquichia
 
 PEU_Felipe_Salaverry = {
 	# Felipe Santiago Salaverry del Solar, coup leader
-	first_name = "felipe_santiago"
+	first_name = Felipe
 	last_name = Salaverry
 	historical = yes
+	culture = primary_culture
+	ruler = yes
+	is_general = yes
 	birth_date = 1806.5.3
 	dna = dna_felipe_santiago_salaverry
 	interest_group = ig_armed_forces
@@ -82,6 +91,11 @@ PEU_Felipe_Salaverry = {
 		brave
 	}
 	trait_generation = { }
+	on_created = {
+		set_variable = {
+			name = is_salaverry
+		}
+	}
 }
 
 PEU_Agustin_Gamarra = {
@@ -89,8 +103,9 @@ PEU_Agustin_Gamarra = {
 	first_name = Agustin
 	last_name = Gamarra
 	historical = yes
+	culture = primary_culture
 	birth_date = 1785.8.27
-	ig_leader = yes
+	is_agitator = yes
 	interest_group = ig_landowners
 	ideology = ideology_authoritarian
 	traits = {
@@ -104,7 +119,7 @@ PEU_Agustin_Gamarra = {
 #	# Vigil, liberal priest, deputy of the republic of Brazil, and generally a political sort of guy. Also royalist sometimes too? Strange fellow.
 #	first_name = Francisco
 #	last_name = de_Paula_GonzA_lez_Vigil
-#	historical = yes
+#	historical = yes	culture = primary_culture
 #	birth_date = 1792.9.13
 #	ig_leader = yes
 #	interest_group = ig_intelligentsia
@@ -122,6 +137,7 @@ PEU_Jose_de_Goyeneche = {
 	first_name = JosE_
 	last_name = de_Goyeneche
 	historical = yes
+	culture = primary_culture
 	age = 1784.1.19
 	ig_leader = yes
 	interest_group = ig_devout
@@ -152,12 +168,30 @@ PEU_jorge_de_benavente_y_macoaga = { # Jorge de Benavente y Macoaga
 	trait_generation = { }
 }
 
+PEU_Juan_Bustamante_Duenas = {	# Juan Bustamante Dueñas AKA Túpac Amaru III
+	first_name = Juan
+	last_name = Bustamante_Duenas
+	historical = yes
+	ig_leader = yes
+	birth_date = 1808.06.24
+	dna = dna_juan_bustamante_duenas
+	interest_group = ig_rural_folk
+	ideology = ideology_incan_reclaimer
+	traits = {
+		brave
+		direct
+		literary
+		basic_political_operator
+	}
+}
+
 ### COMMANDERS ###
 PEU_Manuel_Salazar_y_Baquijano = { # Member of the Suprema Junta Gubernativa del Perú, ally of Orbegoso, active politician
 	is_general = yes
 	first_name = Manuel
 	last_name = Salazar_y_BaquI_jano
 	historical = yes
+	culture = primary_culture
 	birth_date = 1777.12.24
 	interest_group = ig_intelligentsia
 	traits = {
@@ -167,12 +201,12 @@ PEU_Manuel_Salazar_y_Baquijano = { # Member of the Suprema Junta Gubernativa del
 	trait_generation = { }
 }
 
-PEU_Anselmo_Quiroz = {
+PEU_Anselmo_Quiroz = { # Anselmo Quiroz
 	is_general = yes
-	first_name = "anselmo"
-	last_name = "quiroz"
+	first_name = anselmo
+	last_name = quiroz
 	historical = yes
-	culture = cu:south_andean
+	culture = primary_culture
 	interest_group = ig_armed_forces
 	ideology = ideology_moderate
 	birth_date = 1797.04.21
@@ -214,11 +248,11 @@ PEU_bartoleme_herrera = { # Bartolomé Herrera Vélez
 		}
         interest_group_trigger = {
 			is_interest_group_type = ig_devout
-        }   
+        }
         earliest_usage_date = 1842.1.1
         latest_usage_date = 1865.1.1
         chance = 75
-    }   
+    }
 	trait_generation = { }
 }
 
@@ -233,7 +267,9 @@ PEU_francisco_xavier_de_luna_pizarro = { # Francisco Xavier de Luna Pizarro Pach
 	interest_group = ig_devout
 	ideology = ideology_pacifist
 	birth_date = 1780.12.3
+	dna = dna_francisco_luna_pizarro
 	traits = {
+		charismatic
 		erudite
 		expert_political_operator
 	}
@@ -251,11 +287,11 @@ PEU_francisco_xavier_de_luna_pizarro = { # Francisco Xavier de Luna Pizarro Pach
 		}
         interest_group_trigger = {
 			is_interest_group_type = ig_devout
-        }   
+        }
         earliest_usage_date = 1840.1.1
         latest_usage_date = 1855.1.1
         chance = 75
-    }   
+    }
 	trait_generation = { }
 }
 
@@ -288,11 +324,11 @@ PEU_manuel_menendez = { # Manuel Menéndez Gorozabel
 		}
         interest_group_trigger = {
 			is_interest_group_type = ig_landowners
-        }   
+        }
         earliest_usage_date = 1840.1.1
         latest_usage_date = 1847.1.1
         chance = 75
-    }   
+    }
 	trait_generation = { }
 }
 
@@ -325,11 +361,11 @@ PEU_francisco_quiros_y_ampudia = { # Francisco de Paula Isidoro Quirós y Ampudi
 		}
         interest_group_trigger = {
 			is_interest_group_type = ig_industrialists
-        }   
+        }
         earliest_usage_date = 1840.1.1
         latest_usage_date = 1865.1.1
         chance = 75
-    }   
+    }
 	trait_generation = { }
 }
 
@@ -362,11 +398,11 @@ PEU_manuel_pardo_y_lavalle = { # Manuel Justo Pardo y Lavalle
 		}
         interest_group_trigger = {
 			is_interest_group_type = ig_landowners
-        }   
+        }
         earliest_usage_date = 1870.1.1
         latest_usage_date = 1890.1.1
         chance = 75
-    }   
+    }
 	trait_generation = { }
 }
 
@@ -400,11 +436,11 @@ PEU_domingo_elias = { # Domingo Elías Carbajo
 		}
         interest_group_trigger = {
 			is_interest_group_type = ig_landowners
-        }   
+        }
         earliest_usage_date = 1844.1.1
         latest_usage_date = 1858.1.1
         chance = 75
-    }   
+    }
 	trait_generation = { }
 }
 
@@ -440,11 +476,11 @@ PEU_sebastian_lorente = { # Sebastián Ignacio Lorente Ibáñez
 		}
         interest_group_trigger = {
 			is_interest_group_type = ig_intelligentsia
-        }   
+        }
         earliest_usage_date = 1855.1.1
         latest_usage_date = 1880.1.1
         chance = 75
-    }   
+    }
 	trait_generation = { }
 }
 
@@ -476,11 +512,11 @@ PEU_pedro_galvez_egusquiza = { # Pedro Gálvez Egúsquiza
 		}
         interest_group_trigger = {
 			is_interest_group_type = ig_intelligentsia
-        }   
+        }
         earliest_usage_date = 1852.1.1
         latest_usage_date = 1868.1.1
         chance = 75
-    }   
+    }
 	trait_generation = { }
 }
 
@@ -514,11 +550,11 @@ PEU_nicolas_de_pierola = { # José Nicolás Baltazar Fernández de Piérola y Vi
 		}
         interest_group_trigger = {
 			is_interest_group_type = ig_petty_bourgeoisie
-        }   
+        }
         earliest_usage_date = 1875.1.1
         latest_usage_date = 1900.1.1
         chance = 75
-    }   
+    }
 	trait_generation = { }
 }
 
@@ -551,11 +587,11 @@ PEU_julio_cesar_arana_del_aguila = { # Julio César Arana del Águila
 		}
         interest_group_trigger = {
 			is_interest_group_type = ig_industrialists
-        }   
+        }
         earliest_usage_date = 1900.1.1
         latest_usage_date = 1930.1.1
         chance = 75
-    }   
+    }
 	trait_generation = { }
 }
 
@@ -589,11 +625,11 @@ PEU_jose_pardo_y_barreda = { # José Simón Pardo y Barreda
 		}
         interest_group_trigger = {
 			is_interest_group_type = ig_petty_bourgeoisie
-        }   
+        }
         earliest_usage_date = 1900.1.1
         latest_usage_date = 1920.1.1
         chance = 75
-    }   
+    }
 	trait_generation = { }
 }
 
@@ -626,11 +662,11 @@ PEU_augusto_leguia = { # Augusto Bernardino Leguía y Salcedo
 		}
         interest_group_trigger = {
 			is_interest_group_type = ig_petty_bourgeoisie
-        }   
+        }
         earliest_usage_date = 1903.1.1
         latest_usage_date = 1930.1.1
         chance = 75
-    }   
+    }
 	trait_generation = { }
 }
 
@@ -663,11 +699,11 @@ PEU_enrique_lopez_albujar = { # Enrique López Albújar
 		}
         interest_group_trigger = {
 			is_interest_group_type = ig_rural_folk
-        }   
+        }
         earliest_usage_date = 1910.1.1
         latest_usage_date = 1936.1.1
         chance = 75
-    }   
+    }
 	trait_generation = { }
 }
 
@@ -701,11 +737,11 @@ PEU_guillermo_billinghurst = { # Guillermo Enrique Billinghurst Angulo
 		}
         interest_group_trigger = {
 			is_interest_group_type = ig_intelligentsia
-        }   
+        }
         earliest_usage_date = 1900.1.1
         latest_usage_date = 1915.1.1
         chance = 75
-    }   
+    }
 	trait_generation = { }
 }
 
@@ -738,11 +774,11 @@ PEU_victor_raul_haya_de_la_torre = { # Víctor Raúl Haya de la Torre
 		}
         interest_group_trigger = {
 			is_interest_group_type = ig_intelligentsia
-        }   
+        }
         earliest_usage_date = 1924.1.1
         latest_usage_date = 1936.1.1
         chance = 75
-    }   
+    }
 	trait_generation = { }
 }
 
@@ -776,11 +812,11 @@ PEU_emilio_lisson = { # Emilio Lisson
 		}
         interest_group_trigger = {
 			is_interest_group_type = ig_devout
-        }   
+        }
         earliest_usage_date = 1915.1.1
         latest_usage_date = 1936.1.1
         chance = 75
-    }   
+    }
 	trait_generation = { }
 }
 
@@ -814,7 +850,7 @@ PEU_ramon_castilla = { # Ramón Castilla y Marquesado
 			}
 			NOR = { # Anti-Confederation
 				c:PBC ?= THIS
-				is_subject = yes 
+				is_subject = yes
 			}
 			has_dlc_feature = rp1_content
 		}
@@ -853,7 +889,7 @@ PEU_manuel_ignacio_de_vivanco = { # Manuel Ignacio de Vivanco Iturralde
 			}
 			NOR = { # Anti-Confederation
 				c:PBC ?= THIS
-				is_subject = yes 
+				is_subject = yes
 			}
 			has_dlc_feature = rp1_content
 		}
@@ -873,13 +909,17 @@ PEU_juan_francisco_de_vidal_la_hoz = { # Juan Francisco de Vidal La Hoz
 	is_general = yes
 	commander_rank = default
 	interest_group = ig_armed_forces
+	ig_leader = yes
 	ideology = ideology_authoritarian
+	dna = dna_juan_francisco_de_vidal
 	culture = primary_culture
 	religion = rel:catholic
 	traits = {
 		imposing
 		experienced_offensive_planner
 		brave
+		honorable
+		experienced_defensive_strategist
 	}
 	commander_usage = {
 		country_trigger = {
@@ -929,7 +969,7 @@ PEU_juan_cristostomo_torrico = { # Juan Crisóstomo Torrico y Bargas
 			has_dlc_feature = rp1_content
 			NOR = { # Anti-Confederation
 				c:PBC ?= THIS
-				is_subject = yes 
+				is_subject = yes
 			}
 		}
 		role = general
@@ -966,7 +1006,7 @@ PEU_antonio_gutierrez_de_la_fuente = { # Antonio Gutiérrez de la Fuente
 				is_incorporated = yes
 			}
 			has_dlc_feature = rp1_content
-			is_subject = yes 
+			is_subject = yes
 		}
 		role = general
 		earliest_usage_date = 1836.1.1
@@ -1160,7 +1200,7 @@ PEU_pedro_pablo_atusparia = { #Pedro Pablo Atusparia Ángeles
 	last_name = Atusparia
 	historical = yes
 	female = no
-	is_agitator = yes 
+	is_agitator = yes
 	culture = cu:quechua
 	religion = rel:catholic
 	interest_group = ig_rural_folk
@@ -1186,9 +1226,9 @@ PEU_pedro_pablo_atusparia = { #Pedro Pablo Atusparia Ángeles
 		}
         interest_group_trigger = {
 			is_interest_group_type = ig_rural_folk
-        }   
+        }
         earliest_usage_date = 1885.1.1
         latest_usage_date = 1895.1.1
         chance = 50
-    }   
+    }
 }
