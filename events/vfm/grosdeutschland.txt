@@ -31,7 +31,7 @@ grosdeutschland.1 = {
 
 	option = { #Allow non-german states independence
 		name = grosdeutschland.1.a
-		
+
 		default_option = yes
 
 		ai_chance = {
@@ -65,15 +65,15 @@ grosdeutschland.1 = {
 				value = 30
 			}
 		}
-		if = {
-			limit = {
-				exists = scope:italian_2_country
-			}
-			change_relations = {
-				country = scope:italian_2_country
-				value = 30
-			}
-		}
+		#if = { #VFM TODO - is used but is never set
+		#	limit = {
+		#		exists = scope:italian_2_country
+		#	}
+		#	change_relations = {
+		#		country = scope:italian_2_country
+		#		value = 30
+		#	}
+		#}
 		if = {
 			limit = {
 				exists = scope:polish_country
@@ -113,7 +113,7 @@ grosdeutschland.1 = {
 	option = { #To war
 		name = grosdeutschland.1.b
 		root = { save_scope_as = german_country }
-		
+
 		ai_chance = {
 			base = 5
 		}
@@ -152,10 +152,10 @@ grosdeutschland.1 = {
 			every_state = {
 				limit = {
 					has_variable = former_austria
-					NOT = { 
+					NOT = {
 						owner = {
 							has_variable = former_austrian_subject
-						} 
+						}
 					}
 				}
 				save_temporary_scope_as = temp_scope
@@ -241,14 +241,14 @@ grosdeutschland.2 = {
 		make_independent = yes
 
 		set_variable = is_krakow
-		
+
 		c:GER ?= { save_scope_as = new_germany }
-		
+
 		ordered_primary_culture = {
 			position = 0
 			save_scope_as = polish_culture
 		}
-		
+
 		random_country = {
 			limit = {
 				NOT = { has_variable = is_krakow }
@@ -604,7 +604,7 @@ grosdeutschland.3 = {
 			limit = {
 				state_region = {
 					is_homeland = cu:slovene
-					NOT = { 
+					NOT = {
 						OR = {
 							is_homeland = cu:south_german
 							is_homeland = cu:north_german
@@ -620,7 +620,7 @@ grosdeutschland.3 = {
 			limit = {
 				state_region = {
 					is_homeland = cu:croat
-					NOT = { 
+					NOT = {
 						OR = {
 							is_homeland = cu:south_german
 							is_homeland = cu:north_german
@@ -659,7 +659,7 @@ grosdeutschland.3 = {
 			limit = {
 				state_region = {
 					is_homeland = cu:north_italian
-					NOT = { 
+					NOT = {
 						OR = {
 							is_homeland = cu:south_german
 							is_homeland = cu:north_german
@@ -675,7 +675,7 @@ grosdeutschland.3 = {
 			limit = {
 				state_region = {
 					is_homeland = cu:polish
-					NOT = { 
+					NOT = {
 						is_homeland = cu:north_german
 						is_homeland = cu:south_german
 					}
@@ -692,7 +692,7 @@ grosdeutschland.3 = {
 						is_homeland = cu:serb
 						is_homeland = cu:albanian
 					}
-					NOT = { 
+					NOT = {
 						OR = {
 							is_homeland = cu:south_german
 							is_homeland = cu:north_german
@@ -707,8 +707,8 @@ grosdeutschland.3 = {
 		#what to do with silly little krakow?
 		if = {
 			limit = {
-				c:KRA ?= { 
-					is_subject = yes 
+				c:KRA ?= {
+					is_subject = yes
 					overlord = root
 				}
 			}
@@ -735,11 +735,11 @@ grosdeutschland.3 = {
 			make_independent = yes
 		}
 
-		ordered_state = { 
-			limit = { 
-				has_variable = former_austria 
+		ordered_state = {
+			limit = {
+				has_variable = former_austria
 				is_capital = yes
-			} 
+			}
 			order_by = state_population
 			position = 0
 			save_scope_as = war_goal_state
@@ -764,7 +764,7 @@ grosdeutschland.5 = {
 						is_homeland = cu:south_german
 						is_homeland = cu:north_german
 					}
-					NOT = { 
+					NOT = {
 						OR = {
 							is_homeland = cu:czech
 							is_homeland = cu:slovene
@@ -1139,8 +1139,8 @@ grosdeutschland.5 = {
 		#what to do with silly little krakow?
 		if = {
 			limit = {
-				c:KRA ?= { 
-					is_subject = yes 
+				c:KRA ?= {
+					is_subject = yes
 					overlord = root
 				}
 			}
@@ -1167,11 +1167,11 @@ grosdeutschland.5 = {
 			make_independent = yes
 		}
 
-		ordered_state = { 
-			limit = { 
-				has_variable = former_austria 
+		ordered_state = {
+			limit = {
+				has_variable = former_austria
 				is_capital = yes
-			} 
+			}
 			order_by = state_population
 			position = 0
 			save_scope_as = war_goal_state

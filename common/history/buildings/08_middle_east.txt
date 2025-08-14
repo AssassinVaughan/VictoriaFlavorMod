@@ -696,19 +696,19 @@
 		}
 	}
 	s:STATE_FARS={
-		region_state:BHN={
-			create_building={
-				building="building_port"
-				add_ownership={
-					country={
-						country="c:BHN"
-						levels=1
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_anchorage" }
-			}
-		}
+		#region_state:BHN={ #VFM TODO - Bahrain doesn't have a region_state in FARS, should they?
+		#	create_building={
+		#		building="building_port"
+		#		add_ownership={
+		#			country={
+		#				country="c:BHN"
+		#				levels=1
+		#			}
+		#		}
+		#		reserves=1
+		#		activate_production_methods={ "pm_anchorage" }
+		#	}
+		#}
 		region_state:PER={
 			create_building={
 				building="building_wheat_farm"
@@ -994,7 +994,7 @@
 				activate_production_methods={ "pm_simple_farming" "pm_no_secondary" "pm_tools_disabled"  }
 			}
 		}
-		
+
 		region_state:ZFL={
 			create_building={
 				building="building_livestock_ranch"

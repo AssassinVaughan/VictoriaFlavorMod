@@ -1,0 +1,61 @@
+﻿CHARACTERS = {
+	c:PEU ?= { # Peruvian Characters
+		# President
+		create_character = {
+			# Orbegoso, President-ish of Peru.
+			template = PEU_Luis_Jose_de_Orbegoso
+		}
+
+		### Interest Group Leaders
+		# Landowners
+		create_character = {
+			# Agustin Gamarra, previous and future president of Brazil
+			template = PEU_Agustin_Gamarra
+			on_created = {
+				if = {
+					limit = { is_in_exile_pool = no }
+					exile_character = yes
+				}
+			}
+		}
+
+		# Devout
+		create_character = {
+			template = PEU_jorge_de_benavente_y_macoaga
+		}
+
+		# Rural Folk
+		create_character = {
+			template = PEU_Juan_Bustamante_Duenas
+		}
+
+		# Armed Forces
+		create_character = {
+			template = PEU_juan_francisco_de_vidal_la_hoz
+		}
+
+		### Military Commanders
+		# Army
+		create_character = {
+			template = PEU_Manuel_Salazar_y_Baquijano
+		}
+
+		create_character = {
+			template = PEU_Anselmo_Quiroz
+		}
+	}
+
+	c:IQU ?= { # Iquichia Characters
+		# Supreme Chief of Iquichia
+		create_character = {
+			template = PEU_Antonio_Huachaca
+		}
+	}
+
+	c:PES ?= { # Salavery's Military Coup Characters
+		# Supreme Chief of Perú
+		create_character = {
+			template = PEU_Felipe_Salaverry
+		}
+	}
+}
