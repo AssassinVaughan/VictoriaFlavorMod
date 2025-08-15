@@ -13,6 +13,18 @@
 				activate_production_methods={ "pm_simple_organization" "pm_religious_bureaucrats" "pm_professional_bureaucrats" }
 			}
 			create_building={
+				building="building_trade_center"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:ECU"
+						levels=1
+						region="STATE_ECUADOR"
+					}
+				}
+				reserves=1
+			}
+			create_building={
 				building="building_fishing_wharf"
 				add_ownership={
 					building={
@@ -236,6 +248,18 @@
 				activate_production_methods={ "pm_wooden_buildings" }
 			}			
 			create_building={
+				building="building_trade_center"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:VNZ"
+						levels=1
+						region="STATE_MIRANDA"
+					}
+				}
+				reserves=1
+			}
+			create_building={
 				building="building_fishing_wharf"
 				add_ownership={
 					building={
@@ -353,6 +377,18 @@
 				}
 				reserves=1
 				activate_production_methods={ "pm_simple_organization" "pm_religious_bureaucrats" "pm_professional_bureaucrats" }
+			}
+			create_building={
+				building="building_trade_center"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:CLM"
+						levels=1
+						region="STATE_ANTIOQUIA"
+					}
+				}
+				reserves=1
 			}
 			create_building={
 				building="building_fishing_wharf"
@@ -809,6 +845,18 @@
 				reserves=1
 				activate_production_methods={ "default_building_coffee_plantation" "pm_road_carts"  }
 			}
+			create_building={ #VFM - Honestly, I'm not too familiar with their exports, other than coca leaves which aren't really represented in the game, however, as mentioned below, they did import products from their neighbors.
+				building="building_trade_center"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:BOL"
+						levels=1
+						region="STATE_LA_PAZ"
+					}
+				}
+				reserves=1
+			}
 		}
 	}
 	s:STATE_POTOSI={
@@ -1049,6 +1097,18 @@
 				reserves=1
 				activate_production_methods={ "pm_scholastic_education" "pm_secular_academia" }
 			}
+			create_building={ #VFM - Lima the famously busy port of Callao, which is kind of usuless without a trade center lol, gonna go with 3 levels to emphasize the superior volume of trade compared to Arequipa and Cuzco
+				building="building_trade_center"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:PEU"
+						levels=1
+						region="STATE_LIMA"
+					}
+				}
+				reserves=1
+			}
 		}
 	}
 	s:STATE_ICA={
@@ -1139,6 +1199,18 @@
 				building= "building_machu_picchu"
 				level = 1
 			}
+			create_building={ #VFM - Cuzco engaged in frequent trade with neighboring countries, exchanging camelid wool and Andean tubers such as potatoes for wealth and manufactured goods.
+				building="building_trade_center"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:PEU"
+						levels=1
+						region="STATE_ICA"
+					}
+				}
+				reserves=1
+			}
 		}
 		region_state:IQU={
 			create_building={
@@ -1196,6 +1268,18 @@
 				}
 				reserves=1
 				activate_production_methods={ "default_building_dye_plantation" "pm_road_carts"  }
+			}
+			create_building={ #VFM - Arequipa, like Cuzco (although in smaller quantities), traded camelid wool and agricultural products for silver from the mines of Bolivia and Chile, but was distinguished by its main export being wines and liquors from the sorrounding vineyards.
+				building="building_trade_center"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:PES"
+						levels=1
+						region="STATE_AREQUIPA"
+					}
+				}
+				reserves=1
 			}
 		}
 	}

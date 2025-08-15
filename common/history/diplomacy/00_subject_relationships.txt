@@ -182,10 +182,10 @@
 			type = colony
 		}
 		# Colony of South Australia, established in February 1836
-		create_diplomatic_pact = {
-			country = c:SAS
-			type = colony
-		}
+		#create_diplomatic_pact = { #VFM TODO - South Australia doesn't exist in VFM AGS, should it?
+		#	country = c:SAS
+		#	type = colony
+		#}
 		# Colony of Tasmania, historically called Van Dieman's Land until 1856
 		create_diplomatic_pact = {
 			country = c:TAS
@@ -553,10 +553,10 @@
 			country = c:WKH
 			type = vassal
 		}
-		create_diplomatic_pact = {
-			country = c:RSH
-			type = vassal
-		}
+		#create_diplomatic_pact = { tag removal to get under 419 limit
+		#	country = c:RSH
+		#	type = vassal
+		#}
 	}
 	c:KOK = {
 		create_diplomatic_pact = {
@@ -598,9 +598,9 @@
 		add_liberty_desire = -30
 	}	
 
-	c:SAS = {
-		add_liberty_desire = -30
-	}	
+	#c:SAS = { #VFM TODO - South Australia doesn't exist in VFM AGS, should it?
+	#	add_liberty_desire = -30
+	#}
 
 	c:TAS = {
 		add_liberty_desire = -30
