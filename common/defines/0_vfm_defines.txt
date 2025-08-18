@@ -45,6 +45,11 @@ NAI = {
 	
 	DIPLO_PLAY_SECESSION_OWN_SECESSION_RISK_FACTOR = 0 #-100 Add this amount of reluctance for AI to back a secession of a culture that has enough pops in their own country to secede
 	
+	CONSTRUCTION_MAX_NUM_PRODUCTION_BUILDING_CONSTRUCTIONS_SCALED = 0.03 # If country has this number of production building constructions queued, don't add anymore (scaled by construction production)
+	CONSTRUCTION_MAX_NUM_PRODUCTION_BUILDING_CONSTRUCTIONS_SCALED_MAX = 4 # CONSTRUCTION_MAX_NUM_PRODUCTION_BUILDING_CONSTRUCTIONS_SCALED can't be higher than this
+	CONSTRUCTION_MAX_NUM_GOVERNMENT_BUILDING_CONSTRUCTIONS_SCALED = 0.01 # If country has this number of government building constructions queued, don't add anymore (scaled by construction production)
+	CONSTRUCTION_MAX_NUM_GOVERNMENT_BUILDING_CONSTRUCTIONS_SCALED_MAX = 2 # CONSTRUCTION_MAX_NUM_GOVERNMENT_CONSTRUCTIONS_SCALED can't be higher than this
+	
 	CONSTRUCTION_RESERVES_NEW_CONSTRUCTIONS = 0.02 #0.1 If gold reserves are less than this after adding the cost of a new construction, don't queue it	
 	CONSTRUCTION_DEBT_RESUME_CRITICAL_CONSTRUCTION = 0.0 #0.75 If critical constructions are paused, resume once debt is this low relative to ceiling
 	CONSTRUCTION_DEBT_PAUSE_CRITICAL_CONSTRUCTION = 0.07 #0.9 If in this much relative debt to debt ceiling, pause all critical constructions 
@@ -59,23 +64,33 @@ NAI = {
 	MONEY_SPENDING_MILITARY_CRITICAL_THRESHOLD = 0.8 #0.5 If actual-to-wanted number of barracks/naval bases is below this, AI will not consider downsizing them further
 	MONEY_SPENDING_MILITARY_EXCESSIVE_THRESHOLD = 2.5 #2.0 If actual-to-wanted number of barracks/naval bases is above this, AI considers it a target for cutting spending when needed
 	MONEY_SPENDING_CONSTRUCTION_CRITICAL_THRESHOLD = 0.88 # If actual-to-wanted number of construction sector buildings is below this, AI considers it very important to get more
-	MONEY_SPENDING_INNOVATION_DESIRED_THRESHOLD = 1.5 #1.0 If innovation production compared to cap is worse than this, AI considers it important to improve
 	
 	MONEY_SPENDING_WANTED_CONVOYS_PER_BARRACKS_LEVEL = 3 # If the AI has fewer free convoys than this per level of barracks, it wants more ports
-	MONEY_SPENDING_BUREAUCRACY_CRITICAL_THRESHOLD = 0.95 # If bureaucracy income to expenses is worse than this, AI considers it critical to improve it
-	MONEY_SPENDING_BUREAUCRACY_DESIRED_THRESHOLD = 1.08 # If bureaucracy income to expenses is worse than this, AI wants to improve it
-	MONEY_SPENDING_BUREAUCRACY_EXCESSIVE_THRESHOLD = 1.16 # If bureaucracy income to expenses is better than this, AI will not improve it
-	MONEY_SPENDING_INFRASTRUCTURE_CRITICAL_THRESHOLD = 0.93 # If infra production to usage is worse than this, AI considers it critical to improve it
+	MONEY_SPENDING_BUREAUCRACY_CRITICAL_THRESHOLD = 0.98 # If bureaucracy income to expenses is worse than this, AI considers it critical to improve it
+	MONEY_SPENDING_BUREAUCRACY_DESIRED_THRESHOLD = 1.15 # If bureaucracy income to expenses is worse than this, AI wants to improve it
+	MONEY_SPENDING_BUREAUCRACY_EXCESSIVE_THRESHOLD = 1.24 # If bureaucracy income to expenses is better than this, AI will not improve it
+	MONEY_SPENDING_INFRASTRUCTURE_CRITICAL_THRESHOLD = 0.9 # If infra production to usage is worse than this, AI considers it critical to improve it
 	MONEY_SPENDING_INFRASTRUCTURE_DESIRED_THRESHOLD = 1.15 # If infra production to usage is worse than this, AI wants to improve it
+	
+	# This one should be low so that buildings with high throughput such as steel mills are not overly valued
+	PRODUCTION_BUILDING_FAVORED_GOODS_FACTOR = 0.35 # Add this value to a building for each unit of money worth of building goods output that the AI favors
 	
 	PRODUCTION_BUILDING_FREE_INFRASTRUCTURE_TARGET_WHEN_LACKING_WORKFORCE = 2 # When lacking workforce, the AI will stop building in the state once available infrastructure is this or less
 	
-	PRODUCTION_METHOD_PROFIT_FACTOR = 1.5 #1.0 Per pound of profit the produced goods would generate
-	PRODUCTION_METHOD_EMPLOYMENT_CHANGE_FACTOR = 1.55 #2.0 The total score of a PM will be multiplied or divided by 1 + ( this * the proportion of labor that is added or saved by the change )
-	PRODUCTION_METHOD_CHANCE_TO_CHANGE = 0.2 # Chance that the AI will consider changing a production method when evaluating methods
-	
-	PRODUCTION_METHOD_REDUCE_OUTPUT_PENALTY_FACTOR = 3 #10 Multiply method score by this if we're reducing the building's output penalties
-	PRODUCTION_METHOD_INCREASE_OUTPUT_PENALTY_FACTOR = 0.45 #0.01 # Multiply method score by this if we're increasing the building's output penalties
+	# The vanilla base score of 1000 is unreasonably high when combined with multipliers
+	# A building's score with 5000 employees is roughly 100 times their productivity
+	PRODUCTION_METHOD_BASE_VALUE = 300
+	# Merged PRODUCTION_METHOD_FAVORED_GOODS_FACTOR here so that PM selection is less subject to AI strategy
+	PRODUCTION_METHOD_PRODUCED_VALUE_FACTOR = 0.45 # Per pound of produced goods in base value
+	# This is lowered to enable PMs that add employment i.e. passenger trains
+	PRODUCTION_METHOD_EMPLOYMENT_CHANGE_FACTOR = 0.75 # The total score of a PM will be multiplied or divided by 1 + ( this * the proportion of labor that is added or saved by the change )
+	# Don't overly penalize temporary shortages - PM changes can be undone if necessary
+	PRODUCTION_METHOD_INCREASE_OUTPUT_PENALTY_FACTOR = 0.95 # Multiply method score by this if we're increasing the building's output penalties
+	PRODUCTION_METHOD_FAVORED_GOODS_FACTOR = 0.05 # Per base cost * units of goods produced that the AI favors (for non military goods)
+	PRODUCTION_METHOD_UNDESIRABLE_GOODS_PRICE_THRESHOLD = 1.7 # If a PM using the 'most productive' logic makes use of a good whose price is above ( base * this ), reduce the score
+	PRODUCTION_METHOD_UNDESIRABLE_GOODS_PRICE_FACTOR = -0.75 # Per base cost * units of goods whose price is above undesirable price threshold
+	# Certain PMs (especially those of barracks) have a difference too small to overcome the stickiness factor
+	PRODUCTION_METHOD_STICKINESS_UPGRADE = 1.0 # Score of non-current method is multiplied by this when it produces more goods base value in total
     PRODUCTION_METHOD_LOW_POP_THRESHOLD = 90000 #50000 If a state's population is less than this, use the scoring factor below for low-pop PMs
 	
 	PRODUCTION_BUILDING_INCREASE_SHORTAGE_MULT = 0.25 #0.01 Multiply score by this if we're increasing the state region's shortages
@@ -84,7 +99,7 @@ NAI = {
 	PRODUCTION_BUILDING_AUTONOMOUS_INVESTMENT_INDUSTRIAL_GOODS_FACTOR_MULT = 3.0 # Multiplies PRODUCTION_BUILDING_OUTPUT_NEEDED_INDUSTRIAL_GOODS_FACTOR & PRODUCTION_BUILDING_OUTPUT_WANTED_INDUSTRIAL_GOODS_FACTOR for autonomous investment pool constructions
 	
 	# Government construction applies this multiplier to domestic states when determining where to construct
-	GOVERNMENT_CONSTRUCTION_DOMESTIC_INVESTMENT_BIAS = 2.2 #2.0 VFM Favor domestic more over foreign
+	GOVERNMENT_CONSTRUCTION_DOMESTIC_INVESTMENT_BIAS = 3.5 #2.0 VFM Favor domestic more over foreign
 	GOVERNMENT_CONSTRUCTION_SUBJECT_INVESTMENT_BIAS = 1.65 #1.5 VFM Favor subject more
 	
 	DECLARE_INTEREST_RANDOM_FACTOR = 0.25 # The higher this is, the more random AI declare interest will be
@@ -176,9 +191,12 @@ NAI = {
 	NAVAL_INVASION_MIN_SCORE = 10									# AI won't bother launching naval invasions against theaters with a lower total state score than this
 	NAVAL_INVASION_MAX_LOCAL_FRONT_SCORE = 200						# Don't launch a naval invasion if there is a local front of at least this total score for the general
 	
-	#MAX_INSTITUTION_SPENDING = 0.025 #0.02 AI will not spend more BUR than this on institutions (scaled by weekly GDP)
+	MAX_INSTITUTION_SPENDING = 0.01 #0.015 AI will not spend more BUR than this on institutions (scaled by weekly GDP)
+	MAX_INSTITUTION_SPENDING_PER_INSTITUTION = 0.006 # Added to MAX_INSTITUTION_SPENDING_BASE for each institution a country has
 	#INSTITUTION_SPENDING_INCREASE_SPENDING_RATIO = 1.0 # If current + additional institution spending is equal or less than max spending * this, try to improve some institutions
-	INSTITUTION_SPENDING_DECREASE_SPENDING_RATIO = 2.1 # 2.0 If current institution spending is at least max spending * this, try to degrade some institutions 
+	INSTITUTION_SPENDING_DECREASE_SPENDING_RATIO = 1.6 # 2.0 If current institution spending is at least max spending * this, try to degrade some institutions 
+	
+	RAISE_TAX_HIGH_DEBT_OVERRIDE_RATIO = 0.2 # At this amount of debt, any level of tax is OK to deal with it
 	
 	MOBILIZATION_OPTION_GOODS_SHORTAGE_MULT = 0.1 #0.0 Multiply value of mobilization option by this if there is a goods shortage of any of its input goods
 	MOBILIZATION_OPTION_MONEY_COST_FACTOR = 50 #20 When checking whether the AI should activate a mobilization option, the monetary cost of activation is multiplied by this and compared against AI value to determine if it's worth it

@@ -364,7 +364,7 @@ vfm_ai.5 = {
 
 	trigger = {
 		is_ai = yes
-		country_rank >= rank_value:major_power
+		OR = { country_rank >= rank_value:major_power gdp >= 3000000 } # 3 mil
 		any_scope_state = {
 		    is_incorporated = yes
 			tax_capacity_balance < 0
@@ -375,11 +375,11 @@ vfm_ai.5 = {
 			OR = {
 			    AND = {
 					is_capital = no
-			    	tax_capacity_balance > 0.25
+			    	tax_capacity_balance > 0.33
 				}
 				AND = {
 					is_capital = yes
-					tax_capacity_balance > 0.5
+					tax_capacity_balance > 0.6
 				}
 			}
 		}
@@ -391,17 +391,19 @@ vfm_ai.5 = {
 	
 	option = {
 		name = vfm_ai.5.a
-		random_scope_state = {
+		random_list = {
+			60 = {
+			    random_scope_state = {
 		    limit = {
 			    has_building = building_government_administration
 				OR = {
 			        AND = {
 				    	is_capital = no
-			        	tax_capacity_balance > 0.25
+			        	tax_capacity_balance > 0.33
 				    }
 				    AND = {
 				    	is_capital = yes
-				    	tax_capacity_balance > 0.5
+				    	tax_capacity_balance > 0.6
 				    }
 			    }
 			}
@@ -422,6 +424,10 @@ vfm_ai.5 = {
 				building = "building_government_administration"
 				level = scope:government_administration_amount_1
 				reserves = 1
+			}
+		}
+			}
+			40 = {
 			}
 		}
 		random_scope_state = {
