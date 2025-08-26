@@ -66,6 +66,8 @@
 	}
 
 	on_complete = {
+		remove_variable = attack_bolivia
+		remove_variable = befriend_bolivia
 		custom_tooltip = {
 			text = peru_bolivia_completion_nonbolivia_tt
 			if = {
@@ -398,6 +400,8 @@ je_war_of_the_confederation = {
 	}
 
 	on_fail = {
+		remove_variable = attack_bolivia
+		remove_variable = befriend_bolivia
 		trigger_event = { id = peru_bolivia_events.7 popup = yes }
 	}
 
@@ -429,6 +433,11 @@ je_war_of_the_confederation = {
 				}
 			}
 		}
+	}
+	
+	on_invalid = {
+		remove_variable = attack_bolivia
+		remove_variable = befriend_bolivia
 	}
 
 	current_value = {

@@ -3,6 +3,10 @@
 	every_country = {
 		limit = { is_subject = yes }
 		if = {
+			limit = { liberty_desire >= 80 }
+			set_strategy = ai_strategy_subject_break_free
+		}
+		else_if = {
 			limit = { liberty_desire >= 60 }
 			set_strategy = ai_strategy_subject_strengthen_self
 		}
@@ -98,6 +102,16 @@
 		set_strategy = ai_strategy_maintain_power_balance
 		set_strategy = ai_strategy_conservative_agenda
 	}
+	c:HUN ?= {
+		set_strategy = ai_strategy_agricultural_expansion # Kossuth favoured industrialisation, whilst Széchenyi and Batthyány favoured agriculture 
+		set_strategy = ai_strategy_subject_strengthen_self
+		set_strategy = ai_strategy_progressive_agenda
+	}
+	c:CRO ?= {
+		set_strategy = ai_strategy_agricultural_expansion # little concentrated effort to develop industry at game start
+		set_strategy = ai_strategy_subject_maintain_autonomy
+		set_strategy = ai_strategy_progressive_agenda # Illyrian movement was in full sway
+	}
 	c:FRA ?= {
 		random_list = {	
 			50 = { set_strategy = ai_strategy_industrial_expansion }
@@ -159,7 +173,7 @@
 		set_strategy = ai_strategy_plantation_economy
 		set_strategy = ai_strategy_subject_maintain_autonomy
 		set_strategy = ai_strategy_conservative_agenda
-	}	
+	}
 	c:USA ?= {
 		random_list = {	
 			50 = { set_strategy = ai_strategy_industrial_expansion }
@@ -170,7 +184,7 @@
 		set_strategy = ai_strategy_conservative_agenda
 	}
 	c:EGY ?= {
-		set_strategy = ai_strategy_plantation_economy		
+		set_strategy = ai_strategy_plantation_economy
 		set_strategy = ai_strategy_territorial_expansion
 		set_strategy = ai_strategy_conservative_agenda
 	}	
@@ -193,7 +207,12 @@
 	c:CAM ?= {
 		set_strategy = ai_strategy_subject_break_free
 	}
-}	
+	c:SER ?= {
+		set_strategy = ai_strategy_agricultural_expansion
+		set_strategy = ai_strategy_subject_break_free
+		set_strategy = ai_strategy_conservative_agenda
+	}
+}
 
 
 

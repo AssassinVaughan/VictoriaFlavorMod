@@ -57,7 +57,15 @@
 				}
 				OR = {
 					has_treaty_foreign_investment_rights_with = { TARGET = root }
-					has_treaty_port_in_market = root.market
+					#has_treaty_port_in_market = root.market
+					any_scope_state = {
+						is_treaty_port = yes
+						state_region = {
+							any_scope_state = {
+								owner = root
+							}
+						}
+					}
 				}
 			}
 		}

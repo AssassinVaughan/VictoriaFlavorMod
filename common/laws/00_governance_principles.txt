@@ -143,6 +143,13 @@ law_monarchy = {
 			}
 		}
 		crown_land_republic_effect = yes
+		if = {
+			limit = {
+				has_law = law_type:law_neo_absolutism
+			}
+			deactivate_law = law_type:law_neo_absolutism
+			activate_law = law_type:law_autocracy
+		}
 	}
 
 	ai_enact_weight_modifier = { #Petitions
@@ -255,6 +262,13 @@ law_presidential_republic = {
 			}
 		}
 		crown_land_republic_effect = yes
+		if = {
+			limit = {
+				has_law = law_type:law_neo_absolutism
+			}
+			deactivate_law = law_type:law_neo_absolutism
+			activate_law = law_type:law_autocracy
+		}
 	}
 	
 	ai_will_do = {
@@ -402,6 +416,13 @@ law_parliamentary_republic = {
 			}
 		}
 		crown_land_republic_effect = yes
+		if = {
+			limit = {
+				has_law = law_type:law_neo_absolutism
+			}
+			deactivate_law = law_type:law_neo_absolutism
+			activate_law = law_type:law_autocracy
+		}
 	}
 	
 	ai_will_do = {
@@ -506,6 +527,16 @@ law_theocracy = {
 				}
 			}
 			can_impose_law_default = yes
+		}
+	}
+
+	on_activate = {
+		if = {
+			limit = {
+				has_law = law_type:law_neo_absolutism
+			}
+			deactivate_law = law_type:law_neo_absolutism
+			activate_law = law_type:law_autocracy
 		}
 	}
 	
@@ -629,10 +660,31 @@ law_council_republic = {
 				limit = {
 					state_region = s:STATE_INGRIA
 				}
-				STATE_INGRIA_state_name_assign = yes
+				if = {
+					limit = {
+						has_global_variable = lenin_spawn
+
+						owner = {
+							country_has_primary_culture = cu:russian
+							has_law_or_variant = law_type:law_council_republic
+						}
+					}
+
+			        set_hub_name = {
+			            type = city
+			            name = HUB_NAME_STATE_INGRIA_city_russian_sov # St. Petersburg only becomes Leningrad if Lenin has been around to be a namesake
+			        }
+				}
 			}
 		}
 		crown_land_republic_effect = yes
+		if = {
+			limit = {
+				has_law = law_type:law_neo_absolutism
+			}
+			deactivate_law = law_type:law_neo_absolutism
+			activate_law = law_type:law_autocracy
+		}
 	}	
 
 	can_impose = {
@@ -745,6 +797,13 @@ law_corporate_state = {
 			add_modifier = { name = modifier_corporate_state_intelligentsia_bias }
 		}
 		crown_land_republic_effect = yes
+		if = {
+			limit = {
+				has_law = law_type:law_neo_absolutism
+			}
+			deactivate_law = law_type:law_neo_absolutism
+			activate_law = law_type:law_autocracy
+		}
 	}	
 
 	on_enact = {

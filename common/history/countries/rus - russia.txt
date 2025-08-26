@@ -33,7 +33,7 @@
 		activate_law = law_type:law_land_based_taxation
 		activate_law = law_type:law_hereditary_bureaucrats
 		activate_law = law_type:law_state_religion
-		activate_law = law_type:law_national_supremacy # needed so that e.g. Poles are discriminated against
+		activate_law = law_type:law_subjecthood
 		activate_law = law_type:law_traditionalism
 		activate_law = law_type:law_peasant_levies
 		activate_law = law_type:law_censorship
@@ -51,10 +51,6 @@
 		add_journal_entry = {
 			type = je_holy_alliance
 		}
-
-		ig:ig_intelligentsia = { 
-			set_ig_suppression = yes
-		}
 		
 		add_modifier = {
 			name = the_vast_empire
@@ -65,6 +61,12 @@
 				has_dlc_feature = ep1_content
 			}
 			add_journal_entry = { type = je_caucasian_war }
+		}
+
+		add_modifier = {
+			name = modifier_polish_organic_statute
+			days = stupidly_long_modifier_time
+			is_decaying = yes
 		}
 
 		ig:ig_devout = {

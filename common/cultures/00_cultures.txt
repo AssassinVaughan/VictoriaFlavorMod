@@ -2519,6 +2519,7 @@ south_italian= {
 maltese= {
 	color= hsv{ 0.40 0.03 0.58 }
 	religion = catholic
+	# Maltese could be its own thing altogether but the culture is simply too small to justify that hence the results below
 	heritage = heritage_italic
 	language = language_arabic
 	traditions = { }
@@ -5685,7 +5686,7 @@ georgian= {
 	religion = orthodox
 	heritage = heritage_georgian
 	language = language_georgian
-	traditions = { }
+	traditions = { tradition_caucasian }
 	male_common_first_names = {
 		Akaki
 		Alexander
@@ -5832,7 +5833,7 @@ armenian= {
 	religion = oriental_orthodox
 	heritage = heritage_armenian
 	language = language_armenian
-	traditions = { }
+	traditions = { tradition_caucasian }
 	male_common_first_names = {
 		Alexander Arakel Aram Aramais Arsen Artashes Artavazd Artem Ashot Assadour Atom Andranik Avetis
 		Barsegh Benyamin Boghos
@@ -6156,9 +6157,9 @@ turkish= {
 azerbaijani= {
 	color= hsv{ 0.67 0.38 0.41 }
 	religion = shiite
-	heritage = heritage_caucasian
+	heritage = heritage_anatolian
 	language = language_oghuz
-	traditions = { }
+	traditions = { tradition_caucasian tradition_persianate }
 	male_common_first_names = {
 		Ahmad
 		Ali
@@ -6245,8 +6246,9 @@ azerbaijani= {
 north_caucasian= {
 	color= hsv{ 0.17 0.26 0.99 }
 	religion = sunni
-	heritage = heritage_caucasian
+	heritage = heritage_north_caucasian
 	language = language_avaric
+	traditions = { tradition_caucasian }
 	traditions = { }
 	obsessions = {
 		tobacco
@@ -6753,9 +6755,9 @@ berber= { # Amazigh
 persian= {
 	color= hsv{ 0.1 0.43 0.56 }
 	religion = shiite
-	heritage = heritage_persian
+	heritage = heritage_iranian
 	language = language_persian
-	traditions = { }
+	traditions = { tradition_persianate }
 	obsessions = {
 		tea
 	}
@@ -6822,7 +6824,7 @@ uzbek= {
 	religion = sunni
 	heritage = heritage_uzbek
 	language = language_karluk
-	traditions = { }
+	traditions = { tradition_persianate }
 	obsessions = {
 		tea
 	}
@@ -6886,7 +6888,7 @@ uzbek= {
 kazak= {
 	color= { 83 102 46 }
 	religion = sunni
-	heritage = heritage_kazakh
+	heritage = heritage_kipchak
 	language = language_kipchak
 	traditions = { }
 	obsessions = {
@@ -6947,7 +6949,7 @@ kazak= {
 kirgiz= {
 	color= { 62 73 41 }
 	religion = sunni
-	heritage = heritage_kyrgyz
+	heritage = heritage_kipchak
 	language = language_kipchak
 	traditions = { }
 	obsessions = {
@@ -6999,9 +7001,9 @@ kirgiz= {
 tajik= {
 	color= { 122 127 111 }
 	religion = sunni
-	heritage = heritage_tajik
+	heritage = heritage_iranian
 	language = language_persian
-	traditions = { }
+	traditions = { tradition_persianate }
 	obsessions = {
 		tea
 	}
@@ -7119,9 +7121,9 @@ uighur= {
 pashtun= {
 	color= hsv{ 0.76 0.34 0.60 }
 	religion = sunni
-	heritage = heritage_afghan
+	heritage = heritage_iranian
 	language = language_pashto
-	traditions = { }
+	traditions = { tradition_persianate }
 	obsessions = {
 		tea
 	}
@@ -7193,9 +7195,9 @@ pashtun= {
 baluchi= {
 	color= hsv{ 0.96 0.49 0.67 }
 	religion = sunni
-	heritage = heritage_baluchi
+	heritage = heritage_iranian
 	language = language_baluchi
-	traditions = { }
+	traditions = { tradition_persianate }
 	obsessions = {
 		tea
 	}
@@ -7244,7 +7246,7 @@ hazara= {
 	religion = shiite
 	heritage = heritage_hazaran
 	language = language_persian
-	traditions = { }
+	traditions = { tradition_persianate }
 	obsessions = {
 		opium
 	}
@@ -7289,7 +7291,7 @@ turkmen= {
 	religion = sunni
 	heritage = heritage_turkmen
 	language = language_oghuz
-	traditions = { }
+	traditions = { tradition_persianate }
 	obsessions = {
 		tea
 	}
@@ -7333,9 +7335,9 @@ turkmen= {
 kurdish= {
 	color= hsv{ 0.59 0.51 0.79 }
 	religion = sunni
-	heritage = heritage_kurdish
+	heritage = heritage_iranian
 	language = language_kurdish
-	traditions = { }
+	traditions = { tradition_persianate }
 	obsessions = {
 		tea wine
 	}
@@ -7386,7 +7388,7 @@ kurdish= {
 tatar= {
 	color= hsv{ 0.53 0.24 0.28 }
 	religion = sunni
-	heritage = heritage_volga_uralic
+	heritage = heritage_tatar
 	language = language_kipchak
 	traditions = { tradition_russosphere }
 	obsessions = {
@@ -21114,9 +21116,9 @@ marathi= {
 pathan = {
 	color= hsv{ 0.76 0.34 0.60 }
 	religion = sunni
-	heritage = heritage_afghan
+	heritage = heritage_iranian
 	language = language_hindustani
-	traditions = { }
+	traditions = { tradition_persianate }
 	male_common_first_names = {
 		Alif Abd_al-Quddus Abd_al-Rahman Abdallah Afzal Ahmad Akbar Akram Ayyub
 		Daud
@@ -22006,7 +22008,7 @@ circassian = {
 	religion = sunni
 	heritage = heritage_north_caucasian
 	language = language_adyghe
-	traditions = { }
+	traditions = { tradition_caucasian }
 
 	male_common_first_names = {
 		Aidamir
@@ -22199,7 +22201,7 @@ chechen ={
 	religion = sunni
 	heritage = heritage_north_caucasian
 	language = language_vainakh
-	traditions = { }
+	traditions = { tradition_caucasian }
 	male_common_first_names={
 		Abdul-Muslim Ali Akhmad Abdulla Alibek-Khadzhi Albir-Murza Abdurakhman
 		Dziyaudin Dzhabrail Dzhamal Dzhokhar
@@ -22330,7 +22332,7 @@ karelian={
 bashkir={
 	color= rgb{ 106 165 139 }
 	religion = sunni
-	heritage = heritage_volga_uralic
+	heritage = heritage_tatar
 	language = language_kipchak
 	traditions = { tradition_russosphere }
 	male_common_first_names={
@@ -22470,7 +22472,7 @@ mordvin={
 chuvash={
 	color= rgb{ 249 125 4 }
 	religion = orthodox
-	heritage = heritage_volga_uralic
+	heritage = heritage_tatar # Should really be Oghuric but that would make it completely isolated
 	language = language_oghuric
 	traditions = { }
 	male_common_first_names={
@@ -22628,7 +22630,7 @@ mazanderani ={
 	religion = shiite
 	heritage = heritage_iranian
 	language = language_tabari
-	traditions = { }
+	traditions = { tradition_persianate }
 	male_common_first_names={
 		Abbas-Ali Abbas Ali Abdollah Amir Amirteymour Afshin
 		Emam-Ali Ehsan
@@ -22690,7 +22692,7 @@ luri ={
 	religion = shiite
 	heritage = heritage_iranian
 	language = language_persian
-	traditions = { }
+	traditions = { tradition_persianate }
 	male_common_first_names={
 		Ahmed Ali Abol_Ghassem Ali_Gholi Abu_l-Fath Ali_Mardan Ali_Akbar Abdolmohammad
 		Esfandiar Esmaeil 
@@ -22790,28 +22792,56 @@ kho ={
 champa = {
 	color = { 219 252 3 }
 	religion = sunni
-	# TODO PRCAL-38001
-	heritage = heritage_germanic
-	# TODO PRCAL-38001
-	language = language_albanian
+
+	heritage = heritage_insulindian
+
+	language = language_cham
 	traditions = { }
 
-	# PLACEHOLDER 
-	# TODO PRCAL-38001
 	male_common_first_names = {
-		Robert William Alfred
+		A_Nan At Angsaraja
+		Chi
+		Dat
+		Harideva
+		Jatamah Jamlen
+		Kabait Katip Krei_Brei
+		Ladhuanpuguh Ly
+		Mo Man
+		Nraup Nang
+		Rome Rasunandana
+		Sajan Saya Sajai
+		Thak_Wa Tisundimahrai Tisuntiraydapaghoh
 	}
 	female_common_first_names = {
-		Mary Anne Elizabeth
+		Bhaskaradevi
+		Gaurendraksmi
+		Mul
+		Paramecvari Paramaratnastri
+		Surendradevi SU_ryadevI_
+		Tribhuvanadevi Tapasi
 	}
 	common_last_names = {
-		Roberts Williams
+		Amath Amu
+		Bounthong
+		Che
+		Dung
+		Ja Jam
+		Kosem
+		Le
+		Nduai
+		On
+		Po Panduranga
+		Raden
+		Quang
+		Sumat
+		Touneh
+		Yeu Yue
 	}
-	
+
 	ethnicities = {
 		1 = south_east_asian
 	}
-	graphics = east_asian	
+	graphics = east_asian
 }
 
 east_german= {

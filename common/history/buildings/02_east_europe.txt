@@ -657,7 +657,7 @@
 				add_ownership={
 					country={
 						country="c:AUS"
-						levels=5
+						levels=4
 					}
 				}
 				reserves=1
@@ -825,7 +825,7 @@
 				add_ownership={
 					country={
 						country="c:HUN"
-						levels=5
+						levels=4
 					}
 				}
 				reserves=1
@@ -836,7 +836,7 @@
 				add_ownership={
 					country={
 						country="c:HUN"
-						levels=1
+						levels=2
 					}
 				}
 				reserves=1
@@ -853,6 +853,17 @@
 					}
 				}
 				reserves=1
+			}
+			create_building={
+				building="building_university"
+				add_ownership={
+					country={
+						country="c:HUN"
+						levels=2
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_scholastic_education" "pm_religious_academia" }
 			}
 			create_building={
 				building="building_iron_mine"
@@ -971,6 +982,17 @@
 	}
 	s:STATE_TRANSDANUBIA={
 		region_state:HUN={
+		    create_building={
+				building="building_government_administration"
+				add_ownership={
+					country={
+						country="c:HUN"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_horizontal_drawer_cabinets" "pm_hereditary_bureaucrats" "pm_religious_bureaucrats" }
+			}
 			create_building={
 				building="building_food_industry"
 				add_ownership={
@@ -1115,7 +1137,7 @@
 				add_ownership={
 					country={
 						country="c:HUN"
-						levels=3
+						levels=2
 					}
 				}
 				reserves=1

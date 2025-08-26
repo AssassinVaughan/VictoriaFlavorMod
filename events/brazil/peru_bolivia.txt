@@ -583,28 +583,29 @@ peru_bolivia_events.4 = {
 		}
 		default_option = yes
 		ai_chance = {
-			base = 25
-			modifier = {
-				trigger = {
-					c:BOL = {
-						is_player = yes
-					}
-				}
-				add = 25
-			}
+			base = 90
 		}
+
+		set_variable = attack_bolivia
+
 		add_journal_entry = {
 			type = je_war_of_the_confederation
 		}
-		add_modifier = {
-			name = modifier_against_the_confederation
-			months = short_modifier_time
+		show_as_tooltip = {
+			add_modifier = {
+				name = modifier_against_the_confederation
+			}
+		}
+		je:je_war_of_the_confederation ?= {
+			add_modifier = {
+				name = modifier_against_the_confederation
+			}
 		}
 		hidden_effect = {
 			c:BOL ?= {
 				set_mutual_secret_goal = {
 					country = root
-					secret_goal = antagonize
+					secret_goal = conquer
 				}
 			    every_subject_or_below = { # Wants to assist the subjects in attaining independence
 			        set_mutual_secret_goal = {
@@ -629,16 +630,11 @@ peru_bolivia_events.4 = {
 		}
 		default_option = yes
 		ai_chance = {
-			base = 25
-			modifier = {
-				trigger = {
-					c:BOL = {
-						is_player = yes
-					}
-				}
-				add = 25
-			}
+			base = 90
 		}
+
+		set_variable = attack_bolivia
+
 		create_diplomatic_pact = {
 			country = c:BOL
 			type = rivalry
@@ -656,9 +652,15 @@ peru_bolivia_events.4 = {
 		add_journal_entry = {
 			type = je_war_of_the_confederation
 		}
-		add_modifier = {
-			name = modifier_against_the_confederation
-			months = short_modifier_time
+		show_as_tooltip = {
+			add_modifier = {
+				name = modifier_against_the_confederation
+			}
+		}
+		je:je_war_of_the_confederation ?= {
+			add_modifier = {
+				name = modifier_against_the_confederation
+			}
 		}
 		hidden_effect = {
 			c:BOL ?= {
@@ -689,8 +691,11 @@ peru_bolivia_events.4 = {
 	option = {
 		name = peru_bolivia_events.4.b
 		ai_chance = {
-			base = 5
+			base = 10
 		}
+
+		set_variable = befriend_bolivia
+
 		add_journal_entry = {
 			type = je_war_of_the_confederation
 		}
@@ -737,7 +742,7 @@ peru_bolivia_events.4 = {
 			}
 		}
 		ai_chance = {
-			base = 50
+			base = 200
 		}
 		custom_tooltip = ignore_peru_bol_tt
 	}

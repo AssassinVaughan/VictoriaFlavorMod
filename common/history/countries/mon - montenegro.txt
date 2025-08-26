@@ -22,7 +22,13 @@
 		activate_law = law_type:law_traditionalism
 		activate_law = law_type:law_censorship
 		activate_law = law_type:law_consumption_based_taxation
-		activate_law = law_type:law_devolved
+		activate_law = law_type:law_women_in_the_fields
+		activate_law = law_type:law_chiefs_distribute_aid
+        activate_law = law_type:law_devolved
+		set_institution_investment_level = {
+			institution = institution_social_security
+			level = 4
+		}	
 		if = { 
 			limit = {
 				has_dlc_feature = ip3_content
@@ -43,7 +49,7 @@
 			}
 			add_modifier = {
 				name = modifier_lonely_mountain
-				months = 360
+				years = 30
 				is_decaying = yes
 			}
 			add_modifier = {
@@ -82,6 +88,13 @@
 			set_import_tariff_level = { 
 				goods = g:fruit
 				level = high_subventions
+			}
+			random_scope_state = { #gives infra needed to do anything and still access world market
+				add_modifier = {
+					name = mon_strong_backs
+					years = 40
+					is_decaying = yes
+				}
 			}
 		}
 	}

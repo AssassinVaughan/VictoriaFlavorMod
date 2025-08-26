@@ -2285,6 +2285,7 @@ gov_absolute_empire = {
 		NOR = {
 			has_variable = orleanist_restoration_var
 			has_variable = legitimist_restoration_var
+			c:ITA ?= this
 		}
 		NOT = {
 			is_subject_type = subject_type_crown_land
@@ -2360,6 +2361,7 @@ gov_empire = {
 		NOR = {
 			has_variable = orleanist_restoration_var
 			has_variable = legitimist_restoration_var
+			c:ITA ?= this
 		}
 		NOT = {
 			is_subject_type = subject_type_crown_land
@@ -2394,6 +2396,7 @@ gov_constitutional_empire = {
 		NOR = {
 			has_variable = orleanist_restoration_var
 			has_variable = legitimist_restoration_var
+			c:ITA ?= this
 		}
 		NOT = {
 			is_subject_type = subject_type_crown_land
@@ -2420,7 +2423,10 @@ gov_absolute_kingdom = {
 	possible = {
 		has_law_or_variant = law_type:law_monarchy
 		has_law_or_variant = law_type:law_autocracy
-		country_tier = kingdom
+		OR = {
+			country_tier = kingdom
+			c:ITA ?= this
+		}
 		NAND = {
 			is_subject_type = subject_type_personal_union
 			any_overlord_or_above = {
@@ -2489,7 +2495,10 @@ gov_kingdom = {
 		NOT = {
 			has_law_or_variant = law_type:law_technocracy
 		}
-		country_tier = kingdom
+		OR = {
+			country_tier = kingdom
+			c:ITA ?= this
+		}
 		NAND = {
 			is_subject_type = subject_type_personal_union
 			any_overlord_or_above = {
@@ -2528,6 +2537,7 @@ gov_constitutional_kingdom = {
 		OR = {
 			country_tier = kingdom
 			c:HAI ?= this
+			c:ITA ?= this
 		}
 		NAND = {
 			is_subject_type = subject_type_personal_union

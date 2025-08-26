@@ -597,7 +597,7 @@ state_region_devastation = {
 	state_infrastructure_mult = -1.0
 	state_mortality_mult = 2.0
 	state_migration_pull_mult = -2.0
-	building_throughput_add = -0.3
+	building_throughput_add = -0.25
 	state_construction_mult = -0.3
 }
 
@@ -628,8 +628,11 @@ insufficient_tax_capacity = {
 # Scales from 0-100% with the state's obstinance
 state_obstinance = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
-	state_assimilation_mult = -0.1
+	state_assimilation_mult = -0.5
+	state_conversion_mult = -0.5
 	state_institution_impact_add = -1.0
+	state_tax_collection_mult = -0.25
+	state_conscription_rate_mult = -0.5
 }
 
 # Applied if state is above 'in turmoil' threshold

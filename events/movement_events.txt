@@ -1478,12 +1478,7 @@ movement_events.12 = { # Movement experiences a lack of funding due to losing sp
 				ROOT.currently_enacting_law.type ?= this.most_desired_law
 			}
 			is_revolutionary = no
-            NOR = {
-                is_political_movement_type = movement_socialist
-				is_political_movement_type = movement_anarchist
-				is_political_movement_type = movement_communist
-				is_political_movement_type = movement_nihilist
-            }
+            movement_is_socialist = no
 			political_movement_support <= 0.05
 		}
 	}
@@ -1502,12 +1497,7 @@ movement_events.12 = { # Movement experiences a lack of funding due to losing sp
 					ROOT.currently_enacting_law.type ?= this.most_desired_law
 				}
 				is_revolutionary = no
-                NOR = {
-                    is_political_movement_type = movement_socialist
-                    is_political_movement_type = movement_anarchist
-                    is_political_movement_type = movement_communist
-                    is_political_movement_type = movement_nihilist
-                }
+                movement_is_socialist = no
                 political_movement_support <= 5
 			}
 			save_scope_as = relevant_movement

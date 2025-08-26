@@ -2100,7 +2100,64 @@ ai_strategy_unify_germany = {
 	}
 
 	weight = {
-		value = 1000
+		value = 5
+		if = { # Fervour
+			limit = {
+				has_technology_researched = pan-nationalism
+			}
+			add = {
+				value = country_fervor_primary_culture
+				divide = 2
+			}
+		}
+		else = {
+			add = {
+				value = country_fervor_primary_culture
+				divide = 10
+			}
+		}
+		if = { # At this point - up to 55 if Pan-National, 15 if not
+			limit = {
+				any_political_movement ?= {
+					is_political_movement_type = movement_german_national
+					save_temporary_scope_as = german_national_movement
+				}
+			}
+			scope:german_national_movement ?= {
+				multiply = {
+					value = 1
+					add = this.political_movement_radicalism # At this point - maximum 110 [if Pan-National] to 30 [if not]
+				}
+			}
+			if = {
+				limit = {
+					scope:german_national_movement ?= {
+						any_influenced_interest_group = {
+							is_in_government = yes
+							is_powerful = no
+						}
+					}
+				}
+				multiply = 5 # Maximum 550 if Pan-National, 150 if not
+			}
+			else_if = {
+				limit = {
+					scope:german_national_movement ?= {
+						any_influenced_interest_group = {
+							is_in_government = yes
+							is_powerful = yes
+						}
+					}
+				}
+				multiply = 10 # Maximum 1100 if Pan-National, 300 if not
+			}
+		}
+		if = {
+			limit = {
+				has_law = law_type:law_subjecthood
+			}
+			multiply = 0.1
+		}
 	}
 }
 
@@ -2298,12 +2355,63 @@ ai_strategy_unify_italy = {
 	}
 
 	weight = {
-		value = 1000	
+		value = 5
+		if = { # Fervour
+			limit = {
+				has_technology_researched = pan-nationalism
+			}
+			add = {
+				value = country_fervor_primary_culture
+				divide = 2
+			}
+		}
+		else = {
+			add = {
+				value = country_fervor_primary_culture
+				divide = 10
+			}
+		}
+		if = { # At this point - up to 55 if Pan-National, 15 if not
+			limit = {
+				any_political_movement ?= {
+					is_political_movement_type = movement_italian_national
+					save_temporary_scope_as = italian_national_movement
+				}
+			}
+			scope:italian_national_movement ?= {
+				multiply = {
+					value = 1
+					add = this.political_movement_radicalism # At this point - maximum 110 [if Pan-National] to 30 [if not]
+				}
+			}
+			if = {
+				limit = {
+					scope:italian_national_movement ?= {
+						any_influenced_interest_group = {
+							is_in_government = yes
+							is_powerful = no
+						}
+					}
+				}
+				multiply = 5 # Maximum 550 if Pan-National, 150 if not
+			}
+			else_if = {
+				limit = {
+					scope:italian_national_movement ?= {
+						any_influenced_interest_group = {
+							is_in_government = yes
+							is_powerful = yes
+						}
+					}
+				}
+				multiply = 10 # Maximum 1100 if Pan-National, 300 if not
+			}
+		}
 		if = {
 			limit = {
-				has_variable = risorgimento_anti_unifying_stance
+				has_law = law_type:law_subjecthood
 			}
-			multiply = 0.01
+			multiply = 0.1
 		}
 	}
 }

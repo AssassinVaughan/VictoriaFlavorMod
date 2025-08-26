@@ -24,14 +24,15 @@ hawaii_events.1 = { # Fate of Hawaii
 
 	immediate = {
 		set_global_variable = gp_hawaii_interest
-		set_variable = death_of_kamehameha
 	}
 
 	option = { #starts JE
 		name = hawaii_events.1.a
 		default_option = yes
-		add_journal_entry = {
-			type = je_hawaii
+		show_as_tooltip = {
+			add_journal_entry = {
+				type = je_hawaii
+			}
 		}
 	}
 }
@@ -50,7 +51,7 @@ hawaii_events.2 = { #JE success
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
 
-	icon = "gfx/interface/icons/event_icons/event_trade.dds"
+	icon = "gfx/interface/icons/event_icons/waving_flag.dds"
 
 	duration = 3
 
@@ -58,7 +59,7 @@ hawaii_events.2 = { #JE success
 	}
 
 	immediate = {
-	remove_global_variable = gp_hawaii_interest
+		remove_global_variable = gp_hawaii_interest
 	}
 
 	option = { #get an extra defense modifier
@@ -71,7 +72,7 @@ hawaii_events.2 = { #JE success
 			limit = { is_incorporated = yes }
 			add_modifier = {
 				name = national_defence_modifier
-				days = short_modifier_time
+				days = very_long_modifier_time
 			}
 		}
 	}
@@ -96,10 +97,55 @@ hawaii_events.2 = { #JE success
 				add = -25
 			}
 		}
+		add_modifier = {
+			name = national_defence_modifier
+			days = long_modifier_time
+			multiplier = 0.5
+		}
+		set_variable = deported_americans
 		ig:ig_industrialists = {
 			add_modifier = {
 				name = deporting_disloyal_igs
-				days = normal_modifier_time
+				days = long_modifier_time
+				is_decaying = yes
+			}
+			if = {
+				limit = {
+					leader = {
+						culture = {
+							NOT = { this = cu:hawaiian }
+						}
+					}
+				}
+				leader = {
+					kill_character = yes
+				}
+			}
+		}
+		ig:ig_devout = {
+			set_interest_group_name = ig_evangelicals
+			remove_ideology = ideology_laissez_faire
+			if = {
+				limit = {
+					leader = {
+						culture = {
+							NOT = { this = cu:hawaiian }
+						}
+					}
+				}
+				leader = {
+					kill_character = yes
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_law = law_type:law_monarchy
+			}
+			ig:ig_intelligentsia = {
+				set_interest_group_name = ig_intelligentsia
+				remove_ideology = ideology_republican
+				add_ideology = ideology_constitutionalist
 			}
 		}
 		if = {
@@ -108,7 +154,7 @@ hawaii_events.2 = { #JE success
 					has_variable = hawaii_interest
 				}
 			}
-			random_country = {
+			every_country = {
 				limit = {
 					has_variable = hawaii_interest
 				}
@@ -144,6 +190,25 @@ hawaii_events.3 = { #Failed JE
 		remove_global_variable = gp_hawaii_interest
 		if = {
 			limit = {
+				is_subject = yes
+			}
+			overlord = {
+				save_scope_as = hawaiian_coup
+			}
+		}
+		else_if = {
+			limit = {
+				exists = power_bloc
+				is_power_bloc_leader = no
+			}
+			power_bloc ?= {
+				power_bloc_leader ?= {
+					save_scope_as = hawaiian_coup
+				}
+			}
+		}
+		else_if = {
+			limit = {
 				any_country = {
 					has_variable = hawaii_interest
 				}
@@ -151,6 +216,53 @@ hawaii_events.3 = { #Failed JE
 			random_country = {
 				limit = {
 					has_variable = hawaii_interest
+				}
+				weight = {
+					base = 1
+					modifier = {
+						je:je_hawaiian_interest ?= {
+							has_modifier = influence_over_hawaii
+						}
+						add = 300
+					}
+					modifier = {
+						c:USA ?= this
+						add = 300
+					}
+					modifier = {
+						c:USA ?= this
+						is_player = yes
+						add = 300
+					}
+					modifier = {
+						has_diplomatic_pact = {
+							who = root
+							type = fund_lobbies
+						}
+						add = 150
+					}
+					modifier = {
+						has_treaty_foreign_investment_rights_with = { TARGET = root }
+						add = 150
+					}
+					modifier = {
+						has_treaty_trade_privilege_with = { TARGET = root }
+						add = 150
+					}
+					modifier = {
+						"relations(root)" >= relations_threshold:cordial
+						"relations(root)" < relations_threshold:amicable
+						add = 100
+					}
+					modifier = {
+						"relations(root)" >= relations_threshold:amicable
+						"relations(root)" < relations_threshold:friendly
+						add = 200
+					}
+					modifier = {
+						"relations(root)" >= relations_threshold:friendly
+						add = 300
+					}
 				}
 				save_scope_as = hawaiian_coup
 			}
@@ -162,9 +274,17 @@ hawaii_events.3 = { #Failed JE
 		default_option = yes
 		activate_law = law_type:law_presidential_republic
 		activate_law = law_type:law_oligarchy
-		scope:hawaiian_coup = {
-			trigger_event = {
-				id = hawaii_events.4
+		ruler = {
+			kill_character = yes
+		}
+		if = {
+			limit = {
+				exists = scope:hawaiian_coup
+			}
+			scope:hawaiian_coup = {
+				trigger_event = {
+					id = hawaii_events.4
+				}
 			}
 		}
 	}

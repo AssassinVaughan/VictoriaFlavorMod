@@ -14,15 +14,8 @@ matter_of_hungary_dual_monarchy_button = {
 		has_law_or_variant = law_type:law_monarchy
 		custom_tooltip = {
 			text = matter_of_hungary_hungarian_homelands_tt
-			country_or_subject_owns_entire_state_region = STATE_SOUTHERN_TRANSYLVANIA
-			country_or_subject_owns_entire_state_region = STATE_NORTHERN_TRANSYLVANIA
-			country_or_subject_owns_entire_state_region = STATE_SLOVAKIA
-			country_or_subject_owns_entire_state_region = STATE_RUTHENIA
-			country_or_subject_owns_entire_state_region = STATE_BEKES
 			country_or_subject_owns_entire_state_region = STATE_TRANSDANUBIA
 			country_or_subject_owns_entire_state_region = STATE_CENTRAL_HUNGARY
-			country_or_subject_owns_entire_state_region = STATE_DELVIDEK
-			country_or_subject_owns_entire_state_region = STATE_BANAT
 		}
 		OR = {
 			trigger_if = {
@@ -86,7 +79,7 @@ matter_of_hungary_dual_monarchy_button = {
 	}
 
 	ai_chance = {
-		value = 1
+		value = 25
 	}
 }
 
@@ -124,6 +117,12 @@ matter_of_hungary_integrate_crown_lands_button = {
 			limit = {
 				is_subject_type = subject_type_crown_land
 			}
+			if = {
+				limit = {
+					is_player = yes
+				}
+				play_as = prev
+			}
 			root = {
 				annex = prev
 			}
@@ -151,7 +150,17 @@ matter_of_hungary_integrate_crown_lands_button = {
 	}
 
 	ai_chance = {
-		value = 1
+		value = 10
+		if = {
+			limit = { # Will not annex players until their liberty desire is below 5.
+				any_subject_or_below = {
+					is_subject_type = subject_type_crown_land
+					is_player = yes
+					liberty_desire > 5
+				}
+			}
+			add = -100
+		}
 	}
 }
 
@@ -238,10 +247,10 @@ austrian_neo_absolutism_abolish_feudal_obligations_button = {
 
 	possible = {
 		NOT = {
-			has_law_or_variant = law_type:law_serfdom
+			has_law_or_variant = law_type:law_manorialism
 		}
 		NOT = {
-			has_law_or_variant = law_type:law_hereditary_bureaucrats
+			has_law_or_variant = law_type:law_crownland_diets
 		}
 	}
 

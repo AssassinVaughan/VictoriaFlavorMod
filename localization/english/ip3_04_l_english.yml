@@ -171,7 +171,11 @@ red_summer_conservative_insurrection_tt: "[Concept('concept_insurrection', '$con
 red_summer_subject_rebellion_tt: "rebelling [Concept('concept_subject', '$concept_subjects$')]"
 red_summer_events_and_effects_tt: "events and other effects"
 
-liberal_movements_list_tt: "#bold Liberal#! [Concept('concept_political_movement','$concept_political_movements$')] include:\n• $movement_liberal$\n• $movement_radical$\n• $movement_anti_slavery$\n• $movement_positivist$\n• $movement_labor$\n• $movement_german_national$\n• $movement_italian_national$\n• $movement_utilitarian$\n• $movement_modernizer$"
+movement_is_liberal_tt: "[concept_political_movement] is classified as #tooltippable;tooltip:[GetPlayer.GetTooltipTag],liberal_movements_list_tt Liberal#!"
+movement_is_socialist_tt: "[concept_political_movement] is classified as #tooltippable;tooltip:[GetPlayer.GetTooltipTag],socialist_movements_list_tt Socialist#!"
+movement_is_conservative_tt: "[concept_political_movement] is classified as #tooltippable;tooltip:[GetPlayer.GetTooltipTag],conservative_movements_list_tt Conservative#!"
+
+liberal_movements_list_tt: "#bold Liberal#! [Concept('concept_political_movement','$concept_political_movements$')] include:\n• $movement_liberal$\n• $movement_radical$\n• $movement_anti_slavery$\n• $movement_positivist$\n• $movement_labor$\n• $movement_feminist$\n• $movement_german_national$\n• $movement_italian_national$\n• $movement_yugoslav_national$\n• $movement_india_pan_national$\n• $movement_utilitarian$\n• $movement_modernizer$"
 socialist_movements_list_tt: "#bold Socialist#! [Concept('concept_political_movement','$concept_political_movements$')] include:\n• $movement_socialist$\n• $movement_nihilist$\n• $movement_communist$\n• $movement_anarchist$"
 conservative_movements_list_tt: "#bold Conservative#! [Concept('concept_political_movement','$concept_political_movements$')] include:\n• $movement_royalist_constitutional$\n• $movement_royalist_absolutist$\n• $movement_orleanist$\n• $movement_legitimist$\n• $movement_bonapartist$\n• $movement_reactionary$\n• $movement_corporatist$\n• $movement_fascist$\n• $movement_pro_slavery$\n• $movement_religious_majority$\n• $movement_cultural_majority$"
 
@@ -196,6 +200,7 @@ modifier_age_of_liberty: "Age of Liberty"
 
 modifier_red_summer: "Revolutionary Turmoil"
 
+king_in_parliament_tt: "Adds #b The King-in-Parliament#! to the Journal of this [concept_country]"
 je_king_in_parliament: "The [ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle]-in-Parliament"
 je_king_in_parliament_reason: "The end of absolutist rule in [ROOT.GetCountry.GetName] has not settled the question of the balance of powers between the [ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle] and [SCOPE.GetRootScope.GetCountry.GetCustom('country_legislature_name')]. In order to cement itself, the new parliamentary order must establish the will of the people to be above the will of the [ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle]."
 je_king_in_parliament_goal: "The following must be true for #v 10#! total years:"
@@ -243,7 +248,7 @@ national_awakening.3.b: "A toast to our luminaries!"
 
 national_awakening.4.t: "In Vernacular"
 national_awakening.4.d: "The famed scholar [SCOPE.sCharacter('intelligentsia_leader').GetFullName] has translated the New Testament into the [SCOPE.sCulture('relevant_culture').GetName] language. The growing corpus of [SCOPE.sCulture('relevant_culture').GetNameNoFormatting]-language works has spurred an increase in the language's prestige amongst priests and intellectuals."
-national_awakening.4.f: ""I've ordered a copy of the #italic Principia#! in [SCOPE.sCulture('relevant_culture').GetNameNoFormatting], and one of my colleagues has requested a full Bible in the same. If we can have one work of merit translated per year, and each translation done by a team of students that goes on to found their own team, we shall have a sizable corpus by the end of the century. Far more than that, if the suppliers recognize the demand."\n\n"An ambitious undertaking, indeed. Do you believe you could manage to change the department over?"\n\n"I dream of a future where our language is one that others desire to learn - where a Swede may request essays from a [SCOPE.sCulture('relevant_culture').GetNameNoFormatting] publisher. And, furthermore, I dream that one of my own students shall be the author of those essays.""
+national_awakening.4.f:1 ""I've ordered a copy of the #italic Principia#! in [SCOPE.sCulture('relevant_culture').GetNameNoFormatting], and one of my colleagues has requested a full Bible in the same. If we can have one work of merit translated per year, and each translation done by a student that goes on to teach others, we shall have a sizable corpus by the end of the century. Far more than that, if the suppliers recognize the demand."\n\n"An ambitious undertaking, indeed. Do you believe you could manage to change the department over?"\n\n"I dream of a future where our language is one that others desire to learn - where a Swede may request essays from a [SCOPE.sCulture('relevant_culture').GetNameNoFormatting] publisher. And, furthermore, I dream that one of my own students shall be the author of those essays.""
 national_awakening.4.a: "Soon, all of Europe will publish in [SCOPE.sCulture('relevant_culture').GetNameNoFormatting]!"
 national_awakening.4.b: "We must strive to produce original works as well."
 
@@ -342,7 +347,7 @@ austria_federation.6.desc_dual: "The [SCOPE.sCulture('hungarian_culture').GetNam
 austria_federation.6.f: ""I often worry that this plan is unworkable. Won't the Hungarians revolt?"\n\n"A Chinese general is delayed by the rain, and asks his attaché what the penalty for being late is. "Death", he replies. And then he asked the penalty for revolt - the same, of course. And that is how the Dynasty fell. The situation we have with the Hungarians is quite the same. If they'll revolt at the smallest concession, why shouldn't we push the largest?""
 austria_federation.6.a: "Preserve historical Hungary within the Federation."
 austria_federation.6.b: "The [GetCulture('hungarian').GetCustom('getPluralDemonym')] must only give up Slovakia."
-austria_federation.6.c: "Partition Croatia and Translyvania from Hungary."
+austria_federation.6.c: "Partition Croatia and Transylvania from Hungary."
 austria_federation.6.d: "Reduce Hungary to the Hungarian-majority lands."
 
 austria_federation.7.t: "The Slovene Lands"
@@ -369,11 +374,11 @@ austria_federation.8.e: "Endorse a state for all South Slavs within the Federati
 austria_federation.9.t: "Beyond the Forest"
 austria_federation.9.desc: "The crownlands inhabited by the [SCOPE.sCulture('romanian_culture').GetName] are some of the most diverse in our Empire. The establishment of any [SCOPE.sCulture('romanian_culture').GetNameNoFormatting] territory at all is certain to alarm [GetCulture('hungarian').GetName] nationalists, and pockets of [GetCulture('south_german').GetName] people throughout the region worry over autonomy."
 austria_federation.9.f: ""We'll need at least three autonomies, here. Possibly more. Where did all of these Germans come from?"\n\n"We settled them here — quite recently, after the last war with the Turks. They're coming back to haunt us one last time, it seems.""
-austria_federation.9.a: "Grant the Romanian state Banat and all Translyvania."
+austria_federation.9.a: "Grant the Romanian state Banat and all Transylvania."
 austria_federation.9.b: "Grant the Romanian state everything except for Szekeler Land."
-austria_federation.9.c: "Translyvania is Romanian, but Banat is German."
-austria_federation.9.d: "Reduce the Romanian state to the South of Translyvania."
-austria_federation.9.e: "All of Translyvania is irrevocably Hungarian."
+austria_federation.9.c: "Transylvania is Romanian, but Banat is German."
+austria_federation.9.d: "Reduce the Romanian state to the South of Transylvania."
+austria_federation.9.e: "All of Transylvania is irrevocably Hungarian."
 
 austria_federation.10.t: "The Western Fringe"
 austria_federation.10.desc: "The nationalist currents sweeping the Italian peninsula have already stripped us of much of our Italian territories. If the support of the remaining [SCOPE.sCulture('north_italian_culture').GetName] population is to be secured, the outstanding conflicts between Italian, [GetCulture('slovene').GetName], and [GetCulture('south_german').GetName] territories must be resolved."
@@ -406,7 +411,7 @@ because_hungarian_anger_is_high_tt: "Because #b Hungarian#! [concept_liberty_des
 because_lombardy_venetia_tt: "Because [ROOT.GetCountry.GetName] retains #b Lombardy#! or #b Venetia#!: #indent_newline:3 \n• [GetCulture('north_italian').GetName] will be successfully #b integrated#!, becoming a [Concept('concept_primary_cultures','$concept_primary_culture$')] of [ROOT.GetCountry.GetNameNoFlag]#!"
 
 promised_slovakia_to_hungary_tt: "Because #b Slovakia#! has already been promised to #b Hungary#!, the effects of this option will #r worsen#!"
-promised_bukovina_to_romania_tt: "Because #b Bukovina#! has already been promised to #b Translyvania#!: #indent_newline:3 \n• [GetCulture('romanian').GetName] will be #b disqualified#! from future #b integration#!\n• [GetPlayer.MakeScope.ScriptValue('large_radicals')|-=1%] of [GetCulture('romanian').GetName] [Concept('concept_pop', '$concept_pops$')] become more [concept_radical]#!"
+promised_bukovina_to_romania_tt: "Because #b Bukovina#! has already been promised to #b Transylvania#!: #indent_newline:3 \n• [GetCulture('romanian').GetName] will be #b disqualified#! from future #b integration#!\n• [GetPlayer.MakeScope.ScriptValue('large_radicals')|-=1%] of [GetCulture('romanian').GetName] [Concept('concept_pop', '$concept_pops$')] become more [concept_radical]#!"
 
 danubian_tradition_traits_tt: "All #bold European#! [Concept('concept_culture', '$concept_cultures$')] with [Concept('concept_homeland','$concept_homelands$')] in our [Concept('concept_state', '$concept_states$')] in the [GetStrategicRegion('region_danubia').GetName], [GetStrategicRegion('region_balkans').GetName], [GetStrategicRegion('region_poland').GetName], or [GetStrategicRegion('region_south_germany').GetName] [Concept('concept_strategic_region','$concept_strategic_regions$')] will adopt the #b Danubian#! [concept_tradition_trait]"
 
@@ -703,12 +708,12 @@ modifier_geheime_staatskonferenz_member: "Staatskonferenz Member"
 metternich_resignation_and_flee_tt: "[SCOPE.sCharacter('metternich_scope').GetFullName] will issue [SCOPE.sCharacter('metternich_scope').GetHerHis] resignation"
 
 metternich.1.t: "The End of an Age"
-metternich.1.d: "With the accession of [ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle] [ROOT.GetCountry.GetRuler.GetFirstName] to the throne, the long-serving Chancellor [SCOPE.sCharacter('metternich_scope').GetFullName] has announced [SCOPE.sCharacter('metternich_scope').GetHerHis] retirement. The chapter of history defined by his statesmanship has come to a close."
+metternich.1.d: "With the accession of [ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle] [ROOT.GetCountry.GetRuler.GetFirstName] to the throne, the long-serving Chancellor [SCOPE.sCharacter('metternich_scope').GetFullName] has announced [SCOPE.sCharacter('metternich_scope').GetHerHis] retirement. The chapter of history defined by [SCOPE.sCharacter('metternich_scope').GetHerHis] statesmanship has come to a close."
 metternich.1.f: ""But, after all, the thought I secretly cherish is that ancient Europe is at the beginning of the end. My determination being to perish with it, I shall know how to do my duty;nor is this my my motto alone — it is that of the Emperor too. New Europe, on the other hand, has not as yet begun its existence, and between the end and the beginning there will be a chaos."\n\n— Klemens von Metternich" # Sourced from Wolfgang Siemann's Metternich: Strategist and Visionary
 metternich.1.a: "The great conductor exits the stage."
 
 metternich.2.t: "An Ingoniminous End"
-metternich.2.d_revolution: "With [ROOT.GetCountry.GetNameNoFlag] wracked by revolutionary turmoil, and the government no longer able to guarantee [SCOPE.sCharacter('metternich_scope').GetHerHis] safety, [SCOPE.sCharacter('metternich_scope').GetFullName] has been forced to resign from [SCOPE.sCharacter('metternich_scope').GetHerHis] post. [SCOPE.sCharacter('metternich_scope').GetSheHe|U]has fled [ROOT.GetCountry.GetCapital.GetCityHubName], and gone into exile."
+metternich.2.d_revolution: "With [ROOT.GetCountry.GetNameNoFlag] wracked by revolutionary turmoil, and the government no longer able to guarantee [SCOPE.sCharacter('metternich_scope').GetHerHis] safety, [SCOPE.sCharacter('metternich_scope').GetFullName] has been forced to resign from [SCOPE.sCharacter('metternich_scope').GetHerHis] post. [SCOPE.sCharacter('metternich_scope').GetSheHe|U] has fled [ROOT.GetCountry.GetCapital.GetCityHubName], and gone into exile."
 metternich.2.d_gov_change: "The exclusion of the [SCOPE.gsInterestGroup('aristocracy_ig').GetName] from government has left [SCOPE.sCharacter('metternich_scope').GetFullName] with no choice but to resign from [SCOPE.sCharacter('metternich_scope').GetHerHis] post. Shorn of much of [SCOPE.sCharacter('metternich_scope').GetHerHis] former influence, [SCOPE.sCharacter('metternich_scope').GetSheHe] has gone into seclusion on [SCOPE.sCharacter('metternich_scope').GetHerHis] estate."
 metternich.2.f: ""I am no longer anybody. I have nothing more to do, nothing more to discuss."\n\n— Klemens von Metternich"
 metternich.2.a: "[SCOPE.sCharacter('metternich_scope').GetSheHe|U] will no longer define us."
@@ -723,7 +728,7 @@ RIVAL_GERMAN_UNIFIERS: "other valid German [Concept('concept_unification_candida
 UNSOLVED_SCHLESWIG_HOLSTEIN_QUESTION: "#v $je_schleswig_holstein_question$#! unresolved"
 
 ITALIAN_UNIFICATION: "disunified Italy"
-RIVAL_ITALIAN_UNIFIERS: "other valid Italian [Concept('concept_unification_candidate','$concept_unification_candidates$')]
+RIVAL_ITALIAN_UNIFIERS: "other valid Italian [Concept('concept_unification_candidate','$concept_unification_candidates$')]"
 
 galicia_formation.1.t: "The First Step"
 galicia_formation.1.d: "With our reunification of [SCOPE.sState('west_galicia_state').GetName] and [SCOPE.sState('east_galicia_state').GetName], we have advanced far from our former status as a mere free city. However, a question presses - will [ROOT.GetCountry.GetNameNoFlag] be a base for [GetCulture('polish').GetName] unification, or will it embrace its multinational character?"
@@ -741,7 +746,7 @@ subjecthood_events.1.t: "From Many to One"
 subjecthood_events.1.d_1: "The [ROOT.GetCountry.GetAdjectiveNoFlag] state's embrace of [SCOPE.sCulture('relevant_primary_culture').GetName] nationalism has raised fears of forced assimilation amongst [SCOPE.sCulture('relevant_minority_culture').GetName] communities. They have pledged opposition to any attempt to enact [SCOPE.sLaw('current_law_scope').GetName]."
 subjecthood_events.1.d_2: "The [ROOT.GetCountry.GetAdjectiveNoFlag] state's embrace of [SCOPE.sCulture('relevant_primary_culture').GetName] and [SCOPE.sCulture('relevant_primary_culture_2').GetName] nationalism has raised fears of forced assimilation amongst [SCOPE.sCulture('relevant_minority_culture').GetName] communities. They have pledged opposition to any attempt to enact [SCOPE.sLaw('current_law_scope').GetName]."
 subjecthood_events.1.d_3: "The [ROOT.GetCountry.GetAdjectiveNoFlag] state's embrace of nationalism has raised fears of forced assimilation amongst [SCOPE.sCulture('relevant_minority_culture').GetName] communities. They have pledged opposition to any attempt to enact [SCOPE.sLaw('current_law_scope').GetName]."
-subjecthood_events.1.f: "The people of the village had long been loyal subjects of the [ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle]. Certainly, there had been troubles - tax evasion, individual rebellions, the typical grumbling of disaffected peasants - but they had been loyal, in the end. And then the news from [ROOT.GetCountry.GetCapital.GetCityHubName] came, and a great feeling of unease accompanied it. The government would now issues its decrees in [SCOPE.sCulture('relevant_primary_culture').GetNameNoFormatting], a language few of them spoke and even fewer of them read. The [SCOPE.sCulture('relevant_minority_culture').GetNameNoFormatting] language would no longer be good enough. "Learn", it seemed to say. "Speak in our tongue, or say nothing at all"."
+subjecthood_events.1.f:1 "The people of the village had long been loyal subjects of the [ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle]. Certainly, there had been troubles - tax evasion, individual rebellions, the typical grumbling of disaffected peasants - but they had been loyal, in the end. And then the news from [ROOT.GetCountry.GetCapital.GetCityHubName] came, and a great feeling of unease accompanied it. The government would now issue its decrees in [SCOPE.sCulture('relevant_primary_culture').GetNameNoFormatting], a language few of them spoke and even fewer of them read. The [SCOPE.sCulture('relevant_minority_culture').GetNameNoFormatting] language would no longer be good enough. "Learn", it seemed to say. "Speak in our tongue, or say nothing at all"."
 subjecthood_events.1.a: "Why must they insist upon resisting progress?"
 subjecthood_events.1.b: "One may be both [SCOPE.sCulture('relevant_minority_culture').GetName] and [ROOT.GetCountry.GetAdjectiveNoFlag]."
 
@@ -764,7 +769,7 @@ subjecthood_events.4.t: "Subjects to Citizens"
 subjecthood_events.4.d_1: "The gradual transformation of [ROOT.GetCountry.GetName] into a nation-state has created a need for a new civics curriculum in its schools. The new curriculum will elevate the history of the [SCOPE.sCulture('relevant_primary_culture').GetName] people over that of other nations."
 subjecthood_events.4.d_2: "The gradual transformation of [ROOT.GetCountry.GetName] into a nation-state has created a need for a new civics curriculum in its schools. The new curriculum will elevate the histories of the [SCOPE.sCulture('relevant_primary_culture').GetName] and [SCOPE.sCulture('relevant_primary_culture_2').GetName] peoples over that of other nations."
 subjecthood_events.4.d_3: "The gradual transformation of [ROOT.GetCountry.GetName] into a nation-state has created a need for a new civics curriculum in its schools. The new curriculum will elevate the history of the state's official nationalities over that of other nations."
-subjecthood_events.4.f: ""And what do I mean when I say "to be a [SCOPE.sCulture('relevant_primary_culture').GetCustom('getSingularDemonym')]"?, asked the teacher.\n\nOne of the students rose to answer. "To be a [SCOPE.sCulture('relevant_primary_culture').GetCustom('getSingularDemonym')] is to be proud, it is to be honorable, and it is to defend our people. It is to serve [SCOPE.GetRootScope.GetCountry.GetCustom('GetDivinity')] and the [SCOPE.sCulture('relevant_primary_culture').GetNameNoFormatting] nation, and to respect our [ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle] and [ROOT.GetCountry.GetRuler.GetHerHis] ministers."\n\nThe student stood stock-still, until the portrait-artist in the corner of the room peeked out from behind his canvas.\n\n"Well done, [SCOPE.sCharacter('name_a_scope').GetFirstNameNoFormatting]. You may sit.""
+subjecthood_events.4.f: ""And what do I mean when I say "to be a [SCOPE.sCulture('relevant_primary_culture').GetCustom('getSingularDemonym')]"?", asked the teacher.\n\nOne of the students rose to answer. "To be a [SCOPE.sCulture('relevant_primary_culture').GetCustom('getSingularDemonym')] is to be proud, it is to be honorable, and it is to defend our people. It is to serve [SCOPE.GetRootScope.GetCountry.GetCustom('GetDivinity')] and the [SCOPE.sCulture('relevant_primary_culture').GetNameNoFormatting] nation, and to respect our [ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle] and [ROOT.GetCountry.GetRuler.GetHerHis] ministers."\n\nThe student stood stock-still, until the portrait-artist in the corner of the room peeked out from behind his canvas.\n\n"Well done, [SCOPE.sCharacter('name_a_scope').GetFirstNameNoFormatting]. You may sit.""
 subjecthood_events.4.a: "Grant all the funding needed for these changes."
 subjecthood_events.4.b: "A slower process would ease the burden on our treasury."
 subjecthood_events.4.c: "The history of [SCOPE.sState('claim_state').GetName] can be their first lesson."
@@ -919,9 +924,9 @@ is_disqualified_tt: "[THIS.GetCulture.GetName] is #b disqualified#!"
 je_danubian_federation_observer: "The Federal Project"
 je_danubian_federation_observer_reason: "The government of [SCOPE.sCountry('austria_scope').GetName] has endorsed a proposal to reorganize the territories of the [SCOPE.sCountry('austria_scope').GetAdjectiveNoFormatting] Empire into a federation of self-governing states drawn along ethnic lines. This proposal would abolish the complex network of crown-lands and personal unions currently forming the Empire, replacing them with a federal structure ultimately accountable to Vienna.\n\nIf [SCOPE.sCountry('austria_scope').GetNameNoFlag] completes the #v $je_danubian_federation$#! [concept_journal_entry], the traditional rights and privileges of [ROOT.GetCountry.GetName] will be abolished, and our lands integrated directly into the [SCOPE.sCountry('austria_scope').GetCustom('future_kuk_name')|v]."
 
-has_been_integrated_into_federation_tt: "[SCOPE.sCountry('austria_scope').GetName] has #b completed#! #v $je_danubian_federation$#! and formed the #v $dyn_c_usga$#!"
-has_been_integrated_into_federation_republic_tt: "[SCOPE.sCountry('austria_scope').GetName] has #b completed#! #v $je_danubian_federation$#! and formed the #v $KUK$#!"
-austria_has_failed_je_danubian_federation_tt: "[SCOPE.sCountry('austria_scope').GetName] has #b failed#! #v $je_danubian_federation$#!"
+has_been_integrated_into_federation_tt: "[SCOPE.sCountry('austria_scope').GetName] has #b completed#! #v $je_danubian_federation$#! and formed the #v $dyn_c_usga$#!, through the following: #indent_newline:3 "
+has_been_integrated_into_federation_republic_tt: "[SCOPE.sCountry('austria_scope').GetName] has #b completed#! #v $je_danubian_federation$#! and formed the #v $KUK$#!, through the following: #indent_newline:3 "
+austria_has_failed_je_danubian_federation_tt: "[SCOPE.sCountry('austria_scope').GetName] has #b failed#! #v $je_danubian_federation$#!, through the following: #indent_newline:3 "
 
 has_been_integrated_by_austria_tt: "Have been satisfactorily #b integrated#! into the Federation"
 
@@ -959,6 +964,8 @@ no_other_subject_signaling_opposition_tt: "No other #v $AUS_ADJ$#! [concept_subj
 je_danubian_federation_observer_pledge_cooperation: "Pledge Cooperation"
 je_danubian_federation_observer_pledge_cooperation_desc: "We have deemed federalization to be in our interests, and those of the Empire as a whole. We will send a message to [ROOT.GetCountry.GetTopOverlord.GetCapital.GetCityHubName] to expect our full cooperation in the process of reorganizing the Empire."
 
+no_culture_disqualified_tt: "[SCOPE.sCountry('austria_scope').GetName] has not taken actions that #b disqualify#! any of our [concept_primary_cultures]"
+
 je_danubian_federation_observer_reject_cooperation: "Reject Federalization"
 je_danubian_federation_observer_reject_cooperation_desc: "We have deemed federalization to be against our interests. We will send a message to [ROOT.GetCountry.GetTopOverlord.GetCapital.GetCityHubName] that we will not cooperate with the process of reorganizing the Empire."
 
@@ -988,3 +995,31 @@ notification_danubian_federation_culture_pleased_primary_tooltip: "#header $noti
 notification_danubian_federation_culture_integrated_name: "[SCOPE.sCountry('austria_scope').GetName] Integrates [SCOPE.sCulture('relevant_culture_scope').GetName] [concept_culture]"
 notification_danubian_federation_culture_integrated_desc: "As the process of federalizing the Empire advances, the [SCOPE.sCountry('austria_scope').GetAdjective] government has made a decision that has led to the [SCOPE.sCulture('relevant_culture_scope').GetName] [concept_culture] being fully integrated into the federal project.\n\n[SCOPE.sCountry('austria_scope').GetName] will now be able to complete the #v $je_danubian_federation$#! [concept_journal_entry] without needing to reduce our [concept_liberty_desire] to below #v 25#!, or raise relations above #v 50#!"
 notification_danubian_federation_culture_integrated_tooltip: "#header $notification_danubian_federation_culture_integrated_name$#!\n$TOOLTIP_DELIMITER$\n$notification_danubian_federation_culture_integrated_desc$"
+
+modifier_hungarian_renaissance: "Hungarian Renaissance"
+YUGOSLAV_UNIFICATION: "disunified South Slavs"
+RIVAL_YUGOSLAV_UNIFIERS: "other valid South Slavic [Concept('concept_unification_candidate','$concept_unification_candidates$')]"
+FERVOR_OF_CULTURE_ACTIVISM: "[concept_fervor] ([SCOPE.sCulture('culture').GetCurrentFervor|v0]) of [SCOPE.sCulture('culture').GetName] [concept_culture]"
+FERVOR_OF_GERMAN_CULTURE_ACTIVISM: "Average [concept_fervor] ([GetPlayer.MakeScope.ScriptValue('average_german_fervor')|v0]) of [GetCulture('north_german').GetName] and [GetCulture('south_german').GetName] [Concept('concept_culture','$concept_cultures$')]"
+FERVOR_OF_ITALIAN_CULTURE_ACTIVISM: "Average [concept_fervor] ([GetPlayer.MakeScope.ScriptValue('average_italian_fervor')|v0]) of [GetCulture('north_italian').GetName] and [GetCulture('south_italian').GetName] [Concept('concept_culture','$concept_cultures$')]"
+FERVOR_OF_SOUTH_SLAVIC_CULTURE_ACTIVISM: "Average [concept_fervor] ([GetPlayer.MakeScope.ScriptValue('average_south_slavic_fervor')|v0]) of [GetCulture('croat').GetName], [GetCulture('serb').GetName], [GetCulture('bosniak').GetName], and [GetCulture('slovene').GetName] [Concept('concept_culture','$concept_cultures$')]"
+
+NEIGHBOURING_COUNTRY_WITH_REVOLUTION: "[Concept('concept_neighbors','$concept_neighboring$')] [Concept('concept_country','$concept_countries$')] with an [Concept('concept_insurrection', '$concept_insurrectionary$')] [SCOPE.GetRootScope.GetPoliticalMovement.GetName]"
+NEIGHBOURING_COUNTRY_WITH_RELIGIOUS_REVOLUTION: "[Concept('concept_neighbors','$concept_neighboring$')] [Concept('concept_country','$concept_countries$')] with an [Concept('concept_insurrection', '$concept_insurrectionary$')] [Concept('concept_political_movement','$concept_political_movement_short$')] of its associated [concept_religion]"
+NEIGHBOURING_COUNTRY_WITH_CULTURE_REVOLUTION: "[Concept('concept_neighbors','$concept_neighboring$')] [Concept('concept_country','$concept_countries$')] with an [Concept('concept_insurrection', '$concept_insurrectionary$')] [Concept('concept_political_movement','$concept_political_movement_short$')] of its associated [concept_culture]"
+
+subjecthood_fervor_no_effects_ld_tt: "[concept_fervor] of our [concept_primary_cultures] will no longer contribute to our [concept_liberty_desire] gain"
+fervor_effects_ld_tt: "[concept_fervor] of our [concept_primary_cultures] will contribute to our [concept_liberty_desire] gain"
+
+modifier_polish_organic_statute: "Organic Statute of 1832"
+modifier_serbian_revolt_aftermath: "Revolutionary Legacy"
+modifier_greek_revolt_aftermath: "$modifier_serbian_revolt_aftermath$"
+
+tippu_tip_country_spawn_tt: "#b $UTR$#! will be established in [SCOPE.sState('tippu_tip_state').GetName]"
+tippu_tip_country_spawn_subject_tt: "#b $UTR$#! will be established in [SCOPE.sState('tippu_tip_state').GetName] as a [concept_tributary] of [ROOT.GetCountry.GetName]"
+
+tippu_tip_spawn_tt: "$Hamad$ $al_Murjabi$ will appear in [ROOT.GetCountry.GetNameNoFlag] as a [GetIdeology('ideology_traditionalist').GetName] [concept_agitator]"
+tippu_tip_general_tt: "$Hamad$ $al_Murjabi$ will appear in [ROOT.GetCountry.GetNameNoFlag] as a [concept_general]"
+
+aus_integrate_crown_lands_decision: "Integrate the Crown Lands"
+aus_integrate_crown_lands_decision_desc: "With the matter of Hungary resolved, it is clear that our remaining autonomous $concept_crown_lands$ have long outlived their usefulness. For the sake of the prosperity of our great empire, these regions must be fully integrated into the Austrian administration."

@@ -25,9 +25,14 @@
 			}
 			leader = { OR = { has_ideology = ideology:ideology_radical has_ideology = ideology:ideology_liberal } }
 		}
+			OR = {
 			radical_fraction = {
-				value >= 0.1
+				value >= 0.08
 			}
+			capital = {
+				turmoil >= 0.10
+			}
+		}
 		}
 	}
 

@@ -102,6 +102,10 @@
 			country = c:CRO
 			type = crown_land
 		}
+		create_diplomatic_pact = {
+			country = c:CRO
+			type = decrease_payments
+		}
 	}
 	c:USA ?= {
 		create_diplomatic_pact = {
@@ -648,6 +652,14 @@
 	
 	c:CAM ?= {
 		add_liberty_desire = 20
+	}
+
+	c:NPU = {
+		add_liberty_desire = 30
+	}
+
+	c:IQU = {
+		add_liberty_desire = -10
 	}
 	
 	c:BIC ?= {

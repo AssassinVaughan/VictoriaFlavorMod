@@ -814,18 +814,6 @@ nationalism = {
 		international_relations
 	}
 	
-	on_researched = {
-		if = {
-			limit = {
-				NOT = { has_variable = nationalism_researched }
-			}
-			custom_tooltip = {
-				text = unlock_national_agitation_tt
-				set_variable = nationalism_researched
-			}
-		}
-	}
-	
 	ai_weight = {
 		value = 2 # Important in general
 		
@@ -853,6 +841,19 @@ nationalism = {
 				}
 			}
 			multiply = 2
+		}
+
+		if = { # Important for Hungary and the Balkan states
+			limit = {
+				OR = {
+					country_has_primary_culture = cu:croat
+					country_has_primary_culture = cu:serb
+					country_has_primary_culture = cu:slovene
+					country_has_primary_culture = cu:bosniak
+					country_has_primary_culture = cu:hungarian
+				}
+			}
+			multiply = 4
 		}			
 	}
 }
@@ -1267,6 +1268,10 @@ pan-nationalism = {
 					country_has_primary_culture = cu:south_german
 					country_has_primary_culture = cu:north_italian
 					country_has_primary_culture = cu:south_italian
+					country_has_primary_culture = cu:croat
+					country_has_primary_culture = cu:serb
+					country_has_primary_culture = cu:slovene
+					country_has_primary_culture = cu:bosniak
 				}				
 			}
 			add = 2

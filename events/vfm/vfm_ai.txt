@@ -539,14 +539,14 @@ vfm_ai.97 = {
 	duration = 1
 
 	trigger = {
-	    c:FRA ?= this
-		any_scope_state = {
-			state_region = s:STATE_AQUITAINE
-			literacy_rate > 0.2
-		}
+	    c:EGY ?= this
 	}
 
 	immediate = {
+	add_modifier = {
+	    name = egypt_rebellion
+		days = 1500
+	}
 	}
 }
 
