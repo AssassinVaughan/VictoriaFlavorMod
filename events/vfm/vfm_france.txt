@@ -210,13 +210,17 @@ vfm_france.4 = { #Preparation for 1848, swap ideology from liberal to radical
 		ig:ig_intelligentsia = {
 			save_scope_as = intelligentsia_ig
 		}
+		remove_modifier = fra_secular_legacy
+		add_modifier = fra_secular_legacy_2
 	}
 
 	option = { 
 		name = vfm_france.4.a
 		default_option = yes
+		show_as_tooltip = {
 		remove_modifier = fra_secular_legacy
 		add_modifier = fra_secular_legacy_2
+		}
 		if = {
 			limit = {
 			    NOT = { has_global_variable = delescluze_spawn }

@@ -531,6 +531,20 @@ GLOBAL = {
 		
 		
 	}
+	
+	c:TUR ?= {
+	    every_scope_state = {
+			limit = {
+			    OR = {
+				state_region = s:STATE_BASRA
+				state_region = s:STATE_BAGHDAD
+				}
+			}
+			add_modifier = {
+				name = tur_regional_autonomy
+			}
+		}		
+	}
 
 	c:ARG ?= {
 		every_scope_state = {

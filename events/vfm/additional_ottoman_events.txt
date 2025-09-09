@@ -3,6 +3,7 @@ namespace = tur_major_holidays #Light flavor events for holidays
 namespace = tanzimat_events #reform and rebellion related events
 namespace = vilayet_events #events around the provinces and tributaries
 namespace = opda_events #the Ottoman Public Debt Administration
+namespace = ottoman_arabia_events #t
 
 # Death of Mahmud II
 ottoman_dynasty.1 = {
@@ -1116,6 +1117,140 @@ tanzimat_events.16 = {
 #	}
 #}
 #
+
+#Demands
+ottoman_arabia_events.1 = {
+	type = country_event
+	placement = scope:baghdad_state
+	title = ottoman_arabia_events.1.t
+	desc = ottoman_arabia_events.1
+	flavor =  ottoman_arabia_events.1.f
+	
+	duration = 3
+	immediate = {
+		s:STATE_BAGHDAD = {
+			random_scope_state = {
+				limit = {
+					owner = ROOT
+				}
+				save_scope_as = baghdad_state
+			}
+		}
+		s:STATE_BASRA = {
+			random_scope_state = {
+				limit = {
+					owner = ROOT
+				}
+				save_scope_as = basra_state
+			}
+		}
+	}
+	event_image = {
+		video = "gfx/event_pictures/middleeast_police_breaking_door.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/middleeast/police_breaking_door"
+	icon = "gfx/interface/icons/event_icons/event_fire.dds"
+	trigger = {
+		
+	}
+	option = {
+		name = ottoman_arabia_events.1.a
+		default_option = yes
+		scope:baghdad_state = {
+			remove_modifier = {
+				name = tur_regional_autonomy
+			}
+		}
+		scope:basra_state = {
+			remove_modifier = {
+				name = tur_regional_autonomy
+			}
+		}
+	}
+	
+	option = {
+		name = ottoman_arabia_events.1.b
+		default_option = yes
+		scope:baghdad_state = {
+			remove_modifier = {
+				name = tur_regional_autonomy
+			}
+		}
+		scope:basra_state = {
+			remove_modifier = {
+				name = tur_regional_autonomy
+			}
+		}
+	}
+}
+
+#Integration
+ottoman_arabia_events.2 = {
+	type = country_event
+	placement = scope:baghdad_state
+	title = ottoman_arabia_events.2.t
+	desc = ottoman_arabia_events.2
+	flavor =  ottoman_arabia_events.2.f
+	
+	duration = 3
+	immediate = {
+		s:STATE_BAGHDAD = {
+			random_scope_state = {
+				limit = {
+					owner = ROOT
+				}
+				save_scope_as = baghdad_state
+			}
+		}
+		s:STATE_BASRA = {
+			random_scope_state = {
+				limit = {
+					owner = ROOT
+				}
+				save_scope_as = basra_state
+			}
+		}
+	}
+	event_image = {
+		video = "gfx/event_pictures/middleeast_police_breaking_door.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/middleeast/police_breaking_door"
+	icon = "gfx/interface/icons/event_icons/event_fire.dds"
+	trigger = {
+		
+	}
+	option = {
+		name = ottoman_arabia_events.2.a
+		default_option = yes
+		scope:baghdad_state = {
+			remove_modifier = {
+				name = tur_regional_autonomy
+			}
+		}
+		scope:basra_state = {
+			remove_modifier = {
+				name = tur_regional_autonomy
+			}
+		}
+	}
+	
+	option = {
+		name = ottoman_arabia_events.2.b
+		default_option = yes
+		scope:baghdad_state = {
+			remove_modifier = {
+				name = tur_regional_autonomy
+			}
+		}
+		scope:basra_state = {
+			remove_modifier = {
+				name = tur_regional_autonomy
+			}
+		}
+	}
+}
 
 
 

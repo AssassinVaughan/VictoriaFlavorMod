@@ -317,8 +317,10 @@ fra_birth_modifier_on_action = { # from VTM, maybe add this as a tech instead?
 					c:FRA ?= this
 					c:BEL ?= this
 				}
-				NOT = {
+				NOR = {
 					has_modifier = fra_secular_legacy
+					has_modifier = fra_secular_legacy_2
+					has_modifier = fra_secular_legacy_3
 				}
 			}
 			add_modifier = fra_secular_legacy

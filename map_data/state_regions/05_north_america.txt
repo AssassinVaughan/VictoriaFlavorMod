@@ -5,7 +5,9 @@
     city = "x700080"
     port = "x700080"
     farm = "x44578C"
-    arable_land = 1
+    mine = "x44578C"
+    wood = "x44578C"
+    arable_land = 3
     arable_resources = { "bg_maize_farms" "bg_livestock_ranches" "bg_cotton_plantations" "bg_tobacco_plantations" }
     capped_resources = {
         bg_fishing = 1
@@ -125,6 +127,7 @@ STATE_WASHINGTON = {
         bg_coal_mining = 32
         bg_logging = 17
         bg_fishing = 6
+        bg_whaling = 2
     }
     naval_exit_id = 3154
 }
@@ -144,6 +147,7 @@ STATE_OREGON = {
     capped_resources = {
         bg_logging = 20
         bg_fishing = 5
+        bg_whaling = 2
     }
     naval_exit_id = 3154
 }
@@ -581,7 +585,7 @@ STATE_ALABAMA = {
     }
     resource = {
         type = "bg_oil_extraction"
-        undiscovered_amount = 5
+        undiscovered_amount = 8
     }
     naval_exit_id = 3060
 }
@@ -675,6 +679,8 @@ STATE_DELAWARE = {
     city = "xEBA646"
     port = "xEBA646"
     farm = "xEBA646"
+    mine = "xEBA646"
+    wood = "xEBA646"
     arable_land = 15
     arable_resources = { "bg_maize_farms" "bg_livestock_ranches" "bg_cotton_plantations" "bg_tobacco_plantations" "bg_vineyard_plantations" }
     capped_resources = {
@@ -755,6 +761,8 @@ STATE_RHODE_ISLAND = {
     city = "x939ACE"
     port = "x939ACE"
     farm = "x939ACE"
+    wood = "x939ACE"
+    mine = "x939ACE"
     arable_land = 10
     arable_resources = { "bg_wheat_farms" "bg_livestock_ranches" "bg_vineyard_plantations" }
     capped_resources = {
@@ -774,6 +782,7 @@ STATE_CONNECTICUT = {
     port = "x7DE678"
     farm = "x3040C0"
     wood = "x9D3A73"
+    mine = "x9D3A73"
     arable_land = 15
     arable_resources = { "bg_wheat_farms" "bg_livestock_ranches" "bg_vineyard_plantations" }
     capped_resources = {
@@ -938,6 +947,8 @@ STATE_HAWAIIAN_ISLANDS = {
     city = "xB5403E"
     port = "x492B26"
     farm = "x6090C0"
+    mine = "x6090C0"
+    wood = "x6090C0"
     arable_land = 15
     arable_resources = { "bg_rice_farms" "bg_livestock_ranches" "bg_coffee_plantations" "bg_cotton_plantations" "bg_tea_plantations" "bg_tobacco_plantations" "bg_sugar_plantations" "bg_banana_plantations" }
     capped_resources = {
@@ -968,7 +979,7 @@ STATE_ONTARIO = {
     }
     resource = {
         type = "bg_oil_extraction"
-        undiscovered_amount = 40
+        undiscovered_amount = 25
     }
 }
 
@@ -1057,7 +1068,7 @@ STATE_ALBERTA = {
     }
     resource = {
         type = "bg_oil_extraction"
-        undiscovered_amount = 50
+        undiscovered_amount = 35
     }
 }
 
@@ -1107,7 +1118,7 @@ STATE_SASKATCHEWAN = {
     }
     resource = {
         type = "bg_oil_extraction"
-        undiscovered_amount = 20
+        undiscovered_amount = 15
     }
 }
 
@@ -1129,7 +1140,7 @@ STATE_MANITOBA = {
     }
     resource = {
         type = "bg_oil_extraction"
-        undiscovered_amount = 20
+        undiscovered_amount = 15
     }
 }
 
@@ -1199,6 +1210,8 @@ STATE_BERMUDA = {
     city = "xE55147"
     port = "x169E2D"
     farm = "x169E2D"
+    mine = "x169E2D"
+    wood = "x169E2D"
     arable_land = 10
     arable_resources = { "bg_livestock_ranches" "bg_cotton_plantations" "bg_tobacco_plantations" "bg_sugar_plantations" }
     capped_resources = {
@@ -1228,7 +1241,7 @@ STATE_TEXAS = {
     }
     resource = {
         type = "bg_oil_extraction"
-        undiscovered_amount = 50
+        undiscovered_amount = 40
     }
     naval_exit_id = 3060
 }
@@ -1283,7 +1296,7 @@ STATE_NEW_MEXICO = {
     id = 325
     subsistence_building = "building_subsistence_pastures"
     provinces = { "x00E2A7" "x0957D1" "x0B1E97" "x0DAC3E" "x0E8A94" "x168663" "x17660E" "x17E6C3" "x1B611D" "x23E585" "x256AEE" "x2DF849" "x2EE19C" "x3385DD" "x37B6CF" "x38BB61" "x3CC82C" "x3CD2D7" "x4025EE" "x40B080" "x418B71" "x46C455" "x4BBEE7" "x504080" "x50DED9" "x53F9F0" "x5967A1" "x59E5C4" "x5DA018" "x5E769A" "x650434" "x67B298" "x74C317" "x79844B" "x7C809B" "x7D2451" "x7EA360" "x808AB5" "x810C1A" "x84CE0F" "x851687" "x8A526A" "x8C6FA5" "x90EA7D" "x92D597" "x940839" "x9660D3" "x99C48C" "x9C0FED" "x9C15D3" "xA156C7" "xA84AFD" "xA858F4" "xAA2075" "xAE2568" "xAE76ED" "xB0BB90" "xB566BA" "xB636E0" "xB6EC9A" "xB7D6F2" "xBD8033" "xC03080" "xC03297" "xC32AF4" "xC50565" "xCAEC7A" "xD3611A" "xD78928" "xDBA81D" "xDF1965" "xE27DFB" "xE9C718" "xEED52D" "xEF029F" "xF59F44" "xF9F60A" "xFB0FA8" "xFD2B9D" }
-    traits = { "state_trait_bad_soils" }
+    traits = { "state_trait_rio_grande_river" "state_trait_bad_soils" }
     city = "xDF1965"
     farm = "x5DA018"
     mine = "x851687"
@@ -1323,7 +1336,7 @@ STATE_CALIFORNIA = {
     }
     resource = {
         type = "bg_oil_extraction"
-        undiscovered_amount = 50
+        undiscovered_amount = 40
     }
     naval_exit_id = 3153
 }
@@ -1376,6 +1389,7 @@ STATE_RIO_GRANDE = {
     id = 329
     subsistence_building = "building_subsistence_farms"
     provinces = { "x00879A" "x00B001" "x059C97" "x08C98F" "x0DA7FA" "x0F59F0" "x1B9AEE" "x1BD480" "x1C58D1" "x1CC654" "x20360A" "x2F16DF" "x304ACD" "x3A264E" "x41A909" "x4C9B4D" "x4EE20D" "x4FF638" "x50EF80" "x54B95F" "x592CDF" "x59E37B" "x60385F" "x654D48" "x6EDB2C" "x766F08" "x7B177A" "x7F00A8" "x8030C0" "x80B080" "x883E5B" "x9486AD" "x9C099B" "x9F69AD" "xA164AB" "xA20ABD" "xA98620" "xA995BC" "xB13782" "xB65993" "xBA8759" "xBCFFF7" "xC03001" "xC1EF57" "xC202B5" "xC68684" "xCAEB7A" "xD51E89" "xD69138" "xDCEE0B" "xDDC3A9" "xDDE205" "xDEEEB0" "xE1E8AB" "xE4E032" "xE86EA3" "xE96480" "xEA81D3" "xF01B64" "xF32D13" "xF33EC5" "xF468A1" "xF53F63" "xF9A35E" "xFC72E1" "xFEC6A5" }
+    traits = { "state_trait_rio_grande_river" }
     city = "x766F08"
     port = "xE96480"
     farm = "x4FF638"
@@ -1390,7 +1404,7 @@ STATE_RIO_GRANDE = {
     }
     resource = {
         type = "bg_oil_extraction"
-        undiscovered_amount = 50
+        undiscovered_amount = 40
     }
     naval_exit_id = 3060
 }
@@ -1672,6 +1686,7 @@ STATE_BAJA_CALIFORNIA = {
     capped_resources = {
         bg_logging = 2
         bg_fishing = 6
+        bg_whaling = 2
     }
     naval_exit_id = 3153
 }

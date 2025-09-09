@@ -281,7 +281,7 @@ je_sick_man_economy = {
 	}
 
 	goal_add_value = {
-		value = root.gdp
+		value = 25000000
 	}
 	
 	fail = {
@@ -329,11 +329,12 @@ je_sick_man_education = {
 		any_scope_building = {
 			is_building_type = building_university
 			occupancy > 0.9
-			level >= 4
+			level >= 3
 		}
 		scope:journal_entry = {
 			is_goal_complete = yes
 		}
+		NOT = { has_law_or_variant = law_type:law_guild_system }
 	}
 
 	on_complete = {
@@ -350,7 +351,7 @@ je_sick_man_education = {
 	}
 
 	goal_add_value = {
-		add = 0.15
+		value = 0.2
 	}
 
 	invalid = {
@@ -787,6 +788,108 @@ je_sick_man_kurdistan = {
 	transferable = no
     should_be_pinned_by_default = yes   
 	weight = 5000
+}
+
+# Arabia
+je_sick_man_arabia = {
+	icon = "gfx/interface/icons/event_icons/event_fire.dds"
+
+	group = je_group_tanzimat
+	
+	is_shown_when_inactive = {
+		country_has_primary_culture = cu:turkish
+		NOT = {
+			has_variable = sick_man_complete
+		}
+	}
+	possible = {
+	}
+	
+	complete = {
+		scope:journal_entry = {
+			is_goal_complete = yes
+		}
+		owns_entire_state_region = STATE_BASRA
+		owns_entire_state_region = STATE_BAGHDAD
+		any_scope_state = {
+			state_region = s:STATE_BAGHDAD
+			has_famine = no
+			average_sol > 8
+		} 
+		any_scope_state = {
+			state_region = s:STATE_BASRA
+            has_famine = no
+			average_sol > 8
+		}
+	}
+
+	on_complete = {
+	    trigger_event = { id = ottoman_arabia_events.2 }
+		set_variable = completed_separatism_sick_man_je
+		custom_tooltip = je_sick_man_advance
+		change_variable = {
+			name = sick_man_var
+			add = 1
+		}
+	}
+
+	on_monthly_pulse = {
+		effect = {
+			if = {
+				limit = {
+					any_scope_state = {
+						state_region = s:STATE_BAGHDAD
+          			    has_famine = no
+					    average_sol > 8
+					} 
+					any_scope_state = {
+						state_region = s:STATE_BASRA
+        			    has_famine = no
+					    average_sol > 8
+					}
+				}
+				change_variable = {
+					name = sick_man_arabia_var
+					add = 1
+				}
+			}
+			else = {
+			    change_variable = {
+					name = sick_man_arabia_var
+					subtract = 1
+				}
+			}
+		}
+	}
+
+	fail = {
+		root.var:sick_man_arabia_var < 1
+	}
+	
+	on_fail = {
+		trigger_event = { id = ottoman_arabia_events.1 }
+	}
+
+	current_value = {
+		value = var:sick_man_arabia_var
+	}
+
+	goal_add_value = {
+		add = 240
+	}
+
+	invalid = {
+		custom_tooltip = {
+			text = finished_sick_man_tt
+			has_variable = sick_man_complete
+		}
+	}
+
+	transferable = no
+
+	weight = 5000
+    should_be_pinned_by_default = yes
+	progressbar = yes
 }
 
 ###Journal entries for seperatism and foreign interference
