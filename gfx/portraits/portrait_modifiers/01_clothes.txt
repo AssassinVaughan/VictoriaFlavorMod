@@ -6876,20 +6876,6 @@
         weight = {
             base = 0
             modifier = {
-                add = 10000
-                AND = {
-                    circumpolar_clothes_pop_trigger = yes
-                    OR = {
-                        poor_clothes_pop_trigger = yes
-                        middle_clothes_pop_trigger = yes
-                        upper_clothes_pop_trigger = yes
-                        clergy_clothes_pop_trigger = yes
-                        soldier_clothes_pop_trigger = yes
-                        officers_clothes_pop_trigger = yes
-                    }
-                }
-            }
-            modifier = {
                 add = 1000
                 exists = scope:character
                 scope:character = {
