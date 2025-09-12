@@ -1128,22 +1128,6 @@ ottoman_arabia_events.1 = {
 	
 	duration = 3
 	immediate = {
-		s:STATE_BAGHDAD = {
-			random_scope_state = {
-				limit = {
-					owner = ROOT
-				}
-				save_scope_as = baghdad_state
-			}
-		}
-		s:STATE_BASRA = {
-			random_scope_state = {
-				limit = {
-					owner = ROOT
-				}
-				save_scope_as = basra_state
-			}
-		}
 	}
 	event_image = {
 		video = "gfx/event_pictures/middleeast_police_breaking_door.bk2"
@@ -1157,30 +1141,37 @@ ottoman_arabia_events.1 = {
 	option = {
 		name = ottoman_arabia_events.1.a
 		default_option = yes
-		scope:baghdad_state = {
-			remove_modifier = {
-				name = tur_regional_autonomy
+		random_scope_state = {
+			limit = {
+				state_region = s:STATE_BAGHDAD
+				has_modifier = tur_regional_autonomy
 			}
+			remove_modifier = tur_regional_autonomy
 		}
-		scope:basra_state = {
-			remove_modifier = {
-				name = tur_regional_autonomy
+		random_scope_state = {
+			limit = {
+				state_region = s:STATE_BASRA
+				has_modifier = tur_regional_autonomy
 			}
+			remove_modifier = tur_regional_autonomy
 		}
 	}
 	
 	option = {
 		name = ottoman_arabia_events.1.b
-		default_option = yes
-		scope:baghdad_state = {
-			remove_modifier = {
-				name = tur_regional_autonomy
+		random_scope_state = {
+			limit = {
+				state_region = s:STATE_BAGHDAD
+				has_modifier = tur_regional_autonomy
 			}
+			remove_modifier = tur_regional_autonomy
 		}
-		scope:basra_state = {
-			remove_modifier = {
-				name = tur_regional_autonomy
+		random_scope_state = {
+			limit = {
+				state_region = s:STATE_BASRA
+				has_modifier = tur_regional_autonomy
 			}
+			remove_modifier = tur_regional_autonomy
 		}
 	}
 }
@@ -1195,22 +1186,6 @@ ottoman_arabia_events.2 = {
 	
 	duration = 3
 	immediate = {
-		s:STATE_BAGHDAD = {
-			random_scope_state = {
-				limit = {
-					owner = ROOT
-				}
-				save_scope_as = baghdad_state
-			}
-		}
-		s:STATE_BASRA = {
-			random_scope_state = {
-				limit = {
-					owner = ROOT
-				}
-				save_scope_as = basra_state
-			}
-		}
 	}
 	event_image = {
 		video = "gfx/event_pictures/middleeast_police_breaking_door.bk2"
@@ -1224,30 +1199,37 @@ ottoman_arabia_events.2 = {
 	option = {
 		name = ottoman_arabia_events.2.a
 		default_option = yes
-		scope:baghdad_state = {
-			remove_modifier = {
-				name = tur_regional_autonomy
+		random_scope_state = {
+			limit = {
+				state_region = s:STATE_BAGHDAD
+				has_modifier = tur_regional_autonomy
 			}
+			remove_modifier = tur_regional_autonomy
 		}
-		scope:basra_state = {
-			remove_modifier = {
-				name = tur_regional_autonomy
+		random_scope_state = {
+			limit = {
+				state_region = s:STATE_BASRA
+				has_modifier = tur_regional_autonomy
 			}
+			remove_modifier = tur_regional_autonomy
 		}
 	}
 	
 	option = {
 		name = ottoman_arabia_events.2.b
-		default_option = yes
-		scope:baghdad_state = {
-			remove_modifier = {
-				name = tur_regional_autonomy
+		random_scope_state = {
+			limit = {
+				state_region = s:STATE_BAGHDAD
+				has_modifier = tur_regional_autonomy
 			}
+			remove_modifier = tur_regional_autonomy
 		}
-		scope:basra_state = {
-			remove_modifier = {
-				name = tur_regional_autonomy
+		random_scope_state = {
+			limit = {
+				state_region = s:STATE_BASRA
+				has_modifier = tur_regional_autonomy
 			}
+			remove_modifier = tur_regional_autonomy
 		}
 	}
 }

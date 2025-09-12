@@ -4,19 +4,43 @@ max_raiding_income = { # Used below and in raiding loc trigger.
 	value = 5000 #increased from 2500.
 }
 
+mon_unemployment_estimate = {
+	c:MON ?= {
+		every_scope_state = {
+			add = state_unemployment_rate
+		}
+		if = {
+			limit = {
+				num_states > 0
+			}
+			divide = num_states
+		}
+		multiply = 2 #for some reason the trigger is way off actual unemployment rate. 
+	}
+}
+
+
 raiding_income = { # Used in raiding loc trigger.
-	value = c:MON.army_power_projection
-	multiply = c:MON.var:raiding_intensity
-	multiply = 0.15 
-	round = yes
-	min = 0
-	max = max_raiding_income
+	if = {
+		limit = {
+			exists = c:MON
+			c:MON ?= {
+				has_variable = raiding_intensity
+			}
+		}
+		value = c:MON.army_power_projection
+		multiply = c:MON.var:raiding_intensity
+		multiply = 0.17 #moved up from 0.15. Sweet spot is around .165, 1.7-1.75 is easier.
+		round = yes
+		min = 0
+		max = max_raiding_income
+	}
 }
 
 raiding_level = { # 1-6
 	value = raiding_income
-	add = 501 #stops divide by 0 errors, round up
 	min = 1
+	add = 501 #stops divide by 0 errors, round up
 	divide = 1000
 	min = 1
 	round = yes
@@ -138,6 +162,25 @@ metternich_agenda_value = {
 	value = 0
 	if = {
 		limit = {
+			NOT = {
+				exists = c:ITA
+			}
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			OR = {
+				c:GER ?= this
+				NOT = {
+					exists = c:GER
+				}
+			}
+		}
+		add = 1
+	}
+	if = {
+		limit = {
 			leading_producer_of = g:fine_art
 		}
 		add = 1
@@ -226,7 +269,8 @@ grunderzeit_actual_gdp_script_value = {
 		limit = {
 			has_global_variable = grunderzeit_ongoing_global_var
 		}
-		every_country = {
+		every_in_global_list = {
+			variable = german_confederation_country_list
 			limit = {
 				has_journal_entry = je_grunderzeit
 			}
@@ -234,6 +278,7 @@ grunderzeit_actual_gdp_script_value = {
 		}
 	}
 }
+
 danubian_federation_remaining_cultures_to_integrate = {
 	value = 5
 	if = {
@@ -241,5 +286,24 @@ danubian_federation_remaining_cultures_to_integrate = {
 			has_variable = count_integrated_cultures
 		}
 		subtract = var:count_integrated_cultures
+	}
+}
+
+balkan_war_remaining_days = { # 
+	value = 3650 #
+}
+
+
+balkan_league_power_projection = {
+	every_in_global_list = {
+		variable = balkan_league_side_list
+		add = army_power_projection
+	}
+}
+
+ottoman_power_projection= {
+	every_in_global_list = {
+		variable = ottoman_side_list
+		add = army_power_projection
 	}
 }

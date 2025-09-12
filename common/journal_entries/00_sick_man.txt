@@ -394,20 +394,7 @@ je_sick_man_separatism = {
 	icon = "gfx/interface/icons/event_icons/event_fire.dds"
 
 	group = je_group_tanzimat
-	
-	is_shown_when_inactive = {
-		country_has_primary_culture = cu:turkish
-		NOT = {
-			has_variable = sick_man_complete
-		}
-	}
-	possible = {
-		custom_tooltip = {
-			text = gulhane_edict_issued_tt
-			has_variable = gulhane_edict
-		}
-	}
-	
+
 	complete = {
 		scope:journal_entry = {
 			is_goal_complete = yes
@@ -451,15 +438,19 @@ je_sick_man_separatism = {
 	fail = {
 		highest_secession_progress > 0.5
 	}
-	
+
 	on_fail = {
-		if = { # TODO: PRCAL-38244 Ensure IP3 content is locked
+		set_variable = failed_sick_man_separatism
+		if = { #failure immediately triggers eastern_crisis
 			limit = {
+				c:TUR ?= this
 				has_dlc_feature = ip3_content
+				NOT = {
+					has_variable = eastern_crisis_happened
+				}
 			}
-			custom_tooltip = {
-				text = eastern_crisis_consequence_tt
-				set_variable = failed_sick_man_separatism
+			add_journal_entry = {
+				type = je_great_eastern_crisis
 			}
 		}
 	}
@@ -482,7 +473,9 @@ je_sick_man_separatism = {
 	transferable = no
 
 	weight = 5000
-    should_be_pinned_by_default = yes
+
+	should_be_pinned_by_default = yes
+
 	progressbar = yes
 }
 
@@ -823,6 +816,13 @@ je_sick_man_arabia = {
 			has_variable = sick_man_complete
 		}
 	}
+	immediate = {
+		set_variable = {
+			name = sick_man_arabia_var
+			value = 20
+		}
+    }
+		
 	possible = {
 	}
 	

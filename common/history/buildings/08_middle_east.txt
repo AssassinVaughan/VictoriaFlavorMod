@@ -593,6 +593,19 @@
 				reserves=1
 				activate_production_methods={ "default_building_tobacco_plantation" "pm_road_carts"  }
 			}
+			create_building={
+				building="building_silk_plantation"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:TUR"
+						levels=1
+						region="STATE_BAGHDAD"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "default_building_silk_plantation" "pm_road_carts"  }
+			}
 		}
 	}
 	s:STATE_MOSUL={
@@ -1522,7 +1535,7 @@
 					}
 					country={
 						country="c:TUR"
-						levels=2
+						levels=1
 					}
 				}
 				reserves=1
