@@ -313,16 +313,35 @@ modifier_ferdinand_the_good = {
 }
 
 modifier_geheime_staatskonferenz = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
-	country_legitimacy_ideological_incoherence_mult = -0.75
-	country_legitimacy_govt_size_add = 2
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
+	country_legitimacy_govt_size_add = 1
 	country_authority_mult = -0.25
+	country_law_enactment_time_mult = 0.20
+	country_law_enactment_success_add = -0.10
+}
+
+modifier_geheime_staatskonferenz_kolowrat = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
+	interest_group_ig_intelligentsia_pol_str_mult = 0.5
+	interest_group_ig_armed_forces_pol_str_mult = 0.25
+	interest_group_ig_landowners_pol_str_mult = -0.25
+	country_legitimacy_govt_size_add = 1
+	country_authority_mult = -0.20
 	country_law_enactment_time_mult = 0.25
+	country_law_enactment_success_add = -0.15
+}
+
+modifier_geheime_staatskonferenz_metternich = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
+	interest_group_ig_landowners_pol_str_mult = 0.25
+	country_authority_mult = -0.10
+	country_law_enactment_time_mult = 0.10
+	country_law_enactment_success_add = -0.05
 }
 
 modifier_geheime_staatskonferenz_member = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
-	interest_group_pol_str_mult = 0.10
+	interest_group_pol_str_mult = 0.25
 	interest_group_in_opposition_approval_add = -5
 }
 

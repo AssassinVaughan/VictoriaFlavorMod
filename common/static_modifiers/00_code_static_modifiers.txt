@@ -365,9 +365,32 @@ ruler_left_interest_group = {
 	interest_group_approval_add = -5
 }
 
+# Unscaled modifier applied to all insurrectionary countries
+uprising = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_positive.dds
+	building_training_rate_mult = 2.0
+}
+
+# Scaled modifier for insurrectionary country conscription rate, based on CIVIL_WAR_CONSCRIPTION_RATE defines
 uprising_conscription = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_positive.dds
 	state_conscription_rate_add = 1.0
+}
+
+# Below modifiers generate sell orders of military goods in insurrectionary capitals, based on pre-civil war market conditions
+uprising_arms_cache_small_arms = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_positive.dds
+	state_sell_orders_small_arms_add = 1
+}
+
+uprising_arms_cache_ammunition = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_positive.dds
+	state_sell_orders_ammunition_add = 1
+}
+
+uprising_arms_cache_artillery = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_positive.dds
+	state_sell_orders_artillery_add = 1
 }
 
 revolution_lost_ig = {
@@ -868,5 +891,5 @@ successfully_met_foreign_imposition_legitimacy = {
 
 movement_suppressed_after_civil_war = {
 	icon = "gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds"
-	political_movement_pop_attraction_mult = -2.0
+	political_movement_radicalism_add = -1
 }

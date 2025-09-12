@@ -27,7 +27,7 @@
 	}
 
 	on_enable = {
-		ig:ig_landowners = {
+		ig:ig_landowners ?= {
 			if = {
 				limit = {
 					owner = { c:RUS ?= this}
@@ -112,7 +112,7 @@
 			limit = {
 				country_has_primary_culture = cu:australian
 			}
-			ig:ig_landowners = {
+			ig:ig_landowners ?= {
 				set_interest_group_name = ig_squattocracy
 			}
 		}
@@ -121,7 +121,7 @@
 			limit = {
 				c:TUR ?= this
 			}
-			ig:ig_landowners = {
+			ig:ig_landowners ?= {
 				set_interest_group_name = ig_local_governors
 			}
 		}
@@ -130,7 +130,7 @@
 			limit = {
 				c:PRU ?= this
 			}
-			ig:ig_landowners = {
+			ig:ig_landowners ?= {
 				set_interest_group_name = ig_junkers
 				remove_ideology = ideology_paternalistic
 				add_ideology = ideology_junker_paternalistic
@@ -141,7 +141,7 @@
 			limit = {
 				c:RUS ?= this
 			}
-			ig:ig_landowners = {
+			ig:ig_landowners ?= {
 				set_interest_group_name = ig_gentry_assembly
 			}
 		}
@@ -150,7 +150,7 @@
 			limit = {
 				c:PAP ?= this
 			}
-			ig:ig_landowners = {
+			ig:ig_landowners ?= {
 				set_interest_group_name = ig_roman_landowners
 				remove_ideology = ideology_paternalistic
 				add_ideology = ideology_papal_paternalistic
@@ -161,7 +161,7 @@
 			limit = {
 				country_has_primary_culture = cu:hawaiian
 			}
-			ig:ig_landowners = {
+			ig:ig_landowners ?= {
 				set_interest_group_name = ig_alii
 				add_ideology = ideology_loyalist
 			}
@@ -171,7 +171,7 @@
 			limit = {
 				c:GBR ?= this
 			}
-			ig:ig_landowners = {
+			ig:ig_landowners ?= {
 				set_interest_group_name = ig_landed_gentry
 				remove_ideology = ideology_paternalistic
 				add_ideology = ideology_magnatial
@@ -182,7 +182,7 @@
 			limit = {
 				country_has_primary_culture = cu:polish
 			}
-			ig:ig_landowners = {
+			ig:ig_landowners ?= {
 				remove_ideology = ideology_paternalistic
 				add_ideology = ideology_magnatial
 			}
@@ -192,7 +192,7 @@
 			limit = {
 				c:KOR ?= this
 			}
-			ig:ig_landowners = {
+			ig:ig_landowners ?= {
 				set_interest_group_name = ig_yangban
 			}
 		}
@@ -201,7 +201,7 @@
 			limit = {
 				c:CHI ?= this
 			}
-			ig:ig_landowners = {
+			ig:ig_landowners ?= {
 				set_interest_group_name = ig_scholar_officials
 				remove_ideology = ideology_paternalistic
 				add_ideology = ideology_scholar_paternalistic
@@ -212,7 +212,7 @@
 			limit = {
 				country_has_primary_culture = cu:spanish
 			}
-			ig:ig_landowners = {
+			ig:ig_landowners ?= {
 				add_ideology = ideology_pious
 			}
 		}
@@ -221,7 +221,7 @@
 			limit = {
 				country_has_primary_culture = cu:norwegian
 			}
-			ig:ig_landowners = {
+			ig:ig_landowners ?= {
 				set_interest_group_name = ig_aristocracy_of_officials
 			}
 		}
@@ -236,7 +236,7 @@
 					country_has_primary_culture = cu:dixie
 				}
 			}
-			ig:ig_landowners = {
+			ig:ig_landowners ?= {
 				set_interest_group_name = ig_southern_planters
 				remove_ideology = ideology_paternalistic
 				add_ideology = ideology_republican_paternalistic
@@ -252,7 +252,7 @@
 					NOT = { cu:caribeno = this }
 				}
 			}
-			ig:ig_landowners = {
+			ig:ig_landowners ?= {
 				remove_ideology = ideology_paternalistic
 				add_ideology = ideology_republican_paternalistic
 			}
@@ -267,7 +267,7 @@
 					}
 				}
 			}
-			ig:ig_landowners = {
+			ig:ig_landowners ?= {
 				set_interest_group_name = ig_zamindars
 				if = {
 					limit = {
@@ -301,7 +301,7 @@
 					c:NZL ?= this
 				}
 			}
-			ig:ig_landowners = {
+			ig:ig_landowners ?= {
 				remove_ideology = ideology_stratocratic
 				add_ideology = ideology_colonialist
 			}
@@ -312,13 +312,14 @@
 				any_primary_culture = { cu:bedouin = this }
 				NOT = { any_primary_culture = { cu:swahili = this } }
 			}
-			ig:ig_landowners = {
+			ig:ig_landowners ?= {
 				set_interest_group_name = ig_wamanga
 			}
 		}
 		# Magnates
 		else_if = {
 			limit = {
+				has_dlc_feature = ip3_content
 				any_primary_culture = {
 					OR = {
 						cu:polish = this
@@ -327,16 +328,17 @@
 					}
 				}
 			}
-			ig:ig_landowners = {
+			ig:ig_landowners ?= {
 				set_interest_group_name = ig_magnates
 			}
 		}
 		# Boyars
 		else_if = {
 			limit = {
+				has_dlc_feature = ip3_content
 				country_has_primary_culture = cu:romanian
 			}
-			ig:ig_landowners = {
+			ig:ig_landowners ?= {
 				set_interest_group_name = ig_boyars
 			}
 		}
@@ -562,7 +564,7 @@
 		# Agitators will never be part of a marginalized IG
 		if = {
 			limit = {
-				owner.ig:ig_landowners = {
+				owner.ig:ig_landowners ?= {
 					is_marginal = yes
 				}
 			}

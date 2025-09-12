@@ -279,23 +279,11 @@ german_unification.3 = {
 	duration = 3
 
 	trigger = {
-		NOT = { has_global_variable = bismarck_variable }
-		ig:ig_landowners = {
-			is_powerful = yes
-			is_in_government = yes
-		}
-		is_unification_candidate = GER
-		has_technology_researched = nationalism
-		game_date > 1846.1.1
-		game_date < 1898.1.1
+		# triggered by character spawn
 	}
 
 	immediate = {
-		set_global_variable = bismarck_variable
-		create_character = {
-			template = PRU_otto_von_bismarck
-		}
-		ig:ig_landowners = {
+		ig:ig_landowners ?= {
 			save_scope_as = junkers
 			leader = {
 				save_scope_as = bismarck_scope
@@ -315,10 +303,21 @@ german_unification.3 = {
 			add_modifier = {
 				name = bismarck_popular
 			}
+			if = {
+				limit = {
+					has_variable = memento_mori_immunity
+				}
+				remove_variable = memento_mori_immunity
+			}
+			set_variable = { name = memento_mori_immunity years = 30 }
 		}
 		add_modifier = {
 			name = realpolitik
-			days = normal_modifier_time
+			days = long_modifier_time
+		}
+
+		ai_chance = {
+			base = 95
 		}
 	}
 	option = {
@@ -336,7 +335,11 @@ german_unification.3 = {
 		}
 		add_modifier = {
 			name = germany_aggressive_expansion
-			days = normal_modifier_time
+			days = long_modifier_time
+		}
+
+		ai_chance = {
+			base = 5
 		}
 	}
 }

@@ -70,24 +70,6 @@ law_crownland_diets = {
 		}
 	}
 
-	can_enact = {
-		trigger_if = {
-			limit = {
-				game_date > 1836.1.1
-			}
-			OR = {
-				c:AUS ?= this # For the Austrian Empire and its subjects
-				AND = {
-					exists = c:AUS
-					is_subject_of = c:AUS
-				}
-			}
-		}
-		trigger_else = {
-			always = yes
-		}
-	}
-
 	modifier = {
 		state_bureaucracy_population_base_cost_factor_mult = -0.25
 		country_aristocrats_pol_str_mult = 0.10

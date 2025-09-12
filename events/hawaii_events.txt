@@ -122,7 +122,7 @@ hawaii_events.2 = { #JE success
 				}
 			}
 		}
-		ig:ig_devout = {
+		ig:ig_devout ?= {
 			set_interest_group_name = ig_evangelicals
 			remove_ideology = ideology_laissez_faire
 			if = {
@@ -142,7 +142,7 @@ hawaii_events.2 = { #JE success
 			limit = {
 				has_law = law_type:law_monarchy
 			}
-			ig:ig_intelligentsia = {
+			ig:ig_intelligentsia ?= {
 				set_interest_group_name = ig_intelligentsia
 				remove_ideology = ideology_republican
 				add_ideology = ideology_constitutionalist

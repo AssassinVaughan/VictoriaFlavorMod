@@ -1010,7 +1010,7 @@ gov_rawalate = {
 	possible = {
 		has_law_or_variant = law_type:law_monarchy
 		exists = c:JAS
-		c:JAS = ROOT
+		c:JAS ?= ROOT
 		NOT = {
 			is_subject_type = subject_type_crown_land
 		}
@@ -1063,14 +1063,11 @@ gov_tsardom = {
 		OR = {
 			AND = {
 				exists = c:RUS
-				c:RUS = ROOT
+				c:RUS ?= ROOT
 			}
 			AND = {
 				exists = c:BUL
-				c:BUL = ROOT
-				Ruler ?= {
-					has_template = BUL_ferdinand_i
-				}
+				c:BUL ?= ROOT
 			}
 		}
 		NOT = {
@@ -1094,7 +1091,7 @@ gov_dey = {
 
 	possible = {
 		has_law_or_variant = law_type:law_monarchy
-		AND = { exists = c:ALD c:ALD = ROOT }
+		AND = { exists = c:ALD c:ALD ?= ROOT }
 		has_variable = algeria_deylik_restored
 		NOT = {
 			is_subject_type = subject_type_crown_land
@@ -2498,6 +2495,10 @@ gov_kingdom = {
 		OR = {
 			country_tier = kingdom
 			c:ITA ?= this
+			AND = {
+				c:MON ?= this
+				has_variable = king_sounds_better
+			}
 		}
 		NAND = {
 			is_subject_type = subject_type_personal_union
@@ -2538,6 +2539,10 @@ gov_constitutional_kingdom = {
 			country_tier = kingdom
 			c:HAI ?= this
 			c:ITA ?= this
+			AND = {
+				c:MON ?= this
+				has_variable = king_sounds_better
+			}
 		}
 		NAND = {
 			is_subject_type = subject_type_personal_union
@@ -2771,9 +2776,11 @@ gov_absolute_principality = {
 		OR = {
 			country_is_in_europe = no
 			ROOT ?= c:MON
+			##c:mon changes if they have the variable below
 		}
 		NOT = {
 			c:HAI ?= this
+			has_variable = king_sounds_better
 		}
 	}
 

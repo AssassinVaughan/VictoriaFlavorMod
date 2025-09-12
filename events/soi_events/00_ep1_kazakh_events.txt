@@ -1115,7 +1115,7 @@ kazakhstan_events.8 = { #Raid Repelled
 	option = {
 		name = kazakhstan_events.8.a
         default_option = yes
-        ig:ig_armed_forces = {
+        ig:ig_armed_forces ?= {
         	add_modifier = {
         		name = modifier_supported_soldiers_in_casia
         		days = normal_modifier_time
@@ -1345,7 +1345,7 @@ russian_central_asia.2 = {
         	}
         }
         else = {
-        	ig:ig_armed_forces = {
+        	ig:ig_armed_forces ?= {
         		save_scope_as = hawkish_ig
         	}
         }

@@ -20,7 +20,7 @@ emu_war.1 = {
 	trigger = {
 		country_has_primary_culture = cu:australian
 		has_technology_researched = automatic_machine_guns
-		ig:ig_armed_forces = {
+		ig:ig_armed_forces ?= {
 			is_marginal = no
 		}
 		any_scope_state = {
@@ -62,7 +62,7 @@ emu_war.1 = {
 			}
 			save_scope_as = westralia_state
 		}
-		ig:ig_armed_forces = {
+		ig:ig_armed_forces ?= {
 			save_scope_as = armed_forces_ig
 		}
 		set_variable = emu_war_happened_var

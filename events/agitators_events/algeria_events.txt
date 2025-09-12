@@ -63,7 +63,7 @@ algeria_events.1 = {
 				}
 			}
 		}
-		ig:ig_armed_forces = {
+		ig:ig_armed_forces ?= {
 			add_modifier = {
 				name = vanquished_barbary
 				days = normal_modifier_time
@@ -434,7 +434,7 @@ algeria_events.3 = {
 	}
 
 	immediate = {
-		ig:ig_armed_forces = {
+		ig:ig_armed_forces ?= {
 			leader = {
 				save_scope_as = algerian_fiasco_ig_leader
 			}
@@ -449,7 +449,7 @@ algeria_events.3 = {
 			name = the_algerian_fiasco
 			days = long_modifier_time
 		}
-		ig:ig_armed_forces = {
+		ig:ig_armed_forces ?= {
 			add_modifier = {
 				name = widespread_condemnation_modifier
 				days = normal_modifier_time
@@ -519,13 +519,13 @@ algeria_events.4 = {
 	option = {
 		name = algeria_events.4.a
 		default_option = yes
-		ig:ig_intelligentsia = {
+		ig:ig_intelligentsia ?= {
 			add_modifier = {
 				name = the_algerian_dream
 				days = normal_modifier_time
 			}
 		}
-		ig:ig_petty_bourgeoisie = {
+		ig:ig_petty_bourgeoisie ?= {
 			add_modifier = {
 				name = the_algerian_dream
 				days = normal_modifier_time
@@ -547,13 +547,13 @@ algeria_events.4 = {
 	}
 	option = {
 		name = algeria_events.4.b
-		ig:ig_petty_bourgeoisie = {
+		ig:ig_petty_bourgeoisie ?= {
 			add_modifier = {
 				name = the_algerian_dream
 				days = normal_modifier_time
 			}
 		}
-		ig:ig_rural_folk = {
+		ig:ig_rural_folk ?= {
 			add_modifier = {
 				name = the_algerian_dream
 				days = normal_modifier_time
@@ -581,7 +581,7 @@ algeria_events.4 = {
 				days = normal_modifier_time
 			}
 		}
-		ig:ig_landowners = {
+		ig:ig_landowners ?= {
 			add_modifier = {
 				name = the_algerian_dream
 				days = normal_modifier_time
@@ -1161,7 +1161,7 @@ algeria_events.9 = {
 				}
 			}
 		}
-		ig:ig_armed_forces = {
+		ig:ig_armed_forces ?= {
 			# ig approval and some polstr
 			add_modifier = {
 				name = french_foreign_legion_ig

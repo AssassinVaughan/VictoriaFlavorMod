@@ -44,6 +44,7 @@ law_autocracy = {
 			limit = {
 				c:BIC ?= ROOT
 				is_subject = yes
+				NOT = { has_law = scope:law }
 			}
 			custom_tooltip = {
 				text = BIC_not_able_to_change_distribution_of_power_tt
@@ -128,24 +129,12 @@ law_neo_absolutism = { # Reward for completing the neo-absolutist content
 
 	on_activate = {
 		scripted_effect_parties_disappearence = yes
+		clear_geheime_staatskonferenz = yes
 	}
 
 	is_visible = {
 		c:AUS ?= this
 		has_global_variable = neo_absolutism_victory
-	}
-
-	can_enact = {
-		trigger_if = {
-			limit = {
-				game_date > 1836.1.1
-			}
-			c:AUS ?= this
-			has_global_variable = neo_absolutism_victory
-		}
-		trigger_else = {
-			always = yes
-		}
 	}
 
 	modifier = {
@@ -194,6 +183,7 @@ law_technocracy = {
 			remove_modifier = missouri_compromise
 		}
 		add_journal_entry = { type = je_technocracy }
+		clear_geheime_staatskonferenz = yes
 	}
 	
 	modifier = {
@@ -216,6 +206,7 @@ law_technocracy = {
 			limit = {
 				c:BIC ?= ROOT
 				is_subject = yes
+				NOT = { has_law = scope:law }
 			}
 			custom_tooltip = {
 				text = BIC_not_able_to_change_distribution_of_power_tt
@@ -285,7 +276,7 @@ law_oligarchy = {
 	progressiveness = -50
 
 	is_visible = {
-		NOT = {
+		NAND = {
 			country_has_primary_culture = cu:romanian
 			is_subject = yes
 		}
@@ -299,6 +290,7 @@ law_oligarchy = {
 			}
 			remove_modifier = missouri_compromise
 		}
+		clear_geheime_staatskonferenz = yes
 	}
 	
 	modifier = {
@@ -317,6 +309,7 @@ law_oligarchy = {
 			limit = {
 				c:BIC ?= ROOT
 				is_subject = yes
+				NOT = { has_law = scope:law }
 			}
 			custom_tooltip = {
 				text = BIC_not_able_to_change_distribution_of_power_tt
@@ -403,16 +396,8 @@ law_organic_regulation = {
 	}
 
 	can_enact = {
-		trigger_if = {
-			limit = {
-				game_date > 1836.1.1
-			}
-			country_has_primary_culture = cu:romanian
-			is_subject = yes
-		}
-		trigger_else = {
-			always = yes
-		}
+		country_has_primary_culture = cu:romanian
+		is_subject = yes
 	}
 
 	on_activate = {
@@ -522,6 +507,7 @@ law_elder_council = {
 			}
 			remove_modifier = missouri_compromise
 		}
+	    clear_geheime_staatskonferenz = yes
 	}
 
 	modifier = {
@@ -578,6 +564,7 @@ law_landed_voting = {
 			limit = {
 				c:BIC ?= ROOT
 				is_subject = yes
+				NOT = { has_law = scope:law }
 			}
 			custom_tooltip = {
 				text = BIC_not_able_to_change_distribution_of_power_tt
@@ -601,6 +588,7 @@ law_landed_voting = {
 				add_journal_entry = { type = je_king_in_parliament }
 			}
 		}
+		clear_geheime_staatskonferenz = yes
 	}
 	
 	can_impose = {
@@ -697,6 +685,7 @@ law_wealth_voting = {
 			limit = {
 				c:BIC ?= ROOT
 				is_subject = yes
+				NOT = { has_law = scope:law }
 			}
 			custom_tooltip = {
 				text = BIC_not_able_to_change_distribution_of_power_tt
@@ -720,6 +709,7 @@ law_wealth_voting = {
 				add_journal_entry = { type = je_king_in_parliament }
 			}
 		}
+		clear_geheime_staatskonferenz = yes
 	}
 	
 	can_impose = {
@@ -810,6 +800,7 @@ law_census_voting = {
 			limit = {
 				c:BIC ?= ROOT
 				is_subject = yes
+				NOT = { has_law = scope:law }
 			}
 			custom_tooltip = {
 				text = BIC_not_able_to_change_distribution_of_power_tt
@@ -833,6 +824,7 @@ law_census_voting = {
 				add_journal_entry = { type = je_king_in_parliament }
 			}
 		}
+		clear_geheime_staatskonferenz = yes
 	}
 	
 	can_impose = {
@@ -920,6 +912,7 @@ law_universal_suffrage = {
 			limit = {
 				c:BIC ?= ROOT
 				is_subject = yes
+				NOT = { has_law = scope:law }
 			}
 			custom_tooltip = {
 				text = BIC_not_able_to_change_distribution_of_power_tt
@@ -943,6 +936,7 @@ law_universal_suffrage = {
 				add_journal_entry = { type = je_king_in_parliament }
 			}
 		}
+		clear_geheime_staatskonferenz = yes
 	}
 	
 	can_impose = {
@@ -1030,6 +1024,7 @@ law_anarchy = {
 			limit = {
 				c:BIC ?= ROOT
 				is_subject = yes
+				NOT = { has_law = scope:law }
 			}
 			custom_tooltip = {
 				text = BIC_not_able_to_change_distribution_of_power_tt
@@ -1046,6 +1041,7 @@ law_anarchy = {
 			}
 			remove_modifier = missouri_compromise
 		}
+		clear_geheime_staatskonferenz = yes
 	}
 	
 	ai_will_do = {
@@ -1140,6 +1136,7 @@ law_single_party_state = {
 			limit = {
 				c:BIC ?= ROOT
 				is_subject = yes
+				NOT = { has_law = scope:law }
 			}
 			custom_tooltip = {
 				text = BIC_not_able_to_change_distribution_of_power_tt
@@ -1191,8 +1188,12 @@ law_single_party_state = {
 					has_journal_entry = je_king_in_parliament
 				}
 			}
-			add_journal_entry = { type = je_king_in_parliament }
+			custom_tooltip = {
+				text = king_in_parliament_tt
+				add_journal_entry = { type = je_king_in_parliament }
+			}
 		}
+		clear_geheime_staatskonferenz = yes
 	}
 	
 	on_deactivate = {

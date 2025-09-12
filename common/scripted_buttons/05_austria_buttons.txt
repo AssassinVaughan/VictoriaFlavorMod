@@ -35,6 +35,8 @@ matter_of_hungary_dual_monarchy_button = {
 				is_subject_type = subject_type_personal_union
 			}
 		}
+		is_diplomatic_play_committed_participant = no
+		is_at_war = no
 	}
 
 	selected = {
@@ -212,13 +214,13 @@ austrian_neo_absolutism_abolish_crown_land_autonomy_button = {
 				add_progress = { value = 10 name = austrian_neo_absolutism_constitutional_pressure_progress_bar }
 			}
 		}
-		ig:ig_landowners = {
+		ig:ig_landowners ?= {
 			add_modifier = {
 				name = modifier_bureaucratisation_of_the_landtage
 				days = normal_modifier_time
 			}
 		}
-		ig:ig_devout = {
+		ig:ig_devout ?= {
 			add_modifier = {
 				name = modifier_bureaucratisation_of_the_landtage
 				days = normal_modifier_time
@@ -247,10 +249,10 @@ austrian_neo_absolutism_abolish_feudal_obligations_button = {
 
 	possible = {
 		NOT = {
-			has_law_or_variant = law_type:law_manorialism
+			has_law = law_type:law_manorialism
 		}
 		NOT = {
-			has_law_or_variant = law_type:law_crownland_diets
+			has_law = law_type:law_crownland_diets
 		}
 	}
 
@@ -265,13 +267,13 @@ austrian_neo_absolutism_abolish_feudal_obligations_button = {
 				add_progress = { value = -10 name = austrian_neo_absolutism_constitutional_pressure_progress_bar }
 			}
 		}
-		ig:ig_landowners = {
+		ig:ig_landowners ?= {
 			add_modifier = {
 				name = modifier_abolished_feudal_obligations
 				days = normal_modifier_time
 			}
 		}
-		ig:ig_rural_folk = {
+		ig:ig_rural_folk ?= {
 			add_modifier = {
 				name = modifier_empowered_smallholders
 				days = normal_modifier_time

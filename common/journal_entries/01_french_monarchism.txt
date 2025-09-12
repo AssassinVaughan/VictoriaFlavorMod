@@ -227,21 +227,8 @@
 				is_civil_war_type = revolution
 				civil_war_progress >= 0.75
 			}
-			trigger_if = {
-				limit = {
-					has_journal_entry = je_springtime_of_the_peoples
-				}
-				AND = {
-					has_journal_entry = je_springtime_of_the_peoples
-					capital = {
-						turmoil >= 0.10
-					}
-				}
-			}
-			trigger_else = {
-				capital = {
-					turmoil >= 0.25
-				}
+			capital = {
+				is_in_revolt = yes
 			}
 		}
 	}

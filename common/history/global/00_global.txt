@@ -7,10 +7,10 @@ GLOBAL = {
 			limit = {
 				has_law_or_variant = law_type:law_colonial_slavery
 			}
-			ig:ig_landowners = { add_ideology = ideology_pro_slavery_colonial }
+			ig:ig_landowners ?= { add_ideology = ideology_pro_slavery_colonial }
 		}
 		else = {
-			ig:ig_landowners = { add_ideology = ideology_pro_slavery }
+			ig:ig_landowners ?= { add_ideology = ideology_pro_slavery }
 		}
 	}
 

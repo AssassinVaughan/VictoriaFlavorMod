@@ -78,7 +78,7 @@
 		if = {
 			limit = { 
 				exists = ig:ig_landowners
-				ig:ig_landowners = { is_powerful = yes } 
+				ig:ig_landowners ?= { is_powerful = yes }
 			}
 			multiply = 1.5
 		}
@@ -86,7 +86,7 @@
 		if = {
 			limit = { 
 				exists = ig:ig_rural_folk
-				ig:ig_rural_folk = { is_powerful = yes } 
+				ig:ig_rural_folk ?= { is_powerful = yes } 
 			}
 			multiply = 1.5
 		}
@@ -182,7 +182,7 @@ ai_strategy_plantation_economy = {
 		if = {
 			limit = { 
 				exists = ig:ig_landowners
-				ig:ig_landowners = { is_powerful = yes } 
+				ig:ig_landowners ?= { is_powerful = yes } 
 			}
 			multiply = 1.5
 		}	
@@ -281,7 +281,7 @@ ai_strategy_resource_expansion = {
 		if = {
 			limit = { 
 				exists = ig:ig_industrialists
-				ig:ig_industrialists = { is_powerful = yes } 
+				ig:ig_industrialists ?= { is_powerful = yes } 
 			}
 			multiply = 1.5
 		}
@@ -367,7 +367,7 @@ ai_strategy_mining_exporter = {
 		if = {
 			limit = { 
 				exists = ig:ig_industrialists
-				ig:ig_industrialists = { is_powerful = yes } 
+				ig:ig_industrialists ?= { is_powerful = yes } 
 			}
 			multiply = 1.5
 		}
@@ -501,7 +501,7 @@ ai_strategy_industrial_expansion = {
 		if = {
 			limit = { 
 				exists = ig:ig_industrialists
-				ig:ig_industrialists = { is_powerful = yes } 
+				ig:ig_industrialists ?= { is_powerful = yes } 
 			}
 			multiply = 2.0
 		}	
@@ -631,7 +631,7 @@ ai_strategy_placate_population = {
 		if = {
 			limit = { 
 				exists = ig:ig_rural_folk
-				ig:ig_rural_folk = { is_powerful = yes } 
+				ig:ig_rural_folk ?= { is_powerful = yes } 
 			}
 			multiply = 1.5
 		}

@@ -316,15 +316,7 @@ law_extraction_economy = {
 	}
 
 	can_enact = {
-		trigger_if = {
-			limit = {
-				game_date > 1836.1.1
-			}
-			is_subject = yes # Subject relationships load after laws' validities are checked
-		}
-		trigger_else = {
-			always = yes
-		}
+		is_subject = yes
 	}
 
 	on_activate = {
@@ -505,18 +497,20 @@ law_cooperative_ownership = {
 	}
 	
 	modifier = {
-		state_shopkeepers_investment_pool_efficiency_mult = 0.25	
+		state_shopkeepers_investment_pool_efficiency_mult = 0.25
 		state_farmers_investment_pool_efficiency_mult = 0.25
 		country_private_construction_allocation_mult = 0.35
 		country_government_dividends_reinvestment_add = 1.0
-		
+		building_company_worker_dividends_add = 0.75
+		country_free_charters_add = 1
+
 		building_group_bg_manufacturing_allowed_collectivization_add = 1.0
 		building_group_bg_mining_allowed_collectivization_add = 1.0
 		building_group_bg_extraction_allowed_collectivization_add = 1.0
 		building_group_bg_power_allowed_collectivization_add = 1.0
 		building_group_bg_private_infrastructure_allowed_collectivization_add = 1.0
 		building_group_bg_arts_allowed_collectivization_add = 1.0
-		
+
 		country_foreign_collectivization_bool = yes
 	}
 	
@@ -605,17 +599,20 @@ law_command_economy = {
 	
 	modifier = {
 		country_disable_investment_pool_bool = yes
-		
+
+		state_bureaucrats_investment_pool_efficiency_mult = 0.25
 		country_authority_mult = 0.25
 		country_bureaucrats_pol_str_mult = 0.25
 		building_nationalization_cost_mult = -0.5
 		building_nationalization_radicals_mult = -0.75
 		country_government_dividends_efficiency_add = 0.4
 		country_private_construction_allocation_mult = 0.1
-		
+		building_company_government_dividends_add = 0.75
+		country_free_charters_add = 1
+
 		country_leverage_resistance_mult = 0.25
 
-		country_disable_privatization_bool = yes
+		country_disable_non_company_privatization_bool = yes
 	}
 	
 	ai_will_do = {

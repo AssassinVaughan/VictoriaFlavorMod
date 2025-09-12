@@ -286,6 +286,11 @@ decree_promote_national_values = {
 	unlocking_technologies = {
 		nationalism
 	}
+
+	country_trigger = {
+		NOT = { has_law_or_variant = law_type:law_multicultural }
+	}
+
 	modifier = {
 		state_assimilation_mult = 0.5
 		state_conversion_mult = 0.5

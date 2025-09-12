@@ -86,26 +86,6 @@ law_manorialism = {
 		}
 	}
 
-	can_enact = {
-		trigger_if = {
-			limit = {
-				game_date > 1836.1.1
-			}
-			OR = {
-				c:AUS ?= this # For the Austrian Empire and its subjects
-				AND = {
-					exists = c:AUS
-					is_subject_of = c:AUS
-					c:AUS ?= { has_law = law_type:law_manorialism }
-				}
-				country_has_primary_culture = cu:romanian # Also for the Danubian principalities
-			}
-		}
-		trigger_else = {
-			always = yes
-		}
-	}
-
 	on_enact = {
 		if = {
 			limit = {

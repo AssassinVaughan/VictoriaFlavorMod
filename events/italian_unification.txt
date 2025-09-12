@@ -859,13 +859,18 @@ italian_unification.10 = {
 	option = {
 		name = italian_unification.10.a
 		ai_chance = {
-			base = 10
-
+			base = 40
 			modifier = {
 				trigger = {
 					c:SAR ?= this
 				}
-				add = 500
+				add = 50
+			}
+			modifier = {
+				trigger = {
+					c:SIC ?= this
+				}
+				add = -35
 			}
 		}
 		default_option = yes
@@ -877,10 +882,11 @@ italian_unification.10 = {
 			limit = {
 				OR = {
 					has_ideology = ideology:ideology_patriotic
+					has_ideology = ideology:ideology_military_absolutist
 					has_ideology = ideology:ideology_liberal
 					has_ideology = ideology:ideology_liberal_modern
 					leader = {
-						OR = {						
+						OR = {
 							has_ideology = ideology:ideology_radical
 							has_ideology = ideology:ideology_jingoist_leader
 						}
@@ -951,32 +957,43 @@ italian_unification.10 = {
 			base = 15
 			modifier = {
 				trigger = {
-					has_law = law_type:law_theocracy
+					has_law_or_variant = law_type:law_theocracy
 				}
-				add = 300
+				add = 50
 			}
 			modifier = {
 				trigger = {
-					has_law = law_type:law_traditionalism
+					has_law_or_variant = law_type:law_traditionalism
 				}
-				add = 300
+				add = 50
 			}
 			modifier = {
 				trigger = {
-					ig:ig_intelligentsia = {
+					ig:ig_intelligentsia ?= {
 						is_in_government = yes
 					}
+				}
+				add = -25
+			}
+			modifier = {
+				trigger = {
+					ig:ig_landowners ?= {
+						is_in_government = yes
+					}
+				}
+				add = 15
+			}
+			modifier = {
+				trigger = {
+					c:SAR ?= this
 				}
 				add = -50
 			}
 			modifier = {
 				trigger = {
-					NOT = {
-						c:SAR ?= this
-					}
-					has_law = law_type:law_autocracy
+					c:SIC ?= this
 				}
-				add = 500
+				add = 50
 			}
 		}
 		every_interest_group = {
@@ -988,7 +1005,7 @@ italian_unification.10 = {
 				}
 				NOT = {
 					leader = {
-						OR = {						
+						OR = {
 							has_ideology = ideology:ideology_radical
 							has_ideology = ideology:ideology_jingoist_leader
 						}

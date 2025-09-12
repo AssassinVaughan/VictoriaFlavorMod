@@ -2368,7 +2368,7 @@ coup_pulse_events.10 = {
 				save_scope_as = barracks_theft_building
 			}
 		}
-		ig:ig_armed_forces = {
+		ig:ig_armed_forces ?= {
 			save_scope_as = armed_forces_ig
 		}
 	}
@@ -3680,7 +3680,7 @@ coup_aftermath_events.4 = {
 
 	trigger = {
 		has_variable = government_couped
-		ig:ig_intelligentsia = {
+		ig:ig_intelligentsia ?= {
 			law_stance = {
 				law = scope:coup_desired_law.type
 				value < neutral
@@ -3694,7 +3694,7 @@ coup_aftermath_events.4 = {
 	}
 
 	immediate = {
-		ig:ig_intelligentsia = { 
+		ig:ig_intelligentsia ?= { 
 			save_scope_as = intelligentsia_ig
 		}
 		random_scope_character = {
@@ -3737,7 +3737,7 @@ coup_aftermath_events.4 = {
 	}
 	option = { 
 		name = coup_aftermath_events.4.b
-		ig:ig_intelligentsia = {
+		ig:ig_intelligentsia ?= {
 			add_modifier = {
 				name = modifier_emboldened_academia
 				days = normal_modifier_time
