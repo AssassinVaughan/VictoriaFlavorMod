@@ -1,4 +1,9 @@
 ﻿### State geography triggers
+root_owns_state_in_region = {
+	any_scope_state = {
+		owner = root
+	}
+}
 
 state_is_in_europe = {
 	custom_description = {
@@ -13,7 +18,7 @@ state_is_in_europe = {
 			region = sr:region_france
 			region = sr:region_occitania
 			region = sr:region_rhine
-			region = sr:region_italy	
+			region = sr:region_italy
 			region = sr:region_poland
 			region = sr:region_danubia
 			region = sr:region_balkans
@@ -24,7 +29,19 @@ state_is_in_europe = {
 			region = sr:region_finland
 			region = sr:region_baltic_states # Baltic
 			region = sr:region_north_sea_coast # Ireland, Scotland, Greenland, Iceland
-		}		
+		}
+	}
+}
+
+state_is_in_balkans = {
+	custom_description = {
+		text = state_is_in_balkans_desc
+		subject = this
+
+		OR = {
+			region = sr:region_balkans
+			region = sr:region_danubia
+		}
 	}
 }
 
@@ -47,7 +64,7 @@ state_is_in_north_america = {
 state_is_in_central_america = {
 	custom_description = {
 		text = state_is_in_central_america_desc
-		subject = this	
+		subject = this
 
 		OR = {
 			region = sr:region_mexico
@@ -63,12 +80,12 @@ state_is_in_south_america = {
 		subject = this
 
 		OR = {
-			region = sr:region_brazil	
+			region = sr:region_brazil
 			region = sr:region_la_plata
-			region = sr:region_andes	
+			region = sr:region_andes
 			region = sr:region_gran_colombia
 		}
-	}	
+	}
 }
 
 state_is_in_americas = {
@@ -97,9 +114,9 @@ state_is_in_africa = {
 			region = sr:region_niger
 			region = sr:region_congo
 			region = sr:region_southern_africa
-			region = sr:region_zanj		
+			region = sr:region_zanj
 		}
-	}	
+	}
 }
 
 state_is_in_subsaharan_africa = {
@@ -137,7 +154,7 @@ state_is_in_north_africa = {
 			state_region = s:STATE_UPPER_EGYPT
 			state_region = s:STATE_SINAI
 		}
-	}	
+	}
 }
 
 state_is_in_middle_east = {
@@ -151,7 +168,7 @@ state_is_in_middle_east = {
 			region = sr:region_persia
 			region = sr:region_caucasus
 		}
-	}	
+	}
 }
 
 state_is_in_central_asia = {
@@ -163,7 +180,7 @@ state_is_in_central_asia = {
 			region = sr:region_himalayas
 			region = sr:region_central_asia
 		}
-	}	
+	}
 }
 
 state_is_in_india = {
@@ -179,7 +196,7 @@ state_is_in_india = {
 			region = sr:region_bengal
 			state_region = s:STATE_QUETTA
 			state_region = s:STATE_PASHTUNISTAN
-			state_region = s:STATE_KASHMIR			
+			state_region = s:STATE_KASHMIR
 		}
 	}
 }
@@ -197,7 +214,7 @@ state_is_in_east_asia = {
 			region = sr:region_west_siberia
 			region = sr:region_east_siberia
 		}
-	}	
+	}
 }
 
 state_is_in_china = {
@@ -210,7 +227,7 @@ state_is_in_china = {
 			region = sr:region_north_china
 			# not counting manchuria here deliberately
 		}
-	}	
+	}
 }
 
 state_is_in_southeast_asia = {
@@ -222,7 +239,7 @@ state_is_in_southeast_asia = {
 			region = sr:region_indonesia
 			region = sr:region_indochina
 		}
-	}	
+	}
 }
 ### Country geography triggers
 # exists = capital checks are necessary only because we may test these triggers and scope switch to capitals before states are initialized properly
@@ -234,7 +251,7 @@ country_is_in_china = {
 
 		capital ?= {
 			state_is_in_china = yes
-		}		
+		}
 	}
 }
 
@@ -245,9 +262,21 @@ country_is_in_europe = {
 
 		capital ?= {
 			state_is_in_europe = yes
-		}		
+		}
 	}
 }
+
+country_is_in_balkans = {
+	custom_description = {
+		text = country_is_in_balkans_desc
+		subject = this
+
+		capital ?= {
+			state_is_in_balkans = yes
+		}
+	}
+}
+
 
 country_is_in_americas = {
 	custom_description = {
@@ -267,7 +296,7 @@ country_is_in_north_america = {
 
 		capital ?= {
 			state_is_in_north_america = yes
-		}		
+		}
 	}
 }
 
@@ -278,7 +307,7 @@ country_is_in_central_america = {
 
 		capital ?= {
 			state_is_in_central_america = yes
-		}		
+		}
 	}
 }
 
@@ -289,7 +318,7 @@ country_is_in_south_america = {
 
 		capital ?= {
 			state_is_in_south_america = yes
-		}		
+		}
 	}
 }
 
@@ -300,7 +329,7 @@ country_is_in_africa = {
 
 		capital ?= {
 			state_is_in_africa = yes
-		}		
+		}
 	}
 }
 
@@ -323,7 +352,7 @@ country_is_in_north_africa = {
 		capital ?= {
 			state_is_in_north_africa = yes
 		}
-	}	
+	}
 }
 
 country_is_in_middle_east = {
@@ -333,7 +362,7 @@ country_is_in_middle_east = {
 
 		capital ?= {
 			state_is_in_middle_east = yes
-		}		
+		}
 	}
 }
 
@@ -344,7 +373,7 @@ country_is_in_central_asia = {
 
 		capital ?= {
 			state_is_in_central_asia = yes
-		}		
+		}
 	}
 }
 
@@ -355,7 +384,7 @@ country_is_in_india = {
 
 		capital ?= {
 			state_is_in_india = yes
-		}		
+		}
 	}
 }
 
@@ -366,7 +395,7 @@ country_is_in_east_asia = {
 
 		capital ?= {
 			state_is_in_east_asia = yes
-		}		
+		}
 	}
 }
 
@@ -377,7 +406,7 @@ country_is_in_southeast_asia = {
 
 		capital ?= {
 			state_is_in_southeast_asia = yes
-		}		
+		}
 	}
 }
 

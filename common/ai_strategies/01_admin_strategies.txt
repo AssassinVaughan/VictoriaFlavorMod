@@ -1,6 +1,6 @@
 ﻿ai_strategy_agricultural_expansion = {
 	icon = "gfx/interface/icons/ai_strategy_icons/agricultural_expansion.dds"
-	
+
 	type = administrative
 
 	building_group_weights = {
@@ -15,14 +15,40 @@
 		bg_plantations = 1.25
 		bg_logging = 1.25
 	}
-	
+
 	goods_stances = {
 		grain = { stance = wants_export trigger = { kai_has_high_supply = { GOODS = grain } } }
-		meat = { stance = wants_export trigger = { kai_has_high_supply = { GOODS = meat } } }
+		meat = {
+			stance = wants_export
+			trigger = {
+				NOR = {
+					country_has_state_religion = rel:hindu
+				}
+				kai_has_high_supply = { GOODS = meat }
+			}
+		}
 		fish = { stance = wants_export trigger = { kai_has_high_supply = { GOODS = fish } } }
 		fruit = { stance = wants_export trigger = { kai_has_high_supply = { GOODS = fruit } } }
-		liquor = { stance = wants_export trigger = { kai_has_high_supply = { GOODS = liquor } } }
-		wine = { stance = wants_export trigger = { kai_has_high_supply = { GOODS = wine } } }
+		liquor = {
+			stance = wants_export
+			trigger = {
+				NOR = {
+					country_has_state_religion = rel:sunni
+					country_has_state_religion = rel:shiite
+				}
+				kai_has_high_supply = { GOODS = liquor }
+			}
+		}
+        wine = {
+			stance = wants_export
+			trigger = {
+				NOR = {
+					country_has_state_religion = rel:sunni
+					country_has_state_religion = rel:shiite
+				}
+				kai_has_high_supply = { GOODS = wine }
+			}
+		}
 		fabric = { stance = wants_export trigger = { kai_has_high_supply = { GOODS = fabric } } }
         fertilizer = { stance = wants_export trigger = { has_technology_researched = intensive_agriculture kai_has_high_supply = { GOODS = fertilizer } } }
 	}
@@ -30,7 +56,7 @@
 	possible = {
 		always = yes
 	}
-	
+
 	weight = {
 		value = 20		
 
@@ -136,13 +162,12 @@ ai_strategy_plantation_economy = {
 		dye = { stance = wants_export trigger = { kai_has_high_supply = { GOODS = dye } } }
 		silk = { stance = wants_export trigger = { kai_has_high_supply = { GOODS = silk } } }
 		rubber = { stance = wants_export trigger = { kai_has_high_supply = { GOODS = rubber } } }
-	}	
+	}
 
 	building_group_weights = {
-		bg_plantations = 2.0
+		bg_plantations = 1.75
 		# KAI: Add rubber
-		bg_rubber = 2.0
-		bg_manufacturing = 0.75
+		bg_rubber = 1.75
 	}
 
 	possible = {
@@ -152,9 +177,9 @@ ai_strategy_plantation_economy = {
 			country_is_in_central_america = yes
 			country_is_in_india = yes
 			country_is_in_southeast_asia = yes
-			country_is_in_africa = yes	
-			country_is_in_east_asia = yes	
-			country_is_in_middle_east = yes	
+			country_is_in_africa = yes
+			country_is_in_east_asia = yes
+			country_is_in_middle_east = yes
 		}
 	}
 	
@@ -224,15 +249,15 @@ ai_strategy_resource_expansion = {
 	type = administrative	
 
 	building_group_weights = {
-		bg_rubber = 1.5
-		bg_oil_extraction = 1.5
-		bg_coal_mining = 2.2
-		bg_iron_mining = 1.8
-		bg_sulfur_mining = 1.65
-		bg_lead_mining = 1.65
-		bg_gold_fields = 1.5
-		bg_gold_mining = 1.5
-		bg_logging = 1.65
+		bg_rubber = 1.4
+		bg_oil_extraction = 1.4
+		bg_coal_mining = 2
+		bg_iron_mining = 1.7
+		bg_sulfur_mining = 1.55
+		bg_lead_mining = 1.55
+		bg_gold_fields = 1.4
+		bg_gold_mining = 1.4
+		bg_logging = 1.6
 	}
 	
 	goods_stances = {
@@ -318,8 +343,8 @@ ai_strategy_mining_exporter = {
 	type = administrative	
 
 	building_group_weights = {
-		bg_coal_mining = 7.0
-		bg_iron_mining = 5.0
+		bg_coal_mining = 6.0
+		bg_iron_mining = 4.0
 		bg_sulfur_mining = 1.75
 		bg_lead_mining = 1.75
 		bg_gold_fields = 1.5
@@ -420,11 +445,11 @@ ai_strategy_industrial_expansion = {
 	goods_stances = {}
 	
 	building_group_weights = {
-		bg_manufacturing = 1.35
-		bg_rubber = 1.25
-		bg_oil_extraction = 1.25
-		bg_mining = 1.25
-		bg_logging = 1.25		
+		bg_manufacturing = 1.3
+		bg_rubber = 1.2
+		bg_oil_extraction = 1.2
+		bg_mining = 1.2
+		bg_logging = 1.2		
 	}
 	
 	weight = {

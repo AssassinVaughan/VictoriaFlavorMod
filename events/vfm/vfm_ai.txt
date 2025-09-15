@@ -99,14 +99,46 @@ vfm_ai.1 = {
 				}
 			}
 			c:PRU = {
-				s:STATE_POMERANIA = {
+				s:STATE_BRANDENBURG = {
 					random_scope_state = {
-						start_building_construction = building_port
+						start_building_construction = building_logging_camp
+						start_building_construction = building_logging_camp
+					}
+				}
+				s:STATE_LOWER_SILESIA = {
+					random_scope_state = {
+						start_building_construction = building_logging_camp
+					}
+				}
+				s:STATE_RUHR = {
+					random_scope_state = {
+						start_building_construction = building_livestock_ranch
+					}
+				}
+				s:STATE_RUHR = {
+					random_scope_state = {
+						start_building_construction = building_livestock_ranch
+					}
+				}
+				s:STATE_NORTH_RHINE = {
+					random_scope_state = {
+						start_building_construction = building_livestock_ranch
+					}
+				}
+				s:STATE_RHINELAND = {
+					random_scope_state = {
+						start_building_construction = building_livestock_ranch
 					}
 				}
 				s:STATE_WESTPHALIA = {
 					random_scope_state = {
 						start_building_construction = building_railway
+					}
+				}
+				s:STATE_LOWER_SILESIA = {
+					random_scope_state = {
+						start_building_construction = building_government_administration
+						start_building_construction = building_iron_mine
 					}
 				}
 			}
@@ -539,14 +571,14 @@ vfm_ai.97 = {
 	duration = 1
 
 	trigger = {
-	    c:EGY ?= this
+	    c:TUR ?= this
 	}
 
 	immediate = {
-	add_modifier = {
-	    name = egypt_rebellion
-		days = 1500
-	}
+	change_variable = {
+					name = sick_man_arabia_var
+					add = 50
+				}
 	}
 }
 
@@ -559,14 +591,13 @@ vfm_ai.99 = {
 	duration = 1
 
 	trigger = {
-	    c:FRA ?= this
-		s:STATE_AQUITAINE = {
-		every_scope_state = {
-		literacy_rate > 0.6
-		}
-		}
+	    c:TUR ?= this
 	}
 
 	immediate = {
+	change_variable = {
+					name = sick_man_arabia_var
+					subtract = 10
+				}
 	}
 }

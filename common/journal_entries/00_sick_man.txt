@@ -832,21 +832,25 @@ je_sick_man_arabia = {
 		}
 		owns_entire_state_region = STATE_BASRA
 		owns_entire_state_region = STATE_BAGHDAD
+		
 		any_scope_state = {
 			state_region = s:STATE_BAGHDAD
+            is_incorporated = yes
+			turmoil < 0.15
 			has_famine = no
 			average_sol > 8
 		} 
 		any_scope_state = {
 			state_region = s:STATE_BASRA
-            has_famine = no
+            is_incorporated = yes
+			turmoil < 0.15
+			has_famine = no
 			average_sol > 8
 		}
 	}
 
 	on_complete = {
 	    trigger_event = { id = ottoman_arabia_events.2 }
-		set_variable = completed_separatism_sick_man_je
 		custom_tooltip = je_sick_man_advance
 		change_variable = {
 			name = sick_man_var
@@ -884,7 +888,7 @@ je_sick_man_arabia = {
 	}
 
 	fail = {
-		root.var:sick_man_arabia_var < 1
+		var:sick_man_arabia_var < 1
 	}
 	
 	on_fail = {

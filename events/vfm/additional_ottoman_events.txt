@@ -1082,42 +1082,6 @@ tanzimat_events.16 = {
 	}
 }
 
-##Foreign country contemplates intervention
-#tanzimat_events.17 = {
-#	type = state_event
-#	placement = scope:mount_lebanon_state
-#	title = tanzimat_events.17.t
-#	desc = tanzimat_events.17.d
-#	flavor =  tanzimat_events.17.f
-#	
-#	duration = 1
-#	event_image = {
-#		video = "gfx/event_pictures/middleeast_police_breaking_door.bk2"
-#	}
-#	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
-#	on_opened_soundeffect = "event:/SFX/Events/middleeast/police_breaking_door"
-#	icon = "gfx/interface/icons/event_icons/event_fire.dds"
-#	trigger = {
-#		has_journal_entry = je_druze_christian_war_foreign
-#	}
-#	
-#	option = { #We must intervene strongly
-#		name = tanzimat_events.17.a
-#		default_option = yes
-#	}
-#	
-#	option = { #We will petition the Sultan for action
-#		name = tanzimat_events.17.b
-#		default_option = yes
-#	}
-#	
-#	option = { #Take no action, we cannot risk it
-#		name = tanzimat_events.17.c
-#		default_option = yes
-#	}
-#}
-#
-
 #Demands
 ottoman_arabia_events.1 = {
 	type = country_event
@@ -1127,8 +1091,7 @@ ottoman_arabia_events.1 = {
 	flavor =  ottoman_arabia_events.1.f
 	
 	duration = 3
-	immediate = {
-	}
+	
 	event_image = {
 		video = "gfx/event_pictures/middleeast_police_breaking_door.bk2"
 	}
@@ -1138,6 +1101,18 @@ ottoman_arabia_events.1 = {
 	trigger = {
 		
 	}
+	
+	immediate = {
+	    s:STATE_BAGHDAD = {
+			random_scope_state = {
+				limit = {
+					owner = ROOT
+				}
+				save_scope_as = baghdad_state
+			}
+		}
+	}
+	
 	option = {
 		name = ottoman_arabia_events.1.a
 		default_option = yes
@@ -1185,8 +1160,7 @@ ottoman_arabia_events.2 = {
 	flavor =  ottoman_arabia_events.2.f
 	
 	duration = 3
-	immediate = {
-	}
+	
 	event_image = {
 		video = "gfx/event_pictures/middleeast_police_breaking_door.bk2"
 	}
@@ -1196,6 +1170,18 @@ ottoman_arabia_events.2 = {
 	trigger = {
 		
 	}
+	
+	immediate = {
+	    s:STATE_BAGHDAD = {
+			random_scope_state = {
+				limit = {
+					owner = ROOT
+				}
+				save_scope_as = baghdad_state
+			}
+		}
+	}
+	
 	option = {
 		name = ottoman_arabia_events.2.a
 		default_option = yes
@@ -1235,4 +1221,40 @@ ottoman_arabia_events.2 = {
 }
 
 
+
+##Foreign country contemplates intervention
+#tanzimat_events.17 = {
+#	type = state_event
+#	placement = scope:mount_lebanon_state
+#	title = tanzimat_events.17.t
+#	desc = tanzimat_events.17.d
+#	flavor =  tanzimat_events.17.f
+#	
+#	duration = 1
+#	event_image = {
+#		video = "gfx/event_pictures/middleeast_police_breaking_door.bk2"
+#	}
+#	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+#	on_opened_soundeffect = "event:/SFX/Events/middleeast/police_breaking_door"
+#	icon = "gfx/interface/icons/event_icons/event_fire.dds"
+#	trigger = {
+#		has_journal_entry = je_druze_christian_war_foreign
+#	}
+#	
+#	option = { #We must intervene strongly
+#		name = tanzimat_events.17.a
+#		default_option = yes
+#	}
+#	
+#	option = { #We will petition the Sultan for action
+#		name = tanzimat_events.17.b
+#		default_option = yes
+#	}
+#	
+#	option = { #Take no action, we cannot risk it
+#		name = tanzimat_events.17.c
+#		default_option = yes
+#	}
+#}
+#
 
