@@ -886,6 +886,12 @@ je_sick_man_arabia = {
 			}
 		}
 	}
+	
+	timeout = 9125
+	
+    on_timeout = {
+	    trigger_event = { id = ottoman_arabia_events.1 }
+    }	
 
 	fail = {
 		var:sick_man_arabia_var < 1
