@@ -1123,7 +1123,7 @@ law_single_party_state = {
 				exists = ruler
 				OR = {
 					ruler = {
-						this.interest_group = {
+						this.interest_group ?= {
 							has_party = yes
 						}
 					}
