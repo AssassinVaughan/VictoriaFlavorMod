@@ -150,3 +150,35 @@ PBC = { # Peru-Bolivia
 		}
 	}	
 }	
+
+BOL = { # Bolivia PBC
+	flag_definition = {
+		coa = PBC_confederal
+		subject_canton = PBC_confederal
+		coa_with_overlord_canton = PBC_subject
+		allow_overlord_canton = yes			
+		priority = 25
+		trigger = {
+			OR = {
+			    c:PEU = { is_subject_of = c:BOL }
+			    c:NPU = { is_subject_of = c:BOL }
+			    c:SPU = { is_subject_of = c:BOL }
+			}
+		}
+	}
+}
+
+PEU = { # Peru PBC
+	flag_definition = {
+		coa = PEU
+		subject_canton = PEU
+		allow_overlord_canton = no
+		coa_with_overlord_canton = PEU_subject
+		priority = 100
+		trigger = {
+			c:PEU = { is_subject_of = c:BOL }
+			c:IQU = { exists }
+			c:IQU = { is_subject_of = c:BOL }
+		}
+	}
+}	

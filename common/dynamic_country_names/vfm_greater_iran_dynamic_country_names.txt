@@ -143,3 +143,68 @@ KAL = {
 		}
 	}
 }
+
+PAT = { 
+	dynamic_country_name = {
+		name = dyn_c_araucania1
+		adjective = dyn_araucnia1_adj
+		
+		is_main_tag_only = yes
+		priority = 0
+		
+		trigger = {
+			exists = c:PAT
+			c:PAT = {
+				OR = {
+				    is_subject_of = c:CHL
+				    is_subject_of = c:ARG
+				    is_subject_of = c:URU
+				    is_subject_of = c:PRG
+				}
+				has_state_in_state_region = STATE_LOS_RIOS
+			}
+		}
+	}
+	dynamic_country_name = {
+		name = dyn_c_araucania2
+		adjective = dyn_araucnia2_adj
+		
+		is_main_tag_only = yes
+		priority = 0
+		
+		trigger = {
+			exists = c:PAT
+			c:PAT = {
+				OR = {
+				    is_subject_of = c:CHL
+				    is_subject_of = c:ARG
+				    is_subject_of = c:URU
+				    is_subject_of = c:PRG
+				}
+				NOT = { has_state_in_state_region = STATE_LOS_RIOS }
+			}
+		}
+	}	
+}
+
+THL = { 
+	dynamic_country_name = {
+		name = dyn_c_patagonia
+		adjective = dyn_c_patagonia_adj
+		
+		is_main_tag_only = yes
+		priority = 0
+		
+		trigger = {
+			exists = c:THL
+			c:THL = {
+				OR = {
+				    is_subject_of = c:CHL
+				    is_subject_of = c:ARG
+				    is_subject_of = c:URU
+				    is_subject_of = c:PRG
+				}
+			}
+		}
+	}
+}
