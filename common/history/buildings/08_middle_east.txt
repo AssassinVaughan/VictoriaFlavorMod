@@ -207,6 +207,18 @@
 				reserves=1
 				activate_production_methods={ "pm_anchorage" }
 			}
+			}
+			create_building={
+				building="building_trade_center"
+				activate_production_methods={ "pm_trade_center_trade_quantity_limited" }
+				add_ownership={
+					country={
+						country="c:LAH"
+						levels=2
+					}
+				}
+				reserves=1
+			}	
 		}
 		region_state:MAH={
 		}

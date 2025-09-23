@@ -297,6 +297,13 @@ logistics = {
 			limit = { OR = { has_strategy = ai_strategy_territorial_expansion has_strategy = ai_strategy_unify_germany has_strategy = ai_strategy_armed_isolationism } }
 			add = 0.75
 		}
+		
+		if = {
+			limit = {
+				has_journal_entry = je_patagonia
+			}
+			add = 5
+		}	
 	}
 }
 

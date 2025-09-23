@@ -7,7 +7,7 @@ german_unification.1 = {
 
 	title = german_unification.1.t
 	desc = {
-		first_valid = {		
+		first_valid = {
 			triggered_desc = {
 				desc = german_unification.1.d1
 				trigger = {
@@ -202,7 +202,7 @@ german_unification.2 = {
 		random_country = {
 			limit = { is_unification_candidate = GER }
 			save_scope_as = german_unification_candidate
-		}	
+		}
 	}
 
 	option = {
@@ -211,7 +211,7 @@ german_unification.2 = {
 			OR = {
 				is_subject = no
 				is_subject_of = scope:german_unification_candidate
-			}				
+			}
 		}
 		scope:german_unification_candidate = { annex_with_incorporation = root }
 		ai_chance = {
@@ -224,25 +224,25 @@ german_unification.2 = {
 		add_radicals = {
 			value = medium_radicals
 			culture = cu:south_german
-		}		
+		}
 		add_radicals = {
 			value = medium_radicals
 			culture = cu:north_german
-		}			
+		}
 		change_relations = {
 			country = scope:german_unification_candidate
 			value = -50
 		}
 		every_scope_state = {
 			if = {
-				limit = { 	
+				limit = {
 					NOT = { has_claim_by = scope:german_unification_candidate }
 				}
 			}
 			state_region = {
 				add_claim = scope:german_unification_candidate
 			}
-		}		
+		}
 		hidden_effect = {
 			scope:german_unification_candidate = {
 				set_secret_goal = {
@@ -251,7 +251,7 @@ german_unification.2 = {
 				}
 			}
 		}
-		
+
 		ai_chance = {
 			base = 1
 		}
@@ -279,7 +279,10 @@ german_unification.3 = {
 	duration = 3
 
 	trigger = {
-		# triggered by character spawn
+		NOR = {
+			has_modifier = realpolitik
+			has_modifier = germany_aggressive_expansion
+		}
 	}
 
 	immediate = {
@@ -322,7 +325,6 @@ german_unification.3 = {
 	}
 	option = {
 		name = german_unification.3.b
-		default_option = yes
 		show_as_tooltip = {
 			create_character = {
 				template = PRU_otto_von_bismarck
@@ -430,7 +432,7 @@ german_unification.5 = {
 				trigger = {
 					always = yes
 				}
-			}			
+			}
 		}
 	}
 
@@ -483,7 +485,7 @@ german_unification.5 = {
 	
 	option = {
 		name = german_unification.5.b
-		default_option = yes	
+		default_option = yes
 		ai_chance = {
 			base = 5
 			modifier = {

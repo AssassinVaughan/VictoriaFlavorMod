@@ -95,6 +95,34 @@ coup.1 = {
 					ig_clout >= 0.30
 				}
 			}
+			AND = {
+				has_law = law_type:law_theocracy
+				any_interest_group = {
+					is_powerful = yes
+					is_in_government = yes
+					OR = {
+						law_stance = {
+							law = law_type:law_theocracy
+							value < neutral
+						}
+					}
+					ig_approval < 0
+				}
+			}
+			AND = {
+				has_law = law_type:law_corporate_state
+				any_interest_group = {
+					is_powerful = yes
+					is_in_government = yes
+					OR = {
+						law_stance = {
+							law = law_type:law_corporate_state
+							value < neutral
+						}
+					}
+					ig_approval < 0
+				}
+			}
 		}
 	}
 	
@@ -646,7 +674,7 @@ coup.2 = {
 						}
 					}
 					heir ?= {
-						THIS.interest_group = {
+						this.interest_group ?= {
 							is_same_interest_group_type = scope:coup_ig
 						}
 					}

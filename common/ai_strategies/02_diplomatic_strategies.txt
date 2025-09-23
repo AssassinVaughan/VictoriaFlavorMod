@@ -1506,7 +1506,7 @@ ai_strategy_unify_germany = {
 
 	building_group_weights = {
 		bg_army = 1.25
-		bg_artillery_foundaries = 1.25
+		bg_artillery_foundries = 1.25
 		bg_arms_industries = 1.25
 		bg_munition_plants = 1.25
 	}
@@ -1973,8 +1973,65 @@ ai_strategy_unify_italy = {
 	
 	wargoal_scores = {
 		unification_leadership = {
-			value = 1000
-		}			
+			value = 5
+			if = { # Fervour
+				limit = {
+					has_technology_researched = pan-nationalism
+				}
+				add = {
+					value = country_fervor_primary_culture
+					divide = 2
+				}
+			}
+			else = {
+				add = {
+					value = country_fervor_primary_culture
+					divide = 10
+				}
+			}
+			if = { # At this point - up to 55 if Pan-National, 15 if not
+				limit = {
+					any_political_movement ?= {
+						is_political_movement_type = movement_italian_national
+						save_temporary_scope_as = italian_national_movement
+					}
+				}
+				scope:italian_national_movement ?= {
+					multiply = {
+						value = 1
+						add = this.political_movement_radicalism # At this point - maximum 110 [if Pan-National] to 30 [if not]
+					}
+				}
+				if = {
+					limit = {
+						scope:italian_national_movement ?= {
+							any_influenced_interest_group = {
+								is_in_government = yes
+								is_powerful = no
+							}
+						}
+					}
+					multiply = 1.5 # Maximum 155 if Pan-National, 45 if not
+				}
+				else_if = {
+					limit = {
+						scope:italian_national_movement ?= {
+							any_influenced_interest_group = {
+								is_in_government = yes
+								is_powerful = yes
+							}
+						}
+					}
+					multiply = 2.5 # Maximum 275 if Pan-National, 75 if not
+				}
+			}
+			if = {
+				limit = {
+					has_law = law_type:law_subjecthood
+				}
+				multiply = 0.1
+			}
+		}
 	}	
 	
 	secret_goal_scores = {
@@ -3376,7 +3433,7 @@ ai_strategy_prussia_of_the_balkans = {
 
 	building_group_weights = {
 		bg_army = 1.5
-		bg_artillery_foundaries = 1.5
+		bg_artillery_foundries = 1.5
 		bg_arms_industries = 1.5
 		bg_munition_plants = 1.5
 	}

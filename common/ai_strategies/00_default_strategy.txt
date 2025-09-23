@@ -2256,26 +2256,31 @@ ai_strategy_default = {
 				multiply = 0
 			}
 			
-			if = { #Do Not Take Chinese States In Full, unless another power has already done so
+			if = { #Do Not Take core Chinese States In Full, unless another power has already done so
 				limit = {
 					country_rank >= rank_value:major_power
 					scope:target_state = {
-						owner = { has_journal_entry = je_warlord_china }
+						owner = {
+							OR = {
+								c:CHI ?= this
+								c:TPG ?= this
+							}
+						}
 						OR = {
 							region = sr:region_north_china
 							region = sr:region_south_china
-							region = sr:region_manchuria
 						}
-					}				
+					}
 					OR = {
 						country_is_in_north_america = yes
 						country_is_in_europe = yes
 						country_is_in_south_america = yes
-					}					
+					}
 					NOR = {
 						sr:region_north_china = {
 							any_scope_state = {
 								NOT = { is_treaty_port = yes }
+								is_largest_state_in_region = yes
 								owner = {
 									NOT = { THIS = ROOT }
 									country_rank >= rank_value:major_power
@@ -2283,13 +2288,14 @@ ai_strategy_default = {
 										country_is_in_north_america = yes
 										country_is_in_europe = yes
 										country_is_in_south_america = yes
-									}					
+									}
 								}
-							}			 
+							}
 						}
 						sr:region_south_china = {
 							any_scope_state = {
 								NOT = { is_treaty_port = yes }
+								is_largest_state_in_region = yes
 								owner = {
 									NOT = { THIS = ROOT }
 									country_rank >= rank_value:major_power
@@ -2297,24 +2303,10 @@ ai_strategy_default = {
 										country_is_in_north_america = yes
 										country_is_in_europe = yes
 										country_is_in_south_america = yes
-									}					
+									}
 								}
-							}			 
-						}	
-						sr:region_manchuria = {
-							any_scope_state = {
-								NOT = { is_treaty_port = yes }
-								owner = {
-									NOT = { THIS = ROOT }
-									country_rank >= rank_value:major_power
-									OR = {
-										country_is_in_north_america = yes
-										country_is_in_europe = yes
-										country_is_in_south_america = yes
-									}					
-								}
-							}			 
-						}			
+							}
+						}
 					}
 				}
 				multiply = 0

@@ -468,12 +468,39 @@ on_monthly_pulse_country = {
 					has_template = gbr_george_v_template
 				}
 				NOT = {
-				has_variable = george_v_ruler_var
+					has_variable = george_v_ruler_var
 				}
 			}
 			trigger_event = { id = britain_monarchy.1 popup = yes }
 		}
 
+		# Napoleon IV
+		if = {
+			limit = {
+				c:FRA ?= this
+				game_date > 1856.3.16
+				ruler ?= {
+					has_template = fra_napoleon_iii_character_template
+				}
+				trigger_if = {
+					limit = {
+						exists = heir
+					}
+					NOT = {
+						heir ?= {
+							has_template = FRA_napoleon_eugene_louis_bonaparte
+						}
+					}
+				}
+				NOT = {
+					has_variable = napoleon_iv_heir_var
+				}
+			}
+			create_character = {
+				template = FRA_napoleon_eugene_louis_bonaparte
+			}
+			set_variable = napoleon_iv_heir_var
+		}
 
  		#Montenegro ruler dies of Tuberculosis
 		if = {
@@ -491,7 +518,7 @@ on_monthly_pulse_country = {
 						has_variable = is_away
 					}
 				}
-				heir = {
+				heir ?= {
 					has_template = mon_danilo_petrovic_njegos
 				}
 			}
@@ -2430,150 +2457,12 @@ on_character_death = {
 			}
 			# non-ETH rulers in the ethiopian_emperor succession will continue to style themselves 'Emperor' even if another tag forms ETH. This is fine! The other tag is obviously an upstart, and we've created two competing claims for the title. This is what wwe in the biz call 'dynamic storytelling'.
 		}
-		### Greek Monarch
-		if = {
-			limit = {
-				owner = {
-					c:GRE ?= this
-					has_law = law_type:law_monarchy
-				}
-				is_ruler = yes
-				has_template = GRE_otto_von_wittelsbach
-				game_date >= 1863.3.30
-			}
-			owner = {
-				create_character = {
-					template = GRE_george_i_of_greece
-				}
-			}
-		}
-		### Austrian Monarchs
-		if = { # if Franz Joseph I becomes ruler because Ferdinand I dies before he officially abdicates, but this is before Rudolf is born, Maximilian I becomes the new heir
-			limit = {
-				owner = {
-					c:AUS ?= this
-				}
-				is_ruler = yes
-				has_variable = is_aus_ferdinand_I
-				game_date < 1848.12.1
-			}
-			owner = {
-				create_character = {
-					template = aus_maximilian_I_habsburg_template
-				}
-			}
-		}
-		if = { # if Franz Joseph I of Austria dies before The Mayerling Incident in 1889
-			limit = {
-				owner = {
-					c:AUS ?= this
-				}
-				is_ruler = yes
-				has_variable = is_aus_franz_josef_I
-				AND = {
-					game_date > 1875.6.29
-					game_date < 1889.1.30
-				}
-			}
-			owner = {
-				create_character = {
-					template = aus_franz_ferdinand
-				}
-			}
-		}
-
-		### Ottoman Monarchs
-
-		if = { # if Abdulmecid dies, make Abdulaziz the ruler
-			limit = {
-				owner = {
-					c:TUR ?= this
-				}
-				is_ruler = yes
-				has_template = tur_abdulmecid_osmanoglu_template
-				game_date < 1876.5.30
-				game_date > 1842.2.8
-			}
-			owner = {
-				create_character = {
-					template = tur_abdulaziz_osmanoglu_template
-				}
-			}
-		}
-
-		if = { # if Abdulaziz dies, make Murad the ruler
-			limit = {
-				owner = {
-					c:TUR ?= this
-				}
-				is_ruler = yes
-				has_template = tur_abdulaziz_osmanoglu_template
-				game_date < 1876.8.31
-				game_date > 1840.9.21
-			}
-			owner = {
-				create_character = {
-					template = tur_murad_v_osmanoglu_template
-				}
-			}
-		}
-
-		if = { # if Murad dies, make Abdulhamid the ruler
-			limit = {
-				owner = {
-					c:TUR ?= this
-				}
-				is_ruler = yes
-				has_template = tur_murad_v_osmanoglu_template
-				game_date < 1909.4.27
-				game_date > 1842.9.21
-			}
-			owner = {
-				create_character = {
-					template = tur_abdulhamid_ii_osmanoglu_template
-				}
-			}
-		}
-
-		if = { # if Abdulhamid dies, make Reshad the ruler
-			limit = {
-				owner = {
-					c:TUR ?= this
-				}
-				is_ruler = yes
-				has_template = tur_abdulhamid_ii_osmanoglu_template
-				game_date < 1918.6.3
-				game_date > 1844.11.2
-			}
-			owner = {
-				create_character = {
-					template = tur_reshad_osmanoglu_template
-				}
-			}
-		}
-
-		if = { # if Reshad dies, make Vahideddin the ruler
-			limit = {
-				owner = {
-					c:TUR ?= this
-				}
-				is_ruler = yes
-				has_template = tur_reshad_osmanoglu_template
-				game_date < 1922.11.1
-				game_date > 1861.1.14
-			}
-			owner = {
-				create_character = {
-					template = tur_vahideddin_osmanoglu_template
-				}
-			}
-		}
 
 		if = {
 			limit = {
 				owner = {
 					c:MON ?= this
-					heir = {
+					heir ?= {
 						has_template = mon_danilo_petrovic_njegos
 					}
 				}
@@ -2628,88 +2517,6 @@ on_new_ruler = {
 				NOT = { religion = owner.religion }
 			}
 			change_character_religion = owner.religion
-		}
-		if = {
-			limit = {
-				owner = {
-					c:RUS ?= this
-					has_law_or_variant = law_type:law_monarchy
-				}
-				is_ruler = yes
-			}
-			if = {
-				limit = {
-					has_template = RUS_alexander_ii
-				}
-				owner = {
-					trigger_event = { id = russia_monarchy.1 popup = yes }
-				}
-			}
-			else_if = {
-				limit = {
-					has_template = RUS_tsarevich_nicholas_alexandrovich
-				}
-				owner = {
-					trigger_event = { id = russia_monarchy.3 popup = yes }
-				}
-			}
-			else_if = {
-				limit = {
-					has_template = RUS_alexander_iii
-				}
-				owner = {
-					trigger_event = { id = russia_monarchy.4 popup = yes }
-				}
-			}
-			else_if = {
-				limit = {
-					has_template = RUS_nicholas_ii
-				}
-				owner = {
-					trigger_event = { id = russia_monarchy.5 popup = yes }
-				}
-			}
-			else_if = {
-				limit = {
-					has_template = RUS_alexei_ii
-				}
-				owner = {
-					trigger_event = { id = russia_monarchy.9 popup = yes }
-				}
-			}
-			else_if = {
-				limit = {
-					has_template = RUS_michael_ii
-				}
-				owner = {
-					trigger_event = { id = russia_monarchy.10 popup = yes }
-				}
-			}
-			else_if = {
-				limit = {
-					has_template = RUS_george_i
-				}
-				owner = {
-					trigger_event = { id = russia_monarchy.11 popup = yes }
-				}
-			}
-		}
-		if = {
-			limit = {
-				owner = {
-					c:SWE ?= this
-					has_law_or_variant = law_type:law_monarchy
-				}
-				is_ruler = yes
-			}
-			if = {
-				limit = {
-					has_template = swe_oscar_bernadotte_template
-				}
-				owner = {
-					trigger_event = { id = sweden_monarchy.1 popup = yes }
-				}
-			}
 		}
 		if = {
 			limit = {
@@ -2771,101 +2578,80 @@ on_new_ruler = {
 				trigger_event = { id = zanzibar.6 popup = yes }
 			}
 		}
-		### Austrian Monarchs
-		if = {
-			limit = { # if Franz Ferdinand becomes ruler, Charles I becomes heir
-				owner = {
-					c:AUS ?= this
-				}
-				is_ruler = yes
-				has_variable = is_aus_franz_ferdinand
-				game_date > 1887.8.17
-			}
-			owner = {
-				create_character = {
-					template = aus_karl_I_habsburg
-				}
-			}
-		}
-
-		### Serbian Monarchs
+		### Russian Monarchs
 		if = {
 			limit = {
-				owner ?= {
-					c:SER ?= this
+				owner = {
+					c:RUS ?= this
 					has_law_or_variant = law_type:law_monarchy
 				}
 				is_ruler = yes
 			}
-			### Obrenovics
-			if = { # Once Milan succeeds to the Serbian throne, create Mihailo
-				limit = {
-					has_template = SER_milan_obrenovic
-				}
-				create_character = {
-					template = SER_mihailo_obrenovic
-				}
-			}
-			else_if = { # Once Mihailo succeeds to the Serbian throne, fire his coronation event
-				limit = {
-					has_template = SER_mihailo_obrenovic
-				}
-				trigger_event = { id = serbia.2 popup = yes }
-				if = { # And spawn Milan IV as his heir
-					limit = {
-						game_date >= 1854.8.22
+			russia_ruler_succession_chain_effect = yes
+		}
+		### Swedish Monarchs
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						c:SWE ?= this
+						was_formed_from = SWE
 					}
-					create_character = {
-						template = SER_milan_iv_obrenovic
+					has_law_or_variant = law_type:law_monarchy
+				}
+				is_ruler = yes
+			}
+			sweden_ruler_succession_chain_effect = yes
+		}
+		### Austrian Monarchs
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						c:AUS ?= this
+						was_formed_from = AUS
 					}
+					has_law_or_variant = law_type:law_monarchy
 				}
+				is_ruler = yes
 			}
-			else_if = { # Once Milan IV succeeds to the Serbian throne, make Alexander his heir if applicable
-				limit = {
-					has_template = SER_milan_iv_obrenovic
-					game_date >= 1876.8.14
+			austria_ruler_succession_chain_effect = yes
+		}
+		### Serbian Monarchs
+		if = {
+			limit = {
+				owner ?= {
+					OR = {
+						c:SER ?= this
+						was_formed_from = SER
+					}
+					has_law_or_variant = law_type:law_monarchy
 				}
-				create_character = {
-					template = SER_alexander_obrenovic
-				}
+				is_ruler = yes
 			}
-			### Karadordevics
-			if = { # Once Alexander succeeds to the Serbian throne, make Petar his heir if applicable
-				limit = {
-					has_template = SER_alexandar_karadordevic
-					game_date >= 1844.8.14
+			serbia_ruler_succession_chain_effect = yes
+		}
+		### Ottoman Monarchs
+		if = {
+			limit = {
+				owner ?= {
+					c:TUR ?= this
+					has_law_or_variant = law_type:law_monarchy
 				}
-				create_character = {
-					template = SER_petar_i_karadordevic
-				}
+				is_ruler = yes
 			}
-			if = { # Once Petar succeeds to the Serbian throne, make George his heir if applicable
-				limit = {
-					has_template = SER_petar_i_karadordevic
-					game_date >= 1887.9.8
+			ottoman_ruler_succession_chain_effect = yes
+		}
+		### French Monarchs
+		if = {
+			limit = {
+				owner ?= {
+					c:FRA ?= this
+					has_law_or_variant = law_type:law_monarchy
 				}
-				create_character = {
-					template = SER_george_karadordevic
-				}
+				is_ruler = yes
 			}
-			if = { # If George succeeds to the Serbian throne, make Alexander his heir if applicable
-				limit = {
-					has_template = SER_george_karadordevic
-					game_date >= 1888.12.16
-				}
-				create_character = {
-					template = SER_alexander_i_karadordevic
-				}
-			}
-			if = { # Once Alexander succeeds to the Serbian throne, make Petar II his heir if applicable
-				limit = {
-					has_template = SER_alexander_i_karadordevic
-					game_date >= 1923.9.6
-				}
-				create_character = {
-					template = SER_petar_ii_karadordevic
-				}
-			}
+			french_ruler_succession_chain_effect = yes
 		}
 	}
 }
@@ -3409,93 +3195,6 @@ on_country_released_as_own_subject = {
 				add_homeland = cu:ashkenazi
 			}
 		}
-		scope:target ?= {
-			if = {
-				limit = {
-					country_has_state_religion = rel:theravada
-				}
-				ig:ig_devout ?= {
-					set_interest_group_name = ig_theravada_monks
-					remove_ideology = ideology_moralist
-					add_ideology = ideology_buddhist_moralist
-				}
-			}
-			if = {
-				limit = {
-					exists = c:RUS
-					c:RUS = scope:target
-				}
-				ig:ig_devout ?= {
-					set_interest_group_name = ig_orthodox_church
-					remove_ideology = ideology_patriarchal
-					add_ideology = ideology_russian_patriarch
-				}
-			}
-			if = {
-				limit = {
-					country_has_state_religion = rel:orthodox
-					OR = {
-						NOT = { exists = c:RUS }
-						NOT = { c:RUS = scope:target }
-					}
-				}
-				ig:ig_devout ?= {
-					set_interest_group_name = ig_orthodox_church
-					remove_ideology = ideology_patriarchal
-					add_ideology = ideology_orthodox_patriarch
-				}
-			}
-			if = {
-				limit = {
-					country_has_state_religion = rel:hindu
-				}
-				ig:ig_devout ?= {
-					set_interest_group_name = ig_hindu_priesthood
-					remove_ideology = ideology_moralist
-					add_ideology = ideology_hindu_moralist
-				}
-			}
-			if = {
-				limit = {
-					country_has_state_religion = rel:gelugpa
-				}
-				ig:ig_devout ?= {
-					set_interest_group_name = ig_vajrayana_monks
-					remove_ideology = ideology_moralist
-					add_ideology = ideology_buddhist_moralist
-				}
-			}
-			if = {
-				limit = {
-					country_has_state_religion = rel:mahayana
-				}
-				ig:ig_devout ?= {
-					set_interest_group_name = ig_mahayana_monks
-					remove_ideology = ideology_moralist
-					add_ideology = ideology_buddhist_moralist
-				}
-			}
-			if = {
-				limit = {
-					country_has_state_religion = rel:sikh
-				}
-				ig:ig_devout ?= {
-					set_interest_group_name = ig_granthis
-					remove_ideology = ideology_moralist
-					add_ideology = ideology_sikh_moralist
-				}
-			}
-			if = {
-				limit = {
-					country_has_state_religion = rel:oriental_orthodox
-				}
-				ig:ig_devout ?= {
-					set_interest_group_name = ig_oriental_orthodox_church
-					remove_ideology = ideology_patriarchal
-					add_ideology = ideology_oriental_orthodox_patriarch
-				}
-			}
-		}
 		if = {
 			limit = {
 				c:AUS ?= ROOT
@@ -3566,104 +3265,6 @@ on_country_released_as_overlord_subject = {
 			s:STATE_PALESTINE = {
 				add_homeland = cu:sephardic
 				add_homeland = cu:ashkenazi
-			}
-		}
-		scope:target ?= {
-			if = {
-				limit = {
-					country_has_state_religion = rel:theravada
-				}
-				ig:ig_devout ?= {
-					set_interest_group_name = ig_theravada_monks
-					remove_ideology = ideology_moralist
-					add_ideology = ideology_buddhist_moralist
-				}
-			}
-			if = {
-				limit = {
-					country_has_state_religion = rel:orthodox
-					OR = {
-						NOT = { exists = c:RUS }
-						NOT = { c:RUS = scope:target }
-					}
-				}
-				ig:ig_devout ?= {
-					set_interest_group_name = ig_orthodox_church
-					remove_ideology = ideology_patriarchal
-					add_ideology = ideology_orthodox_patriarch
-				}
-			}
-			if = {
-				limit = {
-					exists = c:RUS
-					c:RUS = scope:target
-				}
-				ig:ig_devout ?= {
-					set_interest_group_name = ig_orthodox_church
-					remove_ideology = ideology_patriarchal
-					add_ideology = ideology_russian_patriarch
-				}
-			}
-			if = {
-				limit = {
-					country_has_state_religion = rel:hindu
-				}
-				ig:ig_devout ?= {
-					set_interest_group_name = ig_hindu_priesthood
-					remove_ideology = ideology_hindu_moralist
-					add_ideology = ideology_hindu_moralist
-				}
-			}
-			if = {
-				limit = {
-					country_has_state_religion = rel:gelugpa
-				}
-				ig:ig_devout ?= {
-					set_interest_group_name = ig_vajrayana_monks
-					remove_ideology = ideology_moralist
-					add_ideology = ideology_buddhist_moralist
-				}
-			}
-			if = {
-				limit = {
-					country_has_state_religion = rel:mahayana
-				}
-				ig:ig_devout ?= {
-					set_interest_group_name = ig_mahayana_monks
-					remove_ideology = ideology_moralist
-					add_ideology = ideology_buddhist_moralist
-				}
-			}
-			if = {
-				limit = {
-					country_has_state_religion = rel:sikh
-				}
-				ig:ig_devout ?= {
-					set_interest_group_name = ig_granthis
-					remove_ideology = ideology_moralist
-					add_ideology = ideology_sikh_moralist
-				}
-			}
-			if = {
-				limit = {
-					country_has_state_religion = rel:oriental_orthodox
-				}
-				ig:ig_devout ?= {
-					set_interest_group_name = ig_oriental_orthodox_church
-					remove_ideology = ideology_patriarchal
-					add_ideology = ideology_oriental_orthodox_patriarch
-				}
-			}
-			if = {
-				limit = {
-					country_has_state_religion = rel:confucian
-				}
-				ig:ig_devout ?= {
-					set_interest_group_name = ig_confucian
-					remove_ideology = ideology_pious
-					remove_ideology = ideology_moralist
-					add_ideology = ideology_confucian
-				}
 			}
 		}
 	}
@@ -4068,8 +3669,8 @@ on_diplo_play_back_down_involved = {
 on_diplo_play_join_side = {
 	effect = {
 		post_notification = diplo_play_join_side_notification
-		}
 	}
+}
 
 # Root = Diplomatic Play
 on_diplo_play_abandon_side = {
@@ -4612,7 +4213,7 @@ on_law_enactment_pass = {
 	effect = {
 		if = {
 			limit = {
-				THIS ?= c:MON
+				c:MON ?= this
 				OR = {
 					ROOT.currently_enacting_law.type ?= law_type:law_religious_schools
 					ROOT.currently_enacting_law.type ?= law_type:law_public_schools
@@ -6411,23 +6012,21 @@ on_heir_born = {
 			}
 			if = {
 				limit = {
-					ruler = {
+					owner.ruler ?= {
 						has_variable = orleanist_leader
 					}
 				}
-			}
-			owner = {
-				heir ?= {
-					set_variable = { name = orleanist_leader }
-					set_ideology = ideology:ideology_orleanist
+				owner = {
+					heir ?= {
+						set_variable = { name = orleanist_leader }
+						set_ideology = ideology:ideology_orleanist
+					}
 				}
 			}
 			if = {
 				limit = {
-					owner = {
-						ruler = {
-							has_variable = legitimist_leader
-						}
+					owner.ruler ?= {
+						has_variable = legitimist_leader
 					}
 				}
 				owner = {
@@ -6439,10 +6038,8 @@ on_heir_born = {
 			}
 			if = {
 				limit = {
-					owner = {
-						ruler = {
-							has_variable = bonapartist_leader
-						}
+					owner.ruler ?= {
+						has_variable = bonapartist_leader
 					}
 				}
 				owner = {
@@ -6461,10 +6058,8 @@ on_heir_born = {
 			}
 			if = {
 				limit = {
-					owner = {
-						ruler = {
-							has_variable = house_obrenovic
-						}
+					owner.ruler ?= {
+						has_variable = house_obrenovic
 					}
 				}
 				owner.heir ?= {
@@ -6473,7 +6068,7 @@ on_heir_born = {
 			}
 			else_if = {
 				limit = {
-					owner.ruler = {
+					owner.ruler ?= {
 						has_variable = house_karadordevic
 					}
 				}
