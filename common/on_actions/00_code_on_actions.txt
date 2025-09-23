@@ -249,8 +249,26 @@ on_monthly_pulse = {
 				}
 			}
 		}
+
+		if = {
+			limit = {
+				NAND = {
+					exists = c:MON
+					has_global_variable = montenegro_defeat_var
+				}
+			}
+			sr:region_balkans = {
+				every_scope_state = {
+					limit = {
+						has_modifier = raid_target
+					}
+					remove_modifier = raid_target
+				}
+			}
+			set_global_variable = montenegro_defeat_var
+		}
 	}
-}
+
 
 on_yearly_pulse = {
 }
@@ -5857,7 +5875,7 @@ on_wargoal_enforced = {
 					name = temp_wargoal_impact
 					value = {
 						value = scope:wargoal_impact
-						multiply = -4
+						multiply = 4
 					}
 				}
 				if = {
@@ -5888,7 +5906,7 @@ on_wargoal_enforced = {
 					name = temp_wargoal_impact
 					value = {
 						value = scope:wargoal_impact
-						multiply = 4
+						multiply = -4
 					}
 				}
 				if = {

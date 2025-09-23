@@ -88,7 +88,8 @@ NAI = {
 	PRODUCTION_METHOD_INCREASE_OUTPUT_PENALTY_FACTOR = 0.95 # Multiply method score by this if we're increasing the building's output penalties
 	PRODUCTION_METHOD_FAVORED_GOODS_FACTOR = 0.05 # Per base cost * units of goods produced that the AI favors (for non military goods)
 	PRODUCTION_METHOD_UNDESIRABLE_GOODS_PRICE_THRESHOLD = 1.7 # If a PM using the 'most productive' logic makes use of a good whose price is above ( base * this ), reduce the score
-	PRODUCTION_METHOD_UNDESIRABLE_GOODS_PRICE_FACTOR = -0.75 # Per base cost * units of goods whose price is above undesirable price threshold
+	PRODUCTION_METHOD_UNDESIRABLE_GOODS_PRICE_FACTOR_TRADEABLE = -0.05 # Per base cost * units of goods whose price is above undesirable price threshold (when the goods can be imported from the world market)
+	PRODUCTION_METHOD_UNDESIRABLE_GOODS_PRICE_FACTOR_UNTRADEABLE = -0.25 # Per base cost * units of goods whose price is above undesirable price threshold (when the goods cannot be imported from the world market)
 	# Certain PMs (especially those of barracks) have a difference too small to overcome the stickiness factor
 	PRODUCTION_METHOD_STICKINESS_UPGRADE = 1.0 # Score of non-current method is multiplied by this when it produces more goods base value in total
     PRODUCTION_METHOD_LOW_POP_THRESHOLD = 90000 #50000 If a state's population is less than this, use the scoring factor below for low-pop PMs
