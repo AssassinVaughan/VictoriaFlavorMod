@@ -4845,19 +4845,19 @@ ai_strategy_default = {
 		# 1 level of naval base per 500k coastal incorporated population
 		add = {
 			value = cached_ai_incorporated_coastal_population
-			divide = 450000 
+			divide = 400000 
 		}
 
 		# 1 level of naval base per 2 million coastal unincorporated population
 		add = {
 			value = cached_ai_unincorporated_coastal_population
-			divide = 1800000 
+			divide = 1500000 
 		}
 
 		# 1 level of naval base per 10 million population in direct overseas subjects
 		add = {
 			value = cached_ai_overseas_subject_population
-			divide = 8000000 
+			divide = 7000000 
 		}
 
 		max = 100 # No more than 100 from population
@@ -4873,7 +4873,7 @@ ai_strategy_default = {
 				value = income
 				divide = cached_ai_incorporated_population
 				multiply = cached_ai_incorporated_coastal_population
-				divide = 5000
+				divide = 4000
 			}
 		}
 
@@ -4896,8 +4896,28 @@ ai_strategy_default = {
 			add = 20		
 		}
 		else_if = {
+			limit = { country_rank = rank_value:major_power country_is_in_europe = yes }
+			add = 10
+		}
+		else_if = {
+			limit = { country_is_in_europe = yes }
+			add = 3
+		}
+		else_if = {
 			limit = { country_rank = rank_value:major_power }
-			add = 8
+			add = 5
+		}
+		
+		if = {
+			limit = { 
+			OR = {
+			AND = { exists = c:EGY this = c:EGY } 
+			AND = { exists = c:TUR this = c:TUR } 
+			AND = { exists = c:SWE this = c:SWE } 
+			AND = { exists = c:DEN this = c:DEN } 
+			}
+			}
+			multiply = 1.3
 		}
 		
 		# More advanced navies are expensive and should be smaller relative to population
@@ -4929,9 +4949,9 @@ ai_strategy_default = {
 
 		if = {
 			limit = { has_strategy = ai_strategy_armed_isolationism }
-			multiply = 0.75
+			multiply = 0.8
 		}
-		
+
 		if = {
 			limit = { OR = {country_is_in_europe = yes country_is_in_north_america = yes } }
 			multiply = 1.25
@@ -4963,8 +4983,7 @@ ai_strategy_default = {
 			}
 			min = 25
 		}
-
-		max = 400
+	    max = 300
 		min = 0
 	}
 	
@@ -5026,7 +5045,7 @@ ai_strategy_default = {
 			}
 			if = {
 				limit = { country_rank = rank_value:major_power }
-				add = 10
+				add = 15
 			}			
 		}
 		combat_unit_group_support_ship = {

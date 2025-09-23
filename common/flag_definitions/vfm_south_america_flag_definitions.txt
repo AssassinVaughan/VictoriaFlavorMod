@@ -160,9 +160,18 @@ BOL = { # Bolivia PBC
 		priority = 25
 		trigger = {
 			OR = {
-			    c:PEU = { is_subject_of = c:BOL }
-			    c:NPU = { is_subject_of = c:BOL }
-			    c:SPU = { is_subject_of = c:BOL }
+			    AND = {
+					exists = c:PEU
+			        c:PEU = { is_subject_of = c:BOL }
+				}
+				AND = {
+					exists = c:NPU
+			        c:NPU = { is_subject_of = c:BOL }
+				}
+				AND = {
+					exists = c:SPU
+			        c:SPU = { is_subject_of = c:BOL }
+				}
 			}
 		}
 	}
@@ -176,9 +185,18 @@ PEU = { # Peru PBC
 		coa_with_overlord_canton = PEU_subject
 		priority = 100
 		trigger = {
-			c:PEU = { is_subject_of = c:BOL }
-			c:IQU = { exists }
-			c:IQU = { is_subject_of = c:BOL }
+		    OR = {
+			    AND = {
+					exists = c:BOL
+					scope:actor = {
+						is_subject_of = c:BOL
+					}
+				}
+				AND = {
+					exists = c:IQU
+			        c:IQU = { is_subject_of = c:BOL }
+				}
+			}
 		}
 	}
 }	

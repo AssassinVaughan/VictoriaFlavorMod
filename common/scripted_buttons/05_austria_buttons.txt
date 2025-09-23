@@ -43,13 +43,14 @@ matter_of_hungary_dual_monarchy_button = {
 	}
 
 	effect = {
+		save_scope_as = austria_scope
 		s:STATE_CENTRAL_HUNGARY = {
 			random_scope_state = {
 				save_scope_as = budapest_state_scope
 			}
 		}
 		custom_tooltip = {
-		text = matter_of_hungary_ausgleich_tt
+			text = matter_of_hungary_ausgleich_tt
 			if = {
 				limit = {
 					NOT = {
@@ -100,7 +101,7 @@ matter_of_hungary_integrate_crown_lands_button = {
 
 	possible = {
 		custom_tooltip = {
-		text = matter_of_hungary_integrate_crown_lands_tt
+			text = matter_of_hungary_integrate_crown_lands_tt
 			NOT = {
 				any_subject_or_below = {
 					is_subject_type = subject_type_crown_land
@@ -352,7 +353,7 @@ austrian_neo_absolutism_papal_concordat_button = {
 		if = {
 			limit = {
 				NOT = {
-					has_law_or_variant = law_type:law_state_religion
+					has_law = law_type:law_state_religion
 				}
 			}
 			activate_law = law_type:law_state_religion
@@ -360,7 +361,7 @@ austrian_neo_absolutism_papal_concordat_button = {
 		if = {
 			limit = {
 				NOT = {
-					has_law_or_variant = law_type:law_religious_schools
+					has_law = law_type:law_religious_schools
 				}
 			}
 			activate_law = law_type:law_religious_schools
@@ -378,5 +379,828 @@ austrian_neo_absolutism_papal_concordat_button = {
 
 	ai_chance = {
 		value = 1
+	}
+}
+
+je_danubian_federation_czech_button = {
+	name = "je_danubian_federation_czech_button"
+	desc = "je_danubian_federation_czech_button_desc"
+
+	visible = {
+		je_danubian_federation_czech_button_visible = yes
+	}
+
+	selected = {
+		any_in_list = {
+			variable = aus_integrated_cultures
+			cu:czech ?= this
+		}
+		NOT = {
+			any_in_list = {
+				variable = aus_disqualified_cultures
+				cu:czech ?= this
+			}
+		}
+	}
+
+	ai_chance = {
+		value = 10
+	}
+
+	possible = {
+		je_danubian_federation_czech_button_possible = yes
+	}
+
+	effect = {
+		set_variable = danubian_federation_czech_button
+		trigger_event = {
+			id = austria_federation.3
+		}
+		custom_tooltip = je_danubian_federation_czech_button_integrate_tt
+		custom_tooltip = je_danubian_federation_czech_button_disqualify_tt
+		set_variable = {
+			name = danubian_federation_button_cooldown
+			days = 180
+		}
+	}
+
+	ai_chance = {
+		value = 100
+	}
+}
+
+je_danubian_federation_polish_button = {
+	name = "je_danubian_federation_polish_button"
+	desc = "je_danubian_federation_polish_button_desc"
+
+	visible = {
+		exists = c:AUS
+		c:AUS = ROOT
+		OR = {
+			any_scope_state = {
+				state_region = {
+					is_homeland = cu:polish
+				}
+			}
+			any_subject_or_below = {
+				OR = {
+					#is_subject_type = subject_type_crown_land
+					is_subject_type = subject_type_personal_union
+				}
+				any_scope_state = {
+					state_region = {
+						is_homeland = cu:polish
+					}
+				}
+			}
+		}
+		NAND = {
+			has_variable = danubian_federation_polish_button
+			NOT = {
+				any_in_list = {
+					variable = aus_integrated_cultures
+					cu:polish ?= this
+				}
+			}
+		}
+		NOT = {
+			any_in_list = {
+				variable = aus_disqualified_cultures
+				cu:polish ?= this
+			}
+		}
+	}
+
+	selected = {
+		any_in_list = {
+			variable = aus_integrated_cultures
+			cu:polish ?= this
+		}
+		NOT = {
+			any_in_list = {
+				variable = aus_disqualified_cultures
+				cu:polish ?= this
+			}
+		}
+	}
+
+	ai_chance = {
+		value = 10
+	}
+
+	possible = {
+		custom_tooltip = {
+			text = danubian_federation_button_cooldown_tt
+			NOT = {
+				has_variable = danubian_federation_button_cooldown
+			}
+		}
+		custom_tooltip = {
+			text = not_already_used_this_interaction_tt
+			NOT = {
+				has_variable = danubian_federation_polish_button
+			}
+		}
+		country_average_cultural_acceptance = {
+			target = cu:polish
+			value >= acceptance_status_3
+		}
+		radical_fraction = {
+			culture = cu:polish
+			value <= 0.10
+		}
+		cu:polish = {
+			custom_tooltip = {
+				text = all_culture_states_integrated_tt
+				NOT = {
+					ROOT = {
+						any_scope_state = {
+							state_region = {
+								is_homeland = cu:polish
+							}
+							is_incorporated = no
+						}
+					}
+				}
+			}
+			custom_tooltip = {
+				text = no_active_secession_movement_tt
+				culture_secession_progress = { target = ROOT value = 0 }
+			}
+			custom_tooltip = {
+				text = already_integrated_tt
+				ROOT = {
+					NOT = {
+						any_in_list = {
+							variable = aus_integrated_cultures
+							cu:polish ?= this
+						}
+					}
+				}
+			}
+			custom_tooltip = {
+				text = culture_disqualified_tt
+				ROOT = {
+					NOT = {
+						any_in_list = {
+							variable = aus_disqualified_cultures
+							cu:polish ?= this
+						}
+					}
+				}
+			}
+		}
+	}
+
+	effect = {
+		set_variable = danubian_federation_polish_button
+		trigger_event = {
+			id = austria_federation.5
+		}
+		custom_tooltip = je_danubian_federation_polish_button_integrate_tt
+		custom_tooltip = je_danubian_federation_polish_button_disqualify_tt
+		set_variable = {
+			name = danubian_federation_button_cooldown
+			days = 180
+		}
+	}
+
+	ai_chance = {
+		value = 100
+	}
+}
+
+je_danubian_federation_slovak_button = {
+	name = "je_danubian_federation_slovak_button"
+	desc = "je_danubian_federation_slovak_button_desc"
+
+	visible = {
+		je_danubian_federation_slovak_button_visible = yes
+	}
+
+	selected = {
+		any_in_list = {
+			variable = aus_integrated_cultures
+			cu:slovak ?= this
+		}
+		NOT = {
+			any_in_list = {
+				variable = aus_disqualified_cultures
+				cu:slovak ?= this
+			}
+		}
+	}
+
+	ai_chance = {
+		value = 10
+	}
+
+	possible = {
+		je_danubian_federation_slovak_button_possible = yes
+	}
+
+	effect = {
+		set_variable = danubian_federation_slovak_button
+		trigger_event = {
+			id = austria_federation.4
+		}
+		custom_tooltip = je_danubian_federation_slovak_button_integrate_tt
+		custom_tooltip = je_danubian_federation_slovak_button_disqualify_tt
+		set_variable = {
+			name = danubian_federation_button_cooldown
+			days = 180
+		}
+	}
+
+	ai_chance = {
+		value = 100
+	}
+}
+
+je_danubian_federation_hungarian_button = {
+	name = "je_danubian_federation_hungarian_button"
+	desc = "je_danubian_federation_hungarian_button_desc"
+
+	visible = {
+		je_danubian_federation_hungarian_button_visible = yes
+	}
+
+	selected = {
+		any_in_list = {
+			variable = aus_integrated_cultures
+			cu:hungarian ?= this
+		}
+		NOT = {
+			any_in_list = {
+				variable = aus_disqualified_cultures
+				cu:hungarian ?= this
+			}
+		}
+	}
+
+	ai_chance = {
+		value = 10
+	}
+
+	possible = {
+		je_danubian_federation_hungarian_button_possible = yes
+	}
+
+	effect = {
+		set_variable = danubian_federation_hungarian_button
+		trigger_event = {
+			id = austria_federation.6
+		}
+		custom_tooltip = je_danubian_federation_hungarian_button_integrate_tt
+		custom_tooltip = je_danubian_federation_hungarian_button_disqualify_tt
+		set_variable = {
+			name = danubian_federation_button_cooldown
+			days = 180
+		}
+	}
+
+	ai_chance = {
+		value = 100
+	}
+}
+
+je_danubian_federation_slovene_button = {
+	name = "je_danubian_federation_slovene_button"
+	desc = "je_danubian_federation_slovene_button_desc"
+
+	visible = {
+		je_danubian_federation_slovene_button_visible = yes
+	}
+
+	selected = {
+		any_in_list = {
+			variable = aus_integrated_cultures
+			cu:slovene ?= this
+		}
+		NOT = {
+			any_in_list = {
+				variable = aus_disqualified_cultures
+				cu:slovene ?= this
+			}
+		}
+	}
+
+	ai_chance = {
+		value = 10
+	}
+
+	possible = {
+		je_danubian_federation_slovene_button_possible = yes
+	}
+
+	effect = {
+		set_variable = danubian_federation_slovene_button
+		trigger_event = {
+			id = austria_federation.7
+		}
+		custom_tooltip = je_danubian_federation_slovene_button_integrate_tt
+		custom_tooltip = je_danubian_federation_slovene_button_disqualify_tt
+		set_variable = {
+			name = danubian_federation_button_cooldown
+			days = 180
+		}
+	}
+
+	ai_chance = {
+		value = 100
+	}
+}
+
+je_danubian_federation_croat_button = {
+	name = "je_danubian_federation_croat_button"
+	desc = "je_danubian_federation_croat_button_desc"
+
+	visible = {
+		je_danubian_federation_croat_button_visible = yes
+	}
+
+	selected = {
+		any_in_list = {
+			variable = aus_integrated_cultures
+			cu:croat ?= this
+		}
+		NOT = {
+			any_in_list = {
+				variable = aus_disqualified_cultures
+				cu:croat ?= this
+			}
+		}
+	}
+
+	ai_chance = {
+		value = 10
+	}
+
+	possible = {
+		je_danubian_federation_croat_button_possible = yes
+	}
+
+	effect = {
+		set_variable = danubian_federation_croat_button
+		trigger_event = {
+			id = austria_federation.8
+		}
+		custom_tooltip = je_danubian_federation_croat_button_integrate_tt
+		custom_tooltip = je_danubian_federation_croat_button_disqualify_tt
+		set_variable = {
+			name = danubian_federation_button_cooldown
+			days = 180
+		}
+	}
+
+	ai_chance = {
+		value = 100
+	}
+}
+
+je_danubian_federation_romanian_button = {
+	name = "je_danubian_federation_romanian_button"
+	desc = "je_danubian_federation_romanian_button_desc"
+
+	visible = {
+		je_danubian_federation_romanian_button_visible = yes
+	}
+
+	selected = {
+		any_in_list = {
+			variable = aus_integrated_cultures
+			cu:romanian ?= this
+		}
+		NOT = {
+			any_in_list = {
+				variable = aus_disqualified_cultures
+				cu:romanian ?= this
+			}
+		}
+	}
+
+	ai_chance = {
+		value = 10
+	}
+
+	possible = {
+		je_danubian_federation_romanian_button_possible = yes
+	}
+
+	effect = {
+		set_variable = danubian_federation_romanian_button
+		trigger_event = {
+			id = austria_federation.9
+		}
+		custom_tooltip = je_danubian_federation_romanian_button_integrate_tt
+		custom_tooltip = je_danubian_federation_romanian_button_disqualify_tt
+		set_variable = {
+			name = danubian_federation_button_cooldown
+			days = 180
+		}
+	}
+
+	ai_chance = {
+		value = 100
+	}
+}
+
+je_danubian_federation_north_italian_button = {
+	name = "je_danubian_federation_north_italian_button"
+	desc = "je_danubian_federation_north_italian_button_desc"
+
+	visible = {
+		je_danubian_federation_north_italian_button_visible = yes
+	}
+
+	selected = {
+		has_variable_list = aus_integrated_cultures
+		any_in_list = {
+			variable = aus_integrated_cultures
+			cu:north_italian ?= this
+		}
+		NOT = {
+			any_in_list = {
+				variable = aus_disqualified_cultures
+				cu:north_italian ?= this
+			}
+		}
+	}
+
+	ai_chance = {
+		value = 10
+	}
+
+	possible = {
+		je_danubian_federation_north_italian_button_possible = yes
+	}
+
+	effect = {
+		set_variable = danubian_federation_north_italian_button
+		trigger_event = {
+			id = austria_federation.10
+		}
+		custom_tooltip = je_danubian_federation_north_italian_button_integrate_tt
+		set_variable = {
+			name = danubian_federation_button_cooldown
+			days = 180
+		}
+	}
+
+	ai_chance = {
+		value = 100
+	}
+}
+
+je_danubian_federation_serb_button = {
+	name = "je_danubian_federation_serb_button"
+	desc = "je_danubian_federation_serb_button_desc"
+
+	visible = {
+		je_danubian_federation_serb_button_visible = yes
+	}
+
+	selected = {
+		has_variable_list = aus_integrated_cultures
+		any_in_list = {
+			variable = aus_integrated_cultures
+			cu:serb ?= this
+		}
+		NOT = {
+			any_in_list = {
+				variable = aus_disqualified_cultures
+				cu:serb ?= this
+			}
+		}
+	}
+
+	ai_chance = {
+		value = 10
+	}
+
+	possible = {
+		je_danubian_federation_serb_button_possible = yes
+	}
+
+	effect = {
+		set_variable = danubian_federation_serb_button
+		trigger_event = {
+			id = austria_federation.12
+		}
+		custom_tooltip = je_danubian_federation_serb_button_integrate_tt
+		custom_tooltip = je_danubian_federation_serb_button_disqualify_tt
+		set_variable = {
+			name = danubian_federation_button_cooldown
+			days = 180
+		}
+	}
+
+	ai_chance = {
+		value = 100
+	}
+}
+
+je_danubian_federation_ukrainian_button = {
+	name = "je_danubian_federation_ukrainian_button"
+	desc = "je_danubian_federation_ukrainian_button_desc"
+
+	visible = {
+		je_danubian_federation_ukrainian_button_visible = yes
+	}
+
+	selected = {
+		has_variable_list = aus_integrated_cultures
+		any_in_list = {
+			variable = aus_integrated_cultures
+			cu:ukrainian ?= this
+		}
+		NOT = {
+			any_in_list = {
+				variable = aus_disqualified_cultures
+				cu:ukrainian ?= this
+			}
+		}
+	}
+
+	ai_chance = {
+		value = 10
+	}
+
+	possible = {
+		je_danubian_federation_ukrainian_button_possible = yes
+	}
+
+	effect = {
+		set_variable = danubian_federation_ukrainian_button
+		trigger_event = {
+			id = austria_federation.11
+		}
+		custom_tooltip = je_danubian_federation_ukrainian_button_integrate_tt
+		custom_tooltip = je_danubian_federation_ukrainian_button_disqualify_tt
+		set_variable = {
+			name = danubian_federation_button_cooldown
+			days = 180
+		}
+	}
+
+	ai_chance = {
+		value = 100
+	}
+}
+
+je_danubian_federation_enact_the_federation = {
+	name = "je_danubian_federation_enact_the_federation"
+	desc = "je_danubian_federation_enact_the_federation_desc"
+
+	visible = {
+		exists = c:AUS
+		c:AUS = ROOT
+	}
+
+	ai_chance = {
+		value = 10
+	}
+
+	possible = {
+		trigger_if = {
+			limit = {
+				has_variable = count_integrated_cultures
+			}
+			custom_tooltip = {
+				text = has_integrated_5_danubian_cultures_tt
+				var:count_integrated_cultures >= 5
+				NOT = { has_variable = danubian_federation_final_act }
+			}
+		}
+	}
+
+	effect = {
+		custom_tooltip = {
+			text = federalization_signed_tt
+			set_variable = danubian_federation_final_act
+		}
+	}
+
+	selected = {
+		custom_tooltip = {
+			text = federalization_was_signed_tt
+			has_variable = danubian_federation_final_act
+		}
+	}
+
+	ai_chance = {
+		value = 100
+	}
+}
+
+je_danubian_federation_observer_pledge_cooperation = {
+	name = "je_danubian_federation_observer_pledge_cooperation"
+	desc = "je_danubian_federation_observer_pledge_cooperation_desc"
+
+	visible = {
+		exists = c:AUS
+		c:AUS ?= overlord
+		has_variable = danubian_federation_receptive
+	}
+
+	ai_chance = {
+		value = 10
+	}
+
+	possible = {
+		"ROOT.relations(c:AUS)" >= 0
+		custom_tooltip = {
+			text = no_other_subject_signaling_support_tt
+			NOT = {
+				c:AUS ?= {
+					any_subject_or_below = {
+						has_variable = aus_federation_helping_var
+					}
+				}
+			}
+		}
+		custom_tooltip = {
+			text = not_already_used_this_interaction_tt
+			NOT = {
+				has_variable = aus_federation_sent_support
+			}
+		}
+		custom_tooltip = {
+			text = no_culture_disqualified_tt
+			NOT = {
+				any_primary_culture = {
+					is_danubian_culture = yes
+					save_temporary_scope_as = temp_primary_culture
+					c:AUS ?= {
+						any_in_list = {
+							variable = aus_disqualified_cultures
+							scope:temp_primary_culture ?= this
+						}
+					}
+				}
+			}
+		}
+	}
+
+	effect = {
+		set_variable = { name = aus_federation_helping_var days = 90 }
+		set_variable = aus_federation_sent_support
+		custom_tooltip = {
+			text = inform_vienna_tt
+			c:AUS ?= {
+				trigger_event = { id = austria_federation.15 }
+			}
+		}
+	}
+
+	selected = {
+		has_variable = aus_federation_sent_support
+	}
+
+	ai_chance = {
+		value = 5
+	}
+}
+
+je_danubian_federation_observer_reject_cooperation = {
+	name = "je_danubian_federation_observer_reject_cooperation"
+	desc = "je_danubian_federation_observer_reject_cooperation_desc"
+
+	visible = {
+		exists = c:AUS
+		c:AUS ?= overlord
+		has_variable = danubian_federation_opposed
+	}
+
+	ai_chance = {
+		value = 10
+	}
+
+	possible = {
+		"ROOT.relations(c:AUS)" <= 0
+		custom_tooltip = {
+			text = no_other_subject_signaling_opposition_tt
+			NOT = {
+				c:AUS ?= {
+					any_subject_or_below = {
+						has_variable = aus_federation_hating_var
+					}
+				}
+			}
+		}
+		custom_tooltip = {
+			text = not_already_used_this_interaction_tt
+			NOT = {
+				has_variable = aus_federation_sent_opposition
+			}
+		}
+	}
+
+	effect = {
+		set_variable = { name = aus_federation_hating_var days = 90 }
+		set_variable = aus_federation_sent_opposition
+		custom_tooltip = {
+			text = inform_vienna_that_no_tt
+			c:AUS ?= {
+				trigger_event = { id = austria_federation.16 }
+			}
+		}
+	}
+
+	selected = {
+		has_variable = aus_federation_sent_opposition
+	}
+
+	ai_chance = {
+		value = 5
+	}
+}
+
+je_standestaat_eliminate_parliament = {
+	name = "je_standestaat_eliminate_parliament"
+	desc = "je_standestaat_eliminate_parliament_desc"
+
+	visible = {
+		NOT = {
+			has_variable = fatherland_front_var
+		}
+	}
+
+	ai_chance = {
+		value = 10
+	}
+
+	possible = {
+		legitimacy >= 50
+		ruler.interest_group = {
+			is_in_government = yes
+			OR = {
+				custom_tooltip = {
+					text = has_corporatist_ideology_tt
+					has_ideology = ideology:ideology_corporatist
+				}
+				custom_tooltip = {
+					text = leader_has_corporatist_ideology_tt
+					leader = {
+						OR = {
+							has_ideology = ideology:ideology_fascist
+							has_ideology = ideology:ideology_integralist
+							has_ideology = ideology:ideology_corporatist_leader
+						}
+					}
+				}
+			}
+			custom_tooltip = {
+				text = is_fatherland_front_party_tt
+				party ?= {
+					OR = {
+						is_party_type = agrarian_party
+						is_party_type = conservative_party
+						is_party_type = fascist_party
+						is_party_type = military_party
+						is_party_type = religious_party
+					}
+				}
+			}
+		}
+		custom_tooltip = {
+			text = no_non_fatherland_front_party_in_government_tt
+			NOT = {
+				any_interest_group = {
+					is_in_government = yes
+					party ?= {
+						NOR = {
+							is_party_type = agrarian_party
+							is_party_type = conservative_party
+							is_party_type = fascist_party
+							is_party_type = military_party
+							is_party_type = religious_party
+						}
+					}
+				}
+			}
+		}
+	}
+
+	effect = {
+		set_variable = fatherland_front_var
+		ruler.interest_group.party ?= {
+			save_scope_as = relevant_party
+		}
+		if = {
+			limit = {
+				exists = ruler.interest_group.party
+			}
+			custom_tooltip = form_fatherland_front_tt
+		}
+		activate_law = law_type:law_single_party_state
+	}
+
+	selected = {
+
+	}
+
+	ai_chance = {
+		value = 5
 	}
 }

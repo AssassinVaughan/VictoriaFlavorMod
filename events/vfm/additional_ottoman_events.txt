@@ -1087,7 +1087,7 @@ ottoman_arabia_events.1 = {
 	type = country_event
 	placement = scope:baghdad_state
 	title = ottoman_arabia_events.1.t
-	desc = ottoman_arabia_events.1
+	desc = ottoman_arabia_events.1.d
 	flavor =  ottoman_arabia_events.1.f
 	
 	duration = 3
@@ -1116,6 +1116,13 @@ ottoman_arabia_events.1 = {
 	option = {
 		name = ottoman_arabia_events.1.a
 		default_option = yes
+		show_as_tooltip = {
+		add_fervor_target_modifier = {
+			culture = cu:mashriqi
+			days = long_modifier_time
+			multiplier = 5
+		}
+		}
 		random_scope_state = {
 			limit = {
 				state_region = s:STATE_BAGHDAD
@@ -1132,23 +1139,9 @@ ottoman_arabia_events.1 = {
 		}
 	}
 	
-	option = {
-		name = ottoman_arabia_events.1.b
-		random_scope_state = {
-			limit = {
-				state_region = s:STATE_BAGHDAD
-				has_modifier = tur_regional_autonomy
-			}
-			remove_modifier = tur_regional_autonomy
-		}
-		random_scope_state = {
-			limit = {
-				state_region = s:STATE_BASRA
-				has_modifier = tur_regional_autonomy
-			}
-			remove_modifier = tur_regional_autonomy
-		}
-	}
+	#option = { TODO
+	#	name = ottoman_arabia_events.1.b
+	#}
 }
 
 #Integration
@@ -1156,7 +1149,7 @@ ottoman_arabia_events.2 = {
 	type = country_event
 	placement = scope:baghdad_state
 	title = ottoman_arabia_events.2.t
-	desc = ottoman_arabia_events.2
+	desc = ottoman_arabia_events.2.d
 	flavor =  ottoman_arabia_events.2.f
 	
 	duration = 3
@@ -1201,23 +1194,23 @@ ottoman_arabia_events.2 = {
 		}
 	}
 	
-	option = {
-		name = ottoman_arabia_events.2.b
-		random_scope_state = {
-			limit = {
-				state_region = s:STATE_BAGHDAD
-				has_modifier = tur_regional_autonomy
-			}
-			remove_modifier = tur_regional_autonomy
-		}
-		random_scope_state = {
-			limit = {
-				state_region = s:STATE_BASRA
-				has_modifier = tur_regional_autonomy
-			}
-			remove_modifier = tur_regional_autonomy
-		}
-	}
+	#option = { TODO
+	#	name = ottoman_arabia_events.2.b
+	#	random_scope_state = {
+	#		limit = {
+	#			state_region = s:STATE_BAGHDAD
+	#			has_modifier = tur_regional_autonomy
+	#		}
+	#		remove_modifier = tur_regional_autonomy
+	#	}
+	#	random_scope_state = {
+	#		limit = {
+	#			state_region = s:STATE_BASRA
+	#			has_modifier = tur_regional_autonomy
+	#		}
+	#		remove_modifier = tur_regional_autonomy
+	#	}
+	#}
 }
 
 
