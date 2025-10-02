@@ -46,7 +46,7 @@ NAI = {
 	DIPLO_PLAY_SECESSION_OWN_SECESSION_RISK_FACTOR = 0 #-100 Add this amount of reluctance for AI to back a secession of a culture that has enough pops in their own country to secede
 	
 	CONSTRUCTION_MAX_NUM_PRODUCTION_BUILDING_CONSTRUCTIONS_SCALED = 0.03 # If country has this number of production building constructions queued, don't add anymore (scaled by construction production)
-	CONSTRUCTION_MAX_NUM_PRODUCTION_BUILDING_CONSTRUCTIONS_SCALED_MAX = 4 # CONSTRUCTION_MAX_NUM_PRODUCTION_BUILDING_CONSTRUCTIONS_SCALED can't be higher than this
+	CONSTRUCTION_MAX_NUM_PRODUCTION_BUILDING_CONSTRUCTIONS_SCALED_MAX = 50 # CONSTRUCTION_MAX_NUM_PRODUCTION_BUILDING_CONSTRUCTIONS_SCALED can't be higher than this
 	CONSTRUCTION_MAX_NUM_GOVERNMENT_BUILDING_CONSTRUCTIONS_SCALED = 0.01 # If country has this number of government building constructions queued, don't add anymore (scaled by construction production)
 	CONSTRUCTION_MAX_NUM_GOVERNMENT_BUILDING_CONSTRUCTIONS_SCALED_MAX = 2 # CONSTRUCTION_MAX_NUM_GOVERNMENT_CONSTRUCTIONS_SCALED can't be higher than this
 	
@@ -208,15 +208,9 @@ NCountry = {
 }
 
 NPolitics = {
-	MOVEMENT_MONTHLY_RADICALS_THRESHOLD = 0.3 #0.5 At this level of radicalism, movement supporters start being radicalized each month at an amount scaled by the radicalism value
-	MOVEMENT_MONTHLY_RADICALS_SCALING_MIN = 0.003 #0.05 The minimum % of supporters radicalized each month when above the radicalization threshold
-	
-	SECESSION_CHECKPOINT_INTERVAL_BASE_WEEKS = 2	#1 secession progress will be updated every this many weeks (may be affected by modifiers)
-	
-	SECESSION_TURMOIL_CUTOFF = 0.35						# 0.5 Turmoil requires for cultures to start secession
-	SECESSION_WEEKLY_CHANCE_EXCESS_DIV = 40			    # 100 Excess turmoil is divided by this and used to increase chance for secession movements
-	MIN_POP_SIZE_TO_SECEDE = 40000						# Num pops (including dependents) needed for a secession movement to start
-    SECESSION_STATE_CUTOFF_PERCENT = 0.3				# Required pop percentage in State to be egligble for secession
+	MOVEMENT_MONTHLY_RADICALS_THRESHOLD = 0.4 #0.5 At this level of radicalism, movement supporters start being radicalized each month at an amount scaled by the radicalism value
+	MOVEMENT_MONTHLY_RADICALS_SCALING_MIN = 0.004 #0.005 The minimum % of supporters radicalized each month when above the radicalization threshold
+	MOVEMENT_MONTHLY_RADICALS_SCALING_MAX = 0.02 #0.025 The maximum % of supporters radicalized each month when above the radicalization threshold
 }
 
 NEconomy = {
@@ -284,7 +278,6 @@ NDiplomacy = {
 
 NPops = {
     CONVERSION_RATE = 0.001						# Percentage of pops who will Convert into a different Religion each month, if eligible (halved from vanilla)
-	RADICALS_MONTHLY_FROM_DISCRIMINATION = 0.006 #0.005 # Scales by literacy
 	
 	INDIVIDUALS_TAXED_PER_TAX_CAPACITY = 15000			# How many pops can be taxed efficiently for each tax capacity
 }
