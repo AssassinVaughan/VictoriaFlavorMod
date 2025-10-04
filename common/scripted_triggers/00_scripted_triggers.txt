@@ -468,6 +468,8 @@ on_river = {
 		has_state_trait = state_trait_parana_river
 		has_state_trait = state_trait_paraguay_river
 		has_state_trait = state_trait_amazon_river
+		has_state_trait = state_trait_white_nile
+		has_state_trait = state_trait_rio_grande_river
 	}
 }
 
@@ -1731,9 +1733,17 @@ wants_to_solve_schleswig_holstein = {
 }
 
 is_oppressor_of_schleswig_holstein = {
-	NOR = {
-		country_has_primary_culture = cu:north_german
-		country_has_primary_culture = cu:south_german
+	OR = {
+		top_overlord ?= {
+			NOR = {
+				country_has_primary_culture = cu:north_german
+				country_has_primary_culture = cu:south_german
+			}
+		}
+		NOR = {
+			country_has_primary_culture = cu:north_german
+			country_has_primary_culture = cu:south_german
+		}
 	}
 	OR = {
 		any_scope_state = { state_region = s:STATE_SCHLESWIG_HOLSTEIN }
@@ -2073,7 +2083,7 @@ are_all_balkan_league_countries_independent = {
 				is_subject = no
 				hidden_trigger = {
 					NOT = {
-					has_variable = first_balkan_war_successful
+						has_variable = first_balkan_war_successful
 					}
 				}
 			}
@@ -2086,7 +2096,7 @@ are_all_balkan_league_countries_independent = {
 				is_subject = no
 				hidden_trigger = {
 					NOT = {
-					has_variable = first_balkan_war_successful
+						has_variable = first_balkan_war_successful
 					}
 				}
 			}
@@ -2099,7 +2109,7 @@ are_all_balkan_league_countries_independent = {
 				is_subject = no
 				hidden_trigger = {
 					NOT = {
-					has_variable = first_balkan_war_successful
+						has_variable = first_balkan_war_successful
 					}
 				}
 			}
@@ -2112,7 +2122,7 @@ are_all_balkan_league_countries_independent = {
 				is_subject = no
 				hidden_trigger = {
 					NOT = {
-					has_variable = first_balkan_war_successful
+						has_variable = first_balkan_war_successful
 					}
 				}
 			}
@@ -2121,89 +2131,89 @@ are_all_balkan_league_countries_independent = {
 
 #Checks for; if other league members are all subjects or do not exist, JE gets invalid.
 are_all_balkan_league_nations_subjects_gre = {
-AND = {
-    c:MON ?= {
-    OR = {
-    		is_subject = yes
-    		NOT = {
-    		exists = c:MON
-    		}
-    	}
-    }
-    c:BUL ?= {
-    OR = {
-    		is_subject = yes
-    		NOT = {
-    		exists = c:BUL
-    		}
-    	}
-    }
-   	c:SER ?= {
-   	OR = {
-   			is_subject = yes
-   			NOT = {
-   			exists = c:SER
-    			}
-    		}
-    	}
+	AND = {
+	    c:MON ?= {
+	    	OR = {
+	    		is_subject = yes
+	    		NOT = {
+	    			exists = c:MON
+	    		}
+	    	}
+	    }
+	    c:BUL ?= {
+	    	OR = {
+	    		is_subject = yes
+	    		NOT = {
+	    			exists = c:BUL
+	    		}
+	    	}
+	    }
+	   	c:SER ?= {
+	   		OR = {
+	   			is_subject = yes
+	   			NOT = {
+	   				exists = c:SER
+	    		}
+	    	}
+	    }
 	}
 }
 
 are_all_balkan_league_nations_subjects_mon = {
-AND = {
-    c:GRE ?= {
-    OR = {
-    		is_subject = yes
-    		NOT = {
-    		exists = c:GRE
-    		}
-    	}
-    }
-    c:BUL ?= {
-    OR = {
-    		is_subject = yes
-    		NOT = {
-    		exists = c:BUL
-    		}
-    	}
-    }
-   	c:SER ?= {
-   	OR = {
-   			is_subject = yes
-   			NOT = {
-   			exists = c:SER
-    			}
-    		}
-    	}
+	AND = {
+	    c:GRE ?= {
+		    OR = {
+		    	is_subject = yes
+		    	NOT = {
+		    		exists = c:GRE
+		    	}
+		    }
+	    }
+	    c:BUL ?= {
+		    OR = {
+		    	is_subject = yes
+		    	NOT = {
+		    		exists = c:BUL
+		    	}
+		    }
+	    }
+	   	c:SER ?= {
+	   		OR = {
+	   			is_subject = yes
+	   			NOT = {
+	   				exists = c:SER
+	    		}
+	    	}
+	    }
 	}
 }
 
 are_all_balkan_league_nations_subjects_bul = {
-AND = {
-    c:GRE ?= {
-    OR = {
-    		is_subject = yes
-    		NOT = {
-    		exists = c:GRE
-    		}
-    	}
-    }
-    c:MON ?= {
-    OR = {
-    		is_subject = yes
-    		NOT = {
-    		exists = c:MON
-    		}
-    	}
-    }
-   	c:SER ?= {
-   	OR = {
-   			is_subject = yes
-   			NOT = {
-   			exists = c:SER
-    			}
-    		}
-    	}
+	AND = {
+	    c:GRE ?= {
+		    OR = {
+		    	is_subject = yes
+		    	NOT = {
+		    		exists = c:GRE
+		    	}
+		    }
+		}
+	    c:MON ?= {
+		    OR = {
+		    	is_subject = yes
+		    	NOT = {
+		    		exists = c:MON
+		    	}
+		    }
+	    }
+	   	c:SER ?= {
+	   		OR = {
+	   			is_subject = yes
+	   			NOT = {
+	   				exists = c:SER
+	    		}
+	    	}
+	    }
 	}
 }
 
@@ -2298,7 +2308,7 @@ spoils_of_war_complete_alb = {
 	}
 }
 
-spoils_of_war_complete_wal = {
+spoils_of_war_complete_rom = {
 	sr:region_danubia = {
 		any_scope_state = {
 			state_region = {
@@ -2311,28 +2321,42 @@ spoils_of_war_complete_wal = {
 }
 
 movement_is_socialist = {
-	OR = {
-		is_political_movement_type = movement_socialist
-		is_political_movement_type = movement_communist
-		is_political_movement_type = movement_anarchist
-		is_political_movement_type = movement_nihilist
+	custom_tooltip = {
+		text = movement_is_socialist_tt
+		OR = {
+			is_political_movement_type = movement_socialist
+			is_political_movement_type = movement_communist
+			is_political_movement_type = movement_anarchist
+			is_political_movement_type = movement_nihilist
+		}
 	}
 }
 
 movement_is_liberal = {
-	OR = {
-		is_political_movement_type = movement_liberal
-		is_political_movement_type = movement_radical
-		is_political_movement_type = movement_labor
-		is_political_movement_type = movement_positivist
-		is_political_movement_type = movement_anti_slavery
-		is_political_movement_type = movement_german_national
-		is_political_movement_type = movement_italian_national
+	custom_tooltip = {
+		text = movement_is_liberal_tt
+		OR = {
+			is_political_movement_type = movement_liberal
+			is_political_movement_type = movement_radical
+			is_political_movement_type = movement_labor
+			is_political_movement_type = movement_positivist
+			is_political_movement_type = movement_feminist
+			is_political_movement_type = movement_anti_slavery
+			is_political_movement_type = movement_german_national
+			is_political_movement_type = movement_italian_national
+			is_political_movement_type = movement_yugoslav_national
+			is_political_movement_type = movement_india_pan_national
+			is_political_movement_type = movement_utilitarian
+			is_political_movement_type = movement_modernizer
+		}
 	}
 }
 
 movement_is_nationalist = {
 	OR = {
+		is_political_movement_type = movement_german_national
+		is_political_movement_type = movement_italian_national
+		is_political_movement_type = movement_yugoslav_national
 		is_political_movement_type = movement_cultural_majority
 		is_political_movement_type = movement_fascist
 		is_political_movement_type = movement_modernizer

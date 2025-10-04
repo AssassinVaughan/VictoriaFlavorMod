@@ -45,29 +45,31 @@ vfm_colonial_migration.1 = {
 		any_scope_state = {
 		    is_incorporated = yes
 			state_population > 500000
-			gdp >= 300000 # 300k
+			gdp >= 250000 # 250k
 			any_scope_culture = {
-                is_primary_culture_of = ROOT
-            }
+				is_primary_culture_of = ROOT
+			}
+			average_sol < 12
 		}
 	}
 
 	immediate = {
-	    random_scope_culture = {
-		    limit = {
-				is_primary_culture_of = ROOT
-			}
-			save_scope_as = primary_culture_scope
-		}
 	    random_scope_state = {
 		    limit = {
 				is_incorporated = yes
 				state_population > 500000
 				gdp >= 300000 # 300k
-				culture_percent_state = {
-			  		target = scope:primary_culture_scope
-			 		value >= 0.2
+				any_scope_culture = {
+					is_primary_culture_of = ROOT
 				}
+				average_sol < 12
+			}
+			save_scope_as = move_from_state
+			random_scope_culture = {
+				limit = {
+					is_primary_culture_of = ROOT
+				}
+				save_scope_as = primary_culture_scope
 			}
 		}
 	    random_scope_state = {
@@ -75,15 +77,18 @@ vfm_colonial_migration.1 = {
 			    NOT = {is_homeland_of_country_cultures = ROOT}
 			    is_incorporated = no
 				is_isolated_from_market = no
-				NOT = {
-					any_scope_culture = {
-						is_primary_culture_of = ROOT
-						save_temporary_scope_as = primary_culture
+				OR = {
+					NOT = {
+						any_scope_culture = {
+							is_primary_culture_of = ROOT
+							save_temporary_scope_as = primary_culture
+						}
+						culture_percent_state = {
+						    target = scope:primary_culture
+						    value >= 0.1
+						}
 					}
-					culture_percent_state = {
-			  		   target = scope:primary_culture
-			 		   value >= 0.1
-					}
+					has_decree = decree_greener_grass_campaign
 				}
 			}
 			save_scope_as = move_to_state
@@ -101,16 +106,7 @@ vfm_colonial_migration.1 = {
 				value = 1
 			}
 		}
-		random_scope_state = {
-            limit = {
-                is_incorporated = yes
-				state_population > 500000
-				gdp >= 300000 # 300k
-				culture_percent_state = {
-			  		target = scope:primary_culture_scope
-			 		value >= 0.2
-				}
-            }
+		scope:move_from_state = {
             scope:primary_culture_scope = {
                 ordered_scope_pop = {
                     order_by = total_size
@@ -141,16 +137,7 @@ vfm_colonial_migration.1 = {
 				value = 2
 			}
 		}
-		random_scope_state = {
-            limit = {
-                is_incorporated = yes
-				state_population > 500000
-				gdp >= 300000 # 300k
-				culture_percent_state = {
-			  		target = scope:primary_culture_scope
-			 		value >= 0.2
-				}
-            }
+		scope:move_from_state = {
             scope:primary_culture_scope = {
                 ordered_scope_pop = {
                     order_by = total_size
@@ -181,16 +168,7 @@ vfm_colonial_migration.1 = {
 				value >= 3
 			}
 		}
-		random_scope_state = {
-            limit = {
-                is_incorporated = yes
-				state_population > 500000
-				gdp >= 300000 # 300k
-				culture_percent_state = {
-			  		target = scope:primary_culture_scope
-			 		value >= 0.2
-				}
-            }
+		scope:move_from_state = {
             scope:primary_culture_scope = {
                 ordered_scope_pop = {
                     order_by = total_size
@@ -212,6 +190,9 @@ vfm_colonial_migration.1 = {
 	
 	option = { # Don't move pops
 		name = vfm_colonial_migration.1.e
+		ai_chance = {
+			base = 7
+		}
 		default_option = yes
 	}
 }
@@ -261,29 +242,31 @@ vfm_colonial_migration.2 = {
 		any_scope_state = {
 		    is_incorporated = yes
 			state_population > 500000
-			gdp >= 300000 # 300k
+			gdp >= 250000 # 250k
 			any_scope_culture = {
-                is_primary_culture_of = ROOT
-            }
+				is_primary_culture_of = ROOT
+			}
+			average_sol < 12
 		}
 	}
 
 	immediate = {
-	    random_scope_culture = {
-		    limit = {
-				is_primary_culture_of = ROOT
-			}
-			save_scope_as = primary_culture_scope
-		}
 	    random_scope_state = {
 		    limit = {
 				is_incorporated = yes
 				state_population > 500000
 				gdp >= 300000 # 300k
-				culture_percent_state = {
-			  		target = scope:primary_culture_scope
-			 		value >= 0.2
+				any_scope_culture = {
+					is_primary_culture_of = ROOT
 				}
+				average_sol < 12
+			}
+			save_scope_as = move_from_state
+			random_scope_culture = {
+				limit = {
+					is_primary_culture_of = ROOT
+				}
+				save_scope_as = primary_culture_scope
 			}
 		}
 	    random_scope_state = {
@@ -291,15 +274,18 @@ vfm_colonial_migration.2 = {
 			    NOT = {is_homeland_of_country_cultures = ROOT}
 			    is_incorporated = no
 				is_isolated_from_market = no
-				NOT = {
-					any_scope_culture = {
-						is_primary_culture_of = ROOT
-						save_temporary_scope_as = primary_culture
+				OR = {
+					NOT = {
+						any_scope_culture = {
+							is_primary_culture_of = ROOT
+							save_temporary_scope_as = primary_culture
+						}
+						culture_percent_state = {
+						    target = scope:primary_culture
+						    value >= 0.1
+						}
 					}
-					culture_percent_state = {
-			  		   target = scope:primary_culture
-			 		   value >= 0.1
-					}
+					has_decree = decree_greener_grass_campaign
 				}
 			}
 			save_scope_as = move_to_state
@@ -317,16 +303,7 @@ vfm_colonial_migration.2 = {
 				value = 4
 			}
 		}
-		random_scope_state = {
-            limit = {
-                is_incorporated = yes
-				state_population > 500000
-				gdp >= 300000 # 300k
-				culture_percent_state = {
-			  		target = scope:primary_culture_scope
-			 		value >= 0.2
-				}
-            }
+		scope:move_from_state = {
             scope:primary_culture_scope = {
                 ordered_scope_pop = {
                     order_by = total_size
@@ -357,16 +334,7 @@ vfm_colonial_migration.2 = {
 				value = 5
 			}
 		}
-		random_scope_state = {
-            limit = {
-                is_incorporated = yes
-				state_population > 500000
-				gdp >= 300000 # 300k
-				culture_percent_state = {
-			  		target = scope:primary_culture_scope
-			 		value >= 0.2
-				}
-            }
+		scope:move_from_state = {
             scope:primary_culture_scope = {
                 ordered_scope_pop = {
                     order_by = total_size

@@ -31,14 +31,19 @@ base_values = {
 	state_middle_strata_expected_sol_add = 10
 	state_upper_strata_expected_sol_add = 15
 	state_expected_sol_from_literacy = 5
-	
+
+	state_machinists_investment_pool_contribution_add = 0.10
 	state_farmers_investment_pool_contribution_add = 0.10
+	state_engineers_investment_pool_contribution_add = 0.15
+	state_bureaucrats_investment_pool_contribution_add = 0.15
 	state_shopkeepers_investment_pool_contribution_add = 0.20
 	state_clergymen_investment_pool_contribution_add = 0.20
 	state_aristocrats_investment_pool_contribution_add = 0.20
-	state_capitalists_investment_pool_contribution_add = 0.25	
-	
-	state_unincorporated_starting_wages_mult = -0.2 # To balance for unincorporated states not paying taxes
+	state_capitalists_investment_pool_contribution_add = 0.30
+
+	# To balance for unincorporated states not paying taxes
+	state_unincorporated_starting_wages_mult = -0.20
+	building_unincorporated_subsistence_output_mult = -0.20
 
 	country_construction_add = 1
 	
@@ -68,6 +73,8 @@ base_values = {
 
 	state_trade_advantage_from_capacity_add = 0.0005
 	state_max_trade_advantage_from_capacity_add = 0.2
+	
+	country_party_whip_impact_add = 0.5
 }
 
 # Scales with a country's global prestige rank, so at 20/100 this is multiplied by 0.8x, 50/100 by 0.5x, etc
@@ -198,6 +205,7 @@ unincorporated_state = {
 	building_group_bg_military_throughput_add = -0.1
 	state_market_access_price_impact = -0.1
 	state_construction_mult = -0.15
+    building_group_bg_heavy_industry_construction_efficiency_add = -0.15
 }
 
 treaty_port_state = {
@@ -223,12 +231,14 @@ recently_liberated_state = {
 market_capital_state = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
 	state_infrastructure_mult = 0.25
+	state_trade_advantage_mult = 0.25
 }
 
 capital_state = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
 	state_pop_pol_str_mult = 0.25
 	state_tax_capacity_mult = 0.25
+	state_infrastructure_from_population_max_add = 15
 }
 
 moved_capital_recently = {
@@ -313,6 +323,7 @@ military_wages_very_low = {
 	interest_group_ig_armed_forces_approval_add = -2
 	building_training_rate_mult = -0.75
 	country_prestige_from_army_power_projection_mult = -0.2
+	country_prestige_from_navy_power_projection_mult = -0.2
 }
 
 military_wages_low = {
@@ -321,6 +332,7 @@ military_wages_low = {
 	interest_group_ig_armed_forces_approval_add = -1
 	building_training_rate_mult = -0.5
 	country_prestige_from_army_power_projection_mult = -0.1
+	country_prestige_from_navy_power_projection_mult = -0.1
 }
 
 military_wages_medium = {
@@ -331,6 +343,7 @@ military_wages_high = {
 	country_military_wages_mult = 0.15
 	interest_group_ig_armed_forces_approval_add = 1
 	country_prestige_from_army_power_projection_mult = 0.1
+	country_prestige_from_navy_power_projection_mult = 0.1
 	unit_morale_recovery_mult = 0.1
 }
 
@@ -339,6 +352,7 @@ military_wages_very_high = {
 	country_military_wages_mult = 0.3
 	interest_group_ig_armed_forces_approval_add = 2
 	country_prestige_from_army_power_projection_mult = 0.2
+	country_prestige_from_navy_power_projection_mult = 0.2
 	unit_morale_recovery_mult = 0.2
 }
 
@@ -579,15 +593,10 @@ low_pop_state = {
 	state_birth_rate_mult = 0.5
 }
 
-high_pop_state = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
-	state_birth_rate_mult = -0.25
-}
-
 # Multiplies unemployment rate in state by this
 unemployment_birth_penalty_state = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
-	state_birth_rate_mult = -0.3
+	state_birth_rate_mult = -0.35
 }
 
 # if this bonus changes need code support
@@ -620,8 +629,8 @@ state_region_devastation = {
 	state_infrastructure_mult = -1.0
 	state_mortality_mult = 2.0
 	state_migration_pull_mult = -2.0
-	building_throughput_add = -0.25
 	state_construction_mult = -0.3
+	building_throughput_add = -0.25
 }
 
 # Scales with pollution impact, reduced by state_pollution_reduction_health_mult
@@ -635,7 +644,7 @@ state_region_pollution_health = {
 # Effect = state_region_pollution_health * impact
 state_region_pollution_general = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_negative.dds
-	state_migration_pull_mult = -0.2
+	state_migration_pull_mult = -0.25
 	state_harvest_condition_drought_impact_mult = 0.5
 	state_harvest_condition_flood_impact_mult = 0.5
 	state_harvest_condition_wildfire_impact_mult = 0.5
@@ -655,14 +664,14 @@ state_obstinance = {
 	state_conversion_mult = -0.5
 	state_institution_impact_add = -0.5 # 1.0 VFM
 	state_tax_collection_mult = -0.15 # 0.25 VFM
-	state_conscription_rate_mult = -0.5
+	state_conscription_rate_mult = -0.5 # 0.75 VFM
 }
 
 # Applied if state is above 'in turmoil' threshold
 state_turmoil = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
 	building_throughput_add = -0.1
-	state_tax_waste_add = 0.2
+	state_tax_waste_add = 0.15
 	state_migration_pull_mult = -0.25
 }
 
@@ -670,7 +679,7 @@ state_turmoil = {
 state_turmoil_high = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
 	building_throughput_add = -0.15
-	state_tax_waste_add = 0.35
+	state_tax_waste_add = 0.3
 	state_migration_pull_mult = -0.35
 }
 
@@ -678,7 +687,7 @@ state_turmoil_high = {
 state_turmoil_extreme = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
 	building_throughput_add = -0.2
-	state_tax_waste_add = 0.5
+	state_tax_waste_add = 0.4
 	state_migration_pull_mult = -0.5
 }
 
