@@ -134,6 +134,7 @@ modifier_red_summer = {
 	state_pop_support_movement_radical_mult = 0.25
 	state_pop_support_movement_reactionary_mult = 0.25
 	state_pop_support_movement_cultural_minority_mult = 0.25
+	country_law_enactment_time_mult = -0.45
 }
 
 modifier_constitutional_monarch = {
@@ -278,6 +279,11 @@ modifier_greater_austria_character = {
 modifier_springtime_kick_out_of_insurrection = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
 	interest_group_approval_add = 20
+}
+
+modifier_revolutionary_cabinet = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	country_legitimacy_base_add = 75
 }
 
 modifier_european_potato_famine = {
@@ -429,7 +435,7 @@ modifier_first_among_the_nation = {
 	country_law_enactment_time_mult = 0.25
 }
 
-modifier_clinging_to_privilege = { 
+modifier_clinging_to_privilege = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
 	country_law_enactment_success_add = -0.15
 }
@@ -474,6 +480,12 @@ modifier_protector_of_the_south_slavs = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
 	country_prestige_mult = 0.05
 	country_influence_add = 50
+}
+
+modifier_protector_of_the_south_slavs_twice_dummy = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
+	country_prestige_mult = 0.1
+	country_influence_add = 100
 }
 
 modifier_refused_deporting_slaves = {
@@ -557,8 +569,10 @@ modifier_resurgent_labor_movement = {
 
 modifier_hungarian_renaissance = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_positive.dds
-	country_fervor_target_hungarian_add = 30
 	country_academics_pol_str_mult = 0.25
+	state_pop_support_movement_radical_mult = 0.15
+	state_pop_support_movement_liberal_mult = 0.15
+	state_pop_support_movement_cultural_majority_mult = 0.15
 }
 
 modifier_polish_organic_statute = {
@@ -575,4 +589,16 @@ modifier_serbian_revolt_aftermath = {
 modifier_greek_revolt_aftermath = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
 	country_fervor_target_greek_add = 30
+}
+
+movement_suppressed_after_civil_war_copy = {
+	icon = "gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds"
+	political_movement_radicalism_add = -1
+}
+
+modifier_rebellion_horrific_reprisals = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_fire_negative.dds
+	state_mortality_mult = 0.5
+	state_standard_of_living_add = -3
+	state_migration_push_mult = 0.3
 }

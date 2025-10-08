@@ -13,7 +13,7 @@ decree_agricultural_throughput = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_agriculture_positive.dds
 	building_group_bg_agriculture_throughput_add = 0.1
 	building_group_bg_plantations_throughput_add = 0.1
-	building_group_bg_ranching_throughput_add = 0.1		
+	building_group_bg_ranching_throughput_add = 0.1
 }
 
 decree_resource_throughput = {
@@ -327,7 +327,7 @@ taiping_land_socialization = {
 	state_conversion_mult = 0.25
 }
 
-taiping_army_modifier = { #Taiping 
+taiping_army_modifier = { #Taiping
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_positive.dds
 	state_conscription_rate_mult = 0.02
 	unit_army_defense_mult = 0.1
@@ -495,12 +495,12 @@ serbia_clerical_publicity_mod = {
 serbia_forced_clerical_publicity_mod = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
 	interest_group_ig_devout_approval_add = -3
-}	
+}
 
 serbia_urban_rebels_killed_by_armed_forces_mod = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
-	interest_group_ig_armed_forces_approval_add = -2
-	interest_group_ig_armed_forces_pop_attraction_mult = 0.1
+	interest_group_ig_armed_forces_approval_add = -3
+	interest_group_ig_armed_forces_pop_attraction_mult = 0.15
 }
 
 serbia_urban_rebels_killed_by_loyalists_mod = {
@@ -522,7 +522,7 @@ serbia_aided_magyarized_serbs_mod = {
 
 serbia_greatly_aided_magyarized_serbs_mod = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
-	country_expenses_add = 0.6	
+	country_expenses_add = 0.6
 }
 
 serbia_no_more_blood_feud_mod = {
@@ -597,7 +597,7 @@ serbia_high_fund_campaign_end_karadordevic_mod = {
 
 serbia_auth_fund_campaigned_state_a_mod = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
-	state_standard_of_living_add = 0.25
+	state_standard_of_living_add = 1
 }
 
 serbia_auth_fund_campaigned_state_b_mod = {
@@ -620,7 +620,7 @@ serbia_auth_fund_campaigned_state_e_mod = {
 
 serbia_med_fund_campaigned_state_a_mod = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
-	state_standard_of_living_add = 0.50
+	state_standard_of_living_add = 2
 }
 
 serbia_med_fund_campaigned_state_b_mod = {
@@ -643,7 +643,7 @@ serbia_med_fund_campaigned_state_e_mod = {
 
 serbia_high_fund_campaigned_state_a_mod = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
-	state_standard_of_living_add = 0.70
+	state_standard_of_living_add = 3
 }
 
 serbia_high_fund_campaigned_state_b_mod = {
@@ -690,16 +690,16 @@ balkan_wars_victorious_balkan_league_mod = {
 
 balkan_wars_muster_conscripts_low_mod = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
-	state_conscription_rate_mult = 0.010
-	building_training_rate_mult = 0.0030
-	building_group_bg_agriculture_throughput_add = -0.0015
+	state_conscription_rate_mult = 0.25
+	building_training_rate_mult = 0.35
+	building_group_bg_agriculture_throughput_add = -0.2
 }
 
 balkan_wars_muster_conscripts_high_mod = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
-	state_conscription_rate_mult = 0.015
-	building_training_rate_mult = 0.0050
-	building_group_bg_agriculture_throughput_add = -0.0035
+	state_conscription_rate_mult = 0.5
+	building_training_rate_mult = 0.75
+	building_group_bg_agriculture_throughput_add = -0.4
 }
 
 balkan_wars_military_tech_boost_mod = {
@@ -787,7 +787,7 @@ the_grand_collapse_law_speed_mod = {
 
 the_grand_collapse_relation_speed_mod = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
-	country_improve_relations_speed_mult = 0.15 
+	country_improve_relations_speed_mult = 0.15
 	country_damage_relations_speed_mult = 0.15
 	country_influence_mult = -0.10
 }
@@ -862,7 +862,8 @@ the_grand_collapse_desperate_measures_cost = {
 	country_expenses_add = 1.5
 }
 
-egypt_rebellion = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
-	country_liberty_desire_add = 0.3
+modifier_balkan_wars_won_alone = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	country_prestige_mult = 0.3
+	country_loyalists_from_legitimacy_mult = 0.2
 }

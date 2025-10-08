@@ -121,9 +121,11 @@ grant_leadership_to_agitator = {
 		}
 		trigger_if = {
 			limit = {
-				AND = {
-					has_law_or_variant = law_type:law_multicultural
-					has_law_or_variant = law_type:law_total_separation
+				scope:actor ?= {
+					AND = {
+						has_law_or_variant = law_type:law_multicultural
+						has_law_or_variant = law_type:law_total_separation
+					}
 				}
 			}
 			character_acceptance = { # In light of the Multiculturalism nerf
@@ -354,12 +356,12 @@ abdicate_monarch = {
 				trigger_if = {
 					limit = {
 						any_political_movement = {
-							is_insurrectionary = yes
+							is_revolutionary = yes
 							exists = most_desired_law
 						}
 					}
 					any_political_movement = {
-						is_insurrectionary = yes
+						is_revolutionary = yes
 						exists = most_desired_law
 						most_desired_law ?= { save_temporary_scope_as = revolutionary_law }
 						custom_tooltip = {
@@ -384,7 +386,7 @@ abdicate_monarch = {
 				trigger_else = {
 					AND = {
 						any_political_movement = {
-							is_insurrectionary = yes
+							is_revolutionary = yes
 						}
 						custom_tooltip = {
 							text = ruler_disapproves_of_revolutionary_law_contextless
@@ -399,7 +401,7 @@ abdicate_monarch = {
 				NOT = {
 					owner ?= {
 						any_interest_group = {
-							is_insurrectionary = yes
+							is_revolutionary = yes
 						}
 					}
 				}
@@ -417,7 +419,7 @@ abdicate_monarch = {
 				owner ?= {
 					any_political_movement = {
 						exists = most_desired_law
-						is_insurrectionary = yes
+						is_revolutionary = yes
 					}
 				}
 			}
@@ -483,6 +485,16 @@ abdicate_monarch = {
 exile_character = {
 	clicksound = "event:/SFX/DLC/1.3_ip1/UI/exile_character"
 
+	should_ai_evaluate = {
+		OR = {
+			has_law_or_variant = law_type:law_autocracy
+			has_law_or_variant = law_type:law_oligarchy
+			has_law_or_variant = law_type:law_single_party_state
+			has_law_or_variant = law_type:law_secret_police
+			has_law_or_variant = law_type:law_outlawed_dissent
+		}
+	}
+
 	potential = {
 		is_in_exile_pool = no
 		is_in_void = no
@@ -499,8 +511,9 @@ exile_character = {
 
 	possible = {
 		owner ?= {
-			NOT = {
+			NOR = {
 				has_law_or_variant = law_type:law_protected_speech
+				has_law_or_variant = law_type:law_guaranteed_liberties
 			}
 		}
 		is_busy = no
@@ -753,90 +766,147 @@ exile_character = {
 	show_confirmation_box = yes
 
 	ai_chance = {
-		value = -50
+		value = 0
+
 		if = {
 			limit = {
-				interest_group ?= {
-					ig_approval <= -5
-				}
-			}
-			add = 25
-		}
-		if = {
-			limit = {
-				interest_group ?= {
-					ig_approval <= -10
-				}
-			}
-			add = 30
-		}
-		if = {
-			limit = {
-				scope:actor ?= {
-					NOR = {
-						has_law_or_variant = law_type:law_autocracy
-						has_law_or_variant = law_type:law_oligarchy
-						has_law_or_variant = law_type:law_single_party_state
+				OR = {
+					interest_group ?= {
+						ig_approval < 0
+					}
+					political_movement ?= {
+						is_being_suppressed = yes
 					}
 				}
 			}
-			add = -25
-		}
-		if = {
-			limit = {
-				scope:actor ?= {
-					has_law_or_variant = law_type:law_secret_police
-				}
+
+			add = {
+				value = popularity
+				multiply = 0.2
 			}
-			add = 30
-		}
-		if = {
-			limit = {
-				scope:actor ?= {
-					has_law_or_variant = law_type:law_national_guard
+
+			if = {
+				limit = {
+					scope:actor ?= {
+						has_law_or_variant = law_type:law_outlawed_dissent
+					}
 				}
+				multiply = 1.5
 			}
-			add = 15
-		}
-		if = {
-			limit = {
-				scope:actor ?= {
-					has_law_or_variant = law_type:law_guaranteed_liberties
+			else_if = {
+				limit = {
+					scope:actor ?= {
+						has_law_or_variant = law_type:law_censorship
+					}
 				}
+				multiply = 1.25
 			}
-			add = -100
-		}
-		if = {
-			limit = {
-				scope:actor ?= {
-					has_law_or_variant = law_type:law_outlawed_dissent
+			else_if = {
+				limit = {
+					scope:actor ?= {
+						has_law_or_variant = law_type:law_right_of_assembly
+					}
 				}
+				multiply = 0.75
 			}
-			add = 30
-		}
-		if = {
-			limit = {
-				scope:actor ?= {
-					has_law_or_variant = law_type:law_censorship
+
+			if = {
+				limit = {
+					scope:actor ?= {
+						has_law_or_variant = law_type:law_secret_police
+					}
 				}
+				multiply = 1.5
 			}
-			add = 10
-		}
-		if = {
-			limit = {
-				scope:actor ?= {
-					has_law_or_variant = law_type:law_right_of_assembly
+			else_if = {
+				limit = {
+					scope:actor ?= {
+						has_law_or_variant = law_type:law_national_guard
+					}
 				}
+				multiply = 1.25
 			}
-			add = -10
-		}
-		if = {
-			limit = {
-				scope:actor ?= {
-					has_law_or_variant = law_type:law_protected_speech
+			else_if = {
+				limit = {
+					scope:actor ?= {
+						has_law_or_variant = law_type:law_no_home_affairs
+					}
 				}
+				multiply = 0.5
 			}
-			add = -20
+
+			if = {
+				limit = {
+					interest_group ?= {
+						ig_approval <= -5
+					}
+				}
+				multiply = 1.25
+			}
+			else_if = {
+				limit = {
+					interest_group ?= {
+						ig_approval <= -10
+					}
+				}
+				multiply = 1.5
+			}
+
+			if = { # If we are Conservative dont immediately hang any Liberal politician and so on
+				limit = {
+					scope:actor ?= {
+						has_strategy = ai_strategy_conservative_agenda
+					}
+					has_liberal_ideology = yes
+				}
+				multiply = 0.5
+			}
+			else_if = {
+				limit = {
+					scope:actor ?= {
+						has_strategy = ai_strategy_progressive_agenda
+					}
+					OR = {
+						has_liberal_ideology = yes
+						has_progressive_ideology = yes
+					}
+				}
+				multiply = 0.5
+			}
+			else_if = {
+				limit = {
+					scope:actor ?= {
+						has_strategy = ai_strategy_egalitarian_agenda
+						NOT = { has_law_or_variant = law_type:law_council_republic }
+					}
+					OR = {
+						has_liberal_ideology = yes
+						has_progressive_ideology = yes
+						has_socialist_ideology = yes
+					}
+				}
+				multiply = 0.5
+			}
+			else_if = {
+				limit = {
+					scope:actor ?= {
+						has_strategy = ai_strategy_egalitarian_agenda
+					}
+					OR = {
+						has_progressive_ideology = yes
+						has_socialist_ideology = yes
+					}
+				}
+				multiply = 0.5
+			}
+
+
+			if = { # Be less inclined to toss out politicians
+				limit = {
+					NOT = { has_role = agitator }
+				}
+				multiply = 0.25
+			}
 		}
 	}
 }

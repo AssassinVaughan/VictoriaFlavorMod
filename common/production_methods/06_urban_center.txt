@@ -99,6 +99,8 @@ pm_no_street_lighting = {
 pm_oil_streetlights = {
 	texture = "gfx/interface/icons/production_method_icons/gas_streetlights.dds"
 	
+	city_lights_color_index = 1	# Needs to match city_graphics_data.settings color array
+
 	unlocking_technologies = {
 	}
 
@@ -109,7 +111,13 @@ pm_oil_streetlights = {
 		}
 
 		level_scaled = {
-			building_employment_laborers_add = 225
+			building_employment_laborers_add = 250
+		}
+	}
+
+	state_modifiers = {
+		workforce_scaled = {
+			state_infrastructure_add = 1
 		}
 	}
 }

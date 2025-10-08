@@ -4639,6 +4639,11 @@ ai_strategy_default = {
 			limit = { NOT = { has_technology_researched = steel_frame_buildings } }
 			multiply = 0.8
 		}		
+		
+		if = {
+			limit = { has_strategy = ai_strategy_maintain_mandate_of_heaven }
+			multiply = 0.3
+		}
 
         add = 3 # Accounts for the 3 free construction from base modifiers
 
@@ -4654,6 +4659,32 @@ ai_strategy_default = {
 
 		min = 3
 		max = 800
+	}
+	
+	# How much does the AI want to prioritize economic construction vs government spending?
+	# Having a value above 0 here makes the AI less willing to spend on government expenses and more willing to take on debt to build production buildings
+	# Values below 0 have the opposite effect and thus also increase AI government spending
+	# +0.1 = +10% higher acceptable debt threshold for economic construction / +10% stricter budget requirements for government expenses
+	# Acceptable debt threshold for economic construction is capped at CONSTRUCTION_DEBT_PAUSE
+	# Using this value in other strategies will function additively
+	economic_vs_government_spending_balance = {
+		value = 0.0
+		if = {
+			limit = {
+				has_journal_entry = je_grunderzeit
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_variable = grunderzeit_participant_low_var
+					}
+				}
+				add = 0.25
+			}
+			else = {
+				add = 0.15
+			}
+		}
 	}
 	
 	# How many levels of barracks should the AI have

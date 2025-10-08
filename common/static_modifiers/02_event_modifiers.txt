@@ -66,7 +66,7 @@ rural_folk_conscription_concerns_ignored_modifier = {
 less_conscription_rural_folk_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_negative.dds
 	state_conscription_rate_mult = -0.2
-}	
+}
 
 trade_unions_placation_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
@@ -142,7 +142,7 @@ state_gold_rush_less_migration = {
 state_gold_rush_exploitation = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
 	building_gold_fields_throughput_add = 0.2
-}		
+}
 
 state_limited_gold_rush = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
@@ -1004,11 +1004,6 @@ revolution_canceled = {
 	country_authority_mult = -0.1
 }
 
-modifier_destroy_guerillas = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
-	country_authority_mult = -0.15
-}
-
 modifier_denied_monarch_colony_ig = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
 	interest_group_approval_add = -10
@@ -1426,7 +1421,7 @@ modifier_paying_journalist = {
 
 modifier_article_damages_ig_reputation = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
-	interest_group_pop_attraction_mult = -0.15 
+	interest_group_pop_attraction_mult = -0.15
 }
 
 modifier_intimidating_ig_cost = {
@@ -1964,7 +1959,7 @@ war_wounded_civilian_assistance = {
 
 medical_hygiene = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_positive.dds
-	unit_recovery_rate_add = 0.15	
+	unit_recovery_rate_add = 0.15
 }
 
 medical_hygiene_local = {
@@ -1975,7 +1970,7 @@ medical_hygiene_local = {
 
 prefab_hospital = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_positive.dds
-	unit_recovery_rate_add = 0.1	
+	unit_recovery_rate_add = 0.1
 }
 
 modern_nursing  = {
@@ -2070,4 +2065,16 @@ colonial_administration = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
 	state_non_contiguous_incorporation_speed_mult = -0.5
 	state_contiguous_incorporation_speed_mult = 1.0
+}
+
+usa_capital_relocated = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
+	country_legitimacy_base_add = -15
+	state_incorporation_speed_mult = -0.25
+}
+
+usa_capital_intact = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	country_legitimacy_base_add = 5
+	state_incorporation_speed_mult = 0.1
 }
