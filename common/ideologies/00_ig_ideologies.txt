@@ -51,6 +51,14 @@
 		law_mercantilism = approve
 		law_protectionism = neutral
 		law_free_trade = disapprove
+	}	
+	
+	lawgroup_centralization = {
+		law_decentralized = neutral
+		law_confederated = disapprove
+		law_federal = disapprove
+		law_devolved = neutral
+		law_unitary = approve
 	}
 }
 
@@ -320,11 +328,19 @@ ideology_particularist = {
 		law_debt_slavery = strongly_disapprove
 		law_slave_trade = neutral
 	}
+	
+	lawgroup_centralization = {
+		law_decentralized = strongly_approve
+		law_confederated = strongly_approve
+		law_federal = neutral
+		law_devolved = disapprove
+		law_unitary = strongly_disapprove
+	}
 }
 
 ideology_isolationist = {
 	icon = "gfx/interface/icons/ideology_icons/isolationist.dds"
-
+	
 	lawgroup_colonization = {
 		law_frontier_colonization = strongly_approve
 		law_no_colonial_affairs = approve
@@ -372,6 +388,15 @@ ideology_moralist = {
 		law_freedom_of_conscience = neutral
 		law_total_separation = strongly_disapprove
 		law_state_atheism = strongly_disapprove
+	}
+
+	lawgroup_citizenship = {
+		law_ethnostate = neutral
+		law_national_supremacy = approve
+		law_racial_segregation = neutral
+		law_cultural_exclusion = disapprove
+		law_multicultural = strongly_disapprove	
+        law_subjecthood = neutral
 	}
 }
 
@@ -468,6 +493,14 @@ ideology_patriotic = {
 		law_colonial_resettlement = approve
 		law_colonial_exploitation = approve
 		law_frontier_colonization = approve
+	}	
+	
+	lawgroup_centralization = {
+		law_decentralized = disapprove
+		law_confederated = disapprove
+		law_federal = disapprove
+		law_devolved = approve
+		law_unitary = approve
 	}
 }
 
@@ -547,11 +580,19 @@ ideology_liberal = {
 		law_women_in_the_workplace = neutral
 		law_womens_suffrage = neutral
 	}
+	
+	lawgroup_centralization = {
+		law_decentralized = neutral
+		law_confederated = approve
+		law_federal = approve
+		law_devolved = disapprove
+		law_unitary = strongly_disapprove
+	}
 }
 
 ideology_anti_clerical = {
 	icon = "gfx/interface/icons/ideology_icons/anti_clerical.dds"
-
+	
 	lawgroup_church_and_state = {
 		law_state_atheism = neutral
 		law_total_separation = strongly_approve
@@ -641,6 +682,13 @@ ideology_proletarian = {
 		law_public_health_insurance = approve
 	}
 
+	lawgroup_education_system = {
+		law_public_schools = approve
+		law_private_schools = neutral
+		law_religious_schools = neutral	
+		law_no_schools = disapprove	
+	}
+	
 	lawgroup_labour_associations = {
 		law_combination_acts = strongly_disapprove
 		law_guild_system = disapprove
@@ -670,7 +718,16 @@ ideology_egalitarian = {
 		law_worker_protections = strongly_approve
 		law_regulatory_bodies = approve
 		law_no_workers_rights = neutral
+	}	
+	
+	lawgroup_centralization = {
+		law_decentralized = neutral
+		law_confederated = strongly_approve
+		law_federal = approve
+		law_devolved = disapprove
+		law_unitary = strongly_disapprove
 	}
+	
 }
 
 ideology_populist = {
@@ -859,7 +916,7 @@ ideology_anti_slavery = {
 	icon = "gfx/interface/icons/ideology_icons/abolitionist.dds"
 
 	lawgroup_slavery = {
-		law_slavery_banned = neutral
+		law_slavery_banned = approve
 		law_legacy_slavery = disapprove
 		law_colonial_slavery = disapprove
 		law_debt_slavery = strongly_disapprove
@@ -882,7 +939,7 @@ ideology_pro_slavery = {
 		law_slave_trade = approve
 		law_debt_slavery = approve
 		law_legacy_slavery = approve
-		law_colonial_slavery = disapprove
+		law_colonial_slavery = approve
 		law_slavery_banned = strongly_disapprove
 	}
 }
