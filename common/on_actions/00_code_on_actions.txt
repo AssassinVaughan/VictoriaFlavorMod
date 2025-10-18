@@ -3175,6 +3175,18 @@ on_country_released_as_independent = {
 				trigger_event = { id = slave_revolt_events.1 days = 0 }
 			}
 		}
+		
+		if = { # VFM
+			limit = {
+				scope:target ?= {
+					country_is_in_americas = no
+					country_is_in_africa = no
+				}
+			}
+			scope:target ?= {
+				activate_law = law_type:law_no_colonial_affairs
+			}
+		}	
 	}
 }
 
@@ -3234,6 +3246,18 @@ on_country_released_as_own_subject = {
 				remove_primary_culture = cu:bulgarian
 			}
 		}
+		
+		if = { # VFM
+			limit = {
+				scope:target ?= {
+					country_is_in_americas = no
+					country_is_in_africa = no
+				}
+			}
+			scope:target ?= {
+				activate_law = law_type:law_no_colonial_affairs
+			}
+		}
 	}
 }
 
@@ -3283,6 +3307,18 @@ on_country_released_as_overlord_subject = {
 			s:STATE_PALESTINE = {
 				add_homeland = cu:sephardic
 				add_homeland = cu:ashkenazi
+			}
+		}
+		
+		if = { # VFM
+			limit = {
+				scope:target ?= {
+					country_is_in_americas = no
+					country_is_in_africa = no
+				}
+			}
+			scope:target ?= {
+				activate_law = law_type:law_no_colonial_affairs
 			}
 		}
 	}
