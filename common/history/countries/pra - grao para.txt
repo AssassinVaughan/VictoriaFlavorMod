@@ -1,0 +1,28 @@
+﻿COUNTRIES = {
+	c:PRA ?= {
+		set_next_election_date = 1839.1.6 # 4 years after the uprising's start
+		
+		effect_starting_technology_tier_3_tech = yes
+
+		activate_law = law_type:law_presidential_republic
+		activate_law = law_type:law_freedom_of_conscience
+		activate_law = law_type:law_tenant_farmers
+		activate_law = law_type:law_legacy_slavery
+		activate_law = law_type:law_wealth_voting
+		activate_law = law_type:law_cultural_exclusion
+		activate_law = law_type:law_traditionalism
+		activate_law = law_type:law_consumption_based_taxation
+		activate_law = law_type:law_censorship
+		
+		set_import_tariff_level = { 
+			goods = g:artillery
+			level = high_subventions
+		}
+		set_import_tariff_level = { 
+			goods = g:small_arms
+			level = high_subventions
+		}
+
+		add_journal_entry = { type = ragamuffin_war_minors }
+	}
+}

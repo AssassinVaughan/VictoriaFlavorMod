@@ -107,29 +107,17 @@
 		create_military_formation = {
 			type = army
 			hq_region = sr:region_la_plata
-			name = Ejrcito_de_Chile
+			name = Ejrcito_de_Chile #Chile had a small army but big reservists ("Guardia nacional")
 
 			combat_unit = {
 				type = unit_type:combat_unit_type_line_infantry
-				state_region = s:STATE_SANTIAGO
-				count = 5
-			}
-
-			combat_unit = {
-				type = unit_type:combat_unit_type_cuirassiers
 				state_region = s:STATE_SANTIAGO
 				count = 2
 			}
 
 			combat_unit = {
-				type = unit_type:combat_unit_type_line_infantry
+				type = unit_type:combat_unit_type_dragoons
 				state_region = s:STATE_LOS_RIOS
-				count = 2
-			}
-
-			combat_unit = {
-				type = unit_type:combat_unit_type_mobile_artillery
-				state_region = s:STATE_SANTIAGO
 				count = 1
 			}
 		}
