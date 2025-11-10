@@ -34,7 +34,10 @@ grant_command_to_ruler = {
 			}
 		}
 		owner ?= {
-			ruler_can_have_command = yes
+			OR = {
+				ruler_can_have_command = yes
+				has_modifier = age_of_caudillos_modifier
+			}
 		}
 		exists = owner.capital.land_hq
 	}
@@ -1143,13 +1146,13 @@ retire_commander = {
 			limit = {
 				interest_group ?= {
 					is_in_government = no # VFM the government should not become angry at itself
-				}	
+				}
 				owner = {
-                    OR = {				
+                    OR = {
                         num_commanders < 8 # VFM the AI will keep recruiting/retiering
 					    is_ai = no
                     }
-                }				
+                }
 			}
 		interest_group = {
 			add_modifier = {
