@@ -1,0 +1,42 @@
+﻿MILITARY_DEPLOYMENTS = {
+	c:PEU ?= {
+		random_scope_general = {
+			limit = {
+				has_template = PEU_juan_francisco_de_vidal_la_hoz
+			}
+
+			commander_military_formation = {
+				fully_mobilize_army = yes
+				teleport_to_front = p:x928ED8.front
+			}
+		}
+		random_scope_general = {
+			limit = {
+				has_template = PEU_Anselmo_Quiroz
+			}
+
+			commander_military_formation = {
+				fully_mobilize_army = yes
+				teleport_to_front = p:x923040.front
+			}
+		}
+	}
+	c:PES ?= {
+		every_military_formation = {
+			fully_mobilize_army = yes
+			teleport_to_front = p:xC72B01.front
+		}
+	}
+	c:BOL ?= {
+		random_scope_general = {
+			limit = {
+				has_template = BOL_Jose_Ballivian
+			}
+
+			commander_military_formation = {
+				fully_mobilize_army = yes
+				teleport_to_front = p:x923040.front
+			}
+		}
+	}
+}
