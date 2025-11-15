@@ -150,14 +150,29 @@ peru_bolivia_confederation.2 = { #End of the civil war of 1835 and capture of Sa
 		# Armed Forces
 		create_character = {
 			# Felipe Salaverry, was in the midst of a coup against Orbegoso
-			template = PEU_Felipe_Salaverry
+			first_name = Felipe
+			last_name = Salaverry
+			historical = yes
+			culture = primary_culture
+			birth_date = 1806.5.3
+			dna = dna_felipe_santiago_salaverry
+			interest_group = ig_armed_forces
+			ideology = ideology_slaver # He tried to restore the /slave trade/, for God's sake
+			traits = {
+				arrogant
+				charismatic
+				brave
+			}
 			on_created = {
+				set_variable = {
+					name = is_salaverry
+				}
 				place_character_in_void = 6
 			}
 		}
 		random_character_in_void = {
 			limit = {
-				has_template = PEU_Felipe_Salaverry
+				has_variable = is_salaverry
 			}
 			save_scope_as = salaverry_scope
 		}
@@ -354,7 +369,11 @@ peru_bolivia_confederation.3 = { #Division of Peru
 
 		change_relations = {
 			country = c:PEU
-			value = -80
+			value = -20
+		}
+
+		C:PEU ?= {
+			add_liberty_desire = 12
 		}
 
 		trigger_event = {
@@ -822,7 +841,7 @@ peru_bolivia_confederation.10 = { #Peru - Aliaga
 		}
 		change_relations = {
 			country = c:BOL
-			value = -20
+			value = -10
 		}
 		add_loyalists = {
 			strata = upper
@@ -849,7 +868,7 @@ peru_bolivia_confederation.10 = { #Peru - Aliaga
 		}
 		change_relations = {
 			country = c:BOL
-			value = -10
+			value = -5
 		}
 		add_radicals = {
 			strata = upper
@@ -888,7 +907,6 @@ peru_bolivia_confederation.11 = { #Bolivian reaction/notification of Aliaga - Wo
 	}
 
 	option = {
-		default_option = yes
 		name = peru_bolivia_confederation.11.a
 		change_relations = {
 			country = c:CHL
@@ -911,15 +929,13 @@ peru_bolivia_confederation.11 = { #Bolivian reaction/notification of Aliaga - Wo
 			limit = {
 				exists = c:PEU
 			}
-			change_relations = {
-				country = c:PEU
-				value = -10
+			c:PEU = {
+				add_liberty_desire = 5
 			}
 		}
 		else = {
-			change_relations = {
-				country = c:NPU
-				value = -10
+			c:NPU = {
+				add_liberty_desire = 5
 			}
 		}
 		add_loyalists = {
@@ -971,9 +987,18 @@ peru_bolivia_confederation.12 = { #Bolivian reaction/notification of Aliaga - Be
 			country = c:CHL
 			value = -20
 		}
-		change_relations = {
-			country = c:PEU
-			value = -5
+		if = {
+			limit = {
+				exists = c:PEU
+			}
+			c:PEU = {
+				add_liberty_desire = 2.5
+			}
+		}
+		else = {
+			c:NPU = {
+				add_liberty_desire = 2.5
+			}
 		}
 		add_loyalists = {
 			value = 0.01

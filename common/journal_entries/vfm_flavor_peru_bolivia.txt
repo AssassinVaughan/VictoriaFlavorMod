@@ -1,13 +1,13 @@
-﻿je_peru_bolivia_the_feeble_union = { 
+﻿je_peru_bolivia_the_feeble_union = {
 	icon = "gfx/interface/icons/event_icons/event_fire.dds"
     group = je_group_internal_affairs
-	
+
 	immediate = {
 		ROOT = {
 			save_scope_as = bol_scope
 		}
 
-	    if = { 
+	    if = {
 			limit = {
 	   			c:NPU ?= {
 					is_subject_of = ROOT
@@ -17,7 +17,7 @@
 				save_scope_as = npu_scope
 			}
 		}
-		else_if = { 
+		else_if = {
 			limit = {
 	   			c:PEU ?= {
 					is_subject_of = ROOT
@@ -39,7 +39,7 @@
 				is_subject_of = c:BOL
 			}
 		}
-		
+
 	}
 
 	possible = {
@@ -55,7 +55,7 @@
 
 	complete = {
 		scope:npu_scope = {
-			liberty_desire >= 75
+			liberty_desire >= 95
 		}
 	}
 
@@ -90,7 +90,7 @@
 	should_be_pinned_by_default = yes
 }
 
-je_peru_restoration = { 
+je_peru_restoration = {
 	icon = "gfx/interface/icons/event_icons/event_scales.dds"
     group = je_group_internal_affairs
 	is_shown_when_inactive = {
@@ -105,9 +105,9 @@ je_peru_restoration = {
 	}
 
 	complete = {
-		is_subject = no 
+		is_subject = no
 		OR = {
-			c:SPU ?= { is_subject = no }	
+			c:SPU ?= { is_subject = no }
 		}
 	}
 
@@ -121,7 +121,7 @@ je_peru_restoration = {
 			exists = c:SPU
 		}
 	}
-	
+
 	invalid = {
 		NOR = {
 		    exists = c:BOL
