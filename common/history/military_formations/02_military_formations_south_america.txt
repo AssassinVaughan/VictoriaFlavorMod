@@ -82,7 +82,7 @@
 			type = fleet
 			hq_region = sr:region_brazil
 			name = Armada_Nacional
-		
+
 			combat_unit = {
 				type = unit_type:combat_unit_type_man_o_war
 				state_region = s:STATE_RIO_DE_JANEIRO
@@ -107,29 +107,17 @@
 		create_military_formation = {
 			type = army
 			hq_region = sr:region_la_plata
-			name = Ejrcito_de_Chile
+			name = Ejrcito_de_Chile #Chile had a small army but big reservists ("Guardia nacional")
 
 			combat_unit = {
 				type = unit_type:combat_unit_type_line_infantry
-				state_region = s:STATE_SANTIAGO
-				count = 5
-			}
-
-			combat_unit = {
-				type = unit_type:combat_unit_type_cuirassiers
 				state_region = s:STATE_SANTIAGO
 				count = 2
 			}
 
 			combat_unit = {
-				type = unit_type:combat_unit_type_line_infantry
+				type = unit_type:combat_unit_type_dragoons
 				state_region = s:STATE_LOS_RIOS
-				count = 2
-			}
-
-			combat_unit = {
-				type = unit_type:combat_unit_type_mobile_artillery
-				state_region = s:STATE_SANTIAGO
 				count = 1
 			}
 		}
@@ -151,18 +139,18 @@
 		create_military_formation = {
 			type = army
 			hq_region = sr:region_la_plata
-			name = Ejrcito_Argentino # No organized army really existed in 1836, but an ad-hoc 'Northern Army' was formed in 1837
+			name = Ejrcito_Argentino # No organized army really existed in 1836, but an ad-hoc 'Northern Army' was formed in 1837 #VFM COM - Hence they should have basically no army lol, 3k is being generous
 
 			combat_unit = {
 				type = unit_type:combat_unit_type_line_infantry
 				state_region = s:STATE_BUENOS_AIRES
-				count = 3
+				count = 1
 			}
 
 			combat_unit = {
 				type = unit_type:combat_unit_type_line_infantry
 				state_region = s:STATE_TUCUMAN
-				count = 2
+				count = 1
 			}
 
 			combat_unit = {
@@ -390,7 +378,7 @@
 			}
 		}
 	}
-	
+
 	c:PEU ?= {
 		create_military_formation = {
 			type = army
@@ -399,24 +387,70 @@
 
 			combat_unit = {
 				type = unit_type:combat_unit_type_line_infantry
-				state_region = s:STATE_CAJAMARCA
+				state_region = s:STATE_LIMA
+				count = 1
+			}
+
+			save_scope_as = 1_Sinchis #VFM TODO - Orbegoso should lead this army
+		}
+
+		create_character = {
+			template = PEU_juan_francisco_de_vidal_la_hoz
+			save_scope_as = de_vidal_de_la_hoz_gen
+		}
+
+		scope:de_vidal_de_la_hoz_gen_gen = {
+			transfer_to_formation = scope:1_Sinchis
+		}
+
+		create_military_formation = {
+			type = army
+			hq_region = sr:region_andes
+			name = "Segundo Ejercito del Perú"
+
+			combat_unit = {
+				type = unit_type:combat_unit_type_hussars #Husares de Junin
+				state_region = s:STATE_LIMA
+				count = 1
+			}
+
+			combat_unit = {
+				type = unit_type:combat_unit_type_cannon_artillery
+				state_region = s:STATE_ICA
 				count = 1
 			}
 
 			combat_unit = {
 				type = unit_type:combat_unit_type_line_infantry
-				state_region = s:STATE_LIMA
-				count = 2
-			}
-			
-			combat_unit = {
-				type = unit_type:combat_unit_type_line_infantry
 				state_region = s:STATE_ICA
+				count = 1
+			}
+
+			save_scope_as = 2_Sinchis
+		}
+
+		create_character = {
+			template = PEU_Anselmo_Quiroz
+			save_scope_as = quiroz_gen
+		}
+
+		scope:quiroz_gen = {
+			transfer_to_formation = scope:2_Sinchis
+		}
+
+		create_military_formation = {
+			type = fleet
+			hq_region = sr:region_andes
+			name = "Goletas del Perú"
+
+			combat_unit = {
+				type = unit_type:combat_unit_type_frigate
+				state_region = s:STATE_LIMA
 				count = 1
 			}
 		}
 	}
-	
+
 	c:IQU ?= {
 		create_military_formation = {
 			type = army
@@ -432,7 +466,7 @@
 	}
 
 	c:PES ?= {
-		create_military_formation = {
+		create_military_formation = { #VFM COM - Should be noted that salaverry did put up somewhat of a fight even in 1836
 			type = army
 			hq_region = sr:region_andes
 			name = "Salaverry's Forces"
@@ -442,9 +476,9 @@
 				state_region = s:STATE_AREQUIPA
 				count = 3
 			}
-			
+
 			combat_unit = {
-				type = unit_type:combat_unit_type_line_infantry
+				type = unit_type:combat_unit_type_cuirassiers #Said to have fought on Socabaya
 				state_region = s:STATE_TARAPACA
 				count = 1
 			}
@@ -452,7 +486,7 @@
 	}
 
 	c:BOL ?= {
-		create_military_formation = {
+		create_military_formation = { #VFM COM - Sources differ on what the size of the Bolivian army was, I'm high balling it to help the confederation war trigger as it did historically, tho it should be noted it is still LESS than vanilla.
 			type = army
 			hq_region = sr:region_andes
 			name = "Ejército de Bolivia"
@@ -460,31 +494,69 @@
 			combat_unit = {
 				type = unit_type:combat_unit_type_line_infantry
 				state_region = s:STATE_SANTA_CRUZ
-				count = 3
+				count = 1
 			}
 
 			combat_unit = {
 				type = unit_type:combat_unit_type_line_infantry
 				state_region = s:STATE_LA_PAZ
-				count = 4
+				count = 2
 			}
 
 			combat_unit = {
 				type = unit_type:combat_unit_type_mobile_artillery
 				state_region = s:STATE_LA_PAZ
 				count = 1
-			}			
-
-			combat_unit = {
-				type = unit_type:combat_unit_type_hussars
-				state_region = s:STATE_LA_PAZ
-				count = 2
 			}
 
 			combat_unit = {
+				type = unit_type:combat_unit_type_lancers #VFM TODO should be led by Otto Philipp Braun #https://es.wikipedia.org/wiki/Batalla_de_Socabaya
+				state_region = s:STATE_LA_PAZ
+				count = 1
+			}
+
+			save_scope_as = 1_Sultarus #VFM TODO - Orbegoso should lead this army
+		}
+
+		create_character = {
+			template = BOL_Jose_Ballivian
+			save_scope_as = ballivian_gen
+		}
+
+		scope:ballivian_gen_gen = {
+			transfer_to_formation = scope:1_Sultarus
+		}
+
+		create_character = {
+			template = BOL_Francisco_Burdett_O_Connor
+			save_scope_as = burdett_o_connor_gen
+		}
+
+		scope:burdett_o_connor_gen = {
+			transfer_to_formation = scope:1_Sultarus
+		}
+
+		BOL_Jose_Miguel_de_Velasco = {
+
+		}
+		create_character = {
+			template = BOL_Jose_Miguel_de_Velasco
+			save_scope_as = de_velasco_gen
+		}
+
+		scope:de_velasco_gen = {
+			transfer_to_formation = scope:1_Sultarus
+		}
+
+		create_military_formation = { #VFM COM - At least around 52 soldiers remained stationed at the por of Cobija during the Bolivian intervention in Perú, I think it's fair to assume at least 1000 stayed at home trough the whole country
+			type = army
+			hq_region = sr:region_andes
+			name = "Guarniciones Bolivianas"
+
+			combat_unit = {
 				type = unit_type:combat_unit_type_line_infantry
-				state_region = s:STATE_POTOSI
-				count = 2
+				state_region = s:STATE_ANTOFAGASTA
+				count = 1
 			}
 		}
 	}

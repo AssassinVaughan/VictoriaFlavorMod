@@ -1,0 +1,72 @@
+﻿vfm_headgear = {
+    usage = game
+    selection_behavior = weighted_random
+    fallback = default_headgear
+
+    south_american_caudillo_general_headgear = {
+        dna_modifiers = {
+            accessory = {
+                mode = add
+                gene = headgear
+                template = european_admiral_headgear
+                range = { 0.6 1 } # For the randomness to work correctly
+            }
+        }
+        weight = {
+            base = 0
+            modifier = { #Is a South American
+                add = 11000
+                scope:character ?= {
+                    agitator_character_trigger = no
+                    south_american_clothes_character_trigger = yes
+                    AND = { #General during the Age of Caudillos
+                        age_of_caudillos_trigger = yes
+                        military_clothes_trigger = yes
+                    }
+                }
+            }
+        }
+    }
+    south_american_officer_early_headgear = { #Based on https://www.deviantart.com/alejandroraul/art/Uniforme-del-ejercito-peruano-en-1828-925539216
+        dna_modifiers = {
+            accessory = {
+                mode = add
+                gene = headgear
+                template = male_headgear_austrian_02
+                accessory = male_headgear_austrian_military_cap_02
+            }
+        }
+        weight = {
+            base = 0
+            modifier = {
+                add = 1000000
+                AND = {
+                    south_american_clothes_pop_trigger = yes
+                    officers_clothes_pop_trigger = yes
+                }
+            }
+        }
+    }
+    south_american_military_servicemen_early_headgear = { #Based on https://www.deviantart.com/alejandroraul/art/Uniforme-del-ejercito-peruano-en-1828-925539216
+        dna_modifiers = {
+            accessory = {
+                mode = add
+                gene = headgear
+                template = male_headgear_austrian_01
+                accessory = male_headgear_austrian_military_cap_01
+            }
+        }
+        weight = {
+            base = 0
+            modifier = {
+                add = 1000000
+                AND = {
+                    south_american_clothes_pop_trigger = yes
+                    OR = {
+                        soldier_clothes_pop_trigger = yes
+                    }
+                }
+            }
+        }
+    }
+}

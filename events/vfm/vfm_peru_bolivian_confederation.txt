@@ -52,9 +52,9 @@ peru_bolivia_confederation.1 = { #Historical Context
 		c:IQU = {
 			save_scope_as = iqu_scope
 		}
-	}	
+	}
 
-    option = { 
+    option = {
 		default_option = yes
 		name = peru_bolivia_confederation.1.a
 		trigger = {
@@ -63,10 +63,10 @@ peru_bolivia_confederation.1 = { #Historical Context
 		}
 		add_journal_entry = {
 			type = je_peru_bolivia
-		}	
+		}
 	}
 
-	option = { 
+	option = {
 		default_option = yes
 		name = peru_bolivia_confederation.1.b
 		trigger = {
@@ -75,10 +75,10 @@ peru_bolivia_confederation.1 = { #Historical Context
 		}
 		add_journal_entry = {
 			type = je_peru_bolivia
-		}	
+		}
 	}
 
-	option = { 
+	option = {
 		default_option = yes
 		name = peru_bolivia_confederation.1.b
 		trigger = {
@@ -87,7 +87,7 @@ peru_bolivia_confederation.1 = { #Historical Context
 		}
 		add_journal_entry = {
 			type = je_peru_bolivia
-		}	
+		}
 	}
 }
 
@@ -142,7 +142,7 @@ peru_bolivia_confederation.2 = { #End of the civil war of 1835 and capture of Sa
 	on_opened_soundeffect = "event:/SFX/Events/misc/1Character_Banner"
 
 	icon = "gfx/interface/icons/event_icons/event_military.dds"
-	
+
 	immediate = {
 		c:PEU = {
 			save_scope_as = peru_country
@@ -150,14 +150,29 @@ peru_bolivia_confederation.2 = { #End of the civil war of 1835 and capture of Sa
 		# Armed Forces
 		create_character = {
 			# Felipe Salaverry, was in the midst of a coup against Orbegoso
-			template = PEU_Felipe_Salaverry
+			first_name = Felipe
+			last_name = Salaverry
+			historical = yes
+			culture = primary_culture
+			birth_date = 1806.5.3
+			dna = dna_felipe_santiago_salaverry
+			interest_group = ig_armed_forces
+			ideology = ideology_slaver # He tried to restore the /slave trade/, for God's sake
+			traits = {
+				arrogant
+				charismatic
+				brave
+			}
 			on_created = {
+				set_variable = {
+					name = is_salaverry
+				}
 				place_character_in_void = 6
 			}
 		}
 		random_character_in_void = {
 			limit = {
-				has_template = PEU_Felipe_Salaverry
+				has_variable = is_salaverry
 			}
 			save_scope_as = salaverry_scope
 		}
@@ -167,11 +182,11 @@ peru_bolivia_confederation.2 = { #End of the civil war of 1835 and capture of Sa
 		OR = {
 		    c:PEU ?= THIS
 			c:BOL ?= THIS
-		} 
+		}
 		NOT = { has_global_variable = coup_ended }
 	}
 
-	option = { 
+	option = {
 		default_option = yes
 		name = peru_bolivia_confederation.2.c
 		trigger = {
@@ -269,7 +284,7 @@ peru_bolivia_confederation.2 = { #End of the civil war of 1835 and capture of Sa
 	}
 }
 
-peru_bolivia_confederation.3 = { #Division of Peru 		
+peru_bolivia_confederation.3 = { #Division of Peru
 	type = country_event
 	placement = ROOT
 	title = peru_bolivia_confederation.3.t
@@ -335,26 +350,30 @@ peru_bolivia_confederation.3 = { #Division of Peru
 					first_name = blas
 					last_name = cardena
 					historical = yes
-					ig_leader = no 
+					ig_leader = no
 					interest_group = ig_armed_forces
 					is_general = yes
-					birth_date = 1792.2.2 
+					birth_date = 1792.2.2
 					dna = dna_blas_cardenas
 					ideology = ideology_moderate
 					traits = {
 						reserved
-						experienced_offensive_planner 
+						experienced_offensive_planner
 					}
 				}
 				add_journal_entry = {
 					type = je_peru_bolivia
 				}
-			}	
-		}	
+			}
+		}
 
 		change_relations = {
 			country = c:PEU
-			value = -80
+			value = -20
+		}
+
+		C:PEU ?= {
+			add_liberty_desire = 12
 		}
 
 		trigger_event = {
@@ -372,13 +391,13 @@ peru_bolivia_confederation.3 = { #Division of Peru
 		}
 
 		ai_chance = {
-			base = 100
+			base = 1000
 		}
-	}	
+	}
 
 	option = {  #Undivided Peru
 		name = peru_bolivia_confederation.3.b
-		
+
 		trigger_event = {
 			id = peru_bolivia_confederation.6
 			months = 7
@@ -393,9 +412,9 @@ peru_bolivia_confederation.3 = { #Division of Peru
 					state_region = s:STATE_TARAPACA
 					}
 				}
-			}	
+			}
 			add_radicals = {
-				strata = lower 
+				strata = lower
 				value = 0.2
 			}
 			add_radicals = {
@@ -459,7 +478,7 @@ peru_bolivia_confederation.4 = { #South Peru Declaration of Independence
 
 		c:BOL = {
 			save_scope_as = bol_scope
-		}	
+		}
 	}
 
 	option = { #viva la independecia! - BOL
@@ -478,7 +497,7 @@ peru_bolivia_confederation.4 = { #South Peru Declaration of Independence
 			value = 50
 		}
 		hidden_effect = {
-            c:SPU = { 
+            c:SPU = {
 				ig:ig_intelligentsia = {
 					remove_ideology = ideology_liberal
 					remove_ideology = ideology_anti_clerical
@@ -539,8 +558,8 @@ peru_bolivia_confederation.4 = { #South Peru Declaration of Independence
 					}
 					set_state_type = incorporated
 				}
-			}	
-		}	
+			}
+		}
 		c:SPU = {
 			set_next_election_date = "1837.9.17"
 			add_loyalists = {
@@ -576,7 +595,7 @@ peru_bolivia_confederation.4 = { #South Peru Declaration of Independence
 				interest_group = ig_armed_forces
 				ideology = ideology_moderate
 				dna = dna_ramon_herrera
-				traits = { 
+				traits = {
 					tactful
 					traditionalist_commander
 					basic_diplomat
@@ -598,7 +617,7 @@ peru_bolivia_confederation.4 = { #South Peru Declaration of Independence
 				trait_generation = { }
 			}
 		}
-	}	
+	}
 	option = { #viva la independecia! - PEU
 		default_option = yes
 		name = peru_bolivia_confederation.4.b
@@ -628,7 +647,7 @@ peru_bolivia_confederation.5 = { #Formalization
 	on_opened_soundeffect = "event:/SFX/Events/southamerica/aristocrats"
 
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
-	
+
 	trigger = {
 
 	}
@@ -641,11 +660,11 @@ peru_bolivia_confederation.5 = { #Formalization
 			save_scope_as = spu_scope
 		}
 	}
-	
+
 	option = {
 		default_option = yes
 		name = peru_bolivia_confederation.5.a
-		
+
 		trigger_event = {
 			id = peru_bolivia_confederation.7
 			months = 6
@@ -674,7 +693,7 @@ peru_bolivia_confederation.6 = { #Formalization - One Peru
 	trigger = {
 
 	}
-	
+
 	option = {
 		default_option = yes
 		name = peru_bolivia_confederation.5.a
@@ -694,21 +713,21 @@ peru_bolivia_confederation.6 = { #Formalization - One Peru
 				name = warlord_legitimacy
 				days = normal_modifier_time
 				is_decaying = yes
-			}	
+			}
 		}
 		C:SPU ?= {
 			add_modifier = {
 				name = warlord_legitimacy
 				days = normal_modifier_time
 				is_decaying = yes
-			}	
+			}
 		}
 		C:PEU ?= {
 			add_modifier = {
 				name = warlord_legitimacy
 				days = normal_modifier_time
 				is_decaying = yes
-			}	
+			}
 		}
 	}
 }
@@ -749,7 +768,7 @@ peru_bolivia_confederation.7 = { #Tacna Pact
 		}
 	}
 
-	option = { 
+	option = {
 	    default_option = yes
 	    name = peru_bolivia_confederation.7.a
 		call_election = {
@@ -758,7 +777,7 @@ peru_bolivia_confederation.7 = { #Tacna Pact
 	}
 }
 
-#peru_bolivia_confederation.8 = { #Consolidation 
+#peru_bolivia_confederation.8 = { #Consolidation
 	#Replaced by peru_bolivia_events.1
 #}
 
@@ -777,7 +796,7 @@ peru_bolivia_confederation.9 = { #Elections
 		call_election = {
 		  months = 120
 		}
-		
+
 		trigger_event = {
 			id = peru_bolivia_confederation.9
 			days = 3655
@@ -791,7 +810,7 @@ peru_bolivia_confederation.10 = { #Peru - Aliaga
 	title = peru_bolivia_confederation.10.t
 	desc = peru_bolivia_confederation.10.d
 	flavor = peru_bolivia_confederation.10.f
-	
+
 	duration = 1
 
 	event_image = {
@@ -812,17 +831,17 @@ peru_bolivia_confederation.10 = { #Peru - Aliaga
 			save_scope_as = chl_scope
 		}
 	}
-	
-	option = { 
+
+	option = {
 		name = peru_bolivia_confederation.10.a
-		
+
 		change_relations = {
 			country = c:CHL
 			value = 25
 		}
 		change_relations = {
 			country = c:BOL
-			value = -20
+			value = -10
 		}
 		add_loyalists = {
 			strata = upper
@@ -839,7 +858,7 @@ peru_bolivia_confederation.10 = { #Peru - Aliaga
 		ai_chance = 75
 	}
 
-	option = { 
+	option = {
 		default_option = yes
 		name = peru_bolivia_confederation.10.b
 
@@ -849,7 +868,7 @@ peru_bolivia_confederation.10 = { #Peru - Aliaga
 		}
 		change_relations = {
 			country = c:BOL
-			value = -10
+			value = -5
 		}
 		add_radicals = {
 			strata = upper
@@ -871,7 +890,7 @@ peru_bolivia_confederation.11 = { #Bolivian reaction/notification of Aliaga - Wo
 	title = peru_bolivia_confederation.11.t
 	desc = peru_bolivia_confederation.11.d
 	flavor = peru_bolivia_confederation.11.f
-	
+
 	duration = 1
 
 	event_image = {
@@ -888,14 +907,13 @@ peru_bolivia_confederation.11 = { #Bolivian reaction/notification of Aliaga - Wo
 	}
 
 	option = {
-		default_option = yes
 		name = peru_bolivia_confederation.11.a
 		change_relations = {
 			country = c:CHL
 			value = -25
 		}
 		add_radicals = {
-			value = 0.05	
+			value = 0.05
 		}
 		ai_chance = 1
 	}
@@ -911,15 +929,13 @@ peru_bolivia_confederation.11 = { #Bolivian reaction/notification of Aliaga - Wo
 			limit = {
 				exists = c:PEU
 			}
-			change_relations = {
-				country = c:PEU
-				value = -10
+			c:PEU = {
+				add_liberty_desire = 5
 			}
 		}
 		else = {
-			change_relations = {
-				country = c:NPU
-				value = -10
+			c:NPU = {
+				add_liberty_desire = 5
 			}
 		}
 		add_loyalists = {
@@ -935,7 +951,7 @@ peru_bolivia_confederation.12 = { #Bolivian reaction/notification of Aliaga - Be
 	title = peru_bolivia_confederation.12.t
 	desc = peru_bolivia_confederation.12.d
 	flavor = peru_bolivia_confederation.12.f
-	
+
 	duration = 1
 
 	event_image = {
@@ -959,7 +975,7 @@ peru_bolivia_confederation.12 = { #Bolivian reaction/notification of Aliaga - Be
 			value = -20
 		}
 		add_radicals = {
-			value = 0.025	
+			value = 0.025
 		}
 		ai_chance = 1
 	}
@@ -971,9 +987,18 @@ peru_bolivia_confederation.12 = { #Bolivian reaction/notification of Aliaga - Be
 			country = c:CHL
 			value = -20
 		}
-		change_relations = {
-			country = c:PEU
-			value = -5
+		if = {
+			limit = {
+				exists = c:PEU
+			}
+			c:PEU = {
+				add_liberty_desire = 2.5
+			}
+		}
+		else = {
+			c:NPU = {
+				add_liberty_desire = 2.5
+			}
 		}
 		add_loyalists = {
 			value = 0.01
@@ -1019,7 +1044,7 @@ peru_bolivia_confederation.14 = { #Kill Portales Plot
 				id = peru_bolivia_confederation.15
 			}
 		}
-			
+
 		random_list = {
 
 			25 = {
@@ -1030,7 +1055,7 @@ peru_bolivia_confederation.14 = { #Kill Portales Plot
 
 			75 = {
 				#nothing
-			}	
+			}
 		}
 
 		ai_chance = 80
@@ -1040,7 +1065,7 @@ peru_bolivia_confederation.14 = { #Kill Portales Plot
 		name = peru_bolivia_confederation.14.b
 
 		change_relations = {
-			country = c:CHL 
+			country = c:CHL
 			value = -20
 		}
 
@@ -1055,10 +1080,10 @@ peru_bolivia_confederation.14 = { #Kill Portales Plot
 
 				50 = {
 					#nothing
-				}	
+				}
 			}
 		}
-	
+
 		ai_chance = 20
 	}
 }
@@ -1092,7 +1117,7 @@ peru_bolivia_confederation.15 = { #Death of Portales
 		}
 		scope:portales_scope = {
 			kill_character = yes
-		}		
+		}
 	}
 
 	trigger = {
@@ -1110,7 +1135,7 @@ peru_bolivia_confederation.15 = { #Death of Portales
 		add_loyalists = {
 			value = 0.05
 		}
-		
+
 		c:BOL ?= {
 			post_notification = rumors_have_spread_of_bolivias_involvement
 		}
@@ -1129,7 +1154,7 @@ peru_bolivia_confederation.15 = { #Death of Portales
 
 # This fires for Chile (CHL)
 peru_bolivia_confederation.16 = { #Proof of Santa Cruz's involvement in the plot
-	
+
 	type = country_event
 	placement = ROOT
 	title = peru_bolivia_confederation.16.t

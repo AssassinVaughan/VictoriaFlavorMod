@@ -1,0 +1,11 @@
+﻿age_of_caudillos_trigger = {
+	scope:character ?= {
+		NOR = {
+			has_variable = is_francia
+			has_variable = is_rocafuerte
+		}
+		home_country ?= {
+			has_modifier = age_of_caudillos_modifier
+		}
+	}
+}

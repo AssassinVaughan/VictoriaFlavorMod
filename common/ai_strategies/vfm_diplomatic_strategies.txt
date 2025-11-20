@@ -1,0 +1,126 @@
+﻿ai_strategy_raise_the_confederation = {
+	icon = "gfx/interface/icons/ai_strategy_icons/maintain_power_balance.dds"
+
+	type = diplomatic
+
+	will_form_power_bloc = {
+		global_country_ranking = 1
+	}
+
+	undesirable_infamy_level = {
+		value = 25
+	}
+
+	unacceptable_infamy_level = {
+		value = 50
+	}
+
+	ideological_opinion_effect_mult = {
+		value = 1.5
+	}
+
+	wargoal_maneuvers_fraction = {
+		value = -0.1
+	}
+
+	diplomatic_play_neutrality = {
+		value = 0
+	}
+
+	diplomatic_play_boldness = {
+		value = -20
+	}
+
+	recklessness = {
+		value = -0.25
+	}
+
+	aggression = {
+		value = 0.25
+
+		if = {
+			limit = {
+				NOT = { is_country_type = unrecognized }
+				scope:target_country = { is_country_type = unrecognized }
+				has_technology_researched = colonization
+				institution_investment_level = {
+					institution = institution_colonial_affairs
+					value >= 1
+				}
+			}
+			add = 0.25
+
+			if = {
+				limit = {
+					power_bloc ?= { has_principle = principle:principle_colonial_offices_3 }
+				}
+				add = 0.5
+			}
+
+			if = {
+				limit = { has_technology_researched = civilizing_mission }
+				add = 0.5
+
+				if = {
+					limit = { has_strategic_adjacency = scope:target_country }
+					add = 0.5
+				}
+			}
+		}
+
+		# Less aggressive against countries we're just antagonistic against, rather than belligerent/domineering
+		if = {
+			limit = {
+				has_attitude = {
+					who = scope:target_country
+					attitude = antagonistic
+				}
+			}
+			multiply = 0.2
+		}
+
+		# More aggressive against ideological enemies, a bit less aggressive against ideological allies
+		multiply = {
+			value = "ai_ideological_opinion(scope:target_country)"
+			multiply = -0.1
+			add = 1
+			max = 2.0
+			min = 0.5
+		}
+	}
+
+	building_group_weights = {
+		bg_technology = 1.25
+	}
+
+	secret_goal_weights = {
+		protect = 1.5
+		dominate = 1.5
+		reconcile = 1.5
+		conquer = 1
+        antagonize = 1
+	}
+
+	wargoal_weights = {
+		regime_change = 3.0
+		humiliation = 2.0
+		liberate_subject = 1.5
+		liberate_country = 1.5
+        take_treaty_port = 1.5
+		conquer_state = 1.0
+		return_state = 1.0
+		force_nationalization = 0.25
+	}
+
+
+	possible = {
+		year < 1849
+		exists = c:BOL
+		this = c:BOL
+		ruler = { has_variable = is_santa_cruz }
+	}
+
+	weight = {
+		value = 1000
+	}
+}
