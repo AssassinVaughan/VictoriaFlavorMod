@@ -19,7 +19,7 @@
         building_logging_camp = 16
     }
     resource = {
-        type = "bg_gold_fields"
+        type = "building_gold_field"
         depleted_type = "building_gold_mine"
         undiscovered_amount = 5
     }
@@ -150,7 +150,7 @@ STATE_CHUKOTKA = {
         building_fishing_wharf = 9
     }
     resource = {
-        type = "bg_gold_fields"
+        type = "building_gold_field"
         depleted_type = "building_gold_mine"
         undiscovered_amount = 3
     }
@@ -177,7 +177,7 @@ STATE_KAMCHATKA = {
         building_whaling_station = 4
     }
     resource = {
-        type = "bg_gold_fields"
+        type = "building_gold_field"
         depleted_type = "building_gold_mine"
         undiscovered_amount = 2
     }
@@ -205,7 +205,7 @@ STATE_OKHOTSK = {
         building_logging_camp = 10
     }
     resource = {
-        type = "bg_gold_fields"
+        type = "building_gold_field"
         depleted_type = "building_gold_mine"
         undiscovered_amount = 4
     }
@@ -231,11 +231,14 @@ STATE_YAKUTSK = {
         building_logging_camp = 23
     }
     resource = {
-        type = "bg_gold_fields"
+        type = "building_gold_field"
         depleted_type = "building_gold_mine"
         undiscovered_amount = 4
     }
-}
+    resource = {
+        type = "building_oil_rig"
+        undiscovered_amount = 3
+    }
 
 STATE_TRANS_BAIKAL = {
     #done
@@ -272,7 +275,7 @@ STATE_IRKUTSK = {
     mine = "x638769"
     wood = "x982F85"
     arable_land = 40
-    traits = { "state_trait_sub_arctic_inland" }
+    traits = { "state_trait_angara_river" "state_trait_sub_arctic_inland" }
     arable_resources = { "building_rye_farm" "building_livestock_ranch" }
     capped_resources = {
         building_coal_mine = 24
