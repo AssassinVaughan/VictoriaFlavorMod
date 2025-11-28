@@ -13,10 +13,10 @@
 				activate_production_methods={ "pm_simple_organization" "pm_professional_bureaucrats" "pm_secular_bureaucrats" }
 			}
 			create_building={
-				building="building_textile_mills"
+				building="building_textile_mill"
 				add_ownership={
 					building={
-						type="building_textile_mills"
+						type="building_textile_mill"
 						country="c:UCA"
 						levels=1
 						region="STATE_SAN_SALVADOR"
@@ -52,7 +52,7 @@
 				activate_production_methods={ "pm_open_air_stockyards" "pm_simple_ranch" "pm_standard_fences" "pm_unrefrigerated"  }
 			}
 			create_building={
-				building="building_barracks"
+				building="building_barrack"
 				add_ownership={
 					country={
 						country="c:UCA"
@@ -104,7 +104,7 @@
 				activate_production_methods={ "pm_open_air_stockyards" "pm_simple_ranch" "pm_standard_fences" "pm_unrefrigerated"  }
 			}
 			create_building={
-				building="building_barracks"
+				building="building_barrack"
 				add_ownership={
 					country={
 						country="c:UCA"
@@ -181,7 +181,7 @@
 				activate_production_methods={ "pm_anchorage" }
 			}
 			create_building={
-				building="building_barracks"
+				building="building_barrack"
 				add_ownership={
 					country={
 						country="c:UCA"
@@ -222,7 +222,7 @@
 				activate_production_methods={ "default_building_banana_plantation" "pm_road_carts"  }
 			}
 			create_building={
-				building="building_barracks"
+				building="building_barrack"
 				add_ownership={
 					country={
 						country="c:UCA"
@@ -235,7 +235,7 @@
 		}
 		region_state:MKT={
 			create_building={
-				building="building_barracks"
+				building="building_barrack"
 				add_ownership={
 					country={
 						country="c:MKT"
@@ -274,7 +274,7 @@
 				activate_production_methods={ "default_building_coffee_plantation" "pm_road_carts"  }
 			}
 			create_building={
-				building="building_barracks"
+				building="building_barrack"
 				add_ownership={
 					country={
 						country="c:UCA"
@@ -299,7 +299,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "default_building_coffee_plantation" "pm_road_carts"  }
+				activate_production_methods={ "coffee_plantation_dry_process" "pm_road_carts"  }
 			}
 			create_building={
 				building="building_banana_plantation"
@@ -331,6 +331,7 @@
 			}
 			create_building={
 				building="building_trade_center"
+				activate_production_methods={ "pm_trade_center_trade_quantity_normal" }
 				add_ownership={
 					building={
 						type="building_financial_district"
@@ -381,7 +382,7 @@
 				activate_production_methods={ "pm_simple_farming_building_rice_farm" "pm_no_secondary" "pm_tools_disabled"  }
 			}
 			create_building={
-				building="building_barracks"
+				building="building_barrack"
 				add_ownership={
 					country={
 						country="c:HAI"
@@ -446,7 +447,20 @@
 				activate_production_methods={ "pm_simple_farming_building_rice_farm" "pm_no_secondary" "pm_tools_disabled"  }
 			}
 			create_building={
-				building="building_barracks"
+				building="building_livestock_ranch"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:HAI"
+						levels=1
+						region="STATE_SANTO_DOMINGO"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_open_air_stockyards" "pm_simple_ranch" "pm_standard_fences" "pm_unrefrigerated"  }
+			}
+			create_building={
+				building="building_barrack"
 				add_ownership={
 					country={
 						country="c:HAI"
@@ -470,13 +484,14 @@
 		}
 	}
 	s:STATE_PUERTO_RICO={
-		region_state:SPA={
-		    create_building={
+		region_state:PCO={
+			create_building={
 				building="building_trade_center"
+				activate_production_methods={ "pm_trade_center_trade_quantity_normal" }
 				add_ownership={
 					building={
 						type="building_financial_district"
-						country="c:SPA"
+						country="c:PCO"
 						levels=1
 						region="STATE_PUERTO_RICO"
 					}
@@ -488,20 +503,26 @@
 				add_ownership={
 					building={
 						type="building_manor_house"
-						country="c:SPA"
-						levels=2
+						country="c:PCO"
+						levels=1
 						region="STATE_PUERTO_RICO"
+					}
+					building={
+						type="building_manor_house"
+						country="c:SPA"
+						levels=1
+						region="STATE_NEW_CASTILE"
 					}
 				}
 				reserves=1
-				activate_production_methods={ "default_building_coffee_plantation" "pm_road_carts"  }
+				activate_production_methods={ "coffee_plantation_dry_process" "pm_road_carts"  }
 			}
 			create_building={
 				building="building_banana_plantation"
 				add_ownership={
 					building={
 						type="building_manor_house"
-						country="c:SPA"
+						country="c:PCO"
 						levels=1
 						region="STATE_PUERTO_RICO"
 					}
@@ -514,9 +535,15 @@
 				add_ownership={
 					building={
 						type="building_manor_house"
-						country="c:SPA"
-						levels=3
+						country="c:PCO"
+						levels=1
 						region="STATE_PUERTO_RICO"
+					}
+					building={
+						type="building_manor_house"
+						country="c:SPA"
+						levels=1
+						region="STATE_NEW_CASTILE"
 					}
 				}
 				reserves=1
@@ -527,8 +554,8 @@
 				add_ownership={
 					building={
 						type="building_manor_house"
-						country="c:SPA"
-						levels=3
+						country="c:PCO"
+						levels=1
 						region="STATE_PUERTO_RICO"
 					}
 				}
@@ -539,7 +566,7 @@
 				building="building_port"
 				add_ownership={
 					country={
-						country="c:SPA"
+						country="c:PCO"
 						levels=1
 					}
 				}
@@ -592,6 +619,19 @@
 	s:STATE_WEST_INDIES={
 		region_state:FRA={
 			create_building={
+				building="building_trade_center"
+				activate_production_methods={ "pm_trade_center_trade_quantity_normal" }
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:FRA"
+						levels=1
+						region="STATE_ILE_DE_FRANCE"
+					}
+				}
+				reserves=1
+			}
+			create_building={
 				building="building_sugar_plantation"
 				add_ownership={
 					building={
@@ -615,7 +655,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "default_building_coffee_plantation" "pm_road_carts"  }
+				activate_production_methods={ "coffee_plantation_dry_process" "pm_road_carts"  }
 			}
 			create_building={
 				building="building_tobacco_plantation"
@@ -654,6 +694,45 @@
 				reserves=1
 				activate_production_methods={ "pm_anchorage" }
 			}
+			create_building={
+				building="building_sugar_plantation"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:DEN"
+						levels=1
+						region="STATE_ZEALAND"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "default_building_sugar_plantation" "pm_road_carts"  }
+			}
+		}
+		region_state:NET={
+			create_building={
+				building="building_port"
+				add_ownership={
+					country={
+						country="c:NET"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_anchorage" }
+			}
+			create_building={
+				building="building_cotton_plantation"
+				add_ownership={
+					building={
+						type="building_cotton_plantation"
+						country="c:NET"
+						levels=1
+						region="STATE_WEST_INDIES"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "default_building_cotton_plantation" "pm_road_carts"  }
+			}
 		}
 		region_state:GBR={
 			create_building={
@@ -662,7 +741,7 @@
 					building={
 						type="building_manor_house"
 						country="c:GBR"
-						levels=3
+						levels=2
 						region="STATE_WEST_INDIES"
 					}
 				}
@@ -680,7 +759,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "default_building_coffee_plantation" "pm_road_carts"  }
+				activate_production_methods={ "coffee_plantation_dry_process" "pm_road_carts"  }
 			}
 			create_building={
 				building="building_tobacco_plantation"
@@ -707,9 +786,43 @@
 				activate_production_methods={ "pm_anchorage" }
 			}
 		}
+		region_state:VNZ={
+			create_building={
+				building="building_sugar_plantation"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:VNZ"
+						levels=1
+						region="STATE_BOLIVAR"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "default_building_sugar_plantation" "pm_road_carts"  }
+			}
+		}
 	}
 	s:STATE_JAMAICA={
 		region_state:GBR={
+			create_building={
+				building="building_trade_center"
+				activate_production_methods={ "pm_trade_center_trade_quantity_normal" }
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:GBR"
+						levels=2
+						region="STATE_JAMAICA"
+					}
+					building={
+						type="building_financial_district"
+						country="c:GBR"
+						levels=1
+						region="STATE_HOME_COUNTIES"
+					}
+				}
+				reserves=1
+			}
 			create_building={
 				building="building_banana_plantation"
 				add_ownership={
@@ -724,33 +837,19 @@
 				activate_production_methods={ "default_building_banana_plantation" "pm_road_carts"  }
 			}
 			create_building={
-				building="building_trade_center"
-				add_ownership={
-					building={
-						type="building_financial_district"
-						country="c:GBR"
-						levels=1
-						region="STATE_JAMAICA"
-					}
-				}
-				reserves=1
-			}
-			create_building={
 				building="building_sugar_plantation"
 				add_ownership={
 					building={
 						type="building_manor_house"
 						country="c:GBR"
-						levels=1
+						levels=2
 						region="STATE_JAMAICA"
 					}
-				}
-				add_ownership={
 					building={
 						type="building_manor_house"
 						country="c:GBR"
 						levels=1
-						region="STATE_LOWLANDS"
+						region="STATE_HOME_COUNTIES"
 					}
 				}
 				reserves=1
@@ -762,20 +861,18 @@
 					building={
 						type="building_manor_house"
 						country="c:GBR"
-						levels=2
-						region="STATE_YORKSHIRE"
+						levels=4
+						region="STATE_JAMAICA"
 					}
-				}
-				add_ownership={
 					building={
 						type="building_manor_house"
 						country="c:GBR"
 						levels=1
-						region="STATE_WEST_COUNTRY"
+						region="STATE_HOME_COUNTIES"
 					}
 				}
 				reserves=1
-				activate_production_methods={ "default_building_coffee_plantation" "pm_road_carts"  }
+				activate_production_methods={ "coffee_plantation_dry_process" "pm_road_carts"  }
 			}
 			create_building={
 				building="building_port"
@@ -790,22 +887,29 @@
 			}
 		}
 	}
-	s:STATE_CUBA={
+	s:STATE_WESTERN_CUBA={
 		region_state:CUB={
-		    create_building={
-				building="building_construction_sector"
-				level=1
-				reserves=1
-				activate_production_methods={ "pm_wooden_buildings" }
-			}
 			create_building={
 				building="building_trade_center"
+				activate_production_methods={ "pm_trade_center_trade_quantity_normal" }
 				add_ownership={
 					building={
 						type="building_financial_district"
 						country="c:CUB"
-						levels=1
-						region="STATE_CUBA"
+						levels=3
+						region="STATE_WESTERN_CUBA"
+					}
+					building={
+						type="building_financial_district"
+						country="c:SPA"
+						levels=3
+						region="STATE_NEW_CASTILE"
+					}
+					building={
+						type="building_financial_district"
+						country="c:SPA"
+						levels=2
+						region="STATE_CATALONIA"
 					}
 				}
 				reserves=1
@@ -816,31 +920,12 @@
 					building={
 						type="building_manor_house"
 						country="c:CUB"
-						levels=5
-						region="STATE_CUBA"
+						levels=1
+						region="STATE_WESTERN_CUBA"
 					}
 				}
 				reserves=1
 				activate_production_methods={ "pm_simple_farming_building_rice_farm" "pm_no_secondary" "pm_tools_disabled"  }
-			}
-			create_building={
-				building="building_coffee_plantation"
-				add_ownership={
-					building={
-						type="building_manor_house"
-						country="c:CUB"
-						levels=1
-						region="STATE_CUBA"
-					}
-					building={
-						type="building_manor_house"
-						country="c:SPA"
-						levels=2
-						region="STATE_TOLEDO"
-					}
-				}
-				reserves=1
-				activate_production_methods={ "default_building_coffee_plantation" "pm_road_carts"  }
 			}
 			create_building={
 				building="building_tobacco_plantation"
@@ -849,13 +934,13 @@
 						type="building_manor_house"
 						country="c:CUB"
 						levels=2
-						region="STATE_CUBA"
+						region="STATE_WESTERN_CUBA"
 					}
 					building={
 						type="building_manor_house"
 						country="c:SPA"
-						levels=3
-						region="STATE_TOLEDO"
+						levels=2
+						region="STATE_NEW_CASTILE"
 					}
 				}
 				reserves=1
@@ -867,29 +952,37 @@
 					building={
 						type="building_manor_house"
 						country="c:CUB"
-						levels=5
-						region="STATE_CUBA"
+						levels=4
+						region="STATE_WESTERN_CUBA"
 					}
 					building={
 						type="building_manor_house"
 						country="c:SPA"
-						levels=5
-						region="STATE_TOLEDO"
+						levels=2
+						region="STATE_NEW_CASTILE"
+					}
+					building={
+						type="building_manor_house"
+						country="c:SPA"
+						levels=2
+						region="STATE_CATALONIA"
 					}
 				}
 				reserves=1
 				activate_production_methods={ "default_building_sugar_plantation" "pm_road_carts"  }
 			}
 			create_building={
-				building="building_barracks"
+				building="building_livestock_ranch"
 				add_ownership={
-					country={
+					building={
+						type="building_manor_house"
 						country="c:CUB"
-						levels=5
+						levels=2
+						region="STATE_WESTERN_CUBA"
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_no_organization" }
+				activate_production_methods={ "pm_open_air_stockyards" "pm_simple_ranch" "pm_standard_fences" "pm_unrefrigerated"  }
 			}
 			create_building={
 				building="building_port"
@@ -901,6 +994,175 @@
 				}
 				reserves=1
 				activate_production_methods={ "pm_basic_port" }
+			}
+			create_building={
+				building="building_logging_camp"
+				add_ownership={
+					building={
+						type="building_logging_camp"
+						country="c:CUB"
+						levels=1
+						region="STATE_WESTERN_CUBA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_saw_mills" "pm_hardwood" "pm_no_equipment" "pm_road_carts"  }
+			}
+		}
+	}
+	s:STATE_CENTRAL_CUBA={
+		region_state:CUB={
+			create_building={
+				building="building_sugar_plantation"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:CUB"
+						levels=1
+						region="STATE_CENTRAL_CUBA"
+					}
+					building={
+						type="building_manor_house"
+						country="c:SPA"
+						levels=1
+						region="STATE_NEW_CASTILE"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "default_building_sugar_plantation" "pm_road_carts"  }
+			}
+			create_building={
+				building="building_rice_farm"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:CUB"
+						levels=1
+						region="STATE_CENTRAL_CUBA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_simple_farming_building_rice_farm" "pm_no_secondary" "pm_tools_disabled"  }
+			}
+			create_building={
+				building="building_tobacco_plantation"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:CUB"
+						levels=1
+						region="STATE_CENTRAL_CUBA"
+					}
+					building={
+						type="building_manor_house"
+						country="c:SPA"
+						levels=1
+						region="STATE_NEW_CASTILE"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "default_building_tobacco_plantation" "pm_road_carts"  }
+			}
+			create_building={
+				building="building_livestock_ranch"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:CUB"
+						levels=2
+						region="STATE_CENTRAL_CUBA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_open_air_stockyards" "pm_simple_ranch" "pm_standard_fences" "pm_unrefrigerated"  }
+			}
+			create_building={
+				building="building_logging_camp"
+				add_ownership={
+					building={
+						type="building_logging_camp"
+						country="c:CUB"
+						levels=1
+						region="STATE_CENTRAL_CUBA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_saw_mills" "pm_hardwood" "pm_no_equipment" "pm_road_carts"  }
+			}
+		}
+	}
+	s:STATE_EASTERN_CUBA={
+		region_state:CUB={
+			create_building={
+				building="building_sugar_plantation"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:CUB"
+						levels=1
+						region="STATE_EASTERN_CUBA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "default_building_sugar_plantation" "pm_road_carts"  }
+			}
+			create_building={
+				building="building_coffee_plantation"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:CUB"
+						levels=1
+						region="STATE_EASTERN_CUBA"
+					}
+					building={
+						type="building_manor_house"
+						country="c:SPA"
+						levels=2
+						region="STATE_NEW_CASTILE"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "coffee_plantation_dry_process" "pm_road_carts"  }
+			}
+			create_building={
+				building="building_rice_farm"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:CUB"
+						levels=1
+						region="STATE_EASTERN_CUBA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_simple_farming_building_rice_farm" "pm_no_secondary" "pm_tools_disabled"  }
+			}
+			create_building={
+				building="building_livestock_ranch"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:CUB"
+						levels=1
+						region="STATE_EASTERN_CUBA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_open_air_stockyards" "pm_simple_ranch" "pm_standard_fences" "pm_unrefrigerated"  }
+			}
+			create_building={
+				building="building_logging_camp"
+				add_ownership={
+					building={
+						type="building_logging_camp"
+						country="c:CUB"
+						levels=1
+						region="STATE_EASTERN_CUBA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_saw_mills" "pm_hardwood" "pm_no_equipment" "pm_road_carts"  }
 			}
 		}
 	}

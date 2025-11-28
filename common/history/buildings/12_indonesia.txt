@@ -20,13 +20,13 @@
 					building={
 						type="building_manor_house"
 						country="c:JOH"
-						levels=2
+						levels=1
 						region="STATE_MALAYA"
 					}
 				}
 				reserves=1
 				activate_production_methods={ "default_building_sugar_plantation" "pm_road_carts"  }
-			}			
+			}
 			create_building={
 				building="building_tea_plantation"
 				add_ownership={
@@ -39,7 +39,20 @@
 				}
 				reserves=1
 				activate_production_methods={ "default_building_tea_plantation" "pm_road_carts"  }
-			}					
+			}
+			create_building={
+				building="building_tea_plantation"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:JOH"
+						levels=1
+						region="STATE_MALAYA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "default_building_tea_plantation" "pm_road_carts"  }
+			}
 			create_building={
 				building="building_fishing_wharf"
 				add_ownership={
@@ -54,7 +67,7 @@
 				activate_production_methods={ "pm_simple_fishing" "pm_unrefrigerated"  }
 			}
 			create_building={
-				building="building_barracks"
+				building="building_barrack"
 				add_ownership={
 					country={
 						country="c:JOH"
@@ -108,7 +121,7 @@
 		}
 		region_state:PRK={
 			create_building={
-				building="building_barracks"
+				building="building_barrack"
 				add_ownership={
 					country={
 						country="c:PRK"
@@ -134,7 +147,7 @@
 		}
 		region_state:SEL={
 			create_building={
-				building="building_barracks"
+				building="building_barrack"
 				add_ownership={
 					country={
 						country="c:SEL"
@@ -175,7 +188,7 @@
 				activate_production_methods={ "pm_simple_fishing" "pm_unrefrigerated"  }
 			}
 			create_building={
-				building="building_barracks"
+				building="building_barrack"
 				add_ownership={
 					country={
 						country="c:BRU"
@@ -218,7 +231,7 @@
 	s:STATE_WEST_BORNEO={
 		region_state:LAN={
 			create_building={
-				building="building_barracks"
+				building="building_barrack"
 				add_ownership={
 					country={
 						country="c:LAN"
@@ -244,7 +257,7 @@
 		}
 		region_state:SMB={
 			create_building={
-				building="building_barracks"
+				building="building_barrack"
 				add_ownership={
 					country={
 						country="c:SMB"
@@ -294,7 +307,7 @@
 				activate_production_methods={ "pm_simple_farming_building_rice_farm"  "pm_tools_disabled" "pm_fig_orchards_building_rice_farm" }
 			}
 			create_building={
-				building="building_barracks"
+				building="building_barrack"
 				add_ownership={
 					country={
 						country="c:PON"
@@ -307,7 +320,7 @@
 		}
 		region_state:STG={
 			create_building={
-				building="building_barracks"
+				building="building_barrack"
 				add_ownership={
 					country={
 						country="c:STG"
@@ -361,7 +374,7 @@
 		}
 		region_state:BLG={
 			create_building={
-				building="building_barracks"
+				building="building_barrack"
 				add_ownership={
 					country={
 						country="c:BLG"
@@ -413,7 +426,7 @@
 				activate_production_methods={ "default_building_banana_plantation" "pm_road_carts"  }
 			}
 			create_building={
-				building="building_barracks"
+				building="building_barrack"
 				add_ownership={
 					country={
 						country="c:BNJ"
@@ -426,7 +439,7 @@
 		}
 		region_state:KTI={
 			create_building={
-				building="building_barracks"
+				building="building_barrack"
 				add_ownership={
 					country={
 						country="c:KTI"
@@ -458,7 +471,7 @@
 					building={
 						type="building_financial_district"
 						country="c:NET"
-						levels=4
+						levels=3
 						region="STATE_HOLLAND"
 					}
 					building={
@@ -561,7 +574,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "default_building_coffee_plantation" "pm_road_carts"  }
+				activate_production_methods={ "coffee_plantation_wet_process_manual" "pm_road_carts"  }
 			}
 			create_building={
 				building="building_dye_plantation"
@@ -582,7 +595,7 @@
 					building={
 						type="building_manor_house"
 						country="c:NET"
-						levels=4
+						levels=2
 						region="STATE_HOLLAND"
 					}
 					building={
@@ -594,7 +607,7 @@
 					building={
 						type="building_manor_house"
 						country="c:DEI"
-						levels=2
+						levels=1
 						region="STATE_WEST_JAVA"
 					}
 				}
@@ -708,7 +721,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "default_building_coffee_plantation" "pm_road_carts"  }
+				activate_production_methods={ "coffee_plantation_wet_process_manual" "pm_road_carts"  }
 			}
 			create_building={
 				building="building_tea_plantation"
@@ -742,7 +755,7 @@
 					building={
 						type="building_manor_house"
 						country="c:NET"
-						levels=3
+						levels=2
 						region="STATE_HOLLAND"
 					}
 					building={
@@ -838,7 +851,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "default_building_coffee_plantation" "pm_road_carts"  }
+				activate_production_methods={ "coffee_plantation_wet_process_manual" "pm_road_carts"  }
 			}
 			create_building={
 				building="building_tea_plantation"
@@ -904,7 +917,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "default_building_coffee_plantation" "pm_road_carts"  }
+				activate_production_methods={ "coffee_plantation_dry_process" "pm_road_carts"  }
 			}
 			create_building={
 				building="building_rice_farm"
@@ -920,7 +933,7 @@
 				activate_production_methods={ "pm_simple_farming_building_rice_farm"  "pm_tools_disabled" "pm_fig_orchards_building_rice_farm" }
 			}
 			create_building={
-				building="building_barracks"
+				building="building_barrack"
 				add_ownership={
 					country={
 						country="c:YOG"
@@ -946,7 +959,7 @@
 				activate_production_methods={ "pm_simple_farming_building_rice_farm"  "pm_tools_disabled" "pm_fig_orchards_building_rice_farm" }
 			}
 			create_building={
-				building="building_barracks"
+				building="building_barrack"
 				add_ownership={
 					country={
 						country="c:SRK"
@@ -1037,7 +1050,7 @@
 				activate_production_methods={ "default_building_tobacco_plantation" "pm_road_carts"  }
 			}
 			create_building={
-				building="building_barracks"
+				building="building_barrack"
 				add_ownership={
 					country={
 						country="c:SAK"
@@ -1076,7 +1089,7 @@
 				activate_production_methods={ "pm_simple_farming_building_rice_farm"  "pm_tools_disabled" "pm_fig_orchards_building_rice_farm" }
 			}
 			create_building={
-				building="building_barracks"
+				building="building_barrack"
 				add_ownership={
 					country={
 						country="c:JMB"
@@ -1171,7 +1184,7 @@
 				activate_production_methods={ "pm_simple_fishing" "pm_unrefrigerated"  }
 			}
 			create_building={
-				building="building_barracks"
+				building="building_barrack"
 				add_ownership={
 					country={
 						country="c:ACE"
@@ -1221,7 +1234,7 @@
 				activate_production_methods={ "default_building_tobacco_plantation" "pm_road_carts"  }
 			}
 			create_building={
-				building="building_barracks"
+				building="building_barrack"
 				add_ownership={
 					country={
 						country="c:SAK"
@@ -1359,7 +1372,7 @@
 				activate_production_methods={ "default_building_dye_plantation" "pm_road_carts"  }
 			}
 			create_building={
-				building="building_barracks"
+				building="building_barrack"
 				add_ownership={
 					country={
 						country="c:TID"
@@ -1413,7 +1426,7 @@
 		}
 		region_state:BTN={
 			create_building={
-				building="building_barracks"
+				building="building_barrack"
 				add_ownership={
 					country={
 						country="c:BTN"
@@ -1473,7 +1486,7 @@
 				activate_production_methods={ "default_building_tobacco_plantation" "pm_road_carts"  }
 			}
 			create_building={
-				building="building_barracks"
+				building="building_barrack"
 				add_ownership={
 					country={
 						country="c:BAL"
@@ -1555,7 +1568,7 @@
 		}
 		region_state:SUL={
 			create_building={
-				building="building_barracks"
+				building="building_barrack"
 				add_ownership={
 					country={
 						country="c:SUL"
@@ -1592,7 +1605,7 @@
 		}
 		region_state:MGD={
 			create_building={
-				building="building_barracks"
+				building="building_barrack"
 				add_ownership={
 					country={
 						country="c:MGD"
@@ -1619,6 +1632,15 @@
 	}
 	s:STATE_LUZON={
 		region_state:PHI={
+			if = {
+				limit = {
+					has_dlc_feature = ip4_content
+				}
+				create_building={
+					building="building_manila_cathedral_original"
+					level=1
+				}
+			}
 			create_building={
 				building="building_government_administration"
 				add_ownership={
@@ -1638,7 +1660,7 @@
 						type="building_financial_district"
 						country="c:SPA"
 						levels=1
-						region="STATE_TOLEDO"
+						region="STATE_NEW_CASTILE"
 					}
 				}
 				reserves=1
@@ -1662,7 +1684,7 @@
 					building={
 						type="building_manor_house"
 						country="c:PHI"
-						levels=4
+						levels=2
 						region="STATE_LUZON"
 					}
 				}
@@ -1696,17 +1718,6 @@
 				activate_production_methods={ "pm_simple_fishing" "pm_unrefrigerated"  }
 			}
 			create_building={
-				building="building_barracks"
-				add_ownership={
-					country={
-						country="c:PHI"
-						levels=10
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_no_organization" }
-			}
-			create_building={
 				building="building_port"
 				add_ownership={
 					country={
@@ -1721,6 +1732,7 @@
 		region_state:SUL={
 		}
 	}
+
 	s:STATE_VISAYAS={
 		region_state:PHI={
 			create_building={
@@ -1729,7 +1741,7 @@
 					building={
 						type="building_manor_house"
 						country="c:PHI"
-						levels=3
+						levels=1
 						region="STATE_VISAYAS"
 					}
 				}
@@ -1762,21 +1774,23 @@
 				reserves=1
 				activate_production_methods={ "pm_simple_fishing" "pm_unrefrigerated"  }
 			}
-			create_building={
-				building="building_barracks"
-				add_ownership={
-					country={
-						country="c:PHI"
-						levels=5
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_no_organization" }
-			}
 		}
 	}
 	s:STATE_WEST_MICRONESIA={
 		region_state:MCR={
+		}
+		region_state:PHI = {
+			create_building={
+				building="building_port"
+				add_ownership={
+					country={
+						country="c:PHI"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_anchorage" }
+			}
 		}
 	}
 	s:STATE_EAST_MICRONESIA={

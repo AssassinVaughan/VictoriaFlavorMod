@@ -474,3 +474,275 @@ pm_default_building_victoria_terminus = {
 		}
 	}
 }
+
+### IP3 Monuments ###
+
+pm_default_building_kaiserforum_1 = {
+	texture = "gfx/interface/icons/production_method_icons/wonders.dds"
+
+	is_hidden_when_unavailable = yes
+
+	country_modifiers = {
+		workforce_scaled = {
+			country_prestige_add = 10
+		}
+	}
+
+}
+
+pm_default_building_kaiserforum_2 = {
+	texture = "gfx/interface/icons/production_method_icons/wonders.dds"
+
+	is_hidden_when_unavailable = yes
+
+	country_modifiers = {
+		workforce_scaled = {
+			country_prestige_add = 25
+		}
+	}
+}
+
+pm_default_building_kaiserforum_3 = {
+	texture = "gfx/interface/icons/production_method_icons/wonders.dds"
+
+	is_hidden_when_unavailable = yes
+
+	country_modifiers = {
+		workforce_scaled = {
+			country_legitimacy_headofstate_add = 5
+			country_prestige_add = 25
+		}
+	}
+
+	state_modifiers = {
+		workforce_scaled = {
+			building_government_administration_throughput_add = 0.2
+			state_migration_pull_mult = 0.5
+		}
+	}
+
+	building_modifiers = {
+		#workforce_scaled = {
+		#}
+
+		level_scaled = {
+			building_employment_aristocrats_add = 100
+			building_employment_academics_add = 100
+			building_employment_bureaucrats_add = 200
+		}
+	}
+}
+
+pm_default_building_kaiserforum_4 = {
+	texture = "gfx/interface/icons/production_method_icons/wonders.dds"
+
+	is_hidden_when_unavailable = yes
+
+	country_modifiers = {
+		workforce_scaled = {
+			country_legitimacy_headofstate_add = 5
+			country_prestige_add = 25
+		}
+	}
+
+	state_modifiers = {
+		workforce_scaled = {
+			state_migration_pull_mult = 0.5
+		}
+	}
+
+	building_modifiers = {
+		#workforce_scaled = {
+		#}
+
+		level_scaled = {
+			building_employment_aristocrats_add = 100
+			building_employment_academics_add = 100
+			building_employment_bureaucrats_add = 200
+		}
+	}
+}
+
+### IP4 Monuments ###
+
+pm_default_building_sagrada_familia_cathedral_1 = {
+	texture = "gfx/interface/icons/production_method_icons/wonders.dds"
+
+	is_hidden_when_unavailable = yes
+
+	country_modifiers = {
+		workforce_scaled = {
+			interest_group_ig_devout_pol_str_mult = 0.1
+			country_prestige_add = 25
+		}
+	}
+}
+
+pm_default_building_sagrada_familia_cathedral_2 = {
+	texture = "gfx/interface/icons/production_method_icons/wonders.dds"
+
+	is_hidden_when_unavailable = yes
+
+	country_modifiers = {
+		workforce_scaled = {
+			interest_group_ig_industrialists_pol_str_mult = 0.1
+			country_prestige_add = 25
+		}
+	}
+}
+
+pm_default_building_sagrada_familia_cathedral_3 = {
+	texture = "gfx/interface/icons/production_method_icons/wonders.dds"
+
+	is_hidden_when_unavailable = yes
+
+	country_modifiers = {
+		workforce_scaled = {
+			interest_group_ig_devout_pol_str_mult = 0.1
+			country_prestige_add = 50
+		}
+	}
+
+	building_modifiers = {
+		#workforce_scaled = {
+		#}
+
+		level_scaled = {
+			building_employment_clergymen_add = 400
+		}
+	}
+}
+
+pm_default_building_pena_convent = {
+	texture = "gfx/interface/icons/production_method_icons/wonders.dds"
+
+	is_hidden_when_unavailable = yes
+
+	country_modifiers = {
+		workforce_scaled = {
+			interest_group_ig_devout_pol_str_mult = 0.05
+			country_prestige_add = 10
+		}
+	}
+
+	building_modifiers = {
+		#workforce_scaled = {
+		#}
+
+		# level_scaled = {
+		# }
+	}
+}
+
+pm_default_building_pena_palace = {
+	texture = "gfx/interface/icons/production_method_icons/wonders.dds"
+
+	is_hidden_when_unavailable = yes
+
+	country_modifiers = {
+		workforce_scaled = {
+			country_legitimacy_headofstate_add = 5
+			country_prestige_add = 25
+		}
+	}
+
+	building_modifiers = {
+		#workforce_scaled = {
+		#}
+
+		level_scaled = {
+			building_employment_aristocrats_add = 100
+			building_employment_bureaucrats_add = 200
+		}
+	}
+}
+
+pm_default_building_gran_teatro_de_la_habana = {
+	texture = "gfx/interface/icons/production_method_icons/wonders.dds"
+
+	is_hidden_when_unavailable = yes
+
+	country_modifiers = {
+		workforce_scaled = {
+			country_prestige_add = 25
+		}
+	}
+
+	building_modifiers = {
+		workforce_scaled = { # 700 profit
+			goods_input_paper_add = 10 # 300
+			goods_output_fine_art_add = 5 # 1000
+		}
+
+		level_scaled = {
+			building_employment_academics_add = 200
+		}
+	}
+}
+
+pm_default_building_estacion_de_madrid_atocha = {
+	texture = "gfx/interface/icons/production_method_icons/wonders.dds"
+
+	is_hidden_when_unavailable = yes
+
+	country_modifiers = {
+		workforce_scaled = {
+			country_prestige_add = 50
+			building_railway_throughput_add = 0.20
+		}
+	}
+
+	building_modifiers = {
+		#workforce_scaled = {
+		#}
+
+		level_scaled = {
+			building_employment_laborers_add = 200
+			building_employment_machinists_add = 200
+			building_employment_clerks_add = 100
+		}
+	}
+}
+
+pm_default_building_manila_cathedral_monument = {
+	texture = "gfx/interface/icons/production_method_icons/wonders.dds"
+
+	is_hidden_when_unavailable = yes
+
+	country_modifiers = {
+		workforce_scaled = {
+			interest_group_ig_devout_pol_str_mult = 0.1
+			country_prestige_add = 25
+		}
+	}
+
+	building_modifiers = {
+		#workforce_scaled = {
+		#}
+
+		level_scaled = {
+			building_employment_clergymen_add = 100
+		}
+	}
+}
+
+pm_default_building_manila_cathedral_ruins = {
+	texture = "gfx/interface/icons/production_method_icons/wonders.dds"
+
+	is_hidden_when_unavailable = yes
+
+	country_modifiers = {
+		workforce_scaled = {
+			country_prestige_add = 10
+		}
+	}
+
+	building_modifiers = {
+		#workforce_scaled = {
+		#}
+
+		level_scaled = {
+			building_employment_clergymen_add = 50
+		}
+	}
+}

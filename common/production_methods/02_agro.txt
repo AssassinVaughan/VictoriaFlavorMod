@@ -152,6 +152,10 @@ pm_apple_orchards = {
 pm_sugar_beets = {
 	texture = "gfx/interface/icons/production_method_icons/sugar_beets.dds"
 
+	unlocking_technologies = {
+		fractional_distillation
+	}
+
 	building_modifiers = {
 		workforce_scaled = {
 			goods_output_grain_add = -10
@@ -280,6 +284,8 @@ pm_simple_farming_building_rice_farm = {
 			building_employment_laborers_add = 7100
 			building_employment_farmers_add = 1000
 		}
+		unscaled = {
+			building_slaves_mortality_mult = 0.2
 	}
 }
 
@@ -663,4 +669,51 @@ pm_refrigerated_rail_cars_building_livestock_ranch = {
 	}
 
 	required_input_goods = electricity
+}
+
+
+default_building_vineyard = {
+	texture = "gfx/interface/icons/production_method_icons/plantation_production.dds"
+
+	building_modifiers = {
+		workforce_scaled = {
+			# output goods
+			goods_output_wine_add = 20
+		}
+
+		level_scaled = {
+			# profit
+			building_employment_laborers_add = 4000
+			building_employment_farmers_add = 1000
+		}
+	}
+}
+
+automatic_irrigation_building_vineyard = {
+	texture = "gfx/interface/icons/production_method_icons/automatic_irrigation.dds"
+
+	state_modifiers = {
+		workforce_scaled = {
+			state_pollution_generation_add = 5
+		}
+	}
+
+	unlocking_technologies = {
+		pumpjacks
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			# output goods
+			goods_input_engines_add = 5
+			goods_output_wine_add = 40
+		}
+
+		level_scaled = {
+			# profit
+			building_employment_laborers_add = 3000
+			building_employment_farmers_add = 1500
+			building_employment_machinists_add = 500
+		}
+	}
 }
