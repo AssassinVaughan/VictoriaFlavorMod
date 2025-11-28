@@ -1,4 +1,4 @@
-﻿pm_anchorage = {
+﻿REPLACE:pm_anchorage = {
 	texture = "gfx/interface/icons/production_method_icons/anchorage.dds"
 
 	low_pop_method = yes # AI will activate this method for states with low population
@@ -24,7 +24,7 @@
 	}
 }
 
-pm_basic_port = {
+REPLACE:pm_basic_port = {
 	texture = "gfx/interface/icons/production_method_icons/basic_port.dds"
 
 	building_modifiers = {
@@ -51,7 +51,7 @@ pm_basic_port = {
 	}
 }
 
-pm_industrial_port = {
+REPLACE:pm_industrial_port = {
 	texture = "gfx/interface/icons/production_method_icons/industrial_port.dds"
 
 	unlocking_technologies = {
@@ -84,7 +84,7 @@ pm_industrial_port = {
 	}
 }
 
-pm_modern_port = {
+REPLACE:pm_modern_port = {
 	texture = "gfx/interface/icons/production_method_icons/modern_port.dds"
 	unlocking_technologies = {
 		concrete_dockyards
@@ -117,7 +117,7 @@ pm_modern_port = {
 	}
 }
 
-pm_early_trains = {
+REPLACE:pm_early_trains = {
 	texture = "gfx/interface/icons/production_method_icons/experimental_trains.dds"
 
 	building_modifiers = {
@@ -141,9 +141,9 @@ pm_early_trains = {
 	}
 }
 
-pm_steam_trains = {
+REPLACE:pm_steam_trains = {
 	texture = "gfx/interface/icons/production_method_icons/trains_steam.dds"
-	replacement_if_valid = pm_steam_trains_principle_transport_3
+	replacement_if_valid = REPLACE:pm_steam_trains_principle_transport_3
 
 	unlocking_technologies = {
 		steel_railway_cars
@@ -170,7 +170,7 @@ pm_steam_trains = {
 	}
 }
 
-pm_steam_trains_principle_transport_3 = {
+REPLACE:pm_steam_trains_principle_transport_3 = {
 	texture = "gfx/interface/icons/production_method_icons/trains_steam.dds"
 	is_hidden_when_unavailable = yes
 
@@ -203,7 +203,7 @@ pm_steam_trains_principle_transport_3 = {
 	}
 }
 
-pm_electric_trains = {
+REPLACE:pm_electric_trains = {
 	texture = "gfx/interface/icons/production_method_icons/trains_electric.dds"
 	replacement_if_valid = pm_electric_trains_principle_transport_3
 
@@ -234,7 +234,7 @@ pm_electric_trains = {
 	required_input_goods = electricity
 }
 
-pm_electric_trains_principle_transport_3 = {
+REPLACE:pm_electric_trains_principle_transport_3 = {
 	texture = "gfx/interface/icons/production_method_icons/trains_electric.dds"
 	is_hidden_when_unavailable = yes
 
@@ -269,7 +269,7 @@ pm_electric_trains_principle_transport_3 = {
 	required_input_goods = electricity
 }
 
-pm_diesel_trains = {
+REPLACE:pm_diesel_trains = {
 	texture = "gfx/interface/icons/production_method_icons/trains_diesel.dds"
 	replacement_if_valid = pm_diesel_trains_principle_transport_3
 
@@ -299,7 +299,7 @@ pm_diesel_trains = {
 	}
 }
 
-pm_diesel_trains_principle_transport_3 = {
+REPLACE:pm_diesel_trains_principle_transport_3 = {
 	texture = "gfx/interface/icons/production_method_icons/trains_diesel.dds"
 	is_hidden_when_unavailable = yes
 
@@ -333,11 +333,11 @@ pm_diesel_trains_principle_transport_3 = {
 	}
 }
 
-pm_no_passenger_trains = {
+REPLACE:pm_no_passenger_trains = {
 	texture = "gfx/interface/icons/production_method_icons/no_passenger_trains.dds"
 }
 
-pm_wooden_passenger_carriages = {
+REPLACE:pm_wooden_passenger_carriages = {
 	texture = "gfx/interface/icons/production_method_icons/passenger_trains.dds"
 
 	building_modifiers = {
@@ -351,7 +351,7 @@ pm_wooden_passenger_carriages = {
 	}
 }
 
-pm_steel_passenger_carriages = {
+REPLACE:pm_steel_passenger_carriages = {
 	texture = "gfx/interface/icons/production_method_icons/passenger_carriages.dds"
 
 	unlocking_technologies = {
@@ -369,7 +369,7 @@ pm_steel_passenger_carriages = {
 	}
 }
 
-pm_trade_center = {
+REPLACE:pm_trade_center = {
 	texture = "gfx/interface/icons/production_method_icons/trade_center.dds"
 	replacement_if_valid = pm_trade_center_principle_external_trade_2
 	is_hidden_when_unavailable = yes
@@ -388,7 +388,7 @@ pm_trade_center = {
 	}
 }
 
-pm_trade_center_principle_external_trade_2 = {
+REPLACE:pm_trade_center_principle_external_trade_2 = {
 	texture = "gfx/interface/icons/production_method_icons/trade_center.dds"
 	is_hidden_when_unavailable = yes
 
@@ -417,7 +417,7 @@ pm_trade_center_principle_external_trade_2 = {
 	}
 }
 
-pm_trade_center_trade_quantity_limited = {
+REPLACE:pm_trade_center_trade_quantity_limited = {
 	texture = "gfx/interface/icons/production_method_icons/trade_quantity_1.dds"
 	low_pop_method = yes # AI will activate this method for states with low population
 
@@ -433,7 +433,7 @@ pm_trade_center_trade_quantity_limited = {
 	}
 }
 
-pm_trade_center_trade_quantity_normal = {
+REPLACE:pm_trade_center_trade_quantity_normal = {
 	texture = "gfx/interface/icons/production_method_icons/trade_quantity_2.dds"
 	is_default = yes
 
@@ -444,7 +444,7 @@ pm_trade_center_trade_quantity_normal = {
 	}
 }
 
-pm_trade_center_trade_quantity_high = {
+REPLACE:pm_trade_center_trade_quantity_high = {
 	texture = "gfx/interface/icons/production_method_icons/trade_quantity_3.dds"
 
 	unlocking_technologies = { hydraulic_cranes }
@@ -461,7 +461,7 @@ pm_trade_center_trade_quantity_high = {
 	}
 }
 
-pm_trade_center_trade_quantity_very_high = {
+REPLACE:pm_trade_center_trade_quantity_very_high = {
 	texture = "gfx/interface/icons/production_method_icons/trade_quantity_4.dds"
 
 	unlocking_technologies = { floating_harbor }
@@ -478,7 +478,7 @@ pm_trade_center_trade_quantity_very_high = {
 	}
 }
 
-pm_financial_district_privately_owned = {
+REPLACE:pm_financial_district_privately_owned = {
 	texture = "gfx/interface/icons/production_method_icons/privately_owned.dds"
 	replacement_if_valid = pm_financial_district_principle_divine_economics_2
 
@@ -495,7 +495,7 @@ pm_financial_district_privately_owned = {
 	}
 }
 
-pm_financial_district_publicly_traded = {
+REPLACE:pm_financial_district_publicly_traded = {
 	texture = "gfx/interface/icons/production_method_icons/publicly_traded.dds"
 
 	unlocking_technologies = { mutual_funds }
@@ -512,7 +512,7 @@ pm_financial_district_publicly_traded = {
 	}
 }
 
-pm_financial_district_principle_divine_economics_2 = {
+REPLACE:pm_financial_district_principle_divine_economics_2 = {
 	texture = "gfx/interface/icons/production_method_icons/privately_owned.dds"
 	is_hidden_when_unavailable = yes
 
@@ -534,7 +534,7 @@ pm_financial_district_principle_divine_economics_2 = {
 	}
 }
 
-pm_manor_house_privately_owned = {
+REPLACE:pm_manor_house_privately_owned = {
 	texture = "gfx/interface/icons/production_method_icons/ownership_aristocrats.dds"
 	replacement_if_valid = pm_manor_house_principle_divine_economics_2
 
@@ -548,7 +548,7 @@ pm_manor_house_privately_owned = {
 	}
 }
 
-pm_manor_house_principle_divine_economics_2 = {
+REPLACE:pm_manor_house_principle_divine_economics_2 = {
 	texture = "gfx/interface/icons/production_method_icons/privately_owned.dds"
 	is_hidden_when_unavailable = yes
 
@@ -570,7 +570,7 @@ pm_manor_house_principle_divine_economics_2 = {
 	}
 }
 
-pm_manor_house_bureaucrat_ownership = {
+REPLACE:pm_manor_house_bureaucrat_ownership = {
 	texture = "gfx/interface/icons/production_method_icons/ownership_bureacrats.dds"
 
 	unlocking_laws = {
@@ -587,7 +587,7 @@ pm_manor_house_bureaucrat_ownership = {
 	}
 }
 
-pm_manor_house_clergy_ownership = {
+REPLACE:pm_manor_house_clergy_ownership = {
 	texture = "gfx/interface/icons/production_method_icons/ownership_clergy.dds"
 
 	disallowing_laws = {
