@@ -5,27 +5,6 @@ NJominiMap = {
 }
 
 NAI = {
-	STRATEGY_RANDOM_FACTOR = 10.0
-	CHANGE_STRATEGY_INCREASE_WEEKLY_CHANCE = 40.0
-	CHANGE_STRATEGY_DIPLOMATIC_STATE_GAINED_OR_LOST = 15
-	COUNTRY_GOAL_STRATEGIC_UPDATE_COUNT = 10
-	COUNTRY_GOAL_ADJUSTMENT_UPDATE_COUNT = 75
-	BASE_AGGRESSION = 0.3
-	DIPLO_PROPOSAL_TO_PLAYER_COOLDOWN_MONTHS = 60
-	DIPLO_PROPOSAL_LIKELY_NON_ACCEPTED_COOLDOWN_MONTHS = 60
-	GOAL_BEFRIEND_RECONCILE_FACTOR = 100
-	RECRUITABLE_COMMANDER_RANDOM_FACTOR = 1.5
-	START_DIPLO_PLAY_RANDOM_FACTOR = 1.2
-	WAR_GOAL_RANDOM_FACTOR = 1.5
-	TECH_RANDOM_FACTOR = 1.5
-	DEFEND_STATE_CAPITAL_WEIGHT = 50
-	INVADE_STATE_CAPITAL_WEIGHT = 50
-	COLONY_ARABLE_LAND_WEIGHT = 15
-	COLONY_ADJACENT_WEIGHT_MULT = 20
-	COLONY_RANDOM_FACTOR = 1.5
-	MONEY_SPENDING_RANDOM_FACTOR = 1.5
-	PRODUCTION_BUILDING_RANDOM_FACTOR = 5
-	VIOLATE_SOVEREIGNTY_RANDOM_FACTOR = 1.5
 	
 	MONEY_SPENDING_INNOVATION_CRITICAL_THRESHOLD = 0.65 # If innovation production compared to cap is worse than this, AI considers it very important to improve
 	MONEY_SPENDING_INNOVATION_DESIRED_THRESHOLD = 0.8 # If innovation production compared to cap is worse than this, AI considers it important to improve
@@ -186,11 +165,6 @@ NAI = {
 	DIPLO_PLAY_BOLDNESS_WEAK_ARMY_FACTOR = -15 	# Scaled by our relative forces compared to DIPLO_PLAY_WEAK_ARMY_THRESHOLD
 	DIPLO_PLAY_TAKE_SIDES_MIN_BOLDNESS = 2 # Boldness must be at least this for AI to want to take a side with no gain (ignored for Great Powers in containment plays)
 	
-	# Below data is used for naval invasions:
-	NAVAL_INVASION_RANDOM_FACTOR = 0.4 								# The higher this is, the more random AI naval invasion theater selection will be
-	NAVAL_INVASION_COOLDOWN_DAYS = 20 								# After launching a naval invasion, the AI will wait at least this long before launching another
-	NAVAL_INVASION_MIN_SCORE = 10									# AI won't bother launching naval invasions against theaters with a lower total state score than this
-	NAVAL_INVASION_MAX_LOCAL_FRONT_SCORE = 200						# Don't launch a naval invasion if there is a local front of at least this total score for the general
 	
 	MAX_INSTITUTION_SPENDING = 0.01 #0.015 AI will not spend more BUR than this on institutions (scaled by weekly GDP)
 	MAX_INSTITUTION_SPENDING_PER_INSTITUTION = 0.006 # Added to MAX_INSTITUTION_SPENDING_BASE for each institution a country has
@@ -215,7 +189,7 @@ NPolitics = {
 
 NEconomy = {
 
-    REINVESTMENT_EFFICIENCY_MAX = 1.8 # 3.0, this has a major economical impact		# Maximum conversion of reinvestment to investment pool
+    #REINVESTMENT_EFFICIENCY_MAX = 1.8 # 3.0, this has a major economical impact		# Maximum conversion of reinvestment to investment pool
 	
 	DECLARE_BANKRUPTCY_RADICALIZATION_BASE_FACTOR = 0.1 # VFM, AI cannot handle this yet # Radicalize this percentage of all pops when declaring bankruptcy
 

@@ -28,12 +28,27 @@
 			level = 2
 		}
 
-		ig:ig_landowners = {
+		active_law:lawgroup_education_system ?= { # Public Schools
+			add_amendment = {
+				type = amendment_prussian_education
+				sponsor = PREV.ig:ig_armed_forces
+			}
+		}
+
+		ig:ig_landowners ?= {
 			add_ruling_interest_group = yes
 		}
 
-		ig:ig_armed_forces = {
+		ig:ig_armed_forces ?= {
 			add_ruling_interest_group = yes
+		}
+		
+		set_variable = free_elections_var
+		active_law:lawgroup_distribution_of_power ?= { # Wealth Voting - Reform Act
+			add_amendment = {
+				type = amendment_tradition_of_free_elections
+				sponsor = PREV.ig:ig_intelligentsia
+			}
 		}
 	}
 }

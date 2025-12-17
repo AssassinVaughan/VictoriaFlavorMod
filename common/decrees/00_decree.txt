@@ -77,7 +77,18 @@ decree_road_maintenance = {
 			}
 			multiply = 0
 		}
-        multiply = 2		
+        multiply = 2	
+
+		# Place instances where content should ignore weights here
+		if = {
+			limit = {
+				scope:country = {
+					has_journal_entry = je_lands_of_anarchy
+				}
+				is_capital = yes
+			}
+			add = 1000
+		}
 	}
 }
 
@@ -250,12 +261,6 @@ decree_promote_social_mobility = {
 		}
 		if = {
 			limit = {
-				scope:country = { has_journal_entry = je_hawaii }
-			}
-			add = 1000
-		}
-		if = {
-			limit = {
 				scope:country = {
 					OR = {
 						has_strategy = ai_strategy_reactionary_agenda
@@ -277,7 +282,31 @@ decree_promote_social_mobility = {
 			}
 			multiply = 1.5
 		}
-        multiply = 2				
+        multiply = 2	
+
+		# Content overrides
+		if = {
+			limit = {
+				scope:country = {
+					has_journal_entry = je_lands_of_anarchy
+				}
+				is_capital = yes
+			}
+			add = 1000
+		}
+		if = {
+			limit = {
+				scope:country = { has_journal_entry = je_hawaii }
+			}
+			add = 1000
+		}
+		if = {
+			limit = {
+				scope:country = { has_journal_entry = je_portugal_regeneration_institutions }
+				literacy_rate < 0.5
+			}
+			add = 500
+		}
 	}
 }
 
@@ -318,7 +347,7 @@ decree_promote_national_values = {
 			if = { # Colonies
 				limit = {
 					scope:country = {
-						country_is_in_europe = no
+						is_not_in_geographic_region = geographic_region_europe
 						any_primary_culture = {
 							has_discrimination_trait_group = heritage_group_european
 						}
@@ -385,8 +414,8 @@ decree_promote_national_values = {
 				OR = {
 					NOT = { scope:country = { has_law_or_variant = law_type:law_total_separation } }
 					AND = {
-						scope:country = { country_is_in_africa = no }
-						state_is_in_africa = yes
+						scope:country = { is_not_in_geographic_region = geographic_region_africa }
+						is_in_geographic_region = geographic_region_africa
 					}
 				}
 				religion_percent_state = {
@@ -461,7 +490,7 @@ decree_promote_national_values = {
 		}
 		else_if = {
 			limit = {
-				state_population < 300000
+				state_population > 300000
 			}
 			multiply = 2.0
 		}
@@ -495,6 +524,16 @@ decree_promote_national_values = {
 				}
 			}
 			add = 500
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_journal_entry = je_vernacular_policy
+					has_variable = chose_assimilation_var
+				}
+				is_homeland_of_country_cultures = scope:country
+			}
+			add = 1000
 		}
 
 		if = {
@@ -534,7 +573,7 @@ decree_encourage_manufacturing_industry = {
 	}
 	modifier = {
 		building_group_bg_manufacturing_throughput_add = 0.2
-		#building_group_bg_service_throughput_add = 0.2
+		#building_group_bg_service_throughput_add = 0.2 # VFM
 	}
 	cost = 100
 	
@@ -746,8 +785,8 @@ decree_greener_grass_campaign = {
 		is_isolated_from_market = no
 	}
 	modifier = {
-		state_migration_pull_add = 15 #20 VFM
-		state_migration_pull_mult = 0.2 #0.25 VFM
+		state_migration_pull_add = 20
+		state_migration_pull_mult = 0.25
 	}
 	unlocking_technologies = {
 		romanticism
@@ -853,7 +892,7 @@ decree_enlistment_efforts = {
 		if = {
 			limit = {
 				any_scope_building = {
-					is_building_type = building_barracks
+					is_building_type = building_barrack
 					count >= 5
 				}
 			}
@@ -862,7 +901,7 @@ decree_enlistment_efforts = {
 		if = {
 			limit = {
 				any_scope_building = {
-					is_building_type = building_barracks
+					is_building_type = building_barrack
 					count >= 10
 				}
 			}
@@ -871,7 +910,7 @@ decree_enlistment_efforts = {
 		if = {
 			limit = {
 				any_scope_building = {
-					is_building_type = building_barracks
+					is_building_type = building_barrack
 					count >= 25
 				}
 			}
@@ -884,7 +923,7 @@ decree_enlistment_efforts = {
 					OR = {
 						has_strategy = ai_strategy_unify_germany
 						has_strategy = ai_strategy_unify_italy
-						has_journal_entry = je_war_of_the_confederation
+						has_journal_entry = je_war_of_the_confederation # VFM
 					}
 				}
 			}

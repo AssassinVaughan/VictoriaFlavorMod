@@ -36,25 +36,13 @@
 			level = 1
 		}
 
-		ig:ig_armed_forces = {
-			add_ideology = ideology_bakufu
-			set_interest_group_name = ig_samurai
+		ig:ig_armed_forces ?= {
 			add_ruling_interest_group = yes
 		}
 
-		ig:ig_devout = {
-			set_interest_group_name = ig_buddhist_monks
-			remove_ideology = ideology_moralist
-			add_ideology = ideology_buddhist_moralist
-		}
-
-		ig:ig_landowners = {
+		ig:ig_landowners ?= {
 			set_interest_group_name = ig_shogunate
 			add_ruling_interest_group = yes
-		}
-
-		ig:ig_rural_folk = {
-			set_interest_group_name = ig_peasants
 		}
 
         add_journal_entry = { type = je_the_line_of_advantage	}

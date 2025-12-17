@@ -1,6 +1,6 @@
 ﻿COUNTRIES = {
 	c:BIC ?= {
-		ig:ig_industrialists = {
+		ig:ig_industrialists ?= {
 			add_ruling_interest_group = yes
 		}
 		effect_starting_technology_tier_2_tech = yes
@@ -10,10 +10,10 @@
 		add_technology_researched = railways
 		add_technology_researched = corporate_charters
 
-		activate_law = law_type:law_presidential_republic
+		activate_law = law_type:law_colonial_administration
 		activate_law = law_type:law_total_separation
 		activate_law = law_type:law_tenant_farmers
-		activate_law = law_type:law_cultural_exclusion # English & Anglo-Indian supremacy; no Indians served in the upper echelons of government
+		activate_law = law_type:law_subjecthood # English & Anglo-Indian supremacy; no Indians served in the upper echelons of government
 		activate_law = law_type:law_extraction_economy
 		activate_law = law_type:law_censorship
 		activate_law = law_type:law_land_based_taxation
@@ -26,8 +26,14 @@
         activate_law = law_type:law_combination_acts
         activate_law = law_type:law_devolved
 
+		active_law:lawgroup_citizenship ?= { # Subjecthood
+			add_amendment = {
+				type = amendment_racialized_subjecthood
+				sponsor = PREV.ig:ig_industrialists
+			}
+		}
 		
-		ig:ig_armed_forces = {
+		ig:ig_armed_forces ?= {
 			add_ruling_interest_group = yes
 		}
 
@@ -72,6 +78,12 @@
 			add_modifier = {
 				name = modifier_ryotwari_system
 			}
+		}
+		
+		start_national_awakening = { # Bengali Renaissance
+			culture = cu:bengali
+			months = 240
+			state_region = s:STATE_WEST_BENGAL
 		}
 	}
 }

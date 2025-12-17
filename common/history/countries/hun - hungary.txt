@@ -24,7 +24,7 @@
 		activate_law = law_type:law_land_based_taxation	
 		activate_law = law_type:law_guild_system # Heavily restricted, but still extant until 1859
 		
-		ig:ig_landowners = {
+		ig:ig_landowners ?= {
 			add_ruling_interest_group = yes
 		}
 
@@ -34,6 +34,12 @@
 				has_dlc_feature = ip3_content
 			}
 			add_journal_entry = { type = je_hungarian_revolution }
+		}
+
+		start_national_awakening = {
+			culture = cu:hungarian
+			months = 168
+			state_region = s:STATE_CENTRAL_HUNGARY
 		}
 	}
 }

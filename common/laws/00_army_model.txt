@@ -11,7 +11,7 @@
 		state_conscription_rate_add = 0.04
 		country_aristocrats_pol_str_mult = 0.25
 		country_military_goods_cost_mult = -0.1
-		state_building_barracks_max_level_add = 25
+		state_building_barrack_max_level_add = 25
 		state_building_conscription_center_max_level_add = 25
 	}
 
@@ -74,7 +74,7 @@ law_professional_army = {
 		unit_morale_loss_mult = -0.1
 		state_conscription_rate_add = 0.01
 		country_officers_pol_str_mult = 0.5
-		state_building_barracks_max_level_add = 35 # vfm - dont let player place everything in capital...
+		state_building_barrack_max_level_add = 35 # vfm - dont let player place everything in capital...
 		state_building_conscription_center_max_level_add = 25
 		unit_experience_gain_mult = 1.0
 	}
@@ -133,6 +133,19 @@ law_professional_army = {
 			add = 1000
 		}
 
+		# Once the AI gets to a certain army tech level they should try to ditch Peasant Levies
+		if = {
+			limit = {
+				OR = {
+					has_technology_researched = logistics
+					has_technology_researched = general_staff
+				}
+				has_law_or_variant = law_type:law_peasant_levies
+			}
+
+			add = 700
+		}
+
 		# AI should really try to get out of Peasant Levies under the right circumstances
 		if = {
 			limit = {
@@ -150,7 +163,7 @@ law_professional_army = {
 					has_technology_researched = napoleonic_warfare
 				}
 			}
-			add = 1000
+			add = 700
 		}
 	}
 }
@@ -168,7 +181,7 @@ law_national_militia = {
 		state_conscription_rate_add = 0.05
 		country_leverage_resistance_mult = 0.5
 		country_officers_pol_str_mult = -0.25
-		state_building_barracks_max_level_add = 10
+		state_building_barrack_max_level_add = 10
 		state_building_conscription_center_max_level_add = 50
 	}
 
@@ -227,7 +240,7 @@ law_mass_conscription = {
 		state_conscription_rate_add = 0.03
 		building_training_rate_mult = 1
 		country_officers_pol_str_mult = 0.25
-		state_building_barracks_max_level_add = 35 # vfm - dont let player place everything in capital...
+		state_building_barracs_max_level_add = 35 # vfm - dont let player place everything in capital...
 		state_building_conscription_center_max_level_add = 50
 	}
 
@@ -279,6 +292,19 @@ law_mass_conscription = {
 			add = 1000
 		}
 
+		# Once the AI gets to a certain army tech level they should try to ditch Peasant Levies
+		if = {
+			limit = {
+				OR = {
+					has_technology_researched = logistics
+					has_technology_researched = general_staff
+				}
+				has_law_or_variant = law_type:law_peasant_levies
+			}
+
+			add = 700
+		}
+
 		# AI should really try to get out of Peasant Levies under the right circumstances
 		if = {
 			limit = {
@@ -296,7 +322,7 @@ law_mass_conscription = {
 					has_technology_researched = napoleonic_warfare
 				}
 			}
-			add = 1000
+			add = 700
 		}
 	}
 }

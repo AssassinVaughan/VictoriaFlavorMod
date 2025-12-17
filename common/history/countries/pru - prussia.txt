@@ -49,6 +49,13 @@
 		activate_law = law_type:law_combination_acts
 		activate_law = law_type:law_unitary
 
+        active_law:lawgroup_education_system ?= { # Public Schools
+			add_amendment = {
+				type = amendment_prussian_education
+				sponsor = PREV.ig:ig_armed_forces
+			}
+		}
+
 		add_journal_entry = {
 			type = je_holy_alliance
 		}
@@ -66,11 +73,11 @@
 			level = 1
 		}
 		
-		ig:ig_landowners = { 
+		ig:ig_landowners ?= { 
 			add_ruling_interest_group = yes
 		}
 
-		ig:ig_armed_forces = {
+		ig:ig_armed_forces ?= {
 			add_ruling_interest_group = yes
 		}
 		

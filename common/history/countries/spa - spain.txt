@@ -1,10 +1,13 @@
 ﻿COUNTRIES = {
 	c:SPA ?= {
-		set_next_election_date = 1836.7.13
+		set_next_election_date = 1836.2.26
 		
 		effect_starting_technology_tier_3_tech = yes
 		effect_starting_politics_conservative = yes
 
+		add_technology_researched = empiricism
+		add_technology_researched = napoleonic_warfare
+		add_technology_researched = stock_exchange
 		set_tax_level = medium
 		
 		add_taxed_goods = g:liquor
@@ -18,41 +21,60 @@
 			goods = g:small_arms
 			level = high_subventions
 		}
-		
+
 		# Estatuto Real de 1834 was in effect; the Constitution of 1812 was not restored until August of 1836
 		activate_law = law_type:law_monarchy
-		activate_law = law_type:law_landed_voting
 		activate_law = law_type:law_state_religion
-		activate_law = law_type:law_legacy_slavery
 		activate_law = law_type:law_national_supremacy
 		activate_law = law_type:law_mercantilism
 		activate_law = law_type:law_interventionism
-		activate_law = law_type:law_land_based_taxation	
+		activate_law = law_type:law_land_based_taxation
+		activate_law = law_type:law_latifundias
 		activate_law = law_type:law_religious_schools
 		activate_law = law_type:law_charitable_health_system
-		activate_law = law_type:law_oligarchy
-		#activate_law = law_type:law_colonial_exploitation # spain has nothing to colonize in 1836
-		activate_law = law_type:law_devolved
+		activate_law = law_type:law_national_guard # Urban Guard
+		activate_law = law_type:law_elected_bureaucrats # The Moderados trying to abolish this caused the revolution of 1836
+		activate_law = law_type:law_oligarchy # Blurred the lines between Landed Voting and Oligarchy
+		activate_law = law_type:law_colonial_slavery # Slavery in Spanish colonies was only abolished in 1848
+        activate_law = law_type:law_devolved
+
+		active_law:lawgroup_distribution_of_power ?= { # Oligarchy
+			add_amendment = {
+				type = amendment_chamber_of_procurators
+				sponsor = PREV.ig:ig_petty_bourgeoisie
+				cooldown = 96 # Product of the 1834 Charter
+			}
+		}
+
+		initialise_caciquismo_effect = yes
 
 		set_institution_investment_level = {
 			institution = institution_health_system
 			level = 1
 		}
 
-		ig:ig_intelligentsia = {
-			add_ruling_interest_group = yes # Juan Mendizabal was Prime Minister
+		ig:ig_landowners ?= {
+			add_ruling_interest_group = yes # Juan Mendizabal was Prime Minister, but he needs to be in opposition for the election to work properly
 		}
 
-		ig:ig_devout = {
+		ig:ig_devout ?= {
 			add_ruling_interest_group = yes
 		}
-		
-		ig:ig_devout = { 
-			set_interest_group_name = ig_catholic_church 
+
+		ig:ig_armed_forces ?= {
+			add_ruling_interest_group = yes
+			add_ideology = ideology_liberal_praetorian
 		}
-		
-		ig:ig_landowners = {
-			add_ideology = ideology_pious
+
+		add_modifier = { name = modifier_regency_petty_bourgeoisie }
+
+		set_immune_to_revolutions = yes
+
+		trigger_event = { id = spain_politics.1 days = 30 }
+		trigger_event = {
+			id = carlist_war.7
+			popup = yes
+			days = 1
 		}
 	}
 }

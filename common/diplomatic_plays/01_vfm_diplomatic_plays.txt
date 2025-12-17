@@ -1,4 +1,31 @@
-﻿dp_first_italian_war = {
+﻿REPLACE:dp_return_state = {
+	requires_interest_marker = no
+
+	war_goal = return_state
+
+	texture = "gfx/interface/icons/war_goals/return_state.dds"
+
+	possible = {
+		NOT = { is_country_type = decentralized }
+		aggressive_diplomatic_plays_permitted = yes
+		NOT = { is_subject_of = scope:target_country }
+		scope:target_country = {
+			NOT = { is_country_type = decentralized }
+			NOT = { is_subject_type = subject_type_autonomous_province } # VFM
+		}
+		diplomatic_play_has_no_relations_blockers = yes
+	}
+
+	ai_acceptance_max = 90
+
+	on_weekly_pulse = {}
+
+	on_war_begins = {}
+
+	on_war_end = {}
+}
+
+dp_first_italian_war = {
 	requires_interest_marker = yes
 	enable_switch_sides = no
 	allow_negotiated_peace = yes

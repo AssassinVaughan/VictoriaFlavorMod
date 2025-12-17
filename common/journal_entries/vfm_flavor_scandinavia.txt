@@ -171,7 +171,7 @@ je_swe_motala_fabriker = {
 	    s:STATE_SVEALAND = {
 		    any_scope_state = {
 				any_scope_building = {
-					is_building_type = building_tooling_workshops
+					is_building_type = building_tooling_workshop
 					level >= 2
 					occupancy > 0.75
 				}
@@ -250,8 +250,8 @@ je_swe_gotavarven = {
 		    any_scope_state = {
 		any_scope_building = {
 			OR = {
-				is_building_type = building_shipyards
-				is_building_type = building_military_shipyards
+				is_building_type = building_shipyard
+				is_building_type = building_military_shipyard
 			}
 			level >= 3
 			occupancy > 0.9

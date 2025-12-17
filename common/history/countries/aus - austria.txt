@@ -29,6 +29,14 @@
 		activate_law = law_type:law_unitary
 		activate_law = law_type:law_guild_system # Heavily restricted, but still extant until 1859
 
+		active_law:lawgroup_distribution_of_power ?= { # Autocracy
+			add_amendment = {
+				type = amendment_geheime_staatskonferenz
+				sponsor = PREV.ig:ig_landowners # Franz was a Landowner, I suppose
+				cooldown = 108
+			}
+		}
+
 		set_institution_investment_level = {
 			institution = institution_schools
 			level = 1
@@ -42,17 +50,17 @@
 		set_institution_investment_level = {
 			institution = institution_home_affairs
 			level = 1
-		}	
+		}
 		
 		# Geheime Staatskonferenz
-		ig:ig_landowners = {
+		ig:ig_landowners ?= {
 			add_ruling_interest_group = yes
 			set_interest_group_name = austrian_aristocracy
 		}
-		ig:ig_armed_forces = {
+		ig:ig_armed_forces ?= {
 			add_ruling_interest_group = yes
 		}
-		ig:ig_intelligentsia = {
+		ig:ig_intelligentsia ?= {
 			add_ruling_interest_group = yes
 		}
 
@@ -61,6 +69,12 @@
 		}
 		add_journal_entry = {
 			type = je_holy_alliance
+		}
+
+		start_national_awakening = {
+			culture = cu:czech
+			months = 168
+			state_region = s:STATE_BOHEMIA
 		}
 	}
 }

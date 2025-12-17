@@ -12,7 +12,7 @@
 		ig:ig_armed_forces = {
 			add_ruling_interest_group = yes
 		}
-		ig:ig_landowners = {
+		ig:ig_landowners ?= {
 			add_ruling_interest_group = yes
 		}
 		activate_law = law_type:law_theocracy
@@ -71,7 +71,7 @@
 			}	
 			set_import_tariff_level = { 
 				goods = g:small_arms
-				level = high_subventions
+				level = max_subventions
 			}
 			set_import_tariff_level = { 
 				goods = g:artillery

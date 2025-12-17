@@ -2,11 +2,11 @@
 	c:GBR ?= {
 		set_next_election_date = 1836.2.1
 		
-		ig:ig_intelligentsia = {
+		ig:ig_intelligentsia ?= {
 			add_ruling_interest_group = yes
 		}
 
-		ig:ig_petty_bourgeoisie = {
+		ig:ig_petty_bourgeoisie ?= {
 			add_ruling_interest_group = yes
 		}
 		
@@ -14,13 +14,13 @@
 			goods = g:grain 
 			level = high_tariffs
 		}
-		set_export_tariff_level = { 
-			goods = g:fabric
-			level = low_tariffs
-		}		
 		set_import_tariff_level = { 
-			goods = g:hardwood
-			level = high_subventions
+			goods = g:fabric
+			level = no_tariffs_or_subventions
+		}	
+		set_export_tariff_level = { 
+			goods = g:opium
+			level = low_subventions
 		}
 		set_import_tariff_level = { 
 			goods = g:wood
@@ -106,6 +106,13 @@
 			set_company_state_region = s:STATE_HOME_COUNTIES
 			add_owned_country = c:BIC #links the country to this company
 		}
-
+		
+		set_variable = free_elections_var
+		active_law:lawgroup_distribution_of_power ?= { # Wealth Voting - Reform Act
+			add_amendment = {
+				type = amendment_tradition_of_free_elections
+				sponsor = PREV.ig:ig_intelligentsia
+			}
+		}
 	}
 }

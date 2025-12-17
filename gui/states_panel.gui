@@ -1786,8 +1786,7 @@ types state_panel_types
 			}
 
 			state_panel_status_item_small = {
-				visible = "[State.GetStateRegion.HasDevastation]"
-				datacontext = "[State.GetStateRegion]"
+				visible = "[State.HasDevastation]"
 				tooltip = "TOOLTIP_STATE_DEVASTATION"
 
 				blockoverride "texture" {
@@ -3488,8 +3487,7 @@ types state_panel_types
 				}
 
 				state_panel_status_item_condensed = {
-					visible = "[State.GetStateRegion.HasDevastation]"
-					datacontext = "[State.GetStateRegion]"
+					visible = "[State.HasDevastation]"
 					tooltip = "TOOLTIP_STATE_DEVASTATION"
 
 					blockoverride "texture" {
@@ -3714,7 +3712,7 @@ types state_panel_types
 				}
 
 				building_item_condensed = {
-					datacontext = "[StatesPanel.AccessBuilding('building_barracks')]"
+					datacontext = "[StatesPanel.AccessBuilding('building_barrack')]"
 
 					tooltipwidget = {
 						FancyTooltip_Building = {}
@@ -3897,13 +3895,15 @@ types building_item_types
 				}
 			}
 
-			textbox = {
-				parentanchor = vcenter
-				align = nobaseline
-				autoresize = yes
-				using = fontsize_xl
-				tooltip = "[Building.GetEmploymentTooltip]"
-				text = "[Building.GetExpansionLevelDesc]"
+			block "building_levels_textbox" {
+				textbox = {
+					parentanchor = vcenter
+					align = nobaseline
+					autoresize = yes
+					using = fontsize_xl
+					tooltip = "[Building.GetEmploymentTooltip]"
+					text = "[Building.GetExpansionLevelDesc]"
+				}
 			}
 
 			button_icon_goto = {

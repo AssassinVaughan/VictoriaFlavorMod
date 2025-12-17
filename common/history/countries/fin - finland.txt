@@ -39,11 +39,14 @@
 			level = 2
 		}
 
-		ig:ig_devout = { 
-			set_interest_group_name = ig_evangelical_church 
+		active_law:lawgroup_education_system ?= { # Public Schools
+			add_amendment = {
+				type = amendment_prussian_education
+				sponsor = PREV.ig:ig_armed_forces
+			}
 		}
 
-		ig:ig_landowners = {
+		ig:ig_landowners ?= {
 			add_ruling_interest_group = yes
 		}
 	}

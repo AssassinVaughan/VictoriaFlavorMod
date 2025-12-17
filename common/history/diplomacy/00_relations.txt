@@ -16,6 +16,7 @@
 		set_relations = { country = c:PAR value = 30 }
 		set_relations = { country = c:LUC value = 30 }
 		set_relations = { country = c:PAP value = 30 }
+		set_relations = { country = c:SPC value = 20 }
 	}
 	c:BAV ?= {
 		set_relations = { country = c:WUR value = 50 }
@@ -93,6 +94,7 @@
 		set_relations = { country = c:NET value = -30 }
 		set_relations = { country = c:BEL value = -1 }
 		set_relations = { country = c:SPA value = -20 }
+		set_relations = { country = c:SPC value = -20 }
 		set_relations = { country = c:MAS value = -30 }
 		set_relations = { country = c:PAP value = 30 }
 		set_relations = { country = c:TUR value = -20 }
@@ -105,6 +107,8 @@
 	c:GBR ?= {
 		set_relations = { country = c:TUR value = 30 }
         set_relations = { country = c:POR value = 50 }
+		set_relations = { country = c:SPA value = 20 }
+		set_relations = { country = c:SPC value = -20 }
         set_relations = { country = c:BIC value = 80 }
         set_relations = { country = c:ION value = 30 }
         set_relations = { country = c:SIL value = 30 }
@@ -249,6 +253,7 @@
 		set_relations = { country = c:FRA value = 30 }
 	}
 	c:PAP ?= {
+		set_relations = { country = c:SPC value = 20 }
 		set_relations = { country = c:SAR value = 30 }
 		set_relations = { country = c:SIC value = 30 }
 		set_relations = { country = c:AUS value = 30 }
@@ -265,6 +270,8 @@
 		set_relations = { country = c:LUA value = -30 }
 	}
 	c:SPA ?= {
+		set_relations = { country = c:SPC value = -50 }
+		set_relations = { country = c:PAP value = -20 }
 		set_relations = { country = c:CUB value = 30 }
 		set_relations = { country = c:GBR value = -30 }
 		set_relations = { country = c:POR value = 30 }
@@ -301,6 +308,7 @@
 		set_relations = { country = c:BRZ value = 10 }
 		set_relations = { country = c:VNZ value = 10 }
 		set_relations = { country = c:GBR value = 30 }
+		set_relations = { country = c:CUB value = 30 }
 	}
 	c:WAL ?= {
 		set_relations = { country = c:SER value = 20 }
@@ -369,5 +377,35 @@
 
 	c:MBS ?= {
 		set_relations = { country = c:OMA value = -30 }
+	}
+
+	c:SAF ?= {
+		set_relations = { country = c:TRN value = -10 }
+		set_relations = { country = c:ORA value = 10 }
+		set_relations = { country = c:WBL value = 20 }
+		set_relations = { country = c:PHL value = 20 }
+		set_relations = { country = c:BST value = 10 }
+		set_relations = { country = c:ZUL value = -25 }
+		set_relations = { country = c:SWZ value = -10 }
+	}
+
+	c:ORA ?= {
+		set_relations = { country = c:TRN value = 50 }
+		set_relations = { country = c:BST value = 25 }
+		set_relations = { country = c:ZUL value = 10 }
+		set_relations = { country = c:WBL value = 20 }
+		set_relations = { country = c:PHL value = 20 }
+	}
+
+	c:ZUL ?= {
+		set_relations = { country = c:SWZ value = -25 }
+		set_relations = { country = c:BST value = -25 }
+		set_relations = { country = c:GZA value = -25 }
+	}
+
+	c:TRN ?= {
+		set_relations = { country = c:SWZ value = -25 }
+		set_relations = { country = c:SWZ value = -10 }
+		set_relations = { country = c:GZA value = -25 }
 	}
 }

@@ -2,7 +2,7 @@
 	scope:actor = {  is_country_type = recognized }
 }
 
-coa_def_lesser_subject_trigger = {
+REPLACE:coa_def_lesser_subject_trigger = {
 	OR = {
 		NOT = { exists = scope:actor }
 		AND = {
@@ -33,7 +33,7 @@ coa_def_protectorate_trigger = {
 	}
 }
 
-coa_def_netherlands_ensign_trigger = {
+REPLACE:coa_def_netherlands_ensign_trigger = {
 	OR = {
 		AND = {
 			c:NET ?= { save_temporary_scope_as = custom_overlord }
@@ -53,7 +53,7 @@ coa_def_hispanic_trigger = {
     }
 }
 
-coa_SWE_karl_johan_is_king_trigger = {
+REPLACE:coa_SWE_karl_johan_is_king_trigger = {
 	exists = c:SWE
 	c:SWE ?= {
 		NOT = {
@@ -112,7 +112,7 @@ coa_def_soconosco_trigger = {
 	}
 }
 
-coa_def_german_ensign_trigger = {
+REPLACE:coa_def_german_ensign_trigger = {
 	OR = {
 		AND = {
 			exists = c:GER

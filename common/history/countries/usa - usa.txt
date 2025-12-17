@@ -29,6 +29,22 @@
 		activate_law = law_type:law_local_police
 		activate_law = law_type:law_no_womens_rights # Women couldn't hold property until ~1839
 		activate_law = law_type:law_federal
+
+		active_law:lawgroup_governance_principles ?= { # Presidential Republic
+			add_amendment = {
+				type = amendment_american_second_amendment
+				sponsor = PREV.ig:ig_rural_folk
+			}
+		}
+
+		active_law:lawgroup_slavery ?= { # Legacy Slavery
+			add_amendment = {
+				type = amendment_american_fugitive_slaves_act
+				sponsor = PREV.ig:ig_landowners
+			}
+		}
+		
+		add_modifier = usa_capital_intact
 		
 		set_institution_investment_level = {
 			institution = institution_colonial_affairs
@@ -45,7 +61,7 @@
 			level = 2
 		}
 
-		ig:ig_rural_folk = { # Andrew Jackson, Jacksonian Democracy & Populism
+		ig:ig_rural_folk ?= { # Andrew Jackson, Jacksonian Democracy & Populism
 			add_ruling_interest_group = yes
 		}
 
@@ -64,10 +80,13 @@
 			set_company_establishment_date = 1830.1.1
 			set_company_state_region = s:STATE_PENNSYLVANIA
 		}
-
-		add_radicals = {
-			value = 0.05
-			pop_type = slaves
+		
+		set_variable = free_elections_var
+		active_law:lawgroup_distribution_of_power ?= { # Census Voting - whilst individual parties carried out electoral fraud, the American central government did not typically have any role in rigging elections
+			add_amendment = {
+				type = amendment_tradition_of_free_elections
+				sponsor = PREV.ig:ig_rural_folk
+			}
 		}
 	}
 }

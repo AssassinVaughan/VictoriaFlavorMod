@@ -575,7 +575,7 @@ algeria_events.4 = {
 	}
 	option = {
 		name = algeria_events.4.c
-		ig:ig_industrialists = {
+		ig:ig_industrialists ?= {
 			add_modifier = {
 				name = the_algerian_dream
 				days = normal_modifier_time
@@ -627,25 +627,25 @@ algeria_events.5 = {
 
 	trigger = {
 		OR = {
-			AND = { 
-				exists = c:CON 
-				c:CON = { relations:root <= relations_threshold:neutral }
-				NOT = {	c:CON = { is_subject_of = c:FRA } }
+			AND = {
+				exists = c:CON
+				c:CON ?= { relations:root <= relations_threshold:neutral }
+				NOT = {	c:CON ?= { is_subject_of = c:FRA } }
 			}
-			AND = { 
-				exists = c:AIT 
-				c:AIT = { relations:root <= relations_threshold:neutral }
-				NOT = { c:AIT = { is_subject_of = c:FRA } }
+			AND = {
+				exists = c:AIT
+				c:AIT ?= { relations:root <= relations_threshold:neutral }
+				NOT = { c:AIT ?= { is_subject_of = c:FRA } }
 			}
-			AND = { 
-				exists = c:MAS 
-				c:MAS = { relations:root <= relations_threshold:neutral }
-				NOT = { c:MAS = { is_subject_of = c:FRA } }
+			AND = {
+				exists = c:MAS
+				c:MAS ?= { relations:root <= relations_threshold:neutral }
+				NOT = { c:MAS ?= { is_subject_of = c:FRA } }
 			}
-			AND = { 
+			AND = {
 				exists = c:TUG
-				c:TUG = { relations:root <= relations_threshold:neutral }
-				NOT = { c:TUG = { is_subject_of = c:FRA } }
+				c:TUG ?= { relations:root <= relations_threshold:neutral }
+				NOT = { c:TUG ?= { is_subject_of = c:FRA } }
 			}
 		}
 		any_scope_character = {
@@ -958,11 +958,11 @@ algeria_events.8 = {
 		add_primary_culture = cu:turkish
 		if = {
 			limit = {
-				c:TUR = { 
-					is_country_type = recognized 
+				c:TUR ?= {
+					is_country_type = recognized
 				}
 			}
-			c:TUR = {
+			c:TUR ?= {
 				create_diplomatic_pact = {
 					country = c:ALD
 					type = puppet
@@ -970,7 +970,7 @@ algeria_events.8 = {
 			}
 		}
 		else_if = {
-			c:TUR = {
+			c:TUR ?= {
 				create_diplomatic_pact = {
 					country = c:ALD
 					type = vassal
@@ -1124,17 +1124,17 @@ algeria_events.9 = {
 	immediate = {
 		random_scope_state = {
 			limit = {
-				region = sr:region_north_africa
+				state_is_in_africa = yes
 				any_scope_building = {
-				 	is_building_type = building_barracks
-					level >= 20
-					occupancy >= 0.5
+				 	is_building_type = building_barrack
+					level >= 10
+					occupancy >= 0.75
 				}
 			}
 			save_scope_as = algeria_state_scope
 			random_scope_building = {
 				limit = {
-					is_building_type = building_barracks
+					is_building_type = building_barrack
 				}
 				save_scope_as = legion_barracks
 			}
@@ -1190,11 +1190,11 @@ algeria_events.9 = {
 		}
 		every_scope_state = {
 			limit = {
-				region = sr:region_north_africa
+				state_is_in_africa = yes
 				any_scope_building = {
-				 	is_building_type = building_barracks
-					level >= 20
-					occupancy >= 0.5
+				 	is_building_type = building_barrack
+					level >= 10
+					occupancy >= 0.75
 				}
 			}
 			# migration attraction and training rate

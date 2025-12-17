@@ -2,8 +2,8 @@
 	icon = "gfx/interface/icons/state_trait_icons/natural_harbors.dds"
 	
 	modifier = {
-		building_shipyards_throughput_add = 0.1
-		building_military_shipyards_throughput_add = 0.1
+		building_shipyard_throughput_add = 0.1
+		building_military_shipyard_throughput_add = 0.1
 		building_port_throughput_add = 0.1
 		state_building_naval_base_max_level_add = 10
 	}
@@ -13,8 +13,8 @@ state_trait_maracaibo_lake = {
 	icon = "gfx/interface/icons/state_trait_icons/natural_harbors.dds"
 	
 	modifier = {
-		building_shipyards_throughput_add = 0.1
-		building_military_shipyards_throughput_add = 0.1
+		building_shipyard_throughput_add = 0.1
+		building_military_shipyard_throughput_add = 0.1
 		building_port_throughput_add = 0.1
 		state_building_naval_base_max_level_add = 10
 	}
@@ -25,8 +25,8 @@ state_trait_guanabara_bay = {
 	icon = "gfx/interface/icons/state_trait_icons/natural_harbors.dds"
 	
 	modifier = {
-		building_shipyards_throughput_add = 0.1
-		building_military_shipyards_throughput_add = 0.1
+		building_shipyard_throughput_add = 0.1
+		building_military_shipyard_throughput_add = 0.1
 		building_port_throughput_add = 0.1
 		state_building_naval_base_max_level_add = 10
 	}
@@ -70,9 +70,64 @@ state_trait_gulf_guayaquil = {
 	icon = "gfx/interface/icons/state_trait_icons/natural_harbors.dds"
 	
 	modifier = {
-		building_shipyards_throughput_add = 0.1
-		building_military_shipyards_throughput_add = 0.1
+		building_shipyard_throughput_add = 0.1
+		building_military_shipyard_throughput_add = 0.1
 		building_port_throughput_add = 0.1
 		state_building_naval_base_max_level_add = 10
+	}
+}
+
+REPLACE:state_trait_serra_dos_carajas = {
+    icon = "gfx/interface/icons/state_trait_icons/resources_ore.dds"
+	
+	modifier = {
+		building_iron_mine_throughput_add = 0.1
+	}
+}
+
+REPLACE:state_trait_atacama_desert = {
+	icon = "gfx/interface/icons/state_trait_icons/dry_climate.dds"
+
+	required_techs_for_colonization = { "civilizing_mission" }
+
+	modifier = {
+		building_sulfur_mine_throughput_add = 0.3
+		building_group_bg_agriculture_throughput_add = -0.1
+		building_group_bg_plantations_throughput_add = -0.1
+		state_construction_mult = -0.1
+		state_infrastructure_mult = -0.1
+	}
+}
+
+REPLACE:state_trait_pampas = {
+	icon = "gfx/interface/icons/state_trait_icons/resources_grazing.dds"
+	
+	modifier = {
+		building_group_bg_ranching_throughput_add = 0.15
+		building_group_bg_agriculture_throughput_add = 0.15
+		building_group_bg_plantations_throughput_add = 0.15
+	}
+}
+
+REPLACE:state_trait_cordillera_de_la_costa = { # Santiago, Tarapaca, and Los Rios
+	icon = "gfx/interface/icons/state_trait_icons/fjords.dds"
+	
+	modifier = {
+		building_shipyard_throughput_add = 0.1
+		building_military_shipyard_throughput_add = 0.1
+		building_port_throughput_add = 0.15
+		state_building_naval_base_max_level_add = 15		
+	}
+}
+
+REPLACE:state_trait_canales_patagonicos = { # araucania
+	icon = "gfx/interface/icons/state_trait_icons/fjords.dds"
+	
+	modifier = {
+		goods_output_hardwood_mult = 0.15
+		building_shipyard_throughput_add = 0.1
+		building_military_shipyard_throughput_add = 0.1
+		building_port_throughput_add = 0.15
+		state_building_naval_base_max_level_add = 15		
 	}
 }

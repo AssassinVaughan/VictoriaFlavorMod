@@ -13,10 +13,6 @@
 
 		set_government_wage_level = low
 
-		ig:ig_devout = {
-			set_interest_group_name = ig_catholic_church
-		}
-		
 		set_export_tariff_level = { 
 			goods = g:sulfur
 			level = no_tariffs_or_subventions
@@ -27,7 +23,7 @@
 			level = high_subventions
 		}
 		
-		ig:ig_landowners = {
+		ig:ig_landowners ?= {
 			add_ruling_interest_group = yes
 		}
 	}

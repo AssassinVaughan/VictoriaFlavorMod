@@ -9,3 +9,53 @@ state_trait_cukurova = {
 		goods_output_fruit_mult = 0.15
 	}
 }
+
+REPLACE:state_trait_hyrcanian_forests = {
+	icon = "gfx/interface/icons/state_trait_icons/resources_lumber.dds"
+
+	modifier = {
+		goods_output_hardwood_mult = 0.1 # vfm these stack
+		building_group_bg_logging_throughput_add = 0.1
+	}
+}
+
+REPLACE:state_trait_arabian_desert = {
+	icon = "gfx/interface/icons/state_trait_icons/dry_climate.dds"
+		   
+	modifier = {
+        building_group_bg_ranching_throughput_add = -0.1
+		building_group_bg_agriculture_throughput_add = -0.25
+		building_group_bg_plantations_throughput_add = -0.25
+		state_construction_mult = -0.25
+		state_infrastructure_mult = -0.25
+    }
+}
+
+REPLACE:state_trait_mesopotamian_floodplain = {
+	icon = "gfx/interface/icons/state_trait_icons/good_soils.dds"
+
+	modifier = {
+		building_group_bg_agriculture_throughput_add = 0.15
+		building_group_bg_plantations_throughput_add = 0.1
+	}
+}
+
+REPLACE:state_trait_yemeni_highlands = {
+	icon = "gfx/interface/icons/state_trait_icons/good_soils.dds"
+
+	modifier = {
+		building_group_bg_agriculture_throughput_add = 0.05
+		building_group_bg_ranching_throughput_add = 0.05
+		building_coffee_plantation_throughput_add = 0.15
+	}
+}
+
+REPLACE:state_trait_tihamah = {
+	icon = "gfx/interface/icons/state_trait_icons/poor_soils.dds"
+	modifier = {
+		building_group_bg_agriculture_throughput_add = -0.1
+		building_group_bg_plantations_throughput_add = -0.1
+		building_port_throughput_add = -0.1
+		state_building_naval_base_max_level_add = -15
+    }
+}

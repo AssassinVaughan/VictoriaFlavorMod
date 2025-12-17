@@ -27,11 +27,11 @@
 			level = high_subventions
 		}	
 
-		ig:ig_armed_forces = {
+		ig:ig_armed_forces ?= {
 			add_ruling_interest_group = yes
 		}
 		
-        ig:ig_intelligentsia = {
+        ig:ig_intelligentsia ?= {
 			remove_ideology = ideology_liberal
 			remove_ideology = ideology_anti_clerical
 			add_ideology = ideology_criollo_liberal
@@ -39,7 +39,7 @@
 			add_ideology = ideology_soberania_aristocratica
 		}
 
-		ig:ig_landowners = {
+		ig:ig_landowners ?= {
 			remove_ideology = ideology_republican_paternalistic
 			remove_ideology = ideology_stratocratic
 			add_ideology = ideology_criollo_paternalistic
@@ -47,29 +47,33 @@
 			add_ideology = ideology_soberania_aristocratica
 		}
 
-		ig:ig_rural_folk = {
+		ig:ig_rural_folk ?= {
 			remove_ideology = ideology_isolationist
 			add_ideology = ideology_isolationist_expansionism
 			remove_ideology = ideology_agrarian
 			add_ideology = ideology_agroexportadores
 		}
 
-		ig:ig_petty_bourgeoisie = {
+		ig:ig_petty_bourgeoisie ?= {
 			remove_ideology = ideology_reactionary
 			add_ideology = ideology_artesanado
 		}
 
-		ig:ig_devout = {
+		ig:ig_devout ?= {
 			set_interest_group_name = ig_catholic_church
 		}
 
 		add_modifier = {
 			name = age_of_caudillos_modifier
 		}
-		
 		set_global_variable = {
 			name = peru_bolivia_var
 			value = 0
 		}
+		change_infamy = 30
+
+		set_variable = pbc_member
+		
+		initialise_caciquismo_effect = yes
 	}
 }

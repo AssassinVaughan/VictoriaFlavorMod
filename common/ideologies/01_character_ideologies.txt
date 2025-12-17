@@ -127,6 +127,7 @@ ideology_traditionalist = {
 		law_anti_strike_laws = neutral
 		law_corporatized_unions = neutral
 		law_right_to_associate = disapprove
+		law_factory_councils = strongly_disapprove
 	}
 
 	lawgroup_caste_hegemony = {
@@ -189,6 +190,14 @@ ideology_traditionalist = {
 		if = {
 			limit = {
 				has_variable = anti_dreyfusard_victory
+			}
+			add = 50
+		}
+
+		# conservative and/or reactionary leaders have a higher spawn chance if you win the Two Spains as the conservatives.
+		if = {
+			limit = {
+				has_variable = spa_two_spains_conservative_victory
 			}
 			add = 50
 		}
@@ -311,6 +320,7 @@ ideology_traditionalist_minoritarian = {
 		law_anti_strike_laws = neutral
 		law_corporatized_unions = neutral
 		law_right_to_associate = disapprove
+		law_factory_councils = strongly_disapprove
 	}
 
 	lawgroup_caste_hegemony = {
@@ -371,6 +381,14 @@ ideology_traditionalist_minoritarian = {
 		if = {
 			limit = {
 				has_variable = anti_dreyfusard_victory
+			}
+			add = 50
+		}
+
+		# conservative and/or reactionary leaders have a higher spawn chance if you win the Two Spains as the conservatives.
+		if = {
+			limit = {
+				has_variable = spa_two_spains_conservative_victory
 			}
 			add = 50
 		}
@@ -511,7 +529,7 @@ ideology_nihilist = { #
 		# Monarchs cannot be republicans
 		NAND = {
 			owner = {
-				has_law_or_variant = law_type:law_monarchy
+				has_law = law_type:law_monarchy
 			}
 			OR = {
 				is_ruler = yes
@@ -575,6 +593,15 @@ ideology_nihilist = { #
 
 		# Labour Association Laws
 		if = {
+			limit = {
+				is_interest_group_type = ig_trade_unions
+				owner = {
+					has_law_or_variant = law_type:law_factory_councils
+				}
+			}
+			add = 75
+		}
+		else_if = {
 			limit = {
 				is_interest_group_type = ig_trade_unions
 				owner = {
@@ -673,6 +700,15 @@ ideology_nihilist = { #
 			limit = {
 				is_interest_group_type = ig_trade_unions
 				owner = {
+					has_law_or_variant = law_type:law_factory_councils
+				}
+			}
+			add = 75
+		}
+		else_if = {
+			limit = {
+				is_interest_group_type = ig_trade_unions
+				owner = {
 					has_law_or_variant = law_type:law_combination_acts
 				}
 			}
@@ -768,7 +804,7 @@ ideology_republican_leader = {
 		# Monarchs cannot be republicans
 		NAND = {
 			owner = {
-				has_law_or_variant = law_type:law_monarchy
+				has_law = law_type:law_monarchy
 			}
 			OR = {
 				is_ruler = yes
@@ -809,7 +845,7 @@ ideology_republican_leader = {
 		if = {
 			limit = {
 				owner = {
-					has_law_or_variant = law_type:law_monarchy
+					has_law = law_type:law_monarchy
 				}
 				ig_approval < 0
 			}
@@ -820,6 +856,20 @@ ideology_republican_leader = {
 		if = {
 			limit = {
 				has_variable = dreyfusard_victory
+			}
+			add = 50
+		}
+		# liberal and/or radical leaders have a higher spawn chance if you win the Two Spains as the liberals.
+		if = {
+			limit = {
+				has_variable = spa_two_spains_liberal_victory
+			}
+			add = 50
+		}
+		# liberal and/or radical leaders have a higher spawn chance if you succeed in Portugal's Second Liberalism.
+		if = {
+			limit = {
+				has_variable = por_second_liberalism_victory
 			}
 			add = 50
 		}
@@ -924,11 +974,23 @@ ideology_republican_leader = {
 		if = {
 			limit = {
 				owner = {
-					has_law_or_variant = law_type:law_monarchy
+					has_law = law_type:law_monarchy
 				}
 				interest_group.ig_approval < 0
 			}
 			add = 75
+		}
+
+		# liberal and/or radical leaders have a higher spawn chance if you win the Two Spains as the liberals and choose to have woke commanders.
+		if = {
+			limit = {
+				OR = {
+					has_role = general
+					has_role = admiral
+				}
+				has_variable = spa_liberal_military_var
+			}
+			add = 50
 		}
 
 		# 1848
@@ -1041,6 +1103,7 @@ ideology_radical = {
 		law_anti_strike_laws = neutral
 		law_corporatized_unions = disapprove
 		law_right_to_associate = neutral
+		law_factory_councils = strongly_disapprove
 	}
 
 	country_trigger = {
@@ -1086,7 +1149,7 @@ ideology_radical = {
 		# Monarchs cannot be republicans
 		NOT = {
 			owner = {
-				has_law_or_variant = law_type:law_monarchy
+				has_law = law_type:law_monarchy
 			}
 			OR = {
 				is_ruler = yes
@@ -1178,6 +1241,20 @@ ideology_radical = {
 		if = {
 			limit = {
 				has_variable = dreyfusard_victory
+			}
+			add = 50
+		}
+		# liberal and/or radical leaders have a higher spawn chance if you win the Two Spains as the liberals.
+		if = {
+			limit = {
+				has_variable = spa_two_spains_liberal_victory
+			}
+			add = 50
+		}
+		# liberal and/or radical leaders have a higher spawn chance if you succeed in Portugal's Second Liberalism.
+		if = {
+			limit = {
+				has_variable = por_second_liberalism_victory
 			}
 			add = 50
 		}
@@ -1293,6 +1370,17 @@ ideology_radical = {
 				value = owner.ideology_radical_favoured_laws
 				multiply = 9
 			}
+		}
+		# liberal and/or radical leaders have a higher spawn chance if you win the Two Spains as the liberals and choose to have woke commanders.
+		if = {
+			limit = {
+				OR = {
+					has_role = general
+					has_role = admiral
+				}
+				has_variable = spa_liberal_military_var
+			}
+			add = 50
 		}
 		# Labour Association Laws
 		if = {
@@ -1450,6 +1538,7 @@ ideology_reformer = {
 		law_anti_strike_laws = neutral
 		law_corporatized_unions = neutral
 		law_right_to_associate = approve
+		law_factory_councils = strongly_disapprove
 	}
 
 	country_trigger = {
@@ -1519,6 +1608,20 @@ ideology_reformer = {
 			}
 			add = 50
 		}
+		# liberal and/or radical leaders have a higher spawn chance if you win the Two Spains as the liberals.
+		if = {
+			limit = {
+				has_variable = spa_two_spains_liberal_victory
+			}
+			add = 50
+		}
+		# liberal and/or radical leaders have a higher spawn chance if you succeed in Portugal's Second Liberalism.
+		if = {
+			limit = {
+				has_variable = por_second_liberalism_victory
+			}
+			add = 50
+		}
 		# liberal and/or radical leaders have a higher spawn chance if the Hungarian Revolution was successful.
 		if = {
 			limit = {
@@ -1575,6 +1678,18 @@ ideology_reformer = {
 				value = owner.ideology_reformer_favoured_laws
 				multiply = 12
 			}
+		}
+
+		# liberal and/or radical leaders have a higher spawn chance if you win the Two Spains as the liberals and choose to have woke commanders.
+		if = {
+			limit = {
+				OR = {
+					has_role = general
+					has_role = admiral
+				}
+				has_variable = spa_liberal_military_var
+			}
+			add = 50
 		}
 
 		# less likely among more progressive IG's if they're angry and socialism is researched
@@ -1695,6 +1810,20 @@ ideology_feminist = {
 			}
 			add = 50
 		}
+		# liberal and/or radical leaders have a higher spawn chance if you win the Two Spains as the liberals.
+		if = {
+			limit = {
+				has_variable = spa_two_spains_liberal_victory
+			}
+			add = 50
+		}
+		# liberal and/or radical leaders have a higher spawn chance if you succeed in Portugal's Second Liberalism.
+		if = {
+			limit = {
+				has_variable = por_second_liberalism_victory
+			}
+			add = 50
+		}
 		# liberal and/or radical leaders have a higher spawn chance if the Hungarian Revolution was successful.
 		if = {
 			limit = {
@@ -1779,6 +1908,17 @@ ideology_feminist = {
 				}
 			}
 			add = -25
+		}
+		# liberal and/or radical leaders have a higher spawn chance if you win the Two Spains as the liberals and choose to have woke commanders.
+		if = {
+			limit = {
+				OR = {
+					has_role = general
+					has_role = admiral
+				}
+				has_variable = spa_liberal_military_var
+			}
+			add = 50
 		}
 		# more likely if character is a woman after mass propaganda
 		if = {
@@ -1874,6 +2014,13 @@ ideology_abolitionist = {
 			}
 			add = 25
 		}
+		# liberal and/or radical leaders have a higher spawn chance if you win the Two Spains as the liberals.
+		if = {
+			limit = {
+				has_variable = spa_two_spains_liberal_victory
+			}
+			add = 50
+		}
 
 		if = {
 			limit = {
@@ -1926,7 +2073,6 @@ ideology_abolitionist = {
 			}
 			add = 25
 		}
-
 		if = {
 			limit = {
 				owner = { has_journal_entry = je_acw_countdown }
@@ -1997,7 +2143,13 @@ ideology_slaver = {
 			}
 			add = 50
 		}
-
+		# conservative and/or reactionary leaders have a higher spawn chance if you win the Two Spains as the conservatives.
+		if = {
+			limit = {
+				has_variable = spa_two_spains_conservative_victory
+			}
+			add = 50
+		}
 		if = {
 			limit = {
 				owner = { has_journal_entry = je_acw_countdown }
@@ -2172,6 +2324,20 @@ ideology_pacifist = {
 			}
 			add = 50
 		}
+		# liberal and/or radical leaders have a higher spawn chance if you win the Two Spains as the liberals.
+		if = {
+			limit = {
+				has_variable = spa_two_spains_liberal_victory
+			}
+			add = 50
+		}
+		# liberal and/or radical leaders have a higher spawn chance if you succeed in Portugal's Second Liberalism.
+		if = {
+			limit = {
+				has_variable = por_second_liberalism_victory
+			}
+			add = 50
+		}
 		# liberal and/or radical leaders have a higher spawn chance if the Hungarian Revolution was successful.
 		if = {
 			limit = {
@@ -2248,6 +2414,17 @@ ideology_pacifist = {
 						devastation > 0.2
 					}
 				}
+			}
+			add = 50
+		}
+		# liberal and/or radical leaders have a higher spawn chance if you win the Two Spains as the liberals and choose to have woke commanders.
+		if = {
+			limit = {
+				OR = {
+					has_role = general
+					has_role = admiral
+				}
+				has_variable = spa_liberal_military_var
 			}
 			add = 50
 		}
@@ -2367,7 +2544,7 @@ ideology_jingoist_leader = {
 			limit = {
 				owner = {
 					exists = c:FRA
-					this = c:FRA
+					c:FRA ?= THIS
 					has_journal_entry = je_divided_monarchists
 				}
 				OR = {
@@ -2382,6 +2559,13 @@ ideology_jingoist_leader = {
 		if = {
 			limit = {
 				has_variable = anti_dreyfusard_victory
+			}
+			add = 50
+		}
+		# conservative and/or reactionary leaders have a higher spawn chance if you win the Two Spains as the conservatives.
+		if = {
+			limit = {
+				has_variable = spa_two_spains_conservative_victory
 			}
 			add = 50
 		}
@@ -2465,7 +2649,7 @@ ideology_jingoist_leader = {
 			limit = {
 				owner = {
 					exists = c:FRA
-					this = c:FRA
+					c:FRA ?= THIS
 					has_journal_entry = je_divided_monarchists
 				}
 				OR = {
@@ -2547,7 +2731,7 @@ ideology_royalist = {
 		NAND = {
 			has_role = agitator
 			owner = {
-				has_law_or_variant = law_type:law_monarchy
+				has_law = law_type:law_monarchy
 			}
 		}
 		interest_group = {
@@ -2570,7 +2754,7 @@ ideology_royalist = {
 		if = {
 			limit = {
 				owner = {
-					NOT = { has_law_or_variant = law_type:law_monarchy }
+					NOT = { has_law = law_type:law_monarchy }
 				}
 				ig_approval > 0
 			}
@@ -2580,7 +2764,7 @@ ideology_royalist = {
 		if = {
 			limit = {
 				owner = {
-					has_law_or_variant = law_type:law_monarchy
+					has_law = law_type:law_monarchy
 				}
 				ig_approval > 5
 			}
@@ -2598,6 +2782,13 @@ ideology_royalist = {
 		if = {
 			limit = {
 				has_variable = anti_dreyfusard_victory
+			}
+			add = 50
+		}
+		# conservative and/or reactionary leaders have a higher spawn chance if you win the Two Spains as the conservatives.
+		if = {
+			limit = {
+				has_variable = spa_two_spains_conservative_victory
 			}
 			add = 50
 		}
@@ -2632,7 +2823,7 @@ ideology_royalist = {
 		if = {
 			limit = {
 				owner = {
-					NOT = { has_law_or_variant = law_type:law_monarchy }
+					NOT = { has_law = law_type:law_monarchy }
 				}
 				interest_group.ig_approval > 0
 			}
@@ -2642,7 +2833,7 @@ ideology_royalist = {
 		if = {
 			limit = {
 				owner = {
-					has_law_or_variant = law_type:law_monarchy
+					has_law = law_type:law_monarchy
 				}
 				interest_group.ig_approval > 5
 			}
@@ -2711,6 +2902,7 @@ ideology_social_democrat = {
 		law_anti_strike_laws = neutral
 		law_corporatized_unions = neutral
 		law_right_to_associate = approve
+		law_factory_councils = strongly_disapprove
 	}
 
 	lawgroup_caste_hegemony = {
@@ -2792,6 +2984,20 @@ ideology_social_democrat = {
 		if = {
 			limit = {
 				has_variable = dreyfusard_victory
+			}
+			add = 50
+		}
+		# liberal and/or radical leaders have a higher spawn chance if you win the Two Spains as the liberals.
+		if = {
+			limit = {
+				has_variable = spa_two_spains_liberal_victory
+			}
+			add = 50
+		}
+		# liberal and/or radical leaders have a higher spawn chance if you succeed in Portugal's Second Liberalism.
+		if = {
+			limit = {
+				has_variable = por_second_liberalism_victory
 			}
 			add = 50
 		}
@@ -2891,6 +3097,17 @@ ideology_social_democrat = {
 			}
 			add = 75
 		}
+		# liberal and/or radical leaders have a higher spawn chance if you win the Two Spains as the liberals and choose to have woke commanders.
+		if = {
+			limit = {
+				OR = {
+					has_role = general
+					has_role = admiral
+				}
+				has_variable = spa_liberal_military_var
+			}
+			add = 50
+		}
 		# extremely unlikely for trade unions in council republic
 		if = {
 			limit = {
@@ -2972,6 +3189,7 @@ ideology_communist = {
 		law_anti_strike_laws = neutral
 		law_corporatized_unions = strongly_disapprove
 		law_right_to_associate = neutral
+		law_factory_councils = approve
 	}
 
 	country_trigger = {
@@ -2996,7 +3214,7 @@ ideology_communist = {
 		# Monarchs cannot be republicans
 		NAND = {
 			owner = {
-				has_law_or_variant = law_type:law_monarchy
+				has_law = law_type:law_monarchy
 			}
 			OR = {
 				is_ruler = yes
@@ -3064,6 +3282,15 @@ ideology_communist = {
 		}
 		# Labour Association Laws
 		if = {
+			limit = {
+				is_interest_group_type = ig_trade_unions
+				owner = {
+					has_law_or_variant = law_type:law_factory_councils
+				}
+			}
+			add = 75
+		}
+		else_if = {
 			limit = {
 				is_interest_group_type = ig_trade_unions
 				owner = {
@@ -3211,6 +3438,15 @@ ideology_communist = {
 			limit = {
 				is_interest_group_type = ig_trade_unions
 				owner = {
+					has_law_or_variant = law_type:law_factory_councils
+				}
+			}
+			add = 75
+		}
+		else_if = {
+			limit = {
+				is_interest_group_type = ig_trade_unions
+				owner = {
 					has_law_or_variant = law_type:law_combination_acts
 				}
 			}
@@ -3331,6 +3567,7 @@ ideology_vanguardist = {
 		law_anti_strike_laws = neutral
 		law_corporatized_unions = strongly_disapprove
 		law_right_to_associate = neutral
+		law_factory_councils = approve
 	}
 
 	country_trigger = {
@@ -3356,7 +3593,7 @@ ideology_vanguardist = {
 		# Monarchs cannot be republicans
 		NAND = {
 			owner = {
-				has_law_or_variant = law_type:law_monarchy
+				has_law = law_type:law_monarchy
 			}
 			OR = {
 				is_ruler = yes
@@ -3486,6 +3723,15 @@ ideology_vanguardist = {
 
 		# Labour Association Laws
 		if = {
+			limit = {
+				is_interest_group_type = ig_trade_unions
+				owner = {
+					has_law_or_variant = law_type:law_factory_councils
+				}
+			}
+			add = 75
+		}
+		else_if = {
 			limit = {
 				is_interest_group_type = ig_trade_unions
 				owner = {
@@ -3695,6 +3941,15 @@ ideology_vanguardist = {
 			limit = {
 				is_interest_group_type = ig_trade_unions
 				owner = {
+					has_law_or_variant = law_type:law_factory_councils
+				}
+			}
+			add = 125
+		}
+		else_if = {
+			limit = {
+				is_interest_group_type = ig_trade_unions
+				owner = {
 					has_law_or_variant = law_type:law_combination_acts
 				}
 			}
@@ -3826,6 +4081,7 @@ ideology_fascist = {
 		law_anti_strike_laws = approve
 		law_corporatized_unions = strongly_approve
 		law_right_to_associate = disapprove
+		law_factory_councils = strongly_disapprove
 	}
 
 	country_trigger = {
@@ -4004,6 +4260,13 @@ ideology_fascist = {
 		if = {
 			limit = {
 				has_variable = anti_dreyfusard_victory
+			}
+			add = 50
+		}
+		# conservative and/or reactionary leaders have a higher spawn chance if you win the Two Spains as the conservatives.
+		if = {
+			limit = {
+				has_variable = spa_two_spains_conservative_victory
 			}
 			add = 50
 		}
@@ -4214,6 +4477,13 @@ ideology_fascist = {
 			}
 			add = 50
 		}
+		# conservative and/or reactionary leaders have a higher spawn chance if you win the Two Spains as the conservatives.
+		if = {
+			limit = {
+				has_variable = spa_two_spains_conservative_victory
+			}
+			add = 50
+		}
 		# red scare can make you more fascist
 		if = {
 			limit = {
@@ -4264,10 +4534,10 @@ ideology_anarchist = {
 	lawgroup_citizenship = {
 		law_ethnostate = strongly_disapprove
 		law_national_supremacy = strongly_disapprove
+		law_subjecthood = strongly_disapprove
 		law_racial_segregation = disapprove
 		law_cultural_exclusion = approve
 		law_multicultural = strongly_approve
-		law_subjecthood = strongly_disapprove
 	}
 
 	lawgroup_distribution_of_power = {
@@ -4293,11 +4563,13 @@ ideology_anarchist = {
 		law_extraction_economy = strongly_disapprove
 	}
 
-	lawgroup_army_model = {
-		law_national_militia = strongly_approve
-		law_professional_army = neutral
-		law_mass_conscription = disapprove
-		law_peasant_levies = strongly_disapprove
+	lawgroup_labour_associations = {
+		law_combination_acts = disapprove
+		law_guild_system = strongly_disapprove
+		law_anti_strike_laws = neutral
+		law_corporatized_unions = strongly_disapprove
+		law_right_to_associate = neutral
+		law_factory_councils = approve
 	}
 
 	lawgroup_free_speech = {
@@ -4346,7 +4618,7 @@ ideology_anarchist = {
 		# Monarchs cannot be republicans
 		NAND = {
 			owner = {
-				has_law_or_variant = law_type:law_monarchy
+				has_law = law_type:law_monarchy
 			}
 			OR = {
 				is_ruler = yes
@@ -4425,6 +4697,15 @@ ideology_anarchist = {
 
 		# Labour Association Laws
 		if = {
+			limit = {
+				is_interest_group_type = ig_trade_unions
+				owner = {
+					has_law_or_variant = law_type:law_factory_councils
+				}
+			}
+			add = 75
+		}
+		else_if = {
 			limit = {
 				is_interest_group_type = ig_trade_unions
 				owner = {
@@ -4567,6 +4848,15 @@ ideology_anarchist = {
 
 		# Labour Association Laws
 		if = {
+			limit = {
+				is_interest_group_type = ig_trade_unions
+				owner = {
+					has_law_or_variant = law_type:law_factory_councils
+				}
+			}
+			add = 75
+		}
+		else_if = {
 			limit = {
 				is_interest_group_type = ig_trade_unions
 				owner = {
@@ -4739,6 +5029,13 @@ ideology_ethno_nationalist = {
 			}
 			add = 50
 		}
+		# conservative and/or reactionary leaders have a higher spawn chance if you win the Two Spains as the conservatives.
+		if = {
+			limit = {
+				has_variable = spa_two_spains_conservative_victory
+			}
+			add = 50
+		}
 		if = {
 			limit = {
 				OR = {
@@ -4843,6 +5140,13 @@ ideology_ethno_nationalist = {
 			}
 			add = 50
 		}
+		# conservative and/or reactionary leaders have a higher spawn chance if you win the Two Spains as the conservatives.
+		if = {
+			limit = {
+				has_variable = spa_two_spains_conservative_victory
+			}
+			add = 50
+		}
 		if = {
 			limit = {
 				OR = {
@@ -4911,7 +5215,7 @@ ideology_theocrat = {
 					owner = {
 						NOR = {
 							has_law_or_variant = law_type:law_theocracy
-							has_law_or_variant = law_type:law_monarchy
+							has_law = law_type:law_monarchy
 						}
 						NOT = {
 							has_law_or_variant = law_type:law_state_religion
@@ -4947,6 +5251,13 @@ ideology_theocrat = {
 			}
 			add = 50
 		}
+		# conservative and/or reactionary leaders have a higher spawn chance if you win the Two Spains as the conservatives.
+		if = {
+			limit = {
+				has_variable = spa_two_spains_conservative_victory
+			}
+			add = 50
+		}
 		if = {
 			limit = {
 				OR = {
@@ -4978,7 +5289,7 @@ ideology_theocrat = {
 					owner = {
 						NOR = {
 							has_law_or_variant = law_type:law_theocracy
-							has_law_or_variant = law_type:law_monarchy
+							has_law = law_type:law_monarchy
 						}
 						NOT = {
 							has_law_or_variant = law_type:law_state_religion
@@ -5075,6 +5386,7 @@ ideology_market_liberal = {
 		law_combination_acts = approve
 		law_guild_system = strongly_disapprove
 		law_anti_strike_laws = neutral
+		law_factory_councils = strongly_disapprove
 		law_corporatized_unions = disapprove
 		law_right_to_associate = strongly_disapprove
 	}
@@ -5083,7 +5395,7 @@ ideology_market_liberal = {
 		has_technology_researched = stock_exchange
 		# capitalism must be relevant
 		ig:ig_industrialists ?= {
-			is_marginal = no
+			ig_counts_as_marginal = no
 		}
 	}
 
@@ -5148,7 +5460,7 @@ ideology_market_liberal = {
 				is_powerful = no
 				owner = {
 					exists = ig:ig_industrialists
-					ig:ig_industrialists = {
+					ig:ig_industrialists ?= {
 						is_powerful = yes
 					}
 				}
@@ -5208,7 +5520,7 @@ ideology_market_liberal = {
 			limit = {
 				owner = {
 					exists = c:FRA
-					this = c:FRA
+					c:FRA ?= THIS
 					has_journal_entry = je_divided_monarchists
 				}
 				OR = {
@@ -5234,6 +5546,20 @@ ideology_market_liberal = {
 		if = {
 			limit = {
 				has_variable = dreyfusard_victory
+			}
+			add = 50
+		}
+		# liberal and/or radical leaders have a higher spawn chance if you win the Two Spains as the liberals.
+		if = {
+			limit = {
+				has_variable = spa_two_spains_liberal_victory
+			}
+			add = 50
+		}
+		# liberal and/or radical leaders have a higher spawn chance if you succeed in Portugal's Second Liberalism.
+		if = {
+			limit = {
+				has_variable = por_second_liberalism_victory
 			}
 			add = 50
 		}
@@ -5301,7 +5627,7 @@ ideology_market_liberal = {
 				}
 				owner = {
 					exists = ig:ig_industrialists
-					ig:ig_industrialists = {
+					ig:ig_industrialists ?= {
 						is_powerful = yes
 					}
 				}
@@ -5340,6 +5666,17 @@ ideology_market_liberal = {
 			}
 			add = -50
 		}
+		# liberal and/or radical leaders have a higher spawn chance if you win the Two Spains as the liberals and choose to have woke commanders.
+		if = {
+			limit = {
+				OR = {
+					has_role = general
+					has_role = admiral
+				}
+				has_variable = spa_liberal_military_var
+			}
+			add = 50
+		}
 		# Less likely for unrecognized countries
 		if = {
 			limit = {
@@ -5363,7 +5700,7 @@ ideology_market_liberal = {
 			limit = {
 				owner = {
 					exists = c:FRA
-					this = c:FRA
+					c:FRA ?= THIS
 					has_journal_entry = je_divided_monarchists
 				}
 				OR = {
@@ -5746,7 +6083,7 @@ ideology_authoritarian = {
 			limit = {
 				owner = {
 					exists = c:FRA
-					this = c:FRA
+					c:FRA ?= THIS
 					has_journal_entry = je_divided_monarchists
 				}
 				OR = {
@@ -5761,6 +6098,13 @@ ideology_authoritarian = {
 		if = {
 			limit = {
 				has_variable = anti_dreyfusard_victory
+			}
+			add = 50
+		}
+		# conservative and/or reactionary leaders have a higher spawn chance if you win the Two Spains as the conservatives.
+		if = {
+			limit = {
+				has_variable = spa_two_spains_conservative_victory
 			}
 			add = 50
 		}
@@ -5866,7 +6210,7 @@ ideology_authoritarian = {
 			limit = {
 				owner = {
 					exists = c:FRA
-					this = c:FRA
+					c:FRA ?= THIS
 					has_journal_entry = je_divided_monarchists
 				}
 				OR = {
@@ -5922,8 +6266,8 @@ ideology_protectionist = {
 	country_trigger = {
 		has_technology_researched = international_trade
 		exists = ig:ig_industrialists
-		ig:ig_industrialists = {
-			is_marginal = no
+		ig:ig_industrialists ?= {
+			ig_counts_as_marginal = no
 		}
 	}
 
@@ -6023,7 +6367,7 @@ ideology_protectionist = {
 			limit = {
 				owner = {
 					exists = c:FRA
-					this = c:FRA
+					c:FRA ?= THIS
 					has_journal_entry = je_divided_monarchists
 				}
 				OR = {
@@ -6129,7 +6473,7 @@ ideology_protectionist = {
 			limit = {
 				owner = {
 					exists = c:FRA
-					this = c:FRA
+					c:FRA ?= THIS
 					has_journal_entry = je_divided_monarchists
 				}
 				OR = {
@@ -6294,6 +6638,20 @@ ideology_humanitarian = {
 			}
 			add = 50
 		}
+		# liberal and/or radical leaders have a higher spawn chance if you win the Two Spains as the liberals.
+		if = {
+			limit = {
+				has_variable = spa_two_spains_liberal_victory
+			}
+			add = 50
+		}
+		# liberal and/or radical leaders have a higher spawn chance if you succeed in Portugal's Second Liberalism.
+		if = {
+			limit = {
+				has_variable = por_second_liberalism_victory
+			}
+			add = 50
+		}
 		# liberal and/or radical leaders have a higher spawn chance if the Hungarian Revolution was successful.
 		if = {
 			limit = {
@@ -6338,6 +6696,18 @@ ideology_humanitarian = {
 				value = owner.ideology_humanitarian_disfavoured_laws
 				multiply = 16
 			}
+		}
+
+		# liberal and/or radical leaders have a higher spawn chance if you win the Two Spains as the liberals and choose to have woke commanders.
+		if = {
+			limit = {
+				OR = {
+					has_role = general
+					has_role = admiral
+				}
+				has_variable = spa_liberal_military_var
+			}
+			add = 50
 		}
 
 		# Less likely if issues are not relevant
@@ -6575,7 +6945,7 @@ ideology_positivist = {
 		# Monarchs cannot be republicans
 		NAND = {
 			owner = {
-				has_law_or_variant = law_type:law_monarchy
+				has_law = law_type:law_monarchy
 			}
 			OR = {
 				is_ruler = yes
@@ -6591,8 +6961,8 @@ ideology_positivist = {
 		if = { # Baseline more likely if Catholic or ex-Catholic
 			limit = {
 				owner = {
-					OR = {
-						country_has_state_religion = rel:catholic
+				OR = {
+					country_has_state_religion = rel:catholic
 						country_definition.religion = rel:catholic
 					}
 				}
@@ -6646,7 +7016,7 @@ ideology_positivist = {
 		if = {
 			limit = {
 				owner = {
-					has_law_or_variant = law_type:law_monarchy
+					has_law = law_type:law_monarchy
 					OR = {
 						has_law_or_variant = law_type:law_wealth_voting
 						has_law_or_variant = law_type:law_census_voting
@@ -6768,7 +7138,7 @@ ideology_positivist = {
 		if = {
 			limit = {
 				owner = {
-					has_law_or_variant = law_type:law_monarchy
+					has_law = law_type:law_monarchy
 					OR = {
 						has_law_or_variant = law_type:law_wealth_voting
 						has_law_or_variant = law_type:law_census_voting
@@ -7117,6 +7487,7 @@ ideology_integralist = {
 		law_anti_strike_laws = approve
 		law_corporatized_unions = strongly_approve
 		law_right_to_associate = disapprove
+		law_factory_councils = strongly_disapprove
 	}
 
 	country_trigger = {
@@ -7239,7 +7610,7 @@ ideology_integralist = {
 					NOR = {
 						has_law_or_variant = law_type:law_autocracy
 						has_law_or_variant = law_type:law_corporatized_unions
-						has_law_or_variant = law_type:law_monarchy
+						has_law = law_type:law_monarchy
 						has_law_or_variant = law_type:law_theocracy
 					}
 				}
@@ -7281,7 +7652,7 @@ ideology_integralist = {
 					NOR = {
 						has_law_or_variant = law_type:law_autocracy
 						has_law_or_variant = law_type:law_corporatized_unions
-						has_law_or_variant = law_type:law_monarchy
+						has_law = law_type:law_monarchy
 						has_law_or_variant = law_type:law_theocracy
 					}
 				}
@@ -7304,6 +7675,14 @@ ideology_integralist = {
 		if = {
 			limit = {
 				has_variable = anti_dreyfusard_victory
+			}
+			add = 50
+		}
+
+		# conservative and/or reactionary leaders have a higher spawn chance if you win the Two Spains as the conservatives.
+		if = {
+			limit = {
+				has_variable = spa_two_spains_conservative_victory
 			}
 			add = 50
 		}
@@ -7430,7 +7809,7 @@ ideology_integralist = {
 					NOR = {
 						has_law_or_variant = law_type:law_autocracy
 						has_law_or_variant = law_type:law_corporatized_unions
-						has_law_or_variant = law_type:law_monarchy
+						has_law = law_type:law_monarchy
 						has_law_or_variant = law_type:law_theocracy
 					}
 				}
@@ -7472,7 +7851,7 @@ ideology_integralist = {
 					NOR = {
 						has_law_or_variant = law_type:law_autocracy
 						has_law_or_variant = law_type:law_corporatized_unions
-						has_law_or_variant = law_type:law_monarchy
+						has_law = law_type:law_monarchy
 						has_law_or_variant = law_type:law_theocracy
 					}
 				}
@@ -7546,8 +7925,22 @@ ideology_liberal_leader = {
 
 	lawgroup_bureaucracy = {
 		law_elected_bureaucrats = approve
-		law_appointed_bureaucrats = neutral
-		law_hereditary_bureaucrats = disapprove
+		law_appointed_bureaucrats = disapprove
+		law_hereditary_bureaucrats = strongly_disapprove
+	}
+
+	lawgroup_internal_security = {
+		law_guaranteed_liberties = strongly_approve
+		law_no_home_affairs = neutral
+		law_national_guard = approve
+		law_secret_police = disapprove
+	}
+
+	lawgroup_free_speech = {
+		law_protected_speech = strongly_approve
+		law_right_of_assembly = approve
+		law_censorship = neutral
+		law_outlawed_dissent = disapprove
 	}
 
 	country_trigger = {
@@ -7630,7 +8023,7 @@ ideology_liberal_leader = {
 			limit = {
 				owner = {
 					NOR = {
-						has_law_or_variant = law_type:law_monarchy
+						has_law = law_type:law_monarchy
 						has_law_or_variant = law_type:law_theocracy
 					}
 				}
@@ -7644,6 +8037,20 @@ ideology_liberal_leader = {
 		if = {
 			limit = {
 				has_variable = dreyfusard_victory
+			}
+			add = 25
+		}
+		# liberal and/or radical leaders have a higher spawn chance if you win the Two Spains as the liberals.
+		if = {
+			limit = {
+				has_variable = spa_two_spains_liberal_victory
+			}
+			add = 25
+		}
+		# liberal and/or radical leaders have a higher spawn chance if you succeed in Portugal's Second Liberalism.
+		if = {
+			limit = {
+				has_variable = por_second_liberalism_victory
 			}
 			add = 25
 		}
@@ -7722,12 +8129,24 @@ ideology_liberal_leader = {
 			}
 		}
 
+		# liberal and/or radical leaders have a higher spawn chance if you win the Two Spains as the liberals and choose to have woke commanders.
+		if = {
+			limit = {
+				OR = {
+					has_role = general
+					has_role = admiral
+				}
+				has_variable = spa_liberal_military_var
+			}
+			add = 50
+		}
+
 		# More common in republics
 		if = {
 			limit = {
 				owner = {
 					NOR = {
-						has_law_or_variant = law_type:law_monarchy
+						has_law = law_type:law_monarchy
 						has_law_or_variant = law_type:law_theocracy
 					}
 				}
@@ -7797,6 +8216,7 @@ ideology_corporatist_leader = {
 		law_anti_strike_laws = approve
 		law_corporatized_unions = strongly_approve
 		law_right_to_associate = disapprove
+		law_factory_councils = strongly_disapprove
 	}
 
 	country_trigger = {
@@ -7915,6 +8335,13 @@ ideology_corporatist_leader = {
 		if = {
 			limit = {
 				has_variable = anti_dreyfusard_victory
+			}
+			add = 25
+		}
+		# conservative and/or reactionary leaders have a higher spawn chance if you win the Two Spains as the conservatives.
+		if = {
+			limit = {
+				has_variable = spa_two_spains_conservative_victory
 			}
 			add = 25
 		}
@@ -8094,7 +8521,7 @@ ideology_humanitarian_royalist = {
 		NAND = {
 			has_role = agitator
 			owner = {
-				has_law_or_variant = law_type:law_monarchy
+				has_law = law_type:law_monarchy
 				has_law_or_variant = law_type:law_multicultural
 				has_law_or_variant = law_type:law_protected_speech
 				has_law_or_variant = law_type:law_womens_suffrage
@@ -8121,7 +8548,7 @@ ideology_humanitarian_royalist = {
 		if = {
 			limit = {
 				owner = {
-					has_law_or_variant = law_type:law_monarchy
+					has_law = law_type:law_monarchy
 				}
 			}
 			add = 50
@@ -8184,6 +8611,20 @@ ideology_humanitarian_royalist = {
 			}
 			add = 50
 		}
+		# liberal and/or radical leaders have a higher spawn chance if you win the Two Spains as the liberals.
+		if = {
+			limit = {
+				has_variable = spa_two_spains_liberal_victory
+			}
+			add = 50
+		}
+		# liberal and/or radical leaders have a higher spawn chance if you succeed in Portugal's Second Liberalism.
+		if = {
+			limit = {
+				has_variable = por_second_liberalism_victory
+			}
+			add = 50
+		}
 		# liberal and/or radical leaders have a higher spawn chance if the Hungarian Revolution was successful.
 		if = {
 			limit = {
@@ -8223,7 +8664,7 @@ ideology_humanitarian_royalist = {
 		if = {
 			limit = {
 				owner = {
-					has_law_or_variant = law_type:law_monarchy
+					has_law = law_type:law_monarchy
 				}
 			}
 			add = 50
@@ -8252,6 +8693,18 @@ ideology_humanitarian_royalist = {
 				value = owner.ideology_humanitarian_royalist_favoured_laws
 				multiply = 8
 			}
+		}
+
+		# liberal and/or radical leaders have a higher spawn chance if you win the Two Spains as the liberals and choose to have woke commanders.
+		if = {
+			limit = {
+				OR = {
+					has_role = general
+					has_role = admiral
+				}
+				has_variable = spa_liberal_military_var
+			}
+			add = 50
 		}
 
 		# less likely for angry trade unions outside of Council Republic, they should go communist instead
@@ -8350,7 +8803,7 @@ ideology_despotic_utopian = {
 			AND = { # You're the subject of a country that chose to continue Francia's legacy
 				exists = c:PRG
 				is_subject_of = c:PRG
-				c:PRG = {
+				c:PRG ?= {
 					OR = {
 						has_variable = patino_paraguay_var
 						has_variable = francocracia_paraguay_var
@@ -8693,7 +9146,7 @@ ideology_sovereignist_leader = { # For colonised peoples
 
 	lawgroup_citizenship = {
 		law_ethnostate = strongly_disapprove
-		law_subjecthood = disapprove
+		law_subjecthood = neutral
 		law_national_supremacy = disapprove
 		law_racial_segregation = disapprove
 		law_cultural_exclusion = neutral
@@ -8701,7 +9154,7 @@ ideology_sovereignist_leader = { # For colonised peoples
 	}
 
 	country_trigger = {
-		is_country_type = colonial
+		country_is_colonial_or_company = yes
 	}
 
 	interest_group_leader_trigger = {
@@ -8710,7 +9163,7 @@ ideology_sovereignist_leader = { # For colonised peoples
 
 	non_interest_group_leader_trigger = {
 		owner = {
-			cultural_acceptance_base = { target = prev.culture value <= acceptance_status_4 }
+			country_average_culture_pop_acceptance = { culture = prev.culture value <= acceptance_status_4 }
 		}
 		interest_group = {
 			ideology_sovereignist_leader_valid_trigger = yes
@@ -8856,7 +9309,7 @@ ideology_utopian = {
 		# Monarchs cannot be republicans
 		NAND = {
 			owner = {
-				has_law_or_variant = law_type:law_monarchy
+				has_law = law_type:law_monarchy
 			}
 			OR = {
 				is_ruler = yes
@@ -8881,7 +9334,7 @@ ideology_modernizer_leader = {
 		law_free_trade = neutral
 	}
 
-	lawgroup_childrens_rights = {
+	lawgroup_childrens_rights = { # VFM
 		law_child_labor_allowed = disapprove
 		law_restricted_child_labor = neutral
 		law_compulsory_primary_school = approve
@@ -8913,6 +9366,23 @@ ideology_modernizer_leader = {
 		law_no_schools = disapprove
 	}
 
+	lawgroup_labour_associations = { # Just really hates the Guild System
+		law_combination_acts = neutral
+		law_guild_system = disapprove
+		law_anti_strike_laws = neutral
+		law_corporatized_unions = neutral
+		law_right_to_associate = neutral
+		law_factory_councils = strongly_disapprove
+	}
+
+	lawgroup_land_reform = {
+		law_serfdom = disapprove
+		law_tenant_farmers = neutral
+		law_homesteading = neutral
+		law_collectivized_agriculture = disapprove
+		law_commercialized_agriculture = approve
+	}
+
 	country_trigger = {
 		has_technology_researched = academia
 	}
@@ -8930,6 +9400,7 @@ ideology_modernizer_leader = {
 				has_law_or_variant = law_type:law_compulsory_primary_school
 				has_law_or_variant = law_type:law_public_schools
 				has_law_or_variant = law_type:law_interventionism
+				has_law_or_variant = law_type:law_commercialized_agriculture
 				OR = {
 					has_law_or_variant = law_type:law_proportional_taxation
 					has_law_or_variant = law_type:law_graduated_taxation
@@ -8973,6 +9444,14 @@ ideology_modernizer_leader = {
 			}
 			add = 25
 		}
+		if = {
+			limit = {
+				has_variable = por_increased_regenerator_likelihood
+			}
+			add = {
+				value = var:por_increased_regenerator_likelihood
+			}
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -8995,6 +9474,588 @@ ideology_modernizer_leader = {
 							is_building_type = building_urban_center
 							level >= 10
 						}
+					}
+				}
+			}
+			add = 25
+		}
+		if = {
+			limit = {
+				interest_group = {
+					has_variable = por_increased_regenerator_likelihood
+				}
+			}
+			add = {
+				value = interest_group.var:por_increased_regenerator_likelihood
+			}
+		}
+	}
+}
+
+ideology_carlist = {
+	icon = "gfx/interface/icons/ideology_icons/ideology_leader/ideology_leader_carlist.dds"
+
+	character_ideology = yes
+
+	lawgroup_governance_principles = {
+		law_monarchy = strongly_approve
+		law_presidential_republic = disapprove
+		law_parliamentary_republic = disapprove
+		law_corporate_state = neutral
+		law_theocracy = disapprove
+		law_council_republic = strongly_disapprove
+	}
+
+	lawgroup_economic_system = {
+		law_traditionalism = strongly_approve
+		law_agrarianism = approve
+		law_interventionism = disapprove
+		law_industry_banned = disapprove
+		law_laissez_faire = disapprove
+		law_cooperative_ownership = strongly_disapprove
+		law_command_economy = strongly_disapprove
+		law_extraction_economy = disapprove
+	}
+
+	lawgroup_distribution_of_power = {
+		law_oligarchy = approve
+		law_autocracy = strongly_approve # Were opposed to absolutism, but the game defines Oligarchy as a bourgeois system
+		law_single_party_state = strongly_disapprove
+		law_landed_voting = disapprove
+		law_wealth_voting = strongly_disapprove
+		law_census_voting = strongly_disapprove
+		law_universal_suffrage = strongly_disapprove
+		law_anarchy = strongly_disapprove
+		law_technocracy = strongly_disapprove
+	}
+
+	lawgroup_citizenship = {
+		law_ethnostate = neutral
+		law_subjecthood = approve
+		law_national_supremacy = neutral
+		law_racial_segregation = neutral
+		law_cultural_exclusion = neutral
+		law_multicultural = disapprove
+	}
+
+	lawgroup_church_and_state = {
+		law_state_religion = strongly_approve
+		law_freedom_of_conscience = disapprove
+		law_total_separation = strongly_disapprove
+		law_state_atheism = strongly_disapprove
+	}
+
+	country_trigger = {
+		OR = {
+			country_has_primary_culture = cu:spanish # I am in Spain...
+			country_has_primary_culture = cu:catalan # ...without the S
+			country_has_primary_culture = cu:basque # ...without the A
+		}
+		NOR = {
+			any_interest_group = {
+				has_ideology = ideology:ideology_republican_paternalistic
+			}
+			has_variable = monarchy_stamped_out_var
+		}
+	}
+
+	interest_group_leader_trigger = {
+		ideology_carlist_valid_trigger = yes
+	}
+
+	non_interest_group_leader_trigger = {
+		# Agitators should have an ideology at odds with current laws
+		NAND = {
+			has_role = agitator
+			owner = {
+				has_law = law_type:law_monarchy
+				has_law = law_type:law_traditionalism
+				has_law = law_type:law_oligarchy
+				has_law = law_type:law_subjecthood
+				has_law = law_type:law_state_religion
+			}
+		}
+		interest_group = {
+			ideology_carlist_valid_trigger = yes
+		}
+	}
+
+	interest_group_leader_weight = { # Provisional weights
+		value = 200
+		# less likely in a theocracy
+		if = {
+			limit = {
+				owner = {
+					has_law = law_type:law_theocracy
+				}
+			}
+			add = -75
+		}
+		# less likely if IG is happy in a republic
+		if = {
+			limit = {
+				owner = {
+					NOT = { has_law = law_type:law_monarchy }
+				}
+				ig_approval > 0
+			}
+			add = -100
+		}
+
+		# more likely for LO and Devout
+		if = {
+			limit = {
+				OR = {
+					is_interest_group_type = ig_landowners
+					is_interest_group_type = ig_devout
+				}
+			}
+			add = 50
+		}
+
+		# more likely if the IG is unhappy with the monarchy, and that monarchy is not Carlist
+		if = {
+			limit = {
+				owner = {
+					has_law = law_type:law_monarchy
+					NOT = { ruler ?= { has_ideology = ideology:ideology_carlist } }
+				}
+				ig_approval < 0
+			}
+			add = 75
+		}
+
+		# reduced unhappy modifier if it's not a monarchy
+		if = {
+			limit = {
+				owner = {
+					NOT = { has_law = law_type:law_monarchy }
+					NOT = { ruler ?= { has_ideology = ideology:ideology_carlist } }
+				}
+				ig_approval < 0
+			}
+			add = 25
+		}
+		if = {
+			limit = {
+				OR = {
+					has_variable = communist_ig_var
+					has_variable = chose_vanguardism
+					has_variable = chose_anarchism
+					has_variable = chose_communism
+					has_variable = chose_ethno_nationalism
+					has_variable = chose_conservatism
+					has_variable = chose_fascism
+				}
+			}
+			multiply = 0.1
+		}
+	}
+
+	non_interest_group_leader_weight = {
+		value = 200
+		# less likely in a theocracy
+		if = {
+			limit = {
+				owner = {
+					has_law = law_type:law_theocracy
+				}
+			}
+			add = -75
+		}
+		# less likely if IG is happy in a republic
+		if = {
+			limit = {
+				owner = {
+					NOT = { has_law = law_type:law_monarchy }
+				}
+				interest_group.ig_approval > 0
+			}
+			add = -100
+		}
+
+		# more likely for LO and Devout
+		if = {
+			limit = {
+				OR = {
+					is_interest_group_type = ig_landowners
+					is_interest_group_type = ig_devout
+				}
+			}
+			add = 50
+		}
+
+		# more likely if the IG is unhappy with the monarchy, and that monarchy is not Carlist
+		if = {
+			limit = {
+				owner = {
+					has_law = law_type:law_monarchy
+					NOT = { ruler ?= { has_ideology = ideology:ideology_carlist } }
+				}
+				interest_group.ig_approval < 0
+			}
+			add = 75
+		}
+
+		# reduced unhappy modifier if it's not a monarchy
+		if = {
+			limit = {
+				owner = {
+					NOT = { has_law = law_type:law_monarchy }
+					NOT = { ruler ?= { has_ideology = ideology:ideology_carlist } }
+				}
+				interest_group.ig_approval < 0
+			}
+			add = 25
+		}
+
+		# conservative and/or reactionary leaders have a higher spawn chance if you win the Two Spains as the conservatives.
+		if = {
+			limit = {
+				has_variable = spa_two_spains_conservative_victory
+			}
+			add = 50
+		}
+
+		if = {
+			limit = {
+				OR = {
+					has_variable = communist_ig_var
+					has_variable = chose_vanguardism
+					has_variable = chose_anarchism
+					has_variable = chose_communism
+					has_variable = chose_ethno_nationalism
+					has_variable = chose_conservatism
+					has_variable = chose_fascism
+				}
+			}
+			multiply = 0.1
+		}
+	}
+}
+
+ideology_miguelist = {
+	icon = "gfx/interface/icons/ideology_icons/ideology_leader/ideology_leader_miguelist.dds"
+
+	character_ideology = yes
+
+	lawgroup_governance_principles = {
+		law_monarchy = strongly_approve
+		law_presidential_republic = disapprove
+		law_parliamentary_republic = disapprove
+		law_corporate_state = neutral
+		law_theocracy = disapprove
+		law_council_republic = strongly_disapprove
+	}
+
+	lawgroup_economic_system = {
+		law_traditionalism = strongly_approve
+		law_agrarianism = approve
+		law_interventionism = disapprove
+		law_industry_banned = disapprove
+		law_laissez_faire = disapprove
+		law_cooperative_ownership = strongly_disapprove
+		law_command_economy = strongly_disapprove
+		law_extraction_economy = disapprove
+	}
+
+	lawgroup_distribution_of_power = {
+		law_oligarchy = approve
+		law_autocracy = strongly_approve # Were opposed to absolutism, but the game defines Oligarchy as a bourgeois system
+		law_single_party_state = strongly_disapprove
+		law_landed_voting = disapprove
+		law_wealth_voting = strongly_disapprove
+		law_census_voting = strongly_disapprove
+		law_universal_suffrage = strongly_disapprove
+		law_anarchy = strongly_disapprove
+		law_technocracy = strongly_disapprove
+	}
+
+	lawgroup_citizenship = {
+		law_ethnostate = neutral
+		law_subjecthood = approve
+		law_national_supremacy = neutral
+		law_racial_segregation = neutral
+		law_cultural_exclusion = neutral
+		law_multicultural = disapprove
+	}
+
+	lawgroup_church_and_state = {
+		law_state_religion = strongly_approve
+		law_freedom_of_conscience = disapprove
+		law_total_separation = strongly_disapprove
+		law_state_atheism = strongly_disapprove
+	}
+
+	country_trigger = {
+		OR = {
+			country_has_primary_culture = cu:spanish # I am in Spain...
+			country_has_primary_culture = cu:catalan # ...without the S
+			country_has_primary_culture = cu:basque # ...without the A
+		}
+		NOR = {
+			any_interest_group = {
+				has_ideology = ideology:ideology_republican_paternalistic
+			}
+			has_variable = monarchy_stamped_out_var
+		}
+	}
+
+	interest_group_leader_trigger = {
+		ideology_miguelist_valid_trigger = yes
+	}
+
+	non_interest_group_leader_trigger = {
+		# Agitators should have an ideology at odds with current laws
+		NAND = {
+			has_role = agitator
+			owner = {
+				has_law = law_type:law_monarchy
+				has_law = law_type:law_traditionalism
+				has_law = law_type:law_oligarchy
+				has_law = law_type:law_subjecthood
+				has_law = law_type:law_state_religion
+			}
+		}
+		interest_group = {
+			ideology_miguelist_valid_trigger = yes
+		}
+	}
+
+	interest_group_leader_weight = { # Provisional weights
+		value = 200
+		# less likely in a theocracy
+		if = {
+			limit = {
+				owner = {
+					has_law = law_type:law_theocracy
+				}
+			}
+			add = -75
+		}
+		# less likely if IG is happy in a republic
+		if = {
+			limit = {
+				owner = {
+					NOT = { has_law = law_type:law_monarchy }
+				}
+				ig_approval > 0
+			}
+			add = -100
+		}
+
+		# more likely for LO and Devout
+		if = {
+			limit = {
+				OR = {
+					is_interest_group_type = ig_landowners
+					is_interest_group_type = ig_devout
+				}
+			}
+			add = 50
+		}
+
+		# more likely if the IG is unhappy with the monarchy, and that monarchy is not miguelist
+		if = {
+			limit = {
+				owner = {
+					has_law = law_type:law_monarchy
+					NOT = { ruler ?= { has_ideology = ideology:ideology_miguelist } }
+				}
+				ig_approval < 0
+			}
+			add = 75
+		}
+
+		# reduced unhappy modifier if it's not a monarchy
+		if = {
+			limit = {
+				owner = {
+					NOT = { has_law = law_type:law_monarchy }
+					NOT = { ruler ?= { has_ideology = ideology:ideology_miguelist } }
+				}
+				ig_approval < 0
+			}
+			add = 25
+		}
+		if = {
+			limit = {
+				OR = {
+					has_variable = communist_ig_var
+					has_variable = chose_vanguardism
+					has_variable = chose_anarchism
+					has_variable = chose_communism
+					has_variable = chose_ethno_nationalism
+					has_variable = chose_conservatism
+					has_variable = chose_fascism
+				}
+			}
+			multiply = 0.1
+		}
+	}
+
+	non_interest_group_leader_weight = {
+		value = 200
+		# less likely in a theocracy
+		if = {
+			limit = {
+				owner = {
+					has_law = law_type:law_theocracy
+				}
+			}
+			add = -75
+		}
+		# less likely if IG is happy in a republic
+		if = {
+			limit = {
+				owner = {
+					NOT = { has_law = law_type:law_monarchy }
+				}
+				interest_group.ig_approval > 0
+			}
+			add = -100
+		}
+
+		# more likely for LO and Devout
+		if = {
+			limit = {
+				OR = {
+					is_interest_group_type = ig_landowners
+					is_interest_group_type = ig_devout
+				}
+			}
+			add = 50
+		}
+
+		# more likely if the IG is unhappy with the monarchy, and that monarchy is not miguelist
+		if = {
+			limit = {
+				owner = {
+					has_law = law_type:law_monarchy
+					NOT = { ruler ?= { has_ideology = ideology:ideology_miguelist } }
+				}
+				interest_group.ig_approval < 0
+			}
+			add = 75
+		}
+
+		# reduced unhappy modifier if it's not a monarchy
+		if = {
+			limit = {
+				owner = {
+					NOT = { has_law = law_type:law_monarchy }
+					NOT = { ruler ?= { has_ideology = ideology:ideology_miguelist } }
+				}
+				interest_group.ig_approval < 0
+			}
+			add = 25
+		}
+
+		# conservative and/or reactionary leaders have a higher spawn chance if you win the Two Spains as the conservatives.
+		if = {
+			limit = {
+				has_variable = spa_two_spains_conservative_victory
+			}
+			add = 50
+		}
+
+		if = {
+			limit = {
+				OR = {
+					has_variable = communist_ig_var
+					has_variable = chose_vanguardism
+					has_variable = chose_anarchism
+					has_variable = chose_communism
+					has_variable = chose_ethno_nationalism
+					has_variable = chose_conservatism
+					has_variable = chose_fascism
+				}
+			}
+			multiply = 0.1
+		}
+	}
+}
+
+
+ideology_ilustrado_leader = { 	# Flavoured variant of Liberal and Anti-Clerical for the Philippines
+	icon = "gfx/interface/icons/ideology_icons/ideology_leader/ideology_leader_ilustrado.dds"
+
+	character_ideology = yes
+
+	lawgroup_citizenship = {
+		law_multicultural = disapprove
+		law_ethnostate = strongly_disapprove
+		law_national_supremacy = disapprove
+		law_racial_segregation = neutral
+		law_cultural_exclusion = approve
+		law_subjecthood = neutral
+	}
+
+	lawgroup_church_and_state = {
+		law_state_atheism = neutral
+		law_total_separation = approve
+		law_freedom_of_conscience = strongly_approve
+		law_state_religion = neutral
+	}
+
+	lawgroup_education_system = {
+		law_public_schools = approve
+		law_private_schools = approve
+		law_no_schools = disapprove
+		law_religious_schools = neutral
+	}
+
+	lawgroup_free_speech = {
+		law_protected_speech = strongly_approve
+		law_right_of_assembly = approve
+		law_censorship = disapprove
+		law_outlawed_dissent = strongly_disapprove
+	}
+
+	country_trigger = {
+
+	}
+
+	interest_group_leader_trigger = {
+		ideology_ilustrado_leader_valid_trigger = yes
+	}
+
+	non_interest_group_leader_trigger = {
+		# Agitators should have an ideology at odds with current laws
+		NAND = {
+			has_role = agitator
+			owner = {
+				has_law_or_variant = law_type:law_public_schools
+				has_law_or_variant = law_type:law_protected_speech
+				has_law_or_variant = law_type:law_total_separation
+			}
+		}
+		interest_group = {
+			ideology_ilustrado_leader_valid_trigger = yes
+		}
+	}
+
+	interest_group_leader_weight = {
+		value = 100
+		# More likely for Intelligentsia
+		if = {
+			limit = {
+				is_interest_group_type = ig_intelligentsia
+			}
+			add = 50
+		}
+	}
+
+	non_interest_group_leader_weight = {
+		value = 100
+		# More likely if je_philippines_main is completed
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						has_variable = je_philippines_main_complete_happened
+						has_variable = je_philippines_main_reliance_happened
+
 					}
 				}
 			}

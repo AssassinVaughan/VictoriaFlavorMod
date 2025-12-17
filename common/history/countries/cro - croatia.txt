@@ -4,7 +4,10 @@
 		add_technology_researched = lathe
 		effect_starting_politics_conservative = yes
 
-		set_tax_level = medium
+		set_tax_level = high # To balance the budget
+
+		add_taxed_goods = g:liquor # This is probably not historical, but Croatia is broke otherwise
+		add_taxed_goods = g:wine
 
 		# Laws 
 		activate_law = law_type:law_monarchy
@@ -22,8 +25,14 @@
 		activate_law = law_type:law_land_based_taxation	
 		activate_law = law_type:law_guild_system # Heavily restricted, but still extant until 1859
 		
-		ig:ig_landowners = {
+		ig:ig_landowners ?= {
 			add_ruling_interest_group = yes
+		}
+
+		start_national_awakening = {
+			culture = cu:croat
+			months = 168
+			state_region = s:STATE_CROATIA
 		}
 	}
 }

@@ -42,3 +42,36 @@ is_in_old_world = {
 		country_is_in_southeast_asia = yes
 	}
 }
+
+country_is_in_north_america = {
+	custom_description = {
+		text = country_is_in_north_america_desc
+		subject = this
+
+		capital ?= {
+			state_is_in_north_america = yes
+		}
+	}
+}
+
+country_is_in_central_america = {
+	custom_description = {
+		text = country_is_in_central_america_desc
+		subject = this
+
+		capital ?= {
+			state_is_in_central_america = yes
+		}
+	}
+}
+
+country_is_in_south_america = {
+	custom_description = {
+		text = country_is_in_south_america_desc
+		subject = this
+
+		capital ?= {
+			state_is_in_south_america = yes
+		}
+	}
+}

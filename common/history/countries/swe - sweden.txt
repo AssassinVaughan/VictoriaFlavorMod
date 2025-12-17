@@ -63,6 +63,13 @@
 			level = 2
 		}
 
+		active_law:lawgroup_education_system ?= { # Public Schools
+			add_amendment = {
+				type = amendment_prussian_education
+				sponsor = PREV.ig:ig_armed_forces
+			}
+		}
+
 		add_journal_entry = {
 			type = je_swedish_guilds
 		}

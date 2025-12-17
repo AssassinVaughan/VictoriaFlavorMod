@@ -5,6 +5,10 @@
 			type = colony
 		}
 		create_diplomatic_pact = {
+			country = c:PCO
+			type = colony
+		}
+		create_diplomatic_pact = {
 			country = c:PHI
 			type = colony
 		}	
@@ -132,7 +136,7 @@
 		}
 		create_diplomatic_pact = {
 			country = c:SIL
-			type = puppet
+			type = colony
 		}
 		create_diplomatic_pact = {
 			country = c:ORG
@@ -561,36 +565,36 @@
 		}
 	}
 	
-	c:KAL = {
+	c:KAL ?= {
 		create_diplomatic_pact = {
 			country = c:MAK
 			type = vassal
 		}
 	}
-	
-	
+
+
 	# Starting liberty desire
-	c:BIC = {
-		add_liberty_desire = -30
-	}
-	
-	c:DEI = {
-		add_liberty_desire = -30
-	}	
-	
-	c:SAF = {
-		add_liberty_desire = -30
-	}	
-	
-	c:NSW = {
+	c:BIC ?= {
 		add_liberty_desire = -30
 	}
 
-	c:SAF = {
+	c:DEI ?= {
+		add_liberty_desire = -30
+	}
+
+	c:SAF ?= {
+		add_liberty_desire = -30
+	}
+
+	c:NSW ?= {
+		add_liberty_desire = -30
+	}
+
+	c:SAF ?= {
 		add_liberty_desire = -20
 	
 
-	c:WAS = {
+	c:WAS ?= {
 		add_liberty_desire = -30
 	}	
 
@@ -598,62 +602,62 @@
 	#	add_liberty_desire = -30
 	#}
 
-	c:TAS = {
+	c:TAS ?= {
 		add_liberty_desire = -30
 	}
 
-	c:UNT = {
-		add_liberty_desire = 10
-	}	
-	
-	c:FIN = {
-		add_liberty_desire = 10
-	}
-	
-	c:OZH = {
+	c:UNT ?= {
 		add_liberty_desire = 10
 	}
 
-	c:KZH = {
+	c:FIN ?= {
 		add_liberty_desire = 10
 	}
 
-	c:UZH = {
-		add_liberty_desire = 10
-	}	
-
-	c:SEQ = {
+	c:OZH ?= {
 		add_liberty_desire = 10
 	}
 
-	c:SER = {
+	c:KZH ?= {
+		add_liberty_desire = 10
+	}
+
+	c:UZH ?= {
+		add_liberty_desire = 10
+	}
+
+	c:SEQ ?= {
+		add_liberty_desire = 10
+	}
+
+	c:SER ?= {
 		add_liberty_desire = 20
-	}	
-	
-	c:MOL = {
+	}
+
+	c:MOL ?= {
 		add_liberty_desire = 20
-	}	
-	
-	c:WAL = {
+	}
+
+	c:WAL ?= {
 		add_liberty_desire = 20
-	}	
-	
-	c:EGY = {
+	}
+
+	c:EGY ?= {
 		add_liberty_desire = 45
 	}
-	
+
 	c:CAM ?= {
 		add_liberty_desire = 20
 	}
 
-	c:NPU = {
+	c:NPU ?= {
 		add_liberty_desire = 30
 	}
 
-	c:IQU = {
+	c:IQU ?= {
 		add_liberty_desire = -10
 	}
-	
+
 	c:BIC ?= {
 		every_subject_or_below = {
 			add_liberty_desire = -20
@@ -675,6 +679,13 @@
 		create_diplomatic_pact = {
 			country = c:SHS
 			type = vassal
+		}
+	}
+
+	c:OMA ?= {
+		create_diplomatic_pact = {
+			country = c:MBS
+			type = tributary
 		}
 	}
 }

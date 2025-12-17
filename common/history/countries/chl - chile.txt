@@ -43,11 +43,11 @@
 			level = 2
 		}
 
-		ig:ig_armed_forces = {
+		ig:ig_armed_forces ?= {
 			set_ig_suppression = yes			
 		}
 
-		ig:ig_industrialists = {
+		ig:ig_industrialists ?= {
 			add_modifier = { #Consequence of the Chilean Civil War of 1829
 				name = revolution_lost_ig
 				multiplier = 0.25
@@ -56,21 +56,21 @@
 			}		
 		}
 
-		ig:ig_devout = {
+		ig:ig_devout ?= {
 			set_interest_group_name = ig_catholic_church
 			add_ruling_interest_group = yes
 		}
 
-		ig:ig_rural_folk = {
+		ig:ig_rural_folk ?= {
 			remove_ideology = ideology_isolationist
 			add_ideology = ideology_isolationist_expansionism
 		}		
 
-		ig:ig_landowners = {
+		ig:ig_landowners ?= {
 			add_ruling_interest_group = yes
 		}			
 
-		ig:ig_intelligentsia = {
+		ig:ig_intelligentsia ?= {
 			add_modifier = { #Consequence of the Chilean Civil War of 1829
 				name = revolution_lost_ig
 				multiplier = 0.25
@@ -83,5 +83,7 @@
 		add_modifier = {
 			name = age_of_caudillos_modifier
 		}
+		
+		initialise_caciquismo_effect = yes
 	}
 }

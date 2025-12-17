@@ -39,12 +39,23 @@ law_monarchy = {
 
 	progressiveness = 0
 
+	is_visible = {
+		NOT = {
+			has_law = law_type:law_colonial_administration
+		}
+	}
+
 	disallowing_laws = {
 		law_anarchy
 	}
 
 	can_enact = {
-		NOT = { has_government_type = gov_chartered_company }
+		trigger_if ={
+			limit = {
+				is_subject = no
+			}
+			NOT = { has_government_type = gov_chartered_company }
+		}
 	}
 
 	can_impose = {
@@ -109,6 +120,20 @@ law_monarchy = {
 					}
 				}
 				fra_handle_republic_monarch_assignment = yes
+			}
+		}
+		if = {
+			limit = {
+       	 		has_dlc_feature = ip4_content
+				c:SPA ?= this
+				is_revolutionary = no
+				is_secessionist = no
+				game_date > 1836.1.1
+			}
+			add_modifier = modifier_regency
+			custom_tooltip = {
+				text = activate_provisional_government_tt
+				add_journal_entry = { type = je_spain_provisional_government }
 			}
 		}
 		if = {
@@ -187,6 +212,8 @@ law_monarchy = {
 						}
 					}
 					order_by = ig_clout
+					position = 0
+					check_range_bounds = no
 					ordered_preferred_law = {
 						limit = {
 							is_citizenship_law = yes
@@ -194,8 +221,7 @@ law_monarchy = {
 								type ?= law_type:law_subjecthood
 							}
 						}
-						min = 0
-						max = 1
+						position = 0
 						check_range_bounds = no
 						prev.owner = {
 							activate_law = prev.type
@@ -207,6 +233,7 @@ law_monarchy = {
 				activate_law = law_type:law_national_supremacy
 			}
 		}
+		remove_regency_modifier = yes
 	}
 
 	ai_enact_weight_modifier = { #Petitions
@@ -260,6 +287,50 @@ law_monarchy = {
 	}
 }
 
+law_colonial_administration = {
+	group = lawgroup_governance_principles
+	parent = law_monarchy
+
+	icon = "gfx/interface/icons/law_icons/colonial_administration.dds"
+
+	progressiveness = 0
+
+	disallowing_laws = {
+		law_anarchy
+	}
+
+	can_enact = {
+		country_is_colonial_or_company = yes
+	}
+
+	is_visible = {
+		country_is_colonial_or_company = yes
+	}
+
+	can_impose = {
+		scope:target_country ?= {
+			country_is_colonial_or_company = yes
+			is_subject_of = root
+		}
+	}
+
+	modifier = {
+		country_legitimacy_headofstate_add = 10
+		country_legitimacy_ideological_incoherence_mult = 0.2
+		country_bureaucrats_pol_str_mult = 1
+		country_officers_pol_str_mult = 1
+		country_authority_add = 100
+	}
+
+	ai_will_do = {
+		always = no
+	}
+
+	on_activate = {
+
+	}
+}
+
 law_presidential_republic = {
 	group = lawgroup_governance_principles
 
@@ -269,6 +340,15 @@ law_presidential_republic = {
 
 	unlocking_technologies = {
 		democracy
+	}
+
+	can_enact = {
+		trigger_if ={
+			limit = {
+				is_subject = no
+			}
+			NOT = { has_government_type = gov_chartered_company }
+		}
 	}
 
 	can_impose = {
@@ -325,6 +405,15 @@ law_presidential_republic = {
 			}
 			deactivate_law = law_type:law_neo_absolutism
 			activate_law = law_type:law_autocracy
+		}
+		if = {
+			limit = {
+				c:POR ?= this
+				ruler ?= {
+					has_template = POR_manuel_ii_de_braganca_template
+				}
+			}
+			trigger_event = { id = portuguese_monarchs.3 }
 		}
 	}
 
@@ -423,7 +512,12 @@ law_parliamentary_republic = {
 	}
 
 	can_enact = {
-		NOT = { has_government_type = gov_chartered_company }
+		trigger_if ={
+			limit = {
+				is_subject = no
+			}
+			NOT = { has_government_type = gov_chartered_company }
+		}
 	}
 
 	unlocking_technologies = {
@@ -479,6 +573,15 @@ law_parliamentary_republic = {
 			}
 			deactivate_law = law_type:law_neo_absolutism
 			activate_law = law_type:law_autocracy
+		}
+		if = {
+			limit = {
+				c:POR ?= this
+				ruler ?= {
+					has_template = POR_manuel_ii_de_braganca_template
+				}
+			}
+			trigger_event = { id = portuguese_monarchs.3 }
 		}
 	}
 
@@ -571,7 +674,12 @@ law_theocracy = {
 	}
 
 	can_enact = {
-		NOT = { has_government_type = gov_chartered_company }
+		trigger_if ={
+			limit = {
+				is_subject = no
+			}
+			NOT = { has_government_type = gov_chartered_company }
+		}
 	}
 
 	can_impose = {
@@ -631,6 +739,8 @@ law_theocracy = {
 						}
 					}
 					order_by = ig_clout
+					position = 0
+					check_range_bounds = no
 					ordered_preferred_law = {
 						limit = {
 							is_citizenship_law = yes
@@ -638,8 +748,7 @@ law_theocracy = {
 								type ?= law_type:law_subjecthood
 							}
 						}
-						min = 0
-						max = 1
+						position = 0
 						check_range_bounds = no
 						prev.owner = {
 							activate_law = prev.type
@@ -695,7 +804,7 @@ law_theocracy = {
 				power_bloc ?= { has_identity = identity:identity_religious }
 				religion = scope:target_country.religion
 				scope:target_country = { # Is their law different enough from what we want to impose?
-					NOT = { has_law_or_variant = law_type:law_monarchy }
+					NOT = { has_law = law_type:law_monarchy }
 				}
 			}
 
@@ -740,7 +849,12 @@ law_council_republic = {
 	}
 
 	can_enact = {
-		NOT = { has_government_type = gov_chartered_company }
+		trigger_if ={
+			limit = {
+				is_subject = no
+			}
+			NOT = { has_government_type = gov_chartered_company }
+		}
 	}
 
 	on_activate = {
@@ -797,6 +911,15 @@ law_council_republic = {
 			}
 			deactivate_law = law_type:law_neo_absolutism
 			activate_law = law_type:law_autocracy
+		}
+		if = {
+			limit = {
+				c:POR ?= this
+				ruler ?= {
+					has_template = POR_manuel_ii_de_braganca_template
+				}
+			}
+			trigger_event = { id = portuguese_monarchs.3 }
 		}
 	}
 
@@ -876,6 +999,15 @@ law_corporate_state = {
 		corporatism
 	}
 
+	can_enact = {
+		trigger_if ={
+			limit = {
+				is_subject = no
+			}
+			NOT = { has_government_type = gov_chartered_company }
+		}
+	}
+
 	on_activate = {
 		if = {
 			limit = {
@@ -891,24 +1023,6 @@ law_corporate_state = {
 				add_ideology = ideology_republican
 			}
 		}
-		if = {
-			limit = {
-				var:corporatist_nominating_body_var ?= 1
-			}
-			add_modifier = { name = modifier_corporate_state_trade_unions_bias }
-		}
-		if = {
-			limit = {
-				var:corporatist_nominating_body_var ?= 2
-			}
-			add_modifier = { name = modifier_corporate_state_industrialists_bias }
-		}
-		if = {
-			limit = {
-				var:corporatist_nominating_body_var ?= 3
-			}
-			add_modifier = { name = modifier_corporate_state_intelligentsia_bias }
-		}
 		crown_land_republic_effect = yes
 		if = {
 			limit = {
@@ -917,27 +1031,19 @@ law_corporate_state = {
 			deactivate_law = law_type:law_neo_absolutism
 			activate_law = law_type:law_autocracy
 		}
+		if = {
+			limit = {
+				c:POR ?= this
+				ruler ?= {
+					has_template = POR_manuel_ii_de_braganca_template
+				}
+			}
+			trigger_event = { id = portuguese_monarchs.3 }
+		}
 	}
 
 	on_enact = {
-		if = {
-			limit = {
-				var:corporatist_nominating_body_var ?= 1
-			}
-			custom_tooltip = corporate_state_trade_unions_bias_tt
-		}
-		if = {
-			limit = {
-				var:corporatist_nominating_body_var ?= 2
-			}
-			custom_tooltip = corporate_state_industrialists_bias_tt
-		}
-		if = {
-			limit = {
-				var:corporatist_nominating_body_var ?= 3
-			}
-			custom_tooltip = corporate_state_intelligentsia_bias_tt
-		}
+
 	}
 
 	on_deactivate = {

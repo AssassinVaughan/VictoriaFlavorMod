@@ -33,8 +33,8 @@ urbanization = {
 	category = society
 	
 	modifier = {
-		state_infrastructure_from_population_add = 2
-		state_infrastructure_from_population_max_add = 40	
+		state_infrastructure_from_population_add = 1
+		state_infrastructure_from_population_max_add = 30	
 		state_building_construction_sector_max_level_add = 10
 		country_max_weekly_construction_progress_add = 10
 		#market_land_trade_capacity_add = 50
@@ -199,6 +199,7 @@ centralization = {
 	modifier = {
 		state_tax_capacity_add = 25
 		country_institution_home_affairs_max_investment_add = 1
+		state_incorporation_speed_mult = 0.05
 	}
 	
 	unlocking_technologies = {
@@ -445,6 +446,20 @@ egalitarianism = {
 	unlocking_technologies = {
 		democracy
 	}
+
+	on_researched = {
+		if = {
+			limit = {
+				has_journal_entry = je_springtime_of_the_peoples
+				NOT = {
+					is_involved_in_journal_entry = je_springtime_of_the_peoples
+				}
+			}
+			je:je_springtime_of_the_peoples ?= {
+				add_involved_country = ROOT
+			}
+		}
+	}
 	
 	ai_weight = {
 		value = 1
@@ -495,7 +510,7 @@ modern_sewerage = {
 	category = society
 	
 	modifier = {
-		#state_infrastructure_from_population_add = 1
+		state_infrastructure_from_population_add = 1
 		state_infrastructure_from_population_max_add = 20
 		state_building_construction_sector_max_level_add = 5
 		country_max_weekly_construction_progress_add = 5
@@ -550,7 +565,7 @@ quinine = {
 			if = {
 				limit = {
 					any_scope_state = {
-						state_is_in_africa = yes
+						is_in_geographic_region = geographic_region_africa
 					}
 				}
 				add = 3
@@ -631,6 +646,7 @@ central_archives = {
 	
 	modifier = {
 		country_institution_home_affairs_max_investment_add = 1
+		state_incorporation_speed_mult = 0.05
 	}
 	
 	unlocking_technologies = {
@@ -648,8 +664,8 @@ central_archives = {
 				OR = {
 					AND = {
 						OR = {
-							country_is_in_south_america = yes
-							country_is_in_central_america = yes
+							is_in_geographic_region = geographic_region_south_america
+							is_in_geographic_region = geographic_region_central_america
 						}
 						country_rank <= rank_value:major_power
 					}
@@ -1426,6 +1442,7 @@ identification_documents = {
 	modifier = {
 		state_tax_capacity_add = 25
 		country_institution_home_affairs_max_investment_add = 1
+		state_incorporation_speed_mult = 0.05
 	}
 	
 	unlocking_technologies = {
@@ -1749,6 +1766,7 @@ mass_surveillance = {
 		state_tax_capacity_add = 25
 		country_support_separatism_resistance_mult = 0.25
 		country_institution_home_affairs_max_investment_add = 1
+		state_incorporation_speed_mult = 0.05
 	}
 	
 	unlocking_technologies = {

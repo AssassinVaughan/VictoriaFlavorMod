@@ -69,14 +69,11 @@
 			is_decaying = yes
 		}
 
-		ig:ig_devout = {
-			set_interest_group_name = ig_orthodox_church
-			remove_ideology = ideology_patriarchal
-			add_ideology = ideology_russian_patriarch
-		}
-
-		ig:ig_landowners = {
-			set_interest_group_name = ig_gentry_assembly
+		add_company = company_type:company_russian_american_company
+		company:company_russian_american_company = {
+			set_company_establishment_date = 1799.7.8
+			set_company_state_region = s:STATE_INGRIA
+			add_owned_country = c:ALK
 		}
 	}
 }

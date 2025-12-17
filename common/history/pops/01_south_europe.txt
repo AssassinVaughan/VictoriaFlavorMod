@@ -247,65 +247,72 @@
 			}
 		}
 	}
-	s:STATE_TOLEDO = {
+	# Spanish numbers are based off slightly upscaled numbers from the census of 1833, assuming a 0.3% growth rate
+	s:STATE_NEW_CASTILE = {
 		region_state:SPA = {
 			create_pop = {
 				culture = spanish
-				size = 1268400
+				size = 1578858
 			}
 		}
 	}
 	s:STATE_GALICIA = {
-		# 840792
 		region_state:SPA = {
 			create_pop = {
 				culture = galician
-				size = 828528
+				size = 1331476
 			}
 			create_pop = {
 				culture = spanish
-				size = 12264
+				size = 133677
+			}
+			create_pop = {
+				culture = asturleonese
+				size = 20102
 			}
 		}
 	}
 	s:STATE_ASTURIAS = {
-		# please don't ask for a source
 		region_state:SPA = {
 			create_pop = {
-				culture = spanish
-				size = 614264
+				culture = asturleonese
+				size = 364438
 			}
-			create_pop = {
-				culture = basque
-				size = 32000
-			}
-		}	
-	}
-	s:STATE_CASTILE = {
-		region_state:SPA = {
 			create_pop = {
 				culture = spanish
-				size = 1430808
+				size = 36123
 			}
+			# Galician-Asturian (Eonavia)
 			create_pop = {
-				culture = basque
-				size = 4000
+				culture = galician
+				size = 38002
 			}
 		}
 	}
-	s:STATE_NAVARRA = {
+	s:STATE_OLD_CASTILE = {
 		region_state:SPA = {
 			create_pop = {
 				culture = spanish
-				size = 579200
+				size = 1254058
 			}
+			# Montañés
 			create_pop = {
-				culture = catalan
-				size = 32220
+				culture = asturleonese
+				size = 20040
+			}
+		}
+	}
+	s:STATE_BASQUE_COUNTRY = {
+		# 287.530 in Basque Country, 230.925 in Navarre
+		# Spanish/Basque split based on adjusted estimates by Ladislao de Velasco 1866-1868
+		region_state:SPC = {
+			create_pop = {
+				culture = spanish
+				size = 229003
 			}
 			create_pop = {
 				culture = basque
-				size = 700060
+				size = 294137
 			}
 		}
 	}
@@ -313,15 +320,23 @@
 		region_state:SPA = {
 			create_pop = {
 				culture = spanish
-				size = 401200
-			}
-			create_pop = {
-				culture = basque
-				size = 100008
+				size = 389486
 			}
 			create_pop = {
 				culture = catalan
-				size = 77996
+				size = 30202
+			}
+			# Population of most of Huseca subregion
+			create_pop = {
+				culture = aragonese
+				size = 214874
+			}
+		}
+		# Maestrazgo + about another 50k moved here for gameplay reasons
+		region_state:SPC = {
+			create_pop = {
+				culture = spanish
+				size = 100123
 			}
 		}
 	}
@@ -329,73 +344,132 @@
 		region_state:SPA = {
 			create_pop = {
 				culture = catalan
-				size = 704308
+				size = 926100
 			}
 			create_pop = {
 				culture = spanish
-				size = 316804
+				size = 50010
+			}
+		}
+		# Carlist controlled territories + 50k moved here for gameplay reasons
+		region_state:SPC = {
+			create_pop = {
+				culture = catalan
+				size = 74512
 			}
 		}
 	}
-	s:STATE_BALEARES = {
+	s:STATE_BALEARIC_ISLANDS = {
 		region_state:SPA = {
 			create_pop = {
 				culture = catalan
-				size = 145244
+				size = 211167
 			}
 			create_pop = {
 				culture = spanish
-				size = 78020
-			}
-		}
-	}
-	s:STATE_ANDALUSIA = {
-		region_state:SPA = {
-			create_pop = {
-				culture = spanish
-				size = 1057592
+				size = 20101
 			}
 		}
 	}
-	s:STATE_GRANADA = {
+	s:STATE_LOWER_ANDALUSIA = {
 		region_state:SPA = {
 			create_pop = {
 				culture = spanish
-				size = 1218404
+				size = 1215991
+			}
+		}
+	}
+	s:STATE_UPPER_ANDALUSIA = {
+		region_state:SPA = {
+			create_pop = {
+				culture = spanish
+				size = 1188141
 			}
 		}
 		region_state:GBR = {
 			create_pop = {
-				culture = spanish
-				size = 49024
+				culture = british
+				size = 4510
 			}
 			create_pop = {
-				culture = british
-				size = 12336
+				culture = spanish
+				size = 3010
+			}
+			create_pop = {
+				culture = north_italian
+				size = 2210
 			}
 			create_pop = {
 				culture = sephardic
-				size = 3200
+				size = 2244
+			}
+			create_pop = {
+				culture = portuguese
+				size = 1401
+			}
+			create_pop = {
+				culture = maltese
+				size = 410
 			}
 		}
 	}
-	s:STATE_BADAJOZ = {
+	s:STATE_EXTREMADURA = {
 		region_state:SPA = {
 			create_pop = {
 				culture = spanish
-				size = 579992
+				size = 508179
+			}
+			create_pop = {
+				culture = asturleonese
+				size = 44189
 			}
 		}
 	}
 	s:STATE_VALENCIA = {
 		region_state:SPA = {
 			create_pop = {
+				culture = catalan
+				size = 764685
+			}
+			create_pop = {
 				culture = spanish
-				size = 989604
+				size = 201104
+			}
+		}
+	}
+	s:STATE_MURCIA = {
+		region_state:SPA = {
+			create_pop = {
+				culture = spanish
+				size = 464203
 			}
 			create_pop = {
 				culture = catalan
-				size = 490392
+				size = 10103
+			}
+		}
+	}
+	s:STATE_LEON = {
+		region_state:SPA = {
+			create_pop = {
+				culture = spanish
+				size = 260024
+			}
+			create_pop = {
+				culture = asturleonese
+				size = 372894
+			}
+			create_pop = {
+				culture = galician
+				size = 10003
+			}
+		}
+	}
+	s:STATE_CANARY_ISLANDS = {
+		region_state:SPA = {
+			create_pop = {
+				culture = spanish
+				size = 231268
 			}
 		}
 	}
@@ -403,7 +477,7 @@
 		region_state:POR = {
 			create_pop = {
 				culture = portuguese
-				size = 1620800
+				size = 1106122
 			}
 		}
 	}
@@ -411,7 +485,7 @@
 		region_state:POR = {
 			create_pop = {
 				culture = portuguese
-				size = 860796
+				size = 791012
 			}
 		}
 	}
@@ -419,19 +493,42 @@
 		region_state:POR = {
 			create_pop = {
 				culture = portuguese
-				size = 372508
+				size = 457012
+			}
+		}
+	}
+	s:STATE_ENTRE_DOURO_E_MINHO = {
+		region_state:POR = {
+			create_pop = {
+				culture = portuguese
+				size = 1194781
+			}
+			create_pop = {
+				culture = asturleonese
+				size = 8231
 			}
 		}
 	}
 	s:STATE_CAPE_VERDE = {
 		region_state:POR = {
+			# ~80k estimated population in 1841
 			create_pop = {
 				culture = portuguese
-				size = 103532
+				pop_type = aristocrats
+				size = 600
+			}
+			create_pop = {
+				culture = portuguese
+				size = 1192
 			}
 			create_pop = {
 				culture = afro_brazilian
-				size = 24666
+				size = 65015
+			}
+			create_pop = {
+				culture = afro_brazilian
+				pop_type = slaves
+				size = 12012
 			}
 		}
 	}
@@ -440,33 +537,15 @@
 		region_state:POR = {
 			create_pop = {
 				culture = portuguese
-				size = 103532
-			}
-			create_pop = {
-				culture = afro_brazilian
-				size = 24666
+				size = 110202
 			}
 		}
 	}
-
-	s:STATE_CANARY_ISLANDS = {
-		region_state:SPA = {
-			create_pop = {
-				culture = spanish
-				size = 208004
-			}
-		}
-	}
-
 	s:STATE_AZORES = {
 		region_state:POR = {
 			create_pop = {
 				culture = portuguese
-				size = 103532
-			}
-			create_pop = {
-				culture = afro_brazilian
-				size = 24666
+				size = 210532
 			}
 		}
 	}
