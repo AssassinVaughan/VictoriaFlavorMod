@@ -25,6 +25,244 @@
 	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_farming.dds"
 }
 
+REPLACE:building_construction_sector = {
+	building_group = bg_construction
+	icon = "gfx/interface/icons/building_icons/construction_camp.dds"
+	city_type = city
+	levels_per_mesh = 50
+
+	has_max_level = yes
+
+	required_construction = construction_cost_construction_sector
+	unlocking_technologies = {
+		urbanization
+	}
+	production_method_groups = {
+		pmg_base_building_construction_sector
+	}
+
+	# Construction sector should generally be preferred over other equal-priority spending items
+	ai_value = {
+		value = 1000
+
+		# KAI: Prefer states with iron
+		if = {
+			limit = {
+				state_population >= 250000
+				has_potential_resource = bg_iron_mining
+				NOT = {
+					any_scope_building = {
+						is_building_type = building_construction_sector
+						is_under_construction = yes
+					}
+				}
+			}
+			add = 500
+		}
+	}
+
+	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_farming.dds"
+}
+
+REPLACE:building_government_administration = {
+	building_group = bg_bureaucracy
+	city_type = city
+
+	levels_per_mesh = 50
+	downsizeable = no
+
+	unlocking_technologies = {
+		tech_bureaucracy
+	}
+
+	should_auto_expand = {
+		occupancy >= 0.8
+		OR = {
+			state.tax_capacity < state.tax_capacity_usage
+			owner = {
+				bureaucracy < -10
+			}
+		}
+	}
+
+	production_method_groups = {
+		pmg_base_building_government_administration
+		pmg_government_administration_bureaucrat_professionalism
+		pmg_government_administration_religious_administration
+	}
+
+	icon = "gfx/interface/icons/building_icons/building_government_administration.dds"
+
+	required_construction = 175
+	
+	ai_value = {
+		# KAI: Excess bureaucracy should have lower priority than everything else
+		value = 250
+
+		# KAI: Prioritize states with insufficient tax capacity
+		if = {
+			limit = {
+				is_incorporated = yes
+			}
+			add = {
+				value = 30
+				multiply = {
+					# Scale inversely with surplus from 5 to 30
+					value = tax_capacity_usage
+					subtract = tax_capacity
+					add = 30
+				}
+				min = 0
+				max = 750
+			}
+		}
+	}
+
+	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_monuments.dds"
+}
+
+REPLACE:building_arts_academy = {
+	building_group = bg_arts
+
+	city_type = city
+
+	levels_per_mesh = 50
+
+	unlocking_technologies = {
+		romanticism
+	}
+
+	production_method_groups = {
+		pmg_base_building_arts_academy
+		pmg_ownership_building_arts_academy
+		pmg_principle_freedom_of_movement_3
+	}
+
+	icon = "gfx/interface/icons/building_icons/building_arts_academy.dds"
+
+	required_construction = construction_cost_medium
+
+	ownership_type = self
+
+	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_monuments.dds"
+	ai_value = {
+		value = 100
+
+		if = { # Don't overbuild these
+			limit = {
+				owner = {
+					has_technology_researched = realism
+				}
+			}
+			add = 200
+		}
+		if = {
+			limit = {
+				owner = {
+					gdp > 11000000 # 11 mil
+				}
+			}
+			add = 200
+		}
+		if = {
+			limit = {
+				average_sol > 11
+			}
+			multiply = 1.25
+		}
+		if = {
+			limit = {
+				average_sol > 14
+			}
+			multiply = 1.25
+		}
+		if = { # AI Metternich really wants arts academies
+			limit = {
+				owner ?= {
+					c:AUS ?= this
+					has_journal_entry = je_metternich
+				}
+			}
+            add = 400
+		}
+	}
+}
+
+REPLACE:building_power_plant = {
+	building_group = bg_power
+	icon = "gfx/interface/icons/building_icons/power_plant.dds"
+	levels_per_mesh = 50
+
+	city_type = city
+	
+	unlocking_technologies = {
+		steam_turbine
+	}
+
+	production_method_groups = {
+		pmg_base_building_power_plant
+		pm_transmission_method
+	}
+
+	required_construction = construction_cost_high
+
+	ai_value = {
+		value = 200 
+		
+		if = {
+			limit = {
+				owner = {
+					has_technology_researched = electric_railway
+				}
+				has_building = building_railway
+			}
+			add = 500
+		}
+		
+		if = {
+			limit = {
+				owner = {
+					has_technology_researched = pasteurization
+				}
+			}
+			add = 250
+		}
+		
+		if = {
+			limit = {
+				owner = {
+					has_technology_researched = electrical_capacitors
+				}
+			}
+			add = 250
+		}
+
+		# Need 1 level of Power Plants everywhere as its a local good and a prerequisite to enabling electricity PMs to begin with
+		if = {
+			limit = {
+				NOR = {
+					has_building = building_power_plant
+					any_scope_building = {
+						is_building_type = building_power_plant
+						is_under_construction = yes
+					}
+				}
+			}
+			multiply = 2
+		}
+	}
+
+	possible = {
+		owner = {
+			NOT = { has_law_or_variant = law_type:law_industry_banned }
+		}
+	}
+
+	ownership_type = self
+
+	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_monuments.dds"
+}
+
 building_hydroelectric_power_plant = {
 	building_group = bg_hydro
 	icon = "gfx/interface/icons/building_icons/hydroelectric_power_plant.dds"

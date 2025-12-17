@@ -1,0 +1,44 @@
+﻿#  ██████  ██████  ██    ██ ███    ██ ████████ ██████  ██    ██ 
+# ██      ██    ██ ██    ██ ████   ██    ██    ██   ██  ██  ██  
+# ██      ██    ██ ██    ██ ██ ██  ██    ██    ██████    ████   
+# ██      ██    ██ ██    ██ ██  ██ ██    ██    ██   ██    ██    
+#  ██████  ██████   ██████  ██   ████    ██    ██   ██    ██ 
+
+##############
+### INCOME ###
+##############
+
+country_bureaucracy_add={
+	decimals=0
+	color=good
+	game_data={
+		ai_value=40 # KAI
+	}
+}
+
+####################
+### CONSTRUCTION ###
+#################### 
+
+country_construction_add={
+	decimals=1
+	color=good
+	game_data={
+		ai_value=750 # KAI
+	}
+}
+
+##############
+### BUDGET ###
+##############
+
+country_minting_add={
+	decimals=0
+	color=good
+	prefix="MONEY_PREFIX"
+	game_data={
+		# KAI: 1 minting = 4 pounds of profit
+	    # Multiplied by 3 to combat the unincorporated state infrastructure usage modifier.
+	    ai_value = 12
+	}
+}
