@@ -1846,7 +1846,9 @@ ideology_feminist = {
 				owner = {
 					has_technology_researched = mass_propaganda
 				}
-				is_female = yes
+				leader = {
+					is_female = yes
+				}
 			}
 			multiply = {
 				value = 2
@@ -4314,7 +4316,7 @@ ideology_fascist = {
 			limit = {
 				leader = {
 					culture = {
-						NOT = { is_primary_culture_of = ROOT }
+						NOT = { is_primary_culture_of = prev.owner }
 					}
 				}
 			}
@@ -4964,10 +4966,10 @@ ideology_ethno_nationalist = {
 		# More likely with unowned claims
 		if = {
 			limit = {
-				number_of_claims > 0
+				owner.number_of_claims > 0
 			}
 			add = {
-				value = number_of_claims
+				value = owner.number_of_claims
 				multiply = 25
 				max = 100
 			}
@@ -4988,7 +4990,9 @@ ideology_ethno_nationalist = {
 			add = 25
 			if = { # And if angry without ethnostate
 				limit = {
-					NOT = { has_law_or_variant = law_type:law_ethnostate }
+					owner = {
+						NOT = { has_law_or_variant = law_type:law_ethnostate }
+					}
 					ig_approval <= -5
 				}
 				subtract = {
@@ -5053,7 +5057,7 @@ ideology_ethno_nationalist = {
 			limit = {
 				leader = {
 					culture = {
-						NOT = { is_primary_culture_of = ROOT }
+						NOT = { is_primary_culture_of = prev.owner }
 					}
 				}
 			}
@@ -9546,11 +9550,7 @@ ideology_carlist = {
 	}
 
 	country_trigger = {
-		OR = {
-			country_has_primary_culture = cu:spanish # I am in Spain...
-			country_has_primary_culture = cu:catalan # ...without the S
-			country_has_primary_culture = cu:basque # ...without the A
-		}
+		country_has_primary_culture = cu:portuguese
 		NOR = {
 			any_interest_group = {
 				has_ideology = ideology:ideology_republican_paternalistic

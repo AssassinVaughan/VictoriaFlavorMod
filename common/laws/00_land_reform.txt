@@ -492,12 +492,16 @@ law_latifundias = {
 			OR = {
 				has_discrimination_trait = language_hispanophone
 				has_discrimination_trait = language_lusophone
+				has_discrimination_trait = language_italian
 			}
 		}
 		hidden_trigger = {
 			NOT = {
 				has_variable = upgraded_latifundias_law_var
 			}
+		}
+		NOT = {
+			has_law = law_type:law_tenant_farmers
 		}
 	}
 
@@ -543,6 +547,7 @@ law_expanded_latifundias = {
 			OR = {
 				has_discrimination_trait = language_hispanophone
 				has_discrimination_trait = language_lusophone
+				has_discrimination_trait = language_italian
 			}
 		}
 		hidden_trigger = {

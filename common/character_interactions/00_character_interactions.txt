@@ -1234,19 +1234,20 @@ retire_commander = {
                     }
                 }
 			}
-		interest_group = {
-			add_modifier = {
-				name = retired_commander_interest_group_impact
-				multiplier = {
-					value = root.popularity
-					divide = 100
-					add = 1
-					min = 1
-					multiply = root.commander_rank
-					round = yes # 1
-				}
-				years = 5
-					is_decaying = yes
+			interest_group = {
+				add_modifier = {
+					name = retired_commander_interest_group_impact
+					multiplier = {
+						value = root.popularity
+						divide = 100
+						add = 1
+						min = 1
+						multiply = root.commander_rank
+						round = yes # 1
+					}
+					years = 5
+						is_decaying = yes
+					}
 				}
 			}
 		}

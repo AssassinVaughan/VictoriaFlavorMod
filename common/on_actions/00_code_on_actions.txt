@@ -95,30 +95,19 @@ on_game_started_after_lobby = {
 				initialize_electoral_confidence = yes
 			}
 		}
+		set_global_variable = { # Ensures that Abraham Lincoln is not a valid leader of the Chinese Literati in 1836
+			name = ruler_selector_pool_invalidation_global_var
+			days = 30
+		}
 	}
 }
 
 # No root scope set
 on_monthly_pulse = {
+	on_actions = {
+		exile_pool_culling_on_action
+	}
 	effect = {
-		every_character_in_exile_pool = {
-			limit = {
-				popularity <= -25
-			}
-			if = {
-				limit = {
-					is_historical = no
-				}
-				kill_character = yes
-			}
-			else_if = {
-				limit = {
-					popularity <= -100
-				}
-				kill_character = yes
-			}
-		}
-
 		every_character_in_jail = { # Music too loud? Right to jail. Right away. Driving too fast? Jail. Slow? Jail. You undercook fish? Believe it or not, jail.
 			save_scope_as = prisoner_scope
 			change_variable = { name = prison_time_var subtract = 1 }
@@ -1362,6 +1351,21 @@ on_monthly_pulse_country = {
 			}
 			remove_modifier = modifier_not_recognized_by_spain
 		}
+
+		if = {
+			limit = {
+				has_government_type = gov_colonial_administration_spa
+				NOT = { has_modifier = modifier_reformed_captaincy_general }
+			}
+			add_modifier = modifier_reformed_captaincy_general
+		}
+		else_if = {
+			limit = {
+				NOT = { has_government_type = gov_colonial_administration_spa }
+				has_modifier = modifier_reformed_captaincy_general
+			}
+			remove_modifier = modifier_reformed_captaincy_general
+		}
 	}
 	on_actions = { # delay ensures events won't fire simultaneously
 		coup_monthly_events
@@ -1711,6 +1715,17 @@ on_decade_pulse_country = {
 
 # Only fires for countries with Elections enabled
 on_monthly_pulse_country_elections = {
+	effect = {
+		if = {
+			limit = {
+				NOT = {
+					has_variable = electoral_confidence_initialized
+				}
+			}
+			initialize_electoral_confidence = yes
+		}
+	}
+
 	on_actions = {
 		elections_monthly_events
 	}
@@ -2799,7 +2814,7 @@ on_new_ruler = {
 					if = {
 						limit = {
 							is_character_alive = yes
-							NOT = { c:POR ?= THIS.ruler }
+							NOT = { c:POR.ruler ?= this  }
 						}
 						kill_character = { hidden = yes }
 					}
@@ -3757,6 +3772,26 @@ on_country_formed = {
 			}
 			set_global_variable = { name = chinese_central_government value = ROOT }
 		}
+
+		if = {
+			limit = {
+				c:IBE ?= this
+				has_variable_list = spain_accepted_cultures
+			}
+			every_in_list = {
+				variable = spain_accepted_cultures
+				if = {
+					limit = {
+						NOT = {
+							is_primary_culture_of = ROOT
+						}
+					}
+					ROOT = {
+						add_primary_culture = prev
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -4646,7 +4681,8 @@ on_law_enactment_ended = {
 	}
 }
 
-# Root owner Country of the Law
+# owner = owner country of the Law
+# root = law
 # executed when the law is activated for any reason. It's usually because it
 # has been enacted, but script can activate laws directly without going through
 # the enactment process. Normally, it's immediately preceded by
@@ -4735,6 +4771,17 @@ on_law_activated = {
 		}
 		second_amendment_add_obsessions_effect = yes # Relevant if owner is Yankee or Dixie
 		upgrade_moderniser_movement_effect = yes # Relevant if owner has a moderniser movement
+		owner = {
+			if = { # If a currently enacting law is invalidated by an activated law, stop enacting it
+				limit = {
+					exists = currently_enacting_law
+					currently_enacting_law ?= {
+						law_is_available = no
+					}
+				}
+				cancel_enactment = yes
+			}
+		}
 	}
 }
 
@@ -6356,7 +6403,7 @@ on_heir_born = {
 			}
 			owner = {
 				heir ?= {
-					set_variable = { name = house_orleans }
+					set_variable = house_orleans
 					set_ideology = ideology:ideology_orleanist
 				}
 			}
@@ -6369,7 +6416,7 @@ on_heir_born = {
 			}
 			owner = {
 				heir ?= {
-					set_variable = { name = legitimist_leader }
+					set_variable = legitimist_leader
 					set_ideology = ideology:ideology_legitimist
 				}
 			}
@@ -6382,7 +6429,7 @@ on_heir_born = {
 			}
 			owner = {
 				heir ?= {
-					set_variable = { name = house_bonaparte }
+					set_variable = house_bonaparte
 					set_ideology = ideology:ideology_bonapartist
 				}
 			}
@@ -6395,7 +6442,7 @@ on_heir_born = {
 			}
 			owner = {
 				heir ?= {
-					set_variable = { name = house_savoy }
+					set_variable = house_savoy
 				}
 			}
 		}
@@ -6407,7 +6454,7 @@ on_heir_born = {
 			}
 			owner = {
 				heir ?= {
-					set_variable = { name = house_braganca }
+					set_variable = house_braganca
 				}
 			}
 		}
@@ -6419,7 +6466,7 @@ on_heir_born = {
 			}
 			owner = {
 				heir ?= {
-					set_variable = { name = house_espartero }
+					set_variable = house_espartero
 				}
 			}
 		}
@@ -6431,7 +6478,7 @@ on_heir_born = {
 			}
 			owner = {
 				heir ?= {
-					set_variable = { name = house_bourbon }
+					set_variable = house_bourbon
 				}
 			}
 		}
@@ -6443,7 +6490,7 @@ on_heir_born = {
 			}
 			owner = {
 				heir ?= {
-					set_variable = { name = house_hohenzollern }
+					set_variable = house_hohenzollern
 				}
 			}
 		}
@@ -6848,7 +6895,7 @@ on_election_campaign_start = {
 		if = {
 			limit = {
 				active_law:lawgroup_distribution_of_power ?= {
-					has_amendment = amendment_tradition_of_free_elections
+					has_amendment = amendment_type:amendment_tradition_of_free_elections
 				}
 			}
 			add_electoral_confidence = {
@@ -7343,39 +7390,5 @@ on_national_awakening_started = {
 # Root = Country
 # scope:amendment = amendment being repealed
 on_amendment_repealed = {
-	effect = {
-		if = {
-			limit = {
-				scope:amendment.type ?= amendment_type:amendment_american_second_amendment
-				OR = {
-					cu:yankee = {
-						has_cultural_obsession = small_arms
-					}
-					cu:dixie = {
-						has_cultural_obsession = small_arms
-					}
-				}
-			}
-			cu:yankee = {
-				remove_cultural_obsession = small_arms
-			}
-			cu:dixie = {
-				remove_cultural_obsession = small_arms
-			}
-		}
-		else_if = {
-			limit = {
-				scope:amendment.type ?= amendment_type:amendment_reinstated_fueros
-				any_scope_state = {
-					has_modifier = spc_state_fueros_restored
-				}
-			}
-			random_scope_state = {
-				limit = {
-					has_modifier = spc_state_fueros_restored
-				}
-				remove_modifier = spc_state_fueros_restored
-			}
-		}
-	}
+	effect = {}
 }

@@ -22,12 +22,7 @@ law_autocracy = {
 
 	on_activate = {
 		scripted_effect_parties_disappearence = yes
-		if = {
-			limit = {
-				has_modifier = missouri_compromise
-			}
-			remove_modifier = missouri_compromise
-		}
+		cleanup_voting_strength_modifiers = yes
 	}
 
 	modifier = {
@@ -175,12 +170,7 @@ law_technocracy = {
 			activate_law = law_type:law_appointed_bureaucrats
 		}
 		scripted_effect_parties_disappearence = yes
-		if = {
-			limit = {
-				has_modifier = missouri_compromise
-			}
-			remove_modifier = missouri_compromise
-		}
+		cleanup_voting_strength_modifiers = yes
 		add_journal_entry = { type = je_technocracy }
 	}
 
@@ -285,12 +275,7 @@ law_oligarchy = {
 	on_activate = {
 		scripted_effect_parties_disappearence = yes
 		handle_possible_absent_caciquismo_variables = yes
-		if = {
-			limit = {
-				has_modifier = missouri_compromise
-			}
-			remove_modifier = missouri_compromise
-		}
+		cleanup_voting_strength_modifiers = yes
 	}
 
 	modifier = {
@@ -501,12 +486,7 @@ law_elder_council = {
 			activate_law = law_type:law_appointed_bureaucrats
 		}
 		scripted_effect_parties_disappearence = yes
-		if = {
-			limit = {
-				has_modifier = missouri_compromise
-			}
-			remove_modifier = missouri_compromise
-		}
+		cleanup_voting_strength_modifiers = yes
 	}
 
 	modifier = {
@@ -577,6 +557,7 @@ law_landed_voting = {
 		if = {
 			limit = {
 				game_date > 1836.1.1
+				country_has_voting_franchise = yes
 			}
 			initialize_electoral_confidence = yes
 		}
@@ -713,6 +694,7 @@ law_wealth_voting = {
 		if = {
 			limit = {
 				game_date > 1836.1.1
+				country_has_voting_franchise = yes
 			}
 			initialize_electoral_confidence = yes
 		}
@@ -843,6 +825,7 @@ law_census_voting = {
 		if = {
 			limit = {
 				game_date > 1836.1.1
+				country_has_voting_franchise = yes
 			}
 			initialize_electoral_confidence = yes
 		}
@@ -969,6 +952,7 @@ law_universal_suffrage = {
 		if = {
 			limit = {
 				game_date > 1836.1.1
+				country_has_voting_franchise = yes
 			}
 			initialize_electoral_confidence = yes
 		}
@@ -1093,12 +1077,7 @@ law_anarchy = {
 
 	on_activate = {
 		scripted_effect_parties_disappearence = yes
-		if = {
-			limit = {
-				has_modifier = missouri_compromise
-			}
-			remove_modifier = missouri_compromise
-		}
+		cleanup_voting_strength_modifiers = yes
 	}
 
 	ai_will_do = {
@@ -1249,6 +1228,13 @@ law_single_party_state = {
 				text = king_in_parliament_tt
 				add_journal_entry = { type = je_king_in_parliament }
 			}
+		}
+		if = {
+			limit = {
+				game_date > 1836.1.1
+				country_has_voting_franchise = yes
+			}
+			initialize_electoral_confidence = yes
 		}
 	}
 

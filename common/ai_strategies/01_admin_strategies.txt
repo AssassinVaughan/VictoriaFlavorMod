@@ -742,24 +742,23 @@ ai_strategy_mining_exporter = {
 	type = administrative	
 
 	building_group_weights = {
-		bg_coal_mining = 6.0
-		bg_iron_mining = 4.0
-		bg_sulfur_mining = 1.75
-		bg_lead_mining = 1.75
-		bg_gold_fields = 1.5
-		bg_gold_mining = 1.5
+		bg_oil_extraction = 1.25
+		bg_mining = 2.5
 		bg_logging = 1.25
 	}
 	
 	goods_stances = {
-		coal = { stance = wants_export trigger = { kai_has_high_supply = { GOODS = coal } } }
-		iron = { stance = wants_export trigger = { kai_has_high_supply = { GOODS = iron } } }
-		oil = { stance = wants_export trigger = { kai_has_high_supply = { GOODS = oil } } }
-		lead = { stance = wants_export trigger = { kai_has_high_supply = { GOODS = lead } } }
-		wood = { stance = wants_export trigger = { kai_has_high_supply = { GOODS = wood } } }
-		hardwood = { stance = wants_export trigger = { kai_has_high_supply = { GOODS = hardwood } } }
-		sulfur = { stance = wants_export trigger = { kai_has_high_supply = { GOODS = sulfur } } }
-		rubber = { stance = wants_export trigger = { kai_has_high_supply = { GOODS = rubber } } }
+		explosives = {
+			stance = wants_high_supply
+			trigger = {
+				has_technology_researched = nitroglycerin
+			}
+		}
+		tools = { stance = wants_high_supply }
+		coal = { stance = wants_export }
+		iron = { stance = wants_export }
+		lead = { stance = wants_export }
+		sulfur = { stance = wants_export }
 	}
 
     subsidies = {
