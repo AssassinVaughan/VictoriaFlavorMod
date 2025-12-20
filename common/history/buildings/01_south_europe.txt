@@ -2422,7 +2422,7 @@
 					building={
 						type="building_wheat_farm"
 						country="c:SPA"
-						levels=5
+						levels=2
 						region="STATE_OLD_CASTILE"
 					}
 				}
@@ -3091,6 +3091,19 @@
 				reserves=1
 			}
 			create_building={
+				building="building_fishing_wharf"
+				add_ownership={
+					building={
+						type="building_fishing_wharf"
+						country="c:SPA"
+						levels=1
+						region="STATE_LOWER_ANDALUSIA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_simple_fishing" "pm_unrefrigerated"  }
+			}
+			create_building={
 				building="building_vineyard"
 				add_ownership={
 					building={
@@ -3108,17 +3121,6 @@
 				}
 				reserves=1
 				activate_production_methods={ "default_building_vineyard" "pm_road_carts"  }
-			}
-			create_building={
-				building="building_military_shipyard"
-				add_ownership={
-					country={
-						country="c:SPA"
-						levels=1
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_military_shipbuilding_wooden"  }
 			}
 			create_building={
 				building="building_wheat_farm"
