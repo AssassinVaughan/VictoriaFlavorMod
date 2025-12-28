@@ -6,3 +6,21 @@
 		ai_value=0
 	}
 }
+
+# PBF:Keep in line with other IGs
+REPLACE:interest_group_ig_armed_forces_approval_add = {
+	decimals = 1
+	color = good
+	game_data = {
+		ai_value = 0
+	}
+}
+
+# 05_power_bloc_modifier_types
+REPLACE:power_bloc_income_transfer_to_leader_factor = {
+	color = neutral
+	percent = yes #PBF
+	game_data = {
+		ai_value = 0
+	}
+}

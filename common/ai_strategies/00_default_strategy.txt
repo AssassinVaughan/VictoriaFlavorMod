@@ -1129,7 +1129,7 @@ ai_strategy_default = {
 		
 		if = { # Be careful when the great potato famine is active
 			limit = {
-			    has_global_variable = potato_blight_var
+			    has_global_variable = hungry_forties_var
 			    OR = {
 				    c:PRU ?= this
 					c:SWE ?= this
@@ -5423,7 +5423,7 @@ ai_strategy_default = {
 		building_power_plant = must_have
 		building_railway = must_have
 		building_port = must_have		
-		building_military_shipyards = must_have	
+		building_military_shipyard = must_have	
 	}
 	
 	# Specifying values here will override subsidy priorities while at war
@@ -5622,7 +5622,7 @@ ai_strategy_default = {
 			stance = wants_high_supply
 			trigger = {
 				has_technology_researched = urban_planning
-			
+			}
 		}
 		iron = {
 			stance = wants_high_supply
