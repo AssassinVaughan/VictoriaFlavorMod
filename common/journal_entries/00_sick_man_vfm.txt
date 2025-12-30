@@ -754,29 +754,22 @@ je_sick_man_kurdistan = {
 					}
 				}
 			}
-			AND = {
-				owns_entire_state_region = STATE_ANKARA
-				owns_entire_state_region = STATE_ERZURUM
-				owns_entire_state_region = STATE_DIYARBAKIR
-				owns_entire_state_region = STATE_DEIR_EZ_ZOR
-				owns_entire_state_region = STATE_MOSUL
+			custom_tooltip = {
+            text = centralise_kurdish_vilayets_cooldown_tt
+            has_variable = centralise_kurdish_vilayets_cooldown
+        }
+			custom_tooltip = {
+				text = establish_kurdish_state_cooldown_tt
+				has_variable = establish_kurdish_state_cooldown
 			}
 		}
-		any_scope_state = {
-			state_region = s:STATE_DIYARBAKIR
-            is_incorporated = yes
-			turmoil < 0.15
-		} 
-		any_scope_state = {
-			state_region = s:STATE_MOSUL
-            is_incorporated = yes
-			turmoil < 0.15
-		}
-		any_scope_state = {
-			state_region = s:STATE_ERZURUM
-            is_incorporated = yes
-			turmoil < 0.15
-		}
+		AND = {
+				owns_entire_state_region = STATE_ERZURUM
+				owns_entire_state_region = STATE_DIYARBAKIR
+				owns_entire_state_region = STATE_MOSUL
+				owns_entire_state_region = STATE_DEIR_EZ_ZOR
+			}
+		
 	}
 
 	on_complete = {

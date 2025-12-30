@@ -5,6 +5,7 @@ namespace = vilayet_events #events around the provinces and tributaries
 namespace = opda_events #the Ottoman Public Debt Administration
 namespace = ottoman_arabia_events #t
 
+
 # Death of Mahmud II
 ottoman_dynasty.1 = {
 		type = country_event
@@ -431,104 +432,26 @@ vilayet_events.7 = { #Centralising the Kurdish Emirates
 	on_opened_soundeffect = "event:/SFX/Events/asia/hinduism_sikhism"
 	icon = "gfx/interface/icons/event_icons/event_skull.dds"
 	minor_left_icon = c:TUR
-	trigger = {
-		any_state = {
-			owner = {
-				is_subject_of = ROOT
-				is_player = no
-				country_has_primary_culture = cu:kurdish
-				can_form_nation = KUR
-			}
-		}
-	}
-	immediate = {
-		random_state = {
-			limit = {
-				owner = {
-					is_subject_of = ROOT
-					is_player = no
-					country_has_primary_culture = cu:kurdish
-					can_form_nation = KUR
-				}
-			}
-			owner = { save_scope_as = kurdish_annexation_target_state_1 }
-		}
-		random_state = {
-			limit = {
-				owner = {
-					is_subject_of = ROOT
-					is_player = no
-					country_has_primary_culture = cu:kurdish
-					can_form_nation = KUR
-					NOT = { this = scope:kurdish_annexation_target_state_1 }
-				}
-			}
-			owner = { save_scope_as = kurdish_annexation_target_state_2 }
-		}
-		random_state = {
-			limit = {
-				owner = {
-					is_subject_of = ROOT
-					is_player = no
-					country_has_primary_culture = cu:kurdish
-					can_form_nation = KUR
-					NOT = { this = scope:kurdish_annexation_target_state_1 }
-					NOT = { this = scope:kurdish_annexation_target_state_2 }
-				}
-			}
-			owner = { save_scope_as = kurdish_annexation_target_state_3 }
-		}
-	}
-
 	option = {
-		name = vilayet_events.7.a
+		name = vilayet_events.7.f
 		default_option = yes
-		scope:kurdish_annexation_target_state_1 = {
-			add_radicals = {
-				value = very_large_radicals
+		every_state = {
+			limit = {
+				OR = {
+					state_region = s:STATE_MOSUL
+					state_region = s:STATE_DIYARBAKIR
+					state_region = s:STATE_ERZURUM
+					state_region = s:STATE_DEIR_EZ_ZOR
+				}
 			}
-		}
-		annex = scope:kurdish_annexation_target_state_1
-		create_incident = {
-			country = scope:kurdish_annexation_target_state_1.owner
-			value = 2
-		}
-	}
-
-	option = {
-		name = vilayet_events.7.b
-		trigger = {
-			exists = scope:kurdish_annexation_target_state_2
-		}
-		scope:kurdish_annexation_target_state_2 = {
-			add_radicals = {
-				value = very_large_radicals
+			remove_modifier = kur_principalities_modifier
+			add_modifier = {
+				name = vilayet_kurdish_centralization
 			}
-		}
-		annex = scope:kurdish_annexation_target_state_2
-		create_incident = {
-			country = scope:kurdish_annexation_target_state_2.owner
-			value = 2
-		}
-	}
-	
-	option = {
-		name = vilayet_events.7.c
-		trigger = {
-			exists = scope:kurdish_annexation_target_state_3
-		}
-		scope:kurdish_annexation_target_state_3 = {
-			add_radicals = {
-				value = very_large_radicals
-			}
-		}
-		annex = scope:kurdish_annexation_target_state_3
-		create_incident = {
-			country = scope:kurdish_annexation_target_state_3.owner
-			value = 2
 		}
 	}
 }
+
 
 vilayet_events.8 = { #Creation of the Kurdish Autonomy
 	type = country_event
@@ -540,74 +463,25 @@ vilayet_events.8 = { #Creation of the Kurdish Autonomy
 	event_image = {
 		video = "gfx/event_pictures/asia_hinduism_sikhism.bk2"
 	}
-	immediate = {
-		random_country = {
-            limit = {          
-                country_has_primary_culture = cu:kurdish
-                is_subject_of = c:TUR
-            }
-            save_scope_as = kurdistan_leader
-        }
-        c:TUR = {
-			create_diplomatic_pact = {
-				country = scope:kurdistan_leader
-				type = puppet
-			}
-		}
-        every_country = {
-            limit = { 
-                NOT = { this = scope:kurdistan_leader }
-                is_subject_of = c:TUR
-                country_has_primary_culture = cu:kurdish
-            }
-            save_scope_as = kurdistan_annex_target
-            scope:kurdistan_leader = {
-            annex = scope:kurdistan_annex_target
-            }
-        }
-		scope:kurdistan_leader = {
-             change_tag = KUR
-        }
-	}
-	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
-	on_opened_soundeffect = "event:/SFX/Events/asia/hinduism_sikhism"
-	icon = "gfx/interface/icons/event_icons/event_map.dds"
-	minor_left_icon = c:KUR
-	option = { 
+	option = {
 		name = vilayet_events.8.a
 		default_option = yes
-		hidden_effect = {
-			s:STATE_ANKARA = {
-				random_scope_state = {
-					limit = {
-						owner = {
-							is_subject_of = c:TUR
-						}
-					}
-					set_state_owner = c:TUR
+		every_state = {
+			limit = {
+				OR = {
+					state_region = s:STATE_MOSUL
+					state_region = s:STATE_DIYARBAKIR
+					state_region = s:STATE_ERZURUM
+					state_region = s:STATE_DEIR_EZ_ZOR
 				}
 			}
-			s:STATE_ADANA = {
-				random_scope_state = {
-					limit = {
-						owner = {
-							is_subject_of = c:TUR
-						}
-					}
-					set_state_owner = c:TUR
-				}
-			}
-			s:STATE_ERZURUM = {
-				random_scope_state = {
-					limit = {
-						owner = {
-							is_subject_of = c:TUR
-						}
-					}
-					set_state_owner = c:TUR
-				}
+			remove_modifier = kur_principalities_modifier
+			add_modifier = {
+				name = vilayet_kurdish_autonomy
+				
 			}
 		}
+		
 	}
 }
 
@@ -1212,7 +1086,6 @@ ottoman_arabia_events.2 = {
 	#	}
 	#}
 }
-
 
 
 ##Foreign country contemplates intervention
