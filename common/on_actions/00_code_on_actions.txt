@@ -54,6 +54,19 @@ on_game_started_after_lobby = {
 				}
 			}
 		}
+
+		   every_state = {
+			   limit = {
+				   OR = {
+					   state_region = s:STATE_MOSUL
+					   state_region = s:STATE_DIYARBAKIR
+					   state_region = s:STATE_ERZURUM
+					   state_region = s:STATE_DEIR_EZ_ZOR
+				   }
+				   owner = { c:TUR ?= this }
+			   }
+			   add_modifier = { name = kur_principalities_modifier }
+		   }
 		# Electoral Confidence
 		every_country = {
 			limit = {
@@ -6702,6 +6715,26 @@ on_state_incorporation = {
 on_state_owner_change = {
 	effect = {
 		evaluate_and_assign_state_hub_dynamic_names = yes # All dynamic naming is handled by this scripted effect
+
+		if = {
+			limit = {
+				OR = {
+					state_region = s:STATE_MOSUL
+					state_region = s:STATE_DIYARBAKIR
+					state_region = s:STATE_ERZURUM
+					state_region = s:STATE_DEIR_EZ_ZOR
+				}
+				NOT = { owner = { c:TUR ?= this } }
+					   OR = {
+						   has_modifier = kur_principalities_modifier
+						   has_modifier = vilayet_kurdish_centralization
+						   has_modifier = vilayet_kurdish_autonomy
+					   }
+			}
+			remove_modifier = kur_principalities_modifier
+			remove_modifier = vilayet_kurdish_centralization
+			remove_modifier = vilayet_kurdish_autonomy
+		}
 
 		if = {
 			limit = {
