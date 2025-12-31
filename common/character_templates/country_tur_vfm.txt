@@ -1,0 +1,42 @@
+﻿REPLACE:tur_mahmut_osmanoglu_template = {
+    # Mahmud II of the Ottoman Empire
+    first_name = Mahmut
+    last_name = Osmanoglu
+    historical = yes
+	culture = primary_culture
+    ruler = yes
+    birth_date = 1785.7.20
+    dna = dna_mahmud_02
+    interest_group = ig_intelligentsia
+    ideology = ideology_moderate
+    traits = {
+        ambitious
+		tuberculosis
+    }
+	on_created = {
+		set_variable = {
+			name = is_mahmud_ii
+		}				
+	}
+}
+
+REPLACE:tur_abdulmecid_osmanoglu_template = {
+    first_name = Abdulmecid
+    last_name = Osmanoglu
+    historical = yes
+	culture = primary_culture
+    heir = yes
+	noble = yes
+    birth_date = 1823.4.25
+    interest_group = ig_intelligentsia
+	ideology = ideology_modernizer_leader
+    traits = {
+        trait_child
+		aesthete
+    }
+	on_created = {
+		set_variable = {
+			name = is_abdulmejid_i
+		}				
+	}
+}
