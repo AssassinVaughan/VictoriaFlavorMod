@@ -284,3 +284,32 @@ building_hydroelectric_power_plant = {
 	
 	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_monuments.dds"
 }
+
+REPLACE:building_port = {
+	building_group = bg_private_infrastructure
+	city_type = port
+	levels_per_mesh = 1
+	icon = "gfx/interface/icons/building_icons/building_port.dds"
+
+	has_max_level = yes
+	ignore_stateregion_max_level = yes
+	port = yes
+
+	unlocking_technologies = { navigation }
+
+	production_method_groups = {
+		pmg_base_building_port
+	}
+
+	required_construction = construction_cost_medium
+
+	terrain_manipulator = urban_port
+
+	potential = {
+		is_coastal = yes
+	}
+
+	ownership_type = self
+
+	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_monuments.dds"
+}
