@@ -253,32 +253,6 @@ vfm_sakhalin_colony_created = {
 	}
 }
 
-vfm_barracks_colony_created = {
-	effect = {
-		#temporary solution giving barracks to colonies to prevent being overrun by uprisings instantly
-		if = {
-			limit = {
-				owner = {
-					country_is_in_africa = no
-					is_ai = yes
-				}
-				is_under_colonization = yes
-				is_incorporated = no
-				OR = {
-					state_in_africa = yes
-				}
-				NOT = {
-					has_building = building_barrack
-				}
-			}
-			create_building = {
-				building = building_barrack
-				level = 1
-			}
-		}
-	}
-}
-
 revolution_safety_check_on_action = {
 	effect = {
 		if = {

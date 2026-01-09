@@ -53,7 +53,7 @@
 		law_free_trade = disapprove
 	}	
 	
-	lawgroup_centralization = {
+	lawgroup_centralization = { # VFM
 		law_decentralized = neutral
 		law_confederated = disapprove
 		law_federal = disapprove
@@ -199,6 +199,15 @@ ideology_hierarchic = {
 		law_colonial_exploitation = approve
 		law_frontier_colonization = approve
 	}
+	
+	lawgroup_labour_associations = { # VFM
+		law_combination_acts = neutral
+		law_guild_system = approve
+		law_factory_councils = disapprove
+		law_anti_strike_laws = neutral
+		law_corporatized_unions = neutral
+		law_right_to_associate = disapprove
+	}
 }
 
 ideology_oligarchic = {
@@ -303,6 +312,14 @@ ideology_agrarian = {
 		law_hindu_caste_not_enforced = neutral
 		law_affirmative_action = neutral
 	}
+	
+	lawgroup_centralization = { # VFM
+		law_decentralized = approve
+		law_confederated = neutral
+		law_federal = neutral
+		law_devolved = neutral
+		law_unitary = disapprove
+	}
 }
 
 ideology_particularist = {
@@ -330,7 +347,7 @@ ideology_particularist = {
 		law_slave_trade = neutral
 	}
 	
-	lawgroup_centralization = {
+	lawgroup_centralization = { # VFM
 		law_decentralized = strongly_approve
 		law_confederated = approve
 		law_federal = neutral
@@ -496,7 +513,7 @@ ideology_patriotic = {
 		law_frontier_colonization = approve
 	}	
 	
-	lawgroup_centralization = {
+	lawgroup_centralization = { # VFM
 		law_decentralized = disapprove
 		law_confederated = disapprove
 		law_federal = neutral
@@ -583,7 +600,7 @@ ideology_liberal = {
 		law_womens_suffrage = neutral
 	}
 	
-	lawgroup_centralization = {
+	lawgroup_centralization = { # VFM
 		law_decentralized = neutral
 		law_confederated = approve
 		law_federal = approve
@@ -723,7 +740,14 @@ ideology_egalitarian = {
 		law_no_workers_rights = neutral
 	}	
 	
-	lawgroup_centralization = {
+	lawgroup_education_system = { # VFM
+		law_religious_schools = neutral
+		law_no_schools = disapprove
+		law_public_schools = approve
+		law_private_schools = neutral
+	}
+	
+	lawgroup_centralization = { # VFM
 		law_decentralized = neutral
 		law_confederated = approve
 		law_federal = approve

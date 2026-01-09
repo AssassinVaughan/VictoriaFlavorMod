@@ -4870,17 +4870,12 @@ ai_strategy_default = {
 
 		add = {
 			value = investment_pool_income
-			divide = 550 # 1 construction output per this much into the investment pool				
+			divide = 3500 # 1 construction output per this much into the investment pool				
 		}
 		
 		add = {
-			value = weekly_net_fixed_income
-			divide = 550
-
-			min = {
-				value = kai_state_income
-				divide = 2750 # 1 construction output per this much income
-			}
+			value = fixed_income
+			divide = 3500
 		}
 			
 		# Improved technology enables cheaper construction
@@ -5571,13 +5566,6 @@ ai_strategy_default = {
 				has_technology_researched = vulcanization
 			}
 		}
-		oil = {
-			stance = wants_high_supply
-			trigger = {
-				has_technology_researched = pumpjacks
-				kai_should_use_goods_stances = yes
-			}
-		}
 		lead = {
 			stance = wants_high_supply
 			trigger = {
@@ -5594,7 +5582,6 @@ ai_strategy_default = {
 			stance = wants_high_supply
 			trigger = {
 				has_technology_researched = intensive_agriculture
-				kai_should_use_goods_stances = yes
 			}
 		}
 		fertilizer = { 
@@ -6497,9 +6484,9 @@ ai_strategy_default = {
 					}
 				}
 				add = 200
-			}
+		    	}
 
-            if = { # Try to be on good terms with GBR/USA to avoid intervention
+                if = { # Try to be on good terms with GBR/USA to avoid intervention
 					limit = {
 						has_journal_entry = je_reconquista
 						scope:target_country = {
@@ -6531,7 +6518,6 @@ ai_strategy_default = {
 					}
 					add = 10000
 				}
-            }
 		
 			if = {
 				limit = {
