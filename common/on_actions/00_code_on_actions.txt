@@ -1296,7 +1296,7 @@ on_monthly_pulse_country = {
 		}
 
 		# USA Second Amendment check
-		second_amendment_remove_obsessions_effect = yes
+		# second_amendment_remove_obsessions_effect = yes // GVFH: Remove random removing
 
 		if = { # Nothing to see here, move along, sir.
 			limit = {
@@ -1404,6 +1404,7 @@ on_yearly_pulse_country = {
 		spanish_africa.3
 		spanish_africa.4
 		spain_politics.2
+		gvfh_critical_trade_center_event.1 # GVFH: Add one trade center in capital or treaty port if country has none		
 	}
 	effect = {
 		# Countries have a chance to change their mind about who they want to support in Egypt vs Ottomans conflicts
@@ -4711,7 +4712,7 @@ on_law_activated = {
 	effect = {
 		if = {
 			limit = {
-				c:BRZ ?= {
+				c:BRZ ?= { # GVFH: This if should target owner c:BRZ not to be triggered by any country in the world
 					has_journal_entry = je_matter_of_slavery
 					OR = {
 						has_modifier = unrestricted_slave_trade_modifier
@@ -4761,7 +4762,7 @@ on_law_activated = {
 		}
 		if = {
 			limit = {
-				c:BRZ ?= {
+				c:BRZ ?= { # GVFH: This if should target owner c:BRZ not to be triggered by any country in the world
 					has_journal_entry = je_matter_of_slavery
 					OR = {
 						has_law_or_variant = law_type:law_debt_slavery
@@ -4782,7 +4783,9 @@ on_law_activated = {
 				}
 			}
 		}
-		second_amendment_add_obsessions_effect = yes # Relevant if owner is Yankee or Dixie
+
+		# second_amendment_add_obsessions_effect = yes # Relevant if owner is Yankee or Dixie  // GVFH: Remove random add
+
 		upgrade_moderniser_movement_effect = yes # Relevant if owner has a moderniser movement
 		owner = {
 			if = { # If a currently enacting law is invalidated by an activated law, stop enacting it
@@ -6941,6 +6944,8 @@ on_election_campaign_start = {
 		caciquismo.1
 		caciquismo.2
 		coffee_with_milk.7
+		delay = { days = 1 }
+		gvfh_elections_fix.1
 	}
 }
 
@@ -6960,6 +6965,9 @@ on_election_campaign_end = {
 			}
 			remove_modifier = modifier_government_recently_couped
 		}
+	}
+	events = {
+		gvfh_elections_fix.1 # GVFH: Not needed but just in case single party state is enact in the middle of election
 	}
 }
 

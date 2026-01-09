@@ -182,13 +182,8 @@
 			if = {
 				limit = {
 					s:STATE_TURKMENIA = {
-						NOT = {
-							any_scope_state = {
-								owner = {
-									is_country_type = decentralized
-								}
-							}
-							any_scope_state = {
+						any_scope_state = {
+							NOT = {
 								has_claim_by = root
 							}
 						}
@@ -204,13 +199,8 @@
 			if = {
 				limit = {
 					s:STATE_MERZ = {
-						NOT = {
-							any_scope_state = {
-								owner = {
-									is_country_type = decentralized
-								}
-							}
-							any_scope_state = {
+						any_scope_state = {
+							NOT = {
 								has_claim_by = root
 							}
 						}
@@ -401,7 +391,7 @@ persia_british_aid_button = {
 	effect = {
 		set_variable = PER_appealed_to_GBR
 		save_scope_as = persian_nation_scope
-		c:GBR = {
+		c:GBR ?= {
 			save_scope_as = relevant_country
 			trigger_event = { id = persia_events.4 popup = yes }
 		}
@@ -416,14 +406,14 @@ persia_british_aid_button = {
 				add_modifier = {
 					name = modifier_south_persia_rifles
 				}
-				c:GBR = {
-					create_treaty = { 
+				c:GBR ?= {
+					create_treaty = {
 						first_country = c:GBR
 						second_country = ROOT
-				
+
 						is_draft = no
 						binding_period = { years = 2 }
-				
+
 						articles_to_create = {
 							{
 								article = military_assistance
@@ -438,14 +428,14 @@ persia_british_aid_button = {
 				limit = {
 					has_modifier = modifier_south_persia_rifles
 				}
-				c:GBR = {
-					create_treaty = { 
+				c:GBR ?= {
+					create_treaty = {
 						first_country = c:GBR
 						second_country = ROOT
-				
+
 						is_draft = no
 						binding_period = { years = 2 }
-				
+
 						articles_to_create = {
 							{
 								article = military_assistance
@@ -515,7 +505,7 @@ persia_russian_aid_button = {
 	effect = {
 		set_variable = PER_appealed_to_RUS
 		save_scope_as = persian_nation_scope
-		c:RUS = {
+		c:RUS ?= {
 			save_scope_as = relevant_country
 			trigger_event = { id = persia_events.4 popup = yes }
 		}
@@ -530,14 +520,14 @@ persia_russian_aid_button = {
 				add_modifier = {
 					name = modifier_persian_cossack_brigade
 				}
-				c:RUS = {
-					create_treaty = { 
+				c:RUS ?= {
+					create_treaty = {
 						first_country = c:RUS
 						second_country = ROOT
-				
+
 						is_draft = no
 						binding_period = { years = 2 }
-				
+
 						articles_to_create = {
 							{
 								article = military_assistance
@@ -552,14 +542,14 @@ persia_russian_aid_button = {
 				limit = {
 					has_modifier = modifier_persian_cossack_brigade
 				}
-				c:RUS = {
-					create_treaty = { 
+				c:RUS ?= {
+					create_treaty = {
 						first_country = c:RUS
 						second_country = ROOT
-				
+
 						is_draft = no
 						binding_period = { years = 2 }
-				
+
 						articles_to_create = {
 							{
 								article = military_assistance

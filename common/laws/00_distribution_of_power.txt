@@ -1195,9 +1195,21 @@ law_single_party_state = {
 	}
 
 	on_activate = {
-		set_only_legal_party_from_ig = ruler.interest_group
+		# set_only_legal_party_from_ig = ruler.interest_group # GVFH: This is fully bugged and won't use the given interest group
 		custom_tooltip = {
 			text = sps_government_reshuffle_tt
+			every_active_party = {
+				limit = {
+					NOT = { THIS = root.ruler.interest_group.party }
+				}
+				disband_party = yes
+			}
+			every_active_party = { # GVFH: I have no idea why but I need to run this loop twice or landowner party stay active
+				limit = {
+					NOT = { THIS = root.ruler.interest_group.party }
+				}
+				disband_party = yes
+			}
 			every_interest_group = {
 				limit = {
 					is_in_government = yes

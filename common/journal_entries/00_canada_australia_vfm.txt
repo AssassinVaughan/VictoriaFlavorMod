@@ -38,6 +38,17 @@
 			owns_entire_state_region = STATE_NUNAVUT
 		}
         is_diplomatic_play_committed_participant = no
+		NOT = { 
+			any_neighbouring_state = {
+				owner = {
+					OR = {
+						country_has_primary_culture = cu:anglo_canadian
+						country_has_primary_culture = cu:franco_canadian
+					}
+					is_subject = yes
+				}
+			}
+		}
 	}
 
 	on_complete = {
@@ -130,6 +141,13 @@ REPLACE:je_canada_gbr = {
 				owns_entire_state_region = STATE_NORTHWEST_TERRITORIES
 				owns_entire_state_region = STATE_NUNAVUT
 			}
+		}
+		any_subject_or_below = { # GVFH: Complete only if there is only one subject remaining in canada big enough
+			OR = {
+				country_has_primary_culture = cu:anglo_canadian
+				country_has_primary_culture = cu:franco_canadian
+			}
+			count = 1
 		}
 		is_at_war = no
 	}
