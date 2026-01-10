@@ -301,7 +301,7 @@ REPLACE:je_sick_man_economy = {
 	}
 
 	goal_add_value = {
-		value = 25000000
+		value = root.gdp
 	}
 	
 	fail = {
@@ -371,7 +371,7 @@ REPLACE:je_sick_man_education = {
 	}
 
 	goal_add_value = {
-		value = 0.2
+		value = 0.1
 	}
 
 	invalid = {
@@ -597,9 +597,9 @@ je_sick_man_navy = {
 	}
 
 	on_monthly_pulse = {
-		events = {
-			tanzimat_events.10 # Tanzimat Draft Question
-		}
+		#events = {
+		#	tanzimat_events.10 # Tanzimat Draft Question
+		#}
 	}
 
 	invalid = {
@@ -720,10 +720,10 @@ je_sick_man_vilayets = {
 	}
 
 	on_monthly_pulse = {
-		random_events = {
-			100 = 0
-			10 = tanzimat_events.9 # Land registration resisted
-		}
+		#random_events = {
+		#	100 = 0
+		#	10 = tanzimat_events.9 # Land registration resisted
+		#}
 	}
 	
 	invalid = {
