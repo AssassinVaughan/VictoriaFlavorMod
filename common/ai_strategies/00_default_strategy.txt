@@ -4894,6 +4894,16 @@ ai_strategy_default = {
 			multiply = 0.3
 		}
 
+		if = {
+			limit = {
+				OR = {
+					has_journal_entry = je_meiji_restoration
+					has_journal_entry = je_meiji_main
+				}
+			}
+			multiply = 1.5
+		}
+
         add = 3 # Accounts for the 3 free construction from base modifiers
 
 		# KAI: Scale the wanted construction capacity with gold reserve

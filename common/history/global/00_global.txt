@@ -729,6 +729,17 @@ GLOBAL = {
 				name = tur_regional_autonomy
 			}
 		}
+		every_scope_state = {
+			limit = {
+				OR = {
+					state_region = s:STATE_MOSUL
+					state_region = s:STATE_DIYARBAKIR
+					state_region = s:STATE_ERZURUM
+					state_region = s:STATE_DEIR_EZ_ZOR
+				}
+			}
+			add_modifier = { name = kur_principalities_modifier }
+		}
 	}
 
 	c:ARG ?= {
@@ -1018,7 +1029,7 @@ GLOBAL = {
 		}
     }
 
-	c:TUR = {
+	c:TUR ?= {
 	    add_radicals = {
 			value = 0.35
 			culture = cu:kurdish
@@ -1061,7 +1072,7 @@ GLOBAL = {
 		}
 	}
 
-	c:EGY = {
+	c:EGY ?= {
 	    add_radicals = {
 			value = 0.08
 			culture = cu:greek
@@ -1090,7 +1101,7 @@ GLOBAL = {
 
 
 
-	c:PRU = {
+	c:PRU ?= {
 		add_radicals = {
 			value = very_large_radicals
 			culture = cu:polish

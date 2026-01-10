@@ -54,19 +54,6 @@ on_game_started_after_lobby = {
 				}
 			}
 		}
-
-		   every_state = {
-			   limit = {
-				   OR = {
-					   state_region = s:STATE_MOSUL
-					   state_region = s:STATE_DIYARBAKIR
-					   state_region = s:STATE_ERZURUM
-					   state_region = s:STATE_DEIR_EZ_ZOR
-				   }
-				   owner = { c:TUR ?= this }
-			   }
-			   add_modifier = { name = kur_principalities_modifier }
-		   }
 		# Electoral Confidence
 		every_country = {
 			limit = {
