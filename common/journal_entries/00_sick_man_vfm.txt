@@ -875,7 +875,10 @@ je_sick_man_arabia = {
 					add = 1
 				}
 			}
-			else = {
+			else_if = {
+				limit = {
+	   				var:sick_man_arabia_var >= 0
+				}
 			    change_variable = {
 					name = sick_man_arabia_var
 					subtract = 1

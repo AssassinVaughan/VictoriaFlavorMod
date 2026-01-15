@@ -309,6 +309,18 @@ REPLACE:building_port = {
 		is_coastal = yes
 	}
 
+	should_auto_expand = {
+		occupancy >= 0.8
+		OR = {
+			cash_reserves_ratio > 0.5
+			is_subsidized = yes
+		}
+		state = {
+			infrastructure_delta <= -4
+		}
+		NOT = { is_under_construction = yes }
+	}
+
 	ownership_type = self
 
 	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_monuments.dds"
