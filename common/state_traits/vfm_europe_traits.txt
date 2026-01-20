@@ -159,6 +159,13 @@ state_trait_bosporos = {
 	}
 }
 
+state_trait_ruhr_valley = {
+	icon = "gfx/interface/icons/state_trait_icons/river.dds"
+	modifier = {
+		state_infrastructure_add = 10
+	}
+}
+
 REPLACE:state_trait_bosporus = {
 	icon = "gfx/interface/icons/state_trait_icons/natural_harbors.dds"
 
@@ -174,7 +181,7 @@ REPLACE:state_trait_bosporus = {
 
 #East Europe
 
-state_trait_odeska_zatoka = {
+state_trait_odesa_zatoka = {
 	icon = "gfx/interface/icons/state_trait_icons/natural_harbors.dds"
 	
 	modifier = {
@@ -195,18 +202,6 @@ state_trait_liivi_laht = {
 		building_port_throughput_add = 0.1
 		state_building_port_max_level_add = 2
 		state_building_naval_base_max_level_add = 10
-	}
-}
-
-state_trait_luga_bay = {
-	icon = "gfx/interface/icons/state_trait_icons/natural_harbors.dds"
-	
-	modifier = {
-		building_shipyard_throughput_add = 0.1
-		building_military_shipyard_throughput_add = 0.1
-		building_port_throughput_add = 0.1
-		state_building_port_max_level_add = 2
-		state_building_naval_base_max_level_add = 5
 	}
 }
 

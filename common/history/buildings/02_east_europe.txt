@@ -130,13 +130,13 @@
 					building={
 						type="building_textile_mill"
 						country="c:PRU"
-						levels=2
+						levels=1
 						region="STATE_LOWER_SILESIA"
 					}
 					building={
 						type="building_financial_district"
 						country="c:PRU"
-						levels=6
+						levels=5
 						region="STATE_LOWER_SILESIA"
 					}
 				}
@@ -265,6 +265,175 @@
 				}
 				reserves=1
 				activate_production_methods={ "pm_simple_farming" "pm_sugar_beets" "pm_tools"  }
+			}
+		}
+	}
+	s:STATE_UPPER_SILESIA={
+		region_state:PRU={
+			create_building={
+				building="building_textile_mill"
+				add_ownership={
+					building={
+						type="building_textile_mill"
+						country="c:PRU"
+						levels=1
+						region="STATE_UPPER_SILESIA"
+					}
+					building={
+						type="building_financial_district"
+						country="c:PRU"
+						levels=1
+						region="STATE_UPPER_SILESIA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_dye_workshops" "pm_no_luxury_clothes" "pm_traditional_looms"  }
+			}
+			create_building={
+				building="building_construction_sector"
+				add_ownership={
+					country={
+						country="c:PRU"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_iron_frame_buildings" }
+			}
+			create_building={
+				building="building_coal_mine"
+				add_ownership={
+					building={
+						type="building_coal_mine"
+						country="c:PRU"
+						levels=2
+						region="STATE_UPPER_SILESIA"
+					}
+					building={
+						type="building_financial_district"
+						country="c:PRU"
+						levels=4
+						region="STATE_UPPER_SILESIA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_atmospheric_engine_pump_building_coal_mine" "pm_no_explosives" "pm_no_steam_automation" "pm_road_carts"  }
+			}
+			create_building={
+				building="building_lead_mine"
+				add_ownership={
+					building={
+						type="building_lead_mine"
+						country="c:PRU"
+						levels=1
+						region="STATE_UPPER_SILESIA"
+					}
+					building={
+						type="building_financial_district"
+						country="c:PRU"
+						levels=2
+						region="STATE_UPPER_SILESIA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_atmospheric_engine_pump_building_lead_mine" "pm_no_explosives" "pm_no_steam_automation" "pm_road_carts"  }
+			}
+			create_building={
+				building="building_iron_mine"
+				add_ownership={
+					building={
+						type="building_iron_mine"
+						country="c:PRU"
+						levels=1
+						region="STATE_UPPER_SILESIA"
+					}
+					building={
+						type="building_financial_district"
+						country="c:PRU"
+						levels=2
+						region="STATE_UPPER_SILESIA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_atmospheric_engine_pump_building_iron_mine" "pm_no_explosives" "pm_no_steam_automation" "pm_road_carts"  }
+			}
+			create_building={
+				building="building_livestock_ranch"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:PRU"
+						levels=1
+						region="STATE_UPPER_SILESIA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_slaughterhouses" "pm_sheep_farms" "pm_standard_fences" "pm_unrefrigerated"  }
+			}
+			create_building={ # Kunern sugar beet factory
+				building="building_rye_farm"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:PRU"
+						levels=2
+						region="STATE_UPPER_SILESIA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_simple_farming" "pm_sugar_beets" "pm_tools"  }
+			}
+		}
+		region_state:AUS={
+			create_building={
+				building="building_government_administration"
+				add_ownership={
+					country={
+						country="c:AUS"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_horizontal_drawer_cabinets" "pm_hereditary_bureaucrats" "pm_religious_bureaucrats" }
+			}
+			create_building={
+				building="building_coal_mine"
+				add_ownership={
+					building={
+						type="building_coal_mine"
+						country="c:AUS"
+						levels=1
+						region="STATE_UPPER_SILESIA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_atmospheric_engine_pump_building_coal_mine" "pm_no_explosives" "pm_no_steam_automation" "pm_road_carts"  }
+			}
+			create_building={
+				building="building_iron_mine"
+				add_ownership={
+					building={
+						type="building_iron_mine"
+						country="c:AUS"
+						levels=1
+						region="STATE_UPPER_SILESIA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_atmospheric_engine_pump_building_iron_mine" "pm_no_explosives" "pm_no_steam_automation" "pm_road_carts"  }
+			}
+			create_building={
+				building="building_rye_farm"
+				add_ownership={
+					building={
+						type="building_rye_farm"
+						country="c:AUS"
+						levels=1
+						region="STATE_UPPER_SILESIA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_simple_farming"  "pm_tools_disabled" "pm_potatoes" }
 			}
 		}
 	}

@@ -94,7 +94,7 @@ STATE_GOTLAND = {
     arable_land = 4
     arable_resources = { "building_rye_farm" "building_livestock_ranch" }
     capped_resources = {
-        building_logging_camp = 2
+        building_logging_camp = 1
         building_fishing_wharf = 3
     }
     naval_exit_id = 3000
@@ -113,7 +113,7 @@ STATE_JUTLAND = {
     arable_land = 30
     arable_resources = { "building_rye_farm" "building_livestock_ranch" }
     capped_resources = {
-        building_logging_camp = 4
+        building_logging_camp = 3
         building_fishing_wharf = 10
     }
     naval_exit_id = 3019
@@ -133,7 +133,7 @@ STATE_ZEALAND = {
     arable_land = 20
     arable_resources = { "building_rye_farm" "building_livestock_ranch" }
     capped_resources = {
-        building_logging_camp = 4
+        building_logging_camp = 2
         building_fishing_wharf = 10
     }
     naval_exit_id = 3019
@@ -1089,7 +1089,7 @@ STATE_POMERANIA = {
     arable_land = 55
     arable_resources = { "building_rye_farm" "building_livestock_ranch" }
     capped_resources = {
-        building_logging_camp = 9
+        building_logging_camp = 7
         building_fishing_wharf = 8
 		building_hydroelectric_power_plant = 1
     }
@@ -1165,7 +1165,7 @@ STATE_WESTPHALIA = {
     subsistence_building = "building_subsistence_farm"
     provinces = { "x1BA4F6" "x1DD141" "x218061" "x4101A0" "x418021" "x910095" "x9F0060" "xA08061" }
     prime_land = { "x418021" "xA08061" "x218061" "x1DD141" }
-    traits = { "state_trait_ruhr_coalfield" }
+    traits = { "state_trait_ruhr_valley" "state_trait_ruhr_coalfield" }
     city = "xA08061"
     farm = "x1DD141"
     mine = "x218061"
@@ -1176,7 +1176,7 @@ STATE_WESTPHALIA = {
         building_coal_mine = 36
         building_iron_mine = 20
         building_sulfur_mine = 4
-        building_logging_camp = 9
+        building_logging_camp = 6
 		building_hydroelectric_power_plant = 1
     }
 }
@@ -1214,7 +1214,7 @@ STATE_RHINELAND = {
     capped_resources = {
         building_coal_mine = 32
         building_lead_mine = 14
-        building_logging_camp = 7
+        building_logging_camp = 6
 		building_hydroelectric_power_plant = 2
     }
 }
@@ -1233,7 +1233,7 @@ STATE_NORTH_RHINE = {
     capped_resources = {
         building_coal_mine = 20
         building_iron_mine = 16
-        building_logging_camp = 7
+        building_logging_camp = 6
 		building_hydroelectric_power_plant = 2
     }
 }
@@ -1260,6 +1260,7 @@ STATE_SCHLESWIG_HOLSTEIN = {
     id = 66
     subsistence_building = "building_subsistence_farm"
     provinces = { "x00C060" "x60809F" "x64824C" "x78B203" "x804160" "xBFCC21" "xE000A0" "xE3C876" }
+	traits = { "state_trait_natural_harbors" }
     city = "x64824C"
     port = "x60809F"
     farm = "x00C060"
@@ -1444,7 +1445,7 @@ STATE_MECKLENBURG = {
     arable_resources = { "building_rye_farm" "building_livestock_ranch" }
     capped_resources = {
         building_logging_camp = 6
-        building_fishing_wharf = 7
+        building_fishing_wharf = 5
     }
     naval_exit_id = 3019
 }
