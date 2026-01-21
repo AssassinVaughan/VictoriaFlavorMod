@@ -89,6 +89,24 @@ on_enemy_capitulated_notification = {
 	}
 }
 
+vfm_crimean_war_capitulation_flag = {
+	effect = {
+		if = {
+			limit = {
+				has_variable = crimean_war_active
+			}
+			set_variable = crimean_war_capitulated
+		}
+	}
+}
+
+# Root = Country
+on_self_capitulated_notification = {
+	on_actions = {
+		vfm_crimean_war_capitulation_flag
+	}
+}
+
 # Root = State
 on_state_incorporation = {
 	on_actions = {

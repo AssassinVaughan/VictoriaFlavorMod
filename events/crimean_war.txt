@@ -1,0 +1,721 @@
+namespace = crimean_war
+namespace = crimean_peace
+
+# Menshikov Mission
+crimean_war.1 = {
+	type = country_event
+	placement = root
+	title = crimean_war.1.t
+	desc = crimean_war.1.d
+	flavor = crimean_war.1.f
+	
+	event_image = {
+		video = "unspecific_ruler_speaking_to_people"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/eu/diplomatic_play"
+
+	icon = "gfx/interface/icons/event_icons/event_diplomatic.dds"
+
+	trigger = {
+		tag = RUS
+		is_great_power = yes
+		exists = c:TUR
+		c:TUR = { is_alive = yes }
+		current_date >= 1852.1.1
+		NOT = { has_global_variable = crimean_war_chain_active }
+	}
+
+	mean_time_to_happen = {
+		months = 12
+		modifier = {
+			factor = 0.5
+			relations:TUR < -20
+		}
+	}
+
+	immediate = {
+		set_global_variable = crimean_war_chain_active
+	}
+
+	option = { # Send Menshikov with Demands
+		name = crimean_war.1.a
+		change_infamy = 15
+		c:TUR = {
+			trigger_event = {
+				id = crimean_war.2
+				days = 7
+				popup = yes
+			}
+		}
+		ai_chance = {
+			base = 90
+		}
+	}
+
+	option = { # Let the matter rest
+		name = crimean_war.1.b
+		add_modifier = {
+			name = rus_backed_down_holy_places
+			months = 60
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+# Ottoman response 
+crimean_war.2 = {
+	type = country_event
+	placement = root
+	title = crimean_war.2.t
+	desc = crimean_war.2.d
+	flavor = crimean_war.2.f
+	
+	event_image = {
+		video = "unspecific_signed_contract"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/eu/diplomatic_play"
+
+	icon = "gfx/interface/icons/event_icons/event_diplomatic.dds"
+
+	trigger = {
+		# Triggered by crimean_war.1
+	}
+
+	immediate = {
+	}
+
+	option = { # Reject Demands
+		name = crimean_war.2.a
+		default_option = yes
+		c:RUS = {
+			change_relations= {
+				country = root
+				value = -50
+			}
+			trigger_event = {
+				id = crimean_war.4
+				days = 7
+				popup = yes
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	option = { # Accept Demands 
+		name = crimean_war.2.b
+		add_modifier = {
+			name = ott_backed_down_holy_places
+			months = 122
+		}
+		c:RUS = {
+			trigger_event = {
+				id = crimean_war.3
+				days = 7
+				popup = yes
+			}
+		}
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+# Ottoman accepts menshikovs demands
+
+crimean_war.3 = {
+	type = country_event
+	placement = root
+	title = crimean_war.3.t
+	desc = crimean_war.3.d
+	flavor = crimean_war.3.f
+	
+	event_image = {
+		video = "europenorthamerica_capitalists_meeting"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/eu/diplomatic_play"
+
+	icon = "gfx/interface/icons/event_icons/event_diplomatic.dds"
+
+	trigger = {
+		# Triggered by crimean_war.2
+	}
+
+	immediate = {
+	}
+
+	option = { # Accept Demands 
+		name = crimean_war.3.a
+		default_option = yes
+		add_modifier = {
+			name = rus_the_protector_of_orthodoxy
+			months = 122
+		}
+	}
+}
+
+# Russia reacts to rejection
+crimean_war.4 = {
+	type = country_event
+	placement = root
+	title = crimean_war.4.t
+	desc = crimean_war.4.d
+	flavor = crimean_war.4.f
+	
+	event_image = {
+		video = "unspecific_military_parade"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/eu/diplomatic_play"
+
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+
+	trigger = {
+		# Triggered by crimean_war.2
+	}
+
+	immediate = {
+	}
+
+	option = { # Order the Occupation
+		name = crimean_war.4.a
+		default_option = yes
+		change_infamy = 25
+		c:TUR = {
+			trigger_event = {
+				id = crimean_war.5
+				days = 7
+				popup = yes
+			}
+		}
+		ai_chance = {
+			base = 90
+		}
+	}
+
+	option = { # Back Down
+		name = crimean_war.4.b
+		add_modifier = {
+			name = rus_backed_down_holy_places
+			months = 60
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+# The Vienna Note 
+crimean_war.5 = {
+	type = country_event
+	placement = root
+	title = crimean_war.5.t
+	desc = crimean_war.5.d
+	flavor = crimean_war.5.f
+	
+	event_image = {
+		video = "unspecific_politicians_arguing"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/eu/diplomatic_play"
+
+	icon = "gfx/interface/icons/event_icons/event_diplomatic.dds"
+
+	trigger = {
+		# Triggered by crimean_war.4
+	}
+
+	immediate = {
+	}
+
+	option = { # Reject the Note 
+		name = crimean_war.5.a
+		default_option = yes
+		c:RUS = {
+			trigger_event = {
+				id = crimean_war.6
+				days = 7
+				popup = yes
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	option = { # Accept Mediation
+		name = crimean_war.5.b
+		change_relations = {
+			country = c:RUS
+			value = -50
+		}
+		c:RUS = {
+			add_modifier = {
+				name = rus_the_protector_of_orthodoxy
+				months = 122
+			}
+		}
+		add_modifier = {
+			name = ott_backed_down_holy_places_weaker
+			months = 122
+		}
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+#vienna rejection
+crimean_war.6 = {
+	type = country_event
+	placement = root
+	title = crimean_war.6.t
+	desc = crimean_war.6.d
+	flavor = crimean_war.6.f
+	
+	event_image = {
+		video = "unspecific_ruler_speaking_to_people"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/eu/diplomatic_play"
+
+	icon = "gfx/interface/icons/event_icons/event_skull.dds"
+
+	trigger = {
+		# Triggered by crimean_war.5
+	}
+
+	option = { # War
+		name = crimean_war.6.a
+		create_diplomatic_play = {
+			type = dp_crimean_war
+			target_country = c:TUR
+			add_war_goal = {
+				holder = c:TUR
+				type = humiliation
+				target_country = c:RUS
+			}
+		}
+		c:FRA = {
+			trigger_event = {
+				id = crimean_war.7
+				popup = yes
+				days = 7
+			}
+		}
+		c:SAR = {
+			trigger_event = {
+				id = crimean_war.7
+				popup = yes
+				days = 7
+			}
+		}
+		c:GBR = {
+			trigger_event = {
+				id = crimean_war.7
+				popup = yes
+				days = 7
+			}
+		}
+	}
+}
+
+# Intervention
+crimean_war.7 = {
+	type = country_event
+	placement = root
+	title = crimean_war.7.t
+	desc = crimean_war.7.d
+	flavor = crimean_war.7.f
+	
+	event_image = {
+		video = "unspecific_military_parade"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/eu/diplomatic_play"
+
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+
+	trigger = {
+		# Triggered by crimean_war.6
+	}
+
+	immediate = {
+		c:RUS = {
+			random_diplomatic_play = {
+				limit = {
+					is_diplomatic_play_type = dp_crimean_war
+					target = { this = c:TUR }
+				}
+				save_scope_as = crimean_war_play
+			}
+		}
+	}
+
+	option = { # Join the War 
+		name = crimean_war.7.a
+		default_option = yes
+		
+		custom_tooltip = crimean_war.7.a.tt
+		
+		hidden_effect = {
+			if = {
+				limit = {
+					exists = scope:crimean_war_play
+				}
+				scope:crimean_war_play = {
+					add_target_backers = { root }
+				}
+			}
+		}
+
+
+		root = {
+			change_relations = {
+				country = c:RUS
+				value = -50
+			}
+			change_relations = {
+				country = c:TUR
+				value = 60
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	option = { # Stay Neutral
+		name = crimean_war.7.b
+		root = {
+			change_relations = {
+				country = c:RUS
+				value = 20
+			}
+		}
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+
+
+crimean_peace.1 = {
+	type = country_event
+	placement = root
+	
+	title = crimean_peace.1.t
+	desc = crimean_peace.1.d
+	flavor = crimean_peace.1.f
+	
+	event_image = {
+		video = "unspecific_signed_contract"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/eu/diplomatic_play"
+	
+	icon = "gfx/interface/icons/event_icons/event_peace.dds"
+
+	immediate = {
+		c:RUS = {
+			save_scope_as = loser_scope
+		}
+		root = {
+			save_scope_as = winner_scope
+		}
+		c:MOL = {
+			save_scope_as = mol_scope
+		}
+		c:TUR = {
+			save_scope_as = tur_scope
+		}
+	}
+
+	option = {
+		name = crimean_peace.1.a
+		default_option = yes
+		custom_tooltip = {
+			text = crimean_peace_naval_bases_tt
+			c:RUS = {
+				every_scope_state = {
+					limit = { 
+						OR = {
+							state_region = s:STATE_CHERSON
+							state_region = s:STATE_CRIMEA
+						}
+						has_building = building_naval_base
+					}
+					remove_building = building_naval_base
+				}
+			}
+		}
+		
+		custom_tooltip = {
+			text = crimean_peace_moldavia_annexation_tt
+			if = {
+				limit = {
+					c:MOL = { is_alive = yes }
+				}
+				s:STATE_BESSARABIA = {
+					set_owner_of_provinces = {
+						country = c:MOL
+						provinces = { x712161 x6bf7b8 xb0e0a0 }
+					}
+				}
+			}
+		}
+		
+		custom_tooltip = {
+			text = crimean_peace_ottoman_annexation_tt
+			if = {
+				limit = {
+					c:RUS = { owns_province = x50F5CB }
+				}
+				s:STATE_DOBRUDJA = {
+					set_owner_of_provinces = {
+						country = c:TUR
+						provinces = { x50F5CB }
+					}
+				}
+			}
+		}
+
+		c:RUS = {
+			add_modifier = {
+				name = treaty_of_paris_demilitarized_black_sea
+				months = 122
+			}
+		}
+		c:TUR = {
+			add_modifier = {
+				name = treaty_of_paris_guaranteed_integrity
+				months = 122
+			}
+		}
+		
+		c:RUS = {
+			force_peace = yes
+		}
+		
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+crimean_peace.2 = {
+	type = country_event
+	placement = root
+	
+	title = crimean_peace.2.t
+	desc = crimean_peace.2.d
+	flavor = crimean_peace.2.f	
+	
+	event_image = {
+		video = "unspecific_signed_contract"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/eu/diplomatic_play"
+	
+	icon = "gfx/interface/icons/event_icons/event_peace.dds"
+
+	immediate = {
+		c:TUR = {
+			save_scope_as = loser_scope
+		}
+		root = {
+			save_scope_as = winner_scope
+		}
+		c:WAL = {
+			save_scope_as = wal_scope
+		}
+		c:MOL = {
+			save_scope_as = mol_scope
+		}
+	}
+
+	option = {
+		name = crimean_peace.2.a
+		default_option = yes
+		custom_tooltip = {
+			text = crimean_peace_russia_kars_tt
+			if = {
+				limit = {
+					exists = s:STATE_KARS.region_state:TUR
+				}
+				s:STATE_KARS.region_state:TUR = {
+					set_state_owner = c:RUS
+				}
+				c:RUS = {
+					random_scope_state = {
+						limit = {
+							state_region = s:STATE_KARS
+						}
+						set_state_type = unincorporated
+					}
+				}
+			}
+		}
+		
+		custom_tooltip = {
+			text = crimean_peace_russia_subjects_tt
+			if = {
+				limit = {
+					c:WAL = { is_subject_of = c:TUR }
+				}
+				c:RUS = {
+					make_independent = yes
+					create_diplomatic_pact = {
+						country = c:WAL
+						type = protectorate
+					}
+				}
+			}
+			if = {
+				limit = {
+					c:MOL = { is_subject_of = c:TUR }
+				}
+				c:RUS = {
+					make_independent = yes
+					create_diplomatic_pact = {
+						country = c:MOL
+						type = protectorate
+					}
+				}
+			}
+		}
+		
+		custom_tooltip = {
+			text = crimean_peace_russia_dobrudja_tt
+			if = {
+				limit = {
+					c:WAL = { is_alive = yes }
+				}
+				s:STATE_DOBRUDJA = {
+					set_owner_of_provinces = {
+						country = c:WAL
+						provinces = { x50f5cb x7763f3 x7f25cd xb06121 xd9e021 }
+					}
+				}
+			}
+		}
+		
+		custom_tooltip = {
+			text = crimean_peace_russia_palestine_treaty_port_tt
+			if = {
+				limit = {
+					exists = s:STATE_PALESTINE.region_state:TUR
+				}
+				s:STATE_PALESTINE = {
+					set_owner_of_provinces = {
+						country = c:RUS
+						provinces = { x605060 }
+					}
+				}
+			}
+		}
+		
+		c:TUR = {
+			add_modifier = {
+				name = ott_backed_down_holy_places
+				months = 180
+			}
+			force_peace = yes
+		}
+		
+		c:RUS = {
+			add_modifier = {
+				name = rus_the_protector_of_orthodoxy
+				months = 180
+			}
+		}
+		c:FRA = {
+			add_modifier = {
+				name = humilation_to_tsar
+				months = 72
+			}
+		}
+		c:GBR = {
+			add_modifier = {
+				name = humilation_to_tsar
+				months = 72
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+crimean_peace.1.1 = {
+	type = country_event
+	placement = root
+	
+	title = crimean_peace.1.1.t
+	desc = crimean_peace.1.1.d
+	flavor = crimean_peace.1.1.f	
+	
+	event_image = {
+		video = "unspecific_signed_contract"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/eu/diplomatic_play"
+	
+	icon = "gfx/interface/icons/event_icons/event_peace.dds"
+
+	immediate = {
+	}
+
+	option = {
+		name = crimean_peace.1.1.a
+		default_option = yes
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+crimean_peace.2.1 = {
+	type = country_event
+	placement = root
+	
+	title = crimean_peace.2.1.t
+	desc = crimean_peace.2.1.d
+	flavor = crimean_peace.2.1.f	
+	
+	event_image = {
+		video = "unspecific_signed_contract"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/eu/diplomatic_play"
+	
+	icon = "gfx/interface/icons/event_icons/event_peace.dds"
+
+	immediate = {
+	}
+
+	option = {
+		name = crimean_peace.2.1.a
+		default_option = yes
+		ai_chance = {
+			base = 100
+		}
+	}
+}

@@ -1127,6 +1127,17 @@ ai_strategy_default = {
 	diplomatic_play_boldness = {
 		value = 50 
 		
+		# crimean war always go to war 
+		if = {
+			limit = {
+				is_active_in_diplomatic_play = yes
+				scope:diplomatic_play = {
+					is_diplomatic_play_type = dp_crimean_war
+				}
+			}
+			add = 1000
+		}
+		
 		if = { # Be careful when the great potato famine is active
 			limit = {
 			    has_global_variable = hungry_forties_var

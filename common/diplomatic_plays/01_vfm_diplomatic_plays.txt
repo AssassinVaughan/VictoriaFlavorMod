@@ -76,3 +76,131 @@ dp_second_italian_war = {
 
 	on_war_end = {}
 }
+
+dp_crimean_war = {
+	requires_interest_marker = no
+	enable_switch_sides = no
+	allow_negotiated_peace = no
+	initiator_can_add_war_goals = no
+	target_can_add_war_goals = no
+
+	war_goal = humiliation
+	
+	texture = "gfx/interface/icons/war_goals/unify_italy.dds"
+	
+	possible = {	
+		always = no
+	}
+	
+	selectable_in_lens = {
+		always = no
+	}	
+	
+	on_weekly_pulse = {}
+	
+	on_war_begins = {
+		# Track participants for ANY dp_crimean_war war; don't assume a fixed initiator/target.
+		scope:initiator = {
+			set_variable = crimean_war_active
+			set_variable = crimean_war_initiator
+			remove_variable = crimean_war_capitulated
+			remove_variable = crimean_peace_resolved
+			remove_variable = crimean_peace_1_fired
+			remove_variable = crimean_peace_2_fired
+		}
+		scope:target_country = {
+			set_variable = crimean_war_active
+			set_variable = crimean_war_target
+			remove_variable = crimean_war_capitulated
+			remove_variable = crimean_peace_resolved
+			remove_variable = crimean_peace_1_fired
+			remove_variable = crimean_peace_2_fired
+		}
+	}
+
+	on_war_end = {
+		# Resolve exactly once for the RUS<->TUR war, regardless of who was initiator/target.
+		if = {
+			limit = {
+				c:RUS = { has_variable = crimean_war_active }
+				c:TUR = { has_variable = crimean_war_active }
+				NOT = {
+					OR = {
+						c:RUS = { has_variable = crimean_peace_resolved }
+						c:TUR = { has_variable = crimean_peace_resolved }
+					}
+				}
+			}
+			if = {
+				limit = {
+					c:RUS = {
+						OR = {
+							has_variable = crimean_war_capitulated
+							has_variable = recent_capitulation
+						}
+					}
+				}
+				# Russia capitulated -> TUR wins -> Treaty of Paris to TUR, recap to RUS if player
+				c:TUR = {
+					trigger_event = { id = crimean_peace.1 popup = yes }
+					set_variable = crimean_peace_resolved
+					set_variable = crimean_peace_1_fired
+				}
+				c:RUS = {
+					set_variable = crimean_peace_resolved
+					if = {
+						limit = { is_player = yes }
+						trigger_event = { id = crimean_peace.1.1 popup = yes }
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					c:TUR = {
+						OR = {
+							has_variable = crimean_war_capitulated
+							has_variable = recent_capitulation
+						}
+					}
+				}
+				# Ottoman capitulated -> RUS wins -> Treaty of Constantinople to RUS, recap to TUR if player
+				c:RUS = {
+					trigger_event = { id = crimean_peace.2 popup = yes }
+					set_variable = crimean_peace_resolved
+					set_variable = crimean_peace_2_fired
+				}
+				c:TUR = {
+					set_variable = crimean_peace_resolved
+					if = {
+						limit = { is_player = yes }
+						trigger_event = { id = crimean_peace.2.1 popup = yes }
+					}
+				}
+			}
+		}
+
+		scope:initiator = {
+			remove_variable = crimean_war_active
+			remove_variable = crimean_war_initiator
+			remove_variable = crimean_war_capitulated
+		}
+		scope:target_country = {
+			remove_variable = crimean_war_active
+			remove_variable = crimean_war_target
+			remove_variable = crimean_war_capitulated
+		}
+		# Also cleanup on the canonical participants (in case initiator/target were swapped)
+		c:RUS ?= {
+			remove_variable = crimean_war_active
+			remove_variable = crimean_war_initiator
+			remove_variable = crimean_war_target
+			remove_variable = crimean_war_capitulated
+		}
+		c:TUR ?= {
+			remove_variable = crimean_war_active
+			remove_variable = crimean_war_initiator
+			remove_variable = crimean_war_target
+			remove_variable = crimean_war_capitulated
+		}
+	}
+}
