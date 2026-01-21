@@ -330,6 +330,20 @@ vfm_ai.3 = {
 				}
 			}
 		}
+		every_country = {
+			limit = {
+				is_ai = yes
+                country_rank >= rank_value:minor_power
+			}
+			add_investment_pool = 500000
+		}
+		every_country = {
+			limit = {
+				is_ai = yes
+                country_rank >= rank_value:major_power
+			}
+			add_investment_pool = 1500000
+		}
 	}
 }
 
@@ -386,106 +400,3 @@ vfm_ai.4 = {
 }
 
 
-vfm_ai.5 = {
-	type = country_event
-	placement = root
-
-	#hidden = yes
-
-	duration = 1
-
-	trigger = {
-		is_ai = yes
-		OR = { country_rank >= rank_value:major_power gdp >= 3000000 } # 3 mil
-		any_scope_state = {
-		    is_incorporated = yes
-			tax_capacity_balance < 0
-			gdp >= 600000 # 600k
-		}
-		any_scope_state = {
-		    has_building = building_government_administration
-			OR = {
-			    AND = {
-					is_capital = no
-			    	tax_capacity_balance > 0.33
-				}
-				AND = {
-					is_capital = yes
-					tax_capacity_balance > 0.6
-				}
-			}
-		}
-	}
-
-	immediate = {
-	    
-	}
-	
-	option = {
-		name = vfm_ai.5.a
-		random_list = {
-			60 = {
-			    random_scope_state = {
-		    limit = {
-			    has_building = building_government_administration
-				OR = {
-			        AND = {
-				    	is_capital = no
-			        	tax_capacity_balance > 0.33
-				    }
-				    AND = {
-				    	is_capital = yes
-				    	tax_capacity_balance > 0.6
-				    }
-			    }
-			}
-			save_temporary_scope_value_as = {
-				name = government_administration_amount_1
-				value = {
-					every_scope_building = {
-		  				limit = {
-		   					is_building_type = building_government_administration
-		  				}
-		 		 		add = this.level
-		 			}
-	 				add = -1
-				}
-			}
-			remove_building = building_government_administration
-			create_building = {
-				building = "building_government_administration"
-				level = scope:government_administration_amount_1
-				reserves = 1
-			}
-		}
-			}
-			40 = {
-			}
-		}
-		random_scope_state = {
-		    limit = {
-			    is_incorporated = yes
-				tax_capacity_balance < 0
-				gdp >= 600000 # 600k
-			}
-			save_temporary_scope_value_as = {
-				name = government_administration_amount_2
-				value = {
-					every_scope_building = {
-		  				limit = {
-		   					is_building_type = building_government_administration
-		  				}
-		 		 		add = this.level
-		 			}
-	 				add = 1
-				}
-			}
-			remove_building = building_government_administration
-			create_building = {
-				building = "building_government_administration"
-				level = scope:government_administration_amount_2
-				reserves = 1
-			}
-		}
-	}
-}
