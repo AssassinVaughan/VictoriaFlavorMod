@@ -254,12 +254,11 @@ je_breakup_steuerverein = {
 	
 	on_complete = {
 		set_global_variable = breakup_steuerverein
-		#show_as_tooltip = {
-			# TODO: give bonuses to random bloc member, give obligation from random members?
-		#}
-		add_modifier = {
+		show_as_tooltip = {
+			add_modifier = {
 				name = steuerverein_breakup
 				days = long_modifier_time
+	    	}	
 		}
 		trigger_event = { id = journal_flavor_germany.4 }
 	}

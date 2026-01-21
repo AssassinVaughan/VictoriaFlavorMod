@@ -375,7 +375,163 @@ journal_flavor_germany.4 = {
 	
 	option = {
 		name = journal_flavor_germany.4.a
+		add_modifier = {
+			name = steuerverein_breakup
+			days = long_modifier_time
+		}
+		
+		every_country = {
+			limit = {
+				is_in_same_power_bloc = ROOT
+				NOT = { this = ROOT }
+				OR = {
+					country_has_primary_culture = cu:north_german
+					country_has_primary_culture = cu:south_german
+				}
+		    }
+			trigger_event = { id = national_awakening_germany.3 }
+		}
+		
 		default_option = yes
+	}
+	
+	option = {
+		name = journal_flavor_germany.4.b
+		add_modifier = {
+			name = steuerverein_breakup
+			days = long_modifier_time
+		}
+		
+		every_country = {
+			limit = {
+				is_in_same_power_bloc = ROOT
+				NOT = { this = ROOT }
+				OR = {
+					country_has_primary_culture = cu:north_german
+					country_has_primary_culture = cu:south_german
+				}
+		    }
+			trigger_event = { id = national_awakening_germany.6 }
+		}
+		
+		default_option = yes
+	}
+}
+
+namespace = national_awakening_germany
+
+national_awakening_germany.3 = { # National epic written/rediscovered
+	type = country_event
+	placement = root
+	title = national_awakening_germany.3.t
+	desc = national_awakening_germany.3.d
+	flavor = national_awakening_germany.3.f
+	duration = 3
+	event_image = {
+		video = "ep1_printing_press"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/goods_icons/literature.dds"
+
+	dlc = dlc014
+
+	trigger = {
+	}
+
+	immediate = {
+		random_primary_culture = {
+			save_scope_as = relevant_culture
+		}
+	}
+
+	option = {
+		name = national_awakening_germany.3.a
+		default_option = yes
+		add_modifier = {
+			name = modifier_national_awakening_national_epic
+			days = normal_modifier_time
+		}
+		ig:ig_armed_forces ?= {
+			add_modifier = {
+				name = modifier_national_awakening_luminaries
+				days = normal_modifier_time
+			}
+		}
+	}
+
+	option = {
+		name = national_awakening_germany.3.b
+		add_modifier = {
+			name = modifier_national_awakening_national_epic_prestige
+			days = normal_modifier_time
+		}
+		ig:ig_intelligentsia ?= {
+			add_modifier = {
+				name = modifier_national_awakening_luminaries
+				days = normal_modifier_time
+			}
+		}
+	}
+}
+
+national_awakening_germany.6 = { # Intellectuals going to the peasantry
+	type = country_event
+	placement = root
+	title = national_awakening_germany.6.t
+	desc = national_awakening_germany.6.d
+	flavor = national_awakening_germany.6.f
+	duration = 3
+	dlc = dlc014
+	event_image = {
+		video = "votp_realist_household"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/pops_icons/peasants.dds"
+
+	trigger = {
+	}
+
+	immediate = {
+		ig:ig_rural_folk ?= {
+			save_scope_as = rural_folk_ig
+		}
+		ig:ig_intelligentsia ?= {
+			save_scope_as = intelligentsia_ig
+		}
+		random_primary_culture = {
+			save_scope_as = relevant_culture
+		}
+	}
+
+	cooldown = { days = long_modifier_time }
+
+	option = {
+		name = national_awakening_germany.6.a
+		default_option = yes
+		scope:rural_folk_ig = {
+			add_modifier = {
+				name = modifier_national_awakening_roots_of_the_nation
+				days = normal_modifier_time
+			}
+		}
+		add_modifier = {
+			name = modifier_fervour_military_bonus
+			days = normal_modifier_time
+		}
+	}
+
+	option = {
+		name = national_awakening_germany.6.b
+		scope:rural_folk_ig = {
+			add_modifier = {
+				name = modifier_national_awakening_roots_of_the_nation
+				days = normal_modifier_time
+			}
+		}
+		add_modifier = {
+			name = modifier_national_awakening_folklore
+			days = normal_modifier_time
+		}
 	}
 }
 
