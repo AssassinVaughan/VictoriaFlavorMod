@@ -19,21 +19,21 @@ crimean_war.1 = {
 	icon = "gfx/interface/icons/event_icons/event_diplomatic.dds"
 
 	trigger = {
-		tag = RUS
-		is_great_power = yes
+		exists = c:RUS
 		exists = c:TUR
-		c:TUR = { is_alive = yes }
-		current_date >= 1852.1.1
+		c:RUS = this
+		country_rank = rank_value:great_power	
+		game_date >= 1852.1.1
 		NOT = { has_global_variable = crimean_war_chain_active }
 	}
 
-	mean_time_to_happen = {
-		months = 12
-		modifier = {
-			factor = 0.5
-			relations:TUR < -20
-		}
-	}
+	#mean_time_to_happen = { wrong syntax
+	#	months = 12
+	#	modifier = {
+	#		factor = 0.5
+	#		relations:TUR < -20
+	#	}
+	#}
 
 	immediate = {
 		set_global_variable = crimean_war_chain_active
@@ -306,22 +306,73 @@ crimean_war.6 = {
 				type = humiliation
 				target_country = c:RUS
 			}
+			save_scope_as = crimean_war_play
 		}
-		c:FRA = {
+		
+		if = { 
+		    limit = {
+			    exists = c:WAL
+				c:WAL ?= {
+					is_subject_of = c:TUR
+				}
+			}
+			scope:crimean_war_play = { add_war_goal = { holder = c:RUS type = transfer_subject target_country = c:WAL } }
+		}
+		if = { 
+		    limit = {
+			    exists = c:MOL
+				c:MOL ?= {
+					is_subject_of = c:TUR
+				}
+			}
+			scope:crimean_war_play = { add_war_goal = { holder = c:RUS type = transfer_subject target_country = c:MOL } }
+		}
+		if = { 
+		    limit = {
+			    exists = c:BUL
+				c:BUL ?= {
+					is_subject_of = c:TUR
+				}
+			}
+			scope:crimean_war_play = { add_war_goal = { holder = c:RUS type = transfer_subject target_country = c:BUL } }
+		}
+		if = { 
+		    limit = {
+			    exists = c:ROM
+				c:ROM ?= {
+					is_subject_of = c:TUR
+					
+				}
+			}
+			scope:crimean_war_play = { add_war_goal = { holder = c:RUS type = transfer_subject target_country = c:ROM } }
+		}
+		
+		if = { 
+		    limit = {
+			    exists = c:SER
+				c:SER ?= {
+					is_subject_of = c:TUR
+					
+				}
+			}
+			scope:crimean_war_play = { add_war_goal = { holder = c:RUS type = transfer_subject target_country = c:SER } }
+		}
+		
+		c:FRA ?= {
 			trigger_event = {
 				id = crimean_war.7
 				popup = yes
 				days = 7
 			}
 		}
-		c:SAR = {
+		c:SAR ?= {
 			trigger_event = {
 				id = crimean_war.7
 				popup = yes
 				days = 7
 			}
 		}
-		c:GBR = {
+		c:GBR ?= {
 			trigger_event = {
 				id = crimean_war.7
 				popup = yes
@@ -409,6 +460,40 @@ crimean_war.7 = {
 			base = 0
 		}
 	}
+	
+	option = { # Join the War demand concessions by Ottomans, demand independence of Christian vassals and seccession of Dubrudja
+		name = crimean_war.7.c
+		default_option = yes
+		
+		custom_tooltip = crimean_war.7.a.tt
+		
+		hidden_effect = {
+			if = {
+				limit = {
+					exists = scope:crimean_war_play
+				}
+				scope:crimean_war_play = {
+					add_target_backers = { root }
+				}
+			}
+			set_global_variable = crimean_war_chain_western_demands
+		}
+
+
+		root = {
+			change_relations = {
+				country = c:RUS
+				value = -50
+			}
+			change_relations = {
+				country = c:TUR
+				value = 20
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
 }
 
 
@@ -468,7 +553,7 @@ crimean_peace.1 = {
 			text = crimean_peace_moldavia_annexation_tt
 			if = {
 				limit = {
-					c:MOL = { is_alive = yes }
+					exists = c:MOL
 				}
 				s:STATE_BESSARABIA = {
 					set_owner_of_provinces = {
@@ -493,6 +578,8 @@ crimean_peace.1 = {
 				}
 			}
 		}
+		
+		# TODO: press western demands to forfeit ottoman control of christian vassals
 
 		c:RUS = {
 			add_modifier = {
@@ -591,7 +678,7 @@ crimean_peace.2 = {
 					c:MOL = { is_subject_of = c:TUR }
 				}
 				c:RUS = {
-					make_independent = yes
+					make_independent = yes  ## wrong, fix
 					create_diplomatic_pact = {
 						country = c:MOL
 						type = protectorate
@@ -604,7 +691,7 @@ crimean_peace.2 = {
 			text = crimean_peace_russia_dobrudja_tt
 			if = {
 				limit = {
-					c:WAL = { is_alive = yes }
+					exists = c:WAL
 				}
 				s:STATE_DOBRUDJA = {
 					set_owner_of_provinces = {
@@ -662,13 +749,13 @@ crimean_peace.2 = {
 	}
 }
 
-crimean_peace.1.1 = {
+crimean_peace.101 = {
 	type = country_event
 	placement = root
 	
-	title = crimean_peace.1.1.t
-	desc = crimean_peace.1.1.d
-	flavor = crimean_peace.1.1.f	
+	title = crimean_peace.101.t
+	desc = crimean_peace.101.d
+	flavor = crimean_peace.101.f	
 	
 	event_image = {
 		video = "unspecific_signed_contract"
@@ -683,7 +770,7 @@ crimean_peace.1.1 = {
 	}
 
 	option = {
-		name = crimean_peace.1.1.a
+		name = crimean_peace.101.a
 		default_option = yes
 		ai_chance = {
 			base = 100
@@ -691,13 +778,13 @@ crimean_peace.1.1 = {
 	}
 }
 
-crimean_peace.2.1 = {
+crimean_peace.201 = {
 	type = country_event
 	placement = root
 	
-	title = crimean_peace.2.1.t
-	desc = crimean_peace.2.1.d
-	flavor = crimean_peace.2.1.f	
+	title = crimean_peace.201.t
+	desc = crimean_peace.201.d
+	flavor = crimean_peace.201.f	
 	
 	event_image = {
 		video = "unspecific_signed_contract"
@@ -712,7 +799,7 @@ crimean_peace.2.1 = {
 	}
 
 	option = {
-		name = crimean_peace.2.1.a
+		name = crimean_peace.201.a
 		default_option = yes
 		ai_chance = {
 			base = 100
