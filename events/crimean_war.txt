@@ -295,10 +295,10 @@ crimean_war.6 = {
 	trigger = {
 		# Triggered by crimean_war.5
 	}
-
-	option = { # War
-		name = crimean_war.6.a
-		create_diplomatic_play = {
+	
+	immediate = {
+		c:RUS = {
+			create_diplomatic_play = {
 			type = dp_crimean_war
 			target_country = c:TUR
 			add_war_goal = {
@@ -306,8 +306,19 @@ crimean_war.6 = {
 				type = humiliation
 				target_country = c:RUS
 			}
+		}
+		random_diplomatic_play = {
+			limit = {
+				is_diplomatic_play_type = dp_crimean_war
+				target = { this = c:TUR }
+			}
 			save_scope_as = crimean_war_play
 		}
+		}
+	}
+
+	option = { # War
+		name = crimean_war.6.a
 		
 		if = { 
 		    limit = {
