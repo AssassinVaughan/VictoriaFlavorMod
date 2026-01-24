@@ -6988,7 +6988,7 @@
 					building={
 						type="building_financial_district"
 						country="c:BRE"
-						levels=3
+						levels=2
 						region="STATE_ELBE"
 					}
 				}
@@ -7004,6 +7004,19 @@
 				}
 				reserves=1
 				activate_production_methods={ "pm_pulp_pressing" "pm_automation_disabled"  }
+			}
+			create_building={
+				building="building_logging_camp"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:BRE"
+						levels=1
+						region="STATE_ELBE"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_saw_mills"  "pm_no_equipment" "pm_road_carts" "pm_no_hardwood" }
 			}
 			create_building={
 				building="building_rye_farm"
@@ -7037,7 +7050,7 @@
 					building={
 						type="building_financial_district"
 						country="c:HAM"
-						levels=5
+						levels=4
 						region="STATE_ELBE"
 					}
 				}
@@ -7654,7 +7667,7 @@
 					building={
 						type="building_financial_district"
 						country="c:PRU"
-						levels=5
+						levels=4
 						region="STATE_ANHALT"
 					}
 				}
@@ -8188,6 +8201,19 @@
 				activate_production_methods={ "pm_sulfite_pulping" "pm_automation_disabled"  }
 			}
 			create_building={
+				building="building_logging_camp"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:PRU"
+						levels=1
+						region="STATE_BRANDENBURG"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_saw_mills" "pm_no_hardwood" "pm_no_equipment" "pm_road_carts"  }
+			}
+			create_building={
 				building="building_rye_farm"
 				add_ownership={
 					building={
@@ -8323,6 +8349,19 @@
 			}
 		}
 		region_state:LUB={
+		    create_building={
+				building="building_logging_camp"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:LUB"
+						levels=1
+						region="STATE_SCHLESWIG_HOLSTEIN"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_saw_mills"  "pm_no_equipment" "pm_road_carts" "pm_no_hardwood" }
+			}
 			create_building={
 				building="building_port"
 				add_ownership={

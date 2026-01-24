@@ -344,6 +344,50 @@ vfm_ai.3 = {
 			}
 			add_investment_pool = 1500000
 		}
+		if = {
+			limit = {
+			    c:BRE = {
+					exists = yes
+					is_ai = yes
+				}
+			}
+			c:BRE = {
+			    add_treasury = 190000
+			}
+		}
+		if = {
+			limit = {
+			    c:HAN = {
+					exists = yes
+					is_ai = yes
+				}
+			}
+			c:HAN = {
+			    add_treasury = 600000
+			}
+		}
+		if = {
+			limit = {
+			    c:OLD = {
+					exists = yes
+					is_ai = yes
+				}
+			}
+			c:OLD = {
+			    add_treasury = 190000
+			}
+		}
+		if = {
+			limit = {
+			    c:HAM = {
+					exists = yes
+					is_ai = yes
+				}
+			}
+			c:HAM = {
+			    add_treasury = 190000
+			}
+		}
 	}
 }
 

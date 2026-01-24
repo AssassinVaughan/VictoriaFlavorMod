@@ -11,7 +11,7 @@
 		}
 	}
 	
-	ai_value = 1100
+	ai_value = 500
 }		
 
 REPLACE:pm_butchering_tools = {
@@ -141,6 +141,21 @@ pm_hydroelectric_plant = {
 	}
 }
 
+REPLACE:pm_simple_farming = {
+	texture = "gfx/interface/icons/production_method_icons/simple_farming.dds"
+	building_modifiers = {
+		workforce_scaled = {
+			# output goods													
+			goods_output_grain_add = 19
+		}
+
+		level_scaled = {
+			building_employment_laborers_add = 4400
+			building_employment_farmers_add = 750
+		}
+	}
+}
+
 pm_rotating_crops = {
 	texture = "gfx/interface/icons/production_method_icons/soil_enriching_farming.dds"
 	
@@ -156,6 +171,110 @@ pm_rotating_crops = {
 
 		level_scaled = {
 			building_employment_laborers_add = 4000
+			building_employment_farmers_add = 1000
+		}
+	}
+}
+
+REPLACE:pm_soil_enriching_farming = {
+	texture = "gfx/interface/icons/production_method_icons/plantation_production.dds"
+	
+	unlocking_technologies = {
+		intensive_agriculture
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			# input goods													
+			goods_input_fertilizer_add = 5				
+			
+			# output goods													
+			goods_output_grain_add = 30
+		}
+
+		level_scaled = {
+			# earnings														
+			building_employment_laborers_add = 3800
+			building_employment_farmers_add = 1200
+		}
+	}
+	
+	ai_value = 500
+}
+
+REPLACE:pm_fertilization = {
+	texture = "gfx/interface/icons/production_method_icons/fertilization.dds"
+	
+	unlocking_technologies = {
+		improved_fertilizer
+	}
+	
+	state_modifiers = {
+		unscaled = {
+			state_harvest_condition_drought_impact_mult = 0.05
+		}
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			# input goods													
+			goods_input_fertilizer_add = 10				
+			
+			# output goods												   
+			goods_output_grain_add = 45
+		}
+
+		level_scaled = {
+			# earnings														
+			building_employment_laborers_add = 3300
+			building_employment_farmers_add = 1700
+		}
+	}
+	
+	ai_value = 700
+}
+
+REPLACE:pm_chemical_fertilizer = {
+	texture = "gfx/interface/icons/production_method_icons/chemical_fertilizers.dds"
+	unlocking_technologies = {
+		nitrogen_fixation
+	}
+
+	state_modifiers = {
+		unscaled = {
+			state_harvest_condition_drought_impact_mult = 0.1
+		}
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			# input goods												   
+			goods_input_fertilizer_add = 15			
+			
+			# output goods												   
+			goods_output_grain_add = 70
+		}
+
+		level_scaled = {
+			# earnings														
+			building_employment_laborers_add = 3000
+			building_employment_farmers_add = 2000
+		}
+	}
+	
+	ai_value = 900
+}			
+
+REPLACE:pm_simple_farming_building_rice_farm = {
+	texture = "gfx/interface/icons/production_method_icons/simple_farming.dds"
+	building_modifiers = {
+		workforce_scaled = {
+			# output goods
+			goods_output_grain_add = 28
+		}
+
+		level_scaled = {
+			building_employment_laborers_add = 7100
 			building_employment_farmers_add = 1000
 		}
 	}
@@ -179,6 +298,82 @@ pm_rotating_crops_building_rice_farm = {
 			building_employment_farmers_add = 1500
 		}
 	}
+}
+
+REPLACE:pm_soil_enriching_farming_building_rice_farm = {
+	texture = "gfx/interface/icons/production_method_icons/plantation_production.dds"
+	
+	unlocking_technologies = {
+		intensive_agriculture
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			# input goods
+			goods_input_fertilizer_add = 8	
+			
+			# output goods													
+			goods_output_grain_add = 45
+		}
+
+		level_scaled = {
+			# earnings												
+			building_employment_laborers_add = 6000
+			building_employment_farmers_add = 2000
+		}
+	}
+	
+	ai_value = 500
+}
+
+REPLACE:pm_fertilization_building_rice_farm = {
+	texture = "gfx/interface/icons/production_method_icons/fertilization.dds"
+	
+	unlocking_technologies = {
+		improved_fertilizer
+	}
+	
+	building_modifiers = {
+		workforce_scaled = {
+			# input goods													
+			goods_input_fertilizer_add = 15			
+			
+			# output goods												   
+			goods_output_grain_add = 67
+		}
+
+		level_scaled = {
+			# earnings																									
+			building_employment_laborers_add = 5500
+			building_employment_farmers_add = 2500
+		}
+	}
+	
+	ai_value = 700
+}
+
+REPLACE:pm_chemical_fertilizer_building_rice_farm = {
+	texture = "gfx/interface/icons/production_method_icons/chemical_fertilizers.dds"
+	unlocking_technologies = {
+		nitrogen_fixation
+	}
+	building_modifiers = {
+		workforce_scaled = {
+			# input goods												   
+			goods_input_fertilizer_add = 22
+			
+			# output goods												   
+			goods_output_grain_add = 105
+		}
+
+		level_scaled = {
+			# earnings														
+			building_employment_laborers_add = 5000
+			building_employment_farmers_add = 3000
+		}
+	}
+	
+	ai_value = 900
 }
 
 pm_rotating_crops_ranch = {
@@ -294,6 +489,7 @@ pm_steel_machine = {
 			building_employment_engineers_add = 250
 		}
 	}
+	ai_value = 1500
 }
 
 REPLACE:pm_rubber_grips = {
@@ -478,8 +674,6 @@ REPLACE:pm_simple_organization = {
 			building_employment_clerks_add = 4000
 		}
     }
-    
-    ai_value = 0
 }
 
 REPLACE:pm_horizontal_drawer_cabinets = {
@@ -541,7 +735,7 @@ REPLACE:pm_vertical_filing_cabinets = {
 		}
 	}	
     
-    ai_value = 2000
+    ai_value = 1500
 }
 
 REPLACE:pm_switch_boards = {
@@ -574,7 +768,7 @@ REPLACE:pm_switch_boards = {
 		}
 	}	
     
-    ai_value = 3000
+    ai_value = 2000
 }
 
 REPLACE:pm_market_stalls = {
@@ -613,7 +807,7 @@ REPLACE:pm_market_squares = {
 		}
 	}
 	
-	ai_value = 1200
+	ai_value = 500
 }
 
 REPLACE:pm_covered_markets = {
@@ -637,7 +831,7 @@ REPLACE:pm_covered_markets = {
 		}
 	}
 	
-	ai_value = 1500
+	ai_value = 600
 }
 
 REPLACE:pm_arcades = {
@@ -662,7 +856,7 @@ REPLACE:pm_arcades = {
 		}
 	}
 	
-	ai_value = 1800
+	ai_value = 900
 
 	required_input_goods = electricity
 }

@@ -268,3 +268,79 @@ je_swe_gotavarven = {
 	
 	weight = 5000
 }
+
+je_stormakt = {
+	icon = "gfx/interface/icons/event_icons/bicorne_hat.dds"
+
+	group = je_group_foreign_affairs
+
+	is_shown_when_inactive = {
+		exists = c:SWE
+		c:SWE ?= THIS
+	}
+
+	possible = {
+		has_technology_researched = nationalism
+		ig:ig_intelligentsia = {
+			is_marginal = yes
+		}
+		any_interest_group = {
+			is_powerful = yes
+			is_in_government = yes
+			leader = {
+				OR = {
+					has_ideology = ideology:ideology_jingoist_leader
+					has_ideology = ideology:ideology_ethno_nationalist
+					has_ideology = ideology:ideology_fascist
+					has_ideology = ideology:ideology_authoritarian
+				}
+			}
+		}
+	}
+
+	immediate = {
+		trigger_event = { id = journal_flavor_scandinavia.11 popup = yes }
+	}
+
+	complete = {
+		is_at_war = no
+		custom_tooltip = {
+			text = own_all_french_homelands
+			NOT = {
+				any_state = {
+					state_region = {
+						is_homeland = cu:swedish
+					}
+					NOT = { owner = ROOT }
+				}
+			}
+		}
+		country_or_subject_owns_entire_state_region = STATE_OSTROBOTHNIA
+		country_or_subject_owns_entire_state_region = STATE_ALAND
+		country_or_subject_owns_entire_state_region = STATE_UUSIMAA
+		any_scope_state = {
+		    OR = {
+                region = sr:region_baltic_states
+				region = sr:region_north_germany
+			}
+			count >= 4
+		}
+	}
+
+	on_complete = {
+		trigger_event = { id = journal_flavor_scandinavia.12 popup = yes }
+	}
+
+	invalid = {
+		ig:ig_intelligentsia = {
+			is_powerful = yes
+		}
+	}
+
+	should_be_pinned_by_default = yes
+
+	weight = 100
+}
+
+#je_folkhemmet = {
+#}
