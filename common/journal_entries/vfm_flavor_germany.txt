@@ -237,10 +237,10 @@ je_breakup_steuerverein = {
             percent = 1
         }
 		OR = {
-		    c:HAM ?= { is_subject_of = ROOT }
-			c:BRE ?= { is_subject_of = ROOT }
-			c:OLD ?= { is_subject_of = ROOT }
-			c:HAN ?= { is_subject_of = ROOT }
+		    is_in_same_power_bloc ?= c:HAM
+			is_in_same_power_bloc ?= c:BRE
+			is_in_same_power_bloc ?= c:OLD
+			is_in_same_power_bloc ?= c:HAN
 		}
 	}
 	

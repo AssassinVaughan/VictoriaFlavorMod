@@ -2013,14 +2013,14 @@ italy_1848.31 = {
 
 	trigger = {
 		has_global_variable = roman_rep_war_var
-		c:FRA = {
+		exists = c:RMR
+		c:FRA ?= {
 			has_claim = s:STATE_LAZIO
 		}
-		c:RMR = {
+		c:RMR ?= {
 			owns_entire_state_region = STATE_LAZIO
 			has_truce_with = c:FRA
 		}
-		exists = c:RMR
 	}
 
 	immediate = {
@@ -2057,10 +2057,10 @@ italy_1848.23 = {
 			exists = c:PAR
 		}
 		OR = {
-			c:MOD = {
+			c:MOD ?= {
 				is_subject = no
 			}
-			c:PAR = {
+			c:PAR ?= {
 				is_subject = no
 			}
 		}

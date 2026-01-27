@@ -112,7 +112,7 @@ german_unification.1 = {
 				if = {
 					limit = {
 						exists = c:AUS
-						c:AUS = {
+						c:AUS ?= {
 							country_rank >= rank_value:great_power
 							NOT = { has_claim = root }
 							owns_entire_state_region = STATE_BOHEMIA
@@ -121,7 +121,7 @@ german_unification.1 = {
 						}
 					}
 					
-					c:AUS = {
+					c:AUS ?= {
 						set_mutual_secret_goal = {
 							country = root
 							secret_goal = reconcile
@@ -167,7 +167,7 @@ german_unification.1 = {
 				NOT = { exists = c:SGF }
 				OR = {
 					NOT = { exists = c:AUS }
-					NOT = { THIS = c:AUS }
+					NOT = { c:AUS ?= THIS }
 				}
 				NOR = { #PBF
 					country_tier = hegemony
@@ -275,6 +275,8 @@ german_unification.3 = {
 	on_opened_soundeffect = "event:/SFX/Events/misc/1Character_Banner"
 
 	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	cooldown = { days = never_fire_again_modifier_time }
 
 	duration = 3
 

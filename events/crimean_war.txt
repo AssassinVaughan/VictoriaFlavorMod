@@ -579,7 +579,9 @@ crimean_peace.1 = {
 			text = crimean_peace_ottoman_annexation_tt
 			if = {
 				limit = {
-					c:RUS = { owns_province = x50F5CB }
+					p:x50F5CB }.state = {
+						owner = c:RUS
+					}
 				}
 				s:STATE_DOBRUDJA = {
 					set_owner_of_provinces = {
