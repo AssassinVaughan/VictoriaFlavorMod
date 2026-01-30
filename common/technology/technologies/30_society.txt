@@ -1233,6 +1233,65 @@ corporatism = {
 				add_ideology = ideology_corporatist
 			}
 		}
+		if = {
+			limit = {
+				OR = {
+					country_has_primary_culture = cu:spanish # I am in Spain...
+					country_has_primary_culture = cu:catalan # ...without the S
+					country_has_primary_culture = cu:basque # ...without the A
+				}
+			}
+			custom_tooltip = {
+				text = carlist_amended_tt
+				every_character = {
+					limit = {
+						has_ideology = ideology:ideology_carlist
+						OR = {
+							owner ?= ROOT
+							home_country ?= ROOT
+						}
+					}
+					set_ideology = ideology:ideology_carlist_2
+				}
+				every_political_movement = {
+					limit = {
+						has_core_ideology = ideology:ideology_carlist_movement
+					}
+					set_core_ideology = ideology_carlist_movement_2
+				}
+				every_interest_group = {
+					limit = {
+						has_ideology = ideology:ideology_carlist_ig
+					}
+					remove_ideology = ideology_carlist_ig
+					add_ideology = ideology_carlist_ig_2
+				}
+			}
+		}
+		if = {
+			limit = {
+				country_has_primary_culture = cu:portuguese
+			}
+			custom_tooltip = {
+				text = miguelist_amended_tt
+				every_character = {
+					limit = {
+						has_ideology = ideology:ideology_miguelist
+						OR = {
+							owner ?= ROOT
+							home_country ?= ROOT
+						}
+					}
+					set_ideology = ideology:ideology_miguelist_2
+				}
+				every_political_movement = {
+					limit = {
+						has_core_ideology = ideology:ideology_miguelist_movement
+					}
+					set_core_ideology = ideology_miguelist_movement_2
+				}
+			}
+		}
 	}
 	
 	modifier = {
