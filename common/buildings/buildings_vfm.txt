@@ -1,4 +1,83 @@
-﻿REPLACE:building_livestock_ranch = {
+﻿
+REPLACE:building_power_bloc_statue = {
+
+	building_group = bg_monuments
+
+	city_type = city
+
+	levels_per_mesh = 1
+
+	expandable = no
+
+	statue = yes
+
+	production_method_groups = {
+		pmg_base_building_power_bloc_statue
+	}
+
+	icon = "gfx/interface/icons/building_icons/building_powerblock_statue.dds"
+
+	required_construction = construction_cost_monument
+
+	can_build_government = {
+		always = yes
+	}
+
+	can_build_private = {
+		always = no
+	}
+	
+	potential = {
+		owner ?= {
+			is_in_power_bloc = yes
+		}
+		has_dlc_feature = power_bloc_features
+		is_capital = yes
+	}
+
+	ai_value = {
+		value = 0
+		
+		if = {
+			limit = { 
+				is_incorporated = yes	
+				state_population >= 1000000
+			}
+			
+			add = {
+				value = state_population
+				divide = 3500
+				max = 5000
+			}
+		}
+
+		if = {
+			limit = { is_capital = no }
+			multiply = 0
+		}		
+					
+		owner = {
+			
+			if = {
+				limit = { is_power_bloc_leader = yes }
+				multiply = 2.0
+			}						
+			
+			if = {
+				limit = { country_rank < rank_value:major_power }
+				multiply = 0.0
+			}
+			else_if = {
+				limit = { country_rank < rank_value:great_power }
+				multiply = 0.35
+			}
+		}
+	}
+
+	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_monuments.dds"
+}
+
+REPLACE:building_livestock_ranch = {
 	building_group = bg_ranching
 
 	icon = "gfx/interface/icons/building_icons/cattle_ranch.dds"

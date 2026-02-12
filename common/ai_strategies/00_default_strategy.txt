@@ -182,6 +182,62 @@ ai_strategy_default = {
 			value = "scope:country.modifier:country_diplomatic_reputation_add"
 			desc = "DIPLOMATIC_REPUTATION_REASON"
 		}
+		
+		# Cultures should support its own sucessions
+		if = {
+			limit = {
+			    scope:diplomatic_play_type = play_type:dp_secession
+			    has_technology_researched = nationalism
+				c:TUR ?= this
+				scope:country = {
+				    country_has_primary_culture = cu:turkish
+				}
+				scope:enemy_country = {
+					NOT = { country_has_primary_culture = cu:turkish }
+				}
+			}
+			
+			add = {
+				value = country_fervor_primary_culture
+				desc = "dp_cultural_support"
+			}
+		}
+		if = {
+			limit = {
+			    scope:diplomatic_play_type = play_type:dp_secession
+			    has_technology_researched = nationalism
+				country_has_primary_culture = cu:greek
+				scope:country = {
+				    country_has_primary_culture = cu:greek
+				}
+				scope:enemy_country = {
+					NOT = { country_has_primary_culture = cu:greek }
+				}
+			}
+			
+			add = {
+				value = country_fervor_primary_culture
+				desc = "dp_cultural_support"
+			}
+		}
+		if = {
+			limit = {
+			    scope:diplomatic_play_type = play_type:dp_secession
+			    has_technology_researched = nationalism
+				country_has_primary_culture = cu:romanian
+				scope:country = {
+				    country_has_primary_culture = cu:romanian
+				}
+				scope:enemy_country = {
+					NOT = { country_has_primary_culture = cu:romanian }
+				}
+			}
+			
+			add = {
+				value = country_fervor_primary_culture
+				desc = "dp_cultural_support"
+			}
+		}
 
 		### German Leadership War
 		if = {

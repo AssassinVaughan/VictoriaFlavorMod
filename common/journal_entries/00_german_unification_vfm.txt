@@ -49,7 +49,16 @@
 			custom_tooltip = {
 				text = je_schleswig_holstein_question_state_ownership_desc
 				OR = {
-					any_scope_state = { state_region = s:STATE_SCHLESWIG_HOLSTEIN }
+					s:STATE_SCHLESWIG_HOLSTEIN = {
+					    any_scope_state = {
+						    OR = {
+							    owner = ROOT
+							    owner = {
+							    	is_subject_of = ROOT
+							    }
+						    }
+						}
+					}
 					has_variable = je_potential_sch_hol_solver
 				}
 				s:STATE_SCHLESWIG_HOLSTEIN = {
