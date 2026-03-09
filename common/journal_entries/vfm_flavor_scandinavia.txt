@@ -297,24 +297,20 @@ je_stormakt = {
 			}
 		}
 	}
+	
+	on_monthly_pulse = {
+		random_events = {
+			30 = 0
+			#1 = journal_flavor_scandinavia.16 TODO
+		}
+	}
 
 	immediate = {
-		trigger_event = { id = journal_flavor_scandinavia.11 popup = yes }
+		trigger_event = { id = journal_flavor_scandinavia.13 popup = yes }
 	}
 
 	complete = {
 		is_at_war = no
-		custom_tooltip = {
-			text = own_all_french_homelands
-			NOT = {
-				any_state = {
-					state_region = {
-						is_homeland = cu:swedish
-					}
-					NOT = { owner = ROOT }
-				}
-			}
-		}
 		country_or_subject_owns_entire_state_region = STATE_OSTROBOTHNIA
 		country_or_subject_owns_entire_state_region = STATE_ALAND
 		country_or_subject_owns_entire_state_region = STATE_UUSIMAA
@@ -323,17 +319,20 @@ je_stormakt = {
                 region = sr:region_baltic_states
 				region = sr:region_north_germany
 			}
-			count >= 4
+			count >= 3
 		}
 	}
 
 	on_complete = {
-		trigger_event = { id = journal_flavor_scandinavia.12 popup = yes }
+		trigger_event = { id = journal_flavor_scandinavia.14 popup = yes }
 	}
 
 	invalid = {
+	    OR = {
+		has_variable = reject_stormakt_expansionism
 		ig:ig_intelligentsia = {
 			is_powerful = yes
+		}
 		}
 	}
 
@@ -342,5 +341,33 @@ je_stormakt = {
 	weight = 100
 }
 
-#je_folkhemmet = {
-#}
+je_folkhemmet = {
+	icon = "gfx/interface/icons/invention_icons/bureaucracy.dds"
+
+	group = je_group_historical_content
+
+	complete = {
+		bureaucracy >= 0
+		approaching_bureaucracy_shortage = no
+		literacy_rate >= 0.5
+		institution_investment_level = {
+			institution = institution_schools
+			value >= 3
+		}
+		country_has_building_group_levels = {
+			type = bg_technology
+			value >= 8
+		}
+	}
+
+	on_complete = {
+	}
+
+    fail = {
+		game_date > 1880.1.1
+    }
+
+	weight = 6000
+
+    should_be_pinned_by_default = yes
+}
