@@ -24,14 +24,16 @@ NAI = {
 	
 	DIPLO_PLAY_SECESSION_OWN_SECESSION_RISK_FACTOR = 0 #-100 Add this amount of reluctance for AI to back a secession of a culture that has enough pops in their own country to secede
 	
-	CONSTRUCTION_MAX_NUM_PRODUCTION_BUILDING_CONSTRUCTIONS_SCALED = 0.03 # If country has this number of production building constructions queued, don't add anymore (scaled by construction production)
+	CONSTRUCTION_MAX_NUM_PRODUCTION_BUILDING_CONSTRUCTIONS_SCALED = 0.05 # If country has this number of production building constructions queued, don't add anymore (scaled by construction production)
 	CONSTRUCTION_MAX_NUM_PRODUCTION_BUILDING_CONSTRUCTIONS_SCALED_MAX = 50 # CONSTRUCTION_MAX_NUM_PRODUCTION_BUILDING_CONSTRUCTIONS_SCALED can't be higher than this
-	CONSTRUCTION_MAX_NUM_GOVERNMENT_BUILDING_CONSTRUCTIONS_SCALED = 0.01 # If country has this number of government building constructions queued, don't add anymore (scaled by construction production)
+	CONSTRUCTION_MAX_NUM_GOVERNMENT_BUILDING_CONSTRUCTIONS_SCALED = 0.02 # If country has this number of government building constructions queued, don't add anymore (scaled by construction production)
 	CONSTRUCTION_MAX_NUM_GOVERNMENT_BUILDING_CONSTRUCTIONS_SCALED_MAX = 2 # CONSTRUCTION_MAX_NUM_GOVERNMENT_CONSTRUCTIONS_SCALED can't be higher than this
 	
-	CONSTRUCTION_RESERVES_NEW_CONSTRUCTIONS = 0.02 #0.1 If gold reserves are less than this after adding the cost of a new construction, don't queue it	
-	CONSTRUCTION_DEBT_RESUME_CRITICAL_CONSTRUCTION = 0.0 #0.75 If critical constructions are paused, resume once debt is this low relative to ceiling
-	CONSTRUCTION_DEBT_PAUSE_CRITICAL_CONSTRUCTION = 0.07 #0.9 If in this much relative debt to debt ceiling, pause all critical constructions 
+	CONSTRUCTION_RESERVES_NEW_CONSTRUCTIONS = 0 #0.1 If gold reserves are less than this after adding the cost of a new construction, don't queue it	
+	CONSTRUCTION_DEBT_RESUME = 0.05 # 0.2 If constructions are paused, resume once debt is this low relative to ceiling
+	CONSTRUCTION_DEBT_PAUSE = 0.15 # 0.4 If in this much relative debt to debt ceiling, pause all non-critical constructions 	
+	CONSTRUCTION_DEBT_RESUME_CRITICAL_CONSTRUCTION = 0.1 #0.75 If critical constructions are paused, resume once debt is this low relative to ceiling
+	CONSTRUCTION_DEBT_PAUSE_CRITICAL_CONSTRUCTION = 0.3 #0.9 If in this much relative debt to debt ceiling, pause all critical constructions 	
 	
 	# This number should not exceed the threshold for raising taxes
 	MONEY_SPENDING_MIN_RATIO_TO_ADD_WANTS_TO_HAVE = 1.2 # How much of a income-to-expenses ratio does AI want to have after increasing spending for a 'wants-to-have' project
@@ -188,6 +190,9 @@ NPolitics = {
 }
 
 NEconomy = {
+    
+    COUNTRY_GDP_CONSTRUCTION_MODIFIER_DIVISOR = 8000000	#2000000 Scale the country_gdp_construction static modifier by this GDP divisor
+	COUNTRY_GDP_CONSTRUCTION_MODIFIER_BASE_MULTIPLIER = 0.05	#0.2 Always added to the country_gdp_construction multiplier, regardless of GDP
 
     #REINVESTMENT_EFFICIENCY_MAX = 1.8 # 3.0, this has a major economical impact		# Maximum conversion of reinvestment to investment pool
 	

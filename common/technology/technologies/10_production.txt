@@ -471,9 +471,17 @@ bessemer_process = {
 		
 		if = {
 			limit = { 
-				 has_strategy = ai_strategy_industrial_expansion
+				has_strategy = ai_strategy_industrial_expansion
 			}
 			add = 1
+		}	
+        if = {
+			limit = { 
+				has_strategy = ai_strategy_industrial_expansion
+				country_rank >= rank_value:great_power
+				
+			}
+			add = 5
 		}		
 	}
 }

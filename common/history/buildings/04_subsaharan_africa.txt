@@ -1965,6 +1965,19 @@
 				activate_production_methods={ "coffee_plantation_dry_process" "pm_road_carts"  }
 			}
 			create_building={
+				building="building_logging_camp"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:POR"
+						levels=1
+						region="STATE_BEIRA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_simple_forestry" "pm_hardwood" "pm_no_equipment" "pm_road_carts"  }
+			}
+			create_building={
 				building="building_port"
 				add_ownership={
 					country={
@@ -2194,19 +2207,6 @@
 	s:STATE_NORTH_ANGOLA={
 		region_state:POR={
 			create_building={
-				building="building_millet_farm"
-				add_ownership={
-					building={
-						type="building_manor_house"
-						country="c:POR"
-						levels=1
-						region="STATE_NORTH_ANGOLA"
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_simple_farming" "pm_no_secondary" "pm_tools_disabled"  }
-			}
-			create_building={
 				building="building_coffee_plantation"
 				add_ownership={
 					building={
@@ -2315,7 +2315,7 @@
 					building={
 						type="building_manor_house"
 						country="c:POR"
-						levels=2
+						levels=1
 						region="STATE_ZAMBEZIA"
 					}
 				}

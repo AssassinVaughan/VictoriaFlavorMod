@@ -431,6 +431,14 @@ ai_strategy_industrial_expansion = {
 			}
 			add = 20
 		}
+		
+		if = {
+			limit = { 
+				exists = c:PRU
+				c:PRU = this
+			}
+			add = 15
+		}
 
 		if = { # Grunderzeit
 			limit = {
