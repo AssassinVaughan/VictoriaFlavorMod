@@ -76,7 +76,7 @@ rationalism = {
 	
 	modifier = {
 		country_institution_schools_max_investment_add = 1
-		state_education_access_wealth_add = 0.005
+		state_education_access_wealth_add = 0.01
 	}
 	
 	ai_weight = {
@@ -223,6 +223,7 @@ corporate_charters = {
 	
 	modifier = {
 		country_max_companies_add = 1
+		country_free_charters_add = 2
 	}	
 	
 	unlocking_technologies = {
@@ -392,7 +393,6 @@ mass_communication = {
 	modifier = {
 		country_authority_mult = 0.1
 		country_voting_power_mult = 0.1
-		state_expected_sol_from_literacy = 1
 	}
 	
 	unlocking_technologies = {
@@ -1998,7 +1998,6 @@ analytical_philosophy = {
 	era = era_5
 	texture = "gfx/interface/icons/invention_icons/analytical_philosophy.dds"
 	category = society
-	should_update_map = yes # This technology adds paved roads to the map
 	
 	unlocking_technologies = {
 		psychoanalysis
@@ -2013,6 +2012,7 @@ paved_roads = {
 	era = era_5
 	texture = "gfx/interface/icons/invention_icons/paved_roads.dds"
 	category = society
+	should_update_map = yes # This technology adds paved roads to the map
 	
 	modifier = {
 		state_infrastructure_from_automobiles_consumption_add = 0.25

@@ -4937,12 +4937,12 @@ ai_strategy_default = {
 
 		add = {
 			value = investment_pool_income
-			divide = 3500 # 1 construction output per this much into the investment pool				
+			divide = 3300 # 1 construction output per this much into the investment pool				
 		}
 		
 		add = {
 			value = fixed_income
-			divide = 3500
+			divide = 3300
 		}
 			
 		# Improved technology enables cheaper construction
@@ -4960,6 +4960,16 @@ ai_strategy_default = {
 			limit = { has_strategy = ai_strategy_maintain_mandate_of_heaven }
 			multiply = 0.3
 		}
+		
+		if = {
+			limit = { has_strategy = ai_strategy_industrial_expansion }
+			multiply = 1.15
+		}
+		
+		if = {
+			limit = { country_rank = rank_value:great_power }
+			multiply = 1.15
+		}
 
 		if = {
 			limit = {
@@ -4968,7 +4978,7 @@ ai_strategy_default = {
 					has_journal_entry = je_meiji_main
 				}
 			}
-			multiply = 1.5
+			multiply = 1.4
 		}
 
         add = 3 # Accounts for the 3 free construction from base modifiers
@@ -5020,7 +5030,7 @@ ai_strategy_default = {
 
 		add = {
 			value = cached_ai_incorporated_population
-			divide = 270000 # 1 level of barracks per 270k incorporated population	
+			divide = 280000 # 1 level of barracks per 280k incorporated population	
 		}		
 
 		add = {
@@ -5032,7 +5042,7 @@ ai_strategy_default = {
 
 		add = {
 			value = gdp
-			divide = 500000 # 1 level of barracks per 500k gdp
+			divide = 550000 # 1 level of barracks per 550k gdp
 		}		
 
 		# More advanced standing armies are expensive and should be smaller relative to population
@@ -5185,9 +5195,9 @@ ai_strategy_default = {
 		
 		if = {
 			limit = { 
-				has_journal_entry = je_prussian_guard game_date > 1839.7.1
+				has_journal_entry = je_prussian_guard
 			}
-			min = 125
+			min = 135
 		}	
 
 		max = 700 #VFM, from 500
@@ -5514,13 +5524,15 @@ ai_strategy_default = {
 		artillery = {
 			stance = wants_high_supply
 			trigger = {
-				has_technology_researched = artillery
+				has_technology_researched = napoleonic_warfare
+				OR = { country_rank >= rank_value:major_power gdp > 12000000 } # 12 mil
 			}
 		}
 		ammunition = {
 			stance = wants_high_supply
 			trigger = {
 				has_technology_researched = general_staff
+				OR = { country_rank >= rank_value:major_power gdp > 12000000 } # 12 mil
 			}
 		}
 		aeroplanes = {
@@ -5698,6 +5710,7 @@ ai_strategy_default = {
 			stance = wants_high_supply
 			trigger = {
 				has_technology_researched = mechanical_tools
+				gdp > 4000000 # 4 mil
 			}
 		}
 		glass = {
