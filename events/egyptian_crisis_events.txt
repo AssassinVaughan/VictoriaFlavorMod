@@ -51,11 +51,11 @@ egyptian_crisis_events.1 = {
 
 	option = {
 		name = egyptian_crisis_events.1.a
-		# country_influence_mult
 		add_modifier = {
 			name = working_with_the_great_powers
 			days = long_modifier_time
 		}
+		set_variable = egyptian_crisis_conciliatory
 		every_country = {
 			limit = {
 				country_rank = rank_value:great_power
@@ -73,7 +73,7 @@ egyptian_crisis_events.1 = {
 			}
 			change_relations = {
 				country = root
-				value = 40
+				value = 30
 			}
 		}
 		every_country = {
@@ -92,11 +92,11 @@ egyptian_crisis_events.1 = {
 			custom_tooltip = egyptian_crisis_events.1.a.tt
 		}
 		c:EGY = {
-			trigger_event = { id = egyptian_crisis_events.2 }
+			trigger_event = { id = egyptian_crisis_events.2 days = 5 popup = yes }
 		}
 		
 		ai_chance = {
-			base = 3
+			base = 2
 		}
 	}
 
@@ -104,6 +104,7 @@ egyptian_crisis_events.1 = {
 		name = egyptian_crisis_events.1.b
         default_option = yes
 		change_infamy = 5
+		set_variable = egyptian_crisis_hardline
         every_country = {
         	limit = {
         		country_rank = rank_value:great_power
@@ -120,7 +121,7 @@ egyptian_crisis_events.1 = {
         	custom_tooltip = egyptian_crisis_events.1.a.tt
         }
         c:EGY = {
-        	trigger_event = { id = egyptian_crisis_events.2 }
+	        	trigger_event = { id = egyptian_crisis_events.2 days = 5 popup = yes }
         }
 		
 		ai_chance = {
@@ -161,6 +162,52 @@ egyptian_crisis_events.2 = {
 		name = egyptian_crisis_events.2.a
         default_option = yes
 		custom_tooltip = egyptian_crisis_events.2.a.tt
+		set_variable = egyptian_crisis_egypt_seek_france
+		c:TUR = {
+			change_relations = {
+				country = ROOT
+				value = -20
+			}
+		}
+		if = {
+			limit = {
+				exists = c:FRA
+				c:FRA = {
+					country_rank >= rank_value:major_power
+				}
+			}
+			change_relations = {
+				country = c:FRA
+				value = 40
+			}
+			c:FRA = {
+				set_variable = veiled_protectorate_support_egypt
+				trigger_event = { id = egyptian_crisis_events.4 days = 7 popup = yes }
+			}
+		}
+		c:TUR = {
+			trigger_event = { id = egyptian_crisis_events.6 days = 7 popup = yes }
+		}
+		ai_chance = {
+			base = 70
+		}
+	}
+
+	option = {
+		name = egyptian_crisis_events.2.b
+		custom_tooltip = egyptian_crisis_events.2.b.tt
+		set_variable = egyptian_crisis_egypt_compromise
+		change_relations = {
+			country = c:TUR
+			value = 25
+		}
+		c:TUR = {
+			set_variable = veiled_protectorate_support_ottomans
+			trigger_event = { id = egyptian_crisis_events.5 days = 7 popup = yes }
+		}
+		ai_chance = {
+			base = 30
+		}
 	}
 }
 
@@ -195,32 +242,32 @@ egyptian_crisis_events.4 = {
 	option = {
 		name = egyptian_crisis_events.4.a
         default_option = yes
-		
-		if = {
-			limit = {
-				has_variable = veiled_protectorate_support_egypt
-			}
-			
-			random_list = {
-				50 = {}
-				40 = { 
-					remove_variable = veiled_protectorate_support_egypt
+		custom_tooltip = egyptian_crisis_events.4.a.tt
+		hidden_effect = {
+			if = {
+				limit = {
+					has_variable = veiled_protectorate_support_egypt
 				}
-				10 = { 
-					remove_variable = veiled_protectorate_support_egypt
-					set_variable = veiled_protectorate_support_ottomans
+				random_list = {
+					50 = {}
+					40 = {
+						remove_variable = veiled_protectorate_support_egypt
+					}
+					10 = {
+						remove_variable = veiled_protectorate_support_egypt
+						set_variable = veiled_protectorate_support_ottomans
+					}
 				}
 			}
-		}
-		else_if = {
-			limit = {
-				NOT  = { has_variable = veiled_protectorate_support_ottomans }
-			}
-			
-			random_list = {
-				50 = {}
-				50 = { 
-					set_variable = veiled_protectorate_support_ottomans
+			else_if = {
+				limit = {
+					NOT = { has_variable = veiled_protectorate_support_ottomans }
+				}
+				random_list = {
+					50 = {}
+					50 = {
+						set_variable = veiled_protectorate_support_ottomans
+					}
 				}
 			}
 		}
@@ -248,20 +295,21 @@ egyptian_crisis_events.4 = {
 
 	option = {
 		name = egyptian_crisis_events.4.b
-		
-		if = {
-			limit = {
-				has_variable = veiled_protectorate_support_ottomans
-			}
-			
-			random_list = {
-				70 = {}
-				20 = { 
-					remove_variable = veiled_protectorate_support_ottomans 
+		custom_tooltip = egyptian_crisis_events.4.b.tt
+		hidden_effect = {
+			if = {
+				limit = {
+					has_variable = veiled_protectorate_support_ottomans
 				}
-				10 = { 
-					remove_variable = veiled_protectorate_support_ottomans 
-					set_variable = veiled_protectorate_support_egypt
+				random_list = {
+					70 = {}
+					20 = {
+						remove_variable = veiled_protectorate_support_ottomans
+					}
+					10 = {
+						remove_variable = veiled_protectorate_support_ottomans
+						set_variable = veiled_protectorate_support_egypt
+					}
 				}
 			}
 		}
@@ -285,6 +333,231 @@ egyptian_crisis_events.4 = {
 				}
 				add = 2
 			}
+		}
+	}
+}
+
+egyptian_crisis_events.5 = {
+	type = country_event
+	placement = root
+
+	title = egyptian_crisis_events.5.t
+	desc = egyptian_crisis_events.5.d
+	flavor = egyptian_crisis_events.5.f
+
+	event_image = {
+		video = "unspecific_signed_contract"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_diplomatic.dds"
+
+	duration = 3
+
+	trigger = {
+		has_variable = egyptian_crisis_conciliatory
+		exists = c:EGY
+	}
+
+	option = {
+		name = egyptian_crisis_events.5.a
+		default_option = yes
+		custom_tooltip = egyptian_crisis_events.5.a.tt
+		add_prestige = 10
+		change_relations = {
+			country = c:EGY
+			value = 40
+		}
+		if = {
+			limit = {
+				c:EGY = {
+					is_subject = no
+				}
+				is_at_war_with = c:EGY
+				is_at_war = no
+			}
+			create_diplomatic_pact = {
+				country = c:EGY
+				type = protectorate
+			}
+		}
+		set_variable = egyptian_crisis_settlement
+		ai_chance = {
+			base = 60
+		}
+	}
+
+	option = {
+		name = egyptian_crisis_events.5.b
+		custom_tooltip = egyptian_crisis_events.5.b.tt
+		change_infamy = 3
+		change_relations = {
+			country = c:EGY
+			value = -20
+		}
+		set_variable = egyptian_crisis_harsh_settlement
+		ai_chance = {
+			base = 30
+		}
+	}
+
+	option = {
+		name = egyptian_crisis_events.5.c
+		custom_tooltip = egyptian_crisis_events.5.c.tt
+		change_infamy = 8
+		s:STATE_SINAI = {
+			add_claim = ROOT
+		}
+		s:STATE_UPPER_EGYPT = {
+			add_claim = ROOT
+		}
+		s:STATE_MIDDLE_EGYPT = {
+			add_claim = ROOT
+		}
+		s:STATE_LOWER_EGYPT = {
+			add_claim = ROOT
+		}
+		s:STATE_EGYPTIAN_DESERT = {
+			add_claim = ROOT
+		}
+		c:EGY = {
+			trigger_event = { id = egyptian_crisis_events.7 days = 3 popup = yes }
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+egyptian_crisis_events.6 = {
+	type = country_event
+	placement = root
+
+	title = egyptian_crisis_events.6.t
+	desc = egyptian_crisis_events.6.d
+	flavor = egyptian_crisis_events.6.f
+
+	event_image = {
+		video = "unspecific_politicians_arguing"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_fire.dds"
+
+	duration = 3
+
+	trigger = {
+		has_variable = egyptian_crisis_hardline
+		exists = c:EGY
+		OR = {
+			has_variable = veiled_protectorate_support_egypt
+			infamy >= infamy_threshold:notorious
+		}
+	}
+
+	option = {
+		name = egyptian_crisis_events.6.a
+		default_option = yes
+		custom_tooltip = egyptian_crisis_events.6.a.tt
+		change_infamy = -3
+		add_modifier = {
+			name = working_with_the_great_powers
+			days = long_modifier_time
+		}
+		trigger_event = { id = egyptian_crisis_events.5 days = 7 popup = yes }
+		ai_chance = {
+			base = 35
+		}
+	}
+
+	option = {
+		name = egyptian_crisis_events.6.b
+		custom_tooltip = egyptian_crisis_events.6.b.tt
+		change_infamy = 5
+		every_country = {
+			limit = {
+				country_rank = rank_value:great_power
+				country_is_in_europe = yes
+				NOR = {
+					c:TUR = this
+					c:EGY = this
+					has_war_with = c:TUR
+					has_war_with = c:EGY
+				}
+			}
+			change_relations = {
+				country = ROOT
+				value = -20
+			}
+		}
+		c:EGY = {
+			trigger_event = { id = egyptian_crisis_events.7 days = 3 popup = yes }
+		}
+		set_variable = egyptian_crisis_internationalized
+		ai_chance = {
+			base = 65
+		}
+	}
+}
+
+egyptian_crisis_events.7 = {
+	type = country_event
+	placement = scope:egyptian_crisis_state
+
+	title = egyptian_crisis_events.7.t
+	desc = egyptian_crisis_events.7.d
+	flavor = egyptian_crisis_events.7.f
+
+	event_image = {
+		video = "middleeast_urban_chaos"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+
+	duration = 3
+
+	trigger = {
+		exists = c:TUR
+		exists = c:EGY
+		c:EGY ?= root
+	}
+
+	immediate = {
+		if = {
+			limit = { exists = s:STATE_SYRIA.region_state:EGY }
+			s:STATE_SYRIA.region_state:EGY = { save_scope_as = egyptian_crisis_state }
+		}
+		else = {
+			c:EGY.capital = { save_scope_as = egyptian_crisis_state }
+		}
+	}
+
+	option = {
+		name = egyptian_crisis_events.7.a
+		default_option = yes
+		custom_tooltip = egyptian_crisis_events.7.a.tt
+		change_relations = {
+			country = c:TUR
+			value = -40
+		}
+		add_radicals = {
+			value = medium_radicals
+		}
+		if = {
+			limit = {
+				exists = c:FRA
+			}
+			change_relations = {
+				country = c:FRA
+				value = 25
+			}
+		}
+		ai_chance = {
+			base = 100
 		}
 	}
 }

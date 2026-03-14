@@ -4,6 +4,14 @@ liaotung_lease.1 = {
 	type = country_event
 	placement = ROOT
 
+	trigger = {
+		c:RUS ?= root
+		exists = c:CHI
+		c:CHI = {
+			owns_entire_state_region = STATE_SHENGJING
+		}
+	}
+
 	title = liaotung_lease.1.t
 	desc = liaotung_lease.1.d
 	flavor = liaotung_lease.1.f
@@ -33,6 +41,12 @@ liaotung_lease.2 = {
 	type = country_event
 	placement = c:CHI
 
+	trigger = {
+		c:CHI ?= root
+		exists = c:RUS
+		owns_entire_state_region = STATE_SHENGJING
+	}
+
 	title = liaotung_lease.2.t
 	desc = liaotung_lease.2.d
 	flavor = liaotung_lease.2.f
@@ -49,6 +63,28 @@ liaotung_lease.2 = {
 
 	option = {
 		name = liaotung_lease.2.a
+		trigger = {
+			c:RUS = {
+				can_create_treaty = {
+					first_country = c:RUS
+					second_country = c:CHI
+
+					is_draft = no
+					binding_period = { years = 20 }
+
+					articles_to_create = {
+						{
+							article = treaty_port
+							source_country = c:CHI
+							target_country = c:RUS
+							inputs = {
+								{ state = s:STATE_SHENGJING.region_state:CHI }
+							}
+						}
+					}
+				}
+			}
+		}
 		custom_tooltip = liaotung_lease.2.a_tt
 		create_treaty = {
 			name = "Liaotung Lease"
@@ -82,6 +118,14 @@ liaotung_lease.3 = {
 	type = country_event
 	placement = c:RUS
 
+	trigger = {
+		c:RUS ?= root
+		exists = c:CHI
+		c:CHI = {
+			owns_entire_state_region = STATE_SHENGJING
+		}
+	}
+
 	title = liaotung_lease.3.t
 	desc = liaotung_lease.3.d
 	flavor = liaotung_lease.3.f
@@ -98,6 +142,13 @@ liaotung_lease.3 = {
 
 	option = {
 		name = liaotung_lease.3.a
+		trigger = {
+			is_at_war = no
+			c:CHI = {
+				is_at_war = no
+				owns_entire_state_region = STATE_SHENGJING
+			}
+		}
 		custom_tooltip = liaotung_lease.3.a_tt
 		create_diplomatic_play = {
 			type = dp_take_treaty_port

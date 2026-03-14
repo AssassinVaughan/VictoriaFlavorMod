@@ -78,6 +78,7 @@ lease_of_port_arthur = {
 		}
 	}
 	possible = {
+		NOT = { has_variable = liaotung_lease_recent_demand }
 		is_at_war = no
 		has_technology_researched = railways
 		has_technology_researched = hydraulic_cranes
@@ -87,6 +88,7 @@ lease_of_port_arthur = {
 		}
 	}
 	when_taken = {
+		set_variable = { name = liaotung_lease_recent_demand days = 365 }
 		trigger_event = { id = liaotung_lease.1 days = 0 popup = yes }
 	}
 	ai_chance = {
