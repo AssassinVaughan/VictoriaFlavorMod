@@ -339,10 +339,19 @@ vfm_ai.3 = {
 		}
 		every_country = {
 			limit = {
-				is_ai = yes
                 country_rank >= rank_value:major_power
+				is_ai = yes
 			}
-			add_investment_pool = 1500000
+			add_investment_pool = 800000
+			add_treasury = 800000
+		}
+		every_country = {
+			limit = {
+                country_rank >= rank_value:great_power
+				is_ai = yes
+			}
+			add_investment_pool = 1000000
+			add_treasury = 1000000
 		}
 		if = {
 			limit = {

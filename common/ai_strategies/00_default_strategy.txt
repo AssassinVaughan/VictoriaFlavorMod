@@ -4933,16 +4933,36 @@ ai_strategy_default = {
 	# How much construction output should the AI aim for
 	# Using this value in other strategies will function additively
 	wanted_construction_output = {
-		value = 0
+	    value = 0
+		# Accounts for the 0-8 free construction from base modifiers
+			add = {
+				value = 1
+				add = {
+					value = gdp
+					divide = 9000000
+					multiply = 7
+				}
+				max = 8
+			}
+		
 
 		add = {
 			value = investment_pool_income
-			divide = 3300 # 1 construction output per this much into the investment pool				
+			subtract = 5000 # So small nations don't overshoot early on
+			divide = 900 # 1 construction output per this much into the investment pool			
 		}
 		
 		add = {
 			value = fixed_income
-			divide = 3300
+			divide = 3500
+			max = 200
+		}
+		
+		add = {
+			value = total_population
+
+			divide = 2500000 # 1 construction output per this much population
+			max = 100
 		}
 			
 		# Improved technology enables cheaper construction
@@ -4963,7 +4983,7 @@ ai_strategy_default = {
 		
 		if = {
 			limit = { has_strategy = ai_strategy_industrial_expansion }
-			multiply = 1.15
+			multiply = 1.2
 		}
 		
 		if = {
@@ -4993,7 +5013,6 @@ ai_strategy_default = {
 			max = 1.3
 		}
 
-		min = 3
 		max = 800
 	}
 	
