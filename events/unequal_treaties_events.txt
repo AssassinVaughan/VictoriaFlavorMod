@@ -28,7 +28,13 @@ liaotung_lease.1 = {
 
 	option = {
 		name = liaotung_lease.1.a
-		trigger_event = { id = liaotung_lease.2 days = 5 popup = yes }
+		c:CHI ?= {
+			trigger_event = {
+				id = liaotung_lease.2
+				days = 5
+				popup = yes
+			} 
+		}
 		custom_tooltip = liaotung_lease.1.a_tt
 	}
 	option = {
@@ -110,7 +116,13 @@ liaotung_lease.2 = {
 	option = {
 		name = liaotung_lease.2.b
 		custom_tooltip = liaotung_lease.2.b_tt
-		trigger_event = { id = liaotung_lease.3 days = 1 popup = yes }
+		c:RUS ?= {
+			trigger_event = {
+				id = liaotung_lease.3
+				days = 1
+				popup = yes
+			} 
+		}
 	}
 }
 
