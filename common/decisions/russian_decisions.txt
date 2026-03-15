@@ -68,3 +68,30 @@
 		value = 10
 	}
 }
+
+lease_of_port_arthur = {
+	is_shown = {
+		exists = c:RUS
+		root = c:RUS
+		c:CHI = {
+			owns_entire_state_region = STATE_SHENGJING
+		}
+	}
+	possible = {
+		NOT = { has_variable = liaotung_lease_recent_demand }
+		is_at_war = no
+		has_technology_researched = railways
+		has_technology_researched = hydraulic_cranes
+		c:RUS = {
+			owns_entire_state_region = STATE_AMUR
+			owns_entire_state_region = STATE_OUTER_MANCHURIA
+		}
+	}
+	when_taken = {
+		set_variable = { name = liaotung_lease_recent_demand days = 365 }
+		trigger_event = { id = liaotung_lease.1 days = 0 popup = yes }
+	}
+	ai_chance = {
+		value = 100
+	}
+}
