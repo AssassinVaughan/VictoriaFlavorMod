@@ -396,6 +396,33 @@ pm_rotating_crops_ranch = {
 	}
 }
 
+REPLACE:pm_intensive_grazing_ranch = {
+	texture = "gfx/interface/icons/production_method_icons/large_sheep_ranch.dds"
+
+	unlocking_technologies = {
+		mechanized_farming
+	}
+
+	unlocking_production_methods = {
+		pm_butchering_tools
+		pm_slaughterhouses
+		pm_mechanized_slaughtering
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_grain_add = 10 # 200
+			goods_output_fabric_add = 14 # 280
+			goods_output_fertilizer_add = 3 # 90
+		}
+        level_scaled = {
+            building_employment_laborers_add = -200
+			building_employment_farmers_add = 100
+			building_employment_machinists_add = 100
+		}
+	}
+}
+
 pm_lithography_art = {
 	texture = "gfx/interface/icons/production_method_icons/bleached_paper.dds"
 
@@ -1350,3 +1377,53 @@ REPLACE:pm_religious_academia = {
 		}
 	}			
 }	
+
+REPLACE:pm_pot_stills = {
+	texture = "gfx/interface/icons/production_method_icons/pot_stills.dds"
+
+	unlocking_technologies = {
+		distillation
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			# input goods
+			goods_input_sugar_add = 25				# x30 =  750
+
+			# output goods
+			goods_output_liquor_add = 32				# x30 = 960
+		}
+
+		level_scaled = {
+			# profit = 150 (13.6)
+			building_employment_shopkeepers_add = 100	# x2.0 = 200 laborer wages
+			building_employment_machinists_add = 250	# x1.5 = 375 laborer wages
+		}
+	}
+}
+
+REPLACE:pm_patent_stills = {
+	texture = "gfx/interface/icons/production_method_icons/patent_stills.dds"
+
+	unlocking_technologies = {
+		fractional_distillation
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			# input goods
+			goods_input_sugar_add = 30				# x30 =   900
+			goods_input_glass_add = 10				# x40 =   400
+
+			# output goods
+			goods_output_liquor_add = 70			# x30 =  2100
+		}
+
+		level_scaled = {
+			# profit = 650 (19.3)
+			building_employment_shopkeepers_add = 200	# x2.0 = 400 laborer wages
+			building_employment_machinists_add = 500	# x1.5 = 750 laborer wages
+			building_employment_engineers_add = 200		# x3.0 = 600 laborer wages
+		}
+	}
+}

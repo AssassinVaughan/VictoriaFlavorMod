@@ -7,6 +7,13 @@
 			}
 		}
 	}
+	s:STATE_GOTALAND={
+		region_state:SWE={
+			sg:iron = {
+				add_exports = 10
+			}
+		}
+	}
 	s:STATE_SANTIAGO={
 		region_state:CHL={
 			sg:tools = {
@@ -56,10 +63,18 @@
 			}
 		}
 	}
+	}
 	s:STATE_RHONE={
 		region_state:FRA={
 			sg:luxury_clothes = {
 				add_exports = 15
+			}
+		}
+	}	
+	s:STATE_HOLLAND={
+		region_state:NET={
+			sg:iron = {
+				add_imports = 15
 			}
 		}
 	}		
@@ -127,6 +142,9 @@
 			}
             sg:wood = {
 				add_imports = 15
+			}	
+            sg:iron = {
+				add_imports = 15
 			}			
 		}
 	}
@@ -142,7 +160,7 @@
 				add_imports = 15
 			}
             sg:iron = {
-				add_imports = 15
+				add_imports = 25
 			}			
 		}
 	}	

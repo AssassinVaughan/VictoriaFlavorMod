@@ -4935,26 +4935,23 @@ ai_strategy_default = {
 	wanted_construction_output = {
 	    value = 0
 		# Accounts for the 0-8 free construction from base modifiers
-			add = {
-				value = 1
-				add = {
-					value = gdp
-					divide = 9000000
-					multiply = 7
-				}
-				max = 8
-			}
+		add = {
+			value = gdp
+			divide = 800000
+			max = 10
+		}
+		
 		
 
 		add = {
 			value = investment_pool_income
-			subtract = 5000 # So small nations don't overshoot early on
-			divide = 900 # 1 construction output per this much into the investment pool			
+			subtract = 3500 # So small nations don't overshoot early on
+			divide = 850 # 1 construction output per this much into the investment pool			
 		}
 		
 		add = {
 			value = fixed_income
-			divide = 3500
+			divide = 3100
 			max = 200
 		}
 		
