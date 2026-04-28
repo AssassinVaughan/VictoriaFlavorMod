@@ -515,7 +515,7 @@ ai_strategy_default = {
 				}
 				scope:country = { # country is the country they're at war with
 					OR = {
-						capital.region = sr:region_persia
+						capital.region = sr:region_greater_persia
 						capital.region = sr:region_central_asia
 					}
 					NOT = {
@@ -525,9 +525,9 @@ ai_strategy_default = {
 				OR = {
 					has_strategic_adjacency = scope:country
 					AND = {
-						has_port = yes 
+						has_port_country = yes
 						navy_size >= 10
-						scope:country = { has_port = yes }
+						scope:country = { has_port_country = yes }
 					}
 				}
 			}
@@ -1343,15 +1343,14 @@ ai_strategy_default = {
 			limit = {
 				has_journal_entry = je_spoils_of_war
 				any_diplomatically_relevant_country = {
-					sr:region_balkans = {
-						any_scope_state = {
-							is_homeland_of_country_cultures = root
-							has_claim_by = root
-						}
+					any_scope_state = {
+						region = sr:region_balkans
+						is_homeland_of_country_cultures = root
+						has_claim_by = root
 					}
 				}
 			}
-			 add = 50
+			add = 50
 		}
 
 		# Second Balkan War, pitting the balkan nations against each other (Wallachia)
@@ -1981,7 +1980,7 @@ ai_strategy_default = {
 				if = {
 					limit = { 
 						NOT = { has_strategic_land_adjacency = scope:target_state } 
-						scope:target_state = { has_port = no }
+						scope:target_state = { has_port_state = no }
 					}
 					multiply = 0.5
 				}
@@ -2095,17 +2094,8 @@ ai_strategy_default = {
 					}
 					scope:target_state = {
 						OR = {
-							region = sr:region_madras
-							region = sr:region_bombay
-							region = sr:region_bengal
-							region = sr:region_central_india
-							region = sr:region_himalayas
-							state_region = s:STATE_MANDALAY
-							state_region = s:STATE_KACHIN
-							state_region = s:STATE_SHAN_STATES
-							state_region = s:STATE_PEGU
-							state_region = s:STATE_PASHTUNISTAN
-							state_region = s:STATE_QUETTA
+							is_in_geographic_region = geographic_region_india
+							is_in_geographic_region = geographic_region_burma
 						}
 					}
 				}
@@ -2164,10 +2154,9 @@ ai_strategy_default = {
 					has_journal_entry = je_eastern_frontier
 					scope:target_state = {
 						OR = {
-							region = sr:region_persia
-							region = sr:region_central_asia
-							region = sr:region_bombay
-							region = sr:region_punjab
+							is_in_geographic_region = geographic_region_persia_old
+							is_in_geographic_region = geographic_region_central_asia_old
+							is_in_geographic_region = geographic_region_india
 						}
 						has_claim_by = ROOT
 					}
@@ -2658,10 +2647,11 @@ ai_strategy_default = {
 			limit = {
 				should_carve_up_china = yes
 				scope:target_state = {
+					owner = { is_country_type = unrecognized }
 					OR = {
 						region = sr:region_north_china
 						region = sr:region_south_china
-						region = sr:region_manchuria
+						is_in_geographic_region = geographic_region_manchuria_old
 					}
 				}
 			}
@@ -2948,22 +2938,14 @@ ai_strategy_default = {
 							OR = {
 								any_scope_state = {
 									OR = {
-										region = sr:region_madras
-										region = sr:region_bombay
-										region = sr:region_bengal
-										region = sr:region_central_india
-										region = sr:region_punjab
+										is_in_geographic_region = geographic_region_india
 									}
 									count >= 3
 								}
 								any_subject_or_below = {
 									any_scope_state = {
 										OR = {
-											region = sr:region_madras
-											region = sr:region_bombay
-											region = sr:region_bengal
-											region = sr:region_central_india
-											region = sr:region_punjab
+											is_in_geographic_region = geographic_region_india
 										}
 										count >= 3
 									}
@@ -3260,6 +3242,32 @@ ai_strategy_default = {
 	# Using this value in other strategies will function additively
 	recklessness = {
 		value = 1
+
+		if = {
+			limit = {
+				scope:target_country = {
+					is_country_type = unrecognized
+					any_scope_state = {
+						region = {
+							root = {
+								has_region_stance = {
+									region = prev
+									stance = stance_conquer_region
+								}
+							}
+						}
+					}
+				}
+			}
+			add = 1
+
+			if = {
+				limit = {
+					is_country_type = unrecognized
+				}
+				add = 1
+			}
+		}
 		if = {
 			limit = {
 				is_country_alive = yes
@@ -3537,7 +3545,7 @@ ai_strategy_default = {
 					has_journal_entry = je_eastern_frontier
 					scope:target_country = {
 						capital = {
-							region = sr:region_persia
+							region = sr:region_greater_persia
 						}
 					}
 				}
@@ -3751,7 +3759,31 @@ ai_strategy_default = {
 				scope:target_country = { is_country_type = unrecognized }
 			}
 			
-			add = 0.5
+			add = 1.0
+		}
+
+		if = {
+			limit = {
+				any_country_strategic_region = {
+					scope:target_country = { is_local_country = prev }
+					root = {
+						OR = {
+							has_region_stance = {
+								region = prev
+								stance = stance_conquer_region
+							}
+							AND = {
+								scope:target_country = { is_country_type = unrecognized }
+								has_region_stance = {
+									region = prev
+									stance = stance_colonize_region
+								}
+							}
+						}
+					}
+				}
+			}
+			add = 2.5
 		}
 			
 		# Higher aggression against pariah countries
@@ -3902,7 +3934,7 @@ ai_strategy_default = {
 						OR = {
 							region = sr:region_north_china
 							region = sr:region_south_china
-							region = sr:region_manchuria
+							is_in_geographic_region = geographic_region_manchuria_old
 						}
 					}					
 				}
@@ -4042,23 +4074,13 @@ ai_strategy_default = {
 					target_is_our_or_fellow_subject = no
 					any_scope_state = {
 						OR = {
-							region = sr:region_madras
-							region = sr:region_bombay
-							region = sr:region_bengal
-							region = sr:region_central_india
-							region = sr:region_punjab
-							region = sr:region_himalayas
-							state_region = s:STATE_MANDALAY
-							state_region = s:STATE_KACHIN
-							state_region = s:STATE_SHAN_STATES
-							state_region = s:STATE_PEGU
-							state_region = s:STATE_PASHTUNISTAN
-							state_region = s:STATE_QUETTA
+							is_in_geographic_region = geographic_region_india
+							is_in_geographic_region = geographic_region_burma
 						}
 					}
 				}
 			}
-			add = 3
+			add = 15
 		}
 
 		# Britain consolidating South Asia
@@ -4071,18 +4093,8 @@ ai_strategy_default = {
 					NOT = { is_subject_of = ROOT }
 					any_scope_state = {
 						OR = {
-							region = sr:region_madras
-							region = sr:region_bombay
-							region = sr:region_bengal
-							region = sr:region_central_india
-							region = sr:region_punjab
-							region = sr:region_himalayas
-							state_region = s:STATE_MANDALAY
-							state_region = s:STATE_KACHIN
-							state_region = s:STATE_SHAN_STATES
-							state_region = s:STATE_PEGU
-							state_region = s:STATE_PASHTUNISTAN
-							state_region = s:STATE_QUETTA
+							is_in_geographic_region = geographic_region_india
+							is_in_geographic_region = geographic_region_burma
 						}
 					}
 				}
@@ -4382,22 +4394,14 @@ ai_strategy_default = {
 		        		OR = {
 		        			any_scope_state = {
 		        				OR = {
-									region = sr:region_madras
-									region = sr:region_bombay
-									region = sr:region_bengal
-									region = sr:region_central_india
-									region = sr:region_punjab
+									is_in_geographic_region = geographic_region_india
 		    					}
 								count >= 3
 		        			}
 		        			any_subject_or_below = {
 		        				any_scope_state = {
 		        					OR = {
-										region = sr:region_madras
-										region = sr:region_bombay
-										region = sr:region_bengal
-										region = sr:region_central_india
-										region = sr:region_punjab
+										is_in_geographic_region = geographic_region_india
 		        					}
 									count >= 3
 			        			}
@@ -4603,7 +4607,7 @@ ai_strategy_default = {
 				has_journal_entry = je_maintain_afghan_protectorate
 				scope:target_country = {
 					capital = {
-						region = sr:region_persia
+						region = sr:region_greater_persia
 					}
 					OR = {
 						country_has_primary_culture = cu:pashtun
@@ -4659,12 +4663,7 @@ ai_strategy_default = {
 				has_journal_entry = je_eastern_frontier
 				scope:target_country = {
 					any_scope_state = {
-						OR = {
-							region = sr:region_persia
-							region = sr:region_central_asia
-							region = sr:region_bombay
-							region = sr:region_punjab
-						}
+						is_in_geographic_region = geographic_region_india
 						has_claim_by = ROOT
 					}
 				}
@@ -4698,7 +4697,7 @@ ai_strategy_default = {
 			limit = {
 				c:GBR ?= this
 				has_variable = committed_to_afghanistan_assistance
-				any_country = {
+				any_country_in_greater_persia = {
 					has_variable = AFG_appealed_to_GBR
 					is_diplomatic_play_enemy_of = scope:target_country
 				}
@@ -4715,7 +4714,7 @@ ai_strategy_default = {
 			limit = {
 				c:RUS ?= this
 				has_variable = committed_to_afghanistan_assistance
-				any_country = {
+				any_country_in_greater_persia = {
 					has_variable = AFG_appealed_to_RUS
 					is_diplomatic_play_enemy_of = scope:target_country
 				}
@@ -5012,6 +5011,377 @@ ai_strategy_default = {
 
 		max = 800
 	}
+
+	strategic_region_stance_type_scores = {
+		stance_conquer_region = {
+			value = 0
+
+			if = {
+				limit = {
+					scope:target_region = {
+						any_scope_country = {
+							NOR = {
+								this = root
+								is_subject_of = root
+							}
+						}
+					}
+				}
+
+				add = {
+					desc = "AI_REGION_STANCE_BASE_VALUE"
+					value = 100
+				}
+
+				add = {
+					desc = "AI_REGION_STANCE_NUMBER_OF_CLAIMS"
+					scope:target_region = {
+						every_scope_state = {
+							limit = {
+								owner = {
+									NOT = { is_country_type = decentralized }
+								}
+								has_claim_by = root
+							}
+							add = 100
+						}
+					}
+				}
+
+				if = {
+					limit = {
+						is_country_type = unrecognized
+						scope:target_region = {
+							this = root.capital.region
+						}
+					}
+					add = {
+						desc = "AI_REGION_STANCE_CAPITAL_REGION"
+						value = 150
+					}
+				}
+
+				if = {
+					limit = {
+						scope:target_region = {
+							this = sr:region_northeast_asia
+						}
+					}
+
+					if = {
+						limit = {
+							country_rank = rank_value:great_power
+							navy_size >= 25
+							has_technology_researched = nationalism
+							c:JAP ?= {
+								has_law_or_variant = law_type:law_isolationism
+							}
+						}
+						add = {
+							desc = "AI_REGION_STANCE_WANTS_TO_OPEN_UP_JAPAN"
+							value = 1000
+						}
+					}
+				}
+
+				if = {
+					limit = {
+						scope:target_region = {
+							this = sr:region_western_europe
+						}
+					}
+
+					if = {
+						limit = {
+							has_strategy = ai_strategy_restore_natural_borders
+						}
+						add = {
+							desc = "ai_strategy_restore_natural_borders"
+							add = 1000
+						}
+					}
+				}
+
+				if = {
+					limit = {
+						has_strategy = ai_strategy_territorial_expansion
+					}
+					multiply = {
+						desc = "ai_strategy_territorial_expansion"
+						value = 3
+					}
+				}
+
+				if = {
+					limit = {
+						is_subject = yes
+						liberty_desire <= 25
+					}
+					multiply = {
+						desc = "AI_REGION_STANCE_IS_LOYAL_SUBJECT"
+						value = 0.5
+					}
+				}
+			}
+
+			if = {
+				limit = {
+					country_rank <= rank_value:minor_power
+					scope:target_region != capital.region
+				}
+				multiply = {
+					desc = "AI_REGION_STANCE_SMALL_COUNTRY"
+					value = 0
+				}
+			}
+		}
+
+		stance_protect_region = {
+			value = 0
+
+			if = {
+				limit = {
+					scope:target_region = {
+						any_scope_country = {
+							NOT = {
+								this = root
+							}
+						}
+					}
+				}
+				add = {
+					desc = "AI_REGION_STANCE_BASE_VALUE"
+					value = 100
+				}
+
+				if = {
+					limit = {
+						scope:target_region = {
+							this = root.capital.region
+						}
+					}
+					add = {
+						desc = "AI_REGION_STANCE_CAPITAL_REGION"
+						value = 100
+					}
+				}
+			}
+			
+			if = {
+				limit = {
+					has_journal_entry = je_aberdeen_act
+					scope:target_region = {
+						is_in_geographic_region = geographic_region_americas
+					}
+				}
+
+				add = {
+					desc = "je_aberdeen_act"
+					value = 200
+					
+					if = {
+						limit = {
+							scope:target_region = sr:region_brazil
+						}
+						
+						add = 300
+					}					
+				}
+			}
+
+			if = {
+				limit = {
+					country_rank <= rank_value:minor_power
+					scope:target_region != capital.region
+				}
+				multiply = {
+					desc = "AI_REGION_STANCE_SMALL_COUNTRY"
+					value = 0
+				}
+			}
+		}
+
+		stance_colonize_region = {
+			value = 0
+
+			if = {
+				limit = {
+					has_technology_researched = colonization
+					NOR = {
+						has_law_or_variant = law_type:law_no_colonial_affairs
+						is_country_type = unrecognized
+					}
+					OR = {
+						any_neighbouring_state = {
+							region = scope:target_region
+						}
+						navy_size >= 50
+					}
+					scope:target_region = {
+						any_scope_state = {
+							owner = {
+								OR = {
+									is_country_type = unrecognized
+									is_country_type = decentralized
+								}
+							}
+						}
+					}
+				}
+
+				add = {
+					desc = "AI_REGION_STANCE_BASE_VALUE"
+					value = 100
+				}
+
+				if = {
+					limit = {
+						country_is_colonial_or_company = yes
+					}
+					add =  {
+						desc = "AI_REGION_STANCE_COLONIAL_COUNTRY"
+						value = 200
+					}
+				}
+
+				scope:target_region = {
+					every_scope_state = {
+						limit = {
+							owner = {
+								OR = {
+									is_country_type = unrecognized
+									is_country_type = decentralized
+								}
+							}
+						}
+						add = {
+							desc = "AI_REGION_STANCE_FREE_REAL_ESTATE"
+							value = 200
+						}
+					}
+				}
+
+				if = {
+					limit = {
+						has_strategy = ai_strategy_colonial_expansion
+					}
+					multiply = {
+						desc = "ai_strategy_colonial_expansion"
+						value = 3
+					}
+				}
+
+				if = {
+					limit = {
+						has_technology_researched = civilizing_mission
+					}
+					multiply = {
+						desc = "AI_REGION_STANCE_CIVILIZING_MISSION_RESEARCHED"
+						value = 5
+					}
+				}
+				else_if = {
+					limit = {
+						has_technology_researched = quinine
+					}
+					multiply = {
+						desc = "AI_REGION_STANCE_QUININE_RESEARCHED"
+						value = 2.5
+					}
+				}
+
+				if = {
+					limit = {
+						has_journal_entry = je_scramble_for_africa
+						scope:target_region = {
+							OR = {
+								this = sr:region_nile_basin
+								this = sr:region_north_africa
+								this = sr:region_west_africa
+								this = sr:region_equatorial_africa
+								this = sr:region_southern_africa
+								this = sr:region_east_africa
+							}
+						}
+					}
+					multiply = {
+						desc = "je_scramble_for_africa"
+						value = 10
+					}
+				}
+			}
+
+			if = {
+				limit = {
+					country_rank <= rank_value:minor_power
+					scope:target_region != capital.region
+				}
+				multiply = {
+					desc = "AI_REGION_STANCE_SMALL_COUNTRY"
+					value = 0
+				}
+			}
+		}
+
+		stance_none = {
+			value = 0
+
+			add = {
+				desc = "AI_REGION_STANCE_BASE_VALUE"
+				value = 200
+			}
+
+			if = {
+				limit = {
+					scope:target_region != capital.region
+					any_country_strategic_region = {
+						NOT = {
+							root = {
+								has_region_stance = {
+									region = prev
+									stance = stance_none
+								}
+							}
+						}
+					}
+				}
+				add = {
+					desc = "AI_REGION_STANCE_EXISTING_REGION_STANCES"
+					every_country_strategic_region = {
+						limit = {
+							NOT = {
+								root = {
+									has_region_stance = {
+										region = prev
+										stance = stance_none
+									}
+								}
+							}
+						}
+						add = 200
+						multiply = {
+							value = 10
+							subtract = root.country_rank
+							min = 1
+						}
+						round = yes
+						min = 100
+					}
+				}
+			}
+
+			if = {
+				limit = {
+					has_strategy = ai_strategy_armed_isolationism
+					scope:target_region != capital.region
+				}
+				multiply = {
+					desc = "ai_strategy_armed_isolationism"
+					value = 1.5
+				}
+			}
+		}
+	}
 	
 	# How much does the AI want to prioritize economic construction vs government spending?
 	# Having a value above 0 here makes the AI less willing to spend on government expenses and more willing to take on debt to build production buildings
@@ -5039,335 +5409,102 @@ ai_strategy_default = {
 		}
 	}
 	
-	# How many levels of barracks should the AI have
+	# How many levels of barracks with non-marine units should the AI have
 	# Using this value in other strategies will function additively
 	wanted_army_size = {
-		value = 0		
-
-		add = {
-			value = cached_ai_incorporated_population
-			divide = 280000 # 1 level of barracks per 280k incorporated population	
-		}		
-
-		add = {
-			value = cached_ai_unincorporated_population
-			divide = 900000 # 1 level of barracks per 900 k unincorporated population	
-		}
-
-		max = 350 # VFM - No more than 350 from population, bumped up from base 250
-
-		add = {
-			value = gdp
-			divide = 550000 # 1 level of barracks per 550k gdp
-		}		
-
-		# More advanced standing armies are expensive and should be smaller relative to population
-		#VFM TODO: change this to actually refer to PMs in use rather than tied to tech, current way makes countries weaker even if they couldn't afford the units of the tech in the first place
-		if = {
-			limit = { has_technology_researched = line_infantry }
-			multiply = 0.75
-		}
-
-		if = {
-			limit = { has_technology_researched = general_staff }
-			multiply = 0.9
-		}
-
-		if = {
-			limit = { has_technology_researched = trench_works }
-			multiply = 0.9
-		}
-
-		if = {
-			limit = { has_technology_researched = nco_training }
-			multiply = 0.9
-		}
-
-		if = {
-			limit = { has_technology_researched = mobile_armor }
-			multiply = 0.9
-		}
-		
-		if = {
-			limit = { has_modifier = declared_bankruptcy }
-			multiply = 0.8
-		}	
-		
-		if = {
-			limit = { has_modifier = opium_wars_lost }
-			multiply = 0.8
-		}
-		
-		if = {
-			limit = { has_strategy = ai_strategy_placate_population }
-			multiply = 0.9
-		}
-
-		# Factor in strategies
-		if = {
-			limit = { 
-				OR = {
-					has_strategy = ai_strategy_territorial_expansion 
-					has_strategy = ai_strategy_unify_germany
-					has_strategy = ai_strategy_unify_italy
-					has_strategy = ai_strategy_unify_ethiopia
-					has_strategy = ai_strategy_unify_china
-				}
-			}
-			multiply = 1.25
-		}
-		#VFM, AI major powers and up want larger militaries if their direct neighbors are trying to unify or expand
-		if = { 
-			limit = {
-				country_rank >= rank_value:major_power
-				#NOR = {
-				#	has_strategy = ai_strategy_territorial_expansion 
-				#	has_strategy = ai_strategy_unify_germany
-				#	has_strategy = ai_strategy_unify_italy
-				#	has_strategy = ai_strategy_unify_ethiopia
-				#	has_strategy = ai_strategy_unify_china
-				#}
-				any_neighbouring_state = {
-					# This strategy would make more sense for home territories
-					is_homeland_of_country_cultures = ROOT
-					owner = {
-						OR = {
-							has_strategy = ai_strategy_territorial_expansion 
-							has_strategy = ai_strategy_unify_germany
-							has_strategy = ai_strategy_unify_italy
-							has_strategy = ai_strategy_unify_ethiopia
-							has_strategy = ai_strategy_unify_china
-						}
-					}
-				}
-			}
-			multiply = 1.1
-		}
-		
-		if = {
-			limit = { has_strategy = ai_strategy_maintain_mandate_of_heaven }
-			multiply = 0.8
-		}
-		
-		if = { #VFM, national militias are meant to be small and supported by conscripts
-			limit = { has_law_or_variant = law_type:law_national_militia }
-			multiply = 0.25
-		}
-
-		#VFM moved to bottom since this should be the base army size and not impacted by all of the multipliers above...
-		# To increase base army size for small countries, capped at 1 million population
-		add = {
-			value = cached_ai_incorporated_population
-			divide = 140000 # 1 level of barracks per 140k incorporated population	
-
-			max = 4 #VFM, dropped to 4
-		}	
-		
-		if = {
-			limit = { 
-				is_subject = yes
-				NOT = { has_strategy = ai_strategy_subject_break_free }
-			}
-			multiply = 0.8	
-		}
-		
-		if = {
-			limit = { 
-				has_strategy = ai_strategy_colonial_extraction
-			}
-			multiply = 0.7	
-		}	
-
-		if = {
-			limit = { 
-				OR = {
-					has_journal_entry = je_prussia_of_the_balkans
-					has_strategy = ai_strategy_prussia_of_the_balkans
-				}
-			}
-			multiply = 2
-		}
-		
-		if = {
-			limit = { 
-				has_journal_entry = je_sick_man_army game_date > 1840.1.1
-			}
-			min = 100
-		}
-		
-		if = { #if Mon is raiding, troops pay for themselves and are the countries main source of income
-				limit = {
-					has_journal_entry = je_montenegrin_raiding
-				}
-				multiply = 20
-			}
-		
-		if = {
-			limit = { 
-				has_journal_entry = je_prussia_of_the_balkans
-			}
-			min = 25
-		}		
-		
-		if = {
-			limit = { 
-				has_journal_entry = je_prussian_guard
-			}
-			min = 135
-		}	
-
-		max = 700 #VFM, from 500
-		min = 1
+		value = wanted_army_size_script_value # moved to script_values so this can be called outside of AI
+		subtract = wanted_marines_size_script_value
+	}
+	
+	# How many  levels of barracks with marine units should the AI have
+	# Using this value in other strategies will function additively
+	wanted_marines  = {
+		value = wanted_marines_size_script_value # moved to script_values so this can be called outside of AI
 	}
 
-	# How many levels of naval base should the AI have
-	# Using this value in other strategies will function additively
-	wanted_navy_size = {
-		value = 0
-
-		# 1 level of naval base per 500k coastal incorporated population
+	# Target number of units per marine formation
+	target_marine_formation_size = {
+		value = 5
+	
 		add = {
-			value = cached_ai_incorporated_coastal_population
-			divide = 400000 
+			value = total_marine_capacity
+			divide = 5
+			max = 5
 		}
-
-		# 1 level of naval base per 2 million coastal unincorporated population
-		add = {
-			value = cached_ai_unincorporated_coastal_population
-			divide = 1500000 
-		}
-
-		# 1 level of naval base per 10 million population in direct overseas subjects
-		add = {
-			value = cached_ai_overseas_subject_population
-			divide = 7000000 
-		}
-
-		max = 100 # No more than 100 from population
-
-		# 1 level of naval base per 5k income, multiplied by relative incorporated coastal population to total incorporated population
-		if = {
-			limit = {
-				cached_ai_incorporated_population > 0
-				cached_ai_incorporated_coastal_population > 0
-			}
-
-			add = {
-				value = income
-				divide = cached_ai_incorporated_population
-				multiply = cached_ai_incorporated_coastal_population
-				divide = 4000
-			}
-		}
-
-		# Special logic for british isles - this should be reworked to be less specific later
-		if = {
-			limit = {
-			    country_rank = rank_value:great_power
-				capital = {
-					OR = {
-						region = sr:region_england
-						region = sr:region_north_sea_coast
-					}
-				}
-			}
-			
-			add = 40
-		}
-		else_if = { # GPs and MPs should want to maintain a bit of a navy
-			limit = { country_rank = rank_value:great_power }
-			add = 20		
-		}
-		else_if = {
-			limit = { country_rank = rank_value:major_power country_is_in_europe = yes }
-			add = 10
-		}
-		else_if = {
-			limit = { country_is_in_europe = yes }
-			add = 3
-		}
-		else_if = {
-			limit = { country_rank = rank_value:major_power }
-			add = 5
-		}
-		
-		if = {
-			limit = { 
-			OR = {
-			AND = { exists = c:EGY this = c:EGY } 
-			AND = { exists = c:TUR this = c:TUR } 
-			AND = { exists = c:SWE this = c:SWE } 
-			AND = { exists = c:DEN this = c:DEN } 
-			}
-			}
-			multiply = 1.3
-		}
-		
-		# More advanced navies are expensive and should be smaller relative to population
+	
 		if = {
 			limit = { has_technology_researched = ironclad_tech }
-			multiply = 0.75
+			add = 5
 		}
 
 		if = {
-			limit = { has_technology_researched = dreadnought }
-			multiply = 0.75
-		}
+			limit = { has_technology_researched = landing_craft }
+			add = 5
+		}			
+	}
 
-		if = {
-			limit = { has_technology_researched = battleship_tech }
-			multiply = 0.75
-		}
-
-		# Factor in strategies
+	# How many levels of naval administration should the AI have
+	# Using this value in other strategies will function additively
+	wanted_navy_size = {
+		value = wanted_navy_size_script_value # moved to script_values so this can be called outside of AI
+	}
+	
+	# How many levels of naval fortification should the AI have in a state
+	# Using this value in other strategies will function additively
+	wanted_naval_fortification_levels = {
+		value = 0
+		
 		if = {
 			limit = {
-				OR = {
-					has_strategy = ai_strategy_colonial_expansion
-					has_strategy = ai_strategy_economic_imperialism
+				state_population >= 50000
+			}
+			
+			if = {
+				limit = {
+					has_building = building_port
 				}
+				add = 1
 			}
-			multiply = 1.2
-		}
+			
+			if = {
+				limit = {
+					has_building = building_shipyard
+				}
+				add = 1
+			}				
 
-		if = {
-			limit = { has_strategy = ai_strategy_armed_isolationism }
-			multiply = 0.8
-		}
-
-		if = {
-			limit = { OR = {country_is_in_europe = yes country_is_in_north_america = yes } }
-			multiply = 1.25
-		}
-
-		if = {
-			limit = { country_rank < rank_value:major_power }
-			multiply = 0.5
-		}
-
-		if = {
-			limit = { exists = c:USA this = c:USA game_date < 1875.1.1 } # need to focus on other things
-			multiply = 0.5
-		}
-
-		if = {
-			limit = { is_country_type = unrecognized }
-			multiply = 0.5
-		}
-
-		if = {
-			limit = { OR = { has_strategy = ai_strategy_maintain_mandate_of_heaven has_strategy = ai_strategy_colonial_extraction } }
-			multiply = 0.25
-		}
-
+			if = {
+				limit = { 
+					NOT = { any_neighbouring_state = {} } # Is this a one-state island?
+				}
+				
+				add = 1
+			}		
+		}	
+		
 		if = {
 			limit = {
-				has_journal_entry = je_hawaii
+				is_capital = yes
 			}
-			min = 25
+			add = 2
+		}	
+		
+		if = {
+			limit = {
+				is_world_market_hub = yes
+			}
+			add = 2
 		}
-	    max = 300
-		min = 0
+		
+		if = {
+			limit = {
+				any_scope_strait = {} # Is there a strait linked to this state?
+			}
+			
+			add = 2
+		}
+		
+		max = 5
 	}
 	
 	# Set the weights for combat unit groups, this determines the ratio that the AI aims to have of each, and thus what unit types it adds to formations
@@ -5416,32 +5553,7 @@ ai_strategy_default = {
 				limit = { has_technology_researched = mobile_armor }
 				add = 10
 			}				
-		}
-		combat_unit_group_light_ship = {
-			value = 100				
-		}
-		combat_unit_group_capital_ship = {
-			value = 0
-			if = {
-				limit = { country_rank = rank_value:great_power }
-				add = 30
-			}
-			if = {
-				limit = { country_rank = rank_value:major_power }
-				add = 10
-			}			
-		}
-		combat_unit_group_support_ship = {
-			value = 0
-			if = {
-				limit = { has_technology_researched = submarine }
-				add = 10
-			}
-			if = {
-				limit = { has_technology_researched = carrier_tech }
-				add = 10
-			}			
-		}		
+		}	
 	}
 	
 	# How many conscript battalions should the AI aim to have for each regular battalion in a formation?
@@ -5573,7 +5685,7 @@ ai_strategy_default = {
 					has_technology_researched = ironclad_tech
 					has_technology_researched = gantry_cranes				
 				}
-				has_port = yes
+				has_port_country = yes
 				OR = { country_rank >= rank_value:major_power gdp > 12000000 } # 12 mil
 			}
 		}
@@ -5585,7 +5697,7 @@ ai_strategy_default = {
 					has_technology_researched = ironclad_tech
 					has_technology_researched = gantry_cranes				
 				}
-				has_port = yes
+				has_port_country = yes
 				OR = { country_rank >= rank_value:major_power gdp > 12000000 } # 12 mil
 			}
 		}	
@@ -5594,7 +5706,7 @@ ai_strategy_default = {
 			trigger = {
 				has_technology_researched = ironclad_tech
 				has_technology_researched = gantry_cranes
-				has_port = yes
+				has_port_country = yes
 				OR = { country_rank >= rank_value:major_power gdp > 12000000 } # 12 mil
 			}
 		}			
@@ -5603,7 +5715,7 @@ ai_strategy_default = {
 			trigger = {
 				has_technology_researched = ironclad_tech
 				has_technology_researched = gantry_cranes
-				has_port = yes
+				has_port_country = yes
 				OR = { country_rank >= rank_value:major_power gdp > 12000000 } # 12 mil			
 			}
 		}	
@@ -5813,34 +5925,273 @@ ai_strategy_default = {
 	# How important is it that the AI maintains an interest in a specific strategic region (added on top of region value calculations set in defines)
 	# Using this value in other strategies will function additively
 	strategic_region_scores = {
-		region_anatolia = {
-			if = {
-				limit = { # Certain Great Powers care about Egyptian-Ottoman conflict in the early game
-					OR = {
-						has_variable = veiled_protectorate_support_ottomans
-						has_variable = veiled_protectorate_support_egypt
-					}
-					OR = {
-						navy_size >= 25
-						is_adjacent_to_country = c:TUR
-						is_adjacent_to_country = c:EGY
+		value = 0
+
+		# Base Value
+		add = {
+			value = 100
+
+			add = {
+				scope:region = {
+					every_scope_state = {
+						add = gdp
 					}
 				}
-				add = 1000
+				divide = 40000
+				max = 50
+			}
+
+			every_rival_country = {
+				limit = {
+					has_strategic_region_interest_tier = {
+						strategic_region = scope:region
+						value >= 1
+					}
+				}
+				add = 25
+			}
+
+			scope:region = {
+				every_scope_state = {
+					limit = {
+						is_homeland_of_country_cultures = root
+					}
+					add = 10
+				}
 			}
 		}
-		region_caucasus = {
+
+		# We care about the things happening at home
+		if = {
+			limit = {
+				any_scope_state = {
+					region = scope:region
+				}
+			}
+			add = 50
+
 			if = {
-				limit = { # Britain is participating in the Caucasian War in a certain capacity early game.
+				limit = {
+					scope:region = {
+						any_scope_state = {
+							owner = root
+							is_incorporated = yes
+						}
+					}
+				}
+				add = 50
+			}
+
+			if = {
+				limit = {
+					scope:region = capital.region
+				}
+				add = 100
+			}
+		}
+
+		# Certain Great Powers care about Egyptian-Ottoman conflict in the early game
+		if = {
+			limit = {
+				OR = {
+					has_variable = veiled_protectorate_support_ottomans
+					has_variable = veiled_protectorate_support_egypt
+				}
+				OR = {
+					navy_size >= 25
+					is_adjacent_to_country = c:TUR
+					is_adjacent_to_country = c:EGY
+				}
+				scope:region = {
+					OR = {
+						this = sr:region_near_east
+						this = sr:region_arabia
+						this = sr:region_nile_basin
+						this = sr:region_balkans
+					}
+				}
+			}
+			add = 500
+		}
+
+		# Britain is participating in the Caucasian War in a certain capacity early game.
+		if = {
+			limit = {
+				c:GBR ?= this
+				exists = c:CIR
+				country_rank = rank_value:great_power
+				navy_size >= 50
+				scope:region = sr:region_russia
+			}
+			add = 100
+		}
+
+		# Annexation of Hawaii
+		if = {
+			limit = {
+				OR = {
+					has_variable = hawaii_interest
+					c:USA ?= this
+					AND = {
+						has_global_variable = gp_hawaii_interest
+						country_rank = rank_value:great_power
+						OR = {
+							is_in_geographic_region = geographic_region_north_america
+							is_in_geographic_region = geographic_region_south_america
+						}
+					}
+				}
+				scope:region = sr:region_oceania
+			}
+			add = 200
+		}
+
+		# Sakoku
+		if = {
+			limit = {
+				exists = c:JAP
+				c:JAP = { has_law_or_variant = law_type:law_isolationism }
+				NOT = { country_rank = rank_value:great_power }
+				scope:region = sr:region_northeast_asia
+			}
+			add = -50
+		}
+
+		# Scramble for Africa
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						country_rank = rank_value:great_power
+						has_technology_researched = malaria_prevention
+					}
+					has_journal_entry = je_scramble_for_africa
+				}
+				scope:region = {
+					OR = {
+						this = sr:region_nile_basin
+						this = sr:region_north_africa
+						this = sr:region_west_africa
+						this = sr:region_equatorial_africa
+						this = sr:region_southern_africa
+						this = sr:region_east_africa
+					}
+				}
+			}
+			add = 200
+		}
+
+		# Great Powers always care about Europe somehwat
+		if = {
+			limit = {
+				is_in_geographic_region = geographic_region_europe
+				country_rank >= rank_value:great_power
+				scope:region = {
+					is_in_geographic_region = geographic_region_europe
+				}
+			}
+			add = 50
+
+			if = {
+				limit = {
+					scope:region = {
+						OR = {
+							is_in_geographic_region = geographic_region_north_germany_old
+							is_in_geographic_region = geographic_region_south_germany_old
+							is_in_geographic_region = geographic_region_rhine_old
+						}
+					}
+				}
+				add = 50
+
+				if = {
+					limit = {
+						has_journal_entry = je_german_unification
+					}
+					add = 1000
+				}
+			}
+			else_if = {
+				limit = {
+					scope:region = {
+						is_in_geographic_region = geographic_region_italy_old
+					}
+				}
+				add = 50
+			}
+		}
+
+		# Europeans generally dont have any business in the Americas
+		if = {
+			limit = {
+				is_in_geographic_region = geographic_region_europe
+				NOT = {
+					any_scope_state = {
+						is_in_geographic_region = geographic_region_americas
+					}
+				}
+				scope:region = {
+					is_in_geographic_region = geographic_region_americas
+				}
+			}
+
+			# Unless they do!
+			if = {
+				limit = {
+					has_journal_entry = je_aberdeen_act
+				}
+				add = 200
+				
+				if = {
+					limit = {
+						scope:region = sr:region_brazil
+					}
+					
+					add = 300
+				}
+			}
+			else = {
+				add = -100
+			}
+		}
+
+		# Prussia should have an interest in Scandinavia
+		if = {
+			limit = {
+				wants_to_solve_schleswig_holstein = yes
+				scope:region = sr:region_northern_europe
+			}
+			add = 100
+		}
+
+		# Russia cares more about the Balkans than anyone else
+		if = {
+			limit = {
+				c:RUS ?= this
+				country_rank >= rank_value:great_power
+				scope:region = sr:region_balkans
+			}
+			add = 500
+		}
+
+		# GBR and RUS care about Afghanistan believe it or not
+		if = {
+			limit = {
+				has_journal_entry = je_great_game_control
+				OR = {
 					c:GBR ?= this
 					exists = c:CIR
 					country_rank = rank_value:great_power
 					navy_size >= 50
 				}
-				add = 500
 			}
+			add = 500
 		}
-		region_arabic = {
+
+		if = {
+			limit = {
+				scope:region = sr:region_arabia
+			}
 			if = {
 				limit = { # Certain Great Powers care about Egyptian-Ottoman conflict in the early game
 					OR = {
@@ -5856,7 +6207,10 @@ ai_strategy_default = {
 				add = 1000
 			}
 		}
-		region_oceania = {
+		if = {
+			limit = {
+				scope:region = sr:region_oceania
+			}
 			if = {
 				limit = {
 					OR = {
@@ -5876,30 +6230,12 @@ ai_strategy_default = {
 					}
 				}
 				add = 200
-			}				
-		}			
-		region_japan = {	
-		    if = {
-				limit = {
-					exists = c:JAP
-					game_date > 1858.1.1
-					c:JAP = { has_law_or_variant = law_type:law_isolationism }
-					has_technology_researched = nationalism	
-					country_rank = rank_value:great_power
-					navy_size >= 60
-				}
-				add = 1000
 			}
-			if = {
-				limit = {
-					exists = c:JAP
-					c:JAP = { has_law_or_variant = law_type:law_isolationism }
-					NOT = { country_rank = rank_value:great_power }
-				}
-				add = -50
-			}				
-		}				
-		region_nile_basin = {
+		}
+		if = {
+			limit = {
+				scope:region = sr:region_nile_basin
+			}
 			if = {
 				limit = { # Certain Great Powers care about Egyptian-Ottoman conflict in the early game
 					OR = {
@@ -5910,10 +6246,10 @@ ai_strategy_default = {
 						navy_size >= 25
 						is_adjacent_to_country = c:TUR
 						is_adjacent_to_country = c:EGY
-					}					
+					}
 				}
 				add = 1000
-			}		
+			}
 			if = {
 				limit = {
 					OR = {
@@ -5922,96 +6258,100 @@ ai_strategy_default = {
 							has_technology_researched = malaria_prevention
 						}
 						has_journal_entry = je_scramble_for_africa
-					}						
-				}
-				add = 200
-			}		
-		}
-		region_north_africa = {
-			if = {
-				limit = {
-					OR = {
-						AND = {
-							country_rank = rank_value:great_power
-							has_technology_researched = malaria_prevention
-						}
-						has_journal_entry = je_scramble_for_africa
-					}		
-				}
-				add = 200
-			}		
-		}
-		region_senegal = {
-			if = {
-				limit = {
-					OR = {
-						AND = {
-							country_rank = rank_value:great_power
-							has_technology_researched = malaria_prevention
-						}
-						has_journal_entry = je_scramble_for_africa
-					}		
-				}
-				add = 200
-			}		
-		}
-		region_niger = {
-			if = {
-				limit = {
-					OR = {
-						AND = {
-							country_rank = rank_value:great_power
-							has_technology_researched = malaria_prevention
-						}
-						has_journal_entry = je_scramble_for_africa
-					}		
-				}
-				add = 200
-			}		
-		}
-		region_congo = {
-			if = {
-				limit = {
-					OR = {
-						AND = {
-							country_rank = rank_value:great_power
-							has_technology_researched = malaria_prevention
-						}
-						has_journal_entry = je_scramble_for_africa
-					}		
-				}
-				add = 200
-			}		
-		}
-		region_southern_africa = {
-			if = {
-				limit = {
-					OR = {
-						AND = {
-							country_rank = rank_value:great_power
-							has_technology_researched = malaria_prevention
-						}
-						has_journal_entry = je_scramble_for_africa
-					}		
-				}
-				add = 200
-			}		
-		}
-		region_zanj = {
-			if = {
-				limit = {
-					OR = {
-						AND = {
-							country_rank = rank_value:great_power
-							has_technology_researched = malaria_prevention
-						}
-						has_journal_entry = je_scramble_for_africa
-					}		
+					}
 				}
 				add = 200
 			}
 		}
-		region_north_germany = {
+		if = {
+			limit = {
+				scope:region = sr:region_north_africa
+			}
+			if = {
+				limit = {
+					OR = {
+						AND = {
+							country_rank = rank_value:great_power
+							has_technology_researched = malaria_prevention
+						}
+						has_journal_entry = je_scramble_for_africa
+					}
+				}
+				add = 200
+			}
+		}
+		if = {
+			limit = {
+				scope:region = sr:region_west_africa
+			}
+			if = {
+				limit = {
+					OR = {
+						AND = {
+							country_rank = rank_value:great_power
+							has_technology_researched = malaria_prevention
+						}
+						has_journal_entry = je_scramble_for_africa
+					}
+				}
+				add = 200
+			}
+		}
+		if = {
+			limit = {
+				scope:region = sr:region_equatorial_africa
+			}
+			if = {
+				limit = {
+					OR = {
+						AND = {
+							country_rank = rank_value:great_power
+							has_technology_researched = malaria_prevention
+						}
+						has_journal_entry = je_scramble_for_africa
+					}
+				}
+				add = 200
+			}
+		}
+		if = {
+			limit = {
+				scope:region = sr:region_southern_africa
+			}
+			if = {
+				limit = {
+					OR = {
+						AND = {
+							country_rank = rank_value:great_power
+							has_technology_researched = malaria_prevention
+						}
+						has_journal_entry = je_scramble_for_africa
+					}
+				}
+				add = 200
+			}
+		}
+		if = {
+			limit = {
+				scope:region = sr:region_east_africa
+			}
+			if = {
+				limit = {
+					OR = {
+						AND = {
+							country_rank = rank_value:great_power
+							has_technology_researched = malaria_prevention
+						}
+						has_journal_entry = je_scramble_for_africa
+					}
+				}
+				add = 200
+			}
+		}
+		if = {
+			limit = {
+				scope:region = sr:region_central_europe
+			}
 			if = {
 				limit = {
 					is_in_geographic_region = geographic_region_europe
@@ -6026,22 +6366,10 @@ ai_strategy_default = {
 				add = 1000
 			}
 		}
-		region_south_germany = {
-			if = {
-				limit = {
-					is_in_geographic_region = geographic_region_europe
-					country_rank >= rank_value:great_power
-				}
-				add = 100
+		if = {
+			limit = {
+				scope:region = sr:region_southern_europe
 			}
-			if = {
-				limit = {
-					has_journal_entry = je_german_unification
-				}
-				add = 1000
-			}
-		}
-		region_italy = {
 			if = {
 				limit = {
 					is_in_geographic_region = geographic_region_europe
@@ -6050,7 +6378,10 @@ ai_strategy_default = {
 				add = 100
 			}
 		}
-		region_baltic = {
+		if = {
+			limit = {
+				scope:region = sr:region_northern_europe
+			}
 			if = {
 				limit = {
 					wants_to_solve_schleswig_holstein = yes
@@ -6058,20 +6389,9 @@ ai_strategy_default = {
 				add = 100
 			}
 		}
-		region_balkans = {
-			if = {
-				limit = { # Certain Great Powers care about Egyptian-Ottoman conflict in the early game
-					OR = {
-						has_variable = veiled_protectorate_support_ottomans
-						has_variable = veiled_protectorate_support_egypt
-					}
-					OR = {
-						navy_size >= 25
-						is_adjacent_to_country = c:TUR
-						is_adjacent_to_country = c:EGY
-					}
-				}
-				add = 1000
+		if = {
+			limit = {
+				scope:region = sr:region_balkans
 			}
 			if = {
 				limit = {
@@ -6083,361 +6403,70 @@ ai_strategy_default = {
 			if = { # Russia cares more than anyone else
 				limit = {
 					c:RUS ?= this
-					country_rank >= rank_value:great_power
 				}
-				add = 1000
 			}
+			add = 500
 		}
-		region_england = {
-			if = {
-				limit = {
-					is_in_geographic_region = geographic_region_europe
-					country_rank >= rank_value:great_power
+
+		# Europeans in China
+		if = {
+			limit = {
+				is_in_geographic_region = geographic_region_europe
+				country_rank >= rank_value:great_power
+				navy_size >= 25
+				scope:region = {
+					is_in_geographic_region = geographic_region_china
 				}
-				add = 50
 			}
-		}
-		region_iberia = {
-			if = {
-				limit = {
-					is_in_geographic_region = geographic_region_europe
-					country_rank >= rank_value:great_power
-				}
-				add = 50
-			}
-		}
-		region_rhine = {
-			if = {
-				limit = {
-					is_in_geographic_region = geographic_region_europe
-					country_rank >= rank_value:great_power
-				}
-				add = 50
-			}
-		}
-		region_central_asia = {
-			if = {
-				limit = {
-					has_journal_entry = je_great_game_control
-					OR = {
-						c:GBR ?= this
-						c:RUS ?= this
-					}
-				}
-				add = 500
-			}
-			else = {
-				add = -25
-			}
-		}
-		region_persia = {
-			if = {
-				limit = {
-					has_journal_entry = je_great_game_control
-					OR = {
-						c:GBR ?= this
-						c:RUS ?= this
-					}
-				}
-				add = 500
-			}
-			else = {
-				add = -25
-			}
-		}
-		region_north_china = {
-			if = {
-				limit = {
-					is_in_geographic_region = geographic_region_europe
-					country_rank >= rank_value:great_power
-					navy_size >= 25
-				}
-				add = 50
-			}
-		}
-		region_manchuria = {
-			if = {
-				limit = {
-					is_in_geographic_region = geographic_region_europe
-					country_rank >= rank_value:great_power
-					navy_size >= 25
-				}
-				add = 50
-			}
-		}
-		region_south_china = {
+			add = 50
+
 			if = {
 				limit = {
 					has_journal_entry = je_opium_wars
+					scope:region = sr:region_south_china
 				}
 				add = 1000
-			}		
-            if = {
-				limit = {
-					exists = c:CHI
-					game_date > 1870.1.1
-					c:CHI = { has_law_or_variant = law_type:law_isolationism }
-					has_technology_researched = nationalism	
-					country_rank = rank_value:great_power
-					navy_size >= 150
-				}
-				add = 300
-			}			
-			if = {
-				limit = {
-					is_in_geographic_region = geographic_region_europe
-					country_rank >= rank_value:great_power
-					navy_size >= 25
-				}
-				add = 50
 			}
 		}
-		region_pacific_coast = {
-			if = {
-				limit = {
-					has_variable = monroe_doctrine	
+
+		# Monroe Doctrine
+		if = {
+			limit = {
+				has_variable = monroe_doctrine
+				scope:region = {
+					is_in_geographic_region = geographic_region_americas
 				}
-				add = 1000
-			}	
-			if = {
-				limit = {
-					country_is_in_north_america = yes
-				}
-				add = 75
-			}		
-		}
-		region_great_plains = {
-			if = {
-				limit = {
-					has_variable = monroe_doctrine	
-				}
-				add = 100
 			}
+			add = 100
+
 			if = {
 				limit = {
+					scope:region = sr:region_pacific_coast
+				}
+				add = 900
+			}
+		}
+
+		# Conquest of Algeria
+		if = {
+			limit = {
+				has_journal_entry = je_conquest_of_algeria
+				scope:region = sr:region_north_africa
+			}
+			add = 1000
+		}
+
+		# Ensure we maintain interests in colonies
+		if = {
+			limit = {
+				scope:region = {
 					any_scope_state = {
+						is_under_colonization = yes
 						owner = root
-						is_incorporated = no
 					}
 				}
-				add = 1000
-			}	
-			if = {
-				limit = {
-					country_is_in_north_america = yes
-				}
-				add = 75
-			}		
-		}
-		region_dixie = {
-			if = {
-				limit = {
-					has_variable = monroe_doctrine	
-				}
-				add = 100
-			}	
-			if = {
-				limit = {
-					capital = {
-						state_is_in_americas = yes
-					}
-				}
-				add = 75
 			}
-			if = {
-				limit = {
-					country_is_in_north_america = yes
-				}
-				add = 75
-			}	
-		}		
-		region_new_england = {
-			if = {
-				limit = {
-					has_variable = monroe_doctrine	
-				}
-				add = 100
-			}		
-			if = {
-				limit = {
-					country_is_in_north_america = yes
-				}
-				add = 75
-			}	
-		}
-		region_canada = {
-			if = {
-				limit = {
-					has_variable = monroe_doctrine	
-				}
-				add = 100
-			}	
-			if = {
-				limit = {
-					country_is_in_north_america = yes
-				}
-				add = 75
-			}	
-		}	
-		region_the_midwest = {
-			if = {
-				limit = {
-					has_variable = monroe_doctrine	
-				}
-				add = 100
-			}			
-		}	
-		region_central_america = {
-			if = {
-				limit = {
-					has_variable = monroe_doctrine
-				}
-				add = 100
-			}
-
-			if = {
-				limit = {
-					c:SPA ?= {
-						has_journal_entry = je_reconquista
-					}
-					OR = {
-						c:SPA ?= this
-						AND = {
-							country_rank = rank_value:great_power
-							capital ?= { is_in_geographic_region = geographic_region_americas }
-						}
-						AND = {
-							c:GBR ?= this
-							country_rank = rank_value:great_power
-						}
-					}
-				}
-				add = 50
-			}		
-			if = {
-				limit = {
-					capital = {
-						state_is_in_americas = yes
-					}
-				}
-				add = 40
-			}
-		}
-		region_brazil = {
-			if = {
-				limit = {
-					has_variable = monroe_doctrine
-				}
-				add = 100
-			}			
-			if = {
-				limit = {
-					country_is_in_south_america = yes
-				}
-				add = 75
-			}		
-		}	
-		region_andes = {
-			if = {
-				limit = {
-					has_variable = monroe_doctrine
-				}
-				add = 100
-			}
-
-			if = {
-				limit = {
-					c:SPA ?= {
-						has_journal_entry = je_reconquista
-					}
-					OR = {
-						c:SPA ?= this
-						AND = {
-							country_rank = rank_value:great_power
-							capital ?= { is_in_geographic_region = geographic_region_americas }
-						}
-						AND = {
-							c:GBR ?= this
-							country_rank = rank_value:great_power
-						}
-					}
-				}
-				add = 50
-			}			
-			if = {
-				limit = {
-					country_is_in_south_america = yes
-				}
-				add = 75
-			}	
-		}
-		region_la_plata = {
-			if = {
-				limit = {
-					has_variable = monroe_doctrine
-				}
-				add = 100
-			}
-
-			if = {
-				limit = {
-					c:SPA ?= {
-						has_journal_entry = je_reconquista
-					}
-					OR = {
-						c:SPA ?= this
-						AND = {
-							country_rank = rank_value:great_power
-							capital ?= { is_in_geographic_region = geographic_region_americas }
-						}
-						AND = {
-							c:GBR ?= this
-							country_rank = rank_value:great_power
-						}
-					}
-				}
-				add = 50
-			}			
-			if = {
-				limit = {
-					country_is_in_south_america = yes
-				}
-				add = 75
-			}	
-		}
-		region_gran_colombia = {
-			if = {
-				limit = {
-					has_variable = monroe_doctrine
-				}
-				add = 100
-			}
-
-			if = {
-				limit = {
-					c:SPA ?= {
-						has_journal_entry = je_reconquista
-					}
-					OR = {
-						c:SPA ?= this
-						AND = {
-							country_rank = rank_value:great_power
-							capital ?= { is_in_geographic_region = geographic_region_americas }
-						}
-						AND = {
-							c:GBR ?= this
-							country_rank = rank_value:great_power
-						}
-					}
-				}
-				add = 50
-			}			
-			if = {
-				limit = {
-					country_is_in_south_america = yes
-				}
-				add = 75
-			}	
+			add = 1000
 		}
 	}
 
@@ -6516,13 +6545,17 @@ ai_strategy_default = {
 				}
 
 				# Monarchist Austria really does not want to help revolutions or secessions
-				NAND = {
-					c:AUS ?= this
-					has_law = law_type:law_monarchy
-					scope:target_country = {
-						OR = {
-							is_revolutionary = yes
-							is_secessionist = yes
+				trigger_if = {
+					limit = {
+						c:AUS ?= this
+						has_law = law_type:law_monarchy
+					}
+					NOT = {
+						scope:target_country = {
+							OR = {
+								is_revolutionary = yes
+								is_secessionist = yes
+							}
 						}
 					}
 				}
@@ -6563,34 +6596,33 @@ ai_strategy_default = {
 					limit = {
 						country_has_primary_culture = cu:british
 						exists = c:RUS
-					c:RUS ?= {
-						any_scope_state = {
-							region = sr:region_manchuria
-							OR = {
-								any_scope_building = {
-									is_building_type = building_port
-									level >= 5
-								}
-								any_scope_building = {
-									is_building_type = building_naval_base
-									level >= 15
+						c:RUS ?= {
+							any_scope_state = {
+								region = sr:region_northeast_asia
+								OR = {
+									any_scope_building = {
+										is_building_type = building_port
+										level >= 5
+									}
+									any_scope_building = {
+										is_building_type = building_naval_administration
+										level >= 3
+									}
 								}
 							}
 						}
-					}
-					scope:target_country = {
-						country_rank >= rank_value:unrecognized_major_power
-						OR = {
-							capital.region = sr:region_japan
-							capital.region = sr:region_manchuria
-							capital.region = sr:region_north_china
-							capital.region = sr:region_south_china
-							capital.region = sr:region_indonesia
+						scope:target_country = {
+							country_rank >= rank_value:unrecognized_major_power
+							OR = {
+								capital.region = sr:region_northeast_asia
+								capital.region = sr:region_north_china
+								capital.region = sr:region_south_china
+								capital.region = sr:region_indonesia
+							}
 						}
 					}
+					add = 200
 				}
-				add = 200
-		    	}
 
                 if = { # Try to be on good terms with GBR/USA to avoid intervention
 					limit = {
@@ -6623,6 +6655,36 @@ ai_strategy_default = {
 						has_je_befriend_reason = { TARGET = scope:target_country }
 					}
 					add = 10000
+				}
+
+				if = {
+					limit = {
+						any_country_strategic_region = {
+							root = {
+								has_region_stance = {
+									region = prev
+									stance = stance_protect_region
+								}
+							}
+							scope:target_country = {
+								is_local_country = prev
+							}
+						}
+					}
+					every_country_strategic_region = {
+						limit = {
+							root = {
+								has_region_stance = {
+									region = prev
+									stance = stance_protect_region
+								}
+							}
+							scope:target_country = {
+								is_local_country = prev
+							}
+						}
+						add = 50
+					}
 				}
 		
 			if = {
@@ -6979,32 +7041,6 @@ ai_strategy_default = {
 						multiply = 5
 					}
 				}
-			
-				if = { # Try to be on good terms with GBR/USA to avoid intervention
-					limit = {
-						has_journal_entry = je_reconquista
-						scope:target_country = {
-							country_rank = rank_value:great_power
-							OR = {
-								c:GBR ?= this
-								AND = {
-									is_in_geographic_region = geographic_region_americas
-									is_historical_spanish_american_colony = no
-								}
-							}
-						}
-					}
-					add = 200
-				}
-				else_if = { # Reconcile with former Spanish Colonies
-					limit = {
-						has_journal_entry = je_hispanoamerica
-						scope:target_country = {
-							has_modifier = modifier_not_recognized_by_spain
-						}
-					}
-					add = 200
-				}
 
 			multiply = {
 				value = "ai_ideological_opinion(scope:target_country)"
@@ -7156,18 +7192,22 @@ ai_strategy_default = {
 					country_rank > scope:target_country.country_rank
 					scope:target_country = { is_subject_of = root }
 					has_je_protect_reason = { TARGET = scope:target_country }
-				}	
-				
+				}
+
 				# Monarchist Austria really does not want to help revolutions or secessions
-				NAND = {
-					c:AUS ?= this
-					has_law = law_type:law_monarchy
-					scope:target_country = {
-						OR = {
-							is_revolutionary = yes
-							is_secessionist = yes
+				trigger_if = {
+					limit = {
+						c:AUS ?= this
+						has_law = law_type:law_monarchy
+					}
+					NOT = {
+						scope:target_country = {
+							OR = {
+								is_revolutionary = yes
+								is_secessionist = yes
+							}
 						}
-					}				
+					}
 				}
 			}
 			score = {
@@ -7272,6 +7312,36 @@ ai_strategy_default = {
 
 				if = {
 					limit = {
+						any_country_strategic_region = {
+							root = {
+								has_region_stance = {
+									region = prev
+									stance = stance_protect_region
+								}
+							}
+							scope:target_country = {
+								is_local_country = prev
+							}
+						}
+					}
+					every_country_strategic_region = {
+						limit = {
+							root = {
+								has_region_stance = {
+									region = prev
+									stance = stance_protect_region
+								}
+							}
+							scope:target_country = {
+								is_local_country = prev
+							}
+						}
+						add = 50
+					}
+				}
+
+				if = {
+					limit = {
 						harsh_ai_behavior_trigger = yes
 					}
 					multiply = 0.75
@@ -7310,15 +7380,6 @@ ai_strategy_default = {
 		antagonize = {
 			trigger = {
 				NOT = { scope:target_country = { is_subject_of = root } }
-
-				# Countries scripted to have a friendly pact or same power bloc shouldn't start with hostile goals
-				NAND = {
-					game_date < 1836.1.2
-					OR = {
-						is_in_same_power_bloc = scope:target_country
-						has_friendly_diplomatic_pact = { TARGET = scope:target_country }
-					}				
-				}
 				
 				# Be nice to tutorial players
 				scope:target_country = { is_still_learning = no }
@@ -7400,17 +7461,6 @@ ai_strategy_default = {
 					}
 					add = 50
 				}			
-
-				if = { # Spanish American reconquest of former colonies
-					limit = {
-						has_journal_entry = je_reconquista
-						scope:target_country = {
-							is_historical_spanish_american_colony = yes
-							NOT = { is_subject_of = root }
-						}
-					}
-					add = 100
-				}
 
 				multiply = {
 					value = "ai_ideological_opinion(scope:target_country)"
@@ -7578,7 +7628,7 @@ ai_strategy_default = {
 					}
 				}
 
-				# encouraging Ethiopian unification
+				# Encouraging Ethiopian unification
 				if = {
 					limit = {
 						OR = {
@@ -7608,11 +7658,11 @@ ai_strategy_default = {
 					add = 100
 				}
 
-				if = {
+				if = { # Conquest for the sake of colonies
 					limit = {
 						NOT = { is_country_type = unrecognized }
-						scope:target_country = { is_country_type = unrecognized }
 						scope:target_country = {
+							is_country_type = unrecognized
 							OR = {
 								is_subject = no
 								top_overlord ?= {
@@ -7786,6 +7836,20 @@ ai_strategy_default = {
 						}
 					}
 					add = 200
+				}
+
+				if = { # Britain consolidating South Africa
+					limit = {
+						country_has_primary_culture = cu:british
+						has_technology_researched = malaria_prevention
+						any_subject_or_below = {
+							capital.region = sr:region_southern_africa
+						}
+						scope:target_country = {
+							capital.region = sr:region_southern_africa
+						}
+					}
+					add = 500
 				}
 
 				if = {
@@ -7996,9 +8060,9 @@ ai_strategy_default = {
 						can_reach_target_country = yes
 						country_rank > scope:target_country.country_rank
 						NOT = { is_country_type = unrecognized }
-						scope:target_country = { is_country_type = unrecognized }
-						scope:target_country = { NOT = { is_subject_of = root }	}
 						scope:target_country = {
+							is_country_type = unrecognized
+							NOT = { is_subject_of = root }
 							OR = {
 								is_subject = no
 								top_overlord ?= {
@@ -8197,6 +8261,36 @@ ai_strategy_default = {
 
 				if = {
 					limit = {
+						any_country_strategic_region = {
+							root = {
+								has_region_stance = {
+									region = prev
+									stance = stance_conquer_region
+								}
+							}
+							scope:target_country = {
+								is_local_country = prev
+							}
+						}
+					}
+					every_country_strategic_region = {
+						limit = {
+							root = {
+								has_region_stance = {
+									region = prev
+									stance = stance_conquer_region
+								}
+							}
+							scope:target_country = {
+								is_local_country = prev
+							}
+						}
+						add = 50
+					}
+				}
+
+				if = {
+					limit = {
 						lenient_ai_behavior_trigger = yes
 					}
 					multiply = 0.50
@@ -8367,6 +8461,34 @@ ai_strategy_default = {
 
 			min = 0
 			max = 100
+
+			# Placement here is intentional
+			if = {
+				limit = {
+					any_country_strategic_region = {
+						scope:target_state.region = this
+						root = {
+							OR = {
+								has_region_stance = {
+									region = prev
+									stance = stance_conquer_region
+								}
+								AND = {
+									scope:target_country = { is_country_type = unrecognized }
+									has_region_stance = {
+										region = prev
+										stance = stance_colonize_region
+									}
+								}
+							}
+						}
+					}
+				}
+				multiply = 2.5
+			}
+			else = {
+				multiply = 0.75
+			}
 		}
 
 		return_state = {
@@ -8407,6 +8529,34 @@ ai_strategy_default = {
 				min = 0
 				max = 200
 			}
+
+			# Placement here is intentional
+			if = {
+				limit = {
+					any_country_strategic_region = {
+						scope:target_state.region = this
+						root = {
+							OR = {
+								has_region_stance = {
+									region = prev
+									stance = stance_conquer_region
+								}
+								AND = {
+									scope:target_country = { is_country_type = unrecognized }
+									has_region_stance = {
+										region = prev
+										stance = stance_colonize_region
+									}
+								}
+							}
+						}
+					}
+				}
+				multiply = 2.5
+			}
+			else = {
+				multiply = 0.75
+			}
 		}
 
 		transfer_subject = {
@@ -8429,6 +8579,23 @@ ai_strategy_default = {
 					can_reach_target_country = yes
 				}
 				add = 100
+			}
+
+			if = { # Japan will want to take Korea
+				limit = {
+					c:JAP ?= this
+					OR = {
+						is_country_type = recognized
+						has_variable = japan_restoration_complete
+					}
+					exists = c:KOR
+					scope:target_country = { 
+						c:KOR ?= THIS 
+						is_country_type = unrecognized
+					}
+					can_reach_target_country = yes
+				}
+				add = 25
 			}
 			
 			if = {
@@ -8484,7 +8651,7 @@ ai_strategy_default = {
 					has_journal_entry = je_maintain_afghan_protectorate
 					scope:target_country = {
 						capital = {
-							region = sr:region_persia
+							region = sr:region_greater_persia
 						}
 						OR = {
 							country_has_primary_culture = cu:pashtun
@@ -8503,21 +8670,28 @@ ai_strategy_default = {
 						target_is_our_or_fellow_subject = no
 						any_scope_state = {
 							OR = {
-								region = sr:region_madras
-								region = sr:region_bombay
-								region = sr:region_bengal
-								region = sr:region_central_india
-								region = sr:region_punjab
-								region = sr:region_himalayas
-								state_region = s:STATE_MANDALAY
-								state_region = s:STATE_KACHIN
-								state_region = s:STATE_SHAN_STATES
-								state_region = s:STATE_PEGU
-								state_region = s:STATE_PASHTUNISTAN
-								state_region = s:STATE_QUETTA
+								is_in_geographic_region = geographic_region_india
+								is_in_geographic_region = geographic_region_burma
 							}
 						}
 					}
+				}
+				add = 25
+			}
+
+			if = { # Japan will want to take Korea
+				limit = {
+					c:JAP ?= this
+					OR = {
+						is_country_type = recognized
+						has_variable = japan_restoration_complete
+					}
+					exists = c:KOR
+					scope:target_country = { 
+						c:KOR ?= THIS 
+						is_country_type = unrecognized
+					}
+					can_reach_target_country = yes
 				}
 				add = 25
 			}
@@ -8583,6 +8757,16 @@ ai_strategy_default = {
 					has_journal_entry = je_uneasy_raj
 				}
 				multiply = 0.05
+			}
+
+			if = {
+				limit = {
+					c:JAP ?= this
+					scope:target_country ?= {
+						is_in_geographic_region = geographic_region_japan
+					}
+				}
+				add = 50
 			}
 			
 			if = {
@@ -8931,6 +9115,16 @@ ai_strategy_default = {
 				add = 50
 			}
 
+			if = { # Japan wants to consolidate herself
+				limit = {
+					c:JAP ?= this
+					scope:target_country ?= {
+						is_in_geographic_region = geographic_region_japan
+					}
+				}
+				add = 50
+			}
+
 			if = {
 				limit = {
 					has_strategic_adjacency = scope:target_country
@@ -8994,9 +9188,48 @@ ai_strategy_default = {
 			else = {
 				min = 0
 				max = 200
-			}		
-		}			
-		
+			}
+
+			# Placement here is intentional
+			if = {
+				limit = {
+					any_country_strategic_region = {
+						scope:target_country = {
+							is_local_country = prev
+							is_country_type = unrecognized
+
+						}
+						root = {
+							has_region_stance = {
+								region = prev
+								stance = stance_colonize_region
+							}
+						}
+					}
+				}
+				multiply = 2.5
+			}
+			else_if = {
+				limit = {
+					any_country_strategic_region = {
+						scope:target_country = {
+							is_local_country = prev
+						}
+						root = {
+							has_region_stance = {
+								region = prev
+								stance = stance_conquer_region
+							}
+						}
+					}
+				}
+				multiply = 1.5
+			}
+			else = {
+				multiply = 0.75
+			}
+		}
+
 		colonization_rights = {
 			value = 100
 		}	
@@ -9254,6 +9487,165 @@ ai_strategy_default = {
 			value = 100
 		}
 	}
+
+	# Determines which strait settings the AI will use, highest score 
+	# Using this value in other strategies will function additively
+	# root = country
+	# scope:strait = the strait
+	# scope:first_state = the first state controlling the strait
+	# scope:second_state = the second state controlling the strait
+	# scope:is_sole_controller = yes/no depending on whether country controls both sides of the strait
+	strait_scores = {
+		status_scores = {
+			open = {
+				value = 0
+			}
+
+			no_military = {
+				value = 10
+			}
+
+			closed = {
+				value = 0
+				
+				if = { # Close canals to enemy trade
+					limit = {
+						scope:strait = {
+							OR = {
+								type = strait_type:canal_panama
+								type = strait_type:canal_suez
+							}
+						}
+					}
+					
+					add = 100
+				}			
+			}
+		}
+
+		permissions_scores = {
+			all = {
+				value = 0					
+			}
+
+			no_enemies = {
+				value = 10
+			}
+
+			only_allies = {
+				value = 0
+				
+				# Commented out for now as AI is too happy to close straits, we should consider bringing this back later
+				#if = { # Wants to keep competitor navies out
+				#	limit = {
+				#		OR = {
+				#			has_strategy = ai_strategy_colonial_expansion
+				#			has_strategy = ai_strategy_territorial_expansion
+				#		}
+				#	}
+				#	
+				#	add = 20
+				#}	
+
+				if = { # Don't close off gibraltar
+					limit = {
+						scope:strait = {
+							type = strait_type:strait_gibraltar
+						}					
+					}
+					
+					multiply = 0
+				}				
+			}
+
+			only_controller = {
+				value = 0
+			}
+		}
+
+		toll_rate_scores = {
+			no_tolls = {
+				value = 0
+				
+				if = {
+					limit = {
+						scope:is_sole_controller = no
+						OR = {
+							has_strategy = ai_strategy_maintain_power_balance
+							has_strategy = ai_strategy_anti_imperialism
+						}
+					}
+					
+					add = 20
+				}				
+			}
+
+			low_tolls = {
+				value = 10
+				
+				if = {
+					limit = {
+						scope:is_sole_controller = yes
+						OR = {
+							has_strategy = ai_strategy_maintain_power_balance
+							has_strategy = ai_strategy_anti_imperialism
+						}
+					}
+					
+					add = 20
+				}			
+			}
+
+			medium_tolls = {
+				value = 0
+				
+				if = { # "Greed is good"
+					limit = {
+						OR = {
+							has_strategy = ai_strategy_economic_imperialism
+							has_strategy = ai_strategy_colonial_expansion
+						}
+					}
+					
+					add = 20
+				}
+				
+				if = { # Can charge higher tolls if we control both sides
+					limit = {
+						scope:is_sole_controller = yes
+					}
+					
+					add = 20
+				}
+
+				if = { # Don't extort in gibraltar
+					limit = {
+						scope:strait = {
+							type = strait_type:strait_gibraltar
+						}					
+					}
+					
+					multiply = 0.5
+				}					
+				else_if = { # Make some money on your canals
+					limit = {
+						scope:strait = {
+							OR = {
+								type = strait_type:canal_panama
+								type = strait_type:canal_suez
+							}
+						}
+					}
+					
+					add = 100
+				}				
+			}
+
+			high_tolls = {
+				value = 0
+			}
+		}
+	}	
 
 	# Trigger for whether this strategy can be randomly allocated to a country
 	possible = {

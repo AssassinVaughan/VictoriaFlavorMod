@@ -139,6 +139,12 @@
 				}
 				add = 80
 			}
+			if = {
+				limit = {
+					has_journal_entry = je_colonize_korea
+				}
+				add = 60
+			}
 		}				
 		institution_social_security = {	
 			value = 50			
@@ -357,6 +363,12 @@ ai_strategy_reactionary_agenda = {
 				}
 				add = 80
 			}
+			if = {
+				limit = {
+					has_journal_entry = je_colonize_korea
+				}
+				add = 60
+			}
 		}				
 		institution_social_security = {	
 			value = 50			
@@ -379,9 +391,8 @@ ai_strategy_reactionary_agenda = {
 	}
 
 	possible = {
-		exists = ruler
-		ruler = {
-			interest_group = { 
+		ruler ?= {
+			interest_group ?= {
 				NOR = {
 					is_interest_group_type = ig_intelligentsia
 					is_interest_group_type = ig_trade_unions
@@ -591,6 +602,12 @@ ai_strategy_progressive_agenda = {
                     any_neighbouring_state = {	
 					    owner = { is_country_type = decentralized }
                     }					
+				}
+				add = 50
+			}
+			if = {
+				limit = {
+					has_journal_entry = je_colonize_korea
 				}
 				add = 50
 			}
@@ -842,6 +859,12 @@ ai_strategy_egalitarian_agenda = {
 				}
 				add = 30
 			}
+			if = {
+				limit = {
+					has_journal_entry = je_colonize_korea
+				}
+				add = 50
+			}
 		}				
 		institution_social_security = {
 			value = 150			
@@ -1068,6 +1091,12 @@ ai_strategy_nationalist_agenda = {
                     }					
 				}
 				add = 100
+			}
+			if = {
+				limit = {
+					has_journal_entry = je_colonize_korea
+				}
+				add = 50
 			}
 		}				
 		institution_social_security = {	
@@ -1523,6 +1552,12 @@ ai_strategy_meiji_restoration = {
 				}
 				add = 50
 			}
+			if = {
+				limit = {
+					has_journal_entry = je_colonize_korea
+				}
+				add = 40
+			}
 		}				
 		institution_social_security = {	
 			value = 100			
@@ -1545,10 +1580,7 @@ ai_strategy_meiji_restoration = {
 	}
 
 	possible = {
-		OR = {
-			has_modifier = shogun_ig_forced_to_open_market
-			has_journal_entry = je_meiji_main
-		}
+		has_journal_entry = je_meiji_main
 	}
 	
 	weight = {
