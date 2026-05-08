@@ -732,7 +732,7 @@
 				activate_production_methods={ "pm_basic_port" }
 			}
 			create_building={
-				building="building_military_shipyard"
+				building="building_shipyard"
 				add_ownership={
 					country={
 						country="c:RUS"
@@ -740,7 +740,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_military_shipbuilding_wooden"  }
+				activate_production_methods={ "pm_basic_shipbuilding"  }
 			}
 		}
 	}
@@ -1595,17 +1595,6 @@
 				activate_production_methods={ "pm_basic_shipbuilding"  }
 			}
 			create_building={
-				building="building_military_shipyard"
-				add_ownership={
-					country={
-						country="c:RUS"
-						levels=1
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_military_shipbuilding_wooden"  }
-			}
-			create_building={
 				building="building_construction_sector"
 				add_ownership={
 					country={
@@ -1841,23 +1830,12 @@
 					building={
 						type="building_financial_district"
 						country="c:RUS"
-						levels=1
+						levels=2
 						region="STATE_ROSTOV"
 					}
 				}
 				reserves=1
 				activate_production_methods={ "pm_basic_shipbuilding"  }
-			}
-			create_building={
-				building="building_military_shipyard"
-				add_ownership={
-					country={
-						country="c:RUS"
-						levels=1
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_military_shipbuilding_wooden"  }
 			}
 		}
 	}

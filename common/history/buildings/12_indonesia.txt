@@ -46,7 +46,7 @@
 					building={
 						type="building_manor_house"
 						country="c:JOH"
-						levels=1
+						levels=2
 						region="STATE_MALAYA"
 					}
 				}
@@ -93,31 +93,31 @@
 				activate_production_methods={ "default_building_banana_plantation" "pm_road_carts"  }
 			}
 		}
-		region_state:BIC={
+		region_state:GBR={
 			create_building={
 				building="building_trade_center"
 				activate_production_methods={ "pm_trade_center_trade_quantity_normal" }
 				add_ownership={
 					building={
 						type="building_financial_district"
-						country="c:BIC"
+						country="c:GBR"
 						levels=2
 						region="STATE_MALAYA"
-					}				
+					}
 				}
 				reserves=1
-			}			
+			}
 			create_building={
 				building="building_port"
 				add_ownership={
 					country={
-						country="c:BIC"
+						country="c:GBR"
 						levels=1
 					}
 				}
 				reserves=1
 				activate_production_methods={ "pm_basic_port" }
-			}		
+			}
 		}
 		region_state:PRK={
 			create_building={
@@ -465,6 +465,19 @@
 				activate_production_methods={ "pm_secular_bureaucrats" "pm_professional_bureaucrats" "pm_horizontal_drawer_cabinets" }
 			}
 			create_building={
+				building="building_shipyard"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:DEI"
+						levels=1
+						region="STATE_WEST_JAVA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_basic_shipbuilding"  }
+			}
+			create_building={
 				building="building_trade_center"
 				activate_production_methods={ "pm_trade_center_trade_quantity_normal" }
 				add_ownership={
@@ -527,13 +540,13 @@
 						country="c:NET"
 						levels=2
 						region="STATE_FRIESLAND"
-					}					
+					}
 					building={
 						type="building_manor_house"
 						country="c:NET"
 						levels=3
 						region="STATE_GELRE"
-					}					
+					}
 				}
 				reserves=1
 				activate_production_methods={ "pm_simple_farming_building_rice_farm"  "pm_tools_disabled" "pm_no_secondary" }
@@ -558,7 +571,7 @@
 						country="c:NET"
 						levels=2
 						region="STATE_FRIESLAND"
-					}					
+					}
 				}
 				reserves=1
 				activate_production_methods={ "default_building_tobacco_plantation" "pm_road_carts"  }
@@ -590,31 +603,6 @@
 				activate_production_methods={ "default_building_dye_plantation" "pm_road_carts"  }
 			}
 			create_building={
-				building="building_sugar_plantation"
-				add_ownership={
-					building={
-						type="building_manor_house"
-						country="c:NET"
-						levels=2
-						region="STATE_HOLLAND"
-					}
-					building={
-						type="building_manor_house"
-						country="c:NET"
-						levels=1
-						region="STATE_FRIESLAND"
-					}
-					building={
-						type="building_manor_house"
-						country="c:DEI"
-						levels=1
-						region="STATE_WEST_JAVA"
-					}
-				}
-				reserves=1
-				activate_production_methods={ "default_building_sugar_plantation" "pm_road_carts"  }
-			}
-			create_building={
 				building="building_cotton_plantation"
 				add_ownership={
 					building={
@@ -637,6 +625,16 @@
 				}
 				reserves=1
 				activate_production_methods={ "pm_basic_port" }
+			}
+			create_building={
+				building="building_naval_fortification"
+				add_ownership={
+					country={
+						country="c:DEI"
+						levels=1
+					}
+				}
+				activate_production_methods={ "pm_naval_fortification_basic"  }
 			}
 		}
 	}
@@ -673,7 +671,7 @@
 						country="c:NET"
 						levels=2
 						region="STATE_FRIESLAND"
-					}					
+					}
 				}
 				reserves=1
 				activate_production_methods={ "pm_simple_farming_building_rice_farm"  "pm_tools_disabled" "pm_no_secondary" }
@@ -755,15 +753,9 @@
 					building={
 						type="building_manor_house"
 						country="c:NET"
-						levels=2
+						levels=1
 						region="STATE_HOLLAND"
 					}
-					building={
-						type="building_manor_house"
-						country="c:NET"
-						levels=1
-						region="STATE_GELRE"
-					}					
 					building={
 						type="building_manor_house"
 						country="c:DEI"
@@ -773,6 +765,17 @@
 				}
 				reserves=1
 				activate_production_methods={ "default_building_sugar_plantation" "pm_road_carts"  }
+			}
+			create_building={
+				building="building_naval_administration"
+				add_ownership={
+					country={
+						country="c:DEI"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_simple_sailor_recruitment" }
 			}
 		}
 	}
@@ -998,19 +1001,6 @@
 				activate_production_methods={ "pm_simple_forestry" "pm_hardwood" "pm_no_equipment" "pm_road_carts"  }
 			}
 			create_building={
-				building="building_sugar_plantation"
-				add_ownership={
-					building={
-						type="building_manor_house"
-						country="c:NET"
-						levels=1
-						region="STATE_HOLLAND"
-					}
-				}
-				reserves=1
-				activate_production_methods={ "default_building_sugar_plantation" "pm_road_carts"  }
-			}
-			create_building={
 				building="building_port"
 				add_ownership={
 					country={
@@ -1139,19 +1129,6 @@
 				}
 				reserves=1
 				activate_production_methods={ "default_building_tobacco_plantation" "pm_road_carts"  }
-			}
-			create_building={
-				building="building_sugar_plantation"
-				add_ownership={
-					building={
-						type="building_manor_house"
-						country="c:NET"
-						levels=1
-						region="STATE_HOLLAND"
-					}
-				}
-				reserves=1
-				activate_production_methods={ "default_building_sugar_plantation" "pm_road_carts"  }
 			}
 		}
 	}
@@ -1646,7 +1623,7 @@
 				add_ownership={
 					country={
 						country="c:PHI"
-						levels=3
+						levels=4
 					}
 				}
 				reserves=1
@@ -1671,7 +1648,7 @@
 					building={
 						type="building_manor_house"
 						country="c:PHI"
-						levels=7
+						levels=10
 						region="STATE_LUZON"
 					}
 				}
@@ -1697,7 +1674,7 @@
 					building={
 						type="building_manor_house"
 						country="c:PHI"
-						levels=4
+						levels=5
 						region="STATE_LUZON"
 					}
 				}
@@ -1728,6 +1705,16 @@
 				reserves=1
 				activate_production_methods={ "pm_basic_port" }
 			}
+			create_building={
+				building="building_naval_fortification"
+				add_ownership={
+					country={
+						country="c:PHI"
+						levels=1
+					}
+				}
+				activate_production_methods={ "pm_naval_fortification_basic"  }
+			}
 		}
 		region_state:SUL={
 		}
@@ -1754,7 +1741,7 @@
 					building={
 						type="building_manor_house"
 						country="c:PHI"
-						levels=2
+						levels=3
 						region="STATE_VISAYAS"
 					}
 				}
@@ -1859,7 +1846,7 @@
 				}
 				reserves=1
 				activate_production_methods={ "pm_anchorage" }
-			}			
+			}
 			create_building={
 				building= "building_easter_island_heads"
 				level = 1

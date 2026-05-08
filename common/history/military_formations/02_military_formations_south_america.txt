@@ -83,22 +83,13 @@
 			hq_region = sr:region_brazil
 			name = Armada_Nacional
 
-			combat_unit = {
-				type = unit_type:combat_unit_type_man_o_war
-				state_region = s:STATE_RIO_DE_JANEIRO
+			ship = {
+				type = ship_type:ship_type_ship_of_the_line
 				count = 1
 			}
-
-			combat_unit = {
-				type = unit_type:combat_unit_type_frigate
-				state_region = s:STATE_BAHIA
-				count = 3
-			}
-
-			combat_unit = {
-				type = unit_type:combat_unit_type_frigate
-				state_region = s:STATE_RIO_DE_JANEIRO
-				count = 6
+			ship = {
+				type = ship_type:ship_type_frigate
+				count = 8
 			}
 		}
 	}
@@ -107,17 +98,29 @@
 		create_military_formation = {
 			type = army
 			hq_region = sr:region_la_plata
-			name = Ejrcito_de_Chile #Chile had a small army but big reservists ("Guardia nacional")
+			name = Ejrcito_de_Chile
 
 			combat_unit = {
 				type = unit_type:combat_unit_type_line_infantry
+				state_region = s:STATE_SANTIAGO
+				count = 4
+			}
+
+			combat_unit = {
+				type = unit_type:combat_unit_type_cuirassiers
 				state_region = s:STATE_SANTIAGO
 				count = 2
 			}
 
 			combat_unit = {
-				type = unit_type:combat_unit_type_dragoons
+				type = unit_type:combat_unit_type_line_infantry
 				state_region = s:STATE_LOS_RIOS
+				count = 2
+			}
+
+			combat_unit = {
+				type = unit_type:combat_unit_type_mobile_artillery
+				state_region = s:STATE_SANTIAGO
 				count = 1
 			}
 		}
@@ -127,9 +130,8 @@
 			hq_region = sr:region_la_plata
 			name = Armada_de_Chile
 
-			combat_unit = {
-				type = unit_type:combat_unit_type_frigate
-				state_region = s:STATE_SANTIAGO
+			ship = { # Nothing the size of a frigate
+				type = ship_type:ship_type_frigate
 				count = 1
 			}
 		}
@@ -139,12 +141,12 @@
 		create_military_formation = {
 			type = army
 			hq_region = sr:region_la_plata
-			name = Ejrcito_Argentino # No organized army really existed in 1836, but an ad-hoc 'Northern Army' was formed in 1837 #VFM COM - Hence they should have basically no army lol, 3k is being generous
+			name = Ejrcito_Argentino # No organized army really existed in 1836, but an ad-hoc 'Northern Army' was formed in 1837
 
 			combat_unit = {
 				type = unit_type:combat_unit_type_line_infantry
 				state_region = s:STATE_BUENOS_AIRES
-				count = 1
+				count = 2
 			}
 
 			combat_unit = {
@@ -165,9 +167,8 @@
 			hq_region = sr:region_la_plata
 			name = Armada_Argentina
 
-			combat_unit = { # Nothing the size of a frigate
-				type = unit_type:combat_unit_type_frigate
-				state_region = s:STATE_BUENOS_AIRES
+			ship = { # Nothing the size of a frigate
+				type = ship_type:ship_type_frigate
 				count = 1
 			}
 		}

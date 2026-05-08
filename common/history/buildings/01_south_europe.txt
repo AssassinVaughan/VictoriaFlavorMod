@@ -300,17 +300,6 @@
 				activate_production_methods={ "pm_basic_shipbuilding"  }
 			}
 			create_building={
-				building="building_military_shipyard"
-				add_ownership={
-					country={
-						country="c:SAR"
-						levels=1
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_military_shipbuilding_wooden"  }
-			}
-			create_building={
 				building="building_fishing_wharf"
 				add_ownership={
 					building={
@@ -651,23 +640,12 @@
 					building={
 						type="building_financial_district"
 						country="c:SIC"
-						levels=1
+						levels=2
 						region="STATE_CAMPANIA"
 					}
 				}
 				reserves=1
 				activate_production_methods={ "pm_basic_shipbuilding"  }
-			}
-			create_building={
-				building="building_military_shipyard"
-				add_ownership={
-					country={
-						country="c:SIC"
-						levels=1
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_military_shipbuilding_wooden"  }
 			}
 			create_building={
 				building="building_glassworks"
@@ -1339,6 +1317,19 @@
 				activate_production_methods={ "pm_simple_organization" "pm_hereditary_bureaucrats" "pm_religious_bureaucrats" }
 			}
 			create_building={
+				building="building_shipyard"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:TUS"
+						levels=1
+						region="STATE_TUSCANY"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_basic_shipbuilding"  }
+			}
+			create_building={
 				building="building_vineyard"
 				add_ownership={
 					building={
@@ -1598,6 +1589,19 @@
 				}
 				reserves=1
 				activate_production_methods={ "pm_traditional_art" }
+			}
+			create_building={
+				building="building_shipyard"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:PAP"
+						levels=1
+						region="STATE_LAZIO"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_basic_shipbuilding"  }
 			}
 			create_building={
 				building="building_construction_sector"
@@ -2230,7 +2234,7 @@
 				activate_production_methods={ "pm_open_air_stockyards" "pm_simple_ranch" "pm_standard_fences" "pm_unrefrigerated"  }
 			}
 			create_building={
-				building="building_military_shipyard"
+				building="building_shipyard"
 				add_ownership={
 					country={
 						country="c:SPA"
@@ -2238,7 +2242,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_military_shipbuilding_wooden"  }
+				activate_production_methods={ "pm_basic_shipbuilding"  }
 			}
 			create_building={
 				building="building_fishing_wharf"
@@ -3409,7 +3413,7 @@
 				activate_production_methods={ "default_building_silk_plantation" "pm_road_carts"  }
 			}
 			create_building={
-				building="building_military_shipyard"
+				building="building_shipyard"
 				add_ownership={
 					country={
 						country="c:SPA"
@@ -3417,7 +3421,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_military_shipbuilding_wooden"  }
+				activate_production_methods={ "pm_basic_shipbuilding"  }
 			}
 			create_building={
 				building="building_port"
@@ -3955,23 +3959,12 @@
 					building={
 						type="building_financial_district"
 						country="c:POR"
-						levels=1
+						levels=2
 						region="STATE_ESTREMADURA"
 					}
 				}
 				reserves=1
 				activate_production_methods={ "pm_basic_shipbuilding"  }
-			}
-			create_building={
-				building="building_military_shipyard"
-				add_ownership={
-					country={
-						country="c:POR"
-						levels=1
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_military_shipbuilding_wooden"  }
 			}
 			create_building={
 				building="building_port"
@@ -4349,17 +4342,6 @@
 				}
 				reserves=1
 				activate_production_methods={ "pm_basic_shipbuilding"  }
-			}
-			create_building={
-				building="building_military_shipyard"
-				add_ownership={
-					country={
-						country="c:TUR"
-						levels=1
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_military_shipbuilding_wooden"  }
 			}
 			create_building={
 				building="building_textile_mill"
@@ -5132,23 +5114,12 @@
 					building={
 						type="building_financial_district"
 						country="c:AUS"
-						levels=1
+						levels=2
 						region="STATE_ISTRIA"
 					}
 				}
 				reserves=1
 				activate_production_methods={ "pm_basic_shipbuilding"  }
-			}
-			create_building={
-				building="building_military_shipyard"
-				add_ownership={
-					country={
-						country="c:AUS"
-						levels=1
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_military_shipbuilding_wooden"  }
 			}
 			create_building={
 				building="building_logging_camp"

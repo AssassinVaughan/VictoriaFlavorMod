@@ -93,7 +93,7 @@
 				activate_production_methods={ "pm_butchering_tools" "pm_simple_ranch" "pm_standard_fences" "pm_unrefrigerated"  }
 			}
 			create_building={
-				building="building_port"
+				building="building_barrack"
 				add_ownership={
 					country={
 						country="c:NSW"
@@ -101,7 +101,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_anchorage" }
+				activate_production_methods={ "pm_no_organization" }
 			}
 			create_building={
 				building="building_logging_camp"
@@ -116,12 +116,23 @@
 				reserves=1
 				activate_production_methods={ "pm_simple_forestry" "pm_no_hardwood" "pm_no_equipment" "pm_road_carts"  }
 			}
+			create_building={
+				building="building_port"
+				add_ownership={
+					country={
+						country="c:NSW"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_basic_port" }
+			}
 		}
 	}
 	s:STATE_TASMANIA={
 		region_state:TAS={
 			create_building={
-				building="building_port"
+				building="building_barrack"
 				add_ownership={
 					country={
 						country="c:TAS"
@@ -129,7 +140,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_anchorage" }
+				activate_production_methods={ "pm_no_organization" }
 			}
 			create_building={
 				building="building_logging_camp"
@@ -164,39 +175,25 @@
 		}
 	}
 	s:STATE_SOUTH_AUSTRALIA={
-	}
-	s:STATE_WESTERN_AUSTRALIA={
-		region_state:WAS={	
-            create_building={
+		region_state:SAS={
+			create_building={
 				building="building_wheat_farm"
 				add_ownership={
 					building={
 						type="building_manor_house"
-						country="c:WAS"
+						country="c:SAS"
 						levels=1
-						region="STATE_WESTERN_AUSTRALIA"
+						region="STATE_SOUTH_AUSTRALIA"
 					}
 				}
 				reserves=1
 				activate_production_methods={ "pm_simple_farming"  "pm_tools_disabled" "pm_citrus_orchards" }
-			}		
-			create_building={
-				building="building_trade_center"
-				add_ownership={
-					building={
-						type="building_financial_district"
-						country="c:GBR"
-						levels=1
-						region="STATE_HOME_COUNTIES"
-					}
-				}
-				reserves=1
 			}
-            create_building={
+			create_building={
 				building="building_barrack"
 				add_ownership={
 					country={
-						country="c:WAS"
+						country="c:SAS"
 						levels=1
 					}
 				}
@@ -206,13 +203,58 @@
 			create_building={
 				building="building_port"
 				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:GBR"
+						levels=1
+						region="STATE_HOME_COUNTIES"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_basic_port" }
+			}
+		}
+		region_state:KAU={
+			create_building={
+				building="building_wheat_farm"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:KAU"
+						levels=1
+						region="STATE_SOUTH_AUSTRALIA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_simple_farming" "pm_no_secondary" "pm_tools_disabled"  }
+			}
+			create_building={
+				building="building_fishing_wharf"
+				add_ownership={
+					building={
+						type="building_fishing_wharf"
+						country="c:KAU"
+						levels=1
+						region="STATE_SOUTH_AUSTRALIA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_simple_fishing" "pm_unrefrigerated"  }
+			}
+		}
+	}
+	s:STATE_WESTERN_AUSTRALIA={
+		region_state:WAS={
+			create_building={
+				building="building_barrack"
+				add_ownership={
 					country={
 						country="c:WAS"
 						levels=1
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_anchorage" }
+				activate_production_methods={ "pm_no_organization" }
 			}
 			create_building={
 				building="building_logging_camp"
@@ -227,9 +269,35 @@
 				reserves=1
 				activate_production_methods={ "pm_saw_mills" "pm_no_hardwood" "pm_no_equipment" "pm_road_carts"  }
 			}
+			create_building={
+				building="building_port"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:GBR"
+						levels=1
+						region="STATE_HOME_COUNTIES"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_basic_port" }
+			}
 		}
 	}
 	s:STATE_NORTHERN_TERRITORY={
+		region_state:NSW={
+			create_building={
+				building="building_port"
+				add_ownership={
+					country={
+						country="c:NSW"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_basic_port" }
+			}
+		}
 	}
 	s:STATE_NORTH_ISLAND={
 		region_state:UNT={
