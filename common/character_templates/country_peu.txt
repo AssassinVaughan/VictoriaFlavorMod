@@ -4,21 +4,18 @@ PEU_Luis_Jose_de_Orbegoso = { #North Peru
 	# Luis Jose de Orbegoso
 	first_name = "Luis_2_Jose"
 	last_name = "de_Orbegoso"
-	ig_leader = yes
 	historical = yes
 	culture = primary_culture
 	ruler = yes
-	birth_date = 1795.08.25
+	age = 41
+	home_region = STATE_LIMA
 	dna = dna_luis_jose_de_orbegoso
 	interest_group = ig_intelligentsia
 	ideology = ideology_market_liberal
 	traits = {
 		honorable
 		reserved
-		erudite
-		popular_commander
 		basic_offensive_planner
-		experienced_diplomat
 		experienced_political_operator
 	}
 	trait_generation = { }
@@ -32,6 +29,7 @@ PEU_Nicolas_Fernandez_de_Pierola = { #South Peru
 	culture = primary_culture
 	ruler = yes
 	age = 48
+	home_region = STATE_LIMA
 	interest_group = ig_intelligentsia
 	ideology = ideology_moderate
 	traits = {
@@ -44,7 +42,7 @@ PEU_Nicolas_Fernandez_de_Pierola = { #South Peru
 
 
 PEU_Antonio_Huachaca = { #Iquichia
-	# José Antonio Navala Huachaca, peasant, guerilla, rebel, sometimes-ally of Orbegoso
+	# José Antonio Navala Huachaca, peasant, guerilla, rebel, sometimes-ally of Obregoso
 	first_name = Antonio
 	last_name = Huachaca
 	historical = yes
@@ -52,6 +50,7 @@ PEU_Antonio_Huachaca = { #Iquichia
 	age = 58 # Not even the year he was born was known, although he was probably alive when Tupac Amaru II was executed
 	ruler = yes
 	is_general = yes
+	home_region = STATE_ICA
 	interest_group = ig_rural_folk
 	ideology = ideology_radical
 	traits = {
@@ -74,6 +73,7 @@ PEU_Felipe_Salaverry = {
 	is_general = yes
 	birth_date = 1806.5.3
 	dna = dna_felipe_santiago_salaverry
+	home_region = STATE_LIMA
 	interest_group = ig_armed_forces
 	ideology = ideology_slaver # He tried to restore the /slave trade/, for God's sake
 	traits = {
@@ -96,6 +96,7 @@ PEU_Agustin_Gamarra = {
 	historical = yes
 	culture = primary_culture
 	birth_date = 1785.8.27
+	home_region = STATE_AREQUIPA
 	is_agitator = yes
 	interest_group = ig_landowners
 	ideology = ideology_authoritarian
@@ -129,7 +130,8 @@ PEU_Jose_de_Goyeneche = {
 	last_name = de_Goyeneche
 	historical = yes
 	culture = primary_culture
-	age = 1784.1.19
+	birth_date = 1784.1.19
+	home_region = STATE_AREQUIPA
 	ig_leader = yes
 	interest_group = ig_devout
 	ideology = ideology_moderate
@@ -152,6 +154,7 @@ PEU_jorge_de_benavente_y_macoaga = { # Jorge de Benavente y Macoaga
 	interest_group = ig_devout
 	ideology = ideology_moderate
 	birth_date = 1784.4.21
+	home_region = STATE_LIMA
 	traits = {
 		erudite
 		basic_political_operator
@@ -184,6 +187,7 @@ PEU_Manuel_Salazar_y_Baquijano = { # Member of the Suprema Junta Gubernativa del
 	historical = yes
 	culture = primary_culture
 	birth_date = 1777.12.24
+	home_region = STATE_LIMA
 	interest_group = ig_intelligentsia
 	traits = {
 		tactful
@@ -215,12 +219,13 @@ PEU_bartoleme_herrera = { # Bartolomé Herrera Vélez
 	last_name = Herrera
 	historical = yes
 	female = no
-	ig_leader = yes
+	role = character_role_politician
 	culture = primary_culture
 	religion = rel:catholic
 	interest_group = ig_devout
 	ideology = ideology_theocrat
 	birth_date = 1808.8.24
+	home_region = STATE_LIMA
 	traits = {
 		inspirational_orator
 		imperious
@@ -242,7 +247,7 @@ PEU_bartoleme_herrera = { # Bartolomé Herrera Vélez
         }
         earliest_usage_date = 1842.1.1
         latest_usage_date = 1865.1.1
-        chance = 75
+        #guaranteed to spawn if possible
     }
 	trait_generation = { }
 }
@@ -252,13 +257,14 @@ PEU_francisco_xavier_de_luna_pizarro = { # Francisco Xavier de Luna Pizarro Pach
 	last_name = de_Luna_Pizarro
 	historical = yes
 	female = no
-	ig_leader = yes
+	role = character_role_politician
 	culture = primary_culture
 	religion = rel:catholic
 	interest_group = ig_devout
 	ideology = ideology_pacifist
 	birth_date = 1780.12.3
 	dna = dna_francisco_luna_pizarro
+	home_region = STATE_AREQUIPA
 	traits = {
 		charismatic
 		erudite
@@ -281,7 +287,7 @@ PEU_francisco_xavier_de_luna_pizarro = { # Francisco Xavier de Luna Pizarro Pach
         }
         earliest_usage_date = 1840.1.1
         latest_usage_date = 1855.1.1
-        chance = 75
+        #guaranteed to spawn if possible
     }
 	trait_generation = { }
 }
@@ -291,12 +297,13 @@ PEU_manuel_menendez = { # Manuel Menéndez Gorozabel
 	last_name = Menendez
 	historical = yes
 	female = no
-	ig_leader = yes
+	role = character_role_politician
 	culture = primary_culture
 	religion = rel:catholic
 	interest_group = ig_landowners
 	ideology = ideology_moderate
 	birth_date = 1793.5.31
+	home_region = STATE_LIMA
 	traits = {
 		basic_political_operator
 		tactful
@@ -318,7 +325,7 @@ PEU_manuel_menendez = { # Manuel Menéndez Gorozabel
         }
         earliest_usage_date = 1840.1.1
         latest_usage_date = 1847.1.1
-        chance = 75
+        #guaranteed to spawn if possible
     }
 	trait_generation = { }
 }
@@ -328,12 +335,13 @@ PEU_francisco_quiros_y_ampudia = { # Francisco de Paula Isidoro Quirós y Ampudi
 	last_name = Quiros_y_Ampudia
 	historical = yes
 	female = no
-	ig_leader = yes
+	role = character_role_politician
 	culture = primary_culture
 	religion = rel:catholic
 	interest_group = ig_industrialists
 	ideology = ideology_abolitionist
 	birth_date = 1798.5.5 # Guesswork
+	home_region = STATE_LIMA
 	traits = {
 		cautious
 		basic_political_operator
@@ -355,7 +363,7 @@ PEU_francisco_quiros_y_ampudia = { # Francisco de Paula Isidoro Quirós y Ampudi
         }
         earliest_usage_date = 1840.1.1
         latest_usage_date = 1865.1.1
-        chance = 75
+        #guaranteed to spawn if possible
     }
 	trait_generation = { }
 }
@@ -365,12 +373,13 @@ PEU_manuel_pardo_y_lavalle = { # Manuel Justo Pardo y Lavalle
 	last_name = Pardo_y_Lavalle
 	historical = yes
 	female = no
-	ig_leader = yes
+	role = character_role_politician
 	culture = primary_culture
 	religion = rel:catholic
 	interest_group = ig_landowners
 	ideology = ideology_liberal_leader
 	birth_date = 1834.8.9
+	home_region = STATE_LIMA
 	traits = {
 		persistent
 		innovative
@@ -392,7 +401,7 @@ PEU_manuel_pardo_y_lavalle = { # Manuel Justo Pardo y Lavalle
         }
         earliest_usage_date = 1870.1.1
         latest_usage_date = 1890.1.1
-        chance = 75
+        #guaranteed to spawn if possible
     }
 	trait_generation = { }
 }
@@ -402,12 +411,13 @@ PEU_domingo_elias = { # Domingo Elías Carbajo
 	last_name = Elias
 	historical = yes
 	female = no
-	ig_leader = yes
+	role = character_role_politician
 	culture = primary_culture
 	religion = rel:catholic
 	interest_group = ig_landowners
 	ideology = ideology_market_liberal
 	birth_date = 1805.12.5
+	home_region = STATE_ICA
 	traits = {
 		direct
 		persistent
@@ -430,7 +440,7 @@ PEU_domingo_elias = { # Domingo Elías Carbajo
         }
         earliest_usage_date = 1844.1.1
         latest_usage_date = 1858.1.1
-        chance = 75
+        #guaranteed to spawn if possible
     }
 	trait_generation = { }
 }
@@ -440,12 +450,13 @@ PEU_sebastian_lorente = { # Sebastián Ignacio Lorente Ibáñez
 	last_name = Lorente
 	historical = yes
 	female = no
-	ig_leader = yes
+	role = character_role_politician
 	culture = primary_culture
 	religion = rel:catholic
 	interest_group = ig_intelligentsia
 	ideology = ideology_reformer
 	birth_date = 1813.12.13
+	home_region = STATE_LIMA
 	traits = {
 		erudite
 		sickly
@@ -462,7 +473,7 @@ PEU_sebastian_lorente = { # Sebastián Ignacio Lorente Ibáñez
 			}
 			has_dlc_feature = rp1_content
 			NOT = {
-				has_law = law_type:law_closed_borders
+				has_law_or_variant = law_type:law_closed_borders
 			}
 		}
         interest_group_trigger = {
@@ -470,7 +481,7 @@ PEU_sebastian_lorente = { # Sebastián Ignacio Lorente Ibáñez
         }
         earliest_usage_date = 1855.1.1
         latest_usage_date = 1880.1.1
-        chance = 75
+        #guaranteed to spawn if possible
     }
 	trait_generation = { }
 }
@@ -480,12 +491,13 @@ PEU_pedro_galvez_egusquiza = { # Pedro Gálvez Egúsquiza
 	last_name = Egusquiza
 	historical = yes
 	female = no
-	ig_leader = yes
+	role = character_role_politician
 	culture = primary_culture
 	religion = rel:catholic
 	interest_group = ig_intelligentsia
 	ideology = ideology_moderate
 	birth_date = 1822.4.28
+	home_region = STATE_CAJAMARCA
 	traits = {
 		experienced_diplomat
 	}
@@ -506,7 +518,7 @@ PEU_pedro_galvez_egusquiza = { # Pedro Gálvez Egúsquiza
         }
         earliest_usage_date = 1852.1.1
         latest_usage_date = 1868.1.1
-        chance = 75
+        #guaranteed to spawn if possible
     }
 	trait_generation = { }
 }
@@ -516,13 +528,14 @@ PEU_nicolas_de_pierola = { # José Nicolás Baltazar Fernández de Piérola y Vi
 	last_name = de_Pierola
 	historical = yes
 	female = no
-	ig_leader = yes
+	role = character_role_politician
 	culture = primary_culture
 	religion = rel:catholic
 	interest_group = ig_petty_bourgeoisie
 	ideology = ideology_protectionist
 	birth_date = 1839.1.5
 	dna = dna_nicolas_de_pierola
+	home_region = STATE_AREQUIPA
 	traits = {
 		reckless
 		persistent
@@ -544,22 +557,23 @@ PEU_nicolas_de_pierola = { # José Nicolás Baltazar Fernández de Piérola y Vi
         }
         earliest_usage_date = 1875.1.1
         latest_usage_date = 1900.1.1
-        chance = 75
+        #guaranteed to spawn if possible
     }
 	trait_generation = { }
 }
 
 PEU_julio_cesar_arana_del_aguila = { # Julio César Arana del Águila
-	first_name = Julio_Cesar
+	first_name = Julio_CE_sar
 	last_name = Arana_del_Aguila
 	historical = yes
 	female = no
-	ig_leader = yes
+	role = character_role_politician
 	culture = primary_culture
 	religion = rel:catholic
 	interest_group = ig_industrialists
 	ideology = ideology_ethno_nationalist
 	birth_date = 1864.8.9 # Guesswork
+	home_region = STATE_CAJAMARCA
 	traits = {
 		cruel
 		ambitious
@@ -581,7 +595,7 @@ PEU_julio_cesar_arana_del_aguila = { # Julio César Arana del Águila
         }
         earliest_usage_date = 1900.1.1
         latest_usage_date = 1930.1.1
-        chance = 75
+        #guaranteed to spawn if possible
     }
 	trait_generation = { }
 }
@@ -591,12 +605,13 @@ PEU_jose_pardo_y_barreda = { # José Simón Pardo y Barreda
 	last_name = Pardo_y_Barreda
 	historical = yes
 	female = no
-	ig_leader = yes
+	role = character_role_politician
 	culture = primary_culture
 	religion = rel:catholic
 	interest_group = ig_petty_bourgeoisie
 	ideology = ideology_reformer
 	birth_date = 1864.2.24
+	home_region = STATE_LIMA
 	traits = {
 		expert_political_operator
 		experienced_diplomat
@@ -619,7 +634,7 @@ PEU_jose_pardo_y_barreda = { # José Simón Pardo y Barreda
         }
         earliest_usage_date = 1900.1.1
         latest_usage_date = 1920.1.1
-        chance = 75
+        #guaranteed to spawn if possible
     }
 	trait_generation = { }
 }
@@ -629,12 +644,13 @@ PEU_augusto_leguia = { # Augusto Bernardino Leguía y Salcedo
 	last_name = Leguia
 	historical = yes
 	female = no
-	ig_leader = yes
+	role = character_role_politician
 	culture = primary_culture
 	religion = rel:catholic
 	interest_group = ig_petty_bourgeoisie
 	ideology = ideology_authoritarian
 	birth_date = 1863.2.19
+	home_region = STATE_CAJAMARCA
 	traits = {
 		imperious
 		charismatic
@@ -656,7 +672,7 @@ PEU_augusto_leguia = { # Augusto Bernardino Leguía y Salcedo
         }
         earliest_usage_date = 1903.1.1
         latest_usage_date = 1930.1.1
-        chance = 75
+        #guaranteed to spawn if possible
     }
 	trait_generation = { }
 }
@@ -666,12 +682,13 @@ PEU_enrique_lopez_albujar = { # Enrique López Albújar
 	last_name = Lopez_Albujar
 	historical = yes
 	female = no
-	ig_leader = yes
+	role = character_role_politician
 	culture = primary_culture
 	religion = rel:catholic
 	interest_group = ig_rural_folk
 	ideology = ideology_land_reformer
 	birth_date = 1872.11.23
+	home_region = STATE_CAJAMARCA
 	traits = {
 		literary
 		brave
@@ -693,7 +710,7 @@ PEU_enrique_lopez_albujar = { # Enrique López Albújar
         }
         earliest_usage_date = 1910.1.1
         latest_usage_date = 1936.1.1
-        chance = 75
+        #guaranteed to spawn if possible
     }
 	trait_generation = { }
 }
@@ -703,12 +720,13 @@ PEU_guillermo_billinghurst = { # Guillermo Enrique Billinghurst Angulo
 	last_name = Billinghurst
 	historical = yes
 	female = no
-	ig_leader = yes
+	role = character_role_politician
 	culture = primary_culture
 	religion = rel:catholic
 	interest_group = ig_intelligentsia
 	ideology = ideology_authoritarian
 	birth_date = 1851.7.27
+	home_region = STATE_TARAPACA
 	traits = {
 		brave
 		basic_diplomat
@@ -731,7 +749,7 @@ PEU_guillermo_billinghurst = { # Guillermo Enrique Billinghurst Angulo
         }
         earliest_usage_date = 1900.1.1
         latest_usage_date = 1915.1.1
-        chance = 75
+        #guaranteed to spawn if possible
     }
 	trait_generation = { }
 }
@@ -741,12 +759,13 @@ PEU_victor_raul_haya_de_la_torre = { # Víctor Raúl Haya de la Torre
 	last_name = Haya_de_la_Torre
 	historical = yes
 	female = no
-	ig_leader = yes
+	role = character_role_politician
 	culture = primary_culture
 	religion = rel:catholic
 	interest_group = ig_intelligentsia
 	ideology = ideology_social_democrat
 	birth_date = 1895.2.22
+	home_region = STATE_CAJAMARCA
 	traits = {
 		persistent
 		firebrand
@@ -768,7 +787,7 @@ PEU_victor_raul_haya_de_la_torre = { # Víctor Raúl Haya de la Torre
         }
         earliest_usage_date = 1924.1.1
         latest_usage_date = 1936.1.1
-        chance = 75
+        #guaranteed to spawn if possible
     }
 	trait_generation = { }
 }
@@ -778,12 +797,13 @@ PEU_emilio_lisson = { # Emilio Lisson
 	last_name = Lisson
 	historical = yes
 	female = no
-	ig_leader = yes
+	role = character_role_politician
 	culture = primary_culture
 	religion = rel:catholic
 	interest_group = ig_devout
 	ideology = ideology_traditionalist
 	birth_date = 1872.5.24
+	home_region = STATE_AREQUIPA
 	traits = {
 		pious
 		imperious
@@ -806,7 +826,7 @@ PEU_emilio_lisson = { # Emilio Lisson
         }
         earliest_usage_date = 1915.1.1
         latest_usage_date = 1936.1.1
-        chance = 75
+        #guaranteed to spawn if possible
     }
 	trait_generation = { }
 }
@@ -818,6 +838,7 @@ PEU_ramon_castilla = { # Ramón Castilla y Marquesado
 	last_name = Castilla
 	historical = yes
 	birth_date = 1797.8.31
+	home_region = STATE_TARAPACA
 	is_general = yes
 	commander_rank = default
 	interest_group = ig_armed_forces
@@ -848,7 +869,7 @@ PEU_ramon_castilla = { # Ramón Castilla y Marquesado
 		role = general
 		earliest_usage_date = 1836.1.1
 		latest_usage_date = 1870.1.1
-		chance = 75
+		#guaranteed to spawn if possible
 	}
 	trait_generation = { }
 }
@@ -858,6 +879,7 @@ PEU_manuel_ignacio_de_vivanco = { # Manuel Ignacio de Vivanco Iturralde
 	last_name = de_Vivanco
 	historical = yes
 	birth_date = 1806.6.15
+	home_region = STATE_LIMA
 	is_general = yes
 	commander_rank = default
 	interest_group = ig_landowners
@@ -887,7 +909,7 @@ PEU_manuel_ignacio_de_vivanco = { # Manuel Ignacio de Vivanco Iturralde
 		role = general
 		earliest_usage_date = 1836.1.1
 		latest_usage_date = 1870.1.1
-		chance = 75
+		#guaranteed to spawn if possible
 	}
 	trait_generation = { }
 }
@@ -897,10 +919,10 @@ PEU_juan_francisco_de_vidal_la_hoz = { # Juan Francisco de Vidal La Hoz
 	last_name = de_Vidal_La_Hoz
 	historical = yes
 	birth_date = 1800.4.2
+	home_region = STATE_LIMA
 	is_general = yes
 	commander_rank = default
 	interest_group = ig_armed_forces
-	ig_leader = yes
 	ideology = ideology_authoritarian
 	dna = dna_juan_francisco_de_vidal
 	culture = primary_culture
@@ -909,7 +931,6 @@ PEU_juan_francisco_de_vidal_la_hoz = { # Juan Francisco de Vidal La Hoz
 		imposing
 		experienced_offensive_planner
 		brave
-		honorable
 		experienced_defensive_strategist
 	}
 	commander_usage = {
@@ -927,7 +948,7 @@ PEU_juan_francisco_de_vidal_la_hoz = { # Juan Francisco de Vidal La Hoz
 		role = general
 		earliest_usage_date = 1836.1.1
 		latest_usage_date = 1855.1.1
-		chance = 75
+		#guaranteed to spawn if possible
 	}
 	trait_generation = { }
 }
@@ -937,6 +958,7 @@ PEU_juan_cristostomo_torrico = { # Juan Crisóstomo Torrico y Bargas
 	last_name = Torrico
 	historical = yes
 	birth_date = 1808.1.21
+	home_region = STATE_LIMA
 	is_general = yes
 	commander_rank = default
 	interest_group = ig_armed_forces
@@ -966,7 +988,7 @@ PEU_juan_cristostomo_torrico = { # Juan Crisóstomo Torrico y Bargas
 		role = general
 		earliest_usage_date = 1838.1.1
 		latest_usage_date = 1855.1.1
-		chance = 75
+		#guaranteed to spawn if possible
 	}
 	trait_generation = { }
 }
@@ -976,6 +998,7 @@ PEU_antonio_gutierrez_de_la_fuente = { # Antonio Gutiérrez de la Fuente
 	last_name = de_la_Fuente
 	historical = yes
 	birth_date = 1796.9.8
+	home_region = STATE_TARAPACA
 	is_general = yes
 	commander_rank = default
 	interest_group = ig_armed_forces
@@ -1002,7 +1025,7 @@ PEU_antonio_gutierrez_de_la_fuente = { # Antonio Gutiérrez de la Fuente
 		role = general
 		earliest_usage_date = 1836.1.1
 		latest_usage_date = 1875.1.1
-		chance = 75
+		#guaranteed to spawn if possible
 	}
 	trait_generation = { }
 }
@@ -1012,6 +1035,7 @@ PEU_jose_rufino_echenique = { # José Rufino Pompeyo Echenique Benavente
 	last_name = Echenique
 	historical = yes
 	birth_date = 1808.11.16
+	home_region = STATE_AREQUIPA
 	is_general = yes
 	commander_rank = default
 	interest_group = ig_armed_forces
@@ -1037,7 +1061,7 @@ PEU_jose_rufino_echenique = { # José Rufino Pompeyo Echenique Benavente
 		role = general
 		earliest_usage_date = 1844.1.1
 		latest_usage_date = 1855.1.1
-		chance = 75
+		#guaranteed to spawn if possible
 	}
 	trait_generation = { }
 }
@@ -1047,6 +1071,7 @@ PEU_miguel_de_san_roman = { # Miguel de San Román y Meza
 	last_name = de_San_Roman
 	historical = yes
 	birth_date = 1802.5.17
+	home_region = STATE_AREQUIPA
 	is_general = yes
 	commander_rank = default
 	interest_group = ig_armed_forces
@@ -1073,7 +1098,7 @@ PEU_miguel_de_san_roman = { # Miguel de San Román y Meza
 		role = general
 		earliest_usage_date = 1841.1.1
 		latest_usage_date = 1860.1.1
-		chance = 75
+		#guaranteed to spawn if possible
 	}
 	trait_generation = { }
 }
@@ -1083,6 +1108,7 @@ PEU_pedro_pablo_bermudez_ascarza = { # Pedro Pablo Bermúdez Ascarza
 	last_name = Bermudez_Ascarza
 	historical = yes
 	birth_date = 1793.6.27
+	home_region = STATE_LIMA
 	is_general = yes
 	commander_rank = default
 	interest_group = ig_industrialists
@@ -1108,7 +1134,7 @@ PEU_pedro_pablo_bermudez_ascarza = { # Pedro Pablo Bermúdez Ascarza
 		role = general
 		earliest_usage_date = 1837.1.1
 		latest_usage_date = 1850.1.1
-		chance = 75
+		#guaranteed to spawn if possible
 	}
 	trait_generation = { }
 }
@@ -1118,6 +1144,7 @@ PEU_andres_avelino_caceres = { # Andrés Avelino Cáceres Dorregaray
 	last_name = Caceres
 	historical = yes
 	birth_date = 1836.11.10
+	home_region = STATE_ICA
 	is_general = yes
 	commander_rank = default
 	interest_group = ig_landowners
@@ -1144,7 +1171,7 @@ PEU_andres_avelino_caceres = { # Andrés Avelino Cáceres Dorregaray
 		role = general
 		earliest_usage_date = 1880.1.1
 		latest_usage_date = 1895.1.1
-		chance = 75
+		#guaranteed to spawn if possible
 	}
 	trait_generation = { }
 }
@@ -1154,6 +1181,7 @@ PEU_miguel_iglesias = { # Miguel Iglesias Pino de Arce
 	last_name = Iglesias
 	historical = yes
 	birth_date = 1830.6.11
+	home_region = STATE_CAJAMARCA
 	is_general = yes
 	commander_rank = default
 	interest_group = ig_landowners
@@ -1179,7 +1207,7 @@ PEU_miguel_iglesias = { # Miguel Iglesias Pino de Arce
 		role = general
 		earliest_usage_date = 1874.1.1
 		latest_usage_date = 1885.1.1
-		chance = 75
+		#guaranteed to spawn if possible
 	}
 	trait_generation = { }
 }
@@ -1197,6 +1225,7 @@ PEU_pedro_pablo_atusparia = { #Pedro Pablo Atusparia Ángeles
 	interest_group = ig_rural_folk
 	ideology = ideology_radical
 	birth_date = 1840.6.29
+	home_region = STATE_LIMA
 	traits = {
 		brave
 		firebrand
@@ -1220,6 +1249,6 @@ PEU_pedro_pablo_atusparia = { #Pedro Pablo Atusparia Ángeles
         }
         earliest_usage_date = 1885.1.1
         latest_usage_date = 1895.1.1
-        chance = 50
+        #guaranteed to spawn if possible
     }
 }

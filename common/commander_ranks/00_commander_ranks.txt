@@ -5,10 +5,13 @@ commander_rank_1 = {
 	texture = "gfx/interface/icons/commander_rank_icons/commander_rank_1.dds"
 
 	character_modifier = {
+		character_prominence_add = 10
+		character_max_offensive_battles_add = 2
 	}
 
 	general_modifier = {
 		character_command_limit_add = 15 #vfm, half
+		character_naval_mission_area_add = 2
 	}
 
 	admiral_modifier = {
@@ -18,23 +21,19 @@ commander_rank_1 = {
 	country_modifier = {
 		country_bureaucracy_add = -5
 	}
-
-	interest_group_modifier = {
-		interest_group_pol_str_mult = 0.01 # vfm half
-	}
 	
 	title = {
 		first_valid = {
 			triggered_desc = {
 				desc = commander_rank_1_general
 				trigger = {
-					has_role = general
+					has_role_of_type = general
 				}
 			}
 			triggered_desc = {
 				desc = commander_rank_1_admiral
 				trigger = {
-					has_role = admiral
+					has_role_of_type = admiral
 				}
 			}
 			desc = commander_rank_1_fallback
@@ -47,6 +46,8 @@ commander_rank_2 = {
     texture = "gfx/interface/icons/commander_rank_icons/commander_rank_2.dds"
 	
 	character_modifier = {
+		character_prominence_add = 20
+		character_max_offensive_battles_add = 2
 	}
 
 	general_modifier = {
@@ -55,14 +56,11 @@ commander_rank_2 = {
 
 	admiral_modifier = {
 		character_command_limit_add = 40
+		character_naval_mission_area_add = 3
 	}
 
 	country_modifier = {
 		country_bureaucracy_add = -10
-	}
-
-	interest_group_modifier = {
-		interest_group_pol_str_mult = 0.03
 	}
 	
 	title = {
@@ -70,13 +68,13 @@ commander_rank_2 = {
 			triggered_desc = {
 				desc = commander_rank_2_general
 				trigger = {
-					has_role = general
+					has_role_of_type = general
 				}
 			}
 			triggered_desc = {
 				desc = commander_rank_2_admiral
 				trigger = {
-					has_role = admiral
+					has_role_of_type = admiral
 				}
 			}
 			desc = commander_rank_2_fallback
@@ -89,6 +87,8 @@ commander_rank_3 = {
     texture = "gfx/interface/icons/commander_rank_icons/commander_rank_3.dds"
 	
 	character_modifier = {
+		character_prominence_add = 30
+		character_max_offensive_battles_add = 3
 	}
 
 	general_modifier = {
@@ -97,14 +97,11 @@ commander_rank_3 = {
 
 	admiral_modifier = {
 		character_command_limit_add = 60
+		character_naval_mission_area_add = 4
 	}
 
 	country_modifier = {
 		country_bureaucracy_add = -15
-	}
-
-	interest_group_modifier = {
-		interest_group_pol_str_mult = 0.06
 	}
 	
 	title = {
@@ -112,13 +109,13 @@ commander_rank_3 = {
 			triggered_desc = {
 				desc = commander_rank_3_general
 				trigger = {
-					has_role = general
+					has_role_of_type = general
 				}
 			}
 			triggered_desc = {
 				desc = commander_rank_3_admiral
 				trigger = {
-					has_role = admiral
+					has_role_of_type = admiral
 				}
 			}
 			desc = commander_rank_3_fallback
@@ -131,6 +128,8 @@ commander_rank_4 = {
     texture = "gfx/interface/icons/commander_rank_icons/commander_rank_4.dds"
 	
 	character_modifier = {
+		character_prominence_add = 40
+		character_max_offensive_battles_add = 3
 	}
 
 	general_modifier = {
@@ -139,14 +138,11 @@ commander_rank_4 = {
 
 	admiral_modifier = {
 		character_command_limit_add = 80
+		character_naval_mission_area_add = 5
 	}
 
 	country_modifier = {
 		country_bureaucracy_add = -25
-	}
-
-	interest_group_modifier = {
-		interest_group_pol_str_mult = 0.1
 	}
 	
 	title = {
@@ -154,13 +150,13 @@ commander_rank_4 = {
 			triggered_desc = {
 				desc = commander_rank_4_general
 				trigger = {
-					has_role = general
+					has_role_of_type = general
 				}
 			}
 			triggered_desc = {
 				desc = commander_rank_4_admiral
 				trigger = {
-					has_role = admiral
+					has_role_of_type = admiral
 				}
 			}
 			desc = commander_rank_4_fallback
@@ -173,6 +169,8 @@ commander_rank_5 = {
     texture = "gfx/interface/icons/commander_rank_icons/commander_rank_5.dds"
 	
 	character_modifier = {
+		character_prominence_add = 50
+		character_max_offensive_battles_add = 4
 	}
 
 	general_modifier = {
@@ -181,14 +179,11 @@ commander_rank_5 = {
 
 	admiral_modifier = {
 		character_command_limit_add = 100
+		character_naval_mission_area_add = 6
 	}
 
 	country_modifier = {
 		country_bureaucracy_add = -30
-	}
-
-	interest_group_modifier = {
-		interest_group_pol_str_mult = 0.15
 	}
 	
 	title = {
@@ -196,13 +191,13 @@ commander_rank_5 = {
 			triggered_desc = {
 				desc = commander_rank_5_general
 				trigger = {
-					has_role = general
+					has_role_of_type = general
 				}
 			}
 			triggered_desc = {
 				desc = commander_rank_5_admiral
 				trigger = {
-					has_role = admiral
+					has_role_of_type = admiral
 				}
 			}
 			desc = commander_rank_5_fallback
@@ -215,6 +210,7 @@ commander_rank_ruler = {
     texture = "gfx/interface/icons/character_role_icons/ruler.dds"
 	
 	character_modifier = {
+		character_max_offensive_battles_add = 2
 	}
 
 	general_modifier = {
@@ -223,14 +219,11 @@ commander_rank_ruler = {
 
 	admiral_modifier = {
 		character_command_limit_add = 30
+		character_naval_mission_area_add = 2
 	}
 
 	country_modifier = {
 		country_bureaucracy_add = -10
-	}
-
-	interest_group_modifier = {
-		interest_group_pol_str_mult = 0.25
 	}
 	
 	title = {
@@ -238,8 +231,8 @@ commander_rank_ruler = {
 			triggered_desc = {
 				desc = commander_rank_ruler
 				trigger = {
-					is_ruler = yes
-					has_role = general
+					is_ruler_of_own_country = yes
+					has_role_of_type = general
 				}
 			}
 			desc = commander_rank_ruler_fallback

@@ -7,16 +7,14 @@ BOL_Andres_de_Santa_Cruz = {
 	historical = yes
 	culture = primary_culture
 	ruler = yes
-	ig_leader = yes
 	birth_date = 1792.11.30
 	dna = dna_andres_de_santa_cruz
 	interest_group = ig_armed_forces
-	ideology = ideology_crucismo
+	ideology = ideology_moderate
+    home_region = STATE_LA_PAZ
 	traits = {
 		ambitious
 		celebrity_commander
-		expert_political_operator
-		basic_offensive_planner
 	}
 	trait_generation = { }
 }
@@ -33,6 +31,7 @@ BOL_Mariano_Enrique_Calvo = {
 	ig_leader = yes
 	interest_group = ig_landowners
 	ideology = ideology_reformer
+    home_region = STATE_SANTA_CRUZ
 	traits = {
 		erudite
 		basic_political_operator
@@ -51,6 +50,7 @@ BOL_Casimiro_Olaneta = {
 	ig_leader = yes
 	interest_group = ig_petty_bourgeoisie
 	ideology = ideology_radical
+    home_region = STATE_SANTA_CRUZ
 	traits = {
 		charismatic
 		basic_diplomat
@@ -66,8 +66,10 @@ BOL_Jose_Miguel_de_Velasco = {
 	culture = primary_culture
 	birth_date = 1795.9.29
 	is_general = yes
+	ig_leader = yes
 	interest_group = ig_armed_forces
 	ideology = ideology_moderate
+    home_region = STATE_SANTA_CRUZ
 	traits = {
 		ambitious
 		brave
@@ -87,7 +89,8 @@ BOL_jose_maria_de_acha = { #José María Achá Valiente
     religion = rel:catholic
     ideology = ideology_liberal_leader
     interest_group = ig_armed_forces
-	ig_leader = yes
+    home_region = STATE_LA_PAZ
+	role = character_role_politician
     birth_date = 1810.7.8
     traits = {
         experienced_political_operator
@@ -109,12 +112,12 @@ BOL_jose_maria_de_acha = { #José María Achá Valiente
 			has_dlc_feature = rp1_content
         }
         interest_group_trigger = {
-            is_marginal = no
+            ig_counts_as_marginal = no
             is_interest_group_type = ig_armed_forces
         }
         earliest_usage_date = 1850.1.1
         latest_usage_date = 1870.1.1
-        chance = 50
+        #guaranteed to spawn if possible
     }
 }
 
@@ -123,11 +126,12 @@ BOL_jose_maria_linares = { #José María Rufino de Linares Lizarazu
 	last_name = Linares
 	historical = yes
 	female = no
-	ig_leader = yes
+	role = character_role_politician
 	culture = primary_culture
 	religion = rel:catholic
 	interest_group = ig_intelligentsia
 	ideology = ideology_authoritarian
+    home_region = STATE_POTOSI
 	birth_date = 1808.7.10
 	traits = {
 		erudite
@@ -149,7 +153,7 @@ BOL_jose_maria_linares = { #José María Rufino de Linares Lizarazu
 			has_dlc_feature = rp1_content
         }
         interest_group_trigger = {
-            is_marginal = no
+            ig_counts_as_marginal = no
 			OR = {
 				is_interest_group_type = ig_intelligentsia
 				is_interest_group_type = ig_petty_bourgeoisie
@@ -157,7 +161,7 @@ BOL_jose_maria_linares = { #José María Rufino de Linares Lizarazu
         }
         earliest_usage_date = 1848.1.1
         latest_usage_date = 1862.1.1
-        chance = 75
+        #guaranteed to spawn if possible
     }
 }
 
@@ -170,7 +174,8 @@ BOL_casimiro_corral = { #Casimiro Corral
     religion = rel:catholic
     ideology = ideology_radical
     interest_group = ig_petty_bourgeoisie
-	ig_leader = yes
+    home_region = STATE_SANTA_CRUZ
+	role = character_role_politician
     birth_date = 1830.2.3
     traits = {
         basic_political_operator
@@ -191,12 +196,12 @@ BOL_casimiro_corral = { #Casimiro Corral
 			has_dlc_feature = rp1_content
         }
         interest_group_trigger = {
-            is_marginal = no
+            ig_counts_as_marginal = no
             is_interest_group_type = ig_petty_bourgeoisie
         }
         earliest_usage_date = 1860.1.1
         latest_usage_date = 1880.1.1
-        chance = 50
+        #guaranteed to spawn if possible
     }
 }
 
@@ -209,7 +214,8 @@ BOL_tomas_frias = { #Tomás Frías Ametller
     religion = rel:catholic
     ideology = ideology_liberal_leader
     interest_group = ig_landowners
-	ig_leader = yes
+    home_region = STATE_POTOSI
+	role = character_role_politician
     birth_date = 1805.12.21
     traits = {
         experienced_political_operator
@@ -230,12 +236,12 @@ BOL_tomas_frias = { #Tomás Frías Ametller
 			has_dlc_feature = rp1_content
         }
         interest_group_trigger = {
-            is_marginal = no
+            ig_counts_as_marginal = no
             is_interest_group_type = ig_landowners
         }
         earliest_usage_date = 1840.1.1
         latest_usage_date = 1884.1.1
-        chance = 50
+        #guaranteed to spawn if possible
     }
 }
 
@@ -248,7 +254,10 @@ BOL_aniceto_arce = { #Aniceto Arce
     religion = rel:catholic
     ideology = ideology_republican_leader
     interest_group = ig_industrialists
-	ig_leader = yes
+	role = character_role_magnate
+	holding_type = building_financial_district
+    home_region = STATE_SANTA_CRUZ
+	role = character_role_politician
     birth_date = 1824.4.17
     traits = {
         innovative
@@ -270,12 +279,12 @@ BOL_aniceto_arce = { #Aniceto Arce
 			has_dlc_feature = rp1_content
         }
         interest_group_trigger = {
-            is_marginal = no
+            ig_counts_as_marginal = no
             is_interest_group_type = ig_industrialists
         }
         earliest_usage_date = 1865.1.1
         latest_usage_date = 1900.1.1
-        chance = 50
+        #guaranteed to spawn if possible
     }
 }
 
@@ -288,7 +297,8 @@ BOL_ismael_montes = { #Ismael Montes Gamboa
     religion = rel:catholic
     ideology = ideology_reformer
     interest_group = ig_intelligentsia
-	ig_leader = yes
+    home_region = STATE_LA_PAZ
+	role = character_role_politician
     birth_date = 1861.10.5
     traits = {
         brave
@@ -309,12 +319,12 @@ BOL_ismael_montes = { #Ismael Montes Gamboa
 			has_dlc_feature = rp1_content
         }
         interest_group_trigger = {
-            is_marginal = no
+            ig_counts_as_marginal = no
             is_interest_group_type = ig_intelligentsia
         }
         earliest_usage_date = 1900.1.1
         latest_usage_date = 1933.1.1
-        chance = 50
+        #guaranteed to spawn if possible
     }
 }
 
@@ -322,12 +332,13 @@ BOL_severo_fernandez_alonso = { #Severo Fernández Alonso Caballero
 	first_name = Severo_Fernandez
 	last_name = Alonso
 	historical = yes
-	ig_leader = yes
+	role = character_role_politician
 	birth_date = 1849.8.15
 	culture = primary_culture
 	religion = rel:catholic
 	interest_group = ig_industrialists
 	ideology = ideology_pacifist
+    home_region = STATE_LA_PAZ
 	traits = {
 		reserved
 		basic_political_operator
@@ -346,12 +357,12 @@ BOL_severo_fernandez_alonso = { #Severo Fernández Alonso Caballero
 			}
 		}
         interest_group_trigger = {
-            is_marginal = no
+            ig_counts_as_marginal = no
             is_interest_group_type = ig_industrialists
         }
 		earliest_usage_date = 1885.1.1
 		latest_usage_date = 1910.1.1
-		chance = 50
+		#guaranteed to spawn if possible
 	}
 	trait_generation = { }
 }
@@ -360,12 +371,15 @@ BOL_simon_iturri_patino = { #Simon Iturri Patiño
 	first_name = Simon_Iturri
 	last_name = Patino
 	historical = yes
-	ig_leader = yes
+	role = character_role_politician
 	birth_date = 1860.6.1
 	culture = primary_culture
 	religion = rel:catholic
 	interest_group = ig_industrialists
 	ideology = ideology_protectionist
+	role = character_role_magnate
+	holding_type = building_financial_district
+    home_region = STATE_LA_PAZ
 	traits = {
 		cruel
 		ambitious
@@ -384,12 +398,12 @@ BOL_simon_iturri_patino = { #Simon Iturri Patiño
 			}
 		}
         interest_group_trigger = {
-            is_marginal = no
+            ig_counts_as_marginal = no
             is_interest_group_type = ig_industrialists
         }
 		earliest_usage_date = 1905.1.1
 		latest_usage_date = 1936.1.1
-		chance = 100
+		#guaranteed to spawn if possible
 	}
 	trait_generation = { }
 }
@@ -398,12 +412,13 @@ BOL_francisco_maria_del_granado = { #Francisco María del Granado y Capriles
 	first_name = Francisco_Maria
 	last_name = del_Granado
 	historical = yes
-	ig_leader = yes
+	role = character_role_politician
 	birth_date = 1835.8.18
 	culture = primary_culture
 	religion = rel:catholic
 	interest_group = ig_devout
 	ideology = ideology_reformer
+    home_region = STATE_LA_PAZ
 	traits = {
 		inspirational_orator
 		pious
@@ -423,12 +438,12 @@ BOL_francisco_maria_del_granado = { #Francisco María del Granado y Capriles
 			}
 		}
         interest_group_trigger = {
-            is_marginal = no
+            ig_counts_as_marginal = no
             is_interest_group_type = ig_devout
         }
 		earliest_usage_date = 1870.1.1
 		latest_usage_date = 1895.1.1
-		chance = 50
+		#guaranteed to spawn if possible
 	}
 	trait_generation = { }
 }
@@ -437,12 +452,13 @@ BOL_nicolas_armentia_y_ugarte = { #Nicolás Armentia y Ugarte
 	first_name = Nicolas_2
 	last_name = Armentia_y_Ugarte
 	historical = yes
-	ig_leader = yes
+	role = character_role_politician
 	birth_date = 1860.6.1
 	culture = cu:spanish
 	religion = rel:catholic
 	interest_group = ig_devout
 	ideology = ideology_moderate
+	home_region = STATE_BASQUE_COUNTRY
 	traits = {
 		explorer
 		pious
@@ -461,12 +477,12 @@ BOL_nicolas_armentia_y_ugarte = { #Nicolás Armentia y Ugarte
 			}
 		}
         interest_group_trigger = {
-            is_marginal = no
+            ig_counts_as_marginal = no
             is_interest_group_type = ig_devout
         }
 		earliest_usage_date = 1900.1.1
 		latest_usage_date = 1910.1.1
-		chance = 50
+		#guaranteed to spawn if possible
 	}
 	trait_generation = { }
 }
@@ -475,12 +491,13 @@ BOL_bautista_saavedra_mallea = { #Bautista Saavedra Mallea
 	first_name = Bautista
 	last_name = Saavedra
 	historical = yes
-	ig_leader = yes
+	role = character_role_politician
 	birth_date = 1870.8.30
 	culture = cu:spanish
 	religion = rel:catholic
 	interest_group = ig_petty_bourgeoisie
 	ideology = ideology_reformer
+    home_region = STATE_LA_PAZ
 	traits = {
 		wrathful
 		experienced_political_operator
@@ -499,12 +516,12 @@ BOL_bautista_saavedra_mallea = { #Bautista Saavedra Mallea
 			}
 		}
         interest_group_trigger = {
-            is_marginal = no
+            ig_counts_as_marginal = no
             is_interest_group_type = ig_petty_bourgeoisie
         }
 		earliest_usage_date = 1915.1.1
 		latest_usage_date = 1936.1.1
-		chance = 75
+		#guaranteed to spawn if possible
 	}
 	trait_generation = { }
 }
@@ -513,12 +530,13 @@ BOL_gabriel_gosalvez = { #Gabriel Gosálvez Tejada
 	first_name = Gabriel
 	last_name = Gosalvez
 	historical = yes
-	ig_leader = yes
+	role = character_role_politician
 	birth_date = 1870.8.30
 	culture = cu:spanish
 	religion = rel:catholic
 	interest_group = ig_intelligentsia
 	ideology = ideology_social_democrat
+    home_region = STATE_LA_PAZ
 	traits = {
 		experienced_diplomat
 		basic_political_operator
@@ -537,12 +555,12 @@ BOL_gabriel_gosalvez = { #Gabriel Gosálvez Tejada
 			}
 		}
         interest_group_trigger = {
-            is_marginal = no
+            ig_counts_as_marginal = no
             is_interest_group_type = ig_intelligentsia
         }
 		earliest_usage_date = 1928.1.1
 		latest_usage_date = 1936.1.1
-		chance = 75
+		#guaranteed to spawn if possible
 	}
 	trait_generation = { }
 }
@@ -558,6 +576,7 @@ BOL_Jose_Ballivian = {
 	dna = dna_jose_ballivian
 	interest_group = ig_armed_forces
 	ideology = ideology_moderate
+    home_region = STATE_LA_PAZ
 	traits = {
 		tactful
 		stalwart_defender
@@ -574,6 +593,7 @@ BOL_Francisco_Burdett_O_Connor = {
 	culture = cu:irish
 	interest_group = ig_armed_forces
 	ideology = ideology_moderate
+    home_region = STATE_SANTA_CRUZ
 	traits = {
 		celebrity_commander
 		honorable
@@ -594,6 +614,7 @@ BOL_otto_philipp_braun = { #Otto Philipp Braun
 	culture = cu:north_german
 	interest_group = ig_armed_forces
 	ideology = ideology_moderate
+	home_region = STATE_HESSE
 	traits = {
 		mountain_commander
 		brave
@@ -615,7 +636,7 @@ BOL_otto_philipp_braun = { #Otto Philipp Braun
 		role = general
 		earliest_usage_date = 1836.2.1
 		latest_usage_date = 1848.1.1
-		chance = 100
+		#guaranteed to spawn if possible
 	}
 	trait_generation = { }
 }
@@ -630,6 +651,7 @@ BOL_manuel_isidoro_belzu = { #Manuel Isidoro Belzu Humérez
 	religion = rel:catholic
 	interest_group = ig_armed_forces
 	ideology = ideology_radical
+    home_region = STATE_LA_PAZ
 	traits = {
 		popular_commander
 		charismatic
@@ -650,7 +672,7 @@ BOL_manuel_isidoro_belzu = { #Manuel Isidoro Belzu Humérez
 		role = general
 		earliest_usage_date = 1848.1.1
 		latest_usage_date = 1865.1.1
-		chance = 50
+		#guaranteed to spawn if possible
 	}
 	trait_generation = { }
 }
@@ -665,6 +687,7 @@ BOL_mariano_melgarejo = { #Manuel Mariano Melgarejo Valencia
 	religion = rel:catholic
 	interest_group = ig_armed_forces
 	ideology = ideology_authoritarian
+    home_region = STATE_LA_PAZ
 	traits = {
 		ambitious
 		cruel
@@ -687,7 +710,7 @@ BOL_mariano_melgarejo = { #Manuel Mariano Melgarejo Valencia
 		role = general
 		earliest_usage_date = 1860.1.1
 		latest_usage_date = 1885.1.1
-		chance = 50
+		#guaranteed to spawn if possible
 	}
 	trait_generation = { }
 }
@@ -702,6 +725,7 @@ BOL_hilarion_daza_groselle = { #Hilarión Daza Groselle
 	religion = rel:catholic
 	interest_group = ig_armed_forces
 	ideology = ideology_authoritarian
+    home_region = STATE_SANTA_CRUZ
 	traits = {
 		ambitious
 		reckless
@@ -719,13 +743,13 @@ BOL_hilarion_daza_groselle = { #Hilarión Daza Groselle
 				}
 			}
 			NOT = {
-				has_law = law_type:law_closed_borders
+				has_law_or_variant = law_type:law_closed_borders
 			}
 		}
 		role = general
 		earliest_usage_date = 1870.1.1
 		latest_usage_date = 1894.1.1
-		chance = 50
+		#guaranteed to spawn if possible
 	}
 	trait_generation = { }
 }
@@ -740,6 +764,7 @@ BOL_eliodoro_camacho = { #Eliodoro Camacho Mesa
 	religion = rel:catholic
 	interest_group = ig_intelligentsia
 	ideology = ideology_jingoist_leader
+    home_region = STATE_LA_PAZ
 	traits = {
 		popular_commander
 		basic_offensive_planner
@@ -761,7 +786,7 @@ BOL_eliodoro_camacho = { #Eliodoro Camacho Mesa
 		role = general
 		earliest_usage_date = 1870.1.1
 		latest_usage_date = 1895.1.1
-		chance = 50
+		#guaranteed to spawn if possible
 	}
 	trait_generation = { }
 }
@@ -776,6 +801,7 @@ BOL_jose_manuel_pando = { #José Manuel Pando Solares
 	religion = rel:catholic
 	interest_group = ig_armed_forces
 	ideology = ideology_liberal_leader
+    home_region = STATE_LA_PAZ
 	traits = {
 		explorer
 		basic_artillery_commander
@@ -796,7 +822,7 @@ BOL_jose_manuel_pando = { #José Manuel Pando Solares
 		role = general
 		earliest_usage_date = 1880.1.1
 		latest_usage_date = 1910.1.1
-		chance = 50
+		#guaranteed to spawn if possible
 	}
 	trait_generation = { }
 }
@@ -811,6 +837,7 @@ BOL_narciso_campero = { #Narciso Campero Leyes
 	religion = rel:catholic
 	interest_group = ig_landowners
 	ideology = ideology_moderate
+    home_region = STATE_SANTA_CRUZ
 	traits = {
 		honorable
 		reserved
@@ -831,7 +858,7 @@ BOL_narciso_campero = { #Narciso Campero Leyes
 		role = general
 		earliest_usage_date = 1865.1.1
 		latest_usage_date = 1885.1.1
-		chance = 75
+		#guaranteed to spawn if possible
 	}
 	trait_generation = { }
 }
@@ -848,6 +875,7 @@ BOL_andres_ibanez_justiniano = { #Andrés Ibáñez Justiniano
 	religion = rel:catholic
 	interest_group = ig_intelligentsia
 	ideology = ideology_radical
+    home_region = STATE_SANTA_CRUZ
 	birth_date = 1844.11.30
 	traits = {
 		firebrand
@@ -873,6 +901,6 @@ BOL_andres_ibanez_justiniano = { #Andrés Ibáñez Justiniano
         }
         earliest_usage_date = 1868.1.1
         latest_usage_date = 1877.1.1
-        chance = 100
+        #guaranteed to spawn if possible
     }
 }

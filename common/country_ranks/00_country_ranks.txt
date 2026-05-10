@@ -8,6 +8,7 @@
 # can_colonize = whether a country of this rank can colonize
 # diplo_pact_cost = Diplomatic pacts with country of this rank have their cost multiplied by this amount - 1
 # treaty_article_cost = Treaty articles with country of this rank have their cost multiplied by this amount - 1
+# ai_pool_character_multiplier = Multiplier on how many randomly generated pool characters an AI country of this rank will get. This is done for performance reasons. Does not affect characters generated to pool via templates.
 
 ################
 ## RECOGNIZED ##
@@ -16,120 +17,129 @@
 great_power = {
 	rank_value = 7
 	icon_index = 4
-	
+
 	enforce_subject_rank_check = yes
-	
+
 	diplo_pact_cost = 2.0
 	treaty_article_cost = 2.0
-	
+
 	prestige_average_threshold = 5.0
 	prestige_relative_threshold = 0.75
-	
+
 	infamy_aggressor_scaling = 0.20
 	infamy_target_scaling = 0.20
+	
+	ai_pool_character_multiplier = 1.0
 
 	valid_country_types = {
 		recognized
 		colonial
 		company
 	}
-	
+
 	modifier = {
 		country_influence_add = 1000
 		country_authority_add = 100
 		country_diplomatic_play_maneuvers_add = 100
-		country_max_declared_interests_add = 7
 		country_loan_interest_rate_mult = -0.5
 		country_agitator_slots_add = 2
 		country_support_independence_weekly_liberty_desire_add = 0.20
 		state_migration_pull_mult = 0.25
 		country_leverage_resistance_add = 1000
+		country_free_charters_add = 1
+		country_max_unassigned_generals_add = 3
+		country_max_unassigned_admirals_add = 3
 	}
 }
 
 major_power = {
 	rank_value = 6
 	icon_index = 3
-	
+
 	enforce_subject_rank_check = yes
-	
+
 	diplo_pact_cost = 1.5
 	treaty_article_cost = 1.5
-	
+
 	prestige_average_threshold = 2.5
 	prestige_relative_threshold = 0.5
-	
+
 	infamy_aggressor_scaling = 0.10
 	infamy_target_scaling = 0.10
+	
+	ai_pool_character_multiplier = 1.0
 
 	valid_country_types = {
 		recognized
 		colonial
 		company
 	}
-	
+
 	modifier = {
 		country_influence_add = 750
 		country_diplomatic_play_maneuvers_add = 75
-		country_max_declared_interests_add = 5
 		country_loan_interest_rate_mult = -0.25
 		country_agitator_slots_add = 2
 		country_support_independence_weekly_liberty_desire_add = 0.1
 		state_migration_pull_mult = 0.10
 		country_leverage_resistance_add = 750
+		country_max_unassigned_generals_add = 2
+		country_max_unassigned_admirals_add = 2
 	}
 }
 
 minor_power = {
 	rank_value = 4
 	icon_index = 2
-	
+
 	enforce_subject_rank_check = yes
 
 	prestige_average_threshold = 0.6
 	prestige_relative_threshold = 0.15
 	
+	ai_pool_character_multiplier = 0.6
+
 	valid_country_types = {
 		recognized
 		colonial
 		company
 	}
-	
+
 	modifier = {
 		country_influence_add = 600
 		country_authority_add = -100
 		country_diplomatic_play_maneuvers_add = 60
-		country_max_declared_interests_add = 3
 		country_agitator_slots_add = 1
 		country_support_independence_weekly_liberty_desire_add = 0.05
-		#country_trade_route_competitiveness_mult = -0.15
 		country_leverage_resistance_add = 500
+		country_max_unassigned_generals_add = 1
+		country_max_unassigned_admirals_add = 1
 	}
 }
 
 insignificant_power = {
 	rank_value = 2
 	icon_index = 1
-	
+
 	infamy_aggressor_scaling = -0.10
 	infamy_target_scaling = -0.10
 	
+	ai_pool_character_multiplier = 0.0
+
 	valid_country_types = {
 		recognized
 		colonial
 		company
 	}
-	
+
 	modifier = {
 		country_influence_add = 500
 		country_authority_add = -200
 		country_diplomatic_play_maneuvers_add = 50
-		country_max_declared_interests_add = 1
 		country_loan_interest_rate_mult = 0.25
 		state_migration_pull_mult = -0.25
-		country_agitator_slots_add = 1
 		country_support_independence_weekly_liberty_desire_add = 0.03
-		#country_trade_route_competitiveness_mult = -0.25
+		country_agitator_slots_add = 1
 		country_leverage_resistance_add = 250
 	}
 }
@@ -141,61 +151,65 @@ insignificant_power = {
 unrecognized_major_power = {
 	rank_value = 5
 	icon_index = 3
-	
+
 	enforce_subject_rank_check = yes
 
 	prestige_average_threshold = 2.5
 	prestige_relative_threshold = 0.5
-	
+
 	infamy_aggressor_scaling = 0.50
 	infamy_target_scaling = -0.30
 
 	valid_country_types = {
 		unrecognized
 	}
-	
+
 	modifier = {
 		country_influence_add = 700
 		country_diplomatic_play_maneuvers_add = 75
-		country_max_declared_interests_add = 2
 		country_tech_spread_mult = -0.15
 		country_loan_interest_rate_mult = 0.5
 		country_agitator_slots_add = 2
 		country_support_independence_weekly_liberty_desire_add = 0.1
 		country_leverage_resistance_add = 750
+		country_max_unassigned_generals_add = 2
+		country_max_unassigned_admirals_add = 2
 	}
 }
 
 unrecognized_regional_power = {
 	rank_value = 3
 	icon_index = 2
-	
+
 	enforce_subject_rank_check = yes
 
 	diplo_pact_cost = 0.75
 	treaty_article_cost = 0.75
-	
+
 	prestige_average_threshold = 0.6
 	prestige_relative_threshold = 0.15
-	
+
 	infamy_aggressor_scaling = 0.40
 	infamy_target_scaling = -0.40
+	
+	ai_pool_character_multiplier = 0.6
 
 	valid_country_types = {
 		unrecognized
 	}
-	
+
 	modifier = {
 		country_influence_add = 550
 		country_authority_add = -100
 		country_diplomatic_play_maneuvers_add = 60
-		country_max_declared_interests_add = 1
 		country_tech_spread_mult = -0.20
 		country_loan_interest_rate_mult = 0.75
 		state_migration_pull_mult = -0.25
 		country_agitator_slots_add = 1
 		country_support_independence_weekly_liberty_desire_add = 0.02
 		country_leverage_resistance_add = 500
+		country_max_unassigned_generals_add = 1
+		country_max_unassigned_admirals_add = 1
 	}
 }
 
@@ -206,14 +220,16 @@ unrecognized_power = {
 
 	diplo_pact_cost = 0.5
 	treaty_article_cost = 0.5
-	
+
 	infamy_aggressor_scaling = 0.30
 	infamy_target_scaling = -0.50
+	
+	ai_pool_character_multiplier = 0.0
 
 	valid_country_types = {
 		unrecognized
 	}
-	
+
 	modifier = {
 		country_influence_add = 450	
 		country_authority_add = -200
@@ -221,8 +237,8 @@ unrecognized_power = {
 		country_tech_spread_mult = -0.25
 		country_loan_interest_rate_mult = 1.0
 		country_agitator_slots_add = 1
+		country_support_independence_weekly_liberty_desire_add = 0.01
 		state_migration_pull_mult = -0.5
-		#country_trade_route_competitiveness_mult = -0.2
 		country_leverage_resistance_add = 250
 	}
 
@@ -235,14 +251,15 @@ decentralized_power = {
 	rank_value = 0
 	icon_index = 1
 	
+	ai_pool_character_multiplier = 0.0
+
 	valid_country_types = {
 		decentralized
 	}
-	
+
 	modifier = {
 		country_diplomatic_play_maneuvers_add = 30
 		building_throughput_add = -0.15
-		#country_trade_route_competitiveness_mult = -0.2
 		building_training_rate_add = 1000
 		state_conscription_rate_add = 1.0
 	}

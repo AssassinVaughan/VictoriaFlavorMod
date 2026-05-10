@@ -35,6 +35,38 @@
 			}
 			multiply = 1.25
 		}
+
+		if = {
+			limit = {
+				owner ?= {
+					has_journal_entry = je_zaibatsu
+					has_variable = ai_zaibatsu_curtail
+				}
+				OR = {
+					is_company_type = company_type:company_mitsui
+					is_company_type = company_type:company_mitsubishi
+					is_company_type = company_type:company_sumitomo
+					is_company_type = company_type:company_yasuda
+				}
+			}
+			add = -20
+		}
+
+		if = {
+			limit = {
+				owner ?= {
+					has_journal_entry = je_zaibatsu
+					has_variable = ai_zaibatsu_cement
+				}
+				OR = {
+					is_company_type = company_type:company_mitsui
+					is_company_type = company_type:company_mitsubishi
+					is_company_type = company_type:company_sumitomo
+					is_company_type = company_type:company_yasuda
+				}
+			}
+			add = 10
+		}
     }
 }
 
@@ -51,7 +83,38 @@ monopoly_charter = {
 	}
 
 	ai_weight = {
-        value = 5 #VFM
+        value = 5
+		if = {
+			limit = {
+				owner ?= {
+					has_journal_entry = je_zaibatsu
+					has_variable = ai_zaibatsu_curtail
+				}
+				OR = {
+					is_company_type = company_type:company_mitsui
+					is_company_type = company_type:company_mitsubishi
+					is_company_type = company_type:company_sumitomo
+					is_company_type = company_type:company_yasuda
+				}
+			}
+			add = -100
+		}
+
+		if = {
+			limit = {
+				owner ?= {
+					has_journal_entry = je_zaibatsu
+					has_variable = ai_zaibatsu_cement
+				}
+				OR = {
+					is_company_type = company_type:company_mitsui
+					is_company_type = company_type:company_mitsubishi
+					is_company_type = company_type:company_sumitomo
+					is_company_type = company_type:company_yasuda
+				}
+			}
+			add = 3
+		}
     }
 }
 
@@ -78,6 +141,38 @@ industry_charter = {
 				}
 			}
 			add = 2  #VFM
+		}
+
+		if = {
+			limit = {
+				owner ?= {
+					has_journal_entry = je_zaibatsu
+					has_variable = ai_zaibatsu_curtail
+				}
+				OR = {
+					is_company_type = company_type:company_mitsui
+					is_company_type = company_type:company_mitsubishi
+					is_company_type = company_type:company_sumitomo
+					is_company_type = company_type:company_yasuda
+				}
+			}
+			add = -2
+		}
+
+		if = {
+			limit = {
+				owner ?= {
+					has_journal_entry = je_zaibatsu
+					has_variable = ai_zaibatsu_cement
+				}
+				OR = {
+					is_company_type = company_type:company_mitsui
+					is_company_type = company_type:company_mitsubishi
+					is_company_type = company_type:company_sumitomo
+					is_company_type = company_type:company_yasuda
+				}
+			}
+			add = 2
 		}
     }
 }
@@ -108,6 +203,38 @@ trade_charter = {
 				}
 			}
 			add = -1  #VFM
+		}
+
+		if = {
+			limit = {
+				owner ?= {
+					has_journal_entry = je_zaibatsu
+					has_variable = ai_zaibatsu_curtail
+				}
+				OR = {
+					is_company_type = company_type:company_mitsui
+					is_company_type = company_type:company_mitsubishi
+					is_company_type = company_type:company_sumitomo
+					is_company_type = company_type:company_yasuda
+				}
+			}
+			add = -1
+		}
+
+		if = {
+			limit = {
+				owner ?= {
+					has_journal_entry = je_zaibatsu
+					has_variable = ai_zaibatsu_cement
+				}
+				OR = {
+					is_company_type = company_type:company_mitsui
+					is_company_type = company_type:company_mitsubishi
+					is_company_type = company_type:company_sumitomo
+					is_company_type = company_type:company_yasuda
+				}
+			}
+			add = 2
 		}
     }
 }
@@ -141,6 +268,24 @@ colonization_charter = {
 			is_company_type = company_mozambique_company
 			is_company_type = company_moscow_irrigation_company
 			is_company_type = company_anglo_persian_oil
+		}
+		scope:target = {
+			NOT = {
+				any_scope_state = {
+					OR = {
+						is_homeland_of_country_cultures = root.owner
+						any_neighbouring_state = {
+							OR = {
+								is_homeland_of_country_cultures = root.owner
+								AND = {
+									owner = root.owner
+									is_incorporated = yes
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 
