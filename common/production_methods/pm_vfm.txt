@@ -156,6 +156,32 @@ REPLACE:pm_simple_farming = {
 	}
 }
 
+REPLACE:pm_herring_meal_farming = {
+	texture = "gfx/interface/icons/production_method_icons/simple_fishing.dds"
+
+	is_hidden_when_unavailable = yes
+
+	unlocking_geographic_regions = {
+		geographic_region_japan
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			# input goods
+			goods_input_fish_add = 5 # 100
+
+			# output goods
+			goods_output_grain_add = 25 # 500
+		}
+
+		level_scaled = {
+			# earnings
+			building_employment_laborers_add = 4500
+			building_employment_farmers_add = 750
+		}
+	}
+}
+
 pm_rotating_crops = {
 	texture = "gfx/interface/icons/production_method_icons/soil_enriching_farming.dds"
 	
@@ -276,6 +302,35 @@ REPLACE:pm_simple_farming_building_rice_farm = {
 		level_scaled = {
 			building_employment_laborers_add = 7100
 			building_employment_farmers_add = 1000
+		}
+	}
+}
+
+REPLACE:pm_herring_meal_farming_building_rice_farm = {
+	texture = "gfx/interface/icons/production_method_icons/simple_fishing.dds"
+	
+	is_hidden_when_unavailable = yes
+
+	unlocking_geographic_regions = {
+		geographic_region_japan
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			# input goods
+			goods_input_fish_add = 8 # 160
+
+			# output goods
+			goods_output_grain_add = 36	# 900
+		}
+
+		level_scaled = {
+			# earnings
+			building_employment_laborers_add = 7250
+			building_employment_farmers_add = 1000
+		}
+		unscaled = {
+			building_slaves_mortality_mult = 0.2
 		}
 	}
 }
@@ -1002,19 +1057,13 @@ REPLACE:pm_basic_port = {
 
 	building_modifiers = {
 		workforce_scaled = {
-			goods_input_clippers_add = 5 # 300
-			goods_output_merchant_marine_add = 10 # 500
+			goods_input_clippers_add = 6 # 360
+			goods_output_merchant_marine_add = 9 # 450
 		}
 		level_scaled = {
 			building_employment_laborers_add = 700
 			building_employment_clerks_add = 200
 			building_employment_bureaucrats_add = 100
-		}
-	}
-
-	country_modifiers = {
-		workforce_scaled = {
-			country_convoys_capacity_add = 100
 		}
 	}
 	state_modifiers = {
@@ -1045,11 +1094,6 @@ REPLACE:pm_industrial_port = {
 		}
 	}
 
-	country_modifiers = {
-		workforce_scaled = {
-			country_convoys_capacity_add = 150
-		}
-	}
 	state_modifiers = {
 		workforce_scaled = {
 			state_infrastructure_add = 6 # 4 VFM
@@ -1078,11 +1122,6 @@ REPLACE:pm_modern_port = {
 		}
 	}
 
-	country_modifiers = {
-		workforce_scaled = {
-			country_convoys_capacity_add = 200
-		}
-	}
 	state_modifiers = {
 		workforce_scaled = {
 			state_infrastructure_add = 8 # 5 VFM

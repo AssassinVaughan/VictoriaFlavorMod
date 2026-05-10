@@ -712,7 +712,8 @@ modifier_springtime_of_the_peoples = {
 	state_pop_support_movement_italian_national_mult = 0.25
 	state_pop_support_movement_liberal_mult = 0.25
 	state_pop_support_movement_cultural_minority_mult = 0.25
-	country_law_enactment_time_mult = -0.45
+	country_law_enactment_time_mult = -0.40
+	political_movement_activism_growth_mult = 5
 }
 
 radical_constitution = {
@@ -1488,5 +1489,10 @@ honorable_restoration_failed = {
 
 shogun_forced_to_open_market = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
-	character_popularity_add = -100
+	political_movement_pop_attraction_mult = -0.35
+}
+
+shogun_forced_to_open_market_character = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
+	character_loyalty_add = -25
 }

@@ -61,6 +61,7 @@ mandatory_service = {
 	
 	modifier = {
 		state_conscription_rate_mult = 0.2
+		country_general_rank_impact_mult = 0.2
 	}
 	
 	unlocking_technologies = {
@@ -160,19 +161,19 @@ napoleonic_warfare = {
 }
 
 admiralty = {
-	# Unlocks Naval Base building
+	# Unlocks building_naval_administration building
 	era = era_1
 	texture = "gfx/interface/icons/invention_icons/admiralty.dds"
 	category = military
-	
+
 	modifier = {
-		state_building_naval_base_max_level_add = 20
+		#state_building_naval_administration_max_level_add = 4
     }
-	
+
 	unlocking_technologies = {
 		navigation
-	}	
-	
+	}
+
 	ai_weight = {
 		value = 3 # Very important in general
 	}
@@ -182,21 +183,18 @@ army_reserves = {
 	era = era_1
 	texture = "gfx/interface/icons/invention_icons/army_reserves.dds"
 	category = military
-	
+
 	modifier = {
 		state_conscription_rate_mult = 0.2
+		country_general_rank_impact_mult = 0.2
 	}
-	
-	unlocking_technologies = {	
+
+	unlocking_technologies = {
 		line_infantry
 	}
-	
+
 	ai_weight = {
 		value = 1
-		if = {
-			limit = { OR = { has_strategy = ai_strategy_territorial_expansion has_strategy = ai_strategy_unify_germany has_strategy = ai_strategy_armed_isolationism } }
-			add = 0.5
-		}
 	}
 }
 
@@ -226,8 +224,8 @@ paddle_steamer = {
 	category = military
 	
 	modifier = {
-		unit_navy_offense_mult = 0.1
-		unit_navy_defense_mult = 0.1
+		ship_hull_damage_mult = 0.05
+		ship_crew_damage_mult = 0.05
 	}
 	
 	unlocking_technologies = {
@@ -284,6 +282,7 @@ logistics = {
 	
 	modifier = {
 		state_conscription_rate_mult = 0.2
+		country_general_rank_impact_mult = 0.2
 	}
 	
 	unlocking_technologies = {	
@@ -452,7 +451,8 @@ power_of_the_purse = {
 	category = military
 	
 	modifier = {
-		state_building_naval_base_max_level_add = 10
+		#state_building_naval_administration_max_level_add = 2
+		country_admiral_rank_impact_mult = 0.25
 	}
 	
 	unlocking_technologies = {	
@@ -517,6 +517,7 @@ enlistment_offices = {
 	
 	modifier = {
 		state_conscription_rate_mult = 0.2
+		country_general_rank_impact_mult = 0.2
 	}
 	
 	unlocking_technologies = {	
@@ -643,8 +644,7 @@ self_propelled_torpedoes = {
 	category = military
 	
 	unlocking_technologies = {	
-		ironclad_tech
-		jeune_ecole
+		power_of_the_purse
 	}
 	
 	ai_weight = {
@@ -664,6 +664,7 @@ monitor_tech = {
 	
 	unlocking_technologies = {	
 		ironclad_tech
+		breech_loading_artillery
 	}
 	
 	on_researched = {
@@ -723,15 +724,16 @@ jeune_ecole = {
 	era = era_3
 	texture = "gfx/interface/icons/invention_icons/jeune_ecole.dds"
 	category = military
-	
+
 	modifier = {
-		state_building_naval_base_max_level_add = 10
+		#state_building_naval_administration_max_level_add = 2
+		country_admiral_rank_impact_mult = 0.25
 	}
-	
-	unlocking_technologies = {	
-		power_of_the_purse
+
+	unlocking_technologies = {
+		self_propelled_torpedoes
 	}
-	
+
 	ai_weight = {
 		value = 1
 	}
@@ -775,6 +777,7 @@ gantry_cranes = {
 	
 	modifier = {
 		state_building_port_max_level_add = 2
+		ship_ship_type_supply_ship_supply_capacity_mult = 0.1
 	}
 	
 	unlocking_technologies = {	
@@ -853,6 +856,7 @@ wargaming = {
 
 	modifier = {
 		unit_army_offense_mult = 0.1
+		country_general_rank_impact_mult = 0.2
 	}
 	
 	unlocking_technologies = {
@@ -949,45 +953,61 @@ submarine = {
 
 destroyer = {
 	# Unlocks Destroyer PM on Naval Bases
-	era = era_4
+	era = era_5
 	texture = "gfx/interface/icons/invention_icons/destroyers.dds"
 	category = military
-	
-	unlocking_technologies = {	
+
+	unlocking_technologies = {
 		monitor_tech
 	}
-	
+
 	ai_weight = {
 		value = 1
 	}
 }
 
-dreadnought = {
+pre_dreadnought_tech = {
+	# Unlocks Pre-Dreadnoughts
+	era = era_4
+	texture = "gfx/interface/icons/invention_icons/pre_dreadnought.dds"
+	category = military
+
+	unlocking_technologies = {
+		ironclad_tech
+	}
+
+	ai_weight = {
+		value = 1
+	}
+}
+
+dreadnought_tech = {
 	# Unlocks Dreadnoughts PM in Naval Bases
 	era = era_4
 	texture = "gfx/interface/icons/invention_icons/dreadnought.dds"
 	category = military
-	
+
 	modifier = {
 		# increased coal consumption
 		# increased offense and defense?
-		
+
 		# prestige bonus? Or a prestige bonus to overall naval size. Could apply this to mahanian_thought instead.
 	}
-	
+
 	unlocking_technologies = {
-		ironclad_tech
+		pre_dreadnought_tech
 		sea_lane_strategies
+		concrete_dockyards
 	}
-	
+
 	ai_weight = {
 		value = 1
-		
+
 		# Important for naval powers
 		if = {
 			limit = { navy_size >= 20 }
 			add = 0.5
-		}			
+		}
 	}
 }
 
@@ -996,15 +1016,16 @@ sea_lane_strategies = {
 	era = era_4
 	texture = "gfx/interface/icons/invention_icons/sea_lane_strategies.dds"
 	category = military
-	
+
 	modifier = {
-		state_building_naval_base_max_level_add = 10
+		#state_building_naval_administration_max_level_add = 2
+		country_admiral_rank_impact_mult = 0.25
 	}
-	
-	unlocking_technologies = {	
+
+	unlocking_technologies = {
 		jeune_ecole
 	}
-	
+
 	ai_weight = {
 		value = 1
 	}
@@ -1014,24 +1035,20 @@ landing_craft = {
 	era = era_4
 	texture = "gfx/interface/icons/invention_icons/landing_craft.dds"
 	category = military
-	
-	modifier = {
-		country_ignores_landing_craft_penalty_bool = yes
-	}
-	
-	unlocking_technologies = {	
+
+	unlocking_technologies = {
 		jeune_ecole
 		monitor_tech
 	}
-	
+
 	ai_weight = {
 		value = 1
-		
+
 		# Important for naval powers
 		if = {
 			limit = { navy_size >= 20 }
 			add = 1
-		}			
+		}
 	}
 }
 
@@ -1044,6 +1061,7 @@ concrete_dockyards = {
 	
 	modifier = {
 		state_building_port_max_level_add = 2
+		ship_ship_type_supply_ship_supply_capacity_mult = 0.1
 	}
 	
 	unlocking_technologies = {	
@@ -1072,12 +1090,16 @@ nco_training = {
 	era = era_5
 	texture = "gfx/interface/icons/invention_icons/nco_training.dds"
 	category = military
-	
+
+	modifier = {
+		country_general_rank_impact_mult = 0.2
+	}
+
 	unlocking_technologies = {
 		wargaming
 		trench_works
 	}
-	
+
 	ai_weight = {
 		value = 2 # Important tech in general
 	}
@@ -1214,19 +1236,20 @@ carrier_tech = {
 	era = era_5
 	texture = "gfx/interface/icons/invention_icons/carrier_tech.dds"
 	category = military
-	
-	unlocking_technologies = {	
-		dreadnought
+
+	unlocking_technologies = {
+		dreadnought_tech
+		military_aviation
 	}
-	
+
 	ai_weight = {
 		value = 1
-		
+
 		# Important for naval powers
 		if = {
 			limit = { navy_size >= 20 }
 			add = 0.5
-		}			
+		}
 	}
 }
 
@@ -1235,19 +1258,19 @@ battleship_tech = {
 	era = era_5
 	texture = "gfx/interface/icons/invention_icons/battleship_tech.dds"
 	category = military
-	
-	unlocking_technologies = {	
-		dreadnought
+
+	unlocking_technologies = {
+		dreadnought_tech
 	}
-	
+
 	ai_weight = {
 		value = 1
-		
+
 		# Important for naval powers
 		if = {
 			limit = { navy_size >= 20 }
 			add = 0.5
-		}			
+		}
 	}
 }
 
@@ -1256,16 +1279,17 @@ battlefleet_tactics = {
 	era = era_5
 	texture = "gfx/interface/icons/invention_icons/battlefleet_tactics.dds"
 	category = military
-	
+
 	modifier = {
-		state_building_naval_base_max_level_add = 10
+		#state_building_naval_administration_max_level_add = 2
+		country_admiral_rank_impact_mult = 0.25
 	}
-	
-	unlocking_technologies = {	
+
+	unlocking_technologies = {
 		battleship_tech
 		sea_lane_strategies
 	}
-	
+
 	ai_weight = {
 		value = 1
 	}

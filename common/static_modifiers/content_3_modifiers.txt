@@ -468,13 +468,12 @@ arsenal_proving_ground = {
 
 ramming_doctrine = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_positive.dds
-	unit_navy_defense_mult = -0.1
-	unit_navy_offense_mult = 0.2
+	ship_armor_mult = -0.05
 }
 
 armoured_doctrine = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_positive.dds
-	unit_navy_defense_mult = 0.1
+	ship_armor_mult = 0.1
 }
 
 armoured_high_seas_fleet = {
@@ -489,14 +488,15 @@ safer_shores = {
 
 defensive_doctrine = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_positive.dds
-	unit_navy_defense_mult = 0.1
+	ship_armor_mult = 0.05
+	ship_screening_mult = 0.1
 }
 
 quantity_over_quality = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_positive.dds
-	unit_navy_defense_mult = -0.1
-	unit_navy_offense_mult = -0.1
-	building_military_shipyard_throughput_add = 0.1
+	building_shipyard_throughput_add = 0.1
+	ship_hull_damage_mult = 0.05
+	ship_crew_damage_mult = 0.05
 }
 
 integrating_polish_modifier = {

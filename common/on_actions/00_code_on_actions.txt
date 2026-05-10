@@ -4,26 +4,7 @@
 # At this point we do not know who the players are
 # No root scope set
 on_game_started = {
-	effect = {
-		# Memento Mori
-		every_country = {
-			every_interest_group = {
-				leader = {
-					if = {
-						limit = {
-							NOT = {
-								has_variable = memento_mori_immunity
-							}
-						}
-						set_variable = {
-							name = memento_mori_immunity
-							years = 5
-						}
-					}
-				}
-			}
-		}
-	}
+	effect = {}
 }
 
 # Fires after everyone enters the game from the lobby for the first time for each campaign
@@ -95,9 +76,45 @@ on_game_started_after_lobby = {
 				initialize_electoral_confidence = yes
 			}
 		}
+		clear_global_variable_list = great_power_country_list
+		every_country = {
+			limit = {
+				country_rank >= rank_value:great_power
+			}
+			add_to_global_variable_list = {
+				name = great_power_country_list
+				target = THIS
+			}
+		}
 		set_global_variable = { # Ensures that Abraham Lincoln is not a valid leader of the Chinese Literati in 1836
 			name = ruler_selector_pool_invalidation_global_var
 			days = 30
+		}
+		if = {
+			limit = {
+				has_dlc_feature = ep2_content
+			}
+			c:JAP ?= {
+				set_variable = {
+					name = tenpo_gdp_goal
+					value = {
+						value = c:JAP.gdp
+						multiply = 1.35
+					}
+				}
+			}
+		}
+		c:JAP ?= {
+			every_scope_character = {
+				limit = {
+					has_variable = daimyo_var
+				}
+				add_career_length = { # Important that Daimyos stay relevant until 1860 or so
+					years = 10
+					random_range = { 1.0 1.5 } # 10-15 years
+
+				}
+			}
 		}
 	}
 }
@@ -457,7 +474,6 @@ on_monthly_pulse_country = {
 		communism.8 # Red Army
 		opium_wars.1
 		native_resettlement.1
-		meiji.13
 		bic_breakup.1
 		dreyfus.1
 		dei_breakup.1
@@ -536,6 +552,9 @@ on_monthly_pulse_country = {
 		# Sweden
 		sweden_monarchy.2
 		sweden_monarchy.3
+
+		# Japan
+		japan_monarchy.5
 	}
 
 	effect = {
@@ -976,11 +995,77 @@ on_monthly_pulse_country = {
 			set_variable = nightingale_var
 		}
 
+		# Japanese characters who need to die at certain times
+		if = {
+			limit = {
+				c:JAP ?= this
+			}
+			if = {
+				limit = {
+					any_scope_character = {
+						japanese_character_is_marked_for_death_chance = yes
+					}
+				}
+				every_scope_character = {
+					limit = {
+						japanese_character_is_marked_for_death_chance = yes
+					}
+					random_list = {
+						25 = {
+							kill_character = yes
+						}
+						75 = {
+
+						}
+					}
+				}
+			}
+			if = { # Matsumae curse
+				limit = {
+					any_scope_character = {
+						has_variable = daimyo_var
+						var:daimyo_var ?= s:STATE_HOKKAIDO
+					}
+				}
+				random_scope_character = {
+					limit = {
+						has_variable = daimyo_var
+						var:daimyo_var ?= s:STATE_HOKKAIDO
+					}
+					evaluate_matsumae_curse = yes
+				}
+			}
+			if = { # Wakayama Daimyo need to die young
+				limit = {
+					any_scope_character = {
+						has_variable = daimyo_var
+						var:daimyo_var ?= s:STATE_KANSAI
+					}
+				}
+				random_scope_character = {
+					limit = {
+						OR = {
+							AND = {
+								has_template = JAP_tokugawa_nariyuki
+								game_date > 1846.7.1
+								is_immortal = no
+							}
+							AND = {
+								has_template = JAP_tokugawa_narikatsu
+								game_date > 1849.3.1
+								is_immortal = no
+							}
+						}
+					}
+					kill_character = yes
+				}
+			}
+		}
+
 		# Japan
 		if = {
 			limit = {
 				c:JAP ?= this
-				has_variable = meiji_restoration_complete
 				can_generate_scripted_heirs = yes
 			}
 			japan_generate_scripted_heirs = yes
@@ -1130,6 +1215,48 @@ on_monthly_pulse_country = {
 			    }
 			}
 			set_variable = cant_touch_this_achievement_possible
+		}
+
+		# Achievement: For Twelve Years You Have Been Asking
+		if = {
+			limit = {
+				is_player = yes
+				is_country_type = unrecognized
+				NOT = { has_variable = martin_anwards_pirates_var }
+				any_scope_fleet = {
+					OR = {
+						is_doing_piracy_in_region = sr:region_southern_baltic_sea
+						is_doing_piracy_in_region = sr:region_northern_baltic_sea
+						is_doing_piracy_in_region = sr:region_gulf_of_finland
+					}
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_variable = martin_anwards_pirates_timer
+					}
+				}
+				set_variable = { name = martin_anwards_pirates_timer value = 1 }
+			}
+			else_if = {
+				limit = {
+					has_variable = martin_anwards_pirates_timer
+				}
+				change_variable = { name = martin_anwards_pirates_timer add = 1 }
+				if = {
+					limit = {
+						var:martin_anwards_pirates_timer >= 12
+					}
+					set_variable = martin_anwards_pirates_var
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_variable = martin_anwards_pirates_timer
+			}
+			remove_variable = martin_anwards_pirates_timer
 		}
 
 		if = { # Creates Petrograd
@@ -1363,12 +1490,23 @@ on_monthly_pulse_country = {
 			}
 			remove_modifier = modifier_reformed_captaincy_general
 		}
+
+		if = {
+			limit = {
+				country_has_voting_franchise = yes
+				NOT = {
+					modifier:country_electoral_confidence_over_time = 0
+				}
+			}
+			add_electoral_confidence = modifier:country_electoral_confidence_over_time
+		}
 	}
 	on_actions = { # delay ensures events won't fire simultaneously
 		coup_monthly_events
 		delay = { days = 4 }
 		garibaldi_monthly_events
 		delay = { days = 7 }
+		japan_monarchy_monthly_events
 		fund_lobbies_monthly_events
 		spooky_halloween_events
 		delay = { days = 7 }
@@ -1388,6 +1526,9 @@ on_yearly_pulse_country = {
 		spanish_africa.3
 		spanish_africa.4
 		spain_politics.2
+		japan_politics.1
+		japan_politics.2
+		japan_politics.3
 	}
 	effect = {
 		# Countries have a chance to change their mind about who they want to support in Egypt vs Ottomans conflicts
@@ -1612,8 +1753,8 @@ on_yearly_pulse_country = {
 			if = { # Keeps track of how long one has been Colonial Governor, and replaces them if needed
 				limit = {
 					has_variable = colonial_governor_term
-					NOT = { has_template = HBC_george_simpson } # Special case
 					owner = {
+						is_country_type = colonial
 						has_law = law_type:law_colonial_administration
 						exists = overlord
 					}
@@ -1623,12 +1764,13 @@ on_yearly_pulse_country = {
 		}
 	}
 	on_actions = { # delay ensures events won't fire simultaneously
-		on_memento_mori # IG leader death
+		ryukyu_rivalry_coin_toss
 		kamehameha_coin_toss
 		on_yearly_events
 		ep1_misc_yearly_events
 		delay = { days = 1 }
 		russian_monarchy_yearly_events
+		japan_monarchy_yearly_events
 		spain_single_fire_yearly_events
 		delay = { days = 1 }
 		austrian_monarchy_yearly_events
@@ -1645,6 +1787,7 @@ on_yearly_pulse_country = {
 		famine_yearly_events
 		delay = { days = 13 }
 		slavery_abolition_yearly_events
+		japan_earthquake_events
 		delay = { days = 21 }
 		lobby_yearly_events
 		delay = { days = 34 }
@@ -1654,6 +1797,7 @@ on_yearly_pulse_country = {
 		delay = { days = 89 }
 		british_dictate_yearly_events
 		delay = { days = 90 }
+		japan_yearly_events
 	}
 }
 
@@ -1738,16 +1882,6 @@ on_monthly_pulse_character = {
 	effect = {
 		if = {
 			limit = {
-				AND = {
-					has_trait = trait_child
-					age >= define:NCharacters|ADULT_AGE
-				}
-			}
-			remove_trait = trait_child
-			add_random_trait = personality
-		}
-		if = {
-			limit = {
 				has_ideology = ideology:ideology_traditionalist_minoritarian
 				owner.religion ?= religion
 			}
@@ -1766,12 +1900,29 @@ on_monthly_pulse_character = {
 		if = { # Updates biannual unit share cache
 			limit = {
 				OR = {
-					has_role = admiral
-					has_role = general
+					has_role_of_type = admiral
+					has_role_of_type = general
 				}
 			}
 			set_variable = { name = monthly_cached_units_share value = this.num_units_share }
 			set_variable = { name = monthly_cached_commander_coup_strength value = this.commander_coup_strength }
+		}
+
+		if = {
+			limit = {
+				is_immortal = yes
+				has_variable = temporary_immortality_var
+				var:temporary_immortality_var != 0
+			}
+			change_variable = { name = temporary_immortality_var subtract = 1 }
+		}
+		else_if = {
+			limit = {
+				is_immortal = yes
+				has_variable = temporary_immortality_var
+				var:temporary_immortality_var = 0
+			}
+			set_character_immortal = no
 		}
 	}
 }
@@ -1782,7 +1933,7 @@ on_yearly_pulse_character = {
 	effect = {
 		if = {
 			limit = {
-				is_ruler = yes
+				is_ruler_of_own_country = yes
 				owner = {
 					has_gov_regency = yes
 				}
@@ -1795,6 +1946,20 @@ on_yearly_pulse_character = {
 			}
 			else = {
 				set_variable = { name = regency_years value = 0 } # In case all else fails
+			}
+		}
+		if = { # Handles total years in power, not consecutive years. Mostly for Japan.
+			limit = {
+				is_ruler_of_own_country = yes
+			}
+			if = {
+				limit = {
+					has_variable = year_in_power
+				}
+				change_variable = { name = year_in_power add = 1 } # Keeps track of how long one has been Regent
+			}
+			else = {
+				set_variable = { name = year_in_power value = 1 } # In case all else fails
 			}
 		}
 	}
@@ -1901,6 +2066,127 @@ on_battle_lost = {}
 
 # Same as above, but for battles that end with no units for one of the sides
 on_empty_battle_lost = {}
+
+# Root = attacker or defender country
+# scope:enemy_country = enemy of root
+# scope:battle = naval battle
+# scope:attacker = attacking commander
+# scope:defender = defending commander
+# scope:state = location state
+on_naval_battle_started = {}
+
+# Root = attacker or defender country
+# scope:enemy_country = enemy of root
+# scope:battle = naval battle
+# scope:attacker = attacking commander
+# scope:defender = defending commander
+# scope:state = location state
+on_naval_battle_ended = {}
+
+# Root = attacker or defender country
+# scope:enemy_country = enemy of root
+# scope:battle = naval battle
+# scope:attacker = attacking commander
+# scope:defender = defending commander
+# scope:state = location state
+on_naval_battle_won = {
+	random_events = {
+		chance_to_happen = 20
+		20 = culture_brazil.1
+	}
+}
+
+# Root = attacker or defender country
+# scope:enemy_country = enemy of root
+# scope:battle = naval battle
+# scope:attacker = attacking commander
+# scope:defender = defending commander
+# scope:state = location state
+on_naval_battle_lost = {}
+
+# Root = attacker or defender country
+# scope:battle = battle
+# scope:ship = flagship ship
+# scope:attacker = lead attacking country
+# scope:defender = lead defending country
+# scope:attacker_commander = lead attacking commander
+# scope:defender_commander = lead defending commander
+# scope:other_country = the enemy country to the flagship's country in the battle
+on_flagship_battle_won = {
+	effect = {
+		add_modifier = {
+			name = flagship_battle_won
+			months = 12
+			is_decaying = yes
+		}
+	}
+}
+
+# Root = attacker or defender country
+# scope:battle = battle
+# scope:ship = flagship ship
+# scope:attacker = lead attacking country
+# scope:defender = lead defending country
+# scope:attacker_commander = lead attacking commander
+# scope:defender_commander = lead defending commander
+# scope:other_country = the enemy country to the flagship's country in the battle
+on_flagship_battle_lost = {
+	effect = {
+		add_modifier = {
+			name = flagship_battle_lost
+			months = 12
+			is_decaying = yes
+		}
+	}
+}
+
+# Root = flagship country
+# scope:battle = battle
+# scope:ship = flagship ship
+# scope:attacker = lead attacking country
+# scope:defender = lead defending country
+# scope:attacker_commander = lead attacking commander
+# scope:defender_commander = lead defending commander
+# scope:other_country = the enemy country to the flagship's country in the battle
+on_flagship_destroyed = {
+	effect = {
+		add_modifier = {
+			name = flagship_destroyed
+			months = 12
+			is_decaying = yes
+		}
+		if = { # Checking for Nobody Did Their Duty — FRA or SPA can be assumed to have destroyed the flagship
+			limit = {
+				scope:ship.owner ?= c:GBR
+			}
+			scope:battle ?= {
+				if = {
+					limit = {
+						c:GBR ?= scope:attacker
+					}
+					scope:defender ?= { save_scope_as = gbr_flagship_destroyer }
+				}
+				else = {
+					scope:attacker ?= { save_scope_as = gbr_flagship_destroyer }
+				}
+			}
+			if = {
+				limit = {
+					scope:gbr_flagship_destroyer ?= {
+						is_player = yes
+						OR = {
+							c:FRA ?= this
+							c:SPA ?= this
+						}
+					}
+				}
+				scope:gbr_flagship_destroyer ?= {
+					set_variable = nobody_did_their_duty_var
+				}
+			}
+		}
+	}
+}
 
 # Root = Building
 on_building_built = {
@@ -2192,15 +2478,6 @@ on_character_creation = {
 	effect = {
 		if = {
 			limit = {
-				NOT = { has_variable = memento_mori_immunity }
-			}
-			set_variable = {
-				name = memento_mori_immunity
-				years = 10
-			}
-		}
-		if = {
-			limit = {
 				has_ideology = ideology:ideology_traditionalist_minoritarian
 				owner.religion ?= religion
 			}
@@ -2224,8 +2501,8 @@ on_character_creation = {
 		if = { # Updates biannual unit share cache - just in case a commander spawns another way
 			limit = {
 				OR = {
-					has_role = admiral
-					has_role = general
+					has_role_of_type = admiral
+					has_role_of_type = general
 				}
 			}
 			set_variable = { name = monthly_cached_units_share value = this.num_units_share }
@@ -2237,127 +2514,10 @@ on_character_creation = {
 # Root = Character
 on_character_death = {
 	effect = {
-		if = { # Possibly generates replacement woman or minority IG leader
-			limit = {
-				has_role = politician
-				is_heir = no # cultural trends do not impact the monarchy's line of succession
-				NAND = {
-					is_ruler = yes
-					owner ?= {
-						has_law = law_type:law_monarchy
-					}
-				}
-				interest_group_is_not_less_tolerant_than_current_citizenship_law = yes ## the IG must be at least okay with the status quo regarding cultures in order to potentially accept a minority culture character as a leader, and not want to move things back
-				accepted_cultural_minority_check_character_scope = yes # Check that the character's country has a non-primary culture homeland or cultural community for a culture that is accepted by the country
-			}
-			# If the country and the IG support women's rights, do combinations of woman and/or minority culture for character generation
-			if = {
-				limit = {
-					owner ?= {
-						has_law_or_variant = law_type:law_womens_suffrage
-					}
-					interest_group = {
-						law_stance = {
-							law = law_type:law_womens_suffrage
-							value >= approve
-						}
-	  				}
-				}
-				# 40/10/20/5 chance of primary culture man/woman as leader or of accepted minority culture man/woman as leader
-				random_list = {
-					40 = {
-						# Nothing special happens. Regular guy spawns as new leader.
-					}
-					10 = {
-						owner ?= {
-							accepted_cultural_minority_selector_owner_scope_save_scope_as_minority_culture = yes
-							if = {
-								limit = {
-									exists = scope:minority_culture
-								}
-								create_character = {
-									ig_leader = yes
-									culture = scope:minority_culture
-									interest_group = ROOT.interest_group
-								}
-							}
-							else = { # Fallback in the case of no minorities
-								create_character = {
-									ig_leader = yes
-									interest_group = ROOT.interest_group
-								}
-							}
-						}
-					}
-					20 = {
-						owner ?= {
-							create_character = {
-								ig_leader = yes
-								female = yes
-								interest_group = ROOT.interest_group
-							}
-						}
-					}
-					5 = {
-						owner ?= {
-							accepted_cultural_minority_selector_owner_scope_save_scope_as_minority_culture = yes
-							if = {
-								limit = {
-									exists = scope:minority_culture
-								}
-								create_character = {
-									ig_leader = yes
-									female = yes
-									culture = scope:minority_culture
-									interest_group = ROOT.interest_group
-								}
-							}
-							else = { # Fallback in the case of no minorities
-								create_character = {
-									ig_leader = yes
-									female = yes
-									interest_group = ROOT.interest_group
-								}
-							}
-						}
-					}
-				}
-			}
-			else = {
-				# 75/25 chance of primary culture leader spawning or of minority culture leader spawning
-				random_list = {
-					75 = {
-						# regular guy spawns as usual
-					}
-					25 = {
-						owner ?= {
-							accepted_cultural_minority_selector_owner_scope_save_scope_as_minority_culture = yes
-							if = {
-								limit = {
-									exists = scope:minority_culture
-								}
-								create_character = {
-									ig_leader = yes
-									culture = scope:minority_culture
-									interest_group = ROOT.interest_group
-								}
-							}
-							else = { # Fallback in the case of no minorities
-								create_character = {
-									ig_leader = yes
-									interest_group = ROOT.interest_group
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-
 		#JE about Hawaii triggered by an event
 		if = {
 			limit = {
-				is_ruler = yes
+				is_ruler_of_own_country = yes
 				has_template = HAW_kamehameha_iii
 				exists = c:HAW
 				owner = c:HAW
@@ -2388,7 +2548,7 @@ on_character_death = {
 		### Force-generating French monarchs of the correct dynasty if something goes wrong
 		if = {
 			limit = {
-				is_ruler = yes
+				is_ruler_of_own_country = yes
 				owner = {
 					has_law = law_type:law_monarchy
 					NOT = {
@@ -2431,8 +2591,8 @@ on_character_death = {
 		if = {
 			limit = {
 				NOT = { has_variable = caudillo_kingmaker }
-				has_role = politician
-				interest_group = {
+				has_role_of_type = politician
+				interest_group ?= {
 					is_interest_group_type = ig_armed_forces
 					ig_counts_as_marginal = no
 				}
@@ -2464,29 +2624,14 @@ on_character_death = {
 			}
 			set_global_variable = espartero_is_dead_var
 		}
-
-		if = { # Override to make the ruler of British India always an Industrialist
-			limit = {
-				is_ruler = yes
-				c:BIC ?= owner
-			}
-			owner = {
-				ig:ig_industrialists ?= {
-					leader = {
-						set_character_as_ruler = yes
-					}
-				}
-				generate_new_eic_government_leader = yes
-			}
-		}
 		# Ethiopian emperor succession pre-unification
 		if = {
 			limit = {
-				is_ruler = yes
+				is_ruler_of_own_country = yes
 				owner ?= {
 					has_law = law_type:law_monarchy
 					any_scope_character = {
-						is_heir = yes
+						is_heir_of_own_country = yes
 					}
 				}
 				has_variable = ethiopian_emperor
@@ -2494,7 +2639,7 @@ on_character_death = {
 			owner ?= {
 				random_scope_character = {
 					limit = {
-						is_heir = yes
+						is_heir_of_own_country = yes
 					}
 					set_variable = ethiopian_emperor
 				}
@@ -2506,7 +2651,7 @@ on_character_death = {
 				owner = {
 					c:AUS ?= this
 				}
-				is_ruler = yes
+				is_ruler_of_own_country = yes
 				has_template = aus_franz_josef_I_habsburg_template
 				AND = {
 					game_date > 1875.6.29
@@ -2528,7 +2673,7 @@ on_character_death = {
 						has_template = mon_danilo_petrovic_njegos
 					}
 				}
-				is_ruler = yes
+				is_ruler_of_own_country = yes
 				has_template = mon_petar_II_petrovic_njegos
 			}
 			trigger_event = { id = mon_state_formation.6 popup = yes }
@@ -2553,24 +2698,234 @@ on_character_death = {
 
 		if = { # Hijacks the deaths of colonial governors
 			limit = {
-				is_ruler = yes
+				is_ruler_of_own_country = yes
 				has_variable = colonial_governor_term
 				owner ?= {
+					is_country_type = colonial
 					has_law = law_type:law_colonial_administration
 				}
 			}
 			save_scope_as = current_governor
 			owner ?= {
+				set_variable = { name = hide_ruler_change_notification days = 3 }
 				save_colonial_governor_generation_scopes = yes
 				generate_governor_of_same_type = yes
+				post_notification = colonial_governor_cycle
 			}
+		}
+
+		if = {
+			limit = {
+				owner ?= {
+					c:JAP ?= this
+					country_has_monarchy_law = yes
+					country_has_non_monarchy_law = no # To handle an execution order issue
+				}
+			}
+			if = {
+				limit = {
+					has_template = JAP_ninko_yamato
+				}
+				owner = {
+					if = {
+						limit = {
+							has_dlc_feature = ep2_content
+						}
+						trigger_event = { id = japan_monarchy.1 }
+					}
+					else = {
+						if = {
+							limit = {
+								has_law = law_type:law_bakufu
+							}
+							create_character = {
+								template = JAP_komei_yamato
+								on_created = {
+									c:JAP ?= {
+										set_variable = { name = emperor_var value = PREV }
+									}
+									add_career_length = {
+										years = 75
+										random_range = { 1.0 1.5 } # 75-100 years
+									}
+									if = {
+										limit = {
+											c:JAP ?= { has_variable = one_emperor_one_era }
+										}
+										set_first_name = TenkyU_
+									}
+									else = {
+										set_first_name = Komei
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_template = JAP_komei_yamato
+					game_date >= 1852.11.3
+				}
+				owner = {
+					if = {
+						limit = {
+							has_dlc_feature = ep2_content
+						}
+						trigger_event = { id = japan_monarchy.2 }
+					}
+					else = {
+						if = {
+							limit = {
+								has_law = law_type:law_bakufu
+							}
+							create_character = {
+								template = JAP_meiji_yamato
+								on_created = {
+									c:JAP ?= {
+										set_variable = { name = emperor_var value = PREV }
+									}
+									add_career_length = {
+										years = 75
+										random_range = { 1.0 1.5 } # 75-100 years
+									}
+									set_first_name = Meiji
+								}
+							}
+							country_switch_sonnojoi_ideology = yes
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_template = JAP_meiji_yamato
+					game_date >= 1879.8.31
+				}
+				owner = {
+					if = {
+						limit = {
+							has_dlc_feature = ep2_content
+						}
+						trigger_event = { id = japan_monarchy.3 }
+					}
+					else = {
+						if = {
+							limit = {
+								has_law = law_type:law_bakufu
+							}
+							create_character = {
+								template = JAP_taisho_yamato
+								on_created = {
+									c:JAP ?= {
+										set_variable = { name = emperor_var value = PREV }
+									}
+									add_career_length = {
+										years = 75
+										random_range = { 1.0 1.5 } # 75-100 years
+									}
+									set_first_name = Taisho
+								}
+							}
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_template = JAP_taisho_yamato
+					game_date >= 1901.4.29
+				}
+				owner = {
+					if = {
+						limit = {
+							has_dlc_feature = ep2_content
+						}
+						trigger_event = { id = japan_monarchy.4 }
+					}
+					else = {
+						if = {
+							limit = {
+								has_law = law_type:law_bakufu
+							}
+							create_character = {
+								template = JAP_showa_yamato
+								on_created = {
+									c:JAP ?= {
+										set_variable = { name = emperor_var value = PREV }
+									}
+									add_career_length = {
+										years = 75
+										random_range = { 1.0 1.5 } # 75-100 years
+									}
+									set_first_name = Showa
+								}
+							}
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					owner ?= {
+						has_variable = emperor_var
+						var:emperor_var ?= ROOT # The character that has just died
+					}
+				}
+				if = {
+					limit = {
+						owner = {
+							has_law = law_type:law_bakufu
+						}
+					}
+					create_character = {
+						template = JAP_backup_emperor_template
+						on_created = {
+							c:JAP ?= {
+								set_variable = { name = emperor_var value = PREV }
+							}
+						}
+					}
+				}
+				else = {
+					owner ?= {
+						set_variable = { name = emperor_var value = ruler }
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_variable = daimyo_var
+				var:daimyo_var ?= { # If the daimyo's owner has a state in the daimyo's domain
+					any_scope_state = {
+						owner ?= ROOT.owner # owner = state owner, ROOT.owner = daimyo owner
+					}
+				}
+			}
+			JAP_character_generate_new_daimyo = yes
 		}
 	}
 }
 
 # Root = Character
 on_new_interest_group_leader = {
-
+	effect = {
+		if = {
+			limit = {
+				owner ?= {
+					country_has_primary_culture = cu:japanese
+				}
+			}
+			# Do not under any circumstances allow the Emperor to become an IG leader
+			character_handle_possible_emperor_ig_leader = yes # TODO PRCAL-44673 replace with a code fix
+		}
+		add_career_length = { # Becoming IG leader increases career length
+			years = 5
+			random_range = { 1.0 2.0 } # 5 to 10 extra years
+		}
+	}
 }
 
 # Root = Character
@@ -2589,7 +2944,7 @@ on_new_ruler = {
 							has_variable = hide_ruler_change_notification
 						}
 					}
-					age >= define:NCharacters|ADULT_AGE
+					is_adult = yes
 				}
 				post_notification = new_ruler
 			}
@@ -2608,8 +2963,9 @@ on_new_ruler = {
 						has_law = law_type:law_monarchy
 						has_gov_regency = no
 					}
-					age < define:NCharacters|ADULT_AGE
+					is_adult = no
 					NOT = { has_variable = regency_complete }
+					NOT = { has_template = JAP_iemochi_tokugawa } # Has his own event
 				}
 				owner = {
 					trigger_event = {
@@ -2642,23 +2998,6 @@ on_new_ruler = {
 					}
 				}
 			}
-			if = { # Override to make the ruler of British India always an Industrialist
-				limit = {
-					is_ruler = yes
-					c:BIC ?= owner
-					NOT = {
-						is_interest_group_type = ig_industrialists
-					}
-				}
-				owner = {
-					ig:ig_industrialists ?= {
-						leader = {
-							set_character_as_ruler = yes
-						}
-					}
-					generate_new_eic_government_leader = yes
-				}
-			}
 			if = {
 				limit = {
 					owner = {
@@ -2682,9 +3021,10 @@ on_new_ruler = {
 			### Monarchial succession - add all successions here.
 			if = {
 				limit = {
-					is_ruler = yes
+					is_ruler_of_own_country = yes
 					owner ?= {
-						has_law = law_type:law_monarchy
+						country_has_monarchy_law = yes
+						country_has_non_monarchy_law = no # To handle an execution order issue
 					}
 				}
 				### Russian Monarchs
@@ -2786,6 +3126,45 @@ on_new_ruler = {
 					}
 					character_morocco_ruler_succession_chain_effect = yes
 				}
+				if = {
+					limit = {
+						owner ?= {
+							c:JAP ?= this
+						}
+					}
+					character_japan_ruler_succession_chain_effect = yes
+					if = {
+						limit = {
+							has_variable = house_yamato
+						}
+						c:JAP ?= {
+							set_variable = { name = emperor_var value = PREV }
+						}
+						if = {
+							limit = {
+								NOT = {
+									has_trait = special_character_japanese_emperor
+								}
+							}
+							add_trait = special_character_japanese_emperor
+						}
+					}
+					if = { # Sitting Emperors don't need this role
+						limit = {
+							has_role = character_role_emperor_of_japan
+						}
+						remove_character_role = character_role_emperor_of_japan
+					}
+					if = { # Marks the Shogun as the Shogun
+						limit = {
+							owner = {
+								has_gov_regency = no
+								has_law = law_type:law_bakufu
+							}
+						}
+						set_variable = shogun_var
+					}
+				}
 			}
 
 			if = { # For handling the Succession Rights treaty article in the case of ruler death
@@ -2824,6 +3203,29 @@ on_new_ruler = {
 				}
 			}
 		}
+
+		if = { # Handles total years in power, not consecutive years. Mostly for Japan.
+			limit = {
+				NOT = {
+					has_variable = year_in_power
+				}
+			}
+			set_variable = { name = year_in_power value = 1 } # In case all else fails
+		}
+	}
+}
+
+# Root = Character
+on_character_became_adult = {
+	effect = {
+		post_notification = character_became_adult
+	}
+}
+
+# Root = Character
+on_character_spawned_in_pool = {
+	effect = {
+		post_notification = character_spawned_in_pool
 	}
 }
 
@@ -3092,6 +3494,24 @@ on_treaty_proposal_declined = {
 on_treaty_entered_into_force = {
 	effect = {
 		post_notification = treaty_entered_into_force
+		if = {
+			limit = {
+				is_enforced = no
+			}
+
+			root.first_country = {
+				create_diplomatic_catalyst = {
+					type = catalyst_treaty_signed
+					target = root.second_country
+				}
+			}
+			root.second_country = {
+				create_diplomatic_catalyst = {
+					type = catalyst_treaty_signed
+					target = root.first_country
+				}
+			}
+		}
 		if = { #add balkan war allies to the list
 			limit = {
 				OR = {
@@ -3132,6 +3552,30 @@ on_treaty_entered_into_force = {
 			}
 			generate_balkan_league_side_list = yes
 			generate_ottoman_side_list = yes
+		}
+
+		# clear ownership transfer fleet(s)
+		if = {
+			limit = {
+				any_scope_article_option = {
+					has_type = ship_transfer
+					target_country = root.first_country
+				}
+			}
+			root.first_country = {
+				clear_ownership_transfer_fleet = yes
+			}
+		}
+		if = {
+			limit = {
+				any_scope_article_option = {
+					has_type = ship_transfer
+					target_country = root.second_country
+				}
+			}
+			root.second_country = {
+				clear_ownership_transfer_fleet = yes
+			}
 		}
 	}
 }
@@ -3866,6 +4310,10 @@ on_capitulation = {
             days = 1825
             value = yes
         }
+		set_variable = {
+			name = recent_capitulation
+			days = short_modifier_time
+		}
 	}
 }
 
@@ -3873,10 +4321,6 @@ on_capitulation = {
 on_self_capitulated_notification = {
 	effect = {
 		post_notification = self_capitulated
-		set_variable = {
-			name = recent_capitulation
-			days = short_modifier_time
-		}
 	}
 }
 
@@ -4542,7 +4986,7 @@ on_law_enactment_pass = {
 						value > neutral
 					}
 					any_supporting_character = {
-						has_role = agitator
+						has_role_of_type = agitator
 					}
 				}
 			}
@@ -4579,7 +5023,7 @@ on_law_enactment_pass = {
 				is_enacting_law = law_type:law_presidential_republic
 			}
 			set_variable = { name = hide_ruler_change_notification days = 3 }
-			ruler = { place_character_in_void = 6 }
+			set_variable = { name = keep_current_ruler_var days = 7 }
 			trigger_event = { id = pedro.10 popup = yes days = 1 }
 		}
 		if = {
@@ -4783,6 +5227,23 @@ on_law_activated = {
 				cancel_enactment = yes
 			}
 		}
+		owner = {
+			if = {
+				limit = {
+					game_date > 1836.1.1
+					c:JAP ?= this
+					NOR = {
+						has_law = law_type:law_sakoku
+						has_law = law_type:law_closed_borders
+					}
+				}
+				trigger_event = {
+					id = japan_religion.10
+					years = 10
+					popup = yes
+				}
+			}
+		}
 	}
 }
 
@@ -4847,20 +5308,6 @@ on_revolution_start = {
 			}
 			chi_remove_1_fragile_unity = yes
 			set_variable = china_warlord_explosion_revolution
-		}
-		if = {
-			limit = {
-				OR = {
-					has_journal_entry = je_meiji_restoration
-					has_inactive_journal_entry = je_meiji_restoration
-				}
-				scope:target ?= {
-					ig:ig_landowners ?= {
-						is_in_government = yes
-					}
-				}
-			}
-			set_variable = anti_shogunate_civil_war
 		}
 		if = {
 			limit = {
@@ -5023,7 +5470,7 @@ on_revolution_start = {
 					NOT = {
 						has_law_or_variant = law_type:law_isolationism
 					}
-					has_interest_marker_in_region = region_manchuria
+					has_interest_marker_in_region = sr:region_northeast_asia
 					has_technology_researched = electric_telegraph
 				}
 				any_country = {
@@ -5074,7 +5521,18 @@ on_revolution_start = {
 			}
 			scope:target ?= {
 				change_tag = BHT
-				remove_primary_culture = cu:british
+				every_primary_culture = {
+					save_temporary_scope_as = primary_culture_to_remove
+					PREV ?= { # scope:target
+						remove_primary_culture = scope:primary_culture_to_remove
+						every_scope_character = {
+							limit = {
+								scope:primary_culture_to_remove ?= culture
+							}
+							retire_character = yes
+						}
+					}
+				}
 				grant_indian_cultures = yes
 				if = {
 					limit = {
@@ -5130,17 +5588,6 @@ on_revolution_start = {
 					remove_modifier = modifier_indian_imperial_police
 				}
 				recalculate_pop_ig_support = yes
-				every_scope_character = {
-					limit = {
-						OR = {
-							culture = cu:british
-							culture = cu:scottish
-							culture = cu:irish
-						}
-						is_immortal = no
-					}
-					kill_character = yes
-				}
 			}
 		}
 		### Carlists and Miguelists
@@ -5169,6 +5616,13 @@ on_revolution_start = {
 					country_generate_miguelist_portugal_ruler = yes
 				}
 			}
+		}
+		# Meiji civil wars
+		if = {
+			limit = {
+				country_has_pending_meiji_restoration = yes
+			}
+			meiji_civil_war_effects = yes
 		}
 		set_variable = { name = recent_coup_or_revolution_var value = 0 }
 	}
@@ -5225,7 +5679,7 @@ on_secession_start = {
 						country_has_primary_culture = cu:south_italian
 					}
 				}
-				any_country = {
+				any_country_in_italy_old = {
 					has_journal_entry = je_risorgimento
 				}
 			}
@@ -5310,7 +5764,18 @@ on_secession_start = {
 				c:BIC ?= ROOT
 			}
 			scope:target ?= {
-				remove_primary_culture = cu:british
+				every_primary_culture = {
+					save_temporary_scope_as = primary_culture_to_remove
+					PREV ?= { # scope:target
+						remove_primary_culture = scope:primary_culture_to_remove
+						every_scope_character = {
+							limit = {
+								scope:primary_culture_to_remove ?= culture
+							}
+							retire_character = yes
+						}
+					}
+				}
 				grant_indian_regional_cultures = yes
 				if = {
 					limit = {
@@ -5366,17 +5831,6 @@ on_secession_start = {
 					remove_modifier = modifier_indian_imperial_police
 				}
 				recalculate_pop_ig_support = yes
-				every_scope_character = {
-					limit = {
-						OR = {
-							culture = cu:british
-							culture = cu:scottish
-							culture = cu:irish
-						}
-						is_immortal = no
-					}
-					kill_character = yes
-				}
 			}
 		}
 	}
@@ -5414,18 +5868,6 @@ on_civil_war_won = {
 				has_global_variable = achievement_revo_needed
 			}
 			set_global_variable = achievement_revolutionary
-		}
-		if = {
-			limit = {
-				has_journal_entry = je_meiji_restoration
-				has_variable = anti_shogunate_civil_war
-				has_variable = shogunate_var
-			}
-			change_variable = {
-				name = shogunate_var
-				add = 120
-			}
-			remove_variable = anti_shogunate_civil_war
 		}
 		if = {
 			limit = {
@@ -5494,7 +5936,7 @@ on_civil_war_won = {
 			if = {
 				limit = {
 					any_scope_character = {
-						is_ruler = yes
+						is_ruler_of_own_country = yes
 						NOT = { has_variable = house_orleans }
 					}
 					OR = {
@@ -5602,7 +6044,7 @@ on_civil_war_won = {
 			if = {
 				limit = {
 					any_scope_character = {
-						is_ruler = yes
+						is_ruler_of_own_country = yes
 						NOT = { has_variable = house_bonaparte }
 					}
 					OR = {
@@ -5710,7 +6152,7 @@ on_civil_war_won = {
 			if = {
 				limit = {
 					any_scope_character = {
-						is_ruler = yes
+						is_ruler_of_own_country = yes
 						NOT = { has_variable = legitimist_leader }
 					}
 					OR = {
@@ -5930,7 +6372,6 @@ on_wargoal_enforced = {
             days = 1825
             value = yes
         }
-
 		### Narrative war-end events
         if = { # Paris Commune - Commune victory event
         	limit = {
@@ -6175,7 +6616,7 @@ on_wargoal_enforced = {
 				scope:target ?= {
 					OR = {
 						is_country_type = recognized
-						is_country_type = colonial
+						country_is_colonial_or_company = yes
 					}
 					country_rank >= rank_value:major_power
 				}
@@ -6253,7 +6694,7 @@ on_wargoal_enforced = {
 				scope:target ?= {
 					OR = {
 						is_country_type = recognized
-						is_country_type = colonial
+						country_is_colonial_or_company = yes
 					}
 					country_rank >= rank_value:great_power
 				}
@@ -6311,6 +6752,21 @@ on_wargoal_enforced = {
 			scope:target = {
 				set_variable = wargoal_enforced_by_recognized_power
 			}
+		}
+		if = { # Japanese daimyo reconciliation
+			limit = {
+				c:JAP ?= root
+				NOT = {
+					has_global_variable = japan_daimyo_abolished
+				}
+				scope:diplomatic_play = {
+					OR = {
+						is_diplomatic_play_type = dp_revolution
+						is_diplomatic_play_type = dp_secession
+					}
+				}
+			}
+			japan_reconcile_revolutionary_daimyos = yes
 		}
 	}
 }
@@ -6380,6 +6836,11 @@ on_heir_born = {
 	effect = {
 		if = {
 			limit = {
+				NOT = { # Iesada Tokugawa cannot produce heirs
+					owner.ruler ?= {
+						has_template = JAP_iesada_tokugawa
+					}
+				}
 				owner ?= {
 					has_gov_regency = no
 				}
@@ -6401,27 +6862,52 @@ on_heir_born = {
 						has_variable = house_orleans
 					}
 				}
+				owner = {
+					heir ?= {
+						set_ideology = ideology:ideology_orleanist
+					}
+				}
+			}
+			if = {
+				limit = {
+					owner.ruler ?= {
+						has_variable = legitimist_leader
+					}
+				}
+				owner = {
+					heir ?= {
+						set_ideology = ideology:ideology_legitimist
+					}
+				}
+			}
+			if = {
+				limit = {
+					owner.ruler ?= {
+						has_variable = house_bonaparte
+					}
+				}
+				owner = {
+					heir ?= {
+						set_ideology = ideology:ideology_bonapartist
+					}
+				}
+			}
+		}
+		### Royal House Variables
+		# House Orleans
+		if = {
+			limit = {
+				owner.ruler ?= {
+					has_variable = house_orleans
+				}
 			}
 			owner = {
 				heir ?= {
 					set_variable = house_orleans
-					set_ideology = ideology:ideology_orleanist
 				}
 			}
 		}
-		if = {
-			limit = {
-				owner.ruler ?= {
-					has_variable = legitimist_leader
-				}
-			}
-			owner = {
-				heir ?= {
-					set_variable = legitimist_leader
-					set_ideology = ideology:ideology_legitimist
-				}
-			}
-		}
+		# House Bonaparte
 		if = {
 			limit = {
 				owner.ruler ?= {
@@ -6431,10 +6917,10 @@ on_heir_born = {
 			owner = {
 				heir ?= {
 					set_variable = house_bonaparte
-					set_ideology = ideology:ideology_bonapartist
 				}
 			}
 		}
+		# House Savoy
 		if = {
 			limit = {
 				owner.ruler ?= {
@@ -6447,6 +6933,7 @@ on_heir_born = {
 				}
 			}
 		}
+		# House Braganca
 		if = {
 			limit = {
 				owner.ruler ?= {
@@ -6459,6 +6946,7 @@ on_heir_born = {
 				}
 			}
 		}
+		# House Espartero
 		if = {
 			limit = {
 				owner.ruler ?= {
@@ -6471,6 +6959,7 @@ on_heir_born = {
 				}
 			}
 		}
+		# House Bourbon
 		if = {
 			limit = {
 				owner.ruler ?= {
@@ -6483,6 +6972,7 @@ on_heir_born = {
 				}
 			}
 		}
+		# House Hohenzollern
 		if = {
 			limit = {
 				owner.ruler ?= {
@@ -6495,30 +6985,51 @@ on_heir_born = {
 				}
 			}
 		}
+		# House Obrenovic
 		if = {
 			limit = {
-				owner = {
-					c:SER ?= this
+				owner.ruler ?= {
+					has_variable = house_obrenovic
 				}
 			}
-			if = {
-				limit = {
-					owner.ruler ?= {
-						has_variable = house_obrenovic
-					}
-				}
-				owner.heir ?= {
-					set_variable = house_obrenovic
+			owner.heir ?= {
+				set_variable = house_obrenovic
+			}
+		}
+		# House Karadjordjevic
+		if = {
+			limit = {
+				owner.ruler ?= {
+					has_variable = house_karadordevic
 				}
 			}
-			else_if = {
-				limit = {
-					owner.ruler ?= {
-						has_variable = house_karadordevic
-					}
+			owner.heir ?= {
+				set_variable = house_karadordevic
+			}
+		}
+		# House Yamato
+		if = {
+			limit = {
+				owner.ruler ?= {
+					has_variable = house_yamato
 				}
-				owner.heir ?= {
-					set_variable = house_karadordevic
+			}
+			owner = {
+				heir ?= {
+					set_variable = house_yamato
+				}
+			}
+		}
+		# House Tokugawa
+		if = {
+			limit = {
+				owner.ruler ?= {
+					has_variable = house_tokugawa
+				}
+			}
+			owner = {
+				heir ?= {
+					set_variable = house_tokugawa
 				}
 			}
 		}
@@ -6701,28 +7212,9 @@ on_state_incorporation = {
 	}
 }
 on_state_owner_change = {
+	on_actions = { ip4_lands_of_anarchy_remove_on_state_lost }
 	effect = {
 		evaluate_and_assign_state_hub_dynamic_names = yes # All dynamic naming is handled by this scripted effect
-
-		if = {
-			limit = {
-				OR = {
-					state_region = s:STATE_MOSUL
-					state_region = s:STATE_DIYARBAKIR
-					state_region = s:STATE_ERZURUM
-					state_region = s:STATE_DEIR_EZ_ZOR
-				}
-				NOT = { owner = { c:TUR ?= this } }
-					   OR = {
-						   has_modifier = kur_principalities_modifier
-						   has_modifier = vilayet_kurdish_centralization
-						   has_modifier = vilayet_kurdish_autonomy
-					   }
-			}
-			remove_modifier = kur_principalities_modifier
-			remove_modifier = vilayet_kurdish_centralization
-			remove_modifier = vilayet_kurdish_autonomy
-		}
 
 		if = {
 			limit = {
@@ -7002,18 +7494,58 @@ on_stop_supporting_unification = {
 }
 
 # Root = Country
-# scope:region - the sea region where the raid happened
-on_enemy_convoys_raided = {
+# scope:region - the strategic region where the raid happened
+# scope:attacker_commander - the raiding commander
+# scope:attacker - the raiding country
+# scope:defender_commander - the raided commander
+# scope:defender - the raided country
+# scope:num_sunk_ships - the number of sunk supply ships
+# scope:battle - the naval battle
+on_enemy_supply_ships_raided = {
 	effect = {
-		post_notification = enemy_convoys_raided
+		post_notification = enemy_supply_ships_raided
 	}
 }
 
 # Root = Country
-# scope:region - the sea region where the raid happened
-on_our_convoys_raided = {
+# scope:region - the strategic region where the raid happened
+# scope:attacker_commander - the raiding commander
+# scope:attacker - the raiding country
+# scope:defender_commander - the raided commander
+# scope:defender - the raided country
+# scope:num_sunk_ships - the number of sunk supply ships
+# scope:battle - the naval battle
+on_our_supply_ships_raided = {
 	effect = {
-		post_notification = our_convoys_raided
+		post_notification = our_supply_ships_raided
+	}
+}
+
+# Root = Country
+# scope:region - the strategic region where the raid happened
+# scope:attacker_commander - the raiding commander
+# scope:attacker - the raiding country
+# scope:defender_commander - the intercepting commander
+# scope:defender - the intercepting country
+# scope:num_sunk_ships - the number of sunk supply ships
+# scope:battle - the naval battle
+on_our_supply_ship_raiders_intercepted = {
+	effect = {
+		post_notification = our_supply_ship_raiders_intercepted
+	}
+}
+
+# Root = Country
+# scope:region - the strategic region where the raid happened
+# scope:attacker_commander - the raiding commander
+# scope:attacker - the raiding country
+# scope:defender_commander - the intercepting commander
+# scope:defender - the intercepting country
+# scope:num_sunk_ships - the number of sunk supply ships
+# scope:battle - the naval battle
+on_enemy_supply_ship_raiders_intercepted = {
+	effect = {
+		post_notification = enemy_supply_ship_raiders_intercepted
 	}
 }
 
@@ -7094,8 +7626,8 @@ on_character_recruitment = {
 		if = {
 			limit = {
 				OR = {
-					has_role = admiral
-					has_role = general
+					has_role_of_type = admiral
+					has_role_of_type = general
 				}
 			}
 			set_variable = { name = monthly_cached_units_share value = this.num_units_share }
@@ -7163,11 +7695,24 @@ on_become_independent = {
 		if = {
 			limit = {
 				c:BCE ?= this
-				country_has_primary_culture = cu:british
+				NOT = {
+					country_has_primary_culture = cu:sinhala
+				}
 			}
 			change_tag = CEY
+			every_primary_culture = {
+				save_temporary_scope_as = primary_culture_to_remove
+				PREV ?= { # scope:target
+					remove_primary_culture = scope:primary_culture_to_remove
+					every_scope_character = {
+						limit = {
+							scope:primary_culture_to_remove ?= culture
+						}
+						retire_character = yes
+					}
+				}
+			}
 			add_primary_culture = cu:sinhala
-			remove_primary_culture = cu:british
 			if = {
 				limit = {
 					NOT = {
@@ -7182,17 +7727,6 @@ on_become_independent = {
 				}
 			}
 			recalculate_pop_ig_support = yes
-			every_scope_character = {
-				limit = {
-					OR = {
-						culture = cu:british
-						culture = cu:scottish
-						culture = cu:irish
-					}
-					is_immortal = no
-				}
-				kill_character = yes
-			}
 		}
 		if = {
 			limit = {
@@ -7212,14 +7746,21 @@ on_become_independent = {
 					c:DEI ?= this # has dei_breakup.1
 					c:ALK ?= this # has alk_breakup.1
 					has_variable = senegal_subject_var # has colonial_administration_events.2
-					has_variable = niger_subject_var # has colonial_administration_events.2
-					has_variable = ethiopia_subject_var # has colonial_administration_events.2
 					has_variable = zanj_subject_var # has colonial_administration_events.2
 					has_variable = southern_africa_subject_var # has colonial_administration_events.2
 					has_variable = congo_subject_var # has colonial_administration_events.2
 				}
 			}
 			trigger_event = { id = independence.2 days = 1 popup = yes }
+		}
+		if = {  # if player gains independence as Philippines before researching Nationalism or without je_philippines_main
+			limit = {
+				has_dlc_feature = ip4_content
+				c:PHI ?= this
+			}
+			add_primary_culture = cu:filipino_mestizo
+       		remove_primary_culture = cu:spanish
+       		post_notification = filipino_mestizo_now_primary_culture
 		}
 		if = { # revert to ig_armed_forces
 			limit = {
@@ -7359,6 +7900,14 @@ on_travel_track_formation_cancelled = {
 }
 
 # Root = Military Formation
+# scope:state = State we were deploying to
+on_travel_deploy_to_state_cancelled = {
+	effect = {
+		post_notification = formation_travel_deploy_to_state_cancelled
+	}
+}
+
+# Root = Military Formation
 on_military_formation_created = {
 	effect = {
 		if = {
@@ -7371,6 +7920,13 @@ on_military_formation_created = {
 				remove_variable = formation_tutorial_ongoing
 			}
 		}
+	}
+}
+
+# Root = Military Formation
+on_fleet_destroyed = {
+	effect = {
+		post_notification = fleet_destroyed
 	}
 }
 
@@ -7409,7 +7965,54 @@ on_national_awakening_started = {
 }
 
 # Root = Country
+# scope:strait is the strait in question
+# TODO: PRCAL-41459 Straits Add the access level as event targets
+on_strait_access_setting_changed = {
+}
+
+# Root = Country
 # scope:amendment = amendment being repealed
 on_amendment_repealed = {
 	effect = {}
+}
+
+# Root = Invader Country
+# scope:invasion = the invasion
+# scope:target_state = the invaded state
+# scope:target_country = the defender country
+on_invasion_succeeded = {
+	effect = {
+		if = {
+			limit = {
+				scope:invasion = {
+					is_naval_invasion = yes
+					invasion_has_marines = yes
+				}
+				scope:target_state = {
+					is_capital = yes
+				}
+			}
+			set_variable = has_taken_enemy_capital_with_marines
+		}
+	}
+}
+
+# Root = Owner Country
+# scope:ship = the newly constructed ship
+# scope:fleet = the fleet the ship was added to
+on_ship_constructed = {
+	effect = {
+		scope:ship = {
+			if = {
+				limit = {
+					is_ship_type = ship_type:ship_type_monitor
+					NOT = { has_global_variable = first_monitor_built }
+				}
+				set_global_variable = first_monitor_built
+				ROOT = {
+					set_variable = son_of_varmland_var
+				}
+			}
+		}
+	}
 }

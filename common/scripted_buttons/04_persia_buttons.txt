@@ -221,7 +221,7 @@
 			if = {
 				limit = {
 					c:GBR ?= {
-						has_interest_marker_in_region = sr:region_persia
+						has_interest_marker_in_region = sr:region_greater_persia
 						relations:root <= relations_threshold:neutral
 						NOR = {
 							is_diplomatic_play_ally_of = root
@@ -365,7 +365,7 @@ persia_british_aid_button = {
 			}
 		}
 		c:GBR ?= {
-			has_interest_marker_in_region = region_persia
+			has_interest_marker_in_region = sr:region_greater_persia
 			relations:root >= relations_threshold:amicable
 		}
 		custom_tooltip = {
@@ -479,7 +479,7 @@ persia_russian_aid_button = {
 			}
 		}
 		c:RUS ?= {
-			has_interest_marker_in_region = region_persia
+			has_interest_marker_in_region = sr:region_greater_persia
 			relations:root >= relations_threshold:amicable
 		}
 		custom_tooltip = {

@@ -1132,7 +1132,7 @@ je_standestaat_eliminate_parliament = {
 
 	possible = {
 		legitimacy >= 50
-		ruler.interest_group = {
+		ruler.interest_group ?= {
 			is_in_government = yes
 			OR = {
 				custom_tooltip = {
