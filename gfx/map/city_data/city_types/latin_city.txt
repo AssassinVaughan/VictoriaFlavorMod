@@ -1,24 +1,15 @@
 ﻿latin_city = {
 	#graphical_culture = "latin"
-	
+
 	city_type = city
-	
+
 	trigger = {
 		any_scope_state = {
 			OR = {
-				region = sr:region_brazil
-                region = sr:region_iberia
-                region = sr:region_andes
-                region = sr:region_la_plata
-                region = sr:region_gran_colombia
-                region = sr:region_mexico
-                region = sr:region_central_america
-                region = sr:region_caribbean
-				# etc.
-				state_region = s:STATE_MINDANAO
-				state_region = s:STATE_LUZON
-				state_region = s:STATE_VISAYAS
-                # etc.
+				is_in_geographic_region = geographic_region_iberia_old
+				is_in_geographic_region = geographic_region_south_america
+				is_in_geographic_region = geographic_region_central_america_old
+				is_in_geographic_region = geographic_region_philippines
 			}
 		}
 	}
@@ -28,11 +19,11 @@
 	min_residential_buildings = 2
 	max_residential_buildings = 150
 	max_residence_points = 200
-	
+
 	rich_building_meshes = {
 		"latin_urban_city_residential_rich_01_mesh"
 		"latin_urban_city_residential_rich_02_mesh"
-		"latin_urban_city_residential_rich_03_mesh"	
+		"latin_urban_city_residential_rich_03_mesh"
 	}
 	rich_building_offsets = {
 		position = 0.0	#in grid-space units. 1.0 means the mesh can be placed anywhere inside its allotted cell
@@ -60,7 +51,7 @@
 		position = 0.0
 		rotation = 0.0
 	}
-	
+
 	building_construction_sector = {"latin_manufactory_03_mesh"}
 	building_food_industry = {"latin_manufactory_01_mesh"}
 	building_textile_mill = {"latin_tools_manufactory_01_mesh"}
@@ -84,9 +75,10 @@
 	building_suez_canal = {"canal_suezcanal_01_mesh"}
 	building_panama_canal = {"canal_panamacanal_01_mesh"}
 	building_eiffel_tower = {"wonder_eiffel_tower_01_mesh"}
-		
+
 	building_urban_center = {}
-	 
+	building_naval_administration = {"latin_port_navalbase_01_mesh"}
+
 	building_government_administration = {"latin_urban_city_centerpiece_01_mesh"}
 	building_trade_center = {"latin_city_tradecenter_01_mesh"}
 	building_university = {"latin_city_university_01_mesh"}
@@ -95,4 +87,5 @@
 	building_financial_district = {"latin_city_financialdistrict_01_mesh"}
 	building_company_headquarter = {"generic_companyhq_01_mesh"}
 	building_company_regional_headquarter = {"generic_regionalcompanyhq_01_mesh"}
+	building_land_logistics_center = {"generic_logisticscenter_01_mesh"}
 }

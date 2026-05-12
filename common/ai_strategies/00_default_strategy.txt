@@ -2726,10 +2726,10 @@ ai_strategy_default = {
 			limit = {
 			    scope:target_state = {
 					OR = {
-						region = sr:region_baltic
-						region = sr:region_north_germany
-						region = sr:region_south_germany
-						region = sr:region_italy
+					    is_in_geographic_region = geographic_region_baltic_old
+						is_in_geographic_region = geographic_region_north_germany_old
+						is_in_geographic_region = geographic_region_south_germany_old
+						is_in_geographic_region = geographic_region_italy_old
 					}
 				}
 			}
@@ -3545,7 +3545,7 @@ ai_strategy_default = {
 					has_journal_entry = je_eastern_frontier
 					scope:target_country = {
 						capital = {
-							region = sr:region_greater_persia
+							is_in_geographic_region = geographic_region_persia_old
 						}
 					}
 				}
@@ -4589,12 +4589,12 @@ ai_strategy_default = {
 					capital = {
 						# Africa, omitting North Africa and the Nile Basin
 						OR = {
-							region = sr:region_ethiopia
-							region = sr:region_senegal
-							region = sr:region_niger
-							region = sr:region_congo
-							region = sr:region_southern_africa
-							region = sr:region_zanj		
+						    is_in_geographic_region = geographic_region_ethiopia_old
+							is_in_geographic_region = geographic_region_senegal_old
+							is_in_geographic_region = geographic_region_niger_old
+							is_in_geographic_region = geographic_region_congo_old
+							is_in_geographic_region = geographic_region_southern_africa_old
+							is_in_geographic_region = geographic_region_zanj_old
 						}
 					}
 				}

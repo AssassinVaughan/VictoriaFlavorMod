@@ -140,7 +140,7 @@
 
 	weight = 100
 
-	should_be_pinned_by_default = yes
+	should_be_pinned_by_default_uninvolved_or_context = yes
 }
 
 REPLACE:je_central_america_migration = {
@@ -149,12 +149,7 @@ REPLACE:je_central_america_migration = {
 	group = je_group_foreign_affairs
 
 	is_shown_when_inactive = {
-		capital = {
-			OR = {
-				region = sr:region_mexico
-				region = sr:region_central_america
-			}
-		}
+		is_in_geographic_region = geographic_region_central_america
 		any_primary_culture = {
 			has_discrimination_trait_group = heritage_group_european
 		}
@@ -189,10 +184,7 @@ REPLACE:je_central_america_migration = {
 		every_scope_state = {
 			limit = {
 				is_incorporated = yes
-				OR = {
-					region = sr:region_mexico
-					region = sr:region_central_america
-				}
+				is_in_geographic_region = geographic_region_central_america
 			}
 			ROOT = {
 				change_variable = {
@@ -225,10 +217,7 @@ REPLACE:je_central_america_migration = {
 			every_scope_state = {
 				limit = {
 					is_incorporated = yes
-					OR = {
-						region = sr:region_mexico
-						region = sr:region_central_america
-					}
+					is_in_geographic_region = geographic_region_central_america
 				}
 				ROOT = {
 					change_variable = {
@@ -293,6 +282,6 @@ REPLACE:je_central_america_migration = {
 
 	weight = 100
 
-	should_be_pinned_by_default = yes
+	should_be_pinned_by_default_uninvolved_or_context = yes
 }
 
