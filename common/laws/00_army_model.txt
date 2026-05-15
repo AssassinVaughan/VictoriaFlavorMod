@@ -28,6 +28,12 @@
 		}
 	}
 
+	is_visible = {
+		NOT = {
+			country_has_primary_culture = cu:japanese
+		}
+	}
+
 	on_enact = {
 		custom_tooltip = QUALIFICATIONS_OFFICERS_PEASANT_LEVIES_DESC
 		if = {
@@ -62,6 +68,47 @@
 	}
 }
 
+law_warrior_caste = {
+	group = lawgroup_army_model
+	parent = law_peasant_levies
+	icon = "gfx/interface/icons/law_icons/warrior_caste.dds"
+
+	progressiveness = -50
+
+	modifier = {
+		country_limit_officers_qualifications_to_upper_strata = yes
+		country_can_only_conscript_peasants_bool = yes
+		state_conscription_rate_add = 0.01
+		unit_morale_loss_mult = -0.15
+		country_officers_pol_str_mult = 0.25
+		country_military_goods_cost_mult = -0.1
+		state_building_barrack_max_level_add = 50
+		country_military_wages_mult = 0.25
+		state_building_conscription_center_max_level_add = 10
+	}
+
+	can_impose = {
+		always = no
+	}
+
+	is_visible = {
+		country_has_primary_culture = cu:japanese
+	}
+
+	on_enact = {
+		custom_tooltip = QUALIFICATIONS_OFFICERS_WARRIOR_CASTE_DESC
+	}
+
+	# AI will never return to this law
+	ai_will_do = {
+		always = no
+	}
+
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+	}
+}
+
 law_professional_army = {
 	group = lawgroup_army_model
 	icon = "gfx/interface/icons/law_icons/professional_army.dds"
@@ -90,6 +137,11 @@ law_professional_army = {
 			}
 			can_impose_law_default = yes
 		}
+	}
+
+	disallowing_laws = {
+		law_strict_edo_system
+		law_intermediate_edo_system
 	}
 
 	on_enact = {
@@ -194,6 +246,11 @@ law_national_militia = {
 		}
 	}
 
+	disallowing_laws = {
+		law_strict_edo_system
+		law_intermediate_edo_system
+	}
+
 	on_enact = {
 		if = {
 			limit = {
@@ -255,6 +312,11 @@ law_mass_conscription = {
 			}
 			can_impose_law_default = yes
 		}
+	}
+
+	disallowing_laws = {
+		law_strict_edo_system
+		law_intermediate_edo_system
 	}
 
 	on_enact = {

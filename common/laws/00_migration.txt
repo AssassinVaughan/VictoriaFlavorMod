@@ -4,6 +4,10 @@
 
 	progressiveness = 50
 
+	disallowing_laws = {
+		law_sakoku
+	}
+
 	modifier = {
 		country_leverage_resistance_mult = -0.25
 		country_migration_restrictiveness_add = 20 # VFM migration bugfix
@@ -28,6 +32,10 @@ law_migration_controls = {
 	}
 
 	progressiveness = 0
+
+	disallowing_laws = {
+		law_sakoku
+	}
 
 	on_enact = {
 		if = {
@@ -115,6 +123,13 @@ law_closed_borders = {
 		if = {
 			limit = { ai_has_enact_weight_modifier_journal_entries = yes }
 			add = 750
+		}
+
+		if = {
+			limit = {
+				has_journal_entry = je_meiji_imperial_marriage
+			}
+			add = 10000 # Top priority for Imperial Marriage JE is to enact this law
 		}
 	}
 }
