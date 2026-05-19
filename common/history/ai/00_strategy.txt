@@ -194,12 +194,30 @@
 		set_strategy = ai_strategy_maintain_mandate_of_heaven
 	}
 	c:JAP ?= {
-		random_list = {	
-			75 = { set_strategy = ai_strategy_placate_population }
-			25 = { set_strategy = ai_strategy_agricultural_expansion }
-		}			
-		set_strategy = ai_strategy_armed_isolationism
-		set_strategy = ai_strategy_conservative_agenda
+		if = {
+			limit = {
+				has_journal_entry = je_tenpo_crisis
+			}
+			random_list = {
+				50 = {
+					set_variable = { name = ai_tenpo_reform_agenda days = 4380 }
+					set_strategy = ai_strategy_progressive_agenda
+					set_strategy = ai_strategy_placate_population
+					set_strategy = ai_strategy_armed_isolationism
+				}
+				50 = {
+					set_variable = { name = ai_tenpo_hardline_agenda days = 4380 }
+					set_strategy = ai_strategy_conservative_agenda
+					set_strategy = ai_strategy_agricultural_expansion
+					set_strategy = ai_strategy_armed_isolationism
+				}
+			}
+		}
+		else = {
+			set_strategy = ai_strategy_placate_population
+			set_strategy = ai_strategy_armed_isolationism
+			set_strategy = ai_strategy_conservative_agenda
+		}
 	}
 	c:CAM ?= {
 		set_strategy = ai_strategy_subject_break_free

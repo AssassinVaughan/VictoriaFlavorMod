@@ -60,6 +60,7 @@ hawaii_events.2 = { #JE success
 
 	immediate = {
 		remove_global_variable = gp_hawaii_interest
+		set_global_variable = hawaiian_je_success
 	}
 
 	option = { #get an extra defense modifier
@@ -82,7 +83,7 @@ hawaii_events.2 = { #JE success
 			base = 50
 			modifier = {
 				trigger = {
-					ig:ig_industrialists = {
+					ig:ig_industrialists ?= {
 						ig_approval < -5
 					}
 				}
@@ -90,7 +91,7 @@ hawaii_events.2 = { #JE success
 			}
 			modifier = {
 				trigger = {
-					ig:ig_industrialists = {
+					ig:ig_industrialists ?= {
 						is_powerful = yes
 					}
 				}
@@ -103,7 +104,7 @@ hawaii_events.2 = { #JE success
 			multiplier = 0.5
 		}
 		set_variable = deported_americans
-		ig:ig_industrialists = {
+		ig:ig_industrialists ?= {
 			add_modifier = {
 				name = deporting_disloyal_igs
 				days = long_modifier_time
@@ -118,7 +119,7 @@ hawaii_events.2 = { #JE success
 					}
 				}
 				leader = {
-					kill_character = yes
+					retire_character = yes
 				}
 			}
 		}
@@ -134,7 +135,7 @@ hawaii_events.2 = { #JE success
 					}
 				}
 				leader = {
-					kill_character = yes
+					retire_character = yes
 				}
 			}
 		}
@@ -188,6 +189,7 @@ hawaii_events.3 = { #Failed JE
 
 	immediate = {
 		remove_global_variable = gp_hawaii_interest
+		set_global_variable = hawaiian_coup
 		if = {
 			limit = {
 				is_subject = yes
@@ -275,7 +277,7 @@ hawaii_events.3 = { #Failed JE
 		activate_law = law_type:law_presidential_republic
 		activate_law = law_type:law_oligarchy
 		ruler = {
-			kill_character = yes
+			retire_character = yes
 		}
 		if = {
 			limit = {
@@ -337,7 +339,7 @@ hawaii_events.4 = { #Great Power makes hawaii puppet or annex's them
 		name = hawaii_events.4.b
 		trigger = {
 			exists = c:HAW
-			c:HAW = {
+			c:HAW ?= {
 				is_player = no
 			}
 		}

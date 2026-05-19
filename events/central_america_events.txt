@@ -71,7 +71,7 @@ central_america.2 = {
 		capital = {
 			save_scope_as = capital_scope
 		}
-		
+
 		# All remaining Central American states secede
 		if = {
 			limit = {
@@ -88,7 +88,7 @@ central_america.2 = {
 					set_variable = ca_secession_country
 				}
 			}
-			c:GUA = { save_scope_as = scope_GAU }
+			c:GUA ?= { save_scope_as = scope_GAU }
 			#if = {
 			#	limit = { exists = s:STATE_CHIAPAS.region_state:UCA }
 			#	s:STATE_CHIAPAS.region_state:UCA = { set_state_owner = c:GUA }
@@ -267,7 +267,7 @@ central_america.2 = {
 			add_loyalists_in_state = {
 				value = 0.5
 			}
-		}		
+		}
 		# Change tag to whatever is appropriate ro your capital state
 		if = {
 			limit = {
@@ -368,7 +368,7 @@ central_america.3 = {
 			turmoil > 0.2
 		}
 	}
-	
+
 	immediate = {
 		random_scope_state = {
 			limit = {
@@ -395,7 +395,7 @@ central_america.3 = {
 				origin = this
 				state = scope:secession_state
 			}
-			c:GUA = {
+			c:GUA ?= {
 				save_scope_as = secession_country
 				capital = {
 					save_scope_as = secession_capital
@@ -417,7 +417,7 @@ central_america.3 = {
 				origin = this
 				state = scope:secession_state
 			}
-			c:HON = {
+			c:HON ?= {
 				save_scope_as = secession_country
 				capital = {
 					save_scope_as = secession_capital
@@ -435,7 +435,7 @@ central_america.3 = {
 				origin = this
 				state = scope:secession_state
 			}
-			c:COS = {
+			c:COS ?= {
 				save_scope_as = secession_country
 				capital = {
 					save_scope_as = secession_capital
@@ -453,7 +453,7 @@ central_america.3 = {
 				origin = this
 				state = scope:secession_state
 			}
-			c:ELS = {
+			c:ELS ?= {
 				save_scope_as = secession_country
 				capital = {
 					save_scope_as = secession_capital
@@ -471,7 +471,7 @@ central_america.3 = {
 				origin = this
 				state = scope:secession_state
 			}
-			c:NIC = {
+			c:NIC ?= {
 				save_scope_as = secession_country
 				capital = {
 					save_scope_as = secession_capital

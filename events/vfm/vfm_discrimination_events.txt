@@ -46,8 +46,8 @@ vfm_discrimination_events.1 = {
 			    is_incorporated = yes
 				any_scope_culture = {
 					PREV = {
-						state_cultural_acceptance = {  
-							target = PREV
+						state_average_culture_pop_acceptance = {
+						    culture = PREV
 							value < acceptance_status_4 
 						}
 					}
@@ -62,8 +62,8 @@ vfm_discrimination_events.1 = {
 			random_scope_pop = {
 				limit = { 
 					PREV = {
-						state_cultural_acceptance = {  
-							target = PREV.culture
+						state_average_culture_pop_acceptance = {
+							culture = PREV.culture
 							value < acceptance_status_4 
 						}
 					}
@@ -125,6 +125,8 @@ vfm_discrimination_events.1 = {
 					is_in_government = yes
 				}
 				order_by = ig_clout
+				position = 0
+				check_range_bounds = no
 				add_modifier = {
 					name = segregation_eroding
 					months = 24
@@ -138,7 +140,7 @@ vfm_discrimination_events.1 = {
 						law = law_type:law_multicultural
 					    value < neutral
 					}
-					is_marginal = no
+					ig_counts_as_marginal = no
 				}
 				order_by = ig_clout
 				add_modifier = {
@@ -175,8 +177,8 @@ vfm_discrimination_events.2 = {
 		    is_incorporated = yes
 			any_scope_culture = {
 				prev = {
-					state_cultural_acceptance = {  
-						target = prev
+					state_average_culture_pop_acceptance = {
+						culture = prev
 						value < acceptance_status_4 
 					}
 				}
@@ -192,7 +194,7 @@ vfm_discrimination_events.2 = {
 				law = law_type:law_national_supremacy
 				value > neutral
 			}
-			is_marginal = no
+			ig_counts_as_marginal = no
 		}
 	}
 
@@ -202,8 +204,8 @@ vfm_discrimination_events.2 = {
 			    is_incorporated = yes
 				any_scope_culture = {
 					PREV = {
-						state_cultural_acceptance = {  
-							target = PREV
+						state_average_culture_pop_acceptance = {
+							culture = PREV
 							value < acceptance_status_4 
 						}
 					}
@@ -215,12 +217,14 @@ vfm_discrimination_events.2 = {
 				}
 		    }
 			order_by = state_population
+			position = 0
+			check_range_bounds = no
 			save_scope_as = discrimination_state
 			random_scope_pop = {
 				limit = { 
 					PREV = {
-						state_cultural_acceptance = {  
-							target = PREV.culture
+						state_average_culture_pop_acceptance = {
+							culture = PREV.culture
 							value < acceptance_status_4 
 						}
 					}
@@ -282,6 +286,8 @@ vfm_discrimination_events.2 = {
 					is_in_government = yes
 				}
 				order_by = ig_clout
+				position = 0
+				check_range_bounds = no
 				add_modifier = {
 					name = segregation_eroding
 					months = 24
@@ -295,9 +301,11 @@ vfm_discrimination_events.2 = {
 						law = law_type:law_multicultural
 					    value < neutral
 					}
-					is_marginal = no
+					ig_counts_as_marginal = no
 				}
 				order_by = ig_clout
+				position = 0
+				check_range_bounds = no
 				add_modifier = {
 					name = segregation_eroding
 					months = 24
@@ -333,8 +341,8 @@ vfm_discrimination_events.3 = {
 		any_scope_state = {
 			any_scope_culture = {
 				prev = {
-					state_cultural_acceptance = {  
-						target = prev
+					state_average_culture_pop_acceptance = {
+						culture = prev
 						value < acceptance_status_4 
 					}
 				}
@@ -353,8 +361,8 @@ vfm_discrimination_events.3 = {
 			limit = {
 				any_scope_culture = {
 					PREV = {
-						state_cultural_acceptance = {  
-							target = PREV
+						state_average_culture_pop_acceptance = {
+							culture = PREV
 							value < acceptance_status_4 
 						}
 					}
@@ -369,8 +377,8 @@ vfm_discrimination_events.3 = {
 			random_scope_pop = {
 				limit = { 
 					PREV = {
-						state_cultural_acceptance = {  
-							target = PREV.culture
+						state_average_culture_pop_acceptance = {
+							culture = PREV.culture
 							value < acceptance_status_4 
 						}
 					}
@@ -432,6 +440,8 @@ vfm_discrimination_events.3 = {
 					is_in_government = yes
 				}
 				order_by = ig_clout
+				position = 0
+				check_range_bounds = no
 				add_modifier = {
 					name = segregation_eroding
 					months = 24
@@ -445,9 +455,11 @@ vfm_discrimination_events.3 = {
 						law = law_type:law_national_supremacy
 					    value > neutral
 					}
-					is_marginal = no
+					ig_counts_as_marginal = no
 				}
 				order_by = ig_clout
+				position = 0
+				check_range_bounds = no
 				add_modifier = {
 					name = segregation_eroding
 					months = 24
@@ -484,8 +496,8 @@ vfm_discrimination_events.4 = {
 		    is_incorporated = yes
 			any_scope_culture = {
 				prev = {
-					state_cultural_acceptance = {  
-						target = prev
+					state_average_culture_pop_acceptance = {
+						culture = prev
 						value < acceptance_status_4 
 					}
 				}
@@ -505,8 +517,8 @@ vfm_discrimination_events.4 = {
 			    is_incorporated = yes
 				any_scope_culture = {
 					PREV = {
-						state_cultural_acceptance = {  
-							target = PREV
+						state_average_culture_pop_acceptance = {
+							culture = PREV
 							value < acceptance_status_4 
 						}
 					}
@@ -521,8 +533,8 @@ vfm_discrimination_events.4 = {
 			random_scope_pop = {
 				limit = { 
 					PREV = {
-						state_cultural_acceptance = {  
-							target = PREV.culture
+						state_average_culture_pop_acceptance = {
+							culture = PREV.culture
 							value < acceptance_status_4 
 						}
 					}
@@ -584,6 +596,8 @@ vfm_discrimination_events.4 = {
 					is_in_government = yes
 				}
 				order_by = ig_clout
+				position = 0
+				check_range_bounds = no
 				add_modifier = {
 					name = segregation_eroding
 					months = 24
@@ -597,9 +611,11 @@ vfm_discrimination_events.4 = {
 						law = law_type:law_multicultural
 					    value < neutral
 					}
-					is_marginal = no
+					ig_counts_as_marginal = no
 				}
 				order_by = ig_clout
+				position = 0
+				check_range_bounds = no
 				add_modifier = {
 					name = segregation_eroding
 					months = 24

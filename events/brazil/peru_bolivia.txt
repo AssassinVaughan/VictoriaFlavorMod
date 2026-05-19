@@ -79,7 +79,7 @@ peru_bolivia_events.1 = {
 					is_subject_of = c:BOL
 				}
 			}
-			annex = c:NPU
+			annex_with_incorporation = c:NPU
 		}
 		if = {
 			limit = {
@@ -87,7 +87,7 @@ peru_bolivia_events.1 = {
 					is_subject_of = c:BOL
 				}
 			}
-			annex = c:SPU
+			annex_with_incorporation = c:SPU
 		}
 		if = {
 			limit = {
@@ -95,7 +95,7 @@ peru_bolivia_events.1 = {
 					is_subject_of = c:BOL
 				}
 			}
-			annex = c:IQU
+			annex_with_incorporation = c:IQU
 		}
 		if = {
 			limit = {
@@ -103,7 +103,7 @@ peru_bolivia_events.1 = {
 					is_subject_of = c:BOL
 				}
 			}
-			annex = c:PEU
+			annex_with_incorporation = c:PEU
 		}
 		if = {
 			limit = {
@@ -122,7 +122,7 @@ peru_bolivia_events.1 = {
 				NOT = {
 					THIS = ROOT
 				}
-				has_interest_marker_in_region = region_andes
+				has_interest_marker_in_region =  sr:region_andes
 			}
 			post_notification = pbc_peru_bolivia_success
 		}
@@ -165,11 +165,6 @@ peru_bolivia_events.2 = { #"peru_bolivia_events.2" doesn't fire in VFM and it's 
 			on_created = {
 				place_character_in_void = 6
 			}
-		}
-		random_character_in_void = {
-			limit = {
-				has_template = PEU_Felipe_Salaverry
-			}
 			save_scope_as = salaverry_scope
 		}
 	}
@@ -208,9 +203,6 @@ peru_bolivia_events.2 = { #"peru_bolivia_events.2" doesn't fire in VFM and it's 
 		name = peru_bolivia_events.2.b
 		hidden_effect = {
 			scope:salaverry_scope = {
-				remove_character_role = politician
-				add_character_role = general
-				free_character_from_void = yes
 				exile_character_with_martyrdom = yes
 			}
 		}
@@ -278,7 +270,7 @@ peru_bolivia_events.3 = {
 				limit = {
 					exists = c:NPU
 				}
-				annex = c:NPU
+				annex_with_incorporation = c:NPU
 			}
 			if = {
 				limit = {
@@ -286,7 +278,7 @@ peru_bolivia_events.3 = {
 				}
 				annex = c:IQU
 			}
-			change_tag = PEU
+			change_tag_with_incorporation = PEU
 		}
 		if = {
 			limit = {
@@ -296,13 +288,13 @@ peru_bolivia_events.3 = {
 				limit = {
 					exists = c:SPU
 				}
-				annex = c:SPU
+				annex_with_incorporation = c:SPU
 			}
 			if = {
 				limit = {
 					exists = c:IQU
 				}
-				annex = c:IQU
+				annex_with_incorporation = c:IQU
 			}
 			change_tag = PEU
 		}
@@ -316,7 +308,7 @@ peru_bolivia_events.3 = {
 					exists = c:SPU
 				}
 				c:NPU = {
-					annex = c:SPU
+					annex_with_incorporation = c:SPU
 					change_tag = PEU
 				}
 			}
@@ -331,7 +323,7 @@ peru_bolivia_events.3 = {
 					exists = c:SPU
 				}
 				c:NPU = {
-					annex = c:SPU
+					annex_with_incorporation = c:SPU
 				}
 			}
 			if = {
@@ -339,7 +331,7 @@ peru_bolivia_events.3 = {
 					exists = c:IQU
 				}
 				c:NPU = {
-					annex = c:IQU
+					annex_with_incorporation = c:IQU
 				}
 			}
 			c:NPU = {
@@ -369,7 +361,7 @@ peru_bolivia_events.3 = {
 				NOT = {
 					THIS = ROOT
 				}
-				has_interest_marker_in_region = region_andes
+				has_interest_marker_in_region = sr:region_andes
 			}
 			post_notification = pbc_peru_bolivia_collapse
 		}
@@ -392,13 +384,13 @@ peru_bolivia_events.3 = {
 				limit = {
 					exists = c:NPU
 				}
-				annex = c:NPU
+				annex_with_incorporation = c:NPU
 			}
 			if = {
 				limit = {
 					exists = c:IQU
 				}
-				annex = c:IQU
+				annex_with_incorporation = c:IQU
 			}
 			change_tag = PEU
 		}
@@ -410,13 +402,13 @@ peru_bolivia_events.3 = {
 				limit = {
 					exists = c:SPU
 				}
-				annex = c:SPU
+				annex_with_incorporation = c:SPU
 			}
 			if = {
 				limit = {
 					exists = c:IQU
 				}
-				annex = c:IQU
+				annex_with_incorporation = c:IQU
 			}
 			change_tag = PEU
 		}
@@ -430,7 +422,7 @@ peru_bolivia_events.3 = {
 					exists = c:SPU
 				}
 				c:NPU = {
-					annex = c:SPU
+					annex_with_incorporation = c:SPU
 					change_tag = PEU
 				}
 			}
@@ -445,7 +437,7 @@ peru_bolivia_events.3 = {
 					exists = c:SPU
 				}
 				c:NPU = {
-					annex = c:SPU
+					annex_with_incorporation = c:SPU
 				}
 			}
 			if = {
@@ -453,7 +445,7 @@ peru_bolivia_events.3 = {
 					exists = c:IQU
 				}
 				c:NPU = {
-					annex = c:IQU
+					annex_with_incorporation = c:IQU
 				}
 			}
 			c:NPU = {
@@ -465,7 +457,7 @@ peru_bolivia_events.3 = {
 				NOT = {
 					THIS = ROOT
 				}
-				has_interest_marker_in_region = region_andes
+				has_interest_marker_in_region = sr:region_andes
 			}
 			post_notification = pbc_peru_bolivia_collapse
 		}
@@ -941,7 +933,7 @@ peru_bolivia_events.8 = {
 				limit = {
 					this = c:NPU
 				}
-				every_state = {
+				every_state_in_peru = {
 					limit = {
 						OR = {
 							owner = c:SPU
@@ -958,7 +950,7 @@ peru_bolivia_events.8 = {
 				limit = {
 					this = c:SPU
 				}
-				every_state = {
+				every_state_in_peru = {
 					limit = {
 						OR = {
 							owner = c:NPU
@@ -993,7 +985,7 @@ peru_bolivia_events.8 = {
 				limit = {
 					this = c:NPU
 				}
-				every_state = {
+				every_state_in_peru = {
 					limit = {
 						OR = {
 							owner = c:SPU
@@ -1010,7 +1002,7 @@ peru_bolivia_events.8 = {
 				limit = {
 					this = c:SPU
 				}
-				every_state = {
+				every_state_in_peru = {
 					limit = {
 						OR = {
 							owner = c:NPU

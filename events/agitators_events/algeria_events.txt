@@ -39,9 +39,10 @@ algeria_events.1 = {
 			type = je_french_foreign_legion
 		}
 		random_scope_character = {
-			limit = { 
-				has_role = general
-				is_ruler = no
+			limit = {
+				has_role_of_type = general
+				is_ruler_of_own_country = no
+				character_is_valid_for_events = yes
 			}
 			save_scope_as = algerian_parade_general_scope
 		}
@@ -222,8 +223,8 @@ algeria_events.2 = {
 	trigger = {
 		has_variable = algeria_je_success
 		NOR = {
-			has_law = law_type:law_ethnostate
-			has_law = law_type:law_national_supremacy
+			has_law_or_variant = law_type:law_ethnostate
+			has_law_or_variant = law_type:law_national_supremacy
 		}
 		any_scope_state = {
 			OR = {
@@ -649,9 +650,10 @@ algeria_events.5 = {
 			}
 		}
 		any_scope_character = {
-			has_role = general
-			is_ruler = no
-			is_heir = no
+			has_role_of_type = general
+			is_ruler_of_own_country = no
+			character_is_valid_for_events = yes
+			is_heir_of_own_country = no
 		}
 	}
 
@@ -691,10 +693,11 @@ algeria_events.5 = {
 			}
 		}
 		random_scope_character = {
-			limit = { 
-				has_role = general
-				is_ruler = no
-				is_heir = no
+			limit = {
+				has_role_of_type = general
+				is_ruler_of_own_country = no
+				character_is_valid_for_events = yes
+				is_heir_of_own_country = no
 			}
 			save_scope_as = algerian_raid_general_scope
 		}
@@ -731,10 +734,10 @@ algeria_events.5 = {
 			random_list = {
 				50 = {
 					scope:algerian_raid_general_scope = {
-						kill_character = yes
+						retire_character = yes
 					}
 				}
-				50 = { 
+				50 = {
 				}
 			}
 		}
@@ -771,11 +774,12 @@ algeria_events.6 = {
 	trigger = {
 		# JE single fire pulse event
 		NOT = { has_variable = arab_bureaux_var }
-		NOT = { has_law = law_type:law_no_colonial_affairs }
+		NOT = { has_law_or_variant = law_type:law_no_colonial_affairs }
 		any_scope_character = {
-			has_role = general
-			is_ruler = no
-			is_heir = no
+			has_role_of_type = general
+			is_ruler_of_own_country = no
+			character_is_valid_for_events = yes
+			is_heir_of_own_country = no
 			NOT = { has_trait = bigoted }
 		}
 		any_scope_state = {
@@ -786,10 +790,11 @@ algeria_events.6 = {
 
 	immediate = {
 		random_scope_character = {
-			limit = { 
-				has_role = general
-				is_ruler = no
-				is_heir = no
+			limit = {
+				has_role_of_type = general
+				is_ruler_of_own_country = no
+				character_is_valid_for_events = yes
+				is_heir_of_own_country = no
 				NOT = { has_trait = bigoted }
 			}
 			save_scope_as = arab_bureaux_general_scope
@@ -928,7 +933,7 @@ algeria_events.8 = {
 			culture = cu:turkish
 		}
 		add_modifier = {
-			name = barbary_pirates_modifier	
+			name = barbary_pirates_modifier
 			days = very_long_modifier_time
 		}
 		s:STATE_EAST_SAHARA = {
@@ -948,7 +953,7 @@ algeria_events.8 = {
 				has_variable = algeria_constantine_var
 				has_law = law_type:law_monarchy
 				exists = c:TUR
-				c:TUR = { 
+				c:TUR ?= {
 					has_law = law_type:law_monarchy
 				}
 			}
@@ -978,7 +983,7 @@ algeria_events.8 = {
 			}
 		}
 		add_modifier = {
-			name = barbary_pirates_modifier	
+			name = barbary_pirates_modifier
 			days = very_long_modifier_time
 		}
 		add_loyalists = {
@@ -1003,9 +1008,9 @@ algeria_events.8 = {
 			}
 		}
 		set_variable = algeria_maghreb_restored
-		if = { 
+		if = {
 			limit = {
-				NOT = { 
+				NOT = {
 					has_law = law_type:law_theocracy
 				}
 			}
@@ -1076,7 +1081,7 @@ algeria_events.8 = {
 		name = algeria_events.8.g
 		ruler = {
 			add_modifier = {
-				name = modern_jugurtha	
+				name = modern_jugurtha
 				days = long_modifier_time
 			}
 		}
@@ -1124,7 +1129,7 @@ algeria_events.9 = {
 	immediate = {
 		random_scope_state = {
 			limit = {
-				state_is_in_africa = yes
+				region = sr:region_north_africa
 				any_scope_building = {
 				 	is_building_type = building_barrack
 					level >= 10
@@ -1190,7 +1195,7 @@ algeria_events.9 = {
 		}
 		every_scope_state = {
 			limit = {
-				state_is_in_africa = yes
+				region = sr:region_north_africa
 				any_scope_building = {
 				 	is_building_type = building_barrack
 					level >= 10

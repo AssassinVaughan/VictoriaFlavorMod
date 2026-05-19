@@ -1874,6 +1874,19 @@ ai_strategy_default = {
 					add = 50
 				}
 
+				if = {
+					limit = {
+						scope:target_state = {
+							any_scope_strait = {
+								exists = this
+							}
+						}
+					}
+					add = {
+						value = 200
+					}
+				}
+
 				if = { # Very reluctant to cede incorporated states
 					limit = {
 						scope:target_state = {
@@ -2163,16 +2176,6 @@ ai_strategy_default = {
 				}
 				add = 75
 			}
-
-			if = { #Russian Central Asia
-				limit = {
-					has_journal_entry = je_conquest_of_central_asia
-					scope:target_state = {
-						region = sr:region_central_asia
-					}
-				}
-				add = 50
-			}
 			
 			if = {
 				limit = {
@@ -2269,6 +2272,17 @@ ai_strategy_default = {
 					}
 				}
 				add = 75
+			}
+
+			if = { # Japan wants to consolidate herself
+				limit = {
+					c:JAP ?= this
+					NOT = { has_law_or_variant = law_type:law_serfdom }
+					scope:target_state ?= {
+						is_in_geographic_region = geographic_region_japan
+					}
+				}
+				add = 25
 			}
 
 			if = {
@@ -5008,6 +5022,12 @@ ai_strategy_default = {
 			min = 1
 			max = 1.3
 		}
+		
+		# Multiply final value by diplomatic pact expenses ratio - countries paying a lot to pacts have lower spending ambitions
+		multiply = {
+			value = 1
+			subtract = diplomatic_pact_expense_ratio
+		}
 
 		max = 800
 	}
@@ -5447,6 +5467,97 @@ ai_strategy_default = {
 	# Using this value in other strategies will function additively
 	wanted_navy_size = {
 		value = wanted_navy_size_script_value # moved to script_values so this can be called outside of AI
+	}
+	
+	# How many supply ships should the AI want to have
+	# Using this value in other strategies will function additively
+	wanted_num_supply_ships = {
+		value = wanted_navy_size_script_value
+		multiply = 20 # Straight multiplier on navy size
+	}
+
+	# How much ship construction does the AI want (as a multiplier on the maintenance that would be required to upkeep their desired navy)
+	# Using this value in other strategies will function additively
+	ship_construction_output_multiplier = {
+		value = 10
+	}
+
+	# Set the weights for ship groups, this determines the ratio that the AI aims to have of each, and thus what ship classes it adds to fleets
+	# Using this value in other strategies will function additively
+	# root = country
+	ship_group_weights = {
+		ship_group_capital_ships = {
+			value = 30
+
+			if = {
+				limit = { has_law_or_variant = law_type:law_professional_navy }
+				add = 10
+			}			
+			else_if = {
+				limit = { has_law_or_variant = law_type:law_merchant_navy }
+				subtract = 15
+			}
+			else_if = {
+				limit = { has_law_or_variant = law_type:law_jeune_ecole }
+				subtract = 10
+			}			
+		}
+		ship_group_cruisers = {
+			value = 60
+			if = {
+				limit = { has_technology_researched = self_propelled_torpedoes }
+				subtract = 20
+			}
+
+			if = {
+				limit = { has_law_or_variant = law_type:law_professional_navy }
+				subtract = 10
+			}			
+			else_if = {
+				limit = { has_law_or_variant = law_type:law_merchant_navy }
+				add = 15
+			}
+			else_if = {
+				limit = { has_law_or_variant = law_type:law_jeune_ecole }
+				add = 10
+			}			
+		}
+		ship_group_torpedo_craft = {
+			value = 0
+			if = {
+				limit = { has_technology_researched = self_propelled_torpedoes }
+				add = 30
+			}
+			
+			if = {
+				limit = { has_law_or_variant = law_type:law_jeune_ecole }
+				add = 20
+			}			
+		}
+	}
+
+	# Maximum total modification levels the AI will use when designing ships
+	# Higher values mean the AI is willing to bear more expensive, complex ship designs
+	# Using this value in other strategies will function additively
+	max_ship_design_complexity = {
+		value = 10
+		add = { # +3 to -3
+			value = country_rank
+			subtract = 4
+		}
+
+		if = {
+			limit = { has_law_or_variant = law_type:law_merchant_navy }
+			subtract = 2
+		}
+		else_if = {
+			limit = { has_law_or_variant = law_type:law_jeune_ecole }
+			subtract = 1
+		}
+		else_if = {
+			limit = { has_law_or_variant = law_type:law_professional_navy }
+			add = 1
+		}
 	}
 	
 	# How many levels of naval fortification should the AI have in a state
@@ -6425,7 +6536,7 @@ ai_strategy_default = {
 					has_journal_entry = je_opium_wars
 					scope:region = sr:region_south_china
 				}
-				add = 1000
+				add = 5000
 			}
 		}
 
@@ -7854,6 +7965,17 @@ ai_strategy_default = {
 
 				if = {
 					limit = {
+						c:JAP ?= this
+						NOT = { has_law_or_variant = law_type:law_serfdom }
+						scope:target_country = {
+							is_in_geographic_region = geographic_region_japan
+						}
+					}
+					add = 25
+				}
+
+				if = {
+					limit = {
 						country_has_primary_culture = cu:russian
 						has_law_or_variant = law_type:law_national_supremacy
 						has_technology_researched = nationalism
@@ -8762,11 +8884,12 @@ ai_strategy_default = {
 			if = {
 				limit = {
 					c:JAP ?= this
+					NOT = { has_law_or_variant = law_type:law_serfdom }
 					scope:target_country ?= {
 						is_in_geographic_region = geographic_region_japan
 					}
 				}
-				add = 50
+				add = 100
 			}
 			
 			if = {
@@ -9118,6 +9241,7 @@ ai_strategy_default = {
 			if = { # Japan wants to consolidate herself
 				limit = {
 					c:JAP ?= this
+					NOT = { has_law_or_variant = law_type:law_serfdom }
 					scope:target_country ?= {
 						is_in_geographic_region = geographic_region_japan
 					}
