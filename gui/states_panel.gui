@@ -426,7 +426,7 @@ types state_panel_types
 					name = "tutorial_highlight_building_tab"
 				}
 
-				# Information
+				# Population
 				blockoverride "third_button" {
 					text = "POPULATION"
 				}
@@ -435,6 +435,7 @@ types state_panel_types
 				}
 				blockoverride "third_button_click" {
 					onclick = "[InformationPanel.SelectTab('population')]"
+					onclick = "[GetVariableSystem.Set('population_subtab', 'statistics')]"
 				}
 				blockoverride "third_button_visibility" {
 					visible = "[InformationPanel.IsTabSelected('population')]"
@@ -2194,539 +2195,669 @@ types state_panel_types
 		margin_top = 10
 		spacing = 10
 
-		flowcontainer = {
+		### Subtabs
+		widget = {
 			parentanchor = hcenter
-			minimumsize = { @panel_width_minus_10 -1 }
-			direction = vertical
-			spacing = 10
+			size = { @panel_width 40 }
 
-			### POPULATION BUTTON
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+
+				### Statistics subtab
+				widget = {
+					size = { 170 40 }
+
+					background = {
+						visible = "[GetVariableSystem.HasValue('population_subtab', 'statistics')]"
+						using = paper_bg
+					}
+
+					button = {
+						visible = "[Not(GetVariableSystem.HasValue('population_subtab', 'statistics'))]"
+						size = { 100% 100% }
+						using = default_button
+						onclick = "[GetVariableSystem.Set('population_subtab', 'statistics')]"
+					}
+
+					textbox = {
+						size = { 95% 100% }
+						using = elide_fontsize_min
+						align = hcenter|nobaseline
+						text = "STATISTICS"
+					}
+
+					icon = {
+						visible = "[GetVariableSystem.HasValue('population_subtab', 'statistics')]"
+						using = highlighted_square_selection
+					}
+				}
+
+				### Pop List subtab
+				widget = {
+					size = { 170 40 }
+
+					background = {
+						visible = "[GetVariableSystem.HasValue('population_subtab', 'pop_list')]"
+						using = paper_bg
+					}
+
+					button = {
+						visible = "[Not(GetVariableSystem.HasValue('population_subtab', 'pop_list'))]"
+						size = { 100% 100% }
+						using = default_button
+						onclick = "[GetVariableSystem.Set('population_subtab', 'pop_list')]"
+					}
+
+					textbox = {
+						size = { 95% 100% }
+						using = elide_fontsize_min
+						align = hcenter|nobaseline
+						text = "concept_pops"
+					}
+
+					icon = {
+						visible = "[GetVariableSystem.HasValue('population_subtab', 'pop_list')]"
+						using = highlighted_square_selection
+					}
+				}
+
+				### Characters subtab
+				widget = {
+					size = { 170 40 }
+
+					background = {
+						visible = "[GetVariableSystem.HasValue('population_subtab', 'characters')]"
+						using = paper_bg
+					}
+
+					button = {
+						visible = "[Not(GetVariableSystem.HasValue('population_subtab', 'characters'))]"
+						size = { 100% 100% }
+						using = default_button
+						onclick = "[GetVariableSystem.Set('population_subtab', 'characters')]"
+					}
+
+					textbox = {
+						size = { 95% 100% }
+						using = elide_fontsize_min
+						align = hcenter|nobaseline
+						text = "concept_characters"
+					}
+
+					icon = {
+						visible = "[GetVariableSystem.HasValue('population_subtab', 'characters')]"
+						using = highlighted_square_selection
+					}
+				}
+			}
+		}
+
+		flowcontainer = {
+			visible = "[GetVariableSystem.HasValue('population_subtab', 'statistics')]"
+			parentanchor = hcenter
+			direction = vertical
+
 			flowcontainer = {
 				parentanchor = hcenter
+				minimumsize = { @panel_width_minus_10 -1 }
 				direction = vertical
-				name = "tutorial_highlight_state_population"
-				spacing = 5
+				spacing = 10
 
-				widget = {
-					size = { @panel_width 50 }
-					tooltip = "TOOLTIP_STATE_POPULATION"
-					onmousehierarchyenter = "[SetTempMapModeByKey('mm_population')]"
-					onmousehierarchyleave = "[RemoveTempMapMode]"
-					alwaystransparent = no
+				### POPULATION BUTTON
+				flowcontainer = {
+					parentanchor = hcenter
+					direction = vertical
+					name = "tutorial_highlight_state_population"
+					spacing = 5
 
-					background = {
-						using = entry_bg_simple
-					}
-
-					hbox = {
-						margin = { 15 0 }
-						spacing = 10
-
-						icon = {
-							texture = "gfx/interface/icons/generic_icons/population.dds"
-							size = { 40 40 }
-						}
-
-						textbox = {
-							layoutpolicy_horizontal = expanding
-							layoutpolicy_vertical = expanding
-							text = "[State.GetPopulationSize|Kv] [GetArrowIcon_int64( State.GetPopTotalChange )]"
-							using = fontsize_xl
-							align = left|nobaseline
-						}
-
-						textbox = {
-							layoutpolicy_horizontal = expanding
-							layoutpolicy_vertical = expanding
-							text = "STATE_POP_GROWTH"
-							align = right|nobaseline
-						}
-					}
-				}
-
-				widget = {
-					tooltip = "TOOLTIP_STATE_MIGRATION"
-					size = { @panel_width 40 }
-					onmousehierarchyenter = "[SetTempMapModeByKey('mm_migration')]"
-					onmousehierarchyleave = "[RemoveTempMapMode]"
-					alwaystransparent = no
-
-					background = {
-						using = entry_bg_simple
-					}
-
-
-					hbox = {
-						margin = { 15 0 }
-						spacing = 10
-
-						icon = {
-							size = { 30 30 }
-							texture = "gfx/interface/main_hud/lens_map_info.dds"
-						}
-
-						textbox = {
-							layoutpolicy_horizontal = expanding
-							layoutpolicy_vertical = expanding
-							alpha = "[TransparentIfZero_int64(State.GetWeeklyPopNetMigration)]"
-							text = "STATE_MIGRATION_VALUE"
-							align = left|nobaseline
-						}
-
-						textbox = {
-							visible = "[NotEqualTo_CFixedPoint(State.GetMigrationPull,'(CFixedPoint)0')]"
-							layoutpolicy_horizontal = expanding
-							layoutpolicy_vertical = expanding
-							text = "STATE_MIGRATION_ATTRACTION"
-							align = right|nobaseline
-						}
-					}
-				}
-			}
-
-			textbox = {
-				text = "HEADER_CULTURAL_COMMUNITIES"
-				autoresize = yes
-				align = left|nobaseline
-				parentanchor = hcenter
-				widgetanchor = center
-			}
-
-			dynamicgridbox = {
-				parentanchor = hcenter
-				datamodel = "[State.GetCulturalCommunities]"
-				datamodel_wrap = 3
-				flipdirection = yes
-				item = {
 					widget = {
-						size = { 180 40 }
-						widget = {
-							parentanchor = center
-						  	size = { 170 35 }
-						 	background = {
-								using = entry_bg_simple
-						  	}
-						  	textbox = {
-								parentanchor = left|vcenter
-								autoresize = yes
-							  	align = nobaseline
-							  	max_width = 165
-							  	fontsize_min = 14
-							  	elide = right
-							 	text = "[CulturalCommunity.GetCulture.GetNameNoFormatting|v]"
-							 	position = { 10 0 }
-						  	}
+						size = { @panel_width 50 }
+						tooltip = "TOOLTIP_STATE_POPULATION"
+						onmousehierarchyenter = "[SetTempMapModeByKey('mm_population')]"
+						onmousehierarchyleave = "[RemoveTempMapMode]"
+						alwaystransparent = no
 
-						  	textbox = {
-						  		visible = "[NotZero_CFixedPoint(CulturalCommunity.GetLocalAcceptanceDifference)]"
-								parentanchor = right|vcenter
-								autoresize = yes
-							  	align = nobaseline
-							  	text = "[CulturalCommunity.GetLocalAcceptanceDifference|+=0]"
-							  	position = { -10 0 }
-						  	}
-
-						  	tooltipwidget = {
-						 		FancyTooltip_CulturalCommunity = {}
-						  	}
-					   	}
-					}
-				}
-			}
-
-			container = {
-				parentanchor = hcenter
-
-				top_illu = {
-					parentanchor = top|hcenter
-					size = { @panel_width 200}
-					blockoverride "illu" {
-					texture = "gfx/interface/illustrations/top_illus/top_illu_population.dds"
-					alpha = 0.6
-					}
-					### STANDARD OF LIVING
-					flowcontainer = {
-						name = "tutorial_highlight_state_population_stratas"
-						direction = vertical
-						parentanchor = vcenter
-						margin_left = 15
-
-						### AVERAGE SOL
-						container = {
-							minimumsize = { 315 -1 }
-							tooltip = "NUM_SOL"
-							onmousehierarchyenter = "[SetTempMapModeByKey('mm_standard_of_living')]"
-							onmousehierarchyleave = "[RemoveTempMapMode]"
-							alwaystransparent = no
-
-							textbox = {
-								text = "[concept_sol]"
-								autoresize = yes
-								maximumsize = { 250 -1 }
-								align = left|nobaseline
-								parentanchor = vcenter
-								default_format = "#title"
-								elide = right
-							}
-
-							textbox = {
-								raw_text = "[State.GetFormattedStandardOfLivingLabelAll|v] ([State.GetFormattedStandardOfLivingAll|v])"
-								autoresize = yes
-								align = right|nobaseline
-								parentanchor = right|vcenter
-							}
-						}
-
-						widget = { size = { 1 5 }}
-
-						divider_clean = {}
-
-						widget = { size = { 1 5 }}
-
-
-						### POOR
-						flowcontainer = {
-							tooltip = "AVG_STANDARD_OF_LIVING_POOR"
-
-							widget = { size = { 5 5 }}
-
-							textbox = {
-								text = "[LabelingHelper.GetIconForStandardOfLivingCFixedPoint(State.GetAverageStandardOfLivingPoor)|v]"
-								autoresize = yes
-								align = left
-								fontsize = 20
-							}
-
-							widget = {
-								size = { 284 26 }
-								scissor = yes
-								parentanchor = vcenter
-
-								icon = {
-									size = {23 23 }
-									position =  { -36 3 }
-									parentanchor = right
-									texture = "gfx/interface/icons/pops_icons/sol_poor_icon.dds"
-								}
-
-								textbox = {
-									text = "SOL_LOWER"
-									autoresize = yes
-									margin_left = 5
-									align = left|nobaseline
-									parentanchor = vcenter
-									minimumsize = { 150 -1 }
-									maximumsize = { 150 -1 }
-								}
-
-								textbox = {
-									raw_text = "#V [State.GetFormattedStandardOfLivingPoor|1]#!"
-									autoresize = yes
-									align = right|nobaseline
-									parentanchor = right|vcenter
-									widgetanchor = right|vcenter
-								}
-							}
-						}
-
-						### MIDDLE
-						flowcontainer = {
-							tooltip = "AVG_STANDARD_OF_LIVING_MIDDLE"
-
-							widget = { size = { 5 5 }}
-
-							textbox = {
-								text = "[LabelingHelper.GetIconForStandardOfLivingCFixedPoint(State.GetAverageStandardOfLivingMiddle)|v]"
-								autoresize = yes
-								align = left
-								fontsize = 20
-							}
-
-							widget = {
-								size = { 284 26  }
-								scissor = yes
-								parentanchor = left|vcenter
-
-								icon = {
-									size = { 23 23 }
-									position =  { -36 3 }
-									parentanchor = right
-									texture = "gfx/interface/icons/pops_icons/sol_middle_icon.dds"
-								}
-
-								textbox = {
-									text = "SOL_MIDDLE"
-									autoresize = yes
-									margin_left = 5
-									align = left|nobaseline
-									parentanchor = left|vcenter
-									widgetanchor = left|vcenter
-									minimumsize = { 150 -1 }
-									maximumsize = { 150 -1 }
-								}
-
-								textbox = {
-									raw_text = "#V [State.GetFormattedStandardOfLivingMiddle|1]#!"
-									autoresize = yes
-									align = right|nobaseline
-									parentanchor = right|vcenter
-									widgetanchor = right|vcenter
-								}
-							}
-						}
-
-						### RICH
-						flowcontainer = {
-							tooltip = "AVG_STANDARD_OF_LIVING_RICH"
-
-							widget = { size = { 5 5 }}
-
-							textbox = {
-								text = "[LabelingHelper.GetIconForStandardOfLivingCFixedPoint(State.GetAverageStandardOfLivingRich)|v]"
-								autoresize = yes
-								align = left
-								fontsize = 20
-							}
-
-							widget = {
-								size = { 284 26 }
-								scissor = yes
-								parentanchor = left|vcenter
-
-								icon = {
-									size = { 23 23 }
-									position =  { -36 3 }
-									parentanchor = right
-									texture = "gfx/interface/icons/pops_icons/sol_upper_icon.dds"
-								}
-
-								textbox = {
-									text = "SOL_UPPER"
-									autoresize = yes
-									margin_left = 5
-									align = left|nobaseline
-									parentanchor = vcenter
-									minimumsize = { 150 -1 }
-									maximumsize = { 150 -1 }
-								}
-
-								textbox = {
-									raw_text = "#V [State.GetFormattedStandardOfLivingRich|1]#!"
-									autoresize = yes
-									align = right|nobaseline
-									parentanchor = right|vcenter
-									widgetanchor = right|vcenter
-								}
-							}
-						}
-					}
-
-					### WORKFORCE
-					flowcontainer = {
-						direction = vertical
-						parentanchor = vcenter|right
-						margin = { 10 10 }
-						tooltip = "STATE_AVAILABLE_LABOR_TOOLTIP"
-						minimumsize = { 150 -1 }
-						spacing = 10
 						background = {
-							using = entry_bg
-							margin_right = -10
+							using = entry_bg_simple
 						}
 
+						hbox = {
+							margin = { 15 0 }
+							spacing = 10
+
+							icon = {
+								texture = "gfx/interface/icons/generic_icons/population.dds"
+								size = { 40 40 }
+							}
+
+							textbox = {
+								layoutpolicy_horizontal = expanding
+								layoutpolicy_vertical = expanding
+								text = "[State.GetPopulationSize|Kv] [GetArrowIcon_int64( State.GetPopTotalChange )]"
+								using = fontsize_xl
+								align = left|nobaseline
+							}
+
+							textbox = {
+								layoutpolicy_horizontal = expanding
+								layoutpolicy_vertical = expanding
+								text = "STATE_POP_GROWTH"
+								align = right|nobaseline
+							}
+						}
+					}
+
+					widget = {
+						tooltip = "TOOLTIP_STATE_MIGRATION"
+						size = { @panel_width 40 }
+						onmousehierarchyenter = "[SetTempMapModeByKey('mm_migration')]"
+						onmousehierarchyleave = "[RemoveTempMapMode]"
+						alwaystransparent = no
+
+						background = {
+							using = entry_bg_simple
+						}
+
+
+						hbox = {
+							margin = { 15 0 }
+							spacing = 10
+
+							icon = {
+								size = { 30 30 }
+								texture = "gfx/interface/main_hud/lens_map_info.dds"
+							}
+
+							textbox = {
+								layoutpolicy_horizontal = expanding
+								layoutpolicy_vertical = expanding
+								alpha = "[TransparentIfZero_int64(State.GetWeeklyPopNetMigration)]"
+								text = "STATE_MIGRATION_VALUE"
+								align = left|nobaseline
+							}
+
+							textbox = {
+								visible = "[NotEqualTo_CFixedPoint(State.GetMigrationPull,'(CFixedPoint)0')]"
+								layoutpolicy_horizontal = expanding
+								layoutpolicy_vertical = expanding
+								text = "STATE_MIGRATION_ATTRACTION"
+								align = right|nobaseline
+							}
+						}
+					}
+				}
+
+				textbox = {
+					text = "HEADER_CULTURAL_COMMUNITIES"
+					autoresize = yes
+					align = left|nobaseline
+					parentanchor = hcenter
+					widgetanchor = center
+				}
+
+				dynamicgridbox = {
+					parentanchor = hcenter
+					datamodel = "[State.GetCulturalCommunities]"
+					datamodel_wrap = 3
+					flipdirection = yes
+					item = {
+						widget = {
+							size = { 180 40 }
+							widget = {
+								parentanchor = center
+							  	size = { 170 35 }
+							 	background = {
+									using = entry_bg_simple
+							  	}
+							  	textbox = {
+									parentanchor = left|vcenter
+									autoresize = yes
+								  	align = nobaseline
+								  	max_width = 165
+								  	fontsize_min = 14
+								  	elide = right
+								 	text = "[CulturalCommunity.GetCulture.GetNameNoFormatting|v]"
+								 	position = { 10 0 }
+							  	}
+
+							  	textbox = {
+							  		visible = "[NotZero_CFixedPoint(CulturalCommunity.GetLocalAcceptanceDifference)]"
+									parentanchor = right|vcenter
+									autoresize = yes
+								  	align = nobaseline
+								  	text = "[CulturalCommunity.GetLocalAcceptanceDifference|+=0]"
+								  	position = { -10 0 }
+							  	}
+
+							  	tooltipwidget = {
+							 		FancyTooltip_CulturalCommunity = {}
+							  	}
+						   	}
+						}
+					}
+				}
+
+				container = {
+					parentanchor = hcenter
+
+					top_illu = {
+						parentanchor = top|hcenter
+						size = { @panel_width 200}
+						blockoverride "illu" {
+						texture = "gfx/interface/illustrations/top_illus/top_illu_population.dds"
+						alpha = 0.6
+						}
+						### STANDARD OF LIVING
 						flowcontainer = {
+							name = "tutorial_highlight_state_population_stratas"
 							direction = vertical
-							parentanchor = right
-							textbox = {
-								text = "[GetPopType('peasants').GetName]"
-								autoresize = yes
-								align = right|nobaseline
-								parentanchor = right
-								margin_right = 10
-								elide = right
-								maximumsize = { 150 -1 }
+							parentanchor = vcenter
+							margin_left = 15
+
+							### AVERAGE SOL
+							container = {
+								minimumsize = { 315 -1 }
+								tooltip = "NUM_SOL"
+								onmousehierarchyenter = "[SetTempMapModeByKey('mm_standard_of_living')]"
+								onmousehierarchyleave = "[RemoveTempMapMode]"
+								alwaystransparent = no
+
+								textbox = {
+									text = "[concept_sol]"
+									autoresize = yes
+									maximumsize = { 250 -1 }
+									align = left|nobaseline
+									parentanchor = vcenter
+									default_format = "#title"
+									elide = right
+								}
+
+								textbox = {
+									raw_text = "[State.GetFormattedStandardOfLivingLabelAll|v] ([State.GetFormattedStandardOfLivingAll|v])"
+									autoresize = yes
+									align = right|nobaseline
+									parentanchor = right|vcenter
+								}
 							}
 
-							textbox = {
-								text = "[State.GetNumSubsistenceWorkingAdults|Dv]"
-								visible = "[GreaterThan_int64(State.GetNumSubsistenceWorkingAdults, '(int64)499')]"
-								using = fontsize_large
-								autoresize = yes
-								align = right|nobaseline
-								parentanchor = right
-								margin_right = 10
+							widget = { size = { 1 5 }}
+
+							divider_clean = {}
+
+							widget = { size = { 1 5 }}
+
+
+							### POOR
+							flowcontainer = {
+								tooltip = "AVG_STANDARD_OF_LIVING_POOR"
+
+								widget = { size = { 5 5 }}
+
+								textbox = {
+									text = "[LabelingHelper.GetIconForStandardOfLivingCFixedPoint(State.GetAverageStandardOfLivingPoor)|v]"
+									autoresize = yes
+									align = left
+									fontsize = 20
+								}
+
+								widget = {
+									size = { 284 26 }
+									scissor = yes
+									parentanchor = vcenter
+
+									icon = {
+										size = {23 23 }
+										position =  { -36 3 }
+										parentanchor = right
+										texture = "gfx/interface/icons/pops_icons/sol_poor_icon.dds"
+									}
+
+									textbox = {
+										text = "SOL_LOWER"
+										autoresize = yes
+										margin_left = 5
+										align = left|nobaseline
+										parentanchor = vcenter
+										minimumsize = { 150 -1 }
+										maximumsize = { 150 -1 }
+									}
+
+									textbox = {
+										raw_text = "#V [State.GetFormattedStandardOfLivingPoor|1]#!"
+										autoresize = yes
+										align = right|nobaseline
+										parentanchor = right|vcenter
+										widgetanchor = right|vcenter
+									}
+								}
 							}
 
-							textbox = {
-								text = "INSIGNIFICANT"
-								default_format = "#v"
-								visible = "[Not(GreaterThan_int64(State.GetNumSubsistenceWorkingAdults, '(int64)499'))]"
-								autoresize = yes
-								align = right|nobaseline
-								parentanchor = right
-								margin_right = 10
+							### MIDDLE
+							flowcontainer = {
+								tooltip = "AVG_STANDARD_OF_LIVING_MIDDLE"
+
+								widget = { size = { 5 5 }}
+
+								textbox = {
+									text = "[LabelingHelper.GetIconForStandardOfLivingCFixedPoint(State.GetAverageStandardOfLivingMiddle)|v]"
+									autoresize = yes
+									align = left
+									fontsize = 20
+								}
+
+								widget = {
+									size = { 284 26  }
+									scissor = yes
+									parentanchor = left|vcenter
+
+									icon = {
+										size = { 23 23 }
+										position =  { -36 3 }
+										parentanchor = right
+										texture = "gfx/interface/icons/pops_icons/sol_middle_icon.dds"
+									}
+
+									textbox = {
+										text = "SOL_MIDDLE"
+										autoresize = yes
+										margin_left = 5
+										align = left|nobaseline
+										parentanchor = left|vcenter
+										widgetanchor = left|vcenter
+										minimumsize = { 150 -1 }
+										maximumsize = { 150 -1 }
+									}
+
+									textbox = {
+										raw_text = "#V [State.GetFormattedStandardOfLivingMiddle|1]#!"
+										autoresize = yes
+										align = right|nobaseline
+										parentanchor = right|vcenter
+										widgetanchor = right|vcenter
+									}
+								}
+							}
+
+							### RICH
+							flowcontainer = {
+								tooltip = "AVG_STANDARD_OF_LIVING_RICH"
+
+								widget = { size = { 5 5 }}
+
+								textbox = {
+									text = "[LabelingHelper.GetIconForStandardOfLivingCFixedPoint(State.GetAverageStandardOfLivingRich)|v]"
+									autoresize = yes
+									align = left
+									fontsize = 20
+								}
+
+								widget = {
+									size = { 284 26 }
+									scissor = yes
+									parentanchor = left|vcenter
+
+									icon = {
+										size = { 23 23 }
+										position =  { -36 3 }
+										parentanchor = right
+										texture = "gfx/interface/icons/pops_icons/sol_upper_icon.dds"
+									}
+
+									textbox = {
+										text = "SOL_UPPER"
+										autoresize = yes
+										margin_left = 5
+										align = left|nobaseline
+										parentanchor = vcenter
+										minimumsize = { 150 -1 }
+										maximumsize = { 150 -1 }
+									}
+
+									textbox = {
+										raw_text = "#V [State.GetFormattedStandardOfLivingRich|1]#!"
+										autoresize = yes
+										align = right|nobaseline
+										parentanchor = right|vcenter
+										widgetanchor = right|vcenter
+									}
+								}
 							}
 						}
 
+						### WORKFORCE
 						flowcontainer = {
 							direction = vertical
-							parentanchor = right
-							textbox = {
-								text = "[concept_unemployed]"
-								autoresize = yes
-								align = right|nobaseline
-								parentanchor = right
-								elide = right
-								margin_right = 10
-								maximumsize = { 150 -1 }
+							parentanchor = vcenter|right
+							margin = { 10 10 }
+							tooltip = "STATE_AVAILABLE_LABOR_TOOLTIP"
+							minimumsize = { 150 -1 }
+							spacing = 10
+							background = {
+								using = entry_bg
+								margin_right = -10
 							}
 
-							textbox = {
-								raw_text = "#variable [State.GetNumUnemployedWorkingAdults|D]#!"
-								visible = "[GreaterThan_int64(State.GetNumUnemployedWorkingAdults, '(int64)499')]"
-								using = fontsize_large
-								autoresize = yes
-								align = right|nobaseline
+							flowcontainer = {
+								direction = vertical
 								parentanchor = right
-								margin_right = 10
+								textbox = {
+									text = "[GetPopType('peasants').GetName]"
+									autoresize = yes
+									align = right|nobaseline
+									parentanchor = right
+									margin_right = 10
+									elide = right
+									maximumsize = { 150 -1 }
+								}
+
+								textbox = {
+									text = "[State.GetNumSubsistenceWorkingAdults|Dv]"
+									visible = "[GreaterThan_int64(State.GetNumSubsistenceWorkingAdults, '(int64)499')]"
+									using = fontsize_large
+									autoresize = yes
+									align = right|nobaseline
+									parentanchor = right
+									margin_right = 10
+								}
+
+								textbox = {
+									text = "INSIGNIFICANT"
+									default_format = "#v"
+									visible = "[Not(GreaterThan_int64(State.GetNumSubsistenceWorkingAdults, '(int64)499'))]"
+									autoresize = yes
+									align = right|nobaseline
+									parentanchor = right
+									margin_right = 10
+								}
 							}
 
-							textbox = {
-								text = "INSIGNIFICANT"
-								visible = "[Not(GreaterThan_int64(State.GetNumUnemployedWorkingAdults, '(int64)499'))]"
-								default_format = "#v"
-								autoresize = yes
-								align = right|nobaseline
+							flowcontainer = {
+								direction = vertical
 								parentanchor = right
-								margin_right = 10
+								textbox = {
+									text = "[concept_unemployed]"
+									autoresize = yes
+									align = right|nobaseline
+									parentanchor = right
+									elide = right
+									margin_right = 10
+									maximumsize = { 150 -1 }
+								}
+
+								textbox = {
+									raw_text = "#variable [State.GetNumUnemployedWorkingAdults|D]#!"
+									visible = "[GreaterThan_int64(State.GetNumUnemployedWorkingAdults, '(int64)499')]"
+									using = fontsize_large
+									autoresize = yes
+									align = right|nobaseline
+									parentanchor = right
+									margin_right = 10
+								}
+
+								textbox = {
+									text = "INSIGNIFICANT"
+									visible = "[Not(GreaterThan_int64(State.GetNumUnemployedWorkingAdults, '(int64)499'))]"
+									default_format = "#v"
+									autoresize = yes
+									align = right|nobaseline
+									parentanchor = right
+									margin_right = 10
+								}
 							}
 						}
 					}
 				}
 			}
-		}
 
-		default_header_2texts = {
-			parentanchor = hcenter
-			blockoverride "text1" {
-				text = "POPULATION_CHARTS"
+			default_header = {
+				parentanchor = hcenter
+				blockoverride "text" {
+					text = "POPULATION_CHARTS"
+				}
 			}
-		}
-
-		flowcontainer = {
-			parentanchor = hcenter
-			spacing = 5
-			direction = vertical
 
 			flowcontainer = {
 				parentanchor = hcenter
 				spacing = 5
-				maximumsize = { @panel_width -1 }
-				minimumsize = { @panel_width -1 }
+				direction = vertical
 
-				state_culture_piechart = {
-					visible = "[Not(GetVariableSystem.Exists('state_culture_religion_labels'))]"
+				flowcontainer = {
+					parentanchor = hcenter
+					spacing = 5
+					maximumsize = { @panel_width -1 }
+					minimumsize = { @panel_width -1 }
+
+					state_culture_piechart = {
+						visible = "[Not(GetVariableSystem.Exists('state_culture_religion_labels'))]"
+					}
+					state_culture_piechart = {
+						visible = "[GetVariableSystem.Exists('state_culture_religion_labels')]"
+
+						blockoverride "maxverticalslots" {}
+					}
+
+					state_religion_piechart = {
+						visible = "[Not(GetVariableSystem.Exists('state_culture_religion_labels'))]"
+					}
+					state_religion_piechart = {
+						visible = "[GetVariableSystem.Exists('state_culture_religion_labels')]"
+
+						blockoverride "maxverticalslots" {}
+					}
 				}
-				state_culture_piechart = {
-					visible = "[GetVariableSystem.Exists('state_culture_religion_labels')]"
 
-					blockoverride "maxverticalslots" {}
-				}
+				thin_show_more_button = {
+					blockoverride "show_more_button_visibility" {
+						visible = "[Or(GreaterThan_int32(GetDataModelSize(State.AccessPopCultures), '(int32)3'), GreaterThan_int32(GetDataModelSize(State.AccessPopReligions), '(int32)3'))]"
+					}
 
-				state_religion_piechart = {
-					visible = "[Not(GetVariableSystem.Exists('state_culture_religion_labels'))]"
-				}
-				state_religion_piechart = {
-					visible = "[GetVariableSystem.Exists('state_culture_religion_labels')]"
+					blockoverride "show_more_onclick" {
+						onclick = "[GetVariableSystem.Toggle( 'state_culture_religion_labels' )]"
+					}
 
-					blockoverride "maxverticalslots" {}
+					blockoverride "show_more_button_text_visibility" {
+						visible = "[Not(GetVariableSystem.Exists( 'state_culture_religion_labels' ))]"
+					}
+
+					blockoverride "show_less_button_text_visibility" {
+						visible = "[GetVariableSystem.Exists( 'state_culture_religion_labels' )]"
+					}
 				}
 			}
 
-			thin_show_more_button = {
-				blockoverride "show_more_button_visibility" {
-					visible = "[Or(GreaterThan_int32(GetDataModelSize(State.AccessPopCultures), '(int32)3'), GreaterThan_int32(GetDataModelSize(State.AccessPopReligions), '(int32)3'))]"
+			flowcontainer = {
+				parentanchor = hcenter
+				spacing = 5
+				direction = vertical
+
+				flowcontainer = {
+					maximumsize = { @panel_width -1 }
+					minimumsize = { @panel_width -1 }
+					parentanchor = hcenter
+					spacing = 5
+
+					state_pop_type_piechart = {
+						visible = "[Not(GetVariableSystem.Exists('state_pop_type_ig_labels'))]"
+					}
+					state_pop_type_piechart = {
+						visible = "[GetVariableSystem.Exists('state_pop_type_ig_labels')]"
+
+						blockoverride "maxverticalslots" {}
+					}
+
+					state_ig_piechart = {
+						visible = "[Not(GetVariableSystem.Exists('state_pop_type_ig_labels'))]"
+					}
+					state_ig_piechart = {
+						visible = "[GetVariableSystem.Exists('state_pop_type_ig_labels')]"
+
+						blockoverride "maxverticalslots" {}
+					}
 				}
 
-				blockoverride "show_more_onclick" {
-					onclick = "[GetVariableSystem.Toggle( 'state_culture_religion_labels' )]"
-				}
+				thin_show_more_button = {
+					blockoverride "show_more_button_visibility" {
+						visible = "[Or(GreaterThan_int32(GetDataModelSize(State.AccessPopTypes), '(int32)3'), GreaterThan_int32(GetDataModelSize(State.AccessPopInterestGroups), '(int32)3'))]"
+					}
 
-				blockoverride "show_more_button_text_visibility" {
-					visible = "[Not(GetVariableSystem.Exists( 'state_culture_religion_labels' ))]"
-				}
+					blockoverride "show_more_onclick" {
+						onclick = "[GetVariableSystem.Toggle( 'state_pop_type_ig_labels' )]"
+					}
 
-				blockoverride "show_less_button_text_visibility" {
-					visible = "[GetVariableSystem.Exists( 'state_culture_religion_labels' )]"
+					blockoverride "show_more_button_text_visibility" {
+						visible = "[Not(GetVariableSystem.Exists( 'state_pop_type_ig_labels' ))]"
+					}
+
+					blockoverride "show_less_button_text_visibility" {
+						visible = "[GetVariableSystem.Exists( 'state_pop_type_ig_labels' )]"
+					}
 				}
 			}
 		}
 
 		flowcontainer = {
+			visible = "[GetVariableSystem.HasValue('population_subtab', 'pop_list')]"
 			parentanchor = hcenter
-			spacing = 5
 			direction = vertical
 
-			flowcontainer = {
-				maximumsize = { @panel_width -1 }
-				minimumsize = { @panel_width -1 }
+			pop_list = {
 				parentanchor = hcenter
-				spacing = 5
-
-				state_pop_type_piechart = {
-					visible = "[Not(GetVariableSystem.Exists('state_pop_type_ig_labels'))]"
-				}
-				state_pop_type_piechart = {
-					visible = "[GetVariableSystem.Exists('state_pop_type_ig_labels')]"
-
-					blockoverride "maxverticalslots" {}
+				blockoverride "pop_list_context" {
+					datacontext = "[State.AccessPopsList]"
 				}
 
-				state_ig_piechart = {
-					visible = "[Not(GetVariableSystem.Exists('state_pop_type_ig_labels'))]"
-				}
-				state_ig_piechart = {
-					visible = "[GetVariableSystem.Exists('state_pop_type_ig_labels')]"
-
-					blockoverride "maxverticalslots" {}
-				}
-			}
-
-			thin_show_more_button = {
-				blockoverride "show_more_button_visibility" {
-					visible = "[Or(GreaterThan_int32(GetDataModelSize(State.AccessPopTypes), '(int32)3'), GreaterThan_int32(GetDataModelSize(State.AccessPopInterestGroups), '(int32)3'))]"
-				}
-
-				blockoverride "show_more_onclick" {
-					onclick = "[GetVariableSystem.Toggle( 'state_pop_type_ig_labels' )]"
-				}
-
-				blockoverride "show_more_button_text_visibility" {
-					visible = "[Not(GetVariableSystem.Exists( 'state_pop_type_ig_labels' ))]"
-				}
-
-				blockoverride "show_less_button_text_visibility" {
-					visible = "[GetVariableSystem.Exists( 'state_pop_type_ig_labels' )]"
+				blockoverride "tooltipwidget" {
+					tooltipwidget = {
+						FancyTooltip_PopTypeState = {}
+					}
 				}
 			}
 		}
 
-		default_header_2texts = {
-			parentanchor = hcenter
-			blockoverride "text1" {
-				text = "POPULATION_LIST"
-			}
-		}
+		flowcontainer = {
+			visible = "[GetVariableSystem.HasValue('population_subtab', 'characters')]"
+			direction = vertical
+			datacontext = "[StatesPanel.GetCharacterFilter]"
 
-		pop_list = {
-			parentanchor = hcenter
-			blockoverride "pop_list_context" {
-				datacontext = "[State.AccessPopsList]"
-			}
+			character_filter = {}
 
-			blockoverride "tooltipwidget" {
-				tooltipwidget = {
-					FancyTooltip_PopTypeState = {}
+			character_list_sort_header = {}
+
+			flowcontainer = {
+				using = default_list_position
+				direction = vertical
+				datacontext = "[State.GetCountry]"
+
+				flowcontainer = {
+					parentanchor = hcenter
+					direction = vertical
+					spacing = 5
+					datamodel = "[CharacterFilter.GetCharacters]"
+
+					item = {
+						character_panel_item = {}
+					}
 				}
 			}
 		}

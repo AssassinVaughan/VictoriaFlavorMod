@@ -6,24 +6,24 @@ state_is_in_europe = {
 		subject = this # State
 
 		OR = {
-			is_in_geographic_region = region_north_germany_old
-			is_in_geographic_region = region_south_germany_old
-			is_in_geographic_region = region_england_old
-			is_in_geographic_region = region_iberia_old
-			is_in_geographic_region = region_france_old
-			is_in_geographic_region = region_occitania_old
-			is_in_geographic_region = region_rhine_old
-			is_in_geographic_region = region_italy_old
-			is_in_geographic_region = region_poland_old
-			is_in_geographic_region = region_danubia_old
-			is_in_geographic_region = region_balkans_old
-			is_in_geographic_region = region_baltic_old # Scandinavia
-			is_in_geographic_region = region_russia_old
-			is_in_geographic_region = region_dnieper_old
-			is_in_geographic_region = region_belarus_old
-			is_in_geographic_region = region_finland_old
-			is_in_geographic_region = region_baltic_states_old # Baltic
-			is_in_geographic_region = region_north_sea_coast_old # Ireland, Scotland, Greenland, Iceland
+			is_in_geographic_region = geographic_region_north_germany_old
+			is_in_geographic_region = geographic_region_south_germany_old
+			is_in_geographic_region = geographic_region_england_old
+			is_in_geographic_region = geographic_region_iberia_old
+			is_in_geographic_region = geographic_region_france_old
+			is_in_geographic_region = geographic_region_occitania_old
+			is_in_geographic_region = geographic_region_rhine_old
+			is_in_geographic_region = geographic_region_italy_old
+			is_in_geographic_region = geographic_region_poland_old
+			is_in_geographic_region = geographic_region_danubia_old
+			is_in_geographic_region = geographic_region_balkans_old
+			is_in_geographic_region = geographic_region_baltic_old # Scandinavia
+			is_in_geographic_region = geographic_region_russia_old
+			is_in_geographic_region = geographic_region_dnieper_old
+			is_in_geographic_region = geographic_region_belarus_old
+			is_in_geographic_region = geographic_region_finland_old
+			is_in_geographic_region = geographic_region_baltic_states_old # Baltic
+			is_in_geographic_region = geographic_region_north_sea_coast_old # Ireland, Scotland, Greenland, Iceland
 		}
 	}
 }
@@ -34,8 +34,8 @@ state_is_in_balkans = {
 		subject = this
 
 		OR = {
-			is_in_geographic_region = region_balkans_old
-			is_in_geographic_region = region_danubia_old
+			is_in_geographic_region = geographic_region_balkans_old
+			is_in_geographic_region = geographic_region_danubia_old
 		}
 	}
 }
@@ -46,12 +46,12 @@ state_is_in_north_america = {
 		subject = this
 
 		OR = {
-			is_in_geographic_region = region_canada_old
-			is_in_geographic_region = region_new_england_old
-			is_in_geographic_region = region_pacific_coast_old
-			is_in_geographic_region = region_great_plains_old
-			is_in_geographic_region = region_the_midwest_old
-			is_in_geographic_region = region_dixie_old
+			is_in_geographic_region = geographic_region_canada_old
+			is_in_geographic_region = geographic_region_new_england_old
+			is_in_geographic_region = geographic_region_pacific_coast_old
+			is_in_geographic_region = geographic_region_great_plains_old
+			is_in_geographic_region = geographic_region_the_midwest_old
+			is_in_geographic_region = geographic_region_dixie_old
 		}
 	}
 }
@@ -62,9 +62,9 @@ state_is_in_central_america = {
 		subject = this
 
 		OR = {
-			is_in_geographic_region = region_mexico_old
-			is_in_geographic_region = region_central_america_old
-			is_in_geographic_region = region_caribbean_old
+			is_in_geographic_region = geographic_region_mexico_old
+			is_in_geographic_region = geographic_region_central_america_old
+			is_in_geographic_region = geographic_region_caribbean_old
 		}
 	}
 }
@@ -103,13 +103,13 @@ state_is_in_africa = {
 
 		OR = {
 			is_in_geographic_region = region_nile_basin
-			is_in_geographic_region = region_ethiopia_old
-			is_in_geographic_region = region_north_africa_old
-			is_in_geographic_region = region_senegal_old
-			is_in_geographic_region = region_niger_old
-			is_in_geographic_region = region_congo_old
-			is_in_geographic_region = region_southern_africa_old
-			is_in_geographic_region = region_zanj_old
+			is_in_geographic_region = geographic_region_ethiopia_old
+			is_in_geographic_region = geographic_region_north_africa_old
+			is_in_geographic_region = geographic_region_senegal_old
+			is_in_geographic_region = geographic_region_niger_old
+			is_in_geographic_region = geographic_region_congo_old
+			is_in_geographic_region = geographic_region_southern_africa_old
+			is_in_geographic_region = geographic_region_zanj_old
 		}
 	}
 }
@@ -120,12 +120,12 @@ state_is_in_subsaharan_africa = {
 		subject = this
 
 		OR = {
-			is_in_geographic_region = region_ethiopia_old
-			is_in_geographic_region = region_senegal_old
-			is_in_geographic_region = region_niger_old
-			is_in_geographic_region = region_congo_old
-			is_in_geographic_region = region_southern_africa_old
-			is_in_geographic_region = region_zanj_old
+			is_in_geographic_region = geographic_region_ethiopia_old
+			is_in_geographic_region = geographic_region_senegal_old
+			is_in_geographic_region = geographic_region_niger_old
+			is_in_geographic_region = geographic_region_congo_old
+			is_in_geographic_region = geographic_region_southern_africa_old
+			is_in_geographic_region = geographic_region_zanj_old
 			state_region = s:STATE_EQUATORIA
 			state_region = s:STATE_DARFUR
 			state_region = s:STATE_KORDOFAN
@@ -158,10 +158,10 @@ state_is_in_middle_east = {
 		subject = this
 
 		OR = {
-			is_in_geographic_region = region_anatolia_old
-			is_in_geographic_region = region_arabic_old
-			is_in_geographic_region = region_persia_old
-			is_in_geographic_region = region_caucasus_old
+			is_in_geographic_region = geographic_region_anatolia_old
+			is_in_geographic_region = geographic_region_arabic_old
+			is_in_geographic_region = geographic_region_persia_old
+			is_in_geographic_region = geographic_region_caucasus_old
 		}
 	}
 }
@@ -172,8 +172,8 @@ state_is_in_central_asia = {
 		subject = this
 
 		OR = {
-			is_in_geographic_region = region_himalayas_old
-			is_in_geographic_region = region_central_asia_old
+			is_in_geographic_region = geographic_region_himalayas_old
+			is_in_geographic_region = geographic_region_central_asia_old
 		}
 	}
 }
@@ -184,11 +184,11 @@ state_is_in_india = {
 		subject = this
 
 		OR = {
-			is_in_geographic_region = region_punjab_old
-			is_in_geographic_region = region_bombay_old
-			is_in_geographic_region = region_central_india_old
-			is_in_geographic_region = region_madras_old
-			is_in_geographic_region = region_bengal_old
+			is_in_geographic_region = geographic_region_punjab_old
+			is_in_geographic_region = geographic_region_bombay_old
+			is_in_geographic_region = geographic_region_central_india_old
+			is_in_geographic_region = geographic_region_madras_old
+			is_in_geographic_region = geographic_region_bengal_old
 			state_region = s:STATE_QUETTA
 			state_region = s:STATE_PASHTUNISTAN
 			state_region = s:STATE_KASHMIR
@@ -204,10 +204,10 @@ state_is_in_east_asia = {
 		OR = {
 			is_in_geographic_region = region_south_china
 			is_in_geographic_region = region_north_china
-			is_in_geographic_region = region_manchuria_old
-			is_in_geographic_region = region_japan_old
-			is_in_geographic_region = region_west_siberia_old
-			is_in_geographic_region = region_east_siberia_old
+			is_in_geographic_region = geographic_region_manchuria_old
+			is_in_geographic_region = geographic_region_japan_old
+			is_in_geographic_region = geographic_region_west_siberia_old
+			is_in_geographic_region = geographic_region_east_siberia_old
 		}
 	}
 }
@@ -231,8 +231,8 @@ state_is_in_southeast_asia = {
 		subject = this
 
 		OR = {
-			is_in_geographic_region = region_indonesia_old
-			is_in_geographic_region = region_indochina_old
+			is_in_geographic_region = geographic_region_indonesia_old
+			is_in_geographic_region = geographic_region_indochina_old
 		}
 	}
 }
@@ -376,9 +376,9 @@ country_is_in_southeast_asia = {
 
 in_potato_blight_zone_2 = {
 	OR = {
-		is_in_geographic_region = region_north_sea_coast_old
-		is_in_geographic_region = region_north_germany_old
-		is_in_geographic_region = region_rhine_old
+		is_in_geographic_region = geographic_region_north_sea_coast_old
+		is_in_geographic_region = geographic_region_north_germany_old
+		is_in_geographic_region = geographic_region_rhine_old
 		state_region = s:STATE_GOTALAND
 		state_region = s:STATE_SVEALAND
 		state_region = s:STATE_SCANIA
@@ -389,12 +389,12 @@ in_potato_blight_zone_2 = {
 
 in_potato_blight_mild_zone_2 = {
 	OR = {
-		is_in_geographic_region = region_england_old
-		is_in_geographic_region = region_baltic_states_old
-		is_in_geographic_region = region_poland_old
-		is_in_geographic_region = region_baltic_old
-		is_in_geographic_region = region_belarus_old
-		is_in_geographic_region = region_danubia_old
+		is_in_geographic_region = geographic_region_england_old
+		is_in_geographic_region = geographic_region_baltic_states_old
+		is_in_geographic_region = geographic_region_poland_old
+		is_in_geographic_region = geographic_region_baltic_old
+		is_in_geographic_region = geographic_region_belarus_old
+		is_in_geographic_region = geographic_region_danubia_old
 		# North america
 		state_region = s:STATE_MAINE
 		state_region = s:STATE_VERMONT
@@ -416,9 +416,9 @@ in_potato_blight_mild_zone_2 = {
 
 in_potato_blight_zone = {
 	OR = {
-		is_in_geographic_region = region_north_sea_coast_old
-		is_in_geographic_region = region_north_germany_old
-		is_in_geographic_region = region_rhine_old
+		is_in_geographic_region = geographic_region_north_sea_coast_old
+		is_in_geographic_region = geographic_region_north_germany_old
+		is_in_geographic_region = geographic_region_rhine_old
 		any_scope_state = {
 			state_region = s:STATE_GOTALAND
 			state_region = s:STATE_SVEALAND
@@ -431,12 +431,12 @@ in_potato_blight_zone = {
 
 in_potato_blight_mild_zone = {
 	OR = {
-		is_in_geographic_region = region_england_old
-		is_in_geographic_region = region_baltic_states_old
-		is_in_geographic_region = region_poland_old
-		is_in_geographic_region = region_baltic_old
-		is_in_geographic_region = region_belarus_old
-		is_in_geographic_region = region_danubia_old
+		is_in_geographic_region = geographic_region_england_old
+		is_in_geographic_region = geographic_region_baltic_states_old
+		is_in_geographic_region = geographic_region_poland_old
+		is_in_geographic_region = geographic_region_baltic_old
+		is_in_geographic_region = geographic_region_belarus_old
+		is_in_geographic_region = geographic_region_danubia_old
 		# North america
 		any_scope_state = {
 			OR = {
@@ -477,9 +477,9 @@ is_extra_vulnerable_to_disease = {
 is_extra_vulnerable_to_earthquake = {
 	OR = {
 		is_in_geographic_region = region_la_plata
-		is_in_geographic_region = region_pacific_coast_old
-		is_in_geographic_region = region_indonesia_old
-		is_in_geographic_region = region_japan_old
+		is_in_geographic_region = geographic_region_pacific_coast_old
+		is_in_geographic_region = geographic_region_indonesia_old
+		is_in_geographic_region = geographic_region_japan_old
 	}
 }
 
@@ -499,11 +499,11 @@ state_is_in_hungary = {
 
 state_is_in_german_confederation = {
 	OR = {
-		is_in_geographic_region = region_north_germany_old
+		is_in_geographic_region = geographic_region_north_germany_old
 		state_region = s:STATE_LOWER_SILESIA
 		state_region = s:STATE_UPPER_SILESIA
 		AND = {
-			is_in_geographic_region = region_south_germany_old
+			is_in_geographic_region = geographic_region_south_germany_old
 			NOR = {
 				state_region = s:STATE_WEST_SWITZERLAND
 				state_region = s:STATE_EAST_SWITZERLAND

@@ -2089,9 +2089,9 @@ ai_strategy_default = {
 					country_has_primary_culture = cu:south_german
 					scope:target_state = {
 					    OR = {
-							region = sr:region_italy
-							region = sr:region_balkans
-							region = sr:region_south_germany
+							is_in_geographic_region = geographic_region_italy_old
+							is_in_geographic_region = geographic_region_balkans_old
+							is_in_geographic_region = geographic_region_south_germany_old
 						}
 					}
 				}

@@ -51,15 +51,15 @@ egyptian_crisis_events.1 = {
 
 	option = {
 		name = egyptian_crisis_events.1.a
+		# country_influence_mult
 		add_modifier = {
 			name = working_with_the_great_powers
 			days = long_modifier_time
 		}
 		set_variable = egyptian_crisis_conciliatory
-		every_country = {
+		every_country_in_europe = {
 			limit = {
 				country_rank = rank_value:great_power
-				country_is_in_europe = yes
 				NOR = {
 					c:EGY = this
 					c:TUR = this
@@ -76,23 +76,22 @@ egyptian_crisis_events.1 = {
 				value = 30
 			}
 		}
-		every_country = {
+		every_country_in_europe = {
 			limit = {
 				country_rank = rank_value:great_power
-				country_is_in_europe = yes
 				NOR = {
-					has_interest_marker_in_region = region_arabic
+					has_interest_marker_in_region = sr:region_arabia
 					c:EGY = this
 					c:TUR = this
 					has_war_with = c:TUR
 					has_war_with = c:EGY
 				}
 			}
-			hidden_effect = { trigger_event = { id = egyptian_crisis_events.4 } }
 			custom_tooltip = egyptian_crisis_events.1.a.tt
+			hidden_effect = { trigger_event = { id = egyptian_crisis_events.4 } }
 		}
-		c:EGY = {
-			trigger_event = { id = egyptian_crisis_events.2 days = 5 popup = yes }
+		c:EGY ?= {
+			trigger_event = { id = egyptian_crisis_events.2 }
 		}
 		
 		ai_chance = {
@@ -105,23 +104,22 @@ egyptian_crisis_events.1 = {
         default_option = yes
 		change_infamy = 5
 		set_variable = egyptian_crisis_hardline
-        every_country = {
+        every_country_in_europe = {
         	limit = {
         		country_rank = rank_value:great_power
-        		country_is_in_europe = yes
         		NOR = {
-        			has_interest_marker_in_region = region_arabic
+        			has_interest_marker_in_region = sr:region_arabia
         			c:EGY = this
         			c:TUR = this
         			has_war_with = c:TUR
         			has_war_with = c:EGY
         		}
         	}
-        	hidden_effect = { trigger_event = { id = egyptian_crisis_events.4 } }
         	custom_tooltip = egyptian_crisis_events.1.a.tt
+			hidden_effect = { trigger_event = { id = egyptian_crisis_events.4 } }
         }
-        c:EGY = {
-	        	trigger_event = { id = egyptian_crisis_events.2 days = 5 popup = yes }
+        c:EGY ?= {
+        	trigger_event = { id = egyptian_crisis_events.2 }
         }
 		
 		ai_chance = {
