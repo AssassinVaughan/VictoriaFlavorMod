@@ -1,12 +1,12 @@
 ﻿BUILDINGS={
 	s:STATE_MAZOVIA={
-		region_state:RUS={
+		region_state:POL={
 			create_building={
 				building="building_furniture_manufactory"
 				add_ownership={
 					building={
 						type="building_furniture_manufactory"
-						country="c:RUS"
+						country="c:POL"
 						levels=1
 						region="STATE_MAZOVIA"
 					}
@@ -19,7 +19,7 @@
 				add_ownership={
 					building={
 						type="building_paper_mill"
-						country="c:RUS"
+						country="c:POL"
 						levels=1
 						region="STATE_MAZOVIA"
 					}
@@ -28,10 +28,6 @@
 						country="c:RUS"
 						levels=1
 						region="STATE_INGRIA"
-					}
-					country={
-						country="c:RUS"
-						levels=1
 					}
 				}
 				reserves=1
@@ -42,7 +38,7 @@
 				add_ownership={
 					building={
 						type="building_manor_house"
-						country="c:RUS"
+						country="c:POL"
 						levels=2
 						region="STATE_MAZOVIA"
 					}
@@ -55,7 +51,7 @@
 				add_ownership={
 					building={
 						type="building_tooling_workshop"
-						country="c:RUS"
+						country="c:POL"
 						levels=1
 						region="STATE_MAZOVIA"
 					}
@@ -68,34 +64,18 @@
 				add_ownership={
 					building={
 						type="building_financial_district"
-						country="c:RUS"
-						levels=3
-						region="STATE_BREST"
+						country="c:POL"
+						levels=2
+						region="STATE_MAZOVIA"
 					}
-				}
-				activate_production_methods={ "pm_saw_mills" "pm_hardwood" "pm_no_equipment" "pm_road_carts"  }
-			}
-		}
-	}
-	s:STATE_BREST={
-		region_state:RUS={
-			create_building={
-				building="building_logging_camp"
-				add_ownership={
-					building={
-						type="building_logging_camp"
-						country="c:RUS"
-						levels=4
-						region="STATE_BREST"
-					}
-					building={
+                    building={
 						type="building_financial_district"
 						country="c:RUS"
 						levels=1
-						region="STATE_BREST"
+						region="STATE_INGRIA"
 					}
 				}
-				activate_production_methods={ "pm_saw_mills" "pm_increased_hardwood" "pm_no_equipment" "pm_road_carts"  }
+				activate_production_methods={ "pm_saw_mills" "pm_hardwood" "pm_no_equipment" "pm_road_carts"  }
 			}
 		}
 	}
@@ -438,12 +418,12 @@
 		}
 	}
 	s:STATE_GREATER_POLAND={
-		region_state:RUS={
-		    create_building={
+		region_state:POL={
+			create_building={
 				building="building_government_administration"
 				add_ownership={
 					country={
-						country="c:RUS"
+						country="c:POL"
 						levels=2
 					}
 				}
@@ -455,7 +435,7 @@
 				add_ownership={
 					building={
 						type="building_textile_mill"
-						country="c:RUS"
+						country="c:POL"
 						levels=1
 						region="STATE_GREATER_POLAND"
 					}
@@ -478,22 +458,23 @@
 			}
 			create_building={
 				building="building_trade_center"
+				activate_production_methods={ "pm_trade_center_trade_quantity_normal" }
 				add_ownership={
 					building={
 						type="building_financial_district"
-						country="c:RUS"
-						levels=2
-						region="STATE_INGRIA"
+						country="c:POL"
+						levels=1
+						region="STATE_GREATER_POLAND"
 					}
 				}
 				reserves=1
-			}	
+			}
 			create_building={
 				building="building_furniture_manufactory"
 				add_ownership={
 					building={
 						type="building_furniture_manufactory"
-						country="c:RUS"
+						country="c:POL"
 						levels=1
 						region="STATE_GREATER_POLAND"
 					}
@@ -505,18 +486,37 @@
 				building="building_paper_mill"
 				add_ownership={
 					building={
+						type="building_paper_mill"
+						country="c:POL"
+						levels=1
+						region="STATE_GREATER_POLAND"
+					}
+					building={
 						type="building_financial_district"
 						country="c:RUS"
 						levels=1
 						region="STATE_MOSCOW"
 					}
 					country={
-						country="c:RUS"
+						country="c:POL"
 						levels=1
 					}
 				}
 				reserves=1
 				activate_production_methods={ "pm_pulp_pressing" "pm_automation_disabled"  }
+			}
+			create_building={
+				building="building_tooling_workshop"
+				add_ownership={
+					building={
+						type="building_tooling_workshop"
+						country="c:POL"
+						levels=1
+						region="STATE_GREATER_POLAND"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_crude_tools" "pm_automation_disabled"  }
 			}
 			create_building={
 				building="building_logging_camp"
@@ -544,7 +544,7 @@
 				add_ownership={
 					building={
 						type="building_manor_house"
-						country="c:RUS"
+						country="c:POL"
 						levels=3
 						region="STATE_GREATER_POLAND"
 					}
@@ -555,15 +555,13 @@
 		}
 	}
 	s:STATE_LESSER_POLAND={
-		region_state:RUS={
+		region_state:POL={
 			create_building={
 				building="building_paper_mill"
 				add_ownership={
-					building={
-						type="building_financial_district"
-						country="c:RUS"
-						levels=2
-						region="STATE_LESSER_POLAND"
+					country={
+						country="c:POL"
+						levels=1
 					}
 				}
 				reserves=1
@@ -587,7 +585,7 @@
 				add_ownership={
 					building={
 						type="building_manor_house"
-						country="c:RUS"
+						country="c:POL"
 						levels=2
 						region="STATE_LESSER_POLAND"
 					}
@@ -600,9 +598,9 @@
 				add_ownership={
 					building={
 						type="building_financial_district"
-						country="c:RUS"
+						country="c:POL"
 						levels=1
-						region="STATE_MOSCOW"
+						region="STATE_LESSER_POLAND"
 					}
 				}
 				reserves=1
@@ -613,8 +611,8 @@
 				add_ownership={
 					building={
 						type="building_financial_district"
-						country="c:RUS"
-						levels=2
+						country="c:POL"
+						levels=1
 						region="STATE_LESSER_POLAND"
 					}
 				}

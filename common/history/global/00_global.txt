@@ -3,6 +3,13 @@ GLOBAL = {
 	add_contextless_journal_entry = je_uneasy_raj
 	add_contextless_journal_entry = je_peru_bolivia
 	add_contextless_journal_entry = je_the_first_carlist_war
+	if = {
+		limit = {
+			has_dlc_feature = ep1_content
+		}
+		add_contextless_journal_entry = je_caucasian_war
+	}
+	add_contextless_journal_entry = je_congress_poland # TODO DLC lock
 
 	every_country = {
 		limit = { NOT = { has_law_or_variant = law_type:law_slavery_banned } }
@@ -640,6 +647,7 @@ GLOBAL = {
                 OR = {
                     state_region = s:STATE_KUBAN
                     state_region = s:STATE_DAGESTAN
+                    state_region = s:STATE_NORTH_CAUCASUS
                 }
             }
             add_radicals_in_state = {
@@ -648,21 +656,22 @@ GLOBAL = {
             }
             add_radicals_in_state = {
                 value = 0.20
-                culture = cu:north_caucasian
+                culture = cu:dagestani
+            }
+            add_radicals_in_state = {
+                value = 0.20
+                culture = cu:ossetian
+            }
+            add_radicals_in_state = {
+                value = 0.20
+                culture = cu:caucasian_turk
             }
 			add_radicals_in_state = {
                 value = 0.20
+                culture = cu:chechen
             }
         }
-		every_scope_state = {
-			limit = {
-				state_region = s:STATE_INGRIA
-			}
-			add_modifier = {
-				name = window_to_europe
-			}
-		}
-       create_bidirectional_truce = {
+        create_bidirectional_truce = {
 			country = c:CIR
 			months = 240
 		}
@@ -679,38 +688,6 @@ GLOBAL = {
 				days = 690
 			}
 		}
-		add_radicals = {
-			value = small_radicals
-			culture = cu:lithuanian
-		}
-		add_radicals = {
-			value = small_radicals
-			culture = cu:latvian
-		}
-		add_radicals = {
-			value = small_radicals
-			culture = cu:estonian
-		}
-		add_radicals = {
-			value = small_radicals
-			culture = cu:polish
-		}
-		add_radicals = {
-			value = small_radicals
-			culture = cu:ukrainian
-		}
-		add_radicals = {
-			value = medium_radicals
-			culture = cu:tatar
-		}
-		add_radicals = {
-            value = large_radicals
-            culture = cu:north_caucasian
-        }
-		add_radicals = {
-            value = large_radicals
-            culture = cu:azerbaijani
-        }
 	}
 
 	c:FRA ?= {
@@ -1167,6 +1144,13 @@ GLOBAL = {
 		}
 		set_variable = revolution_safety_check_var
 		set_immune_to_revolutions = yes
+	}
+
+	c:BKH ?= {
+		add_radicals = {
+			value = 0.25
+			pop_type = peasants
+		}
 	}
 }
 

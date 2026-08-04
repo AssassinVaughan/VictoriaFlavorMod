@@ -28,16 +28,18 @@
 		
 		# Laws 
 		activate_law = law_type:law_monarchy
-		activate_law = law_type:law_autocracy 
+		activate_law = law_type:law_autocracy
 		activate_law = law_type:law_serfdom
 		activate_law = law_type:law_land_based_taxation
-		activate_law = law_type:law_hereditary_bureaucrats
-		activate_law = law_type:law_state_religion
-		activate_law = law_type:law_subjecthood
+		activate_law = law_type:law_military_bureaucrats
+		activate_law = law_type:law_caesaropapism
+		activate_law = law_type:law_official_nationality
 		activate_law = law_type:law_traditionalism
 		activate_law = law_type:law_peasant_levies
+		activate_law = law_type:law_professional_navy
 		activate_law = law_type:law_censorship
-		activate_law = law_type:law_frontier_colonization
+		activate_law = law_type:law_third_section
+		activate_law = law_type:law_internal_colonization
 		activate_law = law_type:law_women_own_property
 		activate_law = law_type:law_devolved
 
@@ -58,15 +60,30 @@
 		
 		if = {
 			limit = {
-				has_dlc_feature = ep1_content
+			#	has_dlc_feature = ip5_content # TODO PRCAL-45691
 			}
-			add_journal_entry = { type = je_caucasian_war }
+			trigger_event = {
+				id = tsarpoints_events.14
+				days = 1
+				popup = yes
+			}
+			# je_tsarpoints_master is fired from Russian character setup due to read order issues
 		}
 
 		add_modifier = {
 			name = modifier_polish_organic_statute
 			days = stupidly_long_modifier_time
 			is_decaying = yes
+		}
+		
+		set_export_tariff_level = { 
+			goods = g:grain
+			level = no_tariffs_or_subventions
+		}
+		
+		set_export_tariff_level = { 
+			goods = g:wood
+			level = no_tariffs_or_subventions
 		}
 
 		add_company = company_type:company_russian_american_company

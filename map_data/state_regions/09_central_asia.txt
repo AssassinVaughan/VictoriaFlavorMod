@@ -57,6 +57,7 @@ STATE_ARMENIA = {
     capped_resources = {
         building_iron_mine = 14
         building_lead_mine = 10
+		building_copper_mine = 5
         building_logging_camp = 2
     }
 }
@@ -109,45 +110,45 @@ STATE_GREATER_CAUCASUS = {
 STATE_SAMARA = {
     id = 438
     subsistence_building = "building_subsistence_farm"
-    provinces = { "x024868" "x0DFFD3" "x115723" "x11EA2C" "x16B7FE" "x1C1FB7" "x1CF34F" "x1E5008" "x20D17F" "x21DFA0" "x2505DB" "x250FCA" "x28AD29" "x2FE543" "x32A08B" "x340E79" "x37CD87" "x3F987B" "x3F9C38" "x42401C" "x434D42" "x51CA06" "x53AFD2" "x59D2D4" "x5B392A" "x610EC7" "x6364BE" "x658056" "x71BA78" "x795854" "x7C8665" "x7EA5A3" "x7F204D" "x8840E2" "x8F80BA" "x90C19D" "x915A42" "x93546F" "x942629" "x96058F" "x9F49D5" "xA06020" "xA0DFA0" "xA0E021" "xA121CB" "xA46A6B" "xA4990C" "xA7620E" "xA7B747" "xAC95C4" "xB52DF6" "xB53431" "xB70239" "xB7AA35" "xB921A7" "xBF7060" "xC45745" "xCEF631" "xCF5257" "xCF6246" "xD49810" "xD4F3FD" "xD914CA" "xD9B952" "xDADB41" "xE0856C" "xE41C9D" "xE44235" "xE6ED05" "xE9B9FB" "xE9FFBB" "xEE1033" "xEF1983" "xFA8D56" "xFBE9D0" "xFE5E9D" }
+    provinces = { "x024868" "x0DFFD3" "x115723" "x11EA2C" "x16B7FE" "x1C1FB7" "x1CF34F" "x1E5008" "x20D17F" "x21DFA0" "x2505DB" "x250FCA" "x28AD29" "x2FE543" "x32A08B" "x340E79" "x37CD87" "x3F987B" "x3F9C38" "x42401C" "x434D42" "x51CA06" "x53AFD2" "x59D2D4" "x5B392A" "x610EC7" "x6364BE" "x658056" "x71BA78" "x795854" "x7C8665" "x7EA5A3" "x7F204D" "x8840E2" "x8F80BA" "x90C19D" "x915A42" "x93546F" "x942629" "x96058F" "x9F49D5" "xA06020" "xA0DFA0" "xA0E021" "xA121CB" "xA46A6B" "xA4990C" "xA7620E" "xA7B747" "xAC95C4" "xB42F67" "xB52DF6" "xB53431" "xB70239" "xB7AA35" "xB921A7" "xBF7060" "xC45745" "xCEF631" "xCF5257" "xCF6246" "xD49810" "xD4F3FD" "xD914CA" "xD9B952" "xDADB41" "xDFE045" "xE0856C" "xE41C9D" "xE44235" "xE6ED05" "xE9B9FB" "xE9FFBB" "xEE1033" "xEF1983" "xFA8D56" "xFBE9D0" "xFE5E9D" }
     traits = { "state_trait_volga_river" "state_trait_western_steppe" }
     city = "xBF7060"
-    farm = "xE9B9FB"
+    farm = "x37CD87"
     mine = "x51CA06"
     wood = "x1C1FB7"
-    arable_land = 100
+    arable_land = 95
     arable_resources = { "building_rye_farm" "building_livestock_ranch" }
     capped_resources = {
-        building_coal_mine = 15
-        building_sulfur_mine = 6
+        building_coal_mine = 30
+        building_sulfur_mine = 15
         building_logging_camp = 9
         building_iron_mine = 5
     }
     resource = {
         type = "building_oil_rig"
-        undiscovered_amount = 40
+        undiscovered_amount = 90
     }
 }
 
-STATE_TARTARIA = {
+STATE_SARATOV = {
     #Saratov
     id = 440
     subsistence_building = "building_subsistence_farm"
     provinces = { "x060F1F" "x0BAE1A" "x108711" "x112A5D" "x1233B6" "x161ACD" "x184EBD" "x1889E9" "x1C9CEB" "x1E7643" "x21DF21" "x2517B5" "x269530" "x2D0CA0" "x302B65" "x328BF7" "x346C85" "x36696F" "x370996" "x3BA63A" "x587F59" "x5DC7DF" "x5DFE91" "x66929F" "x69239F" "x8447C0" "x85FB7E" "x8BB04E" "x904CD8" "x9633B6" "x9672A5" "xB353F0" "xB9D801" "xC4B284" "xC7340F" "xCD3A7F" "xD19BE5" "xD6ACAE" "xD9BEED" "xDB5E3F" "xE4E080" "xEBD048" "xF0F779" "xF26043" "xF2884A" "xFAB9A8" }
-    traits = { "state_trait_volga_river" "state_trait_western_steppe" }
+    traits = { "state_trait_volga_river" "state_trait_western_steppe" "state_trait_black_soil" }
     city = "xFAB9A8"
     farm = "x108711"
     mine = "xB9D801"
     wood = "x85FB7E"
-    arable_land = 100
+    arable_land = 90
     arable_resources = { "building_rye_farm" "building_livestock_ranch" }
     capped_resources = {
         building_logging_camp = 16
-        building_iron_mine = 8
+        building_iron_mine = 15
     }
     resource = {
         type = "building_oil_rig"
-        undiscovered_amount = 12
+        undiscovered_amount = 15
     }
 }
 
@@ -310,6 +311,7 @@ STATE_HERAT = {
     capped_resources = {
         building_iron_mine = 4
         building_lead_mine = 5
+		building_copper_mine = 2
     }
 }
 
@@ -383,6 +385,7 @@ STATE_KABUL = {
     capped_resources = {
         building_coal_mine = 5
         building_iron_mine = 8
+		building_copper_mine = 3
         building_logging_camp = 4
     }
 }
@@ -403,6 +406,7 @@ STATE_BALUCHISTAN = {
     capped_resources = {
         building_iron_mine = 12
         building_lead_mine = 6
+		building_copper_mine = 3
         building_logging_camp = 2
         building_fishing_wharf = 5
     }

@@ -213,6 +213,19 @@
 				reserves=1
 				activate_production_methods={ "pm_basic_port" }
 			}
+			create_building={
+				building="building_copper_mine"
+				add_ownership={
+					building={
+						type="building_copper_mine"
+						country="c:SAS"
+						levels=1
+						region="STATE_SOUTH_AUSTRALIA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_picks_and_shovels_building_copper_mine" }
+			}
 		}
 		region_state:KAU={
 			create_building={

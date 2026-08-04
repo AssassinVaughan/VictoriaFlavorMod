@@ -1146,6 +1146,19 @@
 				reserves=1
 				activate_production_methods={ "pm_open_air_stockyards" "pm_simple_ranch" "pm_standard_fences" "pm_unrefrigerated"  }
 			}
+			create_building={
+				building="building_copper_mine"
+				add_ownership={
+					building={
+						type="building_copper_mine"
+						country="c:CUB"
+						levels=1
+						region="STATE_EASTERN_CUBA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_picks_and_shovels_building_copper_mine" }
+			}
 		}
 	}
 }

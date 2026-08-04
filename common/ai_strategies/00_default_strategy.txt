@@ -504,7 +504,7 @@ ai_strategy_default = {
 					c:GBR ?= this
 					c:RUS ?= this
 				}
-				has_journal_entry = je_great_game_control
+				is_involved_in_journal_entry = je_great_game_control
 				has_diplomatic_relevance = scope:enemy_country
 				scope:enemy_country = { # enemy_country is the rival Great Power
 					OR = {
@@ -514,7 +514,7 @@ ai_strategy_default = {
 					NOT = {
 						this = root
 					}
-					has_journal_entry = je_great_game_control
+					is_involved_in_journal_entry = je_great_game_control
 				}
 				scope:country = { # country is the country they're at war with
 					OR = {
@@ -949,6 +949,46 @@ ai_strategy_default = {
 				desc = "je_reconquista"
 			}
 		}
+
+		# Non-Communist countries will not tend to defend communist countries
+		if = {
+			limit = {
+				root = {
+					has_radical_leftist_economy = no
+					has_radical_leftist_government = no
+				}
+				scope:country = {
+					OR = {
+						has_radical_leftist_economy = yes
+						has_radical_leftist_government = yes
+					}
+				}
+			}
+			add = {
+				value = -100
+				desc = "anti_communism"
+			}
+		}
+
+		if = { #Prussia will try to preserve the Zollverein - Power Bloc leaders in general will combat revolutions in the bloc
+			limit = {
+				ROOT = {
+					is_power_bloc_leader = yes
+					is_revolutionary = no
+					has_radical_leftist_government = no
+				}
+				scope:country ?= {
+					is_in_same_power_bloc = ROOT
+				}
+				scope:enemy_country ?= {
+					civil_war_origin_country ?= scope:country
+				}
+			}
+			add = {
+				value = 100
+				desc = "power_bloc_integrity"
+			}
+		}
 	}
 	
 	# Added to base neutrality in diplomatic plays	
@@ -1328,14 +1368,16 @@ ai_strategy_default = {
         }
 
 		# Italian minors should be willing to fight Austria
-		if = { 
+		if = {
 			limit = {
-				exists = c:RSM
-				THIS = {
-					has_journal_entry = je_risorgimento
-				}
-				any_diplomatically_relevant_country = {
-					is_diplomatic_play_enemy_of = c:RSM
+				has_journal_entry = je_risorgimento
+				c:RSM ?= {
+					any_enemy_in_diplo_play = {
+						NOR = {
+							country_has_primary_culture = cu:north_italian
+							country_has_primary_culture = cu:south_italian
+						}
+					}
 				}
 			}
 			add = 50
@@ -1345,24 +1387,7 @@ ai_strategy_default = {
 		if = {
 			limit = {
 				has_journal_entry = je_spoils_of_war
-				any_diplomatically_relevant_country = {
-					any_scope_state = {
-						region = sr:region_balkans
-						is_homeland_of_country_cultures = root
-						has_claim_by = root
-					}
-				}
-			}
-			add = 50
-		}
-
-		# Second Balkan War, pitting the balkan nations against each other (Wallachia)
-		if = {
-			limit = {
-				has_journal_entry = je_spoils_of_war
-				country_has_primary_culture = cu:romanian
-				any_diplomatically_relevant_country = {
-					country_rank <= rank_value:minor_power
+				any_country_in_balkans = {
 					any_scope_state = {
 						is_homeland_of_country_cultures = root
 						has_claim_by = root
@@ -2437,6 +2462,57 @@ ai_strategy_default = {
 				add = 50
 			}
 
+			if = { # German unification
+				limit = {
+					OR = {
+						AND = {
+							OR = {
+								has_journal_entry = je_north_german_unification
+								has_journal_entry = je_german_unification
+							}
+							scope:target_country = {
+								country_has_primary_culture = cu:north_german
+								country_rank < ROOT.country_rank
+								NOT = {
+									is_in_same_power_bloc = ROOT
+								}
+							}
+						}
+						AND = {
+							OR = {
+								has_journal_entry = je_south_german_unification
+								has_journal_entry = je_german_unification
+							}
+							scope:target_country = {
+								country_has_primary_culture = cu:south_german
+								country_rank < ROOT.country_rank
+								NOT = {
+									is_in_same_power_bloc = ROOT
+								}
+							}
+						}
+					}
+				}
+				add = 50
+			}
+			
+			if = {
+				limit = {
+					has_journal_entry = je_risorgimento
+					scope:target_country = {
+						OR = {
+							country_has_primary_culture = cu:north_italian
+							country_has_primary_culture = cu:south_italian
+						}
+						country_rank < ROOT.country_rank
+						NOT = {
+							is_in_same_power_bloc = ROOT
+						}
+					}
+				}
+				add = 50
+			}
+
 			if = {
 				limit = {
 					lenient_ai_behavior_trigger = yes
@@ -2975,6 +3051,55 @@ ai_strategy_default = {
 								has_state_in_state_region = STATE_HERAT
 								has_state_in_state_region = STATE_KANDAHAR
 							}
+						}
+					}
+				}
+				add = 50
+			}
+
+			if = {
+				limit = {
+					OR = {
+						AND = {
+							OR = {
+								has_journal_entry = je_north_german_unification
+								has_journal_entry = je_german_unification
+							}
+							scope:target_country = {
+								country_has_primary_culture = cu:north_german
+								NOT = {
+									is_in_same_power_bloc = ROOT
+								}
+							}
+						}
+						AND = {
+							OR = {
+								has_journal_entry = je_north_german_unification
+								has_journal_entry = je_german_unification
+							}
+							scope:target_country = {
+								country_has_primary_culture = cu:south_german
+								NOT = {
+									is_in_same_power_bloc = ROOT
+								}
+							}
+						}
+					}
+				}
+				add = 50
+			}
+
+			if = {
+				limit = {
+					has_journal_entry = je_risorgimento
+					scope:target_country = {
+						OR = {
+							country_has_primary_culture = cu:north_italian
+							country_has_primary_culture = cu:south_italian
+						}
+						country_rank < ROOT.country_rank
+						NOT = {
+							is_in_same_power_bloc = ROOT
 						}
 					}
 				}
@@ -3706,6 +3831,14 @@ ai_strategy_default = {
 		if = { # Hungary should be reckless about independence
 			limit = {
 				has_journal_entry = je_hungarian_revolution
+				OR = {
+					has_variable = hungarian_revolution_twelve_points_var
+					has_variable = hungarian_revolution_annex_transylvania_button_var
+					AND = {
+						is_involved_in_journal_entry = je_springtime_of_the_peoples
+						has_variable = had_springtime_revolution
+					}
+				}
 				scope:target_country = {
 					has_journal_entry = je_matter_of_hungary
 				}
@@ -4134,7 +4267,8 @@ ai_strategy_default = {
 
 		if = { #Russian Caucasus
 			limit = {
-	            has_journal_entry = je_caucasian_war
+	            c:RUS ?= this
+				is_involved_in_journal_entry = je_caucasian_war
 				scope:target_country = {
 					any_scope_state = {
 						OR = {
@@ -4370,34 +4504,11 @@ ai_strategy_default = {
 				scope:target_country = {
 					c:SPA ?= this
 					ruler = {
-						has_variable = house_hohenzollern
+						var:dynasty_var ?= flag:house_hohenzollern
 					}
 				}
 			}
 			add = 15
-		}
-
-		# Aggression against radical leftists
-		if = {
-			limit = {	
-				AND = {
-					has_radical_leftist_government = no
-					scope:target_country = {
-						has_radical_leftist_government = yes
-					}
-				}
-			}
-			add = 1
-		}
-		
-		if = {
-			limit = {	
-				has_radical_leftist_economy = no
-				scope:target_country = {
-					has_radical_leftist_economy = yes				
-				}				
-			}
-			add = 1
 		}
 
 		if = { #Indian suzerain will be aggressive against Russia
@@ -4874,6 +4985,45 @@ ai_strategy_default = {
 				}
 				add = 2.5
 			}
+		}
+
+        if = { #Prussia will try to preserve the Zollverein
+			limit = {
+				c:PRU ?= this
+				is_power_bloc_leader = yes
+				scope:target_country = {
+					country_rank < rank_value:major_power
+					OR = {
+						country_has_primary_culture = cu:north_german
+						country_has_primary_culture = cu:south_german
+					}
+					is_in_power_bloc = no
+				}
+			}
+			add = 5
+		}
+
+		# Aggression against radical leftists
+		if = {
+			limit = {
+				AND = {
+					has_radical_leftist_government = no
+					scope:target_country = {
+						has_radical_leftist_government = yes
+					}
+				}
+			}
+			add = 5
+		}
+
+		if = {
+			limit = {
+				has_radical_leftist_economy = no
+				scope:target_country = {
+					has_radical_leftist_economy = yes
+				}
+			}
+			add = 5
 		}
 
         # Neutral Switzerland
@@ -6017,9 +6167,7 @@ ai_strategy_default = {
 
 			add = {
 				scope:region = {
-					every_scope_state = {
-						add = gdp
-					}
+					add = gdp
 				}
 				divide = 40000
 				max = 50
@@ -6077,6 +6225,8 @@ ai_strategy_default = {
 		# Certain Great Powers care about Egyptian-Ottoman conflict in the early game
 		if = {
 			limit = {
+				exists = c:TUR
+				exists = c:EGY
 				OR = {
 					has_variable = veiled_protectorate_support_ottomans
 					has_variable = veiled_protectorate_support_egypt
@@ -6261,7 +6411,7 @@ ai_strategy_default = {
 		# GBR and RUS care about Afghanistan believe it or not
 		if = {
 			limit = {
-				has_journal_entry = je_great_game_control
+				is_involved_in_journal_entry = je_great_game_control
 				OR = {
 					c:GBR ?= this
 					exists = c:CIR
@@ -7381,7 +7531,7 @@ ai_strategy_default = {
 						ruler = {
 							OR = {
 								has_variable = legitimist_leader
-								has_variable = house_bonaparte
+								var:dynasty_var ?= flag:house_bonaparte
 							}
 						}
 
@@ -8949,7 +9099,7 @@ ai_strategy_default = {
 					scope:target_country = {
 						c:SPA ?= this
 						ruler = {
-							has_variable = house_hohenzollern
+							var:dynasty_var ?= flag:house_hohenzollern
 						}
 					}
 				}
@@ -9571,6 +9721,14 @@ ai_strategy_default = {
 			if = { # Hungary should be willing to do this.
 				limit = {
 					has_journal_entry = je_hungarian_revolution
+					OR = {
+						has_variable = hungarian_revolution_twelve_points_var
+						has_variable = hungarian_revolution_annex_transylvania_button_var
+						AND = {
+							is_involved_in_journal_entry = je_springtime_of_the_peoples
+							has_variable = had_springtime_revolution
+						}
+					}
 					scope:target_country = {
 						has_journal_entry = je_matter_of_hungary
 					}
