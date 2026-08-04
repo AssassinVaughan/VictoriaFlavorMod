@@ -199,13 +199,14 @@ ai_strategy_default = {
 			
 			add = {
 				value = country_fervor_primary_culture
+				multiply = 3
 				desc = "dp_cultural_support"
 			}
 		}
 		if = {
 			limit = {
 			    scope:diplomatic_play_type = play_type:dp_secession
-			    has_technology_researched = nationalism
+			    #has_technology_researched = nationalism
 				country_has_primary_culture = cu:greek
 				scope:country = {
 				    country_has_primary_culture = cu:greek
@@ -217,6 +218,7 @@ ai_strategy_default = {
 			
 			add = {
 				value = country_fervor_primary_culture
+				multiply = 3
 				desc = "dp_cultural_support"
 			}
 		}
@@ -235,6 +237,7 @@ ai_strategy_default = {
 			
 			add = {
 				value = country_fervor_primary_culture
+				multiply = 3
 				desc = "dp_cultural_support"
 			}
 		}
@@ -5715,7 +5718,6 @@ ai_strategy_default = {
 		building_power_plant = must_have
 		building_railway = must_have
 		building_port = must_have		
-		building_military_shipyard = must_have	
 	}
 	
 	# Specifying values here will override subsidy priorities while at war

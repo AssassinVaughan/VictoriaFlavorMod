@@ -11,11 +11,11 @@ army_projection_comparison = {
 		limit = {
 			army_power_projection > 0
 		}
-		divide = army_power_projection 
+		divide = army_power_projection
 	}
 }
 
-overlords_overlord_army_projection_comparison = { 
+overlords_overlord_army_projection_comparison = {
 	if = {
 		limit = {
 			exists = this.overlord.overlord
@@ -26,7 +26,7 @@ overlords_overlord_army_projection_comparison = {
 		limit = {
 			army_power_projection > 0
 		}
-		divide = army_power_projection 
+		divide = army_power_projection
 	}
 }
 
@@ -94,18 +94,18 @@ liberty_desire_weekly_change = { #AKA liberty_desire_weekly_progress
 			root.second_country = {
 				any_primary_culture = {
 					percent = 1
-					is_primary_culture_of = root.first_country  
+					is_primary_culture_of = root.first_country
 				}
 			}
 		}
-		add = { #extra for overlord culture's fervor. Note many overlord cultures do have high fervor because of literacy. 
+		add = { #extra for overlord culture's fervor. Note many overlord cultures do have high fervor because of literacy.
 			desc = "LIBERTY_DESIRE_SHARED_PRIMARY_CULTURE"
 			add = -0.05 #base for overlord having same culture
 			root.second_country = {
 				every_primary_culture = {
 					limit = {
 						is_primary_culture_of = root.first_country
-					}	
+					}
 					add = culture_current_fervor
 					subtract = 25
 					divide = 150
@@ -127,7 +127,7 @@ liberty_desire_weekly_change = { #AKA liberty_desire_weekly_progress
 		}
 		add = {
 			desc = "LIBERTY_DESIRE_SHARED_PRIMARY_CULTURE_MIX"
-			add = { #extra for overlord culture's fervor. Note many overlord cultures do have high fervor because of literacy. 
+			add = { #extra for overlord culture's fervor. Note many overlord cultures do have high fervor because of literacy.
 				root.second_country = {
 					every_primary_culture = {
 						limit = {
@@ -169,7 +169,7 @@ liberty_desire_weekly_change = { #AKA liberty_desire_weekly_progress
 	# Special - DEI collapses if independent
 	if = {
 		limit = {
-			root.first_country = { c:NET ?= this } 
+			root.first_country = { c:NET ?= this }
 			root.second_country = { c:DEI ?= this } 
 		}
 		add = {
@@ -190,7 +190,7 @@ liberty_desire_weekly_change = { #AKA liberty_desire_weekly_progress
 		}	
 	}
 
-	#If there is a slave revolt movement, overlords' armies are useful. 
+	#If there is a slave revolt movement, overlords' armies are useful.
 	if = {
 		limit = {
 			root.second_country = {
@@ -217,7 +217,7 @@ liberty_desire_weekly_change = { #AKA liberty_desire_weekly_progress
 				}
 			}
 			multiply = -1
-			min = -0.10 
+			min = -0.10
 			if = { #special case in Cuban independence
 				limit = {
 					root.second_country = {
@@ -230,10 +230,10 @@ liberty_desire_weekly_change = { #AKA liberty_desire_weekly_progress
 		}
 	}
 
-	# Cuban Afro-Caribeno 
+	# Cuban Afro-Caribeno
 	if = {
-		limit = { 
-			root.second_country = { 
+		limit = {
+			root.second_country = {
 				c:CUB ?= this
 				has_variable = slaves_work_with_independence_movement
 			}
@@ -250,7 +250,7 @@ liberty_desire_weekly_change = { #AKA liberty_desire_weekly_progress
 		}
 	}
 
-	#Any Sovereignists in government 
+	#Any Sovereignists in government
 	if = {
 		limit = {
 			root.second_country = {
@@ -259,7 +259,7 @@ liberty_desire_weekly_change = { #AKA liberty_desire_weekly_progress
 					OR = {
 						is_ruler_of_own_country = yes
 						AND = {
-							has_role_of_type = politician
+							is_interest_group_leader = yes
 							interest_group ?= {
 								is_in_government = yes
 							}
@@ -471,7 +471,7 @@ liberty_desire_weekly_change = { #AKA liberty_desire_weekly_progress
 			}
 		}
 	}
-	
+
 	#army projection power
 	if = {
 		limit = { root.first_country.army_power_projection < 1 }
@@ -520,7 +520,7 @@ liberty_desire_weekly_change = { #AKA liberty_desire_weekly_progress
 				add = root.second_country.army_power_projection
 				multiply = 10
 				divide = root.first_country.army_power_projection
-				divide = army_projection_to_libery_desire_factor 
+				divide = army_projection_to_libery_desire_factor
 				max = 0.25  #Special max for India
 				desc = "LIBERTY_DESIRE_WEEKLY_CHANGE_ARMY_POWER_PROJECTION_BIC_POSITIVE"
 			}
@@ -556,7 +556,7 @@ liberty_desire_weekly_change = { #AKA liberty_desire_weekly_progress
 				add = root.second_country.army_power_projection
 				multiply = 5
 				divide = root.first_country.army_power_projection
-				divide = army_projection_to_libery_desire_factor 
+				divide = army_projection_to_libery_desire_factor
 				max = 0.5
 				desc = "LIBERTY_DESIRE_WEEKLY_CHANGE_ARMY_POWER_PROJECTION_DIFFERENCE_5_0_POSITIVE"
 			}
@@ -592,7 +592,7 @@ liberty_desire_weekly_change = { #AKA liberty_desire_weekly_progress
 				add = root.second_country.army_power_projection
 				multiply = 7.5
 				divide = root.first_country.army_power_projection
-				divide = army_projection_to_libery_desire_factor 
+				divide = army_projection_to_libery_desire_factor
 				max = 0.5
 				desc = "LIBERTY_DESIRE_WEEKLY_CHANGE_ARMY_POWER_PROJECTION_DIFFERENCE_7_5_POSITIVE"
 			}
@@ -629,7 +629,7 @@ liberty_desire_weekly_change = { #AKA liberty_desire_weekly_progress
 				add = root.second_country.army_power_projection
 				multiply = 10
 				divide = root.first_country.army_power_projection
-				divide = army_projection_to_libery_desire_factor 
+				divide = army_projection_to_libery_desire_factor
 				max = 0.5
 				desc = "LIBERTY_DESIRE_WEEKLY_CHANGE_ARMY_POWER_PROJECTION_DIFFERENCE_10_0_POSITIVE"
 			}
@@ -676,7 +676,7 @@ liberty_desire_weekly_change = { #AKA liberty_desire_weekly_progress
 						}
 					}
 				}
-				add = { 
+				add = {
 					every_scope_ally = {
 						limit = {
 							country_rank >= rank_value:great_power
@@ -746,9 +746,6 @@ liberty_desire_weekly_change = { #AKA liberty_desire_weekly_progress
 			multiply = -1
 		}
 	}
-
-			
-
 	#lobbies
 	second_country = {
 		add = {
@@ -1010,6 +1007,7 @@ support_separatism_radicalism = {
 	max = 0.5
 }
 
+
 ## Interest Tier Effects & Trigger Values
 # When adjusting these ensure that you also adjust the effect tooltips in the interest_tier_types
 interest_tier_effect_infamy_cost_increase_high_value = 0.25
@@ -1029,6 +1027,7 @@ interest_tier_effect_can_sign_alliance_min_tier = 3
 interest_tier_effect_can_sign_defensive_pact_min_tier = 2
 interest_tier_effect_can_sign_support_independence_min_tier = 3
 interest_tier_effect_can_sign_guarantee_independence_min_tier = 2
+interest_tier_effect_can_sign_foreign_investment_rights_min_tier = 2
 interest_tier_effect_stake_colonial_claim_min_tier = 3
 interest_tier_effect_stake_colonial_claim_unrecognized_min_tier = 4
 interest_tier_effect_can_establish_missions_min_tier = 3

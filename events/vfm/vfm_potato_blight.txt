@@ -81,8 +81,8 @@ vfm_potato_blight.100 = {
 		every_state = {
 			limit = {
 				OR = {
-				    region = sr:region_north_germany
-					region = sr:region_rhine
+				    is_in_geographic_region = geographic_region_north_germany_old
+					is_in_geographic_region = geographic_region_rhine_old
 				}
 				NOT = { state_region = s:STATE_SCHLESWIG_HOLSTEIN }
 			}
@@ -105,7 +105,7 @@ vfm_potato_blight.100 = {
 		}
 		every_state = {
 			limit = {
-				region = sr:region_baltic
+				is_in_geographic_region = geographic_region_baltic_old
 				NOR = {
 					state_region = s:STATE_GOTALAND
 					state_region = s:STATE_SVEALAND
@@ -136,10 +136,10 @@ vfm_potato_blight.100 = {
 		every_state = {
 			limit = {
 				OR = {
-				    region = sr:region_poland
-				    region = sr:region_baltic_states
-				    region = sr:region_belarus
-			    	region = sr:region_danubia
+				    is_in_geographic_region = geographic_region_poland_old
+				    is_in_geographic_region = geographic_region_baltic_states_old
+				    is_in_geographic_region = geographic_region_belarus_old
+			    	is_in_geographic_region = geographic_region_danubia_old
 				}
 			}
 			state_region = {

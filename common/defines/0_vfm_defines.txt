@@ -177,6 +177,9 @@ NAI = {
 	
 	MOBILIZATION_OPTION_GOODS_SHORTAGE_MULT = 0.1 #0.0 Multiply value of mobilization option by this if there is a goods shortage of any of its input goods
 	MOBILIZATION_OPTION_MONEY_COST_FACTOR = 50 #20 When checking whether the AI should activate a mobilization option, the monetary cost of activation is multiplied by this and compared against AI value to determine if it's worth it
+	
+	DIPLO_PLAY_SWAY_LOW_IMPACT_FACTOR = -10 # Maximum effect applied to acceptance of a reverse-sway if a country has little to lose from the enemy side's wargoals
+	DIPLO_PLAY_SWAY_LOW_IMPACT_THRESHOLD = 50 # At this total enemy wargoal impact or below, acceptance is reduced by up to DIPLO_PLAY_SWAY_LOW_IMPACT_FACTOR (at 0 impact)
 }
 
 NCountry = {
@@ -255,6 +258,8 @@ NDiplomacy = {
 	SWAY_OFFER_CALL_IN_OBLIGATION_MANEUVERS_COST = 5
 	
 	TENSION_UPRISING_CHANCE = 0.05 # Chance of war breaking out instead of the next province being colonized (base when tension is at least TENSION_THRESHOLD_VOLATILE)
+	
+	INTEREST_NAVY_TARGET_INVOLVEMENT = 1.0	#0.33		# How much of navy power projection is converted into target involvement for a present country
 }
 
 NPops = {

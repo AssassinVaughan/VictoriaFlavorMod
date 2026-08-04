@@ -10,8 +10,6 @@
 			building_employment_farmers_add = 1000
 		}
 	}
-	
-	ai_value = 500
 }		
 
 REPLACE:pm_butchering_tools = {
@@ -158,6 +156,10 @@ REPLACE:pm_simple_farming = {
 
 REPLACE:pm_herring_meal_farming = {
 	texture = "gfx/interface/icons/production_method_icons/simple_fishing.dds"
+	
+	unlocking_technologies = {
+		rotating_crops
+	}
 
 	is_hidden_when_unavailable = yes
 
@@ -478,6 +480,17 @@ REPLACE:pm_intensive_grazing_ranch = {
 	}
 }
 
+REPLACE:pm_traditional_art = {
+	texture = "gfx/interface/icons/production_method_icons/traditional_art.dds"
+
+	building_modifiers = {
+		workforce_scaled = { # 560 profit
+			goods_input_paper_add = 8 # 240
+			goods_output_fine_art_add = 4 # 800
+		}
+	}
+}
+
 pm_lithography_art = {
 	texture = "gfx/interface/icons/production_method_icons/bleached_paper.dds"
 
@@ -487,13 +500,66 @@ pm_lithography_art = {
 
 	building_modifiers = {
 
-		workforce_scaled = {
-			goods_input_paper_add = 5
-			goods_output_fine_art_add = 3
+		workforce_scaled = {  # 600 profit
+			goods_input_paper_add = 10 # 300
+			goods_output_fine_art_add = 5 # 1000
 		}
 	}
-	
-	ai_value = 1400
+}
+
+REPLACE:pm_realist_art = {
+	texture = "gfx/interface/icons/production_method_icons/realist_art.dds"
+
+	unlocking_technologies = {
+		realism
+	}
+
+	building_modifiers = {
+
+		workforce_scaled = { # 750 profit
+			goods_input_paper_add = 13 # 390
+			goods_output_fine_art_add = 6 # 1200
+		}
+	}
+}
+
+REPLACE:pm_photographic_art = {
+	texture = "gfx/interface/icons/production_method_icons/photographic_art.dds"
+
+	unlocking_technologies = {
+		camera
+	}
+
+	building_modifiers = {
+
+		workforce_scaled = { # 830 profit
+			goods_input_paper_add = 15 # 450
+			goods_input_tools_add = 8 # 320
+
+			goods_output_fine_art_add = 8 # 1600
+		}
+	}
+}
+
+REPLACE:pm_film_art = {
+	texture = "gfx/interface/icons/production_method_icons/film_art.dds"
+
+	unlocking_technologies = {
+		film
+	}
+
+	building_modifiers = {
+
+		workforce_scaled = { # 1000 profit
+			goods_input_tools_add = 10 # 400
+			goods_input_paper_add = 15 # 450
+			goods_input_electricity_add = 5 # 150
+
+			goods_output_fine_art_add = 10 # 2000
+		}
+	}
+
+	required_input_goods = electricity
 }
 
 REPLACE:pm_pig_iron = {
@@ -519,7 +585,7 @@ REPLACE:pm_pig_iron = {
 			building_employment_machinists_add = 500
 		}
 	}
-	ai_value = 1500
+	ai_value = 600
 }
 
 REPLACE:pm_steel = {
@@ -545,7 +611,7 @@ REPLACE:pm_steel = {
 			building_employment_engineers_add = 250
 		}
 	}
-	ai_value = 1500
+	ai_value = 700
 }
 
 pm_steel_machine = {
@@ -571,7 +637,7 @@ pm_steel_machine = {
 			building_employment_engineers_add = 250
 		}
 	}
-	ai_value = 1500
+	ai_value = 700
 }
 
 REPLACE:pm_rubber_grips = {
@@ -598,7 +664,7 @@ REPLACE:pm_rubber_grips = {
 			building_employment_engineers_add = 500
 		}
 	}
-	ai_value = 1500
+	ai_value = 700
 }
 
 
@@ -735,6 +801,8 @@ REPLACE:pm_market_stalls = {
 			building_employment_shopkeepers_add = 400
 		}
 	}
+	
+	ai_value = 300
 }
 
 REPLACE:pm_market_squares = {
@@ -1330,6 +1398,104 @@ REPLACE:pm_patent_stills = {
 			building_employment_shopkeepers_add = 200	# x2.0 = 400 laborer wages
 			building_employment_machinists_add = 500	# x1.5 = 750 laborer wages
 			building_employment_engineers_add = 200		# x3.0 = 600 laborer wages
+		}
+	}
+}
+
+REPLACE:pm_basic_shipbuilding = {
+	texture = "gfx/interface/icons/production_method_icons/crude_shipbuilding.dds"
+
+	country_modifiers = {
+		workforce_scaled = {
+			country_ship_construction_add = 4
+		}
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			# input goods
+			goods_input_wood_add = 40
+			goods_input_fabric_add = 15
+
+			# output goods
+			goods_output_clippers_add = 35
+		}
+
+		level_scaled = {
+			# employment
+			building_employment_shopkeepers_add = 250
+			building_employment_laborers_add = 4000
+			building_employment_machinists_add = 250
+			building_employment_engineers_add = 100
+		}
+	}
+}
+
+pm_improved_shipbuilding = {
+	texture = "gfx/interface/icons/production_method_icons/wooden_ships.dds"
+	
+	unlocking_technologies = {
+		mechanical_tools
+	}
+
+	country_modifiers = {
+		workforce_scaled = {
+			country_ship_construction_add = 6
+		}
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			# input goods
+			goods_input_wood_add = 30
+			goods_input_hardwood_add = 10
+			goods_input_fabric_add = 20
+			goods_input_tools_add = 5
+
+			# output goods
+			goods_output_clippers_add = 45
+		}
+
+		level_scaled = {
+			# employment
+			building_employment_shopkeepers_add = 500
+			building_employment_laborers_add = 3500
+			building_employment_machinists_add = 750
+			building_employment_engineers_add = 250
+		}
+	}
+}
+
+REPLACE:pm_complex_shipbuilding = {
+	texture = "gfx/interface/icons/production_method_icons/reinforced_wooden_ships.dds"
+	unlocking_technologies = {
+		screw_frigate
+	}
+
+	country_modifiers = {
+		workforce_scaled = {
+			country_ship_construction_add = 10
+		}
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			# input goods
+			goods_input_wood_add = 20
+			goods_input_hardwood_add = 20
+			goods_input_fabric_add = 20
+			goods_input_engines_add = 5
+
+			# output goods
+			goods_output_clippers_add = 70
+		}
+
+		level_scaled = {
+			# employment
+			building_employment_shopkeepers_add = 500
+			building_employment_laborers_add = 3000
+			building_employment_machinists_add = 1000
+			building_employment_engineers_add = 500
 		}
 	}
 }

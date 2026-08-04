@@ -26,6 +26,7 @@ vfm_colonial_migration.1 = {
 		}
 		any_scope_state = {
 		    NOT = {is_homeland_of_country_cultures = ROOT}
+			NOT = { is_in_geographic_region = geographic_region_europe } # TODO: make this check more advanced
 		    is_incorporated = no
 			is_isolated_from_market = no
 			OR = {
@@ -75,6 +76,7 @@ vfm_colonial_migration.1 = {
 	    random_scope_state = {
 		    limit = {
 			    NOT = {is_homeland_of_country_cultures = ROOT}
+			    NOT = { is_in_geographic_region = geographic_region_europe } # TODO: make this check more advanced
 			    is_incorporated = no
 				is_isolated_from_market = no
 				OR = {
@@ -229,6 +231,7 @@ vfm_colonial_migration.2 = {
 		}
 		any_scope_state = {
 		    NOT = {is_homeland_of_country_cultures = ROOT}
+			NOT = { is_in_geographic_region = geographic_region_europe } # TODO: make this check more advanced
 		    is_incorporated = no
 			is_isolated_from_market = no
 			OR = {
@@ -278,6 +281,7 @@ vfm_colonial_migration.2 = {
 	    random_scope_state = {
 		    limit = {
 			    NOT = {is_homeland_of_country_cultures = ROOT}
+				NOT = { is_in_geographic_region = geographic_region_europe } # TODO: make this check more advanced
 			    is_incorporated = no
 				is_isolated_from_market = no
 				OR = {

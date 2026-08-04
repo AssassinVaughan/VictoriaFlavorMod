@@ -32,16 +32,16 @@ base_values = {
 	state_upper_strata_expected_sol_add = 15
 	state_expected_sol_from_literacy = 5
 
-	state_machinists_investment_pool_contribution_add = 0.05
-	state_farmers_investment_pool_contribution_add = 0.05
-	state_engineers_investment_pool_contribution_add = 0.08
-	state_bureaucrats_investment_pool_contribution_add = 0.08
-	state_shopkeepers_investment_pool_contribution_add = 0.1
-	state_clergymen_investment_pool_contribution_add = 0.1
+	state_machinists_investment_pool_contribution_add = 0.07
+	state_farmers_investment_pool_contribution_add = 0.07
+	state_engineers_investment_pool_contribution_add = 0.1
+	state_bureaucrats_investment_pool_contribution_add = 0.1
+	state_shopkeepers_investment_pool_contribution_add = 0.13
+	state_clergymen_investment_pool_contribution_add = 0.13
 	state_aristocrats_investment_pool_contribution_add = 0.13
 	state_capitalists_investment_pool_contribution_add = 0.2
 
-	state_literacy_growth_add = 0.005
+	state_literacy_growth_add = 0.0005
 
 	# To balance for unincorporated states not paying taxes
 	state_unincorporated_starting_wages_mult = -0.20
@@ -51,13 +51,13 @@ base_values = {
 
 	state_market_access_price_impact = 0.75
 
-	country_company_throughput_bonus_add = 0.15
+	country_company_throughput_bonus_add = 0.1
 	country_company_construction_efficiency_bonus_add = 0.15
 
 	country_max_weekly_construction_progress_add = 10
 	country_ship_construction_progress_max_add = 0
 
-	military_formation_organization_gain_add = 0.5 # 200 days to get max organization
+	military_formation_organization_gain_add = 1.0 # 100 days to get max organization
 
 	state_urbanization_per_level_add = 100
 
@@ -452,7 +452,9 @@ prestige_goods_supply_army = {
 }
 
 prestige_goods_supply_navy = {
-	unit_morale_recovery_mult = 0.25
+	ship_hull_damage_mult = 0.1
+	ship_crew_damage_mult = 0.1
+	ship_armor_mult = 0.1
 }
 
 insurrectionary_ig = {
@@ -688,7 +690,7 @@ low_pop_state = {
 # Multiplies unemployment rate in state by this
 unemployment_birth_penalty_state = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
-	state_birth_rate_mult = -0.35
+	state_birth_rate_mult = -0.4
 }
 
 # if this bonus changes need code support
@@ -718,11 +720,11 @@ infamy_pariah = {
 # Scales with devastation level
 state_region_devastation = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_negative.dds
-	state_infrastructure_mult = -1.0
-	state_mortality_mult = 2.0
+	state_infrastructure_mult = -0.5 # -1.0 VFM
+	state_mortality_mult = 1.0
 	state_migration_pull_mult = -2.0
-	state_construction_mult = -0.3
-	building_throughput_add = -0.25
+	state_construction_mult = -0.3 # 0.5 VFM
+	building_throughput_add = -0.2 # 0.25 VFM
 	state_devastation_decay_mult = 3.0
 }
 
@@ -763,7 +765,7 @@ state_obstinance = {
 # Applied if state is above 'in turmoil' threshold
 state_turmoil = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
-	building_throughput_add = -0.08
+	building_throughput_add = -0.07
 	state_tax_waste_add = 0.15
 	state_migration_pull_mult = -0.25
 }
@@ -771,7 +773,7 @@ state_turmoil = {
 # Applied if state is above 'high turmoil' threshold
 state_turmoil_high = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
-	building_throughput_add = -0.12
+	building_throughput_add = -0.1
 	state_tax_waste_add = 0.25
 	state_migration_pull_mult = -0.35
 }
@@ -779,7 +781,7 @@ state_turmoil_high = {
 # Applied if state is above 'extreme turmoil' threshold
 state_turmoil_extreme = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
-	building_throughput_add = -0.16
+	building_throughput_add = -0.13
 	state_tax_waste_add = 0.4
 	state_migration_pull_mult = -0.5
 }
