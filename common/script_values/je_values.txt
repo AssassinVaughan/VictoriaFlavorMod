@@ -310,3 +310,57 @@ ottoman_power_projection= {
 		add = army_power_projection
 	}
 }
+
+disease_outbreak_level = { # state scope
+	if = {
+		limit = {
+			any_harvest_condition = {
+				harvest_condition_intensity = { target = prev.owner value > 5 }
+			}
+		}
+		value = 1
+	}
+	else_if = {
+		limit = {
+			any_harvest_condition = {
+				harvest_condition_intensity = { target = prev.owner value > 4 }
+			}
+		}
+		value = 0.85
+	}
+	else_if = {
+		limit = {
+			any_harvest_condition = {
+				harvest_condition_intensity = { target = prev.owner value > 3 }
+			}
+		}
+		value = 0.7
+	}
+	else_if = {
+		limit = {
+			any_harvest_condition = {
+				harvest_condition_intensity = { target = prev.owner value > 2 }
+			}
+		}
+		value = 0.55
+	}
+	else_if = {
+		limit = {
+			any_harvest_condition = {
+				harvest_condition_intensity = { target = prev.owner value > 1 }
+			}
+		}
+		value = 0.4
+	}
+	else_if = {
+		limit = {
+			any_harvest_condition = {
+				harvest_condition_intensity = { target = prev.owner value > 0 }
+			}
+		}
+		value = 0.15
+	}
+	else = {
+		value = 0
+	}
+}

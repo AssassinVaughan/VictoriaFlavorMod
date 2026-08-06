@@ -886,6 +886,72 @@ liberty_desire_weekly_change = { #AKA liberty_desire_weekly_progress
 		}
 	}
 
+	# Special Values - Communism
+
+	if = {
+		limit = {
+			ROOT.second_country ?= {
+				has_radical_leftist_government = no
+				has_radical_leftist_economy = no
+			}
+			ROOT.first_country ?= {
+				OR = {
+					has_radical_leftist_government = yes
+					has_radical_leftist_economy = yes
+				}
+			}
+		}
+		add = {
+			if = {
+				limit = {
+					ROOT.first_country ?= {
+						has_radical_leftist_government = yes
+					}
+				}
+				add = 0.5
+			}
+			if = {
+				limit = {
+					ROOT.first_country ?= {
+						has_radical_leftist_economy = yes
+					}
+				}
+				add = 0.5
+			}
+			desc = "LIBERTY_DESIRE_WEEKLY_CHANGE_OVERLORD_COMMUNIST"
+		}
+	}
+
+	if = {
+		limit = {
+			ROOT.second_country ?= {
+				OR = {
+					has_radical_leftist_government = yes
+					has_radical_leftist_economy = yes
+				}
+			}
+			ROOT.first_country ?= {
+				has_radical_leftist_government = no
+				has_radical_leftist_economy = no
+			}
+		}
+		add = {
+			if = {
+				limit = {
+					has_radical_leftist_government = yes
+				}
+				add = 0.5
+			}
+			if = {
+				limit = {
+					has_radical_leftist_economy = yes
+				}
+				add = 0.5
+			}
+			desc = "LIBERTY_DESIRE_WEEKLY_CHANGE_SUBJECT_COMMUNIST"
+		}
+	}
+
 	save_temporary_value_as = pre_scaling_value
 
 	#apply scaling
