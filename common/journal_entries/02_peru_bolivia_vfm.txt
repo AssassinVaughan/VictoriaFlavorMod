@@ -1,7 +1,7 @@
 ﻿REPLACE:je_peru_bolivia = {
 	icon = "gfx/interface/icons/event_icons/event_flags/event_pbc_flag.dds"
 
-	group = je_group_historical_content
+	group = je_group_global_international_situations
 
 	immediate = {
 		cu:quechua = {
@@ -10,65 +10,77 @@
 		cu:south_andean = {
 			save_scope_as = south_andean_culture
 		}
-		c:BOL = {
+		c:BOL ?= {
 			save_scope_as = bolivia_scope
 		}
-		set_variable = pbc_member
 	}
 	on_monthly_pulse = {
 		effect = {
-			if = {
-				limit = {
-					c:BOL ?= this
-					government_legitimacy >= 50
-				}
-				change_global_variable = {
-					name = peru_bolivia_var
-					add = 1
-				}
-			}
-		}
-	}
-
-	complete = {
-		hidden_trigger = {
-			c:BOL = this
-		}
-		scope:journal_entry = { is_goal_complete = yes }
-		OR = {
-			c:SPU ?= {
-				is_subject_of = c:BOL
-			}
-			c:NPU ?= {
-				is_subject_of = c:BOL
-			}
-			c:IQU ?= {
-				is_subject_of = c:BOL
-			}
-			c:PEU ?= {
-				is_subject_of = c:BOL
-			}
-		}
-		custom_tooltip = {
-			text = bol_no_revolutions_tt
-			NOT = {
-				any_country = {
-					is_subject_of = c:BOL
-					OR = {
-						country_has_primary_culture = cu:south_andean
-						country_has_primary_culture = cu:quechua
-						country_has_primary_culture = cu:peruvian
+			scope:journal_entry ?= {
+				if = {
+					limit = {
+						c:BOL ?= {
+							government_legitimacy >= 50
+						}
 					}
-					has_revolution = yes
+					change_global_variable = {
+						name = peru_bolivia_var
+						add = 1
+					}
 				}
 			}
 		}
 	}
 
-	on_complete = {
+
+
+	outcome = {
+		header = je_peru_bolivia_confederation_victory
+		effect_header = je_peru_bolivia_on_confederation_victory
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
+            hidden_trigger = {
+			    c:BOL = this
+		    }
+			scope:journal_entry = { is_goal_complete = yes }
+			c:BOL ?= {
+				is_at_war = no
+			}
+			OR = {
+				c:SPU ?= {
+					is_subject_of = c:BOL
+				}
+				c:NPU ?= {
+					is_subject_of = c:BOL
+				}
+				c:IQU ?= {
+					is_subject_of = c:BOL
+				}
+				c:PEU ?= {
+					is_subject_of = c:BOL
+				}
+			}
+			custom_tooltip = {
+				text = bol_no_revolutions_tt
+				NOT = {
+					c:BOL ?={
+						any_subject_or_below = {
+							OR = {
+								country_has_primary_culture = cu:south_andean
+								country_has_primary_culture = cu:quechua
+								country_has_primary_culture = cu:peruvian
+							}
+							has_revolution = yes
+						}
+					}
+				}
+			}
+		}
+		effect = {
 		remove_variable = attack_bolivia
 		remove_variable = befriend_bolivia
-		custom_tooltip = {
+			custom_tooltip = {
 			text = peru_bolivia_completion_nonbolivia_tt
 			if = {
 				limit = {
@@ -80,10 +92,21 @@
 			}
 		}
 	}
+	}
 
 	is_progressing = {
 		c:BOL ?= {
 			government_legitimacy >= 50
+			NOT = {
+				any_subject_or_below = {
+					OR = {
+						country_has_primary_culture = cu:south_andean
+						country_has_primary_culture = cu:quechua
+						country_has_primary_culture = cu:peruvian
+					}
+					has_revolution = yes
+				}
+			}
 		}
 		OR = {
 			c:SPU ?= {
@@ -99,126 +122,134 @@
 				is_subject_of = c:BOL
 			}
 		}
-		NOT = {
-			any_country = {
-				is_subject_of = c:BOL
-				has_revolution = yes
-			}
-		}
 	}
 
-	fail = {
-		OR = {
-			NOT = {
-				exists = c:BOL
-			}
-			AND = {
-				OR = {
-					NOT = {
-						exists = c:SPU
-					}
-					c:SPU ?= {
-						NOT = { is_subject_of = c:BOL }
-					}
-				}
-				OR = {
-					NOT = {
-						exists = c:NPU
-					}
-					c:NPU ?= {
-						NOT = { is_subject_of = c:BOL }
-					}
-				}
-				OR = {
-					NOT = {
-						exists = c:IQU
-					}
-					c:IQU ?= {
-						NOT = { is_subject_of = c:BOL }
-					}
-				}
-				OR = {
-					NOT = {
-						exists = c:PEU
-					}
-					c:PEU ?= {
-						NOT = { is_subject_of = c:BOL }
-					}
-				}
-			}
-			NOT = {
-				country_has_primary_culture = cu:south_andean
-			}
-			c:BOL ?= {
-				is_subject = yes
-			}
-		}
-	}
-
-	on_fail = {
-		if = { #Why? So that [somehow] this doesn't cause four fail events to fire at once. That should be impossible, but you never know.
-			limit = {
-				c:BOL ?= this
-			} 
-			if = {
-				limit = {
-					any_country = {
-						has_variable = pbc_member
-						is_player = yes
-					}
-				}
-				random_country = {
-					limit = {
-						has_variable = pbc_member
-						is_player = yes
-					}
-					trigger_event = { id = peru_bolivia_events.3 popup = yes }
-				}
-			}
-			else = {
-				ordered_country = {
-					limit = {
-						has_variable = pbc_member
-					}
-					order_by = gdp
-					trigger_event = { id = peru_bolivia_events.3 popup = yes }
-				}
-			}
-		}
-		else_if = {
-			limit = {
+	outcome = {
+		header = je_peru_bolivia_restorer_victory
+		effect_header = je_peru_bolivia_on_restorer_victory
+		color = "blue_negative"
+		conclusion_desc = je_standard_failure_conclusion_desc
+		trigger = {
+			OR = {
 				NOT = {
 					exists = c:BOL
 				}
-			}
-			if = {
-				limit = {
-					any_country = {
-						has_variable = pbc_member
-						is_player = yes
+				AND = {
+					OR = {
+						NOT = {
+							exists = c:SPU
+						}
+						c:SPU ?= {
+							NOT = { is_subject_of = c:BOL }
+						}
+					}
+					OR = {
+						NOT = {
+							exists = c:NPU
+						}
+						c:NPU ?= {
+							NOT = { is_subject_of = c:BOL }
+						}
+					}
+					OR = {
+						NOT = {
+							exists = c:IQU
+						}
+						c:IQU ?= {
+							NOT = { is_subject_of = c:BOL }
+						}
+					}
+					OR = {
+						NOT = {
+							exists = c:PEU
+						}
+						c:PEU ?= {
+							NOT = { is_subject_of = c:BOL }
+						}
 					}
 				}
-				random_country = {
-					limit = {
-						has_variable = pbc_member
-						is_player = yes
-					}
-					trigger_event = { id = peru_bolivia_events.3 popup = yes }
-				}
+			NOT = {
+				country_has_primary_culture = cu:south_andean
 			}
-			else = {
-				ordered_country = {
-					limit = {
-						has_variable = pbc_member
-					}
-					order_by = gdp
-					trigger_event = { id = peru_bolivia_events.3 popup = yes }
+				c:BOL ?= {
+					is_subject = yes
 				}
 			}
 		}
+		effect = {
+			je_peru_bolivia_cleanup = yes
+		}
+		effect_all_involved = {
+			if = { #Why? So that [somehow] this doesn't cause four fail events to fire at once. That should be impossible, but you never know.
+				limit = {
+					c:BOL ?= this
+				}
+				if = {
+					limit = {
+						any_country_in_south_america = {
+							has_variable = pbc_member
+							is_player = yes
+						}
+					}
+					random_country = {
+						limit = {
+							has_variable = pbc_member
+							is_player = yes
+						}
+						trigger_event = { id = peru_bolivia_events.3 popup = yes }
+					}
+				}
+				else = {
+					ordered_country = {
+						limit = {
+							has_variable = pbc_member
+						}
+						order_by = gdp
+						position = 0
+						check_range_bounds = no
+						trigger_event = { id = peru_bolivia_events.3 popup = yes }
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = c:BOL
+					}
+				}
+				if = {
+					limit = {
+						any_country_in_south_america = {
+							has_variable = pbc_member
+							is_player = yes
+						}
+					}
+					random_country = {
+						limit = {
+							has_variable = pbc_member
+							is_player = yes
+						}
+						trigger_event = { id = peru_bolivia_events.3 popup = yes }
+					}
+				}
+				else = {
+					ordered_country = {
+						limit = {
+							has_variable = pbc_member
+						}
+						order_by = gdp
+						position = 0
+						check_range_bounds = no
+						trigger_event = { id = peru_bolivia_events.3 popup = yes }
+					}
+				}
+		}
 	}
 
-	invalid = {
+	outcome = {
+		flags = { hidden invalid_outcome }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		trigger = {
 		OR = {
 			AND = {
 				OR = {
@@ -243,8 +274,10 @@
 				}
 			}
 		}
+	effect = {
+			je_peru_bolivia_cleanup = yes
+		}
 	}
-
 	current_value = {
 		value = global_var:peru_bolivia_var #This variable is initialised in Argentina's country file, because of load orders.
 	}
@@ -257,13 +290,21 @@
 
 	weight = 10000
 
-	should_be_pinned_by_default = yes
+	should_be_pinned_by_default_involved = yes
+	should_be_pinned_by_default_uninvolved_or_context = no
+
+	can_revolution_inherit = yes
 }
 
 je_war_of_the_confederation = {
 	icon = "gfx/interface/icons/event_icons/event_military.dds"
 
-	group = je_group_historical_content
+	group = je_group_global_international_situations
+
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
+
 
 	immediate = {
 		cu:quechua = {
@@ -272,7 +313,7 @@ je_war_of_the_confederation = {
 		cu:south_andean = {
 			save_scope_as = south_andean_culture
 		}
-		c:BOL = {
+		c:BOL ?= {
 			save_scope_as = bolivia_scope
 		}
 		root = {
@@ -291,7 +332,12 @@ je_war_of_the_confederation = {
 		}
 	}
 
-	complete = {
+	outcome = {
+		header = je_peru_bolivia_confederation_victory
+		effect_header = je_peru_bolivia_on_confederation_victory
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
 		OR = {
 			custom_tooltip = {
 				text = peru_bolivia_dead_tt
@@ -356,7 +402,7 @@ je_war_of_the_confederation = {
 		}
 	}
 
-	on_complete = {
+	effect = {
 		custom_tooltip = {
 			text = peru_bolivia_complete_tt
 			if = {
@@ -391,21 +437,31 @@ je_war_of_the_confederation = {
 			}
 		}
 	}
+    }
 
-	fail = {
+	outcome = {
+		header = je_peru_bolivia_restorer_victory
+		effect_header = je_peru_bolivia_on_restorer_victory
+		color = "blue_negative"
+		conclusion_desc = je_standard_failure_conclusion_desc
+		trigger = {
 		custom_tooltip = {
 			text = peru_bolivia_success_tt
 			exists = c:PBC
 		}
 	}
 
-	on_fail = {
+	effect = {
 		remove_variable = attack_bolivia
 		remove_variable = befriend_bolivia
 		trigger_event = { id = peru_bolivia_events.7 popup = yes }
 	}
+    }
 
-	invalid = {
+	outcome = {
+		flags = { hidden invalid_outcome }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		trigger = {
 		OR = {
 			AND = {
 				OR = {
@@ -435,10 +491,11 @@ je_war_of_the_confederation = {
 		}
 	}
 	
-	on_invalid = {
+	effect = {
 		remove_variable = attack_bolivia
 		remove_variable = befriend_bolivia
 	}
+    }
 
 	current_value = {
 		value = var:peru_bolivia_opposition_var

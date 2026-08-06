@@ -3,26 +3,38 @@
 
 	group = je_group_tanzimat
 
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
+
 	is_shown_in_lobby = {
 		c:TUR = THIS
     }
 	
-	complete = {
-		scope:journal_entry = {
-			is_goal_complete = yes
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
+			scope:journal_entry = {
+				is_goal_complete = yes
+			}
+		}
+		effect = {
+			remove_modifier = sick_man_of_europe
+			trigger_event = {
+				id = sick_man.2
+			}
 		}
 	}
 
-	on_complete = {
-		remove_modifier = sick_man_of_europe
-		trigger_event = {
-			id = sick_man.2
-		}
-	}
-
-	timeout = 14600
-
-	on_timeout = {
+	outcome = {
+		header = JOURNAL_ENTRY_TIMEOUT
+		effect_header = JOURNAL_ENTRY_ON_TIMEOUT
+		flags = { timeout }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		effect = {
 		remove_modifier = sick_man_of_europe
 		add_modifier = {
 			name = dead_man_of_europe
@@ -75,6 +87,9 @@
 			remove_tradition_trait = tradition_rumelian
 		}
 	}
+	}
+
+	timeout = 10950
 	
 	on_monthly_pulse = {
 		effect = {
@@ -130,7 +145,16 @@ REPLACE:je_sick_man_syria = {
 
 	group = je_group_tanzimat
 	
-	complete = {
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
+
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
 			AND = {
 				AND = {
 					has_state_in_state_region = STATE_ALEPPO
@@ -150,13 +174,9 @@ REPLACE:je_sick_man_syria = {
 					}
 				}
 			}
-	}
+	    }
 
-	modifiers_while_active = {
-		modifier_syrian_ambitions
-	}
-
-	on_complete = {
+	effect = {
 		change_variable = {
 			name = sick_man_var
 			add = 1
@@ -170,12 +190,25 @@ REPLACE:je_sick_man_syria = {
 			id = vilayet_events.2
 		}
 		custom_tooltip = sickman_syria_egypt
+		je_sick_man_syria_cleanup = yes
+	}
+	}
+	
+	modifiers_while_active = {
+		modifier_syrian_ambitions
 	}
 
-	invalid = {
-		custom_tooltip = {
-			text = finished_sick_man_tt
-			has_variable = sick_man_complete
+	outcome = {
+		flags = { hidden invalid_outcome }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		trigger = {
+			custom_tooltip = {
+				text = finished_sick_man_tt
+				has_variable = sick_man_complete
+			}
+		}
+		effect = {
+			je_sick_man_syria_cleanup = yes
 		}
 	}
 
@@ -197,7 +230,16 @@ REPLACE:je_sick_man_egypt = {
 
 	group = je_group_tanzimat
 	
-	complete = {
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
+
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
 		OR = {
 			AND = {
 				exists = c:EGY
@@ -230,23 +272,31 @@ REPLACE:je_sick_man_egypt = {
 			}
 		}
 	}
-
-	on_complete = {
-		add_modifier = {
-			name = reclaimed_egypt # country_prestige_add = 10
-			days = normal_modifier_time
-		}
-		custom_tooltip = je_sick_man_advance
-		change_variable = {
-			name = sick_man_var
-			add = 1
+		effect = {
+		    add_modifier = {
+				name = reclaimed_egypt # country_prestige_add = 10
+				days = normal_modifier_time
+			}
+			custom_tooltip = je_sick_man_advance
+			change_variable = {
+				name = sick_man_var
+				add = 1
+			}
+			je_sick_man_egypt_cleanup = yes
 		}
 	}
 
-	invalid = {
-		custom_tooltip = {
-			text = finished_sick_man_tt
-			has_variable = sick_man_complete
+	outcome = {
+		flags = { hidden invalid_outcome }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		trigger = {
+			custom_tooltip = {
+				text = finished_sick_man_tt
+				has_variable = sick_man_complete
+			}
+		}
+		effect = {
+			je_sick_man_egypt_cleanup = yes
 		}
 	}
 
@@ -275,7 +325,16 @@ REPLACE:je_sick_man_economy = {
 		}
 	}
 	
-	complete = {
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
+
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
 		taking_loans = no
 		any_scope_state = {
 			is_incorporated = yes
@@ -285,14 +344,15 @@ REPLACE:je_sick_man_economy = {
 		scope:journal_entry = {
 			is_goal_complete = yes
 		}
-	}
-
-	on_complete = {
-		set_variable = completed_sick_man_economy_je
-		custom_tooltip = je_sick_man_advance
-		change_variable = {
-			name = sick_man_var
-			add = 1
+	    }
+		effect = {
+			set_variable = completed_sick_man_economy_je
+			custom_tooltip = je_sick_man_advance
+			change_variable = {
+				name = sick_man_var
+				add = 1
+			}
+			je_sick_man_economy_cleanup = yes
 		}
 	}
 	
@@ -345,7 +405,16 @@ REPLACE:je_sick_man_education = {
 		}
 	}
 	
-	complete = {
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
+
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
 		any_scope_building = {
 			is_building_type = building_university
 			occupancy > 0.9
@@ -356,13 +425,14 @@ REPLACE:je_sick_man_education = {
 		}
 		NOT = { has_law_or_variant = law_type:law_guild_system }
 	}
-
-	on_complete = {
-		set_variable = completed_sick_man_education_je
-		custom_tooltip = je_sick_man_advance
-		change_variable = {
-			name = sick_man_var
-			add = 1
+		effect = {
+			set_variable = completed_sick_man_education_je
+			custom_tooltip = je_sick_man_advance
+			change_variable = {
+				name = sick_man_var
+				add = 1
+			}
+			je_sick_man_education_cleanup = yes
 		}
 	}
 
@@ -374,10 +444,17 @@ REPLACE:je_sick_man_education = {
 		value = 0.1
 	}
 
-	invalid = {
-		custom_tooltip = {
-			text = finished_sick_man_tt
-			has_variable = sick_man_complete
+	outcome = {
+		flags = { hidden invalid_outcome }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		trigger = {
+			custom_tooltip = {
+				text = finished_sick_man_tt
+				has_variable = sick_man_complete
+			}
+		}
+		effect = {
+			je_sick_man_education_cleanup = yes
 		}
 	}
 
@@ -394,7 +471,16 @@ REPLACE:je_sick_man_separatism = {
 
 	group = je_group_tanzimat
 
-	complete = {
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
+
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
 		scope:journal_entry = {
 			is_goal_complete = yes
 		}
@@ -405,13 +491,14 @@ REPLACE:je_sick_man_separatism = {
 			}
 		}
 	}
-
-	on_complete = {
-		set_variable = completed_separatism_sick_man_je
-		custom_tooltip = je_sick_man_advance
-		change_variable = {
-			name = sick_man_var
-			add = 1
+		effect = {
+			set_variable = completed_separatism_sick_man_je
+			custom_tooltip = je_sick_man_advance
+			change_variable = {
+				name = sick_man_var
+				add = 1
+			}
+			je_sick_man_separatism_cleanup = yes
 		}
 	}
 
@@ -434,21 +521,27 @@ REPLACE:je_sick_man_separatism = {
 		}
 	}
 
-	fail = {
-		highest_secession_progress > 0.5
-	}
-
-	on_fail = {
-		set_variable = failed_sick_man_separatism
-		if = { #failure immediately triggers eastern_crisis
-			limit = {
-				c:TUR ?= this
-				has_dlc_feature = ip3_content
-				NOT = {
-					has_global_variable = eastern_crisis_happened
+	outcome = {
+		header = je_standard_failure_header
+		effect_header = je_standard_on_failure_header
+		color = "blue_negative"
+		conclusion_desc = je_standard_failure_conclusion_desc
+		trigger = {
+			highest_secession_progress > 0.5
+		}
+		effect = {
+			set_variable = failed_sick_man_separatism
+			if = { #failure immediately triggers eastern_crisis
+				limit = {
+					c:TUR ?= this
+					has_dlc_feature = ip3_content
+					NOT = {
+						has_global_variable = eastern_crisis_happened
+					}
 				}
+				add_contextless_journal_entry = je_great_eastern_crisis
 			}
-			add_contextless_journal_entry = je_great_eastern_crisis
+			je_sick_man_separatism_cleanup = yes
 		}
 	}
 
@@ -460,10 +553,17 @@ REPLACE:je_sick_man_separatism = {
 		add = 180
 	}
 
-	invalid = {
-		custom_tooltip = {
-			text = finished_sick_man_tt
-			has_variable = sick_man_complete
+	outcome = {
+		flags = { hidden invalid_outcome }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		trigger = {
+			custom_tooltip = {
+				text = finished_sick_man_tt
+				has_variable = sick_man_complete
+			}
+		}
+		effect = {
+			je_sick_man_separatism_cleanup = yes
 		}
 	}
 
@@ -496,7 +596,16 @@ REPLACE:je_sick_man_army = {
 		}
 	}
 
-	complete = {
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
+
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
 		army_size >= 100
 		has_technology_researched = napoleonic_warfare
 		any_scope_building = {
@@ -521,13 +630,14 @@ REPLACE:je_sick_man_army = {
 			}
 		}
 	}
-
-	on_complete = {
-		set_variable = completed_sick_man_army_je
-		custom_tooltip = je_sick_man_advance
-		change_variable = {
-			name = sick_man_var
-			add = 1
+		effect = {
+			set_variable = completed_sick_man_army_je
+			custom_tooltip = je_sick_man_advance
+			change_variable = {
+				name = sick_man_var
+				add = 1
+			}
+			je_sick_man_army_cleanup = yes
 		}
 	}
 
@@ -537,10 +647,17 @@ REPLACE:je_sick_man_army = {
 		}
 	}
 
-	invalid = {
-		custom_tooltip = {
-			text = finished_sick_man_tt
-			has_variable = sick_man_complete
+	outcome = {
+		flags = { hidden invalid_outcome }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		trigger = {
+			custom_tooltip = {
+				text = finished_sick_man_tt
+				has_variable = sick_man_complete
+			}
+		}
+		effect = {
+			je_sick_man_army_cleanup = yes
 		}
 	}
 
@@ -569,7 +686,16 @@ je_sick_man_navy = {
 		}
 	}
 
-	complete = {
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
+
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
 		navy_size >= 50
 		has_technology_researched = power_of_the_purse
 		has_technology_researched = screw_frigate
@@ -586,13 +712,13 @@ je_sick_man_navy = {
 			}
 		}
 	}
-
-	on_complete = {
-		set_variable = completed_sick_man_army_je
-		custom_tooltip = je_sick_man_advance
-		change_variable = {
-			name = sick_man_var
-			add = 1
+		effect = {
+			set_variable = completed_sick_man_army_je
+			custom_tooltip = je_sick_man_advance
+			change_variable = {
+				name = sick_man_var
+				add = 1
+			}
 		}
 	}
 
@@ -602,10 +728,14 @@ je_sick_man_navy = {
 		#}
 	}
 
-	invalid = {
-		custom_tooltip = {
-			text = finished_sick_man_tt
-			has_variable = sick_man_complete
+	outcome = {
+		flags = { hidden invalid_outcome }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		trigger = {
+			custom_tooltip = {
+				text = finished_sick_man_tt
+				has_variable = sick_man_complete
+			}
 		}
 	}
 
@@ -634,7 +764,16 @@ REPLACE:je_sick_man_bureaucracy = {
 		}
 	}
 	
-	complete = {
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
+
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
 		NOR = { 
 			has_law_or_variant = law_type:law_hereditary_bureaucrats 
 			has_law_or_variant = law_type:law_land_based_taxation
@@ -643,15 +782,16 @@ REPLACE:je_sick_man_bureaucracy = {
 		bureaucracy >= 0 
 		approaching_bureaucracy_shortage = no
 	}
-
-	on_complete = {
-		set_variable = completed_sick_man_bureaucracy_je
-		custom_tooltip = je_sick_man_advance
-		change_variable = {
-			name = sick_man_var
-			add = 1
+		effect = {
+			set_variable = completed_sick_man_bureaucracy_je
+			custom_tooltip = je_sick_man_advance
+			change_variable = {
+				name = sick_man_var
+				add = 1
+			}
+			remove_modifier = outmoded_bureaucracy
+			je_sick_man_bureaucracy_cleanup = yes
 		}
-		remove_modifier = outmoded_bureaucracy
 	}
 
 	on_monthly_pulse = {
@@ -661,10 +801,17 @@ REPLACE:je_sick_man_bureaucracy = {
 		}
 	}
 
-	invalid = {
-		custom_tooltip = {
-			text = finished_sick_man_tt
-			has_variable = sick_man_complete
+	outcome = {
+		flags = { hidden invalid_outcome }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		trigger = {
+			custom_tooltip = {
+				text = finished_sick_man_tt
+				has_variable = sick_man_complete
+			}
+		}
+		effect = {
+			je_sick_man_bureaucracy_cleanup = yes
 		}
 	}
 
@@ -692,7 +839,16 @@ je_sick_man_vilayets = {
 		}
 	}
 	
-	complete = {
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
+
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
 		custom_tooltip = {
 			text = finished_syria_tt
 			has_variable = completed_syria_je
@@ -708,8 +864,7 @@ je_sick_man_vilayets = {
 			}
 		}
 	}
-
-	on_complete = {
+    effect = {
 		set_variable = completed_sick_man_vilayet_je
 		custom_tooltip = je_sick_man_advance
 		change_variable = {
@@ -717,6 +872,7 @@ je_sick_man_vilayets = {
 			add = 1
 		}
 		trigger_event = vilayet_events.1
+	}
 	}
 
 	on_monthly_pulse = {
@@ -726,10 +882,14 @@ je_sick_man_vilayets = {
 		#}
 	}
 	
-	invalid = {
-		custom_tooltip = {
-			text = finished_sick_man_tt
-			has_variable = sick_man_complete
+	outcome = {
+		flags = { hidden invalid_outcome }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		trigger = {
+			custom_tooltip = {
+				text = finished_sick_man_tt
+				has_variable = sick_man_complete
+			}
 		}
 	}
 
@@ -743,7 +903,16 @@ je_sick_man_kurdistan = {
 
 	group = je_group_tanzimat
 
-	complete = {
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
+
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
 		OR = {
 			custom_tooltip = {
 				text = finished_kurdistan_je_tt
@@ -772,7 +941,7 @@ je_sick_man_kurdistan = {
 		
 	}
 
-	on_complete = {
+	effect = {
         if = { 
             limit = {
                 NOT = { has_variable = sick_man_complete }
@@ -784,13 +953,18 @@ je_sick_man_kurdistan = {
             }
         }
 	}
+	}
 
-    invalid = {
-        custom_tooltip = {
-			text = finished_sick_man_tt
-			has_variable = sick_man_complete
+    outcome = {
+		flags = { hidden invalid_outcome }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		trigger = {
+			custom_tooltip = {
+				text = finished_sick_man_tt
+				has_variable = sick_man_complete
+			}
 		}
-    }
+	}
 
 	transferable = no
     should_be_pinned_by_default = yes   
@@ -819,7 +993,16 @@ je_sick_man_arabia = {
 	possible = {
 	}
 	
-	complete = {
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
+
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
         scope:journal_entry = {
             is_goal_complete = yes
         }
@@ -846,13 +1029,14 @@ je_sick_man_arabia = {
         }
     }
 
-	on_complete = {
+	effect = {
 	    trigger_event = { id = ottoman_arabia_events.2 }
 		custom_tooltip = je_sick_man_advance
 		change_variable = {
 			name = sick_man_var
 			add = 1
 		}
+	}
 	}
 
 	on_monthly_pulse = {
@@ -887,16 +1071,22 @@ je_sick_man_arabia = {
 		}
 	}
 	
-	timeout = 9125
-	
-    on_timeout = {
+    outcome = {
+		header = JOURNAL_ENTRY_TIMEOUT
+		effect_header = JOURNAL_ENTRY_ON_TIMEOUT
+		flags = { timeout }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		effect = {
 	    add_fervor_target_modifier = {
 			culture = cu:mashriqi
 			days = long_modifier_time
 			multiplier = 5
 		}
 	    trigger_event = { id = ottoman_arabia_events.1 }
+		}
     }
+	
+	timeout = 9125
 
 	current_value = {
 		value = var:sick_man_arabia_var
@@ -906,10 +1096,14 @@ je_sick_man_arabia = {
 		add = 180
 	}
 
-	invalid = {
-		custom_tooltip = {
-			text = finished_sick_man_tt
-			has_variable = sick_man_complete
+	outcome = {
+		flags = { hidden invalid_outcome }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		trigger = {
+			custom_tooltip = {
+				text = finished_sick_man_tt
+				has_variable = sick_man_complete
+			}
 		}
 	}
 
