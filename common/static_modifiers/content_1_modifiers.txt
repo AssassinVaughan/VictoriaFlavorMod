@@ -287,7 +287,7 @@ serfs_buying_serfs = {
 no_buying_serfs = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
 	country_law_enactment_success_add = -0.1
-	country_law_enactment_time_mult = 0.2
+	country_law_enactment_speed_mult = -0.2
 }
 
 enactment_strikes_modifier = {
@@ -303,7 +303,7 @@ enactment_strikes_deterred_modifier = {
 
 worker_protection_negotiations = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
-	country_law_enactment_time_mult = 0.2
+	country_law_enactment_speed_mult = -0.2
 	country_law_enactment_success_add = 0.05
 }
 
@@ -315,7 +315,7 @@ strikebreakers_called_off = {
 
 strikbreakers_enactment = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
-	country_law_enactment_time_mult = 0.2
+	country_law_enactment_speed_mult = -0.2
 }
 
 strikebreakers_allowed = {
@@ -374,7 +374,7 @@ meritocracy_ig = {
 good_and_fast = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
 	country_law_enactment_success_add = 0.1
-	country_law_enactment_time_mult = -0.2
+	country_law_enactment_speed_mult = 0.2
 	country_bureaucracy_mult = -0.1
 }
 
@@ -382,12 +382,12 @@ good_and_cheap = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
 	country_law_enactment_success_add = 0.1
 	country_bureaucracy_mult = 0.1
-	country_law_enactment_time_mult = 0.2
+	country_law_enactment_speed_mult = -0.2
 }
 
 cheap_and_fast = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
-	country_law_enactment_time_mult = -0.2
+	country_law_enactment_speed_mult = 0.2
 	country_bureaucracy_mult = 0.1
 	country_law_enactment_success_add = -0.1
 }
@@ -395,12 +395,12 @@ cheap_and_fast = {
 decolonization = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
 	country_law_enactment_success_add = 0.2
-	country_law_enactment_time_mult = -0.25
+	country_law_enactment_speed_mult = 0.25
 }
 
 refused_to_release_colony = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
-	country_law_enactment_time_mult = 0.2
+	country_law_enactment_speed_mult = -0.2
 }
 
 slow_colonies = {
@@ -410,7 +410,7 @@ slow_colonies = {
 
 fear_of_outsourcing_alleviated = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
-	country_law_enactment_time_mult = 0.2
+	country_law_enactment_speed_mult = -0.2
 }
 
 outsourcing_anger = {
@@ -437,7 +437,7 @@ colonial_enthusiasm_settlers = {
 colonial_enthusiasm_time = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
 	country_law_enactment_success_add = 0.1
-	country_law_enactment_time_mult = 0.1
+	country_law_enactment_speed_mult = -0.1
 }
 
 colonial_ethical_conviction = {
@@ -524,7 +524,7 @@ promised_to_lower_taxes_poll_tax = {
 
 taxation_is_theft = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
-	country_law_enactment_success_add = -0.1
+	country_law_enactment_success_add = -0.05
 }
 
 patriotic_taxation = {
@@ -545,7 +545,7 @@ unpatriotic_movement = {
 death_and_taxes_mod = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
 	country_law_enactment_success_add = 0.1
-	country_law_enactment_time_mult = 0.2
+	country_law_enactment_speed_mult = -0.2
 }
 
 social_banditry = {
@@ -698,7 +698,7 @@ regicide = {
 regicide_averted = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
 	country_law_enactment_success_add = 0.10
-	country_law_enactment_time_mult = 0.2
+	country_law_enactment_speed_mult = -0.2
 }
 
 monarchist_nostalgia = {
@@ -716,8 +716,9 @@ modifier_springtime_of_the_peoples = {
 	state_pop_support_movement_yugoslav_national_mult = 0.25
 	state_pop_support_movement_liberal_mult = 0.25
 	state_pop_support_movement_cultural_minority_mult = 0.25
-	country_law_enactment_time_mult = -0.40
+	country_law_enactment_speed_mult = 0.5
 	political_movement_activism_growth_mult = 5
+	country_revolution_clock_time_add = 0.125
 }
 
 radical_constitution = {
@@ -728,7 +729,7 @@ radical_constitution = {
 no_new_constitution = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
 	country_law_enactment_success_add = 0.15
-	country_law_enactment_time_mult = 0.2
+	country_law_enactment_speed_mult = -0.2
 }
 
 suppressing_radicals = {
@@ -792,7 +793,7 @@ miracle_workers_ig_mod = {
 
 blasphemy_laws = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
-	country_law_enactment_time_mult = -0.2
+	country_law_enactment_speed_mult = 0.2
 }
 
 relaxed_blasphemy_laws = {
@@ -807,7 +808,7 @@ pogroms_law_success = {
 
 pogroms_law_time = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
-	country_law_enactment_time_mult = 0.2
+	country_law_enactment_speed_mult = -0.2
 }
 
 east_india_company_men = {
@@ -858,7 +859,7 @@ legal_scapegoat = {
 
 investigating_foreign_murder = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
-	country_law_enactment_time_mult = 0.2
+	country_law_enactment_speed_mult = -0.2
 }
 
 battleship_hoax = {
@@ -1256,7 +1257,7 @@ skyscraper_site = {
 
 skyscraper_survey = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
-	country_bureaucracy_add = -500
+	country_bureaucracy_cost_add = 500
 }
 
 skyscraper_modifier = {

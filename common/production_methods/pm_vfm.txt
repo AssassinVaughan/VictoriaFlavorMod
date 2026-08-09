@@ -107,7 +107,7 @@ pm_transmission_method_alternating_current = {
 		workforce_scaled = {
 			goods_input_wood_add = 5
 			goods_input_tools_add = 2
-			goods_output_lead_add = 5
+			goods_output_copper_add = 5
 			goods_output_electricity_add = 25
 		}
 		#profit -52
@@ -129,12 +129,96 @@ pm_hydroelectric_plant = {
 	building_modifiers = { 
 		workforce_scaled = {
 			goods_input_engines_add = 20
+			goods_input_coal_add = 3
 			goods_output_electricity_add = 120
 		}
 		level_scaled = {
 			building_employment_laborers_add = 200
 			building_employment_machinists_add = 200
 			building_employment_engineers_add = 100
+		}
+	}
+}
+
+REPLACE:pm_early_power_plant = {
+	texture = "gfx/interface/icons/production_method_icons/power_plant.dds"
+
+	state_modifiers = {
+		workforce_scaled = {
+			state_pollution_generation_add = 25
+		}
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_engines_add = 4 # 240
+			goods_input_coal_add = 5 # 150
+			goods_input_copper_add = 2 # 80
+			goods_output_electricity_add = 25 # 750
+		}
+
+		level_scaled = {
+			building_employment_laborers_add = 500
+			building_employment_machinists_add = 400
+			building_employment_engineers_add = 100
+		}
+	}
+}
+
+REPLACE:pm_coal-fired_plant = {
+	texture = "gfx/interface/icons/production_method_icons/coal_fired_plant.dds"
+
+	unlocking_technologies = {
+		steam_turbine
+	}
+
+	state_modifiers = {
+		workforce_scaled = {
+			state_pollution_generation_add = 50
+		}
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_engines_add = 6 # 360
+			goods_input_coal_add = 15 # 600
+			goods_input_copper_add = 4 # 160
+			goods_output_electricity_add = 50 # 1500
+		}
+
+		level_scaled = {
+			building_employment_laborers_add = 350
+			building_employment_machinists_add = 500
+			building_employment_engineers_add = 150
+		}
+	}
+}
+
+REPLACE:pm_oil-fired_plant = {
+	texture = "gfx/interface/icons/production_method_icons/oil_fired_plant.dds"
+
+	unlocking_technologies = {
+		oil_turbine
+	}
+
+	state_modifiers = {
+		workforce_scaled = {
+			state_pollution_generation_add = 40
+		}
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_engines_add = 10 # 600
+			goods_input_oil_add = 20 # 1000
+			goods_input_copper_add = 5 # 200
+			goods_output_electricity_add = 80 # 2400
+		}
+
+		level_scaled = {
+			building_employment_laborers_add = 200
+			building_employment_machinists_add = 600
+			building_employment_engineers_add = 200
 		}
 	}
 }
@@ -861,7 +945,8 @@ REPLACE:pm_arcades = {
 		workforce_scaled = {
 			goods_input_wood_add = 2
 			goods_input_glass_add = 2
-			goods_input_steel_add = 3
+			goods_input_steel_add = 2
+			goods_input_copper_add = 1
 			goods_input_electricity_add = 2
 			goods_output_services_add = 44
 		}
@@ -1363,9 +1448,11 @@ REPLACE:pm_pot_stills = {
 		workforce_scaled = {
 			# input goods
 			goods_input_sugar_add = 25				# x30 =  750
+			goods_input_glass_add = 2				# x40 =  80
+			goods_input_copper_add = 3				# x40 =  120
 
 			# output goods
-			goods_output_liquor_add = 32				# x30 = 960
+			goods_output_liquor_add = 40				# x30 = 960
 		}
 
 		level_scaled = {
@@ -1387,10 +1474,11 @@ REPLACE:pm_patent_stills = {
 		workforce_scaled = {
 			# input goods
 			goods_input_sugar_add = 30				# x30 =   900
-			goods_input_glass_add = 10				# x40 =   400
+			goods_input_glass_add = 4				# x40 =   160
+			goods_input_copper_add = 6				# x40 =   240
 
 			# output goods
-			goods_output_liquor_add = 70			# x30 =  2100
+			goods_output_liquor_add = 75			# x30 =  2100
 		}
 
 		level_scaled = {

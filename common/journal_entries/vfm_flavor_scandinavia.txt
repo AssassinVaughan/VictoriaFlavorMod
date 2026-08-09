@@ -1,6 +1,10 @@
 ﻿je_scandinavian_monetary_union = {
 	icon = "gfx/interface/icons/event_icons/event_trade.dds"
     group = je_group_foreign_affairs
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
+	
 	is_shown_when_inactive = {
 		any_primary_culture = {
 			has_discrimination_trait = language_scandinavian
@@ -19,12 +23,24 @@
 		}
 	}
 
-	invalid = {
-		has_global_variable = scandinavian_monetary_union_var
+	outcome = {
+		flags = { hidden invalid_outcome }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		trigger = {
+			has_global_variable = scandinavian_monetary_union_var
+		}
+		effect = {
+		    ###
+		}
 	}
-
-	complete = {
-		has_technology_researched = international_exchange_standards
+	
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
+			has_technology_researched = international_exchange_standards
 		custom_tooltip = {
 			text = scandinavian_monetary_union_relations_tt
 			any_in_global_list = {
@@ -33,10 +49,9 @@
 				NOT = { relations:root < relations_threshold:amicable }
 			}
 		}
-	}
-
-	on_complete = {
-		set_global_variable = scandinavian_monetary_union_var
+		}
+		effect = {
+			set_global_variable = scandinavian_monetary_union_var
 		every_country = {
 			limit = { 
 				is_target_in_global_variable_list = { name = scandinavian_countries_list target = THIS }
@@ -53,17 +68,17 @@
 			}
 			trigger_event = { id = journal_flavor_scandinavia.1 }
 		}
-		
+	    }
 	}
-    should_be_pinned_by_default = yes
+    should_be_pinned_by_default_uninvolved_or_context = yes
 	weight = 100
 }
 
 je_swedish_guilds = {
 	icon = "gfx/interface/icons/event_icons/event_trade.dds"
     group = je_group_internal_affairs
-	complete = {
-	    NOT = { has_law_or_variant = law_type:law_guild_system }
+	activation_description = {
+		always = yes # TODO PRCAL-45586
 	}
 	
 	on_monthly_pulse = {
@@ -72,26 +87,44 @@ je_swedish_guilds = {
 			1 = journal_flavor_scandinavia.12
 		}
 	}
-
-	on_complete = {
-	    show_as_tooltip = {
+	
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
+			NOT = { has_law_or_variant = law_type:law_guild_system }
+		}
+		effect = {
+			show_as_tooltip = {
 	        ig:ig_petty_bourgeoisie  = {
 		    	remove_ideology = ideology_guilds
 		    	add_ideology = ideology_meritocratic
 	    	}
 		}
 		trigger_event = { id = journal_flavor_scandinavia.2 }
+	    }
 	}
 
-    should_be_pinned_by_default = yes
+    should_be_pinned_by_default_uninvolved_or_context = yes
 	weight = 100
 }
 
 je_matter_of_norway = {
 	icon = "gfx/interface/icons/event_icons/event_diplomacy.dds"
     group = je_group_foreign_affairs
-	complete = {
-		has_technology_researched = pan-nationalism
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
+	
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
+			has_technology_researched = pan-nationalism
 		c:NOR ?= {
 			has_attitude = {
 				who ?= c:SWE
@@ -112,33 +145,42 @@ je_matter_of_norway = {
 			has_law_or_variant = law_type:law_universal_suffrage
 			has_law_or_variant = law_type:law_census_voting
 		}
-		
-
-	}
-
-	on_complete = {
-		annex ?= c:NOR
+		}
+		effect = {
+			annex ?= c:NOR
 		change_tag ?= SWN
 
 		trigger_event = { id = journal_flavor_scandinavia.7 }
-
+	    }
 	}
-
-	fail = {
-		c:NOR ?= {
+	
+	outcome = {
+        header = je_standard_failure_header
+        effect_header = je_standard_on_failure_header
+        color = "blue_negative"
+        conclusion_desc = je_standard_failure_conclusion_desc
+        trigger = {
+			c:NOR ?= {
 			NOR = { 
 				is_subject_type = subject_type_personal_union
 				is_subject_type = subject_type_puppet 
 			}
 		}
+		}
+		effect = {
+			trigger_event = { id = journal_flavor_scandinavia.6 }
+		}
 	}
-
-	on_fail = {
-		trigger_event = { id = journal_flavor_scandinavia.6 }
-	}
-
-	invalid = {
-		NOT = { exists = c:NOR }
+	
+	outcome = {
+		flags = { hidden invalid_outcome }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		trigger = {
+			NOT = { exists = c:NOR }
+		}
+		effect = {
+		    ###
+		}
 	}
 
 	on_monthly_pulse = {
@@ -149,7 +191,7 @@ je_matter_of_norway = {
 			1 = journal_flavor_scandinavia.5
 		}
 	}
-    should_be_pinned_by_default = yes
+    should_be_pinned_by_default_uninvolved_or_context = yes
 	weight = 100
 }
 
@@ -157,6 +199,10 @@ je_matter_of_norway = {
 je_swe_motala_fabriker = {
 	icon = "gfx/interface/icons/event_icons/event_industry.dds"
     group = je_group_internal_affairs
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
+	
 	is_shown_when_inactive = {
 		OR = {
 			country_has_primary_culture = cu:swedish
@@ -166,8 +212,13 @@ je_swe_motala_fabriker = {
 		owns_entire_state_region = STATE_SVEALAND
 	}
 	
-	complete = {
-	    has_technology_researched = mechanical_tools
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
+			has_technology_researched = mechanical_tools
 	    s:STATE_SVEALAND = {
 		    any_scope_state = {
 				any_scope_building = {
@@ -177,10 +228,10 @@ je_swe_motala_fabriker = {
 				}
 			}
 		}
-	}
-	
-	on_complete = {
-		trigger_event = { id = journal_flavor_scandinavia.8 }
+		}
+		effect = {
+			trigger_event = { id = journal_flavor_scandinavia.8 }
+	    }
 	}
 	
 	timeout = 4380
@@ -192,6 +243,10 @@ je_swe_motala_fabriker = {
 je_swe_glasriket = {
 	icon = "gfx/interface/icons/event_icons/event_industry.dds"
 	group = je_group_internal_affairs
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
+	
 	is_shown_when_inactive = {
 		OR = {
 			country_has_primary_culture = cu:swedish
@@ -204,9 +259,14 @@ je_swe_glasriket = {
 	possible = {
 		has_technology_researched = crystal_glass
 	}
-
-	complete = {
-	    s:STATE_GOTALAND = {
+	
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
+			s:STATE_GOTALAND = {
 		    any_scope_state = {
 				any_scope_building = {
 					is_building_type = building_glassworks
@@ -215,10 +275,10 @@ je_swe_glasriket = {
 				}
 			}
 		}
-	}
-	
-	on_complete = {
-		trigger_event = { id = journal_flavor_scandinavia.9 }
+		}
+		effect = {
+			trigger_event = { id = journal_flavor_scandinavia.9 }
+	    }
 	}
 	
 	timeout = 4380
@@ -230,6 +290,10 @@ je_swe_glasriket = {
 je_swe_gotavarven = {
 	icon = "gfx/interface/icons/event_icons/event_industry.dds"
 	group = je_group_internal_affairs
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
+	
 	is_shown_when_inactive = {
 	    OR = {
 			country_has_primary_culture = cu:swedish
@@ -244,9 +308,14 @@ je_swe_gotavarven = {
 		has_technology_researched = hydraulic_cranes
 		has_technology_researched = screw_frigate
 	}
-
-	complete = {
-	    s:STATE_GOTALAND = {
+	
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
+			 s:STATE_GOTALAND = {
 		    any_scope_state = {
 		any_scope_building = {
 			OR = {
@@ -258,10 +327,10 @@ je_swe_gotavarven = {
 		}
 		}
 		}
-	}
-	
-	on_complete = {
-		trigger_event = { id = journal_flavor_scandinavia.10 }
+		}
+		effect = {
+			trigger_event = { id = journal_flavor_scandinavia.10 }
+	    }
 	}
 	
 	timeout = 7300
@@ -273,6 +342,9 @@ je_stormakt = {
 	icon = "gfx/interface/icons/event_icons/bicorne_hat.dds"
 
 	group = je_group_foreign_affairs
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
 
 	is_shown_when_inactive = {
 		exists = c:SWE
@@ -308,9 +380,14 @@ je_stormakt = {
 	immediate = {
 		trigger_event = { id = journal_flavor_scandinavia.13 popup = yes }
 	}
-
-	complete = {
-		is_at_war = no
+	
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
+			is_at_war = no
 		country_or_subject_owns_entire_state_region = STATE_OSTROBOTHNIA
 		country_or_subject_owns_entire_state_region = STATE_ALAND
 		country_or_subject_owns_entire_state_region = STATE_UUSIMAA
@@ -322,22 +399,29 @@ je_stormakt = {
 			}
 			count >= 3
 		}
+		}
+		effect = {
+			trigger_event = { id = journal_flavor_scandinavia.14 popup = yes }
+	    }
 	}
-
-	on_complete = {
-		trigger_event = { id = journal_flavor_scandinavia.14 popup = yes }
-	}
-
-	invalid = {
-	    OR = {
+	
+	outcome = {
+		flags = { hidden invalid_outcome }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		trigger = {
+			 OR = {
 		has_variable = reject_stormakt_expansionism
 		ig:ig_intelligentsia = {
 			is_powerful = yes
 		}
 		}
+		}
+		effect = {
+		    ###
+		}
 	}
 
-	should_be_pinned_by_default = yes
+	should_be_pinned_by_default_uninvolved_or_context = yes
 
 	weight = 100
 }
@@ -345,10 +429,18 @@ je_stormakt = {
 je_folkhemmet = {
 	icon = "gfx/interface/icons/invention_icons/bureaucracy.dds"
 
-	group = je_group_historical_content
-
-	complete = {
-		bureaucracy >= 0
+	group = je_group_internal_affairs
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
+	
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
+			bureaucracy >= 0
 		approaching_bureaucracy_shortage = no
 		literacy_rate >= 0.5
 		institution_investment_level = {
@@ -359,16 +451,26 @@ je_folkhemmet = {
 			type = bg_technology
 			value >= 8
 		}
+		}
+		effect = {
+			#TODO
+	    }
 	}
-
-	on_complete = {
+	
+	outcome = {
+        header = je_standard_failure_header
+        effect_header = je_standard_on_failure_header
+        color = "blue_negative"
+        conclusion_desc = je_standard_failure_conclusion_desc
+        trigger = {
+			game_date > 1880.1.1
+		}
+		effect = {
+			###
+		}
 	}
-
-    fail = {
-		game_date > 1880.1.1
-    }
 
 	weight = 6000
 
-    should_be_pinned_by_default = yes
+    should_be_pinned_by_default_uninvolved_or_context = yes
 }

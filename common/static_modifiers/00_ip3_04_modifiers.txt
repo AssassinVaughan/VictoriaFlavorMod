@@ -139,7 +139,7 @@ modifier_red_summer = {
 	state_pop_support_movement_radical_mult = 0.25
 	state_pop_support_movement_reactionary_mult = 0.25
 	state_pop_support_movement_cultural_minority_mult = 0.25
-	country_law_enactment_time_mult = -0.45
+	country_law_enactment_speed_mult = 0.5
 }
 
 modifier_constitutional_monarch = {
@@ -315,7 +315,7 @@ modifier_hungry_forties_over = {
 modifier_hungry_forties_continued_imports = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_positive.dds
 	state_import_advantage_mult = 0.05
-	country_authority_add = -50
+	country_authority_cost_add = 50
 }
 
 modifier_ferdinand_the_good = {
@@ -358,13 +358,13 @@ metternich_modifier_t4 = {
 modifier_angered_minorities_with_nationalism = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
 	country_law_enactment_success_add = -1
-	country_law_enactment_time_mult = 1.5
+	country_law_enactment_speed_mult = -1.25
 }
 
 modifier_civic_nationalist_focus = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
 	country_law_enactment_success_add = -0.5
-	country_law_enactment_time_mult = 1
+	country_law_enactment_speed_mult = -1
 }
 
 modifier_empire_of_the_nation = {
@@ -404,7 +404,7 @@ modifier_citizenship_compromises = {
 
 modifier_first_among_the_nation = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
-	country_law_enactment_time_mult = 0.25
+	country_law_enactment_speed_mult = -0.25
 }
 
 modifier_clinging_to_privilege = {
@@ -527,7 +527,7 @@ modifier_austria_corporate_state_vigilance = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_negative.dds
 	country_authority_mult = 0.20
 	unit_morale_loss_mult = -0.1
-	state_mortality_turmoil_mult = 0.10
+	state_mortality_turmoil_mult = 0.05
 	state_conscription_rate_mult = 0.25
 }
 
@@ -563,7 +563,7 @@ modifier_greek_revolt_aftermath = {
 	country_fervor_target_greek_add = 30
 }
 
-movement_suppressed_after_civil_war_copy = {
+movement_suppressed_after_civil_war = {
 	icon = "gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds"
 	political_movement_radicalism_add = -1
 }

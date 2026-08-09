@@ -2,7 +2,17 @@
 
 	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
     group = je_group_historical_content
-	complete = {
+	
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
+	
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
 		has_law_or_variant = law_type:law_monarchy
 		OR = {
 			has_law_or_variant = law_type:law_wealth_voting
@@ -15,11 +25,8 @@
 			has_law_or_variant = law_type:law_protected_speech
 		}
     }
-
-	timeout = 1826
-
-    on_complete = {
-		add_radicals = {
+		effect = {
+			add_radicals = {
 			strata = upper
 			value = 0.25
 		}
@@ -43,10 +50,18 @@
 			name = albertine_statute
 			value = yes
 		}
-    }
-
-    on_timeout = {
-    	add_modifier = {
+	    }
+	}
+	
+	timeout = 1826
+	
+	outcome = {
+		header = JOURNAL_ENTRY_TIMEOUT
+		effect_header = JOURNAL_ENTRY_ON_TIMEOUT
+		flags = { timeout }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		effect = {
+			add_modifier = {
 		    name = alb_statute_legitimacy
 			days = long_modifier_time
 		}
@@ -74,7 +89,8 @@
 			name = albertine_statute
 			value = yes
 		}
-    }
+		}
+	}
 
 	status_desc = {
 		first_valid = {
@@ -86,6 +102,5 @@
 
 	weight = 500
 
-	should_be_pinned_by_default = yes
-	
+	should_be_pinned_by_default_uninvolved_or_context = yes
 }

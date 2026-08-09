@@ -69,11 +69,11 @@ sick_man.1 = {
 			add_modifier = {
 				name = sick_man_of_europe
 				months = -1
-			}		
+			}
 			add_modifier = {
 				name = outmoded_bureaucracy
 				months = -1
-			}			
+			}
 		}
 	}
 }
@@ -180,6 +180,10 @@ sick_man.2 = {
 			days = normal_modifier_time
 		}
 	}
+
+	after = {
+		je_sick_man_main_cleanup = yes
+	}
 }
 
 # Fail event
@@ -207,13 +211,14 @@ sick_man.3 = {
 		remove_modifier = outmoded_bureaucracy
 		ruler = {
 			save_scope_as = ottoman_sultan
+			set_temporary_event_immortality = { DURATION = 3 }
 		}
 	}
 
 	option = {
 		name = sick_man.3.a
 		if = {
-			limit = {				
+			limit = {
 				is_subject = no
 				any_subject_or_below = {
 					NOT = { any_overlord_or_above = { NOT = { ROOT = this } } }
@@ -240,8 +245,22 @@ sick_man.3 = {
 			}
 		}
 		set_country_type = unrecognized
+		revoke_temporary_event_immortality = { CHARACTER = scope:ottoman_sultan }
 		ruler = {
 			kill_character = yes
 		}
+		if = { #failure of JE immediately triggers eastern_crisis, showing here
+			limit = {
+				has_dlc_feature = ip3_content
+			}
+			show_as_tooltip = {
+				add_contextless_journal_entry = je_great_eastern_crisis
+			}
+		}
+	}
+
+	after = {
+		revoke_temporary_event_immortality = { CHARACTER = scope:ottoman_sultan }
+		je_sick_man_main_cleanup = yes
 	}
 }

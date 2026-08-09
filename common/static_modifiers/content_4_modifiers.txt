@@ -10,7 +10,7 @@ decree_minimum_wealth = {
 }
 
 decree_agricultural_throughput = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_agriculture_positive.dds
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_agriculture_positive.dds # VFM
 	building_group_bg_agriculture_throughput_add = 0.1
 	building_group_bg_plantations_throughput_add = 0.1
 	building_group_bg_ranching_throughput_add = 0.1
@@ -347,12 +347,6 @@ modifier_new_treatise_on_administration = {
 	state_construction_mult = 0.10
 }
 
-modifier_second_conversion = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
-	interest_group_approval_add = 5
-	interest_group_pol_str_mult = 0.25
-}
-
 modifier_conversion_of_china = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
 	state_conversion_mult = 0.5
@@ -462,7 +456,7 @@ serbia_pamphlet_money_mod = {
 
 serbia_pamphlet_auth_mod = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
-	country_authority_add = -120
+	country_authority_cost_add = 120
 }
 
 serbia_exposing_hypocrite_mod = {
@@ -529,7 +523,7 @@ serbia_no_more_blood_feud_mod = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
 	country_authority_mult = 0.1
 	country_bureaucracy_mult = 0.25
-	country_law_enactment_time_mult = -0.1
+	country_law_enactment_speed_mult = 0.1
 	country_legitimacy_base_add = 10
 	interest_group_approval_add	= 2
 }
@@ -538,7 +532,7 @@ serbia_karadordevic_changover_mod = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
 	country_authority_mult = -0.2
 	country_bureaucracy_mult = -0.25
-	country_law_enactment_time_mult = 0.1
+	country_law_enactment_speed_mult = -0.1
 	country_legitimacy_base_add = -10
 	interest_group_approval_add	= -2
 }
@@ -779,7 +773,7 @@ the_grand_collapse_complete_mod = {
 
 the_grand_collapse_law_speed_mod = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
-	country_law_enactment_time_mult = -0.15
+	country_law_enactment_speed_mult = 0.15
 	country_law_enactment_success_add = 0.15
 	country_authority_mult = -0.10
 }
@@ -793,7 +787,7 @@ the_grand_collapse_relation_speed_mod = {
 
 the_grand_collapse_issued_khutbah_mod = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
-	country_bureaucracy_add = -40
+	country_bureaucracy_cost_add = 40
 }
 
 the_grand_collapse_desperate_measures_devout = {

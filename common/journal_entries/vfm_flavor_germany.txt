@@ -1,6 +1,9 @@
 ﻿je_trans_german_railway = {
 	icon = "gfx/interface/icons/event_icons/event_industry.dds"
     group = je_group_internal_affairs
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
 	is_shown_when_inactive = {
 		NOT = { has_global_variable = trans_german_done }
 		OR = {
@@ -22,9 +25,14 @@
 	immediate = {
 		trigger_event = { id = journal_flavor_germany.101 }
 	}
-
-	complete = {
-		any_scope_state = {
+	
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
+			any_scope_state = {
 			state_region = s:STATE_BRANDENBURG
 			has_building = building_railway
 		}
@@ -62,14 +70,9 @@
 				has_building = building_railway
 			}
 		}
-	}
-	
-	fail = {
-		game_date > 1856.1.1
-	}
-
-	on_complete = {
-		set_global_variable = trans_german_done
+		}
+		effect = {
+			set_global_variable = trans_german_done
 		show_as_tooltip = {
 			add_modifier = {
 				name = generic_production_tech_research
@@ -77,14 +80,32 @@
 			}
 		}
 		trigger_event = { id = journal_flavor_germany.1 }
+	    }
+	}
+	
+	outcome = {
+        header = je_standard_failure_header
+        effect_header = je_standard_on_failure_header
+        color = "blue_negative"
+        conclusion_desc = je_standard_failure_conclusion_desc
+        trigger = {
+			game_date > 1856.1.1
+		}
+		effect = {
+			###
+		}
 	}
 
 	weight = 50
+	should_be_pinned_by_default_uninvolved_or_context = yes
 }
 
 je_prussian_guard = {
 	icon = "gfx/interface/icons/event_icons/event_military.dds"
     group = je_group_internal_affairs
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
 	
 	immediate = {
 		set_variable = {
@@ -134,9 +155,13 @@ je_prussian_guard = {
 		}
 	}
 	
-	
-	complete = {
-	    custom_tooltip = {
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
+			custom_tooltip = {
 			text = je_prussian_guard_tt
 			scope:journal_entry = { is_goal_complete = yes }
 		}
@@ -168,22 +193,28 @@ je_prussian_guard = {
 				percent >= 0.5
 			}
 		}
-	}
-
-	on_complete = {
-		show_as_tooltip = {
+		}
+		effect = {
+			show_as_tooltip = {
 			add_modifier = {
 				name = generic_military_tech_research
 				days = long_modifier_time
 			}
 		}
 		trigger_event = { id = journal_flavor_germany.2 }
+	    }
 	}
 	
 	timeout = 7000
 	
-	on_timeout = {
-	    trigger_event = { id = journal_flavor_germany.1002 }
+	outcome = {
+		header = JOURNAL_ENTRY_TIMEOUT
+		effect_header = JOURNAL_ENTRY_ON_TIMEOUT
+		flags = { timeout }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		effect = {
+		    trigger_event = { id = journal_flavor_germany.1002 }
+		}
 	}
 	
 	current_value = {
@@ -196,11 +227,16 @@ je_prussian_guard = {
 	progressbar = yes
 
 	weight = 50
+	should_be_pinned_by_default_uninvolved_or_context = yes
 }
 
 je_breakup_steuerverein = {
     icon = "gfx/interface/icons/event_icons/event_military.dds"
     group = je_group_internal_affairs
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
+	
 	is_shown_when_inactive = {
 	    NOT = { has_global_variable = breakup_steuerverein }
 		country_has_primary_culture = cu:north_german
@@ -214,9 +250,13 @@ je_breakup_steuerverein = {
 	}
 	
 	# TODO: spawn events that represent opportunities or crisis among bloc members
-	
-	complete = {
-        any_state = {
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
+			any_state = {
             filter = {
                 OR = {
                     state_region = s:STATE_HANNOVER
@@ -237,23 +277,26 @@ je_breakup_steuerverein = {
             percent = 1
         }
 		OR = {
-		    is_in_same_power_bloc ?= c:HAM
-			is_in_same_power_bloc ?= c:BRE
-			is_in_same_power_bloc ?= c:OLD
-			is_in_same_power_bloc ?= c:HAN
+		    AND = {
+		    exists = c:HAM
+		    is_in_same_power_bloc = c:HAM
+			}
+			AND = {
+			exists = c:BRE
+			is_in_same_power_bloc = c:BRE
+			}
+			AND = {
+			exists = c:OLD
+			is_in_same_power_bloc = c:OLD
+			}
+			AND = {
+			exists = c:HAN
+			is_in_same_power_bloc = c:HAN
+			}
 		}
-	}
-	
-	invalid = {
-		OR = {
-			exists = c:GER
-			exists = c:SGF
-			exists = c:NGF
 		}
-    }
-	
-	on_complete = {
-		set_global_variable = breakup_steuerverein
+		effect = {
+			set_global_variable = breakup_steuerverein
 		show_as_tooltip = {
 			add_modifier = {
 				name = steuerverein_breakup
@@ -261,15 +304,37 @@ je_breakup_steuerverein = {
 	    	}	
 		}
 		trigger_event = { id = journal_flavor_germany.4 }
+	    }
+	}
+	
+	outcome = {
+		flags = { hidden invalid_outcome }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		trigger = {
+			OR = {
+			exists = c:GER
+			exists = c:SGF
+			exists = c:NGF
+		}
+		}
+		effect = {
+		    ###
+		}
 	}
 
 	weight = 50
+	should_be_pinned_by_default_uninvolved_or_context = yes
 }
 
 
 je_the_zollverein = {
 	icon = "gfx/interface/icons/event_icons/event_military.dds"
     group = je_group_internal_affairs
+	
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
+	
 	is_shown_when_inactive = {
 	    NOT = { has_global_variable = zollverein_done }
 		OR = {
@@ -286,9 +351,13 @@ je_the_zollverein = {
 	}
 	
 	# TODO: spawn events that represent opportunities or crisis among bloc members
-	
-	complete = {
-        any_state = {
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
+			any_state = {
             filter = {
                 OR = {
                     state_region = s:STATE_BRANDENBURG
@@ -338,23 +407,31 @@ je_the_zollverein = {
 			}
             percent >= 0.5
         }
-	}
-	
-	invalid = {
-		OR = {
-			exists = c:GER
-			exists = c:SGF
-			exists = c:NGF
 		}
-    }
-	
-	on_complete = {
-		set_global_variable = zollverein_done
+		effect = {
+			set_global_variable = zollverein_done
 		show_as_tooltip = {
 			# TODO: give bonuses to random bloc member, give obligation from random members?
 		}
 		trigger_event = { id = journal_flavor_germany.3 }
+	    }
+	}
+	
+	outcome = {
+		flags = { hidden invalid_outcome }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		trigger = {
+			OR = {
+			exists = c:GER
+			exists = c:SGF
+			exists = c:NGF
+		}
+		}
+		effect = {
+		    ###
+		}
 	}
 
 	weight = 50
+	should_be_pinned_by_default_uninvolved_or_context = yes
 }

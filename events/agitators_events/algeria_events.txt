@@ -45,7 +45,13 @@ algeria_events.1 = {
 				character_is_valid_for_events = yes
 			}
 			save_scope_as = algerian_parade_general_scope
+			set_temporary_event_immortality = { DURATION = 3 }
 		}
+	}
+
+	after = {
+		revoke_temporary_event_immortality = { CHARACTER = scope:algerian_parade_general_scope }
+		je_conquest_of_algeria_cleanup = yes
 	}
 
 	option = { # Focus on partying with the lads
@@ -221,6 +227,7 @@ algeria_events.2 = {
 	icon = "gfx/interface/icons/event_icons/event_map.dds"
 
 	trigger = {
+		# triggered by on_action - on_yearly_events
 		has_variable = algeria_je_success
 		NOR = {
 			has_law_or_variant = law_type:law_ethnostate
@@ -248,7 +255,7 @@ algeria_events.2 = {
 					has_ideology = ideology:ideology_republican_leader
 					has_ideology = ideology:ideology_reformer
 					has_ideology = ideology:ideology_radical
-					has_ideology = ideology:ideology_social_democrat
+					has_ideology = ideology:ideology_state_socialist
 					has_ideology = ideology:ideology_market_liberal
 					has_ideology = ideology:ideology_humanitarian
 					has_ideology = ideology:ideology_humanitarian_royalist
@@ -298,7 +305,7 @@ algeria_events.2 = {
 						has_ideology = ideology:ideology_republican_leader
 						has_ideology = ideology:ideology_reformer
 						has_ideology = ideology:ideology_radical
-						has_ideology = ideology:ideology_social_democrat
+						has_ideology = ideology:ideology_state_socialist
 						has_ideology = ideology:ideology_market_liberal
 						has_ideology = ideology:ideology_humanitarian
 						has_ideology = ideology:ideology_humanitarian_royalist
@@ -308,9 +315,14 @@ algeria_events.2 = {
 			}
 			leader = {
 				save_scope_as = cremieux_decree_leader_scope
+				set_temporary_event_immortality = { DURATION = 3 }
 			}
 			save_scope_as = cremieux_decree_ig_scope
 		}
+	}
+
+	after = {
+		revoke_temporary_event_immortality = { CHARACTER = scope:cremieux_decree_leader_scope }
 	}
 
 	option = {
@@ -438,9 +450,16 @@ algeria_events.3 = {
 		ig:ig_armed_forces ?= {
 			leader = {
 				save_scope_as = algerian_fiasco_ig_leader
+				set_temporary_event_immortality = { DURATION = 3 }
 			}
 			save_scope_as = algerian_fiasco_ig
 		}
+	}
+
+	after = {
+		revoke_temporary_event_immortality = { CHARACTER = scope:algerian_fiasco_ig_leader }
+		je_conquest_of_algeria_cleanup = yes
+		je_the_algerian_departements_cleanup = yes
 	}
 
 	option = {
@@ -470,6 +489,7 @@ algeria_events.3 = {
 		}
 		random_list = {
 			50 = {
+				revoke_temporary_event_immortality = { CHARACTER = scope:algerian_fiasco_ig_leader }
 				scope:algerian_fiasco_ig_leader = {
 					kill_character = yes
 				}
@@ -602,6 +622,9 @@ algeria_events.4 = {
 			}
 		}
 	}
+	after = {
+		je_the_algerian_departements_cleanup = yes
+	}
 }
 
 # Algerians Raid Your Shit
@@ -627,6 +650,7 @@ algeria_events.5 = {
 	icon = "gfx/interface/icons/event_icons/event_map.dds"
 
 	trigger = {
+		# triggered by journal entry - je_conquest_of_algeria [on_monthly_pulse]
 		OR = {
 			AND = {
 				exists = c:CON
@@ -700,7 +724,12 @@ algeria_events.5 = {
 				is_heir_of_own_country = no
 			}
 			save_scope_as = algerian_raid_general_scope
+			set_temporary_event_immortality = { DURATION = 3 }
 		}
+	}
+
+	after = {
+		revoke_temporary_event_immortality = { CHARACTER = scope:algerian_raid_general_scope }
 	}
 
 	option = {
@@ -733,6 +762,7 @@ algeria_events.5 = {
 			text = algeria_events.5.tt
 			random_list = {
 				50 = {
+					revoke_temporary_event_immortality = { CHARACTER = scope:algerian_raid_general_scope }
 					scope:algerian_raid_general_scope = {
 						retire_character = yes
 					}
@@ -771,9 +801,11 @@ algeria_events.6 = {
 
 	icon = "gfx/interface/icons/event_icons/event_map.dds"
 
+	fire_only_once = yes
+
 	trigger = {
+		# triggered by journal entry - je_the_algerian_departements [on_monthly_pulse]
 		# JE single fire pulse event
-		NOT = { has_variable = arab_bureaux_var }
 		NOT = { has_law_or_variant = law_type:law_no_colonial_affairs }
 		any_scope_character = {
 			has_role_of_type = general
@@ -798,6 +830,7 @@ algeria_events.6 = {
 				NOT = { has_trait = bigoted }
 			}
 			save_scope_as = arab_bureaux_general_scope
+			set_temporary_event_immortality = { DURATION = 3 }
 		}
 		random_scope_state = {
 			limit = {
@@ -816,7 +849,10 @@ algeria_events.6 = {
 			}
 			save_scope_as = arab_bureaux_state
 		}
-		set_variable = arab_bureaux_var
+	}
+
+	after = {
+		revoke_temporary_event_immortality = { CHARACTER = scope:arab_bureaux_general_scope }
 	}
 
 	option = {
@@ -932,9 +968,12 @@ algeria_events.8 = {
 			value = 0.1
 			culture = cu:turkish
 		}
-		add_modifier = {
-			name = barbary_pirates_modifier
-			days = very_long_modifier_time
+		if = {
+			limit = { has_dlc_feature = ep2_content }
+			add_modifier = {
+				name = barbary_pirates_modifier
+				days = very_long_modifier_time
+			}
 		}
 		s:STATE_EAST_SAHARA = {
 			add_claim = c:ALD
@@ -982,9 +1021,12 @@ algeria_events.8 = {
 				}
 			}
 		}
-		add_modifier = {
-			name = barbary_pirates_modifier
-			days = very_long_modifier_time
+		if = {
+			limit = { has_dlc_feature = ep2_content }
+			add_modifier = {
+				name = barbary_pirates_modifier
+				days = very_long_modifier_time
+			}
 		}
 		add_loyalists = {
 			value = 0.2
@@ -1051,9 +1093,12 @@ algeria_events.8 = {
 		set_variable = algeria_barbary_restored
 		set_capital = STATE_ALGIERS
 		remove_primary_culture = cu:maghrebi
-		add_modifier = {
-			name = barbary_pirates_modifier
-			days = very_long_modifier_time
+		if = {
+			limit = { has_dlc_feature = ep2_content }
+			add_modifier = {
+				name = barbary_pirates_modifier
+				days = very_long_modifier_time
+			}
 		}
 		s:STATE_TUNISIA = {
 			add_claim = c:ALD
@@ -1099,6 +1144,9 @@ algeria_events.8 = {
 		s:STATE_SAHARA = {
 			add_claim = c:ALD
 		}
+	}
+	after = {
+		je_reconquest_of_algeria_cleanup = yes
 	}
 }
 
@@ -1208,5 +1256,8 @@ algeria_events.9 = {
 				days = very_long_modifier_time
 			}
 		}
+	}
+	after = {
+		je_french_foreign_legion_cleanup = yes
 	}
 }

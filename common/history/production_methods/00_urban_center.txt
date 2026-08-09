@@ -129,23 +129,17 @@
 			activate_production_method = {
 				building_type = building_urban_center
 				production_method = pm_market_squares
-			}		
+			}	
+            activate_production_method = {
+				building_type = building_urban_center
+			    production_method = pm_oil_streetlights
+			}			
 		}
 	}
-    s:STATE_GREATER_POLAND={
-		region_state:RUS={
-			activate_production_method = {
-				building_type = building_urban_center
-				production_method = pm_market_squares
-			}		
-		}
-	}
-    s:STATE_LESSER_POLAND={
-		region_state:RUS={
-			activate_production_method = {
-				building_type = building_urban_center
-				production_method = pm_market_squares
-			}		
+    c:POL ?= {
+		activate_production_method = {
+			building_type = building_urban_center
+			production_method = pm_market_squares
 		}
 	}	
 	

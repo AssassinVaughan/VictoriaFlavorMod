@@ -1,6 +1,10 @@
 ﻿je_durrani_situation = {
 	icon = "gfx/interface/icons/event_icons/event_flags/event_afg_flag.dds"
     group = je_group_internal_affairs
+	
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
 
 	scripted_button = je_submit_to_iran_button
 
@@ -24,56 +28,66 @@
 
 	can_deactivate = yes
 
-	complete = {
-		custom_tooltip = {
-			text = herat_independent_herat_tt
-			NOT = { has_variable = herat_rebellious_vassal_var }
-		}
-	}
-
-	invalid = {
-		exists = c:HER
-		NOT = {
-			c:HER = {
-				is_subject_of = c:PER
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
+			custom_tooltip = {
+				text = herat_independent_herat_tt
+				NOT = { has_variable = herat_rebellious_vassal_var }
 			}
 		}
+		effect = {
+			c:PER = {
+       	    	annex = ROOT
+    	    }
+	    }
 	}
 	
-	fail = {
-
-	}
-	
-	on_weekly_pulse = {
-
-	}
-	
-	on_complete = {
-		c:PER = {
-            annex = ROOT
-        }
-	}
-	
-	on_invalid = {
-		remove_variable = herat_rebellious_vassal_var
+	outcome = {
+		flags = { hidden invalid_outcome }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		trigger = {
+			exists = c:HER
+			NOT = {
+				c:HER = {
+					is_subject_of = c:PER
+				}
+			}
+		}
+		effect = {
+			remove_variable = herat_rebellious_vassal_var
+		}
 	}
 	
 	timeout = 696
-
-	on_timeout = {
-		custom_tooltip = {
-			text = herat_siege_herat_tt
-			remove_variable = herat_rebellious_vassal_var
+	
+	outcome = {
+		header = JOURNAL_ENTRY_TIMEOUT
+		effect_header = JOURNAL_ENTRY_ON_TIMEOUT
+		flags = { timeout }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		effect = {
+			custom_tooltip = {
+				text = herat_siege_herat_tt
+				remove_variable = herat_rebellious_vassal_var
+			}
 		}
 	}
 
     weight = 10000
-	should_be_pinned_by_default = yes
+	should_be_pinned_by_default_uninvolved_or_context = yes
 }
 
 je_durrani_the_siege_of_herat = {
 	icon = "gfx/interface/icons/event_icons/event_herat_map.dds"
     group = je_group_crises
+	
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
 
 	immediate = {
 		c:HER = {
@@ -116,53 +130,61 @@ je_durrani_the_siege_of_herat = {
 	progressbar = yes
 
 	can_deactivate = yes
-
-	complete = {
-		exists = var:herat_siege_progress_var
-		OR = {
-			custom_tooltip = {
-				text = herat_independent_siege_tt
-				NOT = {
-					c:HER = {
-						is_subject_of = c:PER
+	
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
+			exists = var:herat_siege_progress_var
+			OR = {
+				custom_tooltip = {
+					text = herat_independent_siege_tt
+					NOT = {
+						c:HER = {
+							is_subject_of = c:PER
+						}
 					}
 				}
 			}
 		}
-	}
-	
-	fail = {
-		NOT = {
-			exists = c:HER
-		}
-	}
-
-	on_complete = {
-		trigger_event = { id = journal_flavor_afghanistan.2 popup = yes }
-		c:HER = {
-			make_independent = yes
-		}
-	}
-	
-	on_fail = {
-		c:PER = {
-            annex = ROOT
-        }
-	}
-	
-	on_invalid = {
-		hidden_effect = {
+		effect = {
+			trigger_event = { id = journal_flavor_afghanistan.2 popup = yes }
 			c:HER = {
 				make_independent = yes
 			}
+	    }
+	}
+	
+	outcome = {
+        header = je_standard_failure_header
+        effect_header = je_standard_on_failure_header
+        color = "blue_negative"
+        conclusion_desc = je_standard_failure_conclusion_desc
+        trigger = {
+			NOT = {
+				exists = c:HER
+			}
+		}
+		effect = {
+			c:PER = {
+        	    annex = ROOT
+        	}
 		}
 	}
 
 	timeout = 365
-
-	on_timeout = {
-		c:HER = {
-			make_independent = yes
+	
+	outcome = {
+		header = JOURNAL_ENTRY_TIMEOUT
+		effect_header = JOURNAL_ENTRY_ON_TIMEOUT
+		flags = { timeout }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		effect = {
+			c:HER = {
+				make_independent = yes
+			}
 		}
 	}
 
@@ -172,6 +194,6 @@ je_durrani_the_siege_of_herat = {
 		value = root.var:durrani_herat_siege_progress_var
 	}
 	
-	should_be_pinned_by_default = yes
+	should_be_pinned_by_default_uninvolved_or_context = yes
 	
 }

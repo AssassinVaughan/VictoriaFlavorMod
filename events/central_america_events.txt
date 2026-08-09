@@ -43,6 +43,9 @@ central_america.1 = {
 			value = 0.1
 		}
 	}
+	after = {
+		je_reunify_central_america_cleanup = yes
+	}
 }
 
 # Dissolution of Central America
@@ -334,6 +337,9 @@ central_america.2 = {
 			}
 		}
 	}
+	after = {
+		central_america_falls_apart_cleanup = yes
+	}
 }
 
 # State secedes
@@ -353,6 +359,8 @@ central_america.3 = {
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
 
 	icon = "gfx/interface/icons/event_icons/event_fire.dds"
+
+	cooldown = { days = 90 }
 
 	trigger = {
 	    has_variable = frca_crisis_var

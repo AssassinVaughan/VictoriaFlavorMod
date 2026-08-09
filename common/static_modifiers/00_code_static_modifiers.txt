@@ -43,10 +43,6 @@ base_values = {
 
 	state_literacy_growth_add = 0.0005
 
-	# To balance for unincorporated states not paying taxes
-	state_unincorporated_starting_wages_mult = -0.20
-	building_unincorporated_subsistence_output_mult = -0.20
-
 	building_economy_of_scale_level_cap_add = 10
 
 	state_market_access_price_impact = 0.75
@@ -62,7 +58,7 @@ base_values = {
 	state_urbanization_per_level_add = 100
 
 	unit_experience_gain_add = 0.5
-
+	
 	# To account for the power derived from bearing arms
 	country_officers_pol_str_mult = 3
 	country_soldiers_pol_str_mult = 1.5
@@ -258,6 +254,10 @@ unincorporated_state = {
 	state_market_access_price_impact = -0.1
 	state_construction_mult = -0.15
     building_group_bg_heavy_industry_construction_efficiency_add = -0.15
+	# To balance for unincorporated states not paying taxes
+	building_minimum_wage_mult = -0.20
+	building_subsistence_output_mult = -0.20
+
 }
 
 treaty_port_state = {
@@ -572,7 +572,7 @@ administrative_overburden = {
 # Excess AUT reduces enactment time by -25% at 2x production to usage
 legislative_efficiency = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
-	country_law_enactment_time_mult = -0.25
+	country_law_enactment_speed_mult = 0.25
 }
 
 # Insufficent AUT reduces opposition Interest Groups' Approval by -10 at 2x usage to production
@@ -1026,9 +1026,4 @@ agreeable_to_imposition = {
 successfully_met_foreign_imposition_legitimacy = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
 	country_legitimacy_base_add = 10
-}
-
-movement_suppressed_after_civil_war = {
-	icon = "gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds"
-	political_movement_radicalism_add = -1
 }

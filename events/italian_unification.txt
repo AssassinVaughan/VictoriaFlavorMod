@@ -20,19 +20,21 @@ italian_unification.1 = {
 	duration = 3
 
 	trigger = {
+		# triggered by on_action - on_country_formed
+		c:ITA ?= this
 	}
 
 	immediate = {
-		ruler.interest_group = {
+		ruler.interest_group ?= {
 			save_scope_as = ruler_ig_scope
 		}
-	}		
+	}
 
 	option = {
 		name = italian_unification.1.a
 		default_option = yes
 		give_claims_on_italy = yes
-		
+
 		# prestige
 		add_modifier = {
 			name = italian_unifier_prestige
@@ -42,7 +44,7 @@ italian_unification.1 = {
 	option = {
 		name = italian_unification.1.b
 		give_claims_on_italy = yes
-		
+
 		# ruler IG attraction
 		scope:ruler_ig_scope = {
 			add_modifier = {
@@ -73,42 +75,69 @@ italian_unification.2 = {
 	duration = 1
 
 	trigger = {
+		# triggered by journal entry - je_risorgimento [on_monthly_pulse]
+		is_unification_candidate = ITA
+		NOT = {
+			any_country_in_italy_old = {
+				NOT = { this = root }
+				is_unification_candidate = ITA
+			}
+		}
 		any_neighbouring_state = {
 			owner = {
+				is_in_geographic_region = geographic_region_italy_old
 				OR = {
 					country_has_primary_culture = cu:north_italian
 					country_has_primary_culture = cu:south_italian
 				}
+				NOR = {
+					c:AUS ?= this
+					c:KUK ?= this
+					c:HRE ?= this
+				}
 				OR = {
 					is_subject = no
 					is_subject_of = ROOT
+					is_in_customs_union_with = root
 				}
-				is_in_customs_union_with = root
 				country_rank <= rank_value:minor_power
-				relations:root >= relations_threshold:amicable
+				relations:root >= relations_threshold:friendly
 				is_player = no
+				custom_tooltip = {
+					text = risorgimento_unifying_stance_tt
+					has_variable = risorgimento_unifying_stance
+				}
 				NOT = { has_variable = italian_minor_dont_annex }
 			}
 		}
-		is_unification_candidate = ITA	
 	}
 
 	immediate = {
 		random_neighbouring_state = {
 			limit = {
 				owner = {
+					is_in_geographic_region = geographic_region_italy_old
 					OR = {
 						country_has_primary_culture = cu:north_italian
 						country_has_primary_culture = cu:south_italian
 					}
+					NOR = {
+						c:AUS ?= this
+						c:KUK ?= this
+						c:HRE ?= this
+					}
 					OR = {
 						is_subject = no
 						is_subject_of = ROOT
+						is_in_customs_union_with = root
 					}
-					is_in_customs_union_with = root
 					country_rank <= rank_value:minor_power
-					relations:root >= relations_threshold:amicable
+					relations:root >= relations_threshold:friendly
 					is_player = no
+					custom_tooltip = {
+						text = risorgimento_unifying_stance_tt
+						has_variable = risorgimento_unifying_stance
+					}
 					NOT = { has_variable = italian_minor_dont_annex }
 				}
 			}
@@ -204,20 +233,16 @@ italian_unification.4 = {
 	cooldown = { months = 3 }
 
 	trigger = {
+		# triggered by journal entry - je_risorgimento [on_weekly_pulse]
 		NOT = { has_variable = italian_unification_5_happened_here }
-		has_revolution = yes
-		capital = { 
+		capital = {
 			radical_fraction = {
 				value >= 0.10
-			} 
+			}
 		}
 		any_civil_war = {
 			this.political_movement ?= {
-				OR = {
-					movement_is_liberal = yes
-					movement_is_socialist = yes
-					movement_is_nationalist = yes
-				}
+				is_political_movement_type = movement_italian_national
 			}
 			is_civil_war_type = revolution
 		}
@@ -228,6 +253,7 @@ italian_unification.4 = {
 			NOT = {
 				is_subject = yes
 			}
+			is_in_geographic_region = geographic_region_italy_old
 			OR = {
 				country_has_primary_culture = cu:north_italian
 				country_has_primary_culture = cu:south_italian
@@ -242,6 +268,7 @@ italian_unification.4 = {
 
 	immediate = {
 		set_variable = risorgimento_unifying_stance
+		set_strategy = ai_strategy_unify_italy
 		if = {
 			limit = {
 				has_variable = risorgimento_anti_unifying_stance
@@ -251,70 +278,50 @@ italian_unification.4 = {
 		capital = {
 			save_scope_as = capital_scope
 		}
-		ordered_country = { # Why is this structured so strangely? So that the ordering always gets at least one country.
+		ordered_country = {
 			limit = {
+				is_in_geographic_region = geographic_region_italy_old
 				OR = {
 					country_has_primary_culture = cu:north_italian
 					country_has_primary_culture = cu:south_italian
 				}
-				is_adjacent_to_country = ROOT
-				NOT = {
+				NOR = {
+					country_tier = empire
 					is_subject = yes
+					THIS = ROOT
 				}
 				has_variable = risorgimento_unifying_stance
-				NOT = {
+				is_adjacent_to_country = ROOT
+			}
+			alternative_limit = {
+				is_in_geographic_region = geographic_region_italy_old
+				OR = {
+					country_has_primary_culture = cu:north_italian
+					country_has_primary_culture = cu:south_italian
+				}
+				NOR = {
+					country_tier = empire
+					is_subject = yes
+					THIS = ROOT
+				}
+				has_variable = risorgimento_unifying_stance
+			}
+			alternative_limit = {
+				is_in_geographic_region = geographic_region_italy_old
+				OR = {
+					country_has_primary_culture = cu:north_italian
+					country_has_primary_culture = cu:south_italian
+				}
+				NOR = {
+					country_tier = empire
+					is_subject = yes
 					THIS = ROOT
 				}
 			}
 			order_by = country_rank
+			position = 0
+			check_range_bounds = no
 			save_scope_as = italian_leader
-		}
-		if = {
-			limit = {
-				NOT = {
-					exists = scope:italian_leader
-				}
-			}
-			ordered_country = {
-				limit = {
-					OR = {
-						country_has_primary_culture = cu:north_italian
-						country_has_primary_culture = cu:south_italian
-					}
-					NOT = {
-						is_subject = yes
-					}
-					has_variable = risorgimento_unifying_stance
-					NOT = {
-						THIS = ROOT
-					}
-				}
-				order_by = country_rank
-				save_scope_as = italian_leader
-			}
-		}
-		if = {
-			limit = {
-				NOT = {
-					exists = scope:italian_leader
-				}
-			}
-			ordered_country = {
-				limit = {
-					OR = {
-						country_has_primary_culture = cu:north_italian
-						country_has_primary_culture = cu:south_italian
-					}
-					NOT = {
-						is_subject = yes
-					}
-					NOT = {
-						THIS = ROOT
-					}
-				}
-				order_by = country_rank
-				save_scope_as = italian_leader
-			}
 		}
 		save_scope_as = italian_pannational_country
 	}
@@ -352,7 +359,7 @@ italian_unification.4 = {
 		set_variable = owned_by_pan_nationalist_radicals
 		if = {
 			limit = {
-				has_law = law_type:law_hereditary_bureaucrats
+				has_law_or_variant = law_type:law_hereditary_bureaucrats
 			}
 			activate_law = law_type:law_appointed_bureaucrats
 		}
@@ -371,7 +378,7 @@ italian_unification.4 = {
 			trigger_event = { id = italian_unification.6 popup = yes }
 		}
 	}
-	
+
 	option = {
 		name = italian_unification.4.c
 		trigger = {
@@ -411,7 +418,7 @@ italian_unification.5 = {
 	}
 
 	immediate = {
-		
+
 	}
 
 	option = {
@@ -443,9 +450,9 @@ italian_unification.5 = {
 				add_radicals = {
 					value = -1
 					culture = cu:south_italian
-				}				
+				}
 			}
-		}	
+		}
 		annex_with_incorporation = scope:italian_pannational_country
 	}
 	option = {
@@ -458,7 +465,7 @@ italian_unification.5 = {
 			type = puppet
 		}
 		scope:italian_pannational_country = {
-			set_variable = { 
+			set_variable = {
 				name = italian_unification_5_happened_here
 				days = normal_modifier_time
 			}
@@ -563,11 +570,17 @@ italian_unification.7 = {
 	immediate = {
 		save_scope_as = rsm_revolted_scope
 		random_country = {
-			limit = {	
+			limit = {
 				is_secessionist = yes
+				is_in_geographic_region = geographic_region_italy_old
 				OR = {
 					country_has_primary_culture = cu:north_italian
 					country_has_primary_culture = cu:south_italian
+				}
+				NOR = {
+					c:AUS ?= this
+					c:KUK ?= this
+					c:HRE ?= this
 				}
 			}
 			activate_law = law_type:law_presidential_republic
@@ -727,6 +740,7 @@ italian_unification.8 = {
 				}
 				withdraw = {
 					country = root
+					apply_break_penalties = yes
 				}
 			}
 		}
@@ -882,6 +896,7 @@ italian_unification.10 = {
 			limit = {
 				OR = {
 					has_ideology = ideology:ideology_patriotic
+					has_ideology = ideology:ideology_militarist
 					has_ideology = ideology:ideology_military_absolutist
 					has_ideology = ideology:ideology_liberal
 					has_ideology = ideology:ideology_liberal_modern
@@ -927,7 +942,7 @@ italian_unification.10 = {
 		}
 		every_country = {
 			limit = {
-				has_interest_marker_in_region = region_italy
+				has_interest_marker_in_region = sr:region_southern_europe
 				NOT = {
 					THIS = ROOT
 				}

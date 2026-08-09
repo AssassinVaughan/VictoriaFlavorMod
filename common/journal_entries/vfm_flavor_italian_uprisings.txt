@@ -2,6 +2,10 @@
 
 	icon = "gfx/interface/icons/event_icons/event_military.dds"
     group = je_group_crises
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
+	
 	immediate = {
 		s:STATE_VENETIA = {
 			random_scope_state = {
@@ -17,15 +21,29 @@
 			save_scope_as = smr_scope
 		}
 	}
-
-	complete = {
-		country_or_subject_owns_entire_state_region = STATE_VENETIA
+	
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
+			country_or_subject_owns_entire_state_region = STATE_VENETIA
 		country_or_subject_owns_entire_state_region = STATE_LOMBARDY
 		is_subject = no
-    }
-
-    fail = {
-    	custom_tooltip = {
+		}
+		effect = {
+			###
+	    }
+	}
+	
+	outcome = {
+        header = je_standard_failure_header
+        effect_header = je_standard_on_failure_header
+        color = "blue_negative"
+        conclusion_desc = je_standard_failure_conclusion_desc
+        trigger = {
+			custom_tooltip = {
     		text = italian_uprisings_fail
     		c:AUS = {
     			is_at_war = no
@@ -48,10 +66,9 @@
 	    		}
     		}
     	}
-    }
-
-    on_fail = {
-    	c:AUS = {
+		}
+		effect = {
+			c:AUS = {
 			trigger_event = {
 				id = italy_1848.9
 	    	}
@@ -59,7 +76,8 @@
     	c:RSM ?= {
     		remove_variable = san_marco_var
     	}
-    }
+		}
+	}
 
 	status_desc = {
 		first_valid = {
@@ -69,9 +87,19 @@
 		}
 	}
 	
+	outcome = {
+		header = JOURNAL_ENTRY_TIMEOUT
+		effect_header = JOURNAL_ENTRY_ON_TIMEOUT
+		flags = { timeout }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		effect = {
+		    ###
+		}
+	}
+	
 	timeout = 1826
 
 	weight = 200
 
-	should_be_pinned_by_default = yes
+	should_be_pinned_by_default_uninvolved_or_context = yes
 }

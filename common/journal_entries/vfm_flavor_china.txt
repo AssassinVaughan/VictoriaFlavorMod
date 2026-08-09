@@ -1,29 +1,49 @@
 ﻿je_canton_system = {
 	icon = "gfx/interface/icons/event_icons/event_trade.dds"
     group = je_group_internal_affairs
-	complete = {
-		OR = {
+	
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
+	
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
+			OR = {
 			AND = {
 				NOT = { has_law_or_variant = law_type:law_isolationism }
 				NOT = { has_law_or_variant = law_type:law_closed_borders }
 			}
 			has_modifier = opium_wars_lost
 		}
+		}
+		effect = {
+			remove_modifier = canton_system
+	    }
 	}
 
-	on_complete = {
-		remove_modifier = canton_system
-	}
-
-    should_be_pinned_by_default = yes
+    should_be_pinned_by_default_uninvolved_or_context = yes
 	weight = 100
 }
 
 je_eight_banners = {
 	icon = "gfx/interface/icons/event_icons/event_military.dds"
     group = je_group_internal_affairs
-	complete = {
-		OR = {
+	
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
+	
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
+			OR = {
 			AND = {
 				has_technology_researched = enlistment_offices
 				OR = {
@@ -37,33 +57,40 @@ je_eight_banners = {
 			}
 		}
 		has_technology_researched = general_staff
-
+		}
+		effect = {
+			trigger_event = { id = journal_flavor_china.1 }
+	    }
 	}
-
-	fail = {
-		ig:ig_armed_forces = {
-			is_powerful = yes
+	
+	outcome = {
+        header = je_standard_failure_header
+        effect_header = je_standard_on_failure_header
+        color = "blue_negative"
+        conclusion_desc = je_standard_failure_conclusion_desc
+        trigger = {
+			ig:ig_armed_forces = {
+				is_powerful = yes
+			}
+		}
+		effect = {
+			trigger_event = { id = journal_flavor_china.2 }
+		}
+	}
+	
+	outcome = {
+		flags = { hidden invalid_outcome }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		trigger = {
+			NOT = {
+				country_has_primary_culture = cu:manchu
+			}
+		}
+		effect = {
+			trigger_event = { id = journal_flavor_china.1 }
 		}
 	}
 
-	invalid = {
-		NOT = {
-			country_has_primary_culture = cu:manchu
-		}
-	}
-
-	on_invalid = {
-		trigger_event = { id = journal_flavor_china.1 }
-	}
-
-	on_complete = {
-		trigger_event = { id = journal_flavor_china.1 }
-	}
-
-	on_fail = {
-		trigger_event = { id = journal_flavor_china.2 }
-	}
-
-    should_be_pinned_by_default = yes
+    should_be_pinned_by_default_uninvolved_or_context = yes
 	weight = 100
 }

@@ -1,6 +1,10 @@
 ﻿je_kalat_situation = {
 	icon = "gfx/interface/icons/institution_icons/centralization.dds"
     group = je_group_historical_content
+	
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
 
 	immediate = {
 		c:PER = {
@@ -60,9 +64,14 @@
 	scripted_button = je_annex_gwadar_button
 
 	can_deactivate = yes
-
-	complete = {
-		NOT = { has_law = law_type:law_decentralized }
+	
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
+			NOT = { has_law = law_type:law_decentralized }
 		#custom_tooltip = {
 		#	text = kal_abolished_chiefdoms_tt
 		#	NOT = {
@@ -88,41 +97,45 @@
 				}
 			}
 		}
-	}
-	
-	fail = {
-		NOT = { has_state_in_state_region = STATE_BALUCHISTAN }
-	}
-	
-	on_monthly_pulse = {
+		}
 		effect = {
-		
-		}
-		events = {
-
-		}
-	}
-	
-	on_weekly_pulse = {
-		effect = {
-		
-		}
-		events = {
-
-		}
-	}
-	
-	on_complete = {
-		remove_modifier = kal_weak_khan
+			remove_modifier = kal_weak_khan
 		custom_tooltip = {
 			text = kal_change_name_to_bal_tt
 			set_variable = baluchistan_name_var 
 		}
 		trigger_event = { id = journal_flavor_kalat.2 }
+	    }
 	}
 	
-	on_timeout = {
+	outcome = {
+        header = je_standard_failure_header
+        effect_header = je_standard_on_failure_header
+        color = "blue_negative"
+        conclusion_desc = je_standard_failure_conclusion_desc
+        trigger = {
+			NOT = { has_state_in_state_region = STATE_BALUCHISTAN }
+		}
+		effect = {
+			remove_modifier = kal_weak_khan
+		#remove_variable = kalat_cannot_form_baluchistan - #VFM TODO - used but never set
 		custom_tooltip = {
+			text = kal_disintegrate_alt_tt
+		}
+		custom_tooltip = {
+			text = kal_weird_situation_tt
+			set_variable = kohistan_name_var 
+		}
+		}
+	}
+	
+	outcome = {
+		header = JOURNAL_ENTRY_TIMEOUT
+		effect_header = JOURNAL_ENTRY_ON_TIMEOUT
+		flags = { timeout }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		effect = {
+			custom_tooltip = {
 			text = kal_disintegrate_tt
 			remove_variable = kalat_cannot_form_baluchistan
 			remove_modifier = kal_weak_khan
@@ -232,24 +245,13 @@
 			}
 		}
 		trigger_event = { id = journal_flavor_kalat.1 }
-	}
-	
-	on_fail = {
-		remove_modifier = kal_weak_khan
-		#remove_variable = kalat_cannot_form_baluchistan - #VFM TODO - used but never set
-		custom_tooltip = {
-			text = kal_disintegrate_alt_tt
-		}
-		custom_tooltip = {
-			text = kal_weird_situation_tt
-			set_variable = kohistan_name_var 
 		}
 	}
 
 	timeout = 10950
 
     weight = 10000
-	should_be_pinned_by_default = yes
+	should_be_pinned_by_default_uninvolved_or_context = yes
 	can_revolution_inherit = no
 	transferable = no
 }

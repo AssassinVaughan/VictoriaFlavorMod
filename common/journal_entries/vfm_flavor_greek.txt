@@ -1,6 +1,9 @@
 ﻿je_modern_greek_enlightenment = {
 	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
     group = je_group_internal_affairs
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
 	is_shown_when_inactive = {
 		country_has_primary_culture = cu:greek
 	}
@@ -26,9 +29,14 @@
 	immediate = {
 		trigger_event = { id = vfm_greece.1 }
 	}
-
-	complete = {
-	    ig:ig_intelligentsia = {
+	
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
+			ig:ig_intelligentsia = {
 			is_powerful = yes
 		}
 		any_scope_building = {
@@ -36,19 +44,24 @@
 			occupancy >= 0.9
 			level >= 2
 		}
-	}
-
-	on_complete = {
-		trigger_event = { id = vfm_greece.2 }
+		}
+		effect = {
+			trigger_event = { id = vfm_greece.2 }
+	    }
 	}
 
 	weight = 10
+	
+	should_be_pinned_by_default_uninvolved_or_context = yes
 }
 
 
 je_greek_royal_phalanx = {
 	icon = "gfx/interface/icons/pops_icons/officers.dds"
     group = je_group_internal_affairs
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
 	is_shown_when_inactive = {
 		country_has_primary_culture = cu:greek
 	}
@@ -61,9 +74,14 @@ je_greek_royal_phalanx = {
 	immediate = {
 		trigger_event = { id = vfm_greece.5 }
 	}
-
-	complete = {
-		army_size >= 15
+	
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
+			army_size >= 15
 		NOT = {
 			any_military_formation = {
 				filter = {
@@ -75,11 +93,13 @@ je_greek_royal_phalanx = {
 				percent >= 0.1
 			}
 		}
-	}
-
-	on_complete = {
-		trigger_event = { id = vfm_greece.6 }
+		}
+		effect = {
+			trigger_event = { id = vfm_greece.6 }
+	    }
 	}
 
 	weight = 20
+	
+	should_be_pinned_by_default_uninvolved_or_context = yes
 }

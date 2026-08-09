@@ -1,6 +1,9 @@
 ﻿je_qajar_situation = {
 	icon = "gfx/interface/icons/event_icons/event_fragile_authority.dds"
     group = je_group_historical_content
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
 
 	immediate = {
 		c:PER = {
@@ -53,9 +56,14 @@
 	}
 
 	can_deactivate = yes
-
-	complete = {
-		custom_tooltip = {
+	
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
+			custom_tooltip = {
 			text = integrated_herat_iran_tt
 			OR = {
 				has_variable = integrated_herat_iran
@@ -130,38 +138,9 @@
 			}
 		}
 		country_rank >= rank_value:major_power
-	}
-	
-	fail = {
-		NOT = { has_law_or_variant = law_type:law_monarchy }
-	}
-	
-	on_monthly_pulse = {
+		}
 		effect = {
-		
-		}
-		events = {
-			journal_flavor_iran.11 #Appointment of Hasan Khan Salar
-			journal_flavor_iran.12 #Luti Revolt
-			journal_flavor_iran.18 #Second Siege of Herat Trigger (First Siege is triggered via separate JE)
-			journal_flavor_iran.31 #Babism/Bahai Trigger
-			journal_flavor_iran.37 #Persian Gendarmerie
-		}
-	}
-	
-	on_weekly_pulse = {
-		effect = {
-		
-		}
-		events = {
-			journal_flavor_iran.3 #First Siege of Herat Abandoned
-			journal_flavor_iran.17 #Coronation of Nasir al-Din Shah Qajar
-			journal_flavor_iran.20 #Second Siege of Herat Abandoned
-		}
-	}
-	
-	on_complete = {
-		custom_tooltip = {
+			custom_tooltip = {
 			text = trigger_event_the_qajar_century_tt
 			remove_modifier = per_fragile_authority
 			remove_variable = hasan_governor_var 
@@ -171,10 +150,19 @@
 			remove_variable = babism_spawned
 			trigger_event = { id = journal_flavor_iran.50 popup = yes }
 		}
+	    }
 	}
 	
-	on_fail = {
-		custom_tooltip = {
+	outcome = {
+        header = je_standard_failure_header
+        effect_header = je_standard_on_failure_header
+        color = "blue_negative"
+        conclusion_desc = je_standard_failure_conclusion_desc
+        trigger = {
+			NOT = { has_law_or_variant = law_type:law_monarchy }
+		}
+		effect = {
+			custom_tooltip = {
 			text = trigger_event_fall_of_the_qajars_tt
 			remove_modifier = per_fragile_authority
 			remove_modifier = per_pompous_court
@@ -202,10 +190,35 @@
 			}
 			trigger_event = { id = journal_flavor_iran.40 popup = yes }
 		}
+		}
+	}
+	
+	on_monthly_pulse = {
+		effect = {
+		
+		}
+		events = {
+			journal_flavor_iran.11 #Appointment of Hasan Khan Salar
+			journal_flavor_iran.12 #Luti Revolt
+			journal_flavor_iran.18 #Second Siege of Herat Trigger (First Siege is triggered via separate JE)
+			journal_flavor_iran.31 #Babism/Bahai Trigger
+			journal_flavor_iran.37 #Persian Gendarmerie
+		}
+	}
+	
+	on_weekly_pulse = {
+		effect = {
+		
+		}
+		events = {
+			journal_flavor_iran.3 #First Siege of Herat Abandoned
+			journal_flavor_iran.17 #Coronation of Nasir al-Din Shah Qajar
+			journal_flavor_iran.20 #Second Siege of Herat Abandoned
+		}
 	}
 
     weight = 10000
-	should_be_pinned_by_default = yes
+	should_be_pinned_by_default_uninvolved_or_context = yes
 	can_revolution_inherit = no
 	transferable = no
 }
@@ -213,6 +226,9 @@
 je_iran_constitution = {
 	icon = "gfx/interface/icons/event_icons/event_constitutional.dds"
     group = je_group_historical_content
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
 
 	is_shown_when_inactive = {
 		exists = c:PER
@@ -225,9 +241,14 @@ je_iran_constitution = {
 	}
 
 	can_deactivate = yes
-
-	complete = {
-		NOT = { has_law_or_variant = law_type:law_autocracy }
+	
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
+			NOT = { has_law_or_variant = law_type:law_autocracy }
 		NOT = { has_law_or_variant = law_type:law_hereditary_bureaucrats }
 		has_law_or_variant = law_type:law_slavery_banned
 		OR = {
@@ -235,10 +256,9 @@ je_iran_constitution = {
 			has_law_or_variant = law_type:law_total_separation
 			has_law_or_variant = law_type:law_state_atheism
 		}
-	}
-	
-	on_complete = {
-		trigger_event = { id = journal_flavor_iran.13 }
+		}
+		effect = {
+			trigger_event = { id = journal_flavor_iran.13 }
 		custom_tooltip = {
 			text = constitutional_revolution_tt
 			if = { 
@@ -258,15 +278,20 @@ je_iran_constitution = {
 			}
 			set_variable = persian_constitution_has_been_adopted
 		}
+	    }
 	}
 
     weight = 10000
-	should_be_pinned_by_default = yes
+	should_be_pinned_by_default_uninvolved_or_context = yes
 }
 
 je_herat_situation = {
 	icon = "gfx/interface/icons/event_icons/event_centralization.dds"
     group = je_group_internal_affairs
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
+	
 	is_shown_when_inactive = {
 	    exists = c:PER
 		this = c:PER
@@ -291,9 +316,14 @@ je_herat_situation = {
 	}
 
 	can_deactivate = yes
-
-	complete = {
-		AND = {
+	
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
+			AND = {
 			bureaucracy > 0
 			OR = {
 				AND = {
@@ -327,28 +357,22 @@ je_herat_situation = {
 				}
 			}
 		}
-		
-	}
-
-	invalid = {
-		NOT = {
-			c:HER = {
-				is_subject_of = c:PER
-			}
 		}
-	}
-
-	on_complete = {
-		custom_tooltip = {
+		effect = {
+			custom_tooltip = {
 			text = integrate_herat_iran_tt
 			set_variable = integrated_herat_iran
 		}
+	    }
 	}
 
-	timeout = 696
-
-	on_timeout = {
-		trigger_event = { id = journal_flavor_iran.1 popup = yes }
+	outcome = {
+		header = JOURNAL_ENTRY_TIMEOUT
+		effect_header = JOURNAL_ENTRY_ON_TIMEOUT
+		flags = { timeout }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		effect = {
+		    trigger_event = { id = journal_flavor_iran.1 popup = yes }
 		hidden_effect = {
 			add_journal_entry = {
 				type = je_the_siege_of_herat
@@ -359,15 +383,36 @@ je_herat_situation = {
 				}
 			}
 		}
+		}
+	}
+	
+	outcome = {
+		flags = { hidden invalid_outcome }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		trigger = {
+			NOT = {
+			c:HER = {
+				is_subject_of = c:PER
+			}
+		}
+		}
+		effect = {
+		    ###
+		}
 	}
 
+	timeout = 696
+
     weight = 10000
-	should_be_pinned_by_default = yes
+	should_be_pinned_by_default_uninvolved_or_context = yes
 }
 
 je_the_siege_of_herat = {
 	icon = "gfx/interface/icons/event_icons/event_herat_map.dds"
     group = je_group_crises
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
 
 	immediate = {
 		c:HER = {
@@ -412,9 +457,14 @@ je_the_siege_of_herat = {
 	progressbar = yes
 
 	can_deactivate = yes
-
-	complete = {
-		exists = var:herat_siege_progress_var
+	
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
+			exists = var:herat_siege_progress_var
 		OR = {
 			custom_tooltip = {
 				text = custom_tooltip_herat_has_been_annexed_negotiations_context
@@ -425,10 +475,25 @@ je_the_siege_of_herat = {
 				has_variable = city_of_herat_taken
 			}
 		}
+		}
+		effect = {
+			trigger_event = { id = journal_flavor_iran.2 popup = yes }
+		hidden_effect = {
+			if = {
+				limit = {
+					exists = c:HER
+				}
+				annex = c:HER
+			}
+		}
+	    }
 	}
 	
-	invalid = {
-		OR = {
+	outcome = {
+		flags = { hidden invalid_outcome }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		trigger = {
+			OR = {
 			NOT = { exists = c:HER }
 			AND = {
 				exists = c:HER
@@ -443,10 +508,23 @@ je_the_siege_of_herat = {
 			}
 			has_variable = british_intervention_in_iran
 		}
+		}
+		effect = {
+		    hidden_effect = {
+			c:HER = {
+				make_independent = yes
+			}
+		}
+		}
 	}
 	
-	fail = {
-		AND = {
+	outcome = {
+        header = je_standard_failure_header
+        effect_header = je_standard_on_failure_header
+        color = "blue_negative"
+        conclusion_desc = je_standard_failure_conclusion_desc
+        trigger = {
+			AND = {
 			exists = c:HER
 			NOT = {
 				c:HER = {
@@ -454,45 +532,31 @@ je_the_siege_of_herat = {
 				}
 			}
 		}
-	}
-
-	on_complete = {
-		trigger_event = { id = journal_flavor_iran.2 popup = yes }
-		hidden_effect = {
-			if = {
-				limit = {
-					exists = c:HER
-				}
-				annex = c:HER
-			}
 		}
-	}
-	
-	on_fail = {
-		trigger_event = { id = journal_flavor_iran.3 popup = yes }
+		effect = {
+			trigger_event = { id = journal_flavor_iran.3 popup = yes }
 		hidden_effect = {
 			c:HER = {
 				make_independent = yes
 			}
 		}
-	}
-	
-	on_invalid = {
-		hidden_effect = {
-			c:HER = {
-				make_independent = yes
-			}
 		}
 	}
 
 	timeout = 365
-
-	on_timeout = {
-		hidden_effect = {
+	
+	outcome = {
+		header = JOURNAL_ENTRY_TIMEOUT
+		effect_header = JOURNAL_ENTRY_ON_TIMEOUT
+		flags = { timeout }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		effect = {
+		    hidden_effect = {
 			trigger_event = { id = journal_flavor_iran.3 popup = yes }
 			c:HER = {
 				make_independent = yes
 			}
+		}
 		}
 	}
 
@@ -502,13 +566,16 @@ je_the_siege_of_herat = {
 		value = root.var:herat_siege_progress_var
 	}
 	
-	should_be_pinned_by_default = yes
+	should_be_pinned_by_default_uninvolved_or_context = yes
 	
 }
 
 je_integrate_khanate_subjects_iran = {
 	icon = "gfx/interface/icons/objectives/great_game.dds"
     group = je_group_historical_content
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
 
 	immediate = {
 		c:PER = {
@@ -634,9 +701,14 @@ je_integrate_khanate_subjects_iran = {
 	progressbar = yes
 
 	can_deactivate = yes
-
-	complete = {
-		exists = var:iran_annex_subjects_var
+	
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
+			exists = var:iran_annex_subjects_var
 		AND = {
 			custom_tooltip = {
 				text = custom_tooltip_annexed_khorasan
@@ -680,10 +752,28 @@ je_integrate_khanate_subjects_iran = {
 			has_variable = annexed_ardalan_var
 			NOT = { exists = c:ARD }
 		}
+		}
+		effect = {
+			trigger_event = { id = journal_flavor_iran.30 popup = yes }
+		hidden_effect = {
+			set_variable = completed_integrate_subjects_je
+			remove_variable = requested_ard_iran_var
+			remove_variable = requested_jel_iran_var
+			remove_variable = requested_arb_iran_var
+			remove_variable = requested_coast_iran_var
+			remove_variable = requested_btk_iran_var
+			remove_variable = requested_khr_iran_var
+		}
+	    }
 	}
-	
-	fail = {
-		custom_tooltip = {
+
+	outcome = {
+        header = je_standard_failure_header
+        effect_header = je_standard_on_failure_header
+        color = "blue_negative"
+        conclusion_desc = je_standard_failure_conclusion_desc
+        trigger = {
+			custom_tooltip = {
 			text = lost_subjects_iran_tt
 			AND = {
 				exists = c:ARD
@@ -734,11 +824,9 @@ je_integrate_khanate_subjects_iran = {
 			text = doesnt_control_khorasan_tt
 			NOT = { has_state_in_state_region = STATE_KHORASAN }
 		}
-	}
-
-	on_complete = {
-		trigger_event = { id = journal_flavor_iran.30 popup = yes }
-		hidden_effect = {
+		}
+		effect = {
+			hidden_effect = {
 			set_variable = completed_integrate_subjects_je
 			remove_variable = requested_ard_iran_var
 			remove_variable = requested_jel_iran_var
@@ -747,17 +835,6 @@ je_integrate_khanate_subjects_iran = {
 			remove_variable = requested_btk_iran_var
 			remove_variable = requested_khr_iran_var
 		}
-	}
-	
-	on_fail = {
-		hidden_effect = {
-			set_variable = completed_integrate_subjects_je
-			remove_variable = requested_ard_iran_var
-			remove_variable = requested_jel_iran_var
-			remove_variable = requested_arb_iran_var
-			remove_variable = requested_coast_iran_var
-			remove_variable = requested_btk_iran_var
-			remove_variable = requested_khr_iran_var
 		}
 	}
 
@@ -767,24 +844,41 @@ je_integrate_khanate_subjects_iran = {
 		value = root.var:iran_annex_subjects_var
 	}
 	
-	should_be_pinned_by_default = yes
+	should_be_pinned_by_default_uninvolved_or_context = yes
 	
 }
 
 je_iran_babism = {
 	icon = "gfx/interface/icons/event_icons/event_flags/other_black_flag.dds"
     group = je_group_historical_content
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
 
 	can_deactivate = yes
 
 	scripted_button = je_capture_bab_button
 	scripted_button = je_execute_bab_button
 	
-	complete = {
-		custom_tooltip = {
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
+			custom_tooltip = {
 			text = babism_event_chain_tt
 			NOT = { has_variable = babism_je_event_chain }
 		}
+		}
+		effect = {
+			every_state = {
+			limit = {
+				has_modifier = babist_community
+			}
+			remove_modifier = babist_community
+		}
+	    }
 	}
 	
 	on_monthly_pulse = {
@@ -796,16 +890,7 @@ je_iran_babism = {
 			journal_flavor_iran.34 #The Death of the Bab
 		}
 	}
-	
-	on_complete = {
-		every_state = {
-			limit = {
-				has_modifier = babist_community
-			}
-			remove_modifier = babist_community
-		}
-	}
 
     weight = 10000
-	should_be_pinned_by_default = yes
+	should_be_pinned_by_default_uninvolved_or_context = yes
 }

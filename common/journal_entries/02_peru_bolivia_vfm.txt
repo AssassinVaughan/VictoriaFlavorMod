@@ -3,6 +3,26 @@
 
 	group = je_group_global_international_situations
 
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
+	
+	should_be_involved = {
+		OR = {
+			c:BOL ?= this
+			is_subject_of = c:BOL
+		}
+	}
+
+	should_show_when_not_involved = {
+		capital ?= {
+			is_in_geographic_region = geographic_region_south_america
+		}
+		NOT = {
+			has_variable = ignore_peru_bol
+		}
+	}
+
 	immediate = {
 		cu:quechua = {
 			save_scope_as = quechua_culture
@@ -274,6 +294,7 @@
 				}
 			}
 		}
+		}
 	effect = {
 			je_peru_bolivia_cleanup = yes
 		}
@@ -509,5 +530,8 @@ je_war_of_the_confederation = {
 
 	weight = 10000
 
-	should_be_pinned_by_default = yes
+	should_be_pinned_by_default_involved = yes
+	should_be_pinned_by_default_uninvolved_or_context = no
+
+	can_revolution_inherit = yes
 }

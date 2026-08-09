@@ -3,6 +3,10 @@
 
 	group = je_group_foreign_affairs
 
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
+
 	is_shown_when_inactive = {
 		has_variable = scramble_for_africa_complete
 		has_law = law_type:law_monarchy #Check there is a Monarch
@@ -59,33 +63,38 @@
 		}
 	}
 
-	complete = {
-		OR = {
-			scope:journal_entry = {
-				is_goal_complete = yes
-			}
-			NOT = { has_law = law_type:law_monarchy }
-			custom_tooltip = {
-				text = free_state_monarch_dead_tooltip
-				ruler = {
-					NOT = {
-						has_variable = free_state_monarch
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
+			OR = {
+				scope:journal_entry = {
+					is_goal_complete = yes
+				}
+				NOT = { country_has_monarchy_law = yes }
+				custom_tooltip = {
+					text = free_state_monarch_dead_tooltip
+					ruler = {
+						NOT = {
+							has_variable = free_state_monarch
+						}
 					}
 				}
 			}
 		}
-	}
-
-	on_complete = {
-		if = {
-			limit = {
-				exists = c:AFS
+		effect = {
+			if = {
+				limit = {
+					exists = c:AFS
+				}
+				c:AFS ?= {
+					remove_modifier = free_state_mort
+				}
 			}
-			c:AFS ?= {
-				remove_modifier = free_state_mort
-			}
+			trigger_event = { id = congo_free_state_events.5 popup = yes }
 		}
-		trigger_event = { id = congo_free_state_events.5 popup = yes }
 	}
 
 	on_monthly_pulse = {
@@ -137,29 +146,36 @@
 		}
 	}
 
-	invalid = {
-		custom_tooltip = {
-			text = free_state_journal_complete_tt
-			OR = {
-				AND = {
-					NOT = {
-						exists = c:AFS
+	outcome = {
+		flags = { hidden invalid_outcome }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		trigger = {
+			custom_tooltip = {
+				text = free_state_journal_complete_tt
+				OR = {
+					AND = {
+						NOT = {
+							exists = c:AFS
+						}
+						has_variable = free_state_made
 					}
-					has_variable = free_state_made
-				}
-				AND = {
-					exists = c:AFS
-					c:AFS ?= {
-						NOT = { is_subject_of = ROOT }
+					AND = {
+						exists = c:AFS
+						c:AFS ?= {
+							NOT = { is_subject_of = ROOT }
+						}
 					}
 				}
 			}
+			NOT = { has_law_or_variant = law_type:law_colonial_exploitation }
 		}
-		NOT = { has_law_or_variant = law_type:law_colonial_exploitation }
+		effect = {
+			je_free_state_cleanup = yes
+		}
 	}
 
 	weight = 200
-	should_be_pinned_by_default = yes
+	should_be_pinned_by_default_uninvolved_or_context = yes
 
 	current_value = {
 		value = root.var:free_state_international_opinion

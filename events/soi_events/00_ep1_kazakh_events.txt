@@ -75,6 +75,7 @@ kazakhstan_events.1 = {
 			}
 			ruler = {
 				save_scope_as = kenesary_scope
+				set_temporary_event_immortality = { DURATION = 3 }
 			}
 			activate_law = law_type:law_oligarchy
 			activate_law = law_type:law_peasant_levies
@@ -116,6 +117,11 @@ kazakhstan_events.1 = {
 		s:STATE_SYRDARYA = {
 			add_claim = c:KAZ
 		}
+	}
+
+	after = {
+		revoke_temporary_event_immortality = { CHARACTER = scope:kenesary_scope }
+		je_pacify_the_steppes_cleanup = yes
 	}
 
 	option = {
@@ -588,7 +594,12 @@ kazakhstan_events.2 = {
 				has_variable = kenesary_variable
 			}
 			save_scope_as = kenesary_scope
+			set_temporary_event_immortality = { DURATION = 3 }
 		}
+	}
+
+	after = {
+		revoke_temporary_event_immortality = { CHARACTER = scope:kenesary_scope }
 	}
 
 	option = {
@@ -629,6 +640,17 @@ kazakhstan_events.3 = {
 
 	immediate = {
 
+	}
+
+	after = {
+		if = {
+			limit = {
+				has_journal_entry = je_tsarpoints_master
+			}
+			je_tsarpoints_add_low = yes
+		}
+		je_pacify_the_steppes_cleanup = yes
+		je_the_last_kazakh_khan_cleanup = yes
 	}
 
 	option = {
@@ -711,6 +733,7 @@ kazakhstan_events.4 = { #Raid on Russian convoy
 	cooldown = { days = short_modifier_time }
 
 	trigger = {
+		# triggered by journal entry - je_pacify_the_steppes [on_monthly_pulse]
 		any_state_in_central_asia = {
 			owner = {
 				country_has_primary_culture = cu:kazak
@@ -728,6 +751,7 @@ kazakhstan_events.4 = { #Raid on Russian convoy
                 has_variable = kenesary_variable
             }
             save_scope_as = kenesary_scope
+            set_temporary_event_immortality = { DURATION = 3 }
         }
 		random_state_in_central_asia = {
 			limit = {
@@ -749,6 +773,10 @@ kazakhstan_events.4 = { #Raid on Russian convoy
 				save_scope_as = kazakh_scope
 			}
 		}
+	}
+
+	after = {
+		revoke_temporary_event_immortality = { CHARACTER = scope:kenesary_scope }
 	}
 
 	option = {
@@ -803,6 +831,7 @@ kazakhstan_events.5 = { #Raid on Russian fortress
 	cooldown = { days = short_modifier_time }
 
 	trigger = {
+		# triggered by journal entry - je_pacify_the_steppes [on_monthly_pulse]
 		any_state_in_central_asia = {
 			owner = {
 				country_has_primary_culture = cu:kazak
@@ -820,6 +849,7 @@ kazakhstan_events.5 = { #Raid on Russian fortress
                 has_variable = kenesary_variable
             }
             save_scope_as = kenesary_scope
+            set_temporary_event_immortality = { DURATION = 3 }
         }
         c:RUS ?= {
         	save_scope_as = russia_scope
@@ -836,6 +866,10 @@ kazakhstan_events.5 = { #Raid on Russian fortress
 			}
 			save_scope_as = raid_state
 		}
+	}
+
+	after = {
+		revoke_temporary_event_immortality = { CHARACTER = scope:kenesary_scope }
 	}
 
 	option = {
@@ -907,6 +941,7 @@ kazakhstan_events.6 = { #Raid on Kazakh aul
                 has_variable = kenesary_variable
             }
             save_scope_as = kenesary_scope
+            set_temporary_event_immortality = { DURATION = 3 }
         }
         c:RUS ?= {
         	save_scope_as = russia_scope
@@ -920,10 +955,16 @@ kazakhstan_events.6 = { #Raid on Kazakh aul
 				owner = {
 					ruler = {
 						save_scope_as = senior_sultan_scope
+						set_temporary_event_immortality = { DURATION = 3 }
 					}
 				}
 			}
 		}
+	}
+
+	after = {
+		revoke_temporary_event_immortality = { CHARACTER = scope:kenesary_scope }
+		revoke_temporary_event_immortality = { CHARACTER = scope:senior_sultan_scope }
 	}
 
 	option = {
@@ -1007,11 +1048,18 @@ kazakhstan_events.7 = { #Central Asian khanate recognises Kenesary
                 has_variable = kenesary_variable
             }
             save_scope_as = kenesary_scope
+            set_temporary_event_immortality = { DURATION = 3 }
         }
 		save_scope_as = country_kenesary_recognizer
 		ruler = {
 			save_scope_as = ruler_scope
+			set_temporary_event_immortality = { DURATION = 3 }
 		}
+	}
+
+	after = {
+		revoke_temporary_event_immortality = { CHARACTER = scope:kenesary_scope }
+		revoke_temporary_event_immortality = { CHARACTER = scope:ruler_scope }
 	}
 
 	option = {
@@ -1057,6 +1105,7 @@ kazakhstan_events.8 = { #Raid Repelled
 	cooldown = { days = short_modifier_time }
 
 	trigger = {
+		# triggered by journal entry - je_pacify_the_steppes [on_monthly_pulse]
 		any_state_in_central_asia = {
 			owner = {
 				country_has_primary_culture = cu:kazak
@@ -1078,6 +1127,7 @@ kazakhstan_events.8 = { #Raid Repelled
                 has_variable = kenesary_variable
             }
             save_scope_as = kenesary_scope
+            set_temporary_event_immortality = { DURATION = 3 }
         }
 		random_state_in_central_asia = {
 			limit = {
@@ -1109,8 +1159,14 @@ kazakhstan_events.8 = { #Raid Repelled
 					has_role_of_type = general
 				}
 				save_scope_as = casia_general
+				set_temporary_event_immortality = { DURATION = 3 }
 			}
 		}
+	}
+
+	after = {
+		revoke_temporary_event_immortality = { CHARACTER = scope:kenesary_scope }
+		revoke_temporary_event_immortality = { CHARACTER = scope:casia_general }
 	}
 
 	option = {
@@ -1342,6 +1398,16 @@ russian_central_asia.2 = {
         		save_scope_as = hawkish_ig
         	}
         }
+	}
+
+	after = {
+		if = {
+			limit = {
+				has_journal_entry = je_tsarpoints_master
+			}
+			je_tsarpoints_add_med = yes
+		}
+		je_conquest_of_central_asia_cleanup = yes
 	}
 
 	option = {

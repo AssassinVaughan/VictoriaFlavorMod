@@ -182,6 +182,19 @@
 	}
 	s:STATE_LITHUANIA={
 		region_state:RUS={
+		    create_building={
+				building="building_fishing_wharf"
+				add_ownership={
+					building={
+						type="building_fishing_wharf"
+						country="c:RUS"
+						levels=1
+						region="STATE_LITHUANIA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_fishing_trawlers" "pm_unrefrigerated"  }
+			}
 			create_building={
 				building="building_rye_farm"
 				add_ownership={
@@ -194,6 +207,19 @@
 				}
 				reserves=1
 				activate_production_methods={ "pm_simple_farming" "pm_potatoes" "pm_tools_disabled"  }
+			}
+			create_building={
+				building="building_trade_center"
+				activate_production_methods={ "pm_trade_center_trade_quantity_normal" }
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:RUS"
+						levels=2
+						region="STATE_LITHUANIA"
+					}
+				}
+				reserves=1
 			}
 			create_building={
 				building="building_port"
@@ -325,7 +351,7 @@
 				add_ownership={
 					country={
 						country="c:FIN"
-						levels=2
+						levels=1
 					}
 				}
 				reserves=1
@@ -577,7 +603,7 @@
 				add_ownership={
 					country={
 						country="c:RUS"
-						levels=1
+						levels=2
 					}
 				}
 				reserves=1
@@ -599,7 +625,7 @@
 				add_ownership={
 					country={
 						country="c:RUS"
-						levels=15
+						levels=12
 					}
 				}
 				reserves=1
@@ -610,7 +636,7 @@
 				add_ownership={
 					country={
 						country="c:RUS"
-						levels=2
+						levels=3
 					}
 				}
 				reserves=1
@@ -627,7 +653,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_handsewn_clothes" "pm_no_luxury_clothes" "pm_traditional_looms"  }
+				activate_production_methods={ "pm_handsewn_clothes" "pm_craftsman_sewing" "pm_traditional_looms"  }
 			}
 			create_building={
 				building="building_glassworks"
@@ -656,6 +682,32 @@
 				activate_production_methods={ "pm_traditional_art" }
 			}
 			create_building={
+				building="building_logging_camp"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:RUS"
+						levels=2
+						region="STATE_INGRIA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_saw_mills" "pm_hardwood" "pm_no_equipment" "pm_road_carts"  }
+			}
+			create_building={
+				building="building_fishing_wharf"
+				add_ownership={
+					building={
+						type="building_fishing_wharf"
+						country="c:RUS"
+						levels=2
+						region="STATE_INGRIA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_fishing_trawlers" "pm_unrefrigerated"  }
+			}
+			create_building={
 				building="building_rye_farm"
 				add_ownership={
 					building={
@@ -673,7 +725,7 @@
 				add_ownership={
 					country={
 						country="c:RUS"
-						levels=4
+						levels=5
 					}
 				}
 				reserves=1
@@ -779,7 +831,7 @@
 				add_ownership={
 					country={
 						country="c:RUS"
-						levels=2
+						levels=1
 					}
 				}
 				reserves=1
@@ -836,6 +888,19 @@
 				}
 				reserves=1
 				activate_production_methods={ "pm_picks_and_shovels_building_iron_mine" "pm_no_explosives" "pm_no_steam_automation" "pm_road_carts"  }
+			}
+			create_building={
+				building="building_rye_farm"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:RUS"
+						levels=2
+						region="STATE_MOSCOW"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_simple_farming"  "pm_tools_disabled" "pm_potatoes" }
 			}
 			create_building={
 				building="building_saint_basils_cathedral"
@@ -952,6 +1017,19 @@
 				}
 				reserves=1
 				activate_production_methods={ "pm_bakery" "pm_disabled_canning"  "pm_manual_dough_processing" "pm_pot_stills" }
+			}
+			create_building={
+				building="building_logging_camp"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:RUS"
+						levels=2
+						region="STATE_KIEV"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_saw_mills" "pm_no_hardwood" "pm_no_equipment" "pm_road_carts"  }
 			}
 			create_building={
 				building="building_livestock_ranch"
@@ -1679,7 +1757,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_handsewn_clothes"  "pm_traditional_looms" "pm_craftsman_sewing" }
+				activate_production_methods={ "pm_handsewn_clothes"  "pm_traditional_looms" "pm_no_luxury_clothes" }
 			}
 			create_building={
 				building="building_logging_camp"

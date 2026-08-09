@@ -178,6 +178,9 @@
 			}
 		}
 	}
+	after = {
+		je_abolish_monarchy_cleanup = yes
+	}
 }
 
 # New Constitution
@@ -234,6 +237,7 @@
 			}
 			leader = {
 				save_scope_as = radical_leader_scope
+				set_temporary_event_immortality = { DURATION = 3 }
 			}
 		}
 		if = {
@@ -327,6 +331,10 @@
 			base = 75
 		}
 	}
+
+	after = {
+		revoke_temporary_event_immortality = { CHARACTER = scope:radical_leader_scope }
+	}
 }
 
 # Rise of Radicalism
@@ -398,6 +406,7 @@
 			}
 			leader = {
 				save_scope_as = radical_leader_scope
+				set_temporary_event_immortality = { DURATION = 3 }
 			}
 		}
 	}
@@ -495,6 +504,10 @@
 		ai_chance = {
 			base = 33
 		}
+	}
+
+	after = {
+		revoke_temporary_event_immortality = { CHARACTER = scope:radical_leader_scope }
 	}
 }
 
@@ -712,6 +725,9 @@
 			days = short_modifier_time
 		}
 	}
+	after = {
+		je_secret_police_cleanup = yes
+	}
 }
 
 #########
@@ -766,6 +782,7 @@
 			save_scope_as = disgruntled_ig
 			leader = {
 				save_scope_as = disgruntled_ig_leader
+				set_temporary_event_immortality = { DURATION = 3 }
 			}
 		}
 	}
@@ -830,6 +847,10 @@
 			}
 		}
 	}
+
+	after = {
+		revoke_temporary_event_immortality = { CHARACTER = scope:disgruntled_ig_leader }
+	}
 }
 
 # Financial Squeeze
@@ -880,6 +901,7 @@
 			save_scope_as = squeezed_ig
 			leader = {
 				save_scope_as = squeezed_ig_leader
+				set_temporary_event_immortality = { DURATION = 3 }
 			}
 		}
 	}
@@ -956,6 +978,10 @@
 			}
 		}
 	}
+
+	after = {
+		revoke_temporary_event_immortality = { CHARACTER = scope:squeezed_ig_leader }
+	}
 }
 
 # The Crisis of Bread
@@ -1008,6 +1034,7 @@
 			save_scope_as = famine_radicalized_ig
 			leader = {
 				save_scope_as = famine_radicalized_ig_leader
+				set_temporary_event_immortality = { DURATION = 3 }
 			}
 		}
 
@@ -1094,5 +1121,9 @@
 				}
 			}
 		}
+	}
+
+	after = {
+		revoke_temporary_event_immortality = { CHARACTER = scope:famine_radicalized_ig_leader }
 	}
 }

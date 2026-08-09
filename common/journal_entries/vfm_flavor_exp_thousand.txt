@@ -2,6 +2,11 @@
 
 	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
     group = je_group_historical_content
+	
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
+	
 	immediate = {
 		c:SIC = {
 			save_scope_as = sic_scope
@@ -18,9 +23,14 @@
 		set_variable = choose_commander
 		set_variable = garibaldi_redshirts
 	}
-
-	complete = {
-		any_country = {
+	
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
+			any_country = {
 			owns_entire_state_region = STATE_MALTA
 			relations:root >= 10
 		}
@@ -37,23 +47,35 @@
     		text = exp_thousand_commander
 			has_variable = has_thousand_commander
 		}
-    }
-
-    on_complete = {
-		add_journal_entry = {
+		}
+		effect = {
+			add_journal_entry = {
 			type = je_exp_thousand_ongoing
 		}
-    }
-
-    on_timeout = {
-    	set_variable = no_thousand_expedition
-    }
-
-    invalid = {
-    	NOT = {
+	    }
+	}
+	
+	outcome = {
+		header = JOURNAL_ENTRY_TIMEOUT
+		effect_header = JOURNAL_ENTRY_ON_TIMEOUT
+		flags = { timeout }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		effect = {
+			set_variable = no_thousand_expedition
+		}
+	}
+	
+	outcome = {
+		flags = { hidden invalid_outcome }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		trigger = {
+			NOT = {
     		exists = c:SIC
     	}
-    }
+		}
+		effect = {
+		}
+	}
 
 	status_desc = {
 		first_valid = {
@@ -66,13 +88,18 @@
 	timeout = 730
 	weight = 1000
 
-	should_be_pinned_by_default = yes
+	should_be_pinned_by_default_uninvolved_or_context = yes
 }
 
 je_exp_thousand_SIC = {
 
 	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
     group = je_group_historical_content
+	
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
+	
 	immediate = {
 		random_country = {
 			limit = {
@@ -81,9 +108,14 @@ je_exp_thousand_SIC = {
 			save_scope_as = ita_scope
 		}
 	}
-
-	complete = {
-		radical_fraction = {
+	
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
+			radical_fraction = {
 			value < 0.15
 		}
 		NOT = {			
@@ -97,14 +129,19 @@ je_exp_thousand_SIC = {
 			}
 			has_journal_entry = je_springtime_of_the_peoples
 		}
-    }
-
-    on_complete = {
-    	set_global_variable = exp_thousand_limited
-    }
-
-    fail = {
-	    custom_tooltip = {
+		}
+		effect = {
+			set_global_variable = exp_thousand_limited
+	    }
+	}
+	
+	outcome = {
+        header = je_standard_failure_header
+        effect_header = je_standard_on_failure_header
+        color = "blue_negative"
+        conclusion_desc = je_standard_failure_conclusion_desc
+        trigger = {
+			 custom_tooltip = {
     		text = exp_thousand_SIC_fail
 	    	any_country = {
 	    		OR = {
@@ -114,7 +151,10 @@ je_exp_thousand_SIC = {
 
 	    	}
 	    }
-    }
+		}
+		effect = {
+		}
+	}
 
 	status_desc = {
 		first_valid = {
@@ -128,7 +168,7 @@ je_exp_thousand_SIC = {
 	}
 	weight = 1000
 
-	should_be_pinned_by_default = yes
+	should_be_pinned_by_default_uninvolved_or_context = yes
 }
 
 
@@ -136,6 +176,11 @@ je_exp_thousand_ongoing = {
 
 	icon = "gfx/interface/icons/event_icons/event_military.dds"
     group = je_group_historical_content
+	
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
+	
 	on_monthly_pulse = {
 		random_events = {
 			100 = 0
@@ -167,46 +212,62 @@ je_exp_thousand_ongoing = {
 			value = 1
 		}
 	}
-
-	complete = {
-		custom_tooltip = {
+	
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
+			custom_tooltip = {
 			text = je_exp_thousand_complete
 			scope:journal_entry = {
 				is_goal_complete = yes
 			}
 		}
-    }
-
-    on_complete = {
-    	custom_tooltip = je_exp_thousand_ongoing.tt1
+		}
+		effect = {
+			custom_tooltip = je_exp_thousand_ongoing.tt1
 		c:SIC = {
 			trigger_event = { id = exp_thousand.3 }
 		}
 		remove_modifier = modifier_large_expedition_cost
 		remove_global_variable = exp_thousand_limited
-    }
-
-    fail = {
-		custom_tooltip = {
+	    }
+	}
+	
+	outcome = {
+        header = je_standard_failure_header
+        effect_header = je_standard_on_failure_header
+        color = "blue_negative"
+        conclusion_desc = je_standard_failure_conclusion_desc
+        trigger = {
+			custom_tooltip = {
 			text = je_exp_thousand_fail
 			var:expedition_peril >= 5
 		}
-    }
-
-	on_fail = {
-		c:SIC = {
-			trigger_event = { id = exp_thousand.5 }
 		}
-		remove_modifier = modifier_large_expedition_cost
-		remove_global_variable = exp_thousand_limited
-	}
-
-	on_timeout = {
+		effect = {
 			c:SIC = {
 			trigger_event = { id = exp_thousand.5 }
 		}
 		remove_modifier = modifier_large_expedition_cost
 		remove_global_variable = exp_thousand_limited
+		}
+	}
+	
+	outcome = {
+		header = JOURNAL_ENTRY_TIMEOUT
+		effect_header = JOURNAL_ENTRY_ON_TIMEOUT
+		flags = { timeout }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		effect = {
+			c:SIC = {
+			trigger_event = { id = exp_thousand.5 }
+		}
+		remove_modifier = modifier_large_expedition_cost
+		remove_global_variable = exp_thousand_limited
+		}
 	}
 
 	current_value = {
@@ -216,12 +277,18 @@ je_exp_thousand_ongoing = {
 	goal_add_value = {
 		add = 7
 	}
-
-    invalid = {
-    	NOT = {
+	
+	outcome = {
+		flags = { hidden invalid_outcome }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		trigger = {
+			NOT = {
     		exists = c:SIC
     	}
-    }
+		}
+		effect = {
+		}
+	}
 
 	status_desc = {
 		first_valid = {
@@ -258,5 +325,5 @@ je_exp_thousand_ongoing = {
 
 	timeout = 730
 
-	should_be_pinned_by_default = yes
+	should_be_pinned_by_default_uninvolved_or_context = yes
 }

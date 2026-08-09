@@ -38,6 +38,7 @@ discrimination_events.1 = {
 	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
 
 	trigger = {
+		# triggered by on_action - on_yearly_events
 		any_scope_state = {
 			is_incorporated = yes
 			any_scope_pop = {
@@ -219,8 +220,10 @@ discrimination_events.2 = {
 	icon = "gfx/interface/icons/event_icons/event_protest.dds"
 
 	trigger = {
+		# triggered by on_action - on_yearly_events
 		has_variable = recent_capitulation
 		any_scope_pop = {
+			pop_has_primary_culture = no
 			pop_acceptance < acceptance_status_4
 		}
 	}
@@ -349,6 +352,7 @@ discrimination_events.3 = {
 	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
 
 	trigger = {
+		# triggered by on_action - on_yearly_events
 		institution_investment_level = {
 			institution = institution_schools
 			value > 0
@@ -452,9 +456,11 @@ discrimination_events.4 = {
 	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
 
 	trigger = {
+		# triggered by on_action - on_yearly_events
 		any_scope_state = {
 		    is_incorporated = yes #VFM, dont fire in colonies
 			any_scope_culture = {
+				NOT = { is_primary_culture_of = ROOT }
 				prev = {
 					state_average_culture_pop_acceptance = {
 						culture = prev
@@ -495,6 +501,7 @@ discrimination_events.4 = {
 			limit = {
 			    is_incorporated = yes #VFM, dont fire in colonies
 				any_scope_culture = {
+					NOT = { is_primary_culture_of = ROOT }
 					PREV = {
 						state_average_culture_pop_acceptance = {
 							culture = PREV
@@ -524,6 +531,7 @@ discrimination_events.4 = {
 			save_scope_as = discrimination_state
 			random_scope_pop = {
 				limit = {
+					pop_has_primary_culture = no
 					PREV = {
 						state_average_culture_pop_acceptance = {
 							culture = PREV.culture

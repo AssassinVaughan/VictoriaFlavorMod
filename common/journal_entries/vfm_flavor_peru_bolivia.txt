@@ -1,6 +1,9 @@
 ﻿je_peru_bolivia_the_feeble_union = {
 	icon = "gfx/interface/icons/event_icons/event_fire.dds"
     group = je_group_internal_affairs
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
 
 	immediate = {
 		ROOT = {
@@ -52,15 +55,19 @@
 			}
 		}
 	}
-
-	complete = {
-		scope:npu_scope = {
+	
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
+			scope:npu_scope = {
 			liberty_desire >= 95
 		}
-	}
-
-	on_complete = {
-		custom_tooltip = {
+		}
+		effect = {
+			custom_tooltip = {
 			text = peru_bolivia_feeble_union_tt
 			scope:npu_scope = {
 				trigger_event = {
@@ -68,10 +75,16 @@
 				}
 			}
 		}
+	    }
 	}
-
-	fail = {
-		scope:npu_scope = {
+	
+	outcome = {
+        header = je_standard_failure_header
+        effect_header = je_standard_on_failure_header
+        color = "blue_negative"
+        conclusion_desc = je_standard_failure_conclusion_desc
+        trigger = {
+			scope:npu_scope = {
 			OR = {
 				NOT = {
 					is_subject_of = c:BOL
@@ -83,16 +96,24 @@
 				}
 			}
 		}
+		}
+		effect = {
+			###
+		}
 	}
 
 	weight = 10000
 
-	should_be_pinned_by_default = yes
+	should_be_pinned_by_default_uninvolved_or_context = yes
 }
 
 je_peru_restoration = {
 	icon = "gfx/interface/icons/event_icons/event_scales.dds"
     group = je_group_internal_affairs
+	activation_description = {
+		always = yes # TODO PRCAL-45586
+	}
+	
 	is_shown_when_inactive = {
 		c:NPU ?= THIS
 		exists = c:SPU
@@ -103,35 +124,56 @@ je_peru_restoration = {
 	    exists = c:BOL
 		is_subject_of = c:BOL
 	}
-
-	complete = {
-		is_subject = no
+	
+	outcome = {
+		header = je_standard_completion_header
+		effect_header = je_standard_on_completion_header
+		color = "gold_positive"
+		conclusion_desc = je_standard_completion_conclusion_desc
+		trigger = {
+			is_subject = no
 		OR = {
 			c:SPU ?= { is_subject = no }
 		}
+		}
+		effect = {
+			annex = c:SPU # this should rather fire an event that does a cleanup
+	    }
 	}
-
-	on_complete = {
-        annex = c:SPU # this should rather fire an event that does a cleanup
-	}
-
-	fail = {
-		NOR = {
+	
+	outcome = {
+		flags = { hidden invalid_outcome }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		trigger = {
+			NOR = {
 		    exists = c:BOL
 			exists = c:SPU
 		}
+		}
+		effect = {
+		    ###
+		}
 	}
-
-	invalid = {
-		NOR = {
+	
+	outcome = {
+        header = je_standard_failure_header
+        effect_header = je_standard_on_failure_header
+        color = "blue_negative"
+        conclusion_desc = je_standard_failure_conclusion_desc
+        trigger = {
+			NOR = {
 		    exists = c:BOL
 			exists = c:SPU
 		}
-    }
+		}
+		effect = {
+			###
+		}
+	}
 
 	weight = 10000
 
-	should_be_pinned_by_default = yes
+	should_be_pinned_by_default_uninvolved_or_context = yes
 	can_revolution_inherit = no
 	transferable = no
 }

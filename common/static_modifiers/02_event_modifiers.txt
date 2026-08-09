@@ -20,7 +20,7 @@ accepted_petition = {
 
 landowners_petition_rejected_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
-	country_law_enactment_time_mult = 0.15
+	country_law_enactment_speed_mult = -0.15
 }
 
 landowners_petition_acepted_modifier = {
@@ -70,7 +70,7 @@ less_conscription_rural_folk_modifier = {
 
 trade_unions_placation_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
-	country_law_enactment_time_mult = 0.33
+	country_law_enactment_speed_mult = -0.33
 }
 
 accepted_petition_TU = {
@@ -80,7 +80,7 @@ accepted_petition_TU = {
 
 no_public_schools_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
-	country_law_enactment_time_mult = -0.2
+	country_law_enactment_speed_mult = 0.2
 }
 
 industralists_tax_denied_modifier = {
@@ -90,7 +90,7 @@ industralists_tax_denied_modifier = {
 
 industralists_tax_agreed_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
-	country_law_enactment_time_mult = 0.1
+	country_law_enactment_speed_mult = -0.1
 }
 
 accepted_petition_IN = {
@@ -302,11 +302,6 @@ modifier_commander_bribed = {
 	interest_group_approval_add = 1
 }
 
-modifier_conscientious_objection  = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
-	interest_group_approval_add = 2
-}
-
 modifier_conscription_rate_lowered = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_negative.dds
 	state_conscription_rate_mult = -0.25
@@ -315,16 +310,6 @@ modifier_conscription_rate_lowered = {
 modifier_police_ignored = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
 	interest_group_approval_add = -1
-}
-
-modifier_police_given_light = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
-	interest_group_approval_add = 4
-}
-
-modifier_secret_police_ignored = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
-	country_suppression_attraction_factor = 0.10
 }
 
 modifier_secret_police_supported = {
@@ -361,7 +346,7 @@ modifier_religious_schools_abolished_intelligentsia = {
 
 religious_schools_good_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
-	country_law_enactment_time_mult = 0.2
+	country_law_enactment_speed_mult = -0.2
 }
 
 religious_schools_bad_modifier = {
@@ -446,12 +431,12 @@ modifier_oregon_trail_mapped = {
 
  modifier_surveying_suez = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
- 	country_bureaucracy_add = -1000
+ 	country_bureaucracy_cost_add = 1000
  }
 
   modifier_surveying_panama = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
- 	country_bureaucracy_add = -1000
+ 	country_bureaucracy_cost_add = 1000
  }
 
  modifier_failed_expedition = {
@@ -579,16 +564,6 @@ popular_wine = {
 	goods_output_wine_mult = 0.35
 }
 
-modifier_new_ideology = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
-	interest_group_pop_attraction_mult = 0.2
-}
-
-modifier_new_ideology_unsupported = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
-	interest_group_pop_attraction_mult = 0.1
-}
-
 funding_marshals = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
 	country_authority_mult = -0.05
@@ -679,11 +654,6 @@ alaska_usa_big_money = {
 alaska_rus_big_money = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
 	country_tax_income_add = 57700
-}
-
-modifier_killer_coverup = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
-	country_authority_mult = -0.1
 }
 
 lincoln_martyred = {
@@ -939,29 +909,14 @@ first_flight_prestige = {
 	country_prestige_mult = 0.15
 }
 
-ig_placated_authority_cost = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
-	country_authority_mult = -0.1
-}
-
 ig_placated_bureaucracy_cost = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
 	country_bureaucracy_mult = -0.1
 }
 
-ig_placated = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
-	interest_group_approval_add = 3
-}
-
 ig_placated_completion = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
 	interest_group_approval_add = 2
-}
-
-ig_not_placated = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
-	interest_group_approval_add = -2
 }
 
 ig_demand_not_met = {
@@ -1012,11 +967,6 @@ modifier_denied_monarch_colony_ig = {
 modifier_denied_monarch_colony_country = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
 	country_authority_mult = -0.5
-}
-
-modifier_free_state_allegations = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
-	country_prestige_mult = -0.05
 }
 
 modifier_condemned_colony = {
@@ -1209,11 +1159,6 @@ employment_discrimination = {
 modifier_urbanized_state = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
 	state_loyalists_from_political_movements_mult = 0.2
-}
-
-modifier_ig_urbanizing = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
-	interest_group_approval_add = 2
 }
 
 modifier_ig_happy_urbanization = {
@@ -2025,12 +1970,6 @@ mustard_gas = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_negative.dds
 	state_mortality_mult = 0.1
 	state_standard_of_living_add = -2
-}
-
-# This approach requires a boolean modifier type to be added AND trigger-activated Production Method functionality to disable Chemical Weapons country-wide, OR custom modifier-based PM functionality
-mustard_gas_banned = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_negative.dds
-	# country_pm_chemical_weapons_specialists_disabled = yes
 }
 
 if_you_want_peace_bad_modifier = {

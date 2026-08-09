@@ -17,7 +17,10 @@ emu_war.1 = {
 
 	duration = 3
 
+	fire_only_once = yes
+
 	trigger = {
+		# triggered by on_action - on_yearly_events
 		country_has_primary_culture = cu:australian
 		has_technology_researched = automatic_machine_guns
 		ig:ig_armed_forces ?= {
