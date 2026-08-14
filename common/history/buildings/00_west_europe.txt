@@ -2480,7 +2480,7 @@
 						type="building_financial_district"
 						country="c:GBR"
 						levels=1
-						region="STATE_WEST_COUNTRYS"
+						region="STATE_WEST_COUNTRY"
 					}
 				}
 				reserves=1
@@ -7730,12 +7730,48 @@
 				activate_production_methods={ "pm_artificial_fertilizers"  }
 			}	
 			create_building={
+				building="building_steel_mill"
+				add_ownership={
+					company={
+						type=company_krupp
+						country="c:PRU"
+						levels=2
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_blister_steel_process" "pm_automation_disabled"  }
+			}
+			create_building={
+				building="building_arms_industry"
+				add_ownership={
+					company={
+						type=company_krupp
+						country="c:PRU"
+						levels=2
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_muskets" "pm_automation_disabled"  }
+			}
+			create_building={
+				building="building_artillery_foundry"
+				add_ownership={
+					company={
+						type=company_krupp
+						country="c:PRU"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_cannons" "pm_automation_disabled"  }
+			}
+			create_building={
 				building="building_tooling_workshop"
 				add_ownership={
 					building={
 						type="building_tooling_workshop"
 						country="c:PRU"
-						levels=2
+						levels=3
 						region="STATE_WESTPHALIA"
 					}
 					building={
@@ -7747,19 +7783,6 @@
 				}
 				reserves=1
 				activate_production_methods={ "pm_steel" "pm_automation_disabled"  }
-			}			
-			create_building={
-				building="building_steel_mill"
-				add_ownership={
-					building={
-						type="building_financial_district"
-						country="c:PRU"
-						levels=1
-						region="STATE_WESTPHALIA"
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_blister_steel_process" "pm_automation_disabled"  }
 			}
 			create_building={
 				building="building_iron_mine"
@@ -8398,10 +8421,14 @@
 			create_building={
 				building="building_arms_industry"
 				add_ownership={
-					building={
-						type="building_financial_district"
+					country={
 						country="c:PRU"
-						levels=4
+						levels=2
+					}
+					building={
+						type="building_arms_industry"
+						country="c:PRU"
+						levels=1
 						region="STATE_BRANDENBURG"
 					}
 				}

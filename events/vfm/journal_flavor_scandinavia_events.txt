@@ -641,10 +641,7 @@ journal_flavor_scandinavia.10 = { #Götavarven
 	    random_scope_state = {
 			limit = {
 				any_scope_building = {
-					OR = {
-						is_building_type = building_shipyard
-						is_building_type = building_military_shipyard
-					}
+					is_building_type = building_shipyard
 					occupancy > 0.9
 					level >= 2
 				}

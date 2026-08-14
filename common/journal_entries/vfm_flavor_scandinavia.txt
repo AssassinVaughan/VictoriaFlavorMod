@@ -236,6 +236,16 @@ je_swe_motala_fabriker = {
 	
 	timeout = 4380
 	
+	outcome = {
+		header = JOURNAL_ENTRY_TIMEOUT
+		effect_header = JOURNAL_ENTRY_ON_TIMEOUT
+		flags = { timeout }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		effect = {
+		    ###
+		}
+	}
+	
 	weight = 5000
 }
 
@@ -281,6 +291,16 @@ je_swe_glasriket = {
 	    }
 	}
 	
+	outcome = {
+		header = JOURNAL_ENTRY_TIMEOUT
+		effect_header = JOURNAL_ENTRY_ON_TIMEOUT
+		flags = { timeout }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		effect = {
+		    ###
+		}
+	}
+	
 	timeout = 4380
 	
 	weight = 5000
@@ -318,10 +338,7 @@ je_swe_gotavarven = {
 			 s:STATE_GOTALAND = {
 		    any_scope_state = {
 		any_scope_building = {
-			OR = {
-				is_building_type = building_shipyard
-				is_building_type = building_military_shipyard
-			}
+			is_building_type = building_shipyard
 			level >= 3
 			occupancy > 0.9
 		}
@@ -331,6 +348,16 @@ je_swe_gotavarven = {
 		effect = {
 			trigger_event = { id = journal_flavor_scandinavia.10 }
 	    }
+	}
+	
+	outcome = {
+		header = JOURNAL_ENTRY_TIMEOUT
+		effect_header = JOURNAL_ENTRY_ON_TIMEOUT
+		flags = { timeout }
+		conclusion_desc = je_standard_failure_conclusion_desc
+		effect = {
+		    ###
+		}
 	}
 	
 	timeout = 7300
@@ -393,9 +420,9 @@ je_stormakt = {
 		country_or_subject_owns_entire_state_region = STATE_UUSIMAA
 		any_scope_state = {
 		    OR = {
-                region = sr:region_baltic_states
-				region = sr:region_north_germany
-				region = sr:region_poland
+				is_in_geographic_region = geographic_region_baltic_states_old
+				is_in_geographic_region = geographic_region_north_germany_old
+				is_in_geographic_region = geographic_region_poland_old
 			}
 			count >= 3
 		}

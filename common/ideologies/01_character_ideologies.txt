@@ -6774,10 +6774,12 @@ ideology_luddite = { # Average Progressiveness - -33.33
 		if = { # Likely if angry as early-game PB
 			limit = {
 				is_interest_group_type = ig_petty_bourgeoisie
+                owner ?=
 				NOR = {
 					has_technology_researched = egalitarianism
 					has_law_or_variant = law_type:law_guild_system
 				}
+                }
 				ig_approval <= define:NPolitics|APPROVAL_THRESHOLD_UNHAPPY
 			}
 			subtract = {
