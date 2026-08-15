@@ -749,6 +749,9 @@ on_battle_won = {
 	random_events = {
 		chance_to_happen = 20
 		20 = culture_brazil.1
+	}
+	random_events = {
+		chance_to_happen = 1
 		1 = commander_events.7
 	}
 	effect = {
@@ -1450,6 +1453,62 @@ on_new_ruler = {
 					c:JAP ?= owner
 				}
 				on_new_ruler_japan_effect = yes
+			}
+
+			# keeping track of Russian tsars and their ideologies
+			if = {
+				limit = {
+					owner = {
+						c:RUS ?= this
+						has_variable = rus_tsar_count
+					}
+				}
+				owner = {
+					change_variable = {
+						name = rus_tsar_count
+						add = 1
+					}
+				}
+				if = {
+					limit = {
+						OR = {
+							has_reactionary_ideology = yes
+							has_conservative_ideology = yes
+							has_monarchist_ideology = yes
+						}
+					}
+					owner = {
+						change_variable = {
+							name = rus_tsar_conservative
+							add = 1
+						}
+					}
+				}
+				if = {
+					limit = {
+						OR = {
+							has_liberal_ideology = yes
+							has_progressive_ideology = yes
+						}
+					}
+					owner = {
+						change_variable = {
+							name = rus_tsar_liberal
+							add = 1
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_socialist_ideology = yes
+					}
+					owner = {
+						change_variable = {
+							name = rus_tsar_socialist
+							add = 1
+						}
+					}
+				}
 			}
 		}
 
@@ -3872,7 +3931,7 @@ on_state_incorporation = {
 	}
 }
 on_state_owner_change = {
-	on_actions = { ip4_lands_of_anarchy_remove_on_state_lost }
+	on_actions = { ip4_lands_of_anarchy_remove_on_state_lost chartering_the_stanitsas_state_gained }
 	effect = {
 		evaluate_and_assign_state_hub_dynamic_names = yes # All dynamic naming is handled by this scripted effect
 
@@ -3915,6 +3974,7 @@ on_state_owner_change = {
 	}
 }
 on_state_created = {
+    on_actions = { chartering_the_stanitsas_state_gained }
 	effect = {
 		evaluate_and_assign_state_hub_dynamic_names = yes # All dynamic naming is handled by this scripted effect
 
@@ -4027,6 +4087,18 @@ on_party_created = {
 on_party_disbanded = {
 	effect = {
 		debug_log = "[SCOPE.sParty('target').GetNameNoFormatting] Disbanded - [THIS.GetCountry.GetNameNoFormatting]"
+		if = {
+			limit = {
+				scope:target ?= {
+					is_party_type = revolutionary_party
+				}
+				country_has_voting_franchise = yes
+				in_election_campaign = no
+			}
+			call_election = {
+				months = 3
+			}
+		}
 	}
 }
 

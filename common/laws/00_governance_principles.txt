@@ -845,18 +845,6 @@ law_council_republic = {
 	}
 
 	on_activate = {
-		custom_tooltip = {
-			text = enact_law_radical_leftist_government_warning_desc
-			every_country = {
-				limit = {
-					has_overlapping_interests = ROOT
-				}
-				create_diplomatic_catalyst = {
-					type = catalyst_socialist_government
-					target = root
-				}
-			}
-		}
 		if = {
 			limit = {
 				is_template_used = rus_lenin_character_template
@@ -893,6 +881,36 @@ law_council_republic = {
 			}
 			activate_law = law_type:law_factory_councils
 		}
+	    custom_tooltip = {
+			text = enact_law_radical_leftist_government_warning_desc
+			every_country = {
+				limit = {
+					has_overlapping_interests = ROOT
+				}
+				create_diplomatic_catalyst = {
+					type = catalyst_socialist_government
+					target = root
+				}
+			}
+		}
+		if = {
+			limit = {
+				NOR = {
+					has_journal_entry = je_communism_1
+					has_journal_entry = je_communism_2
+					has_journal_entry = je_state_and_revolution
+				}
+			}
+			trigger_event = { id = communism.2 popup = yes }
+			if = {
+				limit = {
+					NOT = {
+						has_global_variable = socialist_world_republic
+					}
+				}
+				custom_tooltip = enact_law_interest_rates_and_trade_advantage_warning_desc
+			}
+		}
 	}
 
 	can_impose = {
@@ -913,6 +931,7 @@ law_council_republic = {
 		country_legitimacy_govt_size_add = 1
 		country_legitimacy_ideological_incoherence_mult = -0.1
 		interest_group_ig_trade_unions_pol_str_mult = 0.25
+		country_other_country_socialist_government_hostility_impact_add = 50
 	}
 
 	ai_will_do = {

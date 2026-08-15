@@ -1161,6 +1161,19 @@
 				activate_production_methods={ "pm_blister_steel_process" "pm_automation_disabled"  }
 			}
 			create_building={
+				building="building_tooling_workshop"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:GBR"
+						levels=2
+						region="STATE_HOME_COUNTIES"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_steel" "pm_automation_disabled"  }
+			}
+			create_building={
 				building="building_art_academy"
 				add_ownership={
 					building={
@@ -1306,7 +1319,7 @@
 					building={
 						type="building_fishing_wharf"
 						country="c:GBR"
-						levels=1
+						levels=3
 						region="STATE_HOME_COUNTIES"
 					}
 					building={
@@ -1338,7 +1351,7 @@
 					building={
 						type="building_coal_mine"
 						country="c:GBR"
-						levels=3
+						levels=4
 						region="STATE_HOME_COUNTIES"
 					}
 				}
@@ -1735,7 +1748,7 @@
 					building={
 						type="building_financial_district"
 						country="c:GBR"
-						levels=9
+						levels=7
 						region="STATE_YORKSHIRE"
 					}
 				}
@@ -8129,12 +8142,25 @@
 					building={
 						type="building_financial_district"
 						country="c:PRU"
-						levels=1
+						levels=2
 						region="STATE_RHINELAND"
 					}
 				}
 				reserves=1
 				activate_production_methods={ "pm_atmospheric_engine_pump_building_coal_mine" "pm_no_explosives" "pm_no_steam_automation" "pm_road_carts" }
+			}
+			create_building={
+				building="building_iron_mine"
+				add_ownership={
+					building={
+						type="building_iron_mine"
+						country="c:PRU"
+						levels=1
+						region="STATE_RHINELAND"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_atmospheric_engine_pump_building_iron_mine" "pm_no_explosives" "pm_no_steam_automation" "pm_road_carts"  }
 			}
 			create_building={
 				building="building_vineyard"

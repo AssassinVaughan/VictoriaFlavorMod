@@ -4784,7 +4784,16 @@ types building_item_types
 
 	type employment_indicator_icon = container {
 		icon = {
-			visible = "[Building.ShouldShowAsUnableToHire]"
+			visible = "[Building.IsActivelyDownsizing]"
+			block "indicator_icon_size" {
+				size = { 28 28 }
+			}
+			texture = "gfx/interface/icons/generic_icons/employment_downsizing.dds"
+			tooltip = "NOT_HIRING"
+		}
+
+		icon = {
+			visible = "[And(Building.ShouldShowAsUnableToHire, Not(Building.IsActivelyDownsizing))]"
 			block "indicator_icon_size" {
 				size = { 28 28 }
 			}
@@ -4793,7 +4802,7 @@ types building_item_types
 		}
 
 		icon = {
-			visible = "[Building.ShouldShowAsUnwillingToHire]"
+			visible = "[And(Building.ShouldShowAsUnwillingToHire, Not(Building.IsActivelyDownsizing))]"
 			block "indicator_icon_size" {
 				size = { 28 28 }
 			}

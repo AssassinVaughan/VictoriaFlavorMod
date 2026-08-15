@@ -364,3 +364,21 @@ disease_outbreak_level = { # state scope
 		value = 0
 	}
 }
+
+je_anarchy_sol_target = {
+	if = {
+		limit = { root = { has_variable = anarchy_starting_sol_var } }
+		value = root.var:anarchy_starting_sol_var
+	}
+	else = {
+		value = root.average_sol
+	}
+	add = 5
+	min = 15
+	max = 25
+}
+
+je_anarchy_sol_goal_increase = {
+	value = je_anarchy_sol_target
+	subtract = root.var:anarchy_starting_sol_var
+}

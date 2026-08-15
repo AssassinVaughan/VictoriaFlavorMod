@@ -297,7 +297,13 @@ ai_strategy_resource_expansion = {
 					}
 				}
 			}
-			add = 25
+			add = {
+				value = 25
+				multiply = {
+					value = 1
+					add = modifier:country_other_country_socialist_government_hostility_impact_mult
+				}
+			}
 		}
 
 		if = {
@@ -457,7 +463,13 @@ ai_strategy_industrial_expansion = {
 					}
 				}
 			}
-			add = 50
+			add = {
+				value = 50
+				multiply = {
+					value = 1
+					add = modifier:country_other_country_socialist_government_hostility_impact_mult
+				}
+			}
 		}
 
 		# Metternich agenda of 1844 - inclined to industrialise

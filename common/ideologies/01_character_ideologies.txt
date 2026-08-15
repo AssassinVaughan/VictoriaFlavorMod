@@ -68,6 +68,11 @@ ideology_moderate = {
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_moderate_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -120,6 +125,11 @@ ideology_moderate = {
 			}
 			multiply = 0.1
 		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_moderate_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 }
 
@@ -127,29 +137,6 @@ ideology_traditionalist = { # Average Progressiveness - -70
 	icon = "gfx/interface/icons/ideology_icons/ideology_leader/ideology_leader_traditionalist.dds"
 
 	character_ideology = yes
-
-	lawgroup_rights_of_women = {
-		law_no_womens_rights = approve
-		law_women_own_property = neutral
-		law_women_in_the_workplace = disapprove
-		law_womens_suffrage = strongly_disapprove
-	}
-
-	lawgroup_church_and_state = {
-		law_state_religion = approve
-		law_freedom_of_conscience = disapprove
-		law_total_separation = strongly_disapprove
-		law_state_atheism = strongly_disapprove
-	}
-
-	lawgroup_labour_associations = {
-		law_combination_acts = neutral
-		law_guild_system = approve
-		law_anti_strike_laws = neutral
-		law_corporatized_unions = neutral
-		law_right_to_associate = disapprove
-		law_factory_councils = strongly_disapprove
-	}
 
 	lawgroup_caste_hegemony = {
 		law_hindu_caste_enforced = strongly_approve
@@ -162,6 +149,29 @@ ideology_traditionalist = { # Average Progressiveness - -70
 		law_strict_edo_system = strongly_approve
 		law_intermediate_edo_system = disapprove
 		law_lax_edo_system = strongly_disapprove
+	}
+
+	lawgroup_church_and_state = {
+		law_state_religion = approve
+		law_freedom_of_conscience = disapprove
+		law_total_separation = strongly_disapprove
+		law_state_atheism = strongly_disapprove
+	}
+
+	lawgroup_rights_of_women = {
+		law_no_womens_rights = approve
+		law_women_own_property = neutral
+		law_women_in_the_workplace = disapprove
+		law_womens_suffrage = strongly_disapprove
+	}
+
+	lawgroup_labour_associations = {
+		law_combination_acts = neutral
+		law_guild_system = approve
+		law_anti_strike_laws = neutral
+		law_corporatized_unions = neutral
+		law_right_to_associate = disapprove
+		law_factory_councils = strongly_disapprove
 	}
 
 	country_trigger = {
@@ -272,6 +282,11 @@ ideology_traditionalist = { # Average Progressiveness - -70
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_traditionalist_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -326,6 +341,11 @@ ideology_traditionalist = { # Average Progressiveness - -70
 			}
 			multiply = 0.1
 		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_traditionalist_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 }
 
@@ -333,29 +353,6 @@ ideology_traditionalist_minoritarian = { # Average Progressiveness - -50
 	icon = "gfx/interface/icons/ideology_icons/ideology_leader/ideology_leader_traditionalist.dds"
 
 	character_ideology = yes
-
-	lawgroup_rights_of_women = {
-		law_no_womens_rights = approve
-		law_women_own_property = neutral
-		law_women_in_the_workplace = disapprove
-		law_womens_suffrage = strongly_disapprove
-	}
-
-	lawgroup_church_and_state = {
-		law_state_religion = strongly_disapprove
-		law_freedom_of_conscience = disapprove
-		law_total_separation = approve
-		law_state_atheism = strongly_disapprove
-	}
-
-	lawgroup_labour_associations = {
-		law_combination_acts = neutral
-		law_guild_system = approve
-		law_anti_strike_laws = neutral
-		law_corporatized_unions = neutral
-		law_right_to_associate = disapprove
-		law_factory_councils = strongly_disapprove
-	}
 
 	lawgroup_caste_hegemony = {
 		law_hindu_caste_enforced = strongly_approve
@@ -368,6 +365,29 @@ ideology_traditionalist_minoritarian = { # Average Progressiveness - -50
 		law_strict_edo_system = strongly_approve
 		law_intermediate_edo_system = disapprove
 		law_lax_edo_system = strongly_disapprove
+	}
+
+	lawgroup_church_and_state = {
+		law_state_religion = strongly_disapprove
+		law_freedom_of_conscience = disapprove
+		law_total_separation = approve
+		law_state_atheism = strongly_disapprove
+	}
+
+	lawgroup_rights_of_women = {
+		law_no_womens_rights = approve
+		law_women_own_property = neutral
+		law_women_in_the_workplace = disapprove
+		law_womens_suffrage = strongly_disapprove
+	}
+
+	lawgroup_labour_associations = {
+		law_combination_acts = neutral
+		law_guild_system = approve
+		law_anti_strike_laws = neutral
+		law_corporatized_unions = neutral
+		law_right_to_associate = disapprove
+		law_factory_councils = strongly_disapprove
 	}
 
 	interest_group_leader_trigger = {
@@ -476,6 +496,11 @@ ideology_traditionalist_minoritarian = { # Average Progressiveness - -50
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_traditionalist_minoritarian_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -530,6 +555,11 @@ ideology_traditionalist_minoritarian = { # Average Progressiveness - -50
 			}
 			multiply = 0.1
 		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_traditionalist_minoritarian_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 }
 
@@ -548,18 +578,18 @@ ideology_nihilist = { # Average Progressiveness - 91.66
 		law_council_republic = approve
 	}
 
-	lawgroup_church_and_state = {
-		law_state_religion = strongly_disapprove
-		law_freedom_of_conscience = disapprove
-		law_total_separation = neutral
-		law_state_atheism = strongly_approve
-	}
-
 	lawgroup_caste_hegemony = {
 		law_hindu_caste_enforced = strongly_disapprove
 		law_hindu_caste_codified = disapprove
 		law_hindu_caste_not_enforced = neutral
 		law_affirmative_action = neutral
+	}
+
+	lawgroup_church_and_state = {
+		law_state_religion = strongly_disapprove
+		law_freedom_of_conscience = disapprove
+		law_total_separation = neutral
+		law_state_atheism = strongly_approve
 	}
 
 	country_trigger = {
@@ -755,6 +785,11 @@ ideology_nihilist = { # Average Progressiveness - 91.66
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_nihilist_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -872,6 +907,11 @@ ideology_nihilist = { # Average Progressiveness - 91.66
 				}
 			}
 			multiply = 0.1
+		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_nihilist_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
 		}
 	}
 }
@@ -1093,6 +1133,11 @@ ideology_republican_leader = { # Average Progressiveness - 75
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_republican_leader_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -1199,6 +1244,11 @@ ideology_republican_leader = { # Average Progressiveness - 75
 			}
 			multiply = 0.1
 		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_republican_leader_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 }
 
@@ -1230,11 +1280,10 @@ ideology_radical = { # Average Progressiveness - 62.5
 		law_labour_suffrage = strongly_disapprove
 	}
 
-	lawgroup_free_speech = {
-		law_protected_speech = strongly_approve
-		law_right_of_assembly = approve
-		law_censorship = disapprove
-		law_outlawed_dissent = strongly_disapprove
+	lawgroup_edo_social_system = {
+		law_strict_edo_system = strongly_disapprove
+		law_intermediate_edo_system = disapprove
+		law_lax_edo_system = approve
 	}
 
 	lawgroup_internal_security = {
@@ -1252,6 +1301,13 @@ ideology_radical = { # Average Progressiveness - 62.5
 		law_religious_schools = disapprove
 	}
 
+	lawgroup_free_speech = {
+		law_protected_speech = strongly_approve
+		law_right_of_assembly = approve
+		law_censorship = disapprove
+		law_outlawed_dissent = strongly_disapprove
+	}
+
 	lawgroup_labour_associations = { # The Sans-Culottes resented the ban on workers' associations.
 		law_combination_acts = disapprove
 		law_guild_system = strongly_disapprove
@@ -1259,12 +1315,6 @@ ideology_radical = { # Average Progressiveness - 62.5
 		law_corporatized_unions = disapprove
 		law_right_to_associate = neutral
 		law_factory_councils = strongly_disapprove
-	}
-
-	lawgroup_edo_social_system = {
-		law_strict_edo_system = strongly_disapprove
-		law_intermediate_edo_system = disapprove
-		law_lax_edo_system = approve
 	}
 
 	country_trigger = {
@@ -1555,6 +1605,11 @@ ideology_radical = { # Average Progressiveness - 62.5
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_radical_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -1717,6 +1772,11 @@ ideology_radical = { # Average Progressiveness - 62.5
 			}
 			multiply = 0.1
 		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_radical_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 }
 
@@ -1734,17 +1794,23 @@ ideology_reformer = { # Average Progressiveness - 10
 		law_cultural_exclusion = approve
 	}
 
-	lawgroup_rights_of_women = {
-		law_no_womens_rights = neutral
-		law_women_own_property = approve
-		law_women_in_the_workplace = neutral
-		law_womens_suffrage = neutral
+	lawgroup_edo_social_system = {
+		law_strict_edo_system = disapprove
+		law_intermediate_edo_system = neutral
+		law_lax_edo_system = approve
 	}
 
 	lawgroup_childrens_rights = {
 		law_child_labor_allowed = disapprove
 		law_restricted_child_labor = neutral
 		law_compulsory_primary_school = approve
+	}
+
+	lawgroup_rights_of_women = {
+		law_no_womens_rights = neutral
+		law_women_own_property = approve
+		law_women_in_the_workplace = neutral
+		law_womens_suffrage = neutral
 	}
 
 	lawgroup_labour_associations = {
@@ -1754,12 +1820,6 @@ ideology_reformer = { # Average Progressiveness - 10
 		law_corporatized_unions = neutral
 		law_right_to_associate = approve
 		law_factory_councils = strongly_disapprove
-	}
-
-	lawgroup_edo_social_system = {
-		law_strict_edo_system = disapprove
-		law_intermediate_edo_system = neutral
-		law_lax_edo_system = approve
 	}
 
 	country_trigger = {
@@ -1897,6 +1957,11 @@ ideology_reformer = { # Average Progressiveness - 10
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_reformer_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -1968,6 +2033,11 @@ ideology_reformer = { # Average Progressiveness - 10
 				}
 			}
 			multiply = 0.1
+		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_reformer_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
 		}
 	}
 }
@@ -2140,6 +2210,11 @@ ideology_feminist = { # Average Progressiveness - 50
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_feminist_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -2222,6 +2297,11 @@ ideology_feminist = { # Average Progressiveness - 50
 			}
 			multiply = 0.1
 		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_feminist_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 }
 
@@ -2230,20 +2310,20 @@ ideology_abolitionist = { # Average Progressiveness - 75
 
 	character_ideology = yes
 
-	lawgroup_slavery = {
-		law_slavery_banned = neutral
-		law_legacy_slavery = disapprove
-		law_colonial_slavery = disapprove
-		law_debt_slavery = strongly_disapprove
-		law_slave_trade = strongly_disapprove
-	}
-
 	lawgroup_land_reform = {
 		law_serfdom = strongly_disapprove
 		law_tenant_farmers = neutral
 		law_peasant_proprietorship = neutral
 		law_collectivized_agriculture = neutral
 		law_commercialized_agriculture = neutral
+	}
+
+	lawgroup_slavery = {
+		law_slavery_banned = neutral
+		law_legacy_slavery = disapprove
+		law_colonial_slavery = disapprove
+		law_debt_slavery = strongly_disapprove
+		law_slave_trade = strongly_disapprove
 	}
 
 	country_trigger = {
@@ -2366,6 +2446,11 @@ ideology_abolitionist = { # Average Progressiveness - 75
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_abolitionist_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -2418,6 +2503,11 @@ ideology_abolitionist = { # Average Progressiveness - 75
 				}
 			}
 			multiply = 0.1
+		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_abolitionist_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
 		}
 	}
 }
@@ -2522,6 +2612,11 @@ ideology_slaver = { # Average Progressiveness - -50
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_slaver_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -2575,6 +2670,11 @@ ideology_slaver = { # Average Progressiveness - -50
 				}
 			}
 			multiply = 0.1
+		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_slaver_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
 		}
 	}
 }
@@ -2743,6 +2843,11 @@ ideology_pacifist = { # Average Progressiveness - -8.33
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_pacifist_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -2836,6 +2941,11 @@ ideology_pacifist = { # Average Progressiveness - -8.33
 				}
 			}
 			multiply = 0.1
+		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_pacifist_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
 		}
 	}
 }
@@ -3018,6 +3128,11 @@ ideology_jingoist_leader = { # Average Progressiveness - 8.33
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_jingoist_leader_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -3109,6 +3224,11 @@ ideology_jingoist_leader = { # Average Progressiveness - 8.33
 				}
 			}
 			multiply = 0.1
+		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_jingoist_leader_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
 		}
 	}
 }
@@ -3254,6 +3374,11 @@ ideology_royalist = { # Average Progressiveness - 0
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_royalist_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -3303,6 +3428,11 @@ ideology_royalist = { # Average Progressiveness - 0
 			}
 			multiply = 0.1
 		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_royalist_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 }
 
@@ -3324,6 +3454,19 @@ ideology_state_socialist = { # Average Progressiveness - 65.62
 		law_labour_suffrage = strongly_disapprove
 	}
 
+	lawgroup_caste_hegemony = {
+		law_hindu_caste_enforced = strongly_disapprove
+		law_hindu_caste_codified = disapprove
+		law_hindu_caste_not_enforced = neutral
+		law_affirmative_action = approve
+	}
+
+	lawgroup_edo_social_system = {
+		law_strict_edo_system = strongly_disapprove
+		law_intermediate_edo_system = disapprove
+		law_lax_edo_system = approve
+	}
+
 	lawgroup_economic_system = {
 		law_command_economy = strongly_approve
 		law_cooperative_ownership = approve
@@ -3335,18 +3478,18 @@ ideology_state_socialist = { # Average Progressiveness - 65.62
 		law_extraction_economy = strongly_disapprove
 	}
 
-	lawgroup_labor_rights = {
-		law_worker_protections = strongly_approve
-		law_regulatory_bodies = approve
-		law_no_workers_rights = disapprove
-	}
-
 	lawgroup_taxation = {
 		law_consumption_based_taxation = disapprove
 		law_land_based_taxation = disapprove
 		law_per_capita_based_taxation = neutral
 		law_proportional_taxation = approve
 		law_graduated_taxation = strongly_approve
+	}
+
+	lawgroup_labor_rights = {
+		law_worker_protections = strongly_approve
+		law_regulatory_bodies = approve
+		law_no_workers_rights = disapprove
 	}
 
 	lawgroup_welfare = {
@@ -3363,19 +3506,6 @@ ideology_state_socialist = { # Average Progressiveness - 65.62
 		law_corporatized_unions = neutral
 		law_right_to_associate = approve
 		law_factory_councils = strongly_disapprove
-	}
-
-	lawgroup_caste_hegemony = {
-		law_hindu_caste_enforced = strongly_disapprove
-		law_hindu_caste_codified = disapprove
-		law_hindu_caste_not_enforced = neutral
-		law_affirmative_action = approve
-	}
-
-	lawgroup_edo_social_system = {
-		law_strict_edo_system = strongly_disapprove
-		law_intermediate_edo_system = disapprove
-		law_lax_edo_system = approve
 	}
 
 	country_trigger = {
@@ -3415,7 +3545,7 @@ ideology_state_socialist = { # Average Progressiveness - 65.62
 			}
 			add = {
 				value = owner.ideology_state_socialist_disfavoured_laws
-				multiply = 10 # Caste laws don't count by default
+				multiply = 9 # Caste laws don't count by default
 				desc = "DISFAVORED_LAWS"
 			}
 		}
@@ -3555,6 +3685,11 @@ ideology_state_socialist = { # Average Progressiveness - 65.62
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_state_socialist_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -3567,7 +3702,7 @@ ideology_state_socialist = { # Average Progressiveness - 65.62
 			}
 			add = {
 				value = owner.ideology_state_socialist_disfavoured_laws
-				multiply = 10 # Caste laws don't count by default
+				multiply = 9 # Caste laws don't count by default
 			}
 		}
 
@@ -3638,6 +3773,11 @@ ideology_state_socialist = { # Average Progressiveness - 65.62
 			}
 			multiply = 0.1
 		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_state_socialist_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 }
 
@@ -3676,15 +3816,6 @@ ideology_communist_leader = { # Average Progressiveness - 104.16
 		law_state_atheism = approve
 	}
 
-	lawgroup_labour_associations = {
-		law_combination_acts = strongly_disapprove
-		law_guild_system = strongly_disapprove
-		law_anti_strike_laws = disapprove
-		law_corporatized_unions = strongly_disapprove
-		law_right_to_associate = neutral
-		law_factory_councils = approve
-	}
-
 	lawgroup_bureaucracy = {
 		law_elected_bureaucrats = disapprove
 		law_military_bureaucrats = strongly_disapprove
@@ -3699,6 +3830,15 @@ ideology_communist_leader = { # Average Progressiveness - 104.16
 		law_national_militia = neutral
 		law_peasant_levies = strongly_disapprove
 		law_revolutionary_guard = approve
+	}
+
+	lawgroup_labour_associations = {
+		law_combination_acts = strongly_disapprove
+		law_guild_system = strongly_disapprove
+		law_anti_strike_laws = disapprove
+		law_corporatized_unions = strongly_disapprove
+		law_right_to_associate = neutral
+		law_factory_councils = approve
 	}
 
 	country_trigger = {
@@ -3927,6 +4067,16 @@ ideology_communist_leader = { # Average Progressiveness - 104.16
 				OR = {
 					has_variable = chose_vanguardism
 					has_variable = chose_anarchism
+				}
+			}
+			multiply = {
+				value = 0.5
+				desc = "CHOSE_A_DIFFERENT_RADICAL_PATH"
+			}
+		}
+		if = {
+			limit = {
+				OR = {
 					has_variable = chose_conservatism
 					has_variable = chose_fascism
 					has_variable = chose_ethno_nationalism
@@ -3936,6 +4086,11 @@ ideology_communist_leader = { # Average Progressiveness - 104.16
 				value = 0.1
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
+		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_communist_leader_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
 		}
 	}
 
@@ -4074,12 +4229,24 @@ ideology_communist_leader = { # Average Progressiveness - 104.16
 				OR = {
 					has_variable = chose_vanguardism
 					has_variable = chose_anarchism
+				}
+			}
+			multiply = 0.5
+		}
+		if = {
+			limit = {
+				OR = {
 					has_variable = chose_conservatism
 					has_variable = chose_fascism
 					has_variable = chose_ethno_nationalism
 				}
 			}
 			multiply = 0.1
+		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_communist_leader_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
 		}
 	}
 }
@@ -4088,7 +4255,7 @@ ideology_vanguardist = { # Average Progressiveness - 70.83
 	icon = "gfx/interface/icons/ideology_icons/ideology_leader/ideology_leader_vanguardist.dds"
 
 	character_ideology = yes
-
+	
 	lawgroup_governance_principles = {
 		law_monarchy = strongly_disapprove
 		law_presidential_republic = disapprove
@@ -4107,9 +4274,26 @@ ideology_vanguardist = { # Average Progressiveness - 70.83
 		law_census_voting = strongly_disapprove
 		law_wealth_voting = strongly_disapprove
 		law_landed_voting = strongly_disapprove
-		law_technocracy = approve
+		law_technocracy = neutral
 		law_single_party_state = strongly_approve
 		law_labour_suffrage = approve
+	}
+
+	lawgroup_church_and_state = {
+		law_state_religion = strongly_disapprove
+		law_freedom_of_conscience = disapprove
+		law_total_separation = neutral
+		law_state_atheism = approve
+	}
+
+	# Inherits Bureaucracy stances from IG
+
+	lawgroup_internal_security = {
+		law_national_guard = neutral
+		law_guaranteed_liberties = disapprove
+		law_no_home_affairs = disapprove
+		law_secret_police = strongly_disapprove
+		law_extraordinary_commission = approve
 	}
 
 	lawgroup_economic_system = {
@@ -4117,31 +4301,26 @@ ideology_vanguardist = { # Average Progressiveness - 70.83
 		law_cooperative_ownership = approve
 		law_interventionism = neutral
 		law_agrarianism = disapprove
-		law_traditionalism = disapprove
-		law_laissez_faire = strongly_disapprove
+		law_traditionalism = strongly_disapprove
+		law_laissez_faire = disapprove
 		law_industry_banned = strongly_disapprove
 		law_extraction_economy = strongly_disapprove
 	}
 
-	lawgroup_trade_policy = {
-		law_protectionism = approve
-		law_mercantilism = disapprove
-		law_isolationism = approve
-		law_free_trade = strongly_disapprove
+	lawgroup_land_reform = {
+		law_collectivized_agriculture = approve
+		law_serfdom = strongly_disapprove
+		law_tenant_farmers = strongly_disapprove
+		law_peasant_proprietorship = disapprove
+		law_commercialized_agriculture = disapprove
 	}
 
-	lawgroup_land_reform = {
-		law_commercialized_agriculture = strongly_disapprove
-		law_serfdom = strongly_disapprove
-		law_tenant_farmers = disapprove
-		law_peasant_proprietorship = neutral
-		law_collectivized_agriculture = approve
-	}
+	# Inherits Army Model stances from IG
 
 	lawgroup_labour_associations = {
-		law_combination_acts = disapprove
+		law_combination_acts = strongly_disapprove
 		law_guild_system = strongly_disapprove
-		law_anti_strike_laws = neutral
+		law_anti_strike_laws = disapprove
 		law_corporatized_unions = strongly_disapprove
 		law_right_to_associate = neutral
 		law_factory_councils = approve
@@ -4201,7 +4380,7 @@ ideology_vanguardist = { # Average Progressiveness - 70.83
 			}
 			add = {
 				value = owner.ideology_vanguardist_disfavoured_laws
-				multiply = 8
+				multiply = 7
 				desc = "DISFAVORED_LAWS"
 			}
 		}
@@ -4213,7 +4392,7 @@ ideology_vanguardist = { # Average Progressiveness - 70.83
 			}
 			subtract = {
 				value = owner.ideology_vanguardist_favoured_laws
-				multiply = 8
+				multiply = 7
 				desc = "FAVORED_LAWS"
 			}
 		}
@@ -4444,6 +4623,16 @@ ideology_vanguardist = { # Average Progressiveness - 70.83
 				OR = {
 					has_variable = chose_communism
 					has_variable = chose_anarchism
+				}
+			}
+			multiply = {
+				value = 0.5
+				desc = "CHOSE_A_DIFFERENT_RADICAL_PATH"
+			}
+		}
+		if = {
+			limit = {
+				OR = {
 					has_variable = chose_conservatism
 					has_variable = chose_fascism
 					has_variable = chose_ethno_nationalism
@@ -4453,6 +4642,11 @@ ideology_vanguardist = { # Average Progressiveness - 70.83
 				value = 0.1
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
+		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_vanguardist_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
 		}
 	}
 
@@ -4472,7 +4666,7 @@ ideology_vanguardist = { # Average Progressiveness - 70.83
 			}
 			add = {
 				value = owner.ideology_vanguardist_disfavoured_laws
-				multiply = 8
+				multiply = 7
 			}
 		}
 
@@ -4483,7 +4677,7 @@ ideology_vanguardist = { # Average Progressiveness - 70.83
 			}
 			subtract = {
 				value = owner.ideology_vanguardist_favoured_laws
-				multiply = 8
+				multiply = 7
 			}
 		}
 
@@ -4664,12 +4858,24 @@ ideology_vanguardist = { # Average Progressiveness - 70.83
 				OR = {
 					has_variable = chose_communism
 					has_variable = chose_anarchism
+				}
+			}
+			multiply = 0.5
+		}
+		if = {
+			limit = {
+				OR = {
 					has_variable = chose_conservatism
 					has_variable = chose_fascism
 					has_variable = chose_ethno_nationalism
 				}
 			}
 			multiply = 0.1
+		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_vanguardist_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
 		}
 	}
 }
@@ -4679,12 +4885,14 @@ ideology_fascist = { # Average Progressiveness - 7.14
 
 	character_ideology = yes
 
-	lawgroup_internal_security = {
-		law_guaranteed_liberties = strongly_disapprove
-		law_no_home_affairs = neutral
-		law_national_guard = approve
-		law_secret_police = strongly_approve
-		law_extraordinary_commission = strongly_disapprove
+	lawgroup_governance_principles = {
+		law_theocracy = disapprove
+		law_monarchy = neutral
+		law_presidential_republic = neutral
+		law_parliamentary_republic = neutral
+		law_corporate_state = strongly_approve
+		law_social_monarchy = approve
+		law_council_republic = strongly_disapprove
 	}
 
 	lawgroup_distribution_of_power = {
@@ -4717,21 +4925,19 @@ ideology_fascist = { # Average Progressiveness - 7.14
 		law_revolutionary_guard = strongly_disapprove
 	}
 
+	lawgroup_internal_security = {
+		law_guaranteed_liberties = strongly_disapprove
+		law_no_home_affairs = neutral
+		law_national_guard = approve
+		law_secret_police = strongly_approve
+		law_extraordinary_commission = strongly_disapprove
+	}
+
 	lawgroup_free_speech = {
 		law_protected_speech = strongly_disapprove
 		law_right_of_assembly = disapprove
 		law_censorship = neutral
 		law_outlawed_dissent = strongly_approve
-	}
-
-	lawgroup_governance_principles = {
-		law_theocracy = disapprove
-		law_monarchy = neutral
-		law_presidential_republic = neutral
-		law_parliamentary_republic = neutral
-		law_corporate_state = strongly_approve
-		law_social_monarchy = approve
-		law_council_republic = strongly_disapprove
 	}
 
 	lawgroup_labour_associations = {
@@ -4789,7 +4995,7 @@ ideology_fascist = { # Average Progressiveness - 7.14
 			}
 			add = {
 				value = owner.ideology_fascist_disfavoured_laws
-				multiply = 8
+				multiply = 7
 				desc = "DISFAVORED_LAWS"
 			}
 		}
@@ -4801,7 +5007,7 @@ ideology_fascist = { # Average Progressiveness - 7.14
 			}
 			subtract = {
 				value = owner.ideology_fascist_favoured_laws
-				multiply = 8
+				multiply = 7
 				desc = "FAVORED_LAWS"
 			}
 		}
@@ -5008,6 +5214,11 @@ ideology_fascist = { # Average Progressiveness - 7.14
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_fascist_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -5026,7 +5237,7 @@ ideology_fascist = { # Average Progressiveness - 7.14
 			}
 			add = {
 				value = owner.ideology_fascist_disfavoured_laws
-				multiply = 8
+				multiply = 7
 			}
 		}
 
@@ -5037,7 +5248,7 @@ ideology_fascist = { # Average Progressiveness - 7.14
 			}
 			subtract = {
 				value = owner.ideology_fascist_favoured_laws
-				multiply = 8
+				multiply = 7
 			}
 		}
 
@@ -5215,6 +5426,11 @@ ideology_fascist = { # Average Progressiveness - 7.14
 			}
 			multiply = 0.1
 		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_fascist_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 }
 
@@ -5223,13 +5439,14 @@ ideology_anarchist = { # Average Progressiveness - 100
 
 	character_ideology = yes
 
-	lawgroup_citizenship = {
-		law_ethnostate = strongly_disapprove
-		law_national_supremacy = strongly_disapprove
-		law_subjecthood = strongly_disapprove
-		law_racial_segregation = disapprove
-		law_cultural_exclusion = approve
-		law_multicultural = strongly_approve
+	lawgroup_governance_principles = {
+		law_monarchy = strongly_disapprove
+		law_presidential_republic = disapprove
+		law_parliamentary_republic = disapprove
+		law_corporate_state = strongly_disapprove
+		law_social_monarchy = strongly_disapprove
+		law_theocracy = strongly_disapprove
+		law_council_republic = strongly_approve
 	}
 
 	lawgroup_distribution_of_power = {
@@ -5245,6 +5462,23 @@ ideology_anarchist = { # Average Progressiveness - 100
 		law_labour_suffrage = approve
 	}
 
+	lawgroup_citizenship = {
+		law_ethnostate = strongly_disapprove
+		law_national_supremacy = strongly_disapprove
+		law_subjecthood = strongly_disapprove
+		law_racial_segregation = disapprove
+		law_cultural_exclusion = approve
+		law_multicultural = strongly_approve
+	}
+
+	lawgroup_bureaucracy = {
+		law_elected_bureaucrats = disapprove
+		law_military_bureaucrats = strongly_disapprove
+		law_appointed_bureaucrats = disapprove
+		law_hereditary_bureaucrats = strongly_disapprove
+		law_communal_administration = approve
+	}
+
 	lawgroup_economic_system = {
 		law_cooperative_ownership = strongly_approve
 		law_command_economy = disapprove
@@ -5256,13 +5490,11 @@ ideology_anarchist = { # Average Progressiveness - 100
 		law_extraction_economy = strongly_disapprove
 	}
 
-	lawgroup_labour_associations = {
-		law_combination_acts = disapprove
-		law_guild_system = strongly_disapprove
-		law_anti_strike_laws = neutral
-		law_corporatized_unions = strongly_disapprove
-		law_right_to_associate = neutral
-		law_factory_councils = approve
+	lawgroup_policing = {
+		law_no_police = approve
+		law_local_police = disapprove
+		law_dedicated_police = disapprove
+		law_militarized_police = strongly_disapprove
 	}
 
 	lawgroup_free_speech = {
@@ -5272,21 +5504,13 @@ ideology_anarchist = { # Average Progressiveness - 100
 		law_outlawed_dissent = strongly_disapprove
 	}
 
-	lawgroup_policing = {
-		law_no_police = approve
-		law_local_police = disapprove
-		law_dedicated_police = disapprove
-		law_militarized_police = strongly_disapprove
-	}
-
-	lawgroup_governance_principles = {
-		law_monarchy = strongly_disapprove
-		law_presidential_republic = disapprove
-		law_parliamentary_republic = disapprove
-		law_corporate_state = strongly_disapprove
-		law_social_monarchy = strongly_disapprove
-		law_theocracy = strongly_disapprove
-		law_council_republic = strongly_approve
+	lawgroup_labour_associations = {
+		law_combination_acts = disapprove
+		law_guild_system = strongly_disapprove
+		law_anti_strike_laws = neutral
+		law_corporatized_unions = strongly_disapprove
+		law_right_to_associate = neutral
+		law_factory_councils = approve
 	}
 
 	country_trigger = {
@@ -5343,7 +5567,7 @@ ideology_anarchist = { # Average Progressiveness - 100
 			}
 			add = {
 				value = owner.ideology_anarchist_disfavoured_laws
-				multiply = 8
+				multiply = 7
 				desc = "DISFAVORED_LAWS"
 			}
 		}
@@ -5355,7 +5579,7 @@ ideology_anarchist = { # Average Progressiveness - 100
 			}
 			subtract = {
 				value = owner.ideology_anarchist_favoured_laws
-				multiply = 8
+				multiply = 7
 				desc = "FAVORED_LAWS"
 			}
 		}
@@ -5516,6 +5740,16 @@ ideology_anarchist = { # Average Progressiveness - 100
 				OR = {
 					has_variable = chose_vanguardism
 					has_variable = chose_communism
+				}
+			}
+			multiply = {
+				value = 0.5
+				desc = "CHOSE_A_DIFFERENT_RADICAL_PATH"
+			}
+		}
+		if = {
+			limit = {
+				OR = {
 					has_variable = chose_conservatism
 					has_variable = chose_fascism
 					has_variable = chose_ethno_nationalism
@@ -5525,6 +5759,11 @@ ideology_anarchist = { # Average Progressiveness - 100
 				value = 0.1
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
+		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_anarchist_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
 		}
 	}
 
@@ -5544,7 +5783,7 @@ ideology_anarchist = { # Average Progressiveness - 100
 			}
 			add = {
 				value = owner.ideology_anarchist_disfavoured_laws
-				multiply = 8
+				multiply = 7
 			}
 		}
 
@@ -5555,7 +5794,7 @@ ideology_anarchist = { # Average Progressiveness - 100
 			}
 			subtract = {
 				value = owner.ideology_anarchist_favoured_laws
-				multiply = 8
+				multiply = 7
 			}
 		}
 
@@ -5660,12 +5899,24 @@ ideology_anarchist = { # Average Progressiveness - 100
 				OR = {
 					has_variable = chose_vanguardism
 					has_variable = chose_communism
+				}
+			}
+			multiply = 0.5
+		}
+		if = {
+			limit = {
+				OR = {
 					has_variable = chose_conservatism
 					has_variable = chose_fascism
 					has_variable = chose_ethno_nationalism
 				}
 			}
 			multiply = 0.1
+		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_anarchist_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
 		}
 	}
 }
@@ -5832,6 +6083,11 @@ ideology_ethno_nationalist = { # Average Progressiveness - -37.5
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_ethno_nationalist_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -5933,6 +6189,11 @@ ideology_ethno_nationalist = { # Average Progressiveness - -37.5
 			}
 			multiply = 0.1
 		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_ethno_nationalist_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 }
 
@@ -5940,13 +6201,6 @@ ideology_theocrat = { # Average Progressiveness - -37.5
 	icon = "gfx/interface/icons/ideology_icons/ideology_leader/ideology_leader_theocrat.dds"
 
 	character_ideology = yes
-
-	lawgroup_church_and_state = {
-		law_state_religion = approve
-		law_freedom_of_conscience = disapprove
-		law_total_separation = strongly_disapprove
-		law_state_atheism = strongly_disapprove
-	}
 
 	lawgroup_governance_principles = {
 		law_theocracy = strongly_approve
@@ -5956,6 +6210,13 @@ ideology_theocrat = { # Average Progressiveness - -37.5
 		law_corporate_state = approve
 		law_social_monarchy = neutral
 		law_council_republic = disapprove
+	}
+
+	lawgroup_church_and_state = {
+		law_state_religion = approve
+		law_freedom_of_conscience = disapprove
+		law_total_separation = strongly_disapprove
+		law_state_atheism = strongly_disapprove
 	}
 
 	interest_group_leader_trigger = {
@@ -6064,6 +6325,11 @@ ideology_theocrat = { # Average Progressiveness - -37.5
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_theocrat_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -6128,6 +6394,11 @@ ideology_theocrat = { # Average Progressiveness - -37.5
 			}
 			multiply = 0.1
 		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_theocrat_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 }
 
@@ -6135,6 +6406,13 @@ ideology_market_liberal = { # Average Progressiveness - 3.57
 	icon = "gfx/interface/icons/ideology_icons/ideology_leader/ideology_leader_market_liberal.dds"
 
 	character_ideology = yes
+
+	lawgroup_navy_model = {
+		law_merchant_navy = approve
+		law_jeune_ecole = neutral
+		law_professional_navy = disapprove
+		law_diplomatic_navy = neutral
+	}
 
 	lawgroup_economic_system = {
 		law_laissez_faire = strongly_approve
@@ -6147,30 +6425,11 @@ ideology_market_liberal = { # Average Progressiveness - 3.57
 		law_extraction_economy = strongly_disapprove
 	}
 
-	lawgroup_childrens_rights = {
-		law_child_labor_allowed = approve
-		law_restricted_child_labor = disapprove
-		law_compulsory_primary_school = strongly_disapprove
-	}
-
 	lawgroup_trade_policy = {
 		law_free_trade = strongly_approve
 		law_mercantilism = disapprove
 		law_protectionism = disapprove
 		law_isolationism = strongly_disapprove
-	}
-
-	lawgroup_navy_model = {
-		law_merchant_navy = approve
-		law_jeune_ecole = neutral
-		law_professional_navy = disapprove
-		law_diplomatic_navy = neutral
-	}
-
-	lawgroup_labor_rights = {
-		law_worker_protections = strongly_disapprove
-		law_regulatory_bodies = disapprove
-		law_no_workers_rights = neutral
 	}
 
 	lawgroup_land_reform = {
@@ -6179,6 +6438,18 @@ ideology_market_liberal = { # Average Progressiveness - 3.57
 		law_tenant_farmers = neutral
 		law_peasant_proprietorship = neutral
 		law_commercialized_agriculture = approve
+	}
+
+	lawgroup_labor_rights = {
+		law_worker_protections = strongly_disapprove
+		law_regulatory_bodies = disapprove
+		law_no_workers_rights = neutral
+	}
+
+	lawgroup_childrens_rights = {
+		law_child_labor_allowed = approve
+		law_restricted_child_labor = disapprove
+		law_compulsory_primary_school = strongly_disapprove
 	}
 
 	lawgroup_labour_associations = {
@@ -6248,7 +6519,7 @@ ideology_market_liberal = { # Average Progressiveness - 3.57
 			}
 			add = {
 				value = owner.ideology_market_liberal_disfavoured_laws
-				multiply = 8
+				multiply = 7
 				desc = "DISFAVORED_LAWS"
 			}
 		}
@@ -6260,7 +6531,7 @@ ideology_market_liberal = { # Average Progressiveness - 3.57
 			}
 			subtract = {
 				value = owner.ideology_market_liberal_favoured_laws
-				multiply = 8
+				multiply = 7
 				desc = "FAVORED_LAWS"
 			}
 		}
@@ -6432,6 +6703,11 @@ ideology_market_liberal = { # Average Progressiveness - 3.57
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_market_liberal_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -6451,7 +6727,7 @@ ideology_market_liberal = { # Average Progressiveness - 3.57
 			}
 			add = {
 				value = owner.ideology_market_liberal_disfavoured_laws
-				multiply = 8
+				multiply = 7
 			}
 		}
 
@@ -6462,7 +6738,7 @@ ideology_market_liberal = { # Average Progressiveness - 3.57
 			}
 			subtract = {
 				value = owner.ideology_market_liberal_favoured_laws
-				multiply = 8
+				multiply = 7
 			}
 		}
 
@@ -6585,6 +6861,11 @@ ideology_market_liberal = { # Average Progressiveness - 3.57
 				}
 			}
 			multiply = 0.1
+		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_market_liberal_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
 		}
 	}
 }
@@ -6755,6 +7036,11 @@ ideology_luddite = { # Average Progressiveness - -33.33
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_luddite_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -6774,13 +7060,13 @@ ideology_luddite = { # Average Progressiveness - -33.33
 		if = { # Likely if angry as early-game PB
 			limit = {
 				is_interest_group_type = ig_petty_bourgeoisie
-                owner ?=
-				NOR = {
-					has_technology_researched = egalitarianism
-					has_law_or_variant = law_type:law_guild_system
+				owner ?= {
+					NOR = {
+						has_technology_researched = egalitarianism
+						has_law_or_variant = law_type:law_guild_system
+					}
 				}
-                }
-				ig_approval <= define:NPolitics|APPROVAL_THRESHOLD_UNHAPPY
+				interest_group.ig_approval <= define:NPolitics|APPROVAL_THRESHOLD_UNHAPPY
 			}
 			subtract = {
 				value = interest_group.ig_approval
@@ -6847,6 +7133,11 @@ ideology_luddite = { # Average Progressiveness - -33.33
 			}
 			multiply = 0.1
 		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_luddite_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 }
 
@@ -6867,19 +7158,19 @@ ideology_authoritarian = { # Average Progressiveness - -27.77
 		law_labour_suffrage = strongly_disapprove
 	}
 
-	lawgroup_free_speech = {
-		law_protected_speech = strongly_disapprove
-		law_right_of_assembly = disapprove
-		law_censorship = approve
-		law_outlawed_dissent = strongly_approve
-	}
-
 	lawgroup_internal_security = {
 		law_guaranteed_liberties = strongly_disapprove
 		law_no_home_affairs = neutral
 		law_national_guard = approve
 		law_secret_police = strongly_approve
 		law_extraordinary_commission = strongly_disapprove
+	}
+
+	lawgroup_free_speech = {
+		law_protected_speech = strongly_disapprove
+		law_right_of_assembly = disapprove
+		law_censorship = approve
+		law_outlawed_dissent = strongly_approve
 	}
 
 	lawgroup_colonization = { # VFM
@@ -7063,6 +7354,11 @@ ideology_authoritarian = { # Average Progressiveness - -27.77
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_authoritarian_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -7177,6 +7473,11 @@ ideology_authoritarian = { # Average Progressiveness - -27.77
 				}
 			}
 			multiply = 0.1
+		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_authoritarian_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
 		}
 	}
 }
@@ -7364,6 +7665,11 @@ ideology_protectionist = { # Average Progressiveness - 37.5
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_protectionist_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -7472,6 +7778,11 @@ ideology_protectionist = { # Average Progressiveness - 37.5
 			}
 			multiply = 0.1
 		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_protectionist_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 }
 
@@ -7504,17 +7815,17 @@ ideology_humanitarian = { # Average Progressiveness - 66.66
 		law_outlawed_dissent = strongly_disapprove
 	}
 
+	lawgroup_childrens_rights = {
+		law_child_labor_allowed = strongly_disapprove
+		law_restricted_child_labor = disapprove
+		law_compulsory_primary_school = approve
+	}
+
 	lawgroup_rights_of_women = {
 		law_no_womens_rights = strongly_disapprove
 		law_women_own_property = disapprove
 		law_women_in_the_workplace = neutral
 		law_womens_suffrage = approve
-	}
-
-	lawgroup_childrens_rights = {
-		law_child_labor_allowed = strongly_disapprove
-		law_restricted_child_labor = disapprove
-		law_compulsory_primary_school = approve
 	}
 
 	lawgroup_migration = {
@@ -7677,6 +7988,11 @@ ideology_humanitarian = { # Average Progressiveness - 66.66
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_humanitarian_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -7764,6 +8080,11 @@ ideology_humanitarian = { # Average Progressiveness - 66.66
 			}
 			multiply = 0.5
 		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_humanitarian_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 }
 
@@ -7795,6 +8116,15 @@ ideology_jacksonian_democrat = { # Average Progressiveness - 55
 		law_labour_suffrage = strongly_disapprove
 	}
 
+	lawgroup_citizenship = {
+		law_ethnostate = strongly_disapprove
+		law_national_supremacy = neutral
+		law_subjecthood = strongly_disapprove
+		law_racial_segregation = approve
+		law_cultural_exclusion = neutral
+		law_multicultural = strongly_disapprove
+	}
+
 	lawgroup_bureaucracy = {
 		law_elected_bureaucrats = approve
 		law_military_bureaucrats = disapprove
@@ -7809,15 +8139,6 @@ ideology_jacksonian_democrat = { # Average Progressiveness - 55
 		law_slave_trade = neutral
 		law_legacy_slavery = approve
 		law_colonial_slavery = approve
-	}
-
-	lawgroup_citizenship = {
-		law_ethnostate = strongly_disapprove
-		law_national_supremacy = neutral
-		law_subjecthood = strongly_disapprove
-		law_racial_segregation = approve
-		law_cultural_exclusion = neutral
-		law_multicultural = strongly_disapprove
 	}
 
 	country_trigger = {
@@ -7873,6 +8194,11 @@ ideology_jacksonian_democrat = { # Average Progressiveness - 55
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_jacksonian_democrat_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -7893,6 +8219,11 @@ ideology_jacksonian_democrat = { # Average Progressiveness - 55
 			}
 			multiply = 0.1
 		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_jacksonian_democrat_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 }
 
@@ -7911,13 +8242,6 @@ ideology_positivist = { # Average Progressiveness - 37.5
 		law_presidential_republic = approve
 	}
 
-	lawgroup_church_and_state = {
-		law_state_religion = strongly_disapprove
-		law_freedom_of_conscience = disapprove
-		law_total_separation = approve
-		law_state_atheism = strongly_approve
-	}
-
 	lawgroup_distribution_of_power = {
 		law_technocracy = strongly_approve
 		law_single_party_state = approve
@@ -7929,6 +8253,13 @@ ideology_positivist = { # Average Progressiveness - 37.5
 		law_universal_suffrage = strongly_disapprove
 		law_anarchy = strongly_disapprove
 		law_labour_suffrage = strongly_disapprove
+	}
+
+	lawgroup_church_and_state = {
+		law_state_religion = strongly_disapprove
+		law_freedom_of_conscience = disapprove
+		law_total_separation = approve
+		law_state_atheism = strongly_approve
 	}
 
 	lawgroup_bureaucracy = {
@@ -8122,6 +8453,11 @@ ideology_positivist = { # Average Progressiveness - 37.5
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_positivist_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -8227,6 +8563,11 @@ ideology_positivist = { # Average Progressiveness - 37.5
 				}
 			}
 			multiply = 0.1
+		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_positivist_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
 		}
 	}
 }
@@ -8401,6 +8742,11 @@ ideology_land_reformer = { # Average Progressiveness - 43.75
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_land_reformer_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -8496,6 +8842,11 @@ ideology_land_reformer = { # Average Progressiveness - 43.75
 			}
 			multiply = 0.1
 		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_land_reformer_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 }
 
@@ -8504,35 +8855,14 @@ ideology_integralist = { # Average Progressiveness - -32.14
 
 	character_ideology = yes
 
-	lawgroup_internal_security = {
-		law_guaranteed_liberties = strongly_disapprove
-		law_no_home_affairs = neutral
-		law_national_guard = approve
-		law_secret_police = strongly_approve
-		law_extraordinary_commission = strongly_disapprove
-	}
-
-	lawgroup_policing = {
-		law_militarized_police = strongly_approve
-		law_local_police = approve
-		law_dedicated_police = approve
-		law_no_police = disapprove
-	}
-
-	lawgroup_church_and_state = {
-		law_state_religion = strongly_approve
-		law_freedom_of_conscience = disapprove
-		law_total_separation = strongly_disapprove
-		law_state_atheism = strongly_disapprove
-	}
-
-	lawgroup_citizenship = {
-		law_cultural_exclusion = neutral
-		law_racial_segregation = neutral
-		law_multicultural = disapprove
-		law_ethnostate = disapprove
-		law_national_supremacy = disapprove
-		law_subjecthood = approve
+	lawgroup_governance_principles = {
+		law_theocracy = approve
+		law_monarchy = approve
+		law_presidential_republic = neutral
+		law_parliamentary_republic = neutral
+		law_corporate_state = neutral
+		law_social_monarchy = strongly_approve
+		law_council_republic = strongly_disapprove
 	}
 
 	lawgroup_distribution_of_power = {
@@ -8548,14 +8878,35 @@ ideology_integralist = { # Average Progressiveness - -32.14
 		law_labour_suffrage = strongly_disapprove
 	}
 
-	lawgroup_governance_principles = {
-		law_theocracy = approve
-		law_monarchy = approve
-		law_presidential_republic = neutral
-		law_parliamentary_republic = neutral
-		law_corporate_state = neutral
-		law_social_monarchy = strongly_approve
-		law_council_republic = strongly_disapprove
+	lawgroup_citizenship = {
+		law_cultural_exclusion = neutral
+		law_racial_segregation = neutral
+		law_multicultural = disapprove
+		law_ethnostate = disapprove
+		law_national_supremacy = disapprove
+		law_subjecthood = approve
+	}
+
+	lawgroup_church_and_state = {
+		law_state_religion = strongly_approve
+		law_freedom_of_conscience = disapprove
+		law_total_separation = strongly_disapprove
+		law_state_atheism = strongly_disapprove
+	}
+
+	lawgroup_internal_security = {
+		law_guaranteed_liberties = strongly_disapprove
+		law_no_home_affairs = neutral
+		law_national_guard = approve
+		law_secret_police = strongly_approve
+		law_extraordinary_commission = strongly_disapprove
+	}
+
+	lawgroup_policing = {
+		law_militarized_police = strongly_approve
+		law_local_police = approve
+		law_dedicated_police = approve
+		law_no_police = disapprove
 	}
 
 	lawgroup_labour_associations = {
@@ -8618,7 +8969,7 @@ ideology_integralist = { # Average Progressiveness - -32.14
 			}
 			add = {
 				value = owner.ideology_integralist_disfavoured_laws
-				multiply = 8
+				multiply = 7
 				desc = "DISFAVORED_LAWS"
 			}
 		}
@@ -8630,7 +8981,7 @@ ideology_integralist = { # Average Progressiveness - -32.14
 			}
 			subtract = {
 				value = owner.ideology_integralist_favoured_laws
-				multiply = 8
+				multiply = 7
 				desc = "FAVORED_LAWS"
 			}
 		}
@@ -8638,11 +8989,13 @@ ideology_integralist = { # Average Progressiveness - -32.14
 		# More likely if paying war reparations
 		if = {
 			limit = {
-				any_scope_treaty = {
-					is_enforced = yes
-					any_scope_article = {
-						has_type = money_transfer
-						source_country = root.owner
+				owner ?= {
+					any_scope_treaty = {
+						is_enforced = yes
+						any_scope_article = {
+							has_type = money_transfer
+							source_country = root.owner
+						}
 					}
 				}
 			}
@@ -8833,6 +9186,11 @@ ideology_integralist = { # Average Progressiveness - -32.14
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_integralist_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -8851,7 +9209,7 @@ ideology_integralist = { # Average Progressiveness - -32.14
 			}
 			add = {
 				value = owner.ideology_integralist_disfavoured_laws
-				multiply = 8
+				multiply = 7
 			}
 		}
 
@@ -8862,18 +9220,20 @@ ideology_integralist = { # Average Progressiveness - -32.14
 			}
 			subtract = {
 				value = owner.ideology_integralist_favoured_laws
-				multiply = 8
+				multiply = 7
 			}
 		}
 
 		# More likely if paying war reparations
 		if = {
 			limit = {
-				any_scope_treaty = {
-					is_enforced = yes
-					any_scope_article = {
-						has_type = money_transfer
-						source_country = root.owner
+				owner ?= {
+					any_scope_treaty = {
+						is_enforced = yes
+						any_scope_article = {
+							has_type = money_transfer
+							source_country = root.owner
+						}
 					}
 				}
 			}
@@ -9015,6 +9375,11 @@ ideology_integralist = { # Average Progressiveness - -32.14
 				}
 			}
 			multiply = 0.1
+		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_integralist_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
 		}
 	}
 }
@@ -9207,6 +9572,11 @@ ideology_liberal_leader = { # Average Progressiveness - 64.06
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_liberal_leader_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -9311,6 +9681,11 @@ ideology_liberal_leader = { # Average Progressiveness - 64.06
 				}
 			}
 			multiply = 0.1
+		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_liberal_leader_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
 		}
 	}
 }
@@ -9510,6 +9885,11 @@ ideology_corporatist_leader = { # Average Progressiveness - 42.5
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_corporatist_leader_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -9614,6 +9994,11 @@ ideology_corporatist_leader = { # Average Progressiveness - 42.5
 			}
 			multiply = 0.1
 		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_corporatist_leader_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 }
 
@@ -9648,17 +10033,17 @@ ideology_humanitarian_royalist = { # Average Progressiveness - 55
 		law_outlawed_dissent = strongly_disapprove
 	}
 
+	lawgroup_childrens_rights = {
+		law_child_labor_allowed = strongly_disapprove
+		law_restricted_child_labor = disapprove
+		law_compulsory_primary_school = approve
+	}
+
 	lawgroup_rights_of_women = {
 		law_no_womens_rights = strongly_disapprove
 		law_women_own_property = disapprove
 		law_women_in_the_workplace = neutral
 		law_womens_suffrage = approve
-	}
-
-	lawgroup_childrens_rights = {
-		law_child_labor_allowed = strongly_disapprove
-		law_restricted_child_labor = disapprove
-		law_compulsory_primary_school = approve
 	}
 
 	country_trigger = {
@@ -9724,10 +10109,10 @@ ideology_humanitarian_royalist = { # Average Progressiveness - 55
 		# More likely if issues are relevant - greater bonus to this than usual
 		if = {
 			limit = {
-				owner.ideology_humanitarian_disfavoured_laws > 0
+				owner.ideology_humanitarian_royalist_disfavoured_laws > 0
 			}
 			add = {
-				value = owner.ideology_humanitarian_disfavoured_laws
+				value = owner.ideology_humanitarian_royalist_disfavoured_laws
 				multiply = 16
 				desc = "DISFAVORED_LAWS"
 			}
@@ -9834,6 +10219,11 @@ ideology_humanitarian_royalist = { # Average Progressiveness - 55
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_humanitarian_royalist_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -9925,6 +10315,11 @@ ideology_humanitarian_royalist = { # Average Progressiveness - 55
 			}
 			multiply = 0.1
 		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_humanitarian_royalist_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 }
 
@@ -9945,12 +10340,13 @@ ideology_despotic_utopian = { # Average Progressiveness - 7.5
 		law_labour_suffrage = strongly_disapprove
 	}
 
-	lawgroup_internal_security = {
-		law_guaranteed_liberties = strongly_disapprove
-		law_no_home_affairs = neutral
-		law_national_guard = approve
-		law_secret_police = strongly_approve
-		law_extraordinary_commission = strongly_disapprove
+	lawgroup_citizenship = {
+		law_ethnostate = strongly_disapprove
+		law_national_supremacy = strongly_disapprove
+		law_racial_segregation = disapprove
+		law_cultural_exclusion = neutral
+		law_multicultural = approve
+		law_subjecthood = disapprove
 	}
 
 	lawgroup_church_and_state = {
@@ -9960,13 +10356,12 @@ ideology_despotic_utopian = { # Average Progressiveness - 7.5
 		law_total_separation = approve
 	}
 
-	lawgroup_citizenship = {
-		law_ethnostate = strongly_disapprove
-		law_national_supremacy = strongly_disapprove
-		law_racial_segregation = disapprove
-		law_cultural_exclusion = neutral
-		law_multicultural = approve
-		law_subjecthood = disapprove
+	lawgroup_internal_security = {
+		law_guaranteed_liberties = strongly_disapprove
+		law_no_home_affairs = neutral
+		law_national_guard = approve
+		law_secret_police = strongly_approve
+		law_extraordinary_commission = strongly_disapprove
 	}
 
 	lawgroup_trade_policy = {
@@ -10097,6 +10492,11 @@ ideology_despotic_utopian = { # Average Progressiveness - 7.5
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_despotic_utopian_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -10170,6 +10570,11 @@ ideology_despotic_utopian = { # Average Progressiveness - 7.5
 			}
 			multiply = 0.1
 		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_despotic_utopian_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 }
 
@@ -10178,10 +10583,19 @@ ideology_utilitarian_leader = { # Average Progressiveness - 54.16
 
 	character_ideology = yes
 
-	lawgroup_childrens_rights = {
-		law_compulsory_primary_school = strongly_approve
-		law_restricted_child_labor = neutral
-		law_child_labor_allowed = neutral
+	lawgroup_caste_hegemony = {
+		law_hindu_caste_enforced = disapprove
+		law_hindu_caste_codified = disapprove
+		law_hindu_caste_not_enforced = neutral
+		law_affirmative_action = neutral
+	}
+
+	lawgroup_taxation = {
+		law_consumption_based_taxation = disapprove
+		law_per_capita_based_taxation = neutral
+		law_proportional_taxation = approve
+		law_graduated_taxation = strongly_approve
+		law_land_based_taxation = disapprove
 	}
 
 	lawgroup_education_system = {
@@ -10189,6 +10603,12 @@ ideology_utilitarian_leader = { # Average Progressiveness - 54.16
 		law_private_schools = neutral
 		law_religious_schools = neutral
 		law_no_schools = disapprove
+	}
+
+	lawgroup_childrens_rights = {
+		law_compulsory_primary_school = strongly_approve
+		law_restricted_child_labor = neutral
+		law_child_labor_allowed = neutral
 	}
 
 	lawgroup_rights_of_women = {
@@ -10204,21 +10624,6 @@ ideology_utilitarian_leader = { # Average Progressiveness - 54.16
 		law_slave_trade = strongly_disapprove
 		law_legacy_slavery = disapprove
 		law_colonial_slavery = approve
-	}
-
-	lawgroup_taxation = {
-		law_consumption_based_taxation = disapprove
-		law_per_capita_based_taxation = neutral
-		law_proportional_taxation = approve
-		law_graduated_taxation = strongly_approve
-		law_land_based_taxation = disapprove
-	}
-
-	lawgroup_caste_hegemony = {
-		law_hindu_caste_enforced = disapprove
-		law_hindu_caste_codified = disapprove
-		law_hindu_caste_not_enforced = neutral
-		law_affirmative_action = neutral
 	}
 
 	country_trigger = {
@@ -10295,6 +10700,11 @@ ideology_utilitarian_leader = { # Average Progressiveness - 54.16
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_utilitarian_leader_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -10331,6 +10741,11 @@ ideology_utilitarian_leader = { # Average Progressiveness - 54.16
 			}
 			multiply = 0.1
 		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_utilitarian_leader_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 }
 
@@ -10339,17 +10754,20 @@ ideology_sovereignist_leader = { # For colonised peoples - Average Progressivene
 
 	character_ideology = yes
 
+	lawgroup_citizenship = {
+		law_ethnostate = strongly_disapprove
+		law_subjecthood = neutral
+		law_national_supremacy = disapprove
+		law_racial_segregation = disapprove
+		law_cultural_exclusion = neutral
+		law_multicultural = approve
+	}
+
 	lawgroup_policing = {
 		law_local_police = approve
 		law_no_police = neutral
 		law_dedicated_police = disapprove
 		law_militarized_police = strongly_disapprove
-	}
-
-	lawgroup_migration = {
-		law_closed_borders = approve
-		law_migration_controls = strongly_approve
-		law_no_migration_controls = disapprove
 	}
 
 	lawgroup_free_speech = {
@@ -10359,13 +10777,10 @@ ideology_sovereignist_leader = { # For colonised peoples - Average Progressivene
 		law_protected_speech = strongly_approve
 	}
 
-	lawgroup_citizenship = {
-		law_ethnostate = strongly_disapprove
-		law_subjecthood = neutral
-		law_national_supremacy = disapprove
-		law_racial_segregation = disapprove
-		law_cultural_exclusion = neutral
-		law_multicultural = approve
+	lawgroup_migration = {
+		law_closed_borders = approve
+		law_migration_controls = strongly_approve
+		law_no_migration_controls = disapprove
 	}
 
 	country_trigger = {
@@ -10407,6 +10822,11 @@ ideology_sovereignist_leader = { # For colonised peoples - Average Progressivene
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_sovereignist_leader_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -10433,6 +10853,11 @@ ideology_sovereignist_leader = { # For colonised peoples - Average Progressivene
 			}
 			multiply = 0.1
 		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_sovereignist_leader_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 }
 
@@ -10441,10 +10866,14 @@ ideology_utopian = { # Average Progressiveness - 98.61
 
 	character_ideology = yes
 
-	lawgroup_labor_rights = {
-		law_worker_protections = strongly_approve
-		law_regulatory_bodies = approve
-		law_no_workers_rights = neutral
+	lawgroup_governance_principles = {
+		law_monarchy = strongly_disapprove
+		law_presidential_republic = approve
+		law_parliamentary_republic = approve
+		law_corporate_state = neutral
+		law_social_monarchy = neutral
+		law_theocracy = strongly_disapprove
+		law_council_republic = approve
 	}
 
 	lawgroup_distribution_of_power = {
@@ -10458,16 +10887,6 @@ ideology_utopian = { # Average Progressiveness - 98.61
 		law_autocracy = strongly_disapprove
 		law_single_party_state = disapprove
 		law_labour_suffrage = approve
-	}
-
-	lawgroup_governance_principles = {
-		law_monarchy = strongly_disapprove
-		law_presidential_republic = approve
-		law_parliamentary_republic = approve
-		law_corporate_state = neutral
-		law_social_monarchy = neutral
-		law_theocracy = strongly_disapprove
-		law_council_republic = approve
 	}
 
 	lawgroup_economic_system = {
@@ -10487,6 +10906,12 @@ ideology_utopian = { # Average Progressiveness - 98.61
 		law_tenant_farmers = disapprove
 		law_peasant_proprietorship = approve
 		law_collectivized_agriculture = approve
+	}
+
+	lawgroup_labor_rights = {
+		law_worker_protections = strongly_approve
+		law_regulatory_bodies = approve
+		law_no_workers_rights = neutral
 	}
 
 	lawgroup_slavery = {
@@ -10581,6 +11006,11 @@ ideology_utopian = { # Average Progressiveness - 98.61
 				desc = "SOL_BELOW_EXPECTED"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_utopian_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -10610,6 +11040,11 @@ ideology_utopian = { # Average Progressiveness - 98.61
 			}
 			add = 50
 		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_utopian_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 }
 
@@ -10618,17 +11053,10 @@ ideology_modernizer_leader = { # Average Progressiveness - 35.71
 
 	character_ideology = yes
 
-	lawgroup_trade_policy = {
-		law_protectionism = approve
-		law_isolationism = strongly_disapprove
-		law_mercantilism = disapprove
-		law_free_trade = neutral
-	}
-
-	lawgroup_childrens_rights = { # VFM
-		law_child_labor_allowed = disapprove
-		law_restricted_child_labor = neutral
-		law_compulsory_primary_school = approve
+	lawgroup_edo_social_system = {
+		law_strict_edo_system = disapprove
+		law_intermediate_edo_system = neutral
+		law_lax_edo_system = approve
 	}
 
 	lawgroup_economic_system = {
@@ -10642,12 +11070,27 @@ ideology_modernizer_leader = { # Average Progressiveness - 35.71
 		law_industry_banned = strongly_disapprove
 	}
 
+	lawgroup_trade_policy = {
+		law_protectionism = approve
+		law_isolationism = strongly_disapprove
+		law_mercantilism = disapprove
+		law_free_trade = neutral
+	}
+
 	lawgroup_taxation = {
 		law_per_capita_based_taxation = approve
 		law_proportional_taxation = strongly_approve
 		law_graduated_taxation = strongly_approve
 		law_land_based_taxation = neutral
 		law_consumption_based_taxation = disapprove
+	}
+
+	lawgroup_land_reform = {
+		law_serfdom = disapprove
+		law_tenant_farmers = neutral
+		law_peasant_proprietorship = neutral
+		law_collectivized_agriculture = disapprove
+		law_commercialized_agriculture = approve
 	}
 
 	lawgroup_education_system = {
@@ -10666,18 +11109,10 @@ ideology_modernizer_leader = { # Average Progressiveness - 35.71
 		law_factory_councils = strongly_disapprove
 	}
 
-	lawgroup_land_reform = {
-		law_serfdom = disapprove
-		law_tenant_farmers = neutral
-		law_peasant_proprietorship = neutral
-		law_collectivized_agriculture = disapprove
-		law_commercialized_agriculture = approve
-	}
-
-	lawgroup_edo_social_system = {
-		law_strict_edo_system = disapprove
-		law_intermediate_edo_system = neutral
-		law_lax_edo_system = approve
+	lawgroup_childrens_rights = { # VFM
+		law_child_labor_allowed = disapprove
+		law_restricted_child_labor = neutral
+		law_compulsory_primary_school = approve
 	}
 
 	country_trigger = {
@@ -10762,6 +11197,11 @@ ideology_modernizer_leader = { # Average Progressiveness - 35.71
 				desc = "POR_INCREASED_REGENERATOR_CHANCE"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_modernizer_leader_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -10799,6 +11239,11 @@ ideology_modernizer_leader = { # Average Progressiveness - 35.71
 				value = interest_group.var:por_increased_regenerator_likelihood
 			}
 		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_modernizer_leader_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 }
 
@@ -10815,17 +11260,6 @@ ideology_carlist = { # Average Progressiveness - -45
 		law_social_monarchy = approve
 		law_theocracy = disapprove
 		law_council_republic = strongly_disapprove
-	}
-
-	lawgroup_economic_system = {
-		law_traditionalism = strongly_approve
-		law_agrarianism = approve
-		law_interventionism = disapprove
-		law_industry_banned = disapprove
-		law_laissez_faire = disapprove
-		law_cooperative_ownership = strongly_disapprove
-		law_command_economy = strongly_disapprove
-		law_extraction_economy = disapprove
 	}
 
 	lawgroup_distribution_of_power = {
@@ -10855,6 +11289,17 @@ ideology_carlist = { # Average Progressiveness - -45
 		law_freedom_of_conscience = disapprove
 		law_total_separation = strongly_disapprove
 		law_state_atheism = strongly_disapprove
+	}
+
+	lawgroup_economic_system = {
+		law_traditionalism = strongly_approve
+		law_agrarianism = approve
+		law_interventionism = disapprove
+		law_industry_banned = disapprove
+		law_laissez_faire = disapprove
+		law_cooperative_ownership = strongly_disapprove
+		law_command_economy = strongly_disapprove
+		law_extraction_economy = disapprove
 	}
 
 	country_trigger = {
@@ -10986,6 +11431,11 @@ ideology_carlist = { # Average Progressiveness - -45
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_carlist_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -11067,6 +11517,11 @@ ideology_carlist = { # Average Progressiveness - -45
 			}
 			multiply = 0.1
 		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_carlist_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 }
 
@@ -11082,17 +11537,6 @@ ideology_carlist_2 = { # Average Progressiveness - -35
 		law_corporate_state = neutral
 		law_theocracy = approve
 		law_council_republic = strongly_disapprove
-	}
-
-	lawgroup_economic_system = {
-		law_traditionalism = neutral
-		law_agrarianism = strongly_approve
-		law_interventionism = approve
-		law_industry_banned = disapprove
-		law_laissez_faire = disapprove
-		law_cooperative_ownership = strongly_disapprove
-		law_command_economy = strongly_disapprove
-		law_extraction_economy = disapprove
 	}
 
 	lawgroup_distribution_of_power = {
@@ -11122,6 +11566,17 @@ ideology_carlist_2 = { # Average Progressiveness - -35
 		law_freedom_of_conscience = disapprove
 		law_total_separation = strongly_disapprove
 		law_state_atheism = strongly_disapprove
+	}
+
+	lawgroup_economic_system = {
+		law_traditionalism = neutral
+		law_agrarianism = strongly_approve
+		law_interventionism = approve
+		law_industry_banned = disapprove
+		law_laissez_faire = disapprove
+		law_cooperative_ownership = strongly_disapprove
+		law_command_economy = strongly_disapprove
+		law_extraction_economy = disapprove
 	}
 
 	country_trigger = {
@@ -11251,6 +11706,11 @@ ideology_carlist_2 = { # Average Progressiveness - -35
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_carlist_2_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -11332,6 +11792,11 @@ ideology_carlist_2 = { # Average Progressiveness - -35
 			}
 			multiply = 0.1
 		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_carlist_2_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 }
 
@@ -11348,17 +11813,6 @@ ideology_miguelist = { # Average Progressiveness - -45
 		law_social_monarchy = approve
 		law_theocracy = disapprove
 		law_council_republic = strongly_disapprove
-	}
-
-	lawgroup_economic_system = {
-		law_traditionalism = strongly_approve
-		law_agrarianism = approve
-		law_interventionism = disapprove
-		law_industry_banned = disapprove
-		law_laissez_faire = disapprove
-		law_cooperative_ownership = strongly_disapprove
-		law_command_economy = strongly_disapprove
-		law_extraction_economy = disapprove
 	}
 
 	lawgroup_distribution_of_power = {
@@ -11388,6 +11842,17 @@ ideology_miguelist = { # Average Progressiveness - -45
 		law_freedom_of_conscience = disapprove
 		law_total_separation = strongly_disapprove
 		law_state_atheism = strongly_disapprove
+	}
+
+	lawgroup_economic_system = {
+		law_traditionalism = strongly_approve
+		law_agrarianism = approve
+		law_interventionism = disapprove
+		law_industry_banned = disapprove
+		law_laissez_faire = disapprove
+		law_cooperative_ownership = strongly_disapprove
+		law_command_economy = strongly_disapprove
+		law_extraction_economy = disapprove
 	}
 
 	country_trigger = {
@@ -11515,6 +11980,11 @@ ideology_miguelist = { # Average Progressiveness - -45
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_miguelist_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -11596,6 +12066,11 @@ ideology_miguelist = { # Average Progressiveness - -45
 			}
 			multiply = 0.1
 		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_miguelist_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 }
 
@@ -11611,17 +12086,6 @@ ideology_miguelist_2 = { # Average Progressiveness - -35
 		law_corporate_state = neutral
 		law_theocracy = disapprove
 		law_council_republic = strongly_disapprove
-	}
-
-	lawgroup_economic_system = {
-		law_traditionalism = neutral
-		law_agrarianism = strongly_approve
-		law_interventionism = approve
-		law_industry_banned = disapprove
-		law_laissez_faire = disapprove
-		law_cooperative_ownership = strongly_disapprove
-		law_command_economy = strongly_disapprove
-		law_extraction_economy = disapprove
 	}
 
 	lawgroup_distribution_of_power = {
@@ -11651,6 +12115,17 @@ ideology_miguelist_2 = { # Average Progressiveness - -35
 		law_freedom_of_conscience = disapprove
 		law_total_separation = strongly_disapprove
 		law_state_atheism = strongly_disapprove
+	}
+
+	lawgroup_economic_system = {
+		law_traditionalism = neutral
+		law_agrarianism = strongly_approve
+		law_interventionism = approve
+		law_industry_banned = disapprove
+		law_laissez_faire = disapprove
+		law_cooperative_ownership = strongly_disapprove
+		law_command_economy = strongly_disapprove
+		law_extraction_economy = disapprove
 	}
 
 	country_trigger = {
@@ -11776,6 +12251,11 @@ ideology_miguelist_2 = { # Average Progressiveness - -35
 				desc = "CHOSE_A_DIFFERENT_PATH"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_miguelist_2_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -11857,6 +12337,11 @@ ideology_miguelist_2 = { # Average Progressiveness - -35
 			}
 			multiply = 0.1
 		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_miguelist_2_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 }
 
@@ -11933,6 +12418,11 @@ ideology_ilustrado_leader = { 	# Flavoured variant of Liberal and Anti-Clerical 
 				desc = "ig_intelligentsia"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_ilustrado_leader_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -11950,6 +12440,11 @@ ideology_ilustrado_leader = { 	# Flavoured variant of Liberal and Anti-Clerical 
 			}
 			add = 25
 		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_ilustrado_leader_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 }
 
@@ -11959,10 +12454,25 @@ ideology_mitogaku = { # Average Progressiveness - 10.71
 
 	character_ideology = yes
 
-	lawgroup_migration = {
-		law_closed_borders = approve
-		law_migration_controls = neutral
-		law_no_migration_controls = disapprove
+	lawgroup_edo_social_system = {
+		law_strict_edo_system = disapprove
+		law_intermediate_edo_system = neutral
+		law_lax_edo_system = approve
+	}
+
+	lawgroup_army_model = {
+		law_national_militia = disapprove
+		law_professional_army = neutral
+		law_peasant_levies = disapprove
+		law_mass_conscription = approve
+		law_revolutionary_guard = strongly_disapprove
+	}
+
+	lawgroup_navy_model = {
+		law_merchant_navy = disapprove
+		law_jeune_ecole = approve
+		law_professional_navy = neutral
+		law_diplomatic_navy = neutral
 	}
 
 	lawgroup_economic_system = {
@@ -11991,25 +12501,10 @@ ideology_mitogaku = { # Average Progressiveness - 10.71
 		law_no_schools = disapprove
 	}
 
-	lawgroup_army_model = {
-		law_national_militia = disapprove
-		law_professional_army = neutral
-		law_peasant_levies = disapprove
-		law_mass_conscription = approve
-		law_revolutionary_guard = strongly_disapprove
-	}
-
-	lawgroup_navy_model = {
-		law_merchant_navy = disapprove
-		law_jeune_ecole = approve
-		law_professional_navy = neutral
-		law_diplomatic_navy = neutral
-	}
-
-	lawgroup_edo_social_system = {
-		law_strict_edo_system = disapprove
-		law_intermediate_edo_system = neutral
-		law_lax_edo_system = approve
+	lawgroup_migration = {
+		law_closed_borders = approve
+		law_migration_controls = neutral
+		law_no_migration_controls = disapprove
 	}
 
 	country_trigger = {
@@ -12083,6 +12578,11 @@ ideology_mitogaku = { # Average Progressiveness - 10.71
 				desc = "URBANIZATION"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_mitogaku_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -12110,6 +12610,11 @@ ideology_mitogaku = { # Average Progressiveness - 10.71
 			}
 			add = 25
 		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_mitogaku_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 }
 
@@ -12117,19 +12622,6 @@ ideology_shojoi = { # Average Progressiveness - -25
 	icon = "gfx/interface/icons/ideology_icons/ideology_leader/isolationist.dds"
 
 	character_ideology = yes
-
-	lawgroup_migration = {
-		law_closed_borders = approve
-		law_migration_controls = disapprove
-		law_no_migration_controls = strongly_disapprove
-	}
-
-	lawgroup_trade_policy = {
-		law_free_trade = strongly_disapprove
-		law_mercantilism = disapprove
-		law_protectionism = disapprove
-		law_isolationism = approve
-	}
 
 	lawgroup_army_model = {
 		law_mass_conscription = strongly_approve
@@ -12144,6 +12636,19 @@ ideology_shojoi = { # Average Progressiveness - -25
 		law_jeune_ecole = approve
 		law_professional_navy = neutral
 		law_diplomatic_navy = neutral
+	}
+
+	lawgroup_trade_policy = {
+		law_free_trade = strongly_disapprove
+		law_mercantilism = disapprove
+		law_protectionism = disapprove
+		law_isolationism = approve
+	}
+
+	lawgroup_migration = {
+		law_closed_borders = approve
+		law_migration_controls = disapprove
+		law_no_migration_controls = strongly_disapprove
 	}
 
 	country_trigger = {
@@ -12231,6 +12736,11 @@ ideology_shojoi = { # Average Progressiveness - -25
 				desc = "forced_market_opening"
 			}
 		}
+		multiply = {
+			value = 1
+			add = modifier:interest_group_ideology_shojoi_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
+		}
 	}
 
 	non_interest_group_leader_weight = {
@@ -12257,6 +12767,11 @@ ideology_shojoi = { # Average Progressiveness - -25
 				}
 			}
 			add = 25
+		}
+		multiply = {
+			value = 1
+			add = interest_group.modifier:interest_group_ideology_shojoi_leader_chance_mult
+			desc = "EVENTS_AND_OTHER_EFFECTS"
 		}
 	}
 }

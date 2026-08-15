@@ -318,7 +318,18 @@ ai_strategy_territorial_expansion = {
 		
 		if = {
 			limit = { has_radical_leftist_government = yes }
-			multiply = 0.5
+			multiply = {
+				value = 1
+				subtract = {
+					value = 1
+					subtract = 0.5
+					multiply = {
+						value = 1
+						add = modifier:country_other_country_socialist_government_hostility_impact_mult
+					}
+				}
+				min = 0
+			}
 		}
 	}
 }
@@ -701,7 +712,18 @@ ai_strategy_colonial_expansion = {
 
 		if = {
 			limit = { has_radical_leftist_government = yes }
-			multiply = 0.01
+			multiply = {
+				value = 1
+				subtract = {
+					value = 1
+					subtract = 0.01
+					multiply = {
+						value = 1
+						add = modifier:country_other_country_socialist_government_hostility_impact_mult
+					}
+				}
+				min = 0
+			}
 		}			
 	}
 }
@@ -1263,7 +1285,18 @@ ai_strategy_economic_imperialism = {
 		
 		if = {
 			limit = { has_radical_leftist_government = yes }
-			multiply = 0.25
+			multiply = {
+				value = 1
+				subtract = {
+					value = 1
+					subtract = 0.25
+					multiply = {
+						value = 1
+						add = modifier:country_other_country_socialist_government_hostility_impact_mult
+					}
+				}
+				min = 0
+			}
 		}
 	}
 }
@@ -2692,34 +2725,46 @@ ai_strategy_socialism_in_one_country = {
 	
 	weight = {
 		value = 50
-		
+
 		if = {
 			limit = { is_country_type = unrecognized }
-			add = 50
-		}
-		
-		if = {
-			limit = { has_law_or_variant = law_type:law_national_militia }
 			add = 50
 		}
 
 		if = {
 			limit = { has_law_or_variant = law_type:law_isolationism }
 			add = 200
-		}	
+		}
+
+		if = {
+			limit = {
+				has_journal_entry = je_state_and_revolution
+			}
+			add = {
+				value = 50
+				subtract = state_and_revolution_average_confrontation
+				multiply = 5
+			}
+		}
+		else_if = {
+			limit = {
+				has_modifier = modifier_state_and_revolution_conciliation
+			}
+			add = 200
+		}
 
 		if = {
 			limit = { country_rank = rank_value:great_power }
 			multiply = 0.25
-		}			
-		
+		}
+
 		if = {
 			limit = { country_rank = rank_value:major_power }
 			multiply = 0.5
-		}	
-		
+		}
+
 		if = {
-			limit = { 
+			limit = {
 				any_country = {
 					NOT = {
 						THIS = ROOT
@@ -2729,10 +2774,21 @@ ai_strategy_socialism_in_one_country = {
 					country_rank >= rank_value:great_power
 				}
 			}
-			multiply = 0.05
-		}		
+			multiply = {
+				value = 1
+				subtract = {
+					value = 1
+					subtract = 0.05
+					multiply = {
+						value = 1
+						add = modifier:country_other_country_socialist_government_hostility_impact_mult
+					}
+				}
+				min = 0
+			}
+		}
 		else_if = {
-			limit = { 
+			limit = {
 				any_country = {
 					NOT = {
 						THIS = ROOT
@@ -2804,7 +2860,18 @@ ai_strategy_world_revolution = {
 					has_radical_leftist_government = yes
 				}		
 			}
-			multiply = 0.25
+			multiply = {
+				value = 1
+				subtract = {
+					value = 1
+					subtract = 0.25
+					multiply = {
+						value = 1
+						add = scope:target_country.modifier:country_other_country_socialist_government_hostility_impact_mult
+					}
+				}
+				min = 0
+			}
 		}	
 
 		# More aggressive against ideological enemies, a bit less aggressive against ideological allies
@@ -2876,8 +2943,10 @@ ai_strategy_world_revolution = {
 	}
 
 	wargoal_weights = {
-		regime_change = 3.0
-		force_nationalization = 1.0
+		regime_change = 3
+		liberate_subject = 2
+		liberate_country = 2
+		force_nationalization = 1
 	}
 
 	possible = {
@@ -2888,13 +2957,10 @@ ai_strategy_world_revolution = {
 
 	weight = {
 		value = 25
-		
+
 		if = {
-			limit = { 
-				OR = {
-					has_law_or_variant = law_type:law_professional_army
-					has_law_or_variant = law_type:law_mass_conscription
-				}
+			limit = {
+				has_law_or_variant = law_type:law_revolutionary_guard
 			}
 			add = 25
 		}
@@ -2902,20 +2968,37 @@ ai_strategy_world_revolution = {
 		if = {
 			limit = { has_law_or_variant = law_type:law_isolationism }
 			add = -200
-		}	
+		}
+
+		if = {
+			limit = {
+				has_journal_entry = je_state_and_revolution
+			}
+			add = {
+				value = state_and_revolution_average_confrontation
+				subtract = 50
+				multiply = 5
+			}
+		}
+		else_if = {
+			limit = {
+				has_global_variable = socialist_world_republic
+			}
+			add = 200
+		}
 
 		if = {
 			limit = { country_rank = rank_value:great_power }
 			multiply = 1.25
-		}			
-		
+		}
+
 		if = {
 			limit = { country_rank = rank_value:major_power }
 			multiply = 1.10
-		}	
-		
+		}
+
 		if = {
-			limit = { 
+			limit = {
 				any_country = {
 					NOT = {
 						THIS = ROOT
@@ -2925,10 +3008,21 @@ ai_strategy_world_revolution = {
 					country_rank >= rank_value:great_power
 				}
 			}
-			multiply = 1.5
-		}		
+			multiply = {
+				value = 1
+				subtract = {
+					value = 1
+					subtract = 1.5
+					multiply = {
+						value = 1
+						add = modifier:country_other_country_socialist_government_hostility_impact_mult
+					}
+				}
+				min = 0
+			}
+		}
 		else_if = {
-			limit = { 
+			limit = {
 				any_country = {
 					NOT = {
 						THIS = ROOT
@@ -2999,7 +3093,18 @@ ai_strategy_anti_imperialism = {
 			limit = { 
 				scope:target_country = { NOT = { has_radical_leftist_government = yes } } 
 			}
-			multiply = 2
+			multiply = {
+				value = 1
+				subtract = {
+					value = 1
+					subtract = 2
+					multiply = {
+						value = 1
+						add = scope:target_country.modifier:country_other_country_socialist_government_hostility_impact_mult
+					}
+				}
+				min = 0
+			}
 		}
 
 		# Less aggressive against countries we're just antagonistic against, rather than belligerent/domineering
@@ -3074,7 +3179,13 @@ ai_strategy_anti_imperialism = {
 					limit = {
 						scope:target_country = { has_radical_leftist_government = yes }
 					}
-					add = 50
+					add = {
+						value = 50
+						multiply = {
+							value = 1
+							add = scope:target_country.modifier:country_other_country_socialist_government_hostility_impact_mult
+						}
+					}
 				}
 				if = {
 					limit = {
@@ -3143,10 +3254,35 @@ ai_strategy_anti_imperialism = {
 	
 	weight = {
 		value = 10
-		
+
 		if = {
-			limit = { country_rank >= rank_value:major_power }
+			limit = {
+				has_journal_entry = je_state_and_revolution
+			}
+			add = {
+				value = state_and_revolution_average_confrontation
+				subtract = 50
+				multiply = 5
+			}
+		}
+
+		if = {
+			limit = { is_country_type = unrecognized }
 			add = 25
+		}
+
+		if = {
+			limit = { country_rank >= rank_value:unrecognized_major_power }
+			add = 25
+		}
+
+		if = {
+			limit = {
+				is_in_geographic_region = geographic_region_europe
+			}
+			multiply = {
+				value = 0.75
+			}
 		}
 	}
 }
@@ -3383,7 +3519,18 @@ ai_strategy_restore_natural_borders = {
 		
 		if = {
 			limit = { has_radical_leftist_government = yes }
-			multiply = 0.5
+			multiply = {
+				value = 1
+				subtract = {
+					value = 1
+					subtract = 0.5
+					multiply = {
+						value = 1
+						add = modifier:country_other_country_socialist_government_hostility_impact_mult
+					}
+				}
+				min = 0
+			}
 		}
 	}
 }

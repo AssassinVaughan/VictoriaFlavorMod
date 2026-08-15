@@ -179,8 +179,34 @@ ai_strategy_default = {
 		}
 		
 		add = {
-			value = "scope:country.modifier:country_diplomatic_reputation_add"
 			desc = "DIPLOMATIC_REPUTATION_REASON"
+			value = "scope:country.modifier:country_diplomatic_reputation_add"
+			if = {
+				limit = {
+					root = {
+						NOT = {
+							has_law_or_variant = law_type:law_council_republic
+						}
+					}
+					scope:country = {
+						has_law_or_variant = law_type:law_council_republic
+					}
+				}
+				subtract = {
+					value = "scope:country.modifier:country_other_country_socialist_government_hostility_impact_add"
+					multiply = {
+						value = 1
+						add = "scope:country.modifier:country_other_country_socialist_government_hostility_impact_mult"
+					}
+				}
+				subtract = {
+					value = "scope:country.modifier:country_other_country_socialist_government_hostility_impact_add"
+					multiply = {
+						value = 1
+						add = "scope:country.modifier:country_other_country_socialist_government_hostility_impact_mult"
+					}
+				}
+			}
 		}
 		
 		# Cultures should support its own sucessions
@@ -2302,6 +2328,20 @@ ai_strategy_default = {
 				add = 75
 			}
 
+			if = { #Russia wants Western borderlands
+				limit = {
+					has_journal_entry = je_russification
+					scope:target_state = {
+						OR = {
+							is_in_geographic_region = geographic_region_finland_old
+							is_in_geographic_region = geographic_region_baltic_states_old
+							is_in_geographic_region = geographic_region_poland_old
+						}
+					}
+				}
+				add = 25
+			}
+
 			if = { # Japan wants to consolidate herself
 				limit = {
 					c:JAP ?= this
@@ -3123,21 +3163,43 @@ ai_strategy_default = {
 					}
 					
 				}
-				multiply = 1.5
+				multiply = {
+					value = 1
+					subtract = {
+						value = 1
+						subtract = 1.5
+						multiply = {
+							value = 1
+							add = scope:target_country.modifier:country_other_country_socialist_government_hostility_impact_mult
+						}
+					}
+					min = 0
+				}
 			}
 
 			if = {
 				limit = {
 					AND = {
-						has_radical_leftist_economy = no			
+						has_radical_leftist_economy = no		
 						scope:target_country = {
 							has_radical_leftist_economy = yes
 						}
 					}
 					
 				}
-				multiply = 1.5
-			}	
+				multiply = {
+					value = 1
+					subtract = {
+						value = 1
+						subtract = 1.5
+						multiply = {
+							value = 1
+							add = scope:target_country.modifier:country_other_country_socialist_economy_hostility_impact_mult
+						}
+					}
+					min = 0
+				}
+			}
 		}
 		
 		# AI should open up large isolationist powers, not subjugate them
@@ -4381,6 +4443,22 @@ ai_strategy_default = {
 			add = 15
 		}
 
+		if = { #Russia wants Western borderlands
+			limit = {
+				has_journal_entry = je_russification
+				scope:target_country = {
+					any_scope_state = {
+						OR = {
+							is_in_geographic_region = geographic_region_finland_old
+							is_in_geographic_region = geographic_region_baltic_states_old
+							is_in_geographic_region = geographic_region_poland_old
+						}
+					}
+				}
+			}
+			add = 10
+		}
+
 		if = { #Russia wants Korea
 			limit = {
 				country_has_primary_culture = cu:russian
@@ -5013,7 +5091,13 @@ ai_strategy_default = {
 					}
 				}
 			}
-			add = 5
+			add = {
+				value = 5
+				multiply = {
+					value = 1
+					add = scope:target_country.modifier:country_other_country_socialist_government_hostility_impact_mult
+				}
+			}
 		}
 
 		if = {
@@ -5023,7 +5107,13 @@ ai_strategy_default = {
 					has_radical_leftist_economy = yes
 				}
 			}
-			add = 5
+			add = {
+				value = 5
+				multiply = {
+					value = 1
+					add = scope:target_country.modifier:country_other_country_socialist_economy_hostility_impact_mult
+				}
+			}
 		}
 
         # Neutral Switzerland
@@ -6920,7 +7010,7 @@ ai_strategy_default = {
 						add = 50
 					}
 				}
-		
+
 			if = {
 				limit = {
 					has_je_befriend_reason = { TARGET = scope:target_country }
@@ -7029,36 +7119,47 @@ ai_strategy_default = {
 				add = 200
 			}
 			
-			multiply = {
-				value = "ai_ideological_opinion(scope:target_country)"
-				multiply = 0.05
-				add = 1
-				min = 0.5
-				max = 2.0
-			}
-
-            multiply = {
-				value = 1
-				add = {
-					value = "lobby_in_government_foreign_pro_clout(scope:target_country)"
-					multiply = 2
+				multiply = {
+					value = "ai_ideological_opinion(scope:target_country)"
+					multiply = 0.05
+					add = 1
+					min = 0.5
+					max = 2.0
 				}
-				subtract = {
-					value = "lobby_in_government_foreign_anti_clout(scope:target_country)"
-					divide = 2
-				}				
-			}				
-			
-			if = {
-				limit = {	
-					AND = {
-						has_radical_leftist_government = yes
+
+				multiply = {
+					value = 1
+					add = {
+						value = "lobby_in_government_foreign_pro_clout(scope:target_country)"
+						multiply = 2
+					}
+					subtract = {
+						value = "lobby_in_government_foreign_anti_clout(scope:target_country)"
+						divide = 2
+					}
+				}
+
+				if = {
+					limit = {
+						AND = {
+							has_radical_leftist_government = yes
 							scope:target_country = {
 								has_radical_leftist_government = yes
 							}
 						}
 					}
-					multiply = 1.5
+					multiply = {
+						value = 1
+						subtract = {
+							value = 1
+							subtract = 1.5
+							multiply = {
+								value = 1
+								add = modifier:country_other_country_socialist_government_hostility_impact_mult
+							}
+						}
+						min = 0
+					}
 				}
 
 				if = {
@@ -7070,7 +7171,18 @@ ai_strategy_default = {
 							}
 						}
 					}
-					multiply = 1.5
+					multiply = {
+						value = 1
+						subtract = {
+							value = 1
+							subtract = 1.5
+							multiply = {
+								value = 1
+								add = modifier:country_other_country_socialist_economy_hostility_impact_mult
+							}
+						}
+						min = 0
+					}
 				}
 
 				if = {
@@ -7083,7 +7195,18 @@ ai_strategy_default = {
 						}
 
 					}
-					multiply = 0.5
+					multiply = {
+						value = 1
+						subtract = {
+							value = 1
+							subtract = 0.5
+							multiply = {
+								value = 1
+								add = scope:target_country.modifier:country_other_country_socialist_government_hostility_impact_mult
+							}
+						}
+						min = 0
+					}
 				}
 
 				if = {
@@ -7096,7 +7219,18 @@ ai_strategy_default = {
 						}
 
 					}
-					multiply = 0.5
+					multiply = {
+						value = 1
+						subtract = {
+							value = 1
+							subtract = 0.5
+							multiply = {
+								value = 1
+								add = scope:target_country.modifier:country_other_country_socialist_economy_hostility_impact_mult
+							}
+						}
+						min = 0
+					}
 				}
 
 				if = {
@@ -7125,57 +7259,57 @@ ai_strategy_default = {
 
 				if = {
 					limit = {
-					harsh_ai_behavior_trigger = yes
+						harsh_ai_behavior_trigger = yes
+					}
+					multiply = 0.75
 				}
-				multiply = 0.75
-			}	
 
-			if = {
-				limit = {
-					scope:target_country.infamy >= infamy_threshold:infamous
+				if = {
+					limit = {
+						scope:target_country.infamy >= infamy_threshold:infamous
+					}
+					multiply = 0.9
 				}
-				multiply = 0.9
-			}	
 
-			if = {
-				limit = {
-					scope:target_country.infamy >= infamy_threshold:notorious
+				if = {
+					limit = {
+						scope:target_country.infamy >= infamy_threshold:notorious
+					}
+					multiply = 0.9
 				}
-				multiply = 0.9
-			}	
 
-			if = {
-				limit = {
-					scope:target_country.infamy >= infamy_threshold:pariah
+				if = {
+					limit = {
+						scope:target_country.infamy >= infamy_threshold:pariah
+					}
+					multiply = 0.5
 				}
-				multiply = 0.5
-			}
 
-			if = {
-				limit = {
-					c:HAI ?= ROOT
-					scope:target_country = { has_variable = haiti_friend }
+				if = {
+					limit = {
+						c:HAI ?= ROOT
+						scope:target_country = { has_variable = haiti_friend }
+					}
+					multiply = 3
 				}
-				multiply = 3
-			}	
 
-            # AI implications for Power Blocs: 'befriend' secret goal is more likely towards the Bloc members
-			if = {
-				limit = {
-					is_in_same_power_bloc = scope:target_country
+				# AI implications for Power Blocs: 'befriend' secret goal is more likely towards the Bloc members
+				if = {
+					limit = {
+						is_in_same_power_bloc = scope:target_country
+					}
+					multiply = 1.5
 				}
-				multiply = 1.5
-			}			
-			
-			if = {
-				limit = {
-					OR = {
-						has_diplomatic_pact = {
-							who = scope:target_country
-							type = rivalry
-						}					
-						scope:target_country = { relations:root <= relations_threshold:poor }					
-					}				
+
+				if = {
+					limit = {
+						OR = {
+							has_diplomatic_pact = {
+								who = scope:target_country
+								type = rivalry
+							}
+							scope:target_country = { relations:root <= relations_threshold:poor }
+						}
 				}
 				multiply = 0.0
 			}
@@ -7305,7 +7439,18 @@ ai_strategy_default = {
 						}
 					}
 				}
-				multiply = 1.5
+				multiply = {
+						value = 1
+						subtract = {
+							value = 1
+							subtract = 1.5
+							multiply = {
+								value = 1
+								add = modifier:country_other_country_socialist_government_hostility_impact_mult
+							}
+						}
+						min = 0
+					}
 			}
 			
 			if = {
@@ -7317,7 +7462,18 @@ ai_strategy_default = {
 						}
 					}
 				}
-				multiply = 1.5
+				multiply = {
+						value = 1
+						subtract = {
+							value = 1
+							subtract = 1.5
+							multiply = {
+								value = 1
+								add = modifier:country_other_country_socialist_economy_hostility_impact_mult
+							}
+						}
+						min = 0
+					}
 			}
 			
 			if = {
@@ -7330,7 +7486,18 @@ ai_strategy_default = {
 					}
 					
 				}
-				multiply = 0.5
+				multiply = {
+						value = 1
+						subtract = {
+							value = 1
+							subtract = 0.5
+							multiply = {
+								value = 1
+								add = scope:target_country.modifier:country_other_country_socialist_government_hostility_impact_mult
+							}
+						}
+						min = 0
+					}
 			}
 	
 			if = {
@@ -7343,7 +7510,18 @@ ai_strategy_default = {
 						}
 
 					}
-					multiply = 0.5
+					multiply = {
+						value = 1
+						subtract = {
+							value = 1
+							subtract = 0.5
+							multiply = {
+								value = 1
+								add = scope:target_country.modifier:country_other_country_socialist_economy_hostility_impact_mult
+							}
+						}
+						min = 0
+					}
 				}
 
 				if = {
@@ -7483,7 +7661,18 @@ ai_strategy_default = {
 							}
 						}
 					}
-					multiply = 1.5
+					multiply = {
+						value = 1
+						subtract = {
+							value = 1
+							subtract = 1.5
+							multiply = {
+								value = 1
+								add = modifier:country_other_country_socialist_government_hostility_impact_mult
+							}
+						}
+						min = 0
+					}
 				}
 
 				if = {
@@ -7495,7 +7684,18 @@ ai_strategy_default = {
 							}
 						}
 					}
-					multiply = 1.5
+					multiply = {
+						value = 1
+						subtract = {
+							value = 1
+							subtract = 1.5
+							multiply = {
+								value = 1
+								add = modifier:country_other_country_socialist_economy_hostility_impact_mult
+							}
+						}
+						min = 0
+					}
 				}
 
 				if = {
@@ -7508,7 +7708,18 @@ ai_strategy_default = {
 						}
 
 					}
-					multiply = 0.5
+					multiply = {
+						value = 1
+						subtract = {
+							value = 1
+							subtract = 0.5
+							multiply = {
+								value = 1
+								add = scope:target_country.modifier:country_other_country_socialist_government_hostility_impact_mult
+							}
+						}
+						min = 0
+					}
 				}
 
 				if = {
@@ -7521,7 +7732,18 @@ ai_strategy_default = {
 						}
 
 					}
-					multiply = 0.5
+					multiply = {
+						value = 1
+						subtract = {
+							value = 1
+							subtract = 0.5
+							multiply = {
+								value = 1
+								add = scope:target_country.modifier:country_other_country_socialist_economy_hostility_impact_mult
+							}
+						}
+						min = 0
+					}
 				}
 
 				if = {
@@ -7753,7 +7975,18 @@ ai_strategy_default = {
 							}
 						}
 					}
-					multiply = 0.5
+					multiply = {
+						value = 1
+						subtract = {
+							value = 1
+							subtract = 0.5
+							multiply = {
+								value = 1
+								add = modifier:country_other_country_socialist_government_hostility_impact_mult
+							}
+						}
+						min = 0
+					}
 				}
 
 				if = {
@@ -7765,7 +7998,18 @@ ai_strategy_default = {
 							}
 						}
 					}
-					multiply = 0.5
+					multiply = {
+						value = 1
+						subtract = {
+							value = 1
+							subtract = 0.5
+							multiply = {
+								value = 1
+								add = modifier:country_other_country_socialist_economy_hostility_impact_mult
+							}
+						}
+						min = 0
+					}
 				}
 
 				if = {
@@ -7778,7 +8022,18 @@ ai_strategy_default = {
 						}
 
 					}
-					multiply = 1.5
+					multiply = {
+						value = 1
+						subtract = {
+							value = 1
+							subtract = 1.5
+							multiply = {
+								value = 1
+								add = scope:target_country.modifier:country_other_country_socialist_government_hostility_impact_mult
+							}
+						}
+						min = 0
+					}
 				}
 
 				if = {
@@ -7791,7 +8046,18 @@ ai_strategy_default = {
 						}
 
 					}
-					multiply = 1.5
+					multiply = {
+						value = 1
+						subtract = {
+							value = 1
+							subtract = 1.5
+							multiply = {
+								value = 1
+								add = scope:target_country.modifier:country_other_country_socialist_economy_hostility_impact_mult
+							}
+						}
+						min = 0
+					}
 				}
 
 				# AI implications for Power Blocs: 'antagonize' secret goal is more likely towards the country from another Bloc
@@ -8159,7 +8425,18 @@ ai_strategy_default = {
 							}
 						}
 					}
-					multiply = 0.5
+					multiply = {
+						value = 1
+						subtract = {
+							value = 1
+							subtract = 0.5
+							multiply = {
+								value = 1
+								add = modifier:country_other_country_socialist_government_hostility_impact_mult
+							}
+						}
+						min = 0
+					}
 				}
 
 				if = {
@@ -8171,7 +8448,18 @@ ai_strategy_default = {
 							}
 						}
 					}
-					multiply = 0.5
+					multiply = {
+						value = 1
+						subtract = {
+							value = 1
+							subtract = 0.5
+							multiply = {
+								value = 1
+								add = modifier:country_other_country_socialist_economy_hostility_impact_mult
+							}
+						}
+						min = 0
+					}
 				}
 
 				if = {
@@ -8184,7 +8472,18 @@ ai_strategy_default = {
 						}
 
 					}
-					multiply = 1.5
+					multiply = {
+						value = 1
+						subtract = {
+							value = 1
+							subtract = 1.5
+							multiply = {
+								value = 1
+								add = scope:target_country.modifier:country_other_country_socialist_government_hostility_impact_mult
+							}
+						}
+						min = 0
+					}
 				}
 
 				if = {
@@ -8197,7 +8496,18 @@ ai_strategy_default = {
 						}
 
 					}
-					multiply = 1.5
+					multiply = {
+						value = 1
+						subtract = {
+							value = 1
+							subtract = 1.5
+							multiply = {
+								value = 1
+								add = scope:target_country.modifier:country_other_country_socialist_economy_hostility_impact_mult
+							}
+						}
+						min = 0
+					}
 				}
 
 				if = {
@@ -8446,7 +8756,18 @@ ai_strategy_default = {
 							}
 						}
 					}
-					multiply = 0.5
+					multiply = {
+						value = 1
+						subtract = {
+							value = 1
+							subtract = 0.5
+							multiply = {
+								value = 1
+								add = modifier:country_other_country_socialist_government_hostility_impact_mult
+							}
+						}
+						min = 0
+					}
 				}
 
 				if = {
@@ -8458,7 +8779,18 @@ ai_strategy_default = {
 							}
 						}
 					}
-					multiply = 0.5
+					multiply = {
+						value = 1
+						subtract = {
+							value = 1
+							subtract = 0.5
+							multiply = {
+								value = 1
+								add = modifier:country_other_country_socialist_economy_hostility_impact_mult
+							}
+						}
+						min = 0
+					}
 				}
 
 				if = {
@@ -8471,7 +8803,18 @@ ai_strategy_default = {
 						}
 
 					}
-					multiply = 1.5
+					multiply = {
+						value = 1
+						subtract = {
+							value = 1
+							subtract = 1.5
+							multiply = {
+								value = 1
+								add = scope:target_country.modifier:country_other_country_socialist_government_hostility_impact_mult
+							}
+						}
+						min = 0
+					}
 				}
 
 				if = {
@@ -8484,7 +8827,29 @@ ai_strategy_default = {
 						}
 
 					}
-					multiply = 1.5
+					multiply = {
+						value = 1
+						subtract = {
+							value = 1
+							subtract = 1.5
+							multiply = {
+								value = 1
+								add = scope:target_country.modifier:country_other_country_socialist_economy_hostility_impact_mult
+							}
+						}
+						min = 0
+					}
+				}
+
+				if = {
+					limit = {
+						c:JAP ?= this
+						NOT = { has_law_or_variant = law_type:law_serfdom }
+						scope:target_country = {
+							is_in_geographic_region = geographic_region_japan
+						}
+					}
+					add = 25
 				}
 
 				if = {
@@ -9114,24 +9479,36 @@ ai_strategy_default = {
 							has_radical_leftist_government = yes
 						}
 					}
-					
+
 				}
-				add = 100
+				add = {
+					value = 100
+					multiply = {
+						value = 1
+						add = scope:target_country.modifier:country_other_country_socialist_government_hostility_impact_mult
+					}
+				}
 			}
-	
+
 			if = {
 				limit = {
 					AND = {
-						has_radical_leftist_economy = no			
+						has_radical_leftist_economy = no
 						scope:target_country = {
 							has_radical_leftist_economy = yes
 						}
 					}
-					
+
 				}
-				add = 100
-			}						
-		}		
+				add = {
+					value = 100
+					multiply = {
+						value = 1
+						add = scope:target_country.modifier:country_other_country_socialist_economy_hostility_impact_mult
+					}
+				}
+			}
+		}
 		
 		force_nationalization = {
 			value = 0
@@ -9199,14 +9576,20 @@ ai_strategy_default = {
 			if = {
 				limit = {
 					AND = {
-						has_radical_leftist_government = no			
+						has_radical_leftist_government = no
 						scope:target_country = {
 							has_radical_leftist_government = yes
 						}
 					}
 
 				}
-				add = 50
+				add = {
+					value = 50
+					multiply = {
+						value = 1
+						add = scope:target_country.modifier:country_other_country_socialist_government_hostility_impact_mult
+					}
+				}
 			}
 
 			if = {
@@ -9219,7 +9602,13 @@ ai_strategy_default = {
 					}
 
 				}
-				add = 50
+				add = {
+					value = 50
+					multiply = {
+						value = 1
+						add = scope:target_country.modifier:country_other_country_socialist_economy_hostility_impact_mult
+					}
+				}
 			}
 
 			# Not worth doing against very small markets
@@ -9356,6 +9745,21 @@ ai_strategy_default = {
 					has_journal_entry = je_eastern_frontier
 					capital = {
 						has_claim_by = ROOT
+					}
+				}
+				add = 50
+			}
+
+			if = {
+				limit = {
+					has_journal_entry = je_russification
+					scope:target_country ?= {
+						is_subject_of = root
+						OR = {
+							is_in_geographic_region = geographic_region_finland_old
+							is_in_geographic_region = geographic_region_baltic_states_old
+							is_in_geographic_region = geographic_region_poland_old
+						}
 					}
 				}
 				add = 50

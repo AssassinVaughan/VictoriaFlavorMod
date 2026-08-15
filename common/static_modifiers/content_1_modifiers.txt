@@ -670,9 +670,11 @@ great_purge_modifier = {
 	state_radicals_from_political_movements_mult = -0.2
 }
 
-institutions_of_socialism_modifier = {
+modifier_social_revolution = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
-	country_bureaucracy_mult = 0.2
+	state_dependent_political_participation_add = 0.10
+	state_working_adult_ratio_add = 0.05
+	country_weekly_innovation_max_add = 25
 }
 
 path_to_vanguardism = {
@@ -1436,7 +1438,26 @@ iron_horse_raids = {
 
 five_year_plan_welfare_mod = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
-	state_loyalists_from_political_movements_mult = 1
+	state_loyalists_from_political_movements_mult = 0.10
+	country_legitimacy_base_add = 3
+}
+
+five_year_plan_failure_mod = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
+	country_legitimacy_base_add = -3
+	country_prestige_mult = -0.02
+}
+
+modifier_falsified_plan_figures = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
+	country_bureaucracy_mult = -0.25
+	country_legitimacy_base_add = -10
+}
+
+modifier_fyp_censorship_campaign = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
+	country_authority_cost_add = 100
+	country_legitimacy_base_add = -5
 }
 
 generic_law_advance = {

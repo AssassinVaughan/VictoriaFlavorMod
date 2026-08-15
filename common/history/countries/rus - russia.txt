@@ -69,12 +69,6 @@
 			}
 			# je_tsarpoints_master is fired from Russian character setup due to read order issues
 		}
-
-		add_modifier = {
-			name = modifier_polish_organic_statute
-			days = stupidly_long_modifier_time
-			is_decaying = yes
-		}
 		
 		set_export_tariff_level = { 
 			goods = g:grain
@@ -92,5 +86,10 @@
 			set_company_state_region = s:STATE_INGRIA
 			add_owned_country = c:ALK
 		}
+
+		set_variable = { name = rus_tsar_count value = 1 }
+		set_variable = { name = rus_tsar_conservative value = 1 }
+		set_variable = { name = rus_tsar_liberal value = 0 }
+		set_variable = { name = rus_tsar_socialist value = 0 }
 	}
 }
