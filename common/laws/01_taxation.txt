@@ -185,9 +185,9 @@ law_per_capita_based_taxation = {
 					has_law_or_variant = law_type:law_land_based_taxation
 				}
 				pop_type_percent_country = {
-					pop_type = peasants
-					percent < 0.75
-				}
+					target = pop_type:peasants
+					value < 0.75
+			    }
 			}
 			add = 400
 		}
@@ -269,9 +269,9 @@ law_proportional_taxation = {
 					has_law_or_variant = law_type:law_land_based_taxation
 				}
 				pop_type_percent_country = {
-					pop_type = peasants
-					percent < 0.6
-				}
+					target = pop_type:peasants
+					value < 0.6
+			    }
 			}
 			add = 400
 		}
@@ -280,7 +280,7 @@ law_proportional_taxation = {
 			limit = {
 				has_law_or_variant = law_type:law_per_capita_based_taxation
 				pop_type_percent_country = {
-					pop_type = peasants
+					pop_type = pop_type:peasants
 					percent < 0.4
 				}
 			}

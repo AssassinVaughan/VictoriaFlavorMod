@@ -228,7 +228,7 @@ REPLACE:pm_simple_farming = {
 	building_modifiers = {
 		workforce_scaled = {
 			# output goods													
-			goods_output_grain_add = 19
+			goods_output_grain_add = 20
 		}
 
 		level_scaled = {
@@ -257,7 +257,7 @@ REPLACE:pm_herring_meal_farming = {
 			goods_input_fish_add = 5 # 100
 
 			# output goods
-			goods_output_grain_add = 27 # 500
+			goods_output_grain_add = 28 # 500
 		}
 
 		level_scaled = {
@@ -278,7 +278,7 @@ pm_rotating_crops = {
 	building_modifiers = {
 		workforce_scaled = {
 			# output goods													
-			goods_output_grain_add = 22
+			goods_output_grain_add = 23
 		}
 
 		level_scaled = {
@@ -301,7 +301,7 @@ REPLACE:pm_soil_enriching_farming = {
 			goods_input_fertilizer_add = 5				
 			
 			# output goods													
-			goods_output_grain_add = 30
+			goods_output_grain_add = 31
 		}
 
 		level_scaled = {
@@ -333,7 +333,7 @@ REPLACE:pm_fertilization = {
 			goods_input_fertilizer_add = 10				
 			
 			# output goods												   
-			goods_output_grain_add = 45
+			goods_output_grain_add = 46
 		}
 
 		level_scaled = {
@@ -382,7 +382,7 @@ REPLACE:pm_simple_farming_building_rice_farm = {
 	building_modifiers = {
 		workforce_scaled = {
 			# output goods
-			goods_output_grain_add = 28
+			goods_output_grain_add = 29
 		}
 
 		level_scaled = {
@@ -404,7 +404,7 @@ REPLACE:pm_herring_meal_farming_building_rice_farm = {
 	building_modifiers = {
 		workforce_scaled = {
 			# input goods
-			goods_input_fish_add = 8 # 160
+			goods_input_fish_add = 7 # 160
 
 			# output goods
 			goods_output_grain_add = 36	# 900
@@ -431,7 +431,7 @@ pm_rotating_crops_building_rice_farm = {
 	building_modifiers = {
 		workforce_scaled = {
 			# output goods
-			goods_output_grain_add = 31
+			goods_output_grain_add = 35
 		}
 
 		level_scaled = {
@@ -454,7 +454,7 @@ REPLACE:pm_soil_enriching_farming_building_rice_farm = {
 			goods_input_fertilizer_add = 8	
 			
 			# output goods													
-			goods_output_grain_add = 45
+			goods_output_grain_add = 46
 		}
 
 		level_scaled = {
@@ -480,7 +480,7 @@ REPLACE:pm_fertilization_building_rice_farm = {
 			goods_input_fertilizer_add = 15			
 			
 			# output goods												   
-			goods_output_grain_add = 67
+			goods_output_grain_add = 68
 		}
 
 		level_scaled = {
@@ -515,6 +515,54 @@ REPLACE:pm_chemical_fertilizer_building_rice_farm = {
 	}
 	
 	ai_value = 900
+}
+
+REPLACE:pm_fig_orchards_building_rice_farm = {
+	texture = "gfx/interface/icons/production_method_icons/orchards.dds"
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_output_grain_add = -15
+			goods_output_fruit_add = 12
+			goods_output_sugar_add = 1
+		}
+	}
+}
+
+REPLACE:pm_apple_orchards = {
+	texture = "gfx/interface/icons/production_method_icons/orchards.dds"
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_output_grain_add = -7
+			goods_output_fruit_add = 6
+			goods_output_sugar_add = 1
+		}
+	}
+}
+
+REPLACE:pm_citrus_orchards = {
+	texture = "gfx/interface/icons/production_method_icons/orchards.dds"
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_output_grain_add = -7
+			goods_output_fruit_add = 6
+			goods_output_sugar_add = 1
+		}
+	}
+}
+
+REPLACE:pm_fig_orchards = {
+	texture = "gfx/interface/icons/production_method_icons/orchards.dds"
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_output_grain_add = -7
+			goods_output_fruit_add = 6
+			goods_output_sugar_add = 1
+		}
+	}
 }
 
 pm_rotating_crops_ranch = {
