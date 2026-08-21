@@ -1,32 +1,14 @@
 ﻿COUNTRIES = {
 	c:RUS ?= {
-		effect_starting_technology_tier_4_tech = yes
-		add_technology_researched = cotton_gin
-		
-		add_technology_researched = mandatory_service
-	    add_technology_researched = army_reserves
-	    add_technology_researched = line_infantry
+		effect_starting_technology_tier_3_tech = yes
 		add_technology_researched = napoleonic_warfare
-		
-		add_technology_researched = romanticism
-	    add_technology_researched = academia
-	    add_technology_researched = currency_standards
-	    add_technology_researched = colonization
-	    add_technology_researched = urban_planning
-	    add_technology_researched = law_enforcement
-		
+		add_technology_researched = stock_exchange
+		add_technology_researched = corporate_charters
+		add_technology_researched = fractional_distillation #beet producer
+
 		set_tax_level = low # pre-Kankrin reform tax system
 
-		set_export_tariff_level = { 
-			goods = g:wood
-			level = low_tariffs
-		}
-		set_export_tariff_level = { 
-			goods = g:fabric
-			level = hardwood
-		}
-		
-		# Laws 
+		# Laws
 		activate_law = law_type:law_monarchy
 		activate_law = law_type:law_autocracy
 		activate_law = law_type:law_serfdom
@@ -41,27 +23,13 @@
 		activate_law = law_type:law_third_section
 		activate_law = law_type:law_internal_colonization
 		activate_law = law_type:law_women_own_property
-		activate_law = law_type:law_devolved
 
-		set_institution_investment_level = {
-			institution = institution_colonial_affairs
-			level = 1
-		}
-		
 		add_taxed_goods = g:liquor
-		
-		add_journal_entry = {
-			type = je_holy_alliance
-		}
-		
-		add_modifier = {
-			name = the_vast_empire
-		}
-		
+
 		if = {
 			limit = {
-			#	has_dlc_feature = ip5_content # TODO PRCAL-45691
-			}
+				#	has_dlc_feature = ip5_content # TODO PRCAL-45691
+			}			
 			trigger_event = {
 				id = tsarpoints_events.14
 				days = 1
