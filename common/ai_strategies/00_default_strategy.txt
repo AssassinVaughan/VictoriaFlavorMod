@@ -2637,18 +2637,43 @@ ai_strategy_default = {
 						}
 					}
 				}
-				multiply = 0
+				multiply = {
+					value = 0
+					desc = "STATE_VALUE_NO_CHINESE_CORE"
+				}
+			}
+			# Russian Civil War
+			if = {
+				limit = {
+					country_has_primary_culture = cu:russian
+					has_journal_entry = je_russia_civil_war
+					scope:target_state = {
+						owner = {
+							country_has_primary_culture = cu:russian
+						}
+					}
+				}
+				add = 200
 			}
 		}
-		
-		min = 0
+
+		min = {
+			value = 0
+			desc = "STATE_VALUE_CLAMP_MIN"
+		}
 		if = {
 			limit = { scope:target_state = { owner = root } }
-			max = 1000
+			max = {
+				value = 1000
+				desc = "STATE_VALUE_CLAMP_OWNED"
+			}
 		}
 		else = {
-			max = 200
-		}			
+			max = {
+				value = 200
+				desc = "STATE_VALUE_CLAMP_FOREIGN"
+			}
+		}
 	}
 	
 	# How much does the AI desire a state owned by another country
