@@ -1717,6 +1717,76 @@ types state_panel_types
 				}
 			}
 
+			#COSSACK HOST DISBAND
+			state_panel_status_item_small = {
+				visible = "[State.HasBuilding('building_cossack_host')]"
+				tooltip = "TOOLTIP_STATE_COSSACK_HOST"
+
+				blockoverride "texture" {
+					texture = "gfx/interface/icons/state_status_icons/establish_cossack_host.dds"
+				}
+
+				blockoverride "name" {
+					text = "STATE_COSSACK_HOST_STATUS"
+				}
+
+				blockoverride "goto" {
+
+				}
+
+				blockoverride "navigation_button" {
+					button_icon_goto = {
+						position = { -5 5 }
+						parentanchor = top|right
+						size = { 25 25 }
+						datacontext = "[State.AccessBuilding('building_cossack_host')]"
+						tooltip = "GO_TO_BUTTON_BUILDING"
+						onclick = "[InformationPanelBar.OpenBuildingDetailsPanel(Building.AccessSelf)]"
+					}
+				}
+
+				blockoverride "extra_widget" {
+					button = {
+						visible = "[ObjectsEqual(State.GetOwner.Self, GetPlayer.Self)]"
+						enabled = "[IsValid( State.DisbandCossackHost )]"
+						onclick = "[PopupManager.AskConfirmation( State.DisbandCossackHost )]"
+						size = { 160 40 }
+						align = left|nobaseline
+						margin_left = 10
+						text = "DISBAND_COSSACK_HOST"
+						tooltip = "TOOLTIP_DISBAND_COSSACK_HOST"
+						using = default_button
+					}
+				}
+			}
+
+			#COSSACK HOST ESTABLISH
+			state_panel_status_item_small = {
+				visible = "[And(Not(State.HasBuilding('building_cossack_host')), And(ObjectsEqual(State.GetOwner.Self, GetPlayer.Self), GetPlayer.CanFoundCossackHost))]"
+				tooltip = "TOOLTIP_STATE_NO_COSSACK_HOST"
+
+				blockoverride "texture" {
+					texture = "gfx/interface/icons/state_status_icons/establish_cossack_host.dds"
+				}
+
+				blockoverride "name" {
+					text = "STATE_NO_COSSACK_HOST_STATUS"
+				}
+
+				blockoverride "extra_widget" {
+					button = {
+						enabled = "[IsValid( State.EstablishCossackHost )]"
+						onclick = "[Execute( State.EstablishCossackHost )]"
+						size = { 160 40 }
+						align = left|nobaseline
+						margin_left = 10
+						text = "ESTABLISH_COSSACK_HOST_BUTTON"
+						tooltip = "TOOLTIP_ESTABLISH_COSSACK_HOST"
+						using = default_button
+					}
+				}
+			}
+
 			state_panel_status_item_small = {
 				visible = "[GreaterThan_CFixedPoint(State.GetStateRegion.GetPollutionImpact, '(CFixedPoint)0')]"
 				datacontext = "[State.GetStateRegion]"

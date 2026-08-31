@@ -5,10 +5,8 @@
 	
 	modifier = {
 	    building_group_bg_ranching_throughput_add = -0.15
-        building_group_bg_agriculture_throughput_add = -0.25
-		building_group_bg_plantations_throughput_add = -0.25
-		state_construction_mult = -0.25
-		state_infrastructure_mult = -0.25
+        building_group_bg_agriculture_throughput_add = -0.2
+		building_group_bg_plantations_throughput_add = -0.2
     }
 }
 
@@ -49,6 +47,15 @@ state_trait_nile_delta = {
 		state_building_port_max_level_add = 2
 		state_infrastructure_add = 10
 		state_market_access_price_impact = 0.04
+	}
+}
+
+state_skeleton_coast = {
+	icon = "gfx/interface/icons/state_trait_icons/poor_soils.dds"
+
+	modifier = {
+        building_port_throughput_add = -0.25
+		state_infrastructure_mult = -0.25
 	}
 }
 

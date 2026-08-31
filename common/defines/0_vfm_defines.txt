@@ -336,12 +336,12 @@ NPops = {
 
 NPops = {
 
-    @starvation_threshold = 0.5 # 0.4 VFM
+    @starvation_threshold = 0.3 # 0.4 VFM
 	@starvation_scaling_factor = @[1/starvation_threshold]
 	
-	FOOD_SECURITY_MODERATE_THRESHOLD = 0.75							#0.6 If Food Security is lower than this, the pop is marked as having moderate food security
+	FOOD_SECURITY_MODERATE_THRESHOLD = 0.5							#0.6 If Food Security is lower than this, the pop is marked as having moderate food security
 	FOOD_SECURITY_STARVATION_THRESHOLD = @starvation_threshold		# If Food Security is lower than this, the pop is considered to be in a starving state
-	FOOD_SECURITY_SEVERE_STARVATION_THRESHOLD = 0.25				#0.2 If Food Security is lower than this, the pop is considered to be in a severe starving state
+	FOOD_SECURITY_SEVERE_STARVATION_THRESHOLD = 0.15				#0.2 If Food Security is lower than this, the pop is considered to be in a severe starving state
 	STARVATION_EFFECTS_SCALING_FACTOR = @starvation_scaling_factor  # Acts as a scaling factor when converting food security to starvation effects: StarvationValue = CLAMP( (StarvationThreshold - FoodSecurity) * ScalingFactor, 0, 1)
 	FAMINE_POPULATION_SHARE_IN_STARVATION = 0.35					# If at least this % of state population is in starvation, the state is considered to have a famine
 	FAMINE_POPULATION_SHARE_IN_SEVERE_STARVATION = 0.15				# If at least this % of state population is in severe starvation, the state is considered to have a famine

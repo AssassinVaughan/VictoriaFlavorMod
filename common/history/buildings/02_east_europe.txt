@@ -39,12 +39,12 @@
 					building={
 						type="building_manor_house"
 						country="c:POL"
-						levels=2
+						levels=3
 						region="STATE_MAZOVIA"
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_rotating_crops" "pm_potatoes" "pm_tools_disabled"  }
+				activate_production_methods={ "pm_rotating_crops" "pm_tools_disabled"  }
 			}
 			create_building={
 				building="building_tooling_workshop"
@@ -488,12 +488,12 @@
 					building={
 						type="building_manor_house"
 						country="c:POL"
-						levels=3
+						levels=5
 						region="STATE_GREATER_POLAND"
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_rotating_crops" "pm_potatoes" "pm_tools_disabled"  }
+				activate_production_methods={ "pm_rotating_crops" "pm_tools_disabled"  }
 			}
 		}
 	}
@@ -534,7 +534,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_rotating_crops" "pm_potatoes" "pm_tools_disabled"  }
+				activate_production_methods={ "pm_rotating_crops" "pm_tools_disabled"  }
 			}
 			create_building={
 				building="building_glassworks"
@@ -1032,12 +1032,12 @@
 					building={
 						type="building_manor_house"
 						country="c:AUS"
-						levels=1
+						levels=2
 						region="STATE_AUSTRIA"
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_rotating_crops" "pm_citrus_orchards" "pm_tools_disabled"  }
+				activate_production_methods={ "pm_rotating_crops" "pm_tools_disabled"  }
 			}
 			create_building={
 				building="building_vineyard"
@@ -1146,7 +1146,7 @@
 					building={
 						type="building_manor_house"
 						country="c:HUN"
-						levels=1
+						levels=2
 						region="STATE_TRANSDANUBIA"
 					}
 				}
@@ -1547,7 +1547,7 @@
 					building={
 						type="building_manor_house"
 						country="c:MOL"
-						levels=1
+						levels=2
 						region="STATE_MOLDAVIA"
 					}
 				}
@@ -1650,7 +1650,7 @@
 					building={
 						type="building_manor_house"
 						country="c:WAL"
-						levels=4
+						levels=5
 						region="STATE_WALLACHIA"
 					}
 				}
@@ -1738,6 +1738,7 @@
 	}
 	s:STATE_BESSARABIA={
 		region_state:RUS={
+			establish_cossack_host = yes
 			create_building={
 				building="building_fishing_wharf"
 				add_ownership={

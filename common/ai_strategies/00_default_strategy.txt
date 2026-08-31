@@ -10172,6 +10172,139 @@ ai_strategy_default = {
 		}
 	}
 
+	# Determines whether the AI wants a Cossack Host in a state, highest score wins
+	# A score of 0 means that option is not on the table at all, it does not mean neutral, so a state is left alone until something scores it
+	# Whichever status the state is already in has its score multiplied by COSSACK_HOST_STICKYNESS
+	# Using these values in other strategies will function additively
+	# root = country
+	# scope:target_state = state
+	cossack_host_scores = {
+		establish_cossack_host = {
+			value = 0
+
+			if = {
+				limit = {
+					scope:target_state = {
+						is_incorporated = no
+						OR = {
+							region = sr:region_central_asia
+							region = sr:region_russia
+							region = sr:region_siberia
+							region = sr:region_greater_persia
+							region = sr:region_north_china
+							region = sr:region_northeast_asia
+						}
+					}
+				}
+				add = 15
+			}
+
+			if = {
+				limit = {
+					scope:target_state = {
+						any_neighbouring_state = {
+							owner ?= {
+								OR = {
+									is_country_type = unrecognized
+									is_country_type = decentralized
+								}
+							}
+						}
+					}
+				}
+				add = 10
+
+				if = {
+					limit = {
+						scope:target_state = {
+							is_split_state = yes
+						}
+					}
+					add = 10
+				}
+			}
+
+			if = {
+				limit = {
+					scope:target_state = {
+						is_under_colonization = yes
+					}
+				}
+				add = 75
+			}
+
+			if = {
+				limit = {
+					scope:target_state = { primary_cultures_percent_state >= 0.9 }
+				}
+				multiply = 0
+			}
+			else_if = {
+				limit = {
+					scope:target_state = { primary_cultures_percent_state >= 0.8 }
+				}
+				multiply = 0.5
+			}
+
+			if = {
+				limit = {
+					OR = {
+						has_law_or_variant = law_type:law_council_republic
+						has_law_or_variant = law_type:law_state_atheism
+						has_law_or_variant = law_type:law_command_economy
+						has_law_or_variant = law_type:law_multicultural
+					}
+				}
+				multiply = 0
+			}
+
+			if = {
+				limit = {
+					scope:target_state = {
+						has_recently_removed_cossack_host = yes
+					}
+				}
+				multiply = 0
+			}
+		}
+
+		disband_cossack_host = {
+			value = 0
+
+			if = {
+				limit = {
+					scope:target_state = {
+						is_incorporated = yes
+					}
+				}
+				add = 10
+			}
+
+			if = { # Russia should be very unlikely to remove Cossacks
+				limit = {
+					NOT = { has_law_or_variant = law_type:law_council_republic }
+					any_primary_culture = {
+						has_discrimination_trait = heritage_east_slavic
+					}
+				}
+				multiply = 0.5
+
+				if = {
+					limit = {
+						OR = {
+							has_law = law_type:law_monarchy
+							has_law = law_type:law_internal_colonization
+						}
+					}
+					multiply = 0.25
+				}
+			}
+			else = { # Everyone else should remove Cossacks
+				add = 1000
+			}
+		}
+	}
+
 	# Determines which strait settings the AI will use, highest score 
 	# Using this value in other strategies will function additively
 	# root = country

@@ -102,7 +102,7 @@
 					building={
 						type="building_manor_house"
 						country="c:AUS"
-						levels=1
+						levels=2
 						region="STATE_LOMBARDY"
 					}
 					building={
@@ -113,7 +113,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_rotating_crops" "pm_citrus_orchards" "pm_tools_disabled"  }
+				activate_production_methods={ "pm_rotating_crops" "pm_tools_disabled"  }
 			}
 			create_building={
 				building="building_vineyard"
@@ -1949,7 +1949,7 @@
 					building={
 						type="building_manor_house"
 						country="c:AUS"
-						levels=2
+						levels=5
 						region="STATE_VENETIA"
 					}
 				}
@@ -4726,6 +4726,19 @@
 				activate_production_methods={ "pm_saw_mills" "pm_no_hardwood" "pm_no_equipment" "pm_road_carts"  }
 			}
 			create_building={
+				building="building_wheat_farm"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:TUR"
+						levels=1
+						region="STATE_ALBANIA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_rotating_crops" "pm_tools_disabled"  }
+			}
+			create_building={
 				building="building_port"
 				add_ownership={
 					country={
@@ -4819,6 +4832,19 @@
 				}
 				reserves=1
 				activate_production_methods={ "pm_open_air_stockyards" "pm_rotating_crops_ranch" "pm_standard_fences" "pm_unrefrigerated"  }
+			}
+			create_building={
+				building="building_wheat_farm"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:TUR"
+						levels=1
+						region="STATE_BOSNIA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_rotating_crops" "pm_tools_disabled"  }
 			}
 		}
 	}
@@ -5885,7 +5911,7 @@
 					building={
 						type="building_manor_house"
 						country="c:TUR"
-						levels=1
+						levels=2
 						region="STATE_MACEDONIA"
 					}
 				}

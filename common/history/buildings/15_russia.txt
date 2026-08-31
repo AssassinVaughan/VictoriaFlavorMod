@@ -1723,6 +1723,30 @@
 				activate_production_methods={ "pm_horizontal_drawer_cabinets" "pm_military_bureaucrats" "pm_religious_bureaucrats" }
 			}
 			create_building={
+				building="building_paper_mill"
+				add_ownership={
+					country={
+						country="c:RUS"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_pulp_pressing" "pm_automation_disabled"  }
+			}
+			create_building={
+				building="building_food_industry"
+				add_ownership={
+					building={
+						type="building_food_industry"
+						country="c:RUS"
+						levels=1
+						region="STATE_MINSK"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_bakery" "pm_disabled_canning" "pm_disabled_distillery" "pm_manual_dough_processing"  }
+			}
+			create_building={
 				building="building_naval_administration"
 				add_ownership={
 					country={
@@ -1784,17 +1808,18 @@
 					building={
 						type="building_manor_house"
 						country="c:RUS"
-						levels=2
+						levels=3
 						region="STATE_MINSK"
 					}
 				}
 				reserves=1
-				activate_production_methods={ "pm_simple_farming" "pm_potatoes" "pm_tools_disabled"  }
+				activate_production_methods={ "pm_simple_farming" "pm_tools_disabled"  }
 			}
 		}
 	}
 	s:STATE_ROSTOV={
 		region_state:RUS={
+			establish_cossack_host = yes
 			create_building={
 				building="building_trade_center"
 				activate_production_methods={ "pm_trade_center_trade_quantity_normal" }
@@ -1935,7 +1960,7 @@
 					building={
 						type="building_food_industry"
 						country="c:RUS"
-						levels=3
+						levels=2
 						region="STATE_KAZAN"
 					}
 				}
@@ -1989,6 +2014,7 @@
 	}
 	s:STATE_URALSK={
 		region_state:RUS={
+			establish_cossack_host = yes
 		}
 		region_state:KZH={
 			create_building={
@@ -2094,6 +2120,7 @@
 			}
 		}
 		region_state:RUS={
+			establish_cossack_host = yes
 			
 		}
 	}
@@ -2125,6 +2152,7 @@
 	}
 	s:STATE_NORTH_CAUCASUS={
 		region_state:RUS={
+			establish_cossack_host = yes
 		}
 		region_state:CHC={
 			create_building={
@@ -2159,6 +2187,7 @@
 	}
 	s:STATE_TAURIDA={
 		region_state:RUS={
+			establish_cossack_host = yes
 			create_building={
 				building="building_wheat_farm"
 				add_ownership={
@@ -2314,10 +2343,6 @@
 			create_building={
 				building="building_paper_mill"
 				add_ownership={
-					country={
-						country="c:RUS"
-						levels=1
-					}
 					building={
 						type="building_financial_district"
 						country="c:RUS"
@@ -2516,6 +2541,7 @@
 	}
 	s:STATE_UFA={
 		region_state:RUS={
+			establish_cossack_host = yes
 			create_building={
 				building="building_iron_mine"
 				add_ownership={
@@ -2571,6 +2597,7 @@
 	}
 	s:STATE_CHELYABINSK={
 		region_state:RUS={
+			establish_cossack_host = yes
 			create_building={
 				building="building_iron_mine"
 				add_ownership={
