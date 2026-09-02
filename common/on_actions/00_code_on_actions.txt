@@ -1308,15 +1308,6 @@ on_character_death = {
 # Root = Character
 on_new_interest_group_leader = {
 	effect = {
-		if = {
-			limit = {
-				owner ?= {
-					country_has_primary_culture = cu:japanese
-				}
-			}
-			# Do not under any circumstances allow the Emperor to become an IG leader
-			character_handle_possible_emperor_ig_leader = yes # TODO PRCAL-44673 replace with a code fix
-		}
 		add_career_length = { # Becoming IG leader increases career length
 			years = 5
 			random_range = { 1.0 2.0 } # 5 to 10 extra years
@@ -3596,11 +3587,22 @@ on_political_movement_supported_law_cancelled = {
 }
 
 # Root = Country
+# scope:actor = the country that enforced the wargoal
 # scope:target = the country the wargoal was enforced against
 # scope:diplomatic_play = the relevant diplomatic play
 # scope:wargoal_impact = the impact of the wargoal enforced
+# scope:enforced_by_timer = only set when this was won by holding the objective mid-war rather than settled in a peace
+# scope:war_goal_enforced = the wargoal that was enforced
 on_wargoal_enforced = {
 	effect = {
+		# Enforcement mid-war changes the world with no peace summary to explain it, so the whole play is told
+		if = {
+			limit = { exists = scope:enforced_by_timer }
+			scope:diplomatic_play ?= {
+				post_notification = wargoal_enforced
+			}
+		}
+
 		# Any war victory over the country that reneged on our inherited treaty ports settles the grudge
 		if = {
 			limit = {

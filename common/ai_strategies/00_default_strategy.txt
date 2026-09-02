@@ -8,6 +8,69 @@ ai_strategy_default = {
 	# Empty trigger counts as evaluating false in this specific case
 	will_form_power_bloc = {}
 
+	# If this trigger evaluates to true for any active strategy, the AI will incorporate scope:target_state if it can afford it and if it's the highest value valid candidate
+	# Empty trigger counts as evaluating false in this specific case
+	# Capitals bypass this and start incorporating immediately if possible
+	# Using this in a different strategy is inclusive, only one needs to return true
+	# root = country, scope:target_state = the state being considered
+	will_incorporate_state = {
+		trigger_if = { # Colonies have a different behaviour
+			limit = {
+				country_is_colonial_or_company = yes
+			}
+			scope:target_state = { ai_colony_will_incorporate_state = yes }
+		}
+		trigger_else_if = { # Default behaviour
+			limit = {
+				scope:target_state = { ai_will_incorporate_state = yes }
+			}
+			always = yes
+		}
+		trigger_else = { # Content
+			OR = {
+				AND = {
+					has_journal_entry = je_the_algerian_departements
+					scope:target_state = {
+						OR = {
+							state_region = s:STATE_ORAN
+							state_region = s:STATE_ALGIERS
+							state_region = s:STATE_CONSTANTINE
+						}
+					}
+				}
+				AND = {
+					has_journal_entry = je_french_natural_borders
+					scope:target_state = {
+						OR = {
+							state_region = s:STATE_WALLONIA
+							state_region = s:STATE_FLANDERS
+							state_region = s:STATE_RHINELAND
+							state_region = s:STATE_NORTH_RHINE
+						}
+					}
+				}
+				AND = {
+					has_journal_entry = je_matter_of_hungary
+					scope:target_state = {
+						state_region = { is_homeland = cu:hungarian }
+					}
+				}
+				AND = {
+					has_journal_entry = je_la_trinitaria
+					scope:target_state = {
+						state_region = s:STATE_SANTO_DOMINGO
+					}
+				}
+				AND = {
+					has_journal_entry = je_colonize_korea
+					scope:target_state = {
+						is_in_geographic_region = geographic_region_korea
+					}
+				}
+			}
+		}
+	}
+
 	# These are the tax levels the AI will try to stay within, though it can go above max tax level if in a financial emergency
 	# Using a different value in a strategy will override these values
 	desired_tax_level = medium
@@ -6071,9 +6134,9 @@ ai_strategy_default = {
 		paper = {
 			stance = wants_high_supply
 			trigger = {
+				has_building = building_government_administration
 				has_technology_researched = centralization
 				total_population >= 1000000
-				NOT = { has_law_or_variant = law_type:law_traditionalism }
 			}
 		}
 		telephones = {
@@ -9266,7 +9329,7 @@ ai_strategy_default = {
 			max = 100		
 		}		
 		
-		make_protectorate = {
+		make_subject = {
 
 			if = { #TUR should want to invade MON
 				limit = {
@@ -9348,28 +9411,6 @@ ai_strategy_default = {
 						who = scope:target_country
 						secret_goal = dominate
 					}
-				}
-			
-				add = scope:target_country.ai_subject_value:root			
-			}	
-
-			min = 0
-			max = 100				
-		}
-		
-		make_tributary = {
-			if = {
-				limit = {
-					OR = {
-						has_secret_goal = {
-							who = scope:target_country
-							secret_goal = protect
-						}
-						has_secret_goal = {
-							who = scope:target_country
-							secret_goal = dominate
-						}
-					}	
 				}
 			
 				add = scope:target_country.ai_subject_value:root			
