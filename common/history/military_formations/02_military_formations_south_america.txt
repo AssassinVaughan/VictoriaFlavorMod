@@ -533,19 +533,6 @@
 			save_scope_as = burdett_o_connor_gen
 		}
 
-		scope:burdett_o_connor_gen = {
-			transfer_to_formation = scope:1_Sultarus
-		}
-
-		create_character = {
-			template = BOL_Jose_Miguel_de_Velasco
-			save_scope_as = de_velasco_gen
-		}
-
-		scope:de_velasco_gen = {
-			transfer_to_formation = scope:1_Sultarus
-		}
-
 		create_military_formation = { #VFM COM - At least around 52 soldiers remained stationed at the por of Cobija during the Bolivian intervention in Perú, I think it's fair to assume at least 1000 stayed at home trough the whole country
 			type = army
 			hq_region = sr:region_andes
@@ -556,6 +543,16 @@
 				state_region = s:STATE_ANTOFAGASTA
 				count = 1
 			}
+			save_scope_as = 1_Guarniciones
+		}
+		
+		create_character = {
+			template = BOL_Jose_Miguel_de_Velasco
+			save_scope_as = de_velasco_gen
+		}
+
+		scope:de_velasco_gen = {
+			transfer_to_formation = scope:1_Guarniciones
 		}
 	}
 }

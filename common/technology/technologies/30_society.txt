@@ -1173,7 +1173,7 @@ socialism = {
 	era = era_3
 	texture = "gfx/interface/icons/invention_icons/socialism.dds"
 	category = society
-	
+
 	modifier = {
 		state_expected_sol_from_literacy = 1
 		country_institution_workplace_safety_max_investment_add = 2
@@ -1185,34 +1185,31 @@ socialism = {
 				NOT = { has_variable = socialism_researched }
 			}
 			set_variable = socialism_researched
-			ig:ig_trade_unions ?= {
-				add_ideology = ideology_socialist
-			}
 		}
 	}
-	
+
 	unlocking_technologies = {
 		labor_movement
 		dialectics
 	}
-	
+
 	ai_weight = {
 		value = 1
-		
+
 		if = {
-			limit = { 
+			limit = {
 				has_strategy = ai_strategy_egalitarian_agenda
 			}
-			add = 1
-		}	
+			add = -0.5
+		}
 		if = {
-			limit = { 
+			limit = {
 				OR = {
 					has_strategy = ai_strategy_conservative_agenda
 					has_strategy = ai_strategy_reactionary_agenda
-				}			
+				}
 			}
-			add = -0.5
+			add = 1
 		}
 	}
 }
