@@ -5665,6 +5665,23 @@
 				activate_production_methods={ "pm_professional_bureaucrats" "pm_religious_bureaucrats" "pm_horizontal_drawer_cabinets" }
 			}
 			create_building={
+				building="building_paper_mill"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:NET"
+						levels=1
+						region="STATE_HOLLAND"
+					}
+					country={
+						country="c:NET"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_pulp_pressing" "pm_automation_disabled"  }
+			}
+			create_building={
 				building="building_construction_sector"
 				add_ownership={
 					country={
@@ -5767,7 +5784,7 @@
 					building={
 						type="building_financial_district"
 						country="c:NET"
-						levels=2
+						levels=3
 						region="STATE_HOLLAND"
 					}
 				}
@@ -5878,12 +5895,12 @@
 					building={
 						type="building_financial_district"
 						country="c:NET"
-						levels=3
+						levels=2
 						region="STATE_FRIESLAND"
 					}
 					country={
 						country="c:NET"
-						levels=2
+						levels=1
 					}
 				}
 				reserves=1
