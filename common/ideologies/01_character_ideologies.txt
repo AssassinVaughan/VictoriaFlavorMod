@@ -3575,7 +3575,7 @@ ideology_state_socialist = { # Average Progressiveness - 65.62
 				desc = "CONTENT_IN_CR"
 			}
 		}
-		# more likely for content trade unions outside of council republic
+		# extremely unlikely for Trade Unions in council republic
 		if = {
 			limit = {
 				is_interest_group_type = ig_trade_unions
@@ -3725,7 +3725,7 @@ ideology_state_socialist = { # Average Progressiveness - 65.62
 			}
 			add = 75
 		}
-		# more likely for content trade unions outside of council republic
+		# extremely unlikely for Trade Unions in council republic
 		if = {
 			limit = {
 				is_interest_group_type = ig_trade_unions
@@ -3793,7 +3793,7 @@ ideology_communist_leader = { # Average Progressiveness - 104.16
 		law_corporate_state = strongly_disapprove
 		law_social_monarchy = strongly_disapprove
 		law_theocracy = strongly_disapprove
-		law_council_republic = strongly_approve
+		law_council_republic = approve
 	}
 
 	lawgroup_distribution_of_power = {
@@ -4263,7 +4263,7 @@ ideology_vanguardist = { # Average Progressiveness - 70.83
 		law_corporate_state = strongly_disapprove
 		law_social_monarchy = strongly_disapprove
 		law_theocracy = strongly_disapprove
-		law_council_republic = strongly_approve
+		law_council_republic = approve
 	}
 
 	lawgroup_distribution_of_power = {
@@ -5446,7 +5446,7 @@ ideology_anarchist = { # Average Progressiveness - 100
 		law_corporate_state = strongly_disapprove
 		law_social_monarchy = strongly_disapprove
 		law_theocracy = strongly_disapprove
-		law_council_republic = strongly_approve
+		law_council_republic = approve
 	}
 
 	lawgroup_distribution_of_power = {
@@ -8591,8 +8591,8 @@ ideology_land_reformer = { # Average Progressiveness - 43.75
 		law_serfdom = strongly_disapprove
 		law_tenant_farmers = disapprove
 		law_commercialized_agriculture = neutral
-		law_peasant_proprietorship = approve
-		law_collectivized_agriculture = approve
+		law_peasant_proprietorship = strongly_approve
+		law_collectivized_agriculture = neutral
 	}
 
 	country_trigger = {

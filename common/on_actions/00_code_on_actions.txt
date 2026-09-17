@@ -160,6 +160,7 @@ on_yearly_pulse = {
 on_monthly_pulse_country = {
 	events = {
 		communism.8 # Red Army
+		nomenklatura.1 # Nomenklatura
 		opium_wars.1
 		native_resettlement.1
 		bic_breakup.1
@@ -397,6 +398,7 @@ on_monthly_pulse_country = {
 		on_monthly_pulse_country_russia
 		on_monthly_pulse_country_baltic
 
+		council_republic_monthly_events
 		coup_monthly_events
 		delay = { days = 4 }
 		garibaldi_monthly_events
@@ -666,6 +668,21 @@ on_yearly_pulse_character = {
 }
 on_half_yearly_pulse_character = {
 	effect = {
+		if = { # No faith healing for Alexei without Rasputin
+			limit = {
+				has_template = RUS_alexei_ii
+				has_modifier = modifier_faith_healing
+				NOT = {
+					owner = {
+						any_scope_character = {
+							has_template = RUS_grigoriy_rasputin
+							has_role = character_role_favorite
+						}
+					}
+				}
+			}
+			remove_modifier = modifier_faith_healing
+		}
 	}
 }
 on_five_year_pulse_character = {}
@@ -1300,6 +1317,17 @@ on_character_death = {
 			owner ?= {
 				#debug_log = "[TimeKeeper.GetCurrentDate.GetString]: Taikun died: new Taikun designated - [THIS.GetCountry.GetNameNoFormatting]"
 				country_designate_new_taikun = yes
+			}
+		}
+		if = { # clear je_tp_fav_rasputin_complete_var if Alexei dies
+			limit = {
+				has_template = RUS_alexei_ii
+				owner ?= {
+					has_variable = je_tp_fav_rasputin_complete_var
+				}
+			}
+			owner ?= {
+				remove_variable = je_tp_fav_rasputin_complete_var
 			}
 		}
 	}

@@ -912,6 +912,83 @@ law_council_republic = {
 			}
 		}
 	}
+	
+	on_deactivate = {
+		if = {
+			limit = {
+				has_variable = ig_nomenklatura_active
+			}
+			ig:ig_intelligentsia ?= {
+				custom_tooltip = nomenklatura_dissolved_tt
+				hidden_effect = {
+					set_interest_group_name = ig_intelligentsia
+					if = {
+						limit = {
+							has_ideology = ideology:ideology_managerial
+						}
+						remove_ideology = ideology_managerial
+					}
+					if = {
+						limit = {
+							has_ideology = ideology:ideology_materialist
+						}
+						remove_ideology = ideology_materialist
+					}
+					if = {
+						limit = {
+							has_ideology = ideology:ideology_defensist
+						}
+						remove_ideology = ideology_defensist
+					}
+					add_ideology = ideology_liberal
+					add_ideology = ideology_anti_clerical
+					add_ideology = ideology_republican
+				}
+			}
+			remove_variable = ig_nomenklatura_active
+			recalculate_pop_ig_support = yes
+		}
+		if = {
+			limit = {
+				has_variable = ig_red_army_active
+			}
+			ig:ig_armed_forces ?= {
+				custom_tooltip = red_army_dissolved_tt
+				hidden_effect = {
+					set_interest_group_name = ig_armed_forces
+					if = {
+						limit = {
+							has_ideology = ideology:ideology_internationalist
+						}
+						remove_ideology = ideology_internationalist
+					}
+					if = {
+						limit = {
+							has_ideology = ideology:ideology_defensist
+						}
+						remove_ideology = ideology_defensist
+					}
+					if = {
+						limit = {
+							has_ideology = ideology:ideology_militant
+						}
+						remove_ideology = ideology_militant
+					}
+					if = {
+						limit = {
+							has_ideology = ideology:ideology_disciplinarian
+						}
+						remove_ideology = ideology_disciplinarian
+					}
+					add_ideology = ideology_jingoist
+					add_ideology = ideology_loyalist
+					add_ideology = ideology_militarist
+				}
+			}
+			remove_variable = ig_red_army_active
+			recalculate_pop_ig_support = yes
+		}
+	}
 
 	can_impose = {
 		OR = {
@@ -1015,31 +1092,6 @@ law_corporate_state = {
 				}
 			}
 			trigger_event = { id = portuguese_monarchs.3 }
-		}
-	}
-
-	on_enact = {
-
-	}
-
-	on_deactivate = {
-		if = {
-			limit = {
-				has_modifier = modifier_corporate_state_trade_unions_bias
-			}
-			remove_modifier = modifier_corporate_state_trade_unions_bias
-		}
-		if = {
-			limit = {
-				has_modifier = modifier_corporate_state_industrialists_bias
-			}
-			remove_modifier = modifier_corporate_state_industrialists_bias
-		}
-		if = {
-			limit = {
-				has_modifier = modifier_corporate_state_intelligentsia_bias
-			}
-			remove_modifier = modifier_corporate_state_intelligentsia_bias
 		}
 	}
 

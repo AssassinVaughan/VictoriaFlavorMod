@@ -89,7 +89,7 @@
 		befriend = {
 			trigger = {
 				scope:target_country = { country_rank >= root.country_rank }
-				can_be_reached_by_target_country = yes			
+				can_be_reached_by_target_country = { TARGET_COUNTRY = scope:target_country }			
 			}
 			score = {
 				if = {
@@ -300,7 +300,7 @@ ai_strategy_subject_strengthen_self = {
 		}
 		conquer = {
 			trigger = {
-				can_reach_target_country = yes
+				can_reach_target_country = { TARGET_COUNTRY = scope:target_country }
 				has_strategic_adjacency = scope:target_country
 				scope:target_country.country_rank <= root.country_rank			
 			}
@@ -441,7 +441,7 @@ ai_strategy_subject_maintain_autonomy = {
 		}
 		conquer = {
 			trigger = {
-				can_reach_target_country = yes
+				can_reach_target_country = { TARGET_COUNTRY = scope:target_country }
 				has_strategic_adjacency = scope:target_country
 				scope:target_country.country_rank <= root.country_rank			
 			}

@@ -1,6 +1,21 @@
 ﻿COUNTRIES = {
 	c:MOR ?= {
 		effect_starting_technology_tier_4_tech = yes
+		add_technology_researched = urban_planning
+		
+		set_import_tariff_level = { 
+			goods = g:tools
+			level = max_subventions
+		}
+		set_import_tariff_level = { 
+			goods = g:artillery
+			level = high_subventions
+		}
+		set_import_tariff_level = { 
+			goods = g:small_arms
+			level = high_subventions
+		}
+		
 		effect_starting_politics_traditional = yes
 		activate_law = law_type:law_monarchy
 		activate_law = law_type:law_autocracy 

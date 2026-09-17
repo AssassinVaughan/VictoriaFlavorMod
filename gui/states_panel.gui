@@ -1034,9 +1034,10 @@ types state_panel_types
 				effectname = "NoHighlight"
 				distribute_visual_state = no
 				inherit_visual_state = no
-				using = fade_top_illus
+				using = illus_top_shadow_bottom_fade
 
 				vfx = {
+					size = { 100% 83% }
 					blockoverride "entity_instance" {
 						entity_instance = "[State.GetBestTextureEffect]"
 					}
