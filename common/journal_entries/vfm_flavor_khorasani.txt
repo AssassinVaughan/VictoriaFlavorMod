@@ -7,7 +7,7 @@
 
 	outcome = {
 		flags = { hidden invalid_outcome }
-		conclusion_desc = je_standard_failure_conclusion_desc
+		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
 		trigger = {
 			NOT = { exists = c:SDL }
 		}
@@ -46,7 +46,7 @@ je_khorasan_situation_sdl = {
 
 	outcome = {
 		flags = { hidden invalid_outcome }
-		conclusion_desc = je_standard_failure_conclusion_desc
+		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
 		trigger = {
 			NOT = { exists = c:ZFL }
 		}

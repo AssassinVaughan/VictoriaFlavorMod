@@ -48,7 +48,7 @@
 	
 	outcome = {
 		flags = { hidden invalid_outcome }
-		conclusion_desc = je_standard_failure_conclusion_desc
+		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
 		trigger = {
 			exists = c:HER
 			NOT = {
@@ -68,7 +68,7 @@
 		header = JOURNAL_ENTRY_TIMEOUT
 		effect_header = JOURNAL_ENTRY_ON_TIMEOUT
 		flags = { timeout }
-		conclusion_desc = je_standard_failure_conclusion_desc
+		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
 		effect = {
 			custom_tooltip = {
 				text = herat_siege_herat_tt
@@ -161,7 +161,7 @@ je_durrani_the_siege_of_herat = {
         header = je_standard_failure_header
         effect_header = je_standard_on_failure_header
         color = "blue_negative"
-        conclusion_desc = je_standard_failure_conclusion_desc
+        conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
         trigger = {
 			NOT = {
 				exists = c:HER
@@ -180,7 +180,7 @@ je_durrani_the_siege_of_herat = {
 		header = JOURNAL_ENTRY_TIMEOUT
 		effect_header = JOURNAL_ENTRY_ON_TIMEOUT
 		flags = { timeout }
-		conclusion_desc = je_standard_failure_conclusion_desc
+		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
 		effect = {
 			c:HER = {
 				make_independent = yes

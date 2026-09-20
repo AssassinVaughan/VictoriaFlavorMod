@@ -58,7 +58,7 @@
 		header = je_peru_bolivia_confederation_victory
 		effect_header = je_peru_bolivia_on_confederation_victory
 		color = "gold_positive"
-		conclusion_desc = je_standard_completion_conclusion_desc
+		conclusion_desc = je_peru_bolivia_confederation_victory_conclusion_desc
 		trigger = {
             hidden_trigger = {
 			    c:BOL = this
@@ -148,7 +148,7 @@
 		header = je_peru_bolivia_restorer_victory
 		effect_header = je_peru_bolivia_on_restorer_victory
 		color = "blue_negative"
-		conclusion_desc = je_standard_failure_conclusion_desc
+		conclusion_desc = je_peru_bolivia_restorer_victory_conclusion_desc
 		trigger = {
 			OR = {
 				NOT = {
@@ -269,7 +269,7 @@
 
 	outcome = {
 		flags = { hidden invalid_outcome }
-		conclusion_desc = je_standard_failure_conclusion_desc
+		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
 		trigger = {
 		OR = {
 			AND = {
@@ -465,7 +465,7 @@ je_war_of_the_confederation = {
 		header = je_peru_bolivia_restorer_victory
 		effect_header = je_peru_bolivia_on_restorer_victory
 		color = "blue_negative"
-		conclusion_desc = je_standard_failure_conclusion_desc
+		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
 		trigger = {
 		custom_tooltip = {
 			text = peru_bolivia_success_tt
@@ -482,7 +482,7 @@ je_war_of_the_confederation = {
 
 	outcome = {
 		flags = { hidden invalid_outcome }
-		conclusion_desc = je_standard_failure_conclusion_desc
+		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
 		trigger = {
 		OR = {
 			AND = {

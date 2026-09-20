@@ -25,7 +25,7 @@
 
 	outcome = {
 		flags = { hidden invalid_outcome }
-		conclusion_desc = je_standard_failure_conclusion_desc
+		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
 		trigger = {
 			has_global_variable = scandinavian_monetary_union_var
 		}
@@ -158,7 +158,7 @@ je_matter_of_norway = {
         header = je_standard_failure_header
         effect_header = je_standard_on_failure_header
         color = "blue_negative"
-        conclusion_desc = je_standard_failure_conclusion_desc
+        conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
         trigger = {
 			c:NOR ?= {
 			NOR = { 
@@ -174,7 +174,7 @@ je_matter_of_norway = {
 	
 	outcome = {
 		flags = { hidden invalid_outcome }
-		conclusion_desc = je_standard_failure_conclusion_desc
+		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
 		trigger = {
 			NOT = { exists = c:NOR }
 		}
@@ -240,7 +240,7 @@ je_swe_motala_fabriker = {
 		header = JOURNAL_ENTRY_TIMEOUT
 		effect_header = JOURNAL_ENTRY_ON_TIMEOUT
 		flags = { timeout }
-		conclusion_desc = je_standard_failure_conclusion_desc
+		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
 		effect = {
 		    ###
 		}
@@ -295,7 +295,7 @@ je_swe_glasriket = {
 		header = JOURNAL_ENTRY_TIMEOUT
 		effect_header = JOURNAL_ENTRY_ON_TIMEOUT
 		flags = { timeout }
-		conclusion_desc = je_standard_failure_conclusion_desc
+		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
 		effect = {
 		    ###
 		}
@@ -354,7 +354,7 @@ je_swe_gotavarven = {
 		header = JOURNAL_ENTRY_TIMEOUT
 		effect_header = JOURNAL_ENTRY_ON_TIMEOUT
 		flags = { timeout }
-		conclusion_desc = je_standard_failure_conclusion_desc
+		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
 		effect = {
 		    ###
 		}
@@ -434,7 +434,7 @@ je_stormakt = {
 	
 	outcome = {
 		flags = { hidden invalid_outcome }
-		conclusion_desc = je_standard_failure_conclusion_desc
+		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
 		trigger = {
 			 OR = {
 		has_variable = reject_stormakt_expansionism
@@ -488,7 +488,7 @@ je_folkhemmet = {
         header = je_standard_failure_header
         effect_header = je_standard_on_failure_header
         color = "blue_negative"
-        conclusion_desc = je_standard_failure_conclusion_desc
+        conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
         trigger = {
 			game_date > 1880.1.1
 		}

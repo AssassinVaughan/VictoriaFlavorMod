@@ -1432,6 +1432,7 @@
 		create_military_formation = {
 			type = army
 			hq_region = sr:region_russia
+			supply_hub = s:STATE_INGRIA
 			name = Otdelniy_Gvardeyskiy_Korpus
 
 			combat_unit = { # L.-Gds. Preobrazhenskii and Semenovskii regiments, L.-Gds. Izmailovskii and Jäger regiments, Livgardets 3:e finska skarpskyttebataljon (Finland)
@@ -1515,7 +1516,8 @@
 
 		create_military_formation = {
 			type = army
-			hq_region = sr:region_russia
+			hq_region = sr:region_eastern_europe
+			supply_hub = s:STATE_LITHUANIA
 			name = 1y_Pekhotniy_Korpus
 
 			combat_unit = { # Neva and Sofiya Infantry, Narva and Kopore Jägers, Prince Wilhelm of Prussia’s and Prince Karl of Prussia’s Infantry, Old Ingermanland and New Ingermanland Infantry
@@ -1582,6 +1584,13 @@
 				state_region = s:STATE_ROSTOV
 				count = 1
 			}
+		}
+
+		create_military_formation = {
+			type = army
+			hq_region = sr:region_greater_persia
+			supply_hub = s:STATE_GREATER_CAUCASUS
+			name = Otdelniy_Kavkazskiy_Korpus
 
 			combat_unit = { # Tenginsk and Navaginsk Infantry, Kabarda and Kura Jägers
 				type = unit_type:combat_unit_type_line_infantry
@@ -1635,7 +1644,8 @@
 
 		create_military_formation = {
 			type = army
-			hq_region = sr:region_russia
+			hq_region = sr:region_eastern_europe
+			supply_hub = s:STATE_BREST
 			name = 2y_Pekhotniy_Korpus
 
 			combat_unit = { # Belozersk, Vologda Infantry
@@ -1731,6 +1741,7 @@
 		create_military_formation = {
 			type = army
 			hq_region = sr:region_eastern_europe
+			supply_hub = s:STATE_BREST
 			name = 3y_Pekhotniy_Korpus
 
 			combat_unit = { # Field Marshal the Duke of Wellington’s and Mogilev Infantry, Vitebsk and Polotsk Jägers
@@ -1807,8 +1818,60 @@
 
 		create_military_formation = {
 			type = army
-			hq_region = sr:region_siberia
+			hq_region = sr:region_eastern_europe
+			supply_hub = s:STATE_VOLHYNIA
 			name = 4y_Pekhotniy_Korpus
+
+			combat_unit = { # Azov and Dnieper Infantry
+				type = unit_type:combat_unit_type_line_infantry
+				state_region = s:STATE_KHARKOV
+				count = 4
+			}
+
+			combat_unit = { # Ukraine and Odessa Jägers
+				type = unit_type:combat_unit_type_line_infantry
+				state_region = s:STATE_CHERSON
+				count = 2
+			}
+
+			# 4th Light Cavalry Division
+			combat_unit = { # Pavlograd and Archduke Ferdinand’s Hussar Regiments.
+				type = unit_type:combat_unit_type_hussars
+				state_region = s:STATE_KHARKOV
+				count = 2
+			}
+			combat_unit = { # Voznesensk and Olviopol Lancer Regiments.
+				type = unit_type:combat_unit_type_lancers
+				state_region = s:STATE_CHERSON
+				count = 2
+			}
+
+			# 4th Artillery Division
+			combat_unit = { # 10th, 11th, and 12th Field Artillery Brigades
+				type = unit_type:combat_unit_type_cannon_artillery
+				state_region = s:STATE_KHARKOV
+				count = 3
+			}
+			combat_unit = { # 4th Horse-Artillery Brigade
+				type = unit_type:combat_unit_type_mobile_artillery
+				state_region = s:STATE_KHARKOV
+				count = 1
+			}
+
+			# 1st Reserve Cavalry Corps
+			combat_unit = { # Belgorod and Chuguev Lancer Regiments, Borisoglebsk and Serpukhov Lancer Regiments
+				type = unit_type:combat_unit_type_lancers
+				state_region = s:STATE_KURSK
+				count = 2
+			}
+			save_scope_as = iiii_pekhotniy_korpus
+		}
+
+		create_military_formation = {
+			type = army
+			hq_region = sr:region_siberia
+			supply_hub = s:STATE_TOBOLSK
+			name = Otdelniy_Sibirskiy_Korpus
 
 			combat_unit = { # Yekaterinburg Infantry
 				type = unit_type:combat_unit_type_line_infantry
@@ -1857,50 +1920,6 @@
 				state_region = s:STATE_KAMCHATKA
 				count = 1
 			}
-
-			combat_unit = { # Azov and Dnieper Infantry
-				type = unit_type:combat_unit_type_line_infantry
-				state_region = s:STATE_KHARKOV
-				count = 4
-			}
-
-			combat_unit = { # Ukraine and Odessa Jägers
-				type = unit_type:combat_unit_type_line_infantry
-				state_region = s:STATE_CHERSON
-				count = 2
-			}
-
-			# 4th Light Cavalry Division
-			combat_unit = { # Pavlograd and Archduke Ferdinand’s Hussar Regiments.
-				type = unit_type:combat_unit_type_hussars
-				state_region = s:STATE_KHARKOV
-				count = 2
-			}
-			combat_unit = { # Voznesensk and Olviopol Lancer Regiments.
-				type = unit_type:combat_unit_type_lancers
-				state_region = s:STATE_CHERSON
-				count = 2
-			}
-
-			# 4th Artillery Division
-			combat_unit = { # 10th, 11th, and 12th Field Artillery Brigades
-				type = unit_type:combat_unit_type_cannon_artillery
-				state_region = s:STATE_KHARKOV
-				count = 3
-			}
-			combat_unit = { # 4th Horse-Artillery Brigade
-				type = unit_type:combat_unit_type_mobile_artillery
-				state_region = s:STATE_KHARKOV
-				count = 1
-			}
-
-			# 1st Reserve Cavalry Corps
-			combat_unit = { # Belgorod and Chuguev Lancer Regiments, Borisoglebsk and Serpukhov Lancer Regiments
-				type = unit_type:combat_unit_type_lancers
-				state_region = s:STATE_KURSK
-				count = 2
-			}
-			save_scope_as = iiii_pekhotniy_korpus
 		}
 
 		create_character = {
@@ -1915,6 +1934,7 @@
 		create_military_formation = {
 			type = army
 			hq_region = sr:region_eastern_europe
+			supply_hub = s:STATE_CHERSON
 			name = 5y_Pekhotniy_Korpus
 
 			combat_unit = { # Brest and Bialystok Infantry
@@ -1995,6 +2015,7 @@
 		create_military_formation = {
 			type = army
 			hq_region = sr:region_russia
+			supply_hub = s:STATE_NOVGOROD
 			name = Otdelniy_Grenaderskiy_Korpus
 
 		#	combat_unit = { # The Crown Prince of Prussia’s and Graf Arakcheev’s Grenadiers # TODO PRCAL-44877

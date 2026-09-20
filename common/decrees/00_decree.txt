@@ -77,7 +77,6 @@ decree_road_maintenance = {
 			}
 			multiply = 0
 		}
-        multiply = 2	
 
 		# Place instances where content should ignore weights here
 		if = {
@@ -144,11 +143,9 @@ decree_violent_suppression = {
 				}
 			}
 			multiply = 0.5
-		}	
-        multiply = 2		
+		}
 	}
 }
-
 
 decree_emergency_relief = {
 	texture = "gfx/interface/icons/decree/decree_emergency_relief.dds"
@@ -186,12 +183,12 @@ decree_emergency_relief = {
 	}
 
 	cost = 50
-	
+
 	ai_weight = {
-		value = 10
-		
+		value = 0
+
 		if = {
-			limit = { 
+			limit = {
 				average_sol < average_expected_sol
 			}
 			add = 100
@@ -206,8 +203,7 @@ decree_emergency_relief = {
 				}
 			}
 			multiply = 0.5
-		}	
-        multiply = 2		
+		}
 	}
 }
 
@@ -245,7 +241,7 @@ decree_promote_social_mobility = {
 	cost = 100
 
 	ai_weight = {
-		value = 10
+		value = 0
 
 		if = {
 			limit = {
@@ -288,7 +284,6 @@ decree_promote_social_mobility = {
 			}
 			multiply = 1.5
 		}
-        multiply = 2	
 
 		# Content overrides
 		if = {
@@ -432,7 +427,10 @@ decree_promote_national_values = {
 						has_law_or_variant = law_type:law_subjecthood
 					}
 				}
-				primary_cultures_percent_state <= 0.9
+				primary_cultures_percent_state = {
+					target_country = owner
+					value <= 0.9
+				}
 			}
 
 			if = { # Colonies
@@ -475,19 +473,28 @@ decree_promote_national_values = {
 
 			if = {
 				limit = {
-					primary_cultures_percent_state <= 0.1
+					primary_cultures_percent_state = {
+						target_country = owner
+						value <= 0.1
+					}
 				}
 				multiply = 5.0
 			}
 			else_if = {
 				limit = {
-					primary_cultures_percent_state <= 0.3
+					primary_cultures_percent_state = {
+						target_country = owner
+						value <= 0.3
+					}
 				}
 				multiply = 3.0
 			}
 			else_if = {
 				limit = {
-					primary_cultures_percent_state <= 0.5
+					primary_cultures_percent_state = {
+						target_country = owner
+						value <= 0.5
+					}
 				}
 				multiply = 2.0
 			}
@@ -672,7 +679,10 @@ decree_promote_national_values = {
 
 		if = {
 			limit = {
-				primary_cultures_percent_state > 0.9
+				primary_cultures_percent_state = {
+					target_country = owner
+					value > 0.9
+				}
 				religion_percent_state = {
 					target = scope:country.religion
 					value > 0.9
@@ -682,7 +692,10 @@ decree_promote_national_values = {
 		}
 		else_if = {
 			limit = {
-				primary_cultures_percent_state > 0.5
+				primary_cultures_percent_state = {
+					target_country = owner
+					value > 0.5
+				}
 				religion_percent_state = {
 					target = scope:country.religion
 					value > 0.5
@@ -690,7 +703,6 @@ decree_promote_national_values = {
 			}
 			multiply = 0.5
 		}
-         multiply = 2	
 	}
 }
 
@@ -731,7 +743,10 @@ decree_promote_national_values_tsarpoints = {
 						has_law_or_variant = law_type:law_subjecthood
 					}
 				}
-				primary_cultures_percent_state <= 0.9
+				primary_cultures_percent_state = {
+					target_country = owner
+					value <= 0.9
+				}
 			}
 
 			if = { # Colonies
@@ -768,19 +783,28 @@ decree_promote_national_values_tsarpoints = {
 
 			if = {
 				limit = {
-					primary_cultures_percent_state <= 0.1
+					primary_cultures_percent_state = {
+						target_country = owner
+						value <= 0.1
+					}
 				}
 				multiply = 5.0
 			}
 			else_if = {
 				limit = {
-					primary_cultures_percent_state <= 0.3
+					primary_cultures_percent_state = {
+						target_country = owner
+						value <= 0.3
+					}
 				}
 				multiply = 3.0
 			}
 			else_if = {
 				limit = {
-					primary_cultures_percent_state <= 0.5
+					primary_cultures_percent_state = {
+						target_country = owner
+						value <= 0.5
+					}
 				}
 				multiply = 2.0
 			}
@@ -903,7 +927,10 @@ decree_promote_national_values_tsarpoints = {
 
 		if = {
 			limit = {
-				primary_cultures_percent_state > 0.9
+				primary_cultures_percent_state = {
+					target_country = owner
+					value > 0.9
+				}
 				religion_percent_state = {
 					target = scope:country.religion
 					value > 0.9
@@ -913,7 +940,10 @@ decree_promote_national_values_tsarpoints = {
 		}
 		else_if = {
 			limit = {
-				primary_cultures_percent_state > 0.5
+				primary_cultures_percent_state = {
+					target_country = owner
+					value > 0.5
+				}
 				religion_percent_state = {
 					target = scope:country.religion
 					value > 0.5
@@ -949,7 +979,7 @@ decree_encourage_manufacturing_industry = {
 	cost = 100
 
 	ai_weight = {
-		value = 25
+		value = 0
 		if = {
 			limit = {
 				any_scope_building = {
@@ -1060,7 +1090,6 @@ decree_encourage_manufacturing_industry_tsarpoints = {
 			}
 			multiply = 1.5
 		}
-        multiply = 2			
 	}
 }
 
@@ -1090,7 +1119,7 @@ decree_encourage_agricultural_industry = {
 	cost = 100
 
 	ai_weight = {
-		value = 20
+		value = 0
 		if = {
 			limit = {
 				any_scope_building = {
@@ -1127,7 +1156,7 @@ decree_encourage_agricultural_industry = {
 					count >= 5
 				}
 			}
-			add = 150
+			add = 50
 		}
 		if = {
 			limit = {
@@ -1151,7 +1180,6 @@ decree_encourage_agricultural_industry = {
 			}
 			multiply = 1.5
 		}
-        multiply = 2			
 	}
 }
 
@@ -1263,7 +1291,7 @@ decree_encourage_resource_industry = {
 	cost = 100
 
 	ai_weight = {
-		value = 25
+		value = 0
 		if = {
 			limit = {
 				any_scope_building = {
@@ -1306,7 +1334,7 @@ decree_encourage_resource_industry = {
 					count >= 5
 				}
 			}
-			add = 150
+			add = 50
 		}
 		if = {
 			limit = {
@@ -1327,7 +1355,6 @@ decree_encourage_resource_industry = {
 			}
 			multiply = 1.5
 		}
-        multiply = 2			
 	}
 }
 
@@ -1438,9 +1465,9 @@ decree_greener_grass_campaign = {
 	cost = 100
 
 	ai_weight = {
-		value = 15
+		value = 0
 		if = {
-			limit = { 
+			limit = {
 				any_scope_building = {
 					is_subsistence_building = yes
 					occupancy < 0.75
@@ -1547,12 +1574,11 @@ decree_greener_grass_campaign = {
 			multiply = 2.0
 		}
 		if = {
-			limit = { 
+			limit = {
 				state_unemployment_rate >= 0.05 #0.1 VFM 
 			}
 			multiply = 0
-		}	
-        multiply = 2	
+		}
 	}
 }
 
@@ -1641,7 +1667,7 @@ decree_enlistment_efforts = {
 	cost = 100
 
 	ai_weight = {
-		value = 10
+		value = 0
 
 		if = {
 			limit = {
@@ -1702,7 +1728,6 @@ decree_enlistment_efforts = {
 			}
 			add = 50
 		}
-        multiply = 2			
 	}
 }
 
@@ -1773,7 +1798,6 @@ decree_enlistment_efforts_tsarpoints = {
 			}
 			add = 50
 		}
-        multiply = 2	
 	}
 }
 
@@ -1954,6 +1978,5 @@ decree_establish_missions = {
 			}
 			add = 500
 		}
-        multiply = 2	
 	}
 }

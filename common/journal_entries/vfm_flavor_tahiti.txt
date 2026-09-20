@@ -29,7 +29,7 @@
 		header = JOURNAL_ENTRY_TIMEOUT
 		effect_header = JOURNAL_ENTRY_ON_TIMEOUT
 		flags = { timeout }
-		conclusion_desc = je_standard_failure_conclusion_desc
+		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
 		effect = {
 		    trigger_event = { id = tahiti_events.3 }
 		}

@@ -3,6 +3,10 @@ decrease_autonomy_liberty_desire_to_add = 10 	# When you decrease autonomy of on
 
 annex_subject_max_liberty_desire_change = 25
 annex_subject_intermediate_desire_change = 15
+annex_subject_prestige_full_impact_fraction = 0.25	# The annexed subject reaching this fraction of its overlord's prestige causes the full liberty desire impact
+annex_subject_prestige_min_fraction = 0.25	# Smallest fraction of the full liberty desire impact an annexation can cause
+annex_subject_liberty_desire_modifier_months = 60	# How long other subjects keep their liberty desire modifier after an annexation
+annex_subject_liberty_desire_weekly_max = 0.4	# Weekly liberty desire other subjects gain from an annexation at full impact, scaled down by annex_subject_prestige_ratio
 prestige_to_libery_desire_factor = 5 #converts ratio of prestige to liberty desire when subject over the expected
 army_projection_to_libery_desire_factor = 10 #converts ratio of armed forces to liberty desire when subject over the expected
 army_projection_comparison = {
@@ -36,9 +40,31 @@ num_primary_cultures = {
 	}
 }
 
+annex_subject_prestige_ratio = {
+	add = {
+		add = scope:target_country.prestige
+		desc = ANNEX_SUBJECT_TARGET_PRESTIGE
+	}
+	divide = {
+		add = scope:annexing_overlord.prestige
+		min = 1
+		desc = ANNEX_SUBJECT_OVERLORD_PRESTIGE
+	}
+	divide = annex_subject_prestige_full_impact_fraction
+	min = annex_subject_prestige_min_fraction
+	max = 1
+}
+
+annex_subject_liberty_desire_weekly_change = {
+	add = annex_subject_liberty_desire_weekly_max
+	multiply = annex_subject_prestige_ratio
+}
+
 annex_subject_base_liberty_desire_change = {
-	scope:target_country ?= {
-		add = prestige
+	add = {
+		add = annex_subject_max_liberty_desire_change
+		multiply = annex_subject_prestige_ratio
+		desc = ANNEX_SUBJECT_RELATIVE_PRESTIGE
 	}
 	round = yes
 	min = 1

@@ -382,6 +382,17 @@ on_monthly_pulse_country = {
 			}
 			mutate_moderniser_movement_effect = yes # Relevant if owner has a moderniser movement
 		}
+
+		# For achievement_imagine
+		if = {
+			limit = {
+				has_law_or_variant = law_type:law_council_republic
+				NOT = {
+					any_scope_pop = { standard_of_living < 10 }
+				}
+			}
+			set_variable = achievement_imagine_var
+		}
 	}
 	on_actions = { # delay ensures events won't fire simultaneously
 		# Country-specific pulses (defined in 00_on_actions_monthly.txt)
@@ -405,6 +416,7 @@ on_monthly_pulse_country = {
 		delay = { days = 7 }
 		japan_monarchy_monthly_events
 		fund_lobbies_monthly_events
+		nemo_monthly_events
 		spooky_halloween_events
 		delay = { days = 7 }
 		sweden_events
@@ -4163,6 +4175,9 @@ on_government_reformed = {
 	effect = {
 		# Government Petition
 		set_variable = gov_petition_coin_toss
+	}
+	events = {
+		unable_to_enact.3
 	}
 }
 

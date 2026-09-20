@@ -60,7 +60,7 @@
 		header = je_standard_failure_header
 		effect_header = je_standard_on_failure_header
 		color = "blue_negative"
-		conclusion_desc = je_standard_failure_conclusion_desc
+		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
 		trigger = {
 			OR = {
 				has_law_or_variant = law_type:law_free_trade
@@ -96,7 +96,7 @@
 		header = JOURNAL_ENTRY_TIMEOUT
 		effect_header = JOURNAL_ENTRY_ON_TIMEOUT
 		flags = { timeout }
-		conclusion_desc = je_standard_failure_conclusion_desc
+		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
 		effect = {
 			hidden_effect = {
 				remove_modifier = opium_wars_addiction_modifier

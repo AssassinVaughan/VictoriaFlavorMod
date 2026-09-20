@@ -67,7 +67,7 @@ je_eight_banners = {
         header = je_standard_failure_header
         effect_header = je_standard_on_failure_header
         color = "blue_negative"
-        conclusion_desc = je_standard_failure_conclusion_desc
+        conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
         trigger = {
 			ig:ig_armed_forces = {
 				is_powerful = yes
@@ -80,7 +80,7 @@ je_eight_banners = {
 	
 	outcome = {
 		flags = { hidden invalid_outcome }
-		conclusion_desc = je_standard_failure_conclusion_desc
+		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
 		trigger = {
 			NOT = {
 				country_has_primary_culture = cu:manchu

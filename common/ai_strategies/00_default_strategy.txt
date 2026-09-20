@@ -10425,13 +10425,23 @@ ai_strategy_default = {
 
 			if = {
 				limit = {
-					scope:target_state = { primary_cultures_percent_state >= 0.9 }
+					scope:target_state = {
+						primary_cultures_percent_state = {
+							target_country = owner
+							value >= 0.9
+						}
+					}
 				}
 				multiply = 0
 			}
 			else_if = {
 				limit = {
-					scope:target_state = { primary_cultures_percent_state >= 0.8 }
+					scope:target_state = {
+						primary_cultures_percent_state = {
+							target_country = owner
+							value >= 0.8
+						}
+					}
 				}
 				multiply = 0.5
 			}

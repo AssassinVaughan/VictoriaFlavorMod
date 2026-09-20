@@ -75,7 +75,7 @@
 	
 	outcome = {
 		flags = { hidden invalid_outcome }
-		conclusion_desc = je_standard_failure_conclusion_desc
+		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
 		trigger = {
 			OR = {
 			owns_entire_state_region = STATE_LOMBARDY
@@ -91,7 +91,7 @@
         header = je_standard_failure_header
         effect_header = je_standard_on_failure_header
         color = "blue_negative"
-        conclusion_desc = je_standard_failure_conclusion_desc
+        conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
         trigger = {
 			custom_tooltip = {
     		text = plombieres_agreement_fail

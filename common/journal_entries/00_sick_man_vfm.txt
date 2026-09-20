@@ -33,7 +33,7 @@
 		header = JOURNAL_ENTRY_TIMEOUT
 		effect_header = JOURNAL_ENTRY_ON_TIMEOUT
 		flags = { timeout }
-		conclusion_desc = je_standard_failure_conclusion_desc
+		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
 		effect = {
 		remove_modifier = sick_man_of_europe
 		add_modifier = {
@@ -200,7 +200,7 @@ REPLACE:je_sick_man_syria = {
 
 	outcome = {
 		flags = { hidden invalid_outcome }
-		conclusion_desc = je_standard_failure_conclusion_desc
+		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
 		trigger = {
 			custom_tooltip = {
 				text = finished_sick_man_tt
@@ -288,7 +288,7 @@ REPLACE:je_sick_man_egypt = {
 
 	outcome = {
 		flags = { hidden invalid_outcome }
-		conclusion_desc = je_standard_failure_conclusion_desc
+		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
 		trigger = {
 			custom_tooltip = {
 				text = finished_sick_man_tt
@@ -366,7 +366,7 @@ REPLACE:je_sick_man_economy = {
 	
 	outcome = {
 		flags = { hidden invalid_outcome }
-		conclusion_desc = je_standard_failure_conclusion_desc
+		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
 		trigger = {
 			custom_tooltip = {
 				text = finished_sick_man_tt
@@ -382,7 +382,7 @@ REPLACE:je_sick_man_economy = {
         header = je_standard_failure_header
         effect_header = je_standard_on_failure_header
         color = "blue_negative"
-        conclusion_desc = je_standard_failure_conclusion_desc
+        conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
         trigger = {
 			in_default = yes
 		}
@@ -458,7 +458,7 @@ REPLACE:je_sick_man_education = {
 
 	outcome = {
 		flags = { hidden invalid_outcome }
-		conclusion_desc = je_standard_failure_conclusion_desc
+		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
 		trigger = {
 			custom_tooltip = {
 				text = finished_sick_man_tt
@@ -537,7 +537,7 @@ REPLACE:je_sick_man_separatism = {
 		header = je_standard_failure_header
 		effect_header = je_standard_on_failure_header
 		color = "blue_negative"
-		conclusion_desc = je_standard_failure_conclusion_desc
+		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
 		trigger = {
 			highest_secession_progress > 0.5
 		}
@@ -567,7 +567,7 @@ REPLACE:je_sick_man_separatism = {
 
 	outcome = {
 		flags = { hidden invalid_outcome }
-		conclusion_desc = je_standard_failure_conclusion_desc
+		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
 		trigger = {
 			custom_tooltip = {
 				text = finished_sick_man_tt
@@ -661,7 +661,7 @@ REPLACE:je_sick_man_army = {
 
 	outcome = {
 		flags = { hidden invalid_outcome }
-		conclusion_desc = je_standard_failure_conclusion_desc
+		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
 		trigger = {
 			custom_tooltip = {
 				text = finished_sick_man_tt
@@ -743,7 +743,7 @@ je_sick_man_navy = {
 
 	outcome = {
 		flags = { hidden invalid_outcome }
-		conclusion_desc = je_standard_failure_conclusion_desc
+		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
 		trigger = {
 			custom_tooltip = {
 				text = finished_sick_man_tt
@@ -816,7 +816,7 @@ REPLACE:je_sick_man_bureaucracy = {
 
 	outcome = {
 		flags = { hidden invalid_outcome }
-		conclusion_desc = je_standard_failure_conclusion_desc
+		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
 		trigger = {
 			custom_tooltip = {
 				text = finished_sick_man_tt
@@ -897,7 +897,7 @@ je_sick_man_vilayets = {
 	
 	outcome = {
 		flags = { hidden invalid_outcome }
-		conclusion_desc = je_standard_failure_conclusion_desc
+		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
 		trigger = {
 			custom_tooltip = {
 				text = finished_sick_man_tt
@@ -970,7 +970,7 @@ je_sick_man_kurdistan = {
 
     outcome = {
 		flags = { hidden invalid_outcome }
-		conclusion_desc = je_standard_failure_conclusion_desc
+		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
 		trigger = {
 			custom_tooltip = {
 				text = finished_sick_man_tt
@@ -1088,7 +1088,7 @@ je_sick_man_arabia = {
 		header = JOURNAL_ENTRY_TIMEOUT
 		effect_header = JOURNAL_ENTRY_ON_TIMEOUT
 		flags = { timeout }
-		conclusion_desc = je_standard_failure_conclusion_desc
+		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
 		effect = {
 	    add_fervor_target_modifier = {
 			culture = cu:mashriqi
@@ -1111,7 +1111,7 @@ je_sick_man_arabia = {
 
 	outcome = {
 		flags = { hidden invalid_outcome }
-		conclusion_desc = je_standard_failure_conclusion_desc
+		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
 		trigger = {
 			custom_tooltip = {
 				text = finished_sick_man_tt
