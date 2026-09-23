@@ -277,104 +277,129 @@ vfm_greece.6 = {
 
 
 # revolters in ottoman occupied lands request support
+# greek Revolt Event
 vfm_greece.7 = {
 	type = country_event
-	placement = scope:ottoman_state
+	placement = root
 
 	title = vfm_greece.7.t
 	desc = vfm_greece.7.d
 	flavor = vfm_greece.7.f
 
-	gui_window = event_window_1char_tabloid
-	left_icon = scope:historic_agitator_scope
-
-	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
-	on_opened_soundeffect = "event:/SFX/Events/misc/1Character_Banner"
-
-	icon = "gfx/interface/icons/event_icons/event_fire.dds"
-
 	duration = 3
 
+	event_image = {
+		video = "votp_barricade"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+
+	cooldown = { days = normal_modifier_time }
+
+
 	trigger = {
-	    exists = c:GRE
-		this = c:GRE
-		any_scope_character = {
-			has_role_of_type =agitator
-			has_ideology = ideology:ideology_ethno_nationalist
-		}
+		# triggered by on_action
 	}
 
 	immediate = {
-		c:TUR = {
-			save_scope_as = turkey_country
+		cu:greek = {
+			save_scope_as = greek_culture_scope
+		}
+		random_country = {
+			limit = {
+				has_variable = greek_rebel_country_var
+			}
+			save_scope_as = greek_rebel_country_scope
 			random_scope_state = {
 				limit = {
-				    state_region = { 
-					    is_homeland = cu:greek
-					}
-					OR = { 
-					    has_state_trait = state_medeteranean_climate
-						state_region = s:STATE_MACEDONIA
-						state_region = s:STATE_WESTERN_THRACE
+					state_region = {
+						is_homeland = cu:greek
 					}
 				}
-				save_scope_as = ottoman_state
+				save_scope_as = greek_rebel_state_scope
 			}
 		}
-		random_scope_character = {
+		random_country = {
 			limit = {
-				has_role_of_type =agitator
-			    has_ideology = ideology:ideology_ethno_nationalist
+				has_variable = greek_rebel_country_enemy_var
 			}
-			save_scope_as = historic_agitator_scope
+			save_scope_as = greek_rebel_country_enemy_scope
+		}
+		random_diplomatic_play = {
+			limit = {
+				target = {
+					has_variable = greek_rebel_country_var
+				}
+			}
+			save_scope_as = gre_diplo_play
 		}
 	}
 
 	option = {
 		name = vfm_greece.7.a
-		default_option = yes
-		add_treasury = -30000
-		scope:ottoman_state = {
-		    add_radicals_in_state = {
-				value = 0.15
-				culture = cu:greek
-			}
-			state_region = {
-			    add_devastation = 20
-		    }
-			
-			trigger_event = { id = vfm_greece.8 }
+		add_radicals = {
+			culture = cu:greek
+			value = medium_radicals
 		}
-		show_as_tooltip = {
-		    scope:ottoman_state = {
-				if = { 
-				    limit = { 
-					    any_scope_building = {
-						    is_building_type = building_barrack
-					    }
-					}
-					remove_building = building_barrack
-				}
-			}
-		}
-		change_infamy = 5
+		change_relations = { country = scope:greek_rebel_country_scope value = -10 }
+		change_relations = { country = scope:greek_rebel_country_enemy_scope value = 10 }
 	}
-	
+
 	option = {
 		name = vfm_greece.7.b
-		scope:ottoman_state = {
-		    add_radicals_in_state = {
-				value = 0.1
-				culture = cu:greek
-			}
-			state_region = {
-			       add_devastation = 10
-		    }
-			trigger_event = { id = vfm_greece.9 }
+		highlighted_option = yes
+		trigger = {
+			is_subject = no
 		}
-		add_radicals = {
-			pop_type = officers
+		add_loyalists = {
+			culture = cu:greek
 			value = small_radicals
+		}
+		add_modifier = {
+			name = funding_greek_rebels_small_modifier
+			days = short_modifier_time
+		}
+		scope:greek_rebel_country_scope = {
+			add_modifier = {
+				name = greek_rebel_funding_modifier
+				days = short_modifier_time
+			}
+		}
+		change_relations = { country = scope:greek_rebel_country_scope value = 20 }
+		change_relations = { country = scope:greek_rebel_country_enemy_scope value = -20 }
+	}
+
+	option = {
+		name = vfm_greece.7.c
+		highlighted_option = yes
+		default_option = yes
+		# TODO AI weight
+		trigger = {
+			is_subject = no
+		}
+		add_loyalists = {
+			culture = cu:greek
+			value = medium_radicals
+		}
+		add_modifier = {
+			name = funding_greek_rebels_large_modifier
+			days = short_modifier_time
+		}
+		scope:greek_rebel_country_scope = {
+			add_modifier = {
+				name = greek_rebel_funding_modifier
+				days = short_modifier_time
+				multiplier = 2
+			}
+		}
+		change_relations = { country = scope:greek_rebel_country_scope value = 40 }
+		change_relations = { country = scope:greek_rebel_country_enemy_scope value = -40 }
+		
+
+		scope:gre_diplo_play = {
+			add_target_backers = { root }
 		}
 	}
 }

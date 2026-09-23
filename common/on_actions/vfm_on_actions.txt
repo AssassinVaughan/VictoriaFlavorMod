@@ -122,12 +122,6 @@ vfm_hidden_ai = {
 	}
 }
 
-vfm_events_five_year_greece = {
-	events = {
-		vfm_greece.7
-	}
-}
-
 vfm_disasters_yearly_country = {
 	random_events = {
 		3 = 0
@@ -307,6 +301,7 @@ fra_birth_modifier_on_action = { # from VTM, maybe add this as a tech instead?
 on_secession_start = {
 	on_actions = {
 		IQU_joins_secession
+		GRE_rebellion_on_action
 	}
 }
 
@@ -339,4 +334,44 @@ IQU_joins_secession = {
 			}
 		}
 	}	
+}
+
+GRE_rebellion_on_action = {
+    effect = {
+	    if = {
+			limit = {
+				scope:target ?= {
+					country_has_primary_culture = cu:greek
+				}
+				NOT = {
+			        country_has_primary_culture = cu:greek
+				}
+				any_country_in_megali_greece = {
+					country_has_primary_culture = cu:greek
+					NOT = {
+						scope:target ?= this
+					}
+				}
+			}
+			scope:target ?= {
+				set_variable = {
+					name = greek_rebel_country_var
+					days = short_modifier_time
+				}
+			}
+			set_variable = {
+				name = greek_rebel_country_enemy_var
+				days = short_modifier_time
+			}
+			every_country_in_megali_greece = {
+				limit = {
+					country_has_primary_culture = cu:greek
+					NOT = {
+						scope:target ?= this
+					}
+				}
+				trigger_event = { id = vfm_greece.7 days = 7 popup = yes }
+			}
+		}
+	}
 }

@@ -22,26 +22,21 @@ vfm_historical_agitators.1 = { # Spyridon Karaiskakis
 	trigger = {
 		has_dlc_feature = voice_of_the_people_content
 		country_has_primary_culture = cu:greek
-		NOT = { has_global_variable = spyridon_spawn }
 		empty_agitator_slots >= 1
+		NOT = { is_template_used = spyridon_karaiskakis }
 		game_date > 1840.1.1
 		game_date < 1872.1.1
 	}
-
+	
 	immediate = {
 		create_character = {
 			template = spyridon_karaiskakis
-			on_created = {
-				set_variable = spyridon_var		
-			}
-		}
-		random_scope_character = {
-			limit = {
-				has_variable = spyridon_var
-			}
 			save_scope_as = historic_agitator_scope
+			on_created = {
+				set_temporary_event_immortality = { DURATION = 3 }
+			}
 		}
-		set_global_variable = spyridon_spawn
+
 		s:STATE_ATTICA = {
 			random_scope_state = {
 				limit = {
@@ -52,6 +47,10 @@ vfm_historical_agitators.1 = { # Spyridon Karaiskakis
 				save_scope_as = attica_state
 			}
 		}
+	}
+
+	after = {
+		revoke_temporary_event_immortality = { CHARACTER = scope:historic_agitator_scope }
 	}
 
 	option = {
@@ -76,15 +75,7 @@ vfm_historical_agitators.1 = { # Spyridon Karaiskakis
 		    create_pop = {
 				pop_type = soldiers
 				culture = greek
-				size = 500			
-		    }
-			#create_building={
-			#	building="building_barracks"
-			#	level=1
-			#	reserves=1
-			#}
-			state_region = {
-			    add_devastation = 10
+				size = 1000			
 		    }
 		}
 		change_infamy = 3
