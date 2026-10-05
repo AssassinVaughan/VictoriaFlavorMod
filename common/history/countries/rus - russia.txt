@@ -26,24 +26,12 @@
 
 		add_taxed_goods = g:liquor
 
-		if = {
-			limit = {
-				#	has_dlc_feature = ip5_content # TODO PRCAL-45691
-			}			
-			trigger_event = {
-				id = tsarpoints_events.14
-				days = 1
-				popup = yes
-			}
-			# je_tsarpoints_master is fired from Russian character setup due to read order issues
-		}
-		
-		set_export_tariff_level = { 
+		set_export_tariff_level = {
 			goods = g:grain
 			level = no_tariffs_or_subventions
 		}
-		
-		set_export_tariff_level = { 
+
+		set_export_tariff_level = {
 			goods = g:wood
 			level = no_tariffs_or_subventions
 		}
@@ -55,16 +43,38 @@
 			add_owned_country = c:ALK
 		}
 
+		if = {
+			limit = {
+					has_dlc_feature = ip5_content
+			}
+			trigger_event = {
+				id = tsarpoints_events.14
+				days = 1
+				popup = yes
+			}
+			# je_tsarpoints_master is fired from Russian character setup due to read order issues
+
+			add_journal_entry = {
+				type = je_rlit_golden_age
+			}
+			trigger_event = {
+				id = rlit.001
+				days = 30
+				popup = yes
+			}
+			trigger_event = {
+				id = rlit.052
+				months = 1140
+				popup = yes
+			}
+			initialize_russian_revolution_alignments = yes
+		}
+
 		active_law:lawgroup_colonization ?= {
 			add_amendment = {
 				type = amendment_cossacks
 				sponsor = PREV.ig:ig_rural_folk
 			}
 		}
-
-		set_variable = { name = rus_tsar_count value = 1 }
-		set_variable = { name = rus_tsar_conservative value = 1 }
-		set_variable = { name = rus_tsar_liberal value = 0 }
-		set_variable = { name = rus_tsar_socialist value = 0 }
 	}
 }

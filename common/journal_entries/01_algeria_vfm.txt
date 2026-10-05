@@ -36,9 +36,9 @@ REPLACE:je_french_foreign_legion = {
 		color = "blue_negative"
 		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
 		trigger = {
-			NOT = { has_state_in_state_region = STATE_ORAN }
-			NOT = { has_state_in_state_region = STATE_ALGIERS }
-			NOT = { has_state_in_state_region = STATE_CONSTANTINE }
+			NOT = { has_or_is_contesting_state_in_state_region = STATE_ORAN }
+			NOT = { has_or_is_contesting_state_in_state_region = STATE_ALGIERS }
+			NOT = { has_or_is_contesting_state_in_state_region = STATE_CONSTANTINE }
 		}
 		effect = {
 			je_french_foreign_legion_cleanup = yes

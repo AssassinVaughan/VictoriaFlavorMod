@@ -5,6 +5,12 @@
 			sg:iron = {
 				add_exports = 35
 			}
+			sg:tools = {
+				add_imports = 10
+			}
+			sg:coffee = {
+				add_imports = 5
+			}
 		}
 	}
 	s:STATE_GOTALAND={
@@ -160,7 +166,7 @@
     s:STATE_POMERANIA={
 		region_state:PRU={
             sg:iron = {
-				add_imports = 15
+				add_imports = 10
 			}	
             sg:hardwood = {
 				add_imports = 15
@@ -211,8 +217,24 @@
 	}
 	s:STATE_WEST_PRUSSIA={
 		region_state:PRU={
+		    sg:iron = {
+				add_imports = 10
+			}
+			sg:silk = {
+				add_imports = 10
+			}
 			sg:artillery = {
 				add_exports = 5
+			}
+			sg:sugar = {
+				add_imports = 20
+			}
+		}
+	}
+	s:STATE_WESTPHALIA={
+		region_state:PRU={
+			sg:tools = {
+				add_exports = 15
 			}
 		}
 	}

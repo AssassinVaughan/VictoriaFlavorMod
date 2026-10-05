@@ -173,7 +173,7 @@ law_monarchy = {
 		if = {
 			limit = {
 				AND = {
-					has_law = law_type:law_subjecthood
+					has_law_or_variant = law_type:law_subjecthood
 					NOR = {
 						has_law = law_type:law_theocracy
 						is_enacting_law = law_type:law_theocracy
@@ -682,7 +682,7 @@ law_theocracy = {
 		if = {
 			limit = {
 				AND = {
-					has_law = law_type:law_subjecthood
+					has_law_or_variant = law_type:law_subjecthood
 					NOR = {
 						has_law = law_type:law_monarchy
 						is_enacting_law = law_type:law_monarchy
@@ -881,7 +881,7 @@ law_council_republic = {
 			}
 			activate_law = law_type:law_factory_councils
 		}
-	    custom_tooltip = {
+		custom_tooltip = {
 			text = enact_law_radical_leftist_government_warning_desc
 			every_country = {
 				limit = {
@@ -912,7 +912,7 @@ law_council_republic = {
 			}
 		}
 	}
-	
+
 	on_deactivate = {
 		if = {
 			limit = {
@@ -1297,7 +1297,7 @@ law_social_monarchy = {
 		if = {
 			limit = {
 				AND = {
-					has_law = law_type:law_subjecthood
+					has_law_or_variant = law_type:law_subjecthood
 					NOR = {
 						has_law = law_type:law_theocracy
 						is_enacting_law = law_type:law_theocracy

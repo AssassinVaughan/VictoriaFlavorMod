@@ -382,6 +382,13 @@ journal_flavor_germany.4 = {
 		
 		every_country = {
 			limit = {
+				has_modifier = steuerverein_imports
+		    }
+			remove_modifier = steuerverein_imports
+		}
+		
+		every_country = {
+			limit = {
 				is_in_same_power_bloc = ROOT
 				NOT = { this = ROOT }
 				OR = {
@@ -400,6 +407,13 @@ journal_flavor_germany.4 = {
 		add_modifier = {
 			name = steuerverein_breakup
 			days = long_modifier_time
+		}
+		
+		every_country = {
+			limit = {
+				has_modifier = steuerverein_imports
+		    }
+			remove_modifier = steuerverein_imports
 		}
 		
 		every_country = {

@@ -9,7 +9,12 @@ GLOBAL = {
 		}
 		add_contextless_journal_entry = je_caucasian_war
 	}
-	add_contextless_journal_entry = je_congress_poland # TODO DLC lock
+	if = {
+		limit = {
+			has_dlc_feature = ip5_content
+		}
+		add_contextless_journal_entry = je_congress_poland
+	}
 
 	every_country = {
 		limit = { NOT = { has_law_or_variant = law_type:law_slavery_banned } }

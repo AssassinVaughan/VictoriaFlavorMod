@@ -605,6 +605,19 @@
 				reserves=1
 			}	
 			create_building={
+				building="building_food_industry"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:PRU"
+						levels=1
+						region="STATE_WEST_PRUSSIA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_pot_stills" "pm_disabled_canning" "pm_sweeteners" "pm_manual_dough_processing"  }
+			}
+			create_building={
 				building="building_fishing_wharf"
 				add_ownership={
 					building={
@@ -731,7 +744,7 @@
 					building={
 						type="building_financial_district"
 						country="c:PRU"
-						levels=2
+						levels=1
 						region="STATE_POSEN"
 					}
 				}

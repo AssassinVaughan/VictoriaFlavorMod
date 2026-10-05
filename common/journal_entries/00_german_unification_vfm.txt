@@ -1,6 +1,6 @@
 ﻿REPLACE:je_schleswig_holstein_question = {
 	icon = "gfx/interface/icons/event_icons/event_flags/event_ger_flag.dds"
-	
+
 	group = je_group_german_unification
 
 	activation_description = {
@@ -12,25 +12,27 @@
 			country_has_primary_culture = cu:north_german
 			country_has_primary_culture = cu:south_german
 		}
+		is_in_geographic_region = geographic_region_german_confederation
 		NOT = {
 			c:AUS = THIS
 		}
 	}
 
 	is_shown_when_inactive = {
-		hidden_trigger = { NOT = { has_global_variable = schleswig_holstein_question_solved } }		
+		hidden_trigger = { NOT = { has_global_variable = schleswig_holstein_question_solved } }
 		OR = {
 			country_has_primary_culture = cu:north_german
 			country_has_primary_culture = cu:south_german
 		}
+		is_in_geographic_region = geographic_region_german_confederation
 	}
 
 	possible = {
-		hidden_trigger = { NOT = { has_global_variable = schleswig_holstein_question_solved } }			
+		hidden_trigger = { NOT = { has_global_variable = schleswig_holstein_question_solved } }
 		OR = {
 			country_has_primary_culture = cu:north_german
 			country_has_primary_culture = cu:south_german
-		}			
+		}
 	}
 
 	outcome = {
@@ -39,18 +41,19 @@
 		color = "gold_positive"
 		conclusion_desc = je_standard_completion_conclusion_desc
 		trigger = {
-		trigger_if = {
-			limit = {
+			trigger_if = {
+				limit = {
 			    has_variable = je_potential_sch_hol_solver
-				OR = {
-					c:HOL ?= this
-					c:SCH ?= this
+					OR = {
+						c:HOL ?= this
+						c:SCH ?= this
+					}
 				}
+				is_subject = no
 			}
-			is_subject = no
-		}
-		trigger_if = {
-			limit = {
+			trigger_if = {
+				limit = {
+                has_variable = je_potential_sch_hol_solver
 				NOT = { c:HOL ?= this }
 				NOT = { c:SCH ?= this }
 				exists = c:DEN
@@ -58,46 +61,45 @@
 			custom_tooltip = {
 				text = je_schleswig_holstein_question_state_ownership_desc
 				OR = {
+                    any_scope_state = { state_region = s:STATE_SCHLESWIG_HOLSTEIN }
 					s:STATE_SCHLESWIG_HOLSTEIN = {
 					    any_scope_state = {
-						    OR = {
-							    owner = ROOT
 							    owner = {
+                                    NOT = { c:LUB ?= this }
 							    	is_subject_of = ROOT
 							    }
-						    }
 						}
 					}
-					has_variable = je_potential_sch_hol_solver
+					
 				}
 				s:STATE_SCHLESWIG_HOLSTEIN = {
 					NOT = {
 						any_scope_state = {
-							OR = {
-								NOT = {
-									owner = {
-										OR = {
-											country_has_primary_culture = cu:north_german
-											country_has_primary_culture = cu:south_german
+								OR = {
+									NOT = {
+										owner = {
+											OR = {
+												country_has_primary_culture = cu:north_german
+												country_has_primary_culture = cu:south_german
+											}
 										}
 									}
-								}
-								owner = {
-									is_subject_of = c:DEN
+									owner = {
+										is_subject_of = c:DEN
+									}
 								}
 							}
 						}
 					}
 				}
 			}
-		}
-		trigger_if = {
-			limit = {
-				c:LUB ?= this
+			trigger_if = {
+				limit = {
+					c:LUB ?= this
+				}
+				country_or_subject_owns_entire_state_region = STATE_SCHLESWIG_HOLSTEIN
 			}
-			country_or_subject_owns_entire_state_region = STATE_SCHLESWIG_HOLSTEIN
 		}
-	    }
 		effect = {
 			add_modifier = {
 				name = schleswig_holstein_question_solver
@@ -107,12 +109,12 @@
 			je_schleswig_holstein_question_cleanup = yes
 		}
 	}
-	
+
 	outcome = {
 		header = je_standard_failure_header
 		effect_header = je_standard_on_failure_header
 		color = "blue_negative"
-		conclusion_desc = JOURNAL_ENTRY_TIMEOUT_CONCLUSION_DESC
+		conclusion_desc = je_standard_failure_conclusion_desc
 		trigger = {
 			custom_tooltip = {
 				has_global_variable = schleswig_holstein_question_solved
@@ -124,16 +126,17 @@
 			je_schleswig_holstein_question_cleanup = yes
 		}
 	}
-	
+
 	status_desc = {
 		first_valid = {
-			triggered_desc = { 
+			triggered_desc = {
 				desc = je_schleswig_holstein_question_status
 			}
 		}
 	}
 
 	weight = 1000
+		
 	should_be_pinned_by_default_uninvolved_or_context = yes
 }
 

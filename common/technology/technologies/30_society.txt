@@ -400,6 +400,13 @@ mass_communication = {
 	
 	ai_weight = {
 		value = 1.5 # Important in general
+		
+		if = {
+			limit = {
+				c:RUS ?= this
+			}
+			add = 10
+		}
 	}
 }
 
@@ -412,6 +419,7 @@ empiricism = {
 	modifier = {
 		country_influence_mult = 0.2
 		country_diplomatic_play_maneuvers_mult = 0.25
+		country_infamy_generation_mult = -0.05
 		country_institution_schools_max_investment_add = 1
 		state_education_access_wealth_add = 0.005
 	}
@@ -706,6 +714,24 @@ central_banking = {
 	
 	ai_weight = {
 		value = 1
+		
+		if = {
+			limit = {
+				OR = {
+					has_journal_entry = je_tp_pool_secret_police
+					AND = {
+						has_journal_entry = je_tp_tsar_unshakable_autocracy
+						NOT = { has_variable = je_tp_tsar_unshakable_autocracy_button_1_complete }
+					}
+					AND = {
+						has_journal_entry = je_tp_tsar_great_reform
+						NOT = { has_variable = je_great_reforms_bureaucratic_complete }
+						has_law = law_type:law_third_section
+					}
+				}
+			}
+			add = 5
+		}
 	}
 }
 
@@ -824,6 +850,7 @@ nationalism = {
 		country_voting_power_mult = 0.1
 		country_infamy_generation_mult = -0.05
 		country_infamy_generation_against_unrecognized_mult = -0.1
+		country_homeland_infamy_reduction_bool = yes
 	}
 	
 	unlocking_technologies = {
@@ -833,6 +860,13 @@ nationalism = {
 	
 	ai_weight = {
 		value = 2 # Important in general
+		
+		if = {
+			limit = {
+				c:RUS ?= this
+			}
+			add = 10
+		}
 		
 		# Extra-important for major unifications
 		if = {
@@ -962,6 +996,7 @@ human_rights = {
 	
 	modifier = {
 		country_institution_social_security_max_investment_add = 1
+		country_ban_slavery_no_infamy_bool = yes
 	}
 	
 	unlocking_technologies = {
@@ -1333,6 +1368,7 @@ pan-nationalism = {
 		country_authority_mult = 0.1
 		country_voting_power_mult = 0.1
 		country_support_separatism_strength_mult = 0.25
+		country_shared_language_infamy_reduction_bool = yes
 	}
 	
 	unlocking_technologies = {
@@ -1357,6 +1393,14 @@ pan-nationalism = {
 				}				
 			}
 			add = 2
+		}
+
+		if = {
+			limit = {
+				has_journal_entry = je_tp_tsar_unshakable_autocracy
+				NOT = { has_variable = je_tp_tsar_unshakable_autocracy_button_2_complete }
+			}
+			add = 5
 		}	
 	}
 }
@@ -1475,7 +1519,9 @@ philosophical_pragmatism = {
 	modifier = {
 		country_influence_mult = 0.2
 		country_diplomatic_play_maneuvers_mult = 0.25
+		country_infamy_generation_mult = -0.05
 		state_bureaucracy_population_base_cost_factor_mult = -0.05
+		state_literacy_growth_add = 0.0001
 	}
 	
 	unlocking_technologies = {

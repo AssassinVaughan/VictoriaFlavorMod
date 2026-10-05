@@ -512,7 +512,27 @@ law_revolutionary_guard = {
 		}
 	}
 
+	ai_will_do = {
+		NOT = { has_strategy = ai_strategy_consolidation_agenda }
+		any_interest_group = {
+			is_in_government = yes
+			has_party = yes
+			party ?= {
+				OR = {
+					is_party_type = socialist_party
+					is_party_type = communist_party
+					is_party_type = anarchist_party
+				}
+			}
+		}
+	}
+
 	ai_enact_weight_modifier = { #Petitions
 		value = 0
+
+		if = {
+			limit = { ai_has_enact_weight_modifier_journal_entries = yes }
+			add = 750
+		}
 	}
 }

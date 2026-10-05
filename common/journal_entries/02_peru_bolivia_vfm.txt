@@ -151,10 +151,12 @@
 		conclusion_desc = je_peru_bolivia_restorer_victory_conclusion_desc
 		trigger = {
 			OR = {
-				NOT = {
-					exists = c:BOL
+				AND = {
+					NOT = { exists = c:BOL }
+					NOT = { war_may_restore_country = BOL }
 				}
 				AND = {
+					c:BOL ?= { is_at_war = no }
 					OR = {
 						NOT = {
 							exists = c:SPU
@@ -193,6 +195,7 @@
 			}
 				c:BOL ?= {
 					is_subject = yes
+					is_at_war = no
 				}
 			}
 		}

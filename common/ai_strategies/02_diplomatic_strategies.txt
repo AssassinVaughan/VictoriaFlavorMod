@@ -1,72 +1,98 @@
 ﻿# Generic
 ai_strategy_maintain_power_balance = {
 	icon = "gfx/interface/icons/ai_strategy_icons/maintain_power_balance.dds"
-	
+
 	type = diplomatic
-	
+
 	will_form_power_bloc = {
 		global_country_ranking = 1
 	}
-	
+
 	undesirable_infamy_level = {
 		value = 25
+
+		if = {
+			limit = {
+				has_technology_researched = pan-nationalism
+			}
+			multiply = 1.5
+		}
+		else_if = {
+			limit = {
+				has_technology_researched = nationalism
+			}
+			multiply = 1.25
+		}
 	}
-	
+
 	unacceptable_infamy_level = {
 		value = 50
+
+		if = {
+			limit = {
+				has_technology_researched = pan-nationalism
+			}
+			multiply = 1.5
+		}
+		else_if = {
+			limit = {
+				has_technology_researched = nationalism
+			}
+			multiply = 1.25
+		}
 	}
-	
+
 	ideological_opinion_effect_mult = {
 		value = 1.5
 	}
-	
+
 	wargoal_maneuvers_fraction = {
 		value = -0.1
-	}	
-	
+	}
+
 	diplomatic_play_neutrality = {
 		value = 0
 	}
-	
+
 	diplomatic_play_boldness = {
 		value = -25
 	}
-	
+
 	recklessness = {
 		value = -0.25
 	}
-	
+
 	aggression = {
-		value = 0.25	
+		value = 0.25
 
 		if = {
-			limit = { 
+			limit = {
 				NOT = { is_country_type = unrecognized }
-				scope:target_country = { is_country_type = unrecognized } 
+				scope:target_country = { is_country_type = unrecognized }
 				has_technology_researched = colonization
 				institution_investment_level = {
 					institution = institution_colonial_affairs
 					value >= 1
-				}					
+				}
 			}
 			add = 0.25
-			
+
 			if = {
 				limit = {
 					power_bloc ?= { has_principle = principle:principle_colonial_offices_3 }
 				}
 				add = 0.5
 			}
-			
+
 			if = {
 				limit = { has_technology_researched = civilizing_mission }
 				add = 0.5
-				
+
 				if = {
 					limit = { has_strategic_adjacency = scope:target_country }
 					add = 0.5
 				}
-			}			
+			}
 		}
 
 		# Less aggressive against countries we're just antagonistic against, rather than belligerent/domineering
@@ -75,9 +101,9 @@ ai_strategy_maintain_power_balance = {
 				has_attitude = {
 					who = scope:target_country
 					attitude = antagonistic
-				}					
+				}
 			}
-			multiply = 0.2
+			multiply = 0.1
 		}
 
 		# More aggressive against ideological enemies, a bit less aggressive against ideological allies
@@ -87,19 +113,17 @@ ai_strategy_maintain_power_balance = {
 			add = 1
 			max = 2.0
 			min = 0.5
-		}		
+		}
 	}
-	 
+
 	building_group_weights = {
 		bg_technology = 1.25
 	}
-	
+
 	secret_goal_weights = {
 		protect = 1.5
 		dominate = 1.5
 		reconcile = 1.5
-		conquer = 1
-        antagonize = 1
 	}
 
 	wargoal_weights = {
@@ -107,34 +131,113 @@ ai_strategy_maintain_power_balance = {
 		humiliation = 2.0
 		liberate_subject = 1.5
 		liberate_country = 1.5
-        take_treaty_port = 1.5
-		conquer_state = 1.0
-		return_state = 1.0
 		force_nationalization = 0.25
+	}
+
+	diplomatic_play_support = {
+		value = 0
+
+		if = { # More likely to side with weaker targets
+			limit = {
+				scope:enemy_country = { country_rank >= rank_value:great_power }
+				scope:country.country_rank < scope:enemy_country.country_rank
+			}
+			add = {
+				value = 10
+				desc = "AI_STRATEGY_SUPPORT_BALANCE_WEAKER_SIDE"
+			}
+		}
+
+		if = { # Fun police against high infamy targets
+			limit = {
+				scope:enemy_country = {
+					country_rank >= rank_value:great_power
+					infamy >= infamy_threshold:infamous
+				}
+			}
+			add = {
+				value = 25
+				desc = "AI_STRATEGY_SUPPORT_BALANCE_RESTRAIN_INFAMOUS"
+			}
+		}
+
+		if = { # No desire to help rival bloc
+			limit = {
+				country_is_in_different_power_bloc = { TARGET = scope:country }
+			}
+			add = {
+				value = -15
+				desc = "AI_STRATEGY_SUPPORT_BALANCE_RIVAL_BLOC"
+			}
+		}
+	}
+
+	treaty_category_scores = {
+		military_defense = {
+			value = 4
+			if = {
+				limit = {
+					OR = {
+						AND = {
+							has_journal_entry = je_tp_tsar_gendarme_of_europe
+							NOT = { has_variable = je_tp_tsar_gendarme_of_europe_button_1_complete }
+						}
+						AND = {
+							has_journal_entry = je_tp_tsar_unshakable_autocracy
+							NOT = { has_variable = je_tp_tsar_unshakable_autocracy_button_4_complete }
+						}
+					}
+				}
+				add = 2
+			}
+		}
+
+		expansion = {
+			value = -2
+		}
+	}
+
+	strategic_region_stance_type_scores = {
+		stance_protect_region = {
+			value = 25
+		}
+
+		stance_conquer_region = {
+			value = -25
+		}
+	}
+
+	obligation_value = {
+		if = {
+			limit = {
+				scope:target_country = { country_rank >= rank_value:major_power }
+			}
+			add = 5
+		}
 	}
 
 	possible = {
 		is_subject = no
 	}
-	
+
 	weight = {
 		value = 10
-		
+
 		if = {
 			limit = { country_rank < rank_value:major_power }
 			add = 10
 		}
 
 		if = { # Metternich System
-			limit = { 
+			limit = {
 				c:AUS ?= this
 				has_journal_entry = je_metternich
 			}
 			add = 50
-		}		
-		
+		}
+
 		if = {
-			limit = { 
+			limit = {
 				exists = c:FRA
 				c:FRA = this
 				ruler = {
@@ -143,14 +246,21 @@ ai_strategy_maintain_power_balance = {
 			}
 			add = 20
 		}
+
+		if = {
+			limit = {
+				has_journal_entry = je_tp_tsar_unshakable_autocracy
+			}
+			add = 100
+		}
 	}
 }
 
 ai_strategy_territorial_expansion = {
 	icon = "gfx/interface/icons/ai_strategy_icons/territorial_expansion.dds"
-	
+
 	type = diplomatic
-	
+
 	will_form_power_bloc = {
 		OR = {
 			global_country_ranking <= 3
@@ -160,45 +270,58 @@ ai_strategy_territorial_expansion = {
 			}
 		}
 	}
-	
+
 	undesirable_infamy_level = {
 		value = 50
+
+		if = {
+			limit = {
+				has_technology_researched = pan-nationalism
+			}
+			multiply = 1.5
+		}
+		else_if = {
+			limit = {
+				has_technology_researched = nationalism
+			}
+			multiply = 1.25
+		}
 	}
-	
+
 	unacceptable_infamy_level = {
 		value = 100
 	}
-	
+
 	ideological_opinion_effect_mult = {
 		value = 0.75
 	}
-	
+
 	wargoal_maneuvers_fraction = {
 		value = 0.15
-	}		
-	
+	}
+
 	diplomatic_play_neutrality = {
 		value = 25
 	}
-	
+
 	diplomatic_play_boldness = {
 		value = 25
 	}
-	
+
 	recklessness = {
 		value = 0.25
 	}
-	
+
 	aggression = {
 		value = 1
-		
+
 		if = {
-			limit = { 
+			limit = {
 				NOT = { is_country_type = unrecognized }
-				scope:target_country = { is_country_type = unrecognized } 
+				scope:target_country = { is_country_type = unrecognized }
 			}
 			add = 1
-		}	
+		}
 
 		# Less aggressive against countries we're just antagonistic against, rather than belligerent/domineering
 		if = {
@@ -206,10 +329,10 @@ ai_strategy_territorial_expansion = {
 				has_attitude = {
 					who = scope:target_country
 					attitude = antagonistic
-				}					
+				}
 			}
-			multiply = 0.33
-		}	
+			multiply = 0.25
+		}
 
 		# More aggressive against ideological enemies, a bit less aggressive against ideological allies
 		multiply = {
@@ -218,18 +341,15 @@ ai_strategy_territorial_expansion = {
 			add = 1
 			max = 2.0
 			min = 0.5
-		}			
+		}
 	}
 
 	building_group_weights = {
 		bg_army = 1.3
 	}
-	
+
 	secret_goal_weights = {
 		protect = 0.5
-		dominate = 0.5
-		reconcile = 0.5
-        antagonize = 0.75
 		conquer = 1.5
 	}
 
@@ -237,7 +357,6 @@ ai_strategy_territorial_expansion = {
 		annex_country = 1.5
 		conquer_state = 1.5
 		return_state = 1.5
-        take_treaty_port = 0.5
 		force_nationalization = 0.25
 	}
 
@@ -266,7 +385,67 @@ ai_strategy_territorial_expansion = {
 			}
 		}
 	}
-		
+
+	diplomatic_play_support = {
+		value = 0
+
+		if = { # Weakening potential conquest target
+			limit = {
+				scope:enemy_country = {
+					has_strategic_adjacency = root
+					any_scope_state = {
+						OR = {
+							is_homeland_of_country_cultures = root
+							has_claim_by = root
+						}
+					}
+				}
+			}
+			add = {
+				value = 30
+				desc = "AI_STRATEGY_SUPPORT_EXPANSION_WEAKEN_NEIGHBOUR"
+			}
+		}
+
+		if = { # Little interest in other wars
+			limit = {
+				NOT = { has_strategic_adjacency = scope:country }
+				NOT = { has_strategic_adjacency = scope:enemy_country }
+			}
+			add = {
+				value = -20
+				desc = "AI_STRATEGY_SUPPORT_EXPANSION_DISTANT_QUARREL"
+			}
+		}
+	}
+
+	treaty_category_scores = {
+		expansion = {
+			value = 4
+		}
+
+		military = {
+			value = 3
+		}
+
+		economy = {
+			value = 0
+			if = {
+				limit = {
+					has_journal_entry = je_tp_tsar_heir_of_alexander
+					NOT = { has_variable = je_tp_tsar_heir_of_alexander_button_2_complete }
+				}
+				add = 5
+			}
+		}
+	}
+
+	strategic_region_stance_type_scores = {
+		stance_conquer_region = {
+			value = 25
+		}
+	}
+
 	possible = {
 		is_subject = no
 	}
@@ -275,11 +454,11 @@ ai_strategy_territorial_expansion = {
 		value = 10
 
 		if = {
-			limit = { 
+			limit = {
 				exists = c:FRA
 				c:FRA = this
 				ruler = {
-					has_variable = house_bonaparte
+					var:dynasty_var ?= flag:house_bonaparte
 				}
 			}
 			add = 5
@@ -305,17 +484,17 @@ ai_strategy_territorial_expansion = {
 				divide = 2
 			}
 		}
-			
+
 		if = {
 			limit = { ig:ig_armed_forces ?= { is_powerful = yes } }
 			multiply = 1.5
-		}			
-		
+		}
+
 		if = {
 			limit = { is_in_geographic_region = geographic_region_europe }
 			multiply = 0.25
-		}	
-		
+		}
+
 		if = {
 			limit = { has_radical_leftist_government = yes }
 			multiply = {
@@ -331,14 +510,21 @@ ai_strategy_territorial_expansion = {
 				min = 0
 			}
 		}
+
+		if = {
+			limit = {
+				has_journal_entry = je_tp_tsar_heir_of_alexander
+			}
+			add = 100
+		}
 	}
 }
 
 ai_strategy_colonial_expansion = {
 	icon = "gfx/interface/icons/ai_strategy_icons/colonial_expansion.dds"
-	
+
 	type = diplomatic
-	
+
 	will_form_power_bloc = {
 		OR = {
 			global_country_ranking <= 3
@@ -348,54 +534,80 @@ ai_strategy_colonial_expansion = {
 			}
 		}
 	}
-	
+
 	undesirable_infamy_level = {
 		value = 25
+
+		if = {
+			limit = {
+				has_technology_researched = pan-nationalism
+			}
+			multiply = 1.5
+		}
+		else_if = {
+			limit = {
+				has_technology_researched = nationalism
+			}
+			multiply = 1.25
+		}
 	}
-	
+
 	unacceptable_infamy_level = {
 		value = 50
+
+		if = {
+			limit = {
+				has_technology_researched = pan-nationalism
+			}
+			multiply = 1.5
+		}
+		else_if = {
+			limit = {
+				has_technology_researched = nationalism
+			}
+			multiply = 1.25
+		}
 	}
-	
+
 	ideological_opinion_effect_mult = {
 		value = 1.0
 	}
-	
+
 	wargoal_maneuvers_fraction = {
 		value = 0
-	
+
 		if = {
 			limit = {
 				scope:enemy_country = { is_country_type = unrecognized }
 			}
 			add = 0.25
-		}	
-	}		
-	
+		}
+	}
+
 	diplomatic_play_neutrality = {
 		value = 25
 	}
-	
+
 	diplomatic_play_boldness = {
 		value = -15
 	}
-	
+
 	recklessness = {
 		value = 0.1
 	}
-	
+
 	# Added to value from default strategy
 	aggression = {
 		value = 0.25
 		if = {
-			limit = { 
+			limit = {
 				NOT = { is_country_type = unrecognized }
-				scope:target_country = { is_country_type = unrecognized }
+				scope:target_country = { ai_country_is_valid_colonization_target = yes }
 				has_technology_researched = colonization
 				institution_investment_level = {
 					institution = institution_colonial_affairs
 					value >= 1
-				}					
+				}
 			}
 			add = 0.25
 
@@ -404,12 +616,12 @@ ai_strategy_colonial_expansion = {
 					power_bloc ?= { has_principle = principle:principle_colonial_offices_3 }
 				}
 				add = 0.75
-			}			
-			
+			}
+
 			if = {
 				limit = { has_technology_researched = civilizing_mission }
 				add = 1.5
-				
+
 				if = {
 					limit = { has_strategic_adjacency = scope:target_country }
 					add = 1
@@ -464,10 +676,10 @@ ai_strategy_colonial_expansion = {
 				has_attitude = {
 					who = scope:target_country
 					attitude = antagonistic
-				}					
+				}
 			}
-			multiply = 0.2
-		}	
+			multiply = 0.1
+		}
 
 		# More aggressive against ideological enemies, a bit less aggressive against ideological allies
 		multiply = {
@@ -476,37 +688,37 @@ ai_strategy_colonial_expansion = {
 			add = 1
 			max = 2.0
 			min = 0.5
-		}	
+		}
 	}
-	
+
 	building_group_weights = {
-		bg_navy = 1.3
+		bg_navy = 1.5
 	}
-	
+
 	colonial_interest_ratio = {
 		value = 0.10
-	
+
 		if = {
 			limit = { navy_size >= 30 }
 			add = 0.1
 		}
-		
+
 		if = {
 			limit = { navy_size >= 60 }
 			add = 0.1
-		}		
-		
+		}
+
 		if = {
 			limit = { navy_size >= 90 }
 			add = 0.1
-		}	
-		
+		}
+
 		if = {
 			limit = { navy_size >= 120 }
 			add = 0.1
-		}			
+		}
 	}
-	
+
 	strategic_region_scores = {
 		if = {
 			limit = {
@@ -537,100 +749,175 @@ ai_strategy_colonial_expansion = {
 			}
 		}
 	}
-	
+
 	secret_goal_scores = {
 		dominate = {
 			score = {
-			if = {
-				limit = {
-					scope:target_country = { NOT = { is_country_type = unrecognized } }
-				}
-				add = -100
-			}		
-			if = {
-				limit = {
-					NOT = { scope:target_country = { is_subject_of = root } }
-					has_strategic_adjacency = scope:target_country
-					scope:target_country = { is_country_type = unrecognized }
-				}
-				add = 200
-
 				if = {
 					limit = {
-						has_journal_entry = je_scramble_for_africa
-						scope:target_country = {
+						scope:target_country = { ai_country_is_valid_colonization_target = no }
+					}
+					add = -100
+				}
+				else_if = {
+					limit = {
+						ai_country_is_valid_colonization_target = yes
+					}
+					add = 200
+
+					if = {
+						limit = {
+							has_journal_entry = je_scramble_for_africa
+							scope:target_country = {
 								is_in_geographic_region = geographic_region_africa
+							}
 						}
-					}
-					add = 600
-				}				
-			}
-			if = {
-				limit = {
-					country_has_primary_culture = cu:british
-					has_technology_researched = malaria_prevention
-					any_subject_or_below = {
-						capital.region = sr:region_southern_africa
-					}
-					scope:target_country = {
-						capital.region = sr:region_southern_africa
+						add = 600
 					}
 				}
-				add = 400
-			}				
+
+				# Cleaning up Boers and Zulu
+				if = {
+					limit = {
+						country_has_primary_culture = cu:british
+						has_technology_researched = malaria_prevention
+						any_subject_or_below = {
+							capital.region = sr:region_southern_africa
+						}
+						scope:target_country = {
+							capital.region = sr:region_southern_africa
+						}
+					}
+					add = 400
+				}
+			}
 		}
-        }		
 		conquer = {
 			score = {
-			if = {
-				limit = {
-					scope:target_country = { NOT = { is_country_type = unrecognized } }
-				}
-				add = -100
-			}		
-			if = {
-				limit = {
-					NOT = { scope:target_country = { is_subject_of = root } }
-					has_strategic_adjacency = scope:target_country
-					scope:target_country = { is_country_type = unrecognized }
-				}
-				add = 200
-
 				if = {
 					limit = {
-						has_journal_entry = je_scramble_for_africa
-						scope:target_country = {
+						scope:target_country = { NOT = { is_country_type = unrecognized } }
+					}
+					add = -100
+				}
+				if = {
+					limit = {
+						NOT = { scope:target_country = { is_subject_of = root } }
+						has_strategic_adjacency = scope:target_country
+						scope:target_country = { is_country_type = unrecognized }
+					}
+					add = 200
+
+					if = {
+						limit = {
+							has_journal_entry = je_scramble_for_africa
+							scope:target_country = {
 								is_in_geographic_region = geographic_region_africa
+							}
 						}
+						add = 600
 					}
-					add = 600
-				}					
-			}
-			if = {
-				limit = {
-					country_has_primary_culture = cu:british
-					has_technology_researched = malaria_prevention
-					any_subject_or_below = {
-						capital.region = sr:region_southern_africa
-					}
-					scope:target_country = {
-						capital.region = sr:region_southern_africa
+
+					if = {
+						limit = {
+							scope:target_country = {
+								is_subject = yes
+								is_country_type = unrecognized
+								top_overlord ?= {
+									NOT = { is_country_type = unrecognized }
+								}
+							}
+						}
+						multiply = 0.0
 					}
 				}
-				add = 800
-			}		
-		}	
-        }		
+				if = {
+					limit = {
+						country_has_primary_culture = cu:british
+						has_technology_researched = malaria_prevention
+						any_subject_or_below = {
+							capital.region = sr:region_southern_africa
+						}
+						scope:target_country = {
+							capital.region = sr:region_southern_africa
+						}
+					}
+					add = 800
+				}
+			}
+		}
 	}
 
 	wargoal_weights = {
 		conquer_state = 1.5
-		make_puppet = 1.0
 		reduce_autonomy = 1.5
 		take_treaty_port = 1.5
 		force_nationalization = 0.5
-	}	
-		
+	}
+
+	diplomatic_play_support = {
+		value = 0
+
+		if = { # Maintain superiority over colonial regions by supporting locals
+			limit = {
+				has_overlapping_interests = scope:enemy_country
+				scope:enemy_country = { country_rank >= rank_value:major_power }
+			}
+			add = {
+				value = 20
+				desc = "AI_STRATEGY_SUPPORT_COLONIAL_DENY_RIVAL"
+			}
+		}
+
+		if = { # Focused on colonizing
+			limit = {
+				scope:country = {
+					NOR = {
+						is_country_type = unrecognized
+						is_country_type = decentralized
+					}
+				}
+				NOT = { has_overlapping_interests = scope:country }
+			}
+			add = {
+				value = -20
+				desc = "AI_STRATEGY_SUPPORT_COLONIAL_NOT_OUR_CONCERN"
+			}
+		}
+	}
+
+	treaty_category_scores = {
+		expansion = {
+			value = 3
+		}
+
+		trade = {
+			value = 2
+		}
+	}
+
+	strategic_region_stance_type_scores = {
+		stance_colonize_region = {
+			value = 30
+		}
+	}
+
+	max_active_stances = {
+		add = 2
+	}
+
+	obligation_value = {
+		if = { # Obligations from fellow colonial powers keep the carve-up orderly
+			limit = {
+				scope:target_country = {
+					country_rank >= rank_value:major_power
+					NOT = { is_country_type = unrecognized }
+				}
+			}
+			add = 5
+		}
+	}
+
 	possible = {
 		is_subject = no
 		is_country_type = recognized
@@ -644,11 +931,11 @@ ai_strategy_colonial_expansion = {
 		value = 10
 
 		if = {
-			limit = { 
+			limit = {
 				exists = c:FRA
 				c:FRA = this
 				ruler = {
-					has_variable = house_bonaparte
+					var:dynasty_var ?= flag:house_bonaparte
 				}
 			}
 			add = 10
@@ -660,17 +947,17 @@ ai_strategy_colonial_expansion = {
 			}
 			add = 20
 		}
-		
+
 		if = {
 			limit = { country_rank = rank_value:major_power }
 			add = 5
-		}	
+		}
 
 		if = {
 			limit = { country_rank = rank_value:great_power }
 			add = 5
-		}			
-		
+		}
+
 		# AI implications for Power Blocs: 'Colonial Expansion' strategy is more likely for Blocs with Colonial Offices
 		if = {
 			limit = {
@@ -684,25 +971,25 @@ ai_strategy_colonial_expansion = {
 		if = {
 			limit = { navy_size < 50 }
 			multiply = 0.5
-		}		
-		
+		}
+
 		if = {
 			limit = { navy_size >= 75 }
 			multiply = 1.5
-		}	
+		}
 
 		if = {
 			limit = { has_technology_researched = civilizing_mission }
 			multiply = 1.5
-		}	
-		
+		}
+
 		if = {
 			limit = {
 				power_bloc ?= { has_principle_group = principle_group:principle_group_colonial_offices }
 			}
 			multiply = 1.5
-		}		
-		
+		}
+
 		if = {
 			limit = {
 				has_journal_entry = je_hispanoamerica
@@ -724,51 +1011,77 @@ ai_strategy_colonial_expansion = {
 				}
 				min = 0
 			}
-		}			
+		}
 	}
 }
 
 ai_strategy_armed_isolationism = {
 	icon = "gfx/interface/icons/ai_strategy_icons/armed_isolationism.dds"
-	
+
 	type = diplomatic
 
 	undesirable_infamy_level = {
-		value = 10
+		value = 25
+
+		if = {
+			limit = {
+				has_technology_researched = pan-nationalism
+			}
+			multiply = 1.5
+		}
+		else_if = {
+			limit = {
+				has_technology_researched = nationalism
+			}
+			multiply = 1.25
+		}
 	}
-	
+
 	unacceptable_infamy_level = {
-		value = 30
+		value = 50
+
+		if = {
+			limit = {
+				has_technology_researched = pan-nationalism
+			}
+			multiply = 1.5
+		}
+		else_if = {
+			limit = {
+				has_technology_researched = nationalism
+			}
+			multiply = 1.25
+		}
 	}
-	
+
 	ideological_opinion_effect_mult = {
 		value = 0.75
 	}
-	
+
 	wargoal_maneuvers_fraction = {
 		value = -0.1
-	}		
-	
+	}
+
 	diplomatic_play_neutrality = {
 		value = 50
 	}
-	
+
 	diplomatic_play_boldness = {
 		value = 0
 	}
-	
+
 	recklessness = {
 		value = -0.5
 	}
-	
+
 	aggression = {
 		value = 0
 	}
-	
+
 	building_group_weights = {
-		bg_army = 1.1
+		bg_army = 1.3
 	}
-	
+
 	secret_goal_weights = {
 		dominate = 0.0
 		protect = 0.0
@@ -779,14 +1092,58 @@ ai_strategy_armed_isolationism = {
 		make_subject = 0.0
 		reduce_autonomy = 0.0
 		force_nationalization = 2.0
-	}	
-	
+	}
+
+	diplomatic_play_support = {
+		value = 0
+
+		if = { # Stay out of foreign wars
+			limit = {
+				NOT = { has_strategic_adjacency = scope:country }
+				NOT = { has_strategic_adjacency = scope:enemy_country }
+			}
+			add = {
+				value = -40
+				desc = "AI_STRATEGY_SUPPORT_ISOLATIONIST_NOT_OUR_WAR"
+			}
+		}
+
+		if = { # Concerned over wars in the neighborhood
+			limit = {
+				has_strategic_adjacency = scope:enemy_country
+				scope:enemy_country.country_rank > scope:country.country_rank
+			}
+			add = {
+				value = 15
+				desc = "AI_STRATEGY_SUPPORT_ISOLATIONIST_UNEASY_NEIGHBOUR"
+			}
+		}
+	}
+
+	subject_value = {
+		value = -50
+	}
+
+	treaty_category_scores = {
+		military_defense = {
+			value = 5
+		}
+
+		expansion = {
+			value = -4
+		}
+
+		power_bloc = {
+			value = -2
+		}
+	}
+
 	possible = {
 		is_subject = no
 		NOT = { country_rank = rank_value:great_power }
 		NOT = { has_radical_leftist_government = yes }
 	}
-	
+
 	weight = {
 		value = 10
 
@@ -813,7 +1170,7 @@ ai_strategy_armed_isolationism = {
 				}
 			}
 			multiply = 0.1
-		}	
+		}
 
         if = {
 			limit = { country_has_primary_culture = cu:north_german }
@@ -824,19 +1181,19 @@ ai_strategy_armed_isolationism = {
 			limit = { country_rank = rank_value:great_power }
 			multiply = 0.1
 		}			
-		
+
 		if = {
 			limit = { country_rank = rank_value:major_power }
 			multiply = 0.5
-		}		
+		}
 	}
 }
 
 ai_strategy_economic_imperialism = {
 	icon = "gfx/interface/icons/ai_strategy_icons/economic_imperialism.dds"
-	
+
 	type = diplomatic
-	
+
 	will_form_power_bloc = {
 		OR = {
 			global_country_ranking <= 3
@@ -845,23 +1202,49 @@ ai_strategy_economic_imperialism = {
 				has_technology_researched = nationalism
 			}
 		}
-	}	
-	
+	}
+
 	undesirable_infamy_level = {
 		value = 25
+
+		if = {
+			limit = {
+				has_technology_researched = pan-nationalism
+			}
+			multiply = 1.5
+		}
+		else_if = {
+			limit = {
+				has_technology_researched = nationalism
+			}
+			multiply = 1.25
+		}
 	}
-	
+
 	unacceptable_infamy_level = {
 		value = 50
+
+		if = {
+			limit = {
+				has_technology_researched = pan-nationalism
+			}
+			multiply = 1.5
+		}
+		else_if = {
+			limit = {
+				has_technology_researched = nationalism
+			}
+			multiply = 1.25
+		}
 	}
-	
+
 	ideological_opinion_effect_mult = {
 		value = 1.0
 	}
-	
+
 	wargoal_maneuvers_fraction = {
 		value = 0
-	
+
 		if = {
 			limit = {
 				scope:enemy_country = { is_country_type = unrecognized }
@@ -869,7 +1252,7 @@ ai_strategy_economic_imperialism = {
 			add = 0.25
 		}
 	}
-	
+
 	obligation_value = {
 		if = { # Countries with Economic Imperialism is always looking to bring more countries into their market
 			limit = {
@@ -882,48 +1265,48 @@ ai_strategy_economic_imperialism = {
 			add = 5
 		}
 	}
-	
+
 	diplomatic_play_neutrality = {
 		value = 10
 	}
-	
+
 	diplomatic_play_boldness = {
 		value = -10
 	}
-	
+
 	recklessness = {
 		value = -0.1
 	}
-	
+
 	aggression = {
 		value = 0.5
 		if = {
-			limit = { 
+			limit = {
 				NOT = { is_country_type = unrecognized }
-				scope:target_country = { is_country_type = unrecognized } 
+				scope:target_country = { is_country_type = unrecognized }
 				has_technology_researched = colonization
 				institution_investment_level = {
 					institution = institution_colonial_affairs
 					value >= 1
-				}					
+				}
 			}
 			add = 0.5
-					
+
 			if = {
 				limit = {
 					power_bloc ?= { has_principle = principle:principle_colonial_offices_3 }
 				}
 				add = 0.5
-			}			
-			
+			}
+
 			if = {
 				limit = { has_technology_researched = civilizing_mission }
 				add = 0.5
-				
+
 				if = {
 					limit = { has_strategic_adjacency = scope:target_country }
 					add = 0.5
-				}				
+				}
 			}
 
 			if = {
@@ -937,24 +1320,24 @@ ai_strategy_economic_imperialism = {
 					}
 				}
 				multiply = 0.1
-			}		
+			}
 		}
-		
+
 		# Very aggressive about opening up Japan
 		if = {
-			limit = { 
+			limit = {
 				has_technology_researched = nationalism # Just to make sure it doesn't happen immediately in 1836
 				country_rank = rank_value:great_power
 				navy_size >= 25
-				scope:target_country = { 
+				scope:target_country = {
 					exists = c:JAP
 					c:JAP ?= THIS
 					has_law_or_variant = law_type:law_isolationism
 					gdp >= 5000000
-				} 
+				}
 			}
 			add = 20
-		}		
+		}
 
 		# Less aggressive against countries we're just antagonistic against, rather than belligerent/domineering
 		if = {
@@ -962,9 +1345,9 @@ ai_strategy_economic_imperialism = {
 				has_attitude = {
 					who = scope:target_country
 					attitude = antagonistic
-				}					
+				}
 			}
-			multiply = 0.33
+			multiply = 0.25
 		}
 
 		# More aggressive against ideological enemies, a bit less aggressive against ideological allies
@@ -974,37 +1357,37 @@ ai_strategy_economic_imperialism = {
 			add = 1
 			max = 2.0
 			min = 0.5
-		}			
+		}
 	}
-	
+
 	building_group_weights = {
-		bg_navy = 1.25
+		bg_navy = 1.5
 	}
-	
+
 	colonial_interest_ratio = {
 		value = 0.10
-	
+
 		if = {
 			limit = { navy_size >= 30 }
 			add = 0.05
 		}
-		
+
 		if = {
 			limit = { navy_size >= 60 }
 			add = 0.05
-		}		
-		
+		}
+
 		if = {
 			limit = { navy_size >= 90 }
 			add = 0.05
-		}	
-		
+		}
+
 		if = {
 			limit = { navy_size >= 120 }
 			add = 0.05
-		}			
+		}
 	}
-	
+
 	strategic_region_scores = {
 		if = { # Great Powers with significant navies should pay attention to Japan
 			limit = {
@@ -1023,7 +1406,7 @@ ai_strategy_economic_imperialism = {
 			}
 		}
 	}
-	
+
 	secret_goal_scores = {
 		dominate = {
 			score = {
@@ -1117,19 +1500,11 @@ ai_strategy_economic_imperialism = {
 		}
 	}
 
-    secret_goal_weights = {
-		protect = 0.25
-		dominate = 0.75
-		reconcile = 0.25
-		conquer = 0.5
-        antagonize = 0.5
-	}
-
 	wargoal_weights = {
 		make_subject = 1.5
-		force_nationalization = 1.5		
-	}	
-	
+		force_nationalization = 1.5
+	}
+
 	treaty_port_value = {
 		if = {
 			limit = {
@@ -1142,21 +1517,31 @@ ai_strategy_economic_imperialism = {
 			}
 			add = {
 				value = 50
-			
+
 				# More likely to grab a treaty port if we're already enemies in a play, ie they attacked us first
 				if = {
 					limit = { is_diplomatic_play_enemy_of = scope:target_country }
 					multiply = 2.0
 				}
 			}
-		}	
+		}
+
+		# Eager to reclaim a treaty port from a country that recently reneged on the agreement we inherited to them
+		if = {
+			limit = {
+				can_reach_target_state = { TARGET_STATE = scope:target_state }
+				has_variable = wants_treaty_port_revenge_against
+				var:wants_treaty_port_revenge_against ?= scope:target_country
+			}
+			add = 100
+		}
 	}
-	
-	wargoal_scores = {	
+
+	wargoal_scores = {
 		# Need to have identical weights for foreign_investment_rights and open_market here as which one is used depends on whether Foreign Investment is available
 		foreign_investment_rights = {
 			value = 0
-		
+
 			if = {
 				limit = {
 					country_rank = rank_value:great_power
@@ -1168,28 +1553,28 @@ ai_strategy_economic_imperialism = {
 				}
 				add = {
 					value = 100
-				
+
 					# Less interested in foreign investment rights as a sway or defensive wargoal
 					if = {
 						limit = { is_diplomatic_play_involved_with = scope:target_country }
 						multiply = 0.2
 					}
 					else_if = { # Very high score for opening Japan
-						limit = { 
-							scope:target_country = { 
+						limit = {
+							scope:target_country = {
 								exists = c:JAP
 								c:JAP ?= THIS
-								has_law_or_variant = law_type:law_isolationism 				
-							} 	
+								has_law_or_variant = law_type:law_isolationism
+							}
 						}
 						multiply = 10
 					}
 				}
 			}
-		}		
+		}
 		open_market = {
 			value = 0
-		
+
 			if = {
 				limit = {
 					country_rank = rank_value:great_power
@@ -1201,27 +1586,54 @@ ai_strategy_economic_imperialism = {
 				}
 				add = {
 					value = 100
-				
+
 					# Less interested in open market as a sway or defensive wargoal
 					if = {
 						limit = { is_diplomatic_play_involved_with = scope:target_country }
 						multiply = 0.2
 					}
 					else_if = { # Very high score for opening Japan
-						limit = { 
-							scope:target_country = { 
+						limit = {
+							scope:target_country = {
 								exists = c:JAP
 								c:JAP ?= THIS
-								has_law_or_variant = law_type:law_isolationism 				
-							} 	
+								has_law_or_variant = law_type:law_isolationism
+							}
 						}
 						multiply = 10
 					}
 				}
 			}
-		}		
+		}
 	}
-		
+
+	subject_value = {
+		if = { # A sizeable state outside our market is worth bringing inside it
+			limit = {
+				NOT = { is_in_customs_union_with = scope:target_country }
+				scope:target_country = {
+					is_subject = no
+					gdp >= 2000000
+				}
+			}
+			add = 25
+		}
+	}
+
+	treaty_category_scores = {
+		trade = {
+			value = 5
+		}
+
+		economy = {
+			value = 4
+		}
+
+		expansion = {
+			value = -2
+		}
+	}
+
 	possible = {
 		is_subject = no
 		navy_size >= 25
@@ -1230,11 +1642,11 @@ ai_strategy_economic_imperialism = {
 		OR = {
 			country_rank = rank_value:major_power
 			country_rank = rank_value:great_power
-		}	
+		}
 	}
 
 	weight = {
-		value = 10		
+		value = 10
 
 		if = {
 			limit = { country_rank = rank_value:great_power }
@@ -1242,13 +1654,13 @@ ai_strategy_economic_imperialism = {
 		}
 
 		if = {
-			limit = { 
+			limit = {
 				exists = c:FRA
 				c:FRA = this
 				ruler = {
 					OR = {
-						has_variable = house_bonaparte
-						has_variable = house_orleans
+						var:dynasty_var ?= flag:house_bonaparte
+						var:dynasty_var ?= flag:house_orleans
 					}
 				}
 			}
@@ -1272,18 +1684,18 @@ ai_strategy_economic_imperialism = {
 				c:JAP ?= { has_law_or_variant = law_type:law_isolationism }
 			}
 			multiply = 2.0
-		}	
+		}
 
 		if = {
 			limit = { navy_size < 50 }
 			multiply = 0.5
-		}		
-		
+		}
+
 		if = {
 			limit = { navy_size >= 75 }
 			multiply = 1.5
-		}	
-		
+		}
+
 		if = {
 			limit = { has_radical_leftist_government = yes }
 			multiply = {
@@ -1306,25 +1718,25 @@ ai_strategy_economic_imperialism = {
 
 ai_strategy_unify_germany = {
 	icon = "gfx/interface/icons/ai_strategy_icons/unification.dds"
-	
+
 	type = diplomatic
-	
+
 	will_form_power_bloc = {
 		always = yes
 	}
-	
+
 	undesirable_infamy_level = {
 		value = 50
 	}
-	
+
 	unacceptable_infamy_level = {
 		value = 100
 	}
-	
+
 	ideological_opinion_effect_mult = {
 		value = 0.5
 	}
-	
+
 	wargoal_maneuvers_fraction = {
 		value = 0.2
 	}		
@@ -1586,14 +1998,14 @@ ai_strategy_unify_germany = {
 			add = 1
 			max = 2.0
 			min = 0.5
-		}	
+		}
 	}
 
 	building_group_weights = {
-		bg_army = 1.25
-		bg_military_industry = 1.25
+		bg_army = 1.3
+		bg_military_industry = 1.5
 	}
-	
+
 	state_value = {
 		if = {
 			limit = {
@@ -1605,7 +2017,7 @@ ai_strategy_unify_germany = {
 						}
 					}
 				}
-				can_reach_target_state = { TARGET_STATE = scope:target_state }					
+				can_reach_target_state = { TARGET_STATE = scope:target_state }
 			}
 			add = {
 				value = 100
@@ -1992,67 +2404,67 @@ ai_strategy_unify_germany = {
 
 ai_strategy_unify_italy = {
 	icon = "gfx/interface/icons/ai_strategy_icons/unification.dds"
-	
+
 	type = diplomatic
-	
+
 	will_form_power_bloc = {
 		always = yes
-	}	
-		
+	}
+
 	undesirable_infamy_level = {
 		value = 50
 	}
-	
+
 	unacceptable_infamy_level = {
 		value = 100
 	}
-	
+
 	ideological_opinion_effect_mult = {
 		value = 0.5
 	}
-	
+
 	wargoal_maneuvers_fraction = {
 		value = 0.2
-	}		
-	
+	}
+
 	diplomatic_play_neutrality = {
 		value = 0
 	}
-	
+
 	diplomatic_play_boldness = {
 		value = 75
 	}
-	
+
 	obligation_value = {
 		value = 0
-	
+
 		if = {
-			limit = { 
+			limit = {
 				scope:target_country = {
 					OR = {
 						country_has_primary_culture = cu:north_italian
 						country_has_primary_culture = cu:south_italian
-					}				
+					}
 				}
 			}
 			add = 25
 		}
-	}		
-	
+	}
+
 	recklessness = {
 		value = 0.5
-	}	
-	
+	}
+
 	aggression = {
 		value = 0.25
-		
+
 		if = {
-			limit = { 
+			limit = {
 				scope:target_country = {
 					OR = {
 						country_has_primary_culture = cu:north_italian
 						country_has_primary_culture = cu:south_italian
-					}	
+					}
 				}
 			}
 			add = 2.75
@@ -2064,10 +2476,10 @@ ai_strategy_unify_italy = {
 				has_attitude = {
 					who = scope:target_country
 					attitude = antagonistic
-				}					
+				}
 			}
 			multiply = 0.25
-		}	
+		}
 
 		# More aggressive against ideological enemies, a bit less aggressive against ideological allies
 		multiply = {
@@ -2076,13 +2488,13 @@ ai_strategy_unify_italy = {
 			add = 1
 			max = 2.0
 			min = 0.5
-		}	
+		}
 	}
 
 	building_group_weights = {
-		bg_army = 1.25
+		bg_army = 1.3
 	}
-	
+
 	state_value = {
 		if = {
 			limit = {
@@ -2092,8 +2504,8 @@ ai_strategy_unify_italy = {
 							is_homeland = cu:north_italian
 							is_homeland = cu:south_italian
 						}
-					}						
-				}	
+					}
+				}
 				can_reach_target_state = { TARGET_STATE = scope:target_state }
 			}
 			add = {
@@ -2102,7 +2514,7 @@ ai_strategy_unify_italy = {
 			}
 		}
 	}
-	
+
 	wargoal_scores = {
 		unification_leadership = {
 			value = 5
@@ -2164,8 +2576,8 @@ ai_strategy_unify_italy = {
 				multiply = 0.1
 			}
 		}
-	}	
-	
+	}
+
 	secret_goal_scores = {
 		protect = {
 			trigger = {
@@ -2215,16 +2627,11 @@ ai_strategy_unify_italy = {
 				value = 1000
 			}
 		}
-	}	
+	}
 
-	wargoal_weights = {
-		conquer_state = 2.0
-		return_state = 2.0
-	}	
-		
 	possible = {
 		is_subject = no
-		is_unification_candidate = ITA	
+		is_unification_candidate = ITA
 		NOT = { country_tier = empire }
 	}
 
@@ -2292,55 +2699,55 @@ ai_strategy_unify_italy = {
 
 ai_strategy_unify_ethiopia = {
 	icon = "gfx/interface/icons/ai_strategy_icons/unification.dds"
-	
+
 	type = diplomatic
-	
+
 	will_form_power_bloc = {
 		always = yes
-	}		
-	
+	}
+
 	undesirable_infamy_level = {
 		value = 50
 	}
-	
+
 	unacceptable_infamy_level = {
 		value = 100
 	}
-	
+
 	ideological_opinion_effect_mult = 0.5
-	
+
 	wargoal_maneuvers_fraction = {
 		value = 0.2
-	}		
-		
+	}
+
 	diplomatic_play_neutrality = {
 		value = 0
 	}
-	
+
 	diplomatic_play_boldness = {
 		value = 50
 	}
-		
+
 	obligation_value = {
 		value = 0
-	
+
 		if = {
-			limit = { 
+			limit = {
 				scope:target_country = { has_journal_entry = je_age_of_princes }
 			}
 			add = 25
 		}
-	}			
-		
+	}
+
 	recklessness = {
 		value = 1.0
-	}	
-	
+	}
+
 	aggression = {
 		value = 0.5
-		
+
 		if = {
-			limit = { 
+			limit = {
 				scope:target_country = {
 					any_scope_state = {
 						OR = {
@@ -2359,16 +2766,16 @@ ai_strategy_unify_ethiopia = {
 				has_attitude = {
 					who = scope:target_country
 					attitude = antagonistic
-				}					
+				}
 			}
 			multiply = 0.25
-		}	
+		}
 	}
 
 	building_group_weights = {
-		bg_army = 1.25
+		bg_army = 1.3
 	}
-	
+
 	state_value = {
 		if = {
 			limit = {
@@ -2378,8 +2785,8 @@ ai_strategy_unify_ethiopia = {
 							is_homeland = cu:amhara
 							is_homeland = cu:oromo
 							is_homeland = cu:tigray
-						}					
-					}						
+						}
+					}
 				}
 				can_reach_target_state = { TARGET_STATE = scope:target_state }
 			}
@@ -2387,9 +2794,9 @@ ai_strategy_unify_ethiopia = {
 				value = 100
 				desc = "STATE_VALUE_UNIFY_ETHIOPIA"
 			}
-		}	
+		}
 	}
-	
+
 	wargoal_scores = {
 		annex_country = {
 			if = {
@@ -2400,10 +2807,10 @@ ai_strategy_unify_ethiopia = {
 					can_reach_target_country = { TARGET_COUNTRY = scope:target_country }
 				}
 				add = 300
-			}		
-		}	
-	}		
-	
+			}
+		}
+	}
+
 	secret_goal_scores = {
 		befriend = {
 			trigger = {
@@ -2454,12 +2861,12 @@ ai_strategy_unify_ethiopia = {
 
 	weight = {
 		value = 25
-		
+
 		add = {
 			value = army_size
 			multiply = 10
 		}
-		
+
 		if = {
 			limit = { NOT = { is_country_type = unrecognized } }
 			multiply = 10.0
@@ -2467,12 +2874,12 @@ ai_strategy_unify_ethiopia = {
 		else_if = {
 			limit = { country_rank = rank_value:unrecognized_major_power }
 			multiply = 5.0
-		}			
+		}
 		else_if = {
 			limit = { country_rank = rank_value:unrecognized_regional_power }
 			multiply = 3.0
 		}
-		
+
 		# Delay the Ethiopian Thunderdome a bit
 		if = {
 			limit = { NOT = { has_technology_researched = centralization } }
@@ -2483,57 +2890,57 @@ ai_strategy_unify_ethiopia = {
 
 ai_strategy_unify_china = {
 	icon = "gfx/interface/icons/ai_strategy_icons/unification.dds"
-	
+
 	type = diplomatic
-	
+
 	will_form_power_bloc = {
 		always = yes
-	}		
-	
+	}
+
 	undesirable_infamy_level = {
 		value = 50
 	}
-	
+
 	unacceptable_infamy_level = {
 		value = 100
 	}
-	
+
 	ideological_opinion_effect_mult = {
 		value = 0.5
 	}
-	
+
 	wargoal_maneuvers_fraction = {
 		value = 0.2
-	}		
-		
+	}
+
 	diplomatic_play_neutrality = {
 		value = 0
 	}
-	
+
 	diplomatic_play_boldness = {
 		value = 50
 	}
-		
+
 	obligation_value = {
 		value = 0
-	
+
 		if = {
-			limit = { 
+			limit = {
 				scope:target_country = { has_journal_entry = je_reunify_china }
 			}
 			add = 25
 		}
-	}			
-		
+	}
+
 	recklessness = {
 		value = 0.5
-	}	
-	
+	}
+
 	aggression = {
 		value = 0.5
-		
+
 		if = {
-			limit = { 
+			limit = {
 				scope:target_country = { has_journal_entry = je_reunify_china }
 			}
 			add = 5.0
@@ -2545,25 +2952,25 @@ ai_strategy_unify_china = {
 				has_attitude = {
 					who = scope:target_country
 					attitude = antagonistic
-				}					
+				}
 			}
 			multiply = 0.25
-		}		
+		}
 	}
 
 	building_group_weights = {
-		bg_army = 1.25
+		bg_army = 1.3
 	}
-	
+
 	state_value = {
 		if = {
 			limit = {
-				scope:target_state = {				
+				scope:target_state = {
 					state_region = {
 						OR = {
 							is_homeland = cu:manchu
 							is_homeland = cu:han
-						}		
+						}
 					}
 				}
 				can_reach_target_state = { TARGET_STATE = scope:target_state }
@@ -2572,9 +2979,9 @@ ai_strategy_unify_china = {
 				value = 100
 				desc = "STATE_VALUE_UNIFY_CHINA"
 			}
-		}	
+		}
 	}
-	
+
 	wargoal_scores = {
 		annex_country = {
 			if = {
@@ -2585,10 +2992,10 @@ ai_strategy_unify_china = {
 					can_reach_target_country = { TARGET_COUNTRY = scope:target_country }
 				}
 				add = 300
-			}		
-		}		
-	}			
-	
+			}
+		}
+	}
+
 	secret_goal_scores = {
 		befriend = {
 			trigger = {
@@ -2624,14 +3031,14 @@ ai_strategy_unify_china = {
 
 	possible = {
 		is_subject = no
-		has_journal_entry = je_reunify_china	
+		has_journal_entry = je_reunify_china
 	}
 
 	weight = {
 		value = 25
 
 		if = {
-			limit = { 
+			limit = {
 				has_journal_entry = je_reunify_china
 			}
 			add = 50
@@ -2641,7 +3048,7 @@ ai_strategy_unify_china = {
 			value = army_size
 			multiply = 10
 		}
-		
+
 		if = {
 			limit = { NOT = { is_country_type = unrecognized } }
 			multiply = 10.0
@@ -2649,7 +3056,7 @@ ai_strategy_unify_china = {
 		else_if = {
 			limit = { country_rank = rank_value:unrecognized_major_power }
 			multiply = 5.0
-		}			
+		}
 		else_if = {
 			limit = { country_rank = rank_value:unrecognized_regional_power }
 			multiply = 3.0
@@ -2661,46 +3068,72 @@ ai_strategy_unify_china = {
 
 ai_strategy_socialism_in_one_country = {
 	icon = "gfx/interface/icons/ai_strategy_icons/armed_isolationism.dds"
-	
+
 	type = diplomatic
 
 	undesirable_infamy_level = {
 		value = 25
+
+		if = {
+			limit = {
+				has_technology_researched = pan-nationalism
+			}
+			multiply = 1.5
+		}
+		else_if = {
+			limit = {
+				has_technology_researched = nationalism
+			}
+			multiply = 1.25
+		}
 	}
-	
+
 	unacceptable_infamy_level = {
 		value = 50
+
+		if = {
+			limit = {
+				has_technology_researched = pan-nationalism
+			}
+			multiply = 1.5
+		}
+		else_if = {
+			limit = {
+				has_technology_researched = nationalism
+			}
+			multiply = 1.25
+		}
 	}
-	
+
 	ideological_opinion_effect_mult = {
 		value = 0.75
 	}
-	
+
 	wargoal_maneuvers_fraction = {
 		value = -0.1
-	}		
-	
+	}
+
 	diplomatic_play_neutrality = {
 		value = 50
 	}
-	
+
 	diplomatic_play_boldness = {
 		value = 0
 	}
-	
+
 	recklessness = {
 		value = -0.5
 	}
-	
+
 	aggression = {
 		value = 0
 	}
-	
+
 	building_group_weights = {
-		bg_army = 1.15
-		bg_technology = 1.15
+		bg_army = 1.2
+		bg_technology = 1.25
 	}
-	
+
 	secret_goal_scores = {
 		protect = {
 			trigger = {
@@ -2727,13 +3160,57 @@ ai_strategy_socialism_in_one_country = {
 		make_subject = 0.0
 		reduce_autonomy = 0.0
 		force_nationalization = 5.0
-	}	
-	
+	}
+
+	diplomatic_play_support = {
+		value = 0
+
+		if = { # Still lean towards supporting other socialists when under attack
+			limit = {
+				scope:country = { has_radical_leftist_government = yes }
+				scope:enemy_country = { has_radical_leftist_government = no }
+			}
+			add = {
+				value = 25
+				desc = "AI_STRATEGY_SUPPORT_SOCIALISM_FELLOW_RADICAL"
+			}
+		}
+
+		if = { # Dont care otherwise
+			limit = {
+				scope:country = { has_radical_leftist_government = no }
+				scope:enemy_country = { has_radical_leftist_government = no }
+			}
+			add = {
+				value = -35
+				desc = "AI_STRATEGY_SUPPORT_SOCIALISM_OLD_ORDER_QUARREL"
+			}
+		}
+	}
+
+	subject_value = {
+		value = -50
+	}
+
+	treaty_category_scores = {
+		ideology = {
+			value = 3
+		}
+
+		military_defense = {
+			value = 4
+		}
+
+		expansion = {
+			value = -4
+		}
+	}
+
 	possible = {
 		is_subject = no
 		has_radical_leftist_government = yes
 	}
-	
+
 	weight = {
 		value = 50
 
@@ -2818,58 +3295,58 @@ ai_strategy_socialism_in_one_country = {
 
 ai_strategy_world_revolution = {
 	icon = "gfx/interface/icons/ai_strategy_icons/revolutionary.dds"
-	
+
 	type = diplomatic
-		
+
 	will_form_power_bloc = {
 		always = yes
-	}			
-	
+	}
+
 	undesirable_infamy_level = {
 		value = 75
 	}
-	
+
 	unacceptable_infamy_level = {
 		value = 100
 	}
-	
+
 	ideological_opinion_effect_mult = {
 		value = 3
 	}
-	
+
 	wargoal_maneuvers_fraction = {
 		value = 0.25
-	}		
-	
+	}
+
 	diplomatic_play_neutrality = {
 		value = 0
 	}
-	
+
 	diplomatic_play_boldness = {
 		value = 75
 	}
-	
+
 	recklessness = {
 		value = 0.5
 	}
-	
+
 	aggression = {
 		value = 1
-		
+
 		if = {
-			limit = { 
+			limit = {
 				scope:target_country = {
 					has_radical_leftist_government = no
-				} 
+				}
 			}
 			add = 3
-		}	
+		}
 
 		if = {
 			limit = {
 				scope:target_country = {
 					has_radical_leftist_government = yes
-				}		
+				}
 			}
 			multiply = {
 				value = 1
@@ -2883,7 +3360,7 @@ ai_strategy_world_revolution = {
 				}
 				min = 0
 			}
-		}	
+		}
 
 		# More aggressive against ideological enemies, a bit less aggressive against ideological allies
 		multiply = {
@@ -2892,13 +3369,13 @@ ai_strategy_world_revolution = {
 			add = 1
 			max = 2.0
 			min = 0.5
-		}			
+		}
 	}
 
 	building_group_weights = {
-		bg_army = 1.25
+		bg_army = 1.3
 	}
-	
+
 	secret_goal_scores = {
 		protect = {
 			trigger = {
@@ -2958,6 +3435,59 @@ ai_strategy_world_revolution = {
 		liberate_subject = 2
 		liberate_country = 2
 		force_nationalization = 1
+	}
+
+	diplomatic_play_support = {
+		value = 0
+
+		if = { # The revolution takes a side in every war
+			limit = {
+				scope:country = { has_radical_leftist_government = yes }
+				scope:enemy_country = { has_radical_leftist_government = no }
+			}
+			add = {
+				value = 50
+				desc = "AI_STRATEGY_SUPPORT_WORLD_REVOLUTION_COMRADES"
+			}
+		}
+
+		if = { # Break up global empires
+			limit = {
+				scope:enemy_country = {
+					country_rank >= rank_value:great_power
+					any_subject_or_below = { count >= 1 }
+				}
+			}
+			add = {
+				value = 25
+				desc = "AI_STRATEGY_SUPPORT_WORLD_REVOLUTION_ANTI_EMPIRE"
+			}
+		}
+	}
+
+	treaty_category_scores = {
+		ideology = {
+			value = 5
+		}
+
+		military = {
+			value = 3
+		}
+	}
+
+	strategic_region_stance_type_scores = {
+		stance_protect_region = {
+			value = 15
+		}
+	}
+
+	obligation_value = {
+		if = {
+			limit = {
+				scope:target_country = { has_radical_leftist_government = yes }
+			}
+			add = 10
+		}
 	}
 
 	possible = {
@@ -3049,49 +3579,75 @@ ai_strategy_world_revolution = {
 
 ai_strategy_anti_imperialism = {
 	icon = "gfx/interface/icons/ai_strategy_icons/protect_region.dds"
-	
+
 	type = diplomatic
-		
+
 	will_form_power_bloc = {
 		country_rank >= rank_value:great_power
-	}			
-	
+	}
+
 	undesirable_infamy_level = {
 		value = 25
+
+		if = {
+			limit = {
+				has_technology_researched = pan-nationalism
+			}
+			multiply = 1.5
+		}
+		else_if = {
+			limit = {
+				has_technology_researched = nationalism
+			}
+			multiply = 1.25
+		}
 	}
-	
+
 	unacceptable_infamy_level = {
 		value = 50
+
+		if = {
+			limit = {
+				has_technology_researched = pan-nationalism
+			}
+			multiply = 1.5
+		}
+		else_if = {
+			limit = {
+				has_technology_researched = nationalism
+			}
+			multiply = 1.25
+		}
 	}
-	
+
 	ideological_opinion_effect_mult = {
 		value = 1.5
 	}
-	
+
 	wargoal_maneuvers_fraction = {
 		value = -0.1
-	}	
-	
+	}
+
 	diplomatic_play_neutrality = {
 		value = 0
 	}
-	
+
 	diplomatic_play_boldness = {
 		value = -25
 	}
-	
+
 	recklessness = {
 		value = -0.25
 	}
-	
+
 	aggression = {
-		value = 0.25	
+		value = 0.25
 
 		if = {
 			limit = {
 				scope:target_country = {
 					is_diplomatic_play_initiator = yes
-					scope:target_country = { is_country_type = recognized } 
+					scope:target_country = { is_country_type = recognized }
 					any_enemy_in_diplo_play = {
 						is_country_type = unrecognized
 					}
@@ -3101,8 +3657,8 @@ ai_strategy_anti_imperialism = {
 		}
 
 		if = {
-			limit = { 
-				scope:target_country = { NOT = { has_radical_leftist_government = yes } } 
+			limit = {
+				scope:target_country = { NOT = { has_radical_leftist_government = yes } }
 			}
 			multiply = {
 				value = 1
@@ -3124,7 +3680,7 @@ ai_strategy_anti_imperialism = {
 				has_attitude = {
 					who = scope:target_country
 					attitude = antagonistic
-				}					
+				}
 			}
 			multiply = 0.1
 		}
@@ -3132,12 +3688,12 @@ ai_strategy_anti_imperialism = {
 		# Less aggressive against unrecognized powers
 		if = {
 			limit = {
-				scope:target_country = { 
+				scope:target_country = {
 					is_country_type = unrecognized
 					NOT = {
 						relations:root <= relations_threshold:poor
-					}		 
-				}	
+					}
+				}
 			}
 			multiply = 0.25
 		}
@@ -3146,9 +3702,9 @@ ai_strategy_anti_imperialism = {
 
 		if = {
 			limit = {
-				scope:target_country = { 
+				scope:target_country = {
 					country_is_colonial_or_company = yes
-				}	
+				}
 			}
 			multiply = 2
 		}
@@ -3176,13 +3732,13 @@ ai_strategy_anti_imperialism = {
 			add = 1
 			max = 2.0
 			min = 0.5
-		}		
+		}
 	}
-	 
+
 	building_group_weights = {
-		bg_technology = 1.1
+		bg_technology = 1.25
 	}
-	
+
 	secret_goal_scores = {
 		protect = {
 			score = {
@@ -3249,7 +3805,7 @@ ai_strategy_anti_imperialism = {
 			}
 		}
 	}
-	
+
 	wargoal_weights = {
 		regime_change = 1.5
 		humiliation = 1.5
@@ -3258,11 +3814,79 @@ ai_strategy_anti_imperialism = {
 		force_nationalization = 2.0
 	}
 
+	diplomatic_play_support = {
+		value = 0
+
+		if = { # Always on the side of the defenders
+			limit = {
+				scope:country = {
+					OR = {
+						is_country_type = unrecognized
+						is_subject = yes
+					}
+				}
+				scope:enemy_country = {
+					NOR = {
+						is_country_type = unrecognized
+						is_country_type = decentralized
+					}
+					country_rank >= rank_value:major_power
+				}
+			}
+			add = {
+				value = 50
+				desc = "AI_STRATEGY_SUPPORT_ANTI_IMPERIALISM_DEFEND_VICTIM"
+			}
+		}
+
+		if = { # Against infamous countries
+			limit = {
+				scope:enemy_country = { infamy >= infamy_threshold:infamous }
+			}
+			add = {
+				value = 25
+				desc = "AI_STRATEGY_SUPPORT_ANTI_IMPERIALISM_NOTORIOUS_AGGRESSOR"
+			}
+		}
+	}
+
+	subject_value = {
+		value = -75
+	}
+
+	treaty_category_scores = {
+		military_defense = {
+			value = 4
+		}
+
+		ideology = {
+			value = 3
+		}
+
+		expansion = {
+			value = -5
+		}
+	}
+
+	strategic_region_stance_type_scores = {
+		stance_protect_region = {
+			value = 25
+		}
+
+		stance_colonize_region = {
+			value = -50
+		}
+
+		stance_conquer_region = {
+			value = -25
+		}
+	}
+
 	possible = {
 		is_subject = no
 		has_radical_leftist_government = yes
 	}
-	
+
 	weight = {
 		value = 10
 
@@ -3302,77 +3926,90 @@ ai_strategy_anti_imperialism = {
 
 ai_strategy_restore_natural_borders = {
 	icon = "gfx/interface/icons/ai_strategy_icons/protect_region.dds"
-	
-	type = diplomatic	
-	
+
+	type = diplomatic
+
 	will_form_power_bloc = {
 		country_rank >= rank_value:great_power
-	}			
-	
+	}
+
 	undesirable_infamy_level = {
 		value = 50
+
+		if = {
+			limit = {
+				has_technology_researched = pan-nationalism
+			}
+			multiply = 1.5
+		}
+		else_if = {
+			limit = {
+				has_technology_researched = nationalism
+			}
+			multiply = 1.25
+		}
 	}
-	
+
 	unacceptable_infamy_level = {
 		value = 100
 	}
-	
+
 	ideological_opinion_effect_mult = {
 		value = 0.75
 	}
-	
+
 	wargoal_maneuvers_fraction = {
 		value = 0.15
-	}		
-	
+	}
+
 	diplomatic_play_neutrality = {
 		value = 25
 	}
-	
+
 	diplomatic_play_boldness = {
 		value = 25
 	}
-	
+
 	recklessness = {
 		value = 0.25
 	}
-	
+
 	aggression = {
 		value = 1
-		
+
 		if = {
-			limit = { 
+			limit = {
 				NOT = { is_country_type = unrecognized }
-				scope:target_country = { is_country_type = unrecognized } 
+				scope:target_country = { is_country_type = unrecognized }
 				has_technology_researched = colonization
 				institution_investment_level = {
 					institution = institution_colonial_affairs
 					value >= 1
-				}					
+				}
 			}
 			add = 1
-			
+
 			if = {
 				limit = {
 					power_bloc ?= { has_principle = principle:principle_colonial_offices_3 }
 				}
 				add = 1.0
-			}			
-			
+			}
+
 			if = {
 				limit = { has_technology_researched = civilizing_mission }
 				add = 1.0
-				
+
 				if = {
 					limit = { has_strategic_adjacency = scope:target_country }
 					add = 1.0
-				}				
-			}			
-		}	
+				}
+			}
+		}
 
 		if = {
-			limit = { 
-				scope:target_country = { 
+			limit = {
+				scope:target_country = {
 					any_scope_state = {
 						OR = {
 							state_region = s:STATE_NORTH_RHINE
@@ -3380,7 +4017,7 @@ ai_strategy_restore_natural_borders = {
 							state_region = s:STATE_ALSACE_LORRAINE
 						}
 					}
-				} 
+				}
 			}
 			add = 3
 		}
@@ -3391,10 +4028,10 @@ ai_strategy_restore_natural_borders = {
 				has_attitude = {
 					who = scope:target_country
 					attitude = antagonistic
-				}					
+				}
 			}
 			multiply = 0.75
-		}	
+		}
 
 		# More aggressive against ideological enemies, a bit less aggressive against ideological allies
 		multiply = {
@@ -3403,13 +4040,13 @@ ai_strategy_restore_natural_borders = {
 			add = 1
 			max = 2.0
 			min = 0.5
-		}				
+		}
 	}
 
 	building_group_weights = {
-		bg_army = 1.25
+		bg_army = 1.3
 	}
-	
+
 	secret_goal_weights = {
 		protect = 0.5
 		conquer = 1.5
@@ -3476,58 +4113,80 @@ ai_strategy_restore_natural_borders = {
 			}
 		}
 	}
-		
+
+	diplomatic_play_support = {
+		value = 0
+
+		if = { # Opportunistically weaken targets
+			limit = {
+				scope:enemy_country = {
+					any_scope_state = {
+						OR = {
+							is_homeland_of_country_cultures = root
+							has_claim_by = root
+						}
+					}
+				}
+			}
+			add = {
+				value = 25
+				desc = "AI_STRATEGY_SUPPORT_NATURAL_BORDERS_AGAINST_OCCUPIER"
+			}
+		}
+	}
+
+	treaty_category_scores = {
+		expansion = {
+			value = 4
+		}
+
+		military = {
+			value = 3
+		}
+	}
+
 	possible = {
 		is_subject = no
+		c:FRA ?= this
 	}
 
 	weight = {
 		value = 10
 
 		if = {
-			limit = { 
+			limit = {
 				c:FRA ?= THIS
 				has_journal_entry = je_french_natural_borders
 			}
 			add = 25
 		}
-		
+
 		if = {
-			limit = { 
-				is_country_type = unrecognized 
+			limit = {
+				is_country_type = unrecognized
 				OR = {
 					country_rank >= rank_value:unrecognized_regional_power
 					is_in_geographic_region = geographic_region_africa
 				}
 			}
 			add = 25
-		}		
+		}
 
 		if = {
-			limit = { 
-				exists = c:FRA
-				c:FRA = this
+			limit = {
+				c:FRA ?= this
 				ruler = {
-					has_variable = house_bonaparte
+					var:dynasty_var ?= flag:house_bonaparte
 				}
 			}
 			add = 5
 		}
-			
+
 		if = {
 			limit = { ig:ig_armed_forces ?= { is_powerful = yes } }
 			multiply = 1.5
-		}			
-		
-		if = {
-			limit = { 
-				NOT = {
-					c:FRA ?= THIS
-				}
-			}
-			multiply = 0
-		}	
-		
+		}
+
 		if = {
 			limit = { has_radical_leftist_government = yes }
 			multiply = {
@@ -3693,7 +4352,7 @@ ai_strategy_prussia_of_the_balkans = {
 	}
 
 	building_group_weights = {
-		bg_army = 1.5
+		bg_army = 1.3
 		bg_military_industry = 1.5
 	}
 
@@ -3782,13 +4441,13 @@ ai_strategy_prussia_of_the_balkans = {
 					AND = {
 						has_variable = bul_pursued_greater_yugoslavism
 						OR = {
-							scope:target_country = {
-								is_unification_candidate = YUG
-							}
+				scope:target_country = {
+					is_unification_candidate = YUG
+				}
 							AND = {
 								NOT = {
 									can_form_nation = YUG
-								}
+			}
 								any_scope_state = {
 									state_region = {
 										OR = {

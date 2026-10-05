@@ -292,6 +292,13 @@ logistics = {
 	
 	ai_weight = {
 		value = 1
+
+		if = {
+			limit = {
+				has_variable = save_nixa_var
+			}
+			add = 100
+		}
 		if = {
 			limit = { OR = { has_strategy = ai_strategy_territorial_expansion has_strategy = ai_strategy_unify_germany has_strategy = ai_strategy_armed_isolationism } }
 			add = 0.75
@@ -318,6 +325,12 @@ triage = {
 	
 	ai_weight = {
 		value = 1
+		if = {
+			limit = {
+				has_variable = save_nixa_var
+			}
+			add = 100
+		}
 		if = {
 			limit = { OR = { has_strategy = ai_strategy_territorial_expansion has_strategy = ai_strategy_unify_germany } }
 			add = 0.5
@@ -395,7 +408,15 @@ rifling = {
 		value = 1.75 # Important tech in general
 		if = {
 			limit = { OR = { has_strategy = ai_strategy_territorial_expansion has_strategy = ai_strategy_unify_germany } }
-			add = 0.25
+			add = 0.75
+		}
+
+		if = {
+			limit = {
+				has_journal_entry = je_tp_tsar_great_reform
+				NOT = { has_variable = je_great_reforms_military_complete }
+			}
+			add = 5
 		}
 	}
 }
@@ -415,6 +436,21 @@ general_staff = {
 		if = {
 			limit = { OR = { has_strategy = ai_strategy_territorial_expansion has_strategy = ai_strategy_unify_germany } }
 			add = 0.75
+		}
+		
+		if = {
+			limit = {
+				has_journal_entry = je_tp_pool_build_army
+			}
+			add = 5
+		}
+
+		if = {
+			limit = {
+				has_journal_entry = je_tp_tsar_great_reform
+				NOT = { has_variable = je_great_reforms_military_complete }
+			}
+			add = 5
 		}
 	}
 }
@@ -507,6 +543,13 @@ modern_nursing = {
 	
 	ai_weight = {
 		value = 1
+		if = {
+			limit = {
+				has_variable = save_nixa_var
+				game_date >= 1850.1.1
+			}
+			add = 100
+		}
 	}
 }
 
@@ -867,6 +910,14 @@ wargaming = {
 	
 	ai_weight = {
 		value = 1
+		
+		if = {
+			limit = {
+				has_journal_entry = je_tp_tsar_heir_of_alexander
+				NOT = { has_variable = je_tp_tsar_heir_of_alexander_button_3_complete }
+			}
+			add = 5
+		}
 	}
 }
 

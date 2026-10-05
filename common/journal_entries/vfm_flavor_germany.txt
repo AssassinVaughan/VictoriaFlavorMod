@@ -302,6 +302,12 @@ je_breakup_steuerverein = {
 				name = steuerverein_breakup
 				days = long_modifier_time
 	    	}	
+			every_country = {
+			limit = {
+				has_modifier = steuerverein_imports
+		    }
+			remove_modifier = steuerverein_imports
+	     	}
 		}
 		trigger_event = { id = journal_flavor_germany.4 }
 	    }

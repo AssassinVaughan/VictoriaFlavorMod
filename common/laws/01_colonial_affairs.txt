@@ -18,6 +18,13 @@
 
 	ai_will_do = {
 		has_law_or_variant = law_type:law_council_republic
+		trigger_if = {
+			limit = {
+				c:RUS ?= this
+				has_law_or_variant = law_type:law_internal_colonization
+			}
+			has_journal_entry = je_social_revolution
+		}
 	}
 
 	ai_enact_weight_modifier = { #Petitions
@@ -110,10 +117,6 @@ law_internal_colonization = {
 		}
 	}
 
-	modifier = {
-		country_can_found_cossack_host_bool = yes
-	}
-
 	institution = institution_colonial_affairs
 	institution_modifier = {
 		state_colony_growth_creation_factor = -0.1
@@ -138,6 +141,7 @@ law_internal_colonization = {
 		OR = {
 			has_law_or_variant = law_type:law_colonial_exploitation
 			navy_size >= 50
+			has_journal_entry = je_tp_pool_develop_frontier
 		}
 	}
 
@@ -241,6 +245,13 @@ law_frontier_colonization = {
 			has_law_or_variant = law_type:law_colonial_exploitation
 			has_law_or_variant = law_type:law_colonial_resettlement
 		}
+		trigger_if = {
+			limit = {
+				c:RUS ?= this
+				has_law_or_variant = law_type:law_internal_colonization
+			}
+			has_journal_entry = je_social_revolution
+		}
 	}
 
 	ai_enact_weight_modifier = { #Petitions
@@ -250,9 +261,9 @@ law_frontier_colonization = {
 			limit = { ai_has_enact_weight_modifier_journal_entries = yes }
 			add = 750
 		}
-		
+
 		if = {
-			limit = { 
+			limit = {
 				has_journal_entry = je_taming_the_north
 			}
 			add = 250
@@ -356,6 +367,13 @@ law_colonial_resettlement = {
 			navy_size >= 50
 			has_journal_entry = je_taming_the_north
 		}
+		trigger_if = {
+			limit = {
+				c:RUS ?= this
+				has_law_or_variant = law_type:law_internal_colonization
+			}
+			has_journal_entry = je_social_revolution
+		}
 	}
 
 	ai_enact_weight_modifier = { #Petitions
@@ -365,16 +383,16 @@ law_colonial_resettlement = {
 			limit = { ai_has_enact_weight_modifier_journal_entries = yes }
 			add = 750
 		}
-		
+
 		if = {
-			limit = { 
+			limit = {
 				has_journal_entry = je_taming_the_north
 			}
 			add = 500
 		}
-		
+
 		if = {
-			limit = { 
+			limit = {
 				c:JAP ?= this
 				is_country_type = recognized
 				has_claim = s:STATE_SEOUL
@@ -467,6 +485,13 @@ law_colonial_exploitation = {
 			navy_size >= 50
 			has_journal_entry = je_taming_the_north
 		}
+		trigger_if = {
+			limit = {
+				c:RUS ?= this
+				has_law_or_variant = law_type:law_internal_colonization
+			}
+			has_journal_entry = je_social_revolution
+		}
 	}
 
 	ai_enact_weight_modifier = { #Petitions
@@ -476,16 +501,16 @@ law_colonial_exploitation = {
 			limit = { ai_has_enact_weight_modifier_journal_entries = yes }
 			add = 750
 		}
-		
+
 		if = {
-			limit = { 
+			limit = {
 				has_journal_entry = je_taming_the_north
 			}
 			add = 500
 		}
-		
+
 		if = {
-			limit = { 
+			limit = {
 				c:JAP ?= this
 				is_country_type = recognized
 				has_claim = s:STATE_SEOUL

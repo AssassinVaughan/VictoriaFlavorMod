@@ -7469,17 +7469,6 @@
 			}			
 		}
 		region_state:HAN={
-		    create_building={
-				building="building_government_administration"
-				add_ownership={
-					country={
-						country="c:HAN"
-						levels=2
-					}
-				}
-				reserves=1
-				activate_production_methods={ "pm_horizontal_drawer_cabinets" }
-			}
 			create_building={
 				building="building_furniture_manufactory"
 				add_ownership={
@@ -7778,6 +7767,18 @@
 				activate_production_methods={ "pm_professional_bureaucrats" "pm_religious_bureaucrats" "pm_horizontal_drawer_cabinets" }
 			}
 			create_building={
+				building="building_trade_center"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:PRU"
+						levels=1
+						region="STATE_WESTPHALIA"
+					}
+				}
+				reserves=1
+			}	
+			create_building={
 				building="building_paper_mill"
 				add_ownership={
 					building={
@@ -7845,7 +7846,7 @@
 					building={
 						type="building_tooling_workshop"
 						country="c:PRU"
-						levels=3
+						levels=2
 						region="STATE_WESTPHALIA"
 					}
 					building={
@@ -10309,6 +10310,19 @@
 				}
 				reserves=1
 				activate_production_methods={ "pm_blister_steel_process" "pm_automation_disabled"  }
+			}
+			create_building={
+				building="building_tooling_workshop"
+				add_ownership={
+					building={
+						type="building_tooling_workshop"
+						country="c:PRU"
+						levels=1
+						region="STATE_RUHR"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_steel" "pm_automation_disabled"  }
 			}
 			create_building={
 				building="building_arms_industry"
