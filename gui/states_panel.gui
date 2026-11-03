@@ -1187,13 +1187,13 @@ types state_panel_types
 					parentanchor = top|right
 					widgetanchor = top|right
 					#position =  { -15 65 }
-					spacing = 5
+					spacing = 3
 
 					# Harvest conditions
 					flowcontainer = {
 						visible = "[Not(IsDataModelEmpty(State.GetHarvestConditions))]"
 						datamodel = "[State.GetHarvestConditions]"
-						spacing = 5
+						spacing = 3
 
 						item = {
 							icon = {
@@ -1216,15 +1216,32 @@ types state_panel_types
 						visible = "[State.HasFamine]"
 						tooltip = "[State.GetFamineDesc]"
 						using = tooltip_se
-						size = { 50 50 }
+						size = { 45 45 }
 						texture = "gfx/interface/backgrounds/round_button_bg.dds"
 						using = clickthrough_blocker
 
 						icon = {
-							size = { 50 50 }
+							size = { 45 45 }
 							parentanchor = center
 							texture = "gfx/interface/icons/famine_icons/famine_icon.dds"
 						}
+					}
+				}
+
+				# Cold icon
+				icon = {
+					visible = "[State.GetStateRegion.HasModerateOrSevereCold]"
+					tooltip = "[State.GetColdDesc]"
+					using = tooltip_se
+					size = { 45 45 }
+					texture = "gfx/interface/backgrounds/round_button_bg.dds"
+					using = clickthrough_blocker
+					parentanchor = right
+
+					icon = {
+						size = { 40 40 }
+						parentanchor = center
+						texture = "gfx/interface/icons/generic_icons/cold_value.dds"
 					}
 				}
 			}
@@ -2179,6 +2196,19 @@ types state_panel_types
 
 				blockoverride "name" {
 					text = "TOOLTIP_CLAIMS"
+				}
+			}
+
+			state_panel_status_item_small = {
+				visible = "[State.GetStateRegion.HasModerateOrSevereCold]"
+				tooltip = "[State.GetColdDesc]"
+
+				blockoverride "texture" {
+					texture = "gfx/interface/icons/generic_icons/cold_value.dds"
+				}
+
+				blockoverride "name" {
+					text = "STATE_STATUS_ITEM_COLD"
 				}
 			}
 
@@ -3179,7 +3209,7 @@ types state_panel_types
 					}
 				}
 
-				using = fade_top_illus
+				using = illus_top_shadow_bottom_fade
 
 				toggle_condensed = {}
 			}

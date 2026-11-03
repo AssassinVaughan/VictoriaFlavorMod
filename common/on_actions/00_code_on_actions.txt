@@ -1110,6 +1110,7 @@ on_diplomatic_play_started = {
 				OR = {
 					is_diplomatic_play_type = dp_conquer_state
 					is_diplomatic_play_type = dp_return_state
+					is_diplomatic_play_type = dp_return_state_to_subject
 					is_diplomatic_play_type = dp_reduce_autonomy
 					is_diplomatic_play_type = dp_make_tributary
 					is_diplomatic_play_type = dp_make_protectorate
@@ -1353,6 +1354,19 @@ on_character_death = {
 			owner ?= {
 				remove_variable = je_tp_fav_rasputin_complete_var
 			}
+		}
+		if = { # clear favorite event variables if a favorite dies
+			limit = {
+				has_role = character_role_favorite
+				OR = {
+					has_variable = favorite_character_lobby_var
+					has_variable = favorite_character_scandal_var
+					has_variable = favorite_character_law_var
+				}
+			}
+			remove_variable = favorite_character_lobby_var
+			remove_variable = favorite_character_scandal_var
+			remove_variable = favorite_character_law_var
 		}
 	}
 }
@@ -4530,6 +4544,12 @@ on_become_independent = {
 				set_interest_group_name = ig_armed_forces
 			}
 			remove_variable = ig_guardia_civil_active
+		}
+		if = {
+			limit = {
+				c:POL ?= this
+			}
+			on_become_independent_poland_effect = yes
 		}
 	}
 }

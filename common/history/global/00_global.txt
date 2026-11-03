@@ -16,7 +16,13 @@ GLOBAL = {
 		limit = {
 			has_dlc_feature = ip5_content
 		}
-		add_contextless_journal_entry = je_congress_poland
+		}
+		c:POL ?= {
+			trigger_event = {
+				id = congress_poland.1000
+				days = 14 # 15 January
+			}
+		}
 	}
 
 	every_country = {

@@ -1525,8 +1525,8 @@ REPLACE:pm_pot_stills = {
 		workforce_scaled = {
 			# input goods
 			goods_input_sugar_add = 25				# x30 =  750
-			goods_input_glass_add = 2				# x40 =  80
-			goods_input_copper_add = 3				# x40 =  120
+			goods_input_glass_add = 3				# x40 =  120
+			goods_input_copper_add = 2				# x40 =  80
 
 			# output goods
 			goods_output_liquor_add = 40				# x30 = 960
@@ -1551,8 +1551,8 @@ REPLACE:pm_patent_stills = {
 		workforce_scaled = {
 			# input goods
 			goods_input_sugar_add = 30				# x30 =   900
-			goods_input_glass_add = 4				# x40 =   160
-			goods_input_copper_add = 6				# x40 =   240
+			goods_input_glass_add = 6				# x40 =   240
+			goods_input_copper_add = 4				# x40 =   160
 
 			# output goods
 			goods_output_liquor_add = 75			# x30 =  2100
@@ -1572,7 +1572,7 @@ REPLACE:pm_basic_shipbuilding = {
 
 	country_modifiers = {
 		workforce_scaled = {
-			country_ship_construction_add = 4
+			country_ship_construction_add = 5
 		}
 	}
 
@@ -1605,7 +1605,7 @@ pm_improved_shipbuilding = {
 
 	country_modifiers = {
 		workforce_scaled = {
-			country_ship_construction_add = 6
+			country_ship_construction_add = 9
 		}
 	}
 
@@ -1639,7 +1639,7 @@ REPLACE:pm_complex_shipbuilding = {
 
 	country_modifiers = {
 		workforce_scaled = {
-			country_ship_construction_add = 10
+			country_ship_construction_add = 13
 		}
 	}
 
@@ -1663,4 +1663,86 @@ REPLACE:pm_complex_shipbuilding = {
 			building_employment_engineers_add = 500
 		}
 	}
+}
+
+REPLACE:pm_metal_shipbuilding = {
+	texture = "gfx/interface/icons/production_method_icons/reinforced_steam_ships.dds"
+
+	country_modifiers = {
+		workforce_scaled = {
+			country_ship_construction_add = 18
+		}
+	}
+
+	state_modifiers = {
+		workforce_scaled = {
+			state_pollution_generation_add = 10
+		}
+	}
+
+	unlocking_technologies = {
+		gantry_cranes
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			# input goods
+			goods_input_steel_add = 30
+			goods_input_coal_add = 10
+			goods_input_engines_add = 10
+
+			# output goods
+			goods_output_steamers_add = 65
+		}
+
+		level_scaled = {
+			# employment
+			building_employment_shopkeepers_add = 500
+			building_employment_laborers_add = 2000
+			building_employment_machinists_add = 1500
+			building_employment_engineers_add = 1000
+		}
+	}
+}
+
+REPLACE:pm_arc_welding_shipbuilding = {
+	texture = "gfx/interface/icons/production_method_icons/arc_welded_steam_ships.dds"
+
+	unlocking_technologies = {
+		arc_welding
+	}
+
+	country_modifiers = {
+		workforce_scaled = {
+			country_ship_construction_add = 24
+		}
+	}
+
+	state_modifiers = {
+		workforce_scaled = {
+			state_pollution_generation_add = 20
+		}
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			# input goods
+			goods_input_steel_add = 30
+			goods_input_electricity_add = 30
+			goods_input_engines_add = 10
+
+			# output goods
+			goods_output_steamers_add = 80
+		}
+
+		level_scaled = {
+			# employment
+			building_employment_shopkeepers_add = 500
+			building_employment_laborers_add = 1000
+			building_employment_machinists_add = 2000
+			building_employment_engineers_add = 1500
+		}
+	}
+
+	required_input_goods = electricity
 }

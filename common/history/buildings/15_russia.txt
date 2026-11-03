@@ -577,6 +577,15 @@
 				reserves=1
 				activate_production_methods={ "pm_picks_and_shovels_building_iron_mine" "pm_no_explosives" "pm_no_steam_automation" "pm_road_carts"  }
 			}
+			if = {
+				limit = {
+					has_dlc_feature = ip5_content
+				}
+				create_building={
+					building="building_kizhi_pogost"
+					level=1
+				}
+			}
 		}
 	}
 	s:STATE_KOLA={
@@ -763,6 +772,19 @@
 				}
 				activate_production_methods={ "pm_naval_fortification_basic"  }
 			}
+			if = {
+				limit = {
+					has_dlc_feature = ip5_content
+				}
+				create_building={
+					building="building_winter_palace"
+					level=1
+				}
+				create_building={
+					building="building_saint_isaacs_cathedral"
+					level=1
+				}
+			}
 		}
 	}
 	s:STATE_MOSCOW={
@@ -905,6 +927,19 @@
 			create_building={
 				building="building_saint_basils_cathedral"
 				level=1
+			}
+			if = {
+				limit = {
+					has_dlc_feature = ip5_content
+				}
+				create_building={
+					building="building_grand_kremlin_palace"
+					level=1
+				}
+				create_building={
+					building="building_cathedral_of_christ_the_savior"
+					level=1
+				}
 			}
 		}
 	}
@@ -2578,7 +2613,7 @@
 					building={
 						type="building_financial_district"
 						country="c:RUS"
-						levels=1
+						levels=5
 						region="STATE_INGRIA"
 					}
 				}

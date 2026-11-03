@@ -29,7 +29,7 @@
 				add_ownership={
 					country={
 						country="c:SWE"
-						levels=3
+						levels=4
 					}
 				}
 				reserves=1
@@ -1631,7 +1631,7 @@
 					building={
 						type="building_financial_district"
 						country="c:GBR"
-						levels=1
+						levels=2
 						region="STATE_WALES"
 					}
 				}
@@ -2453,6 +2453,17 @@
 				reserves=1
 				activate_production_methods={ "pm_atmospheric_engine_pump_building_coal_mine" "pm_no_explosives" "pm_no_steam_automation" "pm_road_carts"  }
 			}
+			create_building={
+				building="building_trade_center"
+				activate_production_methods={ "pm_trade_center_trade_quantity_normal" }
+				add_ownership={
+					country={
+						country="c:GBR"
+						levels=3
+					}
+				}
+				reserves=1
+			}
 		}
 	}
 	s:STATE_WEST_COUNTRY={
@@ -2968,6 +2979,17 @@
 				}
 				reserves=1
 				activate_production_methods={ "pm_basic_port" }
+			}
+			create_building={
+				building="building_trade_center"
+				activate_production_methods={ "pm_trade_center_trade_quantity_normal" }
+				add_ownership={
+					country={
+						country="c:GBR"
+						levels=2
+					}
+				}
+				reserves=1
 			}
 		}
 	}
@@ -5647,7 +5669,7 @@
 					building={
 						type="building_financial_district"
 						country="c:NET"
-						levels=6
+						levels=8
 						region="STATE_HOLLAND"
 					}
 				}
@@ -6258,7 +6280,7 @@
 					building={
 						type="building_financial_district"
 						country="c:BEL"
-						levels=6
+						levels=7
 						region="STATE_FLANDERS"
 					}
 				}

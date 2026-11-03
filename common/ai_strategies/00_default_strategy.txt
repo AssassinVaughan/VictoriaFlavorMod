@@ -67,6 +67,39 @@ ai_strategy_default = {
 						is_in_geographic_region = geographic_region_korea
 					}
 				}
+				AND = {
+					has_journal_entry = je_tp_pool_develop_frontier
+					scope:target_state = {
+						OR = {
+							has_variable = rus_develop_frontier_unincorporated_state
+							AND = {
+								root = { has_variable = tp_siberia_frontier_target_gdp }
+								is_in_geographic_region = geographic_region_siberia
+							}
+							AND = {
+								root = { has_variable = tp_central_asia_frontier_target_gdp }
+								is_in_geographic_region = geographic_region_central_asia
+							}
+							AND = {
+								root = { has_variable = tp_caucasus_frontier_target_gdp }
+								is_in_geographic_region = geographic_region_caucasus_old
+							}
+						}
+					}
+				}
+				AND = {
+					has_journal_entry = je_tp_tsar_crown_of_perfection
+					NOT = { has_variable = je_tp_tsar_crown_of_perfection_button_4_complete }
+					scope:target_state = { is_in_same_market_area = root.capital }
+				}
+				AND = {
+					has_journal_entry = je_russification
+					scope:target_state = { is_in_geographic_region = geographic_region_russia_western_borderlands }
+					any_state_in_russia_western_borderlands = {
+						owner ?= c:RUS
+						percent < je_russification_region_goal_percent
+					}
+				}
 			}
 		}
 	}
@@ -1000,6 +1033,80 @@ ai_strategy_default = {
 			}
 		}
 
+		### European encroachment in the Americas
+		if = {
+			limit = {
+				scope:is_initiator = no
+				is_in_geographic_region = geographic_region_americas
+				NOT = {
+					is_subject_of = scope:enemy_country
+				}
+				scope:enemy_country = {
+					is_in_geographic_region = geographic_region_europe
+				}
+				scope:country = {
+					is_in_geographic_region = geographic_region_americas
+					NOT = {
+						is_subject_of = scope:enemy_country
+					}
+				}
+				can_reach_target_country_to_coerce = { TARGET_COUNTRY = scope:country }
+			}
+			if = {
+				limit = {
+					OR = {
+						scope:diplomatic_play_type = play_type:dp_make_protectorate
+						scope:diplomatic_play_type = play_type:dp_make_tributary
+						scope:diplomatic_play_type = play_type:dp_make_dominion
+						scope:diplomatic_play_type = play_type:dp_annex_war
+						scope:diplomatic_play_type = play_type:dp_join_power_bloc
+						any_diplomatic_play = {
+							scope:country = {
+								is_diplomatic_play_enemy_of = scope:enemy_country
+							}
+							OR = {
+								has_play_goal = make_protectorate
+								has_play_goal = make_tributary
+								has_play_goal = make_dominion
+								has_play_goal = annex_country
+								has_play_goal = join_power_bloc
+							}
+						}
+					}
+				}
+				add = {
+					value = 100
+					desc = "opposing_foreign_encroachment"
+				}
+			}
+			else_if = {
+				limit = {
+					OR = {
+						scope:diplomatic_play_type = play_type:dp_conquer_state
+						any_diplomatic_play = {
+							scope:country = {
+								is_diplomatic_play_enemy_of = scope:enemy_country
+							}
+							OR = {
+								has_play_goal = conquer_state
+								has_play_goal = take_treaty_port
+							}
+						}
+					}
+				}
+				add = {
+					value = 50
+					desc = "opposing_foreign_encroachment"
+				}
+			}
+			else = {
+				add = {
+					value = 25
+					desc = "opposing_foreign_encroachment"
+				}
+			}
+		}
+
 		if = { # Monroe USA will step in and defend cross-ocean invasion of americas
 			limit = {
 				c:USA ?= this
@@ -1042,14 +1149,14 @@ ai_strategy_default = {
 				}
 				scope:enemy_country = {
 					has_journal_entry = je_reconquista
-					exists = scope:is_initiator
 				}
+				scope:is_initiator = no
 				scope:country = {
 					is_historical_spanish_american_colony = yes
 				}
 			}
 			add = {
-				value = 50
+				value = 25
 				desc = "je_reconquista"
 			}
 		}
@@ -6943,19 +7050,19 @@ ai_strategy_default = {
 			}				
 
 			if = {
-				limit = { 
+				limit = {
 					NOT = { any_neighbouring_state = {} } # Is this a one-state island?
 				}
-				
+
 				add = 1
-			}		
-		}	
-		
-		if = {
-			limit = {
-				is_capital = yes
 			}
-			add = 2
+
+			if = {
+				limit = {
+					is_capital = yes
+				}
+				add = 2
+			}
 		}	
 		
 		if = {
@@ -7202,6 +7309,12 @@ ai_strategy_default = {
 			}
 		}
 		electricity = { 
+			stance = wants_high_supply
+			trigger = {
+				has_technology_researched = electrical_generation
+			}
+		}
+		copper = {
 			stance = wants_high_supply
 			trigger = {
 				has_technology_researched = electrical_generation
