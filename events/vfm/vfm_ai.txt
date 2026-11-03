@@ -460,20 +460,63 @@ vfm_ai.5 = {
 	duration = 1
 
 	trigger = {
-		custom_tooltip = {
-				text = je_schleswig_holstein_question_state_ownership_desc
-				OR = {
-                    any_scope_state = { state_region = s:STATE_SCHLESWIG_HOLSTEIN }
+		has_variable = je_potential_sch_hol_solver
+	}
+
+	immediate = {
+	}
+}
+
+vfm_ai.6 = {
+	type = country_event
+	placement = root
+
+	duration = 1
+
+	trigger = {
+		OR = {
 					s:STATE_SCHLESWIG_HOLSTEIN = {
 					    any_scope_state = {
+						    OR = {
+							    owner = ROOT
 							    owner = {
-                                    NOT = { c:LUB ?= this }
 							    	is_subject_of = ROOT
 							    }
+						    }
 						}
 					}
-					
+					has_variable = je_potential_sch_hol_solver
 				}
+	}
+
+	immediate = {
+	}
+}
+
+vfm_ai.7 = {
+	type = country_event
+	placement = root
+
+	duration = 1
+
+	trigger = {
+					NOT = { c:HOL ?= this }
+					NOT = { c:SCH ?= this }
+					exists = c:DEN
+				NOT = { has_war_with = c:DEN }
+	}
+
+	immediate = {
+	}
+}
+
+vfm_ai.8 = {
+	type = country_event
+	placement = root
+
+	duration = 1
+
+	trigger = {
 				s:STATE_SCHLESWIG_HOLSTEIN = {
 					NOT = {
 						any_scope_state = {
@@ -493,10 +536,16 @@ vfm_ai.5 = {
 							}
 						}
 					}
-				}
 	}
 
 	immediate = {
+	}
+	
+	option = { # Send Menshikov with Demands
+		name = vfm_ai.8.a
+		ai_chance = {
+			base = 1
+		}
 	}
 }
 

@@ -400,12 +400,17 @@ mass_communication = {
 	
 	ai_weight = {
 		value = 1.5 # Important in general
-		
+		if = {
+			limit = {
+				is_in_geographic_region = geographic_region_italy_old
+			}
+			add = 2
+		}
 		if = {
 			limit = {
 				c:RUS ?= this
 			}
-			add = 10
+			add = 5
 		}
 	}
 }
@@ -466,10 +471,18 @@ egalitarianism = {
 				add_involved_country = ROOT
 			}
 		}
+		forest_of_bayonets_involve_country_effect = yes
 	}
 	
 	ai_weight = {
 		value = 1
+		
+		if = {
+			limit = {
+				is_in_geographic_region = geographic_region_italy_old
+			}
+			add = 2
+		}
 		
 		if = {
 			limit = { 

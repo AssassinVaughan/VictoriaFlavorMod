@@ -70,7 +70,10 @@
 
 		if = {
 			limit = {
-				has_dlc_feature = ep1_content
+				OR = {
+					has_dlc_feature = ep1_content
+					has_dlc_feature = ip5_content
+				}
 			}
 			add_journal_entry = { type = je_eastern_frontier }
 		}

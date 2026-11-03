@@ -187,6 +187,7 @@ law_monarchy = {
 						is_in_government = yes
 						any_preferred_law = {
 							is_citizenship_law = yes
+							law_is_available = yes
 							NOT = {
 								type ?= law_type:law_subjecthood
 							}
@@ -198,6 +199,7 @@ law_monarchy = {
 						is_in_government = yes
 						any_preferred_law = {
 							is_citizenship_law = yes
+							law_is_available = yes
 							NOT = {
 								type ?= law_type:law_subjecthood
 							}
@@ -209,6 +211,7 @@ law_monarchy = {
 					ordered_preferred_law = {
 						limit = {
 							is_citizenship_law = yes
+							law_is_available = yes
 							NOT = {
 								type ?= law_type:law_subjecthood
 							}
@@ -695,6 +698,7 @@ law_theocracy = {
 						is_in_government = yes
 						any_preferred_law = {
 							is_citizenship_law = yes
+							law_is_available = yes
 							NOT = {
 								type ?= law_type:law_subjecthood
 							}
@@ -706,6 +710,7 @@ law_theocracy = {
 						is_in_government = yes
 						any_preferred_law = {
 							is_citizenship_law = yes
+							law_is_available = yes
 							NOT = {
 								type ?= law_type:law_subjecthood
 							}
@@ -717,6 +722,7 @@ law_theocracy = {
 					ordered_preferred_law = {
 						limit = {
 							is_citizenship_law = yes
+							law_is_available = yes
 							NOT = {
 								type ?= law_type:law_subjecthood
 							}
@@ -899,6 +905,7 @@ law_council_republic = {
 					has_journal_entry = je_communism_1
 					has_journal_entry = je_communism_2
 					has_journal_entry = je_state_and_revolution
+					has_variable = rcw_russian_faction
 				}
 			}
 			trigger_event = { id = communism.2 popup = yes }
@@ -1311,6 +1318,7 @@ law_social_monarchy = {
 						is_in_government = yes
 						any_preferred_law = {
 							is_citizenship_law = yes
+							law_is_available = yes
 							NOT = {
 								type ?= law_type:law_subjecthood
 							}
@@ -1322,6 +1330,7 @@ law_social_monarchy = {
 						is_in_government = yes
 						any_preferred_law = {
 							is_citizenship_law = yes
+							law_is_available = yes
 							NOT = {
 								type ?= law_type:law_subjecthood
 							}
@@ -1333,6 +1342,7 @@ law_social_monarchy = {
 					ordered_preferred_law = {
 						limit = {
 							is_citizenship_law = yes
+							law_is_available = yes
 							NOT = {
 								type ?= law_type:law_subjecthood
 							}

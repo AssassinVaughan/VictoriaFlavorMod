@@ -42,36 +42,40 @@
 		conclusion_desc = je_standard_completion_conclusion_desc
 		trigger = {
 			trigger_if = {
-				limit = {
-			    has_variable = je_potential_sch_hol_solver
+			    limit = {
 					OR = {
 						c:HOL ?= this
 						c:SCH ?= this
 					}
 				}
+				has_variable = je_potential_sch_hol_solver
 				is_subject = no
+				c:DEN ?= { is_at_war = no }
+				c:PRU ?= { NOT = { has_variable = je_potential_sch_hol_solver } }
 			}
 			trigger_if = {
+                
 				limit = {
-                has_variable = je_potential_sch_hol_solver
-				NOT = { c:HOL ?= this }
-				NOT = { c:SCH ?= this }
-				exists = c:DEN
-			}
-			custom_tooltip = {
-				text = je_schleswig_holstein_question_state_ownership_desc
+					NOT = { c:HOL ?= this }
+					NOT = { c:SCH ?= this }
+					exists = c:DEN
+				}
+				NOT = { has_war_with = c:DEN }
 				OR = {
-                    any_scope_state = { state_region = s:STATE_SCHLESWIG_HOLSTEIN }
 					s:STATE_SCHLESWIG_HOLSTEIN = {
 					    any_scope_state = {
+						    OR = {
+							    owner = ROOT
 							    owner = {
-                                    NOT = { c:LUB ?= this }
 							    	is_subject_of = ROOT
 							    }
+						    }
 						}
 					}
-					
+					has_variable = je_potential_sch_hol_solver
 				}
+				custom_tooltip = {
+				text = je_schleswig_holstein_question_state_ownership_desc
 				s:STATE_SCHLESWIG_HOLSTEIN = {
 					NOT = {
 						any_scope_state = {

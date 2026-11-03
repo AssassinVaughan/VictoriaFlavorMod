@@ -5,7 +5,10 @@ GLOBAL = {
 	add_contextless_journal_entry = je_the_first_carlist_war
 	if = {
 		limit = {
-			has_dlc_feature = ep1_content
+			OR = {
+				has_dlc_feature = ep1_content
+				has_dlc_feature = ip5_content
+			}
 		}
 		add_contextless_journal_entry = je_caucasian_war
 	}
@@ -262,7 +265,7 @@ GLOBAL = {
 					state_region = s:STATE_BASQUE_COUNTRY
 				}
 				add_modifier = {
-					name = ad_hoc_manufacturing_negative
+					name = ad_hoc_manufacturing
 					days = normal_modifier_time
 					multiplier = 3
 				}
@@ -704,7 +707,10 @@ GLOBAL = {
 		}
 		if = {
 			limit = {
-				has_dlc_feature = ep1_content
+				OR = {
+					has_dlc_feature = ep1_content # Sphere of Influence
+					has_dlc_feature = ip5_content # State and Revolution
+				}
 			}
 			trigger_event = {
 				id = kazakhstan_events.2

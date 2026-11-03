@@ -144,6 +144,20 @@ decree_violent_suppression = {
 			}
 			multiply = 0.5
 		}
+		if = {
+			limit = {
+				scope:country = { ai_avoids_radicals = yes }
+				is_capital = yes
+			}
+			multiply = 2
+		}
+		if = {
+			limit = {
+				scope:country = { ai_wants_radicals = yes }
+				is_capital = yes
+			}
+			multiply = 0
+		}
 	}
 }
 

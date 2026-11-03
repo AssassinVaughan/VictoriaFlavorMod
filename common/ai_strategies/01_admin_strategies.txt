@@ -58,8 +58,11 @@
 			limit = {
 				exists = c:FRA
 				c:FRA = this
-				ruler = {
-					has_variable = legitimist_leader
+				OR = {
+					ruler = {
+						has_variable = legitimist_leader
+					}
+					divided_monarchists_ai_legitimist = yes
 				}
 			}
 			add = 20
@@ -590,11 +593,15 @@ ai_strategy_industrial_expansion = {
 			limit = {
 				exists = c:FRA
 				c:FRA = this
-				ruler = {
-					OR = {
-						has_variable = house_orleans
-						has_variable = house_bonaparte
+				OR = {
+					ruler = {
+						OR = {
+							var:dynasty_var ?= flag:house_orleans
+							var:dynasty_var ?= flag:house_bonaparte
+						}
 					}
+					divided_monarchists_ai_orleanist = yes
+					divided_monarchists_ai_bonapartist = yes
 				}
 			}
 			add = 20

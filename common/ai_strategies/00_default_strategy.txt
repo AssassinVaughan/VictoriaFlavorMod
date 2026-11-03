@@ -115,12 +115,6 @@ ai_strategy_default = {
 			}
 			add = 100
 		}
-		
-		# Revolution aversion for July Monarchy
-		if = {
-			limit = { has_journal_entry = je_divided_monarchists }
-			add = 100
-		}
 	}
 	
 	# If base chance for law to pass is below this, don't enact it
@@ -624,7 +618,7 @@ ai_strategy_default = {
 						is_subject_of = scope:enemy_country
 					}
 				}
-				can_reach_target_country = { TARGET_COUNTRY = scope:country }
+				can_reach_target_country_to_coerce = { TARGET_COUNTRY = scope:country }
 			}
 			if = {
 				limit = {
@@ -1183,6 +1177,101 @@ ai_strategy_default = {
 				desc = "caucasus_first"
 			}
 		}
+		
+		if = {
+			limit = {
+				has_variable = rcw_russian_faction
+				scope:country = {
+					has_variable = rcw_russian_faction
+				}
+				scope:enemy_country = {
+					has_variable = rcw_russian_faction
+				}
+				NOR = {
+					this = scope:country
+					this = scope:enemy_country
+				}
+			}
+			if = {
+				limit = {
+					rcw_factions_are_aligned = { FACTION = root OTHER_FACTION = scope:country }
+					rcw_factions_are_hostile = { FACTION = root OTHER_FACTION = scope:enemy_country }
+				}
+				add = {
+					value = 150
+					desc = "ai_rcw_aligned_faction_war"
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = { rcw_factions_are_aligned = { FACTION = root OTHER_FACTION = scope:country } }
+				}
+				add = {
+					value = -100
+					desc = "ai_rcw_rival_factions_war"
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				NOR = {
+					has_variable = rcw_russian_faction
+					has_variable = rcw_separatist
+				}
+				scope:diplomatic_play_type = play_type:dp_unify_russia
+				NOT = {
+					any_scope_treaty = {
+						OR = {
+							binds = scope:country
+							binds = scope:enemy_country
+						}
+						any_scope_article = {
+							OR = {
+								has_type = alliance
+								has_type = defensive_pact
+								has_type = guarantee_independence
+							}
+						}
+					}
+				}
+			}
+			add = {
+				value = -200
+				desc = "ai_rcw_no_ties"
+			}
+		}
+
+		if = {
+			limit = {
+				has_variable = rcw_separatist
+				scope:is_initiator = no
+				scope:country = {
+					has_variable = rcw_separatist
+				}
+				scope:enemy_country = {
+					has_variable = rcw_russian_faction
+				}
+			}
+			add = {
+				value = 50
+				desc = "ai_rcw_separatist_solidarity"
+			}
+		}
+
+		if = {
+			limit = {
+				has_variable = rcw_separatist
+				OR = {
+					scope:diplomatic_play_type = play_type:dp_unify_russia
+					scope:diplomatic_play_type = play_type:dp_revolution
+				}
+			}
+			add = {
+				value = -200
+				desc = "ai_rcw_separatist_stays_out"
+			}
+		}
 	}
 	
 	# Added to base neutrality in diplomatic plays	
@@ -1552,6 +1641,22 @@ ai_strategy_default = {
 			}
 			add = 1000
 		}
+
+		if = {
+			limit = {
+				OR = {
+					has_variable = rcw_russian_faction
+					has_variable = rcw_separatist
+				}
+				scope:diplomatic_play = {
+					any_scope_play_involved = {
+						has_variable = rcw_russian_faction
+						is_diplomatic_play_enemy_of = root
+					}
+				}
+			}
+			add = 1000
+		}
 		
 		# Paraguay should be bold while they have the war JE.
         if = {
@@ -1560,6 +1665,13 @@ ai_strategy_default = {
             }
             add = 25
         }
+
+		if = {
+			limit = {
+				divided_monarchists_ai_backs_bonapartist = yes
+			}
+			add = 10
+		}
 
 		# Italian minors should be willing to fight Austria
 		if = {
@@ -3247,7 +3359,7 @@ ai_strategy_default = {
 				limit = {
 					has_journal_entry = je_hawaiian_interest
 					scope:target_state = {
-						state_region = s:STATE_HAWAII
+						state_region = s:STATE_HAWAIIAN_ISLANDS
 					}
 				}
 				add = {
@@ -3354,16 +3466,6 @@ ai_strategy_default = {
 
 			if = {
 				limit = {
-					NOT = { can_reach_target_state = { TARGET_STATE = scope:target_state } }
-				}
-				multiply = {
-					value = 0.1
-					desc = "STATE_VALUE_UNREACHABLE"
-				}
-			}
-
-			if = {
-				limit = {
 					ai_state_is_invalid_target = yes
 				}
 				multiply = {
@@ -3382,6 +3484,23 @@ ai_strategy_default = {
 				multiply = {
 					value = 0
 					desc = "STATE_VALUE_NOT_INTEREST_IN_REGION"
+				}
+			}
+
+			if = {
+				limit = {
+					ai_state_is_invalid_target = no
+					NOT = {
+						has_strategic_region_interest_tier = {
+							strategic_region = scope:target_state.region
+							value <= 1
+						}
+					}
+					NOT = { can_reach_target_state_to_conquer = { TARGET_STATE = scope:target_state } }
+				}
+				multiply = {
+					value = 0.1
+					desc = "STATE_VALUE_UNREACHABLE"
 				}
 			}
 		}
@@ -3594,7 +3713,7 @@ ai_strategy_default = {
 
 			if = {
 				limit = {
-					NOT = { can_reach_target_state = { TARGET_STATE = scope:target_state } }
+					NOT = { can_reach_target_state_to_coerce = { TARGET_STATE = scope:target_state } }
 				}
 				multiply = 0
 			}
@@ -3629,7 +3748,7 @@ ai_strategy_default = {
 			limit = {		
 				OR = {
 					scope:target_country = { is_subject_of = root }
-					can_reach_target_country = { TARGET_COUNTRY = scope:target_country }
+					can_reach_target_country_to_subjugate = { TARGET_COUNTRY = scope:target_country }
 				}
 			}
 
@@ -4676,6 +4795,19 @@ ai_strategy_default = {
 			add = 5
 		}
 
+		if = {
+			limit = {
+				has_variable = rcw_russian_faction
+				has_variable = rcw_axis
+				scope:target_country = {
+					has_variable = rcw_russian_faction
+					has_variable = rcw_axis
+				}
+				rcw_axis_distance_at_least = { FACTION = root OTHER_FACTION = scope:target_country MIN_DISTANCE = 1 }
+			}
+			add = 0.5
+		}
+
 		# Countries with high-fervour primary cultures are more reckless against rivals or countries with homelands
 		if = {
 			limit = {
@@ -4865,6 +4997,41 @@ ai_strategy_default = {
 				}
 			}
 				add = 500
+		}
+		
+		if = {
+			limit = {
+				has_variable = rcw_russian_faction
+				has_variable = rcw_axis
+				scope:target_country = {
+					has_variable = rcw_russian_faction
+					has_variable = rcw_axis
+				}
+			}
+			if = {
+				limit = {
+					rcw_axis_distance_at_least = { FACTION = root OTHER_FACTION = scope:target_country MIN_DISTANCE = 2 }
+				}
+				add = 1000
+			}
+			else_if = {
+				limit = {
+					rcw_axis_distance_at_least = { FACTION = root OTHER_FACTION = scope:target_country MIN_DISTANCE = 1 }
+				}
+				add = 400
+			}
+			else = {
+				add = {
+					value = 1
+					if = {
+						limit = {
+							has_global_variable = rcw_exhaustion_level
+						}
+						add = global_var:rcw_exhaustion_level
+					}
+					multiply = 150
+				}
+			}
 		}
 		
 		# Greek Nationalism
@@ -5095,7 +5262,7 @@ ai_strategy_default = {
 						}
 					}
 				}
-				can_reach_target_country = { TARGET_COUNTRY = scope:target_country }
+				can_reach_target_country_to_conquer = { TARGET_COUNTRY = scope:target_country }
 			}
 			add = 10
 		}
@@ -5104,7 +5271,7 @@ ai_strategy_default = {
 			limit = {
 				has_journal_entry = je_tp_fav_war
 				var:tp_fav_war_target ?= scope:target_country
-				can_reach_target_country = { TARGET_COUNTRY = scope:target_country }
+				can_reach_target_country_to_conquer = { TARGET_COUNTRY = scope:target_country }
 			}
 			add = 10
 		}
@@ -5153,6 +5320,33 @@ ai_strategy_default = {
 			add = 3
 		}
 	
+		if = { #Russian Caucasus
+			limit = {
+				c:RUS ?= this
+				is_involved_in_journal_entry = je_caucasian_war
+				scope:target_country = {
+					any_scope_state = {
+						OR = {
+							state_region = s:STATE_KUBAN
+							state_region = s:STATE_DAGESTAN
+							state_region = s:STATE_NORTH_CAUCASUS
+						}
+					}
+				}
+				can_reach_target_country_to_conquer = { TARGET_COUNTRY = scope:target_country }
+			}
+			add = 10
+		}
+
+		if = {
+			limit = {
+				has_journal_entry = je_tp_fav_war
+				var:tp_fav_war_target ?= scope:target_country
+				can_reach_target_country_to_conquer = { TARGET_COUNTRY = scope:target_country }
+			}
+			add = 10
+		}
+
 		if = { #Russian Far East
 			limit = {
 				has_journal_entry = je_the_eastern_border
@@ -5167,39 +5361,28 @@ ai_strategy_default = {
 						}
 					}
 				}
-				can_reach_target_country = { TARGET_COUNTRY = scope:target_country }
+				can_reach_target_country_to_conquer = { TARGET_COUNTRY = scope:target_country }
 			}
 			add = 10
 		}
 
 		if = { #Russian Central Asia
 			limit = {
-				country_has_primary_culture = cu:russian
-				OR = {
-					has_law = law_type:law_national_supremacy
-					has_law = law_type:law_official_nationality
-				}
+				has_journal_entry = je_conquest_of_central_asia
 				scope:target_country = {
 					any_scope_state = {
 						OR = {
-							state_region = s:STATE_URALSK
-							state_region = s:STATE_SEMIRECHE
-							state_region = s:STATE_AKMOLINSK
+							state_region = s:STATE_UZBEKIA
+							state_region = s:STATE_KIRGHIZIA
+							state_region = s:STATE_KHIVA
+							state_region = s:STATE_TURKMENIA
+							state_region = s:STATE_TAJIKISTAN
 						}
 					}
 				}
+				can_reach_target_country_to_conquer = { TARGET_COUNTRY = scope:target_country }
 			}
 			add = 15
-		}
-
-		if = { # Russia presses her Caucasus subjects and Bukey Orda once the wars behind them are won
-			limit = {
-				OR = {
-					ai_russia_wants_caucasus_subject_annexed = yes
-					ai_russia_wants_bukey_orda_annexed = yes
-				}
-			}
-			add = 25
 		}
 
 		if = { #Russian Central Asia
@@ -5892,6 +6075,14 @@ ai_strategy_default = {
 			}
 		}
 
+		if = {
+			limit = {
+				divided_monarchists_ai_backs_bonapartist = yes
+				is_at_war = no
+			}
+			add = 10
+		}
+
         # Neutral Switzerland
         if = {
             limit = {
@@ -5960,6 +6151,52 @@ ai_strategy_default = {
 				ai_russia_gendarme_spares_china = yes
 			}
 			multiply = 0.0
+		}
+
+		if = {
+			limit = {
+				has_variable = rcw_russian_faction
+				scope:target_country = {
+					has_variable = rcw_russian_faction
+				}
+				rcw_factions_are_aligned = { FACTION = root OTHER_FACTION = scope:target_country }
+			}
+			multiply = 0
+		}
+
+		if = {
+			limit = {
+				has_variable = rcw_russian_faction
+				scope:target_country = {
+					NOR = {
+						has_variable = rcw_russian_faction
+						has_variable = rcw_separatist
+					}
+				}
+			}
+			multiply = 0.1
+		}
+		else_if = {
+			limit = {
+				has_variable = rcw_russian_faction
+				scope:target_country = {
+					has_variable = rcw_separatist
+				}
+				OR = {
+					NOT = { has_global_variable = rcw_exhaustion_level }
+					global_var:rcw_exhaustion_level < 2
+				}
+			}
+			multiply = 0.25
+		}
+		else_if = {
+			limit = {
+				has_variable = rcw_separatist
+				scope:target_country = {
+					has_variable = rcw_russian_faction
+				}
+			}
+			multiply = 0.1
 		}
 
         if = { # Be careful when the great potato famine is active
@@ -6131,7 +6368,7 @@ ai_strategy_default = {
 					if = {
 						limit = {
 							country_rank = rank_value:great_power
-							navy_size >= 25
+							carrying_capacity >= 10
 							has_technology_researched = nationalism
 							c:JAP ?= {
 								has_law_or_variant = law_type:law_isolationism
@@ -6547,7 +6784,6 @@ ai_strategy_default = {
 
 			if = { # Are we in the coastal defense ship era?
 				limit = {
-					has_technology_researched = ironclad_tech
 					NOT = { has_technology_researched = pre_dreadnought_tech }
 				}
 
@@ -6568,6 +6804,17 @@ ai_strategy_default = {
 				subtract = 10
 			}
 
+			if = { # Submarines take some of the cruisers' raiding role
+				limit = {
+					has_technology_researched = submarine
+					OR = {
+						has_law_or_variant = law_type:law_jeune_ecole
+						has_law_or_variant = law_type:law_merchant_navy
+					}
+				}
+				subtract = 10
+			}
+
 			if = {
 				limit = {
 					OR = {
@@ -6580,23 +6827,43 @@ ai_strategy_default = {
 			}
 		}
 		ai_ship_category_torpedo_craft = {
-			value = 0
-			if = {
-				limit = { has_technology_researched = self_propelled_torpedoes }
-				add = 20
+			value = 20
 
-				if = {
-					limit = {
-						has_law_or_variant = law_type:law_jeune_ecole
-					}
-					add = 20
+			if = {
+				limit = {
+					has_law_or_variant = law_type:law_jeune_ecole
 				}
-				else_if = {
-					limit = {
+				add = 20
+			}
+			else_if = {
+				limit = {
+					has_law_or_variant = law_type:law_merchant_navy
+				}
+				add = 10
+			}
+
+			if = { # Submarines take some of the torpedo craft weight
+				limit = {
+					has_technology_researched = submarine
+					OR = {
+						has_law_or_variant = law_type:law_jeune_ecole
 						has_law_or_variant = law_type:law_merchant_navy
 					}
-					add = 10
 				}
+				subtract = 10
+			}
+		}
+		ai_ship_category_submarines = { # Only navies built around commerce raiding or defense use submarines
+			value = 0
+			if = {
+				limit = {
+					has_technology_researched = submarine
+					OR = {
+						has_law_or_variant = law_type:law_jeune_ecole
+						has_law_or_variant = law_type:law_merchant_navy
+					}
+				}
+				add = 20
 			}
 		}
 		ai_ship_category_carriers = {
@@ -6604,7 +6871,6 @@ ai_strategy_default = {
 
 			if = { # Seaplane Tenders
 				limit = {
-					has_technology_researched = dreadnought_tech
 					OR = {
 						has_law_or_variant = law_type:law_professional_navy
 						has_law_or_variant = law_type:law_jeune_ecole
@@ -7099,7 +7365,7 @@ ai_strategy_default = {
 					scope:target_country = {
 						is_oppressor_of_schleswig_holstein = yes
 					}
-					NOT = { can_reach_target_country = { TARGET_COUNTRY = scope:target_country }}
+					NOT = { can_reach_target_country_to_conquer = { TARGET_COUNTRY = scope:target_country }}
 				}
 				add = 100
 			}
@@ -7213,7 +7479,7 @@ ai_strategy_default = {
 					has_variable = veiled_protectorate_support_egypt
 				}
 				OR = {
-					navy_size >= 25
+					carrying_capacity >= 10
 					is_adjacent_to_country = c:TUR
 					is_adjacent_to_country = c:EGY
 				}
@@ -7235,7 +7501,7 @@ ai_strategy_default = {
 				c:GBR ?= this
 				exists = c:CIR
 				country_rank = rank_value:great_power
-				navy_size >= 50
+				carrying_capacity >= 20
 				scope:region = sr:region_russia
 			}
 			add = 100
@@ -7393,7 +7659,7 @@ ai_strategy_default = {
 						has_variable = veiled_protectorate_support_egypt
 					}
 					OR = {
-						navy_size >= 25
+						carrying_capacity >= 10
 						is_adjacent_to_country = c:TUR
 						is_adjacent_to_country = c:EGY
 					}
@@ -7437,7 +7703,7 @@ ai_strategy_default = {
 						has_variable = veiled_protectorate_support_egypt
 					}
 					OR = {
-						navy_size >= 25
+						carrying_capacity >= 10
 						is_adjacent_to_country = c:TUR
 						is_adjacent_to_country = c:EGY
 					}
@@ -7608,7 +7874,7 @@ ai_strategy_default = {
 			limit = {
 				is_in_geographic_region = geographic_region_europe
 				country_rank >= rank_value:great_power
-				navy_size >= 25
+				carrying_capacity >= 10
 				scope:region = {
 					is_in_geographic_region = geographic_region_china
 				}
@@ -7849,6 +8115,16 @@ ai_strategy_default = {
 				if = { # Billions must smile
 					limit = {
 						has_je_befriend_reason = { TARGET = scope:target_country }
+					}
+					add = 10000
+				}
+				if = {
+					limit = {
+						has_variable = rcw_russian_faction
+						scope:target_country = {
+							has_variable = rcw_russian_faction
+						}
+						rcw_factions_are_aligned = { FACTION = root OTHER_FACTION = scope:target_country }
 					}
 					add = 10000
 				}
@@ -8127,8 +8403,11 @@ ai_strategy_default = {
 					limit = {
 						exists = c:FRA
 						c:FRA = this
-						ruler = {
-							has_variable = legitimist_leader
+						OR = {
+							ruler = {
+								has_variable = legitimist_leader
+							}
+							divided_monarchists_ai_backs_legitimist = yes
 						}
 
 						exists = c:SPA
@@ -8655,11 +8934,15 @@ ai_strategy_default = {
 					limit = {
 						exists = c:FRA
 						c:FRA = this
-						ruler = {
-							OR = {
-								has_variable = legitimist_leader
-								var:dynasty_var ?= flag:house_bonaparte
+						OR = {
+							ruler = {
+								OR = {
+									has_variable = legitimist_leader
+									var:dynasty_var ?= flag:house_bonaparte
+								}
 							}
+							divided_monarchists_ai_backs_legitimist = yes
+							divided_monarchists_ai_backs_bonapartist = yes
 						}
 
 						exists = c:PAP
@@ -8777,7 +9060,7 @@ ai_strategy_default = {
 
 				if = {
 					limit = {
-						can_reach_target_country = { TARGET_COUNTRY = scope:target_country }
+						can_reach_target_country_to_coerce = { TARGET_COUNTRY = scope:target_country }
 						NOT = { is_subject_of = scope:target_country }
 					}
 					add = 50
@@ -9018,7 +9301,6 @@ ai_strategy_default = {
 		}
 		conquer = {
 			trigger = {
-				can_reach_target_country = { TARGET_COUNTRY = scope:target_country }
 				NOT = { is_subject_of = scope:target_country }
 
 				# Be nice to tutorial players
@@ -9031,7 +9313,8 @@ ai_strategy_default = {
 						is_in_same_power_bloc = scope:target_country
 						has_friendly_diplomatic_pact = { TARGET = scope:target_country }
 					}
-				}			
+				}
+				can_reach_target_country_to_conquer = { TARGET_COUNTRY = scope:target_country }
 			}
 			score = {
 				value = 0
@@ -9039,6 +9322,17 @@ ai_strategy_default = {
 				if = {
 					limit = { has_je_conquest_reason = { TARGET = scope:target_country } }
 					add = 10000
+				}
+
+				if = {
+					limit = {
+						has_variable = rcw_russian_faction
+						scope:target_country = {
+							has_variable = rcw_russian_faction
+						}
+						rcw_factions_are_aligned = { FACTION = root OTHER_FACTION = scope:target_country }
+					}
+					add = -10000
 				}
 
 				if = {
@@ -9058,14 +9352,9 @@ ai_strategy_default = {
 								TYPE = aro:ai_regional_objective_acquire_states
 								TARGET = scope:target_country
 							}
-							AND = {
-								ai_is_regional_objective_local_country = {
-									TYPE = aro:ai_regional_objective_recover_claims
-									TARGET = scope:target_country
-								}
-								scope:target_country = {
-									any_scope_state = { has_claim_by = root }
-								}
+							ai_is_regional_objective_local_country = {
+								TYPE = aro:ai_regional_objective_recover_claims
+								TARGET = scope:target_country
 							}
 						}
 					}
@@ -9581,7 +9870,7 @@ ai_strategy_default = {
 						scope:target_country = { is_country_type = unrecognized }
 					}
 				}
-				can_reach_target_country = { TARGET_COUNTRY = scope:target_country }
+				can_reach_target_country_to_subjugate = { TARGET_COUNTRY = scope:target_country }
 				NOT = { is_subject_of = scope:target_country }
 
 				# AI shouldn't be aggressive against subjects of their subjects
@@ -9647,7 +9936,7 @@ ai_strategy_default = {
 
 				if = {
 					limit = {
-						can_reach_target_country = { TARGET_COUNTRY = scope:target_country }
+						can_reach_target_country_to_subjugate = { TARGET_COUNTRY = scope:target_country }
 						country_rank > scope:target_country.country_rank
 						NOT = { is_country_type = unrecognized }
 						scope:target_country = {
@@ -9734,7 +10023,7 @@ ai_strategy_default = {
 
 				if = {
 					limit = {
-						can_reach_target_country = { TARGET_COUNTRY = scope:target_country }
+						can_reach_target_country_to_subjugate = { TARGET_COUNTRY = scope:target_country }
 						country_rank > scope:target_country.country_rank
 						scope:target_country.country_rank < rank_value:major_power
 						scope:target_country = { NOT = { is_subject_of = root }	}
@@ -10138,7 +10427,7 @@ ai_strategy_default = {
 
 				if = {
 					limit = {
-						scope:target_state.ai_state_value:root >= ai_strongly_desires_state_value_threshold
+						scope:target_state.ai_state_value:root >= define:NAI|AI_STRONGLY_DESIRES_STATE_VALUE_THRESHOLD
 					}
 					add = scope:target_state.ai_state_value:root
 				}
@@ -10293,7 +10582,7 @@ ai_strategy_default = {
 					wants_to_solve_schleswig_holstein = yes
 					exists = c:HOL
 					scope:target_country = { c:HOL ?= THIS }
-					can_reach_target_country = { TARGET_COUNTRY = scope:target_country }
+					can_reach_target_country_to_subjugate = { TARGET_COUNTRY = scope:target_country }
 				}
 				add = 100
 			}
@@ -10310,7 +10599,7 @@ ai_strategy_default = {
 						c:KOR ?= THIS 
 						is_country_type = unrecognized
 					}
-					can_reach_target_country = { TARGET_COUNTRY = scope:target_country }
+					can_reach_target_country_to_subjugate = { TARGET_COUNTRY = scope:target_country }
 				}
 				add = 25
 			}
@@ -10408,7 +10697,7 @@ ai_strategy_default = {
 						c:KOR ?= THIS 
 						is_country_type = unrecognized
 					}
-					can_reach_target_country = { TARGET_COUNTRY = scope:target_country }
+					can_reach_target_country_to_subjugate = { TARGET_COUNTRY = scope:target_country }
 				}
 				add = 25
 			}
@@ -10694,7 +10983,7 @@ ai_strategy_default = {
 							type = embargo
 						}	
 					}
-					can_reach_target_country = { TARGET_COUNTRY = scope:target_country }
+					can_reach_target_country_to_coerce = { TARGET_COUNTRY = scope:target_country }
 				}
 				add = 50
 			}			
@@ -10913,6 +11202,17 @@ ai_strategy_default = {
 
 			if = {
 				limit = {
+					has_variable = rcw_russian_faction
+					scope:target_country = {
+						has_variable = rcw_russian_faction
+					}
+					rcw_factions_are_hostile = { FACTION = root OTHER_FACTION = scope:target_country }
+				}
+				add = 200
+			}
+
+			if = {
+				limit = {
 					has_journal_entry = je_unify_afghanistan
 					scope:target_country = {
 						OR = {
@@ -10994,7 +11294,7 @@ ai_strategy_default = {
 			
 			if = {
 				limit = {
-					can_reach_target_country = { TARGET_COUNTRY = scope:target_country }
+					can_reach_target_country_to_subjugate = { TARGET_COUNTRY = scope:target_country }
 					has_technology_researched = civilizing_mission
 					has_colonial_law = yes
 					scope:target_country = {
@@ -11157,7 +11457,7 @@ ai_strategy_default = {
 						wants_to_solve_schleswig_holstein = yes
 						exists = c:HOL
 						scope:target_country = { this = c:HOL }
-						can_reach_target_country = { TARGET_COUNTRY = scope:target_country }
+						can_reach_target_country_to_subjugate = { TARGET_COUNTRY = scope:target_country }
 					}
 					add = 150
 				}
@@ -11839,6 +12139,34 @@ ai_strategy_default = {
 				max = 5
 			}
 		}
+		submarine_raiding_fleet = { # Small all-submarine fleets that only raid enemy supply
+			ai_ship_category_weights = {
+				ai_ship_category_submarines = 100.0
+			}
+			mission_type_weights = {
+				raid_supply = 1.0
+			}
+
+			min_ships_wanted = 8 # This is a soft limit
+			num_fleets_wanted = { # Around 10 submarines per fleet, but only split off another fleet once every fleet would have at least 6
+				value = ai_num_submarines
+				divide = 10
+				ceiling = yes
+				max = {
+					value = ai_num_submarines
+					divide = 6
+					floor = yes
+				}
+				min = 1
+				max = 8
+			}
+
+			potential = {
+				any_scope_ship = {
+					is_ai_ship_category = ai_ship_category_submarines
+				}
+			}
+		}
 		coastal_defense_fleet = { # A single fleet for the AI's coastal defense ships that only does intercept orders
 			ai_ship_category_weights = {
 				ai_ship_category_coastal_defense = 100.0
@@ -11856,16 +12184,12 @@ ai_strategy_default = {
 			}
 
 			num_fleets_wanted = {
-				value = 0
+				value = 1
+			}
 
-				if = {
-					limit = {
-						any_scope_ship = {
-							is_ai_ship_category = ai_ship_category_coastal_defense
-						}
-					}
-
-					add = 1
+			potential = {
+				any_scope_ship = {
+					is_ai_ship_category = ai_ship_category_coastal_defense
 				}
 			}
 		}
