@@ -605,7 +605,7 @@ kazakhstan_events.2 = {
 	option = {
 		name = kazakhstan_events.2.a
         default_option = yes
-        add_journal_entry = { type = je_pacify_the_steppes }
+        add_contextless_journal_entry = je_pacify_the_steppes
         every_country = {
         	limit = {
         		country_has_primary_culture = cu:kazak
@@ -684,6 +684,9 @@ kazakhstan_events.3 = {
 			}
 			add_claim = c:RUS
 		}
+		ai_chance = {
+			base = 80
+		}
 	}
 	option = {
 		name = kazakhstan_events.3.b
@@ -710,6 +713,19 @@ kazakhstan_events.3 = {
         		days = normal_modifier_time
         	}
         }
+        ai_chance = {
+			base = 0
+			modifier = {
+				trigger = {
+					ROOT = {
+						any_civil_war = {
+	                        civil_war_progress >= 0.50
+	                    }
+					}
+				}
+				add = 20
+			}
+		}
 	}
 }
 
