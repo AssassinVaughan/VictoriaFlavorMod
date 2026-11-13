@@ -259,7 +259,7 @@ on_monthly_pulse_country = {
 		# Ideological unification
 		ideological_unification.1
 		german_unification.6
-		
+
 		# Conquest of Constantinople
 		tsarpoints_events.7
 	}
@@ -340,13 +340,55 @@ on_monthly_pulse_country = {
 					limit = {
 						modifier:country_electoral_confidence_over_time < 0
 					}
-					electoral_confidence > { # Can never drift to below 25%
-						value = 0.25
-						subtract = modifier:country_electoral_confidence_over_time
-					}
+					electoral_confidence > electoral_confidence_drift_limit # Can never drift to below 25%
 				}
 			}
 			add_electoral_confidence = modifier:country_electoral_confidence_over_time
+		}
+
+		if = {
+			limit = {
+				country_has_voting_franchise = yes
+			}
+			if = {
+				limit = {
+					NOT = { has_variable = electoral_confidence_notified_band }
+				}
+				set_variable = {
+					name = electoral_confidence_notified_band
+					value = electoral_confidence_band
+				}
+			}
+			else_if = {
+				limit = {
+					var:electoral_confidence_notified_band > electoral_confidence_band
+				}
+				save_scope_as = electoral_confidence_country
+				post_notification = electoral_confidence_fell_notification
+				clear_saved_scope = electoral_confidence_country
+				set_variable = {
+					name = electoral_confidence_notified_band
+					value = electoral_confidence_band
+				}
+			}
+			else_if = {
+				limit = {
+					var:electoral_confidence_notified_band < electoral_confidence_band
+				}
+				save_scope_as = electoral_confidence_country
+				post_notification = electoral_confidence_rose_notification
+				clear_saved_scope = electoral_confidence_country
+				set_variable = {
+					name = electoral_confidence_notified_band
+					value = electoral_confidence_band
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_variable = electoral_confidence_notified_band
+			}
+			remove_variable = electoral_confidence_notified_band
 		}
 
 		if = {
@@ -3344,6 +3386,12 @@ on_secession_start = {
 		on_secession_start_handle_target_secession_effect = yes
 		if = {
 			limit = {
+				has_variable = rcw_russian_faction
+			}
+			rcw_register_late_separatist = yes
+		}
+		if = {
+			limit = {
 				has_journal_entry = je_warlord_china
 				NOT = { has_variable = china_warlord_explosion_revolution }
 			}
@@ -4256,14 +4304,9 @@ on_election_campaign_start = {
 		debug_log = "[TimeKeeper.GetCurrentDate.GetString]: Election Campaign Started - [THIS.GetCountry.GetNameNoFormatting]"
 		if = {
 			limit = {
-				active_law:lawgroup_distribution_of_power ?= {
-					has_amendment = amendment_type:amendment_tradition_of_free_elections
-				}
+				electoral_confidence_campaign_start_gain > 0
 			}
-			add_electoral_confidence = {
-				value = eagle_burger_freedom_index
-				divide = 10
-			}
+			add_electoral_confidence = electoral_confidence_campaign_start_gain
 		}
 	}
 	events = {
@@ -4638,6 +4681,20 @@ on_power_bloc_struggle_ended = {
 			scope:failed_contender = {
 				remove_variable = achievement_im_the_captain_now_challanger_var
 			}
+		}
+	}
+}
+
+# This on-action is triggered every time a Power Bloc is formed after the game has started, once its founding members have joined.
+# Root = Country that formed the Power Bloc (its leader)
+# scope:power_bloc = The newly formed Power Bloc
+on_power_bloc_formed = {
+	effect = {
+		if = {
+			limit = {
+				has_modifier = russian_mandates_refund
+			}
+			remove_modifier = russian_mandates_refund
 		}
 	}
 }

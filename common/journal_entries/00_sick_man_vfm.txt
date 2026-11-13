@@ -493,16 +493,19 @@ REPLACE:je_sick_man_separatism = {
 		color = "gold_positive"
 		conclusion_desc = je_standard_completion_conclusion_desc
 		trigger = {
-		scope:journal_entry = {
-			is_goal_complete = yes
-		}
-		highest_secession_progress < 0.5
-		NOT = {
-			any_scope_state = {
-				turmoil >= 0.2
+			scope:journal_entry = {
+				is_goal_complete = yes
+			}
+			highest_secession_progress < 0.5
+			custom_tooltip = {
+				text = je_sick_man_separatism_no_high_turmoil_tt
+				NOT = {
+					any_scope_state = {
+						turmoil >= 0.2
+					}
+				}
 			}
 		}
-	}
 		effect = {
 			set_variable = completed_separatism_sick_man_je
 			custom_tooltip = je_sick_man_advance
