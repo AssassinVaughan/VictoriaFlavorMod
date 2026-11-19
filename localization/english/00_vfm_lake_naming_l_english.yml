@@ -1,0 +1,58 @@
+﻿l_english:
+  #naming options
+  vfm_lake_naming_explorer: "Lake [SCOPE.sCharacter('vfm_explorer').GetLastName], after the one who found it"
+  vfm_lake_naming_explorer_again: "Name it again: [SCOPE.sCharacter('vfm_explorer').GetCustom('vfm_lake_ordinal_next')]Lake [SCOPE.sCharacter('vfm_explorer').GetLastName]"
+  vfm_lake_naming_monarch: "Lake [SCOPE.sCharacter('vfm_ruler').GetFirstName], in honor of our sovereign"
+  vfm_lake_naming_monarch_again: "Name it again: [SCOPE.sCharacter('vfm_ruler').GetCustom('vfm_lake_ordinal_next')]Lake [SCOPE.sCharacter('vfm_ruler').GetFirstName]"
+  vfm_lake_naming_ruler: "Lake [SCOPE.sCharacter('vfm_ruler').GetLastName], in honor of our leader"
+  vfm_lake_naming_ruler_again: "Name it again: [SCOPE.sCharacter('vfm_ruler').GetCustom('vfm_lake_ordinal_next')]Lake [SCOPE.sCharacter('vfm_ruler').GetLastName]"
+  vfm_lake_naming_nation: "[ROOT.GetCountry.GetCustom('vfm_lake_nation_name')], for the glory of the nation"
+  vfm_lake_naming_nation_again: "Name it again: [ROOT.GetCountry.GetCustom('vfm_lake_ordinal_next_country')][ROOT.GetCountry.GetCustom('vfm_lake_nation_name')]"
+  vfm_lake_naming_explorer_fourth: "Fourth Lake [SCOPE.sCharacter('vfm_explorer').GetLastName]. Was nobody else on this expedition?"
+  vfm_lake_naming_monarch_fourth: "Fourth Lake [SCOPE.sCharacter('vfm_ruler').GetFirstName]. Has the royal family run out of names?"
+  vfm_lake_naming_ruler_fourth: "Fourth Lake [SCOPE.sCharacter('vfm_ruler').GetLastName]. Are there no other names left in [ROOT.GetCountry.GetNameNoFlag]?"
+  vfm_lake_naming_nation_fourth: "Fourth [ROOT.GetCountry.GetCustom('vfm_lake_nation_name')]. Are there no other names left in this country?"
+
+  #victoria
+  vfm_lake_naming.1.t: "The Source of the Nile"
+  vfm_lake_naming.1.d: "Our expedition has come back from the heart of Africa with great news: the Nile flows out of a huge lake, so wide you cannot see the other shore. The locals call it Nyanza.\n\nThe Geographical Society says a discovery like this needs a proper name, and they are waiting for us to pick one. What should we call it?"
+  vfm_lake_naming.1.f: "\"I no longer felt any doubt that the lake at my feet gave birth to that interesting river, the source of which has been the subject of so much speculation.\"\n- John Hanning Speke, 1858"
+  vfm_lake_naming.1.e: "Let it keep the name Nyanza"
+
+  #turkana
+  vfm_lake_naming.2.t: "Another Lake to the North"
+  vfm_lake_naming.2.d: "Not content with finding the source of the Nile, part of the expedition kept going north through dry, volcanic country. There they found a second big lake with strange green water, reaching out into the desert. The Turkana herders living on its shores had never seen anyone like them.\n\nIt is up to us to name this one too."
+  vfm_lake_naming.2.f: "A green lake in the middle of the desert. Nobody back home will believe it."
+  vfm_lake_naming.2.e: "Let it keep the name of the Turkana"
+
+  #nile news
+  vfm_lake_naming.3.t: "The Source of the Nile Found"
+  vfm_lake_naming.3.d: "The source of the Nile has finally been found. An expedition from [SCOPE.sCountry('vfm_discoverer').GetName] followed the river all the way to a great lake in the middle of Africa, which the [SCOPE.sCountry('vfm_discoverer').GetAdjective] have named [GetPlayer.GetCustom('vfm_lake_victoria_name')]. The same expedition also found a second lake further north, now called [GetPlayer.GetCustom('vfm_lake_turkana_name')].\n\nIt is all the newspapers are talking about."
+  vfm_lake_naming.3.f: "Herodotus, Ptolemy and Nero all looked for it. In the end the [SCOPE.sCountry('vfm_discoverer').GetAdjective] got there first."
+  vfm_lake_naming.3.a: "What a dreadful name."
+
+  #tanganyika
+  vfm_lake_naming.4.t: "The Long Lake"
+  vfm_lake_naming.4.d: "Our expedition has reached a very long lake on the eastern edge of the Congo basin. It is surrounded by mountains and goes further north and south than anyone could see. At Ujiji, a trading town on its shore, the Arab traders and the local fishermen both call it Tanganyika.\n\nThe Geographical Society wants to know what we will call it."
+  vfm_lake_naming.4.f: "\"Nothing, in sooth, could be more picturesque than this first view of the Tanganyika Lake, as it lay in the lap of the mountains, basking in the gorgeous tropical sunshine.\"\n- Richard Francis Burton, 1858"
+  vfm_lake_naming.4.e: "Let it keep the name Tanganyika"
+
+  #mweru
+  vfm_lake_naming.5.t: "A Lake Among the Papyrus"
+  vfm_lake_naming.5.d: "Southwest of Tanganyika, our explorers found another large lake, full of papyrus swamps and fishing villages along its shores. The people living there call it Mweru.\n\nIt is up to us to name this one too."
+  vfm_lake_naming.5.f: "Canoes everywhere, and not one of our maps shows this place."
+  vfm_lake_naming.5.e: "Let it keep the name Mweru"
+
+  #congo news
+  vfm_lake_naming.6.t: "The Great Lakes of the Congo"
+  vfm_lake_naming.6.d: "An expedition from [SCOPE.sCountry('vfm_discoverer').GetName] has come back from the interior of Africa after mapping the great lakes of the Congo. The long lake in the east will now be called [GetPlayer.GetCustom('vfm_lake_tanganyika_name')], and the one to the south [GetPlayer.GetCustom('vfm_lake_mweru_name')].\n\nThe [SCOPE.sCountry('vfm_discoverer').GetAdjective] newspapers are celebrating. Everyone else is less impressed."
+  vfm_lake_naming.6.f: "One more place in Africa with a foreign name on it."
+  vfm_lake_naming.6.a: "What a dreadful name."
+
+  #modifiers
+  vfm_lake_named_explorer: "Renowned Discovery"
+  vfm_lake_named_explorer_desc: "Our explorer's name is now on maps all over the world."
+  vfm_lake_named_ruler: "Royal Namesake"
+  vfm_lake_named_ruler_desc: "A great African lake now carries the name of our head of state."
+  vfm_lake_named_nation: "National Landmark"
+  vfm_lake_named_nation_desc: "Our nation's name is now on the map of Africa."

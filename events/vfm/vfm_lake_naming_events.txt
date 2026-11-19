@@ -1,0 +1,801 @@
+﻿namespace = vfm_lake_naming
+
+#victoria
+vfm_lake_naming.1 = {
+	type = country_event
+	placement = ROOT
+
+	title = vfm_lake_naming.1.t
+	desc = vfm_lake_naming.1.d
+	flavor = vfm_lake_naming.1.f
+
+	duration = 3
+
+	event_image = {
+		video = "africa_diplomats_negotiating"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+
+	immediate = {
+		vfm_lake_naming_scopes_effect = { CHAIN = nile }
+	}
+
+	#explorer
+	option = {
+		name = {
+			trigger = { scope:vfm_explorer ?= { NOT = { has_variable = vfm_lake_namesake } } }
+			text = vfm_lake_naming_explorer
+		}
+		name = {
+			trigger = {
+				scope:vfm_explorer ?= {
+					has_variable = vfm_lake_namesake
+					var:vfm_lake_namesake < 3
+				}
+			}
+			text = vfm_lake_naming_explorer_again
+		}
+		name = {
+			trigger = {
+				scope:vfm_explorer ?= {
+					has_variable = vfm_lake_namesake
+					var:vfm_lake_namesake >= 3
+				}
+			}
+			text = vfm_lake_naming_explorer_fourth
+		}
+		trigger = { exists = scope:vfm_explorer }
+		default_option = yes
+		vfm_lake_name_explorer_effect = { LAKE = victoria }
+		ai_chance = {
+			base = 3
+			modifier = {
+				trigger = { NOT = { has_law = law_type:law_monarchy } }
+				factor = 1.5
+			}
+		}
+	}
+
+	#ruler
+	option = {
+		name = {
+			trigger = {
+				has_law = law_type:law_monarchy
+				scope:vfm_ruler ?= { NOT = { has_variable = vfm_lake_namesake } }
+			}
+			text = vfm_lake_naming_monarch
+		}
+		name = {
+			trigger = {
+				has_law = law_type:law_monarchy
+				scope:vfm_ruler ?= {
+					has_variable = vfm_lake_namesake
+					var:vfm_lake_namesake < 3
+				}
+			}
+			text = vfm_lake_naming_monarch_again
+		}
+		name = {
+			trigger = {
+				has_law = law_type:law_monarchy
+				scope:vfm_ruler ?= {
+					has_variable = vfm_lake_namesake
+					var:vfm_lake_namesake >= 3
+				}
+			}
+			text = vfm_lake_naming_monarch_fourth
+		}
+		name = {
+			trigger = {
+				NOT = { has_law = law_type:law_monarchy }
+				scope:vfm_ruler ?= { NOT = { has_variable = vfm_lake_namesake } }
+			}
+			text = vfm_lake_naming_ruler
+		}
+		name = {
+			trigger = {
+				NOT = { has_law = law_type:law_monarchy }
+				scope:vfm_ruler ?= {
+					has_variable = vfm_lake_namesake
+					var:vfm_lake_namesake < 3
+				}
+			}
+			text = vfm_lake_naming_ruler_again
+		}
+		name = {
+			trigger = {
+				NOT = { has_law = law_type:law_monarchy }
+				scope:vfm_ruler ?= {
+					has_variable = vfm_lake_namesake
+					var:vfm_lake_namesake >= 3
+				}
+			}
+			text = vfm_lake_naming_ruler_fourth
+		}
+		trigger = { exists = scope:vfm_ruler }
+		vfm_lake_name_ruler_effect = { LAKE = victoria }
+		ai_chance = {
+			base = 3
+			modifier = {
+				trigger = { has_law = law_type:law_monarchy }
+				factor = 3
+			}
+			modifier = {
+				trigger = { NOT = { has_law = law_type:law_monarchy } }
+				factor = 0.3
+			}
+		}
+	}
+
+	#nation
+	option = {
+		name = {
+			trigger = { NOT = { has_variable = vfm_lake_namesake } }
+			text = vfm_lake_naming_nation
+		}
+		name = {
+			trigger = {
+				has_variable = vfm_lake_namesake
+				var:vfm_lake_namesake < 3
+			}
+			text = vfm_lake_naming_nation_again
+		}
+		name = {
+			trigger = {
+				has_variable = vfm_lake_namesake
+				var:vfm_lake_namesake >= 3
+			}
+			text = vfm_lake_naming_nation_fourth
+		}
+		vfm_lake_name_nation_effect = { LAKE = victoria }
+		ai_chance = {
+			base = 2
+			modifier = {
+				trigger = { NOT = { has_law = law_type:law_monarchy } }
+				factor = 2
+			}
+		}
+	}
+
+	#nativename
+	option = {
+		name = vfm_lake_naming.1.e
+		change_infamy = -5
+		ai_chance = {
+			base = 1
+			modifier = {
+				trigger = {
+					OR = {
+						country_is_in_africa = yes
+						country_has_state_religion = rel:sunni
+						country_has_state_religion = rel:shiite
+						country_has_state_religion = rel:ibadi
+					}
+				}
+				factor = 5
+			}
+		}
+	}
+
+	after = {
+		trigger_event = { id = vfm_lake_naming.2 days = 14 popup = yes }
+	}
+}
+
+#turkana
+vfm_lake_naming.2 = {
+	type = country_event
+	placement = ROOT
+
+	title = vfm_lake_naming.2.t
+	desc = vfm_lake_naming.2.d
+	flavor = vfm_lake_naming.2.f
+
+	duration = 3
+
+	event_image = {
+		video = "middleeast_jungle_expedition"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+
+	immediate = {
+		vfm_lake_naming_scopes_effect = { CHAIN = nile }
+	}
+
+	#explorer
+	option = {
+		name = {
+			trigger = { scope:vfm_explorer ?= { NOT = { has_variable = vfm_lake_namesake } } }
+			text = vfm_lake_naming_explorer
+		}
+		name = {
+			trigger = {
+				scope:vfm_explorer ?= {
+					has_variable = vfm_lake_namesake
+					var:vfm_lake_namesake < 3
+				}
+			}
+			text = vfm_lake_naming_explorer_again
+		}
+		name = {
+			trigger = {
+				scope:vfm_explorer ?= {
+					has_variable = vfm_lake_namesake
+					var:vfm_lake_namesake >= 3
+				}
+			}
+			text = vfm_lake_naming_explorer_fourth
+		}
+		trigger = { exists = scope:vfm_explorer }
+		default_option = yes
+		vfm_lake_name_explorer_effect = { LAKE = turkana }
+		ai_chance = {
+			base = 3
+			modifier = {
+				trigger = { NOT = { has_law = law_type:law_monarchy } }
+				factor = 1.5
+			}
+		}
+	}
+
+	#ruler
+	option = {
+		name = {
+			trigger = {
+				has_law = law_type:law_monarchy
+				scope:vfm_ruler ?= { NOT = { has_variable = vfm_lake_namesake } }
+			}
+			text = vfm_lake_naming_monarch
+		}
+		name = {
+			trigger = {
+				has_law = law_type:law_monarchy
+				scope:vfm_ruler ?= {
+					has_variable = vfm_lake_namesake
+					var:vfm_lake_namesake < 3
+				}
+			}
+			text = vfm_lake_naming_monarch_again
+		}
+		name = {
+			trigger = {
+				has_law = law_type:law_monarchy
+				scope:vfm_ruler ?= {
+					has_variable = vfm_lake_namesake
+					var:vfm_lake_namesake >= 3
+				}
+			}
+			text = vfm_lake_naming_monarch_fourth
+		}
+		name = {
+			trigger = {
+				NOT = { has_law = law_type:law_monarchy }
+				scope:vfm_ruler ?= { NOT = { has_variable = vfm_lake_namesake } }
+			}
+			text = vfm_lake_naming_ruler
+		}
+		name = {
+			trigger = {
+				NOT = { has_law = law_type:law_monarchy }
+				scope:vfm_ruler ?= {
+					has_variable = vfm_lake_namesake
+					var:vfm_lake_namesake < 3
+				}
+			}
+			text = vfm_lake_naming_ruler_again
+		}
+		name = {
+			trigger = {
+				NOT = { has_law = law_type:law_monarchy }
+				scope:vfm_ruler ?= {
+					has_variable = vfm_lake_namesake
+					var:vfm_lake_namesake >= 3
+				}
+			}
+			text = vfm_lake_naming_ruler_fourth
+		}
+		trigger = { exists = scope:vfm_ruler }
+		vfm_lake_name_ruler_effect = { LAKE = turkana }
+		ai_chance = {
+			base = 3
+			modifier = {
+				trigger = { has_law = law_type:law_monarchy }
+				factor = 3
+			}
+			modifier = {
+				trigger = { NOT = { has_law = law_type:law_monarchy } }
+				factor = 0.3
+			}
+		}
+	}
+
+	#nation
+	option = {
+		name = {
+			trigger = { NOT = { has_variable = vfm_lake_namesake } }
+			text = vfm_lake_naming_nation
+		}
+		name = {
+			trigger = {
+				has_variable = vfm_lake_namesake
+				var:vfm_lake_namesake < 3
+			}
+			text = vfm_lake_naming_nation_again
+		}
+		name = {
+			trigger = {
+				has_variable = vfm_lake_namesake
+				var:vfm_lake_namesake >= 3
+			}
+			text = vfm_lake_naming_nation_fourth
+		}
+		vfm_lake_name_nation_effect = { LAKE = turkana }
+		ai_chance = {
+			base = 2
+			modifier = {
+				trigger = { NOT = { has_law = law_type:law_monarchy } }
+				factor = 2
+			}
+		}
+	}
+
+	#nativename
+	option = {
+		name = vfm_lake_naming.2.e
+		change_infamy = -5
+		ai_chance = {
+			base = 1
+			modifier = {
+				trigger = {
+					OR = {
+						country_is_in_africa = yes
+						country_has_state_religion = rel:sunni
+						country_has_state_religion = rel:shiite
+						country_has_state_religion = rel:ibadi
+					}
+				}
+				factor = 5
+			}
+		}
+	}
+
+	after = {
+		remove_variable = vfm_lake_nile_explorer
+		vfm_lake_news_effect = { CHAIN = nile EVENT = vfm_lake_naming.3 }
+	}
+}
+
+#nile news
+vfm_lake_naming.3 = {
+	type = country_event
+	placement = ROOT
+
+	title = vfm_lake_naming.3.t
+	desc = vfm_lake_naming.3.d
+	flavor = vfm_lake_naming.3.f
+
+	duration = 3
+
+	event_image = {
+		video = "unspecific_steam_ship"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	immediate = {
+		global_var:vfm_lake_nile_discoverer = { save_scope_as = vfm_discoverer }
+	}
+
+	option = {
+		name = vfm_lake_naming.3.a
+		default_option = yes
+	}
+}
+
+#tanganyika
+vfm_lake_naming.4 = {
+	type = country_event
+	placement = ROOT
+
+	title = vfm_lake_naming.4.t
+	desc = vfm_lake_naming.4.d
+	flavor = vfm_lake_naming.4.f
+
+	duration = 3
+
+	event_image = {
+		video = "africa_diplomats_negotiating"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+
+	immediate = {
+		vfm_lake_naming_scopes_effect = { CHAIN = congo }
+	}
+
+	#explorer
+	option = {
+		name = {
+			trigger = { scope:vfm_explorer ?= { NOT = { has_variable = vfm_lake_namesake } } }
+			text = vfm_lake_naming_explorer
+		}
+		name = {
+			trigger = {
+				scope:vfm_explorer ?= {
+					has_variable = vfm_lake_namesake
+					var:vfm_lake_namesake < 3
+				}
+			}
+			text = vfm_lake_naming_explorer_again
+		}
+		name = {
+			trigger = {
+				scope:vfm_explorer ?= {
+					has_variable = vfm_lake_namesake
+					var:vfm_lake_namesake >= 3
+				}
+			}
+			text = vfm_lake_naming_explorer_fourth
+		}
+		trigger = { exists = scope:vfm_explorer }
+		default_option = yes
+		vfm_lake_name_explorer_effect = { LAKE = tanganyika }
+		ai_chance = {
+			base = 3
+			modifier = {
+				trigger = { NOT = { has_law = law_type:law_monarchy } }
+				factor = 1.5
+			}
+		}
+	}
+
+	#ruler
+	option = {
+		name = {
+			trigger = {
+				has_law = law_type:law_monarchy
+				scope:vfm_ruler ?= { NOT = { has_variable = vfm_lake_namesake } }
+			}
+			text = vfm_lake_naming_monarch
+		}
+		name = {
+			trigger = {
+				has_law = law_type:law_monarchy
+				scope:vfm_ruler ?= {
+					has_variable = vfm_lake_namesake
+					var:vfm_lake_namesake < 3
+				}
+			}
+			text = vfm_lake_naming_monarch_again
+		}
+		name = {
+			trigger = {
+				has_law = law_type:law_monarchy
+				scope:vfm_ruler ?= {
+					has_variable = vfm_lake_namesake
+					var:vfm_lake_namesake >= 3
+				}
+			}
+			text = vfm_lake_naming_monarch_fourth
+		}
+		name = {
+			trigger = {
+				NOT = { has_law = law_type:law_monarchy }
+				scope:vfm_ruler ?= { NOT = { has_variable = vfm_lake_namesake } }
+			}
+			text = vfm_lake_naming_ruler
+		}
+		name = {
+			trigger = {
+				NOT = { has_law = law_type:law_monarchy }
+				scope:vfm_ruler ?= {
+					has_variable = vfm_lake_namesake
+					var:vfm_lake_namesake < 3
+				}
+			}
+			text = vfm_lake_naming_ruler_again
+		}
+		name = {
+			trigger = {
+				NOT = { has_law = law_type:law_monarchy }
+				scope:vfm_ruler ?= {
+					has_variable = vfm_lake_namesake
+					var:vfm_lake_namesake >= 3
+				}
+			}
+			text = vfm_lake_naming_ruler_fourth
+		}
+		trigger = { exists = scope:vfm_ruler }
+		vfm_lake_name_ruler_effect = { LAKE = tanganyika }
+		ai_chance = {
+			base = 3
+			modifier = {
+				trigger = { has_law = law_type:law_monarchy }
+				factor = 3
+			}
+			modifier = {
+				trigger = { NOT = { has_law = law_type:law_monarchy } }
+				factor = 0.3
+			}
+		}
+	}
+
+	#nation
+	option = {
+		name = {
+			trigger = { NOT = { has_variable = vfm_lake_namesake } }
+			text = vfm_lake_naming_nation
+		}
+		name = {
+			trigger = {
+				has_variable = vfm_lake_namesake
+				var:vfm_lake_namesake < 3
+			}
+			text = vfm_lake_naming_nation_again
+		}
+		name = {
+			trigger = {
+				has_variable = vfm_lake_namesake
+				var:vfm_lake_namesake >= 3
+			}
+			text = vfm_lake_naming_nation_fourth
+		}
+		vfm_lake_name_nation_effect = { LAKE = tanganyika }
+		ai_chance = {
+			base = 2
+			modifier = {
+				trigger = { NOT = { has_law = law_type:law_monarchy } }
+				factor = 2
+			}
+		}
+	}
+
+	#nativename
+	option = {
+		name = vfm_lake_naming.4.e
+		change_infamy = -5
+		ai_chance = {
+			base = 1
+			modifier = {
+				trigger = {
+					OR = {
+						country_is_in_africa = yes
+						country_has_state_religion = rel:sunni
+						country_has_state_religion = rel:shiite
+						country_has_state_religion = rel:ibadi
+					}
+				}
+				factor = 5
+			}
+		}
+	}
+
+	after = {
+		trigger_event = { id = vfm_lake_naming.5 days = 14 popup = yes }
+	}
+}
+
+#mweru
+vfm_lake_naming.5 = {
+	type = country_event
+	placement = ROOT
+
+	title = vfm_lake_naming.5.t
+	desc = vfm_lake_naming.5.d
+	flavor = vfm_lake_naming.5.f
+
+	duration = 3
+
+	event_image = {
+		video = "middleeast_jungle_expedition"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+
+	immediate = {
+		vfm_lake_naming_scopes_effect = { CHAIN = congo }
+	}
+
+	#explorer
+	option = {
+		name = {
+			trigger = { scope:vfm_explorer ?= { NOT = { has_variable = vfm_lake_namesake } } }
+			text = vfm_lake_naming_explorer
+		}
+		name = {
+			trigger = {
+				scope:vfm_explorer ?= {
+					has_variable = vfm_lake_namesake
+					var:vfm_lake_namesake < 3
+				}
+			}
+			text = vfm_lake_naming_explorer_again
+		}
+		name = {
+			trigger = {
+				scope:vfm_explorer ?= {
+					has_variable = vfm_lake_namesake
+					var:vfm_lake_namesake >= 3
+				}
+			}
+			text = vfm_lake_naming_explorer_fourth
+		}
+		trigger = { exists = scope:vfm_explorer }
+		default_option = yes
+		vfm_lake_name_explorer_effect = { LAKE = mweru }
+		ai_chance = {
+			base = 3
+			modifier = {
+				trigger = { NOT = { has_law = law_type:law_monarchy } }
+				factor = 1.5
+			}
+		}
+	}
+
+	#ruler
+	option = {
+		name = {
+			trigger = {
+				has_law = law_type:law_monarchy
+				scope:vfm_ruler ?= { NOT = { has_variable = vfm_lake_namesake } }
+			}
+			text = vfm_lake_naming_monarch
+		}
+		name = {
+			trigger = {
+				has_law = law_type:law_monarchy
+				scope:vfm_ruler ?= {
+					has_variable = vfm_lake_namesake
+					var:vfm_lake_namesake < 3
+				}
+			}
+			text = vfm_lake_naming_monarch_again
+		}
+		name = {
+			trigger = {
+				has_law = law_type:law_monarchy
+				scope:vfm_ruler ?= {
+					has_variable = vfm_lake_namesake
+					var:vfm_lake_namesake >= 3
+				}
+			}
+			text = vfm_lake_naming_monarch_fourth
+		}
+		name = {
+			trigger = {
+				NOT = { has_law = law_type:law_monarchy }
+				scope:vfm_ruler ?= { NOT = { has_variable = vfm_lake_namesake } }
+			}
+			text = vfm_lake_naming_ruler
+		}
+		name = {
+			trigger = {
+				NOT = { has_law = law_type:law_monarchy }
+				scope:vfm_ruler ?= {
+					has_variable = vfm_lake_namesake
+					var:vfm_lake_namesake < 3
+				}
+			}
+			text = vfm_lake_naming_ruler_again
+		}
+		name = {
+			trigger = {
+				NOT = { has_law = law_type:law_monarchy }
+				scope:vfm_ruler ?= {
+					has_variable = vfm_lake_namesake
+					var:vfm_lake_namesake >= 3
+				}
+			}
+			text = vfm_lake_naming_ruler_fourth
+		}
+		trigger = { exists = scope:vfm_ruler }
+		vfm_lake_name_ruler_effect = { LAKE = mweru }
+		ai_chance = {
+			base = 3
+			modifier = {
+				trigger = { has_law = law_type:law_monarchy }
+				factor = 3
+			}
+			modifier = {
+				trigger = { NOT = { has_law = law_type:law_monarchy } }
+				factor = 0.3
+			}
+		}
+	}
+
+	#nation
+	option = {
+		name = {
+			trigger = { NOT = { has_variable = vfm_lake_namesake } }
+			text = vfm_lake_naming_nation
+		}
+		name = {
+			trigger = {
+				has_variable = vfm_lake_namesake
+				var:vfm_lake_namesake < 3
+			}
+			text = vfm_lake_naming_nation_again
+		}
+		name = {
+			trigger = {
+				has_variable = vfm_lake_namesake
+				var:vfm_lake_namesake >= 3
+			}
+			text = vfm_lake_naming_nation_fourth
+		}
+		vfm_lake_name_nation_effect = { LAKE = mweru }
+		ai_chance = {
+			base = 2
+			modifier = {
+				trigger = { NOT = { has_law = law_type:law_monarchy } }
+				factor = 2
+			}
+		}
+	}
+
+	#nativename
+	option = {
+		name = vfm_lake_naming.5.e
+		change_infamy = -5
+		ai_chance = {
+			base = 1
+			modifier = {
+				trigger = {
+					OR = {
+						country_is_in_africa = yes
+						country_has_state_religion = rel:sunni
+						country_has_state_religion = rel:shiite
+						country_has_state_religion = rel:ibadi
+					}
+				}
+				factor = 5
+			}
+		}
+	}
+
+	after = {
+		remove_variable = vfm_lake_congo_explorer
+		vfm_lake_news_effect = { CHAIN = congo EVENT = vfm_lake_naming.6 }
+	}
+}
+
+#congo news
+vfm_lake_naming.6 = {
+	type = country_event
+	placement = ROOT
+
+	title = vfm_lake_naming.6.t
+	desc = vfm_lake_naming.6.d
+	flavor = vfm_lake_naming.6.f
+
+	duration = 3
+
+	event_image = {
+		video = "unspecific_steam_ship"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	immediate = {
+		global_var:vfm_lake_congo_discoverer = { save_scope_as = vfm_discoverer }
+	}
+
+	option = {
+		name = vfm_lake_naming.6.a
+		default_option = yes
+	}
+}
