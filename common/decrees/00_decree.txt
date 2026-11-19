@@ -88,6 +88,44 @@ decree_road_maintenance = {
 			}
 			add = 1000
 		}
+		if = {
+			limit = {
+				scope:country = {
+					has_journal_entry = je_tp_pool_develop_capital
+				}
+				is_capital = yes
+			}
+			add = 1000
+		}
+		if = {
+			limit = {
+				scope:country ?= {
+					has_journal_entry = je_tp_fav_parochial
+					has_variable = tp_fav_home_state
+					var:tp_fav_home_state ?= root
+				}
+			}
+			add = 1000
+		}
+		if = {
+			limit = {
+				is_capital = yes
+				scope:country = {
+					has_journal_entry = je_tp_pool_develop_capital
+				}
+			}
+			multiply = 1.5
+		}
+		if = {
+			limit = {
+				scope:country ?= {
+					has_journal_entry = je_tp_fav_parochial
+					has_variable = tp_fav_home_state
+					var:tp_fav_home_state ?= root
+				}
+			}
+			multiply = 1.5
+		}
 	}
 }
 
@@ -227,10 +265,12 @@ decree_promote_social_mobility = {
 		custom_tooltip = {
 			text = tsarpoints_decree_not_upgraded_tt
 			NOT = { has_variable = tsarpoints_upgraded_promote_social_mobility }
+			NOT = { overlord ?= { has_variable = tsarpoints_upgraded_promote_social_mobility } }
 		}
 	}
 
 	state_trigger = {
+		NOT = { has_decree = decree_promote_social_mobility_tsarpoints }
 		NOT = {
 			AND = {
 				owner ?= {
@@ -256,7 +296,23 @@ decree_promote_social_mobility = {
 
 	ai_weight = {
 		value = 0
-
+		if = {
+			limit = {
+				scope:country.total_population > 0
+			}
+			add = {
+				value = 1
+				subtract = literacy_rate
+				multiply = 100
+			}
+			multiply = {
+				value = state_population
+				divide = scope:country.total_population
+				multiply = 20
+				min = 0
+				max = 2
+			}
+		}
 		if = {
 			limit = {
 				literacy_rate < 0.25
@@ -298,6 +354,18 @@ decree_promote_social_mobility = {
 			}
 			multiply = 1.5
 		}
+		if = {
+			limit = {
+				is_incorporated = no
+			}
+			multiply = 0.25
+		}
+		if = {
+			limit = {
+				is_capital = yes
+			}
+			multiply = 2
+		}
 
 		# Content overrides
 		if = {
@@ -322,6 +390,126 @@ decree_promote_social_mobility = {
 			}
 			add = 500
 		}
+		if = {
+			limit = {
+				scope:country = {
+					has_journal_entry = je_tp_tsar_crown_of_perfection
+					NOT = { has_variable = je_tp_tsar_crown_of_perfection_button_1_complete }
+				}
+				is_capital = yes
+			}
+			add = 1000
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_variable = ai_ukraine_renaissance_accelerate
+				}
+				state_region = { is_homeland = cu:ukrainian }
+			}
+			add = 250
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_variable = ai_belarus_renaissance_accelerate
+				}
+				state_region = { is_homeland = cu:byelorussian }
+			}
+			add = 250
+		}
+		if = {
+			limit = {
+				scope:country = {
+					OR = {
+						has_strategy = ai_strategy_reactionary_agenda
+						has_strategy = ai_strategy_conservative_agenda
+						has_strategy = ai_strategy_maintain_mandate_of_heaven
+					}
+				}
+			}
+			multiply = 0.5
+		}
+		if = {
+			limit = {
+				scope:country = {
+					OR = {
+						has_strategy = ai_strategy_progressive_agenda
+						has_strategy = ai_strategy_egalitarian_agenda
+					}
+				}
+			}
+			multiply = 1.5
+		}
+		if = {
+			limit = {
+				is_incorporated = no
+			}
+			multiply = 0.25
+		}
+		if = {
+			limit = {
+				is_capital = yes
+			}
+			multiply = 2
+		}
+		if = {
+			limit = {
+				is_capital = yes
+				scope:country = {
+					has_journal_entry = je_tp_pool_develop_capital
+				}
+			}
+			multiply = 1.5
+		}
+		if = {
+			limit = {
+				scope:country ?= {
+					has_journal_entry = je_tp_fav_parochial
+					has_variable = tp_fav_home_state
+					var:tp_fav_home_state ?= root
+				}
+			}
+			multiply = 1.5
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_variable = ai_ukraine_renaissance_repress
+				}
+				state_region = { is_homeland = cu:ukrainian }
+			}
+			multiply = 0.25
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_variable = ai_belarus_renaissance_repress
+				}
+				state_region = { is_homeland = cu:byelorussian }
+			}
+			multiply = 0.25
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_variable = ai_ukraine_renaissance_moderate
+				}
+				state_region = { is_homeland = cu:ukrainian }
+				cultural_renaissance_fervor_is_high = { CULTURE = ukrainian }
+			}
+			multiply = 0.5
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_variable = ai_belarus_renaissance_moderate
+				}
+				state_region = { is_homeland = cu:byelorussian }
+				cultural_renaissance_fervor_is_high = { CULTURE = byelorussian }
+			}
+			multiply = 0.5
+		}
 	}
 }
 
@@ -330,11 +518,15 @@ decree_promote_social_mobility_tsarpoints = {
 	country_trigger = {
 		custom_tooltip = {
 			text = tsarpoints_decree_upgraded_tt
-			has_variable = tsarpoints_upgraded_promote_social_mobility
+			OR = {
+				has_variable = tsarpoints_upgraded_promote_social_mobility
+				overlord ?= { has_variable = tsarpoints_upgraded_promote_social_mobility }
+			}
 		}
 	}
 
 	state_trigger = {
+		NOT = { has_decree = decree_promote_social_mobility }
 		NOT = {
 			AND = {
 				owner ?= {
@@ -382,6 +574,34 @@ decree_promote_social_mobility_tsarpoints = {
 		if = {
 			limit = {
 				scope:country = {
+					has_journal_entry = je_tp_tsar_crown_of_perfection
+					NOT = { has_variable = je_tp_tsar_crown_of_perfection_button_1_complete }
+				}
+				is_capital = yes
+			}
+			add = 1000
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_variable = ai_ukraine_renaissance_accelerate
+				}
+				state_region = { is_homeland = cu:ukrainian }
+			}
+			add = 250
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_variable = ai_belarus_renaissance_accelerate
+				}
+				state_region = { is_homeland = cu:byelorussian }
+			}
+			add = 250
+		}
+		if = {
+			limit = {
+				scope:country = {
 					OR = {
 						has_strategy = ai_strategy_reactionary_agenda
 						has_strategy = ai_strategy_conservative_agenda
@@ -401,6 +621,75 @@ decree_promote_social_mobility_tsarpoints = {
 			}
 			multiply = 1.5
 		}
+		if = {
+			limit = {
+				is_incorporated = no
+			}
+			multiply = 0.25
+		}
+		if = {
+			limit = {
+				is_capital = yes
+			}
+			multiply = 2
+		}
+		if = {
+			limit = {
+				is_capital = yes
+				scope:country = {
+					has_journal_entry = je_tp_pool_develop_capital
+				}
+			}
+			multiply = 1.5
+		}
+		if = {
+			limit = {
+				scope:country ?= {
+					has_journal_entry = je_tp_fav_parochial
+					has_variable = tp_fav_home_state
+					var:tp_fav_home_state ?= root
+				}
+			}
+			multiply = 1.5
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_variable = ai_ukraine_renaissance_repress
+				}
+				state_region = { is_homeland = cu:ukrainian }
+			}
+			multiply = 0.25
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_variable = ai_belarus_renaissance_repress
+				}
+				state_region = { is_homeland = cu:byelorussian }
+			}
+			multiply = 0.25
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_variable = ai_ukraine_renaissance_moderate
+				}
+				state_region = { is_homeland = cu:ukrainian }
+				cultural_renaissance_fervor_is_high = { CULTURE = ukrainian }
+			}
+			multiply = 0.5
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_variable = ai_belarus_renaissance_moderate
+				}
+				state_region = { is_homeland = cu:byelorussian }
+				cultural_renaissance_fervor_is_high = { CULTURE = byelorussian }
+			}
+			multiply = 0.5
+		}
 	}
 }
 
@@ -414,8 +703,13 @@ decree_promote_national_values = {
 		custom_tooltip = {
 			text = tsarpoints_decree_not_upgraded_tt
 			NOT = { has_variable = tsarpoints_upgraded_promote_national_values }
+			NOT = { overlord ?= { has_variable = tsarpoints_upgraded_promote_national_values } }
 		}
 		NOT = { has_law_or_variant = law_type:law_multicultural }
+	}
+
+	state_trigger = {
+		NOT = { has_decree = decree_promote_national_values_tsarpoints }
 	}
 
 	modifier = {
@@ -469,7 +763,6 @@ decree_promote_national_values = {
 						OR = {
 							has_strategy = ai_strategy_reactionary_agenda
 							has_strategy = ai_strategy_conservative_agenda
-							has_strategy = ai_strategy_maintain_mandate_of_heaven
 						}
 					}
 				}
@@ -663,12 +956,91 @@ decree_promote_national_values = {
 				}
 				culture_percent_state = {
 					target = cu:russian
-					value < je_russification_state_russian_culture_min # set in event_values
+					value < je_russification_decree_russian_culture_target # set in event_values
 				}
 				OR = {
 					is_in_geographic_region = geographic_region_finland_old
 					is_in_geographic_region = geographic_region_baltic_states_old
 					is_in_geographic_region = geographic_region_poland_old
+				}
+			}
+			add = 250
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_journal_entry = je_tp_pool_cultural_dominance
+				}
+				culture_percent_state = {
+					target = cu:russian
+					value < 0.5
+				}
+			}
+			add = 250
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_variable = ai_ukraine_renaissance_repress
+				}
+				state_region = { is_homeland = cu:ukrainian }
+			}
+			add = 250
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_variable = ai_ukraine_renaissance_moderate
+					cultural_renaissance_fervor_is_high = { CULTURE = ukrainian }
+				}
+				state_region = { is_homeland = cu:ukrainian }
+			}
+			add = 150
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_variable = ai_belarus_renaissance_repress
+				}
+				state_region = { is_homeland = cu:byelorussian }
+			}
+			add = 250
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_variable = ai_belarus_renaissance_moderate
+					cultural_renaissance_fervor_is_high = { CULTURE = byelorussian }
+				}
+				state_region = { is_homeland = cu:byelorussian }
+			}
+			add = 150
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_journal_entry = je_tp_tsar_gendarme_of_europe
+					NOT = { has_variable = je_tp_tsar_gendarme_of_europe_button_3_complete }
+				}
+				OR = {
+					AND = {
+						is_in_geographic_region = geographic_region_diocese_of_kamchatka
+						NOT = {
+							religion_percent_state = {
+								target = rel:orthodox
+								value >= 0.75
+							}
+						}
+					}
+					AND = {
+						is_in_geographic_region = geographic_region_baltic_governorates
+						NOT = {
+							religion_percent_state = {
+								target = rel:orthodox
+								value >= 0.25
+							}
+						}
+					}
 				}
 			}
 			add = 250
@@ -717,6 +1089,45 @@ decree_promote_national_values = {
 			}
 			multiply = 0.5
 		}
+
+		if = {
+			limit = {
+				scope:country = {
+					has_variable = ai_ukraine_renaissance_moderate
+				}
+				state_region = { is_homeland = cu:ukrainian }
+				NOT = { cultural_renaissance_fervor_is_high = { CULTURE = ukrainian } }
+			}
+			multiply = 0.5
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_variable = ai_ukraine_renaissance_accelerate
+				}
+				state_region = { is_homeland = cu:ukrainian }
+			}
+			multiply = 0.1
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_variable = ai_belarus_renaissance_moderate
+				}
+				state_region = { is_homeland = cu:byelorussian }
+				NOT = { cultural_renaissance_fervor_is_high = { CULTURE = byelorussian } }
+			}
+			multiply = 0.5
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_variable = ai_belarus_renaissance_accelerate
+				}
+				state_region = { is_homeland = cu:byelorussian }
+			}
+			multiply = 0.1
+		}
 	}
 }
 
@@ -729,9 +1140,16 @@ decree_promote_national_values_tsarpoints = {
 	country_trigger = {
 		custom_tooltip = {
 			text = tsarpoints_decree_upgraded_tt
-			has_variable = tsarpoints_upgraded_promote_national_values
+			OR = {
+				has_variable = tsarpoints_upgraded_promote_national_values
+				overlord ?= { has_variable = tsarpoints_upgraded_promote_national_values }
+			}
 		}
 		NOT = { has_law_or_variant = law_type:law_multicultural }
+	}
+
+	state_trigger = {
+		NOT = { has_decree = decree_promote_national_values }
 	}
 
 	modifier = {
@@ -938,6 +1356,103 @@ decree_promote_national_values_tsarpoints = {
 			}
 			multiply = 0.1
 		}
+		
+		if = {
+			limit = {
+				scope:country = {
+					has_journal_entry = je_russification
+				}
+				culture_percent_state = {
+					target = cu:russian
+					value < je_russification_decree_russian_culture_target # set in event_values
+				}
+				OR = {
+					is_in_geographic_region = geographic_region_finland_old
+					is_in_geographic_region = geographic_region_baltic_states_old
+					is_in_geographic_region = geographic_region_poland_old
+				}
+			}
+			add = 250
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_journal_entry = je_tp_pool_cultural_dominance
+				}
+				culture_percent_state = {
+					target = cu:russian
+					value < 0.5
+				}
+			}
+			add = 250
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_variable = ai_ukraine_renaissance_repress
+				}
+				state_region = { is_homeland = cu:ukrainian }
+			}
+			add = 250
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_variable = ai_ukraine_renaissance_moderate
+					cultural_renaissance_fervor_is_high = { CULTURE = ukrainian }
+				}
+				state_region = { is_homeland = cu:ukrainian }
+			}
+			add = 150
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_variable = ai_belarus_renaissance_repress
+				}
+				state_region = { is_homeland = cu:byelorussian }
+			}
+			add = 250
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_variable = ai_belarus_renaissance_moderate
+					cultural_renaissance_fervor_is_high = { CULTURE = byelorussian }
+				}
+				state_region = { is_homeland = cu:byelorussian }
+			}
+			add = 150
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_journal_entry = je_tp_tsar_gendarme_of_europe
+					NOT = { has_variable = je_tp_tsar_gendarme_of_europe_button_3_complete }
+				}
+				OR = {
+					AND = {
+						is_in_geographic_region = geographic_region_diocese_of_kamchatka
+						NOT = {
+							religion_percent_state = {
+								target = rel:orthodox
+								value >= 0.75
+							}
+						}
+					}
+					AND = {
+						is_in_geographic_region = geographic_region_baltic_governorates
+						NOT = {
+							religion_percent_state = {
+								target = rel:orthodox
+								value >= 0.25
+							}
+						}
+					}
+				}
+			}
+			add = 250
+		}
 
 		if = {
 			limit = {
@@ -965,6 +1480,45 @@ decree_promote_national_values_tsarpoints = {
 			}
 			multiply = 0.5
 		}
+
+		if = {
+			limit = {
+				scope:country = {
+					has_variable = ai_ukraine_renaissance_moderate
+				}
+				state_region = { is_homeland = cu:ukrainian }
+				NOT = { cultural_renaissance_fervor_is_high = { CULTURE = ukrainian } }
+			}
+			multiply = 0.5
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_variable = ai_ukraine_renaissance_accelerate
+				}
+				state_region = { is_homeland = cu:ukrainian }
+			}
+			multiply = 0.1
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_variable = ai_belarus_renaissance_moderate
+				}
+				state_region = { is_homeland = cu:byelorussian }
+				NOT = { cultural_renaissance_fervor_is_high = { CULTURE = byelorussian } }
+			}
+			multiply = 0.5
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_variable = ai_belarus_renaissance_accelerate
+				}
+				state_region = { is_homeland = cu:byelorussian }
+			}
+			multiply = 0.1
+		}
 	}
 }
 
@@ -974,6 +1528,7 @@ decree_encourage_manufacturing_industry = {
 		custom_tooltip = {
 			text = tsarpoints_decree_not_upgraded_tt
 			NOT = { has_variable = tsarpoints_upgraded_encourage_manufacturing_industry }
+			NOT = { overlord ?= { has_variable = tsarpoints_upgraded_encourage_manufacturing_industry } }
 		}
 	}
 
@@ -981,6 +1536,7 @@ decree_encourage_manufacturing_industry = {
 		manufacturies
 	}
 	state_trigger = {
+		NOT = { has_decree = decree_encourage_manufacturing_industry_tsarpoints }
 		NOR = {
 			state_has_decree_variant = { DECREE = decree_encourage_agricultural_industry }
 			state_has_decree_variant = { DECREE = decree_encourage_resource_industry }
@@ -1023,6 +1579,22 @@ decree_encourage_manufacturing_industry = {
 		}
 		if = {
 			limit = {
+				scope:country ?= {
+					has_variable_map = industrial_states_map
+					is_key_in_variable_map = {
+						name = industrial_states_map
+						target = root
+					}
+				}
+			}
+			add = {
+				value = 5
+				subtract = "scope:country.variable_map(industrial_states_map|root)"
+				multiply = 20
+			}
+		}
+		if = {
+			limit = {
 				scope:country = {
 					has_journal_entry = je_taming_the_north
 				}
@@ -1040,6 +1612,25 @@ decree_encourage_manufacturing_industry = {
 			}
 			multiply = 1.5
 		}
+		if = {
+			limit = {
+				is_capital = yes
+				scope:country = {
+					has_journal_entry = je_tp_pool_develop_capital
+				}
+			}
+			multiply = 1.5
+		}
+		if = {
+			limit = {
+				scope:country ?= {
+					has_journal_entry = je_tp_fav_parochial
+					has_variable = tp_fav_home_state
+					var:tp_fav_home_state ?= root
+				}
+			}
+			multiply = 1.5
+		}
 	}
 }
 
@@ -1048,7 +1639,10 @@ decree_encourage_manufacturing_industry_tsarpoints = {
 	country_trigger = {
 		custom_tooltip = {
 			text = tsarpoints_decree_upgraded_tt
-			has_variable = tsarpoints_upgraded_encourage_manufacturing_industry
+			OR = {
+				has_variable = tsarpoints_upgraded_encourage_manufacturing_industry
+				overlord ?= { has_variable = tsarpoints_upgraded_encourage_manufacturing_industry }
+			}
 		}
 	}
 
@@ -1056,6 +1650,7 @@ decree_encourage_manufacturing_industry_tsarpoints = {
 		manufacturies
 	}
 	state_trigger = {
+		NOT = { has_decree = decree_encourage_manufacturing_industry }
 		NOR = {
 			state_has_decree_variant = { DECREE = decree_encourage_agricultural_industry }
 			state_has_decree_variant = { DECREE = decree_encourage_resource_industry }
@@ -1098,8 +1693,43 @@ decree_encourage_manufacturing_industry_tsarpoints = {
 		}
 		if = {
 			limit = {
+				scope:country ?= {
+					has_variable_map = industrial_states_map
+					is_key_in_variable_map = {
+						name = industrial_states_map
+						target = root
+					}
+				}
+			}
+			add = {
+				value = 5
+				subtract = "scope:country.variable_map(industrial_states_map|root)"
+				multiply = 20
+			}
+		}
+		if = {
+			limit = {
 				scope:country = {
 					has_strategy = ai_strategy_industrial_expansion
+				}
+			}
+			multiply = 1.5
+		}
+		if = {
+			limit = {
+				is_capital = yes
+				scope:country = {
+					has_journal_entry = je_tp_pool_develop_capital
+				}
+			}
+			multiply = 1.5
+		}
+		if = {
+			limit = {
+				scope:country ?= {
+					has_journal_entry = je_tp_fav_parochial
+					has_variable = tp_fav_home_state
+					var:tp_fav_home_state ?= root
 				}
 			}
 			multiply = 1.5
@@ -1113,6 +1743,7 @@ decree_encourage_agricultural_industry = {
 		custom_tooltip = {
 			text = tsarpoints_decree_not_upgraded_tt
 			NOT = { has_variable = tsarpoints_upgraded_encourage_agricultural_industry }
+			NOT = { overlord ?= { has_variable = tsarpoints_upgraded_encourage_agricultural_industry } }
 		}
 	}
 
@@ -1120,6 +1751,7 @@ decree_encourage_agricultural_industry = {
 		enclosure
 	}
 	state_trigger = {
+		NOT = { has_decree = decree_encourage_agricultural_industry_tsarpoints }
 		NOR = {
 			state_has_decree_variant = { DECREE = decree_encourage_manufacturing_industry }
 			state_has_decree_variant = { DECREE = decree_encourage_resource_industry }
@@ -1174,6 +1806,22 @@ decree_encourage_agricultural_industry = {
 		}
 		if = {
 			limit = {
+				scope:country ?= {
+					has_variable_map = agricultural_states_map
+					is_key_in_variable_map = {
+						name = agricultural_states_map
+						target = root
+					}
+				}
+			}
+			add = {
+				value = 5
+				subtract = "scope:country.variable_map(agricultural_states_map|root)"
+				multiply = 20
+			}
+		}
+		if = {
+			limit = {
 				scope:country = {
 					has_journal_entry = je_taming_the_north
 				}
@@ -1194,6 +1842,25 @@ decree_encourage_agricultural_industry = {
 			}
 			multiply = 1.5
 		}
+		if = {
+			limit = {
+				is_capital = yes
+				scope:country = {
+					has_journal_entry = je_tp_pool_develop_capital
+				}
+			}
+			multiply = 1.5
+		}
+		if = {
+			limit = {
+				scope:country ?= {
+					has_journal_entry = je_tp_fav_parochial
+					has_variable = tp_fav_home_state
+					var:tp_fav_home_state ?= root
+				}
+			}
+			multiply = 1.5
+		}
 	}
 }
 
@@ -1202,7 +1869,10 @@ decree_encourage_agricultural_industry_tsarpoints = {
 	country_trigger = {
 		custom_tooltip = {
 			text = tsarpoints_decree_upgraded_tt
-			has_variable = tsarpoints_upgraded_encourage_agricultural_industry
+			OR = {
+				has_variable = tsarpoints_upgraded_encourage_agricultural_industry
+				overlord ?= { has_variable = tsarpoints_upgraded_encourage_agricultural_industry }
+			}
 		}
 	}
 
@@ -1210,6 +1880,7 @@ decree_encourage_agricultural_industry_tsarpoints = {
 		enclosure
 	}
 	state_trigger = {
+		NOT = { has_decree = decree_encourage_agricultural_industry }
 		NOR = {
 			state_has_decree_variant = { DECREE = decree_encourage_manufacturing_industry }
 			state_has_decree_variant = { DECREE = decree_encourage_resource_industry }
@@ -1264,11 +1935,46 @@ decree_encourage_agricultural_industry_tsarpoints = {
 		}
 		if = {
 			limit = {
+				scope:country ?= {
+					has_variable_map = agricultural_states_map
+					is_key_in_variable_map = {
+						name = agricultural_states_map
+						target = root
+					}
+				}
+			}
+			add = {
+				value = 5
+				subtract = "scope:country.variable_map(agricultural_states_map|root)"
+				multiply = 20
+			}
+		}
+		if = {
+			limit = {
 				scope:country = {
 					OR = {
 						has_strategy = ai_strategy_plantation_economy
 						has_strategy = ai_strategy_agricultural_expansion
 					}
+				}
+			}
+			multiply = 1.5
+		}
+		if = {
+			limit = {
+				is_capital = yes
+				scope:country = {
+					has_journal_entry = je_tp_pool_develop_capital
+				}
+			}
+			multiply = 1.5
+		}
+		if = {
+			limit = {
+				scope:country ?= {
+					has_journal_entry = je_tp_fav_parochial
+					has_variable = tp_fav_home_state
+					var:tp_fav_home_state ?= root
 				}
 			}
 			multiply = 1.5
@@ -1282,6 +1988,7 @@ decree_encourage_resource_industry = {
 		custom_tooltip = {
 			text = tsarpoints_decree_not_upgraded_tt
 			NOT = { has_variable = tsarpoints_upgraded_encourage_resource_industry }
+			NOT = { overlord ?= { has_variable = tsarpoints_upgraded_encourage_resource_industry } }
 		}
 	}
 
@@ -1289,6 +1996,7 @@ decree_encourage_resource_industry = {
 		shaft_mining
 	}
 	state_trigger = {
+		NOT = { has_decree = decree_encourage_resource_industry_tsarpoints }
 		NOR = {
 			state_has_decree_variant = { DECREE = decree_encourage_manufacturing_industry }
 			state_has_decree_variant = { DECREE = decree_encourage_agricultural_industry }
@@ -1352,6 +2060,22 @@ decree_encourage_resource_industry = {
 		}
 		if = {
 			limit = {
+				scope:country ?= {
+					has_variable_map = resource_states_map
+					is_key_in_variable_map = {
+						name = resource_states_map
+						target = root
+					}
+				}
+			}
+			add = {
+				value = 5
+				subtract = "scope:country.variable_map(resource_states_map|root)"
+				multiply = 20
+			}
+		}
+		if = {
+			limit = {
 				scope:country = {
 					has_journal_entry = je_taming_the_north
 				}
@@ -1369,6 +2093,25 @@ decree_encourage_resource_industry = {
 			}
 			multiply = 1.5
 		}
+		if = {
+			limit = {
+				is_capital = yes
+				scope:country = {
+					has_journal_entry = je_tp_pool_develop_capital
+				}
+			}
+			multiply = 1.5
+		}
+		if = {
+			limit = {
+				scope:country ?= {
+					has_journal_entry = je_tp_fav_parochial
+					has_variable = tp_fav_home_state
+					var:tp_fav_home_state ?= root
+				}
+			}
+			multiply = 1.5
+		}
 	}
 }
 
@@ -1377,7 +2120,10 @@ decree_encourage_resource_industry_tsarpoints = {
 	country_trigger = {
 		custom_tooltip = {
 			text = tsarpoints_decree_upgraded_tt
-			has_variable = tsarpoints_upgraded_encourage_resource_industry
+			OR = {
+				has_variable = tsarpoints_upgraded_encourage_resource_industry
+				overlord ?= { has_variable = tsarpoints_upgraded_encourage_resource_industry }
+			}
 		}
 	}
 
@@ -1385,6 +2131,7 @@ decree_encourage_resource_industry_tsarpoints = {
 		shaft_mining
 	}
 	state_trigger = {
+		NOT = { has_decree = decree_encourage_resource_industry }
 		NOR = {
 			state_has_decree_variant = { DECREE = decree_encourage_manufacturing_industry }
 			state_has_decree_variant = { DECREE = decree_encourage_agricultural_industry }
@@ -1414,7 +2161,7 @@ decree_encourage_resource_industry_tsarpoints = {
 					}
 				}
 			}
-			add = 50
+			add = 25
 		}
 		if = {
 			limit = {
@@ -1429,7 +2176,7 @@ decree_encourage_resource_industry_tsarpoints = {
 					count >= 3
 				}
 			}
-			add = 50
+			add = 25
 		}
 		if = {
 			limit = {
@@ -1444,12 +2191,47 @@ decree_encourage_resource_industry_tsarpoints = {
 					count >= 5
 				}
 			}
-			add = 50
+			add = 25
+		}
+		if = {
+			limit = {
+				scope:country ?= {
+					has_variable_map = resource_states_map
+					is_key_in_variable_map = {
+						name = resource_states_map
+						target = root
+					}
+				}
+			}
+			add = {
+				value = 5
+				subtract = "scope:country.variable_map(resource_states_map|root)"
+				multiply = 20
+			}
 		}
 		if = {
 			limit = {
 				scope:country = {
 					has_strategy = ai_strategy_resource_expansion
+				}
+			}
+			multiply = 1.5
+		}
+		if = {
+			limit = {
+				is_capital = yes
+				scope:country = {
+					has_journal_entry = je_tp_pool_develop_capital
+				}
+			}
+			multiply = 1.5
+		}
+		if = {
+			limit = {
+				scope:country ?= {
+					has_journal_entry = je_tp_fav_parochial
+					has_variable = tp_fav_home_state
+					var:tp_fav_home_state ?= root
 				}
 			}
 			multiply = 1.5
@@ -1463,10 +2245,12 @@ decree_greener_grass_campaign = {
 		custom_tooltip = {
 			text = tsarpoints_decree_not_upgraded_tt
 			NOT = { has_variable = tsarpoints_upgraded_greener_grass_campaign }
+			NOT = { overlord ?= { has_variable = tsarpoints_upgraded_greener_grass_campaign } }
 		}
 	}
 
 	state_trigger = {
+		NOT = { has_decree = decree_greener_grass_campaign_tsarpoints }
 		is_isolated_from_market = no
 	}
 	modifier = {
@@ -1496,7 +2280,7 @@ decree_greener_grass_campaign = {
 					occupancy < 0.5
 				}
 			}
-			add = 50
+			add = 25
 		}
 		if = {
 			limit = {
@@ -1570,7 +2354,7 @@ decree_greener_grass_campaign = {
 				}
 				culture_percent_state = {
 					target = cu:russian
-					value < je_russification_state_russian_culture_min # set in event_values
+					value < je_russification_decree_russian_culture_target # set in event_values
 				}
 				OR = {
 					is_in_geographic_region = geographic_region_finland_old
@@ -1579,6 +2363,31 @@ decree_greener_grass_campaign = {
 				}
 			}
 			add = 250
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_journal_entry = je_tp_tsar_heir_of_alexander
+					NOT = { has_variable = je_tp_tsar_heir_of_alexander_button_1_complete }
+				}
+				state_region = {
+					this = s:STATE_OUTER_MANCHURIA
+				}
+			}
+			add = 500
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_journal_entry = je_tp_pool_develop_frontier
+				}
+				OR = {
+					is_in_geographic_region = geographic_region_siberia
+					is_in_geographic_region = geographic_region_central_asia
+					is_in_geographic_region = geographic_region_caucasus_old
+				}
+			}
+			multiply = 1.5
 		}
 		if = {
 			limit = {
@@ -1601,11 +2410,15 @@ decree_greener_grass_campaign_tsarpoints = {
 	country_trigger = {
 		custom_tooltip = {
 			text = tsarpoints_decree_upgraded_tt
-			has_variable = tsarpoints_upgraded_greener_grass_campaign
+			OR = {
+				has_variable = tsarpoints_upgraded_greener_grass_campaign
+				overlord ?= { has_variable = tsarpoints_upgraded_greener_grass_campaign }
+			}
 		}
 	}
 
 	state_trigger = {
+		NOT = { has_decree = decree_greener_grass_campaign }
 		is_isolated_from_market = no
 	}
 	modifier = {
@@ -1626,7 +2439,7 @@ decree_greener_grass_campaign_tsarpoints = {
 					occupancy < 0.75
 				}
 			}
-			add = 50
+			add = 20
 		}
 		if = {
 			limit = {
@@ -1635,7 +2448,7 @@ decree_greener_grass_campaign_tsarpoints = {
 					occupancy < 0.5
 				}
 			}
-			add = 50
+			add = 30
 		}
 		if = {
 			limit = {
@@ -1648,10 +2461,52 @@ decree_greener_grass_campaign_tsarpoints = {
 		}
 		if = {
 			limit = {
+				scope:country = {
+					has_journal_entry = je_russification
+				}
+				culture_percent_state = {
+					target = cu:russian
+					value < je_russification_decree_russian_culture_target # set in event_values
+				}
+				OR = {
+					is_in_geographic_region = geographic_region_finland_old
+					is_in_geographic_region = geographic_region_baltic_states_old
+					is_in_geographic_region = geographic_region_poland_old
+				}
+			}
+			add = 250
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_journal_entry = je_tp_tsar_heir_of_alexander
+					NOT = { has_variable = je_tp_tsar_heir_of_alexander_button_1_complete }
+				}
+				state_region = {
+					this = s:STATE_OUTER_MANCHURIA
+				}
+			}
+			add = 500
+		}
+		if = {
+			limit = {
+				scope:country = {
+					has_journal_entry = je_tp_pool_develop_frontier
+				}
+				OR = {
+					is_in_geographic_region = geographic_region_siberia
+					is_in_geographic_region = geographic_region_central_asia
+					is_in_geographic_region = geographic_region_caucasus_old
+				}
+			}
+			multiply = 1.5
+		}
+		if = {
+			limit = {
 				is_incorporated = no
 				scope:country = { NOT = { has_law_or_variant = law_type:law_colonial_resettlement } } # Already gives a hefty migration bonus
 			}
-			multiply = 2.0
+			multiply = 3.0
 		}
 		if = {
 			limit = {
@@ -1668,7 +2523,12 @@ decree_enlistment_efforts = {
 		custom_tooltip = {
 			text = tsarpoints_decree_not_upgraded_tt
 			NOT = { has_variable = tsarpoints_upgraded_enlistment_efforts }
+			NOT = { overlord ?= { has_variable = tsarpoints_upgraded_enlistment_efforts } }
 		}
+	}
+
+	state_trigger = {
+		NOT = { has_decree = decree_enlistment_efforts_tsarpoints }
 	}
 
 	modifier = {
@@ -1690,7 +2550,7 @@ decree_enlistment_efforts = {
 					count >= 5
 				}
 			}
-			add = 25
+			add = 10
 		}
 		if = {
 			limit = {
@@ -1699,7 +2559,7 @@ decree_enlistment_efforts = {
 					count >= 10
 				}
 			}
-			add = 50
+			add = 20
 		}
 		if = {
 			limit = {
@@ -1708,7 +2568,23 @@ decree_enlistment_efforts = {
 					count >= 25
 				}
 			}
-			add = 75
+			add = 30
+		}
+		if = {
+			limit = {
+				scope:country ?= {
+					has_variable_map = army_states_map
+					is_key_in_variable_map = {
+						name = army_states_map
+						target = root
+					}
+				}
+			}
+			add = {
+				value = 5
+				subtract = "scope:country.variable_map(army_states_map|root)"
+				multiply = 20
+			}
 		}
 
 		if = {
@@ -1717,30 +2593,11 @@ decree_enlistment_efforts = {
 					OR = {
 						has_strategy = ai_strategy_unify_germany
 						has_strategy = ai_strategy_unify_italy
-						has_journal_entry = je_war_of_the_confederation # VFM
+						is_involved_in_journal_entry = je_peru_bolivia
 					}
 				}
 			}
 			multiply = 5.0
-		}
-
-		if = {
-			limit = {
-				any_scope_building = {
-					is_building_type = building_naval_administration
-					count >= 5
-				}
-			}
-			add = 50
-		}
-		if = {
-			limit = {
-				any_scope_building = {
-					is_building_type = building_naval_administration
-					count >= 10
-				}
-			}
-			add = 50
 		}
 	}
 }
@@ -1750,8 +2607,15 @@ decree_enlistment_efforts_tsarpoints = {
 	country_trigger = {
 		custom_tooltip = {
 			text = tsarpoints_decree_upgraded_tt
-			has_variable = tsarpoints_upgraded_enlistment_efforts
+			OR = {
+				has_variable = tsarpoints_upgraded_enlistment_efforts
+				overlord ?= { has_variable = tsarpoints_upgraded_enlistment_efforts }
+			}
 		}
+	}
+
+	state_trigger = {
+		NOT = { has_decree = decree_enlistment_efforts }
 	}
 
 	modifier = {
@@ -1773,7 +2637,7 @@ decree_enlistment_efforts_tsarpoints = {
 					count >= 5
 				}
 			}
-			add = 25
+			add = 10
 		}
 		if = {
 			limit = {
@@ -1782,7 +2646,7 @@ decree_enlistment_efforts_tsarpoints = {
 					count >= 10
 				}
 			}
-			add = 50
+			add = 20
 		}
 		if = {
 			limit = {
@@ -1791,7 +2655,7 @@ decree_enlistment_efforts_tsarpoints = {
 					count >= 25
 				}
 			}
-			add = 75
+			add = 30
 		}
 
 		if = {
@@ -1801,7 +2665,7 @@ decree_enlistment_efforts_tsarpoints = {
 					count >= 5
 				}
 			}
-			add = 50
+			add = 10
 		}
 		if = {
 			limit = {
@@ -1810,7 +2674,24 @@ decree_enlistment_efforts_tsarpoints = {
 					count >= 10
 				}
 			}
-			add = 50
+			add = 20
+		}
+
+		if = {
+			limit = {
+				scope:country ?= {
+					has_variable_map = army_states_map
+					is_key_in_variable_map = {
+						name = army_states_map
+						target = root
+					}
+				}
+			}
+			add = {
+				value = 5
+				subtract = "scope:country.variable_map(army_states_map|root)"
+				multiply = 20
+			}
 		}
 	}
 }

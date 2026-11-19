@@ -745,16 +745,58 @@ pumpjacks = {
 	
 	ai_weight = {
 		value = 1
-		
+
 		if = {
-			limit = { 
+			limit = {
 				OR = {
 					 has_strategy = ai_strategy_industrial_expansion
 					 has_strategy = ai_strategy_resource_expansion
 				}
 			}
 			add = 2
-		}	
+		}
+
+		if = {
+			limit = {
+				country_rank >= rank_value:unrecognized_major_power
+			}
+			add = 2
+		}
+
+		if = {
+			limit = {
+				has_technology_researched = battleship_tech
+			}
+			add = 4
+		}
+
+		if = {
+			limit = {
+				has_technology_researched = carrier_tech
+			}
+			add = 4
+		}
+
+		if = {
+			limit = {
+				has_technology_researched = destroyer
+			}
+			add = 4
+		}
+
+		if = {
+			limit = {
+				has_technology_researched = mobile_armor
+			}
+			add = 4
+		}
+
+		if = {
+			limit = {
+				has_technology_researched = submarine
+			}
+			add = 4
+		}
 	}
 }
 
@@ -871,17 +913,24 @@ electrical_generation = {
 	}
 	
 	ai_weight = {
-		value = 1
-		
+		value = 2
+
 		if = {
-			limit = { 
+			limit = {
 				OR = {
 					 has_strategy = ai_strategy_industrial_expansion
 					 has_strategy = ai_strategy_resource_expansion
 				}
 			}
 			add = 2
-		}	
+		}
+
+		if = {
+			limit = {
+				country_rank >= rank_value:unrecognized_major_power
+			}
+			add = 2
+		}
 	}
 }
 
@@ -1029,16 +1078,30 @@ combustion_engine = {
 	
 	ai_weight = {
 		value = 1
-		
+
 		if = {
-			limit = { 
+			limit = {
 				OR = {
 					 has_strategy = ai_strategy_industrial_expansion
 					 has_strategy = ai_strategy_resource_expansion
 				}
 			}
 			add = 1
-		}	
+		}
+
+		if = {
+			limit = {
+				has_technology_researched = mobile_armor
+			}
+			add = 4
+		}
+
+		if = {
+			limit = {
+				has_technology_researched = carrier_tech
+			}
+			add = 4
+		}
 	}
 }
 
@@ -1179,6 +1242,41 @@ radio = {
 	
 	ai_weight = {
 		value = 1
+
+		if = {
+			limit = {
+				has_technology_researched = nco_training
+			}
+			add = 4
+		}
+
+		if = {
+			limit = {
+				has_technology_researched = mobile_armor
+			}
+			add = 4
+		}
+
+		if = {
+			limit = {
+				has_technology_researched = defense_in_depth
+			}
+			add = 4
+		}
+
+		if = {
+			limit = {
+				has_technology_researched = battleship_tech
+			}
+			add = 4
+		}
+
+		if = {
+			limit = {
+				has_technology_researched = carrier_tech
+			}
+			add = 4
+		}
 	}
 }
 
@@ -1194,7 +1292,42 @@ telephone = {
 	}
 	
 	ai_weight = {
-		value = 1
+		value = 3
+
+		if = {
+			limit = {
+				has_technology_researched = nco_training
+			}
+			add = 4
+		}
+
+		if = {
+			limit = {
+				has_technology_researched = mobile_armor
+			}
+			add = 4
+		}
+
+		if = {
+			limit = {
+				has_technology_researched = defense_in_depth
+			}
+			add = 4
+		}
+
+		if = {
+			limit = {
+				has_technology_researched = battleship_tech
+			}
+			add = 4
+		}
+
+		if = {
+			limit = {
+				has_technology_researched = carrier_tech
+			}
+			add = 4
+		}
 	}
 }
 
@@ -1243,6 +1376,13 @@ oil_turbine = {
 	
 	ai_weight = {
 		value = 1
+
+		if = {
+			limit = {
+				country_rank >= rank_value:unrecognized_major_power
+			}
+			add = 2
+		}
 	}
 }
 

@@ -1654,7 +1654,7 @@
 					building={
 						type="building_financial_district"
 						country="c:GBR"
-						levels=3
+						levels=4
 						region="STATE_HOME_COUNTIES"
 					}
 					country={
@@ -1703,7 +1703,7 @@
 					building={
 						type="building_financial_district"
 						country="c:GBR"
-						levels=3
+						levels=6
 						region="STATE_WALES"
 					}
 				}
@@ -1957,7 +1957,7 @@
 					building={
 						type="building_financial_district"
 						country="c:GBR"
-						levels=2
+						levels=3
 						region="STATE_HIGHLANDS"
 					}
 				}
@@ -2128,7 +2128,7 @@
 					building={
 						type="building_financial_district"
 						country="c:GBR"
-						levels=2
+						levels=3
 						region="STATE_MIDLANDS"
 					}
 				}
@@ -2304,7 +2304,7 @@
 					building={
 						type="building_financial_district"
 						country="c:GBR"
-						levels=2
+						levels=3
 						region="STATE_EAST_ANGLIA"
 					}
 				}
@@ -2329,7 +2329,7 @@
 				add_ownership={
 					country={
 						country="c:GBR"
-						levels=2
+						levels=4
 					}
 				}
 				reserves=1
@@ -3087,7 +3087,7 @@
 					building={
 						type="building_financial_district"
 						country="c:GBR"
-						levels=1
+						levels=3
 						region="STATE_YORKSHIRE"
 					}
 					building={
@@ -3711,7 +3711,7 @@
 					building={
 						type="building_fishing_wharf"
 						country="c:FRA"
-						levels=3
+						levels=4
 						region="STATE_NORMANDY"
 					}
 				}
@@ -3838,7 +3838,7 @@
 					building={
 						type="building_fishing_wharf"
 						country="c:FRA"
-						levels=2
+						levels=3
 						region="STATE_LANGUEDOC"
 					}
 				}
@@ -3857,7 +3857,7 @@
 					building={
 						type="building_financial_district"
 						country="c:FRA"
-						levels=2
+						levels=1
 						region="STATE_ILE_DE_FRANCE"
 					}
 				}
@@ -4033,7 +4033,7 @@
 					building={
 						type="building_financial_district"
 						country="c:FRA"
-						levels=2
+						levels=3
 						region="STATE_RHONE"
 					}
 					building={
@@ -4231,6 +4231,7 @@
 						region="STATE_ILE_DE_FRANCE"
 					}
 				}
+				subsidized=yes
 				reserves=1
 				activate_production_methods={ "pm_percussion_caps" "pm_automation_disabled"  }
 			}
@@ -4281,6 +4282,7 @@
 						levels=4
 					}
 				}
+				subsidized=yes
 				reserves=1
 				activate_production_methods={ "pm_basic_port" }
 			}
@@ -4511,7 +4513,7 @@
 					building={
 						type="building_financial_district"
 						country="c:FRA"
-						levels=2
+						levels=4
 						region="STATE_ALSACE_LORRAINE"
 					}
 					building={
@@ -4657,7 +4659,7 @@
 					building={
 						type="building_fishing_wharf"
 						country="c:FRA"
-						levels=2
+						levels=3
 						region="STATE_POITOU"
 					}
 				}
@@ -4672,6 +4674,7 @@
 						levels=1
 					}
 				}
+				subsidized=yes
 				reserves=1
 				activate_production_methods={ "pm_basic_port" }
 			}
@@ -4696,7 +4699,7 @@
 					building={
 						type="building_financial_district"
 						country="c:FRA"
-						levels=2
+						levels=1
 						region="STATE_GUYENNE"
 					}
 					building={
@@ -4829,7 +4832,7 @@
 					building={
 						type="building_logging_camp"
 						country="c:FRA"
-						levels=1
+						levels=3
 						region="STATE_AUVERGNE_LIMOUSIN"
 					}
 				}
@@ -4973,7 +4976,7 @@
 					building={
 						type="building_fishing_wharf"
 						country="c:FRA"
-						levels=3
+						levels=4
 						region="STATE_BRITTANY"
 					}
 				}
@@ -5128,7 +5131,7 @@
 					building={
 						type="building_financial_district"
 						country="c:FRA"
-						levels=2
+						levels=3
 						region="STATE_BURGUNDY"
 					}
 				}
@@ -5203,7 +5206,7 @@
 					building={
 						type="building_logging_camp"
 						country="c:FRA"
-						levels=1
+						levels=2
 						region="STATE_CHAMPAGNE"
 					}
 					building={
@@ -5509,7 +5512,7 @@
 					building={
 						type="building_financial_district"
 						country="c:FRA"
-						levels=1
+						levels=2
 						region="STATE_AQUITAINE"
 					}
 				}
@@ -5522,7 +5525,7 @@
 					building={
 						type="building_fishing_wharf"
 						country="c:FRA"
-						levels=2
+						levels=3
 						region="STATE_AQUITAINE"
 					}
 				}
@@ -5563,6 +5566,7 @@
 						levels=2
 					}
 				}
+				subsidized=yes
 				reserves=1
 				activate_production_methods={ "pm_basic_port" }
 			}
@@ -5587,7 +5591,7 @@
 					building={
 						type="building_financial_district"
 						country="c:FRA"
-						levels=2
+						levels=1
 						region="STATE_ORLEANS"
 					}
 				}
@@ -5613,7 +5617,7 @@
 					building={
 						type="building_financial_district"
 						country="c:FRA"
-						levels=1
+						levels=2
 						region="STATE_ORLEANS"
 					}
 				}
@@ -6232,6 +6236,19 @@
 				activate_production_methods={ "pm_atmospheric_engine_pump_building_iron_mine" "pm_no_explosives" "pm_no_steam_automation" "pm_road_carts"  }
 			}
 			create_building={
+				building="building_sulfur_mine"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:BEL"
+						levels=2
+						region="STATE_WALLONIA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_atmospheric_engine_pump_building_sulfur_mine" "pm_no_explosives" "pm_no_steam_automation" "pm_road_carts"  }
+			}
+			create_building={
 				building="building_wheat_farm"
 				add_ownership={
 					building={
@@ -6313,7 +6330,7 @@
 				add_ownership={
 					country={
 						country="c:BEL"
-						levels=1
+						levels=2
 					}
 				}
 				reserves=1
@@ -7577,7 +7594,7 @@
 					building={
 						type="building_financial_district"
 						country="c:SWI"
-						levels=4
+						levels=2
 						region="STATE_EAST_SWITZERLAND"
 					}
 				}
@@ -7680,7 +7697,7 @@
 					building={
 						type="building_financial_district"
 						country="c:SWI"
-						levels=2
+						levels=1
 						region="STATE_WEST_SWITZERLAND"
 					}
 				}
@@ -8558,7 +8575,7 @@
 					building={
 						type="building_financial_district"
 						country="c:PRU"
-						levels=2
+						levels=1
 						region="STATE_BRANDENBURG"
 					}
 					building={
@@ -8896,12 +8913,6 @@
 			create_building={
 				building="building_textile_mill"
 				add_ownership={
-					building={
-						type="building_textile_mill"
-						country="c:WUR"
-						levels=1
-						region="STATE_WURTTEMBERG"
-					}
 					building={
 						type="building_financial_district"
 						country="c:WUR"
@@ -9675,12 +9686,24 @@
 					building={
 						type="building_financial_district"
 						country="c:BAV"
-						levels=3
+						levels=4
 						region="STATE_FRANCONIA"
 					}
 				}
 				reserves=1
 				activate_production_methods={ "pm_saw_mills"  "pm_no_equipment" "pm_road_carts" "pm_hardwood" }
+			}
+			create_building={ # Bavarian Ludwig Railway
+				building="building_railway"
+				add_ownership={
+					country={
+						country="c:BAV"
+						levels=1
+					}
+				}
+				subsidized=yes
+				reserves=1
+				activate_production_methods={ "pm_early_trains"  "pm_wooden_passenger_carriages" }
 			}
 		}
 	}
@@ -9737,7 +9760,7 @@
 					building={
 						type="building_glassworks"
 						country="c:SAX"
-						levels=2
+						levels=1
 						region="STATE_SAXONY"
 					}
 					building={
@@ -10022,6 +10045,19 @@
 				reserves=1
 				activate_production_methods={ "pm_handsewn_clothes" "pm_no_luxury_clothes" "pm_traditional_looms"  }
 			}
+			create_building={
+				building="building_paper_mill"
+				add_ownership={
+					building={
+						type="building_financial_district"
+						country="c:FRM"
+						levels=1
+						region="STATE_HESSE"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_pulp_pressing" "pm_automation_disabled"  }
+			}
 		}
 		region_state:HES={
 			create_building={
@@ -10290,6 +10326,7 @@
 						levels=2
 					}
 				}
+				subsidized=yes
 				reserves=1
 				activate_production_methods={ "pm_basic_port" }
 			}
@@ -10548,7 +10585,7 @@
 					building={
 						type="building_financial_district"
 						country="c:FRA"
-						levels=1
+						levels=2
 						region="STATE_MAINE_ANJOU"
 					}
 				}

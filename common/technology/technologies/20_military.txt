@@ -375,12 +375,30 @@ percussion_cap = {
 	ai_weight = {
 		value = 1.5 # Important tech in general
 		if = {
-			limit = { army_size > 75 }
+			limit = { army_size > 40 }
+			add = 0.5
+		}
+		if = {
+			limit = { army_size > 80 }
 			add = 0.5
 		}
 		if = {
 			limit = { OR = { has_strategy = ai_strategy_territorial_expansion has_strategy = ai_strategy_unify_germany } }
 			add = 0.5
+		}
+
+		if = {
+			limit = {
+				has_technology_researched = general_staff
+			}
+			add = 1
+		}
+
+		if = {
+			limit = {
+				has_technology_researched = power_of_the_purse
+			}
+			add = 1
 		}
 	}
 }

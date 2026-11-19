@@ -251,8 +251,8 @@ ai_strategy_resource_expansion = {
 	}
 
 	subsidies = {
-		building_tooling_workshop = nice_to_have
-		building_explosives_factory = nice_to_have
+		building_tooling_workshop = wants_to_have
+		building_explosives_factory = wants_to_have
 	}
 
 	goods_stances = {
@@ -448,10 +448,11 @@ ai_strategy_industrial_expansion = {
 	type = administrative
 
 	subsidies = {
-		building_coal_mine = nice_to_have
-		building_iron_mine = nice_to_have
-		building_lead_mine = nice_to_have
-		building_sulfur_mine = nice_to_have
+	    building_tooling_workshop = wants_to_have
+		building_coal_mine = wants_to_have
+		building_iron_mine = wants_to_have
+		building_lead_mine = wants_to_have
+		building_sulfur_mine = wants_to_have
 	}
 
 	goods_stances = {
@@ -964,6 +965,7 @@ ai_strategy_mining_exporter = {
 
     subsidies = {
 		building_coal_mine = must_have	
+		building_iron_mine = wants_to_have
 	}
 
 	possible = {

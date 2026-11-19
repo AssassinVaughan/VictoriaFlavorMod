@@ -4333,7 +4333,10 @@ ideology_vanguardist = { # Average Progressiveness - 70.83
 	}
 
 	country_trigger = {
-		has_technology_researched = political_agitation
+		OR = {
+			has_technology_researched = political_agitation
+			has_journal_entry = je_bolsheviks
+		}
 	}
 
 	interest_group_leader_trigger = {

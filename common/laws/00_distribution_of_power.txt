@@ -1267,21 +1267,17 @@ law_single_party_state = {
 	progressiveness = 50
 
 	can_enact = {
-		OR = {
-			custom_tooltip = {
-				text = ruler_in_party_tt
-				exists = ruler
-				OR = {
-					ruler = {
-						this.interest_group ?= {
-							has_party = yes
-						}
-					}
-				}
+		custom_tooltip = {
+			text = sps_government_party_tt
+			any_interest_group = {
+				is_in_government = yes
+				has_party = yes
 			}
-			custom_tooltip = {
-				text = sps_no_party_tt
-				country_has_voting_franchise = no
+		}
+		any_interest_group = {
+			is_in_government = yes
+			party ?= {
+				party_has_insurrectionary_member = no
 			}
 		}
 		trigger_if = {
@@ -1311,7 +1307,30 @@ law_single_party_state = {
 	}
 
 	on_activate = {
-		set_only_legal_party_from_ig = ruler.interest_group
+		custom_tooltip = {
+			text = set_government_party_as_only_legal_party_tt
+			if = {
+				limit = {
+					var:sps_dominant_party_ig_var ?= {
+						has_party = yes
+					}
+				}
+				set_only_legal_party_from_ig = var:sps_dominant_party_ig_var
+			}
+			else = {
+				set_only_legal_party_from_ig = ruler.interest_group
+			}
+		}
+		if = {
+			limit = {
+				has_variable = sps_dominant_party_ig_var
+			}
+			remove_variable = sps_dominant_party_ig_var
+		}
+		add_modifier = {
+			name = modifier_single_party_consolidation
+			days = 90
+		}
 		custom_tooltip = {
 			text = sps_government_reshuffle_tt
 			every_interest_group = {

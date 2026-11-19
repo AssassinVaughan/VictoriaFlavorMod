@@ -1129,7 +1129,7 @@ REPLACE:pm_electric_streetlights = {
 REPLACE:pm_anchorage = {
 	texture = "gfx/interface/icons/production_method_icons/anchorage.dds"
 
-	low_pop_method = yes # AI will activate this method for states with low population
+	scoring_override = world_market_hub_status # AI will activate this method for ports in market areas without an active world market hub
 
 	building_modifiers = {
 	    workforce_scaled = {
@@ -1745,4 +1745,27 @@ REPLACE:pm_arc_welding_shipbuilding = {
 	}
 
 	required_input_goods = electricity
+}
+
+
+REPLACE:pm_cossack_host = {
+	texture = "gfx/interface/icons/production_method_icons/subsistence_farming.dds"
+	building_modifiers = {
+		workforce_scaled = {
+			goods_output_grain_add = 2
+			goods_output_meat_add = 1.5
+			goods_output_fabric_add = 1
+			goods_output_wood_add = 0.3
+			goods_output_services_add = 0.25
+
+			goods_output_clothes_add = 0.25
+			goods_output_furniture_add = 0.25
+			goods_output_liquor_add = 0.25
+		}
+
+		level_scaled = {
+			building_employment_farmers_add = 500
+			building_employment_laborers_add = 4500
+		}
+	}
 }

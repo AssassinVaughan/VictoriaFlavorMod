@@ -7,10 +7,13 @@
 		effect_starting_technology_tier_1_tech = yes
 		
 		set_market_capital = STATE_NEW_YORK
-			
-		set_export_tariff_level = { 
+		set_export_tariff_level = {
 			goods = g:fabric
-			level = low_tariffs
+			level = no_tariffs_or_subventions
+		}
+		set_import_tariff_level = {
+			goods = g:sulfur
+			level = no_tariffs_or_subventions
 		}
 		
 		set_variable = monroe_doctrine

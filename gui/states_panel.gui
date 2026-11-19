@@ -1257,7 +1257,7 @@ types state_panel_types
 
 				item = {
 					icon = {
-						size = { 40 40 }
+						size = { 40 40 } # VFM
 						tooltip = "[TimedModifier.GetTooltip]"
 						using = tooltip_se
 						texture = "[TimedModifier.GetIcon]"
@@ -1987,35 +1987,45 @@ types state_panel_types
 					texture = "gfx/interface/icons/state_status_icons/trade_capacity.dds"
 				}
 
-				blockoverride "name" {
-					text = "STATE_TRADE_CAPACITY"
-				}
+				blockoverride "title" {
+					widget = {
+						size = { 160 25 }
 
-				blockoverride "goto" {
-
-				}
-
-				blockoverride "navigation_button" {
-					flowcontainer = {
-						position = { -5 5 }
-						parentanchor = top|right
-						datacontext = "[State.AccessBuilding('building_trade_center')]"
-						spacing = 1
-
-						button_icon_plus_action = {
-							size = { 25 25 }
-							visible = "[IsValid( Building.QueueConstruction )]"
-							tooltip = "[Building.GetQueueConstructionTooltip]"
-							onclick = "[Execute( Building.QueueConstruction )]"
+						textbox = {
+							parentanchor = vcenter
+							max_width = 105
+							autoresize = yes
+							align = nobaseline
+							using = elide_fontsize_min
+							raw_text = "[concept_trade_capacity]"
 						}
 
-						button_icon_goto = {
-							size = { 25 25 }
-							tooltip = "GO_TO_BUTTON_BUILDING"
-							onclick = "[InformationPanelBar.OpenBuildingDetailsPanel(Building.AccessSelf)]"
+						flowcontainer = {
+							parentanchor = right|vcenter
+							spacing = 1
+							datacontext = "[State.AccessBuilding('building_trade_center')]"
+
+							button_icon_plus_action = {
+								visible = "[IsValid( Building.QueueConstruction )]"
+								size = { 25 25 }
+								onclick = "[Execute( Building.QueueConstruction )]"
+								tooltip = "[Building.GetQueueConstructionTooltip]"
+							}
+
+							button_icon_goto = {
+								size = { 25 25 }
+								onclick = "[InformationPanelBar.OpenBuildingDetailsPanel(Building.AccessSelf)]"
+								tooltip = "GO_TO_BUTTON_BUILDING"
+							}
 						}
 					}
 				}
+
+				blockoverride "name" {
+					text = "STATE_TRADE_CAPACITY_CONDENSED"
+				}
+
+				blockoverride "navigation_button" {}
 
 				blockoverride "extra_widget" {
 					flowcontainer = {
@@ -2502,39 +2512,44 @@ types state_panel_types
 					datamodel = "[State.GetCulturalCommunities]"
 					datamodel_wrap = 3
 					flipdirection = yes
+
 					item = {
 						widget = {
 							size = { 180 40 }
 							widget = {
+								size = { 170 35 }
 								parentanchor = center
-							  	size = { 170 35 }
-							 	background = {
+								using = tooltip_se
+
+								background = {
 									using = entry_bg_simple
-							  	}
-							  	textbox = {
-									parentanchor = left|vcenter
-									autoresize = yes
-								  	align = nobaseline
-								  	max_width = 165
-								  	fontsize_min = 14
-								  	elide = right
-								 	text = "[CulturalCommunity.GetCulture.GetNameNoFormatting|v]"
-								 	position = { 10 0 }
-							  	}
+								}
 
-							  	textbox = {
-							  		visible = "[NotZero_CFixedPoint(CulturalCommunity.GetLocalAcceptanceDifference)]"
-									parentanchor = right|vcenter
-									autoresize = yes
-								  	align = nobaseline
-								  	text = "[CulturalCommunity.GetLocalAcceptanceDifference|+=0]"
-								  	position = { -10 0 }
-							  	}
+								tooltipwidget = {
+									FancyTooltip_CulturalCommunity = {}
+								}
 
-							  	tooltipwidget = {
-							 		FancyTooltip_CulturalCommunity = {}
-							  	}
-						   	}
+								hbox = {
+									layoutpolicy_horizontal = expanding
+									spacing = 5
+									margin = { 10 0 }
+
+									textbox = {
+										layoutpolicy_horizontal = expanding
+										size = { 0 20 }
+										align = nobaseline
+										using = elide_fontsize_min
+										text = "[CulturalCommunity.GetCulture.GetNameNoFormatting|v]"
+									}
+
+									textbox = {
+										visible = "[NotZero_CFixedPoint(CulturalCommunity.GetLocalAcceptanceDifference)]"
+										autoresize = yes
+										align = nobaseline
+										text = "[CulturalCommunity.GetLocalAcceptanceDifference|+=0]"
+									}
+								}
+							}
 						}
 					}
 				}
@@ -3049,6 +3064,9 @@ types state_panel_types
 				block "spacing" {
 					spacing = 5
 				}
+
+				block "title" {}
+
 				textbox = {
 					block "name" {}
 					block "alpha" {}
@@ -3417,7 +3435,7 @@ types state_panel_types
 						icon = {
 							tooltip = "[TimedModifier.GetTooltip]"
 							texture = "[TimedModifier.GetIcon]"
-							size = { 40 40 }
+							size = { 40 40 } # VFM
 						}
 					}
 				}
@@ -4175,7 +4193,7 @@ types building_item_types
 			button_icon_goto = {
 				parentanchor = vcenter
 				size = { 30 30 }
-				using = tooltip_above
+				using = tooltip_ne
 				tooltip = "GO_TO_BUTTON_BUILDING"
 				onclick = "[InformationPanelBar.OpenBuildingDetailsPanel(Building.AccessSelf)]"
 			}
@@ -4393,7 +4411,7 @@ types building_item_types
 						enabled = "[IsValid( Building.Downsize )]"
 						visible = no
 						#visible = "[And(And( And( Building.IsValid, Building.IsDownsizeable ), Not( ShouldAskConfirmation( Building.Downsize ) ) ), Not(Building.GeneratesCombatUnits))]"
-						using = tooltip_below
+						using = tooltip_se
 					}
 
 					### DOWNSIZE WITH CONFIRMATION
@@ -4406,7 +4424,7 @@ types building_item_types
 						enabled = "[IsValid( Building.Downsize )]"
 						visible = no
 						#visible = "[And(And( And( Building.IsValid, Building.IsDownsizeable ), ShouldAskConfirmation( Building.Downsize ) ), Not(Building.GeneratesCombatUnits))]"
-						using = tooltip_below
+						using = tooltip_se
 					}
 
 					### CANCEL CONSTRUCTION
@@ -4418,7 +4436,7 @@ types building_item_types
 						visible = no
 						#visible = "[And(IsValid( Building.CancelConstruction ), Not(Building.IsMilitaryBuilding))]"
 						onclick = "[Execute( Building.CancelConstruction )]"
-						using = tooltip_below
+						using = tooltip_se
 					}
 
 					### EXPAND BUTTON
@@ -4453,7 +4471,7 @@ types building_item_types
 								autoresize = yes
 								minimumsize = { 23 27 }
 								margin_right = 6
-								using = tooltip_above
+								using = tooltip_ne
 								tooltip = "TOOLTIP_BUILDING_PRODUCTIVITY"
 
 								tooltipwidget = {
@@ -4467,13 +4485,13 @@ types building_item_types
 							}
 
 							icon = {
-								parentanchor = right
-								texture = "gfx/interface/icons/generic_icons/government_building_icon.dds"
-								alwaystransparent = no
-								size = { 23 23 }
 								visible = "[And(Building.IsGovernmentFunded, Building.IsActive)]"
+								size = { 23 23 }
+								parentanchor = right
+								alwaystransparent = no
+								using = tooltip_ne
 								tooltip = "TOOLTIP_BUILDINGS_BUDGET"
-								using = tooltip_above
+								texture = "gfx/interface/icons/generic_icons/government_building_icon.dds"
 							}
 
 							### subsidize
@@ -4713,7 +4731,7 @@ types building_item_types
 						tooltip = "[Building.GetDownsizeTooltip]"
 						onclick = "[Execute( Building.Downsize )]"
 						enabled = "[IsValid( Building.Downsize )]"
-						using = tooltip_below
+						using = tooltip_se
 					}
 
 					### DOWNSIZE WITH CONFIRMATION
@@ -4725,7 +4743,7 @@ types building_item_types
 						tooltip = "[Building.GetDownsizeTooltip]"
 						onclick = "[PopupManager.AskConfirmation( Building.Downsize )]"
 						enabled = "[IsValid( Building.Downsize )]"
-						using = tooltip_below
+						using = tooltip_se
 					}
 
 					### CANCEL CONSTRUCTION
@@ -4736,7 +4754,7 @@ types building_item_types
 						position = { 5 0 }
 						tooltip = "[Building.GetCancelConstructionTooltip]"
 						onclick = "[Execute( Building.CancelConstruction )]"
-						using = tooltip_below
+						using = tooltip_se
 					}
 
 					### EXPAND BUTTON
@@ -4813,13 +4831,13 @@ types building_item_types
 				parentanchor = vcenter
 
 				textbox = {
+					minimumsize = { 65 -1 }
+					parentanchor = vcenter
 					autoresize = yes
 					alpha = "[TransparentIfFalse(Building.IsActive)]"
-					text = "[Building.GetExpansionLevelDesc]"
-					using = tooltip_above
 					align = nobaseline
-					parentanchor = vcenter
-					minimumsize = { 65 -1 }
+					using = tooltip_ne
+					text = "[Building.GetExpansionLevelDesc]"
 				}
 
 				widget = {
@@ -4827,25 +4845,26 @@ types building_item_types
 					parentanchor = vcenter
 					textbox = {
 						visible = "[And(And(Not(Building.IsGovernmentFunded), Building.IsActive), Not(Building.IsSubsistenceBuilding))]"
-						raw_text = "#v @money![Building.GetAverageAnnualEarningsPerEmployeeFormatted|1+]#!"
+						parentanchor = center
+						autoresize = yes
+						alpha = "[TransparentIfFalse(Building.IsActive)]"
+						align = nobaseline
+						using = tooltip_ne
 						tooltip = "TOOLTIP_BUILDING_PRODUCTIVITY"
+						raw_text = "#v @money![Building.GetAverageAnnualEarningsPerEmployeeFormatted|1+]#!"
+
 						tooltipwidget = {
 							GraphTooltip_Productivity = {}
 						}
-						autoresize = yes
-						using = tooltip_above
-						alpha = "[TransparentIfFalse(Building.IsActive)]"
-						align = left|nobaseline
-						parentanchor = center
 					}
 
 					icon = {
 						visible = "[And(Building.IsGovernmentFunded, Building.IsActive)]"
-						texture = "gfx/interface/icons/generic_icons/government_building_icon.dds"
 						size = { 23 23 }
-						tooltip = "TOOLTIP_BUILDINGS_BUDGET"
-						using = tooltip_above
 						parentanchor = center
+						using = tooltip_ne
+						tooltip = "TOOLTIP_BUILDINGS_BUDGET"
+						texture = "gfx/interface/icons/generic_icons/government_building_icon.dds"
 					}
 				}
 

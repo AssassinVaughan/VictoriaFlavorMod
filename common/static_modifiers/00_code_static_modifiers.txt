@@ -284,12 +284,14 @@ recently_conquered_state = {
 	state_pop_pol_str_mult = -0.50
 	state_tax_collection_mult = -0.50
 	state_conscription_rate_mult = -0.50
+	state_disable_disband_prestige_penalty_bool = yes
 }
 
 recently_liberated_state = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_positive.dds
 	building_nationalization_cost_mult = -0.75
 	building_nationalization_radicals_mult = -0.75
+	state_disable_disband_prestige_penalty_bool = yes
 }
 
 market_capital_state = {
@@ -984,6 +986,7 @@ forced_regime_change = {
 	interest_group_in_government_approval_add = 5
 	country_legitimacy_base_add = 25
 	country_prestige_mult = -0.25
+	country_law_enactment_imposition_success_add = 0.2
 }
 
 # The effects of this is scaled by both the amount of 'missing' electoral confidence and the country_electoral_confidence_impact_mult modifier
@@ -1022,12 +1025,6 @@ foreign_legislative_interference_enactment = {
 impose_law_cooldown = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
 	country_cannot_be_target_for_law_imposition_bool = yes
-}
-
-# Should be scaled to the level desired when added
-installed_regime = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
-	country_law_enactment_imposition_success_add = 1
 }
 
 agreeable_to_imposition = {
