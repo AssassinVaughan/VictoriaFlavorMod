@@ -1,0 +1,442 @@
+﻿ namespace = russo_chinese
+
+russo_chinese.1 = {
+	type = country_event
+	placement = scope:outer_manchuria_scope
+
+	title = russo_chinese.1.t
+	desc = russo_chinese.1.d
+	flavor = russo_chinese.1.f
+
+	event_image = {
+		video = "asia_poor_people_moving"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+
+	duration = 3
+
+	trigger = {
+		# triggered by decision
+	}
+
+	immediate = {
+		scope:donor_scope ?= {
+			save_scope_as = china_scope
+		}
+		s:STATE_OUTER_MANCHURIA ?= {
+			random_scope_state = {
+				limit = {
+					scope:china_scope ?= owner
+				}
+				save_scope_as = outer_manchuria_scope
+			}
+		}
+	}
+
+	option = {
+		name = russo_chinese.1.a
+		default_option = yes
+		if = {
+			limit = {
+				scope:china_scope ?= {
+					owes_obligation_to = c:RUS
+				}
+			}
+			scope:china_scope ?= {
+				set_owes_obligation_to = {
+					country = c:RUS
+					setting = no
+				}
+			}
+		}
+		custom_tooltip = {
+			text = treaty_of_beijing_tt
+			create_treaty = {
+				name = treaty_name_treaty_of_beijing
+				first_country = c:RUS
+				second_country = scope:china_scope
+				is_draft = no
+				binding_period = { years = 20 }
+
+				articles_to_create = {
+					{
+						article = state_transfer
+						source_country = scope:china_scope
+						target_country = c:RUS
+						inputs = {
+							{ state = scope:outer_manchuria_scope }
+						}
+					}
+				}
+			}
+		}
+		scope:outer_manchuria_scope ?= {
+			add_modifier = {
+				name = modifier_ruler_of_the_east
+				days = long_modifier_time
+			}
+		}
+	}
+
+	option = {
+		name = russo_chinese.1.b
+		if = {
+			limit = {
+				scope:china_scope = {
+					owes_obligation_to = c:RUS
+				}
+			}
+			scope:china_scope = {
+				set_owes_obligation_to = {
+					country = c:RUS
+					setting = no
+				}
+			}
+		}
+		custom_tooltip = {
+			text = treaty_of_beijing_tt
+			create_treaty = {
+				name = treaty_name_treaty_of_beijing
+				first_country = c:RUS
+				second_country = scope:china_scope
+				is_draft = no
+				binding_period = { years = 20 }
+
+				articles_to_create = {
+					{
+						article = state_transfer
+						source_country = scope:china_scope
+						target_country = c:RUS
+						inputs = {
+							{ state = scope:outer_manchuria_scope }
+						}
+					}
+				}
+			}
+		}
+		scope:outer_manchuria_scope ?= {
+			add_modifier = {
+				name = modifier_ruler_of_the_east_navy
+				days = long_modifier_time
+			}
+		}
+	}
+}
+
+russo_chinese.2 = {
+	type = country_event
+	placement = scope:ili_scope
+
+	title = russo_chinese.2.t
+	desc = russo_chinese.2.d
+	flavor = russo_chinese.2.f
+
+	event_image = {
+		video = "europenorthamerica_russian_serfs"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+
+	duration = 3
+
+	trigger = {
+		# triggered by decision
+	}
+
+	immediate = {
+		scope:donor_scope ?= {
+			save_scope_as = china_scope
+		}
+		s:STATE_KIRGHIZIA ?= {
+			random_scope_state = {
+				limit = {
+					scope:china_scope ?= owner
+				}
+				save_scope_as = kirghizia_scope
+			}
+		}
+		s:STATE_ALTAI ?= {
+			random_scope_state = {
+				limit = {
+					scope:china_scope ?= owner
+				}
+				save_scope_as = tomsk_scope
+			}
+		}
+		s:STATE_JETISY ?= {
+			random_scope_state = {
+				limit = {
+					scope:china_scope ?= owner
+				}
+				save_scope_as = ili_scope
+			}
+		}
+		random_country_in_central_asia = {
+			limit = {
+				is_subject_of = c:RUS
+				country_has_primary_culture = cu:kirgiz
+			}
+			save_scope_as = kirgiz_scope
+		}
+	}
+
+	option = {
+		name = russo_chinese.2.a
+		default_option = yes
+		trigger = {
+			OR = {
+				exists = scope:tomsk_scope
+				exists = scope:ili_scope
+			}
+		}
+		if = {
+			limit = {
+				scope:china_scope = {
+					owes_obligation_to = c:RUS
+				}
+			}
+			scope:china_scope = {
+				set_owes_obligation_to = {
+					country = c:RUS
+					setting = no
+				}
+			}
+		}
+		chuguchak_protocol_treaty = yes
+	}
+
+	option = {
+		name = russo_chinese.2.b
+		default_option = yes
+		trigger = {
+			exists = scope:kirghizia_scope
+			OR = {
+				any_scope_state = {
+					state_region = s:STATE_KIRGHIZIA
+				}
+				NOR = {
+					exists = scope:tomsk_scope
+					exists = scope:ili_scope
+				}
+			}
+		}
+		if = {
+			limit = {
+				scope:china_scope = {
+					owes_obligation_to = c:RUS
+				}
+			}
+			scope:china_scope = {
+				set_owes_obligation_to = {
+					country = c:RUS
+					setting = no
+				}
+			}
+		}
+		chuguchak_protocol_treaty_with_kirghizia = yes
+	}
+
+	option = {
+		name = russo_chinese.2.c
+		trigger = {
+			exists = scope:kirgiz_scope
+		}
+		if = {
+			limit = {
+				c:CHI ?= {
+					owes_obligation_to = c:RUS
+				}
+			}
+			c:CHI ?= {
+				set_owes_obligation_to = {
+					country = c:RUS
+					setting = no
+				}
+			}
+		}
+		chuguchak_protocol_treaty = yes
+		if = {
+			limit = {
+				exists = scope:kirghizia_scope
+			}
+			custom_tooltip = {
+				text = chuguchak_protocol_kirgiz_tt
+				create_treaty = {
+					name = treaty_name_chuguchak_protocol
+					first_country = scope:kirgiz_scope
+					second_country = scope:china_scope
+					is_draft = no
+					binding_period = { years = 20 }
+
+					articles_to_create = {
+						{
+							article = state_transfer
+							source_country = scope:china_scope
+							target_country = scope:kirgiz_scope
+							inputs = {
+								{ state = scope:kirghizia_scope }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+russo_chinese.3 = {
+	type = country_event
+	placement = scope:vladivostok_scope
+
+	title = russo_chinese.3.t
+	desc = russo_chinese.3.d
+	flavor = russo_chinese.3.f
+
+	event_image = {
+		video = "europenorthamerica_london_center"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	duration = 3
+
+	trigger = {
+		# triggered by JE
+	}
+
+	immediate = {
+		s:STATE_OUTER_MANCHURIA ?= {
+			random_scope_state = {
+				save_scope_as = vladivostok_scope
+			}
+		}
+	}
+
+	after = {
+		if = {
+			limit = {
+				has_journal_entry = je_tsarpoints_master
+			}
+			je_tsarpoints_add_med = yes
+		}
+		je_the_eastern_border_cleanup = yes
+	}
+
+	option = {
+		name = russo_chinese.3.a
+		default_option = yes
+		scope:vladivostok_scope = {
+			if = {
+				limit = {
+					NOT = {
+						has_building = building_naval_administration
+					}
+				}
+				create_building={
+	 				building="building_naval_administration"
+	 				level=2
+	 				reserves=1
+	 			}
+			}
+ 			add_modifier = modifier_vladivostok_navy
+		}
+		add_modifier = {
+			name = modifier_vladivostok_navy_country
+			days = normal_modifier_time
+		}
+		
+	}
+
+	option = {
+		name = russo_chinese.3.b
+		scope:vladivostok_scope = {
+			if = {
+				limit = {
+					NOT = {
+						has_building = building_port
+					}
+				}
+				create_building={
+	 				building="building_port"
+	 				level=2
+	 				reserves=1
+	 			}
+			}
+ 			add_modifier = modifier_vladivostok_civilian
+ 			add_loyalists = {
+ 				value = large_radicals
+ 				strata = upper
+ 			}
+		}
+	}
+}
+
+russo_chinese.4 = {
+	type = country_event
+	placement = scope:amur_scope
+
+	title = russo_chinese.4.t
+	desc = russo_chinese.4.d
+	flavor = russo_chinese.4.f
+
+	event_image = {
+		video = "europenorthamerica_london_center"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	duration = 3
+
+	trigger = {
+		# triggered by JE
+	}
+
+	immediate = {
+		scope:donor_scope ?= {
+			save_scope_as = china_scope
+		}
+		s:STATE_AMUR ?= {
+			random_scope_state = {
+				limit = {
+					scope:china_scope ?= owner
+				}
+				save_scope_as = amur_scope
+			}
+		}
+	}
+
+	option = {
+		name = russo_chinese.4.a
+		default_option = yes
+		custom_tooltip = {
+			text = treaty_of_aigun_tt
+			create_treaty = {
+				name = treaty_name_treaty_of_aigun
+				first_country = c:RUS
+				second_country = scope:china_scope
+				is_draft = no
+				binding_period = { years = 20 }
+
+				articles_to_create = {
+					{
+						article = state_transfer
+						source_country = scope:china_scope
+						target_country = c:RUS
+						inputs = {
+							{ state = scope:amur_scope }
+						}
+					}
+				}
+			}
+		}
+	}
+}
