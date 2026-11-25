@@ -1,4 +1,4 @@
-namespace = crimean_war
+﻿namespace = crimean_war
 namespace = crimean_peace
 
 # Menshikov Mission
@@ -23,17 +23,17 @@ crimean_war.1 = {
 		exists = c:TUR
 		c:RUS = this
 		country_rank = rank_value:great_power	
-		game_date >= 1852.1.1
+		game_date >= 1850.1.1
 		NOT = { has_global_variable = crimean_war_chain_active }
+		NOR = {
+			is_in_same_power_bloc = c:TUR
+			has_war_with = c:TUR
+			has_war_with = c:AUS
+			any_diplomatic_play = {
+				initiator_is = root
+			}
+		}
 	}
-
-	#mean_time_to_happen = { wrong syntax
-	#	months = 12
-	#	modifier = {
-	#		factor = 0.5
-	#		relations:TUR < -20
-	#	}
-	#}
 
 	immediate = {
 		set_global_variable = crimean_war_chain_active
@@ -41,7 +41,8 @@ crimean_war.1 = {
 
 	option = { # Send Menshikov with Demands
 		name = crimean_war.1.a
-		change_infamy = 15
+		default_option = yes
+		change_infamy = 10
 		c:TUR = {
 			trigger_event = {
 				id = crimean_war.2
@@ -190,7 +191,7 @@ crimean_war.4 = {
 	option = { # Order the Occupation
 		name = crimean_war.4.a
 		default_option = yes
-		change_infamy = 25
+		change_infamy = 10
 		c:TUR = {
 			trigger_event = {
 				id = crimean_war.5
