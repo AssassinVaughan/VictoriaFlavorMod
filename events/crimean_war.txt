@@ -580,9 +580,7 @@ crimean_peace.1 = {
 			text = crimean_peace_ottoman_annexation_tt
 			if = {
 				limit = {
-					p:x50F5CB }.state = {
-						owner = c:RUS
-					}
+					p:x50F5CB.state.owner = c:RUS
 				}
 				s:STATE_DOBRUDJA = {
 					set_owner_of_provinces = {
@@ -608,8 +606,12 @@ crimean_peace.1 = {
 			}
 		}
 		
-		c:RUS = {
-			force_peace = yes
+		random_diplomatic_play = {
+    		limit = {
+        		any_scope_play_involved = { c:RUS ?= this }
+       		 	any_scope_play_involved = { c:TUR ?= this }
+    		}
+    		resolve_play_for = c:TUR
 		}
 		
 		ai_chance = {
@@ -731,12 +733,12 @@ crimean_peace.2 = {
 			}
 		}
 		
-		c:TUR = {
-			add_modifier = {
-				name = ott_backed_down_holy_places
-				months = 180
-			}
-			force_peace = yes
+		random_diplomatic_play = {
+    		limit = {
+        		any_scope_play_involved = { c:RUS ?= this }
+       		 	any_scope_play_involved = { c:TUR ?= this }
+    		}
+    		resolve_play_for = c:RUS
 		}
 		
 		c:RUS = {
