@@ -1,0 +1,98 @@
+﻿#nile expedition success
+REPLACE:je_central_africa_expedition_cleanup = {
+	hidden_effect = {
+		vfm_lake_expedition_success_effect = { CHAIN = nile EXPLORED = central_africa_explored SUCCESS = central_africa_expedition_success_var EVENT = vfm_lake_naming.1 }
+	}
+}
+
+#congo expedition success
+REPLACE:je_congo_expedition_cleanup = {
+	hidden_effect = {
+		vfm_lake_expedition_success_effect = { CHAIN = congo EXPLORED = congo_river_explored SUCCESS = congo_river_expedition_success_var EVENT = vfm_lake_naming.4 }
+	}
+}
+
+vfm_lake_expedition_success_effect = {
+	if = {
+		limit = {
+			has_global_variable = $EXPLORED$
+			has_variable = $SUCCESS$
+			NOT = { has_global_variable = vfm_lake_$CHAIN$_started }
+		}
+		set_global_variable = vfm_lake_$CHAIN$_started
+		if = {
+			limit = { exists = scope:expedition_leader }
+			set_variable = { name = vfm_lake_$CHAIN$_explorer value = scope:expedition_leader }
+		}
+		else_if = {
+			limit = { exists = var:expedition_leader_storage_var }
+			set_variable = { name = vfm_lake_$CHAIN$_explorer value = var:expedition_leader_storage_var }
+		}
+		trigger_event = { id = $EVENT$ days = 7 popup = yes }
+	}
+}
+
+vfm_lake_naming_scopes_effect = {
+	if = {
+		limit = { has_variable = vfm_lake_$CHAIN$_explorer }
+		var:vfm_lake_$CHAIN$_explorer = { save_scope_as = vfm_explorer }
+	}
+	if = {
+		limit = { exists = ruler }
+		ruler = { save_scope_as = vfm_ruler }
+	}
+}
+
+#namesake counter
+vfm_lake_namesake_count_effect = {
+	if = {
+		limit = { has_variable = vfm_lake_namesake }
+		change_variable = { name = vfm_lake_namesake add = 1 }
+	}
+	else = {
+		set_variable = { name = vfm_lake_namesake value = 1 }
+	}
+	set_global_variable = { name = vfm_lake_$LAKE$_ordinal value = var:vfm_lake_namesake }
+}
+
+vfm_lake_name_explorer_effect = {
+	set_global_variable = { name = vfm_lake_$LAKE$_explorer value = scope:vfm_explorer }
+	scope:vfm_explorer = { vfm_lake_namesake_count_effect = { LAKE = $LAKE$ } }
+	add_modifier = {
+		name = vfm_lake_named_explorer
+		days = normal_modifier_time
+	}
+}
+
+vfm_lake_name_ruler_effect = {
+	set_global_variable = { name = vfm_lake_$LAKE$_ruler value = scope:vfm_ruler }
+	if = {
+		limit = { has_law = law_type:law_monarchy }
+		set_global_variable = vfm_lake_$LAKE$_monarch
+	}
+	scope:vfm_ruler = { vfm_lake_namesake_count_effect = { LAKE = $LAKE$ } }
+	add_modifier = {
+		name = vfm_lake_named_ruler
+		days = normal_modifier_time
+	}
+}
+
+vfm_lake_name_nation_effect = {
+	set_global_variable = { name = vfm_lake_$LAKE$_nation value = ROOT }
+	vfm_lake_namesake_count_effect = { LAKE = $LAKE$ }
+	add_modifier = {
+		name = vfm_lake_named_nation
+		days = normal_modifier_time
+	}
+}
+
+vfm_lake_news_effect = {
+	set_global_variable = { name = vfm_lake_$CHAIN$_discoverer value = ROOT }
+	every_country = {
+		limit = {
+			NOT = { THIS = ROOT }
+			NOT = { is_country_type = decentralized }
+		}
+		trigger_event = { id = $EVENT$ days = 7 }
+	}
+}
